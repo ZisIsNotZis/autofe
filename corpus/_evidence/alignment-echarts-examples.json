@@ -5,32 +5,301 @@
     "height": 900
   },
   "nodesChecked": 3508,
-  "candidatesExamined": 1,
+  "nodesBelowCapturedHeight": 3218,
+  "colourCandidatesExamined": 1,
   "tolerancePerChannel": 3,
   "minimumMatchingFraction": 0.25,
+  "minimumDiscriminating": 2,
   "aligned": 1,
   "unexplained": 0,
+  "paintedCarriesEvidence": true,
+  "shiftSensitivityPx": 10,
   "classificationCounts": {
     "translucent-overlay": 0,
     "ancestor-transparent": 0,
     "covered-by-later-node": 0,
+    "covered-by-overlapping-node": 0,
+    "fixed-or-sticky-relayout": 0,
+    "near-match": 0,
     "non-discriminating": 0,
     "low-coverage": 0
   },
+  "paintedFeature": {
+    "candidates": 9,
+    "examined": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "required": true,
+    "checks": [
+      {
+        "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[0]/div[0]/a[0]/picture[0]/img[2]",
+        "tag": "img",
+        "bbox": {
+          "x": 225,
+          "y": 153,
+          "w": 275,
+          "h": 206.25
+        },
+        "localBackground": "rgb(241, 242, 248)",
+        "inkPixels": 1014,
+        "inkFraction": 0.018,
+        "centroid": [
+          351,
+          271
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          255,
+          176,
+          472,
+          334
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/div[0]/a[0]/picture[0]/img[2]",
+        "tag": "img",
+        "bbox": {
+          "x": 530,
+          "y": 153,
+          "w": 275,
+          "h": 206.25
+        },
+        "localBackground": "rgb(241, 242, 248)",
+        "inkPixels": 929,
+        "inkFraction": 0.016,
+        "centroid": [
+          650,
+          270
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          557,
+          176,
+          777,
+          334
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/a[0]/picture[0]/img[2]",
+        "tag": "img",
+        "bbox": {
+          "x": 835,
+          "y": 153,
+          "w": 275,
+          "h": 206.25
+        },
+        "localBackground": "rgb(241, 242, 248)",
+        "inkPixels": 22824,
+        "inkFraction": 0.401,
+        "centroid": [
+          988,
+          272
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          862,
+          176,
+          1086,
+          334
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/a[0]/picture[0]/img[2]",
+        "tag": "img",
+        "bbox": {
+          "x": 1140,
+          "y": 153,
+          "w": 275,
+          "h": 206.25
+        },
+        "localBackground": "rgb(241, 242, 248)",
+        "inkPixels": 3646,
+        "inkFraction": 0.064,
+        "centroid": [
+          1275,
+          296
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          1148,
+          160,
+          1408,
+          352
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[4]/div[0]/a[0]/picture[0]/img[2]",
+        "tag": "img",
+        "bbox": {
+          "x": 225,
+          "y": 441.25,
+          "w": 275,
+          "h": 206.25
+        },
+        "localBackground": "rgb(241, 242, 248)",
+        "inkPixels": 22877,
+        "inkFraction": 0.402,
+        "centroid": [
+          376,
+          563
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          251,
+          448,
+          493,
+          636
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[5]/div[0]/a[0]/picture[0]/img[2]",
+        "tag": "img",
+        "bbox": {
+          "x": 530,
+          "y": 441.25,
+          "w": 275,
+          "h": 206.25
+        },
+        "localBackground": "rgb(241, 242, 248)",
+        "inkPixels": 24601,
+        "inkFraction": 0.432,
+        "centroid": [
+          673,
+          558
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          557,
+          448,
+          798,
+          635
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[6]/div[0]/a[0]/picture[0]/img[2]",
+        "tag": "img",
+        "bbox": {
+          "x": 835,
+          "y": 441.25,
+          "w": 275,
+          "h": 206.25
+        },
+        "localBackground": "rgb(241, 242, 248)",
+        "inkPixels": 10517,
+        "inkFraction": 0.185,
+        "centroid": [
+          969,
+          542
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          847,
+          448,
+          1103,
+          635
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[7]/div[0]/a[0]/picture[0]/img[2]",
+        "tag": "img",
+        "bbox": {
+          "x": 1140,
+          "y": 441.25,
+          "w": 275,
+          "h": 206.25
+        },
+        "localBackground": "rgb(241, 242, 248)",
+        "inkPixels": 3306,
+        "inkFraction": 0.058,
+        "centroid": [
+          1283,
+          535
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          1166,
+          447,
+          1408,
+          636
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[3]/nav[0]/nav[0]/div[0]/div[0]/a[1]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 23,
+          "y": 9,
+          "w": 138.92,
+          "h": 32
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 1558,
+        "inkFraction": 0.35,
+        "centroid": [
+          82,
+          25
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          23,
+          9,
+          161,
+          40
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      }
+    ]
+  },
   "frameAnchor": {
     "available": true,
+    "status": "strong",
     "viewportSize": {
       "w": 1440,
       "h": 900
     },
-    "sampledPixels": 144000,
+    "sampledPixels": 1296000,
     "identicalFraction": 1,
-    "note": "viewport.png is captured at scroll (0,0); equality with the top of full.png proves full.png starts at the document origin"
+    "differingPixels": 0,
+    "maxChannelDelta": 0,
+    "diffBoundingBox": null,
+    "note": "viewport.png (captured at scroll 0,0) matches the top of full.png, i.e. full.png starts at the document origin"
   },
-  "verdict": "aligned",
+  "domResolution": {
+    "available": true,
+    "checkedPaths": 3508,
+    "resolved": 3508,
+    "unresolved": [],
+    "unresolvedCount": 0,
+    "tagMismatch": [],
+    "tagMismatchCount": 0,
+    "elementsInDom": 4325,
+    "passed": true
+  },
+  "blockers": [],
+  "warnings": [],
+  "verdict": "aligned-painted-features",
   "checks": [
     {
       "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[2]/div[0]/span[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[2]/div[0]/span[1]",
       "tag": "span",
       "role": "generic",
       "bbox": {
@@ -45,6 +314,8 @@
         "gridPoints": 25,
         "matchingPoints": 15,
         "fraction": 0.6,
+        "nearPoints": 15,
+        "nearFraction": 0.6,
         "blendedPoints": 10,
         "blendedFraction": 0.4,
         "blend": {
@@ -62,6 +333,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -79,6 +352,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 1,
+        "nearFraction": 0.04,
         "blendedPoints": 23,
         "blendedFraction": 0.92,
         "blend": {
@@ -91,6 +366,11 @@
           255,
           255
         ]
+      },
+      "shiftSensitivityPx": 10,
+      "positionedAncestor": {
+        "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[2]",
+        "position": "fixed"
       }
     }
   ]

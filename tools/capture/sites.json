@@ -38,6 +38,11 @@
           "url": "https://www.mi.com/search?keyword=%E6%89%8B%E6%9C%BA",
           "archetype": "search-results",
           "note": "site-internal search; public search engines deny robots"
+        },
+        {
+          "slug": "search-earbuds",
+          "url": "https://www.mi.com/search?keyword=%E8%80%B3%E6%9C%BA",
+          "archetype": "search-results"
         }
       ]
     },
@@ -63,6 +68,11 @@
         {
           "slug": "search-phone",
           "url": "https://www.huawei.com/cn/search?keyword=phone",
+          "archetype": "search-results"
+        },
+        {
+          "slug": "search-laptop",
+          "url": "https://www.huawei.com/cn/search?keyword=laptop",
           "archetype": "search-results"
         }
       ]
@@ -110,12 +120,16 @@
         {
           "slug": "home",
           "url": "https://www.jd.com/",
-          "archetype": "landing/home"
+          "archetype": "landing/home",
+          "skip": true,
+          "note": "excluded: robots.txt on this host redirects cross-origin to a non-robots resource (list/search -> https://h5st.m.jd.com/file-no.2/public/error.html, www -> http://www.jd.com/), so the host is denied and recorded as robots_cross_origin_redirect"
         },
         {
           "slug": "category-phone",
           "url": "https://list.jd.com/list.html?cat=9987,653,655",
-          "archetype": "category/list"
+          "archetype": "category/list",
+          "skip": true,
+          "note": "excluded: robots.txt on this host redirects cross-origin to a non-robots resource (list/search -> https://h5st.m.jd.com/file-no.2/public/error.html, www -> http://www.jd.com/), so the host is denied and recorded as robots_cross_origin_redirect"
         },
         {
           "slug": "item-100012043978",
@@ -217,6 +231,11 @@
         {
           "slug": "search-yun",
           "url": "https://cloud.tencent.com/search?q=%E4%BA%91",
+          "archetype": "search-results"
+        },
+        {
+          "slug": "search-db",
+          "url": "https://cloud.tencent.com/search?q=%E6%95%B0%E6%8D%AE%E5%BA%93",
           "archetype": "search-results"
         }
       ]
@@ -372,6 +391,12 @@
           "slug": "matrix",
           "url": "https://sspai.com/matrix",
           "archetype": "category/list"
+        },
+        {
+          "slug": "u-jtc092al",
+          "url": "https://sspai.com/u/jtc092al",
+          "archetype": "profile/account",
+          "note": "author profile"
         }
       ]
     },
@@ -398,6 +423,11 @@
           "slug": "search-viz",
           "url": "https://36kr.com/search/articles/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96",
           "archetype": "search-results"
+        },
+        {
+          "slug": "search-ai",
+          "url": "https://36kr.com/search/articles/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD",
+          "archetype": "search-results"
         }
       ]
     },
@@ -413,7 +443,9 @@
         {
           "slug": "discover",
           "url": "https://www.zcool.com.cn/discover",
-          "archetype": "category/list"
+          "archetype": "category/list",
+          "skip": true,
+          "note": "excluded after probing: renders only 17 nodes (JS-only SPA shell)"
         }
       ]
     },
@@ -452,12 +484,16 @@
         {
           "slug": "search-phone",
           "url": "https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8",
-          "archetype": "search-results"
+          "archetype": "search-results",
+          "skip": true,
+          "note": "excluded: robots.txt on this host redirects cross-origin to a non-robots resource (list/search -> https://h5st.m.jd.com/file-no.2/public/error.html, www -> http://www.jd.com/), so the host is denied and recorded as robots_cross_origin_redirect"
         },
         {
           "slug": "search-laptop",
           "url": "https://search.jd.com/Search?keyword=%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91&enc=utf-8",
-          "archetype": "search-results"
+          "archetype": "search-results",
+          "skip": true,
+          "note": "excluded: robots.txt on this host redirects cross-origin to a non-robots resource (list/search -> https://h5st.m.jd.com/file-no.2/public/error.html, www -> http://www.jd.com/), so the host is denied and recorded as robots_cross_origin_redirect"
         }
       ]
     },
@@ -937,6 +973,18 @@
           "slug": "oss-profile",
           "url": "https://gitee.com/oss",
           "archetype": "profile/account"
+        },
+        {
+          "slug": "mirrors-org",
+          "url": "https://gitee.com/mirrors",
+          "archetype": "profile/account",
+          "note": "organisation profile"
+        },
+        {
+          "slug": "oschina-org",
+          "url": "https://gitee.com/oschina",
+          "archetype": "profile/account",
+          "note": "organisation profile"
         }
       ]
     },
@@ -969,6 +1017,11 @@
           "slug": "docs-latest",
           "url": "https://www.chartjs.org/docs/latest/",
           "archetype": "dashboard/data-viz"
+        },
+        {
+          "slug": "samples",
+          "url": "https://www.chartjs.org/docs/latest/samples/",
+          "archetype": "dashboard/data-viz"
         }
       ]
     },
@@ -984,6 +1037,11 @@
         {
           "slug": "home",
           "url": "https://apexcharts.com/",
+          "archetype": "dashboard/data-viz"
+        },
+        {
+          "slug": "chart-demos",
+          "url": "https://apexcharts.com/javascript-chart-demos/",
           "archetype": "dashboard/data-viz"
         }
       ]
@@ -1001,6 +1059,99 @@
           "slug": "home",
           "url": "https://g2.antv.antgroup.com/",
           "archetype": "dashboard/data-viz"
+        },
+        {
+          "slug": "examples-gallery",
+          "url": "https://g2.antv.antgroup.com/examples/gallery",
+          "archetype": "dashboard/data-viz"
+        }
+      ]
+    },
+    {
+      "slug": "cnblogs",
+      "domain": "www.cnblogs.com",
+      "origin": "https://www.cnblogs.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "developer-community",
+      "styleTag": "utility-clean",
+      "pages": [
+        {
+          "slug": "blog-cmt",
+          "url": "https://www.cnblogs.com/cmt/",
+          "archetype": "profile/account",
+          "note": "author blog home = profile + article list"
+        },
+        {
+          "slug": "blog-duwenlong",
+          "url": "https://www.cnblogs.com/duwenlong/",
+          "archetype": "profile/account"
+        }
+      ]
+    },
+    {
+      "slug": "plotly",
+      "domain": "plotly.com",
+      "origin": "https://plotly.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "data-viz",
+      "styleTag": "marketing-product",
+      "pages": [
+        {
+          "slug": "javascript-home",
+          "url": "https://plotly.com/javascript/",
+          "archetype": "dashboard/data-viz",
+          "skip": true,
+          "note": "excluded after probing: Chromium navigation times out twice (curl and Node fetch both reach it, so this is browser-specific)"
+        }
+      ]
+    },
+    {
+      "slug": "vega",
+      "domain": "vega.github.io",
+      "origin": "https://vega.github.io",
+      "region": "global",
+      "language": "en-US",
+      "industry": "data-viz",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "vega-lite-examples",
+          "url": "https://vega.github.io/vega-lite/examples/",
+          "archetype": "dashboard/data-viz"
+        }
+      ]
+    },
+    {
+      "slug": "amcharts",
+      "domain": "www.amcharts.com",
+      "origin": "https://www.amcharts.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "data-viz",
+      "styleTag": "marketing-product",
+      "pages": [
+        {
+          "slug": "demos",
+          "url": "https://www.amcharts.com/demos/",
+          "archetype": "dashboard/data-viz"
+        }
+      ]
+    },
+    {
+      "slug": "oppo-cn",
+      "domain": "www.oppo.com",
+      "origin": "https://www.oppo.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "consumer-electronics",
+      "styleTag": "hero-product",
+      "pages": [
+        {
+          "slug": "search-phone",
+          "url": "https://www.oppo.com/cn/search/?q=%E6%89%8B%E6%9C%BA",
+          "archetype": "search-results"
         }
       ]
     }
@@ -1057,7 +1208,7 @@
     {
       "url": "https://search.jd.com/Search?keyword=...",
       "archetype": "search-results",
-      "reason": "robots-permitted but redirects to passport.jd.com login (cross-host redirect); kept in sites.json because the redirect itself is captured and recorded",
+      "reason": "kept initially to exercise cross-host-redirect recording; the redirect (to passport.jd.com) appeared in one early run only, and the host is now denied for a different reason: search.jd.com/robots.txt redirects cross-origin to a non-robots resource (https://h5st.m.jd.com/file-no.2/public/error.html). Cross-host redirect handling is covered deterministically by tools/capture/test-guards.mjs.",
       "checkedAt": "2026-09-18"
     },
     {
@@ -1154,6 +1305,78 @@
       "url": "https://datav.aliyun.com/portal/school/atlas/area_selector, https://www.antdv.com/components/table",
       "archetype": "dashboard/data-viz / table-heavy/admin",
       "reason": "only a ~3KB SPA shell is served; same empty-render risk that removed ant-design-pro from the pilot",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.jd.com/, https://list.jd.com/..., https://search.jd.com/...",
+      "archetype": "landing/home, category/list, search-results",
+      "reason": "robots.txt redirects to a non-robots resource (h5st.m.jd.com error page / http://www.jd.com/ homepage). Denied as robots_cross_origin_redirect instead of parsing non-robots content as rules. item.jd.com is plain and stays in the seed.",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.zcool.com.cn/discover",
+      "archetype": "category/list",
+      "reason": "captured but renders only 17 nodes (JS-only shell) - dropped from the seed rather than polluting the corpus",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.samsung.com/cn/search/?searchvalue=phone",
+      "archetype": "search-results",
+      "reason": "robots.txt: `Disallow: /*/search/`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.lenovo.com.cn/search.html?keyword=...",
+      "archetype": "search-results",
+      "reason": "robots.txt: `Disallow: *?*`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://search.zol.com.cn/s/all/?kword=...",
+      "archetype": "search-results",
+      "reason": "robots.txt: `Disallow: *`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.highcharts.com/demo",
+      "archetype": "dashboard/data-viz",
+      "reason": "robots.txt returns HTTP 403 for our agent (robots_forbidden)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://v2ex.com/member/Livid",
+      "archetype": "profile/account",
+      "reason": "robots.txt unreachable (robots_unavailable)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://segmentfault.com/u/segmentfault",
+      "archetype": "profile/account",
+      "reason": "HTTP 468 anti-bot response",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.douban.com/people/douban/",
+      "archetype": "profile/account",
+      "reason": "HTTP 404 (guessed user id)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.vivo.com.cn/search?keyword=...",
+      "archetype": "search-results",
+      "reason": "HTTP 404 (no such search route)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://antv.antgroup.com/examples",
+      "archetype": "dashboard/data-viz",
+      "reason": "HTTP 404 (route moved to g2.antv.antgroup.com/examples/gallery)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://plotly.com/javascript/",
+      "archetype": "dashboard/data-viz",
+      "reason": "Chromium navigation fails with a 45s timeout twice while curl and Node fetch return 200; dropped rather than retried forever",
       "checkedAt": "2026-09-18"
     }
   ]

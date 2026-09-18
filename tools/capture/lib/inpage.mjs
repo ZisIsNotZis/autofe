@@ -7,9 +7,22 @@ export const MARK_ATTR = 'data-af-node';
 export const HIDDEN_ATTR = 'data-af-hidden';
 export const AF_ATTR_PREFIX = 'data-af-';
 
-// Walks every element in document order, computes the alignment record for the
-// visible ones, and tags the live DOM with marker/hidden attributes so the DOM
-// serializer and the CDP accessibility mapping can reuse the same element order.
+// Walks every element in document order and returns one record per *laid-out* element
+// together with the decisions that define the cleaned DOM.
+//
+// One marker attribute is left on the live DOM so the Node side can join DOM ↔ a11y ↔
+// nodes.json without relying on browser-assigned ids:
+//   data-af-node = stable element id ("e<i>" in document order; retagMarkers() adds "r<i>"
+//                  for elements that appear in a re-render after this pass)
+//
+// Cleaning contract implemented here (single source of truth; extractCleanedDom() only removes
+// [data-af-hidden] and then parses the result to derive element paths):
+//   - script/style/noscript, ad containers **and their whole subtree**, and subtrees with no
+//     layout box (display:none) are marked dropped.
+//   - everything else stays, including `visibility:hidden`/`opacity:0` elements that still
+//     occupy layout. They are kept on purpose: nodes.json must be resolvable in dom.html
+//     (see README "cleaning rules"), and hidden-but-laid-out subtrees (menus, tabs, modals)
+//     are exactly the state carriers M1 needs.
 export function analyzeDom() {
   const MAX_TEXT = 1000;
   const NAME_MAX = 200;
@@ -38,8 +51,6 @@ export function analyzeDom() {
     file: 'button', color: 'button', hidden: 'none',
   };
 
-  // One source of truth for "what leaves the cleaned DOM": dropped nodes are marked here
-  // and the serializer only has to remove [data-af-hidden].
   const DROP_TAGS = new Set(['script', 'style', 'noscript']);
   const AD_PATTERN = /(doubleclick|googlesyndication|googlesync|adsystem|adservice|admaster|miaozhen|pos\.baidu|alimama|tanx|cpro|google_ads_iframe)/i;
   function isAdElement(el, tag) {
@@ -163,7 +174,7 @@ export function analyzeDom() {
   for (let i = 0; i < all.length; i += 1) {
     const el = all[i];
     indexOf.set(el, i);
-    el.setAttribute(MARK, String(i));
+    el.setAttribute(MARK, `e${i}`);
 
     const style = getComputedStyle(el);
     const rect = el.getBoundingClientRect();
@@ -171,13 +182,17 @@ export function analyzeDom() {
     const displayNone = style.display === 'none';
     const visibilityHidden = style.visibility === 'hidden' || style.visibility === 'collapse';
     const transparent = opacityCleared(el);
-    const visible = hasBox && !displayNone && !visibilityHidden && !transparent;
+    // Laid out (occupies a box in layout) vs painted (actually drawn with content).
+    const rendered = hasBox && !displayNone;
+    const visible = rendered && !visibilityHidden && !transparent;
 
     const text = (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim();
     records[i] = {
       element: el,
+      hasBox,
+      displayNone,
+      rendered,
       visible,
-      hiddenByStyle: !hasBox || displayNone || visibilityHidden,
       structuralKeep: STRUCTURAL_KEEP.has(el.tagName.toLowerCase()) || el.closest('head') !== null,
       tag: el.tagName.toLowerCase(),
       dropByTag: DROP_TAGS.has(el.tagName.toLowerCase()),
@@ -200,38 +215,56 @@ export function analyzeDom() {
     };
   }
 
-  // An element is dropped from the cleaned DOM only if it is itself unrendered and
-  // has no visible descendant (avoids deleting e.g. a visible child of visibility:hidden).
-  const hasVisibleDescendant = new Uint8Array(all.length);
+  // Ad containers are dropped with their whole subtree, so no kept element can be an ad
+  // descendant (otherwise its cleanedPath would not resolve in dom.html).
+  const adDropped = new Uint8Array(all.length);
   for (let i = 0; i < all.length; i += 1) {
-    if (!records[i].visible) continue;
+    if (!records[i].dropAsAd) continue;
+    adDropped[i] = 1;
+    for (const descendant of records[i].element.querySelectorAll('*')) {
+      const descendantIndex = indexOf.get(descendant);
+      if (descendantIndex !== undefined) adDropped[descendantIndex] = 1;
+    }
+  }
+
+  // A boxless subtree is dropped only if nothing inside it is laid out either.
+  const hasLaidOutDescendant = new Uint8Array(all.length);
+  for (let i = 0; i < all.length; i += 1) {
+    if (!records[i].rendered) continue;
     let parent = all[i].parentElement;
     while (parent) {
       const parentIndex = indexOf.get(parent);
       if (parentIndex === undefined) break;
-      hasVisibleDescendant[parentIndex] = 1;
+      hasLaidOutDescendant[parentIndex] = 1;
       parent = parent.parentElement;
     }
   }
 
   const nodes = [];
-  const cleanedIndexByRaw = new Array(all.length).fill(null);
   let droppedFromDom = 0;
-  let cleanedElements = 0;
+  let adExcludedNodes = 0;
+
   for (let i = 0; i < all.length; i += 1) {
     const record = records[i];
     const shouldDrop =
       record.dropByTag ||
-      record.dropAsAd ||
-      (record.hiddenByStyle && !record.structuralKeep && hasVisibleDescendant[i] === 0);
+      adDropped[i] === 1 ||
+      ((!record.hasBox || record.displayNone) && !record.structuralKeep && hasLaidOutDescendant[i] === 0);
+
     if (shouldDrop) {
       record.element.setAttribute(HIDDEN, '1');
       droppedFromDom += 1;
-    } else {
-      cleanedIndexByRaw[i] = cleanedElements;
-      cleanedElements += 1;
+      continue;
     }
-    if (record.visible) {
+
+    // One entry per laid-out element; `visible` distinguishes painted from laid-out-but-hidden.
+    // cleanedPath/cleanedIndex are attached after the cleaned DOM is parsed (extractCleanedDom),
+    // so they always describe the delivered file rather than the live tree.
+    if (record.rendered) {
+      if (adDropped[i] === 1) {
+        adExcludedNodes += 1;
+        continue;
+      }
       nodes.push({
         domPath: record.domPath,
         tag: record.tag,
@@ -240,21 +273,19 @@ export function analyzeDom() {
         text: record.text,
         bbox: record.bbox,
         styles: record.styles,
-        visible: true,
+        visible: record.visible,
         // Internal hints, removed before writing:
+        _id: `e${i}`,
         _implicitRole: record.implicitRole,
-        _index: i,
-        _cleanedIndex: cleanedIndexByRaw[i],
       });
     }
   }
 
   return {
     total: all.length,
-    visible: nodes.length,
+    rendered: nodes.length,
     droppedFromDom,
-    cleanedElements,
-    cleanedIndexByRaw,
+    adExcludedNodes,
     nodes,
     document: {
       scrollWidth: document.documentElement.scrollWidth,
@@ -264,6 +295,45 @@ export function analyzeDom() {
       bodyTextLength: document.body ? (document.body.innerText || '').replace(/\s+/g, ' ').trim().length : 0,
     },
   };
+}
+
+// Resolves once the DOM stops changing (no mutations for quietMs) or after maxMs. Renderers keep
+// painting after `load`; capturing before they settle is what produced a mid-load artifact on a
+// slow-network run (a docs page captured while its loading bar was still busy).
+export function waitForDomQuiescence(quietMs = 800, maxMs = 12000) {
+  return new Promise((resolve) => {
+    let done = false;
+    let quiet = null;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      clearTimeout(quiet);
+      clearTimeout(hard);
+      observer.disconnect();
+      resolve(true);
+    };
+    const observer = new MutationObserver(() => {
+      clearTimeout(quiet);
+      quiet = setTimeout(finish, quietMs);
+    });
+    const hard = setTimeout(finish, maxMs);
+    observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true, characterData: true });
+    quiet = setTimeout(finish, quietMs);
+  });
+}
+
+// Adds markers to elements that did not exist when analyzeDom() ran (a page re-rendering
+// between that pass and DOM.getDocument would otherwise silently lose their AX join).
+// Existing markers are preserved, so ids stay consistent with the analysis payload.
+export function retagMarkers() {
+  let added = 0;
+  for (const el of document.querySelectorAll('*')) {
+    if (!el.hasAttribute('data-af-node')) {
+      el.setAttribute('data-af-node', `r${added}`);
+      added += 1;
+    }
+  }
+  return added;
 }
 
 // JSON-LD (`script[type="application/ld+json"]`) plus best-effort microdata, which is
@@ -302,30 +372,64 @@ export function extractStructuredData() {
   return { blocks };
 }
 
-// Serialized DOM after render, with script/style/noscript, ad iframes and tracking
-// attributes stripped. Returns the `outerHTML` of the cleaned root.
-export function serializeCleanedDom() {
-  // analyzeDom() already decided what leaves the DOM (scripts/styles/noscript, ad containers,
-  // unrendered subtrees) and marked it with data-af-hidden.
-  const DROP_SELECTOR = '[data-af-hidden]';
-  // `data-*` analytics/tracking carriers and inline event handlers.
+// Serialized, cleaned DOM — and the authoritative source of element paths.
+//
+// The live DOM can contain markup the HTML parser repairs (nested <a>, blocks inside inline
+// elements, elements outside <body>), so a path computed from the live tree may not resolve in
+// a re-parsed file. This function therefore: clones the cleaned tree *with* the data-af-node
+// markers, parses that serialization back with DOMParser (the same parser class a consumer
+// would use), and walks the parsed tree to produce the paths. Stripping markers/tracking
+// attributes and comments afterwards cannot change element structure, so every returned path
+// resolves in the returned HTML by construction.
+//
+// Returns { html, indexById, pathById, elementsInDom, duplicates, unmarkedElements }.
+// `wantedPathIds` limits the (bulky) path output to the elements nodes.json will reference.
+export function extractCleanedDom(wantedPathIds) {
+  const wanted = new Set(wantedPathIds ?? []);
   const TRACK_ATTR = /^(?:on[a-z]+|data-(?:spm|track|tracking|analytics|ga|gtm|click|report|stat|stats|bi|log|logs|event|events|beacon|utm)[-_a-z0-9]*)$/i;
 
   const clone = document.documentElement.cloneNode(true);
-  for (const el of clone.querySelectorAll(DROP_SELECTOR)) el.remove();
+  for (const el of clone.querySelectorAll('[data-af-hidden]')) el.remove();
 
-  for (const el of [clone, ...clone.querySelectorAll('*')]) {
+  const parsed = new DOMParser().parseFromString(`<!DOCTYPE html>${clone.outerHTML}`, 'text/html');
+  const root = parsed.documentElement;
+
+  const indexById = {};
+  const pathById = {};
+  let elementsInDom = 0;
+  let duplicates = 0;
+  let unmarkedElements = 0;
+
+  const walk = (el, path) => {
+    const id = el.getAttribute('data-af-node');
+    if (id === null) {
+      unmarkedElements += 1;
+    } else if (indexById[id] === undefined) {
+      indexById[id] = elementsInDom;
+      if (wanted.has(id)) pathById[id] = path;
+    } else {
+      duplicates += 1;
+    }
+    elementsInDom += 1;
+    const children = el.children;
+    for (let k = 0; k < children.length; k += 1) {
+      walk(children[k], `${path}/${children[k].tagName.toLowerCase()}[${k}]`);
+    }
+  };
+  walk(root, 'html');
+
+  for (const el of [root, ...root.querySelectorAll('*')]) {
     for (const name of el.getAttributeNames()) {
       if (TRACK_ATTR.test(name) || name.startsWith('data-af-')) el.removeAttribute(name);
     }
   }
 
-  const walker = document.createTreeWalker(clone, NodeFilter.SHOW_COMMENT);
+  const walker = parsed.createTreeWalker(root, NodeFilter.SHOW_COMMENT);
   const comments = [];
   while (walker.nextNode()) comments.push(walker.currentNode);
   for (const comment of comments) comment.remove();
 
-  return clone.outerHTML;
+  return { html: root.outerHTML, indexById, pathById, elementsInDom, duplicates, unmarkedElements };
 }
 
 // Removes the in-page markers again (belt-and-braces; the serializer also strips them).

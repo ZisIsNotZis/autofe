@@ -1,12 +1,12 @@
 {
-  "version": 2,
+  "version": 3,
   "updatedAt": "2026-09-18",
   "purpose": "Pilot gate for the M0 capture pipeline: 11 pages spanning 10 archetypes over 11 hosts, so per-host delay, robots handling, SPA-vs-SSR rendering and the failure recorder are all exercised. Selected with `--pilot`.",
   "pages": [
     "mi-com/home",
     "mi-com/product-detail-mi15",
-    "jd-com/category-phone",
-    "search-jd/search-phone",
+    "huaban-com/discovery",
+    "mi-com/search-phone",
     "juejin-cn/user-712139234359182",
     "sspai-com/post-102392",
     "element-plus/button",
@@ -31,6 +31,12 @@
     "bilibili search/profile pages dropped: host robots.txt disallows `*` entirely",
     "ant-design-pro pages dropped: SPA renders empty in headless Chrome from this environment (0 body text on 4 routes, all bundles HTTP 200)",
     "added echarts/examples (dashboard/data-viz), getbootstrap/example-checkout (form), passport-baidu/login (form)",
-    "search-jd/search-phone kept on purpose: JD redirects it to passport.jd.com, which exercises cross-host-redirect recording"
-  ]
+    "search-jd/search-phone was added to exercise cross-host-redirect recording; it redirected to passport.jd.com in one early run and then served the search page directly, so that claim did not hold (corrected in v3: the path is now covered deterministically by tools/capture/test-guards.mjs, and JD hosts are denied anyway because their robots.txt redirects cross-origin to a non-robots resource)"
+  ],
+  "v3Changes": [
+    "jd-com/* and search-jd/* removed: JD's robots.txt on those hosts redirects to a non-robots resource (https://h5st.m.jd.com/file-no.2/public/error.html for list/search, http://www.jd.com/ for www), so the host is now denied and recorded as robots_cross_origin_redirect instead of following the redirect",
+    "category/list representative is now huaban-com/discovery; zcool-com-cn/discover renders only 17 nodes (SPA shell) and is skipped in sites.json",
+    "search-results representative is now mi-com/search-phone (site-internal search); its same-host redirect is recorded as informational, not as a capture failure"
+  ],
+  "notes": "Pilot gate for the M0 capture pipeline: 11 pages, 10 archetypes, 11 hosts. Cross-host redirect handling is covered deterministically by tools/capture/test-guards.mjs (local server) rather than by a live site."
 }

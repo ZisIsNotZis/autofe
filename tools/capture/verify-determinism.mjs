@@ -1,10 +1,15 @@
 #!/usr/bin/env node
-// Structural re-run check: capture the same page into two directories and prove the
-// outputs are structurally identical. Volatile fields (capturedAt, timings) are ignored;
-// everything else must match exactly, and the screenshots must be byte-identical.
+// Structural re-run check: capture the same page twice and prove the outputs are structurally
+// identical. Volatile fields (timestamps, wall-clock timings) are ignored and listed explicitly;
+// everything else must match exactly. PNGs are compared byte-wise first, then — if they differ —
+// pixel-wise over *every* pixel (never subsampled), requiring all of:
+//   maxChannelDelta <= --max-pixel-delta, differing fraction <= --max-diff-fraction, and a
+//   difference bounding box covering <= --max-diff-box-fraction of the image area.
+// Larger differences are a failure, not rendering noise.
 //
 // Usage:
 //   node tools/capture/verify-determinism.mjs <dirA> <dirB> [--out file.json]
+//   node tools/capture/verify-determinism.mjs --pair <dirA>:<dirB> [--pair <dirA>:<dirB> ...] [--out file.json]
 
 import crypto from 'node:crypto';
 import fs from 'node:fs';
@@ -18,8 +23,7 @@ const DYNAMIC_LEAF_KEYS = new Set(['capturedAt', 'at']);
 //   timings.*            wall-clock durations
 //   counts.domElements   raw element count in the live DOM; the page injects an extra
 //   counts.droppedFromDom  <script>/<style> on some runs, which moves these two counters
-//                        while dom.html, nodes.json and counts.cleanedElements stay identical
-//                        (measured: 4528 vs 4527 raw, 1676 cleaned both runs, dom.html byte-equal).
+//                        while dom.html, nodes.json and counts.cleanedElements stay identical.
 const VOLATILE_META_PATHS = [
   ['capturedAt'],
   ['timings'],
@@ -32,36 +36,44 @@ function isVolatileMetaPath(path) {
 }
 
 function parseArgs(argv) {
-  const options = { dirs: [], out: null, maxPixelDelta: 2 };
+  const options = { pairs: [], out: null, maxPixelDelta: 2, maxDiffFraction: 0.01, maxDiffBoxFraction: 0.01 };
+  const positional = [];
   for (let i = 0; i < argv.length; i += 1) {
-    if (argv[i] === '--out') {
-      options.out = argv[i + 1];
+    const arg = argv[i];
+    const value = () => {
       i += 1;
-    } else if (argv[i] === '--max-pixel-delta') {
-      options.maxPixelDelta = Number(argv[i + 1]);
-      i += 1;
-    } else {
-      options.dirs.push(argv[i]);
-    }
+      if (argv[i] === undefined) throw new Error(`missing value for ${arg}`);
+      return argv[i];
+    };
+    if (arg === '--out') options.out = value();
+    else if (arg === '--pair') {
+      const [a, b] = value().split(':');
+      if (!a || !b) throw new Error('--pair expects dirA:dirB');
+      options.pairs.push([a, b]);
+    } else if (arg === '--max-pixel-delta') options.maxPixelDelta = Number(value());
+    else if (arg === '--max-diff-fraction') options.maxDiffFraction = Number(value());
+    else if (arg === '--max-diff-box-fraction') options.maxDiffBoxFraction = Number(value());
+    else if (arg.startsWith('--')) throw new Error(`unknown argument: ${arg}`);
+    else positional.push(arg);
   }
-  if (options.dirs.length !== 2) throw new Error('usage: verify-determinism.mjs <dirA> <dirB> [--out file.json] [--max-pixel-delta N]');
+  if (positional.length === 2) options.pairs.push([positional[0], positional[1]]);
+  else if (positional.length) throw new Error('pass exactly two directories, or use --pair dirA:dirB');
+  if (!options.pairs.length) throw new Error('usage: verify-determinism.mjs <dirA> <dirB> | --pair dirA:dirB [--pair ...] [--out file.json]');
   return options;
 }
 
-// For PNGs that are not byte-identical: measure how different the pixels actually are, so a
-// rendering-noise diff is reported as such instead of being hidden or treated as a failure.
-function pixelDiff(fileA, fileB) {
+// Every pixel is compared; no subsampling, so a sparse difference cannot slip through.
+function pixelDiff(fileA, fileB, options) {
   const a = decodePng(fs.readFileSync(fileA));
   const b = decodePng(fs.readFileSync(fileB));
   if (a.width !== b.width || a.height !== b.height) {
     return { sameSize: false, sizeA: { w: a.width, h: a.height }, sizeB: { w: b.width, h: b.height } };
   }
-  const step = a.width * a.height > 20_000_000 ? 2 : 1;
   let differing = 0;
   let maxDelta = 0;
   let box = null;
-  for (let y = 0; y < a.height; y += step) {
-    for (let x = 0; x < a.width; x += step) {
+  for (let y = 0; y < a.height; y += 1) {
+    for (let x = 0; x < a.width; x += 1) {
       const p = a.pixel(x, y);
       const q = b.pixel(x, y);
       const delta = Math.max(Math.abs(p[0] - q[0]), Math.abs(p[1] - q[1]), Math.abs(p[2] - q[2]), Math.abs(p[3] - q[3]));
@@ -71,15 +83,27 @@ function pixelDiff(fileA, fileB) {
       box = box ? [Math.min(box[0], x), Math.min(box[1], y), Math.max(box[2], x), Math.max(box[3], y)] : [x, y, x, y];
     }
   }
-  return { sameSize: true, sampledStep: step, differingPixels: differing, maxChannelDelta: maxDelta, boundingBox: box };
+  const totalPixels = a.width * a.height;
+  const boxArea = box ? (box[2] - box[0] + 1) * (box[3] - box[1] + 1) : 0;
+  const differingFraction = totalPixels ? differing / totalPixels : 0;
+  const boxFraction = totalPixels ? boxArea / totalPixels : 0;
+  return {
+    sameSize: true,
+    totalPixels,
+    differingPixels: differing,
+    differingFraction: Math.round(differingFraction * 1e6) / 1e6,
+    maxChannelDelta: maxDelta,
+    boundingBox: box,
+    boundingBoxAreaFraction: Math.round(boxFraction * 1e6) / 1e6,
+    withinTolerance:
+      maxDelta <= options.maxPixelDelta && differingFraction <= options.maxDiffFraction && boxFraction <= options.maxDiffBoxFraction,
+  };
 }
 
 function sha256(file) {
   return crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 }
 
-// Removes known volatile fields recursively so a timestamp or a page-injected script
-// cannot mask or force a diff.
 function strip(value, path = [], isMeta = false) {
   if (Array.isArray(value)) return value.map((item) => strip(item, path, isMeta));
   if (value && typeof value === 'object') {
@@ -97,7 +121,9 @@ function strip(value, path = [], isMeta = false) {
 
 function firstDifference(a, b) {
   const limit = Math.min(a.length, b.length);
-  for (let i = 0; i < limit; i += 1) if (a[i] !== b[i]) return { offset: i, a: a.slice(Math.max(0, i - 40), i + 40), b: b.slice(Math.max(0, i - 40), i + 40) };
+  for (let i = 0; i < limit; i += 1) {
+    if (a[i] !== b[i]) return { offset: i, a: a.slice(Math.max(0, i - 40), i + 40), b: b.slice(Math.max(0, i - 40), i + 40) };
+  }
   if (a.length !== b.length) return { offset: limit, a: a.slice(Math.max(0, limit - 40)), b: b.slice(Math.max(0, limit - 40)) };
   return null;
 }
@@ -111,77 +137,84 @@ function compareJson(fileA, fileB, name) {
   return { file: name, identical: false, mode: 'json-structural', detail: firstDifference(a, b) };
 }
 
-function main() {
-  const options = parseArgs(process.argv.slice(2));
-  const [dirA, dirB] = options.dirs.map((dir) => path.resolve(dir));
+function comparePair(dirA, dirB, options) {
   const filesA = fs.readdirSync(dirA).sort();
   const filesB = fs.readdirSync(dirB).sort();
-  const report = {
+  const pair = {
     dirA: path.relative(process.cwd(), dirA),
     dirB: path.relative(process.cwd(), dirB),
     fileSets: { a: filesA, b: filesB, identical: JSON.stringify(filesA) === JSON.stringify(filesB) },
-    ignoredVolatile: {
-      dynamicLeafKeys: [...DYNAMIC_LEAF_KEYS],
-      metaPaths: VOLATILE_META_PATHS.map((path) => path.join('.')),
-      reason:
-        'timestamps always differ; counts.domElements / counts.droppedFromDom count raw live-DOM elements, and the page injects an extra script or style node on some runs (dom.html, nodes.json and counts.cleanedElements were byte/structurally identical while these moved)',
-    },
     comparisons: [],
   };
 
   for (const file of filesA) {
     const fileB = path.join(dirB, file);
     if (!fs.existsSync(fileB)) {
-      report.comparisons.push({ file, identical: false, mode: 'missing', detail: 'missing in second capture' });
+      pair.comparisons.push({ file, identical: false, mode: 'missing', detail: 'missing in second capture' });
       continue;
     }
     const a = path.join(dirA, file);
     if (file.endsWith('.json')) {
-      report.comparisons.push(compareJson(a, fileB, file));
+      pair.comparisons.push(compareJson(a, fileB, file));
     } else if (file.endsWith('.png')) {
       const hashA = sha256(a);
       const hashB = sha256(fileB);
       if (hashA === hashB) {
-        report.comparisons.push({ file, identical: true, byteIdentical: true, mode: 'bytes', sha256: hashA });
+        pair.comparisons.push({ file, identical: true, byteIdentical: true, mode: 'bytes', sha256: hashA });
       } else {
-        const pixels = pixelDiff(a, fileB);
-        const equivalent = pixels.sameSize && (pixels.differingPixels ?? 1) > 0 && pixels.maxChannelDelta <= options.maxPixelDelta;
-        report.comparisons.push({
+        const pixels = pixelDiff(a, fileB, options);
+        pair.comparisons.push({
           file,
           identical: false,
           byteIdentical: false,
-          pixelEquivalent: equivalent,
+          pixelEquivalent: pixels.sameSize && pixels.withinTolerance,
           mode: 'bytes+pixel-diff',
           sha256: hashA,
           sha256Other: hashB,
           pixelDiff: pixels,
-          note: equivalent
-            ? `differs in ${pixels.differingPixels} sampled pixels, max channel delta ${pixels.maxChannelDelta} (<= --max-pixel-delta ${options.maxPixelDelta}): rendering noise, not a structural difference`
-            : 'pixel difference exceeds --max-pixel-delta',
+          note: pixels.withinTolerance
+            ? `differs in ${pixels.differingPixels}/${pixels.totalPixels} pixels (${(pixels.differingFraction * 100).toFixed(4)}%), max channel delta ${pixels.maxChannelDelta}, diff box ${(pixels.boundingBoxAreaFraction * 100).toFixed(4)}% of the image: within the rendering-noise budget`
+            : 'pixel difference exceeds the rendering-noise budget (max channel delta / differing fraction / diff box)',
         });
       }
     } else {
       const textA = fs.readFileSync(a, 'utf8');
       const textB = fs.readFileSync(fileB, 'utf8');
-      report.comparisons.push({
-        file,
-        identical: textA === textB,
-        mode: 'text',
-        detail: textA === textB ? null : firstDifference(textA, textB),
-      });
+      pair.comparisons.push({ file, identical: textA === textB, mode: 'text', detail: textA === textB ? null : firstDifference(textA, textB) });
     }
   }
 
-  const allIdentical = report.fileSets.identical && report.comparisons.every((comparison) => comparison.identical);
+  const allIdentical = pair.fileSets.identical && pair.comparisons.every((comparison) => comparison.identical);
   const structurallyIdentical =
-    report.fileSets.identical &&
-    report.comparisons.every((comparison) => comparison.identical || (comparison.mode === 'bytes+pixel-diff' && comparison.pixelEquivalent));
-  report.verdict = allIdentical ? 'identical' : structurallyIdentical ? 'identical-modulo-png-rendering-noise' : 'different';
+    pair.fileSets.identical &&
+    pair.comparisons.every((comparison) => comparison.identical || (comparison.mode === 'bytes+pixel-diff' && comparison.pixelEquivalent));
+  pair.verdict = allIdentical ? 'identical' : structurallyIdentical ? 'identical-modulo-png-rendering-noise' : 'different';
+  return pair;
+}
+
+function main() {
+  const options = parseArgs(process.argv.slice(2));
+  const pairs = options.pairs.map(([a, b]) => comparePair(path.resolve(a), path.resolve(b), options));
+  const report = {
+    pairs,
+    budgets: {
+      maxPixelDelta: options.maxPixelDelta,
+      maxDifferingFraction: options.maxDiffFraction,
+      maxDiffBoxAreaFraction: options.maxDiffBoxFraction,
+      note: 'PNG diffs are compared over every pixel; a diff must satisfy all three budgets to count as rendering noise',
+    },
+    ignoredVolatile: {
+      dynamicLeafKeys: [...DYNAMIC_LEAF_KEYS],
+      metaPaths: VOLATILE_META_PATHS.map((entry) => entry.join('.')),
+      reason:
+        'timestamps always differ; counts.domElements / counts.droppedFromDom count raw live-DOM elements, and the page injects an extra script or style node on some runs (dom.html, nodes.json and counts.cleanedElements were byte/structurally identical while these moved)',
+    },
+    verdict: pairs.length === 1 ? pairs[0].verdict : pairs.some((pair) => pair.verdict === 'different') ? 'different' : pairs.every((pair) => pair.verdict === 'identical') ? 'identical' : 'identical-modulo-png-rendering-noise',
+  };
+
   const text = `${JSON.stringify(report, null, 2)}\n`;
   if (options.out) fs.writeFileSync(options.out, text);
   process.stdout.write(text);
-  // 'identical-modulo-png-rendering-noise' still passes: sub-pixel deltas inside PNGs are
-  // reported with exact counts, not hidden, but they are not a structural difference.
   if (report.verdict === 'different') process.exitCode = 1;
 }
 

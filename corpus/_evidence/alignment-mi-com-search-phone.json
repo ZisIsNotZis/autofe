@@ -1,0 +1,1292 @@
+{
+  "pageDir": "corpus/mi-com/search-phone",
+  "fullPng": {
+    "width": 1440,
+    "height": 3991
+  },
+  "nodesChecked": 784,
+  "nodesBelowCapturedHeight": 0,
+  "colourCandidatesExamined": 8,
+  "tolerancePerChannel": 3,
+  "minimumMatchingFraction": 0.25,
+  "minimumDiscriminating": 2,
+  "aligned": 3,
+  "unexplained": 0,
+  "paintedCarriesEvidence": true,
+  "shiftSensitivityPx": 15,
+  "classificationCounts": {
+    "translucent-overlay": 0,
+    "ancestor-transparent": 5,
+    "covered-by-later-node": 0,
+    "covered-by-overlapping-node": 0,
+    "fixed-or-sticky-relayout": 0,
+    "near-match": 0,
+    "non-discriminating": 0,
+    "low-coverage": 0
+  },
+  "paintedFeature": {
+    "candidates": 25,
+    "examined": 25,
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "required": true,
+    "checks": [
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[0]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 155,
+          "y": 401,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 39679,
+        "inkFraction": 0.992,
+        "centroid": [
+          255,
+          501
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          155,
+          401,
+          354,
+          600
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[1]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 465,
+          "y": 401,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 19898,
+        "inkFraction": 0.497,
+        "centroid": [
+          565,
+          500
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          501,
+          422,
+          628,
+          579
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[2]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 775,
+          "y": 401,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 20420,
+        "inkFraction": 0.51,
+        "centroid": [
+          875,
+          501
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          812,
+          420,
+          938,
+          581
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[3]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 1085,
+          "y": 401,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 11970,
+        "inkFraction": 0.299,
+        "centroid": [
+          1200,
+          503
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          1108,
+          447,
+          1261,
+          553
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[4]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 155,
+          "y": 845,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 20068,
+        "inkFraction": 0.502,
+        "centroid": [
+          255,
+          945
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          191,
+          866,
+          318,
+          1023
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[5]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 465,
+          "y": 845,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 20649,
+        "inkFraction": 0.516,
+        "centroid": [
+          565,
+          945
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          501,
+          864,
+          628,
+          1025
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[6]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 775,
+          "y": 845,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 20542,
+        "inkFraction": 0.514,
+        "centroid": [
+          875,
+          944
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          811,
+          864,
+          938,
+          1025
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[7]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 1085,
+          "y": 845,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 19853,
+        "inkFraction": 0.496,
+        "centroid": [
+          1185,
+          945
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          1122,
+          866,
+          1248,
+          1023
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[8]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 155,
+          "y": 1289,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 19445,
+        "inkFraction": 0.486,
+        "centroid": [
+          255,
+          1389
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          193,
+          1310,
+          318,
+          1467
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[9]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 465,
+          "y": 1289,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 20650,
+        "inkFraction": 0.516,
+        "centroid": [
+          565,
+          1389
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          501,
+          1308,
+          628,
+          1469
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[10]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 775,
+          "y": 1289,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 20638,
+        "inkFraction": 0.516,
+        "centroid": [
+          874,
+          1389
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          811,
+          1308,
+          938,
+          1469
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[11]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 1085,
+          "y": 1289,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 20642,
+        "inkFraction": 0.516,
+        "centroid": [
+          1185,
+          1389
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          1121,
+          1308,
+          1248,
+          1469
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[12]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 155,
+          "y": 1733,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 16907,
+        "inkFraction": 0.423,
+        "centroid": [
+          255,
+          1837
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          195,
+          1754,
+          315,
+          1911
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[13]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 465,
+          "y": 1733,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 19819,
+        "inkFraction": 0.495,
+        "centroid": [
+          565,
+          1832
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          501,
+          1754,
+          628,
+          1911
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[14]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 775,
+          "y": 1733,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 19979,
+        "inkFraction": 0.499,
+        "centroid": [
+          875,
+          1832
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          811,
+          1754,
+          938,
+          1911
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[15]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 1085,
+          "y": 1733,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 20535,
+        "inkFraction": 0.513,
+        "centroid": [
+          1184,
+          1832
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          1121,
+          1752,
+          1248,
+          1913
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[16]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 155,
+          "y": 2177,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 16944,
+        "inkFraction": 0.424,
+        "centroid": [
+          254,
+          2276
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          196,
+          2204,
+          313,
+          2349
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[17]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 465,
+          "y": 2177,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 17084,
+        "inkFraction": 0.427,
+        "centroid": [
+          565,
+          2277
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          506,
+          2204,
+          623,
+          2349
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[18]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 775,
+          "y": 2177,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 19843,
+        "inkFraction": 0.496,
+        "centroid": [
+          875,
+          2276
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          811,
+          2198,
+          938,
+          2355
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[0]/div[19]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 1085,
+          "y": 2177,
+          "w": 200,
+          "h": 200
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 19963,
+        "inkFraction": 0.499,
+        "centroid": [
+          1185,
+          2276
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          1121,
+          2198,
+          1248,
+          2355
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[0]/a[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 154,
+          "y": 2845,
+          "w": 140,
+          "h": 140
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 937,
+        "inkFraction": 0.048,
+        "centroid": [
+          223,
+          2915
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          206,
+          2897,
+          241,
+          2932
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[1]/a[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 402,
+          "y": 2845,
+          "w": 140,
+          "h": 140
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 937,
+        "inkFraction": 0.048,
+        "centroid": [
+          471,
+          2915
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          454,
+          2897,
+          489,
+          2932
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[2]/a[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 650,
+          "y": 2845,
+          "w": 140,
+          "h": 140
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 937,
+        "inkFraction": 0.048,
+        "centroid": [
+          719,
+          2915
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          702,
+          2897,
+          737,
+          2932
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[3]/a[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 898,
+          "y": 2845,
+          "w": 140,
+          "h": 140
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 937,
+        "inkFraction": 0.048,
+        "centroid": [
+          967,
+          2915
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          950,
+          2897,
+          985,
+          2932
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[4]/a[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 1146,
+          "y": 2845,
+          "w": 140,
+          "h": 140
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 937,
+        "inkFraction": 0.048,
+        "centroid": [
+          1215,
+          2915
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          1198,
+          2897,
+          1233,
+          2932
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      }
+    ]
+  },
+  "frameAnchor": {
+    "available": true,
+    "status": "strong",
+    "viewportSize": {
+      "w": 1440,
+      "h": 900
+    },
+    "sampledPixels": 1296000,
+    "identicalFraction": 1,
+    "differingPixels": 0,
+    "maxChannelDelta": 0,
+    "diffBoundingBox": null,
+    "note": "viewport.png (captured at scroll 0,0) matches the top of full.png, i.e. full.png starts at the document origin"
+  },
+  "domResolution": {
+    "available": true,
+    "checkedPaths": 784,
+    "resolved": 784,
+    "unresolved": [],
+    "unresolvedCount": 0,
+    "tagMismatch": [],
+    "tagMismatchCount": 0,
+    "elementsInDom": 826,
+    "passed": true
+  },
+  "blockers": [],
+  "warnings": [],
+  "verdict": "aligned",
+  "checks": [
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[0]/div[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[0]/div[0]",
+      "tag": "div",
+      "role": "generic",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 40
+      },
+      "expectedBackground": "rgb(51, 51, 51)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 19,
+        "fraction": 0.76,
+        "nearPoints": 19,
+        "nearFraction": 0.76,
+        "blendedPoints": 6,
+        "blendedFraction": 0.24,
+        "blend": {
+          "alpha": 0.45,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          51,
+          51,
+          51
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 0,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": null,
+        "centrePixel": null
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 204,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "shiftSensitivityPx": 20
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[0]/div[2]/a[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[3]/div[0]/div[1]/ul[0]/li[0]/div[2]/a[0]",
+      "tag": "a",
+      "role": "generic",
+      "bbox": {
+        "x": 107,
+        "y": 2795,
+        "w": 234,
+        "h": 38
+      },
+      "expectedBackground": "rgb(131, 196, 78)",
+      "classification": "ancestor-transparent",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 167,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 167,
+        "centrePixel": [
+          245,
+          245,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 129,
+        "centrePixel": [
+          207,
+          207,
+          207
+        ]
+      },
+      "shiftSensitivityPx": 19,
+      "ancestorOpacity": {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[0]/div[2]",
+        "opacity": 0
+      },
+      "overlappingNode": {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[0]",
+        "tag": "li",
+        "bbox": {
+          "x": 107,
+          "y": 2805,
+          "w": 234,
+          "h": 300
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[1]/div[2]/a[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[3]/div[0]/div[1]/ul[0]/li[1]/div[2]/a[0]",
+      "tag": "a",
+      "role": "generic",
+      "bbox": {
+        "x": 355,
+        "y": 2795,
+        "w": 234,
+        "h": 38
+      },
+      "expectedBackground": "rgb(131, 196, 78)",
+      "classification": "ancestor-transparent",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 167,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 167,
+        "centrePixel": [
+          245,
+          245,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 129,
+        "centrePixel": [
+          207,
+          207,
+          207
+        ]
+      },
+      "shiftSensitivityPx": 19,
+      "ancestorOpacity": {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[1]/div[2]",
+        "opacity": 0
+      },
+      "overlappingNode": {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[1]",
+        "tag": "li",
+        "bbox": {
+          "x": 355,
+          "y": 2805,
+          "w": 234,
+          "h": 300
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[2]/div[2]/a[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[3]/div[0]/div[1]/ul[0]/li[2]/div[2]/a[0]",
+      "tag": "a",
+      "role": "generic",
+      "bbox": {
+        "x": 603,
+        "y": 2795,
+        "w": 234,
+        "h": 38
+      },
+      "expectedBackground": "rgb(131, 196, 78)",
+      "classification": "ancestor-transparent",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 167,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 167,
+        "centrePixel": [
+          245,
+          245,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 129,
+        "centrePixel": [
+          207,
+          207,
+          207
+        ]
+      },
+      "shiftSensitivityPx": 19,
+      "ancestorOpacity": {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[2]/div[2]",
+        "opacity": 0
+      },
+      "overlappingNode": {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[2]",
+        "tag": "li",
+        "bbox": {
+          "x": 603,
+          "y": 2805,
+          "w": 234,
+          "h": 300
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[3]/div[2]/a[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[3]/div[0]/div[1]/ul[0]/li[3]/div[2]/a[0]",
+      "tag": "a",
+      "role": "generic",
+      "bbox": {
+        "x": 851,
+        "y": 2795,
+        "w": 234,
+        "h": 38
+      },
+      "expectedBackground": "rgb(131, 196, 78)",
+      "classification": "ancestor-transparent",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 167,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 167,
+        "centrePixel": [
+          245,
+          245,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 129,
+        "centrePixel": [
+          207,
+          207,
+          207
+        ]
+      },
+      "shiftSensitivityPx": 19,
+      "ancestorOpacity": {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[3]/div[2]",
+        "opacity": 0
+      },
+      "overlappingNode": {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[3]",
+        "tag": "li",
+        "bbox": {
+          "x": 851,
+          "y": 2805,
+          "w": 234,
+          "h": 300
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[4]/div[2]/a[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[3]/div[0]/div[1]/ul[0]/li[4]/div[2]/a[0]",
+      "tag": "a",
+      "role": "generic",
+      "bbox": {
+        "x": 1099,
+        "y": 2795,
+        "w": 234,
+        "h": 38
+      },
+      "expectedBackground": "rgb(131, 196, 78)",
+      "classification": "ancestor-transparent",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 167,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 167,
+        "centrePixel": [
+          245,
+          245,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 129,
+        "centrePixel": [
+          207,
+          207,
+          207
+        ]
+      },
+      "shiftSensitivityPx": 19,
+      "ancestorOpacity": {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[4]/div[2]",
+        "opacity": 0
+      },
+      "overlappingNode": {
+        "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[4]",
+        "tag": "li",
+        "bbox": {
+          "x": 1099,
+          "y": 2805,
+          "w": 234,
+          "h": 300
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[0]/div[1]/div[0]/div[1]/a[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/a[0]",
+      "tag": "a",
+      "role": "link",
+      "bbox": {
+        "x": 1213,
+        "y": 0,
+        "w": 120,
+        "h": 40
+      },
+      "expectedBackground": "rgb(66, 66, 66)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.91,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          68,
+          68,
+          68
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 0,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": null,
+        "centrePixel": null
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 189,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "shiftSensitivityPx": 20
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[1]/span[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[2]/div[0]/div[1]/div[1]/span[1]",
+      "tag": "span",
+      "role": "generic",
+      "bbox": {
+        "x": 638,
+        "y": 2589,
+        "w": 48,
+        "h": 30
+      },
+      "expectedBackground": "rgb(117, 117, 117)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 23,
+        "fraction": 0.92,
+        "nearPoints": 23,
+        "nearFraction": 0.92,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 138,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.09,
+          "over": "white"
+        },
+        "minChannelDelta": 128,
+        "centrePixel": [
+          245,
+          245,
+          245
+        ]
+      },
+      "shiftSensitivityPx": 15
+    }
+  ]
+}

@@ -4,33 +4,304 @@
     "width": 1440,
     "height": 26544
   },
-  "nodesChecked": 463,
-  "candidatesExamined": 5,
+  "nodesChecked": 472,
+  "nodesBelowCapturedHeight": 5,
+  "colourCandidatesExamined": 5,
   "tolerancePerChannel": 3,
   "minimumMatchingFraction": 0.25,
+  "minimumDiscriminating": 2,
   "aligned": 5,
   "unexplained": 0,
+  "paintedCarriesEvidence": true,
+  "shiftSensitivityPx": 12,
   "classificationCounts": {
     "translucent-overlay": 0,
     "ancestor-transparent": 0,
     "covered-by-later-node": 0,
+    "covered-by-overlapping-node": 0,
+    "fixed-or-sticky-relayout": 0,
+    "near-match": 0,
     "non-discriminating": 0,
     "low-coverage": 0
   },
+  "paintedFeature": {
+    "candidates": 25,
+    "examined": 25,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 18,
+    "required": true,
+    "checks": [
+      {
+        "skipped": "too little ink to test (859 px, 0.04%)"
+      },
+      {
+        "skipped": "too little ink to test (894 px, 0.05%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.05%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.05%)"
+      },
+      {
+        "skipped": "too little ink to test (894 px, 0.05%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.05%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.05%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.05%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.05%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.05%)"
+      },
+      {
+        "skipped": "too little ink to test (894 px, 0.06%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.06%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.07%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.07%)"
+      },
+      {
+        "skipped": "too little ink to test (859 px, 0.08%)"
+      },
+      {
+        "skipped": "too little ink to test (894 px, 0.08%)"
+      },
+      {
+        "skipped": "too little ink to test (894 px, 0.09%)"
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 107,
+          "y": 957.59,
+          "w": 1226,
+          "h": 799
+        },
+        "localBackground": "rgb(248, 248, 248)",
+        "inkPixels": 960434,
+        "inkFraction": 0.98,
+        "centroid": [
+          716,
+          1356
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          107,
+          958,
+          1332,
+          1756
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "skipped": "too little ink to test (894 px, 0.16%)"
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 107,
+          "y": 285,
+          "w": 560,
+          "h": 560
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 93199,
+        "inkFraction": 0.297,
+        "centroid": [
+          406,
+          578
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          250,
+          331,
+          528,
+          798
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[21]/div[0]/div[1]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 625.5,
+          "y": 25568.59,
+          "w": 189,
+          "h": 189
+        },
+        "localBackground": "rgb(245, 245, 245)",
+        "inkPixels": 859,
+        "inkFraction": 0.024,
+        "centroid": [
+          720,
+          25663
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          703,
+          25645,
+          737,
+          25680
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[20]/div[0]/div[1]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 640,
+          "y": 25331.59,
+          "w": 160,
+          "h": 160
+        },
+        "localBackground": "rgb(245, 245, 245)",
+        "inkPixels": 894,
+        "inkFraction": 0.035,
+        "centroid": [
+          720,
+          25412
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          702,
+          25394,
+          737,
+          25429
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/a[20]/span[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 715.83,
+          "y": 58,
+          "w": 90,
+          "h": 90
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 554,
+        "inkFraction": 0.068,
+        "centroid": [
+          765,
+          96
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          716,
+          80,
+          805,
+          140
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[3]/div[1]/div[0]/div[2]/a[1]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 272.34,
+          "y": 26422.09,
+          "w": 91.83,
+          "h": 28
+        },
+        "localBackground": "rgb(250, 250, 250)",
+        "inkPixels": 2065,
+        "inkFraction": 0.766,
+        "centroid": [
+          324,
+          26436
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          272,
+          26422,
+          363,
+          26449
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[3]/div[1]/div[0]/div[2]/a[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 184,
+          "y": 26422.09,
+          "w": 85,
+          "h": 28
+        },
+        "localBackground": "rgb(250, 250, 250)",
+        "inkPixels": 957,
+        "inkFraction": 0.388,
+        "centroid": [
+          225,
+          26435
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          187,
+          26422,
+          265,
+          26448
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      }
+    ]
+  },
   "frameAnchor": {
     "available": true,
+    "status": "strong",
     "viewportSize": {
       "w": 1440,
       "h": 900
     },
-    "sampledPixels": 144000,
+    "sampledPixels": 1296000,
     "identicalFraction": 1,
-    "note": "viewport.png is captured at scroll (0,0); equality with the top of full.png proves full.png starts at the document origin"
+    "differingPixels": 0,
+    "maxChannelDelta": 0,
+    "diffBoundingBox": null,
+    "note": "viewport.png (captured at scroll 0,0) matches the top of full.png, i.e. full.png starts at the document origin"
   },
+  "domResolution": {
+    "available": true,
+    "checkedPaths": 472,
+    "resolved": 472,
+    "unresolved": [],
+    "unresolvedCount": 0,
+    "tagMismatch": [],
+    "tagMismatchCount": 0,
+    "elementsInDom": 510,
+    "passed": true
+  },
+  "blockers": [],
+  "warnings": [],
   "verdict": "aligned",
   "checks": [
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[0]/div[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[0]/div[0]",
       "tag": "div",
       "role": "generic",
       "bbox": {
@@ -45,6 +316,8 @@
         "gridPoints": 25,
         "matchingPoints": 19,
         "fraction": 0.76,
+        "nearPoints": 19,
+        "nearFraction": 0.76,
         "blendedPoints": 6,
         "blendedFraction": 0.24,
         "blend": {
@@ -62,6 +335,8 @@
         "gridPoints": 0,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -72,6 +347,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -81,10 +358,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 20
     },
     {
       "domPath": "html/body[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[1]/div[8]/div[0]/a[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[1]/div[8]/div[0]/a[0]",
       "tag": "a",
       "role": "link",
       "bbox": {
@@ -99,6 +378,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -116,6 +397,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -130,6 +413,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -139,10 +424,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 27
     },
     {
       "domPath": "html/body[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[1]/div[8]/div[1]/a[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[1]/div[8]/div[1]/a[0]",
       "tag": "a",
       "role": "link",
       "bbox": {
@@ -157,6 +444,8 @@
         "gridPoints": 25,
         "matchingPoints": 23,
         "fraction": 0.92,
+        "nearPoints": 23,
+        "nearFraction": 0.92,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -174,6 +463,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -188,6 +479,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -197,10 +490,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 27
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[0]/div[1]/div[0]/div[1]/a[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/a[0]",
       "tag": "a",
       "role": "link",
       "bbox": {
@@ -215,6 +510,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -232,6 +529,8 @@
         "gridPoints": 0,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -242,6 +541,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -251,10 +552,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 20
     },
     {
       "domPath": "html/body[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[1]/div[5]/div[0]/span[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[1]/div[5]/div[0]/span[0]",
       "tag": "span",
       "role": "generic",
       "bbox": {
@@ -269,6 +572,8 @@
         "gridPoints": 25,
         "matchingPoints": 19,
         "fraction": 0.76,
+        "nearPoints": 19,
+        "nearFraction": 0.76,
         "blendedPoints": 4,
         "blendedFraction": 0.16,
         "blend": {
@@ -286,6 +591,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -303,6 +610,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -312,7 +621,8 @@
           250,
           250
         ]
-      }
+      },
+      "shiftSensitivityPx": 12
     }
   ]
 }

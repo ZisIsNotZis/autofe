@@ -1,4 +1,5 @@
-// Per-page capture: navigate -> freeze -> screenshots -> DOM/a11y/JSON-LD/geometry.
+// Per-page capture: navigate -> robots re-check on the final URL -> freeze -> screenshots
+// -> DOM/a11y/JSON-LD/geometry.
 //
 // Output layout per page (corpus/<site>/<page>/):
 //   meta.json, dom.html, a11y.json, jsonld.json, full.png, viewport.png, nodes.json
@@ -6,8 +7,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { analyzeDom, extractStructuredData, serializeCleanedDom } from './inpage.mjs';
-import { fileSize, firstLine, nowIso, writeJson, writeText } from './util.mjs';
+import { analyzeDom, extractStructuredData, retagMarkers, extractCleanedDom, waitForDomQuiescence } from './inpage.mjs';
+import { fileSize, firstLine, nowIso, withTimeout, writeJson, writeJsonCompact, writeText } from './util.mjs';
 
 // Capture-time deterministic rendering: animations/transitions off, light colour scheme,
 // scroll-behavior auto. Recorded in meta.normalizations so it is never silent.
@@ -22,6 +23,12 @@ export const FREEZE_CSS = [
 export const NORMALIZATIONS = ['reduced-motion', 'animation-freeze', 'color-scheme-light', 'scroll-to-top'];
 
 export const FREEZE_STYLE_MARKER = 'data-af-freeze';
+
+// Threshold below which the a11y join is considered low-fidelity and flagged explicitly.
+export const AX_COVERAGE_LOW_RATIO = 0.6;
+// Elements that appear only after the analysis pass (re-render) above this share of the DOM
+// are flagged: ids still join, but the capture is of a moving page.
+export const DOM_CHANGE_FLAG_RATIO = 0.01;
 
 // Runs before any page script so animations/transitions never progress: without this the
 // freeze would land at a different animation offset on every run. The style tag is dropped
@@ -41,11 +48,40 @@ export function installFreezeStyle(css) {
 
 export const ARTIFACT_FILES = ['meta.json', 'dom.html', 'a11y.json', 'jsonld.json', 'full.png', 'viewport.png', 'nodes.json'];
 
+// A failed capture must never leave artifacts from an earlier run behind that failures.json
+// could be misread as this run's output.
+function discardArtifacts(outDir) {
+  const hadStaleArtifacts = fs.existsSync(outDir);
+  if (hadStaleArtifacts) {
+    fs.rmSync(outDir, { recursive: true, force: true });
+    // Leave no empty site directory behind either.
+    try {
+      fs.rmdirSync(path.dirname(outDir));
+    } catch {
+      /* site directory still holds other pages */
+    }
+  }
+  return hadStaleArtifacts;
+}
+
+function terminalFailure({ stage, reason, message, url, outDir, extra = {} }) {
+  const hadStaleArtifacts = discardArtifacts(outDir);
+  return {
+    stage,
+    reason,
+    message,
+    url,
+    partialArtifacts: false,
+    discardedStaleArtifacts: hadStaleArtifacts,
+    ...extra,
+  };
+}
+
 // CDP assigns accessibility node ids in allocation order, which is not stable across
 // runs (observed: identical tree, ids shifted by one). IDs are therefore re-assigned in
 // pre-order DFS so a11y.json is byte-stable for identical renders while the tree shape and
 // child order stay exactly as the browser reported them.
-export function serializeAxTree(axNodes, backendIndex = new Map(), cleanedIndexByRaw = []) {
+export function serializeAxTree(axNodes, markerIndex = new Map(), indexById = {}) {
   const byId = new Map(axNodes.map((node) => [node.nodeId, node]));
   const roots = axNodes.filter((node) => !node.parentId || !byId.has(node.parentId));
   const ordered = [];
@@ -60,56 +96,62 @@ export function serializeAxTree(axNodes, backendIndex = new Map(), cleanedIndexB
   for (const node of axNodes) visit(node); // safety net for nodes unreachable via childIds
 
   const newId = new Map(ordered.map((node, index) => [node.nodeId, `ax${index + 1}`]));
-  const nodes = ordered.map((node) => ({
-    id: newId.get(node.nodeId),
-    parentId: node.parentId && newId.has(node.parentId) ? newId.get(node.parentId) : null,
-    ignored: Boolean(node.ignored),
-    role: node.role?.value ?? null,
-    name: node.name?.value ?? null,
-    description: node.description?.value ?? null,
-    value: node.value?.value ?? null,
-    properties: Array.isArray(node.properties)
-      ? node.properties.map((property) => ({ name: property.name, value: property.value?.value ?? null }))
-      : [],
-    // Position of the element in the cleaned DOM (i.e. an index into dom.html's element
-    // order). CDP's own backendDOMNodeId is allocated as the DOM is built and is not
-    // run-stable, and the raw element index shifts when a page injects a script, so neither
-    // is stored.
-    domIndex:
-      node.backendDOMNodeId === undefined
-        ? null
-        : (() => {
-            const raw = backendIndex.get(node.backendDOMNodeId);
-            return raw === undefined ? null : cleanedIndexByRaw[raw] ?? null;
-          })(),
-    childIds: (node.childIds ?? []).filter((childId) => newId.has(childId)).map((childId) => newId.get(childId)),
-  }));
+  const nodes = ordered.map((node) => {
+    const marker = node.backendDOMNodeId === undefined ? null : markerIndex.get(node.backendDOMNodeId) ?? null;
+    const properties = Array.isArray(node.properties)
+      ? node.properties
+          .map((property) => ({ name: property.name, value: property.value?.value ?? null }))
+          .filter((property) => property.value !== null && property.value !== undefined)
+      : [];
+    const childIds = (node.childIds ?? []).filter((childId) => newId.has(childId)).map((childId) => newId.get(childId));
+    // Fields with no content are omitted (absent === null/empty) to keep a11y.json proportional
+    // to the page's semantics rather than to its node count.
+    const entry = {
+      id: newId.get(node.nodeId),
+      parentId: node.parentId && newId.has(node.parentId) ? newId.get(node.parentId) : null,
+      ignored: Boolean(node.ignored),
+      role: node.role?.value ?? null,
+      childIds,
+    };
+    const name = node.name?.value ?? null;
+    const description = node.description?.value ?? null;
+    const value = node.value?.value ?? null;
+    if (name) entry.name = name;
+    if (description) entry.description = description;
+    if (value !== null && value !== undefined && value !== '') entry.value = value;
+    if (properties.length) entry.properties = properties;
+    // domIndex is the element's position in the delivered dom.html (from extractCleanedDom);
+    // it is the join key into nodes.json cleanedIndex.
+    if (marker && indexById[marker.id] !== undefined) entry.domIndex = indexById[marker.id];
+    return entry;
+  });
 
   return {
     source: 'CDP Accessibility.getFullAXTree',
-    semantics: 'trimmed to id/parentId/childIds/ignored/role/name/description/value/properties/domIndex',
+    semantics:
+      'trimmed to id,parentId,ignored,role,childIds plus name/description/value/properties/domIndex when non-empty (absent means null/empty)',
     idNormalization: 'ids re-assigned in pre-order DFS (CDP allocation order is not run-stable); child order preserved',
-    domIndexDefinition: 'position among the elements that survive cleaning = index into dom.html element order; visible nodes in nodes.json appear in this same relative order',
+    domIndexDefinition: 'position among the elements that survive cleaning = index into dom.html element order; nodes.json carries the same value as cleanedIndex',
     count: nodes.length,
     rootId: nodes[0]?.id ?? null,
     nodes,
   };
 }
 
-// backendNodeId -> index in the `document.querySelectorAll('*')` order, recovered from
-// the data-af-node markers set by analyzeDom().
-export function buildBackendIndex(domRoot) {
+// backendNodeId -> marker element id, read from the data-af-node markers written by
+// analyzeDom()/retagMarkers(). Read in the same CDP round-trip as the AX tree, so both describe
+// the same DOM snapshot.
+export function buildMarkerIndex(domRoot) {
   const map = new Map();
   const stack = [domRoot];
   while (stack.length) {
     const node = stack.pop();
     if (node.backendNodeId !== undefined && Array.isArray(node.attributes)) {
+      let id = null;
       for (let i = 0; i < node.attributes.length; i += 2) {
-        if (node.attributes[i] === 'data-af-node') {
-          map.set(node.backendNodeId, Number(node.attributes[i + 1]));
-          break;
-        }
+        if (node.attributes[i] === 'data-af-node') id = node.attributes[i + 1];
       }
+      if (id !== null) map.set(node.backendNodeId, { id });
     }
     if (Array.isArray(node.children)) stack.push(...node.children);
     if (Array.isArray(node.shadowRoots)) stack.push(...node.shadowRoots);
@@ -118,26 +160,21 @@ export function buildBackendIndex(domRoot) {
   return map;
 }
 
-// Attach real accessibility role/name to each node record (fallback: in-page approximations).
-export function applyAxToNodes(nodes, backendIndex, axNodes) {
-  const byDomIndex = new Map();
+// Attach the real accessibility role/name to each node record (fallback: in-page
+// approximations). Matching is by element id, so a re-render cannot shift the join.
+export function applyAxToNodes(nodes, markerIndex, axNodes) {
+  const byMarkerId = new Map();
   for (const ax of axNodes) {
-    const backendId = ax.backendDOMNodeId;
-    if (backendId === undefined) continue;
-    const domIndex = backendIndex.get(backendId);
-    if (domIndex === undefined) continue;
-    const candidate = {
-      ignored: Boolean(ax.ignored),
-      role: ax.role?.value ?? null,
-      name: ax.name?.value ?? null,
-    };
-    const previous = byDomIndex.get(domIndex);
-    if (!previous || (previous.ignored && !candidate.ignored)) byDomIndex.set(domIndex, candidate);
+    const marker = ax.backendDOMNodeId === undefined ? null : markerIndex.get(ax.backendDOMNodeId) ?? null;
+    if (!marker) continue;
+    const candidate = { ignored: Boolean(ax.ignored), role: ax.role?.value ?? null, name: ax.name?.value ?? null };
+    const previous = byMarkerId.get(marker.id);
+    if (!previous || (previous.ignored && !candidate.ignored)) byMarkerId.set(marker.id, candidate);
   }
 
   let matched = 0;
   for (const node of nodes) {
-    const ax = byDomIndex.get(node._index);
+    const ax = byMarkerId.get(node._id);
     if (!ax) {
       node.role = node._implicitRole ?? null;
       continue;
@@ -150,17 +187,82 @@ export function applyAxToNodes(nodes, backendIndex, axNodes) {
   return matched;
 }
 
-export function finalizeNodes(nodes) {
-  return nodes.map((node) => ({
-    domPath: node.domPath,
-    tag: node.tag,
-    role: node.role,
-    name: node.name,
-    text: node.text,
-    bbox: node.bbox,
-    styles: node.styles,
-    visible: node.visible,
-  }));
+// nodes.json fields (spec set + the two join keys, see README "join keys"):
+//   cleanedPath/cleanedIndex resolve in the delivered dom.html (paths come from parsing it);
+//   domPath resolves in the live DOM.
+// Nodes with no position in the parsed dom.html (an ad-descendant, or markup the HTML parser
+// dropped) are excluded rather than emitted with an unresolvable path; the count is recorded.
+export function finalizeNodes(nodes, cleaned) {
+  const out = [];
+  let withoutDomPath = 0;
+  for (const node of nodes) {
+    const cleanedIndex = cleaned.indexById[node._id];
+    if (cleanedIndex === undefined) {
+      withoutDomPath += 1;
+      continue;
+    }
+    out.push({
+      domPath: node.domPath,
+      cleanedPath: cleaned.pathById[node._id] ?? null,
+      cleanedIndex,
+      tag: node.tag,
+      role: node.role,
+      name: node.name,
+      text: node.text,
+      bbox: node.bbox,
+      styles: node.styles,
+      visible: node.visible,
+    });
+  }
+  return { nodes: out, withoutDomPath };
+}
+
+// Per-page artifact cap: keeps the corpus manageable by shrinking the JSON artifacts only.
+// The PNG pair is the alignment anchor and is never modified. Pages that stay above the cap
+// after every mitigation are kept in full and flagged (qualityFlags: artifact_cap_exceeded).
+export function applyArtifactCap({ nodes, axTree, fixedBytes, capBytes }) {
+  // Measured the same way the files are written (compact), otherwise the ladder mis-triggers.
+  const jsonBytes = (value) => Buffer.byteLength(`${JSON.stringify(value)}\n`, 'utf8');
+  const measure = (candidateNodes, candidateAx) => jsonBytes(candidateNodes) + jsonBytes(candidateAx) + fixedBytes;
+
+  let nodesOut = nodes;
+  let axOut = axTree;
+  const mitigations = [];
+  let totalBytes = measure(nodesOut, axOut);
+  if (capBytes <= 0 || totalBytes <= capBytes) {
+    return { nodes: nodesOut, a11y: axOut, mitigations, projectedBytes: totalBytes, exceeded: false };
+  }
+
+  for (const tier of [200, 64]) {
+    nodesOut = nodesOut.map((node) => (node.text.length > tier ? { ...node, text: node.text.slice(0, tier) } : node));
+    mitigations.push(`nodeTextCappedAt${tier}Chars`);
+    totalBytes = measure(nodesOut, axOut);
+    if (totalBytes <= capBytes) break;
+  }
+
+  if (totalBytes > capBytes) {
+    const trimmed = axTree.nodes.map((node) =>
+      node.ignored
+        ? {
+            id: node.id,
+            parentId: node.parentId,
+            ignored: true,
+            role: node.role,
+            childIds: node.childIds,
+            ...(node.domIndex === undefined ? {} : { domIndex: node.domIndex }),
+          }
+        : node,
+    );
+    axOut = {
+      ...axTree,
+      a11yTrim: 'ignored nodes reduced to id/parentId/childIds/role/domIndex',
+      nodes: trimmed,
+    };
+    mitigations.push('a11yIgnoredNodesTrimmed');
+    totalBytes = measure(nodesOut, axOut);
+  }
+
+  return { nodes: nodesOut, a11y: axOut, mitigations, projectedBytes: totalBytes, exceeded: totalBytes > capBytes };
 }
 
 async function navigateWithRetry(browserPage, url, { throttle, timeoutMs, attempts, errors }) {
@@ -204,17 +306,15 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
   if (!access.allowed) {
     result.reason = access.reason;
     result.detail = access.detail ?? null;
-    result.failures = [
-      {
-        stage: 'robots',
-        reason: access.reason,
-        message: access.detail ?? access.reason,
-        url: page.url,
-        // A directory may already exist from an earlier successful run; it is not from this run.
-        partialArtifacts: fs.existsSync(outDir),
-        staleArtifactsFromEarlierRun: fs.existsSync(outDir),
-      },
-    ];
+    const failure = terminalFailure({
+      stage: 'robots',
+      reason: access.reason,
+      message: access.detail ?? access.reason,
+      url: page.url,
+      outDir,
+    });
+    result.discardedStaleArtifacts = failure.discardedStaleArtifacts;
+    result.failures = [failure];
     return result;
   }
 
@@ -250,42 +350,83 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     } catch (error) {
       result.reason = 'navigation_failed';
       result.detail = firstLine(error.message);
-      result.failures = [
-        {
-          stage: 'navigation',
-          reason: 'navigation_failed',
-          message: firstLine(error.message),
-          url: page.url,
-          partialArtifacts: fs.existsSync(outDir),
-          staleArtifactsFromEarlierRun: fs.existsSync(outDir),
-        },
-      ];
+      const failure = terminalFailure({
+        stage: 'navigation',
+        reason: 'navigation_failed',
+        message: firstLine(error.message),
+        url: page.url,
+        outDir,
+      });
+      result.discardedStaleArtifacts = failure.discardedStaleArtifacts;
+      result.failures = [failure];
       return result;
     }
     const navigationMs = Date.now() - navStartedAt;
     const httpStatus = response ? response.status() : null;
 
     await browserPage.waitForLoadState('load', { timeout: 30000 }).catch(() => {});
+    // Let the renderer settle before reading anything: a quiet DOM is a much better readiness
+    // signal than a fixed sleep when the network is slow.
+    await withTimeout(
+      browserPage.evaluate(waitForDomQuiescence, options.quiescenceMs, options.quiescenceMaxMs),
+      options.quiescenceMaxMs + 5000,
+      'DOM quiescence',
+    ).catch(() => {});
     await browserPage.waitForLoadState('networkidle', { timeout: options.networkIdleTimeoutMs }).catch(() => {});
-    await browserPage
-      .evaluate(() => (document.fonts && document.fonts.ready ? document.fonts.ready.then(() => true) : true))
-      .catch(() => {});
+    // document.fonts.ready never settling (a hung font request) would otherwise stall the run.
+    await withTimeout(
+      browserPage.evaluate(() => (document.fonts && document.fonts.ready ? document.fonts.ready.then(() => true) : true)),
+      options.fontsTimeoutMs,
+      'document.fonts.ready',
+    ).catch(() => {});
     await browserPage.waitForTimeout(options.settleMs);
+
+    const finalUrl = browserPage.url();
+
+    // robots is checked per request, not per seed entry: a redirect must not be used to land
+    // on a path or host we were told not to fetch. Nothing is written before this point.
+    const redirectChain = finalUrl !== page.url;
+    if (redirectChain) {
+      const finalAccess = await robots.check(finalUrl, { maxCrawlDelayMs: options.maxCrawlDelayMs });
+      if (!finalAccess.allowed) {
+        result.reason = 'robots_redirect_disallowed';
+        result.detail = `${page.url} -> ${finalUrl} (${finalAccess.reason}${finalAccess.rule ? `: ${finalAccess.rule}` : ''})`;
+        const failure = terminalFailure({
+          stage: 'robots',
+          reason: 'robots_redirect_disallowed',
+          message: result.detail,
+          url: finalUrl,
+          outDir,
+          extra: { requestedUrl: page.url, redirectRule: finalAccess.rule ?? null, redirectDetail: finalAccess.detail ?? null },
+        });
+        result.discardedStaleArtifacts = failure.discardedStaleArtifacts;
+        result.failures = [failure];
+        return result;
+      }
+    }
 
     if (httpStatus !== null && httpStatus >= 400) {
       result.reason = 'http_error';
       result.detail = `HTTP ${httpStatus}`;
       result.httpStatus = httpStatus;
-      result.failures = [{ stage: 'navigation', reason: 'http_error', message: `HTTP ${httpStatus}`, url: browserPage.url() }];
+      const failure = terminalFailure({
+        stage: 'navigation',
+        reason: 'http_error',
+        message: `HTTP ${httpStatus}`,
+        url: finalUrl,
+        outDir,
+      });
+      result.discardedStaleArtifacts = failure.discardedStaleArtifacts;
+      result.failures = [failure];
       return result;
     }
 
-    const finalUrl = browserPage.url();
-
     // Reset scroll and confirm the init-script freeze actually applied.
-    const freezeApplied = await browserPage
-      .evaluate(() => Boolean(document.querySelector('style[data-af-freeze]')))
-      .catch(() => false);
+    const freezeApplied = await withTimeout(
+      browserPage.evaluate(() => Boolean(document.querySelector('style[data-af-freeze]'))),
+      options.evaluateTimeoutMs,
+      'freeze probe',
+    ).catch(() => false);
     if (!freezeApplied) {
       await browserPage.addStyleTag({ content: FREEZE_CSS }).catch(() => {});
       errors.push('animation freeze had to be injected after load (init script did not apply)');
@@ -300,80 +441,136 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     const viewportPng = path.join(outDir, 'viewport.png');
     const failures = [];
     try {
-      await browserPage.screenshot({ path: viewportPng, fullPage: false });
+      await browserPage.screenshot({ path: viewportPng, fullPage: false, timeout: options.screenshotTimeoutMs });
     } catch (error) {
       errors.push(`viewport screenshot failed: ${firstLine(error.message)}`);
-      failures.push({ stage: 'screenshot', reason: 'viewport_screenshot_failed', message: firstLine(error.message), url: finalUrl });
+      failures.push({ stage: 'screenshot', reason: 'viewport_screenshot_failed', message: firstLine(error.message), url: finalUrl, partialArtifacts: true });
     }
+    // Optional full-page height ceiling: keeps very tall pages from dominating the corpus. Off by
+    // default; when it bites, the captured height is recorded and the page is flagged.
+    const documentHeight = await withTimeout(
+      browserPage.evaluate(() => document.documentElement.scrollHeight),
+      options.evaluateTimeoutMs,
+      'document height probe',
+    ).catch(() => null);
+    const fullPngTruncated = Boolean(options.maxFullPngHeight) && documentHeight !== null && documentHeight > options.maxFullPngHeight;
     try {
-      await browserPage.screenshot({ path: fullPng, fullPage: true });
+      if (fullPngTruncated) {
+        await browserPage.screenshot({
+          path: fullPng,
+          clip: { x: 0, y: 0, width: options.viewport.width, height: options.maxFullPngHeight },
+          timeout: options.screenshotTimeoutMs,
+        });
+      } else {
+        await browserPage.screenshot({ path: fullPng, fullPage: true, timeout: options.screenshotTimeoutMs });
+      }
     } catch (error) {
       errors.push(`full-page screenshot failed: ${firstLine(error.message)}`);
-      failures.push({ stage: 'screenshot', reason: 'fullpage_screenshot_failed', message: firstLine(error.message), url: finalUrl });
+      failures.push({ stage: 'screenshot', reason: 'fullpage_screenshot_failed', message: firstLine(error.message), url: finalUrl, partialArtifacts: true });
     }
     await browserPage.evaluate(() => window.scrollTo(0, 0)).catch(() => {});
 
-    // Element order is fixed by analyzeDom(): it tags every element with data-af-node and
-    // drops unrendered ones from the cleaned DOM. The accessibility tree is fetched after
-    // that so its backendDOMNodeIds can be resolved back to the same element order.
-    const analysis = await browserPage.evaluate(analyzeDom);
+    // Element order, ids and cleaning decisions come from this pass; the accessibility tree is
+    // read next so both describe the same elements.
+    const analysis = await withTimeout(browserPage.evaluate(analyzeDom), options.evaluateTimeoutMs, 'DOM analysis');
 
     const session = await context.newCDPSession(browserPage);
     let axNodesRaw = [];
     let axTree = { source: 'CDP Accessibility.getFullAXTree', count: 0, nodes: [] };
-    let backendIndex = new Map();
+    let markerIndex = new Map();
+    let retaggedElements = 0;
     try {
-      const { nodes: axNodes } = await session.send('Accessibility.getFullAXTree');
+      const { nodes: axNodes } = await withTimeout(session.send('Accessibility.getFullAXTree'), options.cdpTimeoutMs, 'Accessibility.getFullAXTree');
       axNodesRaw = axNodes;
-      const { root } = await session.send('DOM.getDocument', { depth: -1, pierce: true });
-      backendIndex = buildBackendIndex(root);
-      axTree = serializeAxTree(axNodes, backendIndex, analysis.cleanedIndexByRaw);
+      // Re-tag immediately before reading the DOM: anything that appeared after analyzeDom()
+      // gets a marker, so the join cannot silently lose elements to a re-render.
+      retaggedElements = await withTimeout(browserPage.evaluate(retagMarkers), options.evaluateTimeoutMs, 'marker retag');
+      const { root } = await withTimeout(
+        session.send('DOM.getDocument', { depth: -1, pierce: true }),
+        options.cdpTimeoutMs,
+        'DOM.getDocument',
+      );
+      markerIndex = buildMarkerIndex(root);
     } catch (error) {
       errors.push(`accessibility snapshot failed: ${firstLine(error.message)}`);
-      failures.push({ stage: 'a11y', reason: 'a11y_snapshot_failed', message: firstLine(error.message), url: finalUrl });
+      failures.push({ stage: 'a11y', reason: 'a11y_snapshot_failed', message: firstLine(error.message), url: finalUrl, partialArtifacts: true });
     } finally {
       await session.detach().catch(() => {});
     }
 
-    const axMatched = applyAxToNodes(analysis.nodes, backendIndex, axNodesRaw);
-    const nodes = finalizeNodes(analysis.nodes);
+    // Paths come from parsing the cleaned DOM we are about to write, so they resolve in it.
+    const cleaned = await withTimeout(
+      browserPage.evaluate(extractCleanedDom, analysis.nodes.map((node) => node._id)),
+      options.evaluateTimeoutMs,
+      'cleaned DOM extraction',
+    );
+    if (axNodesRaw.length) axTree = serializeAxTree(axNodesRaw, markerIndex, cleaned.indexById);
+    const axMatched = applyAxToNodes(analysis.nodes, markerIndex, axNodesRaw);
+    const finalized = finalizeNodes(analysis.nodes, cleaned);
+    const nodes = finalized.nodes;
+    const visibleNodes = nodes.filter((node) => node.visible).length;
+    const axCoverageRatio = nodes.length ? axMatched / nodes.length : 0;
 
-    // Quality guards — a rendered-but-empty page is a capture failure, never a success.
+    // Quality guards — a rendered-but-empty page is a capture failure, never a success, and
+    // low-fidelity joins are flagged instead of being averaged into the corpus.
     const qualityFlags = [];
     const bodyTextLength = analysis.document.bodyTextLength;
-    if (
-      nodes.length < options.minVisibleNodes ||
-      (bodyTextLength < options.minBodyTextLength && nodes.length < 100)
-    ) {
+    if (!nodes.length || (bodyTextLength < options.minBodyTextLength && nodes.length < 100)) {
       qualityFlags.push('suspicious_empty_render');
       failures.push({
         stage: 'render',
         reason: 'suspicious_empty_render',
-        message: `visibleNodes=${nodes.length} bodyTextLength=${bodyTextLength}`,
+        message: `renderedNodes=${nodes.length} bodyTextLength=${bodyTextLength}`,
         url: finalUrl,
         partialArtifacts: true,
       });
     }
-    const sourceHost = new URL(page.url).host;
-    const finalHost = new URL(finalUrl).host;
-    if (finalHost !== sourceHost) {
+    if (nodes.length >= 50 && axCoverageRatio < AX_COVERAGE_LOW_RATIO) {
+      qualityFlags.push('ax_coverage_low');
+    }
+    if (analysis.total > 0 && retaggedElements / analysis.total > DOM_CHANGE_FLAG_RATIO) {
+      qualityFlags.push('dom_changed_during_capture');
+    }
+    // A same-host redirect (trailing slash, param normalisation) is recorded but is not a
+    // capture failure; a cross-host redirect changes which site was captured and is recorded as
+    // a failure so it cannot hide inside an apparently successful page.
+    const sameHostRedirect = finalUrl !== page.url && new URL(finalUrl).host === new URL(page.url).host;
+    if (finalUrl !== page.url && !sameHostRedirect) {
       failures.push({
         stage: 'navigation',
         reason: 'cross_host_redirect',
-        message: `${sourceHost} -> ${finalHost}`,
+        message: `${page.url} -> ${finalUrl}`,
         url: finalUrl,
+        // The target was robots-checked above; the capture itself is kept.
+        partialArtifacts: true,
       });
     }
 
-    const structured = await browserPage.evaluate(extractStructuredData);
-    const cleanedDom = await browserPage.evaluate(serializeCleanedDom);
+    const structured = await withTimeout(browserPage.evaluate(extractStructuredData), options.evaluateTimeoutMs, 'structured data extraction');
+    const domHtml = `<!DOCTYPE html>\n${cleaned.html}\n`;
+    const jsonld = { url: finalUrl, count: structured.blocks.length, blocks: structured.blocks };
 
-    const title = await browserPage.title();
-    writeText(path.join(outDir, 'dom.html'), `<!DOCTYPE html>\n${cleanedDom}\n`);
-    writeJson(path.join(outDir, 'nodes.json'), nodes);
-    writeJson(path.join(outDir, 'a11y.json'), axTree);
-    writeJson(path.join(outDir, 'jsonld.json'), { url: finalUrl, count: structured.blocks.length, blocks: structured.blocks });
+    // Artifact cap: JSON only, PNGs untouched (see applyArtifactCap).
+    const fixedBytes =
+      Buffer.byteLength(domHtml, 'utf8') +
+      Buffer.byteLength(`${JSON.stringify(jsonld, null, 2)}\n`, 'utf8') +
+      (fileSize(fullPng) ?? 0) +
+      (fileSize(viewportPng) ?? 0);
+    const capped = applyArtifactCap({ nodes, axTree, fixedBytes, capBytes: options.maxPageBytes });
+    if (fullPngTruncated) qualityFlags.push('fullpage_screenshot_truncated');
+    if (capped.exceeded) qualityFlags.push('artifact_cap_exceeded');
 
+    const title = await withTimeout(browserPage.title(), options.evaluateTimeoutMs, 'title read').catch(() => '');
+    writeText(path.join(outDir, 'dom.html'), domHtml);
+    writeJsonCompact(path.join(outDir, 'nodes.json'), capped.nodes);
+    writeJsonCompact(path.join(outDir, 'a11y.json'), capped.a11y);
+    writeJson(path.join(outDir, 'jsonld.json'), jsonld);
+
+    const artifactBytes = ARTIFACT_FILES.reduce((sum, name) => sum + (fileSize(path.join(outDir, name)) ?? 0), 0);
+    const jsonBytes = ['meta.json', 'dom.html', 'a11y.json', 'jsonld.json', 'nodes.json'].reduce(
+      (sum, name) => sum + (fileSize(path.join(outDir, name)) ?? 0),
+      0,
+    );
     const meta = {
       url: page.url,
       redirectedUrl: finalUrl,
@@ -382,12 +579,20 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
       viewport: { w: options.viewport.width, h: options.viewport.height },
       userAgent,
       status: httpStatus,
-      errors,
+      // Sorted so two runs of the same page produce comparable error lists: console/page events
+      // arrive asynchronously and their arrival order is not stable.
+      errors: [...errors].sort(),
       site: site.slug,
       page: page.slug,
       archetype: page.archetype,
       robots: access.robots ?? null,
       crawlDelaySeconds: access.crawlDelaySeconds ?? null,
+      redirect: {
+        requestedUrl: page.url,
+        finalUrl,
+        sameHost: new URL(finalUrl).host === new URL(page.url).host,
+        redirected: finalUrl !== page.url,
+      },
       effectiveHostDelayMs: throttle.delayFor(new URL(finalUrl).host),
       context: {
         locale: options.locale,
@@ -401,13 +606,34 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
       document: analysis.document,
       counts: {
         domElements: analysis.total,
-        cleanedElements: analysis.cleanedElements,
+        cleanedElements: cleaned.elementsInDom,
         droppedFromDom: analysis.droppedFromDom,
-        visibleNodes: nodes.length,
+        adExcludedNodes: analysis.adExcludedNodes,
+        nodesWithoutDomPath: finalized.withoutDomPath,
+        domReparseDuplicates: cleaned.duplicates,
+        domUnmarkedElements: cleaned.unmarkedElements,
+        retaggedElements,
+        renderedNodes: nodes.length,
+        visibleNodes,
         axNodes: axTree.count,
         axMatchedNodes: axMatched,
+        axCoverageRatio: Math.round(axCoverageRatio * 1000) / 1000,
         jsonLdAndMicrodataBlocks: structured.blocks.length,
       },
+      artifactCap: {
+        maxBytes: options.maxPageBytes,
+        totalBytes: artifactBytes,
+        jsonBytes,
+        imageBytes: artifactBytes - jsonBytes,
+        exceeded: capped.exceeded,
+        mitigations: capped.mitigations,
+        fullPngHeight: {
+          maxHeight: options.maxFullPngHeight,
+          documentHeight,
+          truncated: fullPngTruncated,
+        },
+      },
+      artifactBytes,
       timings: {
         navigationMs,
         totalMs: Date.now() - startedAt,
@@ -424,7 +650,10 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     result.qualityFlags = qualityFlags;
     result.httpStatus = httpStatus;
     result.redirectedUrl = finalUrl;
+    result.sameHostRedirect = sameHostRedirect;
     result.counts = meta.counts;
+    result.artifactBytes = artifactBytes;
+    result.artifactCap = meta.artifactCap;
     result.screenshot = { full: fileSize(fullPng), viewport: fileSize(viewportPng) };
     result.artifacts = ARTIFACT_FILES.filter((name) => fs.existsSync(path.join(outDir, name)));
     result.durationMs = meta.timings.totalMs;
@@ -433,9 +662,15 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
   } catch (error) {
     result.reason = 'capture_failed';
     result.detail = firstLine(error.message);
-    result.failures = [
-      { stage: 'capture', reason: 'capture_failed', message: firstLine(error.message), url: page.url, partialArtifacts: fs.existsSync(outDir) },
-    ];
+    const failure = terminalFailure({
+      stage: 'capture',
+      reason: 'capture_failed',
+      message: firstLine(error.message),
+      url: page.url,
+      outDir,
+    });
+    result.discardedStaleArtifacts = failure.discardedStaleArtifacts;
+    result.failures = [failure];
     return result;
   } finally {
     if (browserPage) await browserPage.close().catch(() => {});

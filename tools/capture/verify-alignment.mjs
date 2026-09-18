@@ -1,38 +1,69 @@
 #!/usr/bin/env node
-// Alignment spot-check: does nodes.json `bbox` point at the same pixels in full.png?
+// Alignment verification for one capture directory. Four independent checks:
 //
-// For every node with a solid, opaque, visually distinctive background colour, sample a
-// 5x5 grid inside its bbox and compare with the computed background colour. Two controls
-// (the same grid placed entirely above and entirely below the element) must NOT match,
-// otherwise the element sits on a same-coloured surface and its match proves nothing.
+//  1. domResolution  — every nodes.json entry must resolve in the delivered dom.html. dom.html is
+//                      parsed by a real browser and each element's cleaned path + tag is compared
+//                      with nodes.json `cleanedPath`. Unresolved paths or tag mismatches are
+//                      blockers: without this, nodes.json cannot be joined to the delivered DOM.
+//  2. colour grid    — for nodes with a solid opaque background, a 5x5 grid inside the bbox must
+//                      match the computed background colour, while same-size controls above and
+//                      below must NOT match (otherwise the match proves nothing). Non-matching
+//                      candidates are explained: translucent-overlay, ancestor-transparent,
+//                      covered-by-later-node, non-discriminating, low-coverage; `unexplained` is
+//                      the alarm signal.
+//  3. painted feature— for image-like elements (no solid background) the centroid of "ink" inside
+//                      the bbox must lie inside the box and the ink extent must stay within a few
+//                      px of it. This is what catches a many-px offset on image-heavy pages.
+//  4. frame anchor   — viewport.png (captured at scroll 0,0) vs the top of full.png. Below 0.99 is
+//                      reported as a warning (full-page capture re-lays out sticky/viewport-fixed
+//                      content), never as silent success.
 //
-// Candidates that do not match exactly are then explained rather than merely counted:
-//   aligned               — grid matches, controls do not: positive evidence
-//   translucent-overlay   — painted colour equals the element colour composited with white
-//                           or black (e.g. a ::before overlay on a loading button)
-//   ancestor-transparent  — an ancestor on the domPath has opacity < 1
-//   covered-by-later-node — a later node in document order fully covers the bbox
-//   non-discriminating    — matches, but the controls match too (uninformative)
-//   low-coverage          — some grid points match (text/border covers the rest)
-//   unexplained           — nothing above applies; the only true alarm signal
-//
-// Second, independent check: the top rows of viewport.png (captured at scroll 0,0) must
-// equal the top rows of full.png, i.e. full.png is anchored at the document origin.
+// Shift sensitivity: for each matched element the smallest offset its own geometry can detect is
+// floor(min(w,h)/2); the page-level value is the minimum over matched candidates, i.e. "alignment
+// proven to within X px". A page whose smallest matched element is coarse reports a warning.
 //
 // Usage:
-//   node tools/capture/verify-alignment.mjs corpus/<site>/<page> [--max-checked 25] [--tolerance 3] [--out file.json]
+//   node tools/capture/verify-alignment.mjs corpus/<site>/<page> [options]
+//     --max-checked N        colour candidates to examine (default 25)
+//     --tolerance N          per-channel tolerance (default 3)
+//     --min-discriminating N minimum matched colour candidates for a strong verdict (default 2)
+//     --max-shift-sensitivity N  required detection resolution in px (default 16)
+//     --min-painted-checks N required painted-feature passes when the page has >=3 painted
+//                            candidates (default 1)
+//     --feature-tolerance N  allowed ink spill outside the bbox in px (default 6)
+//     --no-dom-check         skip the dom.html resolution check (offline/quick runs)
+//     --strict-warnings      exit 1 on warnings too
+//     --out FILE             write the evidence JSON
 
 import fs from 'node:fs';
 import path from 'node:path';
 
 import { decodePng } from './lib/png.mjs';
+import { launchBrowser } from './lib/browser.mjs';
 
 // Elements whose pixels come from painted content rather than the CSS background.
 const PAINTED_TAGS = new Set(['img', 'svg', 'canvas', 'video', 'iframe', 'picture', 'object', 'embed', 'map', 'area', 'image']);
 const BLEND_BASES = [[255, 255, 255], [0, 0, 0]];
 
 function parseArgs(argv) {
-  const options = { dir: null, maxChecked: 25, tolerance: 3, out: null, minSize: 20, shiftPx: 60, minFraction: 0.25 };
+  const options = {
+    dir: null,
+    maxChecked: 25,
+    tolerance: 3,
+    minDiscriminating: 2,
+    maxShiftSensitivity: 16,
+    minPaintedChecks: 1,
+    featureTolerancePx: 6,
+    domCheck: true,
+    strictWarnings: false,
+    out: null,
+    minSize: 20,
+    shiftPx: 60,
+    minFraction: 0.25,
+    // A colour region this close to the computed background counts as the element being there
+    // with a subtly different paint (gradient/alpha/AA), not as a misplaced box.
+    nearMissDelta: 12,
+  };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     const value = () => {
@@ -45,11 +76,18 @@ function parseArgs(argv) {
     else if (arg === '--min-size') options.minSize = Number(value());
     else if (arg === '--shift') options.shiftPx = Number(value());
     else if (arg === '--min-fraction') options.minFraction = Number(value());
+    else if (arg === '--min-discriminating') options.minDiscriminating = Number(value());
+    else if (arg === '--max-shift-sensitivity') options.maxShiftSensitivity = Number(value());
+    else if (arg === '--min-painted-checks') options.minPaintedChecks = Number(value());
+    else if (arg === '--feature-tolerance') options.featureTolerancePx = Number(value());
+    else if (arg === '--near-miss-delta') options.nearMissDelta = Number(value());
+    else if (arg === '--no-dom-check') options.domCheck = false;
+    else if (arg === '--strict-warnings') options.strictWarnings = true;
     else if (arg === '--out') options.out = value();
     else if (!options.dir) options.dir = arg;
     else throw new Error(`unknown argument: ${arg}`);
   }
-  if (!options.dir) throw new Error('usage: verify-alignment.mjs <page-dir> [--max-checked N]');
+  if (!options.dir) throw new Error('usage: verify-alignment.mjs <page-dir> [options]');
   return options;
 }
 
@@ -63,7 +101,6 @@ function channelDelta(a, b) {
   return Math.max(Math.abs(a[0] - b[0]), Math.abs(a[1] - b[1]), Math.abs(a[2] - b[2]));
 }
 
-// Nearest alpha (1% steps) at which the element colour composited over white/black matches.
 function blendOf(expectedRgb, sampledRgb, tolerance) {
   for (const base of BLEND_BASES) {
     for (let step = 99; step >= 5; step -= 1) {
@@ -75,8 +112,19 @@ function blendOf(expectedRgb, sampledRgb, tolerance) {
   return null;
 }
 
-function sampleGrid(png, box, expectedRgb, tolerance) {
-  const empty = { gridPoints: 0, matchingPoints: 0, fraction: 0, blendedPoints: 0, blendedFraction: 0, blend: null, minChannelDelta: null, centrePixel: null };
+function sampleGrid(png, box, expectedRgb, tolerance, nearMissDelta = 12) {
+  const empty = {
+    gridPoints: 0,
+    matchingPoints: 0,
+    fraction: 0,
+    nearPoints: 0,
+    nearFraction: 0,
+    blendedPoints: 0,
+    blendedFraction: 0,
+    blend: null,
+    minChannelDelta: null,
+    centrePixel: null,
+  };
   if (box.w < 2 || box.h < 2 || box.y + box.h < 0) return empty;
   const insetX = Math.max(1, Math.round(box.w * 0.1));
   const insetY = Math.max(1, Math.round(box.h * 0.1));
@@ -87,6 +135,7 @@ function sampleGrid(png, box, expectedRgb, tolerance) {
   const centreX = Math.round((x0 + x1) / 2);
   const centreY = Math.round((y0 + y1) / 2);
   let matchingPoints = 0;
+  let nearPoints = 0;
   let blendedPoints = 0;
   let gridPoints = 0;
   let minChannelDelta = null;
@@ -102,6 +151,7 @@ function sampleGrid(png, box, expectedRgb, tolerance) {
       gridPoints += 1;
       const delta = channelDelta(rgb, expectedRgb);
       minChannelDelta = minChannelDelta === null ? delta : Math.min(minChannelDelta, delta);
+      if (delta <= nearMissDelta) nearPoints += 1;
       if (delta <= tolerance) matchingPoints += 1;
       else {
         const found = blendOf(expectedRgb, rgb, tolerance);
@@ -117,6 +167,8 @@ function sampleGrid(png, box, expectedRgb, tolerance) {
     gridPoints,
     matchingPoints,
     fraction: gridPoints ? matchingPoints / gridPoints : 0,
+    nearPoints,
+    nearFraction: gridPoints ? nearPoints / gridPoints : 0,
     blendedPoints,
     blendedFraction: gridPoints ? blendedPoints / gridPoints : 0,
     blend,
@@ -125,6 +177,8 @@ function sampleGrid(png, box, expectedRgb, tolerance) {
   };
 }
 
+// Two independent facts: how well viewport.png matches the top of full.png (fraction), and where
+// the difference is (so a weak anchor can be explained rather than merely reported).
 function frameAnchorCheck(dir, fullPng, options) {
   const viewportPath = path.join(dir, 'viewport.png');
   if (!fs.existsSync(viewportPath)) return { available: false };
@@ -133,22 +187,172 @@ function frameAnchorCheck(dir, fullPng, options) {
   const columns = Math.min(viewport.width, fullPng.width);
   let compared = 0;
   let identical = 0;
-  for (let y = 0; y < rows; y += 3) {
-    for (let x = 0; x < columns; x += 3) {
+  let maxChannelDelta = 0;
+  let boundingBox = null;
+  for (let y = 0; y < rows; y += 1) {
+    for (let x = 0; x < columns; x += 1) {
       const a = fullPng.pixel(x, y);
       const b = viewport.pixel(x, y);
       if (!a || !b) continue;
       compared += 1;
-      if (channelDelta(a, b) <= options.tolerance) identical += 1;
+      const delta = channelDelta(a, b);
+      if (delta <= options.tolerance) identical += 1;
+      else {
+        if (delta > maxChannelDelta) maxChannelDelta = delta;
+        boundingBox = boundingBox
+          ? [Math.min(boundingBox[0], x), Math.min(boundingBox[1], y), Math.max(boundingBox[2], x), Math.max(boundingBox[3], y)]
+          : [x, y, x, y];
+      }
     }
   }
+  const identicalFraction = compared ? identical / compared : 0;
+  const status = identicalFraction >= 0.99 ? 'strong' : 'weak';
   return {
     available: true,
+    status,
     viewportSize: { w: viewport.width, h: viewport.height },
     sampledPixels: compared,
-    identicalFraction: compared ? identical / compared : 0,
-    note: 'viewport.png is captured at scroll (0,0); equality with the top of full.png proves full.png starts at the document origin',
+    identicalFraction,
+    differingPixels: compared - identical,
+    maxChannelDelta,
+    diffBoundingBox: boundingBox,
+    note:
+      status === 'strong'
+        ? 'viewport.png (captured at scroll 0,0) matches the top of full.png, i.e. full.png starts at the document origin'
+        : `viewport.png and the top of full.png differ in ${((1 - identicalFraction) * 100).toFixed(2)}% of pixels (max channel delta ${maxChannelDelta}). Full-page capture re-lays out viewport-dependent content (sticky/fixed headers, vh sizing, scrollbar reflow), so this anchor is weak for this page; the colour-grid and painted-feature checks are unaffected and carry the alignment claim.`,
   };
+}
+
+// Painted-feature check: local background from the ring around the bbox, then the ink centroid
+// and ink extent inside the bbox. A systematic bbox offset moves image content outside the box.
+function paintedFeatureCheck(png, node, options) {
+  const box = node.bbox;
+  const pad = 12;
+  const ring = {
+    x: Math.max(0, box.x - pad),
+    y: Math.max(0, box.y - pad),
+    w: Math.min(png.width, box.x + box.w + pad) - Math.max(0, box.x - pad),
+    h: Math.min(png.height, box.y + box.h + pad) - Math.max(0, box.y - pad),
+  };
+  if (ring.w < 4 || ring.h < 4) return { skipped: 'bbox touches the image edge' };
+
+  // Modal colour of the ring (quantised to 16 levels), used as the local background.
+  const histogram = new Map();
+  for (let y = Math.round(ring.y); y < ring.y + ring.h; y += 2) {
+    for (let x = Math.round(ring.x); x < ring.x + ring.w; x += 2) {
+      const inside =
+        x >= box.x - 1 && x <= box.x + box.w + 1 && y >= box.y - 1 && y <= box.y + box.h + 1;
+      if (inside) continue;
+      const pixel = png.pixel(x, y);
+      if (!pixel) continue;
+      const key = `${pixel[0] >> 4},${pixel[1] >> 4},${pixel[2] >> 4}`;
+      const entry = histogram.get(key) ?? { count: 0, r: 0, g: 0, b: 0 };
+      entry.count += 1;
+      entry.r += pixel[0];
+      entry.g += pixel[1];
+      entry.b += pixel[2];
+      histogram.set(key, entry);
+    }
+  }
+  const mode = [...histogram.values()].sort((a, b) => b.count - a.count)[0];
+  if (!mode) return { skipped: 'no ring pixels sampled' };
+  const background = [Math.round(mode.r / mode.count), Math.round(mode.g / mode.count), Math.round(mode.b / mode.count)];
+
+  const inkThreshold = 24;
+  let ink = 0;
+  let sampled = 0;
+  let sumX = 0;
+  let sumY = 0;
+  let inkBox = null;
+  for (let y = Math.round(box.y); y < box.y + box.h; y += 1) {
+    for (let x = Math.round(box.x); x < box.x + box.w; x += 1) {
+      const pixel = png.pixel(x, y);
+      if (!pixel) continue;
+      sampled += 1;
+      if (channelDelta(pixel, background) <= inkThreshold) continue;
+      ink += 1;
+      sumX += x;
+      sumY += y;
+      inkBox = inkBox ? [Math.min(inkBox[0], x), Math.min(inkBox[1], y), Math.max(inkBox[2], x), Math.max(inkBox[3], y)] : [x, y, x, y];
+    }
+  }
+  if (sampled === 0) return { skipped: 'bbox outside the image' };
+  const inkFraction = ink / sampled;
+  if (ink < 20 || inkFraction < 0.005) return { skipped: `too little ink to test (${ink} px, ${(inkFraction * 100).toFixed(2)}%)` };
+
+  const centroid = [Math.round(sumX / ink), Math.round(sumY / ink)];
+  const centroidInsideBox = centroid[0] >= box.x && centroid[0] <= box.x + box.w && centroid[1] >= box.y && centroid[1] <= box.y + box.h;
+  const tolerance = options.featureTolerancePx;
+  const inkWithinBox =
+    inkBox[0] >= box.x - tolerance &&
+    inkBox[1] >= box.y - tolerance &&
+    inkBox[2] <= box.x + box.w + tolerance &&
+    inkBox[3] <= box.y + box.h + tolerance;
+
+  return {
+    domPath: node.domPath,
+    tag: node.tag,
+    bbox: box,
+    localBackground: `rgb(${background.join(', ')})`,
+    inkPixels: ink,
+    inkFraction: Math.round(inkFraction * 1000) / 1000,
+    centroid,
+    centroidInsideBox,
+    inkBox,
+    inkWithinBox,
+    passed: centroidInsideBox && inkWithinBox,
+  };
+}
+
+// Resolve every nodes.json cleanedPath in the delivered dom.html using a real browser parse.
+async function domResolutionCheck(dir, nodes, options) {
+  const domPath = path.join(dir, 'dom.html');
+  if (!fs.existsSync(domPath)) return { available: false, note: 'dom.html missing' };
+  const html = fs.readFileSync(domPath, 'utf8');
+  const browser = await launchBrowser({ log: () => {} });
+  try {
+    const context = await browser.newContext();
+    await context.route('**/*', (route) => route.abort()); // structure only: no network
+    const page = await context.newPage();
+    await page.setContent(html, { waitUntil: 'domcontentloaded' });
+    const expected = nodes.map((node) => ({ p: node.cleanedPath, t: node.tag }));
+    const result = await page.evaluate((pairs) => {
+      const byPath = new Map();
+      const walk = (el, p) => {
+        const tag = el.tagName.toLowerCase();
+        byPath.set(p, tag);
+        const children = el.children;
+        for (let i = 0; i < children.length; i += 1) walk(children[i], `${p}/${children[i].tagName.toLowerCase()}[${i}]`);
+      };
+      walk(document.documentElement, 'html');
+      const unresolved = [];
+      const tagMismatch = [];
+      let resolved = 0;
+      for (const pair of pairs) {
+        const actual = pair.p === null || pair.p === undefined ? undefined : byPath.get(pair.p);
+        if (actual === undefined) {
+          if (unresolved.length < 10) unresolved.push(pair.p);
+        } else if (actual !== pair.t) {
+          if (tagMismatch.length < 10) tagMismatch.push({ path: pair.p, expected: pair.t, actual });
+        } else resolved += 1;
+      }
+      return { resolved, unresolved, tagMismatch, elementsInDom: byPath.size };
+    }, expected);
+    await context.close();
+    return {
+      available: true,
+      checkedPaths: expected.length,
+      resolved: result.resolved,
+      unresolved: result.unresolved,
+      unresolvedCount: expected.length - result.resolved - result.tagMismatch.length,
+      tagMismatch: result.tagMismatch,
+      tagMismatchCount: result.tagMismatch.length,
+      elementsInDom: result.elementsInDom,
+      passed: result.resolved === expected.length,
+    };
+  } finally {
+    await browser.close().catch(() => {});
+  }
 }
 
 function covers(outer, inner) {
@@ -163,12 +367,11 @@ function covers(outer, inner) {
 function classify({ node, index, nodes, byPath, png, options }) {
   const colour = parseColor(node.styles.backgroundColor);
   const expectedRgb = [colour.r, colour.g, colour.b];
-  const direct = sampleGrid(png, node.bbox, expectedRgb, options.tolerance);
-  const above = sampleGrid(png, { ...node.bbox, y: node.bbox.y - node.bbox.h - options.shiftPx }, expectedRgb, options.tolerance);
-  const below = sampleGrid(png, { ...node.bbox, y: node.bbox.y + node.bbox.h + options.shiftPx }, expectedRgb, options.tolerance);
+  const direct = sampleGrid(png, node.bbox, expectedRgb, options.tolerance, options.nearMissDelta);
+  const above = sampleGrid(png, { ...node.bbox, y: node.bbox.y - node.bbox.h - options.shiftPx }, expectedRgb, options.tolerance, options.nearMissDelta);
+  const below = sampleGrid(png, { ...node.bbox, y: node.bbox.y + node.bbox.h + options.shiftPx }, expectedRgb, options.tolerance, options.nearMissDelta);
   const discriminating = above.fraction < options.minFraction && below.fraction < options.minFraction;
 
-  // Ancestor opacity (nodes.json only records the element's own opacity).
   const segments = node.domPath.split('/');
   let ancestorOpacity = null;
   for (let i = segments.length - 1; i > 0; i -= 1) {
@@ -177,19 +380,54 @@ function classify({ node, index, nodes, byPath, png, options }) {
       ancestorOpacity = { domPath: ancestor.domPath, opacity: ancestor.styles.opacity };
     }
   }
+  // A fixed/sticky ancestor (or the element itself) is re-laid-out by the full-page capture:
+  // in viewport.png it sits at the bottom of the viewport, in full.png at its document position.
+  let positionedAncestor = null;
+  const selfPosition = node.styles.position;
+  if (selfPosition === 'fixed' || selfPosition === 'sticky') positionedAncestor = { domPath: node.domPath, position: selfPosition };
+  else {
+    for (let i = segments.length - 1; i > 0 && !positionedAncestor; i -= 1) {
+      const ancestor = byPath.get(segments.slice(0, i).join('/'));
+      if (ancestor && (ancestor.styles.position === 'fixed' || ancestor.styles.position === 'sticky')) {
+        positionedAncestor = { domPath: ancestor.domPath, position: ancestor.styles.position };
+      }
+    }
+  }
+
   const cover = nodes.findIndex((other, otherIndex) => otherIndex > index && other.tag !== node.tag && covers(other.bbox, node.bbox));
+
+  // Which node, if any, paints over this bbox with the colour actually sampled at its centre?
+  let overlapping = null;
+  if (direct.centrePixel && direct.fraction < options.minFraction) {
+    const centre = { x: node.bbox.x + node.bbox.w / 2, y: node.bbox.y + node.bbox.h / 2 };
+    for (const other of nodes) {
+      if (other === node) continue;
+      if (centre.x < other.bbox.x || centre.x > other.bbox.x + other.bbox.w) continue;
+      if (centre.y < other.bbox.y || centre.y > other.bbox.y + other.bbox.h) continue;
+      const otherColour = parseColor(other.styles.backgroundColor);
+      if (!otherColour || otherColour.a < 1) continue;
+      if (channelDelta(direct.centrePixel, [otherColour.r, otherColour.g, otherColour.b]) > options.tolerance) continue;
+      if (!overlapping || other.bbox.w * other.bbox.h < overlapping.bbox.w * overlapping.bbox.h) {
+        overlapping = { domPath: other.domPath, tag: other.tag, bbox: other.bbox };
+      }
+    }
+  }
 
   let classification;
   if (ancestorOpacity) classification = 'ancestor-transparent';
   else if (direct.fraction >= options.minFraction && discriminating) classification = 'aligned';
   else if (direct.fraction >= options.minFraction) classification = 'non-discriminating';
   else if (direct.blendedFraction >= options.minFraction) classification = 'translucent-overlay';
+  else if (positionedAncestor) classification = 'fixed-or-sticky-relayout';
   else if (cover !== -1) classification = 'covered-by-later-node';
+  else if (overlapping) classification = 'covered-by-overlapping-node';
+  else if (direct.nearFraction >= options.minFraction) classification = 'near-match';
   else if (direct.fraction > 0) classification = 'low-coverage';
   else classification = 'unexplained';
 
   return {
     domPath: node.domPath,
+    cleanedPath: node.cleanedPath,
     tag: node.tag,
     role: node.role,
     bbox: node.bbox,
@@ -198,12 +436,16 @@ function classify({ node, index, nodes, byPath, png, options }) {
     direct,
     controlAbove: above,
     controlBelow: below,
+    // Smallest offset this element's own geometry can detect: half its smaller dimension.
+    shiftSensitivityPx: Math.max(1, Math.floor(Math.min(node.bbox.w, node.bbox.h) / 2)),
     ancestorOpacity: ancestorOpacity ?? undefined,
     coveringNode: cover === -1 ? undefined : { domPath: nodes[cover].domPath, tag: nodes[cover].tag, bbox: nodes[cover].bbox },
+    positionedAncestor: positionedAncestor ?? undefined,
+    overlappingNode: overlapping ?? undefined,
   };
 }
 
-function main() {
+async function main() {
   const options = parseArgs(process.argv.slice(2));
   const dir = path.resolve(options.dir);
   const nodes = JSON.parse(fs.readFileSync(path.join(dir, 'nodes.json'), 'utf8'));
@@ -227,38 +469,101 @@ function main() {
 
   const checks = candidates.map(({ node, index }) => classify({ node, index, nodes, byPath, png, options }));
   const count = (name) => checks.filter((check) => check.classification === name).length;
-  const frameAnchor = frameAnchorCheck(dir, png, options);
-  const aligned = count('aligned');
+  const alignedChecks = checks.filter((check) => check.classification === 'aligned');
+  const aligned = alignedChecks.length;
   const unexplained = count('unexplained');
 
-  const verdict =
-    aligned > 0 && unexplained === 0
-      ? 'aligned'
-      : aligned > 0
-        ? 'aligned-with-caveats'
-        : unexplained > 0
-          ? 'misaligned'
-          : frameAnchor.available && frameAnchor.identicalFraction > 0.99
-            ? 'no-distinctive-candidate; frame-anchor-only'
-            : 'inconclusive';
+  // Painted-feature checks for image-like elements.
+  const paintedCandidates = nodes
+    .filter((node) => {
+      if (!PAINTED_TAGS.has(node.tag)) return false;
+      if (node.bbox.w < 24 || node.bbox.h < 24) return false;
+      if (node.bbox.x < 0 || node.bbox.y < 0) return false;
+      if (node.bbox.x + node.bbox.w > png.width || node.bbox.y + node.bbox.h > png.height) return false;
+      return node.visible === true;
+    })
+    .sort((a, b) => b.bbox.w * b.bbox.h - a.bbox.w * a.bbox.h)
+    .slice(0, options.maxChecked);
+  const painted = paintedCandidates.map((node) => paintedFeatureCheck(png, node, options));
+  const paintedPassed = painted.filter((check) => check.passed === true).length;
+  const paintedFailed = painted.filter((check) => check.passed === false).length;
+  const paintedSkipped = painted.filter((check) => check.skipped).length;
+  const paintedRequired = paintedCandidates.length >= 3;
+
+  const nodesBelowCapturedHeight = nodes.filter((node) => node.bbox.y + node.bbox.h > png.height).length;
+  const frameAnchor = frameAnchorCheck(dir, png, options);
+  const domResolution = options.domCheck
+    ? await domResolutionCheck(dir, nodes, options)
+    : { available: false, note: 'skipped via --no-dom-check' };
+
+  const shiftSensitivityPx = alignedChecks.length ? Math.min(...alignedChecks.map((check) => check.shiftSensitivityPx)) : null;
+
+  const blockers = [];
+  if (unexplained > 0) blockers.push(`${unexplained} unexplained colour candidate(s)`);
+  if (domResolution.available && !domResolution.passed) {
+    blockers.push(`nodes.json does not resolve in dom.html (unresolved=${domResolution.unresolvedCount}, tagMismatch=${domResolution.tagMismatchCount})`);
+  }
+  if (paintedFailed > 0) blockers.push(`${paintedFailed} painted-feature check(s) failed`);
+
+  const warnings = [];
+  const paintedCarriesEvidence = paintedFailed === 0 && paintedPassed >= options.minPaintedChecks;
+  if (aligned < options.minDiscriminating && !paintedCarriesEvidence) {
+    warnings.push(`only ${aligned} discriminating colour candidate(s), ${options.minDiscriminating} required for a strong verdict`);
+  }
+  if (shiftSensitivityPx !== null && shiftSensitivityPx > options.maxShiftSensitivity) {
+    warnings.push(`coarse shift detection: smallest matched element proves alignment only to ${shiftSensitivityPx}px (> ${options.maxShiftSensitivity}px)`);
+  }
+  if (frameAnchor.available && frameAnchor.status === 'weak') {
+    warnings.push(`frame anchor weak (${(frameAnchor.identicalFraction * 100).toFixed(2)}% of top-of-page pixels match)`);
+  }
+  if (paintedRequired && paintedPassed < options.minPaintedChecks) {
+    warnings.push(`${paintedCandidates.length} image-like candidates but only ${paintedPassed} painted-feature pass(es), ${options.minPaintedChecks} required`);
+  }
+
+  let verdict;
+  if (blockers.length) verdict = 'misaligned';
+  else if (aligned >= options.minDiscriminating) verdict = warnings.length ? 'aligned-with-warnings' : 'aligned';
+  else if (paintedCarriesEvidence) verdict = warnings.length ? 'aligned-painted-features-with-warnings' : 'aligned-painted-features';
+  else if (aligned > 0) verdict = 'aligned-thin';
+  else if (frameAnchor.available && frameAnchor.status === 'strong') verdict = 'frame-anchor-only';
+  else verdict = 'inconclusive';
 
   const evidence = {
     pageDir: path.relative(process.cwd(), dir),
     fullPng: { width: png.width, height: png.height },
     nodesChecked: nodes.length,
-    candidatesExamined: candidates.length,
+    nodesBelowCapturedHeight,
+    colourCandidatesExamined: candidates.length,
     tolerancePerChannel: options.tolerance,
     minimumMatchingFraction: options.minFraction,
+    minimumDiscriminating: options.minDiscriminating,
     aligned,
     unexplained,
+    paintedCarriesEvidence,
+    shiftSensitivityPx,
     classificationCounts: {
       'translucent-overlay': count('translucent-overlay'),
       'ancestor-transparent': count('ancestor-transparent'),
       'covered-by-later-node': count('covered-by-later-node'),
+      'covered-by-overlapping-node': count('covered-by-overlapping-node'),
+      'fixed-or-sticky-relayout': count('fixed-or-sticky-relayout'),
+      'near-match': count('near-match'),
       'non-discriminating': count('non-discriminating'),
       'low-coverage': count('low-coverage'),
     },
+    paintedFeature: {
+      candidates: paintedCandidates.length,
+      examined: painted.length,
+      passed: paintedPassed,
+      failed: paintedFailed,
+      skipped: paintedSkipped,
+      required: paintedRequired,
+      checks: painted,
+    },
     frameAnchor,
+    domResolution,
+    blockers,
+    warnings,
     verdict,
     checks,
   };
@@ -267,6 +572,10 @@ function main() {
   if (options.out) fs.writeFileSync(options.out, text);
   process.stdout.write(text);
   if (verdict === 'misaligned' || verdict === 'inconclusive') process.exitCode = 1;
+  else if (options.strictWarnings && warnings.length) process.exitCode = 1;
 }
 
-main();
+main().catch((error) => {
+  process.stderr.write(`verify-alignment error: ${error.stack ?? error.message}\n`);
+  process.exit(1);
+});

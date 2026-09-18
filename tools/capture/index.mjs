@@ -18,6 +18,9 @@
 //   --include-skipped      also run pages marked "skip" in sites.json
 //   --no-retry-pass        do not re-attempt pages that failed for transient reasons
 //   --retry-pass-delay-ms  wait before that retry pass (default 5000)
+//   --max-page-bytes <n>   per-page artifact ceiling; 0 disables (default 2000000)
+//   --max-full-png-height <n>  truncate full.png to n px of document height; 0 = never (default)
+//   --skip-existing        skip pages that already have a meta.json (resume a long run)
 //   --strict               exit 1 if any selected page fails
 //
 // Exit codes: 0 = ran (failures are recorded in corpus/failures.json), 1 = pipeline error.
@@ -26,15 +29,17 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { capturePage, createCaptureLogger } from './lib/capture.mjs';
-import { launchBrowser, newCaptureContext, DEFAULT_OPTIONS, PRODUCT_TOKEN, USER_AGENT } from './lib/browser.mjs';
+import { launchBrowser, newCaptureContext, fetchTextViaBrowser, DEFAULT_OPTIONS, PRODUCT_TOKEN, USER_AGENT } from './lib/browser.mjs';
 import { RobotsClient } from './lib/robots-client.mjs';
 import { HostThrottle } from './lib/throttle.mjs';
 import { fileSize, hostOf, nowIso, readJson, sleep, writeJson } from './lib/util.mjs';
 
 // Transient conditions that are worth exactly one extra attempt at the end of a run.
-// A robots.txt fetch that fails on a flaky network, or a navigation that times out, says
-// nothing about the page itself; a robots denial or a 404 does, and is never retried.
-const RETRYABLE_FAILURE_REASONS = new Set(['robots_unavailable', 'navigation_failed']);
+// A robots.txt fetch that fails on a flaky network, a navigation that times out, or an
+// anti-bot shell that renders empty on some hits (passport.baidu.com served a full page in 3 of
+// 5 observations) say nothing about the page itself; a robots denial or a 404 does, and is never
+// retried.
+const RETRYABLE_FAILURE_REASONS = new Set(['robots_unavailable', 'navigation_failed', 'suspicious_empty_render']);
 
 const HERE = path.dirname(new URL(import.meta.url).pathname);
 
@@ -53,6 +58,9 @@ function parseArgs(argv) {
     includeSkipped: false,
     retryPass: true,
     retryPassDelayMs: 5000,
+    maxPageBytes: DEFAULT_OPTIONS.maxPageBytes,
+    maxFullPngHeight: DEFAULT_OPTIONS.maxFullPngHeight,
+    skipExisting: false,
     minDelayMs: DEFAULT_OPTIONS.minDelayMs,
     quiet: false,
   };
@@ -78,6 +86,9 @@ function parseArgs(argv) {
       case '--include-skipped': options.includeSkipped = true; break;
       case '--no-retry-pass': options.retryPass = false; break;
       case '--retry-pass-delay-ms': options.retryPassDelayMs = Number(value()); break;
+      case '--max-page-bytes': options.maxPageBytes = Number(value()); break;
+      case '--max-full-png-height': options.maxFullPngHeight = Number(value()); break;
+      case '--skip-existing': options.skipExisting = true; break;
       case '--quiet': options.quiet = true; break;
       case '--min-delay-ms': options.minDelayMs = Number(value()); break;
       case '--help':
@@ -105,11 +116,12 @@ function knownArchetypes(archetypesFile) {
   }
 }
 
-function buildJobs(sitesDoc, options) {
+function buildJobs(sitesDoc, options, corpusDir) {
   const wantedPages = new Set(options.page);
   const wantedArchetypes = new Set(options.archetype);
   const jobs = [];
   const unknown = [];
+  let skippedExisting = 0;
 
   for (const site of sitesDoc.sites) {
     if (options.site.length && !options.site.includes(site.slug)) continue;
@@ -119,6 +131,10 @@ function buildJobs(sitesDoc, options) {
       if (wantedArchetypes.size && !wantedArchetypes.has(page.archetype)) continue;
       // `skip` pages stay out of bulk runs but can be forced by naming them with --page.
       if (page.skip && !wantedPages.has(key) && !options.includeSkipped) continue;
+      if (options.skipExisting && fs.existsSync(path.join(corpusDir, site.slug, page.slug, 'meta.json'))) {
+        skippedExisting += 1;
+        continue;
+      }
       jobs.push({
         site,
         page: { slug: page.slug, url: page.url, archetype: page.archetype, note: page.note ?? null },
@@ -130,7 +146,7 @@ function buildJobs(sitesDoc, options) {
     const found = new Set(jobs.map((job) => `${job.site.slug}/${job.page.slug}`));
     for (const key of wantedPages) if (!found.has(key)) unknown.push(key);
   }
-  return { jobs, unknown };
+  return { jobs, unknown, skippedExisting };
 }
 
 function upsertFailures(corpusDir, results) {
@@ -150,9 +166,14 @@ function upsertFailures(corpusDir, results) {
         stage: failure.stage,
         reason: failure.reason,
         message: failure.message,
+        rule: failure.redirectRule ?? failure.rule ?? null,
+        requestedUrl: failure.requestedUrl ?? null,
         partialArtifacts: failure.partialArtifacts ?? false,
+        discardedStaleArtifacts: failure.discardedStaleArtifacts ?? false,
         at: nowIso(),
       });
+      // qualityFlags make a failure self-describing when read without run-report.json.
+      if (result.qualityFlags?.length) added[added.length - 1].qualityFlags = result.qualityFlags;
     }
   }
   const failures = [...kept, ...added].sort(
@@ -179,8 +200,9 @@ async function main() {
     options.page = [...(pilot.pages ?? []), ...options.page];
   }
 
-  const { jobs: allJobs, unknown } = buildJobs(sitesDoc, options);
+  const { jobs: allJobs, unknown, skippedExisting } = buildJobs(sitesDoc, options, corpusDir);
   if (unknown.length) log(`warning: --page selectors not found in ${options.sites}: ${unknown.join(', ')}`);
+  if (skippedExisting) log(`--skip-existing: ${skippedExisting} page(s) already captured`);
   const jobs = options.limit ? allJobs.slice(0, options.limit) : allJobs;
 
   // The taxonomy is a data contract: archetypes.md is the source of truth, and both the seed
@@ -250,6 +272,9 @@ async function main() {
   let lastRetryPass = { enabled: options.retryPass, delayMs: options.retryPassDelayMs, attempted: [], recovered: [], stillFailing: [] };
   try {
     const context = await newCaptureContext(browser, options);
+    // Hosts whose robots.txt Node cannot fetch (intermittent DNS/connect failures here) are
+    // retried through the browser's network stack instead of being skipped.
+    robots.setBrowserFetch((url) => fetchTextViaBrowser(context, url, { timeoutMs: options.robotsTimeoutMs, throttle }));
     const retryPass = lastRetryPass;
     for (const [index, job] of jobs.entries()) {
       const label = `[${index + 1}/${jobs.length}] ${job.site.slug}/${job.page.slug} [${job.page.archetype}]`;
@@ -307,6 +332,43 @@ async function main() {
   if (options.strict && failed + partial > 0) process.exitCode = 1;
 }
 
+// Per-archetype outcome table: coverage claims in the ticket are made against this.
+function archetypeCoverage(results) {
+  const byArchetype = {};
+  for (const result of results) {
+    const entry = (byArchetype[result.archetype] ??= { selected: 0, ok: 0, partial: 0, failed: 0, renderedNodes: 0, overArtifactCap: 0 });
+    entry.selected += 1;
+    entry[result.status] = (entry[result.status] ?? 0) + 1;
+    entry.renderedNodes += result.counts?.renderedNodes ?? 0;
+    if ((result.qualityFlags ?? []).includes('artifact_cap_exceeded')) entry.overArtifactCap += 1;
+  }
+  return byArchetype;
+}
+
+function qualityFlagCounts(results) {
+  const counts = {};
+  for (const result of results) {
+    for (const flag of result.qualityFlags ?? []) counts[flag] = (counts[flag] ?? 0) + 1;
+  }
+  return counts;
+}
+
+function artifactSizeStats(results, maxPageBytes) {
+  const sizes = results.map((result) => result.artifactBytes ?? 0).filter((size) => size > 0).sort((a, b) => a - b);
+  if (!sizes.length) return { pages: 0 };
+  const sum = sizes.reduce((total, size) => total + size, 0);
+  return {
+    pages: sizes.length,
+    totalBytes: sum,
+    meanBytes: Math.round(sum / sizes.length),
+    medianBytes: sizes[Math.floor(sizes.length / 2)],
+    p90Bytes: sizes[Math.min(sizes.length - 1, Math.floor(sizes.length * 0.9))],
+    maxBytes: sizes[sizes.length - 1],
+    maxPageBytes,
+    overCap: sizes.filter((size) => maxPageBytes > 0 && size > maxPageBytes).length,
+  };
+}
+
 function buildReport({ results, summary, options, startedAt, throttle, retryPass = null }) {
   return {
     generatedAt: nowIso(),
@@ -322,6 +384,9 @@ function buildReport({ results, summary, options, startedAt, throttle, retryPass
       maxCrawlDelayMs: options.maxCrawlDelayMs,
       retryPass: options.retryPass,
       retryPassDelayMs: options.retryPassDelayMs,
+      maxPageBytes: options.maxPageBytes,
+      maxFullPngHeight: options.maxFullPngHeight,
+      skipExisting: options.skipExisting,
       minVisibleNodes: options.minVisibleNodes,
       minBodyTextLength: options.minBodyTextLength,
       userAgent: USER_AGENT,
@@ -331,10 +396,14 @@ function buildReport({ results, summary, options, startedAt, throttle, retryPass
       ok: results.filter((result) => result.status === 'ok').length,
       partial: results.filter((result) => result.status === 'partial').length,
       failed: results.filter((result) => result.status === 'failed').length,
+      renderedNodes: results.reduce((sum, result) => sum + (result.counts?.renderedNodes ?? 0), 0),
       visibleNodes: results.reduce((sum, result) => sum + (result.counts?.visibleNodes ?? 0), 0),
       hostWaitMs: Math.round(throttle.totalWaitMs),
       wallMs: Date.now() - startedAt,
     },
+    archetypeCoverage: archetypeCoverage(results),
+    qualityFlagCounts: qualityFlagCounts(results),
+    artifactSize: artifactSizeStats(results, options.maxPageBytes),
     retryPass,
     hostPacing: {
       minDelayMs: throttle.minDelayMs,

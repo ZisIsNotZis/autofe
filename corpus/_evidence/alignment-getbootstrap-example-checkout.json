@@ -5,32 +5,93 @@
     "height": 1602
   },
   "nodesChecked": 125,
-  "candidatesExamined": 4,
+  "nodesBelowCapturedHeight": 0,
+  "colourCandidatesExamined": 4,
   "tolerancePerChannel": 3,
   "minimumMatchingFraction": 0.25,
+  "minimumDiscriminating": 2,
   "aligned": 4,
   "unexplained": 0,
+  "paintedCarriesEvidence": true,
+  "shiftSensitivityPx": 15,
   "classificationCounts": {
     "translucent-overlay": 0,
     "ancestor-transparent": 0,
     "covered-by-later-node": 0,
+    "covered-by-overlapping-node": 0,
+    "fixed-or-sticky-relayout": 0,
+    "near-match": 0,
     "non-discriminating": 0,
     "low-coverage": 0
   },
+  "paintedFeature": {
+    "candidates": 1,
+    "examined": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "required": false,
+    "checks": [
+      {
+        "domPath": "html/body[1]/div[2]/main[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 684,
+          "y": 48,
+          "w": 72,
+          "h": 57
+        },
+        "localBackground": "rgb(248, 249, 250)",
+        "inkPixels": 3029,
+        "inkFraction": 0.738,
+        "centroid": [
+          720,
+          76
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          684,
+          48,
+          755,
+          104
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      }
+    ]
+  },
   "frameAnchor": {
     "available": true,
+    "status": "strong",
     "viewportSize": {
       "w": 1440,
       "h": 900
     },
-    "sampledPixels": 144000,
+    "sampledPixels": 1296000,
     "identicalFraction": 1,
-    "note": "viewport.png is captured at scroll (0,0); equality with the top of full.png proves full.png starts at the document origin"
+    "differingPixels": 0,
+    "maxChannelDelta": 0,
+    "diffBoundingBox": null,
+    "note": "viewport.png (captured at scroll 0,0) matches the top of full.png, i.e. full.png starts at the document origin"
   },
+  "domResolution": {
+    "available": true,
+    "checkedPaths": 125,
+    "resolved": 125,
+    "unresolved": [],
+    "unresolvedCount": 0,
+    "tagMismatch": [],
+    "tagMismatchCount": 0,
+    "elementsInDom": 151,
+    "passed": true
+  },
+  "blockers": [],
+  "warnings": [],
   "verdict": "aligned",
   "checks": [
     {
       "domPath": "html/body[1]/div[2]/main[0]/div[1]/div[1]/form[1]/button[9]",
+      "cleanedPath": "html/body[1]/div[2]/main[0]/div[1]/div[1]/form[1]/button[9]",
       "tag": "button",
       "role": "button",
       "bbox": {
@@ -45,6 +106,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -62,6 +125,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -76,6 +141,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -85,10 +152,12 @@
           249,
           250
         ]
-      }
+      },
+      "shiftSensitivityPx": 24
     },
     {
       "domPath": "html/body[1]/div[2]/main[0]/div[1]/div[0]/form[2]/div[0]/button[1]",
+      "cleanedPath": "html/body[1]/div[2]/main[0]/div[1]/div[0]/form[2]/div[0]/button[1]",
       "tag": "button",
       "role": "button",
       "bbox": {
@@ -103,6 +172,8 @@
         "gridPoints": 25,
         "matchingPoints": 23,
         "fraction": 0.92,
+        "nearPoints": 23,
+        "nearFraction": 0.92,
         "blendedPoints": 2,
         "blendedFraction": 0.08,
         "blend": {
@@ -120,6 +191,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 20,
         "blendedFraction": 0.8,
         "blend": {
@@ -137,6 +210,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -149,10 +224,12 @@
           249,
           250
         ]
-      }
+      },
+      "shiftSensitivityPx": 19
     },
     {
       "domPath": "html/body[1]/div[1]/button[0]",
+      "cleanedPath": "html/body[1]/div[1]/button[0]",
       "tag": "button",
       "role": "button",
       "bbox": {
@@ -167,6 +244,8 @@
         "gridPoints": 25,
         "matchingPoints": 23,
         "fraction": 0.92,
+        "nearPoints": 23,
+        "nearFraction": 0.92,
         "blendedPoints": 2,
         "blendedFraction": 0.08,
         "blend": {
@@ -184,6 +263,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -198,6 +279,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -207,10 +290,16 @@
           249,
           250
         ]
+      },
+      "shiftSensitivityPx": 21,
+      "positionedAncestor": {
+        "domPath": "html/body[1]/div[1]",
+        "position": "fixed"
       }
     },
     {
       "domPath": "html/body[1]/div[2]/main[0]/div[1]/div[0]/h4[0]/span[1]",
+      "cleanedPath": "html/body[1]/div[2]/main[0]/div[1]/div[0]/h4[0]/span[1]",
       "tag": "span",
       "role": "generic",
       "bbox": {
@@ -225,6 +314,8 @@
         "gridPoints": 25,
         "matchingPoints": 19,
         "fraction": 0.76,
+        "nearPoints": 19,
+        "nearFraction": 0.76,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -242,6 +333,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -256,6 +349,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -265,7 +360,8 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 15
     }
   ]
 }

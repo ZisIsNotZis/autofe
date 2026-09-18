@@ -1,0 +1,160 @@
+{
+  "pairs": [
+    {
+      "dirA": ".tmp/det-a/element-plus/button",
+      "dirB": ".tmp/det-b/element-plus/button",
+      "fileSets": {
+        "a": [
+          "a11y.json",
+          "dom.html",
+          "full.png",
+          "jsonld.json",
+          "meta.json",
+          "nodes.json",
+          "viewport.png"
+        ],
+        "b": [
+          "a11y.json",
+          "dom.html",
+          "full.png",
+          "jsonld.json",
+          "meta.json",
+          "nodes.json",
+          "viewport.png"
+        ],
+        "identical": true
+      },
+      "comparisons": [
+        {
+          "file": "a11y.json",
+          "identical": true,
+          "mode": "json-structural"
+        },
+        {
+          "file": "dom.html",
+          "identical": true,
+          "mode": "text",
+          "detail": null
+        },
+        {
+          "file": "full.png",
+          "identical": true,
+          "byteIdentical": true,
+          "mode": "bytes",
+          "sha256": "866e1650d512a672740f6c53507cdffd2cd8d7899e4cd71f2a811aa30f9ae7b6"
+        },
+        {
+          "file": "jsonld.json",
+          "identical": true,
+          "mode": "json-structural"
+        },
+        {
+          "file": "meta.json",
+          "identical": true,
+          "mode": "json-structural"
+        },
+        {
+          "file": "nodes.json",
+          "identical": true,
+          "mode": "json-structural"
+        },
+        {
+          "file": "viewport.png",
+          "identical": true,
+          "byteIdentical": true,
+          "mode": "bytes",
+          "sha256": "698fc4a75f22b157c160a4b0ef816249175af9040a54b04754c33f7a970cd5b0"
+        }
+      ],
+      "verdict": "identical"
+    },
+    {
+      "dirA": ".tmp/det-a/arco-design/components-table",
+      "dirB": ".tmp/det-b/arco-design/components-table",
+      "fileSets": {
+        "a": [
+          "a11y.json",
+          "dom.html",
+          "full.png",
+          "jsonld.json",
+          "meta.json",
+          "nodes.json",
+          "viewport.png"
+        ],
+        "b": [
+          "a11y.json",
+          "dom.html",
+          "full.png",
+          "jsonld.json",
+          "meta.json",
+          "nodes.json",
+          "viewport.png"
+        ],
+        "identical": true
+      },
+      "comparisons": [
+        {
+          "file": "a11y.json",
+          "identical": true,
+          "mode": "json-structural"
+        },
+        {
+          "file": "dom.html",
+          "identical": true,
+          "mode": "text",
+          "detail": null
+        },
+        {
+          "file": "full.png",
+          "identical": true,
+          "byteIdentical": true,
+          "mode": "bytes",
+          "sha256": "eb9f55100a845e1ebde69b6659276fb4bfbbd168ab9a990d6980eeac573ea838"
+        },
+        {
+          "file": "jsonld.json",
+          "identical": true,
+          "mode": "json-structural"
+        },
+        {
+          "file": "meta.json",
+          "identical": true,
+          "mode": "json-structural"
+        },
+        {
+          "file": "nodes.json",
+          "identical": true,
+          "mode": "json-structural"
+        },
+        {
+          "file": "viewport.png",
+          "identical": true,
+          "byteIdentical": true,
+          "mode": "bytes",
+          "sha256": "f768799d4813c32930bc9ff1d175402cd8ecae6bbcc3c411d14cca11e936522a"
+        }
+      ],
+      "verdict": "identical"
+    }
+  ],
+  "budgets": {
+    "maxPixelDelta": 2,
+    "maxDifferingFraction": 0.01,
+    "maxDiffBoxAreaFraction": 0.01,
+    "note": "PNG diffs are compared over every pixel; a diff must satisfy all three budgets to count as rendering noise"
+  },
+  "ignoredVolatile": {
+    "dynamicLeafKeys": [
+      "capturedAt",
+      "at"
+    ],
+    "metaPaths": [
+      "capturedAt",
+      "timings",
+      "counts.domElements",
+      "counts.droppedFromDom"
+    ],
+    "reason": "timestamps always differ; counts.domElements / counts.droppedFromDom count raw live-DOM elements, and the page injects an extra script or style node on some runs (dom.html, nodes.json and counts.cleanedElements were byte/structurally identical while these moved)"
+  },
+  "verdict": "identical"
+}

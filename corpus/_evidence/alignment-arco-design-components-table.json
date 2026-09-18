@@ -4,33 +4,128 @@
     "width": 1440,
     "height": 25870
   },
-  "nodesChecked": 17525,
-  "candidatesExamined": 25,
+  "nodesChecked": 18065,
+  "nodesBelowCapturedHeight": 1,
+  "colourCandidatesExamined": 25,
   "tolerancePerChannel": 3,
   "minimumMatchingFraction": 0.25,
+  "minimumDiscriminating": 2,
   "aligned": 14,
   "unexplained": 0,
+  "paintedCarriesEvidence": true,
+  "shiftSensitivityPx": 20,
   "classificationCounts": {
     "translucent-overlay": 1,
     "ancestor-transparent": 0,
     "covered-by-later-node": 0,
+    "covered-by-overlapping-node": 0,
+    "fixed-or-sticky-relayout": 0,
+    "near-match": 0,
     "non-discriminating": 10,
     "low-coverage": 0
   },
+  "paintedFeature": {
+    "candidates": 2,
+    "examined": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "required": false,
+    "checks": [
+      {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/footer[1]/div[0]/div[0]/div[0]/div[0]/svg[0]",
+        "tag": "svg",
+        "bbox": {
+          "x": 454.3,
+          "y": 25453.53,
+          "w": 112,
+          "h": 112
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 7901,
+        "inkFraction": 0.624,
+        "centroid": [
+          509,
+          25509
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          454,
+          25454,
+          565,
+          25565
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/a[0]/svg[0]",
+        "tag": "svg",
+        "bbox": {
+          "x": 90.5,
+          "y": 17.5,
+          "w": 143,
+          "h": 24
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 1274,
+        "inkFraction": 0.371,
+        "centroid": [
+          163,
+          31
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          93,
+          21,
+          233,
+          41
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      }
+    ]
+  },
   "frameAnchor": {
     "available": true,
+    "status": "weak",
     "viewportSize": {
       "w": 1440,
       "h": 900
     },
-    "sampledPixels": 144000,
-    "identicalFraction": 0.9701805555555556,
-    "note": "viewport.png is captured at scroll (0,0); equality with the top of full.png proves full.png starts at the document origin"
+    "sampledPixels": 1296000,
+    "identicalFraction": 0.9703016975308641,
+    "differingPixels": 38489,
+    "maxChannelDelta": 255,
+    "diffBoundingBox": [
+      2,
+      62,
+      455,
+      340
+    ],
+    "note": "viewport.png and the top of full.png differ in 2.97% of pixels (max channel delta 255). Full-page capture re-lays out viewport-dependent content (sticky/fixed headers, vh sizing, scrollbar reflow), so this anchor is weak for this page; the colour-grid and painted-feature checks are unaffected and carry the alignment claim."
   },
-  "verdict": "aligned",
+  "domResolution": {
+    "available": true,
+    "checkedPaths": 18065,
+    "resolved": 18065,
+    "unresolved": [],
+    "unresolvedCount": 0,
+    "tagMismatch": [],
+    "tagMismatchCount": 0,
+    "elementsInDom": 21177,
+    "passed": true
+  },
+  "blockers": [],
+  "warnings": [
+    "coarse shift detection: smallest matched element proves alignment only to 20px (> 16px)",
+    "frame anchor weak (97.03% of top-of-page pixels match)"
+  ],
+  "verdict": "aligned-with-warnings",
   "checks": [
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[13]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[13]",
       "tag": "pre",
       "role": "generic",
       "bbox": {
@@ -45,6 +140,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -62,6 +159,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 21,
         "blendedFraction": 0.84,
         "blend": {
@@ -79,6 +178,8 @@
         "gridPoints": 25,
         "matchingPoints": 20,
         "fraction": 0.8,
+        "nearPoints": 20,
+        "nearFraction": 0.8,
         "blendedPoints": 5,
         "blendedFraction": 0.2,
         "blend": {
@@ -91,10 +192,12 @@
           243,
           245
         ]
-      }
+      },
+      "shiftSensitivityPx": 421
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[28]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[28]",
       "tag": "pre",
       "role": "generic",
       "bbox": {
@@ -109,6 +212,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -123,6 +228,8 @@
         "gridPoints": 25,
         "matchingPoints": 12,
         "fraction": 0.48,
+        "nearPoints": 12,
+        "nearFraction": 0.48,
         "blendedPoints": 13,
         "blendedFraction": 0.52,
         "blend": {
@@ -140,6 +247,8 @@
         "gridPoints": 25,
         "matchingPoints": 1,
         "fraction": 0.04,
+        "nearPoints": 15,
+        "nearFraction": 0.6,
         "blendedPoints": 22,
         "blendedFraction": 0.88,
         "blend": {
@@ -152,10 +261,12 @@
           188,
           195
         ]
-      }
+      },
+      "shiftSensitivityPx": 265
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[23]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[23]",
       "tag": "pre",
       "role": "generic",
       "bbox": {
@@ -170,6 +281,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -184,6 +297,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -198,6 +313,8 @@
         "gridPoints": 25,
         "matchingPoints": 12,
         "fraction": 0.48,
+        "nearPoints": 12,
+        "nearFraction": 0.48,
         "blendedPoints": 13,
         "blendedFraction": 0.52,
         "blend": {
@@ -210,10 +327,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 145
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[21]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[21]",
       "tag": "pre",
       "role": "generic",
       "bbox": {
@@ -228,6 +347,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -242,6 +363,8 @@
         "gridPoints": 25,
         "matchingPoints": 15,
         "fraction": 0.6,
+        "nearPoints": 15,
+        "nearFraction": 0.6,
         "blendedPoints": 10,
         "blendedFraction": 0.4,
         "blend": {
@@ -259,6 +382,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -268,10 +393,12 @@
           243,
           245
         ]
-      }
+      },
+      "shiftSensitivityPx": 133
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[15]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[15]",
       "tag": "pre",
       "role": "generic",
       "bbox": {
@@ -286,6 +413,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -300,6 +429,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -314,6 +445,8 @@
         "gridPoints": 25,
         "matchingPoints": 15,
         "fraction": 0.6,
+        "nearPoints": 15,
+        "nearFraction": 0.6,
         "blendedPoints": 10,
         "blendedFraction": 0.4,
         "blend": {
@@ -326,10 +459,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 97
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[17]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[17]",
       "tag": "pre",
       "role": "generic",
       "bbox": {
@@ -344,6 +479,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -361,6 +498,8 @@
         "gridPoints": 25,
         "matchingPoints": 20,
         "fraction": 0.8,
+        "nearPoints": 20,
+        "nearFraction": 0.8,
         "blendedPoints": 5,
         "blendedFraction": 0.2,
         "blend": {
@@ -378,6 +517,8 @@
         "gridPoints": 25,
         "matchingPoints": 20,
         "fraction": 0.8,
+        "nearPoints": 20,
+        "nearFraction": 0.8,
         "blendedPoints": 5,
         "blendedFraction": 0.2,
         "blend": {
@@ -390,10 +531,12 @@
           243,
           245
         ]
-      }
+      },
+      "shiftSensitivityPx": 37
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[19]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[19]",
       "tag": "pre",
       "role": "generic",
       "bbox": {
@@ -408,6 +551,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -422,6 +567,8 @@
         "gridPoints": 25,
         "matchingPoints": 20,
         "fraction": 0.8,
+        "nearPoints": 20,
+        "nearFraction": 0.8,
         "blendedPoints": 5,
         "blendedFraction": 0.2,
         "blend": {
@@ -439,6 +586,8 @@
         "gridPoints": 25,
         "matchingPoints": 20,
         "fraction": 0.8,
+        "nearPoints": 20,
+        "nearFraction": 0.8,
         "blendedPoints": 5,
         "blendedFraction": 0.2,
         "blend": {
@@ -451,10 +600,12 @@
           243,
           245
         ]
-      }
+      },
+      "shiftSensitivityPx": 37
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[12]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[12]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
       "tag": "div",
       "role": "generic",
       "bbox": {
@@ -469,6 +620,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -483,6 +636,8 @@
         "gridPoints": 25,
         "matchingPoints": 6,
         "fraction": 0.24,
+        "nearPoints": 6,
+        "nearFraction": 0.24,
         "blendedPoints": 15,
         "blendedFraction": 0.6,
         "blend": {
@@ -500,6 +655,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 24,
         "blendedFraction": 0.96,
         "blend": {
@@ -513,6 +670,7 @@
           235
         ]
       },
+      "shiftSensitivityPx": 20,
       "coveringNode": {
         "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[12]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]",
         "tag": "table",
@@ -526,6 +684,7 @@
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
       "tag": "div",
       "role": "generic",
       "bbox": {
@@ -540,6 +699,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -554,6 +715,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -571,6 +734,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 23,
         "blendedFraction": 0.92,
         "blend": {
@@ -584,6 +749,7 @@
           235
         ]
       },
+      "shiftSensitivityPx": 20,
       "coveringNode": {
         "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]",
         "tag": "table",
@@ -597,6 +763,7 @@
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
       "tag": "div",
       "role": "generic",
       "bbox": {
@@ -611,6 +778,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -625,6 +794,8 @@
         "gridPoints": 25,
         "matchingPoints": 20,
         "fraction": 0.8,
+        "nearPoints": 20,
+        "nearFraction": 0.8,
         "blendedPoints": 5,
         "blendedFraction": 0.2,
         "blend": {
@@ -642,6 +813,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -655,6 +828,7 @@
           235
         ]
       },
+      "shiftSensitivityPx": 20,
       "coveringNode": {
         "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]",
         "tag": "table",
@@ -668,6 +842,7 @@
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[2]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[2]",
       "tag": "div",
       "role": "generic",
       "bbox": {
@@ -682,6 +857,8 @@
         "gridPoints": 25,
         "matchingPoints": 15,
         "fraction": 0.6,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -696,6 +873,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -713,6 +892,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -726,6 +907,7 @@
           255
         ]
       },
+      "shiftSensitivityPx": 20,
       "coveringNode": {
         "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[2]/table[0]",
         "tag": "table",
@@ -739,6 +921,7 @@
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[15]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[2]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[15]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[2]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -753,6 +936,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -770,6 +955,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -787,6 +974,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 22,
         "blendedFraction": 0.88,
         "blend": {
@@ -800,6 +989,7 @@
           235
         ]
       },
+      "shiftSensitivityPx": 20,
       "coveringNode": {
         "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[15]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[2]/div[0]",
         "tag": "div",
@@ -813,6 +1003,7 @@
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[1]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -827,6 +1018,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -841,6 +1034,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 23,
         "blendedFraction": 0.92,
         "blend": {
@@ -858,6 +1053,8 @@
         "gridPoints": 25,
         "matchingPoints": 7,
         "fraction": 0.28,
+        "nearPoints": 7,
+        "nearFraction": 0.28,
         "blendedPoints": 17,
         "blendedFraction": 0.68,
         "blend": {
@@ -871,6 +1068,7 @@
           235
         ]
       },
+      "shiftSensitivityPx": 20,
       "coveringNode": {
         "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[1]/div[0]",
         "tag": "div",
@@ -884,6 +1082,7 @@
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[0]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -898,6 +1097,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -912,6 +1113,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 24,
         "blendedFraction": 0.96,
         "blend": {
@@ -929,6 +1132,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 23,
         "blendedFraction": 0.92,
         "blend": {
@@ -941,10 +1146,16 @@
           255,
           255
         ]
+      },
+      "shiftSensitivityPx": 61,
+      "positionedAncestor": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[0]",
+        "position": "sticky"
       }
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[1]/th[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[1]/th[1]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -959,6 +1170,8 @@
         "gridPoints": 25,
         "matchingPoints": 20,
         "fraction": 0.8,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 5,
         "blendedFraction": 0.2,
         "blend": {
@@ -976,6 +1189,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -993,6 +1208,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 5,
+        "nearFraction": 0.2,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1006,6 +1223,7 @@
           255
         ]
       },
+      "shiftSensitivityPx": 20,
       "coveringNode": {
         "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[1]/th[1]/div[0]",
         "tag": "div",
@@ -1019,6 +1237,7 @@
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[8]/thead[0]/tr[0]/th[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/table[8]/thead[0]/tr[0]/th[1]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -1033,6 +1252,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -1047,6 +1268,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1064,6 +1287,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 23,
         "blendedFraction": 0.92,
         "blend": {
@@ -1076,10 +1301,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 20
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[5]/thead[0]/tr[0]/th[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/table[5]/thead[0]/tr[0]/th[1]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -1094,6 +1321,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -1108,6 +1337,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1125,6 +1356,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 1,
+        "nearFraction": 0.04,
         "blendedPoints": 22,
         "blendedFraction": 0.88,
         "blend": {
@@ -1137,10 +1370,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 20
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[11]/thead[0]/tr[0]/th[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/table[11]/thead[0]/tr[0]/th[1]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -1155,6 +1390,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -1169,6 +1406,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1186,6 +1425,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1198,10 +1439,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 20
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[2]/tbody[1]/tr[10]/td[1]/code[2]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/table[2]/tbody[1]/tr[10]/td[1]/code[2]",
       "tag": "code",
       "role": "code",
       "bbox": {
@@ -1216,6 +1459,8 @@
         "gridPoints": 25,
         "matchingPoints": 7,
         "fraction": 0.28,
+        "nearPoints": 7,
+        "nearFraction": 0.28,
         "blendedPoints": 17,
         "blendedFraction": 0.68,
         "blend": {
@@ -1233,6 +1478,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1250,6 +1497,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1262,10 +1511,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 22
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[3]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[3]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -1280,6 +1531,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -1294,6 +1547,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1311,6 +1566,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 24,
         "blendedFraction": 0.96,
         "blend": {
@@ -1323,10 +1580,16 @@
           255,
           255
         ]
+      },
+      "shiftSensitivityPx": 60,
+      "positionedAncestor": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[3]",
+        "position": "sticky"
       }
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[3]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[3]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -1341,6 +1604,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -1358,6 +1623,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1375,6 +1642,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 24,
         "blendedFraction": 0.96,
         "blend": {
@@ -1388,6 +1657,7 @@
           235
         ]
       },
+      "shiftSensitivityPx": 20,
       "coveringNode": {
         "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[3]/div[0]",
         "tag": "div",
@@ -1401,6 +1671,7 @@
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[4]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[4]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -1415,6 +1686,8 @@
         "gridPoints": 25,
         "matchingPoints": 15,
         "fraction": 0.6,
+        "nearPoints": 15,
+        "nearFraction": 0.6,
         "blendedPoints": 10,
         "blendedFraction": 0.4,
         "blend": {
@@ -1432,6 +1705,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1449,6 +1724,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 24,
         "blendedFraction": 0.96,
         "blend": {
@@ -1462,6 +1739,7 @@
           235
         ]
       },
+      "shiftSensitivityPx": 20,
       "coveringNode": {
         "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[4]/div[0]",
         "tag": "div",
@@ -1475,6 +1753,7 @@
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[2]/thead[0]/tr[0]/th[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/table[2]/thead[0]/tr[0]/th[1]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -1489,6 +1768,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -1503,6 +1784,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1520,6 +1803,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1532,10 +1817,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 20
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[2]/tbody[1]/tr[0]/td[1]/code[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[3]/table[2]/tbody[1]/tr[0]/td[1]/code[0]",
       "tag": "code",
       "role": "code",
       "bbox": {
@@ -1550,6 +1837,8 @@
         "gridPoints": 25,
         "matchingPoints": 3,
         "fraction": 0.12,
+        "nearPoints": 3,
+        "nearFraction": 0.12,
         "blendedPoints": 18,
         "blendedFraction": 0.72,
         "blend": {
@@ -1567,6 +1856,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1584,6 +1875,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1596,10 +1889,22 @@
           255,
           255
         ]
+      },
+      "shiftSensitivityPx": 22,
+      "overlappingNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[2]",
+        "tag": "table",
+        "bbox": {
+          "x": 356,
+          "y": 16257,
+          "w": 988,
+          "h": 2668.63
+        }
       }
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[1]",
       "tag": "th",
       "role": "columnheader",
       "bbox": {
@@ -1614,6 +1919,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
@@ -1631,6 +1938,8 @@
         "gridPoints": 25,
         "matchingPoints": 20,
         "fraction": 0.8,
+        "nearPoints": 20,
+        "nearFraction": 0.8,
         "blendedPoints": 5,
         "blendedFraction": 0.2,
         "blend": {
@@ -1648,6 +1957,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 25,
         "blendedFraction": 1,
         "blend": {
@@ -1661,6 +1972,7 @@
           235
         ]
       },
+      "shiftSensitivityPx": 20,
       "coveringNode": {
         "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[1]/div[0]",
         "tag": "div",

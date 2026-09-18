@@ -4,33 +4,631 @@
     "width": 1440,
     "height": 4902
   },
-  "nodesChecked": 934,
-  "candidatesExamined": 4,
+  "nodesChecked": 943,
+  "nodesBelowCapturedHeight": 8,
+  "colourCandidatesExamined": 4,
   "tolerancePerChannel": 3,
   "minimumMatchingFraction": 0.25,
+  "minimumDiscriminating": 2,
   "aligned": 4,
   "unexplained": 0,
+  "paintedCarriesEvidence": true,
+  "shiftSensitivityPx": 10,
   "classificationCounts": {
     "translucent-overlay": 0,
     "ancestor-transparent": 0,
     "covered-by-later-node": 0,
+    "covered-by-overlapping-node": 0,
+    "fixed-or-sticky-relayout": 0,
+    "near-match": 0,
     "non-discriminating": 0,
     "low-coverage": 0
   },
+  "paintedFeature": {
+    "candidates": 25,
+    "examined": 25,
+    "passed": 21,
+    "failed": 0,
+    "skipped": 4,
+    "required": true,
+    "checks": [
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[0]/div[5]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 270,
+          "y": 111.2,
+          "w": 90,
+          "h": 90
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 3065,
+        "inkFraction": 0.374,
+        "centroid": [
+          321,
+          158
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          273,
+          115,
+          357,
+          198
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[1]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 796.16,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 1243,
+        "inkFraction": 0.29,
+        "centroid": [
+          895,
+          826
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          805,
+          927,
+          853
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[2]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 1044.16,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 2600,
+        "inkFraction": 0.606,
+        "centroid": [
+          900,
+          1075
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          866,
+          1044,
+          927,
+          1108
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[3]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 1270.47,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 2120,
+        "inkFraction": 0.494,
+        "centroid": [
+          896,
+          1302
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          866,
+          1270,
+          925,
+          1334
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[4]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 1496.78,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 2773,
+        "inkFraction": 0.656,
+        "centroid": [
+          895,
+          1533
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          1501,
+          927,
+          1560
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[5]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 1748.59,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 1270,
+        "inkFraction": 0.301,
+        "centroid": [
+          896,
+          1776
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          1759,
+          927,
+          1802
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[6]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 1971.09,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 1328,
+        "inkFraction": 0.31,
+        "centroid": [
+          895,
+          2004
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          1977,
+          927,
+          2030
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[7]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 2197.41,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 2074,
+        "inkFraction": 0.483,
+        "centroid": [
+          895,
+          2229
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          2199,
+          927,
+          2259
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[8]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 2445.41,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 2266,
+        "inkFraction": 0.528,
+        "centroid": [
+          892,
+          2474
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          2448,
+          927,
+          2507
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[9]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 2667.91,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 1692,
+        "inkFraction": 0.4,
+        "centroid": [
+          892,
+          2703
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          2674,
+          927,
+          2728
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[10]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 2894.22,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 1918,
+        "inkFraction": 0.447,
+        "centroid": [
+          895,
+          2927
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          2903,
+          927,
+          2951
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[11]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 3116.72,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 2049,
+        "inkFraction": 0.485,
+        "centroid": [
+          894,
+          3154
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          3120,
+          927,
+          3179
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[12]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 3339.22,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 1761,
+        "inkFraction": 0.41,
+        "centroid": [
+          901,
+          3374
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          3339,
+          927,
+          3403
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[13]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 3565.53,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 4050,
+        "inkFraction": 0.959,
+        "centroid": [
+          895,
+          3599
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          3566,
+          927,
+          3630
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[14]/div[0]/div[1]/a[0]/div[1]/img[1]",
+        "tag": "img",
+        "bbox": {
+          "x": 863,
+          "y": 3788.03,
+          "w": 65,
+          "h": 65
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 4225,
+        "inkFraction": 0.985,
+        "centroid": [
+          895,
+          3820
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          863,
+          3788,
+          927,
+          3852
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "skipped": "too little ink to test (0 px, 0.00%)"
+      },
+      {
+        "skipped": "too little ink to test (0 px, 0.00%)"
+      },
+      {
+        "skipped": "too little ink to test (0 px, 0.00%)"
+      },
+      {
+        "skipped": "too little ink to test (0 px, 0.00%)"
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 260,
+          "y": 478.69,
+          "w": 48,
+          "h": 48
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 945,
+        "inkFraction": 0.41,
+        "centroid": [
+          287,
+          504
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          261,
+          481,
+          306,
+          525
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 260,
+          "y": 713.66,
+          "w": 45,
+          "h": 45
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 829,
+        "inkFraction": 0.409,
+        "centroid": [
+          285,
+          737
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          261,
+          716,
+          303,
+          757
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 260,
+          "y": 936.16,
+          "w": 45,
+          "h": 45
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 829,
+        "inkFraction": 0.4,
+        "centroid": [
+          285,
+          959
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          261,
+          938,
+          303,
+          979
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[3]/div[0]/div[0]/div[0]/div[0]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 260,
+          "y": 1187.97,
+          "w": 45,
+          "h": 45
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 829,
+        "inkFraction": 0.409,
+        "centroid": [
+          285,
+          1211
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          261,
+          1190,
+          303,
+          1231
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[0]/div[0]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 260,
+          "y": 1414.28,
+          "w": 45,
+          "h": 45
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 829,
+        "inkFraction": 0.4,
+        "centroid": [
+          285,
+          1437
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          261,
+          1416,
+          303,
+          1457
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[0]/div[0]/a[0]/div[0]/img[0]",
+        "tag": "img",
+        "bbox": {
+          "x": 260,
+          "y": 1640.59,
+          "w": 45,
+          "h": 45
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 829,
+        "inkFraction": 0.409,
+        "centroid": [
+          285,
+          1664
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          261,
+          1643,
+          303,
+          1684
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      }
+    ]
+  },
   "frameAnchor": {
     "available": true,
+    "status": "strong",
     "viewportSize": {
       "w": 1440,
       "h": 900
     },
-    "sampledPixels": 144000,
-    "identicalFraction": 1,
-    "note": "viewport.png is captured at scroll (0,0); equality with the top of full.png proves full.png starts at the document origin"
+    "sampledPixels": 1296000,
+    "identicalFraction": 0.9999969135802469,
+    "differingPixels": 4,
+    "maxChannelDelta": 4,
+    "diffBoundingBox": [
+      863,
+      796,
+      927,
+      860
+    ],
+    "note": "viewport.png (captured at scroll 0,0) matches the top of full.png, i.e. full.png starts at the document origin"
   },
+  "domResolution": {
+    "available": true,
+    "checkedPaths": 943,
+    "resolved": 943,
+    "unresolved": [],
+    "unresolvedCount": 0,
+    "tagMismatch": [],
+    "tagMismatchCount": 0,
+    "elementsInDom": 1027,
+    "passed": true
+  },
+  "blockers": [],
+  "warnings": [],
   "verdict": "aligned",
   "checks": [
     {
       "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]/div[0]/nav[1]/ul[0]/ul[1]/li[0]/ul[0]/li[1]/div[0]/button[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[0]/div[0]/div[0]/header[0]/div[0]/nav[1]/ul[0]/ul[1]/li[0]/ul[0]/li[1]/div[0]/button[0]",
       "tag": "button",
       "role": "button",
       "bbox": {
@@ -45,6 +643,8 @@
         "gridPoints": 25,
         "matchingPoints": 22,
         "fraction": 0.88,
+        "nearPoints": 22,
+        "nearFraction": 0.88,
         "blendedPoints": 2,
         "blendedFraction": 0.08,
         "blend": {
@@ -62,6 +662,8 @@
         "gridPoints": 0,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -72,6 +674,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -81,10 +685,16 @@
           243,
           245
         ]
+      },
+      "shiftSensitivityPx": 18,
+      "positionedAncestor": {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]",
+        "position": "sticky"
       }
     },
     {
       "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[0]/div[6]/div[2]/div[1]/div[0]/span[0]/span[1]/div[0]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[0]/div[0]/div[0]/main[1]/div[0]/div[0]/div[0]/div[5]/div[2]/div[1]/div[0]/span[0]/span[0]/div[0]",
       "tag": "div",
       "role": "generic",
       "bbox": {
@@ -99,6 +709,8 @@
         "gridPoints": 25,
         "matchingPoints": 25,
         "fraction": 1,
+        "nearPoints": 25,
+        "nearFraction": 1,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -113,6 +725,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -127,6 +741,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -136,10 +752,12 @@
           255,
           255
         ]
-      }
+      },
+      "shiftSensitivityPx": 17
     },
     {
       "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]/div[0]/nav[1]/ul[0]/ul[1]/li[0]/ul[0]/li[0]/form[0]/div[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[0]/div[0]/div[0]/header[0]/div[0]/nav[1]/ul[0]/ul[1]/li[0]/ul[0]/li[0]/form[0]/div[1]",
       "tag": "div",
       "role": "generic",
       "bbox": {
@@ -154,6 +772,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -168,6 +788,8 @@
         "gridPoints": 0,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -178,6 +800,8 @@
         "gridPoints": 25,
         "matchingPoints": 5,
         "fraction": 0.2,
+        "nearPoints": 5,
+        "nearFraction": 0.2,
         "blendedPoints": 20,
         "blendedFraction": 0.8,
         "blend": {
@@ -190,10 +814,16 @@
           255,
           255
         ]
+      },
+      "shiftSensitivityPx": 15,
+      "positionedAncestor": {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]",
+        "position": "sticky"
       }
     },
     {
       "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]/div[0]/nav[1]/ul[0]/ul[1]/li[0]/ul[0]/li[1]/div[0]/div[1]",
+      "cleanedPath": "html/body[1]/div[0]/div[0]/div[0]/div[0]/div[0]/header[0]/div[0]/nav[1]/ul[0]/ul[1]/li[0]/ul[0]/li[1]/div[0]/div[1]",
       "tag": "div",
       "role": "generic",
       "bbox": {
@@ -208,6 +838,8 @@
         "gridPoints": 25,
         "matchingPoints": 24,
         "fraction": 0.96,
+        "nearPoints": 24,
+        "nearFraction": 0.96,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -222,6 +854,8 @@
         "gridPoints": 0,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -232,6 +866,8 @@
         "gridPoints": 25,
         "matchingPoints": 0,
         "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
@@ -241,6 +877,11 @@
           243,
           245
         ]
+      },
+      "shiftSensitivityPx": 10,
+      "positionedAncestor": {
+        "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]",
+        "position": "sticky"
       }
     }
   ]

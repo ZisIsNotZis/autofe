@@ -4,6 +4,8 @@
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 
+import { withTimeout } from './util.mjs';
+
 const require = createRequire(import.meta.url);
 
 export const DEFAULT_PLAYWRIGHT_CORE =
@@ -40,6 +42,27 @@ export async function launchBrowser({ log = () => {} } = {}) {
   return chromium.launch({ executablePath, args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-lcd-text', '--disable-font-subpixel-positioning', '--force-color-profile=srgb'] });
 }
 
+// Fallback robots.txt fetch through the browser's network stack. Node's fetch fails
+// intermittently on some hosts in this environment (DNS/connect timeouts on
+// echarts.apache.org and mui.com) while Chromium reaches them; this performs the same GET and
+// returns the final URL so cross-origin redirects can still be rejected.
+export async function fetchTextViaBrowser(context, url, { timeoutMs = 20000, throttle = null } = {}) {
+  const host = new URL(url).host;
+  if (throttle) await throttle.wait(host);
+  const page = await context.newPage();
+  try {
+    const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: timeoutMs });
+    const text = await withTimeout(
+      page.evaluate(() => (document.body ? document.body.innerText : '')),
+      timeoutMs,
+      'browser robots.txt read',
+    );
+    return { status: response ? response.status() : null, text, finalUrl: page.url(), via: 'browser' };
+  } finally {
+    await page.close().catch(() => {});
+  }
+}
+
 export async function newCaptureContext(browser, options) {
   return browser.newContext({
     viewport: options.viewport,
@@ -66,4 +89,18 @@ export const DEFAULT_OPTIONS = {
   maxCrawlDelayMs: 30000,
   minVisibleNodes: 10,
   minBodyTextLength: 20,
+  // Per-page artifact ceiling in bytes; applied to the JSON artifacts only (see capture.mjs).
+  maxPageBytes: 2_000_000,
+  robotsTimeoutMs: 20000,
+  // In-page evaluation, CDP round-trips and screenshots all get explicit ceilings: a page that
+  // never yields its main thread must not stall a corpus run (observed once: a 20-minute stall).
+  evaluateTimeoutMs: 60000,
+  cdpTimeoutMs: 60000,
+  screenshotTimeoutMs: 60000,
+  fontsTimeoutMs: 10000,
+  // DOM-quiescence gate: capture once the renderer stops mutating (or after the hard cap).
+  quiescenceMs: 800,
+  quiescenceMaxMs: 12000,
+  // 0 keeps every full-page screenshot complete (see --max-full-png-height).
+  maxFullPngHeight: 0,
 };

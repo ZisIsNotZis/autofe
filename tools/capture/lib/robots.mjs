@@ -29,10 +29,9 @@ export function parseRobotsTxt(text) {
       continue;
     }
 
-    if (!current) {
-      current = { agents: ['*'], rules: [], crawlDelay: null };
-      groups.push(current);
-    }
+    // RFC 9309: a record starts with a user-agent line. Rules that appear before any
+    // user-agent line are not part of any group and must be ignored, not attributed to `*`.
+    if (!current) continue;
 
     if (field === 'allow' || field === 'disallow') {
       sawRuleInCurrentGroup = true;
@@ -100,8 +99,11 @@ function patternToRegExp(pattern) {
   return new RegExp(source);
 }
 
+// Specificity is the length of the *path* part of the pattern: wildcards are not counted and
+// the `$` end-anchor is not part of the path (RFC 9309 §2.2.2).
 function specificity(pattern) {
-  return pattern.replace(/\*/g, '').length;
+  const body = pattern.endsWith('$') ? pattern.slice(0, -1) : pattern;
+  return body.replace(/\*/g, '').length;
 }
 
 // `url` is matched on path + query, as RFC 9309 prescribes.

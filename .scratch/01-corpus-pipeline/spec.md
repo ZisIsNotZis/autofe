@@ -68,3 +68,9 @@ The taxonomy + seed list lives in `tools/capture/archetypes.md` and `tools/captu
 3. Re-running a single page yields a structurally identical output (timestamps may differ).
 4. Failures are recorded, not hidden.
 Then report: pilot coverage, spot-check evidence, blockers, and whether to scale to the full set.
+
+## Decisions (append-only)
+
+- 2026-09-18 — Storage: page captures stay gitignored (regenerable + third-party trademarks); `corpus/_evidence/` + `corpus/failures.json` are tracked acceptance evidence. `run-report.json` is untracked (transient per-run); the durable summary is `corpus/_evidence/corpus-summary.json`.
+- 2026-09-18 — Size policy: keep full-fidelity artifacts; do NOT enable the `--max-page-bytes` / `--max-full-png-height` truncation ladder by default. Mean 3.62 MB/page (337 MB total) is acceptable for a local, regenerable corpus; truncating would weaken the M1+ acceptance evidence. Revisit only if disk/CI bounds require it.
+- 2026-09-18 — F1 independently verified: `cleanedPath` resolves against `dom.html` for 1442/351/18065/943 nodes on element-plus/sspai/arco/juejin (0 mismatch, 0 missing) using an independent resolver (`.tmp/verify-join.mjs`, not the project verifier).

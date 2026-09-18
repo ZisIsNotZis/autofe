@@ -1,0 +1,154 @@
+{
+  "corpusDir": "corpus",
+  "capturedPages": 97,
+  "emptyCapturePages": 0,
+  "failedPages": 9,
+  "domains": 34,
+  "renderedNodes": 200076,
+  "visibleNodes": 182220,
+  "artifactBytes": {
+    "total": 350682696,
+    "mean": 3615286,
+    "median": 2177561,
+    "p90": 7039919,
+    "max": 25815298
+  },
+  "qualityFlags": {
+    "artifact_cap_exceeded": 53,
+    "dom_changed_during_capture": 2,
+    "ax_coverage_low": 18
+  },
+  "failureReasons": {
+    "http_error": 2,
+    "robots_redirect_disallowed": 3,
+    "navigation_failed": 4
+  },
+  "failureList": [
+    {
+      "page": "csdn/article-126135357",
+      "archetype": "article/editorial",
+      "reason": "http_error",
+      "message": "HTTP 521"
+    },
+    {
+      "page": "csdn/nav-web",
+      "archetype": "category/list",
+      "reason": "http_error",
+      "message": "HTTP 521"
+    },
+    {
+      "page": "jd-com/item-100012043978",
+      "archetype": "product-detail",
+      "reason": "robots_redirect_disallowed",
+      "message": "https://item.jd.com/100012043978.html -> https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Fitem.jd.com%2F100012043978.html&czLogin=1 (robots_cross_origin_redirect)"
+    },
+    {
+      "page": "jd-com/item-100026667910",
+      "archetype": "product-detail",
+      "reason": "robots_redirect_disallowed",
+      "message": "https://item.jd.com/100026667910.html -> https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Fitem.jd.com%2F100026667910.html&czLogin=1 (robots_cross_origin_redirect)"
+    },
+    {
+      "page": "mui/button",
+      "archetype": "docs/design-system",
+      "reason": "navigation_failed",
+      "message": "page.goto: Timeout 45000ms exceeded."
+    },
+    {
+      "page": "mui/getting-started",
+      "archetype": "docs/design-system",
+      "reason": "navigation_failed",
+      "message": "page.goto: Timeout 45000ms exceeded."
+    },
+    {
+      "page": "mui/table",
+      "archetype": "table-heavy/admin",
+      "reason": "navigation_failed",
+      "message": "page.goto: Timeout 45000ms exceeded."
+    },
+    {
+      "page": "taobao-com/list-dress",
+      "archetype": "category/list",
+      "reason": "robots_redirect_disallowed",
+      "message": "https://www.taobao.com/list/product/nvzhuang.htm -> https://jiantiseos.taobao.com//list/product/nvzhuang.htm/_____tmd_____/punish?x5secdata=xflR1Yx90l7EXkxhdfZRXTARHNa-u_rDHaa22n--2AxILVfK_kTZpMRIqwCdCiJAGv8enJmbj8tO6Uv2uPlobbipMJ3UNm6OLcMjtBx56XMSQmi2kUfOY_DDziTAfRM2zW7EW35NxfE1_yz0WcBIt_oftHXyMwokkSE6xkKxXmQC6jllS7jd-W83F367BltsoHweYx6zvY8LsXiBm1P6C984mBjqiomc7bIJvNbU2Bsim1Z1EVMaO06CZHVMn9aW5P8cnpf709kcnae_CDIjQBKyq50mp0PKHdUlEqPyNY3oDc5jY7KO-b_gbaWXKW6BsGbrCrnDSoj8uuFB8mmJBCungJEL1Sym3gQRAJVOgHzAyS3WyaasGZn4hWG7zCO-4L3zpG0Eh-wSCii7YhSdNMVO9MrQ89z6PAdo0LuXnToOF4kqwSmhz5wEeOS-XgQsLGvu2VJUQhccDI3xsHF5VWlPWcgCnzD-DYbOLWl3OpcnuJepQmktTfus7YcqMBjDwJIzNwm44kwIxwgaVZWSGplp2M6XV5OsT8-bVXNfBE9EyW4IzcHxNpu610dExbk05kdXwF31DgIg9bj-IJ6fcK-9jjQXshWkxaXvcys87MTiBHyMhpqcBEMUGYzQuDSoLpZV6f9unEx00BTINhF0G0CJFHZe-V5bjT-2RaMAOU3m7sbl86KzICsY541SrmGg1j2Gt3uSBZX6MHJRsujtxCznu1H781qDhxXwqOjDtvLhcaj62n-XsryFYzL3F3E2ooZuVRAGAnJ-__wCHfEdHC02Jg-T4pt8N-9mzQ0rYVqvL-CNNa1A8iuG3aTAIyPvHzc8uwJoD14Ky3TYl1mfPrP5X-Hy4dCRzk70o2J3FyfA9TUyuECV-j0uOry1ORwKuTX1ktWH_u6KBI2KtQ08b_lefZUJUWrY0yf9bvPwlPGWeW-G_eEAZrmqakHNMXLNclO8nAGYSDcQLfND_NetpLxz91D0GlDb1nLVzLv7CaurYJszPAWNiOSzLy0e9GcgCz__bx__jiantiseos.taobao.com%2flist%2fproduct%2fnvzhuang.htm&x5step=1 (robots_disallowed: disallow: /)"
+    },
+    {
+      "page": "vega/vega-lite-examples",
+      "archetype": "dashboard/data-viz",
+      "reason": "navigation_failed",
+      "message": "page.goto: Timeout 45000ms exceeded."
+    }
+  ],
+  "archetypeCoverage": {
+    "landing/home": {
+      "captured": 11,
+      "empty": 0,
+      "failed": 0,
+      "renderedNodes": 12314,
+      "bytes": 35055492
+    },
+    "category/list": {
+      "captured": 8,
+      "empty": 0,
+      "failed": 2,
+      "renderedNodes": 8340,
+      "bytes": 19117666
+    },
+    "search-results": {
+      "captured": 9,
+      "empty": 0,
+      "failed": 0,
+      "renderedNodes": 4556,
+      "bytes": 9604666
+    },
+    "product-detail": {
+      "captured": 7,
+      "empty": 0,
+      "failed": 2,
+      "renderedNodes": 11491,
+      "bytes": 30037165
+    },
+    "dashboard/data-viz": {
+      "captured": 12,
+      "empty": 0,
+      "failed": 1,
+      "renderedNodes": 14299,
+      "bytes": 26347677
+    },
+    "docs/design-system": {
+      "captured": 15,
+      "empty": 0,
+      "failed": 2,
+      "renderedNodes": 24670,
+      "bytes": 33500142
+    },
+    "form/checkout/settings": {
+      "captured": 15,
+      "empty": 0,
+      "failed": 0,
+      "renderedNodes": 55829,
+      "bytes": 77280343
+    },
+    "table-heavy/admin": {
+      "captured": 5,
+      "empty": 0,
+      "failed": 1,
+      "renderedNodes": 58553,
+      "bytes": 85130996
+    },
+    "article/editorial": {
+      "captured": 7,
+      "empty": 0,
+      "failed": 1,
+      "renderedNodes": 5678,
+      "bytes": 23823883
+    },
+    "profile/account": {
+      "captured": 8,
+      "empty": 0,
+      "failed": 0,
+      "renderedNodes": 4346,
+      "bytes": 10784666
+    }
+  }
+}

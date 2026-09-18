@@ -4,8 +4,9 @@ node_modules/
 .DS_Store
 
 # Corpus page captures are regenerable (pipeline) and contain third-party
-# trademarks; keep only the acceptance evidence and run/failure reports.
+# trademarks; keep only the durable acceptance evidence and summary.
 /corpus/*
 !/corpus/_evidence
 !/corpus/failures.json
-!/corpus/run-report.json
+# run-report.json is a transient per-run artifact; the durable summary is
+# corpus/_evidence/corpus-summary.json.
