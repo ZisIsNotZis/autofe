@@ -29,6 +29,12 @@ const VOLATILE_META_PATHS = [
   ['timings'],
   ['counts', 'domElements'],
   ['counts', 'droppedFromDom'],
+  // Measured byte totals move when a PNG differs by a few bytes; the structural facts
+  // (artifactCap.exceeded, artifactCap.mitigations) are still compared.
+  ['artifactCap', 'totalBytes'],
+  ['artifactCap', 'jsonBytes'],
+  ['artifactCap', 'imageBytes'],
+  ['artifactBytes'],
 ];
 
 function isVolatileMetaPath(path) {
@@ -207,7 +213,7 @@ function main() {
       dynamicLeafKeys: [...DYNAMIC_LEAF_KEYS],
       metaPaths: VOLATILE_META_PATHS.map((entry) => entry.join('.')),
       reason:
-        'timestamps always differ; counts.domElements / counts.droppedFromDom count raw live-DOM elements, and the page injects an extra script or style node on some runs (dom.html, nodes.json and counts.cleanedElements were byte/structurally identical while these moved)',
+        'timestamps and measured byte totals always differ; counts.domElements / counts.droppedFromDom count raw live-DOM elements, and the page injects an extra script or style node on some runs (dom.html, nodes.json and counts.cleanedElements were byte/structurally identical while these moved)',
     },
     verdict: pairs.length === 1 ? pairs[0].verdict : pairs.some((pair) => pair.verdict === 'different') ? 'different' : pairs.every((pair) => pair.verdict === 'identical') ? 'identical' : 'identical-modulo-png-rendering-noise',
   };

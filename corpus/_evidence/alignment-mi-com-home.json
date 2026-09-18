@@ -8,7 +8,7 @@
   "nodesBelowCapturedHeight": 8,
   "colourCandidatesExamined": 0,
   "tolerancePerChannel": 3,
-  "minimumMatchingFraction": 0.25,
+  "minimumMatchingFraction": 0.6,
   "minimumDiscriminating": 2,
   "aligned": 0,
   "unexplained": 0,
@@ -502,10 +502,10 @@
           "h": 28
         },
         "localBackground": "rgb(250, 250, 250)",
-        "inkPixels": 1660,
-        "inkFraction": 0.763,
+        "inkPixels": 1640,
+        "inkFraction": 0.754,
         "centroid": [
-          503,
+          502,
           6764
         ],
         "centroidInsideBox": true,
@@ -568,6 +568,16 @@
     "unresolvedCount": 0,
     "tagMismatch": [],
     "tagMismatchCount": 0,
+    "indexMismatch": [],
+    "indexMismatchCount": 0,
+    "a11yDomIndexSample": {
+      "sampled": 14,
+      "checked": 2,
+      "skipped": 12,
+      "mismatchCount": 0,
+      "mismatches": [],
+      "note": "a11y.json[].domIndex resolved against the parsed dom.html and compared with the tag implied by the AX role (elements with an explicit role attribute are skipped)"
+    },
     "elementsInDom": 674,
     "passed": true
   },

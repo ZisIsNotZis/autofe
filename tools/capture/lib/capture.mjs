@@ -81,7 +81,7 @@ function terminalFailure({ stage, reason, message, url, outDir, extra = {} }) {
 // runs (observed: identical tree, ids shifted by one). IDs are therefore re-assigned in
 // pre-order DFS so a11y.json is byte-stable for identical renders while the tree shape and
 // child order stay exactly as the browser reported them.
-export function serializeAxTree(axNodes, markerIndex = new Map(), indexById = {}) {
+export function serializeAxTree(axNodes, markerIndex = new Map(), indexById = {}, frameScope = null) {
   const byId = new Map(axNodes.map((node) => [node.nodeId, node]));
   const roots = axNodes.filter((node) => !node.parentId || !byId.has(node.parentId));
   const ordered = [];
@@ -95,8 +95,25 @@ export function serializeAxTree(axNodes, markerIndex = new Map(), indexById = {}
   for (const root of roots) visit(root);
   for (const node of axNodes) visit(node); // safety net for nodes unreachable via childIds
 
-  const newId = new Map(ordered.map((node, index) => [node.nodeId, `ax${index + 1}`]));
-  const nodes = ordered.map((node) => {
+  // Document scope: only the main frame is persisted. Frame AX content has no entry in
+  // nodes.json/dom.html (the top document is what we walk), and a third-party frame's content is
+  // content we did not ask to crawl. Nodes attributed to any other frame are dropped here;
+  // the pages that embed cross-origin frames are flagged by the caller (qualityFlags).
+  const frameById = new Map((frameScope?.frames ?? []).map((frame) => [frame.frameId, frame]));
+  const frameExclusions = new Map();
+  const survivors = ordered.filter((node) => {
+    if (!frameScope || !node.frameId || node.frameId === frameScope.mainFrameId) return true;
+    const frame = frameById.get(node.frameId) ?? { frameId: node.frameId, url: null, origin: null, crossOrigin: null };
+    // Keyed by frameId internally, but only stable fields are persisted: CDP frame ids differ
+    // between runs, which would make a11y.json non-reproducible.
+    const entry = frameExclusions.get(node.frameId) ?? { url: frame.url, origin: frame.origin, crossOrigin: frame.crossOrigin, axNodesExcluded: 0 };
+    entry.axNodesExcluded += 1;
+    frameExclusions.set(node.frameId, entry);
+    return false;
+  });
+
+  const newId = new Map(survivors.map((node, index) => [node.nodeId, `ax${index + 1}`]));
+  const nodes = survivors.map((node) => {
     const marker = node.backendDOMNodeId === undefined ? null : markerIndex.get(node.backendDOMNodeId) ?? null;
     const properties = Array.isArray(node.properties)
       ? node.properties
@@ -132,6 +149,8 @@ export function serializeAxTree(axNodes, markerIndex = new Map(), indexById = {}
       'trimmed to id,parentId,ignored,role,childIds plus name/description/value/properties/domIndex when non-empty (absent means null/empty)',
     idNormalization: 'ids re-assigned in pre-order DFS (CDP allocation order is not run-stable); child order preserved',
     domIndexDefinition: 'position among the elements that survive cleaning = index into dom.html element order; nodes.json carries the same value as cleanedIndex',
+    documentScope: 'main frame only; nodes belonging to another frame are excluded (see framesExcluded)',
+    framesExcluded: [...frameExclusions.values()],
     count: nodes.length,
     rootId: nodes[0]?.id ?? null,
     nodes,
@@ -139,8 +158,8 @@ export function serializeAxTree(axNodes, markerIndex = new Map(), indexById = {}
 }
 
 // backendNodeId -> marker element id, read from the data-af-node markers written by
-// analyzeDom()/retagMarkers(). Read in the same CDP round-trip as the AX tree, so both describe
-// the same DOM snapshot.
+// analyzeDom()/retagMarkers(). Read through DOM.getDocument in the same CDP session as the AX
+// tree, immediately after the markers were re-applied, so both describe the same DOM snapshot.
 export function buildMarkerIndex(domRoot) {
   const map = new Map();
   const stack = [domRoot];
@@ -176,12 +195,14 @@ export function applyAxToNodes(nodes, markerIndex, axNodes) {
   for (const node of nodes) {
     const ax = byMarkerId.get(node._id);
     if (!ax) {
-      node.role = node._implicitRole ?? null;
+      // No AX node: keep the author's explicit role attribute before falling back to the
+      // implicit tag mapping.
+      node.role = node.role ?? node._implicitRole ?? null;
       continue;
     }
     matched += 1;
     const axRole = ax.role && ax.role !== 'none' ? ax.role : null;
-    node.role = axRole ?? node._implicitRole ?? null;
+    node.role = axRole ?? node.role ?? node._implicitRole ?? null;
     if (ax.name) node.name = ax.name;
   }
   return matched;
@@ -292,6 +313,12 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
   const startedAt = Date.now();
   const outDir = path.join(corpusDir, site.slug, page.slug);
   const errors = [];
+  let pageErrorCount = 0;
+  // Main-frame navigations seen after the initial load (evidence for the pre-write URL re-check).
+  const navigationLog = [];
+  // The site's own stylesheets/scripts that failed to load: those change the render (observed: a
+  // docs page whose CSS failed captured as an unstyled 13k-px page and was reported "ok").
+  const assetLoadFailures = [];
   const result = {
     site: site.slug,
     page: page.slug,
@@ -324,6 +351,7 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     browserPage.setDefaultTimeout(options.navTimeoutMs);
     await browserPage.addInitScript(installFreezeStyle, FREEZE_CSS);
     browserPage.on('pageerror', (error) => {
+      pageErrorCount += 1;
       if (errors.length < 25) errors.push(`pageerror: ${firstLine(error.message)}`);
     });
     browserPage.on('console', (message) => {
@@ -331,11 +359,36 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
         errors.push(`console.error: ${firstLine(message.text())}`);
       }
     });
+    browserPage.on('framenavigated', (frame) => {
+      if (frame !== browserPage.mainFrame()) return;
+      if (navigationLog.length < 10) navigationLog.push(frame.url());
+    });
+    // A same-host stylesheet/script that fails at the network layer OR comes back with an error
+    // status degrades the render (observed: a docs page whose CSS did not load captured as an
+    // unstyled 13k-px page and was reported "ok"). Both paths feed the same counter.
+    const recordAssetFailure = (url, type, error) => {
+      try {
+        if (new URL(url).host !== new URL(page.url).host) return;
+      } catch {
+        return;
+      }
+      if (assetLoadFailures.some((failure) => failure.url === url)) return;
+      if (assetLoadFailures.length < 10) assetLoadFailures.push({ url: url.slice(0, 300), type, error });
+    };
+    browserPage.on('response', (response) => {
+      if (response.status() < 400) return;
+      const type = response.request().resourceType();
+      if (type !== 'stylesheet' && type !== 'script') return;
+      recordAssetFailure(response.url(), type, `HTTP ${response.status()}`);
+    });
     browserPage.on('requestfailed', (request) => {
       const failure = request.failure();
       const text = failure ? failure.errorText : 'unknown';
       if (/ERR_ABORTED/.test(text)) return;
       if (errors.length < 25) errors.push(`requestfailed: ${request.url().slice(0, 200)} (${text})`);
+      const type = request.resourceType();
+      if (type !== 'stylesheet' && type !== 'script') return;
+      recordAssetFailure(request.url(), type, text);
     });
 
     const navStartedAt = Date.now();
@@ -397,7 +450,12 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
           message: result.detail,
           url: finalUrl,
           outDir,
-          extra: { requestedUrl: page.url, redirectRule: finalAccess.rule ?? null, redirectDetail: finalAccess.detail ?? null },
+          extra: {
+            requestedUrl: page.url,
+            rule: finalAccess.rule ?? null,
+            redirectRule: finalAccess.rule ?? null,
+            redirectDetail: finalAccess.detail ?? null,
+          },
         });
         result.discardedStaleArtifacts = failure.discardedStaleArtifacts;
         result.failures = [failure];
@@ -478,13 +536,39 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     let axNodesRaw = [];
     let axTree = { source: 'CDP Accessibility.getFullAXTree', count: 0, nodes: [] };
     let markerIndex = new Map();
-    let retaggedElements = 0;
+    let retagged = { addedTotal: 0, addedRendered: 0 };
+    let frameScope = null;
     try {
       const { nodes: axNodes } = await withTimeout(session.send('Accessibility.getFullAXTree'), options.cdpTimeoutMs, 'Accessibility.getFullAXTree');
       axNodesRaw = axNodes;
+      // Frame tree: the a11y tree is scoped to the main frame, and pages embedding third-party
+      // frames are flagged rather than having that content persisted.
+      try {
+        const { frameTree } = await withTimeout(session.send('Page.getFrameTree'), options.cdpTimeoutMs, 'Page.getFrameTree');
+        const pageOrigin = (() => { try { return new URL(finalUrl).origin; } catch { return null; } })();
+        const frames = [];
+        const collect = (tree, depth) => {
+          const frameUrl = tree.frame.url || null;
+          let origin = null;
+          try { origin = frameUrl ? new URL(frameUrl).origin : null; } catch { origin = null; }
+          frames.push({
+            frameId: tree.frame.id,
+            parentFrameId: tree.frame.parentId ?? null,
+            depth,
+            url: frameUrl ? frameUrl.slice(0, 300) : null,
+            origin: origin === 'null' ? null : origin,
+            crossOrigin: depth > 0 && origin !== null && pageOrigin !== null && origin !== pageOrigin,
+          });
+          for (const child of tree.childFrames ?? []) collect(child, depth + 1);
+        };
+        collect(frameTree, 0);
+        frameScope = { mainFrameId: frameTree.frame.id, frames };
+      } catch (error) {
+        errors.push(`frame tree read failed: ${firstLine(error.message)}`);
+      }
       // Re-tag immediately before reading the DOM: anything that appeared after analyzeDom()
       // gets a marker, so the join cannot silently lose elements to a re-render.
-      retaggedElements = await withTimeout(browserPage.evaluate(retagMarkers), options.evaluateTimeoutMs, 'marker retag');
+      retagged = await withTimeout(browserPage.evaluate(retagMarkers), options.evaluateTimeoutMs, 'marker retag');
       const { root } = await withTimeout(
         session.send('DOM.getDocument', { depth: -1, pierce: true }),
         options.cdpTimeoutMs,
@@ -504,7 +588,8 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
       options.evaluateTimeoutMs,
       'cleaned DOM extraction',
     );
-    if (axNodesRaw.length) axTree = serializeAxTree(axNodesRaw, markerIndex, cleaned.indexById);
+    if (axNodesRaw.length) axTree = serializeAxTree(axNodesRaw, markerIndex, cleaned.indexById, frameScope);
+    const crossOriginFrames = (frameScope?.frames ?? []).filter((frame) => frame.crossOrigin);
     const axMatched = applyAxToNodes(analysis.nodes, markerIndex, axNodesRaw);
     const finalized = finalizeNodes(analysis.nodes, cleaned);
     const nodes = finalized.nodes;
@@ -515,12 +600,19 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     // low-fidelity joins are flagged instead of being averaged into the corpus.
     const qualityFlags = [];
     const bodyTextLength = analysis.document.bodyTextLength;
-    if (!nodes.length || (bodyTextLength < options.minBodyTextLength && nodes.length < 100)) {
+    // Three ways a capture is not a usable page: nothing rendered at all; almost no content; or a
+    // page whose scripts threw and which then rendered only a speck (e.g. cn.bing.com home:
+    // 36 nodes / 113 chars / 1 pageerror used to slip through the first two rules).
+    const renderIsEmpty =
+      !nodes.length ||
+      (bodyTextLength < options.minBodyTextLength && nodes.length < 100) ||
+      (pageErrorCount > 0 && bodyTextLength < options.sparseBodyTextLength && nodes.length < options.sparseNodes);
+    if (renderIsEmpty) {
       qualityFlags.push('suspicious_empty_render');
       failures.push({
         stage: 'render',
         reason: 'suspicious_empty_render',
-        message: `renderedNodes=${nodes.length} bodyTextLength=${bodyTextLength}`,
+        message: `renderedNodes=${nodes.length} bodyTextLength=${bodyTextLength} pageErrors=${pageErrorCount}`,
         url: finalUrl,
         partialArtifacts: true,
       });
@@ -528,8 +620,26 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     if (nodes.length >= 50 && axCoverageRatio < AX_COVERAGE_LOW_RATIO) {
       qualityFlags.push('ax_coverage_low');
     }
-    if (analysis.total > 0 && retaggedElements / analysis.total > DOM_CHANGE_FLAG_RATIO) {
+    // Only laid-out additions count: script/style nodes injected mid-capture are not a DOM change
+    // anyone cares about, and a sub-1% loss is still reported through counts.nodesWithoutDomPath.
+    if (nodes.length && retagged.addedRendered / nodes.length > DOM_CHANGE_FLAG_RATIO) {
       qualityFlags.push('dom_changed_during_capture');
+    }
+    if (crossOriginFrames.length) {
+      qualityFlags.push('cross_origin_frame');
+    }
+    if (assetLoadFailures.length) {
+      qualityFlags.push('asset_load_failed');
+      failures.push({
+        stage: 'render',
+        reason: 'asset_load_failed',
+        message: `${assetLoadFailures.length} same-host stylesheet/script request(s) failed: ${assetLoadFailures
+          .slice(0, 3)
+          .map((failure) => `${failure.type} ${failure.url} (${failure.error})`)
+          .join('; ')}`,
+        url: finalUrl,
+        partialArtifacts: true,
+      });
     }
     // A same-host redirect (trailing slash, param normalisation) is recorded but is not a
     // capture failure; a cross-host redirect changes which site was captured and is recorded as
@@ -547,8 +657,61 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     }
 
     const structured = await withTimeout(browserPage.evaluate(extractStructuredData), options.evaluateTimeoutMs, 'structured data extraction');
+
+    // TOCTOU: `finalUrl` was a snapshot taken before extraction. Re-read the live URL immediately
+    // before anything is written; a page that navigated in between must be robots-checked again
+    // (and discarded if the new target is disallowed) rather than being stored under the old
+    // identity. A `framenavigated` listener records main-frame navigations for evidence.
+    let resolvedUrl = finalUrl;
+    const urlBeforeWrite = browserPage.url();
+    // A same-document anchor change moves browserPage.url() without fetching anything; compare on
+    // the URL without its fragment so scrolling/anchor scripts do not read as a late navigation.
+    const withoutFragment = (value) => {
+      try {
+        const parsed = new URL(value);
+        parsed.hash = '';
+        return parsed.toString();
+      } catch {
+        return value;
+      }
+    };
+    if (withoutFragment(urlBeforeWrite) !== withoutFragment(finalUrl)) {
+      const lateAccess = await robots.check(urlBeforeWrite, { maxCrawlDelayMs: options.maxCrawlDelayMs });
+      if (!lateAccess.allowed) {
+        result.reason = 'robots_redirect_disallowed';
+        result.detail = `late navigation ${finalUrl} -> ${urlBeforeWrite} (${lateAccess.reason}${lateAccess.rule ? `: ${lateAccess.rule}` : ''})`;
+        const failure = terminalFailure({
+          stage: 'robots',
+          reason: 'robots_redirect_disallowed',
+          message: result.detail,
+          url: urlBeforeWrite,
+          outDir,
+          extra: {
+            requestedUrl: page.url,
+            rule: lateAccess.rule ?? null,
+            redirectRule: lateAccess.rule ?? null,
+            redirectDetail: lateAccess.detail ?? null,
+            lateNavigation: true,
+            navigationLog,
+          },
+        });
+        result.discardedStaleArtifacts = failure.discardedStaleArtifacts;
+        result.failures = [failure];
+        return result;
+      }
+      resolvedUrl = urlBeforeWrite;
+      qualityFlags.push('late_navigation');
+      failures.push({
+        stage: 'navigation',
+        reason: 'late_navigation',
+        message: `${finalUrl} -> ${urlBeforeWrite} after the robots check (re-checked and allowed)`,
+        url: urlBeforeWrite,
+        partialArtifacts: true,
+      });
+    }
+
     const domHtml = `<!DOCTYPE html>\n${cleaned.html}\n`;
-    const jsonld = { url: finalUrl, count: structured.blocks.length, blocks: structured.blocks };
+    const jsonld = { url: resolvedUrl, count: structured.blocks.length, blocks: structured.blocks };
 
     // Artifact cap: JSON only, PNGs untouched (see applyArtifactCap).
     const fixedBytes =
@@ -573,7 +736,7 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     );
     const meta = {
       url: page.url,
-      redirectedUrl: finalUrl,
+      redirectedUrl: resolvedUrl,
       capturedAt: nowIso(),
       title,
       viewport: { w: options.viewport.width, h: options.viewport.height },
@@ -589,11 +752,22 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
       crawlDelaySeconds: access.crawlDelaySeconds ?? null,
       redirect: {
         requestedUrl: page.url,
-        finalUrl,
-        sameHost: new URL(finalUrl).host === new URL(page.url).host,
-        redirected: finalUrl !== page.url,
+        finalUrl: resolvedUrl,
+        sameHost: new URL(resolvedUrl).host === new URL(page.url).host,
+        redirected: resolvedUrl !== page.url,
+        lateNavigation: resolvedUrl !== finalUrl,
+        navigationLog,
       },
-      effectiveHostDelayMs: throttle.delayFor(new URL(finalUrl).host),
+      // No frameId: CDP frame ids are not run-stable; url/origin identify a frame for a reader.
+      assetLoadFailures,
+      frames: (frameScope?.frames ?? []).map((frame) => ({
+        depth: frame.depth,
+        url: frame.url,
+        origin: frame.origin,
+        crossOrigin: frame.crossOrigin,
+      })),
+      a11yFramesExcluded: axTree.framesExcluded ?? [],
+      effectiveHostDelayMs: throttle.delayFor(new URL(resolvedUrl).host),
       context: {
         locale: options.locale,
         timezoneId: options.timezoneId,
@@ -612,7 +786,11 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
         nodesWithoutDomPath: finalized.withoutDomPath,
         domReparseDuplicates: cleaned.duplicates,
         domUnmarkedElements: cleaned.unmarkedElements,
-        retaggedElements,
+        retaggedElements: retagged.addedTotal,
+        retaggedRenderedElements: retagged.addedRendered,
+        pageErrors: pageErrorCount,
+        assetLoadFailures: assetLoadFailures.length,
+        a11yFrameNodesExcluded: (axTree.framesExcluded ?? []).reduce((sum, frame) => sum + frame.axNodesExcluded, 0),
         renderedNodes: nodes.length,
         visibleNodes,
         axNodes: axTree.count,
@@ -649,7 +827,7 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     result.reason = failures.length ? failures[0].reason : null;
     result.qualityFlags = qualityFlags;
     result.httpStatus = httpStatus;
-    result.redirectedUrl = finalUrl;
+    result.redirectedUrl = resolvedUrl;
     result.sameHostRedirect = sameHostRedirect;
     result.counts = meta.counts;
     result.artifactBytes = artifactBytes;

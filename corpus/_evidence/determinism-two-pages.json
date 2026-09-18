@@ -41,7 +41,7 @@
           "identical": true,
           "byteIdentical": true,
           "mode": "bytes",
-          "sha256": "866e1650d512a672740f6c53507cdffd2cd8d7899e4cd71f2a811aa30f9ae7b6"
+          "sha256": "031768514bd93b135ea8e58b5ca762091f2d21e84b28770e992efa48fb4a2d1d"
         },
         {
           "file": "jsonld.json",
@@ -60,13 +60,31 @@
         },
         {
           "file": "viewport.png",
-          "identical": true,
-          "byteIdentical": true,
-          "mode": "bytes",
-          "sha256": "698fc4a75f22b157c160a4b0ef816249175af9040a54b04754c33f7a970cd5b0"
+          "identical": false,
+          "byteIdentical": false,
+          "pixelEquivalent": true,
+          "mode": "bytes+pixel-diff",
+          "sha256": "483a93e94c58d172f26f58c2ccdcb8634845ecfa43037148b141d12668ff5231",
+          "sha256Other": "f5780fda262926097397a86133aae40b4b2c33b108605a03395151618e733007",
+          "pixelDiff": {
+            "sameSize": true,
+            "totalPixels": 1296000,
+            "differingPixels": 6,
+            "differingFraction": 0.000005,
+            "maxChannelDelta": 2,
+            "boundingBox": [
+              224,
+              410,
+              227,
+              449
+            ],
+            "boundingBoxAreaFraction": 0.000123,
+            "withinTolerance": true
+          },
+          "note": "differs in 6/1296000 pixels (0.0005%), max channel delta 2, diff box 0.0123% of the image: within the rendering-noise budget"
         }
       ],
-      "verdict": "identical"
+      "verdict": "identical-modulo-png-rendering-noise"
     },
     {
       "dirA": ".tmp/det-a/arco-design/components-table",
@@ -152,9 +170,13 @@
       "capturedAt",
       "timings",
       "counts.domElements",
-      "counts.droppedFromDom"
+      "counts.droppedFromDom",
+      "artifactCap.totalBytes",
+      "artifactCap.jsonBytes",
+      "artifactCap.imageBytes",
+      "artifactBytes"
     ],
-    "reason": "timestamps always differ; counts.domElements / counts.droppedFromDom count raw live-DOM elements, and the page injects an extra script or style node on some runs (dom.html, nodes.json and counts.cleanedElements were byte/structurally identical while these moved)"
+    "reason": "timestamps and measured byte totals always differ; counts.domElements / counts.droppedFromDom count raw live-DOM elements, and the page injects an extra script or style node on some runs (dom.html, nodes.json and counts.cleanedElements were byte/structurally identical while these moved)"
   },
-  "verdict": "identical"
+  "verdict": "identical-modulo-png-rendering-noise"
 }

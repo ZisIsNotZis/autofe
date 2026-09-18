@@ -45,6 +45,38 @@ import { launchBrowser } from './lib/browser.mjs';
 const PAINTED_TAGS = new Set(['img', 'svg', 'canvas', 'video', 'iframe', 'picture', 'object', 'embed', 'map', 'area', 'image']);
 const BLEND_BASES = [[255, 255, 255], [0, 0, 0]];
 
+// Roles whose implicit-role mapping to a tag is unambiguous; used to cross-check a11y.json's
+// domIndex against the parsed dom.html.
+const STRICT_ROLE_TAGS = {
+  link: ['a', 'area'],
+  button: ['button', 'input', 'summary'],
+  img: ['img', 'svg', 'image', 'input', 'picture'],
+  heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+  list: ['ul', 'ol', 'menu'],
+  listitem: ['li', 'div', 'span'],
+  table: ['table'],
+  row: ['tr'],
+  cell: ['td'],
+  columnheader: ['th'],
+  rowheader: ['th'],
+  textbox: ['input', 'textarea'],
+  searchbox: ['input'],
+  combobox: ['select', 'input', 'datalist'],
+  checkbox: ['input'],
+  radio: ['input'],
+  slider: ['input'],
+  spinbutton: ['input'],
+  navigation: ['nav'],
+  main: ['main'],
+  banner: ['header'],
+  contentinfo: ['footer'],
+  complementary: ['aside'],
+  form: ['form'],
+  paragraph: ['p'],
+  iframe: ['iframe'],
+  listbox: ['select', 'datalist'],
+};
+
 function parseArgs(argv) {
   const options = {
     dir: null,
@@ -59,7 +91,9 @@ function parseArgs(argv) {
     out: null,
     minSize: 20,
     shiftPx: 60,
-    minFraction: 0.25,
+    // Share of the full-box grid that must match for a candidate to count as aligned. Raised from
+    // 0.25: with the 1px inset that value would tolerate a large offset (see shiftDetection).
+    minFraction: 0.6,
     // A colour region this close to the computed background counts as the element being there
     // with a subtly different paint (gradient/alpha/AA), not as a misplaced box.
     nearMissDelta: 12,
@@ -90,6 +124,10 @@ function parseArgs(argv) {
   if (!options.dir) throw new Error('usage: verify-alignment.mjs <page-dir> [options]');
   return options;
 }
+
+// Offsets at which the shifted grid is re-sampled, to measure the smallest offset this element
+// can actually detect instead of deriving it from a formula.
+const SHIFT_LADDER = [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48, 64, 96, 128, 192, 256];
 
 function parseColor(value) {
   const match = /^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:[,/\s]+([\d.]+))?\s*\)$/.exec(String(value ?? ''));
@@ -126,8 +164,10 @@ function sampleGrid(png, box, expectedRgb, tolerance, nearMissDelta = 12) {
     centrePixel: null,
   };
   if (box.w < 2 || box.h < 2 || box.y + box.h < 0) return empty;
-  const insetX = Math.max(1, Math.round(box.w * 0.1));
-  const insetY = Math.max(1, Math.round(box.h * 0.1));
+  // 1px inset: the grid must span the whole box, otherwise a large offset can keep every sample
+  // inside a 10%-inset grid and still read as "aligned".
+  const insetX = 1;
+  const insetY = 1;
   const x0 = box.x + insetX;
   const x1 = box.x + box.w - insetX;
   const y0 = box.y + insetY;
@@ -179,6 +219,20 @@ function sampleGrid(png, box, expectedRgb, tolerance, nearMissDelta = 12) {
 
 // Two independent facts: how well viewport.png matches the top of full.png (fraction), and where
 // the difference is (so a weak anchor can be explained rather than merely reported).
+// Smallest offset (px) at which shifting the grid makes the match fraction fall below
+// minFraction: this is the real detection threshold of the check for this element.
+function measureShiftDetection(png, box, expectedRgb, options) {
+  const limit = Math.max(1, Math.floor(Math.min(box.w, box.h)));
+  for (const shift of SHIFT_LADDER) {
+    if (shift > limit) break;
+    const shiftedY = sampleGrid(png, { ...box, y: box.y + shift }, expectedRgb, options.tolerance, options.nearMissDelta);
+    if (shiftedY.fraction < options.minFraction) return { measuredPx: shift, axis: 'y', fractionAtDetection: shiftedY.fraction };
+    const shiftedX = sampleGrid(png, { ...box, x: box.x + shift }, expectedRgb, options.tolerance, options.nearMissDelta);
+    if (shiftedX.fraction < options.minFraction) return { measuredPx: shift, axis: 'x', fractionAtDetection: shiftedX.fraction };
+  }
+  return { measuredPx: null, axis: null, note: `no shift up to ${limit}px drops the match below ${options.minFraction}` };
+}
+
 function frameAnchorCheck(dir, fullPng, options) {
   const viewportPath = path.join(dir, 'viewport.png');
   if (!fs.existsSync(viewportPath)) return { available: false };
@@ -315,40 +369,111 @@ async function domResolutionCheck(dir, nodes, options) {
     await context.route('**/*', (route) => route.abort()); // structure only: no network
     const page = await context.newPage();
     await page.setContent(html, { waitUntil: 'domcontentloaded' });
-    const expected = nodes.map((node) => ({ p: node.cleanedPath, t: node.tag }));
-    const result = await page.evaluate((pairs) => {
+    const expected = nodes.map((node) => ({ p: node.cleanedPath, t: node.tag, i: node.cleanedIndex }));
+    // a11y.json is optional (older captures do not carry domIndex).
+    let a11yNodes = [];
+    try {
+      a11yNodes = JSON.parse(fs.readFileSync(path.join(dir, 'a11y.json'), 'utf8')).nodes ?? [];
+    } catch {
+      a11yNodes = [];
+    }
+    const sampleStep = Math.max(1, Math.floor(a11yNodes.length / 25));
+    const a11ySample = a11yNodes
+      .filter((_, index) => index % sampleStep === 0)
+      .filter((node) => typeof node.domIndex === 'number' && node.role)
+      .slice(0, 25)
+      .map((node) => ({ domIndex: node.domIndex, role: node.role }));
+
+    const result = await page.evaluate(({ pairs, sample, strictRoles }) => {
       const byPath = new Map();
+      const tagByIndex = [];
+      const roleAttrByIndex = [];
       const walk = (el, p) => {
         const tag = el.tagName.toLowerCase();
-        byPath.set(p, tag);
+        byPath.set(p, { tag, index: tagByIndex.length });
+        tagByIndex.push(tag);
+        roleAttrByIndex.push(el.getAttribute('role'));
         const children = el.children;
         for (let i = 0; i < children.length; i += 1) walk(children[i], `${p}/${children[i].tagName.toLowerCase()}[${i}]`);
       };
       walk(document.documentElement, 'html');
+
       const unresolved = [];
       const tagMismatch = [];
+      const indexMismatch = [];
       let resolved = 0;
       for (const pair of pairs) {
-        const actual = pair.p === null || pair.p === undefined ? undefined : byPath.get(pair.p);
-        if (actual === undefined) {
+        const found = pair.p === null || pair.p === undefined ? undefined : byPath.get(pair.p);
+        if (found === undefined) {
           if (unresolved.length < 10) unresolved.push(pair.p);
-        } else if (actual !== pair.t) {
-          if (tagMismatch.length < 10) tagMismatch.push({ path: pair.p, expected: pair.t, actual });
-        } else resolved += 1;
+          continue;
+        }
+        if (found.tag !== pair.t) {
+          if (tagMismatch.length < 10) tagMismatch.push({ path: pair.p, expected: pair.t, actual: found.tag });
+          continue;
+        }
+        if (typeof pair.i === 'number' && found.index !== pair.i) {
+          if (indexMismatch.length < 10) indexMismatch.push({ path: pair.p, expectedIndex: pair.i, actualIndex: found.index });
+          continue;
+        }
+        resolved += 1;
       }
-      return { resolved, unresolved, tagMismatch, elementsInDom: byPath.size };
-    }, expected);
+
+      const a11yMismatch = [];
+      let a11yChecked = 0;
+      let a11ySkipped = 0;
+      for (const entry of sample) {
+        const tag = tagByIndex[entry.domIndex];
+        if (tag === undefined) {
+          if (a11yMismatch.length < 10) a11yMismatch.push({ ...entry, reason: 'domIndex out of range' });
+          continue;
+        }
+        const allowed = strictRoles[entry.role];
+        // An explicit role attribute can legitimately make any tag carry the role.
+        if (!allowed || roleAttrByIndex[entry.domIndex]) {
+          a11ySkipped += 1;
+          continue;
+        }
+        a11yChecked += 1;
+        if (!allowed.includes(tag) && a11yMismatch.length < 10) a11yMismatch.push({ ...entry, tag, allowed });
+      }
+
+      return {
+        resolved,
+        unresolved,
+        tagMismatch,
+        indexMismatch,
+        a11yChecked,
+        a11ySkipped,
+        a11yMismatch,
+        elementsInDom: tagByIndex.length,
+      };
+    }, { pairs: expected, sample: a11ySample, strictRoles: STRICT_ROLE_TAGS });
     await context.close();
     return {
       available: true,
       checkedPaths: expected.length,
       resolved: result.resolved,
       unresolved: result.unresolved,
-      unresolvedCount: expected.length - result.resolved - result.tagMismatch.length,
+      unresolvedCount: expected.length - result.resolved - result.tagMismatch.length - result.indexMismatch.length,
       tagMismatch: result.tagMismatch,
       tagMismatchCount: result.tagMismatch.length,
+      indexMismatch: result.indexMismatch,
+      indexMismatchCount: result.indexMismatch.length,
+      a11yDomIndexSample: {
+        sampled: a11ySample.length,
+        checked: result.a11yChecked,
+        skipped: result.a11ySkipped,
+        mismatchCount: result.a11yMismatch.length,
+        mismatches: result.a11yMismatch,
+        note: 'a11y.json[].domIndex resolved against the parsed dom.html and compared with the tag implied by the AX role (elements with an explicit role attribute are skipped)',
+      },
       elementsInDom: result.elementsInDom,
-      passed: result.resolved === expected.length,
+      passed:
+        result.resolved === expected.length &&
+        result.tagMismatch.length === 0 &&
+        result.indexMismatch.length === 0 &&
+        result.a11yMismatch.length === 0,
     };
   } finally {
     await browser.close().catch(() => {});
@@ -436,8 +561,12 @@ function classify({ node, index, nodes, byPath, png, options }) {
     direct,
     controlAbove: above,
     controlBelow: below,
-    // Smallest offset this element's own geometry can detect: half its smaller dimension.
-    shiftSensitivityPx: Math.max(1, Math.floor(Math.min(node.bbox.w, node.bbox.h) / 2)),
+    // Measured, not assumed: the smallest offset at which the shifted grid drops below
+    // minFraction, with the analytic bound as a fallback for elements larger than the ladder.
+    shiftDetection: {
+      ...measureShiftDetection(png, node.bbox, expectedRgb, options),
+      analyticPx: Math.max(1, Math.ceil(Math.min(node.bbox.w, node.bbox.h) * (1 - options.minFraction))),
+    },
     ancestorOpacity: ancestorOpacity ?? undefined,
     coveringNode: cover === -1 ? undefined : { domPath: nodes[cover].domPath, tag: nodes[cover].tag, bbox: nodes[cover].bbox },
     positionedAncestor: positionedAncestor ?? undefined,
@@ -496,12 +625,16 @@ async function main() {
     ? await domResolutionCheck(dir, nodes, options)
     : { available: false, note: 'skipped via --no-dom-check' };
 
-  const shiftSensitivityPx = alignedChecks.length ? Math.min(...alignedChecks.map((check) => check.shiftSensitivityPx)) : null;
+  const shiftSensitivityPx = alignedChecks.length
+    ? Math.min(...alignedChecks.map((check) => check.shiftDetection.measuredPx ?? check.shiftDetection.analyticPx))
+    : null;
 
   const blockers = [];
   if (unexplained > 0) blockers.push(`${unexplained} unexplained colour candidate(s)`);
   if (domResolution.available && !domResolution.passed) {
-    blockers.push(`nodes.json does not resolve in dom.html (unresolved=${domResolution.unresolvedCount}, tagMismatch=${domResolution.tagMismatchCount})`);
+    blockers.push(
+      `nodes.json does not resolve in dom.html (unresolved=${domResolution.unresolvedCount}, tagMismatch=${domResolution.tagMismatchCount}, indexMismatch=${domResolution.indexMismatchCount}, a11yDomIndexMismatch=${domResolution.a11yDomIndexSample?.mismatchCount ?? 0})`,
+    );
   }
   if (paintedFailed > 0) blockers.push(`${paintedFailed} painted-feature check(s) failed`);
 

@@ -63,7 +63,10 @@ export function selectRobotsGroup(groups, productToken) {
   for (const group of groups) {
     for (const agent of group.agents) {
       if (agent === '*') continue;
-      if (!token.startsWith(agent) && !token.includes(agent)) continue;
+      // Match against the product token (RFC 9309 §2.2.1): the group's agent must be a prefix of
+      // our product token ("AutoFE-Research-Bot"), so a group named "bot" or "research-bot" no
+      // longer captures us. Longest match wins.
+      if (!token.startsWith(agent)) continue;
       if (bestToken === null || agent.length > bestToken.length) {
         bestToken = agent;
         bestGroups = [group];

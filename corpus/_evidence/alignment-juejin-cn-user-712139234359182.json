@@ -8,12 +8,12 @@
   "nodesBelowCapturedHeight": 8,
   "colourCandidatesExamined": 4,
   "tolerancePerChannel": 3,
-  "minimumMatchingFraction": 0.25,
+  "minimumMatchingFraction": 0.6,
   "minimumDiscriminating": 2,
   "aligned": 4,
   "unexplained": 0,
   "paintedCarriesEvidence": true,
-  "shiftSensitivityPx": 10,
+  "shiftSensitivityPx": 5,
   "classificationCounts": {
     "translucent-overlay": 0,
     "ancestor-transparent": 0,
@@ -600,15 +600,10 @@
       "h": 900
     },
     "sampledPixels": 1296000,
-    "identicalFraction": 0.9999969135802469,
-    "differingPixels": 4,
-    "maxChannelDelta": 4,
-    "diffBoundingBox": [
-      863,
-      796,
-      927,
-      860
-    ],
+    "identicalFraction": 1,
+    "differingPixels": 0,
+    "maxChannelDelta": 0,
+    "diffBoundingBox": null,
     "note": "viewport.png (captured at scroll 0,0) matches the top of full.png, i.e. full.png starts at the document origin"
   },
   "domResolution": {
@@ -619,6 +614,16 @@
     "unresolvedCount": 0,
     "tagMismatch": [],
     "tagMismatchCount": 0,
+    "indexMismatch": [],
+    "indexMismatchCount": 0,
+    "a11yDomIndexSample": {
+      "sampled": 19,
+      "checked": 2,
+      "skipped": 17,
+      "mismatchCount": 0,
+      "mismatches": [],
+      "note": "a11y.json[].domIndex resolved against the parsed dom.html and compared with the tag implied by the AX role (elements with an explicit role attribute are skipped)"
+    },
     "elementsInDom": 1027,
     "passed": true
   },
@@ -641,14 +646,14 @@
       "classification": "aligned",
       "direct": {
         "gridPoints": 25,
-        "matchingPoints": 22,
-        "fraction": 0.88,
-        "nearPoints": 22,
-        "nearFraction": 0.88,
-        "blendedPoints": 2,
-        "blendedFraction": 0.08,
+        "matchingPoints": 21,
+        "fraction": 0.84,
+        "nearPoints": 21,
+        "nearFraction": 0.84,
+        "blendedPoints": 3,
+        "blendedFraction": 0.12,
         "blend": {
-          "alpha": 0.45,
+          "alpha": 0.64,
           "over": "white"
         },
         "minChannelDelta": 0,
@@ -686,7 +691,12 @@
           245
         ]
       },
-      "shiftSensitivityPx": 18,
+      "shiftDetection": {
+        "measuredPx": 10,
+        "axis": "y",
+        "fractionAtDetection": 0.48,
+        "analyticPx": 15
+      },
       "positionedAncestor": {
         "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]",
         "position": "sticky"
@@ -707,13 +717,16 @@
       "classification": "aligned",
       "direct": {
         "gridPoints": 25,
-        "matchingPoints": 25,
-        "fraction": 1,
-        "nearPoints": 25,
-        "nearFraction": 1,
-        "blendedPoints": 0,
-        "blendedFraction": 0,
-        "blend": null,
+        "matchingPoints": 21,
+        "fraction": 0.84,
+        "nearPoints": 21,
+        "nearFraction": 0.84,
+        "blendedPoints": 3,
+        "blendedFraction": 0.12,
+        "blend": {
+          "alpha": 0.9,
+          "over": "white"
+        },
         "minChannelDelta": 0,
         "centrePixel": [
           30,
@@ -746,14 +759,19 @@
         "blendedPoints": 0,
         "blendedFraction": 0,
         "blend": null,
-        "minChannelDelta": 34,
+        "minChannelDelta": 55,
         "centrePixel": [
           255,
           255,
           255
         ]
       },
-      "shiftSensitivityPx": 17
+      "shiftDetection": {
+        "measuredPx": 12,
+        "axis": "y",
+        "fractionAtDetection": 0.56,
+        "analyticPx": 14
+      }
     },
     {
       "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]/div[0]/nav[1]/ul[0]/ul[1]/li[0]/ul[0]/li[0]/form[0]/div[1]",
@@ -770,13 +788,16 @@
       "classification": "aligned",
       "direct": {
         "gridPoints": 25,
-        "matchingPoints": 24,
-        "fraction": 0.96,
+        "matchingPoints": 23,
+        "fraction": 0.92,
         "nearPoints": 24,
         "nearFraction": 0.96,
-        "blendedPoints": 0,
-        "blendedFraction": 0,
-        "blend": null,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.53,
+          "over": "white"
+        },
         "minChannelDelta": 0,
         "centrePixel": [
           242,
@@ -798,24 +819,29 @@
       },
       "controlBelow": {
         "gridPoints": 25,
-        "matchingPoints": 5,
-        "fraction": 0.2,
-        "nearPoints": 5,
-        "nearFraction": 0.2,
-        "blendedPoints": 20,
-        "blendedFraction": 0.8,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "nearPoints": 0,
+        "nearFraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
         "blend": {
           "alpha": 0.23,
           "over": "white"
         },
-        "minChannelDelta": 2,
+        "minChannelDelta": 13,
         "centrePixel": [
           255,
           255,
           255
         ]
       },
-      "shiftSensitivityPx": 15,
+      "shiftDetection": {
+        "measuredPx": 12,
+        "axis": "y",
+        "fractionAtDetection": 0.56,
+        "analyticPx": 12
+      },
       "positionedAncestor": {
         "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]",
         "position": "sticky"
@@ -836,13 +862,16 @@
       "classification": "aligned",
       "direct": {
         "gridPoints": 25,
-        "matchingPoints": 24,
-        "fraction": 0.96,
-        "nearPoints": 24,
-        "nearFraction": 0.96,
-        "blendedPoints": 0,
-        "blendedFraction": 0,
-        "blend": null,
+        "matchingPoints": 22,
+        "fraction": 0.88,
+        "nearPoints": 22,
+        "nearFraction": 0.88,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.67,
+          "over": "white"
+        },
         "minChannelDelta": 0,
         "centrePixel": [
           255,
@@ -878,7 +907,12 @@
           245
         ]
       },
-      "shiftSensitivityPx": 10,
+      "shiftDetection": {
+        "measuredPx": 5,
+        "axis": "x",
+        "fractionAtDetection": 0.56,
+        "analyticPx": 8
+      },
       "positionedAncestor": {
         "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]",
         "position": "sticky"

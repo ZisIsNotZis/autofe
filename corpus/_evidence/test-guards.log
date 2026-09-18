@@ -1,5 +1,5 @@
 PASS  F7 denied redirect records robots_redirect_disallowed  — reason=robots_redirect_disallowed
-PASS  F7 denied redirect keeps the requested URL  — "http://127.0.0.1:43213/redirect-secret"
+PASS  F7 denied redirect keeps the requested URL  — "http://127.0.0.1:41983/redirect-secret"
 PASS  F7 denied redirect discards artifacts  — directory absent
 PASS  F7 both requested and final URL were robots-checked  — calls=2
 PASS  F2 allowed cross-host redirect is captured  — status=partial reason=cross_host_redirect
@@ -7,9 +7,18 @@ PASS  F2 redirect target artifacts exist  — meta.json written
 PASS  F8 http_error is recorded  — reason=http_error
 PASS  F8 stale artifacts are discarded  — stale directory removed
 PASS  F8 failure reports the discard  — true
-PASS  F7 cross-origin robots redirect is not followed  — reason=robots_cross_origin_redirect -> http://localhost:43213/robots-cross-origin.txt
+PASS  F7 cross-origin robots redirect is not followed  — reason=robots_cross_origin_redirect -> http://localhost:41983/robots-cross-origin.txt
+PASS  same-host redirect to a disallowed path is recorded  — reason=robots_redirect_disallowed rule=disallow: /secret
+PASS  same-host denied redirect discards artifacts  — directory absent
+PASS  sparse render with a page error is a recorded failure  — status=failed reason=suspicious_empty_render message=renderedNodes=4 bodyTextLength=97 pageErrors=1
+PASS  same-host stylesheet error makes the capture partial with a reason  — status=partial reason=asset_load_failed message=1 same-host stylesheet/script request(s) failed: stylesheet http://127.0.0.1:41983/broken.
+PASS  cross-origin frame is recorded and flagged  — frames=[{"origin":"http://127.0.0.1:41983","crossOrigin":false},{"origin":"http://localhost:41983","crossOrigin":true}] flags=["cross_origin_frame"]
+PASS  third-party frame AX content is not persisted  — frame button name absent from a11y.json
+PASS  frame exclusion count is reported  — a11yFrameNodesExcluded=0
 PASS  F9 rule before the first User-agent is ignored  — allowed=true rules=1
 PASS  F9 `$` is not counted in rule specificity (allow wins the tie)  — rule=allow: /a
+PASS  F9 a different bot token does not match our product token  — matchedAgent=* allowed=true
+PASS  F9 our own product token still matches  — matchedAgent=autofe-research-bot
 PASS  F9 plain disallow still blocks  — rule=disallow: /private/
 
-13/13 guard checks passed
+22/22 guard checks passed

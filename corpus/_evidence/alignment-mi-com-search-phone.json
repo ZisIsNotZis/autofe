@@ -8,12 +8,12 @@
   "nodesBelowCapturedHeight": 0,
   "colourCandidatesExamined": 8,
   "tolerancePerChannel": 3,
-  "minimumMatchingFraction": 0.25,
+  "minimumMatchingFraction": 0.6,
   "minimumDiscriminating": 2,
   "aligned": 3,
   "unexplained": 0,
   "paintedCarriesEvidence": true,
-  "shiftSensitivityPx": 15,
+  "shiftSensitivityPx": 8,
   "classificationCounts": {
     "translucent-overlay": 0,
     "ancestor-transparent": 5,
@@ -432,18 +432,18 @@
           "h": 200
         },
         "localBackground": "rgb(255, 255, 255)",
-        "inkPixels": 20535,
-        "inkFraction": 0.513,
+        "inkPixels": 16944,
+        "inkFraction": 0.424,
         "centroid": [
           1184,
           1832
         ],
         "centroidInsideBox": true,
         "inkBox": [
-          1121,
-          1752,
-          1248,
-          1913
+          1126,
+          1760,
+          1243,
+          1905
         ],
         "inkWithinBox": true,
         "passed": true
@@ -458,18 +458,18 @@
           "h": 200
         },
         "localBackground": "rgb(255, 255, 255)",
-        "inkPixels": 16944,
-        "inkFraction": 0.424,
+        "inkPixels": 20535,
+        "inkFraction": 0.513,
         "centroid": [
           254,
           2276
         ],
         "centroidInsideBox": true,
         "inkBox": [
-          196,
-          2204,
-          313,
-          2349
+          191,
+          2196,
+          318,
+          2357
         ],
         "inkWithinBox": true,
         "passed": true
@@ -706,6 +706,16 @@
     "unresolvedCount": 0,
     "tagMismatch": [],
     "tagMismatchCount": 0,
+    "indexMismatch": [],
+    "indexMismatchCount": 0,
+    "a11yDomIndexSample": {
+      "sampled": 16,
+      "checked": 9,
+      "skipped": 7,
+      "mismatchCount": 0,
+      "mismatches": [],
+      "note": "a11y.json[].domIndex resolved against the parsed dom.html and compared with the tag implied by the AX role (elements with an explicit role attribute are skipped)"
+    },
     "elementsInDom": 826,
     "passed": true
   },
@@ -728,14 +738,14 @@
       "classification": "aligned",
       "direct": {
         "gridPoints": 25,
-        "matchingPoints": 19,
-        "fraction": 0.76,
-        "nearPoints": 19,
-        "nearFraction": 0.76,
-        "blendedPoints": 6,
-        "blendedFraction": 0.24,
+        "matchingPoints": 23,
+        "fraction": 0.92,
+        "nearPoints": 23,
+        "nearFraction": 0.92,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
         "blend": {
-          "alpha": 0.45,
+          "alpha": 0.74,
           "over": "white"
         },
         "minChannelDelta": 0,
@@ -773,7 +783,12 @@
           255
         ]
       },
-      "shiftSensitivityPx": 20
+      "shiftDetection": {
+        "measuredPx": 10,
+        "axis": "y",
+        "fractionAtDetection": 0.52,
+        "analyticPx": 16
+      }
     },
     {
       "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[0]/div[2]/a[0]",
@@ -836,7 +851,12 @@
           207
         ]
       },
-      "shiftSensitivityPx": 19,
+      "shiftDetection": {
+        "measuredPx": 1,
+        "axis": "y",
+        "fractionAtDetection": 0,
+        "analyticPx": 16
+      },
       "ancestorOpacity": {
         "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[0]/div[2]",
         "opacity": 0
@@ -913,7 +933,12 @@
           207
         ]
       },
-      "shiftSensitivityPx": 19,
+      "shiftDetection": {
+        "measuredPx": 1,
+        "axis": "y",
+        "fractionAtDetection": 0,
+        "analyticPx": 16
+      },
       "ancestorOpacity": {
         "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[1]/div[2]",
         "opacity": 0
@@ -990,7 +1015,12 @@
           207
         ]
       },
-      "shiftSensitivityPx": 19,
+      "shiftDetection": {
+        "measuredPx": 1,
+        "axis": "y",
+        "fractionAtDetection": 0,
+        "analyticPx": 16
+      },
       "ancestorOpacity": {
         "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[2]/div[2]",
         "opacity": 0
@@ -1067,7 +1097,12 @@
           207
         ]
       },
-      "shiftSensitivityPx": 19,
+      "shiftDetection": {
+        "measuredPx": 1,
+        "axis": "y",
+        "fractionAtDetection": 0,
+        "analyticPx": 16
+      },
       "ancestorOpacity": {
         "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[3]/div[2]",
         "opacity": 0
@@ -1144,7 +1179,12 @@
           207
         ]
       },
-      "shiftSensitivityPx": 19,
+      "shiftDetection": {
+        "measuredPx": 1,
+        "axis": "y",
+        "fractionAtDetection": 0,
+        "analyticPx": 16
+      },
       "ancestorOpacity": {
         "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[3]/div[0]/div[1]/ul[0]/li[4]/div[2]",
         "opacity": 0
@@ -1182,7 +1222,7 @@
         "blendedPoints": 1,
         "blendedFraction": 0.04,
         "blend": {
-          "alpha": 0.91,
+          "alpha": 0.43,
           "over": "white"
         },
         "minChannelDelta": 0,
@@ -1210,17 +1250,25 @@
         "fraction": 0,
         "nearPoints": 0,
         "nearFraction": 0,
-        "blendedPoints": 0,
-        "blendedFraction": 0,
-        "blend": null,
-        "minChannelDelta": 189,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.17,
+          "over": "white"
+        },
+        "minChannelDelta": 158,
         "centrePixel": [
           255,
           255,
           255
         ]
       },
-      "shiftSensitivityPx": 20
+      "shiftDetection": {
+        "measuredPx": 10,
+        "axis": "y",
+        "fractionAtDetection": 0.52,
+        "analyticPx": 16
+      }
     },
     {
       "domPath": "html/body[1]/div[0]/div[1]/div[0]/div[0]/div[1]/div[2]/div[0]/div[1]/div[1]/span[1]",
@@ -1286,7 +1334,12 @@
           245
         ]
       },
-      "shiftSensitivityPx": 15
+      "shiftDetection": {
+        "measuredPx": 8,
+        "axis": "y",
+        "fractionAtDetection": 0.52,
+        "analyticPx": 12
+      }
     }
   ]
 }

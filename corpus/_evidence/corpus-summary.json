@@ -4,12 +4,12 @@
   "emptyCapturePages": 0,
   "failedPages": 9,
   "domains": 34,
-  "renderedNodes": 200076,
-  "visibleNodes": 182220,
+  "renderedNodes": 200442,
+  "visibleNodes": 182586,
   "artifactBytes": {
-    "total": 350682696,
-    "mean": 3615286,
-    "median": 2177561,
+    "total": 352645520,
+    "mean": 3635521,
+    "median": 2193468,
     "p90": 7039919,
     "max": 25815298
   },
@@ -17,6 +17,17 @@
     "artifact_cap_exceeded": 53,
     "dom_changed_during_capture": 2,
     "ax_coverage_low": 18
+  },
+  "domIntegrity": {
+    "nodesWithoutDomPath": 206,
+    "pagesWithNodesWithoutDomPath": 3,
+    "retaggedElements": 995,
+    "retaggedRenderedElements": 0,
+    "domReparseDuplicates": 172,
+    "adExcludedNodes": 0,
+    "a11yFrameNodesExcluded": 0,
+    "pagesWithAssetLoadFailure": 0,
+    "pagesWithCrossOriginFrame": 0
   },
   "failureReasons": {
     "http_error": 2,
@@ -85,70 +96,70 @@
       "empty": 0,
       "failed": 0,
       "renderedNodes": 12314,
-      "bytes": 35055492
+      "bytes": 35055646
     },
     "category/list": {
       "captured": 8,
       "empty": 0,
       "failed": 2,
-      "renderedNodes": 8340,
-      "bytes": 19117666
+      "renderedNodes": 8602,
+      "bytes": 20942452
     },
     "search-results": {
       "captured": 9,
       "empty": 0,
       "failed": 0,
       "renderedNodes": 4556,
-      "bytes": 9604666
+      "bytes": 9604938
     },
     "product-detail": {
       "captured": 7,
       "empty": 0,
       "failed": 2,
       "renderedNodes": 11491,
-      "bytes": 30037165
+      "bytes": 30037281
     },
     "dashboard/data-viz": {
       "captured": 12,
       "empty": 0,
       "failed": 1,
       "renderedNodes": 14299,
-      "bytes": 26347677
+      "bytes": 26347799
     },
     "docs/design-system": {
       "captured": 15,
       "empty": 0,
       "failed": 2,
-      "renderedNodes": 24670,
-      "bytes": 33500142
+      "renderedNodes": 24760,
+      "bytes": 33588788
     },
     "form/checkout/settings": {
       "captured": 15,
       "empty": 0,
       "failed": 0,
       "renderedNodes": 55829,
-      "bytes": 77280343
+      "bytes": 77280263
     },
     "table-heavy/admin": {
       "captured": 5,
       "empty": 0,
       "failed": 1,
       "renderedNodes": 58553,
-      "bytes": 85130996
+      "bytes": 85131197
     },
     "article/editorial": {
       "captured": 7,
       "empty": 0,
       "failed": 1,
-      "renderedNodes": 5678,
-      "bytes": 23823883
+      "renderedNodes": 5692,
+      "bytes": 23872342
     },
     "profile/account": {
       "captured": 8,
       "empty": 0,
       "failed": 0,
       "renderedNodes": 4346,
-      "bytes": 10784666
+      "bytes": 10784814
     }
   }
 }

@@ -74,10 +74,23 @@ Alongside the page directories:
   agency) on a page.
 - `a11y.json[].domIndex` — same value as `nodes.json[].cleanedIndex`; the join key for the
   accessibility tree.
-- Entries whose element has no position in the parsed `dom.html` (ad descendants, markup the parser
-  dropped) are **excluded** from `nodes.json` and counted in `meta.counts.nodesWithoutDomPath`.
-- `verify-alignment.mjs` re-parses `dom.html` in a browser and asserts every `cleanedPath` resolves
-  and its tag matches; a failure there is a blocker.
+- Entries are **excluded** from `nodes.json` when they have no position in the parsed `dom.html`,
+  and the reason is counted separately: `meta.counts.adExcludedNodes` (inside a dropped ad subtree)
+  and `meta.counts.nodesWithoutDomPath` (markup the HTML parser dropped or relocated).
+- `verify-alignment.mjs` re-parses `dom.html` in a browser and asserts, for every entry, that
+  `cleanedPath` resolves, that its tag matches, and that `cleanedIndex` equals the element's
+  pre-order index in that parse — plus a sample of `a11y.json[].domIndex` values resolved the same
+  way and checked against the tag implied by the AX role. Any mismatch is a blocker.
+
+**Document scope of `a11y.json`**: only the main frame is persisted. `meta.frames` lists every
+frame with `depth`, `url`, `origin` and `crossOrigin` (CDP frame ids are deliberately not stored —
+they are not run-stable), and AX nodes attributed to any other frame are dropped and summarised in
+`a11y.json.framesExcluded` / `meta.counts.a11yFrameNodesExcluded`. Pages that embed a cross-origin
+frame are flagged `cross_origin_frame` so third-party frame content is never silently persisted —
+we did not ask to crawl it, and it has no counterpart in `dom.html`/`nodes.json`. Measured on the
+seed pages checked, Chromium attributes 0 AX nodes to those frames (tdesign.tencent.com embeds
+`tdesign.gtimg.com/site/spline/data/index.html`: 1 frame listed, 0 nodes persisted), so the
+exclusion is defensive.
 
 `role`/`name` come from the real accessibility tree when the element is in it
 (`meta.counts.axMatchedNodes`, `axCoverageRatio`); otherwise a simplified in-page fallback is used
@@ -102,10 +115,17 @@ not in `nodes.json`/`dom.html`.
   times out on `echarts.apache.org` and `mui.com` while Chromium succeeds), the same GET is retried
   through the browser's network stack, still paced and still rejecting cross-origin redirects
   (`meta.robots.fetchedVia` is `node` or `browser`).
-- **robots is checked per request, not per seed entry**: after navigation the **final URL** is
-  checked too. If the redirect target is disallowed, the capture is abandoned with
-  `robots_redirect_disallowed`, artifacts are discarded, and nothing is written
-  (`failures.json` keeps `requestedUrl` + the matched rule).
+- **robots governs the top-level navigation only**, and both URLs of that navigation are checked:
+  the requested URL before the browser starts, and the **final URL** the navigation settled on. If
+  the redirect target is disallowed, the capture is abandoned with `robots_redirect_disallowed`,
+  artifacts are discarded, and nothing is written (`failures.json` keeps `requestedUrl` + the
+  matched rule). The URL is re-read immediately before anything is written and re-checked if it
+  moved in between (a main-frame `framenavigated` log is kept in `meta.redirect.navigationLog`); an
+  allowed late move is recorded as `late_navigation`, a denied one discards the capture.
+  **Not robots-checked**: the subresource requests the rendering engine makes on its own (scripts,
+  stylesheets, images, fonts) and any frame URLs — robots.txt regulates crawling URLs, not the
+  engine's subresource fetches, so the capture behaves like a normal browser there. Frame content
+  is not persisted (see the a11y document scope above).
 - **Per-host pacing ≥ 1.5 s** between any two requests to the same host (robots fetch, navigation
   and retries all pass through one `HostThrottle`); a larger `Crawl-delay` raises that host's floor,
   and a `Crawl-delay` above 30 s skips the host with a recorded reason. `run-report.json.hostPacing`
@@ -163,11 +183,17 @@ A page is `ok`, `partial` (captured, but e.g. a screenshot or a11y snapshot fail
 cross-host redirect was recorded) or `failed` (no usable capture). `meta.json.status` is always the
 HTTP status; capture state lives in the run report and in `meta.qualityFlags`.
 
-Quality flags: `suspicious_empty_render` (no rendered nodes, or <20 chars of body text with <100
-nodes — this is what catches SPA shells that return HTTP 200 and render nothing),
+Quality flags: `suspicious_empty_render` (no rendered nodes; or <20 chars of body text with <100
+nodes; or a page whose scripts threw and which rendered fewer than 150 nodes and 300 chars — this
+is what catches SPA shells and failed-JS pages that return HTTP 200 and render nothing usable),
 `ax_coverage_low` (a11y match ratio < 0.6 on a page with ≥50 nodes, i.e. the join is low fidelity
-and the fallback roles dominate), `dom_changed_during_capture` (more than 1 % of elements appeared
-after the analysis pass, i.e. the page re-rendered mid-capture), `artifact_cap_exceeded` (below).
+and the fallback roles dominate), `dom_changed_during_capture` (more than 1 % of *laid-out* elements
+appeared after the analysis pass, i.e. the page re-rendered mid-capture; script/style injections do
+not count, and sub-threshold loss is still visible as `counts.nodesWithoutDomPath`),
+`cross_origin_frame` (a third-party frame is embedded; its content is not persisted),
+`late_navigation` (the URL moved after the robots check and was re-checked), `asset_load_failed`
+(a same-host stylesheet/script failed at the network layer or returned ≥400 — such a page renders
+degraded, so it is recorded as `partial`, not `ok`), `artifact_cap_exceeded` (below).
 
 **Terminal failures discard artifacts**: for `robots_*`, `navigation_failed`, `http_error` and
 `capture_failed`, any directory from an earlier successful run is removed so `failures.json` can
@@ -204,9 +230,12 @@ decision for the corpus owner.
 - `verify-alignment.mjs <page-dir>` — four independent checks with an explicit verdict, blockers and
   warnings:
   1. **domResolution** — re-parse `dom.html` in a browser and assert every `cleanedPath` resolves
-     with the right tag (blocker).
-  2. **colour grid** — 5×5 grid inside each solid-colour node vs its computed background, with
-     same-size controls above/below that must not match. Non-matching candidates are explained
+     with the right tag, that `cleanedIndex` matches the pre-order index of that element, and that a
+     sample of `a11y.json[].domIndex` resolves to a tag consistent with the AX role (blocker).
+  2. **colour grid** — 5×5 grid across the whole box (1 px inset, not the 10 % inset used before,
+     which could hide a large offset) inside each solid-colour node vs its computed background,
+     with same-size controls above/below that must not match; `--min-fraction` defaults to 0.6.
+     Non-matching candidates are explained
      (`translucent-overlay`, `ancestor-transparent`, `covered-by-later-node`,
      `covered-by-overlapping-node`, `fixed-or-sticky-relayout`, `near-match`, `non-discriminating`,
      `low-coverage`); `unexplained` is the alarm signal (blocker).
@@ -216,16 +245,23 @@ decision for the corpus owner.
   4. **frame anchor** — `viewport.png` vs the top of `full.png`. `< 0.99` is a warning: full-page
      capture re-lays out sticky/fixed and viewport-sized content, so this anchor is weak on pages
      with such elements (arco-design measured 0.970 in a 462×292 region).
-  Also reports **shift sensitivity**: the smallest offset the matched elements can detect
-  (`min(min(w,h)/2)`), i.e. "alignment proven to within X px", warning when coarser than
-  `--max-shift-sensitivity` (default 16).
+  Also reports **shift sensitivity**: the smallest offset the matched elements actually detect —
+  measured (each candidate's grid is re-sampled at 1,2,3,…,256 px offsets until the match fraction
+  drops below `--min-fraction`), with the analytic bound `ceil(min(w,h)·(1−minFraction))` as a
+  fallback for elements larger than the ladder. That is "alignment proven to within X px", warning
+  when coarser than `--max-shift-sensitivity` (default 16). The measured threshold is far tighter
+  than the old `min(w,h)/2` estimate: the pilot reports 1–16 px. The same offset-ladder reasoning
+  is why `minFraction` was raised: with a full-box grid the detectable offset is
+  `min(w,h)·(1−minFraction)`, so a low threshold silently weakens the claim.
 - `verify-determinism.mjs --pair A:B [--pair C:D]` — see above; exits non-zero only on a real
   difference.
-- `test-guards.mjs` — 13 checks against a local server + stub robots, no external network:
-  redirect-target robots denial recorded + artifacts discarded, cross-host redirect captured and
-  recorded, `robots.txt` cross-origin redirect not followed, stale-artifact discard on `http_error`,
-  and the robots-parser rules (pre-`user-agent` rules ignored, `$` excluded from specificity,
-  plain disallow still blocks).
+- `test-guards.mjs` — 22 checks against a local server + stub robots, no external network:
+  redirect-target robots denial recorded + artifacts discarded (cross-host *and* same-host-to-
+  disallowed-path), cross-host redirect captured and recorded, `robots.txt` cross-origin redirect
+  not followed, stale-artifact discard on `http_error`, sparse-render-with-page-error recording,
+  same-host stylesheet error ⇒ `partial` + `asset_load_failed`, third-party frame content not
+  persisted + `cross_origin_frame` flag, and the robots-parser rules (pre-`user-agent` rules
+  ignored, `$` excluded from specificity, product-token matching, plain disallow still blocks).
 - `report.mjs [--corpus corpus] [--json]` — per-archetype coverage, failure breakdown, size
   distribution and quality-flag counts from `run-report.json` + `failures.json`.
 

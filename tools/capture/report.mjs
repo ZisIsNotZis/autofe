@@ -49,6 +49,16 @@ function scanCorpus(corpusDir) {
         robotsVia: meta.robots?.fetchedVia ?? null,
         redirected: meta.redirect?.redirected ?? false,
         errors: meta.errors?.length ?? 0,
+        // Join integrity: nodes that could not be resolved into dom.html, elements that appeared
+        // after the analysis pass, and parser duplications of our markers.
+        nodesWithoutDomPath: meta.counts?.nodesWithoutDomPath ?? 0,
+        retaggedElements: meta.counts?.retaggedElements ?? 0,
+        retaggedRenderedElements: meta.counts?.retaggedRenderedElements ?? 0,
+        domReparseDuplicates: meta.counts?.domReparseDuplicates ?? 0,
+        adExcludedNodes: meta.counts?.adExcludedNodes ?? 0,
+        a11yFrameNodesExcluded: meta.counts?.a11yFrameNodesExcluded ?? 0,
+        assetLoadFailures: meta.counts?.assetLoadFailures ?? 0,
+        crossOriginFrames: (meta.frames ?? []).filter((frame) => frame.crossOrigin).length,
       });
     }
   }
@@ -84,6 +94,18 @@ function main() {
   const failureReasons = {};
   for (const failure of failures) failureReasons[failure.reason] = (failureReasons[failure.reason] ?? 0) + 1;
 
+  const domIntegrity = {
+    nodesWithoutDomPath: pages.reduce((sum, entry) => sum + entry.nodesWithoutDomPath, 0),
+    pagesWithNodesWithoutDomPath: pages.filter((entry) => entry.nodesWithoutDomPath > 0).length,
+    retaggedElements: pages.reduce((sum, entry) => sum + entry.retaggedElements, 0),
+    retaggedRenderedElements: pages.reduce((sum, entry) => sum + entry.retaggedRenderedElements, 0),
+    domReparseDuplicates: pages.reduce((sum, entry) => sum + entry.domReparseDuplicates, 0),
+    adExcludedNodes: pages.reduce((sum, entry) => sum + entry.adExcludedNodes, 0),
+    a11yFrameNodesExcluded: pages.reduce((sum, entry) => sum + entry.a11yFrameNodesExcluded, 0),
+    pagesWithAssetLoadFailure: pages.filter((entry) => entry.assetLoadFailures > 0).length,
+    pagesWithCrossOriginFrame: pages.filter((entry) => entry.crossOriginFrames > 0).length,
+  };
+
   const summary = {
     corpusDir: path.relative(process.cwd(), corpusDir),
     capturedPages: pages.length,
@@ -100,6 +122,7 @@ function main() {
       max: sizes.length ? sizes[sizes.length - 1] : 0,
     },
     qualityFlags: flagCounts,
+    domIntegrity,
     failureReasons,
     failureList: failures.map((failure) => ({ page: `${failure.site}/${failure.page}`, archetype: failure.archetype, reason: failure.reason, message: failure.message })),
     archetypeCoverage: byArchetype,
@@ -112,6 +135,9 @@ function main() {
 
   process.stdout.write(`${summary.corpusDir}: ${summary.capturedPages} captured pages (${summary.domains} domains), ${summary.emptyCapturePages} empty, ${summary.failedPages} failed\n`);
   process.stdout.write(`nodes: rendered=${summary.renderedNodes} visible=${summary.visibleNodes}\n`);
+  process.stdout.write(
+    `dom integrity: nodesWithoutDomPath=${domIntegrity.nodesWithoutDomPath} (${domIntegrity.pagesWithNodesWithoutDomPath} pages), retagged=${domIntegrity.retaggedElements} (rendered ${domIntegrity.retaggedRenderedElements}), reparseDuplicates=${domIntegrity.domReparseDuplicates}, adExcluded=${domIntegrity.adExcludedNodes}, frameAxExcluded=${domIntegrity.a11yFrameNodesExcluded}, assetLoadFailedPages=${domIntegrity.pagesWithAssetLoadFailure} (${domIntegrity.pagesWithCrossOriginFrame} pages with cross-origin frames)\n`,
+  );
   process.stdout.write(`artifacts: total=${mb(summary.artifactBytes.total)} mean=${mb(summary.artifactBytes.mean)} median=${mb(summary.artifactBytes.median)} p90=${mb(summary.artifactBytes.p90)} max=${mb(summary.artifactBytes.max)}\n\n`);
 
   process.stdout.write('per archetype:\n');

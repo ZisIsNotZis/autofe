@@ -89,6 +89,10 @@ export const DEFAULT_OPTIONS = {
   maxCrawlDelayMs: 30000,
   minVisibleNodes: 10,
   minBodyTextLength: 20,
+  // A page whose scripts threw and which then rendered only a speck is a failed capture even if
+  // it is just above the two thresholds above.
+  sparseBodyTextLength: 300,
+  sparseNodes: 150,
   // Per-page artifact ceiling in bytes; applied to the JSON artifacts only (see capture.mjs).
   maxPageBytes: 2_000_000,
   robotsTimeoutMs: 20000,

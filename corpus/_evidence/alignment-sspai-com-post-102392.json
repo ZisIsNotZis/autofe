@@ -4,30 +4,30 @@
     "width": 1440,
     "height": 5225
   },
-  "nodesChecked": 351,
+  "nodesChecked": 365,
   "nodesBelowCapturedHeight": 0,
   "colourCandidatesExamined": 2,
   "tolerancePerChannel": 3,
-  "minimumMatchingFraction": 0.25,
+  "minimumMatchingFraction": 0.6,
   "minimumDiscriminating": 2,
-  "aligned": 1,
+  "aligned": 0,
   "unexplained": 0,
   "paintedCarriesEvidence": true,
-  "shiftSensitivityPx": 32,
+  "shiftSensitivityPx": null,
   "classificationCounts": {
     "translucent-overlay": 1,
     "ancestor-transparent": 0,
     "covered-by-later-node": 0,
     "covered-by-overlapping-node": 0,
     "fixed-or-sticky-relayout": 0,
-    "near-match": 0,
+    "near-match": 1,
     "non-discriminating": 0,
     "low-coverage": 0
   },
   "paintedFeature": {
-    "candidates": 13,
-    "examined": 13,
-    "passed": 8,
+    "candidates": 14,
+    "examined": 14,
+    "passed": 9,
     "failed": 0,
     "skipped": 5,
     "required": true,
@@ -204,6 +204,32 @@
         "passed": true
       },
       {
+        "domPath": "html/body[1]/div[0]/div[0]/header[0]/div[0]/div[2]/div[2]/div[1]/div[0]/div[1]/svg[0]",
+        "tag": "svg",
+        "bbox": {
+          "x": 1151.5,
+          "y": 73,
+          "w": 124,
+          "h": 27
+        },
+        "localBackground": "rgb(255, 255, 255)",
+        "inkPixels": 775,
+        "inkFraction": 0.231,
+        "centroid": [
+          1212,
+          85
+        ],
+        "centroidInsideBox": true,
+        "inkBox": [
+          1152,
+          75,
+          1275,
+          98
+        ],
+        "inkWithinBox": true,
+        "passed": true
+      },
+      {
         "domPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/article[0]/div[0]/div[0]/div[2]/div[0]/div[0]/span[0]/span[1]/div[0]/div[0]/a[0]/img[0]",
         "tag": "img",
         "bbox": {
@@ -273,20 +299,28 @@
   },
   "domResolution": {
     "available": true,
-    "checkedPaths": 351,
-    "resolved": 351,
+    "checkedPaths": 365,
+    "resolved": 365,
     "unresolved": [],
     "unresolvedCount": 0,
     "tagMismatch": [],
     "tagMismatchCount": 0,
-    "elementsInDom": 409,
+    "indexMismatch": [],
+    "indexMismatchCount": 0,
+    "a11yDomIndexSample": {
+      "sampled": 11,
+      "checked": 3,
+      "skipped": 8,
+      "mismatchCount": 0,
+      "mismatches": [],
+      "note": "a11y.json[].domIndex resolved against the parsed dom.html and compared with the tag implied by the AX role (elements with an explicit role attribute are skipped)"
+    },
+    "elementsInDom": 424,
     "passed": true
   },
   "blockers": [],
-  "warnings": [
-    "coarse shift detection: smallest matched element proves alignment only to 32px (> 16px)"
-  ],
-  "verdict": "aligned-painted-features-with-warnings",
+  "warnings": [],
+  "verdict": "aligned-painted-features",
   "checks": [
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/article[0]/div[1]/div[0]/div[0]/div[0]/hr[16]",
@@ -345,20 +379,25 @@
         "fraction": 0,
         "nearPoints": 0,
         "nearFraction": 0,
-        "blendedPoints": 22,
-        "blendedFraction": 0.88,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
         "blend": {
           "alpha": 0.11,
           "over": "white"
         },
-        "minChannelDelta": 27,
+        "minChannelDelta": 26,
         "centrePixel": [
           255,
           255,
           255
         ]
       },
-      "shiftSensitivityPx": 16
+      "shiftDetection": {
+        "measuredPx": 1,
+        "axis": "y",
+        "fractionAtDetection": 0,
+        "analyticPx": 14
+      }
     },
     {
       "domPath": "html/body[1]/div[0]/div[0]/div[1]/div[0]/article[0]/div[2]/div[1]/button[0]/span[0]",
@@ -372,15 +411,15 @@
         "h": 64
       },
       "expectedBackground": "rgb(255, 244, 230)",
-      "classification": "aligned",
+      "classification": "near-match",
       "direct": {
         "gridPoints": 25,
-        "matchingPoints": 19,
-        "fraction": 0.76,
-        "nearPoints": 19,
-        "nearFraction": 0.76,
-        "blendedPoints": 4,
-        "blendedFraction": 0.16,
+        "matchingPoints": 13,
+        "fraction": 0.52,
+        "nearPoints": 15,
+        "nearFraction": 0.6,
+        "blendedPoints": 11,
+        "blendedFraction": 0.44,
         "blend": {
           "alpha": 0.12,
           "over": "white"
@@ -430,7 +469,12 @@
           255
         ]
       },
-      "shiftSensitivityPx": 32
+      "shiftDetection": {
+        "measuredPx": 1,
+        "axis": "y",
+        "fractionAtDetection": 0.52,
+        "analyticPx": 26
+      }
     }
   ]
 }

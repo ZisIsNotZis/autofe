@@ -326,14 +326,20 @@ export function waitForDomQuiescence(quietMs = 800, maxMs = 12000) {
 // between that pass and DOM.getDocument would otherwise silently lose their AX join).
 // Existing markers are preserved, so ids stay consistent with the analysis payload.
 export function retagMarkers() {
-  let added = 0;
+  let addedTotal = 0;
+  let addedRendered = 0;
+  // Ids continue from the number of already-marked elements, so a second call cannot reissue an
+  // id that is already in use (the previous version restarted at r0 every call).
+  const existing = document.querySelectorAll('[data-af-node]').length;
   for (const el of document.querySelectorAll('*')) {
-    if (!el.hasAttribute('data-af-node')) {
-      el.setAttribute('data-af-node', `r${added}`);
-      added += 1;
-    }
+    if (el.hasAttribute('data-af-node')) continue;
+    el.setAttribute('data-af-node', `r${existing + addedTotal}`);
+    addedTotal += 1;
+    const style = getComputedStyle(el);
+    const rect = el.getBoundingClientRect();
+    if (style.display !== 'none' && rect.width > 0 && rect.height > 0) addedRendered += 1;
   }
-  return added;
+  return { addedTotal, addedRendered };
 }
 
 // JSON-LD (`script[type="application/ld+json"]`) plus best-effort microdata, which is

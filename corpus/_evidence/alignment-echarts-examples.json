@@ -8,18 +8,18 @@
   "nodesBelowCapturedHeight": 3218,
   "colourCandidatesExamined": 1,
   "tolerancePerChannel": 3,
-  "minimumMatchingFraction": 0.25,
+  "minimumMatchingFraction": 0.6,
   "minimumDiscriminating": 2,
-  "aligned": 1,
+  "aligned": 0,
   "unexplained": 0,
   "paintedCarriesEvidence": true,
-  "shiftSensitivityPx": 10,
+  "shiftSensitivityPx": null,
   "classificationCounts": {
     "translucent-overlay": 0,
     "ancestor-transparent": 0,
     "covered-by-later-node": 0,
     "covered-by-overlapping-node": 0,
-    "fixed-or-sticky-relayout": 0,
+    "fixed-or-sticky-relayout": 1,
     "near-match": 0,
     "non-discriminating": 0,
     "low-coverage": 0
@@ -290,6 +290,16 @@
     "unresolvedCount": 0,
     "tagMismatch": [],
     "tagMismatchCount": 0,
+    "indexMismatch": [],
+    "indexMismatchCount": 0,
+    "a11yDomIndexSample": {
+      "sampled": 16,
+      "checked": 1,
+      "skipped": 15,
+      "mismatchCount": 0,
+      "mismatches": [],
+      "note": "a11y.json[].domIndex resolved against the parsed dom.html and compared with the tag implied by the AX role (elements with an explicit role attribute are skipped)"
+    },
     "elementsInDom": 4325,
     "passed": true
   },
@@ -309,15 +319,15 @@
         "h": 20
       },
       "expectedBackground": "rgb(220, 223, 230)",
-      "classification": "aligned",
+      "classification": "fixed-or-sticky-relayout",
       "direct": {
         "gridPoints": 25,
-        "matchingPoints": 15,
-        "fraction": 0.6,
+        "matchingPoints": 14,
+        "fraction": 0.56,
         "nearPoints": 15,
         "nearFraction": 0.6,
-        "blendedPoints": 10,
-        "blendedFraction": 0.4,
+        "blendedPoints": 11,
+        "blendedFraction": 0.44,
         "blend": {
           "alpha": 0.08,
           "over": "white"
@@ -354,20 +364,25 @@
         "fraction": 0,
         "nearPoints": 1,
         "nearFraction": 0.04,
-        "blendedPoints": 23,
-        "blendedFraction": 0.92,
+        "blendedPoints": 21,
+        "blendedFraction": 0.84,
         "blend": {
-          "alpha": 0.31,
+          "alpha": 0.11,
           "over": "white"
         },
-        "minChannelDelta": 7,
+        "minChannelDelta": 11,
         "centrePixel": [
           255,
           255,
           255
         ]
       },
-      "shiftSensitivityPx": 10,
+      "shiftDetection": {
+        "measuredPx": 1,
+        "axis": "y",
+        "fractionAtDetection": 0.4,
+        "analyticPx": 8
+      },
       "positionedAncestor": {
         "domPath": "html/body[1]/div[3]/div[1]/div[0]/div[0]/div[2]",
         "position": "fixed"
