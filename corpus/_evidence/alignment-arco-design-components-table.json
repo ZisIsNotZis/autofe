@@ -1,0 +1,1676 @@
+{
+  "pageDir": "corpus/arco-design/components-table",
+  "fullPng": {
+    "width": 1440,
+    "height": 25870
+  },
+  "nodesChecked": 17525,
+  "candidatesExamined": 25,
+  "tolerancePerChannel": 3,
+  "minimumMatchingFraction": 0.25,
+  "aligned": 14,
+  "unexplained": 0,
+  "classificationCounts": {
+    "translucent-overlay": 1,
+    "ancestor-transparent": 0,
+    "covered-by-later-node": 0,
+    "non-discriminating": 10,
+    "low-coverage": 0
+  },
+  "frameAnchor": {
+    "available": true,
+    "viewportSize": {
+      "w": 1440,
+      "h": 900
+    },
+    "sampledPixels": 144000,
+    "identicalFraction": 0.9701805555555556,
+    "note": "viewport.png is captured at scroll (0,0); equality with the top of full.png proves full.png starts at the document origin"
+  },
+  "verdict": "aligned",
+  "checks": [
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[13]",
+      "tag": "pre",
+      "role": "generic",
+      "bbox": {
+        "x": 356,
+        "y": 22343.86,
+        "w": 988,
+        "h": 842
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.95,
+          "over": "black"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 21,
+        "blendedFraction": 0.84,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 20,
+        "fraction": 0.8,
+        "blendedPoints": 5,
+        "blendedFraction": 0.2,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[28]",
+      "tag": "pre",
+      "role": "generic",
+      "bbox": {
+        "x": 356,
+        "y": 24659.53,
+        "w": 988,
+        "h": 530
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 12,
+        "fraction": 0.48,
+        "blendedPoints": 13,
+        "blendedFraction": 0.52,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 1,
+        "fraction": 0.04,
+        "blendedPoints": 22,
+        "blendedFraction": 0.88,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 2,
+        "centrePixel": [
+          183,
+          188,
+          195
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[23]",
+      "tag": "pre",
+      "role": "generic",
+      "bbox": {
+        "x": 356,
+        "y": 24143.86,
+        "w": 988,
+        "h": 290
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 12,
+        "fraction": 0.48,
+        "blendedPoints": 13,
+        "blendedFraction": 0.52,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[21]",
+      "tag": "pre",
+      "role": "generic",
+      "bbox": {
+        "x": 356,
+        "y": 23807.86,
+        "w": 988,
+        "h": 266
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 15,
+        "fraction": 0.6,
+        "blendedPoints": 10,
+        "blendedFraction": 0.4,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[15]",
+      "tag": "pre",
+      "role": "generic",
+      "bbox": {
+        "x": 356,
+        "y": 23255.86,
+        "w": 988,
+        "h": 194
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 15,
+        "fraction": 0.6,
+        "blendedPoints": 10,
+        "blendedFraction": 0.4,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[17]",
+      "tag": "pre",
+      "role": "generic",
+      "bbox": {
+        "x": 356,
+        "y": 23519.86,
+        "w": 988,
+        "h": 74
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.96,
+          "over": "black"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 20,
+        "fraction": 0.8,
+        "blendedPoints": 5,
+        "blendedFraction": 0.2,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 20,
+        "fraction": 0.8,
+        "blendedPoints": 5,
+        "blendedFraction": 0.2,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/pre[19]",
+      "tag": "pre",
+      "role": "generic",
+      "bbox": {
+        "x": 356,
+        "y": 23663.86,
+        "w": 988,
+        "h": 74
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 20,
+        "fraction": 0.8,
+        "blendedPoints": 5,
+        "blendedFraction": 0.2,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 20,
+        "fraction": 0.8,
+        "blendedPoints": 5,
+        "blendedFraction": 0.2,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[12]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "tag": "div",
+      "role": "generic",
+      "bbox": {
+        "x": 405,
+        "y": 7698,
+        "w": 889,
+        "h": 41
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 6,
+        "fraction": 0.24,
+        "blendedPoints": 15,
+        "blendedFraction": 0.6,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          138,
+          145,
+          156
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 24,
+        "blendedFraction": 0.96,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          229,
+          230,
+          235
+        ]
+      },
+      "coveringNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[12]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]",
+        "tag": "table",
+        "bbox": {
+          "x": 405,
+          "y": 7698,
+          "w": 1600,
+          "h": 41
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "tag": "div",
+      "role": "generic",
+      "bbox": {
+        "x": 405,
+        "y": 13750,
+        "w": 889,
+        "h": 41
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 23,
+        "blendedFraction": 0.92,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          229,
+          230,
+          235
+        ]
+      },
+      "coveringNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]",
+        "tag": "table",
+        "bbox": {
+          "x": 405,
+          "y": 13750,
+          "w": 1000,
+          "h": 41
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "tag": "div",
+      "role": "generic",
+      "bbox": {
+        "x": 405,
+        "y": 15734,
+        "w": 889,
+        "h": 41
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 20,
+        "fraction": 0.8,
+        "blendedPoints": 5,
+        "blendedFraction": 0.2,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          229,
+          230,
+          235
+        ]
+      },
+      "coveringNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]",
+        "tag": "table",
+        "bbox": {
+          "x": 405,
+          "y": 15734,
+          "w": 1200,
+          "h": 41
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[2]",
+      "tag": "div",
+      "role": "generic",
+      "bbox": {
+        "x": 405,
+        "y": 15925,
+        "w": 889,
+        "h": 41
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 15,
+        "fraction": 0.6,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          232,
+          255,
+          234
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "coveringNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[2]/table[0]",
+        "tag": "table",
+        "bbox": {
+          "x": 405,
+          "y": 15925,
+          "w": 1200,
+          "h": 41
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[15]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[2]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 694.64,
+        "y": 9603,
+        "w": 599.36,
+        "h": 41
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.83,
+          "over": "black"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          200,
+          202,
+          206
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 22,
+        "blendedFraction": 0.88,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          229,
+          230,
+          235
+        ]
+      },
+      "coveringNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[15]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[2]/div[0]",
+        "tag": "div",
+        "bbox": {
+          "x": 695.64,
+          "y": 9603,
+          "w": 598.36,
+          "h": 40
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[1]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 545,
+        "y": 8847,
+        "w": 553.31,
+        "h": 41
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 23,
+        "blendedFraction": 0.92,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 7,
+        "fraction": 0.28,
+        "blendedPoints": 17,
+        "blendedFraction": 0.68,
+        "blend": {
+          "alpha": 0.95,
+          "over": "black"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          229,
+          230,
+          235
+        ]
+      },
+      "coveringNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[1]/div[0]",
+        "tag": "div",
+        "bbox": {
+          "x": 546,
+          "y": 8847,
+          "w": 552.31,
+          "h": 40
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[0]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 405,
+        "y": 8847,
+        "w": 140,
+        "h": 123
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 24,
+        "blendedFraction": 0.96,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 23,
+        "blendedFraction": 0.92,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[1]/th[1]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 683.33,
+        "y": 8888,
+        "w": 414.98,
+        "h": 41
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 20,
+        "fraction": 0.8,
+        "blendedPoints": 5,
+        "blendedFraction": 0.2,
+        "blend": {
+          "alpha": 0.99,
+          "over": "black"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 8,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "coveringNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[1]/th[1]/div[0]",
+        "tag": "div",
+        "bbox": {
+          "x": 684.33,
+          "y": 8888,
+          "w": 413.98,
+          "h": 40
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[8]/thead[0]/tr[0]/th[1]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 547.66,
+        "y": 20084.28,
+        "w": 407.3,
+        "h": 40
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 23,
+        "blendedFraction": 0.92,
+        "blend": {
+          "alpha": 0.93,
+          "over": "black"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[5]/thead[0]/tr[0]/th[1]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 551.42,
+        "y": 19038.52,
+        "w": 404.38,
+        "h": 40
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 22,
+        "blendedFraction": 0.88,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 10,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[11]/thead[0]/tr[0]/th[1]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 551.39,
+        "y": 20641.42,
+        "w": 389.11,
+        "h": 40
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[2]/tbody[1]/tr[10]/td[1]/code[2]",
+      "tag": "code",
+      "role": "code",
+      "bbox": {
+        "x": 561.58,
+        "y": 17045.72,
+        "w": 331.97,
+        "h": 45.19
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 7,
+        "fraction": 0.28,
+        "blendedPoints": 17,
+        "blendedFraction": 0.68,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[14]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[3]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 1064,
+        "y": 8847,
+        "w": 120,
+        "h": 123
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 24,
+        "blendedFraction": 0.96,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[3]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 685,
+        "y": 13750,
+        "w": 360,
+        "h": 41
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.8,
+          "over": "black"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 24,
+        "blendedFraction": 0.96,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          229,
+          230,
+          235
+        ]
+      },
+      "coveringNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[3]/div[0]",
+        "tag": "div",
+        "bbox": {
+          "x": 685,
+          "y": 13750,
+          "w": 360,
+          "h": 40
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[4]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 1045,
+        "y": 13750,
+        "w": 360,
+        "h": 41
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 15,
+        "fraction": 0.6,
+        "blendedPoints": 10,
+        "blendedFraction": 0.4,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 24,
+        "blendedFraction": 0.96,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          229,
+          230,
+          235
+        ]
+      },
+      "coveringNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[22]/div[1]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[4]/div[0]",
+        "tag": "div",
+        "bbox": {
+          "x": 1045,
+          "y": 13750,
+          "w": 360,
+          "h": 40
+        }
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[2]/thead[0]/tr[0]/th[1]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 549.58,
+        "y": 16258,
+        "w": 367.41,
+        "h": 40
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[3]/table[2]/tbody[1]/tr[0]/td[1]/code[0]",
+      "tag": "code",
+      "role": "code",
+      "bbox": {
+        "x": 561.58,
+        "y": 16309,
+        "w": 321.58,
+        "h": 45.19
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "translucent-overlay",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 3,
+        "fraction": 0.12,
+        "blendedPoints": 18,
+        "blendedFraction": 0.72,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[1]",
+      "tag": "th",
+      "role": "columnheader",
+      "bbox": {
+        "x": 605,
+        "y": 15734,
+        "w": 333.33,
+        "h": 41
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.92,
+          "over": "black"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 20,
+        "fraction": 0.8,
+        "blendedPoints": 5,
+        "blendedFraction": 0.2,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 13,
+        "centrePixel": [
+          229,
+          230,
+          235
+        ]
+      },
+      "coveringNode": {
+        "domPath": "html/body[1]/div[0]/div[0]/div[2]/div[0]/div[2]/div[0]/span[0]/span[2]/div[24]/div[1]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[1]/div[0]",
+        "tag": "div",
+        "bbox": {
+          "x": 606,
+          "y": 15734,
+          "w": 332.33,
+          "h": 40
+        }
+      }
+    }
+  ]
+}

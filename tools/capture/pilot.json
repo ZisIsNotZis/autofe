@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "updatedAt": "2026-09-18",
+  "purpose": "Pilot gate for the M0 capture pipeline: 11 pages spanning 10 archetypes over 11 hosts, so per-host delay, robots handling, SPA-vs-SSR rendering and the failure recorder are all exercised. Selected with `--pilot`.",
+  "pages": [
+    "mi-com/home",
+    "mi-com/product-detail-mi15",
+    "jd-com/category-phone",
+    "search-jd/search-phone",
+    "juejin-cn/user-712139234359182",
+    "sspai-com/post-102392",
+    "element-plus/button",
+    "arco-design/components-table",
+    "echarts/examples",
+    "getbootstrap/example-checkout",
+    "passport-baidu/login"
+  ],
+  "archetypeCoverage": [
+    "landing/home",
+    "product-detail",
+    "category/list",
+    "search-results",
+    "profile/account",
+    "article/editorial",
+    "docs/design-system",
+    "table-heavy/admin",
+    "dashboard/data-viz",
+    "form/checkout/settings"
+  ],
+  "v2Changes": [
+    "bilibili search/profile pages dropped: host robots.txt disallows `*` entirely",
+    "ant-design-pro pages dropped: SPA renders empty in headless Chrome from this environment (0 body text on 4 routes, all bundles HTTP 200)",
+    "added echarts/examples (dashboard/data-viz), getbootstrap/example-checkout (form), passport-baidu/login (form)",
+    "search-jd/search-phone kept on purpose: JD redirects it to passport.jd.com, which exercises cross-host-redirect recording"
+  ]
+}

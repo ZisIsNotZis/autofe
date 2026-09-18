@@ -1,0 +1,1540 @@
+{
+  "pageDir": "corpus/element-plus/button",
+  "fullPng": {
+    "width": 1440,
+    "height": 7615
+  },
+  "nodesChecked": 1509,
+  "candidatesExamined": 25,
+  "tolerancePerChannel": 3,
+  "minimumMatchingFraction": 0.25,
+  "aligned": 9,
+  "unexplained": 0,
+  "classificationCounts": {
+    "translucent-overlay": 3,
+    "ancestor-transparent": 0,
+    "covered-by-later-node": 0,
+    "non-discriminating": 13,
+    "low-coverage": 0
+  },
+  "frameAnchor": {
+    "available": true,
+    "viewportSize": {
+      "w": 1440,
+      "h": 900
+    },
+    "sampledPixels": 144000,
+    "identicalFraction": 1,
+    "note": "viewport.png is captured at scroll (0,0); equality with the top of full.png proves full.png starts at the document origin"
+  },
+  "verdict": "aligned",
+  "checks": [
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[27]/div[0]/div[0]/button[0]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 355.5,
+        "y": 2861.95,
+        "w": 147.59,
+        "h": 32
+      },
+      "expectedBackground": "rgb(64, 158, 255)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.83,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          64,
+          158,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 181,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 19,
+        "fraction": 0.76,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.89,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          88,
+          170,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[47]/div[0]/div[0]/button[6]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 837.06,
+        "y": 4466.44,
+        "w": 126.33,
+        "h": 32
+      },
+      "expectedBackground": "rgb(239, 240, 253)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 21,
+        "fraction": 0.84,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          191,
+          194,
+          249
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.18,
+          "over": "white"
+        },
+        "minChannelDelta": 16,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 21,
+        "blendedFraction": 0.84,
+        "blend": {
+          "alpha": 0.18,
+          "over": "white"
+        },
+        "minChannelDelta": 7,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[27]/div[0]/div[0]/button[1]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 502.09,
+        "y": 2861.95,
+        "w": 119.83,
+        "h": 32
+      },
+      "expectedBackground": "rgb(64, 158, 255)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 23,
+        "fraction": 0.92,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.89,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          88,
+          170,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 181,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 191,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[33]/div[0]/button[2]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 591,
+        "y": 3406.52,
+        "w": 109.75,
+        "h": 32
+      },
+      "expectedBackground": "rgb(64, 158, 255)",
+      "classification": "translucent-overlay",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.71,
+          "over": "white"
+        },
+        "minChannelDelta": 57,
+        "centrePixel": [
+          228,
+          241,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 22,
+        "blendedFraction": 0.88,
+        "blend": {
+          "alpha": 0.11,
+          "over": "white"
+        },
+        "minChannelDelta": 158,
+        "centrePixel": [
+          236,
+          245,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 191,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[33]/div[0]/button[0]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 355.5,
+        "y": 3406.52,
+        "w": 105.75,
+        "h": 32
+      },
+      "expectedBackground": "rgb(64, 158, 255)",
+      "classification": "translucent-overlay",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.71,
+          "over": "white"
+        },
+        "minChannelDelta": 57,
+        "centrePixel": [
+          138,
+          195,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 16,
+        "blendedFraction": 0.64,
+        "blend": {
+          "alpha": 0.11,
+          "over": "white"
+        },
+        "minChannelDelta": 145,
+        "centrePixel": [
+          245,
+          247,
+          250
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 191,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[33]/div[0]/button[1]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 473.25,
+        "y": 3406.52,
+        "w": 105.75,
+        "h": 32
+      },
+      "expectedBackground": "rgb(64, 158, 255)",
+      "classification": "translucent-overlay",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 24,
+        "blendedFraction": 0.96,
+        "blend": {
+          "alpha": 0.71,
+          "over": "white"
+        },
+        "minChannelDelta": 57,
+        "centrePixel": [
+          165,
+          209,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 20,
+        "blendedFraction": 0.8,
+        "blend": {
+          "alpha": 0.11,
+          "over": "white"
+        },
+        "minChannelDelta": 129,
+        "centrePixel": [
+          236,
+          245,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 191,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[22]/div[0]/div[0]/button[3]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 529.5,
+        "y": 2514.38,
+        "w": 99.02,
+        "h": 32
+      },
+      "expectedBackground": "rgb(64, 158, 255)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          214,
+          234,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 116,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 191,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[22]/div[0]/div[0]/button[4]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 640.52,
+        "y": 2514.38,
+        "w": 98.75,
+        "h": 32
+      },
+      "expectedBackground": "rgb(64, 158, 255)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.14,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          231,
+          243,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 161,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 191,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[47]/div[0]/div[0]/button[5]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 734.88,
+        "y": 4466.44,
+        "w": 90.19,
+        "h": 32
+      },
+      "expectedBackground": "rgb(177, 181, 247)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 22,
+        "fraction": 0.88,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.05,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          177,
+          181,
+          247
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 78,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 78,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[0]/button[2]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 551.89,
+        "y": 478.91,
+        "w": 88.94,
+        "h": 32
+      },
+      "expectedBackground": "rgb(103, 194, 58)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 23,
+        "fraction": 0.92,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.44,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          103,
+          194,
+          58
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 192,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 16,
+        "fraction": 0.64,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.39,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          103,
+          194,
+          58
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[1]/button[2]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 536.03,
+        "y": 526.91,
+        "w": 88.94,
+        "h": 32
+      },
+      "expectedBackground": "rgb(240, 249, 235)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 23,
+        "fraction": 0.92,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          240,
+          249,
+          235
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 20,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 10,
+        "fraction": 0.4,
+        "blendedPoints": 9,
+        "blendedFraction": 0.36,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          134,
+          206,
+          98
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[2]/button[2]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 546.45,
+        "y": 574.91,
+        "w": 88.94,
+        "h": 32
+      },
+      "expectedBackground": "rgb(103, 194, 58)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 22,
+        "fraction": 0.88,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.93,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          103,
+          194,
+          58
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 18,
+        "fraction": 0.72,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.94,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          103,
+          194,
+          58
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 127,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[3]/button[2]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 554.52,
+        "y": 622.91,
+        "w": 88.94,
+        "h": 32
+      },
+      "expectedBackground": "rgb(240, 249, 235)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 23,
+        "fraction": 0.92,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          240,
+          249,
+          235
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 13,
+        "fraction": 0.52,
+        "blendedPoints": 9,
+        "blendedFraction": 0.36,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          240,
+          249,
+          235
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 20,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[9]/div[0]/div[0]/div[0]/button[2]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 551.89,
+        "y": 975.3,
+        "w": 88.94,
+        "h": 32
+      },
+      "expectedBackground": "rgb(179, 225, 157)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 23,
+        "fraction": 0.92,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.45,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          179,
+          225,
+          157
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 98,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 98,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[9]/div[0]/div[0]/div[1]/button[2]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 536.03,
+        "y": 1023.3,
+        "w": 88.94,
+        "h": 32
+      },
+      "expectedBackground": "rgb(240, 249, 235)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 23,
+        "fraction": 0.92,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          240,
+          249,
+          235
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 20,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 20,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[0]/button[4]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 730.47,
+        "y": 478.91,
+        "w": 87.89,
+        "h": 32
+      },
+      "expectedBackground": "rgb(230, 162, 60)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 22,
+        "fraction": 0.88,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.24,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          250,
+          234,
+          210
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 195,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 12,
+        "fraction": 0.48,
+        "blendedPoints": 6,
+        "blendedFraction": 0.24,
+        "blend": {
+          "alpha": 0.34,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          233,
+          173,
+          84
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[1]/button[4]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 714.61,
+        "y": 526.91,
+        "w": 87.89,
+        "h": 32
+      },
+      "expectedBackground": "rgb(253, 246, 236)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 22,
+        "fraction": 0.88,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          230,
+          162,
+          60
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 19,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 13,
+        "fraction": 0.52,
+        "blendedPoints": 9,
+        "blendedFraction": 0.36,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          253,
+          246,
+          236
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[2]/button[4]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 725.03,
+        "y": 574.91,
+        "w": 87.89,
+        "h": 32
+      },
+      "expectedBackground": "rgb(230, 162, 60)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 21,
+        "fraction": 0.84,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.12,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 17,
+        "fraction": 0.68,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.24,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          230,
+          162,
+          60
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 195,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[3]/button[4]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 733.09,
+        "y": 622.91,
+        "w": 87.89,
+        "h": 32
+      },
+      "expectedBackground": "rgb(253, 246, 236)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 22,
+        "fraction": 0.88,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          230,
+          163,
+          62
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 14,
+        "fraction": 0.56,
+        "blendedPoints": 9,
+        "blendedFraction": 0.36,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          253,
+          246,
+          236
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 19,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[9]/div[0]/div[0]/div[0]/button[4]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 730.47,
+        "y": 975.3,
+        "w": 87.89,
+        "h": 32
+      },
+      "expectedBackground": "rgb(243, 209, 158)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 22,
+        "fraction": 0.88,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.25,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          253,
+          245,
+          233
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 97,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 97,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[9]/div[0]/div[0]/div[1]/button[4]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 714.61,
+        "y": 1023.3,
+        "w": 87.89,
+        "h": 32
+      },
+      "expectedBackground": "rgb(253, 246, 236)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 22,
+        "fraction": 0.88,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          243,
+          209,
+          158
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 19,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 19,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[0]/button[1]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 451.78,
+        "y": 478.91,
+        "w": 84.11,
+        "h": 32
+      },
+      "expectedBackground": "rgb(64, 158, 255)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 1,
+        "blendedFraction": 0.04,
+        "blend": {
+          "alpha": 0.72,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          64,
+          158,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 181,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 13,
+        "fraction": 0.52,
+        "blendedPoints": 5,
+        "blendedFraction": 0.2,
+        "blend": {
+          "alpha": 0.78,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          95,
+          174,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[1]/button[1]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 435.92,
+        "y": 526.91,
+        "w": 84.11,
+        "h": 32
+      },
+      "expectedBackground": "rgb(236, 245, 255)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          236,
+          245,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 19,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 12,
+        "fraction": 0.48,
+        "blendedPoints": 9,
+        "blendedFraction": 0.36,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          110,
+          182,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[2]/button[1]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 446.34,
+        "y": 574.91,
+        "w": 84.11,
+        "h": 32
+      },
+      "expectedBackground": "rgb(64, 158, 255)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 23,
+        "fraction": 0.92,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.94,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          64,
+          158,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 18,
+        "fraction": 0.72,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.16,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          64,
+          158,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 94,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/main[5]/div[0]/div[0]/div[0]/div[0]/div[5]/div[0]/div[0]/div[3]/button[1]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 454.41,
+        "y": 622.91,
+        "w": 84.11,
+        "h": 32
+      },
+      "expectedBackground": "rgb(236, 245, 255)",
+      "classification": "non-discriminating",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          236,
+          245,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 13,
+        "fraction": 0.52,
+        "blendedPoints": 9,
+        "blendedFraction": 0.36,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          236,
+          245,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.15,
+          "over": "white"
+        },
+        "minChannelDelta": 19,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    }
+  ]
+}

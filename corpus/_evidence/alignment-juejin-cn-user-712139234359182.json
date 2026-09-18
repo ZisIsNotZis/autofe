@@ -1,0 +1,247 @@
+{
+  "pageDir": "corpus/juejin-cn/user-712139234359182",
+  "fullPng": {
+    "width": 1440,
+    "height": 4902
+  },
+  "nodesChecked": 934,
+  "candidatesExamined": 4,
+  "tolerancePerChannel": 3,
+  "minimumMatchingFraction": 0.25,
+  "aligned": 4,
+  "unexplained": 0,
+  "classificationCounts": {
+    "translucent-overlay": 0,
+    "ancestor-transparent": 0,
+    "covered-by-later-node": 0,
+    "non-discriminating": 0,
+    "low-coverage": 0
+  },
+  "frameAnchor": {
+    "available": true,
+    "viewportSize": {
+      "w": 1440,
+      "h": 900
+    },
+    "sampledPixels": 144000,
+    "identicalFraction": 1,
+    "note": "viewport.png is captured at scroll (0,0); equality with the top of full.png proves full.png starts at the document origin"
+  },
+  "verdict": "aligned",
+  "checks": [
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]/div[0]/nav[1]/ul[0]/ul[1]/li[0]/ul[0]/li[1]/div[0]/button[0]",
+      "tag": "button",
+      "role": "button",
+      "bbox": {
+        "x": 1195.02,
+        "y": 12,
+        "w": 94,
+        "h": 36
+      },
+      "expectedBackground": "rgb(30, 128, 255)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 22,
+        "fraction": 0.88,
+        "blendedPoints": 2,
+        "blendedFraction": 0.08,
+        "blend": {
+          "alpha": 0.45,
+          "over": "white"
+        },
+        "minChannelDelta": 0,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 0,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": null,
+        "centrePixel": null
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 212,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/main[2]/div[0]/div[0]/div[0]/div[6]/div[2]/div[1]/div[0]/span[0]/span[1]/div[0]",
+      "tag": "div",
+      "role": "generic",
+      "bbox": {
+        "x": 694,
+        "y": 269.69,
+        "w": 88,
+        "h": 34
+      },
+      "expectedBackground": "rgb(30, 128, 255)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 25,
+        "fraction": 1,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          30,
+          128,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 225,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 34,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]/div[0]/nav[1]/ul[0]/ul[1]/li[0]/ul[0]/li[0]/form[0]/div[1]",
+      "tag": "div",
+      "role": "generic",
+      "bbox": {
+        "x": 1130.02,
+        "y": 15,
+        "w": 44,
+        "h": 30
+      },
+      "expectedBackground": "rgb(242, 243, 245)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 0,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": null,
+        "centrePixel": null
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 5,
+        "fraction": 0.2,
+        "blendedPoints": 20,
+        "blendedFraction": 0.8,
+        "blend": {
+          "alpha": 0.23,
+          "over": "white"
+        },
+        "minChannelDelta": 2,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "domPath": "html/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/header[1]/div[0]/nav[1]/ul[0]/ul[1]/li[0]/ul[0]/li[1]/div[0]/div[1]",
+      "tag": "div",
+      "role": "generic",
+      "bbox": {
+        "x": 1289.02,
+        "y": 12,
+        "w": 20,
+        "h": 36
+      },
+      "expectedBackground": "rgb(30, 128, 255)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 0,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": null,
+        "centrePixel": null
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 212,
+        "centrePixel": [
+          242,
+          243,
+          245
+        ]
+      }
+    }
+  ]
+}

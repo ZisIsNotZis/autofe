@@ -1,0 +1,1160 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-18",
+  "notes": "Stratified seed for the M0 corpus. CN-first because several global sites are unreliable from this network. URLs were reachability-probed once (HTTP GET) on 2026-09-18; anything that failed the probe is recorded in droppedCandidates instead of being seeded. Unreachable pages during a run are recorded in corpus/failures.json, never dropped silently. Robots-denied pages are kept with `skip: true` plus a droppedCandidates entry, so nothing is silently removed.",
+  "primaryStratum": "archetype",
+  "secondaryStrata": [
+    "region",
+    "industry",
+    "styleTag"
+  ],
+  "sites": [
+    {
+      "slug": "mi-com",
+      "domain": "www.mi.com",
+      "origin": "https://www.mi.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "consumer-electronics",
+      "styleTag": "minimal-product",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://www.mi.com/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "shop-category-list",
+          "url": "https://www.mi.com/shop/category/list",
+          "archetype": "category/list"
+        },
+        {
+          "slug": "product-detail-mi15",
+          "url": "https://www.mi.com/shop/buy/detail?product_id=21096",
+          "archetype": "product-detail"
+        },
+        {
+          "slug": "search-phone",
+          "url": "https://www.mi.com/search?keyword=%E6%89%8B%E6%9C%BA",
+          "archetype": "search-results",
+          "note": "site-internal search; public search engines deny robots"
+        }
+      ]
+    },
+    {
+      "slug": "huawei-cn",
+      "domain": "www.huawei.com",
+      "origin": "https://www.huawei.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "consumer-electronics",
+      "styleTag": "corporate-brand",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://www.huawei.com/cn/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "consumer-phones",
+          "url": "https://consumer.huawei.com/cn/phones/",
+          "archetype": "category/list"
+        },
+        {
+          "slug": "search-phone",
+          "url": "https://www.huawei.com/cn/search?keyword=phone",
+          "archetype": "search-results"
+        }
+      ]
+    },
+    {
+      "slug": "apple-com",
+      "domain": "www.apple.com",
+      "origin": "https://www.apple.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "consumer-electronics",
+      "styleTag": "hero-product",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://www.apple.com/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "iphone-16",
+          "url": "https://www.apple.com/iphone-16/",
+          "archetype": "product-detail"
+        },
+        {
+          "slug": "ipad-air",
+          "url": "https://www.apple.com/ipad-air/",
+          "archetype": "product-detail"
+        },
+        {
+          "slug": "macbook-air",
+          "url": "https://www.apple.com/macbook-air/",
+          "archetype": "product-detail"
+        }
+      ]
+    },
+    {
+      "slug": "jd-com",
+      "domain": "www.jd.com",
+      "origin": "https://www.jd.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "e-commerce",
+      "styleTag": "dense-marketplace",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://www.jd.com/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "category-phone",
+          "url": "https://list.jd.com/list.html?cat=9987,653,655",
+          "archetype": "category/list"
+        },
+        {
+          "slug": "item-100012043978",
+          "url": "https://item.jd.com/100012043978.html",
+          "archetype": "product-detail"
+        },
+        {
+          "slug": "item-100026667910",
+          "url": "https://item.jd.com/100026667910.html",
+          "archetype": "product-detail"
+        }
+      ]
+    },
+    {
+      "slug": "taobao-com",
+      "domain": "www.taobao.com",
+      "origin": "https://www.taobao.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "e-commerce",
+      "styleTag": "dense-marketplace",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://www.taobao.com/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "list-dress",
+          "url": "https://www.taobao.com/list/product/nvzhuang.htm",
+          "archetype": "category/list"
+        }
+      ]
+    },
+    {
+      "slug": "aliyun-com",
+      "domain": "www.aliyun.com",
+      "origin": "https://www.aliyun.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "cloud-infrastructure",
+      "styleTag": "enterprise-blue",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://www.aliyun.com/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "product-ecs",
+          "url": "https://www.aliyun.com/product/ecs",
+          "archetype": "product-detail"
+        }
+      ]
+    },
+    {
+      "slug": "aliyun-account",
+      "domain": "account.aliyun.com",
+      "origin": "https://account.aliyun.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "identity",
+      "styleTag": "functional-form",
+      "pages": [
+        {
+          "slug": "login",
+          "url": "https://account.aliyun.com/login/login.htm",
+          "archetype": "form/checkout/settings",
+          "note": "excluded: robots.txt `Disallow: /*` for our agent",
+          "skip": true
+        }
+      ]
+    },
+    {
+      "slug": "cloud-tencent",
+      "domain": "cloud.tencent.com",
+      "origin": "https://cloud.tencent.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "cloud-infrastructure",
+      "styleTag": "enterprise-blue",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://cloud.tencent.com/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "product-cvm",
+          "url": "https://cloud.tencent.com/product/cvm",
+          "archetype": "product-detail"
+        },
+        {
+          "slug": "docs-cvm",
+          "url": "https://cloud.tencent.com/document/product/213",
+          "archetype": "docs/design-system",
+          "note": "documentation shell, not a design system"
+        },
+        {
+          "slug": "search-yun",
+          "url": "https://cloud.tencent.com/search?q=%E4%BA%91",
+          "archetype": "search-results"
+        }
+      ]
+    },
+    {
+      "slug": "baidu-com",
+      "domain": "www.baidu.com",
+      "origin": "https://www.baidu.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "search",
+      "styleTag": "sparse-utility",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://www.baidu.com/",
+          "archetype": "landing/home",
+          "skip": true,
+          "note": "excluded: robots.txt has `User-agent: *` -> `Disallow: /`"
+        }
+      ]
+    },
+    {
+      "slug": "cn-bing",
+      "domain": "cn.bing.com",
+      "origin": "https://cn.bing.com",
+      "region": "global",
+      "language": "zh-CN",
+      "industry": "search",
+      "styleTag": "sparse-utility",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://cn.bing.com/",
+          "archetype": "landing/home"
+        }
+      ]
+    },
+    {
+      "slug": "bilibili-com",
+      "domain": "www.bilibili.com",
+      "origin": "https://www.bilibili.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "media-video",
+      "styleTag": "playful-dense",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://www.bilibili.com/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "video-bv1gj411x7h7",
+          "url": "https://www.bilibili.com/video/BV1GJ411x7h7/",
+          "archetype": "article/editorial",
+          "note": "video detail; closest existing archetype"
+        },
+        {
+          "slug": "read-home",
+          "url": "https://www.bilibili.com/read/home",
+          "archetype": "category/list"
+        }
+      ]
+    },
+    {
+      "slug": "juejin-cn",
+      "domain": "juejin.cn",
+      "origin": "https://juejin.cn",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "developer-community",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://juejin.cn/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "post-7686401413472862214",
+          "url": "https://juejin.cn/post/7686401413472862214",
+          "archetype": "article/editorial"
+        },
+        {
+          "slug": "user-712139234359182",
+          "url": "https://juejin.cn/user/712139234359182",
+          "archetype": "profile/account"
+        },
+        {
+          "slug": "post-7686408837753995314",
+          "url": "https://juejin.cn/post/7686408837753995314",
+          "archetype": "article/editorial"
+        },
+        {
+          "slug": "post-7686341986505818147",
+          "url": "https://juejin.cn/post/7686341986505818147",
+          "archetype": "article/editorial"
+        }
+      ]
+    },
+    {
+      "slug": "csdn",
+      "domain": "blog.csdn.net",
+      "origin": "https://blog.csdn.net",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "developer-community",
+      "styleTag": "ad-heavy-utility",
+      "pages": [
+        {
+          "slug": "nav-web",
+          "url": "https://blog.csdn.net/nav/web",
+          "archetype": "category/list"
+        },
+        {
+          "slug": "article-126135357",
+          "url": "https://blog.csdn.net/blogdevteam/article/details/126135357",
+          "archetype": "article/editorial"
+        }
+      ]
+    },
+    {
+      "slug": "sspai-com",
+      "domain": "sspai.com",
+      "origin": "https://sspai.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "tech-media",
+      "styleTag": "editorial-clean",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://sspai.com/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "post-102392",
+          "url": "https://sspai.com/post/102392",
+          "archetype": "article/editorial"
+        },
+        {
+          "slug": "post-114699",
+          "url": "https://sspai.com/post/114699",
+          "archetype": "article/editorial"
+        },
+        {
+          "slug": "post-114716",
+          "url": "https://sspai.com/post/114716",
+          "archetype": "article/editorial"
+        },
+        {
+          "slug": "matrix",
+          "url": "https://sspai.com/matrix",
+          "archetype": "category/list"
+        }
+      ]
+    },
+    {
+      "slug": "36kr-com",
+      "domain": "36kr.com",
+      "origin": "https://36kr.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "business-media",
+      "styleTag": "editorial-dense",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://36kr.com/",
+          "archetype": "landing/home"
+        },
+        {
+          "slug": "information-technology",
+          "url": "https://36kr.com/information/technology",
+          "archetype": "category/list"
+        },
+        {
+          "slug": "search-viz",
+          "url": "https://36kr.com/search/articles/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96",
+          "archetype": "search-results"
+        }
+      ]
+    },
+    {
+      "slug": "zcool-com-cn",
+      "domain": "www.zcool.com.cn",
+      "origin": "https://www.zcool.com.cn",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "design-community",
+      "styleTag": "image-gallery",
+      "pages": [
+        {
+          "slug": "discover",
+          "url": "https://www.zcool.com.cn/discover",
+          "archetype": "category/list"
+        }
+      ]
+    },
+    {
+      "slug": "huaban-com",
+      "domain": "huaban.com",
+      "origin": "https://huaban.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "design-community",
+      "styleTag": "image-gallery",
+      "pages": [
+        {
+          "slug": "discovery",
+          "url": "https://huaban.com/discovery",
+          "archetype": "category/list"
+        },
+        {
+          "slug": "board-beauty",
+          "url": "https://huaban.com/boards/favorite/beauty",
+          "archetype": "category/list",
+          "skip": true,
+          "note": "excluded: robots.txt `Disallow: /boards/favorite/*`"
+        }
+      ]
+    },
+    {
+      "slug": "search-jd",
+      "domain": "search.jd.com",
+      "origin": "https://search.jd.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "e-commerce",
+      "styleTag": "dense-marketplace",
+      "pages": [
+        {
+          "slug": "search-phone",
+          "url": "https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8",
+          "archetype": "search-results"
+        },
+        {
+          "slug": "search-laptop",
+          "url": "https://search.jd.com/Search?keyword=%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91&enc=utf-8",
+          "archetype": "search-results"
+        }
+      ]
+    },
+    {
+      "slug": "douban-people",
+      "domain": "www.douban.com",
+      "origin": "https://www.douban.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "community",
+      "styleTag": "editorial-dense",
+      "pages": [
+        {
+          "slug": "people-ahbei",
+          "url": "https://www.douban.com/people/ahbei/",
+          "archetype": "profile/account"
+        },
+        {
+          "slug": "group-explore",
+          "url": "https://www.douban.com/group/explore",
+          "archetype": "category/list"
+        }
+      ]
+    },
+    {
+      "slug": "douban-movie",
+      "domain": "movie.douban.com",
+      "origin": "https://movie.douban.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "media-review",
+      "styleTag": "editorial-dense",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://movie.douban.com/",
+          "archetype": "category/list"
+        }
+      ]
+    },
+    {
+      "slug": "ant-design",
+      "domain": "ant.design",
+      "origin": "https://ant.design",
+      "region": "CN",
+      "language": "zh-CN/en-US",
+      "industry": "design-system",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "docs-introduce",
+          "url": "https://ant.design/docs/react/introduce",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "components-button",
+          "url": "https://ant.design/components/button",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "components-form",
+          "url": "https://ant.design/components/form",
+          "archetype": "form/checkout/settings"
+        },
+        {
+          "slug": "components-table",
+          "url": "https://ant.design/components/table",
+          "archetype": "table-heavy/admin"
+        },
+        {
+          "slug": "components-date-picker",
+          "url": "https://ant.design/components/date-picker",
+          "archetype": "form/checkout/settings"
+        },
+        {
+          "slug": "components-input",
+          "url": "https://ant.design/components/input",
+          "archetype": "form/checkout/settings"
+        }
+      ]
+    },
+    {
+      "slug": "arco-design",
+      "domain": "arco.design",
+      "origin": "https://arco.design",
+      "region": "CN",
+      "language": "zh-CN/en-US",
+      "industry": "design-system",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "docs-start",
+          "url": "https://arco.design/react/docs/start",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "components-table",
+          "url": "https://arco.design/react/components/table",
+          "archetype": "table-heavy/admin"
+        },
+        {
+          "slug": "components-form",
+          "url": "https://arco.design/react/components/form",
+          "archetype": "form/checkout/settings"
+        },
+        {
+          "slug": "components-input",
+          "url": "https://arco.design/react/components/input",
+          "archetype": "form/checkout/settings"
+        },
+        {
+          "slug": "components-button",
+          "url": "https://arco.design/react/components/button",
+          "archetype": "docs/design-system"
+        }
+      ]
+    },
+    {
+      "slug": "tdesign",
+      "domain": "tdesign.tencent.com",
+      "origin": "https://tdesign.tencent.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "design-system",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "vue-button",
+          "url": "https://tdesign.tencent.com/vue-next/components/button",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "vue-table",
+          "url": "https://tdesign.tencent.com/vue-next/components/table",
+          "archetype": "table-heavy/admin"
+        },
+        {
+          "slug": "vue-form",
+          "url": "https://tdesign.tencent.com/vue-next/components/form",
+          "archetype": "form/checkout/settings"
+        },
+        {
+          "slug": "vue-input",
+          "url": "https://tdesign.tencent.com/vue-next/components/input",
+          "archetype": "form/checkout/settings"
+        }
+      ]
+    },
+    {
+      "slug": "semi-design",
+      "domain": "semi.design",
+      "origin": "https://semi.design",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "design-system",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "getting-started",
+          "url": "https://semi.design/zh-CN/start/getting-started",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "table",
+          "url": "https://semi.design/zh-CN/show/table",
+          "archetype": "table-heavy/admin"
+        },
+        {
+          "slug": "form",
+          "url": "https://semi.design/zh-CN/show/form",
+          "archetype": "form/checkout/settings"
+        }
+      ]
+    },
+    {
+      "slug": "element-plus",
+      "domain": "element-plus.org",
+      "origin": "https://element-plus.org",
+      "region": "CN",
+      "language": "zh-CN/en-US",
+      "industry": "design-system",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "button",
+          "url": "https://element-plus.org/en-US/component/button.html",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "form",
+          "url": "https://element-plus.org/en-US/component/form.html",
+          "archetype": "form/checkout/settings"
+        },
+        {
+          "slug": "table",
+          "url": "https://element-plus.org/en-US/component/table.html",
+          "archetype": "table-heavy/admin"
+        },
+        {
+          "slug": "select",
+          "url": "https://element-plus.org/en-US/component/select.html",
+          "archetype": "form/checkout/settings"
+        },
+        {
+          "slug": "date-picker",
+          "url": "https://element-plus.org/en-US/component/date-picker.html",
+          "archetype": "form/checkout/settings"
+        },
+        {
+          "slug": "input",
+          "url": "https://element-plus.org/en-US/component/input.html",
+          "archetype": "form/checkout/settings"
+        }
+      ]
+    },
+    {
+      "slug": "ant-design-pro",
+      "domain": "preview.pro.ant.design",
+      "origin": "https://preview.pro.ant.design",
+      "region": "CN",
+      "language": "zh-CN/en-US",
+      "industry": "admin-template",
+      "styleTag": "enterprise-blue",
+      "pages": [
+        {
+          "slug": "dashboard-analysis",
+          "url": "https://preview.pro.ant.design/dashboard/analysis",
+          "archetype": "dashboard/data-viz",
+          "skip": true,
+          "note": "excluded after pilot: SPA renders empty in headless Chrome from this environment (0 body text on 4 routes, all bundles HTTP 200)"
+        },
+        {
+          "slug": "dashboard-monitor",
+          "url": "https://preview.pro.ant.design/dashboard/monitor",
+          "archetype": "dashboard/data-viz",
+          "skip": true,
+          "note": "excluded after pilot: same empty-render failure as dashboard-analysis"
+        },
+        {
+          "slug": "form-basic",
+          "url": "https://preview.pro.ant.design/form/basic-form",
+          "archetype": "form/checkout/settings",
+          "skip": true,
+          "note": "excluded after pilot: same empty-render failure"
+        },
+        {
+          "slug": "form-step",
+          "url": "https://preview.pro.ant.design/form/step-form",
+          "archetype": "form/checkout/settings",
+          "skip": true,
+          "note": "excluded after pilot: same empty-render failure"
+        },
+        {
+          "slug": "list-table-list",
+          "url": "https://preview.pro.ant.design/list/table-list",
+          "archetype": "table-heavy/admin",
+          "skip": true,
+          "note": "excluded after pilot: same empty-render failure"
+        },
+        {
+          "slug": "list-search",
+          "url": "https://preview.pro.ant.design/list/search",
+          "archetype": "search-results",
+          "skip": true,
+          "note": "excluded after pilot: same empty-render failure"
+        },
+        {
+          "slug": "profile-basic",
+          "url": "https://preview.pro.ant.design/profile/basic",
+          "archetype": "profile/account",
+          "skip": true,
+          "note": "excluded after pilot: same empty-render failure"
+        },
+        {
+          "slug": "account-settings",
+          "url": "https://preview.pro.ant.design/account/settings",
+          "archetype": "form/checkout/settings",
+          "skip": true,
+          "note": "excluded after pilot: same empty-render failure"
+        }
+      ]
+    },
+    {
+      "slug": "echarts",
+      "domain": "echarts.apache.org",
+      "origin": "https://echarts.apache.org",
+      "region": "global",
+      "language": "en-US",
+      "industry": "data-viz",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "examples",
+          "url": "https://echarts.apache.org/examples/en/index.html",
+          "archetype": "dashboard/data-viz"
+        },
+        {
+          "slug": "handbook-get-started",
+          "url": "https://echarts.apache.org/handbook/en/get-started/",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "examples-zh",
+          "url": "https://echarts.apache.org/examples/zh/index.html",
+          "archetype": "dashboard/data-viz"
+        }
+      ]
+    },
+    {
+      "slug": "antv",
+      "domain": "antv.antgroup.com",
+      "origin": "https://antv.antgroup.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "data-viz",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://antv.antgroup.com/",
+          "archetype": "dashboard/data-viz"
+        }
+      ]
+    },
+    {
+      "slug": "getbootstrap",
+      "domain": "getbootstrap.com",
+      "origin": "https://getbootstrap.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "design-system",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "docs-introduction",
+          "url": "https://getbootstrap.com/docs/5.3/getting-started/introduction/",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "example-dashboard",
+          "url": "https://getbootstrap.com/docs/5.3/examples/dashboard/",
+          "archetype": "dashboard/data-viz"
+        },
+        {
+          "slug": "example-checkout",
+          "url": "https://getbootstrap.com/docs/5.3/examples/checkout/",
+          "archetype": "form/checkout/settings"
+        },
+        {
+          "slug": "example-pricing",
+          "url": "https://getbootstrap.com/docs/5.3/examples/pricing/",
+          "archetype": "product-detail"
+        },
+        {
+          "slug": "example-dashboard",
+          "url": "https://getbootstrap.com/docs/5.3/examples/dashboard/",
+          "archetype": "dashboard/data-viz"
+        },
+        {
+          "slug": "forms-overview",
+          "url": "https://getbootstrap.com/docs/5.3/forms/overview/",
+          "archetype": "form/checkout/settings"
+        }
+      ]
+    },
+    {
+      "slug": "tailwindcss",
+      "domain": "tailwindcss.com",
+      "origin": "https://tailwindcss.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "design-system",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "docs-installation",
+          "url": "https://tailwindcss.com/docs/installation",
+          "archetype": "docs/design-system"
+        }
+      ]
+    },
+    {
+      "slug": "mui",
+      "domain": "mui.com",
+      "origin": "https://mui.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "design-system",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "getting-started",
+          "url": "https://mui.com/material-ui/getting-started/",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "table",
+          "url": "https://mui.com/material-ui/react-table/",
+          "archetype": "table-heavy/admin"
+        },
+        {
+          "slug": "button",
+          "url": "https://mui.com/material-ui/react-button/",
+          "archetype": "docs/design-system"
+        }
+      ]
+    },
+    {
+      "slug": "react-dev",
+      "domain": "react.dev",
+      "origin": "https://react.dev",
+      "region": "global",
+      "language": "en-US",
+      "industry": "framework-docs",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "learn",
+          "url": "https://react.dev/learn",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "reference-react",
+          "url": "https://react.dev/reference/react",
+          "archetype": "docs/design-system"
+        }
+      ]
+    },
+    {
+      "slug": "mdn",
+      "domain": "developer.mozilla.org",
+      "origin": "https://developer.mozilla.org",
+      "region": "global",
+      "language": "en-US",
+      "industry": "framework-docs",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "docs-css",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+          "archetype": "docs/design-system"
+        },
+        {
+          "slug": "docs-html",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+          "archetype": "docs/design-system"
+        }
+      ]
+    },
+    {
+      "slug": "passport-baidu",
+      "domain": "passport.baidu.com",
+      "origin": "https://passport.baidu.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "identity",
+      "styleTag": "functional-form",
+      "pages": [
+        {
+          "slug": "login",
+          "url": "https://passport.baidu.com/v2/?login",
+          "archetype": "form/checkout/settings",
+          "note": "public login form, no credentials submitted"
+        }
+      ]
+    },
+    {
+      "slug": "gitee",
+      "domain": "gitee.com",
+      "origin": "https://gitee.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "developer-platform",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "oss-profile",
+          "url": "https://gitee.com/oss",
+          "archetype": "profile/account"
+        }
+      ]
+    },
+    {
+      "slug": "d3js",
+      "domain": "d3js.org",
+      "origin": "https://d3js.org",
+      "region": "global",
+      "language": "en-US",
+      "industry": "data-viz",
+      "styleTag": "editorial-clean",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://d3js.org/",
+          "archetype": "dashboard/data-viz"
+        }
+      ]
+    },
+    {
+      "slug": "chartjs",
+      "domain": "www.chartjs.org",
+      "origin": "https://www.chartjs.org",
+      "region": "global",
+      "language": "en-US",
+      "industry": "data-viz",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "docs-latest",
+          "url": "https://www.chartjs.org/docs/latest/",
+          "archetype": "dashboard/data-viz"
+        }
+      ]
+    },
+    {
+      "slug": "apexcharts",
+      "domain": "apexcharts.com",
+      "origin": "https://apexcharts.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "data-viz",
+      "styleTag": "marketing-product",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://apexcharts.com/",
+          "archetype": "dashboard/data-viz"
+        }
+      ]
+    },
+    {
+      "slug": "g2-antv",
+      "domain": "g2.antv.antgroup.com",
+      "origin": "https://g2.antv.antgroup.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "data-viz",
+      "styleTag": "clean-technical",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://g2.antv.antgroup.com/",
+          "archetype": "dashboard/data-viz"
+        }
+      ]
+    }
+  ],
+  "droppedCandidates": [
+    {
+      "url": "https://search.bilibili.com/all?keyword=...",
+      "archetype": "search-results",
+      "reason": "robots.txt: `User-agent: *` -> `Disallow: /` (only named search crawlers are allowed)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://space.bilibili.com/2",
+      "archetype": "profile/account",
+      "reason": "robots.txt: `User-agent: *` -> `Disallow: /`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.zcool.com.cn/u/13233950",
+      "archetype": "profile/account",
+      "reason": "robots.txt: `Disallow: /u/*`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://cn.bing.com/search?q=...",
+      "archetype": "search-results",
+      "reason": "robots.txt: `Disallow: /search`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://sspai.com/search/post/...",
+      "archetype": "search-results",
+      "reason": "robots.txt: `Disallow: /search/*`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.zcool.com.cn/search/content?word=...",
+      "archetype": "search-results",
+      "reason": "robots.txt: `Disallow: /search/*`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://juejin.cn/search?query=...",
+      "archetype": "search-results",
+      "reason": "robots.txt: `Disallow: /search`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://preview.pro.ant.design/dashboard/analysis",
+      "archetype": "dashboard/data-viz",
+      "reason": "pilot: SPA renders nothing in headless Chrome from this environment (body text length 0 on /, /dashboard/analysis, /zh-CN/dashboard/analysis, /list/table-list, with every JS bundle returning HTTP 200 and no page errors). Site kept in sites.json but all pages marked skip.",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://search.jd.com/Search?keyword=...",
+      "archetype": "search-results",
+      "reason": "robots-permitted but redirects to passport.jd.com login (cross-host redirect); kept in sites.json because the redirect itself is captured and recorded",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.zhihu.com/",
+      "archetype": "landing/home",
+      "reason": "robots.txt has no `*` group and no group matching our UA; site also 403s anonymous requests and redirects to /signin",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/100000000",
+      "archetype": "article/editorial",
+      "reason": "HTTP 403 for anonymous clients",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.baidu.com/s?wd=...",
+      "archetype": "search-results",
+      "reason": "redirects to wappass CAPTCHA; cannot capture SERP anonymously",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://movie.douban.com/subject/10756537/",
+      "archetype": "product-detail",
+      "reason": "redirects to sec.douban.com anti-bot interstitial",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://consumer.huawei.com/cn/phones/pura-70/",
+      "archetype": "product-detail",
+      "reason": "HTTP 404 (guessed slug)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.mi.com/xiaomi-15",
+      "archetype": "product-detail",
+      "reason": "HTTP 302 -> err.www.mi.com/04.html (guessed slug)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://web.dev/",
+      "archetype": "docs/design-system",
+      "reason": "connection timed out twice from this network",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://github.com/*",
+      "archetype": "profile/account",
+      "reason": "github.com unreachable from this network (known environment fact)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.baidu.com/",
+      "archetype": "landing/home",
+      "reason": "robots.txt: `User-agent: *` -> `Disallow: /` (only named search crawlers allowed)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://account.aliyun.com/login/login.htm",
+      "archetype": "form/checkout/settings",
+      "reason": "robots.txt: `Disallow: /*` for our agent",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://huaban.com/boards/favorite/beauty",
+      "archetype": "category/list",
+      "reason": "robots.txt: `Disallow: /boards/favorite/*`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.bing.com/search?q=..., https://www.so.com/s?q=..., https://www.sogou.com/web?query=..., https://so.toutiao.com/search?keyword=...",
+      "archetype": "search-results",
+      "reason": "all four CN/general search engines deny robots (`/search` or `/s` or `/`) for our agent — search-results is seeded from site-internal search instead",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://help.aliyun.com/search?keyword=ecs",
+      "archetype": "search-results",
+      "reason": "robots.txt: `Disallow: /search?*`",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://blog.csdn.net/blogdevteam",
+      "archetype": "profile/account",
+      "reason": "HTTP 521 (anti-bot interstitial) for the author profile route",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://element-plus.org/en-US/component/virtualized-table.html",
+      "archetype": "table-heavy/admin",
+      "reason": "HTTP 404 (guessed slug)",
+      "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://datav.aliyun.com/portal/school/atlas/area_selector, https://www.antdv.com/components/table",
+      "archetype": "dashboard/data-viz / table-heavy/admin",
+      "reason": "only a ~3KB SPA shell is served; same empty-render risk that removed ant-design-pro from the pilot",
+      "checkedAt": "2026-09-18"
+    }
+  ]
+}

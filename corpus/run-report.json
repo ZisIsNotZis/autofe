@@ -1,0 +1,619 @@
+{
+  "generatedAt": "2026-09-18T11:56:18.626Z",
+  "selection": {
+    "selectedPages": 11,
+    "selectedSites": 10,
+    "archetypes": [
+      "landing/home",
+      "product-detail",
+      "category/list",
+      "profile/account",
+      "article/editorial",
+      "search-results",
+      "table-heavy/admin",
+      "docs/design-system",
+      "dashboard/data-viz",
+      "form/checkout/settings"
+    ]
+  },
+  "options": {
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "locale": "zh-CN",
+    "minDelayMs": 1500,
+    "navTimeoutMs": 45000,
+    "navRetries": 2,
+    "networkIdleTimeoutMs": 8000,
+    "settleMs": 1200,
+    "maxCrawlDelayMs": 30000,
+    "retryPass": true,
+    "retryPassDelayMs": 5000,
+    "minVisibleNodes": 10,
+    "minBodyTextLength": 20,
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 AutoFE-Research-Bot/0.1"
+  },
+  "summary": {
+    "pages": 11,
+    "ok": 11,
+    "partial": 0,
+    "failed": 0,
+    "visibleNodes": 25694,
+    "hostWaitMs": 9216,
+    "wallMs": 146865
+  },
+  "retryPass": {
+    "enabled": true,
+    "delayMs": 5000,
+    "attempted": [],
+    "recovered": [],
+    "stillFailing": []
+  },
+  "hostPacing": {
+    "minDelayMs": 1500,
+    "perHostDelayMs": {
+      "echarts.apache.org": 1500,
+      "passport.baidu.com": 1500
+    },
+    "pacedRequests": [
+      {
+        "host": "www.mi.com",
+        "at": "2026-09-18T11:53:52.195Z",
+        "gapSincePreviousRequestMs": null,
+        "waitedMs": 0
+      },
+      {
+        "host": "www.mi.com",
+        "at": "2026-09-18T11:53:53.696Z",
+        "gapSincePreviousRequestMs": 1501,
+        "waitedMs": 1360
+      },
+      {
+        "host": "www.mi.com",
+        "at": "2026-09-18T11:53:58.878Z",
+        "gapSincePreviousRequestMs": 5182,
+        "waitedMs": 0
+      },
+      {
+        "host": "list.jd.com",
+        "at": "2026-09-18T11:54:04.277Z",
+        "gapSincePreviousRequestMs": null,
+        "waitedMs": 0
+      },
+      {
+        "host": "list.jd.com",
+        "at": "2026-09-18T11:54:05.777Z",
+        "gapSincePreviousRequestMs": 1500,
+        "waitedMs": 1298
+      },
+      {
+        "host": "juejin.cn",
+        "at": "2026-09-18T11:54:11.254Z",
+        "gapSincePreviousRequestMs": null,
+        "waitedMs": 0
+      },
+      {
+        "host": "juejin.cn",
+        "at": "2026-09-18T11:54:12.754Z",
+        "gapSincePreviousRequestMs": 1500,
+        "waitedMs": 1362
+      },
+      {
+        "host": "sspai.com",
+        "at": "2026-09-18T11:54:18.880Z",
+        "gapSincePreviousRequestMs": null,
+        "waitedMs": 0
+      },
+      {
+        "host": "sspai.com",
+        "at": "2026-09-18T11:54:20.380Z",
+        "gapSincePreviousRequestMs": 1500,
+        "waitedMs": 1271
+      },
+      {
+        "host": "search.jd.com",
+        "at": "2026-09-18T11:54:25.143Z",
+        "gapSincePreviousRequestMs": null,
+        "waitedMs": 0
+      },
+      {
+        "host": "search.jd.com",
+        "at": "2026-09-18T11:54:26.644Z",
+        "gapSincePreviousRequestMs": 1501,
+        "waitedMs": 1315
+      },
+      {
+        "host": "arco.design",
+        "at": "2026-09-18T11:54:31.103Z",
+        "gapSincePreviousRequestMs": null,
+        "waitedMs": 0
+      },
+      {
+        "host": "arco.design",
+        "at": "2026-09-18T11:54:32.604Z",
+        "gapSincePreviousRequestMs": 1501,
+        "waitedMs": 45
+      },
+      {
+        "host": "element-plus.org",
+        "at": "2026-09-18T11:54:55.111Z",
+        "gapSincePreviousRequestMs": null,
+        "waitedMs": 0
+      },
+      {
+        "host": "element-plus.org",
+        "at": "2026-09-18T11:54:56.611Z",
+        "gapSincePreviousRequestMs": 1500,
+        "waitedMs": 760
+      },
+      {
+        "host": "echarts.apache.org",
+        "at": "2026-09-18T11:55:09.241Z",
+        "gapSincePreviousRequestMs": null,
+        "waitedMs": 0
+      },
+      {
+        "host": "echarts.apache.org",
+        "at": "2026-09-18T11:55:10.741Z",
+        "gapSincePreviousRequestMs": 1500,
+        "waitedMs": 415
+      },
+      {
+        "host": "getbootstrap.com",
+        "at": "2026-09-18T11:55:57.307Z",
+        "gapSincePreviousRequestMs": null,
+        "waitedMs": 0
+      },
+      {
+        "host": "getbootstrap.com",
+        "at": "2026-09-18T11:55:59.074Z",
+        "gapSincePreviousRequestMs": 1767,
+        "waitedMs": 0
+      },
+      {
+        "host": "passport.baidu.com",
+        "at": "2026-09-18T11:56:05.761Z",
+        "gapSincePreviousRequestMs": null,
+        "waitedMs": 0
+      },
+      {
+        "host": "passport.baidu.com",
+        "at": "2026-09-18T11:56:07.261Z",
+        "gapSincePreviousRequestMs": 1500,
+        "waitedMs": 1390
+      }
+    ]
+  },
+  "results": [
+    {
+      "site": "mi-com",
+      "page": "home",
+      "archetype": "landing/home",
+      "url": "https://www.mi.com/",
+      "outDir": "corpus/mi-com/home",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://www.mi.com/",
+      "counts": {
+        "domElements": 1069,
+        "cleanedElements": 681,
+        "droppedFromDom": 388,
+        "visibleNodes": 556,
+        "axNodes": 1123,
+        "axMatchedNodes": 488,
+        "jsonLdAndMicrodataBlocks": 1
+      },
+      "screenshot": {
+        "full": 2426667,
+        "viewport": 307564
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 6632,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 1411,
+      "host": "www.mi.com"
+    },
+    {
+      "site": "mi-com",
+      "page": "product-detail-mi15",
+      "archetype": "product-detail",
+      "url": "https://www.mi.com/shop/buy/detail?product_id=21096",
+      "outDir": "corpus/mi-com/product-detail-mi15",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://www.mi.com/shop/buy/detail?product_id=21096",
+      "counts": {
+        "domElements": 1531,
+        "cleanedElements": 940,
+        "droppedFromDom": 591,
+        "visibleNodes": 463,
+        "axNodes": 933,
+        "axMatchedNodes": 415,
+        "jsonLdAndMicrodataBlocks": 0
+      },
+      "screenshot": {
+        "full": 1617552,
+        "viewport": 241659
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 5436,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 1475,
+      "host": "www.mi.com"
+    },
+    {
+      "site": "jd-com",
+      "page": "category-phone",
+      "archetype": "category/list",
+      "url": "https://list.jd.com/list.html?cat=9987,653,655",
+      "outDir": "corpus/jd-com/category-phone",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://list.jd.com/list.html?cat=9987%2C653%2C655",
+      "counts": {
+        "domElements": 623,
+        "cleanedElements": 397,
+        "droppedFromDom": 226,
+        "visibleNodes": 340,
+        "axNodes": 687,
+        "axMatchedNodes": 327,
+        "jsonLdAndMicrodataBlocks": 0
+      },
+      "screenshot": {
+        "full": 257245,
+        "viewport": 150134
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 6971,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 3625,
+      "host": "list.jd.com"
+    },
+    {
+      "site": "juejin-cn",
+      "page": "user-712139234359182",
+      "archetype": "profile/account",
+      "url": "https://juejin.cn/user/712139234359182",
+      "outDir": "corpus/juejin-cn/user-712139234359182",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://juejin.cn/user/712139234359182",
+      "counts": {
+        "domElements": 1376,
+        "cleanedElements": 1070,
+        "droppedFromDom": 306,
+        "visibleNodes": 934,
+        "axNodes": 1417,
+        "axMatchedNodes": 869,
+        "jsonLdAndMicrodataBlocks": 1
+      },
+      "screenshot": {
+        "full": 990782,
+        "viewport": 179681
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 7620,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 3875,
+      "host": "juejin.cn"
+    },
+    {
+      "site": "sspai-com",
+      "page": "post-102392",
+      "archetype": "article/editorial",
+      "url": "https://sspai.com/post/102392",
+      "outDir": "corpus/sspai-com/post-102392",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://sspai.com/post/102392",
+      "counts": {
+        "domElements": 810,
+        "cleanedElements": 412,
+        "droppedFromDom": 398,
+        "visibleNodes": 351,
+        "axNodes": 783,
+        "axMatchedNodes": 308,
+        "jsonLdAndMicrodataBlocks": 2
+      },
+      "screenshot": {
+        "full": 858785,
+        "viewport": 227490
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 6252,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 1770,
+      "host": "sspai.com"
+    },
+    {
+      "site": "search-jd",
+      "page": "search-phone",
+      "archetype": "search-results",
+      "url": "https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8",
+      "outDir": "corpus/search-jd/search-phone",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8",
+      "counts": {
+        "domElements": 577,
+        "cleanedElements": 393,
+        "droppedFromDom": 184,
+        "visibleNodes": 336,
+        "axNodes": 663,
+        "axMatchedNodes": 325,
+        "jsonLdAndMicrodataBlocks": 0
+      },
+      "screenshot": {
+        "full": 253184,
+        "viewport": 162883
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 5953,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 4065,
+      "host": "search.jd.com"
+    },
+    {
+      "site": "arco-design",
+      "page": "components-table",
+      "archetype": "table-heavy/admin",
+      "url": "https://arco.design/react/components/table",
+      "outDir": "corpus/arco-design/components-table",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://arco.design/react/components/table",
+      "counts": {
+        "domElements": 21619,
+        "cleanedElements": 20733,
+        "droppedFromDom": 886,
+        "visibleNodes": 17525,
+        "axNodes": 47393,
+        "axMatchedNodes": 4507,
+        "jsonLdAndMicrodataBlocks": 0
+      },
+      "screenshot": {
+        "full": 2513217,
+        "viewport": 108989
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 24002,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 1842,
+      "host": "arco.design"
+    },
+    {
+      "site": "element-plus",
+      "page": "button",
+      "archetype": "docs/design-system",
+      "url": "https://element-plus.org/en-US/component/button.html",
+      "outDir": "corpus/element-plus/button",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://element-plus.org/en-US/component/button.html",
+      "counts": {
+        "domElements": 4528,
+        "cleanedElements": 1676,
+        "droppedFromDom": 2852,
+        "visibleNodes": 1509,
+        "axNodes": 2717,
+        "axMatchedNodes": 1376,
+        "jsonLdAndMicrodataBlocks": 0
+      },
+      "screenshot": {
+        "full": 757957,
+        "viewport": 162147
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 14116,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 1456,
+      "host": "element-plus.org"
+    },
+    {
+      "site": "echarts",
+      "page": "examples",
+      "archetype": "dashboard/data-viz",
+      "url": "https://echarts.apache.org/examples/en/index.html",
+      "outDir": "corpus/echarts/examples",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://echarts.apache.org/examples/en/index.html",
+      "counts": {
+        "domElements": 4458,
+        "cleanedElements": 4333,
+        "droppedFromDom": 125,
+        "visibleNodes": 3508,
+        "axNodes": 4033,
+        "axMatchedNodes": 2938,
+        "jsonLdAndMicrodataBlocks": 0
+      },
+      "screenshot": {
+        "full": 330235,
+        "viewport": 330235
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 48063,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 1456,
+      "host": "echarts.apache.org"
+    },
+    {
+      "site": "getbootstrap",
+      "page": "example-checkout",
+      "archetype": "form/checkout/settings",
+      "url": "https://getbootstrap.com/docs/5.3/examples/checkout/",
+      "outDir": "corpus/getbootstrap/example-checkout",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://getbootstrap.com/docs/5.3/examples/checkout/",
+      "counts": {
+        "domElements": 192,
+        "cleanedElements": 157,
+        "droppedFromDom": 35,
+        "visibleNodes": 125,
+        "axNodes": 253,
+        "axMatchedNodes": 116,
+        "jsonLdAndMicrodataBlocks": 0
+      },
+      "screenshot": {
+        "full": 128658,
+        "viewport": 88336
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 8450,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 1473,
+      "host": "getbootstrap.com"
+    },
+    {
+      "site": "passport-baidu",
+      "page": "login",
+      "archetype": "form/checkout/settings",
+      "url": "https://passport.baidu.com/v2/?login",
+      "outDir": "corpus/passport-baidu/login",
+      "status": "ok",
+      "reason": null,
+      "qualityFlags": [],
+      "httpStatus": 200,
+      "redirectedUrl": "https://passport.baidu.com/v2/?login",
+      "counts": {
+        "domElements": 188,
+        "cleanedElements": 95,
+        "droppedFromDom": 93,
+        "visibleNodes": 47,
+        "axNodes": 91,
+        "axMatchedNodes": 43,
+        "jsonLdAndMicrodataBlocks": 0
+      },
+      "screenshot": {
+        "full": 84522,
+        "viewport": 84522
+      },
+      "artifacts": [
+        "meta.json",
+        "dom.html",
+        "a11y.json",
+        "jsonld.json",
+        "full.png",
+        "viewport.png",
+        "nodes.json"
+      ],
+      "durationMs": 12806,
+      "failures": [],
+      "outDirSize": null,
+      "metaSize": 1418,
+      "host": "passport.baidu.com"
+    }
+  ]
+}

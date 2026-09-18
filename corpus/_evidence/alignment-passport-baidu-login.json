@@ -1,0 +1,94 @@
+{
+  "pageDir": "corpus/passport-baidu/login",
+  "fullPng": {
+    "width": 1440,
+    "height": 900
+  },
+  "nodesChecked": 47,
+  "candidatesExamined": 1,
+  "tolerancePerChannel": 3,
+  "minimumMatchingFraction": 0.25,
+  "aligned": 1,
+  "unexplained": 0,
+  "classificationCounts": {
+    "translucent-overlay": 0,
+    "ancestor-transparent": 0,
+    "covered-by-later-node": 0,
+    "non-discriminating": 0,
+    "low-coverage": 0
+  },
+  "frameAnchor": {
+    "available": true,
+    "viewportSize": {
+      "w": 1440,
+      "h": 900
+    },
+    "sampledPixels": 144000,
+    "identicalFraction": 1,
+    "note": "viewport.png is captured at scroll (0,0); equality with the top of full.png proves full.png starts at the document origin"
+  },
+  "verdict": "aligned",
+  "checks": [
+    {
+      "domPath": "html/body[1]/div[1]/div[2]/div[0]/div[0]/div[0]/div[2]",
+      "tag": "div",
+      "role": "generic",
+      "bbox": {
+        "x": 825,
+        "y": 516,
+        "w": 354,
+        "h": 60
+      },
+      "expectedBackground": "rgb(240, 246, 255)",
+      "classification": "aligned",
+      "direct": {
+        "gridPoints": 25,
+        "matchingPoints": 24,
+        "fraction": 0.96,
+        "blendedPoints": 0,
+        "blendedFraction": 0,
+        "blend": null,
+        "minChannelDelta": 0,
+        "centrePixel": [
+          240,
+          246,
+          255
+        ]
+      },
+      "controlAbove": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 23,
+        "blendedFraction": 0.92,
+        "blend": {
+          "alpha": 0.2,
+          "over": "white"
+        },
+        "minChannelDelta": 15,
+        "centrePixel": [
+          89,
+          156,
+          255
+        ]
+      },
+      "controlBelow": {
+        "gridPoints": 25,
+        "matchingPoints": 0,
+        "fraction": 0,
+        "blendedPoints": 25,
+        "blendedFraction": 1,
+        "blend": {
+          "alpha": 0.2,
+          "over": "white"
+        },
+        "minChannelDelta": 15,
+        "centrePixel": [
+          255,
+          255,
+          255
+        ]
+      }
+    }
+  ]
+}
