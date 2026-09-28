@@ -1,5 +1,7 @@
 // Minimal deterministic renderer for AutoFE M1 axioms v0 (§9 contract).
-// Pure function: same model => byte-identical HTML. No AI, no network, no clock.
+// Pure function: same model + context => byte-identical HTML. No AI, no network, no clock.
+// Presentation forms (table/cards/steps) are chosen here by heuristics (F-018);
+// the model never names a presentation form.
 // Usage: node m1/render.mjs <model.json> [out.html]
 import fs from 'node:fs';
 import {
@@ -24,8 +26,45 @@ function fmt(v) {
 }
 const factHtml = (role, v) => `<div class="fact fact-${esc(role)}"><span class="role">${esc(role)}</span><span class="val">${fmt(v)}</span></div>`;
 
-// Renders a node. hide = Map<node, {keys:Set, nodes:Set}> naming facts/subtrees
-// already rendered elsewhere (the _primary hero), so nothing is dropped or duplicated.
+// ---- engine heuristic (F-018): discover homogeneous runs among siblings ----
+const fieldKeys = (n) => Object.keys(n._fields ?? {});
+function similar(a, b) {
+  const ka = fieldKeys(a), kb = fieldKeys(b);
+  if (!ka.length || !kb.length) return false;
+  const inter = ka.filter((k) => kb.includes(k)).length;
+  return inter / new Set([...ka, ...kb]).size >= 0.6;
+}
+function discoverRuns(orderedChildren) {
+  const runs = []; let run = [];
+  for (const c of orderedChildren) {
+    if (run.length === 0 || similar(run[run.length - 1].node, c.node)) run.push(c);
+    else { if (run.length >= 2) runs.push(run); run = [c]; }
+  }
+  if (run.length >= 2) runs.push(run);
+  return runs;
+}
+function renderRun(run, chain, hide, ctx) {
+  const roleCols = (n) => factsOf(n).filter((f) => !['_title', '_name'].includes(f.key)).map((f) => f.key);
+  const cols = [...new Set(run.flatMap((c) => [...fieldKeys(c.node), ...roleCols(c.node)]))];
+  const valuesOf = (n, col) => {
+    const fv = n._fields?.[col];
+    if (fv) return fmt(fv);
+    const f = factsOf(n).find((x) => x.key === col);
+    return f ? fmt(f.value) : '';
+  };
+  if (cols.length >= 3) {
+    const head = `<tr>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? c.replace(/^_/, ''))}</th>`).join('')}<th></th></tr>`;
+    const trs = run.map((c) => {
+      const tds = cols.map((col) => `<td>${valuesOf(c.node, col)}</td>`).join('');
+      const ops = childrenOf(c.node).filter((ch) => !ch.key.startsWith('_items['))
+        .map((ch) => renderNode(ch.node, [...chain, c.node], false, hide, ctx)).join('');
+      return `<tr>${tds}<td class="row-ops">${ops}</td></tr>`;
+    }).join('');
+    return `<table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table>`;
+  }
+  return `<div class="cards">${run.map((c) => `<div class="item">${renderNode(c.node, [...chain, c.node], false, hide, ctx)}</div>`).join('')}</div>`;
+}
+
 function renderNode(node, chain, isHero, hide, ctx) {
   if (node === null || typeof node !== 'object') return '';
   const scope = { ...ctx.values, ...scopeFor([...chain, node]) };
@@ -34,7 +73,6 @@ function renderNode(node, chain, isHero, hide, ctx) {
     if (ast.ok && !evalExpr(ast, scope)) return '';
   }
   const headingKey = node._title ? '_title' : (node._name ? '_name' : null);
-  const titleText = headingKey ? fmt(node[headingKey]) : null;
 
   const cls = ['node'];
   if (isHero) cls.push('hero');
@@ -57,17 +95,17 @@ function renderNode(node, chain, isHero, hide, ctx) {
     }
   }
 
+  // _primary hero: fact or subtree, hidden from its normal position
   let heroHtml = '';
   if (typeof node._primary === 'string') {
     const r = resolveWithParent(node, node, node._primary);
     if (r.ok && r.node !== node) {
-      const childChain = [...chain, node];
       if (isRoleKey(r.lastKey)) {
         heroHtml = `<div class="hero">${factHtml(roleOf(r.lastKey), r.node)}</div>`;
         if (!hide.has(r.holder)) hide.set(r.holder, { keys: new Set(), nodes: new Set() });
         hide.get(r.holder).keys.add(r.lastKey);
       } else {
-        heroHtml = `<div class="hero">${renderNode(r.node, childChain, true, hide, ctx)}</div>`;
+        heroHtml = `<div class="hero">${renderNode(r.node, [...chain, node], true, hide, ctx)}</div>`;
         if (!hide.has(r.holder)) hide.set(r.holder, { keys: new Set(), nodes: new Set() });
         hide.get(r.holder).nodes.add(r.node);
       }
@@ -77,10 +115,16 @@ function renderNode(node, chain, isHero, hide, ctx) {
   const hid = hide.get(node);
   const kids = childrenOf(node).filter((c) => !(hid?.nodes.has(c.node)));
   const facts = factsOf(node).filter((f) => !(hid?.keys.has(f.key)));
+  const titleText = headingKey ? fmt(node[headingKey]) : null;
 
   let body = '';
   for (const f of facts) { if (headingKey && f.key === headingKey) continue; body += factHtml(f.role, f.value); }
 
+  const ordered = kids.filter((c) => c.key.startsWith('_lines[') || c.key.startsWith('_items['));
+  const runs = discoverRuns(ordered);
+  const inRun = new Set(runs.flat().map((c) => c.node));
+
+  // exposed interaction: choice set over items, or a free input
   const exp = exposeOf(node);
   if (exp && node._items?.length) {
     const multi = exp.multiple === true;
@@ -95,55 +139,17 @@ function renderNode(node, chain, isHero, hide, ctx) {
     body += `<label class="expose expose-${esc(exp.name)}"><span class="role">${esc(exp.name)}</span><input type="text" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></label>`;
   }
 
-  const itemsChildren = kids.filter((c) => c.key.startsWith('_items['));
-  if (itemsChildren.length && itemsChildren.every((c) => c.node._fields)) {
-    const rowsN = itemsChildren.map((c) => c.node);
-    const cols = [...new Set(rowsN.flatMap((r) => [...Object.keys(r._fields), ...factsOf(r).filter((f) => !['_title', '_name'].includes(f.key)).map((f) => f.key)]))];
-    const label = (col) => esc(FIELDS[col]?.label ?? col.replace(/^_/, ''));
-    const head = `<tr>${cols.map((c) => `<th>${label(c)}</th>`).join('')}<th></th></tr>`;
-    const trs = itemsChildren.map((c) => {
-      const r = c.node;
-      const tds = cols.map((col) => {
-        let v = r._fields?.[col];
-        if (v === undefined) { const f = factsOf(r).find((x) => x.key === col); v = f ? f.value : undefined; }
-        return `<td>${v ? fmt(v) : ''}</td>`;
-      }).join('');
-      const ops = childrenOf(r).filter((ch) => !ch.key.startsWith('_items['))
-        .map((ch) => renderNode(ch.node, [...chain, node], false, hide, ctx)).join('');
-      return `<tr>${tds}<td class="row-ops">${ops}</td></tr>`;
-    }).join('');
-    let out = `<table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table>`;
-    if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
-      out += renderNode(node._empty, [...chain, node], false, hide, ctx);
-    }
-    const tail = [];
-    for (const c of kids) {
-      if (c.key.startsWith('_items[')) continue;
-      const h = renderNode(c.node, [...chain, node], false, hide, ctx);
-      if (h) tail.push(c.key.startsWith('_lines[') ? `<section class="line">${h}</section>` : `<section class="group g-${esc(c.key)}">${h}</section>`);
-    }
-    const head0 = titleText ? `<h3 class="title">${titleText}</h3>` : (node._intent ? `<h4 class="intent">${esc(node._intent)}</h4>` : '');
-    return `<article class="${cls.join(' ')}">${heroHtml}${head0}${out}${body}${tail.join('')}${action}</article>`;
-  }
-  if (kids.length) {
-    const parts = [];
-    for (const c of kids) {
-      if (exp && c.key.startsWith('_items[')) continue;
-      const h = renderNode(c.node, [...chain, node], false, hide, ctx);
-      if (!h) continue;
-      if (c.key.startsWith('_lines[')) parts.push(`<section class="line">${h}</section>`);
-      else if (c.key.startsWith('_items[')) parts.push(`<div class="item">${h}</div>`);
-      else parts.push(`<section class="group g-${esc(c.key)}">${h}</section>`);
-    }
-    let inner = parts.join('');
-    if (node._items?.length) {
-      const wrap = node._rel?.order === 'time' ? 'ol' : 'div';
-      inner = `<${wrap} class="items${node._rel?.order === 'time' ? ' ol' : ''}">${inner}</${wrap}>`;
-    }
-    body += inner;
+  for (const run of runs) body += renderRun(run, chain, hide, ctx);
+  if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
+    body += renderNode(node._empty, [...chain, node], false, hide, ctx);
   }
 
-  if (node._fields) body = `<div class="facts-actions">${body}${action}</div>`;
+  for (const c of kids) {
+    if (inRun.has(c.node)) continue;
+    const h = renderNode(c.node, [...chain, node], false, hide, ctx);
+    if (h) body += c.key.startsWith('_lines[') ? `<section class="line">${h}</section>` : `<section class="group g-${esc(c.key)}">${h}</section>`;
+  }
+
   const head = titleText
     ? `<h3 class="title">${titleText}</h3>`
     : (node._intent && kids.length ? `<h4 class="intent">${esc(node._intent)}</h4>` : '');
@@ -177,23 +183,25 @@ h4.intent{margin:.2em 0 .6em;font-weight:500;color:#5b6a78;font-size:.92em}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .items{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.items.ol{display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{display:flex;gap:10px;align-items:baseline;margin:3px 0}
 .role{min-width:104px;color:#68788a;font-size:.78em;text-transform:uppercase;letter-spacing:.04em}
 .val{font-variant-numeric:tabular-nums}
-.expose{display:block;margin:8px 0}.expose .role{display:block;margin-bottom:4px}
+.expose{display:block;margin:8px 0}
+.expose .role{display:block;margin-bottom:4px}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
 legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
 input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 img{max-width:100%;border-radius:10px;display:block}
-table.data{border-collapse:collapse;width:100%;font-size:.92em}
+table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
 table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
-.facts-actions{display:flex;flex-direction:column;gap:4px}
-.facts-actions .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+.row-ops{display:flex;flex-direction:column;gap:4px}
+.row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 .level-1{opacity:.92}.level-2{opacity:.85}.level-3{opacity:.78}
 </style></head>
 <body><main><p class="page-intent">${intent}</p>${html}</main></body></html>
