@@ -119,6 +119,8 @@ function renderNode(node, chain, isHero, hide, ctx) {
 
   let body = '';
   for (const f of facts) { if (headingKey && f.key === headingKey) continue; body += factHtml(f.role, f.value); }
+  // domain fields on non-collection nodes render as labelled facts (tables cover them for run members)
+  if (node._fields) for (const [k, v] of Object.entries(node._fields)) body += factHtml(FIELDS[k]?.label ?? k, v);
 
   const ordered = kids.filter((c) => c.key.startsWith('_lines[') || c.key.startsWith('_items['));
   const runs = discoverRuns(ordered);
