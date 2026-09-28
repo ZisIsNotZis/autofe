@@ -1,0 +1,86 @@
+{
+  "site": "cnblogs",
+  "page": "blog-duwenlong",
+  "url": "https://www.cnblogs.com/duwenlong/",
+  "title": "杜文龙 - 博客园",
+  "sourceNodes": 491,
+  "counts": {
+    "storylines": 21,
+    "items": 86,
+    "actions": 110,
+    "exposes": 1,
+    "images": 0,
+    "facts": 13,
+    "tables": 1,
+    "lists": 9,
+    "choiceSets": 0,
+    "inputs": 1,
+    "dupeText": 13,
+    "capHits": []
+  },
+  "storylines": 21,
+  "chrome": [
+    {
+      "role": "navigation",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 24,
+      "examples": [
+        "二: 1",
+        "三: 2",
+        "五: 4",
+        "六: 5",
+        "二: 8"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "日",
+      "example": "30"
+    },
+    {
+      "name": "col-2",
+      "type": "text",
+      "label": "一",
+      "example": "31"
+    },
+    {
+      "name": "col-3",
+      "type": "text",
+      "label": "二",
+      "example": "1"
+    },
+    {
+      "name": "col-4",
+      "type": "text",
+      "label": "三",
+      "example": "2"
+    },
+    {
+      "name": "col-5",
+      "type": "text",
+      "label": "四",
+      "example": "3"
+    },
+    {
+      "name": "col-6",
+      "type": "text",
+      "label": "五",
+      "example": "4"
+    },
+    {
+      "name": "col-7",
+      "type": "text",
+      "label": "六",
+      "example": "5"
+    }
+  ]
+}

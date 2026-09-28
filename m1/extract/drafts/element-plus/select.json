@@ -1,0 +1,1797 @@
+{
+  "_intent": "Select | Element Plus — Select Permalink to \"Select\" [draft]",
+  "_title": {
+    "text": "Select | Element Plus"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://element-plus.org/en-US/component/select.html#page-content",
+        "label": "Skip to content"
+      }
+    },
+    {
+      "_intent": "Select Permalink to \"Select\" [draft]",
+      "_title": {
+        "text": "Select Permalink to \"Select\""
+      },
+      "_summary": {
+        "text": "When there are plenty of options, use a drop-down menu to display and select desired ones."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Changelog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Open issues 88"
+          }
+        },
+        {
+          "_text": {
+            "text": "TIP"
+          }
+        },
+        {
+          "_text": {
+            "text": "After version 2.5.0, the default width of el-select changed to 100%. When used in a inline form, the width will collapse. In order to display the width properly, you need to give el-select a specific"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Basic usage Permalink to \"Basic usage\" [draft]",
+      "_title": {
+        "text": "Basic usage Permalink to \"Basic usage\""
+      },
+      "_summary": {
+        "text": "v-model is the value of el-option that is currently selected."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Select"
+          }
+        },
+        {
+          "_text": {
+            "text": "TS"
+          }
+        },
+        {
+          "_text": {
+            "text": "JS"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0IHYtbW9kZWw9XCJ2YWx1ZVwiIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCIgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIj5cbiAgICA8ZWwtb3B0aW9uXG4gICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICA6a2V5PVwiaXRlbS52YWx1ZVwiXG4gICAgICA6bGFiZWw9XCJpdGVtLmxhYmVsXCJcbiAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgIC8+XG4gIDwvZWwtc2VsZWN0PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgdmFsdWUgPSByZWYoJycpXG5cbmNvbnN0IG9wdGlvbnMgPSBbXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjEnLFxuICAgIGxhYmVsOiAnT3B0aW9uMScsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjInLFxuICAgIGxhYmVsOiAnT3B0aW9uMicsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjMnLFxuICAgIGxhYmVsOiAnT3B0aW9uMycsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjQnLFxuICAgIGxhYmVsOiAnT3B0aW9uNCcsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjUnLFxuICAgIGxhYmVsOiAnT3B0aW9uNScsXG4gIH0sXG5dXG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/basic-usage.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Options attribute 2.10.5 Permalink to \"Options attribute ^(2.10.5)\" [draft]",
+      "_title": {
+        "text": "Options attribute 2.10.5 Permalink to \"Options attribute ^(2.10.5)\""
+      },
+      "_summary": {
+        "text": "Shortcut from basic el-option usage. You can customize the alias of the options through the props attribute."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0XG4gICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICA6b3B0aW9ucz1cIm9wdGlvbnNcIlxuICAgIDpwcm9wcz1cInByb3BzXCJcbiAgICBwbGFjZWhvbGRlcj1cIlNlbGVjdFwiXG4gICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICAvPlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgdmFsdWUgPSByZWYoJycpXG5cbmNvbnN0IHByb3BzID0ge1xuICB2YWx1ZTogJ2lkJyxcbiAgbGFiZWw6ICdsYWJlbCcsXG4gIG9wdGlvbnM6ICdvcHRpb25zJyxcbiAgZGlzYWJsZWQ6ICdkaXNhYmxlZCcsXG59XG5cbmNvbnN0IG9wdGlvbnMgPSBbXG4gIHtcbiAgICBpZDogJ09wdGlvbjEnLFxuICAgIGxhYmVsOiAnT3B0aW9uMScsXG4gIH0sXG4gIHtcbiAgICBpZDogJ09wdGlvbjInLFxuICAgIGxhYmVsOiAnT3B0aW9uMicsXG4gICAgZGlzYWJsZWQ6IHRydWUsXG4gIH0sXG4gIHtcbiAgICBpZDogJ09wdGlvbjMnLFxuICAgIGxhYmVsOiAnT3B0aW9uMycsXG4gIH0sXG4gIHtcbiAgICBpZDogJ09wdGlvbjQnLFxuICAgIGxhYmVsOiAnT3B0aW9uNCcsXG4gICAgZGlzYWJsZWQ6IHRydWUsXG4gIH0sXG4gIHtcbiAgICBpZDogJ09wdGlvbjUnLFxuICAgIGxhYmVsOiAnT3B0aW9uNScsXG4gIH0sXG5dXG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/options.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Disabled option Permalink to \"Disabled option\" [draft]",
+      "_title": {
+        "text": "Disabled option Permalink to \"Disabled option\""
+      },
+      "_summary": {
+        "text": "Set the value of disabled in el-option to true to disable this option."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0IHYtbW9kZWw9XCJ2YWx1ZVwiIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCIgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIj5cbiAgICA8ZWwtb3B0aW9uXG4gICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICA6a2V5PVwiaXRlbS52YWx1ZVwiXG4gICAgICA6bGFiZWw9XCJpdGVtLmxhYmVsXCJcbiAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgICAgOmRpc2FibGVkPVwiaXRlbS5kaXNhYmxlZFwiXG4gICAgLz5cbiAgPC9lbC1zZWxlY3Q+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCB2YWx1ZSA9IHJlZignJylcbmNvbnN0IG9wdGlvbnMgPSBbXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjEnLFxuICAgIGxhYmVsOiAnT3B0aW9uMScsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjInLFxuICAgIGxhYmVsOiAnT3B0aW9uMicsXG4gICAgZGlzYWJsZWQ6IHRydWUsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjMnLFxuICAgIGxhYmVsOiAnT3B0aW9uMycsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjQnLFxuICAgIGxhYmVsOiAnT3B0aW9uNCcsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjUnLFxuICAgIGxhYmVsOiAnT3B0aW9uNScsXG4gIH0sXG5dXG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/disabled-option.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Disabled select Permalink to \"Disabled select\" [draft]",
+      "_title": {
+        "text": "Disabled select Permalink to \"Disabled select\""
+      },
+      "_summary": {
+        "text": "Disable the whole component."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Set disabled of el-select to make it disabled."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0IHYtbW9kZWw9XCJ2YWx1ZVwiIGRpc2FibGVkIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCIgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIj5cbiAgICA8ZWwtb3B0aW9uXG4gICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICA6a2V5PVwiaXRlbS52YWx1ZVwiXG4gICAgICA6bGFiZWw9XCJpdGVtLmxhYmVsXCJcbiAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgIC8+XG4gIDwvZWwtc2VsZWN0PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgdmFsdWUgPSByZWYoJycpXG5jb25zdCBvcHRpb25zID0gW1xuICB7XG4gICAgdmFsdWU6ICdPcHRpb24xJyxcbiAgICBsYWJlbDogJ09wdGlvbjEnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdPcHRpb24yJyxcbiAgICBsYWJlbDogJ09wdGlvbjInLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdPcHRpb24zJyxcbiAgICBsYWJlbDogJ09wdGlvbjMnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdPcHRpb240JyxcbiAgICBsYWJlbDogJ09wdGlvbjQnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdPcHRpb241JyxcbiAgICBsYWJlbDogJ09wdGlvbjUnLFxuICB9LFxuXVxuPC9zY3JpcHQ+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/disabled.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Clearable Permalink to \"Clearable\" [draft]",
+      "_title": {
+        "text": "Clearable Permalink to \"Clearable\""
+      },
+      "_summary": {
+        "text": "You can clear Select using a clear icon."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Set clearable attribute for el-select and a clear icon will appear."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0XG4gICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICBjbGVhcmFibGVcbiAgICBwbGFjZWhvbGRlcj1cIlNlbGVjdFwiXG4gICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICA+XG4gICAgPGVsLW9wdGlvblxuICAgICAgdi1mb3I9XCJpdGVtIGluIG9wdGlvbnNcIlxuICAgICAgOmtleT1cIml0ZW0udmFsdWVcIlxuICAgICAgOmxhYmVsPVwiaXRlbS5sYWJlbFwiXG4gICAgICA6dmFsdWU9XCJpdGVtLnZhbHVlXCJcbiAgICAvPlxuICA8L2VsLXNlbGVjdD5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IHZhbHVlID0gcmVmKCcnKVxuY29uc3Qgb3B0aW9ucyA9IFtcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uMScsXG4gICAgbGFiZWw6ICdPcHRpb24xJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uMicsXG4gICAgbGFiZWw6ICdPcHRpb24yJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uMycsXG4gICAgbGFiZWw6ICdPcHRpb24zJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uNCcsXG4gICAgbGFiZWw6ICdPcHRpb240JyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uNScsXG4gICAgbGFiZWw6ICdPcHRpb241JyxcbiAgfSxcbl1cbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/clearable.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Sizes Permalink to \"Sizes\" [draft]",
+      "_title": {
+        "text": "Sizes Permalink to \"Sizes\""
+      },
+      "_summary": {
+        "text": "Add size attribute to change the size of Select. In addition to the default size, there are two other options: large, small."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZmxleCBmbGV4LXdyYXAgZ2FwLTQgaXRlbXMtY2VudGVyXCI+XG4gICAgPGVsLXNlbGVjdFxuICAgICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCJcbiAgICAgIHNpemU9XCJsYXJnZVwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgPlxuICAgICAgPGVsLW9wdGlvblxuICAgICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICAgIDprZXk9XCJpdGVtLnZhbHVlXCJcbiAgICAgICAgOmxhYmVsPVwiaXRlbS5sYWJlbFwiXG4gICAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgICAgLz5cbiAgICA8L2VsLXNlbGVjdD5cbiAgICA8ZWwtc2VsZWN0IHYtbW9kZWw9XCJ2YWx1ZVwiIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCIgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIj5cbiAgICAgIDxlbC1vcHRpb25cbiAgICAgICAgdi1mb3I9XCJpdGVtIGluIG9wdGlvbnNcIlxuICAgICAgICA6a2V5PVwiaXRlbS52YWx1ZVwiXG4gICAgICAgIDpsYWJlbD1cIml0ZW0ubGFiZWxcIlxuICAgICAgICA6dmFsdWU9XCJpdGVtLnZhbHVlXCJcbiAgICAgIC8+XG4gICAgPC9lbC1zZWxlY3Q+XG4gICAgPGVsLXNlbGVjdFxuICAgICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCJcbiAgICAgIHNpemU9XCJzbWFsbFwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgPlxuICAgICAgPGVsLW9wdGlvblxuICAgICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICAgIDprZXk9XCJpdGVtLnZhbHVlXCJcbiAgICAgICAgOmxhYmVsPVwiaXRlbS5sYWJlbFwiXG4gICAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgICAgLz5cbiAgICA8L2VsLXNlbGVjdD5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCB2YWx1ZSA9IHJlZignJylcblxuY29uc3Qgb3B0aW9ucyA9IFtcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uMScsXG4gICAgbGFiZWw6ICdPcHRpb24xJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uMicsXG4gICAgbGFiZWw6ICdPcHRpb24yJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uMycsXG4gICAgbGFiZWw6ICdPcHRpb24zJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uNCcsXG4gICAgbGFiZWw6ICdPcHRpb240JyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uNScsXG4gICAgbGFiZWw6ICdPcHRpb241JyxcbiAgfSxcbl1cbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/size.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Basic multiple select Permalink to \"Basic multiple select\" [draft]",
+      "_title": {
+        "text": "Basic multiple select Permalink to \"Basic multiple select\""
+      },
+      "_summary": {
+        "text": "Multiple select uses tags to display selected options."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Set multiple attribute for el-select to enable multiple mode. In this case, the value of v-model will be an array of selected options. By default the selected options will be displayed as Tags. You ca"
+          }
+        },
+        {
+          "_text": {
+            "text": "default"
+          }
+        },
+        {
+          "_text": {
+            "text": "use collapse-tags"
+          }
+        },
+        {
+          "_text": {
+            "text": "use collapse-tags-tooltip"
+          }
+        },
+        {
+          "_text": {
+            "text": "use max-collapse-tags"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwibS00XCI+XG4gICAgPHA+ZGVmYXVsdDwvcD5cbiAgICA8ZWwtc2VsZWN0XG4gICAgICB2LW1vZGVsPVwidmFsdWUxXCJcbiAgICAgIG11bHRpcGxlXG4gICAgICBwbGFjZWhvbGRlcj1cIlNlbGVjdFwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgPlxuICAgICAgPGVsLW9wdGlvblxuICAgICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICAgIDprZXk9XCJpdGVtLnZhbHVlXCJcbiAgICAgICAgOmxhYmVsPVwiaXRlbS5sYWJlbFwiXG4gICAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgICAgLz5cbiAgICA8L2VsLXNlbGVjdD5cbiAgPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJtLTRcIj5cbiAgICA8cD51c2UgY29sbGFwc2UtdGFnczwvcD5cbiAgICA8ZWwtc2VsZWN0XG4gICAgICB2LW1vZGVsPVwidmFsdWUyXCJcbiAgICAgIG11bHRpcGxlXG4gICAgICBjb2xsYXBzZS10YWdzXG4gICAgICBwbGFjZWhvbGRlcj1cIlNlbGVjdFwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgPlxuICAgICAgPGVsLW9wdGlvblxuICAgICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICAgIDprZXk9XCJpdGVtLnZhbHVlXCJcbiAgICAgICAgOmxhYmVsPVwiaXRlbS5sYWJlbFwiXG4gICAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgICAgLz5cbiAgICA8L2VsLXNlbGVjdD5cbiAgPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJtLTRcIj5cbiAgICA8cD51c2UgY29sbGFwc2UtdGFncy10b29sdGlwPC9wPlxuICAgIDxlbC1zZWxlY3RcbiAgICAgIHYtbW9kZWw9XCJ2YWx1ZTNcIlxuICAgICAgbXVsdGlwbGVcbiAgICAgIGNvbGxhcHNlLXRhZ3NcbiAgICAgIGNvbGxhcHNlLXRhZ3MtdG9vbHRpcFxuICAgICAgcGxhY2Vob2xkZXI9XCJTZWxlY3RcIlxuICAgICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICAgID5cbiAgICAgIDxlbC1vcHRpb25cbiAgICAgICAgdi1mb3I9XCJpdGVtIGluIG9wdGlvbnNcIlxuICAgICAgICA6a2V5PVwiaXRlbS52YWx1ZVwiXG4gICAgICAgIDpsYWJlbD1cIml0ZW0ubGFiZWxcIlxuICAgICAgICA6dmFsdWU9XCJpdGVtLnZhbHVlXCJcbiAgICAgIC8+XG4gICAgPC9lbC1zZWxlY3Q+XG4gIDwvZGl2PlxuICA8ZGl2IGNsYXNzPVwibS00XCI+XG4gICAgPHA+dXNlIG1heC1jb2xsYXBzZS10YWdzPC9wPlxuICAgIDxlbC1zZWxlY3RcbiAgICAgIHYtbW9kZWw9XCJ2YWx1ZTRcIlxuICAgICAgbXVsdGlwbGVcbiAgICAgIGNvbGxhcHNlLXRhZ3NcbiAgICAgIGNvbGxhcHNlLXRhZ3MtdG9vbHRpcFxuICAgICAgOm1heC1jb2xsYXBzZS10YWdzPVwiM1wiXG4gICAgICBwbGFjZWhvbGRlcj1cIlNlbGVjdFwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgPlxuICAgICAgPGVsLW9wdGlvblxuICAgICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICAgIDprZXk9XCJpdGVtLnZhbHVlXCJcbiAgICAgICAgOmxhYmVsPVwiaXRlbS5sYWJlbFwiXG4gICAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgICAgLz5cbiAgICA8L2VsLXNlbGVjdD5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCB2YWx1ZTEgPSByZWYoW10pXG5jb25zdCB2YWx1ZTIgPSByZWYoW10pXG5jb25zdCB2YWx1ZTMgPSByZWYoW10pXG5jb25zdCB2YWx1ZTQgPSByZWYoW10pXG5jb25zdCBvcHRpb25zID0gW1xuICB7XG4gICAgdmFsdWU6ICdPcHRpb24xJyxcbiAgICBsYWJlbDogJ09wdGlvbjEnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdPcHRpb24yJyxcbiAgICBsYWJlbDogJ09wdGlvbjInLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdPcHRpb24zJyxcbiAgICBsYWJlbDogJ09wdGlvbjMnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdPcHRpb240JyxcbiAgICBsYWJlbDogJ09wdGlvbjQnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdPcHRpb241JyxcbiAgICBsYWJlbDogJ09wdGlvbjUnLFxuICB9LFxuXVxuPC9zY3JpcHQ+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/multiple.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Custom template Permalink to \"Custom template\" [draft]",
+      "_title": {
+        "text": "Custom template Permalink to \"Custom template\""
+      },
+      "_summary": {
+        "text": "You can customize HTML templates for options."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Insert customized HTML templates into the slot of el-option."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0IHYtbW9kZWw9XCJ2YWx1ZVwiIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCIgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIj5cbiAgICA8ZWwtb3B0aW9uXG4gICAgICB2LWZvcj1cIml0ZW0gaW4gY2l0aWVzXCJcbiAgICAgIDprZXk9XCJpdGVtLnZhbHVlXCJcbiAgICAgIDpsYWJlbD1cIml0ZW0ubGFiZWxcIlxuICAgICAgOnZhbHVlPVwiaXRlbS52YWx1ZVwiXG4gICAgPlxuICAgICAgPHNwYW4gc3R5bGU9XCJmbG9hdDogbGVmdFwiPnt7IGl0ZW0ubGFiZWwgfX08L3NwYW4+XG4gICAgICA8c3BhblxuICAgICAgICBzdHlsZT1cIlxuICAgICAgICAgIGZsb2F0OiByaWdodDtcbiAgICAgICAgICBjb2xvcjogdmFyKC0tZWwtdGV4dC1jb2xvci1zZWNvbmRhcnkpO1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTNweDtcbiAgICAgICAgXCJcbiAgICAgID5cbiAgICAgICAge3sgaXRlbS52YWx1ZSB9fVxuICAgICAgPC9zcGFuPlxuICAgIDwvZWwtb3B0aW9uPlxuICA8L2VsLXNlbGVjdD5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IHZhbHVlID0gcmVmKCcnKVxuY29uc3QgY2l0aWVzID0gW1xuICB7XG4gICAgdmFsdWU6ICdCZWlqaW5nJyxcbiAgICBsYWJlbDogJ0JlaWppbmcnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdTaGFuZ2hhaScsXG4gICAgbGFiZWw6ICdTaGFuZ2hhaScsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ05hbmppbmcnLFxuICAgIGxhYmVsOiAnTmFuamluZycsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ0NoZW5nZHUnLFxuICAgIGxhYmVsOiAnQ2hlbmdkdScsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ1NoZW56aGVuJyxcbiAgICBsYWJlbDogJ1NoZW56aGVuJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnR3Vhbmd6aG91JyxcbiAgICBsYWJlbDogJ0d1YW5nemhvdScsXG4gIH0sXG5dXG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/custom-template.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Header of the dropdown 2.4.3 Permalink to \"Header of the dropdown ^(2.4.3)\" [draft]",
+      "_title": {
+        "text": "Header of the dropdown 2.4.3 Permalink to \"Header of the dropdown ^(2.4.3)\""
+      },
+      "_summary": {
+        "text": "You can customize the header of the dropdown."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Use slot to customize the content."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0XG4gICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICBtdWx0aXBsZVxuICAgIGNsZWFyYWJsZVxuICAgIGNvbGxhcHNlLXRhZ3NcbiAgICBwbGFjZWhvbGRlcj1cIlNlbGVjdFwiXG4gICAgcG9wcGVyLWNsYXNzPVwiY3VzdG9tLWhlYWRlclwiXG4gICAgOm1heC1jb2xsYXBzZS10YWdzPVwiMVwiXG4gICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICA+XG4gICAgPHRlbXBsYXRlICNoZWFkZXI+XG4gICAgICA8ZWwtY2hlY2tib3hcbiAgICAgICAgdi1tb2RlbD1cImNoZWNrQWxsXCJcbiAgICAgICAgOmluZGV0ZXJtaW5hdGU9XCJpbmRldGVybWluYXRlXCJcbiAgICAgICAgQGNoYW5nZT1cImhhbmRsZUNoZWNrQWxsXCJcbiAgICAgID5cbiAgICAgICAgQWxsXG4gICAgICA8L2VsLWNoZWNrYm94PlxuICAgIDwvdGVtcGxhdGU+XG4gICAgPGVsLW9wdGlvblxuICAgICAgdi1mb3I9XCJpdGVtIGluIGNpdGllc1wiXG4gICAgICA6a2V5PVwiaXRlbS52YWx1ZVwiXG4gICAgICA6bGFiZWw9XCJpdGVtLmxhYmVsXCJcbiAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgIC8+XG4gIDwvZWwtc2VsZWN0PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiwgd2F0Y2ggfSBmcm9tICd2dWUnXG5cbmltcG9ydCB0eXBlIHsgQ2hlY2tib3hWYWx1ZVR5cGUgfSBmcm9tICdlbGVtZW50LXBsdXMnXG5cbmNvbnN0IGNoZWNrQWxsID0gcmVmKGZhbHNlKVxuY29uc3QgaW5kZXRlcm1pbmF0ZSA9IHJlZihmYWxzZSlcbmNvbnN0IHZhbHVlID0gcmVmPENoZWNrYm94VmFsdWVUeXBlW10+KFtdKVxuY29uc3QgY2l0aWVzID0gcmVmKFtcbiAge1xuICAgIHZhbHVlOiAnQmVpamluZycsXG4gICAgbGFiZWw6ICdCZWlqaW5nJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnU2hhbmdoYWknLFxuICAgIGxhYmVsOiAnU2hhbmdoYWknLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdOYW5qaW5nJyxcbiAgICBsYWJlbDogJ05hbmppbmcnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdDaGVuZ2R1JyxcbiAgICBsYWJlbDogJ0NoZW5nZHUnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdTaGVuemhlbicsXG4gICAgbGFiZWw6ICdTaGVuemhlbicsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ0d1YW5nemhvdScsXG4gICAgbGFiZWw6ICdHdWFuZ3pob3UnLFxuICB9LFxuXSlcblxud2F0Y2godmFsdWUsICh2YWwpID0+IHtcbiAgaWYgKHZhbC5sZW5ndGggPT09IDApIHtcbiAgICBjaGVja0FsbC52YWx1ZSA9IGZhbHNlXG4gICAgaW5kZXRlcm1pbmF0ZS52YWx1ZSA9IGZhbHNlXG4gIH0gZWxzZSBpZiAodmFsLmxlbmd0aCA9PT0gY2l0aWVzLnZhbHVlLmxlbmd0aCkge1xuICAgIGNoZWNrQWxsLnZhbHVlID0gdHJ1ZVxuICAgIGluZGV0ZXJtaW5hdGUudmFsdWUgPSBmYWxzZVxuICB9IGVsc2Uge1xuICAgIGluZGV0ZXJtaW5hdGUudmFsdWUgPSB0cnVlXG4gIH1cbn0pXG5cbmNvbnN0IGhhbmRsZUNoZWNrQWxsID0gKHZhbDogQ2hlY2tib3hWYWx1ZVR5cGUpID0+IHtcbiAgaW5kZXRlcm1pbmF0ZS52YWx1ZSA9IGZhbHNlXG4gIGlmICh2YWwpIHtcbiAgICB2YWx1ZS52YWx1ZSA9IGNpdGllcy52YWx1ZS5tYXAoKF8pID0+IF8udmFsdWUpXG4gIH0gZWxzZSB7XG4gICAgdmFsdWUudmFsdWUgPSBbXVxuICB9XG59XG48L3NjcmlwdD5cblxuPHN0eWxlPlxuLmN1c3RvbS1oZWFkZXIge1xuICAuZWwtY2hlY2tib3gge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgaGVpZ2h0OiB1bnNldDtcbiAgfVxufVxuPC9zdHlsZT5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/custom-header.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Footer of the dropdown 2.4.3 Permalink to \"Footer of the dropdown ^(2.4.3)\" [draft]",
+      "_title": {
+        "text": "Footer of the dropdown 2.4.3 Permalink to \"Footer of the dropdown ^(2.4.3)\""
+      },
+      "_summary": {
+        "text": "You can customize the footer of the dropdown."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0IHYtbW9kZWw9XCJ2YWx1ZVwiIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCIgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIj5cbiAgICA8ZWwtb3B0aW9uXG4gICAgICB2LWZvcj1cIml0ZW0gaW4gY2l0aWVzXCJcbiAgICAgIDprZXk9XCJpdGVtLnZhbHVlXCJcbiAgICAgIDpsYWJlbD1cIml0ZW0ubGFiZWxcIlxuICAgICAgOnZhbHVlPVwiaXRlbS52YWx1ZVwiXG4gICAgLz5cbiAgICA8dGVtcGxhdGUgI2Zvb3Rlcj5cbiAgICAgIDxlbC1idXR0b24gdi1pZj1cIiFpc0FkZGluZ1wiIHRleHQgYmcgc2l6ZT1cInNtYWxsXCIgQGNsaWNrPVwib25BZGRPcHRpb25cIj5cbiAgICAgICAgQWRkIGFuIG9wdGlvblxuICAgICAgPC9lbC1idXR0b24+XG4gICAgICA8dGVtcGxhdGUgdi1lbHNlPlxuICAgICAgICA8ZWwtaW5wdXRcbiAgICAgICAgICB2LW1vZGVsPVwib3B0aW9uTmFtZVwiXG4gICAgICAgICAgY2xhc3M9XCJvcHRpb24taW5wdXRcIlxuICAgICAgICAgIHBsYWNlaG9sZGVyPVwiaW5wdXQgb3B0aW9uIG5hbWVcIlxuICAgICAgICAgIHNpemU9XCJzbWFsbFwiXG4gICAgICAgIC8+XG4gICAgICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiBzaXplPVwic21hbGxcIiBAY2xpY2s9XCJvbkNvbmZpcm1cIj5cbiAgICAgICAgICBjb25maXJtXG4gICAgICAgIDwvZWwtYnV0dG9uPlxuICAgICAgICA8ZWwtYnV0dG9uIHNpemU9XCJzbWFsbFwiIEBjbGljaz1cImNsZWFyXCI+Y2FuY2VsPC9lbC1idXR0b24+XG4gICAgICA8L3RlbXBsYXRlPlxuICAgIDwvdGVtcGxhdGU+XG4gIDwvZWwtc2VsZWN0PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuaW1wb3J0IHR5cGUgeyBDaGVja2JveFZhbHVlVHlwZSB9IGZyb20gJ2VsZW1lbnQtcGx1cydcblxuY29uc3QgaXNBZGRpbmcgPSByZWYoZmFsc2UpXG5jb25zdCB2YWx1ZSA9IHJlZjxDaGVja2JveFZhbHVlVHlwZVtdPihbXSlcbmNvbnN0IG9wdGlvbk5hbWUgPSByZWYoJycpXG5jb25zdCBjaXRpZXMgPSByZWYoW1xuICB7XG4gICAgdmFsdWU6ICdCZWlqaW5nJyxcbiAgICBsYWJlbDogJ0JlaWppbmcnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdTaGFuZ2hhaScsXG4gICAgbGFiZWw6ICdTaGFuZ2hhaScsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ05hbmppbmcnLFxuICAgIGxhYmVsOiAnTmFuamluZycsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ0NoZW5nZHUnLFxuICAgIGxhYmVsOiAnQ2hlbmdkdScsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ1NoZW56aGVuJyxcbiAgICBsYWJlbDogJ1NoZW56aGVuJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnR3Vhbmd6aG91JyxcbiAgICBsYWJlbDogJ0d1YW5nemhvdScsXG4gIH0sXG5dKVxuXG5jb25zdCBvbkFkZE9wdGlvbiA9ICgpID0+IHtcbiAgaXNBZGRpbmcudmFsdWUgPSB0cnVlXG59XG5cbmNvbnN0IG9uQ29uZmlybSA9ICgpID0+IHtcbiAgaWYgKG9wdGlvbk5hbWUudmFsdWUpIHtcbiAgICBjaXRpZXMudmFsdWUucHVzaCh7XG4gICAgICBsYWJlbDogb3B0aW9uTmFtZS52YWx1ZSxcbiAgICAgIHZhbHVlOiBvcHRpb25OYW1lLnZhbHVlLFxuICAgIH0pXG4gICAgY2xlYXIoKVxuICB9XG59XG5cbmNvbnN0IGNsZWFyID0gKCkgPT4ge1xuICBvcHRpb25OYW1lLnZhbHVlID0gJydcbiAgaXNBZGRpbmcudmFsdWUgPSBmYWxzZVxufVxuPC9zY3JpcHQ+XG5cbjxzdHlsZT5cbi5vcHRpb24taW5wdXQge1xuICB3aWR0aDogMTAwJTtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xufVxuPC9zdHlsZT5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/custom-footer.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Grouping Permalink to \"Grouping\" [draft]",
+      "_title": {
+        "text": "Grouping Permalink to \"Grouping\""
+      },
+      "_summary": {
+        "text": "Display options in groups."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Use el-option-group to group the options, and its label attribute stands for the name of the group."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0IHYtbW9kZWw9XCJ2YWx1ZVwiIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCIgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIj5cbiAgICA8ZWwtb3B0aW9uLWdyb3VwXG4gICAgICB2LWZvcj1cImdyb3VwIGluIG9wdGlvbnNcIlxuICAgICAgOmtleT1cImdyb3VwLmxhYmVsXCJcbiAgICAgIDpsYWJlbD1cImdyb3VwLmxhYmVsXCJcbiAgICA+XG4gICAgICA8ZWwtb3B0aW9uXG4gICAgICAgIHYtZm9yPVwiaXRlbSBpbiBncm91cC5vcHRpb25zXCJcbiAgICAgICAgOmtleT1cIml0ZW0udmFsdWVcIlxuICAgICAgICA6bGFiZWw9XCJpdGVtLmxhYmVsXCJcbiAgICAgICAgOnZhbHVlPVwiaXRlbS52YWx1ZVwiXG4gICAgICAvPlxuICAgIDwvZWwtb3B0aW9uLWdyb3VwPlxuICA8L2VsLXNlbGVjdD5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IHZhbHVlID0gcmVmKCcnKVxuY29uc3Qgb3B0aW9ucyA9IFtcbiAge1xuICAgIGxhYmVsOiAnUG9wdWxhciBjaXRpZXMnLFxuICAgIG9wdGlvbnM6IFtcbiAgICAgIHtcbiAgICAgICAgdmFsdWU6ICdTaGFuZ2hhaScsXG4gICAgICAgIGxhYmVsOiAnU2hhbmdoYWknLFxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgdmFsdWU6ICdCZWlqaW5nJyxcbiAgICAgICAgbGFiZWw6ICdCZWlqaW5nJyxcbiAgICAgIH0sXG4gICAgXSxcbiAgfSxcbiAge1xuICAgIGxhYmVsOiAnQ2l0eSBuYW1lJyxcbiAgICBvcHRpb25zOiBbXG4gICAgICB7XG4gICAgICAgIHZhbHVlOiAnQ2hlbmdkdScsXG4gICAgICAgIGxhYmVsOiAnQ2hlbmdkdScsXG4gICAgICB9LFxuICAgICAge1xuICAgICAgICB2YWx1ZTogJ1NoZW56aGVuJyxcbiAgICAgICAgbGFiZWw6ICdTaGVuemhlbicsXG4gICAgICB9LFxuICAgICAge1xuICAgICAgICB2YWx1ZTogJ0d1YW5nemhvdScsXG4gICAgICAgIGxhYmVsOiAnR3Vhbmd6aG91JyxcbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIHZhbHVlOiAnRGFsaWFuJyxcbiAgICAgICAgbGFiZWw6ICdEYWxpYW4nLFxuICAgICAgfSxcbiAgICBdLFxuICB9LFxuXVxuPC9zY3JpcHQ+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/grouping.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Option filtering Permalink to \"Option filtering\" [draft]",
+      "_title": {
+        "text": "Option filtering Permalink to \"Option filtering\""
+      },
+      "_summary": {
+        "text": "You can filter options for your desired ones."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Adding filterable to el-select enables filtering. By default, Select will find all the options whose label attribute contains the input value. If you prefer other filtering strategies, you can pass th"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0XG4gICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICBmaWx0ZXJhYmxlXG4gICAgcGxhY2Vob2xkZXI9XCJTZWxlY3RcIlxuICAgIHN0eWxlPVwid2lkdGg6IDI0MHB4XCJcbiAgPlxuICAgIDxlbC1vcHRpb25cbiAgICAgIHYtZm9yPVwiaXRlbSBpbiBvcHRpb25zXCJcbiAgICAgIDprZXk9XCJpdGVtLnZhbHVlXCJcbiAgICAgIDpsYWJlbD1cIml0ZW0ubGFiZWxcIlxuICAgICAgOnZhbHVlPVwiaXRlbS52YWx1ZVwiXG4gICAgLz5cbiAgPC9lbC1zZWxlY3Q+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCB2YWx1ZSA9IHJlZignJylcbmNvbnN0IG9wdGlvbnMgPSBbXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjEnLFxuICAgIGxhYmVsOiAnT3B0aW9uMScsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjInLFxuICAgIGxhYmVsOiAnT3B0aW9uMicsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjMnLFxuICAgIGxhYmVsOiAnT3B0aW9uMycsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjQnLFxuICAgIGxhYmVsOiAnT3B0aW9uNCcsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjUnLFxuICAgIGxhYmVsOiAnT3B0aW9uNScsXG4gIH0sXG5dXG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/filterable.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Remote Search Permalink to \"Remote Search\" [draft]",
+      "_title": {
+        "text": "Remote Search Permalink to \"Remote Search\""
+      },
+      "_summary": {
+        "text": "Enter keywords and search data from server."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Set the value of filterable and remote with true to enable remote search, and you should pass the remote-method. remote-method is a Function that gets called when the input value changes, and its para"
+          }
+        },
+        {
+          "_text": {
+            "text": "Please enter a keyword"
+          }
+        },
+        {
+          "_text": {
+            "text": "use remote-show-suffix"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZmxleCBmbGV4LXdyYXBcIj5cbiAgICA8ZGl2IGNsYXNzPVwibS00XCI+XG4gICAgICA8cD5kZWZhdWx0PC9wPlxuICAgICAgPGVsLXNlbGVjdFxuICAgICAgICB2LW1vZGVsPVwidmFsdWVcIlxuICAgICAgICBtdWx0aXBsZVxuICAgICAgICBmaWx0ZXJhYmxlXG4gICAgICAgIHJlbW90ZVxuICAgICAgICByZXNlcnZlLWtleXdvcmRcbiAgICAgICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgZW50ZXIgYSBrZXl3b3JkXCJcbiAgICAgICAgOnJlbW90ZS1tZXRob2Q9XCJyZW1vdGVNZXRob2RcIlxuICAgICAgICA6bG9hZGluZz1cImxvYWRpbmdcIlxuICAgICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgICA+XG4gICAgICAgIDxlbC1vcHRpb25cbiAgICAgICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICAgICAgOmtleT1cIml0ZW0udmFsdWVcIlxuICAgICAgICAgIDpsYWJlbD1cIml0ZW0ubGFiZWxcIlxuICAgICAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgICAgICAvPlxuICAgICAgPC9lbC1zZWxlY3Q+XG4gICAgPC9kaXY+XG4gICAgPGRpdiBjbGFzcz1cIm0tNFwiPlxuICAgICAgPHA+dXNlIHJlbW90ZS1zaG93LXN1ZmZpeDwvcD5cbiAgICAgIDxlbC1zZWxlY3RcbiAgICAgICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICAgICAgbXVsdGlwbGVcbiAgICAgICAgZmlsdGVyYWJsZVxuICAgICAgICByZW1vdGVcbiAgICAgICAgcmVzZXJ2ZS1rZXl3b3JkXG4gICAgICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGVudGVyIGEga2V5d29yZFwiXG4gICAgICAgIHJlbW90ZS1zaG93LXN1ZmZpeFxuICAgICAgICA6cmVtb3RlLW1ldGhvZD1cInJlbW90ZU1ldGhvZFwiXG4gICAgICAgIDpsb2FkaW5nPVwibG9hZGluZ1wiXG4gICAgICAgIHN0eWxlPVwid2lkdGg6IDI0MHB4XCJcbiAgICAgID5cbiAgICAgICAgPGVsLW9wdGlvblxuICAgICAgICAgIHYtZm9yPVwiaXRlbSBpbiBvcHRpb25zXCJcbiAgICAgICAgICA6a2V5PVwiaXRlbS52YWx1ZVwiXG4gICAgICAgICAgOmxhYmVsPVwiaXRlbS5sYWJlbFwiXG4gICAgICAgICAgOnZhbHVlPVwiaXRlbS52YWx1ZVwiXG4gICAgICAgIC8+XG4gICAgICA8L2VsLXNlbGVjdD5cbiAgICA8L2Rpdj5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgb25Nb3VudGVkLCByZWYgfSBmcm9tICd2dWUnXG5cbmludGVyZmFjZSBMaXN0SXRlbSB7XG4gIHZhbHVlOiBzdHJpbmdcbiAgbGFiZWw6IHN0cmluZ1xufVxuXG5jb25zdCBsaXN0ID0gcmVmPExpc3RJdGVtW10+KFtdKVxuY29uc3Qgb3B0aW9ucyA9IHJlZjxMaXN0SXRlbVtdPihbXSlcbmNvbnN0IHZhbHVlID0gcmVmPHN0cmluZ1tdPihbXSlcbmNvbnN0IGxvYWRpbmcgPSByZWYoZmFsc2UpXG5cbm9uTW91bnRlZCgoKSA9PiB7XG4gIGxpc3QudmFsdWUgPSBzdGF0ZXMubWFwKChpdGVtKSA9PiB7XG4gICAgcmV0dXJuIHsgdmFsdWU6IGB2YWx1ZToke2l0ZW19YCwgbGFiZWw6IGBsYWJlbDoke2l0ZW19YCB9XG4gIH0pXG59KVxuXG5jb25zdCByZW1vdGVNZXRob2QgPSAocXVlcnk6IHN0cmluZykgPT4ge1xuICBpZiAocXVlcnkpIHtcbiAgICBsb2FkaW5nLnZhbHVlID0gdHJ1ZVxuICAgIHNldFRpbWVvdXQoKCkgPT4ge1xuICAgICAgbG9hZGluZy52YWx1ZSA9IGZhbHNlXG4gICAgICBvcHRpb25zLnZhbHVlID0gbGlzdC52YWx1ZS5maWx0ZXIoKGl0ZW0pID0+IHtcbiAgICAgICAgcmV0dXJuIGl0ZW0ubGFiZWwudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhxdWVyeS50b0xvd2VyQ2FzZSgpKVxuICAgICAgfSlcbiAgICB9LCAyMDApXG4gIH0gZWxzZSB7XG4gICAgb3B0aW9ucy52YWx1ZSA9IFtdXG4gIH1cbn1cblxuY29uc3Qgc3RhdGVzID0gW1xuICAnQWxhYmFtYScsXG4gICdBbGFza2EnLFxuICAnQXJpem9uYScsXG4gICdBcmthbnNhcycsXG4gICdDYWxpZm9ybmlhJyxcbiAgJ0NvbG9yYWRvJyxcbiAgJ0Nvbm5lY3RpY3V0JyxcbiAgJ0RlbGF3YXJlJyxcbiAgJ0Zsb3JpZGEnLFxuICAnR2VvcmdpYScsXG4gICdIYXdhaWknLFxuICAnSWRhaG8nLFxuICAnSWxsaW5vaXMnLFxuICAnSW5kaWFuYScsXG4gICdJb3dhJyxcbiAgJ0thbnNhcycsXG4gICdLZW50dWNreScsXG4gICdMb3Vpc2lhbmEnLFxuICAnTWFpbmUnLFxuICAnTWFyeWxhbmQnLFxuICAnTWFzc2FjaHVzZXR0cycsXG4gICdNaWNoaWdhbicsXG4gICdNaW5uZXNvdGEnLFxuICAnTWlzc2lzc2lwcGknLFxuICAnTWlzc291cmknLFxuICAnTW9udGFuYScsXG4gICdOZWJyYXNrYScsXG4gICdOZXZhZGEnLFxuICAnTmV3IEhhbXBzaGlyZScsXG4gICdOZXcgSmVyc2V5JyxcbiAgJ05ldyBNZXhpY28nLFxuICAnTmV3IFlvcmsnLFxuICAnTm9ydGggQ2Fyb2xpbmEnLFxuICAnTm9ydGggRGFrb3RhJyxcbiAgJ09oaW8nLFxuICAnT2tsYWhvbWEnLFxuICAnT3JlZ29uJyxcbiAgJ1Blbm5zeWx2YW5pYScsXG4gICdSaG9kZSBJc2xhbmQnLFxuICAnU291dGggQ2Fyb2xpbmEnLFxuICAnU291dGggRGFrb3RhJyxcbiAgJ1Rlbm5lc3NlZScsXG4gICdUZXhhcycsXG4gICdVdGFoJyxcbiAgJ1Zlcm1vbnQnLFxuICAnVmlyZ2luaWEnLFxuICAnV2FzaGluZ3RvbicsXG4gICdXZXN0IFZpcmdpbmlhJyxcbiAgJ1dpc2NvbnNpbicsXG4gICdXeW9taW5nJyxcbl1cbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/remote-search.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Create new items Permalink to \"Create new items\" [draft]",
+      "_title": {
+        "text": "Create new items Permalink to \"Create new items\""
+      },
+      "_summary": {
+        "text": "Create and select new items that are not included in select options"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "By using the allow-create attribute, users can create new items by typing in the input box. Note that for allow-create to work, filterable must be true. This example also demonstrates default-first-op"
+          }
+        },
+        {
+          "_text": {
+            "text": "Choose tags for your article"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0XG4gICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICBtdWx0aXBsZVxuICAgIGZpbHRlcmFibGVcbiAgICBhbGxvdy1jcmVhdGVcbiAgICBkZWZhdWx0LWZpcnN0LW9wdGlvblxuICAgIDpyZXNlcnZlLWtleXdvcmQ9XCJmYWxzZVwiXG4gICAgcGxhY2Vob2xkZXI9XCJDaG9vc2UgdGFncyBmb3IgeW91ciBhcnRpY2xlXCJcbiAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gID5cbiAgICA8ZWwtb3B0aW9uXG4gICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICA6a2V5PVwiaXRlbS52YWx1ZVwiXG4gICAgICA6bGFiZWw9XCJpdGVtLmxhYmVsXCJcbiAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgIC8+XG4gIDwvZWwtc2VsZWN0PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgdmFsdWUgPSByZWY8c3RyaW5nW10+KFtdKVxuY29uc3Qgb3B0aW9ucyA9IFtcbiAge1xuICAgIHZhbHVlOiAnSFRNTCcsXG4gICAgbGFiZWw6ICdIVE1MJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnQ1NTJyxcbiAgICBsYWJlbDogJ0NTUycsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ0phdmFTY3JpcHQnLFxuICAgIGxhYmVsOiAnSmF2YVNjcmlwdCcsXG4gIH0sXG5dXG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/allow-create.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Use value-key attribute Permalink to \"Use value-key attribute\" [draft]",
+      "_title": {
+        "text": "Use value-key attribute Permalink to \"Use value-key attribute\""
+      },
+      "_summary": {
+        "text": "If the binding value of Select is an object, make sure to assign value-key as its unique identity key name."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "By using the value-key attribute, data with duplicate labels can be properly handled. The value of the label property is duplicated, but the option can be identified through the id."
+          }
+        },
+        {
+          "_text": {
+            "text": "selected option's description: no select"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwibS00XCI+XG4gICAgPGVsLXNlbGVjdFxuICAgICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICAgIHZhbHVlLWtleT1cImlkXCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCJcbiAgICAgIHN0eWxlPVwid2lkdGg6IDI0MHB4XCJcbiAgICA+XG4gICAgICA8ZWwtb3B0aW9uXG4gICAgICAgIHYtZm9yPVwiaXRlbSBpbiBvcHRpb25zXCJcbiAgICAgICAgOmtleT1cIml0ZW0uaWRcIlxuICAgICAgICA6bGFiZWw9XCJpdGVtLmxhYmVsXCJcbiAgICAgICAgOnZhbHVlPVwiaXRlbVwiXG4gICAgICAvPlxuICAgIDwvZWwtc2VsZWN0PlxuICAgIDxwPlxuICAgICAgc2VsZWN0ZWQgb3B0aW9uJ3MgZGVzY3JpcHRpb246XG4gICAgICB7eyB2YWx1ZSA/IHZhbHVlLmRlc2MgOiAnbm8gc2VsZWN0JyB9fVxuICAgIDwvcD5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IHNldHVwIGxhbmc9XCJ0c1wiPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG50eXBlIE9wdGlvbiA9IHtcbiAgaWQ6IG51bWJlclxuICBsYWJlbDogc3RyaW5nXG4gIGRlc2M6IHN0cmluZ1xufVxuY29uc3QgdmFsdWUgPSByZWY8T3B0aW9uPigpXG5jb25zdCBvcHRpb25zID0gcmVmKFtcbiAgeyBpZDogMSwgbGFiZWw6ICdPcHRpb24gQScsIGRlc2M6ICdPcHRpb24gQSAtIDIzMDUwNicgfSxcbiAgeyBpZDogMiwgbGFiZWw6ICdPcHRpb24gQicsIGRlc2M6ICdPcHRpb24gQiAtIDIzMDUwNicgfSxcbiAgeyBpZDogMywgbGFiZWw6ICdPcHRpb24gQycsIGRlc2M6ICdPcHRpb24gQyAtIDIzMDUwNicgfSxcbiAgeyBpZDogNCwgbGFiZWw6ICdPcHRpb24gQScsIGRlc2M6ICdPcHRpb24gQSAtIDIzMDUwNycgfSxcbl0pXG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/value-key.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Custom Tag 2.5.0 Permalink to \"Custom Tag ^(2.5.0)\" [draft]",
+      "_title": {
+        "text": "Custom Tag 2.5.0 Permalink to \"Custom Tag ^(2.5.0)\""
+      },
+      "_summary": {
+        "text": "You can customize tags."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Insert customized tags into the slot of el-select. collapse-tags, collapse-tags-tooltip, max-collapse-tags will not work."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0IHYtbW9kZWw9XCJ2YWx1ZVwiIG11bHRpcGxlIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCIgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIj5cbiAgICA8ZWwtb3B0aW9uXG4gICAgICB2LWZvcj1cIml0ZW0gaW4gY29sb3JzXCJcbiAgICAgIDprZXk9XCJpdGVtLnZhbHVlXCJcbiAgICAgIDpsYWJlbD1cIml0ZW0ubGFiZWxcIlxuICAgICAgOnZhbHVlPVwiaXRlbS52YWx1ZVwiXG4gICAgPlxuICAgICAgPGRpdiBjbGFzcz1cImZsZXggaXRlbXMtY2VudGVyXCI+XG4gICAgICAgIDxlbC10YWcgOmNvbG9yPVwiaXRlbS52YWx1ZVwiIHN0eWxlPVwibWFyZ2luLXJpZ2h0OiA4cHhcIiBzaXplPVwic21hbGxcIiAvPlxuICAgICAgICA8c3BhbiA6c3R5bGU9XCJ7IGNvbG9yOiBpdGVtLnZhbHVlIH1cIj57eyBpdGVtLmxhYmVsIH19PC9zcGFuPlxuICAgICAgPC9kaXY+XG4gICAgPC9lbC1vcHRpb24+XG4gICAgPHRlbXBsYXRlICN0YWc+XG4gICAgICA8ZWwtdGFnIHYtZm9yPVwiY29sb3IgaW4gdmFsdWVcIiA6a2V5PVwiY29sb3JcIiA6Y29sb3I9XCJjb2xvclwiIC8+XG4gICAgPC90ZW1wbGF0ZT5cbiAgPC9lbC1zZWxlY3Q+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCB2YWx1ZSA9IHJlZjxzdHJpbmdbXT4oW10pXG5jb25zdCBjb2xvcnMgPSBbXG4gIHtcbiAgICB2YWx1ZTogJyNFNjM0MTUnLFxuICAgIGxhYmVsOiAncmVkJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnI0ZGNjYwMCcsXG4gICAgbGFiZWw6ICdvcmFuZ2UnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICcjRkZERTBBJyxcbiAgICBsYWJlbDogJ3llbGxvdycsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJyMxRUM3OUQnLFxuICAgIGxhYmVsOiAnZ3JlZW4nLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICcjMTRDQ0NDJyxcbiAgICBsYWJlbDogJ2N5YW4nLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICcjNDE2N0YwJyxcbiAgICBsYWJlbDogJ2JsdWUnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICcjNjIyMkM5JyxcbiAgICBsYWJlbDogJ3B1cnBsZScsXG4gIH0sXG5dXG5jb2xvcnMuZm9yRWFjaCgoY29sb3IpID0+IHtcbiAgdmFsdWUudmFsdWUucHVzaChjb2xvci52YWx1ZSlcbn0pXG48L3NjcmlwdD5cblxuPHN0eWxlIHNjb3BlZD5cbi5lbC10YWcge1xuICBib3JkZXI6IG5vbmU7XG4gIGFzcGVjdC1yYXRpbzogMTtcbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/custom-tag.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Custom Loading 2.5.2 Permalink to \"Custom Loading ^(2.5.2)\" [draft]",
+      "_title": {
+        "text": "Custom Loading 2.5.2 Permalink to \"Custom Loading ^(2.5.2)\""
+      },
+      "_summary": {
+        "text": "Override loading content."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "loading icon1"
+          }
+        },
+        {
+          "_text": {
+            "text": "loading icon2"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZmxleCBmbGV4LXdyYXBcIj5cbiAgICA8ZGl2IGNsYXNzPVwibS00XCI+XG4gICAgICA8cD5sb2FkaW5nIGljb24xPC9wPlxuICAgICAgPGVsLXNlbGVjdFxuICAgICAgICB2LW1vZGVsPVwidmFsdWVcIlxuICAgICAgICBtdWx0aXBsZVxuICAgICAgICBmaWx0ZXJhYmxlXG4gICAgICAgIHJlbW90ZVxuICAgICAgICByZXNlcnZlLWtleXdvcmRcbiAgICAgICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgZW50ZXIgYSBrZXl3b3JkXCJcbiAgICAgICAgOnJlbW90ZS1tZXRob2Q9XCJyZW1vdGVNZXRob2RcIlxuICAgICAgICA6bG9hZGluZz1cImxvYWRpbmdcIlxuICAgICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgICA+XG4gICAgICAgIDxlbC1vcHRpb25cbiAgICAgICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICAgICAgOmtleT1cIml0ZW0udmFsdWVcIlxuICAgICAgICAgIDpsYWJlbD1cIml0ZW0ubGFiZWxcIlxuICAgICAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgICAgICAvPlxuICAgICAgICA8dGVtcGxhdGUgI2xvYWRpbmc+XG4gICAgICAgICAgPHN2ZyBjbGFzcz1cImNpcmN1bGFyXCIgdmlld0JveD1cIjAgMCA1MCA1MFwiPlxuICAgICAgICAgICAgPGNpcmNsZSBjbGFzcz1cInBhdGhcIiBjeD1cIjI1XCIgY3k9XCIyNVwiIHI9XCIyMFwiIGZpbGw9XCJub25lXCIgLz5cbiAgICAgICAgICA8L3N2Zz5cbiAgICAgICAgPC90ZW1wbGF0ZT5cbiAgICAgIDwvZWwtc2VsZWN0PlxuICAgIDwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJtLTRcIj5cbiAgICAgIDxwPmxvYWRpbmcgaWNvbjI8L3A+XG4gICAgICA8ZWwtc2VsZWN0XG4gICAgICAgIHYtbW9kZWw9XCJ2YWx1ZVwiXG4gICAgICAgIG11bHRpcGxlXG4gICAgICAgIGZpbHRlcmFibGVcbiAgICAgICAgcmVtb3RlXG4gICAgICAgIHJlc2VydmUta2V5d29yZFxuICAgICAgICBwbGFjZWhvbGRlcj1cIlBsZWFzZSBlbnRlciBhIGtleXdvcmRcIlxuICAgICAgICA6cmVtb3RlLW1ldGhvZD1cInJlbW90ZU1ldGhvZFwiXG4gICAgICAgIDpsb2FkaW5nPVwibG9hZGluZ1wiXG4gICAgICAgIHN0eWxlPVwid2lkdGg6IDI0MHB4XCJcbiAgICAgID5cbiAgICAgICAgPGVsLW9wdGlvblxuICAgICAgICAgIHYtZm9yPVwiaXRlbSBpbiBvcHRpb25zXCJcbiAgICAgICAgICA6a2V5PVwiaXRlbS52YWx1ZVwiXG4gICAgICAgICAgOmxhYmVsPVwiaXRlbS5sYWJlbFwiXG4gICAgICAgICAgOnZhbHVlPVwiaXRlbS52YWx1ZVwiXG4gICAgICAgIC8+XG4gICAgICAgIDx0ZW1wbGF0ZSAjbG9hZGluZz5cbiAgICAgICAgICA8ZWwtaWNvbiBjbGFzcz1cImlzLWxvYWRpbmdcIj5cbiAgICAgICAgICAgIDxzdmcgY2xhc3M9XCJjaXJjdWxhclwiIHZpZXdCb3g9XCIwIDAgMjAgMjBcIj5cbiAgICAgICAgICAgICAgPGdcbiAgICAgICAgICAgICAgICBjbGFzcz1cInBhdGgyIGxvYWRpbmctcGF0aFwiXG4gICAgICAgICAgICAgICAgc3Ryb2tlLXdpZHRoPVwiMFwiXG4gICAgICAgICAgICAgICAgc3R5bGU9XCJhbmltYXRpb246IG5vbmU7IHN0cm9rZTogbm9uZVwiXG4gICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICA8Y2lyY2xlIHI9XCIzLjM3NVwiIGNsYXNzPVwiZG90MVwiIHJ4PVwiMFwiIHJ5PVwiMFwiIC8+XG4gICAgICAgICAgICAgICAgPGNpcmNsZSByPVwiMy4zNzVcIiBjbGFzcz1cImRvdDJcIiByeD1cIjBcIiByeT1cIjBcIiAvPlxuICAgICAgICAgICAgICAgIDxjaXJjbGUgcj1cIjMuMzc1XCIgY2xhc3M9XCJkb3Q0XCIgcng9XCIwXCIgcnk9XCIwXCIgLz5cbiAgICAgICAgICAgICAgICA8Y2lyY2xlIHI9XCIzLjM3NVwiIGNsYXNzPVwiZG90M1wiIHJ4PVwiMFwiIHJ5PVwiMFwiIC8+XG4gICAgICAgICAgICAgIDwvZz5cbiAgICAgICAgICAgIDwvc3ZnPlxuICAgICAgICAgIDwvZWwtaWNvbj5cbiAgICAgICAgPC90ZW1wbGF0ZT5cbiAgICAgIDwvZWwtc2VsZWN0PlxuICAgIDwvZGl2PlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyBvbk1vdW50ZWQsIHJlZiB9IGZyb20gJ3Z1ZSdcblxuaW50ZXJmYWNlIExpc3RJdGVtIHtcbiAgdmFsdWU6IHN0cmluZ1xuICBsYWJlbDogc3RyaW5nXG59XG5cbmNvbnN0IGxpc3QgPSByZWY8TGlzdEl0ZW1bXT4oW10pXG5jb25zdCBvcHRpb25zID0gcmVmPExpc3RJdGVtW10+KFtdKVxuY29uc3QgdmFsdWUgPSByZWY8c3RyaW5nW10+KFtdKVxuY29uc3QgbG9hZGluZyA9IHJlZihmYWxzZSlcblxub25Nb3VudGVkKCgpID0+IHtcbiAgbGlzdC52YWx1ZSA9IHN0YXRlcy5tYXAoKGl0ZW0pID0+IHtcbiAgICByZXR1cm4geyB2YWx1ZTogYHZhbHVlOiR7aXRlbX1gLCBsYWJlbDogYGxhYmVsOiR7aXRlbX1gIH1cbiAgfSlcbn0pXG5cbmNvbnN0IHJlbW90ZU1ldGhvZCA9IChxdWVyeTogc3RyaW5nKSA9PiB7XG4gIGlmIChxdWVyeSkge1xuICAgIGxvYWRpbmcudmFsdWUgPSB0cnVlXG4gICAgc2V0VGltZW91dCgoKSA9PiB7XG4gICAgICBsb2FkaW5nLnZhbHVlID0gZmFsc2VcbiAgICAgIG9wdGlvbnMudmFsdWUgPSBsaXN0LnZhbHVlLmZpbHRlcigoaXRlbSkgPT4ge1xuICAgICAgICByZXR1cm4gaXRlbS5sYWJlbC50b0xvd2VyQ2FzZSgpLmluY2x1ZGVzKHF1ZXJ5LnRvTG93ZXJDYXNlKCkpXG4gICAgICB9KVxuICAgIH0sIDMwMDApXG4gIH0gZWxzZSB7XG4gICAgb3B0aW9ucy52YWx1ZSA9IFtdXG4gIH1cbn1cblxuY29uc3Qgc3RhdGVzID0gW1xuICAnQWxhYmFtYScsXG4gICdBbGFza2EnLFxuICAnQXJpem9uYScsXG4gICdBcmthbnNhcycsXG4gICdDYWxpZm9ybmlhJyxcbiAgJ0NvbG9yYWRvJyxcbiAgJ0Nvbm5lY3RpY3V0JyxcbiAgJ0RlbGF3YXJlJyxcbiAgJ0Zsb3JpZGEnLFxuICAnR2VvcmdpYScsXG4gICdIYXdhaWknLFxuICAnSWRhaG8nLFxuICAnSWxsaW5vaXMnLFxuICAnSW5kaWFuYScsXG4gICdJb3dhJyxcbiAgJ0thbnNhcycsXG4gICdLZW50dWNreScsXG4gICdMb3Vpc2lhbmEnLFxuICAnTWFpbmUnLFxuICAnTWFyeWxhbmQnLFxuICAnTWFzc2FjaHVzZXR0cycsXG4gICdNaWNoaWdhbicsXG4gICdNaW5uZXNvdGEnLFxuICAnTWlzc2lzc2lwcGknLFxuICAnTWlzc291cmknLFxuICAnTW9udGFuYScsXG4gICdOZWJyYXNrYScsXG4gICdOZXZhZGEnLFxuICAnTmV3IEhhbXBzaGlyZScsXG4gICdOZXcgSmVyc2V5JyxcbiAgJ05ldyBNZXhpY28nLFxuICAnTmV3IFlvcmsnLFxuICAnTm9ydGggQ2Fyb2xpbmEnLFxuICAnTm9ydGggRGFrb3RhJyxcbiAgJ09oaW8nLFxuICAnT2tsYWhvbWEnLFxuICAnT3JlZ29uJyxcbiAgJ1Blbm5zeWx2YW5pYScsXG4gICdSaG9kZSBJc2xhbmQnLFxuICAnU291dGggQ2Fyb2xpbmEnLFxuICAnU291dGggRGFrb3RhJyxcbiAgJ1Rlbm5lc3NlZScsXG4gICdUZXhhcycsXG4gICdVdGFoJyxcbiAgJ1Zlcm1vbnQnLFxuICAnVmlyZ2luaWEnLFxuICAnV2FzaGluZ3RvbicsXG4gICdXZXN0IFZpcmdpbmlhJyxcbiAgJ1dpc2NvbnNpbicsXG4gICdXeW9taW5nJyxcbl1cbjwvc2NyaXB0PlxuXG48c3R5bGU+XG4uZWwtc2VsZWN0LWRyb3Bkb3duX19sb2FkaW5nIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGhlaWdodDogMTAwcHg7XG4gIGZvbnQtc2l6ZTogMjBweDtcbn1cblxuLmNpcmN1bGFyIHtcbiAgZGlzcGxheTogaW5saW5lO1xuICBoZWlnaHQ6IDMwcHg7XG4gIHdpZHRoOiAzMHB4O1xuICBhbmltYXRpb246IGxvYWRpbmctcm90YXRlIDJzIGxpbmVhciBpbmZpbml0ZTtcbn1cbi5wYXRoIHtcbiAgYW5pbWF0aW9uOiBsb2FkaW5nLWRhc2ggMS41cyBlYXNlLWluLW91dCBpbmZpbml0ZTtcbiAgc3Ryb2tlLWRhc2hhcnJheTogOTAsIDE1MDtcbiAgc3Ryb2tlLWRhc2hvZmZzZXQ6IDA7XG4gIHN0cm9rZS13aWR0aDogMjtcbiAgc3Ryb2tlOiB2YXIoLS1lbC1jb2xvci1wcmltYXJ5KTtcbiAgc3Ryb2tlLWxpbmVjYXA6IHJvdW5kO1xufVxuLmxvYWRpbmctcGF0aCAuZG90MSB7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlKDMuNzVweCwgMy43NXB4KTtcbiAgZmlsbDogdmFyKC0tZWwtY29sb3ItcHJpbWFyeSk7XG4gIGFuaW1hdGlvbjogY3VzdG9tLXNwaW4tbW92ZSAxcyBpbmZpbml0ZSBsaW5lYXIgYWx0ZXJuYXRlO1xuICBvcGFjaXR5OiAwLjM7XG59XG4ubG9hZGluZy1wYXRoIC5kb3QyIHtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoY2FsYygxMDAlIC0gMy43NXB4KSwgMy43NXB4KTtcbiAgZmlsbDogdmFyKC0tZWwtY29sb3ItcHJpbWFyeSk7XG4gIGFuaW1hdGlvbjogY3VzdG9tLXNwaW4tbW92ZSAxcyBpbmZpbml0ZSBsaW5lYXIgYWx0ZXJuYXRlO1xuICBvcGFjaXR5OiAwLjM7XG4gIGFuaW1hdGlvbi1kZWxheTogMC40cztcbn1cbi5sb2FkaW5nLXBhdGggLmRvdDMge1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgzLjc1cHgsIGNhbGMoMTAwJSAtIDMuNzVweCkpO1xuICBmaWxsOiB2YXIoLS1lbC1jb2xvci1wcmltYXJ5KTtcbiAgYW5pbWF0aW9uOiBjdXN0b20tc3Bpbi1tb3ZlIDFzIGluZmluaXRlIGxpbmVhciBhbHRlcm5hdGU7XG4gIG9wYWNpdHk6IDAuMztcbiAgYW5pbWF0aW9uLWRlbGF5OiAxLjJzO1xufVxuLmxvYWRpbmctcGF0aCAuZG90NCB7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlKGNhbGMoMTAwJSAtIDMuNzVweCksIGNhbGMoMTAwJSAtIDMuNzVweCkpO1xuICBmaWxsOiB2YXIoLS1lbC1jb2xvci1wcmltYXJ5KTtcbiAgYW5pbWF0aW9uOiBjdXN0b20tc3Bpbi1tb3ZlIDFzIGluZmluaXRlIGxpbmVhciBhbHRlcm5hdGU7XG4gIG9wYWNpdHk6IDAuMztcbiAgYW5pbWF0aW9uLWRlbGF5OiAwLjhzO1xufVxuQGtleWZyYW1lcyBsb2FkaW5nLXJvdGF0ZSB7XG4gIHRvIHtcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpO1xuICB9XG59XG5Aa2V5ZnJhbWVzIGxvYWRpbmctZGFzaCB7XG4gIDAlIHtcbiAgICBzdHJva2UtZGFzaGFycmF5OiAxLCAyMDA7XG4gICAgc3Ryb2tlLWRhc2hvZmZzZXQ6IDA7XG4gIH1cbiAgNTAlIHtcbiAgICBzdHJva2UtZGFzaGFycmF5OiA5MCwgMTUwO1xuICAgIHN0cm9rZS1kYXNob2Zmc2V0OiAtNDBweDtcbiAgfVxuICAxMDAlIHtcbiAgICBzdHJva2UtZGFzaGFycmF5OiA5MCwgMTUwO1xuICAgIHN0cm9rZS1kYXNob2Zmc2V0OiAtMTIwcHg7XG4gIH1cbn1cbkBrZXlmcmFtZXMgY3VzdG9tLXNwaW4tbW92ZSB7XG4gIHRvIHtcbiAgICBvcGFjaXR5OiAxO1xuICB9XG59XG48L3N0eWxlPlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/custom-loading.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Empty Values 2.7.0 Permalink to \"Empty Values ^(2.7.0)\" [draft]",
+      "_title": {
+        "text": "Empty Values 2.7.0 Permalink to \"Empty Values ^(2.7.0)\""
+      },
+      "_summary": {
+        "text": "If you want to support empty string, please set empty-values to [null, undefined]."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "If you want to change the clear value to null, please set value-on-clear to null."
+          }
+        },
+        {
+          "_text": {
+            "text": "All"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtc2VsZWN0XG4gICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICA6ZW1wdHktdmFsdWVzPVwiW251bGwsIHVuZGVmaW5lZF1cIlxuICAgIDp2YWx1ZS1vbi1jbGVhcj1cIm51bGxcIlxuICAgIGNsZWFyYWJsZVxuICAgIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCJcbiAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgQGNsZWFyPVwiaGFuZGxlQ2xlYXJcIlxuICA+XG4gICAgPGVsLW9wdGlvblxuICAgICAgdi1mb3I9XCJpdGVtIGluIG9wdGlvbnNcIlxuICAgICAgOmtleT1cIml0ZW0udmFsdWVcIlxuICAgICAgOmxhYmVsPVwiaXRlbS5sYWJlbFwiXG4gICAgICA6dmFsdWU9XCJpdGVtLnZhbHVlXCJcbiAgICAvPlxuICA8L2VsLXNlbGVjdD5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5pbXBvcnQgeyBFbE1lc3NhZ2UgfSBmcm9tICdlbGVtZW50LXBsdXMnXG5cbmNvbnN0IHZhbHVlID0gcmVmKCcnKVxuXG5jb25zdCBvcHRpb25zID0gW1xuICB7XG4gICAgdmFsdWU6ICcnLFxuICAgIGxhYmVsOiAnQWxsJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uMScsXG4gICAgbGFiZWw6ICdPcHRpb24xJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uMicsXG4gICAgbGFiZWw6ICdPcHRpb24yJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uMycsXG4gICAgbGFiZWw6ICdPcHRpb24zJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uNCcsXG4gICAgbGFiZWw6ICdPcHRpb240JyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uNScsXG4gICAgbGFiZWw6ICdPcHRpb241JyxcbiAgfSxcbl1cblxuY29uc3QgaGFuZGxlQ2xlYXIgPSAoKSA9PiB7XG4gIEVsTWVzc2FnZS5pbmZvKGBUaGUgY2xlYXIgdmFsdWUgaXM6ICR7dmFsdWUudmFsdWV9YClcbn1cbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/empty-values.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Custom Label 2.7.4 Permalink to \"Custom Label ^(2.7.4)\" [draft]",
+      "_title": {
+        "text": "Custom Label 2.7.4 Permalink to \"Custom Label ^(2.7.4)\""
+      },
+      "_summary": {
+        "text": "You can customize label."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Label1: Option1"
+          }
+        },
+        {
+          "_text": {
+            "text": "Label1:"
+          }
+        },
+        {
+          "_text": {
+            "text": "Option1"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Close this tag"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZmxleCBmbGV4LXdyYXAgZ2FwLTQgaXRlbXMtY2VudGVyXCI+XG4gICAgPGVsLXNlbGVjdFxuICAgICAgdi1tb2RlbD1cInZhbHVlMVwiXG4gICAgICBwbGFjZWhvbGRlcj1cIlNlbGVjdFwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgICBjbGVhcmFibGVcbiAgICA+XG4gICAgICA8dGVtcGxhdGUgI2xhYmVsPVwieyBsYWJlbCwgdmFsdWUgfVwiPlxuICAgICAgICA8c3Bhbj57eyBsYWJlbCB9fTogPC9zcGFuPlxuICAgICAgICA8c3BhbiBzdHlsZT1cImZvbnQtd2VpZ2h0OiBib2xkXCI+e3sgdmFsdWUgfX08L3NwYW4+XG4gICAgICA8L3RlbXBsYXRlPlxuICAgICAgPGVsLW9wdGlvblxuICAgICAgICB2LWZvcj1cIml0ZW0gaW4gb3B0aW9uc1wiXG4gICAgICAgIDprZXk9XCJpdGVtLnZhbHVlXCJcbiAgICAgICAgOmxhYmVsPVwiaXRlbS5sYWJlbFwiXG4gICAgICAgIDp2YWx1ZT1cIml0ZW0udmFsdWVcIlxuICAgICAgLz5cbiAgICA8L2VsLXNlbGVjdD5cblxuICAgIDxlbC1zZWxlY3RcbiAgICAgIHYtbW9kZWw9XCJ2YWx1ZTJcIlxuICAgICAgcGxhY2Vob2xkZXI9XCJTZWxlY3RcIlxuICAgICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICAgICAgY2xlYXJhYmxlXG4gICAgICBtdWx0aXBsZVxuICAgID5cbiAgICAgIDx0ZW1wbGF0ZSAjbGFiZWw9XCJ7IGxhYmVsLCB2YWx1ZSB9XCI+XG4gICAgICAgIDxzcGFuPnt7IGxhYmVsIH19OiA8L3NwYW4+XG4gICAgICAgIDxzcGFuIHN0eWxlPVwiZm9udC13ZWlnaHQ6IGJvbGRcIj57eyB2YWx1ZSB9fTwvc3Bhbj5cbiAgICAgIDwvdGVtcGxhdGU+XG4gICAgICA8ZWwtb3B0aW9uXG4gICAgICAgIHYtZm9yPVwiaXRlbSBpbiBvcHRpb25zXCJcbiAgICAgICAgOmtleT1cIml0ZW0udmFsdWVcIlxuICAgICAgICA6bGFiZWw9XCJpdGVtLmxhYmVsXCJcbiAgICAgICAgOnZhbHVlPVwiaXRlbS52YWx1ZVwiXG4gICAgICAvPlxuICAgIDwvZWwtc2VsZWN0PlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IHZhbHVlMSA9IHJlZjxzdHJpbmc+KCdPcHRpb24xJylcbmNvbnN0IHZhbHVlMiA9IHJlZjxzdHJpbmdbXT4oWydPcHRpb24xJ10pXG5jb25zdCBvcHRpb25zID0gW1xuICB7XG4gICAgdmFsdWU6ICdPcHRpb24xJyxcbiAgICBsYWJlbDogJ0xhYmVsMScsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjInLFxuICAgIGxhYmVsOiAnTGFiZWwyJyxcbiAgfSxcbiAge1xuICAgIHZhbHVlOiAnT3B0aW9uMycsXG4gICAgbGFiZWw6ICdMYWJlbDMnLFxuICB9LFxuICB7XG4gICAgdmFsdWU6ICdPcHRpb240JyxcbiAgICBsYWJlbDogJ0xhYmVsNCcsXG4gIH0sXG4gIHtcbiAgICB2YWx1ZTogJ09wdGlvbjUnLFxuICAgIGxhYmVsOiAnTGFiZWw1JyxcbiAgfSxcbl1cbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/select/custom-label.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Select API Permalink to \"Select API\" [draft]",
+      "_title": {
+        "text": "Select API Permalink to \"Select API\""
+      },
+      "_lines": [
+        {
+          "_intent": "Select Attributes Permalink to \"Select Attributes\" [draft]",
+          "_title": {
+            "text": "Select Attributes Permalink to \"Select Attributes\""
+          },
+          "_summary": {
+            "text": "WARNING"
+          },
+          "_lines": [
+            {
+              "_intent": "table (53 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "model-value / v-model"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "multiple"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "options 2.10.5"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "props 2.10.5"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value-key"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clearable"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "collapse-tags"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "collapse-tags-tooltip 2.3.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tag-tooltip 2.13.3"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "multiple-limit"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "id"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "name"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "effect"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "autocomplete"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placeholder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterable"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "allow-create"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filter-method"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "remote"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "debounce 2.11.7"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "remote-method"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "remote-show-suffix"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loading"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loading-text"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "no-match-text"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "no-data-text"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "popper-class"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "popper-style 2.11.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "reserve-keyword"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "default-first-option"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "teleported"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "append-to 2.8.4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "persistent"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "automatic-dropdown"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear-icon"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "fit-input-width"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "suffix-icon"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tag-type"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "suffix-transition has been deprecated, and will be removed in 2.4.0, please use override style scheme."
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "props Permalink to \"props\" [draft]",
+          "_title": {
+            "text": "props Permalink to \"props\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (4 rows): Attribute / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "value"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "options 2.11.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "tag-tooltip 2.13.3 Permalink to \"tag-tooltip ^(2.13.3)\" [draft]",
+          "_title": {
+            "text": "tag-tooltip 2.13.3 Permalink to \"tag-tooltip ^(2.13.3)\""
+          },
+          "_summary": {
+            "text": "Fallback Mechanism"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Properties in tag-tooltip follow this priority order:"
+              }
+            },
+            {
+              "_intent": "list (3 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Explicitly defined fields within the tag-tooltip object."
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Shared props inherited from el-select (e.g. effect, popper-class, popper-style, teleported, append-to, popper-options)."
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Default values of the underlying el-tooltip component. This allows you to override specific tooltip behaviors for tags while maintaining consistency with the Se"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "Custom Container Positioning"
+              }
+            },
+            {
+              "_text": {
+                "text": "When appending the Tooltip to a custom container (via the append-to attribute), the container should be configured with position: relative or position: absolute to ensure accurate positioning. Additio"
+              }
+            },
+            {
+              "_intent": "table (13 rows): Attribute / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "append-to"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placement"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "fallback-placements"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements",
+                          "label": "popper.js"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "open",
+                          "label": "Type details"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "effect"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "popper-class"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "popper-style"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "transition"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "teleported"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "popper-options"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://popper.js.org/docs/v2/",
+                          "label": "popper.js"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://popper.js.org/docs/v2/",
+                          "label": "popper.js"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "show-after"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "hide-after"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "auto-close"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "offset"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Select Events Permalink to \"Select Events\" [draft]",
+          "_title": {
+            "text": "Select Events Permalink to \"Select Events\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (8 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "change"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "visible-change"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "remove-tag"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "blur"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "focus"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "popup-scroll 2.9.4"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "end-reached 2.14.0"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Select Slots Permalink to \"Select Slots\" [draft]",
+          "_title": {
+            "text": "Select Slots Permalink to \"Select Slots\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (8 rows): Name / Description / Subtags [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "default"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "header 2.4.3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "footer 2.4.3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prefix"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "empty"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tag 2.5.0"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loading 2.5.2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label 2.7.4"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Select Exposes Permalink to \"Select Exposes\" [draft]",
+          "_title": {
+            "text": "Select Exposes Permalink to \"Select Exposes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "focus"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "blur"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "selectedLabel 2.8.5"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Option Group API Permalink to \"Option Group API\" [draft]",
+      "_title": {
+        "text": "Option Group API Permalink to \"Option Group API\""
+      },
+      "_lines": [
+        {
+          "_intent": "Option Group Attributes Permalink to \"Option Group Attributes\" [draft]",
+          "_title": {
+            "text": "Option Group Attributes Permalink to \"Option Group Attributes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (2 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "label"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Option Group Slots Permalink to \"Option Group Slots\" [draft]",
+          "_title": {
+            "text": "Option Group Slots Permalink to \"Option Group Slots\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (1 rows): Name / Description / Subtags [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "default"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Option API Permalink to \"Option API\" [draft]",
+      "_title": {
+        "text": "Option API Permalink to \"Option API\""
+      },
+      "_lines": [
+        {
+          "_intent": "Option Attributes Permalink to \"Option Attributes\" [draft]",
+          "_title": {
+            "text": "Option Attributes Permalink to \"Option Attributes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "value"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Option Slots Permalink to \"Option Slots\" [draft]",
+          "_title": {
+            "text": "Option Slots Permalink to \"Option Slots\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (1 rows): Name / Description [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "default"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Source Permalink to \"Source\" [draft]",
+      "_title": {
+        "text": "Source Permalink to \"Source\""
+      },
+      "_summary": {
+        "text": "Component • Style • Docs"
+      }
+    },
+    {
+      "_intent": "Contributors Permalink to \"Contributors\" [draft]",
+      "_title": {
+        "text": "Contributors Permalink to \"Contributors\""
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/en-US/component/select.md",
+            "label": "Edit this page on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.org/en-US/component/rate",
+            "label": "Rate"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.org/en-US/component/select-v2",
+            "label": "Virtualized Select"
+          }
+        },
+        {
+          "_intent": "Links [draft]",
+          "_title": {
+            "text": "Links"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://cn.element-plus.org/zh-CN/",
+                "label": "China Mirror 🇨🇳"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/releases",
+                "label": "Changelog"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://element.eleme.io/",
+                "label": "Element UI for Vue 2"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://element-plus.org/sitemap.xml",
+                "label": "Site Map"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Community [draft]",
+          "_title": {
+            "text": "Community"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus",
+                "label": "GitHub"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://discord.com/invite/gXK9XNzW3X",
+                "label": "Discord"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/issues",
+                "label": "Feedback"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/blob/dev/.github/CONTRIBUTING.en-US.md",
+                "label": "Contribution"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://segmentfault.com/t/element-plus",
+                "label": "SegmentFault"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

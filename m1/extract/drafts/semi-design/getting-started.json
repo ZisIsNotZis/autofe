@@ -1,0 +1,423 @@
+{
+  "_intent": "Getting Started 快速开始 - Semi Design — 1、安装 Semi link [draft]",
+  "_title": {
+    "text": "Getting Started 快速开始 - Semi Design"
+  },
+  "_image": {
+    "image": "",
+    "alt": "info_circle"
+  },
+  "_summary": {
+    "text": "跳转到:"
+  },
+  "_lines": [
+    {
+      "_intent": "list (3 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "跳转到侧边导航"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/start/getting-started#side-nav",
+            "label": "跳转到侧边导航"
+          }
+        },
+        {
+          "_name": {
+            "text": "跳转到主内容"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/start/getting-started#main-content",
+            "label": "跳转到主内容"
+          }
+        },
+        {
+          "_name": {
+            "text": "跳转到页脚"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/start/getting-started#footer",
+            "label": "跳转到页脚"
+          }
+        }
+      ]
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "🎯 使用 MCP & Skills 让 AI 对 Semi 了如指掌，如虎添翼 🚀"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "关闭横幅"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "semi design logo， 链接到semi主页"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/zh-CN/start/introduction",
+        "label": "组件"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/dsm",
+        "label": "主题"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/code",
+        "label": "设计转代码"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/template",
+        "label": "模板"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/dsm_vchart",
+        "label": "数据可视化 NEW"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/blogs",
+        "label": "博客"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "切换到暗色模式"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Twitter"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "查看Github"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Switch to English"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "登录"
+      }
+    },
+    {
+      "_text": {
+        "text": "开始 · Getting Started"
+      }
+    },
+    {
+      "_text": {
+        "text": "快速开始"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/zh-CN/start/react19",
+        "label": "React v19 适配"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://bytedance.larkoffice.com/wiki/FaRwweDLmigrD0k8wLgcDaQtnbb",
+        "label": "Semi工程化 FAQ"
+      }
+    },
+    {
+      "_text": {
+        "text": "注意事项"
+      }
+    },
+    {
+      "_text": {
+        "text": "组件包 @douyinfe/semi-ui 适用于 React 版本低于 v19 的情况，如果使用 React v19，请使用"
+      }
+    },
+    {
+      "_intent": "1、安装 Semi link [draft]",
+      "_title": {
+        "text": "1、安装 Semi link"
+      }
+    },
+    {
+      "_intent": "2、使用组件 link [draft]",
+      "_title": {
+        "text": "2、使用组件 link"
+      },
+      "_summary": {
+        "text": "在 Webpack、Rspack、create-react-app 或 Vite 项目中使用时，无需进行任何编译项配置，直接使用"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "推荐在项目中引入 reset.css，它可以重置浏览器自带的默认样式，避免不同UA之间的样式差异。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "3、在 NextJs 中使用 link [draft]",
+      "_title": {
+        "text": "3、在 NextJs 中使用 link"
+      },
+      "_summary": {
+        "text": "如何在 Next.js 中使用主题包"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "首先安装插件 npm i @douyinfe/semi-next (如果你使用 yarn 或 pnpm，请自行更换为对等命令)"
+              }
+            },
+            {
+              "_name": {
+                "text": "在 next.config.js 中进行配置，插件会将组件默认的import CSS 语句移除。更多配置可查阅 @douyinfe/semi-next详细文档"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.npmjs.com/package/@douyinfe/semi-next",
+                "label": "详细文档"
+              }
+            },
+            {
+              "_name": {
+                "text": "在 global.css 中引入全量的 semi css（目前在 Next.js 中不支持按需引入）"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "4、在 Remix 中使用 link [draft]",
+      "_title": {
+        "text": "4、在 Remix 中使用 link"
+      },
+      "_image": {
+        "image": "",
+        "alt": "info_circle"
+      },
+      "_summary": {
+        "text": "完成配置，可以正常使用 Semi 相关组件"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/DouyinFE/semi-design/issues/2444",
+            "label": "Issue 2444"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://remix.run/docs/en/v1/guides/styling#css-side-effect-imports",
+            "label": "Remix Css Side-Effect Imports"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://remix.run/docs/en/v1/guides/styling#css-bundling",
+            "label": "Remix CSS Bundling"
+          }
+        },
+        {
+          "_text": {
+            "text": "如何在 Remix 中使用主题包"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "5、UMD 方式使用组件 link [draft]",
+      "_title": {
+        "text": "5、UMD 方式使用组件 link"
+      },
+      "_summary": {
+        "text": "我们并不推荐直接使用已构建文件，这样会全量引入所有组件，无法实现按需加载。但如果确实有非构建场景的需求，可以通过以下方式引用"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://unpkg.com/browse/@douyinfe/semi-ui/dist/umd/semi-ui.min.js",
+            "label": "BUILD-JS"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://unpkg.com/browse/@douyinfe/semi-ui/dist/css/semi.min.css",
+            "label": "BUILD-CSS"
+          }
+        },
+        {
+          "_text": {
+            "text": "1、 请确保你已提前引入 react 以及 react-dom 2、 引入 JS 文件，以下示例 URL 中 2.27.0 为"
+          }
+        },
+        {
+          "_intent": "table (6 rows): 资源 / URL [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "semi-ui (min)"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://unpkg.com/@douyinfe/semi-ui@2.27.0/dist/umd/semi-ui.min.js",
+                "label": "https://unpkg.com/@douyinfe/semi-ui@2.27.0/dist/umd/semi-ui.min.js"
+              }
+            },
+            {
+              "_name": {
+                "text": "semi-icons (min)"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://unpkg.com/@douyinfe/semi-icons@latest/dist/umd/semi-icons.min.js",
+                "label": "https://unpkg.com/@douyinfe/semi-icons@latest/dist/umd/semi-icons.min.js"
+              }
+            },
+            {
+              "_name": {
+                "text": "semi-illustrations (min)"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://unpkg.com/@douyinfe/semi-illustrations@latest/dist/umd/semi-illustrations.min.js",
+                "label": "https://unpkg.com/@douyinfe/semi-illustrations@latest/dist/umd/semi-illustrations.min.js"
+              }
+            },
+            {
+              "_name": {
+                "text": "semi-ui (normal)"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://unpkg.com/@douyinfe/semi-ui@2.27.0/dist/umd/semi-ui.js",
+                "label": "https://unpkg.com/@douyinfe/semi-ui@2.27.0/dist/umd/semi-ui.js"
+              }
+            },
+            {
+              "_name": {
+                "text": "semi-icons (normal)"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://unpkg.com/@douyinfe/semi-icons@latest/dist/umd/semi-icons.js",
+                "label": "https://unpkg.com/@douyinfe/semi-icons@latest/dist/umd/semi-icons.js"
+              }
+            },
+            {
+              "_name": {
+                "text": "semi-illustrations (normal)"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://unpkg.com/@douyinfe/semi-illustrations@latest/dist/umd/semi-illustrations.js",
+                "label": "https://unpkg.com/@douyinfe/semi-illustrations@latest/dist/umd/semi-illustrations.js"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "3、 引入 Semi 默认主题的 CSS 样式文件"
+          }
+        },
+        {
+          "_intent": "table (2 rows): 资源 / URL [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "semi.css"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://unpkg.com/@douyinfe/semi-ui@2.27.0/dist/css/semi.css",
+                "label": "https://unpkg.com/@douyinfe/semi-ui@2.27.0/dist/css/semi.css"
+              }
+            },
+            {
+              "_name": {
+                "text": "semi-icons.css"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://unpkg.com/@douyinfe/semi-icons@latest/dist/css/semi-icons.css",
+                "label": "https://unpkg.com/@douyinfe/semi-icons@latest/dist/css/semi-icons.css"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/start/introduction",
+            "label": "start / Introduction 介绍 Introduction 介绍"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/ecosystem/react19",
+            "label": "ecosystem / React 19 适配 React 19 适配"
+          }
+        },
+        {
+          "_text": {
+            "text": "Navigated to Getting Started 快速开始 - Semi Design"
+          }
+        }
+      ]
+    }
+  ]
+}

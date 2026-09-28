@@ -1,0 +1,86 @@
+{
+  "site": "element-plus",
+  "page": "input",
+  "url": "https://element-plus.org/en-US/component/input.html",
+  "title": "Input | Element Plus",
+  "sourceNodes": 1740,
+  "counts": {
+    "storylines": 25,
+    "items": 64,
+    "actions": 67,
+    "exposes": 34,
+    "images": 0,
+    "facts": 15,
+    "tables": 4,
+    "lists": 1,
+    "choiceSets": 0,
+    "inputs": 34,
+    "dupeText": 26,
+    "capHits": []
+  },
+  "storylines": 25,
+  "chrome": [
+    {
+      "role": "complementary",
+      "count": 2
+    },
+    {
+      "role": "banner",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 119,
+      "examples": [
+        "Type: string",
+        "Default: text",
+        "Type: string / number",
+        "Default: —",
+        "Type: object"
+      ]
+    },
+    {
+      "kind": "chart-or-svg",
+      "role": "graphics-document",
+      "count": 2,
+      "examples": []
+    },
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 1,
+      "examples": [
+        "<el-input v-model=\"input\" clearable style=\"width: 200px\" />"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name",
+      "example": "blur"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "blur the input element"
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "label": "Type",
+      "example": "Function"
+    },
+    {
+      "name": "default",
+      "type": "text",
+      "label": "Default",
+      "example": "text"
+    }
+  ]
+}

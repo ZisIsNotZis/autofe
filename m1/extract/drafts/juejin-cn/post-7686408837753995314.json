@@ -1,0 +1,809 @@
+{
+  "_intent": "九代是原生支持终点，Win7 装机 CPU 兼容梳理原生支持的分水岭落在第九代 Intel 处理器对 Windows 7 - 掘金 — 九代是原生支持终点，Win7 装机 CPU 兼容梳理 [draft]",
+  "_title": {
+    "text": "九代是原生支持终点，Win7 装机 CPU 兼容梳理原生支持的分水岭落在第九代 Intel 处理器对 Windows 7 - 掘金"
+  },
+  "_lines": [
+    {
+      "_intent": "九代是原生支持终点，Win7 装机 CPU 兼容梳理 [draft]",
+      "_title": {
+        "text": "九代是原生支持终点，Win7 装机 CPU 兼容梳理"
+      },
+      "_summary": {
+        "text": "Fri Sep 18 2026 01:58:56 GMT+0800 (中国标准时间)"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/717297245759224/posts",
+            "label": "脚本自动化开发"
+          }
+        },
+        {
+          "_text": {
+            "text": "阅读4分钟"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "原生支持的分水岭落在第九代 [draft]",
+      "_title": {
+        "text": "原生支持的分水岭落在第九代"
+      },
+      "_summary": {
+        "text": "第七、第八代延续同样的状况，属于能装但要补驱动的区间。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Intel 处理器对 Windows 7 的支持不是一条平滑的曲线，中间有回摆。第六代 Skylake 开始，官方不再把 USB 3.0 驱动做进系统镜像，装机时经常出现 U 盘、键鼠在安装界面完全没有反应；如果硬盘走 NVMe 协议，还会撞上 0x0000007B 蓝屏。这两个问题处理起来相对成熟，用带 USB 与 NVMe 驱动的 PE 安装盘就能绕过去。"
+          }
+        },
+        {
+          "_text": {
+            "text": "第九代出现了变化，官方重新提供原生 USB 支持，不注入驱动也能装完，这让它在很长时间里被当作实用意义上的分界线。再往后，情形又不一样了。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "第八代之后多出来的麻烦 [draft]",
+      "_title": {
+        "text": "第八代之后多出来的麻烦"
+      },
+      "_summary": {
+        "text": "第八代虽然也缺 USB 驱动，但真正棘手的是 0x000000A5 蓝屏，它来自 BIOS 层面的不兼容，社区里没有成熟解法。集显驱动同样缺席，好在这部分有第三方改写的版本可以顶上。部分笔记本装完发现网卡认不出来，需要另配一个 USB 网卡。"
+      }
+    },
+    {
+      "_intent": "第十代要同时应付集显、网卡和卡 logo [draft]",
+      "_title": {
+        "text": "第十代要同时应付集显、网卡和卡 logo"
+      },
+      "_summary": {
+        "text": "第十代与八、九代类似，官方没有提供 USB 驱动，集显驱动也要靠改版。台式机开始出现连网卡都认不出的情况，安装过程中卡在 logo 界面也变得常见，在 PE 里勾选相应的处理选项往往能继续往下走。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "集成显卡能不能用要分情况看。i3-10100、i3-10105 以及部分 i5-10400 可以走核显装 Win7，其中 i5-10400 有两个步进版本，G1 带集显驱动，Q0 不带。这两颗 i3 还必须搭配 400 系列主板，换到 500 系列主板后同样要加独立显卡。10400 以上的型号基本都得插一张显卡，GT 730 这类亮机卡就够用。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "十一代往上只能靠组装机加独显 [draft]",
+      "_title": {
+        "text": "十一代往上只能靠组装机加独显"
+      },
+      "_summary": {
+        "text": "到了第十一代及以后，能装上 Win7 的场景收窄成一种：自己组装的机器、插独立显卡、在 BIOS 里打开 CSM 兼容模式。品牌机通常不给 CSM 开关，即便系统装了进去，独显驱动也是带感叹号的状态，错误代码 12。联想有部分机型能开启隐藏的 CSM，网上能找到对应教程。笔记本走到这个阶段，不建议再强行改系统。"
+      }
+    },
+    {
+      "_intent": "显卡与网卡的可用范围 [draft]",
+      "_title": {
+        "text": "显卡与网卡的可用范围"
+      },
+      "_summary": {
+        "text": "独立显卡方面，NVIDIA 到 GT 720、GT 1030 以及 RTX 20、30 系列为止还有官方 Win7 驱动，RTX 40、50 系列没有；AMD 这边 RX 470、RX 5600 XT 及更低型号可用，RX 7000、8000 系列不可用。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "网卡的问题更隐蔽。Intel I219-V 和 I219-LM 按版本号区分支持情况，早期版本能直接认出来，较新的版本要额外处理，具体号码可以在设备管理器里查看。有些做法是通过 PE 刷写 GBE 固件把版本降下来，操作前应当备份 BIOS，刷写失败还能恢复原来的固件。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "装之前要改的几项设置 [draft]",
+      "_title": {
+        "text": "装之前要改的几项设置"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Secure Boot 默认开着会挡住未签名的系统，一般需要在 BIOS 里关掉；已经适配过的镜像可以不关，但前提是不使用卡 logo 的处理方案，且是组装机加独显加 CSM 的组合。CSM 打开后如果仍然卡在 logo，要检查 Video 模式是否设成了 Legacy 或 PEG，个别华硕主板还要把快速启动关掉。硬盘模式需要改成 AHCI，VMD 关掉，Win7 本身不支持 RAID、VMD、R"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "按需求挑配置 [draft]",
+      "_title": {
+        "text": "按需求挑配置"
+      },
+      "_measure": {
+        "list": [
+          {
+            "num": 215
+          },
+          {
+            "num": 402
+          },
+          {
+            "num": 414
+          },
+          {
+            "num": 968
+          },
+          {
+            "num": 8.4,
+            "unit": "k"
+          },
+          {
+            "num": 90
+          },
+          {
+            "num": 24
+          },
+          {
+            "num": 3.4,
+            "unit": "k"
+          },
+          {
+            "num": 496
+          },
+          {
+            "num": 977
+          },
+          {
+            "num": 14,
+            "unit": "k"
+          },
+          {
+            "num": 12
+          },
+          {
+            "num": 228
+          },
+          {
+            "num": 433
+          },
+          {
+            "num": 728
+          },
+          {
+            "num": 936
+          },
+          {
+            "num": 4.8,
+            "unit": "k"
+          },
+          {
+            "num": 7.2,
+            "unit": "k"
+          }
+        ]
+      },
+      "_image": {
+        "image": "",
+        "alt": "avatar"
+      },
+      "_summary": {
+        "text": "标签："
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "如果只是偶尔需要 Win7 跑一些老软件，九代平台配一张 20 系或 30 系显卡是比较省事的选择。手上有 10 代 CPU 又想用核显，先确认是不是 i3-10100、i3-10105 或者 G1 步进的 i5-10400，再看主板是不是 400 系列。再往上的平台，请把独立显卡和可开启的 CSM 当作前提条件。笔记本用户与其反复折腾驱动，不如考虑虚拟机，或者另配一台老机器。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E5%90%8E%E7%AB%AF",
+            "label": "后端"
+          }
+        },
+        {
+          "_text": {
+            "text": "评论 0"
+          }
+        },
+        {
+          "_text": {
+            "text": "/ 1000"
+          }
+        },
+        {
+          "_text": {
+            "text": "标点符号、链接等不计算在有效字数内"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "发送"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "登录 / 注册"
+          }
+        },
+        {
+          "_text": {
+            "text": "即可发布评论！"
+          }
+        },
+        {
+          "_text": {
+            "text": "暂无评论数据"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/717297245759224/posts",
+            "label": "avatar 脚本自动化开发 创作等级LV.3 技术经理 @山东艾思软件科技有限公司"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/717297245759224/posts",
+            "label": "130 文章"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/717297245759224/posts",
+            "label": "24k 阅读"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/717297245759224/followers",
+            "label": "4 粉丝"
+          }
+        },
+        {
+          "_text": {
+            "text": "关注"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/notification/im?participantId=717297245759224",
+            "label": "私信"
+          }
+        },
+        {
+          "_text": {
+            "text": "精选内容"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686406221083410478",
+            "label": "QML 常见的四种导航布局 Quz · 61阅读 · 0点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686341072616652838",
+            "label": "我让 AI 当面试官面了我一轮：第 3 个追问我就卡住了（附 10 道追问清单） kyriewen · 106阅读 · 1点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686361321609904174",
+            "label": "页面内存只涨不跌? 一次泄漏排查, 牵出 WeakMap 的诞生 JamesZhang80078 · 90阅读 · 2点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686341072616144934",
+            "label": "第 6 章 组件进阶 Z小明 · 44阅读 · 1点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686347234724085803",
+            "label": "OmniPic Studio v3.2.1 核心技术架构与全平台发版解析文档 superOmni · 43阅读 · 0点赞"
+          }
+        },
+        {
+          "_text": {
+            "text": "找对属于你的技术圈子"
+          }
+        },
+        {
+          "_text": {
+            "text": "回复「进群」加入官方微信群"
+          }
+        },
+        {
+          "_text": {
+            "text": "为你推荐"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7231391129945391160",
+            "label": "【图文并茂】如何进行Win7系统的重装"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/125780474215927",
+            "label": "千空石纪"
+          }
+        },
+        {
+          "_text": {
+            "text": "3年前"
+          }
+        },
+        {
+          "_text": {
+            "text": "点赞"
+          }
+        },
+        {
+          "_text": {
+            "text": "评论"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7200253939688898616",
+            "label": "CULinux缘何迅速崛起？原因是一份对信任的精彩回报"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3183782863845454",
+            "label": "openEuler"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/Linux",
+            "label": "Linux"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F",
+            "label": "操作系统"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E4%BA%91%E8%AE%A1%E7%AE%97",
+            "label": "云计算"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6860365626511523847",
+            "label": "电脑小知识：电脑怎么选择操作系统？XP、Win7、Win10该用哪个？"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3940246036446071",
+            "label": "编程小火车"
+          }
+        },
+        {
+          "_text": {
+            "text": "6年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/Windows",
+            "label": "Windows"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7343902899095240723",
+            "label": "CPU基础知识全面讲解，小白必备"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/1322077061387415",
+            "label": "Java潘老师"
+          }
+        },
+        {
+          "_text": {
+            "text": "2年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6844904052543717384",
+            "label": "手摸手教你装 文能黑苹果，武可3A游戏大作的2400块主机"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3245414024218333",
+            "label": "前端劝退师"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/Apple",
+            "label": "Apple"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7131756106711302181",
+            "label": "垃圾佬如何一步步走向深渊（家庭自用服务器装机）"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/1838039174761912",
+            "label": "lF"
+          }
+        },
+        {
+          "_text": {
+            "text": "4年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E6%9C%8D%E5%8A%A1%E5%99%A8",
+            "label": "服务器"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6969375585357430820",
+            "label": "小白第一次用macOSの初体验"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/2084329777534216",
+            "label": "前端队长Daotin"
+          }
+        },
+        {
+          "_text": {
+            "text": "5年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/macOS",
+            "label": "macOS"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6844903652277092365",
+            "label": "WIN10 1809隐藏大杀器--卓越模式"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3808364009097390",
+            "label": "tengshe789"
+          }
+        },
+        {
+          "_text": {
+            "text": "8年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E6%B8%B8%E6%88%8F",
+            "label": "游戏"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/Microsoft",
+            "label": "Microsoft"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7227465695239110717",
+            "label": "PE系统与U盘启动工具的推荐"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/2524134427600535",
+            "label": "CodeDevMaster"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E8%BF%90%E7%BB%B4",
+            "label": "运维"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7177722320230809657",
+            "label": "利用老毛头启动盘重装win7"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/2550465587590430",
+            "label": "穆雄雄"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E6%8E%98%E9%87%91%C2%B7%E6%97%A5%E6%96%B0%E8%AE%A1%E5%88%92",
+            "label": "掘金·日新计划"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7121999834780794887",
+            "label": "CPU简单科普笔记"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/2520541952215854",
+            "label": "何小幸"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86",
+            "label": "计算机组成原理"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6844903602327126030",
+            "label": "win 10 重装 win 7 系统"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3597257775002920",
+            "label": "evgo2017"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7234781850773618745",
+            "label": "电脑安装centos7系统"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3570858041554413",
+            "label": "阿康undefined"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/CentOS",
+            "label": "CentOS"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7101389906043207694",
+            "label": "双路E5平台PVE7.0系统GTX1060 显卡直通"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/2031553215999694",
+            "label": "ws_d1"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6920221010524373005",
+            "label": "windows和linux双系统"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3430131614884798",
+            "label": "码农先锋"
+          }
+        },
+        {
+          "_text": {
+            "text": "友情链接："
+          }
+        },
+        {
+          "_intent": "list (10 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "金字这样写对吗#手写 #行草书 #练习 #练字日常分享"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686081208586020453",
+                "label": "金字这样写对吗#手写 #行草书 #练习 #练字日常分享"
+              }
+            },
+            {
+              "_name": {
+                "text": "谢谢你拯救了它#动物世界"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686081155304709242",
+                "label": "谢谢你拯救了它#动物世界"
+              }
+            },
+            {
+              "_name": {
+                "text": "垃圾桶巨无霸买菜袋横空出世 #真实生活分享计划 #退休生活 #省钱攻略 #缝纫 #购菜"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686081133838585787",
+                "label": "垃圾桶巨无霸买菜袋横空出世 #真实生活分享计划 #退休生活 #省钱攻略 #缝纫 #购菜"
+              }
+            },
+            {
+              "_name": {
+                "text": "一口气看完“越南地道”结构，为什么美军对其无可奈何？ 一口气看完“越南地道”结构，为什么美军对其无可奈何？ #越南战争 #越南地道 #美军 #军事科普"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686081038077971727",
+                "label": "一口气看完“越南地道”结构，为什么美军对其无可奈何？ 一口气看完“越南地道”结构，为什么美军对其无可奈何？ #越南战争 #越南地道 #美军 #军事科普"
+              }
+            },
+            {
+              "_name": {
+                "text": "#唯妙唯俏 #天欢地喜"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686081077220259173",
+                "label": "#唯妙唯俏 #天欢地喜"
+              }
+            },
+            {
+              "_name": {
+                "text": "36岁被婚姻伤的体无完肤后突然觉醒，明白女人需要不断提升自己，成长自己用五个多月的时间去通过舞蹈逆袭，换圈子，成就了全新的自己 ，让我们一起来见证她的成长蜕变过程吧#成人零基础学舞蹈 #手把手教学 #舞到改变人生 #宝妈逆袭#舞蹈前🆚舞蹈后"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686081066029909669",
+                "label": "36岁被婚姻伤的体无完肤后突然觉醒，明白女人需要不断提升自己，成长自己用五个多月的时间去通过舞蹈逆袭，换圈子，成就了全新的自己 ，让我们一起来见证她的成长蜕变过程吧#成人零基础学舞蹈 #手把手教学 #舞到改变人生 #宝妈逆袭#舞蹈前🆚舞蹈"
+              }
+            },
+            {
+              "_name": {
+                "text": "这支大老虎吃得饱饱的下来了。"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686080971099770597",
+                "label": "这支大老虎吃得饱饱的下来了。"
+              }
+            },
+            {
+              "_name": {
+                "text": "本想着可以报餐一顿 #搞笑配音"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686080923707673894",
+                "label": "本想着可以报餐一顿 #搞笑配音"
+              }
+            },
+            {
+              "_name": {
+                "text": "你仔细看在挺机关枪 #热点话题 #抖音二创激励计划 #好剧推荐 #影视剪辑 #热点 @DOU+上热门 @抖音小助手 @DOU+小助手 @中视频伙伴计划官号"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686080924936572211",
+                "label": "你仔细看在挺机关枪 #热点话题 #抖音二创激励计划 #好剧推荐 #影视剪辑 #热点 @DOU+上热门 @抖音小助手 @DOU+小助手 @中视频伙伴计划官号"
+              }
+            },
+            {
+              "_name": {
+                "text": "真的有用！5位教授联合科研，肌肤溜光水滑 #好物推荐🔥 #好物分享 #创业"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686080918720711962",
+                "label": "真的有用！5位教授联合科研，肌肤溜光水滑 #好物推荐🔥 #好物分享 #创业"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "收藏成功！ 已添加到「」， 点击更改"
+          }
+        },
+        {
+          "_text": {
+            "text": "微信微信扫码分享新浪微博QQ"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "建议反馈"
+          }
+        },
+        {
+          "_text": {
+            "text": "下载APP 下载APP 微信扫一扫 微信公众号 新浪微博"
+          }
+        }
+      ]
+    }
+  ]
+}

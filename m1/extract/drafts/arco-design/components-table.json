@@ -1,0 +1,4098 @@
+{
+  "_intent": "表格 Table | ArcoDesign — 表格 Table [draft]",
+  "_title": {
+    "text": "表格 Table | ArcoDesign"
+  },
+  "_summary": {
+    "text": "未登录"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Open Search Modal"
+      }
+    },
+    {
+      "_text": {
+        "text": "React"
+      }
+    },
+    {
+      "_text": {
+        "text": "Vue"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "menu collapse button"
+      }
+    },
+    {
+      "_text": {
+        "text": "组件 / 数据展示"
+      }
+    },
+    {
+      "_intent": "表格 Table [draft]",
+      "_title": {
+        "text": "表格 Table"
+      },
+      "_summary": {
+        "text": "用于数据收集展示、分析整理、操作处理。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Changelog"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "基础用法 [draft]",
+      "_title": {
+        "text": "基础用法"
+      },
+      "_summary": {
+        "text": "最基础的用法。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "展开所有代码"
+          }
+        },
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              },
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "JSTS"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "开启选择 [draft]",
+      "_title": {
+        "text": "开启选择"
+      },
+      "_summary": {
+        "text": "表格开启选择，可以设置 rowSelection.type 来使用复选框和单选框。 checkbox - 复选框。 radio - 单选框。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "checkbox"
+          }
+        },
+        {
+          "_text": {
+            "text": "radio"
+          }
+        },
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import { useState } from 'react'; import { Table, Radio } from '"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "展开行 [draft]",
+      "_title": {
+        "text": "展开行"
+      },
+      "_summary": {
+        "text": "当内容过长，可以通过expandedRowRender设置展开行。如果返回值是 null，不会渲染展开按钮。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import { Table } from '@arco-design/web-react'; const columns ="
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "定制展开参数 [draft]",
+      "_title": {
+        "text": "定制展开参数"
+      },
+      "_summary": {
+        "text": "可以通过 expandProps 定制展开列的图标，宽度，标题，是否展开等。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Tip: 正常情况下，是否展开是由 expandedRowRender 返回值决定的，如果过多的 expandedRowRender 计算导致卡顿，建议使用 expandProps.rowExpandable。"
+          }
+        },
+        {
+          "_intent": "table (5 rows): Expand / Name / Salary [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import { Table } from '@arco-design/web-react'; import { IconRig"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "嵌套子表格 [draft]",
+      "_title": {
+        "text": "嵌套子表格"
+      },
+      "_summary": {
+        "text": "嵌套子表格的例子，点击展开按钮可以在展开区域展示子表格。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "树形数据展示 [draft]",
+      "_title": {
+        "text": "树形数据展示"
+      },
+      "_summary": {
+        "text": "树形数据展示的例子，data 里有 children 字段, 或者通过 childrenColumnName 设置成自定义字段。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "checkStrictly:"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle",
+            "type": "bool"
+          }
+        },
+        {
+          "_intent": "table (3 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import { useState } from 'react'; import { Table, Switch, Space"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表格属性 [draft]",
+      "_title": {
+        "text": "表格属性"
+      },
+      "_summary": {
+        "text": "在这里，你可以方便的打开或关闭表格的属性，来看一下吧。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Border"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-2",
+            "type": "bool"
+          }
+        },
+        {
+          "_text": {
+            "text": "Border Cell"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-3",
+            "type": "bool"
+          }
+        },
+        {
+          "_text": {
+            "text": "Hover"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-4",
+            "type": "bool"
+          }
+        },
+        {
+          "_text": {
+            "text": "Stripe"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-5",
+            "type": "bool"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-6",
+            "type": "bool"
+          }
+        },
+        {
+          "_text": {
+            "text": "Check All"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-7",
+            "type": "bool"
+          }
+        },
+        {
+          "_text": {
+            "text": "Loading"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-8",
+            "type": "bool"
+          }
+        },
+        {
+          "_text": {
+            "text": "Table Header"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-9",
+            "type": "bool"
+          }
+        },
+        {
+          "_text": {
+            "text": "Header fixed"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-10",
+            "type": "bool"
+          }
+        },
+        {
+          "_text": {
+            "text": "No data"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-11",
+            "type": "bool"
+          }
+        },
+        {
+          "_text": {
+            "text": "Size"
+          }
+        },
+        {
+          "_text": {
+            "text": "default"
+          }
+        },
+        {
+          "_text": {
+            "text": "middle"
+          }
+        },
+        {
+          "_text": {
+            "text": "small"
+          }
+        },
+        {
+          "_text": {
+            "text": "mini"
+          }
+        },
+        {
+          "_text": {
+            "text": "Pagination position"
+          }
+        },
+        {
+          "_text": {
+            "text": "BottomRight"
+          }
+        },
+        {
+          "_text": {
+            "text": "BottomLeft"
+          }
+        },
+        {
+          "_text": {
+            "text": "TopRight"
+          }
+        },
+        {
+          "_text": {
+            "text": "TopLeft"
+          }
+        },
+        {
+          "_text": {
+            "text": "TopCenter"
+          }
+        },
+        {
+          "_text": {
+            "text": "BottomCenter"
+          }
+        },
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import React from 'react'; import { Table, Grid, Switch, Form, R"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "排序和筛选 [draft]",
+      "_title": {
+        "text": "排序和筛选"
+      },
+      "_summary": {
+        "text": "默认排序和筛选：通过指定 defaultFilters 和 defaultSortOrder 可以指定默认的排序和筛选。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "配置 Column 的 sorter，可以对表格进行排序。 配置 Column 的 filters，可以对表格进行筛选。 sorter 为一个排序函数，当然，你也可以指定 sorter 为 true，这样你可以通过 Table 的 onChange 事件进行自定义排序。 filters 为一个数组，包含着要筛选的信息，需要配合 onFilter 使用。当然也可以配合 Table 的 onChang"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, Paris"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "自定义筛选菜单 [draft]",
+      "_title": {
+        "text": "自定义筛选菜单"
+      },
+      "_summary": {
+        "text": "import { useState, useRef } from 'react'; import { Table, Input,"
+      },
+      "_lines": [
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              },
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "多列排序 [draft]",
+      "_title": {
+        "text": "多列排序"
+      },
+      "_summary": {
+        "text": "import { useState } from 'react'; import { Table } from '@arco-d"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "column.sorter 支持传入一个对象，指定该对象的 multiple 属性可以实现多列排序的效果。multiple为number类型，数字越大代表排序优先级越高。 注意： 多列排序配合 sortOrder 使用时，为保持状态一致性，所有指定了sorter的列都需要同时指定sortOrder（可为undefined），同时需要注意列之间的互斥关系。"
+          }
+        },
+        {
+          "_intent": "table (5 rows): Name / Age / Score A [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "A"
+              },
+              "_fields": {
+                "age": {
+                  "num": 18
+                }
+              },
+              "_measure": {
+                "num": 100
+              }
+            },
+            {
+              "_name": {
+                "text": "C"
+              },
+              "_fields": {
+                "age": {
+                  "num": 19
+                }
+              },
+              "_measure": {
+                "num": 100
+              }
+            },
+            {
+              "_name": {
+                "text": "B"
+              },
+              "_fields": {
+                "age": {
+                  "num": 17
+                }
+              },
+              "_measure": {
+                "num": 100
+              }
+            },
+            {
+              "_name": {
+                "text": "D"
+              },
+              "_fields": {
+                "age": {
+                  "num": 15
+                }
+              },
+              "_measure": {
+                "num": 80
+              }
+            },
+            {
+              "_name": {
+                "text": "E"
+              },
+              "_fields": {
+                "age": {
+                  "num": 20
+                }
+              },
+              "_measure": {
+                "num": 80
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "自定义分页 [draft]",
+      "_title": {
+        "text": "自定义分页"
+      },
+      "_summary": {
+        "text": "自定义分页，通过设置 total，pageSize，通过 onChange 来动态更新表格数据。当分页设置 simple 为 true 时，会应用简单分页样式。关于 pagination 的具体设置可查看pagination 组件文档。通过 renderPagination 可以自定义分页渲染部分。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (10 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "0 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra_0@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "1 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra_1@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "2 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra_2@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "3 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra_3@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "4 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra_4@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "5 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra_5@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "6 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra_6@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "7 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra_7@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "8 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra_8@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "9 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra_9@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "Selected 0"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Save"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Delete"
+          }
+        },
+        {
+          "_text": {
+            "text": "共 96 条"
+          }
+        },
+        {
+          "_intent": "list (9 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 2 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 3 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 4 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 5 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "向后 5 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 10 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import { useState, useEffect } from 'react'; import { Table, Spa"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "自定义单元格内容 [draft]",
+      "_title": {
+        "text": "自定义单元格内容"
+      },
+      "_summary": {
+        "text": "通过 columns 中的 render 字段，可以自定义单元格的内容"
+      },
+      "_lines": [
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_price": {
+                "money": 23000,
+                "currency": "USD"
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_price": {
+                "money": 25000,
+                "currency": "USD"
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_price": {
+                "money": 22000,
+                "currency": "USD"
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              },
+              "_price": {
+                "money": 17000,
+                "currency": "USD"
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_price": {
+                "money": 27000,
+                "currency": "USD"
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import { Table, Tag } from '@arco-design/web-react'; const colum"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "固定列 [draft]",
+      "_title": {
+        "text": "固定列"
+      },
+      "_summary": {
+        "text": "在 column 中指定 fixed: \"left\" 或 fixed: \"right\"，可将列固定到左侧或右侧，设置 fixed 的列，也需要设置 width。 注意： 要配合 scroll={{ x: number }} 使用，columns 中需要有一列不设置宽度，自适应，不然会有样式问题。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (0 rows): Name / Address / Email [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": []
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "自定义样式 [draft]",
+      "_title": {
+        "text": "自定义样式"
+      },
+      "_summary": {
+        "text": "有多种方式定制行列样式，rowClassName 可以对每一行进行样式定制，Column.className 可以对列进行样式定制。此外，还有 headerCellStyle, bodyCellStyle， 对表头和表格主体的列进行样式定制。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              },
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "表头分组 [draft]",
+      "_title": {
+        "text": "表头分组"
+      },
+      "_summary": {
+        "text": "columns 内可以嵌套 children，用于表头分组。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (7 rows): Name / User Info / Information [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_fields": {
+                "gender": {
+                  "text": "34"
+                }
+              },
+              "_measure": {
+                "num": 12345678
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_fields": {
+                "gender": {
+                  "text": "37"
+                }
+              },
+              "_measure": {
+                "num": 12345678
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_fields": {
+                "gender": {
+                  "text": "67"
+                }
+              },
+              "_measure": {
+                "num": 12345678
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              },
+              "_fields": {
+                "gender": {
+                  "text": "317"
+                }
+              },
+              "_measure": {
+                "num": 12345678
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_fields": {
+                "gender": {
+                  "text": "114"
+                }
+              },
+              "_measure": {
+                "num": 12345678
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "单元格合并 [draft]",
+      "_title": {
+        "text": "单元格合并"
+      },
+      "_summary": {
+        "text": "用于单元格合并，表头只能进行列合并。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (5 rows): Name / Salary / Detail [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "可编辑单元格 [draft]",
+      "_title": {
+        "text": "可编辑单元格"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Add"
+          }
+        },
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Delete"
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Delete"
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Delete"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              },
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Delete"
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Delete"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "可伸缩列 [draft]",
+      "_title": {
+        "text": "可伸缩列"
+      },
+      "_summary": {
+        "text": "配合 react-resizable@3.0.0 可以实现可伸缩列的效果。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              },
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import { useState, forwardRef } from 'react'; import { Table } f"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表头吸顶 [draft]",
+      "_title": {
+        "text": "表头吸顶"
+      },
+      "_summary": {
+        "text": "配合 react-sticky@6.0.3 可以实现表头吸顶的效果。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (0 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": []
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import { Table } from '@arco-design/web-react'; import { StickyC"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "定制前置操作列 [draft]",
+      "_title": {
+        "text": "定制前置操作列"
+      },
+      "_summary": {
+        "text": "可以通过 components 来定制前置操作列，包括新增列、调整列的顺序等。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (5 rows): Index / Name / Salary [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "2"
+              },
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "3"
+              },
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "4"
+              },
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "5"
+              },
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "拖拽排序 [draft]",
+      "_title": {
+        "text": "拖拽排序"
+      },
+      "_summary": {
+        "text": "可以配合 react-sortable-hoc@2.0.0 实现拖拽排序。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              },
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "拖拽锚点排序 [draft]",
+      "_title": {
+        "text": "拖拽锚点排序"
+      },
+      "_summary": {
+        "text": "可以配合 react-sortable-hoc@2.0.0 可以实现拖拽锚点排序。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (5 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "address": {
+                  "text": "32 Park Road, London"
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 25000
+              },
+              "_fields": {
+                "address": {
+                  "text": "35 Park Road, London"
+                },
+                "email": {
+                  "text": "alisa.ross@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 22000
+              },
+              "_fields": {
+                "address": {
+                  "text": "31 Park Road, London"
+                },
+                "email": {
+                  "text": "kevin.sandra@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 17000
+              },
+              "_fields": {
+                "address": {
+                  "text": "42 Park Road, London"
+                },
+                "email": {
+                  "text": "ed.hellen@example.com"
+                }
+              }
+            },
+            {
+              "_measure": {
+                "num": 27000
+              },
+              "_fields": {
+                "address": {
+                  "text": "62 Park Road, London"
+                },
+                "email": {
+                  "text": "william.smith@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "大数据 [draft]",
+      "_title": {
+        "text": "大数据"
+      },
+      "_measure": {
+        "num": 22000
+      },
+      "_summary": {
+        "text": "内置虚拟滚动逻辑，设置 virtualized=true 开启。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "注意： 开启虚拟滚动之后，不要给每一列都设置宽度，要保证有一列自适应，不然可能出现表头表身对不齐的情况。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "滚动到第 500 条"
+          }
+        },
+        {
+          "_intent": "table (0 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": []
+        },
+        {
+          "_text": {
+            "text": "Kevin 0"
+          }
+        },
+        {
+          "_text": {
+            "text": "0 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_0@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 1"
+          }
+        },
+        {
+          "_text": {
+            "text": "1 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_1@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 2"
+          }
+        },
+        {
+          "_text": {
+            "text": "2 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_2@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 3"
+          }
+        },
+        {
+          "_text": {
+            "text": "3 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_3@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 4"
+          }
+        },
+        {
+          "_text": {
+            "text": "4 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_4@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 5"
+          }
+        },
+        {
+          "_text": {
+            "text": "5 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_5@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 6"
+          }
+        },
+        {
+          "_text": {
+            "text": "6 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_6@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 7"
+          }
+        },
+        {
+          "_text": {
+            "text": "7 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_7@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 8"
+          }
+        },
+        {
+          "_text": {
+            "text": "8 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_8@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 9"
+          }
+        },
+        {
+          "_text": {
+            "text": "9 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_9@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 10"
+          }
+        },
+        {
+          "_text": {
+            "text": "10 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_10@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 11"
+          }
+        },
+        {
+          "_text": {
+            "text": "11 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_11@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 12"
+          }
+        },
+        {
+          "_text": {
+            "text": "12 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_12@example.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Kevin 13"
+          }
+        },
+        {
+          "_text": {
+            "text": "13 Park Road, London"
+          }
+        },
+        {
+          "_text": {
+            "text": "kevin.sandra_13@example.com"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "自定义空状态 [draft]",
+      "_title": {
+        "text": "自定义空状态"
+      },
+      "_summary": {
+        "text": "当表格无数据时，默认会展示一个居中的提示信息。你可以通过 noDataElement 属性来自定义无数据时的展示内容。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (1 rows): Name / Salary / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "No data available"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "总结栏 [draft]",
+      "_title": {
+        "text": "总结栏"
+      },
+      "_summary": {
+        "text": "总结栏 summary 的用法。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (6 rows): Name / Salary / Count [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_measure": {
+                "num": 23000
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_measure": {
+                "num": 25000
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_measure": {
+                "num": 22000
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              },
+              "_measure": {
+                "num": 17000
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_measure": {
+                "num": 27000
+              }
+            },
+            {
+              "_name": {
+                "text": "Total"
+              },
+              "_measure": {
+                "num": 114000
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (7 rows): Name / Salary / Count [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Confirm"
+              }
+            },
+            {
+              "_name": {
+                "text": "Alisa Ross"
+              },
+              "_measure": {
+                "num": 25000
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Confirm"
+              }
+            },
+            {
+              "_name": {
+                "text": "Kevin Sandra"
+              },
+              "_measure": {
+                "num": 22000
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Confirm"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ed Hellen"
+              },
+              "_measure": {
+                "num": 17000
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Confirm"
+              }
+            },
+            {
+              "_name": {
+                "text": "William Smith"
+              },
+              "_measure": {
+                "num": 27000
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Confirm"
+              }
+            },
+            {
+              "_name": {
+                "text": "Total"
+              },
+              "_measure": {
+                "num": 114000
+              }
+            },
+            {
+              "_name": {
+                "text": "Avarage"
+              },
+              "_measure": {
+                "num": 22800
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (0 rows): Name / Salary / Count [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": []
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import { Table, Typography, Button } from '@arco-design/web-reac"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "API [draft]",
+      "_title": {
+        "text": "API"
+      },
+      "_lines": [
+        {
+          "_intent": "Table [draft]",
+          "_title": {
+            "text": "Table"
+          },
+          "_lines": [
+            {
+              "_intent": "table (39 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "borderCell"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultExpandAllRows"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "hover"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showHeader"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "stripe"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tableLayoutFixed"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "virtualized"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "indentSize"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "childrenColumnName"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/pagination#pagination",
+                          "label": "PaginationProps"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/table#sorterinfo",
+                          "label": "SorterInfo"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/table#sorterinfo",
+                          "label": "SorterInfo"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "pagePosition"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "noDataElement"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placeholder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "border"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "columns"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/table#column",
+                    "label": "ColumnProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "components"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/table#componentsprops",
+                    "label": "ComponentsProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "data"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultExpandedRowKeys"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "expandedRowKeys"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "expandProps"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/table#%E5%AE%9A%E5%88%B6%E5%B1%95%E5%BC%80%E5%8F%82%E6%95%B0",
+                          "label": "这个例子"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/table#expandprops",
+                          "label": "ExpandProps"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loading"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/spin#spin",
+                    "label": "SpinProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onHeaderRow"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/table#column",
+                          "label": "ColumnProps"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/table#rowcallbackprops",
+                          "label": "RowCallbackProps"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "pagination"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/pagination",
+                          "label": "Pagination组件"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/pagination#pagination",
+                          "label": "PaginationProps"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rowSelection"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/table#rowselection",
+                          "label": "配置项"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/table#rowselection",
+                          "label": "RowSelectionProps"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "scroll"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showSorterTooltip"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/tooltip#tooltip",
+                    "label": "TooltipProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "style"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "virtualListProps"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/table#availablevirtuallistprops",
+                    "label": "AvailableVirtualListProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "expandedRowRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "footer"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onExpand"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onExpandedRowsChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onRow"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/table#rowcallbackprops",
+                    "label": "RowCallbackProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "renderPagination"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rowClassName"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rowKey"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "summary"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "RowSelection [draft]",
+          "_title": {
+            "text": "RowSelection"
+          },
+          "_summary": {
+            "text": "<Table> 参数 rowSelection 的详细参数。"
+          },
+          "_lines": [
+            {
+              "_intent": "table (14 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "checkAll"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "checkCrossPage"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "checkStrictly"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "fixed"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "preserveSelectedRowKeys"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "columnWidth"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "type"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "columnTitle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "selectedRowKeys"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "checkboxProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onSelect"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onSelectAll"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "renderCell"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "ExpandProps [draft]",
+          "_title": {
+            "text": "ExpandProps"
+          },
+          "_summary": {
+            "text": "<Table> 参数 expandProps 的详细参数。"
+          },
+          "_lines": [
+            {
+              "_intent": "table (6 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "expandRowByClick"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "strictTreeData"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "width"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "columnTitle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "icon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rowExpandable"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Column [draft]",
+          "_title": {
+            "text": "Column"
+          },
+          "_summary": {
+            "text": "列描述数据对象，是 columns 中的一项。"
+          },
+          "_lines": [
+            {
+              "_intent": "table (27 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "ellipsis"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterMultiple"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "dataIndex"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.npmjs.com/package/lodash.get",
+                    "label": "lodash.get"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "align"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultSortOrder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "fixed"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "sortDirections"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "sortOrder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placeholder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "title"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "bodyCellStyle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultFilters"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterDropdownProps"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/trigger#trigger",
+                    "label": "TriggerProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filteredValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filters"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "headerCellStyle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "key"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "sorter"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/table#sorterfn",
+                          "label": "SorterFn"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/table#sorterfn",
+                          "label": "SorterFn"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "width"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterDropdown"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onCell"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/table#rowcallbackprops",
+                    "label": "RowCallbackProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onFilter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onFilterDropdownVisibleChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onHeaderCell"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/table#rowcallbackprops",
+                    "label": "RowCallbackProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "render"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "ComponentsProps [draft]",
+          "_title": {
+            "text": "ComponentsProps"
+          }
+        },
+        {
+          "_intent": "SorterInfo [draft]",
+          "_title": {
+            "text": "SorterInfo"
+          }
+        },
+        {
+          "_intent": "SortDirection [draft]",
+          "_title": {
+            "text": "SortDirection"
+          }
+        },
+        {
+          "_intent": "SorterFn [draft]",
+          "_title": {
+            "text": "SorterFn"
+          }
+        },
+        {
+          "_intent": "RowCallbackProps [draft]",
+          "_title": {
+            "text": "RowCallbackProps"
+          }
+        },
+        {
+          "_intent": "AvailableVirtualListProps [draft]",
+          "_title": {
+            "text": "AvailableVirtualListProps"
+          }
+        },
+        {
+          "_intent": "隐藏分页 [draft]",
+          "_title": {
+            "text": "隐藏分页"
+          },
+          "_summary": {
+            "text": "如果想在页数小于或等于一页时隐藏分页，可以配置 pagination.hideOnSinglePage = true，如果想全局配置， 可以配置 ConfigProvider 组件的 tablePagination.hideOnSinglePage = true。"
+          }
+        },
+        {
+          "_intent": "onRow 用法 [draft]",
+          "_title": {
+            "text": "onRow 用法"
+          },
+          "_summary": {
+            "text": "onRow, onHeaderRow, onCell, onHeaderCell 用法一致。"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95",
+                "label": "基础用法"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%BC%80%E5%90%AF%E9%80%89%E6%8B%A9",
+                "label": "开启选择"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%B1%95%E5%BC%80%E8%A1%8C",
+                "label": "展开行"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%AE%9A%E5%88%B6%E5%B1%95%E5%BC%80%E5%8F%82%E6%95%B0",
+                "label": "定制展开参数"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%B5%8C%E5%A5%97%E5%AD%90%E8%A1%A8%E6%A0%BC",
+                "label": "嵌套子表格"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E6%A0%91%E5%BD%A2%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA",
+                "label": "树形数据展示"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E8%A1%A8%E6%A0%BC%E5%B1%9E%E6%80%A7",
+                "label": "表格属性"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E6%8E%92%E5%BA%8F%E5%92%8C%E7%AD%9B%E9%80%89",
+                "label": "排序和筛选"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AD%9B%E9%80%89%E8%8F%9C%E5%8D%95",
+                "label": "自定义筛选菜单"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%A4%9A%E5%88%97%E6%8E%92%E5%BA%8F",
+                "label": "多列排序"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%88%86%E9%A1%B5",
+                "label": "自定义分页"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E5%85%83%E6%A0%BC%E5%86%85%E5%AE%B9",
+                "label": "自定义单元格内容"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%9B%BA%E5%AE%9A%E5%88%97",
+                "label": "固定列"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F",
+                "label": "自定义样式"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E8%A1%A8%E5%A4%B4%E5%88%86%E7%BB%84",
+                "label": "表头分组"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%8D%95%E5%85%83%E6%A0%BC%E5%90%88%E5%B9%B6",
+                "label": "单元格合并"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%8F%AF%E7%BC%96%E8%BE%91%E5%8D%95%E5%85%83%E6%A0%BC",
+                "label": "可编辑单元格"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%8F%AF%E4%BC%B8%E7%BC%A9%E5%88%97",
+                "label": "可伸缩列"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E8%A1%A8%E5%A4%B4%E5%90%B8%E9%A1%B6",
+                "label": "表头吸顶"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%AE%9A%E5%88%B6%E5%89%8D%E7%BD%AE%E6%93%8D%E4%BD%9C%E5%88%97",
+                "label": "定制前置操作列"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E6%8B%96%E6%8B%BD%E6%8E%92%E5%BA%8F",
+                "label": "拖拽排序"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E6%8B%96%E6%8B%BD%E9%94%9A%E7%82%B9%E6%8E%92%E5%BA%8F",
+                "label": "拖拽锚点排序"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E5%A4%A7%E6%95%B0%E6%8D%AE",
+                "label": "大数据"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%A9%BA%E7%8A%B6%E6%80%81",
+                "label": "自定义空状态"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#%E6%80%BB%E7%BB%93%E6%A0%8F",
+                "label": "总结栏"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/table#api",
+                "label": "API"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "anchor collapse button"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "button to open theme box"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

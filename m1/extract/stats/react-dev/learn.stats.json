@@ -1,0 +1,55 @@
+{
+  "site": "react-dev",
+  "page": "learn",
+  "url": "https://react.dev/learn",
+  "title": "Quick Start – React",
+  "sourceNodes": 1943,
+  "counts": {
+    "storylines": 13,
+    "items": 6,
+    "actions": 57,
+    "exposes": 5,
+    "images": 4,
+    "facts": 15,
+    "tables": 0,
+    "lists": 1,
+    "choiceSets": 0,
+    "inputs": 5,
+    "dupeText": 0,
+    "capHits": []
+  },
+  "storylines": 13,
+  "chrome": [
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "complementary",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 19,
+      "examples": [
+        "function MyButton() { return ( <button>I'm a button</button> );",
+        "export default function MyApp() { return ( <div> <h1>Welcome to",
+        "function AboutPage() { return ( <> <h1>About</h1> <p>Hello there",
+        "<img className=\"avatar\" />",
+        "/* In your CSS */ .avatar { border-radius: 50%; }"
+      ]
+    },
+    {
+      "kind": "embedded-media",
+      "role": "Iframe",
+      "count": 5,
+      "examples": [
+        "Sandbox Preview"
+      ]
+    }
+  ],
+  "fieldsDrafted": []
+}

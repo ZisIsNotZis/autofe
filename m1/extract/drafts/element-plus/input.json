@@ -1,0 +1,1388 @@
+{
+  "_intent": "Input | Element Plus — Input Permalink to \"Input\" [draft]",
+  "_title": {
+    "text": "Input | Element Plus"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://element-plus.org/en-US/component/input.html#page-content",
+        "label": "Skip to content"
+      }
+    },
+    {
+      "_intent": "Input Permalink to \"Input\" [draft]",
+      "_title": {
+        "text": "Input Permalink to \"Input\""
+      },
+      "_summary": {
+        "text": "Input data using mouse or keyboard."
+      }
+    },
+    {
+      "_intent": "Basic usage Permalink to \"Basic usage\" [draft]",
+      "_title": {
+        "text": "Basic usage Permalink to \"Basic usage\""
+      },
+      "_summary": {
+        "text": "TS"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "JS"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtaW5wdXQgdi1tb2RlbD1cImlucHV0XCIgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIiBwbGFjZWhvbGRlcj1cIlBsZWFzZSBpbnB1dFwiIC8+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCBpbnB1dCA9IHJlZignJylcbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/basic.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Disabled Permalink to \"Disabled\" [draft]",
+      "_title": {
+        "text": "Disabled Permalink to \"Disabled\""
+      },
+      "_summary": {
+        "text": "Disable the Input with the disabled attribute."
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-2",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtaW5wdXRcbiAgICB2LW1vZGVsPVwiaW5wdXRcIlxuICAgIHN0eWxlPVwid2lkdGg6IDI0MHB4XCJcbiAgICBkaXNhYmxlZFxuICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGlucHV0XCJcbiAgLz5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IGlucHV0ID0gcmVmKCcnKVxuPC9zY3JpcHQ+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/disabled.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Clearable Permalink to \"Clearable\" [draft]",
+      "_title": {
+        "text": "Clearable Permalink to \"Clearable\""
+      },
+      "_summary": {
+        "text": "Make the Input clearable with the clearable attribute. After version 2.13.4, the clearable feature is also available for textarea type of Input."
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-3",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-4",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiaW5wdXQtZ3JvdXBcIj5cbiAgICA8ZWwtaW5wdXRcbiAgICAgIHYtbW9kZWw9XCJpbnB1dFwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgICBwbGFjZWhvbGRlcj1cIlBsZWFzZSBpbnB1dFwiXG4gICAgICBjbGVhcmFibGVcbiAgICAvPlxuICAgIDxlbC1pbnB1dFxuICAgICAgdi1tb2RlbD1cInRleHRhcmVhSW5wdXRcIlxuICAgICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICAgICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgaW5wdXRcIlxuICAgICAgdHlwZT1cInRleHRhcmVhXCJcbiAgICAgIGNsZWFyYWJsZVxuICAgIC8+XG4gIDwvZGl2PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgaW5wdXQgPSByZWYoJycpXG5jb25zdCB0ZXh0YXJlYUlucHV0ID0gcmVmKCcnKVxuPC9zY3JpcHQ+XG5cbjxzdHlsZSBzY29wZWQ+XG4uaW5wdXQtZ3JvdXAge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBnYXA6IDFlbTtcbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/clearable.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Custom Clear Icon 2.11.0 Permalink to \"Custom Clear Icon ^(2.11.0)\" [draft]",
+      "_title": {
+        "text": "Custom Clear Icon 2.11.0 Permalink to \"Custom Clear Icon ^(2.11.0)\""
+      },
+      "_summary": {
+        "text": "You can customize the clear icon by setting the clear-icon attribute."
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "custom-clear",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "custom-clear-2",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiaW5wdXQtZ3JvdXBcIj5cbiAgICA8ZWwtaW5wdXRcbiAgICAgIHYtbW9kZWw9XCJpbnB1dFwiXG4gICAgICBjbGVhcmFibGVcbiAgICAgIDpjbGVhci1pY29uPVwiQ2xvc2VCb2xkXCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiQ3VzdG9tIGNsZWFyIGljb25cIlxuICAgIC8+XG4gICAgPGVsLWlucHV0XG4gICAgICB2LW1vZGVsPVwidGV4dGFyZWFJbnB1dFwiXG4gICAgICBjbGVhcmFibGVcbiAgICAgIDpjbGVhci1pY29uPVwiQ2xvc2VCb2xkXCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiQ3VzdG9tIGNsZWFyIGljb25cIlxuICAgICAgdHlwZT1cInRleHRhcmVhXCJcbiAgICAvPlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5pbXBvcnQgeyBDbG9zZUJvbGQgfSBmcm9tICdAZWxlbWVudC1wbHVzL2ljb25zLXZ1ZSdcblxuY29uc3QgaW5wdXQgPSByZWYoJ0N1c3RvbSBjbGVhciBpY29uJylcbmNvbnN0IHRleHRhcmVhSW5wdXQgPSByZWYoJ0N1c3RvbSBjbGVhciBpY29uJylcbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuLmlucHV0LWdyb3VwIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgZ2FwOiAxZW07XG59XG48L3N0eWxlPlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/clear-icon.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Formatter Permalink to \"Formatter\" [draft]",
+      "_title": {
+        "text": "Formatter Permalink to \"Formatter\""
+      },
+      "_summary": {
+        "text": "Display value within it's situation with formatter, and we usually use parser at the same time."
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-5",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtaW5wdXRcbiAgICB2LW1vZGVsPVwiaW5wdXRcIlxuICAgIHN0eWxlPVwid2lkdGg6IDI0MHB4XCJcbiAgICBwbGFjZWhvbGRlcj1cIlBsZWFzZSBpbnB1dFwiXG4gICAgOmZvcm1hdHRlcj1cIih2YWx1ZSkgPT4gYCQgJHt2YWx1ZX1gLnJlcGxhY2UoL1xcQig/PShcXGR7M30pKyg/IVxcZCkpL2csICcsJylcIlxuICAgIDpwYXJzZXI9XCIodmFsdWUpID0+IHZhbHVlLnJlcGxhY2UoL1xcJFxccz98KCwqKS9nLCAnJylcIlxuICAvPlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgaW5wdXQgPSByZWYoJycpXG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/formatter.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Password box Permalink to \"Password box\" [draft]",
+      "_title": {
+        "text": "Password box Permalink to \"Password box\""
+      },
+      "_summary": {
+        "text": "Make a toggle-able password Input with the show-password attribute. Since 2.13.6, the password-icon slot is supported to override the default icon."
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-6",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-7",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiaW5wdXQtZ3JvdXBcIj5cbiAgICA8ZWwtaW5wdXRcbiAgICAgIHYtbW9kZWw9XCJpbnB1dFwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgICB0eXBlPVwicGFzc3dvcmRcIlxuICAgICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgaW5wdXQgcGFzc3dvcmRcIlxuICAgICAgc2hvdy1wYXNzd29yZFxuICAgIC8+XG4gICAgPGVsLWlucHV0XG4gICAgICB2LW1vZGVsPVwiaW5wdXRcIlxuICAgICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICAgICAgdHlwZT1cInBhc3N3b3JkXCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGlucHV0IHBhc3N3b3JkXCJcbiAgICAgIHNob3ctcGFzc3dvcmRcbiAgICA+XG4gICAgICA8dGVtcGxhdGUgI3Bhc3N3b3JkLWljb249XCJ7IHZpc2libGUgfVwiPlxuICAgICAgICA8ZWwtaWNvbiA6c2l6ZT1cIjE2XCI+XG4gICAgICAgICAgPFVubG9jayB2LWlmPVwidmlzaWJsZVwiIC8+XG4gICAgICAgICAgPExvY2sgdi1lbHNlIC8+XG4gICAgICAgIDwvZWwtaWNvbj5cbiAgICAgIDwvdGVtcGxhdGU+XG4gICAgPC9lbC1pbnB1dD5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuaW1wb3J0IHsgTG9jaywgVW5sb2NrIH0gZnJvbSAnQGVsZW1lbnQtcGx1cy9pY29ucy12dWUnXG5cbmNvbnN0IGlucHV0ID0gcmVmKCcnKVxuPC9zY3JpcHQ+XG5cbjxzdHlsZSBzY29wZWQ+XG4uaW5wdXQtZ3JvdXAge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBnYXA6IDFlbTtcbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/password.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Input with icon Permalink to \"Input with icon\" [draft]",
+      "_title": {
+        "text": "Input with icon Permalink to \"Input with icon\""
+      },
+      "_summary": {
+        "text": "Add an icon to indicate input type."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "To add icons in Input, you can simply use prefix-icon and suffix-icon attributes. Also, the prefix and suffix named slots works as well."
+          }
+        },
+        {
+          "_text": {
+            "text": "Using attributes"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "pick-a",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "type-something",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Using slots"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "pick-a-2",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "type-something-2",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1pbnB1dC13aXRoLWljb25cIj5cbiAgICA8ZGl2IGNsYXNzPVwiaW5wdXQtZ3JvdXBcIj5cbiAgICAgIDxzcGFuIGNsYXNzPVwibGFiZWxcIj5Vc2luZyBhdHRyaWJ1dGVzPC9zcGFuPlxuICAgICAgPGRpdiBjbGFzcz1cImlucHV0LWNvbnRhaW5lclwiPlxuICAgICAgICA8ZWwtaW5wdXRcbiAgICAgICAgICB2LW1vZGVsPVwiaW5wdXQxXCJcbiAgICAgICAgICBjbGFzcz1cInJlc3BvbnNpdmUtaW5wdXRcIlxuICAgICAgICAgIHBsYWNlaG9sZGVyPVwiUGljayBhIGRhdGVcIlxuICAgICAgICAgIDpzdWZmaXgtaWNvbj1cIkNhbGVuZGFyXCJcbiAgICAgICAgLz5cbiAgICAgICAgPGVsLWlucHV0XG4gICAgICAgICAgdi1tb2RlbD1cImlucHV0MlwiXG4gICAgICAgICAgY2xhc3M9XCJyZXNwb25zaXZlLWlucHV0XCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIlR5cGUgc29tZXRoaW5nXCJcbiAgICAgICAgICA6cHJlZml4LWljb249XCJTZWFyY2hcIlxuICAgICAgICAvPlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gICAgPGRpdiBjbGFzcz1cImlucHV0LWdyb3VwXCI+XG4gICAgICA8c3BhbiBjbGFzcz1cImxhYmVsXCI+VXNpbmcgc2xvdHM8L3NwYW4+XG4gICAgICA8ZGl2IGNsYXNzPVwiaW5wdXQtY29udGFpbmVyXCI+XG4gICAgICAgIDxlbC1pbnB1dFxuICAgICAgICAgIHYtbW9kZWw9XCJpbnB1dDNcIlxuICAgICAgICAgIGNsYXNzPVwicmVzcG9uc2l2ZS1pbnB1dFwiXG4gICAgICAgICAgcGxhY2Vob2xkZXI9XCJQaWNrIGEgZGF0ZVwiXG4gICAgICAgID5cbiAgICAgICAgICA8dGVtcGxhdGUgI3N1ZmZpeD5cbiAgICAgICAgICAgIDxlbC1pY29uIGNsYXNzPVwiZWwtaW5wdXRfX2ljb25cIj48Y2FsZW5kYXIgLz48L2VsLWljb24+XG4gICAgICAgICAgPC90ZW1wbGF0ZT5cbiAgICAgICAgPC9lbC1pbnB1dD5cbiAgICAgICAgPGVsLWlucHV0XG4gICAgICAgICAgdi1tb2RlbD1cImlucHV0NFwiXG4gICAgICAgICAgY2xhc3M9XCJyZXNwb25zaXZlLWlucHV0XCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIlR5cGUgc29tZXRoaW5nXCJcbiAgICAgICAgPlxuICAgICAgICAgIDx0ZW1wbGF0ZSAjcHJlZml4PlxuICAgICAgICAgICAgPGVsLWljb24gY2xhc3M9XCJlbC1pbnB1dF9faWNvblwiPjxzZWFyY2ggLz48L2VsLWljb24+XG4gICAgICAgICAgPC90ZW1wbGF0ZT5cbiAgICAgICAgPC9lbC1pbnB1dD5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgc2V0dXAgbGFuZz1cInRzXCI+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5pbXBvcnQgeyBDYWxlbmRhciwgU2VhcmNoIH0gZnJvbSAnQGVsZW1lbnQtcGx1cy9pY29ucy12dWUnXG5cbmNvbnN0IGlucHV0MSA9IHJlZignJylcbmNvbnN0IGlucHV0MiA9IHJlZignJylcbmNvbnN0IGlucHV0MyA9IHJlZignJylcbmNvbnN0IGlucHV0NCA9IHJlZignJylcbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuLmRlbW8taW5wdXQtd2l0aC1pY29uIHtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5pbnB1dC1ncm91cCB7XG4gIG1hcmdpbi1ib3R0b206IDEuNXJlbTtcbn1cblxuLmxhYmVsIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1ib3R0b206IDFyZW07XG4gIGNvbG9yOiB2YXIoLS1lbC10ZXh0LWNvbG9yLXJlZ3VsYXIpO1xufVxuXG4uaW5wdXQtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZ2FwOiAxcmVtO1xuICBmbGV4LXdyYXA6IHdyYXA7XG59XG5cbi5yZXNwb25zaXZlLWlucHV0IHtcbiAgd2lkdGg6IDI0MHB4O1xufVxuXG5AbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcbiAgLmlucHV0LWNvbnRhaW5lciB7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBnYXA6IDFyZW07XG4gIH1cblxuICAucmVzcG9uc2l2ZS1pbnB1dCB7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/with-icon.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Textarea Permalink to \"Textarea\" [draft]",
+      "_title": {
+        "text": "Textarea Permalink to \"Textarea\""
+      },
+      "_summary": {
+        "text": "Resizable for entering multiple lines of text information. Add attribute type=\"textarea\" to change input into native textarea."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Control the height by setting the rows prop."
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-8",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtaW5wdXRcbiAgICB2LW1vZGVsPVwidGV4dGFyZWFcIlxuICAgIHN0eWxlPVwid2lkdGg6IDI0MHB4XCJcbiAgICA6cm93cz1cIjJcIlxuICAgIHR5cGU9XCJ0ZXh0YXJlYVwiXG4gICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgaW5wdXRcIlxuICAvPlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgdGV4dGFyZWEgPSByZWYoJycpXG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/textarea.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Autosize Textarea Permalink to \"Autosize Textarea\" [draft]",
+      "_title": {
+        "text": "Autosize Textarea Permalink to \"Autosize Textarea\""
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Setting the autosize prop for a textarea type of Input makes the height to automatically adjust based on the content. An options object can be provided to autosize to specify the minimum and maximum n"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-9",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-10",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtaW5wdXRcbiAgICB2LW1vZGVsPVwidGV4dGFyZWExXCJcbiAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgYXV0b3NpemVcbiAgICB0eXBlPVwidGV4dGFyZWFcIlxuICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGlucHV0XCJcbiAgLz5cbiAgPGRpdiBzdHlsZT1cIm1hcmdpbjogMjBweCAwXCIgLz5cbiAgPGVsLWlucHV0XG4gICAgdi1tb2RlbD1cInRleHRhcmVhMlwiXG4gICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICAgIDphdXRvc2l6ZT1cInsgbWluUm93czogMiwgbWF4Um93czogNCB9XCJcbiAgICB0eXBlPVwidGV4dGFyZWFcIlxuICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGlucHV0XCJcbiAgLz5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IHRleHRhcmVhMSA9IHJlZignJylcbmNvbnN0IHRleHRhcmVhMiA9IHJlZignJylcbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/auto-sizing-textarea.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Mixed input Permalink to \"Mixed input\" [draft]",
+      "_title": {
+        "text": "Mixed input Permalink to \"Mixed input\""
+      },
+      "_summary": {
+        "text": "Prepend or append an element, generally a label or a button."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Use slot to distribute elements that prepend or append to Input."
+          }
+        },
+        {
+          "_text": {
+            "text": "Http://"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-11",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-12",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": ".com"
+          }
+        },
+        {
+          "_text": {
+            "text": "Select"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-13",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-14",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2PlxuICAgIDxlbC1pbnB1dFxuICAgICAgdi1tb2RlbD1cImlucHV0MVwiXG4gICAgICBzdHlsZT1cIm1heC13aWR0aDogNjAwcHhcIlxuICAgICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgaW5wdXRcIlxuICAgID5cbiAgICAgIDx0ZW1wbGF0ZSAjcHJlcGVuZD5IdHRwOi8vPC90ZW1wbGF0ZT5cbiAgICA8L2VsLWlucHV0PlxuICA8L2Rpdj5cbiAgPGRpdiBjbGFzcz1cIm10LTRcIj5cbiAgICA8ZWwtaW5wdXRcbiAgICAgIHYtbW9kZWw9XCJpbnB1dDJcIlxuICAgICAgc3R5bGU9XCJtYXgtd2lkdGg6IDYwMHB4XCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGlucHV0XCJcbiAgICA+XG4gICAgICA8dGVtcGxhdGUgI2FwcGVuZD4uY29tPC90ZW1wbGF0ZT5cbiAgICA8L2VsLWlucHV0PlxuICA8L2Rpdj5cbiAgPGRpdiBjbGFzcz1cIm10LTRcIj5cbiAgICA8ZWwtaW5wdXRcbiAgICAgIHYtbW9kZWw9XCJpbnB1dDNcIlxuICAgICAgc3R5bGU9XCJtYXgtd2lkdGg6IDYwMHB4XCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGlucHV0XCJcbiAgICAgIGNsYXNzPVwiaW5wdXQtd2l0aC1zZWxlY3RcIlxuICAgID5cbiAgICAgIDx0ZW1wbGF0ZSAjcHJlcGVuZD5cbiAgICAgICAgPGVsLXNlbGVjdCB2LW1vZGVsPVwic2VsZWN0XCIgcGxhY2Vob2xkZXI9XCJTZWxlY3RcIiBzdHlsZT1cIndpZHRoOiAxMTVweFwiPlxuICAgICAgICAgIDxlbC1vcHRpb24gbGFiZWw9XCJSZXN0YXVyYW50XCIgdmFsdWU9XCIxXCIgLz5cbiAgICAgICAgICA8ZWwtb3B0aW9uIGxhYmVsPVwiT3JkZXIgTm8uXCIgdmFsdWU9XCIyXCIgLz5cbiAgICAgICAgICA8ZWwtb3B0aW9uIGxhYmVsPVwiVGVsXCIgdmFsdWU9XCIzXCIgLz5cbiAgICAgICAgPC9lbC1zZWxlY3Q+XG4gICAgICA8L3RlbXBsYXRlPlxuICAgICAgPHRlbXBsYXRlICNhcHBlbmQ+XG4gICAgICAgIDxlbC1idXR0b24gOmljb249XCJTZWFyY2hcIiAvPlxuICAgICAgPC90ZW1wbGF0ZT5cbiAgICA8L2VsLWlucHV0PlxuICA8L2Rpdj5cbiAgPGRpdiBjbGFzcz1cIm10LTRcIj5cbiAgICA8ZWwtaW5wdXRcbiAgICAgIHYtbW9kZWw9XCJpbnB1dDNcIlxuICAgICAgc3R5bGU9XCJtYXgtd2lkdGg6IDYwMHB4XCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGlucHV0XCJcbiAgICAgIGNsYXNzPVwiaW5wdXQtd2l0aC1zZWxlY3RcIlxuICAgID5cbiAgICAgIDx0ZW1wbGF0ZSAjcHJlcGVuZD5cbiAgICAgICAgPGVsLWJ1dHRvbiA6aWNvbj1cIlNlYXJjaFwiIC8+XG4gICAgICA8L3RlbXBsYXRlPlxuICAgICAgPHRlbXBsYXRlICNhcHBlbmQ+XG4gICAgICAgIDxlbC1zZWxlY3Qgdi1tb2RlbD1cInNlbGVjdFwiIHBsYWNlaG9sZGVyPVwiU2VsZWN0XCIgc3R5bGU9XCJ3aWR0aDogMTE1cHhcIj5cbiAgICAgICAgICA8ZWwtb3B0aW9uIGxhYmVsPVwiUmVzdGF1cmFudFwiIHZhbHVlPVwiMVwiIC8+XG4gICAgICAgICAgPGVsLW9wdGlvbiBsYWJlbD1cIk9yZGVyIE5vLlwiIHZhbHVlPVwiMlwiIC8+XG4gICAgICAgICAgPGVsLW9wdGlvbiBsYWJlbD1cIlRlbFwiIHZhbHVlPVwiM1wiIC8+XG4gICAgICAgIDwvZWwtc2VsZWN0PlxuICAgICAgPC90ZW1wbGF0ZT5cbiAgICA8L2VsLWlucHV0PlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgc2V0dXAgbGFuZz1cInRzXCI+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5pbXBvcnQgeyBTZWFyY2ggfSBmcm9tICdAZWxlbWVudC1wbHVzL2ljb25zLXZ1ZSdcblxuY29uc3QgaW5wdXQxID0gcmVmKCcnKVxuY29uc3QgaW5wdXQyID0gcmVmKCcnKVxuY29uc3QgaW5wdXQzID0gcmVmKCcnKVxuY29uc3Qgc2VsZWN0ID0gcmVmKCcnKVxuPC9zY3JpcHQ+XG5cbjxzdHlsZT5cbi5pbnB1dC13aXRoLXNlbGVjdCAuZWwtaW5wdXQtZ3JvdXBfX3ByZXBlbmQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1lbC1maWxsLWNvbG9yLWJsYW5rKTtcbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/mixed-input.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Sizes Permalink to \"Sizes\" [draft]",
+      "_title": {
+        "text": "Sizes Permalink to \"Sizes\""
+      },
+      "_summary": {
+        "text": "Add size attribute to change the size of Input. In addition to the default size, there are two other options: large, small."
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-15",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-16",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-17",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-18",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-19",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-20",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-21",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-22",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-23",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZmxleCBnYXAtNCBtYi00IGl0ZW1zLWNlbnRlclwiPlxuICAgIDxlbC1pbnB1dFxuICAgICAgdi1tb2RlbD1cImlucHV0MVwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgICBzaXplPVwibGFyZ2VcIlxuICAgICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgSW5wdXRcIlxuICAgIC8+XG4gICAgPGVsLWlucHV0XG4gICAgICB2LW1vZGVsPVwiaW5wdXQyXCJcbiAgICAgIHN0eWxlPVwid2lkdGg6IDI0MHB4XCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIElucHV0XCJcbiAgICAvPlxuICAgIDxlbC1pbnB1dFxuICAgICAgdi1tb2RlbD1cImlucHV0M1wiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgICBzaXplPVwic21hbGxcIlxuICAgICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgSW5wdXRcIlxuICAgIC8+XG4gIDwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZmxleCBnYXAtNCBtYi00IGl0ZW1zLWNlbnRlclwiPlxuICAgIDxlbC1pbnB1dFxuICAgICAgdi1tb2RlbD1cImlucHV0MVwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgICBzaXplPVwibGFyZ2VcIlxuICAgICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgSW5wdXRcIlxuICAgICAgOnN1ZmZpeC1pY29uPVwiU2VhcmNoXCJcbiAgICAvPlxuICAgIDxlbC1pbnB1dFxuICAgICAgdi1tb2RlbD1cImlucHV0MlwiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgICBwbGFjZWhvbGRlcj1cIlBsZWFzZSBJbnB1dFwiXG4gICAgICA6c3VmZml4LWljb249XCJTZWFyY2hcIlxuICAgIC8+XG4gICAgPGVsLWlucHV0XG4gICAgICB2LW1vZGVsPVwiaW5wdXQzXCJcbiAgICAgIHN0eWxlPVwid2lkdGg6IDI0MHB4XCJcbiAgICAgIHNpemU9XCJzbWFsbFwiXG4gICAgICBwbGFjZWhvbGRlcj1cIlBsZWFzZSBJbnB1dFwiXG4gICAgICA6c3VmZml4LWljb249XCJTZWFyY2hcIlxuICAgIC8+XG4gIDwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZmxleCBnYXAtNCBpdGVtcy1jZW50ZXJcIj5cbiAgICA8ZWwtaW5wdXRcbiAgICAgIHYtbW9kZWw9XCJpbnB1dDFcIlxuICAgICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICAgICAgc2l6ZT1cImxhcmdlXCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIElucHV0XCJcbiAgICAgIDpwcmVmaXgtaWNvbj1cIlNlYXJjaFwiXG4gICAgLz5cbiAgICA8ZWwtaW5wdXRcbiAgICAgIHYtbW9kZWw9XCJpbnB1dDJcIlxuICAgICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICAgICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgSW5wdXRcIlxuICAgICAgOnByZWZpeC1pY29uPVwiU2VhcmNoXCJcbiAgICAvPlxuICAgIDxlbC1pbnB1dFxuICAgICAgdi1tb2RlbD1cImlucHV0M1wiXG4gICAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgICBzaXplPVwic21hbGxcIlxuICAgICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgSW5wdXRcIlxuICAgICAgOnByZWZpeC1pY29uPVwiU2VhcmNoXCJcbiAgICAvPlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5pbXBvcnQgeyBTZWFyY2ggfSBmcm9tICdAZWxlbWVudC1wbHVzL2ljb25zLXZ1ZSdcblxuY29uc3QgaW5wdXQxID0gcmVmKCcnKVxuY29uc3QgaW5wdXQyID0gcmVmKCcnKVxuY29uc3QgaW5wdXQzID0gcmVmKCcnKVxuPC9zY3JpcHQ+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/various-size.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Limit length Permalink to \"Limit length\" [draft]",
+      "_title": {
+        "text": "Limit length Permalink to \"Limit length\""
+      },
+      "_summary": {
+        "text": "0 / 10 characters"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "maxlength and minlength attributes of input, they declare a limit on the number of characters a user can input. The \"number of characters\" is measured using JavaScript string length.Setting the maxlen"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-24",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "0 / 10"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-25",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "0 / 30 characters"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-26",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtaW5wdXRcbiAgICB2LW1vZGVsPVwidGV4dFwiXG4gICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICAgIG1heGxlbmd0aD1cIjEwXCJcbiAgICBwbGFjZWhvbGRlcj1cIlBsZWFzZSBpbnB1dFwiXG4gICAgc2hvdy13b3JkLWxpbWl0XG4gICAgdHlwZT1cInRleHRcIlxuICAvPlxuICA8ZWwtaW5wdXRcbiAgICB2LW1vZGVsPVwidGV4dFwiXG4gICAgY2xhc3M9XCJtbC00XCJcbiAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgbWF4bGVuZ3RoPVwiMTBcIlxuICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGlucHV0XCJcbiAgICBzaG93LXdvcmQtbGltaXRcbiAgICB3b3JkLWxpbWl0LXBvc2l0aW9uPVwib3V0c2lkZVwiXG4gICAgdHlwZT1cInRleHRcIlxuICAvPlxuICA8ZGl2IHN0eWxlPVwibWFyZ2luOiAyMHB4IDBcIiAvPlxuICA8ZWwtaW5wdXRcbiAgICB2LW1vZGVsPVwidGV4dGFyZWFcIlxuICAgIG1heGxlbmd0aD1cIjMwXCJcbiAgICBzdHlsZT1cIndpZHRoOiAyNDBweFwiXG4gICAgcGxhY2Vob2xkZXI9XCJQbGVhc2UgaW5wdXRcIlxuICAgIHNob3ctd29yZC1saW1pdFxuICAgIHR5cGU9XCJ0ZXh0YXJlYVwiXG4gIC8+XG4gIDxlbC1pbnB1dFxuICAgIHYtbW9kZWw9XCJ0ZXh0YXJlYVwiXG4gICAgY2xhc3M9XCJtbC00XCJcbiAgICBtYXhsZW5ndGg9XCIzMFwiXG4gICAgc3R5bGU9XCJ3aWR0aDogMjQwcHhcIlxuICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGlucHV0XCJcbiAgICBzaG93LXdvcmQtbGltaXRcbiAgICB3b3JkLWxpbWl0LXBvc2l0aW9uPVwib3V0c2lkZVwiXG4gICAgdHlwZT1cInRleHRhcmVhXCJcbiAgLz5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IHRleHQgPSByZWYoJycpXG5jb25zdCB0ZXh0YXJlYSA9IHJlZignJylcbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/length-limiting.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Count graphemes 2.13.7 Permalink to \"Count graphemes ^(2.13.7)\" [draft]",
+      "_title": {
+        "text": "Count graphemes 2.13.7 Permalink to \"Count graphemes ^(2.13.7)\""
+      },
+      "_summary": {
+        "text": "Set count-graphemes to calculate text length. If it's set, native maxlength and minlength won't be used."
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-27",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "2 / 10 characters"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-input-28",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "2 / 20 characters"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtaW5wdXRcbiAgICB2LW1vZGVsPVwidGV4dFwiXG4gICAgbWF4bGVuZ3RoPVwiMTBcIlxuICAgIHBsYWNlaG9sZGVyPVwiUGxlYXNlIGlucHV0XCJcbiAgICBzaG93LXdvcmQtbGltaXRcbiAgICA6Y291bnQtZ3JhcGhlbWVzPVwiY2FsY1wiXG4gICAgdHlwZT1cInRleHRcIlxuICAvPlxuICA8ZGl2IHN0eWxlPVwibWFyZ2luOiAyMHB4IDBcIiAvPlxuICA8ZWwtaW5wdXRcbiAgICB2LW1vZGVsPVwidGV4dGFyZWFcIlxuICAgIG1heGxlbmd0aD1cIjIwXCJcbiAgICBwbGFjZWhvbGRlcj1cIlBsZWFzZSBpbnB1dFwiXG4gICAgc2hvdy13b3JkLWxpbWl0XG4gICAgOmNvdW50LWdyYXBoZW1lcz1cImNhbGNcIlxuICAgIHR5cGU9XCJ0ZXh0YXJlYVwiXG4gIC8+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCB0ZXh0ID0gcmVmKCfwn5iA8J+YgScpXG5jb25zdCB0ZXh0YXJlYSA9IHJlZign8J+YgPCfmIEnKVxuXG4vKipcbiAqIENvdW50IGZ1bmN0aW9uIGZvciBncmFwaGVtZSBjbHVzdGVyaW5nLlxuICogQ291bnRzIHRoZSBudW1iZXIgb2YgZ3JhcGhlbWVzICh2aXN1YWwgY2hhcmFjdGVycykgaW4gYSBzdHJpbmcuXG4gKlxuICogTm90ZTogVGhpcyBleGFtcGxlIHVzZXMgQXJyYXkuZnJvbSgpIGZvciBzaW1wbGljaXR5LlxuICogRm9yIHByb2R1Y3Rpb24gdXNlLCBjb25zaWRlciB1c2luZyBJbnRsLlNlZ21lbnRlciBmb3IgYmV0dGVyXG4gKiBoYW5kbGluZyBvZiBjb21wbGV4IGVtb2ppIGFuZCB1bmljb2RlIGNoYXJhY3RlcnMuXG4gKi9cbmNvbnN0IGNhbGMgPSAodmFsdWU6IHN0cmluZykgPT4ge1xuICAvLyBTaW1wbGlmaWVkIHZlcnNpb246IGNvdW50cyBjb2RlIHBvaW50cyAobm90IGZ1bGwgZ3JhcGhlbWUgY2x1c3RlcnMpXG4gIC8vIEZvciBwcm9kdWN0aW9uLCB1c2UgSW50bC5TZWdtZW50ZXIgbGlrZSB0aGUgY29tcG9uZW50IGRvZXNcbiAgcmV0dXJuIEFycmF5LmZyb20odmFsdWUpLmxlbmd0aFxufVxuPC9zY3JpcHQ+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/input/count-graphemes.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        },
+        {
+          "_text": {
+            "text": "TIP"
+          }
+        },
+        {
+          "_text": {
+            "text": "Browser Support & Fallback Strategy"
+          }
+        },
+        {
+          "_text": {
+            "text": "When using the count-graphemes prop, the component employs the following approach:"
+          }
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Primary: Uses Intl.Segmenter API (Chrome 87+, Firefox 125+, Safari 14.1+) for proper grapheme cluster handling. This correctly handles complex emoji, combining "
+              }
+            },
+            {
+              "_name": {
+                "text": "Fallback: Older browsers fall back to Array.from() for code-point based iteration. Note that this may split multi-codepoint grapheme sequences (e.g., emoji with"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "When implementing your own count-graphemes function, consider using Intl.Segmenter if you need robust support for complex unicode characters."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "API Permalink to \"API\" [draft]",
+      "_title": {
+        "text": "API Permalink to \"API\""
+      },
+      "_lines": [
+        {
+          "_intent": "Attributes Permalink to \"Attributes\" [draft]",
+          "_title": {
+            "text": "Attributes Permalink to \"Attributes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (35 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "type"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types",
+                    "label": "MDN"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "model-value / v-model"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "model-modifiers 2.11.5"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://vuejs.org/guide/essentials/forms.html#modifiers",
+                    "label": "Vue modifiers"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "maxlength"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "minlength"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "show-word-limit"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "word-limit-position 2.11.5"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placeholder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clearable"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear-icon 2.11.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "formatter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "parser"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "show-password"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prefix-icon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "suffix-icon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rows"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "autosize"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "autocomplete"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "name"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "readonly"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "max"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "min"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "step"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "resize"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "autofocus"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "form"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "aria-label a11y 2.7.2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tabindex"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validate-event"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "input-style"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label a11y deprecated"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "inputmode 2.10.3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "count-graphemes 2.13.7"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Events Permalink to \"Events\" [draft]",
+          "_title": {
+            "text": "Events Permalink to \"Events\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (11 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "blur"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "focus"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "change"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "input"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "keydown"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "mouseleave"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "mouseenter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "compositionstart"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "compositionupdate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "compositionend"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Slots Permalink to \"Slots\" [draft]",
+          "_title": {
+            "text": "Slots Permalink to \"Slots\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (5 rows): Name / Description [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "prefix"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "suffix"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prepend"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "append"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "password-icon 2.13.6"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Exposes Permalink to \"Exposes\" [draft]",
+          "_title": {
+            "text": "Exposes Permalink to \"Exposes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (11 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "blur"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "focus"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "input"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "ref"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "resizeTextarea"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "select"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "textarea"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "textareaStyle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "isComposing 2.8.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "passwordVisible 2.13.7"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "FAQ Permalink to \"FAQ\" [draft]",
+      "_title": {
+        "text": "FAQ Permalink to \"FAQ\""
+      },
+      "_lines": [
+        {
+          "_intent": "Why is the width of the ElInput component expanded by clearable? Permalink to \"Why is the width of the ElInput component expanded by clearable?\" [draft]",
+          "_title": {
+            "text": "Why is the width of the ElInput component expanded by clearable? Permalink to \"Why is the width of the ElInput component expanded by clearable?\""
+          },
+          "_summary": {
+            "text": "Typical issue: #7287"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "PS: Since the ElInput component does not have a default width, when the clearable icon is displayed, the width of the component will be expanded, which can be solved by setting width."
+              }
+            },
+            {
+              "_text": {
+                "text": "vue"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Source Permalink to \"Source\" [draft]",
+      "_title": {
+        "text": "Source Permalink to \"Source\""
+      },
+      "_summary": {
+        "text": "Component • Style • Docs"
+      }
+    },
+    {
+      "_intent": "Contributors Permalink to \"Contributors\" [draft]",
+      "_title": {
+        "text": "Contributors Permalink to \"Contributors\""
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/en-US/component/input.md",
+            "label": "Edit this page on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.org/en-US/component/form",
+            "label": "Form"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.org/en-US/component/input-number",
+            "label": "Input Number"
+          }
+        },
+        {
+          "_intent": "Links [draft]",
+          "_title": {
+            "text": "Links"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://cn.element-plus.org/zh-CN/",
+                "label": "China Mirror 🇨🇳"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/releases",
+                "label": "Changelog"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://element.eleme.io/",
+                "label": "Element UI for Vue 2"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://element-plus.org/sitemap.xml",
+                "label": "Site Map"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Community [draft]",
+          "_title": {
+            "text": "Community"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus",
+                "label": "GitHub"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://discord.com/invite/gXK9XNzW3X",
+                "label": "Discord"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/issues",
+                "label": "Feedback"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/blob/dev/.github/CONTRIBUTING.en-US.md",
+                "label": "Contribution"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://segmentfault.com/t/element-plus",
+                "label": "SegmentFault"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

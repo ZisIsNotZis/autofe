@@ -1,0 +1,390 @@
+{
+  "_intent": "Installing Tailwind CSS with Vite - Tailwind CSS — Get started with Tailwind CSS [draft]",
+  "_title": {
+    "text": "Installing Tailwind CSS with Vite - Tailwind CSS"
+  },
+  "_summary": {
+    "text": "INSTALLATION"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://tailwindcss.com/",
+        "label": "Home"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Select version of library"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Ctrl K"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://tailwindcss.com/docs",
+        "label": "Docs"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://play.tailwindcss.com/",
+        "label": "Play"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://tailwindcss.com/blog",
+        "label": "Blog"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://tailwindcss.com/showcase",
+        "label": "Showcase"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://tailwindcss.com/partners",
+        "label": "Partners"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://tailwindcss.com/plus?ref=top",
+        "label": "Plus"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://github.com/tailwindlabs/tailwindcss",
+        "label": "GitHub repository"
+      }
+    },
+    {
+      "_intent": "Get started with Tailwind CSS [draft]",
+      "_title": {
+        "text": "Get started with Tailwind CSS"
+      },
+      "_summary": {
+        "text": "It's fast, flexible, and reliable — with zero-runtime."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Installation [draft]",
+      "_title": {
+        "text": "Installation"
+      },
+      "_lines": [
+        {
+          "_intent": "list (5 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Using Vite"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://tailwindcss.com/docs/installation/using-vite",
+                "label": "Using Vite"
+              }
+            },
+            {
+              "_name": {
+                "text": "Using PostCSS"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://tailwindcss.com/docs/installation/using-postcss",
+                "label": "Using PostCSS"
+              }
+            },
+            {
+              "_name": {
+                "text": "Tailwind CLI"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://tailwindcss.com/docs/installation/tailwind-cli",
+                "label": "Tailwind CLI"
+              }
+            },
+            {
+              "_name": {
+                "text": "Framework Guides"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://tailwindcss.com/docs/installation/framework-guides",
+                "label": "Framework Guides"
+              }
+            },
+            {
+              "_name": {
+                "text": "Play CDN"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://tailwindcss.com/docs/installation/play-cdn",
+                "label": "Play CDN"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Installing Tailwind CSS as a Vite plugin [draft]",
+          "_title": {
+            "text": "Installing Tailwind CSS as a Vite plugin"
+          },
+          "_measure": {
+            "num": 1
+          },
+          "_summary": {
+            "text": "Installing Tailwind CSS as a Vite plugin is the most seamless way to integrate it with frameworks like Laravel, SvelteKit, React Router, Nuxt, and SolidJS."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "01"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Create your project [draft]",
+          "_title": {
+            "text": "Create your project"
+          },
+          "_measure": {
+            "num": 2
+          },
+          "_summary": {
+            "text": "Start by creating a new Vite project if you don’t have one set up already. The most common approach is to use Create Vite."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Terminal"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Copy to clipboard"
+              }
+            },
+            {
+              "_text": {
+                "text": "02"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Install Tailwind CSS [draft]",
+          "_title": {
+            "text": "Install Tailwind CSS"
+          },
+          "_measure": {
+            "num": 3
+          },
+          "_summary": {
+            "text": "Install tailwindcss and @tailwindcss/vite via npm."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Copy to clipboard"
+              }
+            },
+            {
+              "_text": {
+                "text": "03"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Configure the Vite plugin [draft]",
+          "_title": {
+            "text": "Configure the Vite plugin"
+          },
+          "_measure": {
+            "num": 4
+          },
+          "_summary": {
+            "text": "Add the @tailwindcss/vite plugin to your Vite configuration."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "vite.config.ts"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Copy to clipboard"
+              }
+            },
+            {
+              "_text": {
+                "text": "04"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Import Tailwind CSS [draft]",
+          "_title": {
+            "text": "Import Tailwind CSS"
+          },
+          "_measure": {
+            "num": 5
+          },
+          "_summary": {
+            "text": "Add an @import to your CSS file that imports Tailwind CSS."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "CSS"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Copy to clipboard"
+              }
+            },
+            {
+              "_text": {
+                "text": "05"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Start your build process [draft]",
+          "_title": {
+            "text": "Start your build process"
+          },
+          "_measure": {
+            "num": 6
+          },
+          "_summary": {
+            "text": "Run your build process with npm run dev or whatever command is configured in your package.json file."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Copy to clipboard"
+              }
+            },
+            {
+              "_text": {
+                "text": "06"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Start using Tailwind in your HTML [draft]",
+          "_title": {
+            "text": "Start using Tailwind in your HTML"
+          },
+          "_summary": {
+            "text": "HTML"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Make sure your compiled CSS is included in the <head> (your framework might handle this for you), then start using Tailwind’s utility classes to style your content."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Copy to clipboard"
+              }
+            },
+            {
+              "_text": {
+                "text": "Are you stuck?"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://tailwindcss.com/docs/installation/framework-guides",
+                "label": "Explore our framework guides"
+              }
+            },
+            {
+              "_intent": "Copyright © 2026 Tailwind Labs Inc. · Trademark Policy [draft]",
+              "_rel": {
+                "compare": true
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "System theme"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Light theme"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Dark theme"
+                  }
+                }
+              ],
+              "_expose": {
+                "name": "copyright-tailwind",
+                "type": "text"
+              }
+            },
+            {
+              "_text": {
+                "text": "Copyright © 2026 Tailwind Labs Inc."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://tailwindcss.com/brand",
+                "label": "Trademark Policy"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

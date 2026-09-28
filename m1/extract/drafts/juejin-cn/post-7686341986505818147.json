@@ -1,0 +1,1124 @@
+{
+  "_intent": "再见了前端岗位！古董技术存档。那些年我们背过的八股文。Hi，我是蓝莓，2026年9月，现在95%公司完全不招前端程序员了 - 掘金 — 再见了前端岗位！古董技术存档。那些年我们背过的八股文。 [draft]",
+  "_title": {
+    "text": "再见了前端岗位！古董技术存档。那些年我们背过的八股文。Hi，我是蓝莓，2026年9月，现在95%公司完全不招前端程序员了 - 掘金"
+  },
+  "_lines": [
+    {
+      "_intent": "再见了前端岗位！古董技术存档。那些年我们背过的八股文。 [draft]",
+      "_title": {
+        "text": "再见了前端岗位！古董技术存档。那些年我们背过的八股文。"
+      },
+      "_measure": {
+        "num": 16
+      },
+      "_summary": {
+        "text": "Fri Sep 18 2026 01:48:05 GMT+0800 (中国标准时间)"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/668146835666663/posts",
+            "label": "程序员蓝莓"
+          }
+        },
+        {
+          "_text": {
+            "text": "阅读1分钟"
+          }
+        },
+        {
+          "_text": {
+            "text": "Hi，我是蓝莓，2026年9月，现在95%公司完全不招前端程序员了。"
+          }
+        },
+        {
+          "_text": {
+            "text": "boss上，前端岗位真的大部分消失，不要说前端已死了，现在是真的没有了。前端岗位被AI代替了，1个人可以干之前5个前端工作。"
+          }
+        },
+        {
+          "_text": {
+            "text": "但是前端需求、前端技术还会存在。这篇文章总结一下。"
+          }
+        },
+        {
+          "_text": {
+            "text": "感叹一下，任何行业都是周期的。"
+          }
+        },
+        {
+          "_text": {
+            "text": "一个行业、一个岗位赚钱的时候，就赶快赚钱。"
+          }
+        },
+        {
+          "_text": {
+            "text": "过了这个村 真的是没有店了。后面进来真的是浪费时间精力，甚至还亏钱。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "市场不会消失的需求 [draft]",
+      "_title": {
+        "text": "市场不会消失的需求"
+      },
+      "_summary": {
+        "text": "不过，下面的终端需求永远在："
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "PC端："
+          }
+        },
+        {
+          "_text": {
+            "text": "PC-Web后台管理页面: SaaS 控制台。前后端分离。"
+          }
+        },
+        {
+          "_text": {
+            "text": "PC-Web前端展示页面：SSR SEO。NextJs。"
+          }
+        },
+        {
+          "_text": {
+            "text": "PC-桌面端：Electron。"
+          }
+        },
+        {
+          "_text": {
+            "text": "移动端："
+          }
+        },
+        {
+          "_text": {
+            "text": "移动-H5：手机页面。"
+          }
+        },
+        {
+          "_text": {
+            "text": "移动-APP："
+          }
+        },
+        {
+          "_text": {
+            "text": "移动-小程序："
+          }
+        },
+        {
+          "_text": {
+            "text": "下面的业务场景也会存在："
+          }
+        },
+        {
+          "_text": {
+            "text": "AI 原生应用与交互："
+          }
+        },
+        {
+          "_text": {
+            "text": "AI 时代绝大部分爆款应用（如各类 Agent、工作流编排、AI 搜索、多模态画布）的核心竞争力很大程度在前端交互**。如何优雅处理流式输出（SSE/WebSocket）、生成式 UI（Generative UI）、节点连线画布（如 Dify/Coze 的 Workflow）、对话与富文本混合编辑。**"
+          }
+        },
+        {
+          "_text": {
+            "text": "深入理解 SSE（Server-Sent Events）、WebSocket，掌握如何处理 Chunk 丢失、流式 Markdown 实时高亮解析与渲染、中断与重试机制。"
+          }
+        },
+        {
+          "_text": {
+            "text": "掌握如何在前端做工具调用（Tool Calling）的 UI 呈现。"
+          }
+        },
+        {
+          "_text": {
+            "text": "重前端 / 复杂 Web 客户端应用："
+          }
+        },
+        {
+          "_text": {
+            "text": "类似 Figma、Canva、Notion、在线 CAD、在线音视频剪辑等重度依赖浏览器的工具。这类项目后端相对轻。"
+          }
+        },
+        {
+          "_text": {
+            "text": "图形渲染（WebGPU / 3D / 工业互联网）："
+          }
+        },
+        {
+          "_text": {
+            "text": "数字孪生、智慧园区、3D 电商、元宇宙残留的工业需求。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "仍然还有用的前端技术 [draft]",
+      "_title": {
+        "text": "仍然还有用的前端技术"
+      },
+      "_summary": {
+        "text": "包管理 ："
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "npm pnpm nodejs环境。安装，知道package版本冲突，幽灵依赖。"
+          }
+        },
+        {
+          "_text": {
+            "text": "引用导出：JavaScript 模块系统"
+          }
+        },
+        {
+          "_text": {
+            "text": "import，export.commjs 循环引用。默认导出、命名导出、动态 import"
+          }
+        },
+        {
+          "_text": {
+            "text": "、模块解析、循环依赖、Tree Shaking。"
+          }
+        },
+        {
+          "_text": {
+            "text": "组件化开发："
+          }
+        },
+        {
+          "_text": {
+            "text": "React 组件 → Web Components，“封装可复用的 UI 单元”。状态和UI绑定。State -> Render。"
+          }
+        },
+        {
+          "_text": {
+            "text": "vue，react:"
+          }
+        },
+        {
+          "_text": {
+            "text": "Vue2Object.defineProperty (getter/setter 依赖收集与派发更新) vs Vue 3 的 Proxy (全属性拦截与高效追踪)。react fiber。"
+          }
+        },
+        {
+          "_text": {
+            "text": "状态管理："
+          }
+        },
+        {
+          "_text": {
+            "text": "Zustand 。状态放哪、怎么同步。组件状态 ,页面状态 ,全局状态 。 服务端状态 ，持久化状态。"
+          }
+        },
+        {
+          "_text": {
+            "text": "打包："
+          }
+        },
+        {
+          "_text": {
+            "text": "webpack，vite。Lazy Loading。Source Map。"
+          }
+        },
+        {
+          "_text": {
+            "text": "TS："
+          }
+        },
+        {
+          "_text": {
+            "text": "interface 描述对象结构，type 用于联合类型、函数类型。泛型（看懂第三方库、写通用 hooks 必备）。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "再见了！传统的前端八股 [draft]",
+      "_title": {
+        "text": "再见了！传统的前端八股"
+      },
+      "_measure": {
+        "list": [
+          {
+            "num": 17,
+            "unit": "k"
+          },
+          {
+            "num": 307
+          },
+          {
+            "num": 73
+          },
+          {
+            "num": 4.8,
+            "unit": "k"
+          },
+          {
+            "num": 35
+          },
+          {
+            "num": 13
+          },
+          {
+            "num": 3.7,
+            "unit": "k"
+          },
+          {
+            "num": 146
+          },
+          {
+            "num": 20
+          },
+          {
+            "num": 550
+          },
+          {
+            "num": 21,
+            "unit": "k"
+          },
+          {
+            "num": 136
+          },
+          {
+            "num": 86
+          },
+          {
+            "num": 13,
+            "unit": "k"
+          },
+          {
+            "num": 170
+          },
+          {
+            "num": 17
+          },
+          {
+            "num": 740
+          },
+          {
+            "num": 20,
+            "unit": "k"
+          },
+          {
+            "num": 521
+          },
+          {
+            "num": 118
+          },
+          {
+            "num": 6,
+            "unit": "k"
+          },
+          {
+            "num": 21
+          },
+          {
+            "num": 387
+          },
+          {
+            "num": 40,
+            "unit": "k"
+          },
+          {
+            "num": 279
+          },
+          {
+            "num": 111
+          },
+          {
+            "num": 1.8,
+            "unit": "k"
+          },
+          {
+            "num": 28
+          },
+          {
+            "num": 2.2,
+            "unit": "k"
+          },
+          {
+            "num": 584
+          },
+          {
+            "num": 12,
+            "unit": "k"
+          },
+          {
+            "num": 318
+          },
+          {
+            "num": 39
+          }
+        ]
+      },
+      "_image": {
+        "image": "",
+        "alt": "avatar"
+      },
+      "_summary": {
+        "text": "虽然不用背了，但也永远不会过时。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "HTML："
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "html元素：input文件、video视频、audio音频。"
+              }
+            },
+            {
+              "_name": {
+                "text": "html属性、全局属性、特殊属性：data-* (自定义数据属性)。class，input,script。script 的 async / defer。"
+              }
+            },
+            {
+              "_name": {
+                "text": "html属性值：rel属性值。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "CSS："
+          }
+        },
+        {
+          "_intent": "list (8 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "css属性过程：计算初始值，指定值、计算值，解析值，应用展示值"
+              }
+            },
+            {
+              "_name": {
+                "text": "css层叠："
+              }
+            },
+            {
+              "_name": {
+                "text": "css源浏览器(用户代理)，浏览者(用户)，开发者(作者)。"
+              }
+            },
+            {
+              "_name": {
+                "text": "css优先级选择器：!import > 内敛 > id > 类 > 元素。"
+              }
+            },
+            {
+              "_name": {
+                "text": "css资源顺序：->继承，不继承。"
+              }
+            },
+            {
+              "_name": {
+                "text": "css盒子模型、布局定位、媒体查询：position。flex。"
+              }
+            },
+            {
+              "_name": {
+                "text": "css动画：transform。"
+              }
+            },
+            {
+              "_name": {
+                "text": "css框架：tailwindcss。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "JS："
+          }
+        },
+        {
+          "_intent": "list (5 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "单个变量：作用域、内存、内置对象、数据结构Array,String。"
+              }
+            },
+            {
+              "_name": {
+                "text": "多个变量：表达式、操作符、语句。"
+              }
+            },
+            {
+              "_name": {
+                "text": "函数：箭头函数，匿名函数，高阶函数，闭包。"
+              }
+            },
+            {
+              "_name": {
+                "text": "事件执行循环：宏任务、微任务、promise、async、await。"
+              }
+            },
+            {
+              "_name": {
+                "text": "核心思想：this指向，执行上下文，对象模型，继承。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "bom："
+          }
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "获取浏览器技术。window location history navigator screen storage clipboard。"
+              }
+            },
+            {
+              "_name": {
+                "text": "文件获取、拖拽获取。文件，拖拽，剪贴板，下载，上传，全屏，，权限。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "dom:"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "获取文档：getElementById。"
+              }
+            },
+            {
+              "_name": {
+                "text": "事件 事件冒泡 事件捕获 事件委托。"
+              }
+            },
+            {
+              "_name": {
+                "text": "DOM Tree ↓ JavaScript ↓ 修改 DOM ↓ 浏览器重新渲染。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "网络请求："
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "ajax: XHR，理解状态码、readyState 即可。axios。"
+              }
+            },
+            {
+              "_name": {
+                "text": "fetch：Promise。"
+              }
+            },
+            {
+              "_name": {
+                "text": "rel,link:preload prefetch async defer module"
+              }
+            },
+            {
+              "_name": {
+                "text": "跨域：CORS 原理、JSONP、代理（dev server proxy）。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "标签："
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E5%89%8D%E7%AB%AF",
+            "label": "前端"
+          }
+        },
+        {
+          "_text": {
+            "text": "评论 0"
+          }
+        },
+        {
+          "_text": {
+            "text": "/ 1000"
+          }
+        },
+        {
+          "_text": {
+            "text": "标点符号、链接等不计算在有效字数内"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "发送"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "登录 / 注册"
+          }
+        },
+        {
+          "_text": {
+            "text": "即可发布评论！"
+          }
+        },
+        {
+          "_text": {
+            "text": "暂无评论数据"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/668146835666663/posts",
+            "label": "avatar 程序员蓝莓 创作等级LV.3"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/668146835666663/posts",
+            "label": "41 文章"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/668146835666663/posts",
+            "label": "8.1k 阅读"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/668146835666663/followers",
+            "label": "1 粉丝"
+          }
+        },
+        {
+          "_text": {
+            "text": "关注"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/notification/im?participantId=668146835666663",
+            "label": "私信"
+          }
+        },
+        {
+          "_text": {
+            "text": "精选内容"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686406221083410478",
+            "label": "QML 常见的四种导航布局 Quz · 61阅读 · 0点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686341072616652838",
+            "label": "我让 AI 当面试官面了我一轮：第 3 个追问我就卡住了（附 10 道追问清单） kyriewen · 106阅读 · 1点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686361321609904174",
+            "label": "页面内存只涨不跌? 一次泄漏排查, 牵出 WeakMap 的诞生 JamesZhang80078 · 90阅读 · 2点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686341072616144934",
+            "label": "第 6 章 组件进阶 Z小明 · 44阅读 · 1点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686347234724085803",
+            "label": "OmniPic Studio v3.2.1 核心技术架构与全平台发版解析文档 superOmni · 43阅读 · 0点赞"
+          }
+        },
+        {
+          "_text": {
+            "text": "找对属于你的技术圈子"
+          }
+        },
+        {
+          "_text": {
+            "text": "回复「进群」加入官方微信群"
+          }
+        },
+        {
+          "_text": {
+            "text": "为你推荐"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7236354905492963385",
+            "label": "毕业后待过外包、小公司、潜力公司、大厂，我是怎么求职的？分享经历~"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/1292681407377624",
+            "label": "Sunshine_Lin"
+          }
+        },
+        {
+          "_text": {
+            "text": "3年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E9%9D%A2%E8%AF%95",
+            "label": "面试"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7272843829555560489",
+            "label": "马上金九银十了，给大家一点面试方面的建议"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3853127158081144",
+            "label": "码农参上"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E5%90%8E%E7%AB%AF",
+            "label": "后端"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6986457927011794974",
+            "label": "迟来的年中总结：2021年，我毕业啦！"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3544481220801815",
+            "label": "CUGGZ"
+          }
+        },
+        {
+          "_text": {
+            "text": "5年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7210572936985968701",
+            "label": "阿里最新出品Java面试核心讲（终极版），Github已星标50K"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3268165945263966",
+            "label": "欧子有话说"
+          }
+        },
+        {
+          "_text": {
+            "text": "点赞"
+          }
+        },
+        {
+          "_text": {
+            "text": "评论"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/Java",
+            "label": "Java"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E7%A8%8B%E5%BA%8F%E5%91%98",
+            "label": "程序员"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7324213873783554083",
+            "label": "2023年，我创业了"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/835284568143799",
+            "label": "马丁玩编程"
+          }
+        },
+        {
+          "_text": {
+            "text": "2年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7008027646898487326",
+            "label": "今年面试了100+的前端同学我的总结"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/1943592288395479",
+            "label": "前端要努力"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7218006634039656503",
+            "label": "程序员面试背八股，可以说是现在互联网开发岗招聘不可逆的形式了，其中最卷的当属Java！（网上动不动就是成千上百道的面试题总结）你要是都能啃下来，平时技术不是太差"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3620068823403304",
+            "label": "程序猿java易"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7119042130764693511",
+            "label": "2022年中总结 | 我如愿踏进了字节跳动"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/4309700183594366",
+            "label": "Dewey"
+          }
+        },
+        {
+          "_text": {
+            "text": "4年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7254171813118001209",
+            "label": "真香！阿里最新出品Java面试核心讲（终极版），Github已星标50K"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/2441349519143037",
+            "label": "Java水解"
+          }
+        },
+        {
+          "_text": {
+            "text": "6.0k"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E6%9E%B6%E6%9E%84",
+            "label": "架构"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7182129451591794725",
+            "label": "应届前端三本小伙的年终总结：无知、迷茫、焦虑、躺平"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3312154566199783",
+            "label": "Karam"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93",
+            "label": "年终总结"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7304182487663312947",
+            "label": "气死了😤，过五关，斩六将，结果被 HR 捅了一刀！！"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/2963939078980712",
+            "label": "程序员Sunday"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/Vue.js",
+            "label": "Vue.js"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7239715390804344891",
+            "label": "2023年5月大厂面经新鲜出炉，这些八股文你会了吗"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/782508011299917",
+            "label": "卷起千堆雪"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7231031691300094007",
+            "label": "别再无脑背八股文了"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/1468603264145911",
+            "label": "帅地"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7357698682743980071",
+            "label": "校招如何上岸互联网Java大厂？项目、笔试、面试准备全攻略"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/2118079461997388",
+            "label": "春天的靴子"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7270095064440864804",
+            "label": "万字总结我在寒冬里的面试准备经历"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/2348212570298807",
+            "label": "wakaka378"
+          }
+        },
+        {
+          "_text": {
+            "text": "友情链接："
+          }
+        },
+        {
+          "_intent": "list (10 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "这要是再慢一点点都得砸身上#接地气的农村剧情 #路边搞笑日常 #傍晚户外休闲时刻 #看一遍笑一遍"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686112813077444857",
+                "label": "这要是再慢一点点都得砸身上#接地气的农村剧情 #路边搞笑日常 #傍晚户外休闲时刻 #看一遍笑一遍"
+              }
+            },
+            {
+              "_name": {
+                "text": "#纪念伟大的领袖 毛主席逝世50周年#家国情怀教育 #伟人"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686112753978977721",
+                "label": "#纪念伟大的领袖 毛主席逝世50周年#家国情怀教育 #伟人"
+              }
+            },
+            {
+              "_name": {
+                "text": "游览河南荥阳广武山楚河汉界古战场有感 2026年9月15日中午，我们六名军校同窗（另一名同学有事未去）在郑州市原006部队老战友赵保兴、丁伟的亲自驾车陪同下，来到了距离郑州市约36公里的河南荥阳广武山楚河汉界古战场遗址，寻找并游览2200多年前的霸王城、汉王城和鸿沟遗址。 踏入河南荥阳广武山，便踏入了楚河汉界的历史褶皱"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686112719644791217",
+                "label": "游览河南荥阳广武山楚河汉界古战场有感 2026年9月15日中午，我们六名军校同窗（另一名同学有事未去）在郑州市原006部队老战友赵保兴、丁伟的亲自驾车陪同下，来到了距离郑州市约36公里的河南荥阳广武山楚河汉界古战场遗址，寻找并游览2200多"
+              }
+            },
+            {
+              "_name": {
+                "text": "《出入平安》 孙大圣终是成了佛#佳片说 #了不起的精讲团 #影视万字精讲 #影视经典补完计划"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686112625494707490",
+                "label": "《出入平安》 孙大圣终是成了佛#佳片说 #了不起的精讲团 #影视万字精讲 #影视经典补完计划"
+              }
+            },
+            {
+              "_name": {
+                "text": "您敢相信吗？ 只有在中国才有的画面!第十三届北京香山论坛上各国军方代表互相握手 亲切交流 #热门时政 #各国军方代表团 #香山论坛 @DOU+小助手"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686112603034879552",
+                "label": "您敢相信吗？ 只有在中国才有的画面!第十三届北京香山论坛上各国军方代表互相握手 亲切交流 #热门时政 #各国军方代表团 #香山论坛 @DOU+小助手"
+              }
+            },
+            {
+              "_name": {
+                "text": "《彼岸悠悠》成长篇（30）十八冶围排游泳被人盘查"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686112575872081393",
+                "label": "《彼岸悠悠》成长篇（30）十八冶围排游泳被人盘查"
+              }
+            },
+            {
+              "_name": {
+                "text": "凯奇塌房？爱情动作片的剧情居然是真的？ #集帅集合处 #吐槽"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686112524664160441",
+                "label": "凯奇塌房？爱情动作片的剧情居然是真的？ #集帅集合处 #吐槽"
+              }
+            },
+            {
+              "_name": {
+                "text": "你们觉得这批料子有没有看的上的感觉值不值！ #翡翠原石 #翡翠挑战 #翡翠实战 #翡翠"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686112405255982336",
+                "label": "你们觉得这批料子有没有看的上的感觉值不值！ #翡翠原石 #翡翠挑战 #翡翠实战 #翡翠"
+              }
+            },
+            {
+              "_name": {
+                "text": "和 @大直男 一起 #合拍"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686112295151722725",
+                "label": "和 @大直男 一起 #合拍"
+              }
+            },
+            {
+              "_name": {
+                "text": "一切本来可以不一样 #影视解说 #好剧推荐"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686112055857925416",
+                "label": "一切本来可以不一样 #影视解说 #好剧推荐"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "收藏成功！ 已添加到「」， 点击更改"
+          }
+        },
+        {
+          "_text": {
+            "text": "微信微信扫码分享新浪微博QQ"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "建议反馈"
+          }
+        },
+        {
+          "_text": {
+            "text": "下载APP 下载APP 微信扫一扫 微信公众号 新浪微博"
+          }
+        }
+      ]
+    }
+  ]
+}

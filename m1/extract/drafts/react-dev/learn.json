@@ -1,0 +1,833 @@
+{
+  "_intent": "Quick Start – React — Quick Start [draft]",
+  "_title": {
+    "text": "Quick Start – React"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://react.dev/learn",
+        "label": "LEARN REACT"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Copy page"
+      }
+    },
+    {
+      "_intent": "Quick Start [draft]",
+      "_title": {
+        "text": "Quick Start"
+      },
+      "_summary": {
+        "text": "Welcome to the React documentation! This page will give you an introduction to 80% of the React concepts that you will use on a daily basis."
+      },
+      "_lines": [
+        {
+          "_intent": "You will learn [draft]",
+          "_title": {
+            "text": "You will learn"
+          },
+          "_lines": [
+            {
+              "_intent": "list (6 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "How to create and nest components"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "How to add markup and styles"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "How to display data"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "How to render conditions and lists"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "How to respond to events and update the screen"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "How to share data between components"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Creating and nesting components Link for Creating and nesting components [draft]",
+      "_title": {
+        "text": "Creating and nesting components Link for Creating and nesting components"
+      },
+      "_summary": {
+        "text": "React components are JavaScript functions that return markup:"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "React apps are made out of components. A component is a piece of the UI (user interface) that has its own logic and appearance. A component can be as small as a button, or as large as an entire page."
+          }
+        },
+        {
+          "_text": {
+            "text": "Now that you’ve declared MyButton, you can nest it into another component:"
+          }
+        },
+        {
+          "_text": {
+            "text": "Notice that <MyButton /> starts with a capital letter. That’s how you know it’s a React component. React component names must always start with a capital letter, while HTML tags must be lowercase."
+          }
+        },
+        {
+          "_text": {
+            "text": "Have a look at the result:"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "App.js"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Download"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reload"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Clear"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Fork"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "code-editor",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Open on CodeSandboxOpen Sandbox"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Show more"
+          }
+        },
+        {
+          "_text": {
+            "text": "The export default keywords specify the main component in the file. If you’re not familiar with some piece of JavaScript syntax, MDN and javascript.info have great references."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Writing markup with JSX Link for Writing markup with JSX [draft]",
+      "_title": {
+        "text": "Writing markup with JSX Link for Writing markup with JSX"
+      },
+      "_summary": {
+        "text": "If you have a lot of HTML to port to JSX, you can use an online converter."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "The markup syntax you’ve seen above is called JSX. It is optional, but most React projects use JSX for its convenience. All of the tools we recommend for local development support JSX out of the box."
+          }
+        },
+        {
+          "_text": {
+            "text": "JSX is stricter than HTML. You have to close tags like <br />. Your component also can’t return multiple JSX tags. You have to wrap them into a shared parent, like a <div>...</div> or an empty <>...</"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Adding styles Link for Adding styles [draft]",
+      "_title": {
+        "text": "Adding styles Link for Adding styles"
+      },
+      "_summary": {
+        "text": "In React, you specify a CSS class with className. It works the same way as the HTML class attribute:"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Then you write the CSS rules for it in a separate CSS file:"
+          }
+        },
+        {
+          "_text": {
+            "text": "React does not prescribe how you add CSS files. In the simplest case, you’ll add a <link> tag to your HTML. If you use a build tool or a framework, consult its documentation to learn how to add a CSS"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Displaying data Link for Displaying data [draft]",
+      "_title": {
+        "text": "Displaying data Link for Displaying data"
+      },
+      "_summary": {
+        "text": "You can put more complex expressions inside the JSX curly braces too, for example, string concatenation:"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "JSX lets you put markup into JavaScript. Curly braces let you “escape back” into JavaScript so that you can embed some variable from your code and display it to the user. For example, this will displa"
+          }
+        },
+        {
+          "_text": {
+            "text": "You can also “escape into JavaScript” from JSX attributes, but you have to use curly braces instead of quotes. For example, className=\"avatar\" passes the \"avatar\" string as the CSS class, but src={use"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "App.js"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Download"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reload"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Clear"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Fork"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "code-editor-2",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Show more"
+          }
+        },
+        {
+          "_text": {
+            "text": "In the above example, style={{}} is not a special syntax, but a regular {} object inside the style={ } JSX curly braces. You can use the style attribute when your styles depend on JavaScript variables"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Conditional rendering Link for Conditional rendering [draft]",
+      "_title": {
+        "text": "Conditional rendering Link for Conditional rendering"
+      },
+      "_summary": {
+        "text": "If you prefer more compact code, you can use the conditional ? operator. Unlike if, it works inside JSX:"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "In React, there is no special syntax for writing conditions. Instead, you’ll use the same techniques as you use when writing regular JavaScript code. For example, you can use an if statement to condit"
+          }
+        },
+        {
+          "_text": {
+            "text": "When you don’t need the else branch, you can also use a shorter logical && syntax:"
+          }
+        },
+        {
+          "_text": {
+            "text": "All of these approaches also work for conditionally specifying attributes. If you’re unfamiliar with some of this JavaScript syntax, you can start by always using if...else."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Rendering lists Link for Rendering lists [draft]",
+      "_title": {
+        "text": "Rendering lists Link for Rendering lists"
+      },
+      "_summary": {
+        "text": "You will rely on JavaScript features like for loop and the array map() function to render lists of components."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "For example, let’s say you have an array of products:"
+          }
+        },
+        {
+          "_text": {
+            "text": "Inside your component, use the map() function to transform an array of products into an array of <li> items:"
+          }
+        },
+        {
+          "_text": {
+            "text": "Notice how <li> has a key attribute. For each item in a list, you should pass a string or a number that uniquely identifies that item among its siblings. Usually, a key should be coming from your data"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "App.js"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Download"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reload"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Clear"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Fork"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "code-editor-3",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Show more"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Responding to events Link for Responding to events [draft]",
+      "_title": {
+        "text": "Responding to events Link for Responding to events"
+      },
+      "_summary": {
+        "text": "You can respond to events by declaring event handler functions inside your components:"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Notice how onClick={handleClick} has no parentheses at the end! Do not call the event handler function: you only need to pass it down. React will call your event handler when the user clicks the butto"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Updating the screen Link for Updating the screen [draft]",
+      "_title": {
+        "text": "Updating the screen Link for Updating the screen"
+      },
+      "_summary": {
+        "text": "First, import useState from React:"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Often, you’ll want your component to “remember” some information and display it. For example, maybe you want to count the number of times a button is clicked. To do this, add state to your component."
+          }
+        },
+        {
+          "_text": {
+            "text": "Now you can declare a state variable inside your component:"
+          }
+        },
+        {
+          "_text": {
+            "text": "You’ll get two things from useState: the current state (count), and the function that lets you update it (setCount). You can give them any names, but the convention is to write [something, setSomethin"
+          }
+        },
+        {
+          "_text": {
+            "text": "The first time the button is displayed, count will be 0 because you passed 0 to useState(). When you want to change state, call setCount() and pass the new value to it. Clicking this button will incre"
+          }
+        },
+        {
+          "_text": {
+            "text": "React will call your component function again. This time, count will be 1. Then it will be 2. And so on."
+          }
+        },
+        {
+          "_text": {
+            "text": "If you render the same component multiple times, each will get its own state. Click each button separately:"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "App.js"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Download"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reload"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Clear"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Fork"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "code-editor-4",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Show more"
+          }
+        },
+        {
+          "_text": {
+            "text": "Notice how each button “remembers” its own count state and doesn’t affect other buttons."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Using Hooks Link for Using Hooks [draft]",
+      "_title": {
+        "text": "Using Hooks Link for Using Hooks"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Functions starting with use are called Hooks. useState is a built-in Hook provided by React. You can find other built-in Hooks in the API reference. You can also write your own Hooks by combining the"
+          }
+        },
+        {
+          "_text": {
+            "text": "Hooks are more restrictive than other functions. You can only call Hooks at the top of your components (or other Hooks). If you want to use useState in a condition or a loop, extract a new component a"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Sharing data between components Link for Sharing data between components [draft]",
+      "_title": {
+        "text": "Sharing data between components Link for Sharing data between components"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "Diagram showing a tree of three components, one parent labeled MyApp and two children labeled MyButton. Both MyButton components contain a count with value zero."
+          },
+          {
+            "image": "",
+            "alt": "The same diagram as the previous, with the count of the first child MyButton component highlighted indicating a click with the count value incremented to one. The second MyButton component still conta"
+          },
+          {
+            "image": "",
+            "alt": "Diagram showing a tree of three components, one parent labeled MyApp and two children labeled MyButton. MyApp contains a count value of zero which is passed down to both of the MyButton components, wh"
+          },
+          {
+            "image": "",
+            "alt": "The same diagram as the previous, with the count of the parent MyApp component highlighted indicating a click with the value incremented to one. The flow to both of the children MyButton components is"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "In the previous example, each MyButton had its own independent count, and when each button was clicked, only the count for the button clicked changed:"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Initially, each MyButton’s count state is 0"
+          }
+        },
+        {
+          "_text": {
+            "text": "The first MyButton updates its count to 1"
+          }
+        },
+        {
+          "_text": {
+            "text": "However, often you’ll need components to share data and always update together."
+          }
+        },
+        {
+          "_text": {
+            "text": "To make both MyButton components display the same count and update together, you need to move the state from the individual buttons “upwards” to the closest component containing all of them."
+          }
+        },
+        {
+          "_text": {
+            "text": "In this example, it is MyApp:"
+          }
+        },
+        {
+          "_text": {
+            "text": "Initially, MyApp’s count state is 0 and is passed down to both children"
+          }
+        },
+        {
+          "_text": {
+            "text": "On click, MyApp updates its count state to 1 and passes it down to both children"
+          }
+        },
+        {
+          "_text": {
+            "text": "Now when you click either button, the count in MyApp will change, which will change both of the counts in MyButton. Here’s how you can express this in code."
+          }
+        },
+        {
+          "_text": {
+            "text": "First, move the state up from MyButton into MyApp:"
+          }
+        },
+        {
+          "_text": {
+            "text": "Then, pass the state down from MyApp to each MyButton, together with the shared click handler. You can pass information to MyButton using the JSX curly braces, just like you previously did with built-"
+          }
+        },
+        {
+          "_text": {
+            "text": "The information you pass down like this is called props. Now the MyApp component contains the count state and the handleClick event handler, and passes both of them down as props to each of the button"
+          }
+        },
+        {
+          "_text": {
+            "text": "Finally, change MyButton to read the props you have passed from its parent component:"
+          }
+        },
+        {
+          "_text": {
+            "text": "When you click the button, the onClick handler fires. Each button’s onClick prop was set to the handleClick function inside MyApp, so the code inside of it runs. That code calls setCount(count + 1), i"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "App.js"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Download"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reload"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Clear"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Fork"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "code-editor-5",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Show more"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Next Steps Link for Next Steps [draft]",
+      "_title": {
+        "text": "Next Steps Link for Next Steps"
+      },
+      "_summary": {
+        "text": "By now, you know the basics of how to write React code!"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Check out the Tutorial to put them into practice and build your first mini-app with React."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/learn/tutorial-tic-tac-toe",
+            "label": "NEXT Tutorial: Tic-Tac-Toe"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://opensource.fb.com/",
+            "label": "Meta Open Source"
+          }
+        },
+        {
+          "_text": {
+            "text": "Copyright © Meta Platforms, Inc"
+          }
+        },
+        {
+          "_text": {
+            "text": "uwu?"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/learn",
+            "label": "Learn React"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/learn",
+            "label": "Quick Start"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/learn/installation",
+            "label": "Installation"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/learn/describing-the-ui",
+            "label": "Describing the UI"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/learn/adding-interactivity",
+            "label": "Adding Interactivity"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/learn/managing-state",
+            "label": "Managing State"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/learn/escape-hatches",
+            "label": "Escape Hatches"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/reference/react",
+            "label": "API Reference"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/reference/react",
+            "label": "React APIs"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/reference/react-dom",
+            "label": "React DOM APIs"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/community",
+            "label": "Community"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/react/react/blob/main/CODE_OF_CONDUCT.md",
+            "label": "Code of Conduct"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/community/team",
+            "label": "Meet the Team"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/community/docs-contributors",
+            "label": "Docs Contributors"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/community/acknowledgements",
+            "label": "Acknowledgements"
+          }
+        },
+        {
+          "_text": {
+            "text": "More"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://react.dev/blog",
+            "label": "Blog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://reactnative.dev/",
+            "label": "React Native"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://opensource.facebook.com/legal/privacy",
+            "label": "Privacy"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://opensource.fb.com/legal/terms/",
+            "label": "Terms"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.facebook.com/react",
+            "label": "React on Facebook"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://twitter.com/reactjs",
+            "label": "React on Twitter"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://bsky.app/profile/react.dev",
+            "label": "React on Bluesky"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/react/react",
+            "label": "React on Github"
+          }
+        }
+      ]
+    }
+  ]
+}

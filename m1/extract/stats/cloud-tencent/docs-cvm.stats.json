@@ -1,0 +1,55 @@
+{
+  "site": "cloud-tencent",
+  "page": "docs-cvm",
+  "url": "https://cloud.tencent.com/document/product/213",
+  "title": "云服务器简介_云服务器购买指南_云服务器操作指南-腾讯云",
+  "sourceNodes": 467,
+  "counts": {
+    "storylines": 9,
+    "items": 38,
+    "actions": 60,
+    "exposes": 2,
+    "images": 1,
+    "facts": 2,
+    "tables": 0,
+    "lists": 7,
+    "choiceSets": 0,
+    "inputs": 2,
+    "dupeText": 0,
+    "capHits": []
+  },
+  "storylines": 9,
+  "chrome": [
+    {
+      "role": "presentation",
+      "count": 4
+    },
+    {
+      "role": "navigation",
+      "count": 2
+    },
+    {
+      "role": "LayoutTable",
+      "count": 2
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "list-item-multi-action",
+      "role": "listitem",
+      "count": 3,
+      "examples": [
+        "1注册与认证 注册腾讯云账号",
+        "2创建云服务器 快速配置 Linux 云服务器 快速配置 Windows 云服务器",
+        "3登录云服务器 登录 Linux 实例 登录 Windows 实例"
+      ]
+    },
+    {
+      "kind": "chart-or-svg",
+      "role": "graphics-document",
+      "count": 2,
+      "examples": []
+    }
+  ],
+  "fieldsDrafted": []
+}

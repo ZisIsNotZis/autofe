@@ -1,0 +1,100 @@
+{
+  "site": "ant-design",
+  "page": "components-button",
+  "url": "https://ant.design/components/button",
+  "title": "Button - Ant Design",
+  "sourceNodes": 2916,
+  "counts": {
+    "storylines": 15,
+    "items": 108,
+    "actions": 177,
+    "exposes": 0,
+    "images": 47,
+    "facts": 57,
+    "tables": 3,
+    "lists": 3,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 125,
+    "capHits": []
+  },
+  "storylines": 15,
+  "chrome": [
+    {
+      "role": "banner",
+      "count": 1
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "LayoutTable",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 233,
+      "examples": [
+        "Default: true",
+        "Version: 5.17.0",
+        "Global Config: 5.17.0",
+        "Default: false",
+        "Global Config: ×"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "property",
+      "type": "text",
+      "label": "Property",
+      "example": "autoInsertSpace"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "Container background color, e.g: default button, input box, "
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "label": "Type",
+      "example": "string"
+    },
+    {
+      "name": "default",
+      "type": "text",
+      "label": "Default",
+      "example": "true"
+    },
+    {
+      "name": "version",
+      "type": "text",
+      "label": "Version",
+      "example": "5.17.0"
+    },
+    {
+      "name": "global-config",
+      "type": "text",
+      "label": "Global Config",
+      "example": "5.17.0"
+    },
+    {
+      "name": "token-name",
+      "type": "text",
+      "label": "Token Name",
+      "example": "colorBgContainer"
+    },
+    {
+      "name": "default-value",
+      "type": "text",
+      "label": "Default Value",
+      "example": "#ffffff"
+    }
+  ]
+}

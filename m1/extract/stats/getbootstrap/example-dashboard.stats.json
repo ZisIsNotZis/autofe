@@ -1,0 +1,62 @@
+{
+  "site": "getbootstrap",
+  "page": "example-dashboard",
+  "url": "https://getbootstrap.com/docs/5.3/examples/dashboard/",
+  "title": "Dashboard Template · Bootstrap v5.3",
+  "sourceNodes": 189,
+  "counts": {
+    "storylines": 3,
+    "items": 28,
+    "actions": 16,
+    "exposes": 0,
+    "images": 0,
+    "facts": 0,
+    "tables": 1,
+    "lists": 3,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 0,
+    "capHits": []
+  },
+  "storylines": 3,
+  "chrome": [
+    {
+      "role": "banner",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 64,
+      "examples": [
+        "Header: random",
+        "Header: data",
+        "Header: placeholder",
+        "Header: text",
+        "Header: irrelevant"
+      ]
+    },
+    {
+      "kind": "chart-or-svg",
+      "role": "Canvas",
+      "count": 1,
+      "examples": []
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "col-1",
+      "type": "num",
+      "label": "#",
+      "example": "1,001"
+    },
+    {
+      "name": "header",
+      "type": "text",
+      "label": "Header",
+      "example": "text"
+    }
+  ]
+}

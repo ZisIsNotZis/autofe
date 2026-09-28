@@ -1,0 +1,47 @@
+{
+  "_intent": "腾讯云搜索 [draft]",
+  "_title": {
+    "text": "腾讯云搜索"
+  },
+  "_summary": {
+    "text": "搜索词为空"
+  },
+  "_lines": [
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input",
+        "type": "text"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "搜索"
+      }
+    },
+    {
+      "_text": {
+        "text": "抱歉，请重新输入搜索词"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "联系销售"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "售后支持"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "满意度反馈"
+      }
+    }
+  ]
+}

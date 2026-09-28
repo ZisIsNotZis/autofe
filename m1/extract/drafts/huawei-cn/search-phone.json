@@ -1,0 +1,57 @@
+{
+  "_intent": "站内搜索 - 华为 — 搜索结果 [draft]",
+  "_title": {
+    "text": "站内搜索 - 华为"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.huawei.com/cn/searchresult?keyword=phone&pageIndex=1#",
+        "label": " 集团网站 "
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.huawei.com/cn/searchresult?keyword=phone&pageIndex=1#",
+        "label": " 选择区域/语言 "
+      }
+    },
+    {
+      "_text": {
+        "text": "返回主菜单 集团网站 企业业务网站 运营商业务网站 消费者业务网站 华为云业务网站 数字能源业务网站 智能汽车解决方案业务网站 返回主菜单 选择区域/语言 Australia - English Brazil - Português China - 简体中文 Europe - English France - Français Germany - Deutsch Ireland - English Italy - Italiano Japan - 日本語 Kazakhstan - Қазақ тілі Kazakhstan - Pусский Kenya - English Korea - 한국어 Malaysia - English Mexico - Español Mongolia - Mонгол New Zealand - English Netherlands - Nederlands Poland - Polski Romania - Română Singapore - English South Africa - English Spain - Español Switzerland - Deutsch Switzerland - Français Switzerland - Italiano Switzerland - English Tanzania - English Thailand - ภาษาไทย Turkiye - Türkçe Ukraine - Українська United Kingdom - English Uzbekistan - Pусский Uzbekistan - O’zbek Vietnam - Tiếng Việt Global - English"
+      }
+    },
+    {
+      "_intent": "搜索结果 [draft]",
+      "_title": {
+        "text": "搜索结果"
+      },
+      "_image": {
+        "image": "",
+        "alt": "在线客服"
+      },
+      "_summary": {
+        "text": "类别 重置"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "全部 (0) 产品与解决方案 (0) 服务支持 (0) 技术探讨 (0) 新闻与活动 (0)"
+          }
+        },
+        {
+          "_text": {
+            "text": "0 条结果 相关性"
+          }
+        },
+        {
+          "_text": {
+            "text": "没有找到相关结果"
+          }
+        }
+      ]
+    }
+  ]
+}

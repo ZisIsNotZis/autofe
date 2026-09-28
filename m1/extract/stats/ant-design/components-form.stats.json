@@ -1,0 +1,149 @@
+{
+  "site": "ant-design",
+  "page": "components-form",
+  "url": "https://ant.design/components/form",
+  "title": "Form - Ant Design",
+  "sourceNodes": 8722,
+  "counts": {
+    "storylines": 60,
+    "items": 193,
+    "actions": 223,
+    "exposes": 137,
+    "images": 157,
+    "facts": 198,
+    "tables": 12,
+    "lists": 6,
+    "choiceSets": 6,
+    "inputs": 131,
+    "dupeText": 516,
+    "capHits": [
+      "blocksPerStoryline"
+    ]
+  },
+  "storylines": 60,
+  "chrome": [
+    {
+      "role": "banner",
+      "count": 1
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "LayoutTable",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 258,
+      "examples": [
+        "Default: -",
+        "Global Config: 6.0.0",
+        "Default: true",
+        "Global Config: 4.18.0",
+        "Default: false"
+      ]
+    },
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 16,
+      "examples": [
+        "- <Form.Item label=\"Field\" name=\"field\"> - <Input /> - </Form.It",
+        "onChange",
+        "onValuesChange",
+        "value",
+        "defaultValue"
+      ]
+    },
+    {
+      "kind": "combobox-select",
+      "role": "combobox",
+      "count": 15,
+      "examples": [
+        "* Gender :",
+        "* Select :",
+        "* Cascader :",
+        "* TreeSelect :",
+        "* Website :"
+      ]
+    },
+    {
+      "kind": "checkbox-multi-select-as-choice-set",
+      "role": "checkbox",
+      "count": 2,
+      "examples": [
+        "Parent 1 Child 1-1 Child 1-2 Parent 2 Child 2-1",
+        "A B C D E F"
+      ]
+    },
+    {
+      "kind": "embedded-media",
+      "role": "Iframe",
+      "count": 1,
+      "examples": [
+        "demo"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "property",
+      "type": "text",
+      "label": "Property",
+      "example": "form"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "Default border color, used to separate different elements, s"
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "label": "Type",
+      "example": "string"
+    },
+    {
+      "name": "default",
+      "type": "text",
+      "label": "Default",
+      "example": "Current form in context"
+    },
+    {
+      "name": "version",
+      "type": "text",
+      "label": "Version",
+      "example": "5.4.0"
+    },
+    {
+      "name": "global-config",
+      "type": "text",
+      "label": "Global Config",
+      "example": "6.0.0"
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name",
+      "example": "getFieldError"
+    },
+    {
+      "name": "token-name",
+      "type": "text",
+      "label": "Token Name",
+      "example": "colorBorder"
+    },
+    {
+      "name": "default-value",
+      "type": "text",
+      "label": "Default Value",
+      "example": "#d9d9d9"
+    }
+  ]
+}

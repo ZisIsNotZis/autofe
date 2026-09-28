@@ -1,0 +1,965 @@
+{
+  "_intent": "输入框 Input | ArcoDesign — 输入框 Input [draft]",
+  "_title": {
+    "text": "输入框 Input | ArcoDesign"
+  },
+  "_summary": {
+    "text": "未登录"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Open Search Modal"
+      }
+    },
+    {
+      "_text": {
+        "text": "React"
+      }
+    },
+    {
+      "_text": {
+        "text": "Vue"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "menu collapse button"
+      }
+    },
+    {
+      "_text": {
+        "text": "组件 / 数据输入"
+      }
+    },
+    {
+      "_intent": "输入框 Input [draft]",
+      "_title": {
+        "text": "输入框 Input"
+      },
+      "_summary": {
+        "text": "基本表单组件，并在原生控件基础上进行了功能扩展，可以组合使用。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Changelog"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "基本用法 [draft]",
+      "_title": {
+        "text": "基本用法"
+      },
+      "_summary": {
+        "text": "通过鼠标或键盘输入内容。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "展开所有代码"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Input } from '@arco-design/web-react'; const App = () ="
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "输入框状态 [draft]",
+      "_title": {
+        "text": "输入框状态"
+      },
+      "_summary": {
+        "text": "不同的输入框状态"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "error-status",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "warning-status",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "disabled-input",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Input, Space } from '@arco-design/web-react'; const App"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "四种尺寸 [draft]",
+      "_title": {
+        "text": "四种尺寸"
+      },
+      "_measure": {
+        "num": 86
+      },
+      "_summary": {
+        "text": "输入框定义了四种默认尺寸（mini,small, default, large），分别为 24px，28px，32px，36px。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "mini"
+          }
+        },
+        {
+          "_text": {
+            "text": "small"
+          }
+        },
+        {
+          "_text": {
+            "text": "default"
+          }
+        },
+        {
+          "_text": {
+            "text": "large"
+          }
+        },
+        {
+          "_text": {
+            "text": "Custom height"
+          }
+        },
+        {
+          "_text": {
+            "text": "+86"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something-2",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "import React from 'react'; import { Input, Radio, Select, Slider"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "前置、后置标签 [draft]",
+      "_title": {
+        "text": "前置、后置标签"
+      },
+      "_summary": {
+        "text": "指定addBefore和addAfter在输入框前后添加元素。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "import { Input, Select, Space } from '@arco-design/web-react'; i"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "前后缀 [draft]",
+      "_title": {
+        "text": "前后缀"
+      },
+      "_summary": {
+        "text": "通过指定prefix和suffix来在输入框内添加前缀和后缀。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "import { Input, Space } from '@arco-design/web-react'; import {"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "搜索框 [draft]",
+      "_title": {
+        "text": "搜索框"
+      },
+      "_summary": {
+        "text": "带有搜索按钮的输入框，用于内容检索。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "import { Input, Space } from '@arco-design/web-react'; const Inp"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "搜索框 Loading [draft]",
+      "_title": {
+        "text": "搜索框 Loading"
+      },
+      "_summary": {
+        "text": "通过 loading 属性可以设置搜索框在 onSearch 的时候展示 loading。"
+      }
+    },
+    {
+      "_intent": "输入框组合 [draft]",
+      "_title": {
+        "text": "输入框组合"
+      },
+      "_summary": {
+        "text": "import { Input, Grid, Select, DatePicker } from '@arco-design/we"
+      }
+    },
+    {
+      "_intent": "字数统计 [draft]",
+      "_title": {
+        "text": "字数统计"
+      },
+      "_summary": {
+        "text": "设置 maxLength 可以限制最大字数，配合 showWordLimit 可以显示字数统计。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "设置 maxLength.errorOnly 后不会限制用户输入字数，但是超过最大字数会展示错误状态。"
+          }
+        },
+        {
+          "_text": {
+            "text": "值得注意的是，如果配置了 showWordLimit，那么你将不能使用 suffix。"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-no",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "0/50"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "more-than",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "word-count",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Input, Space } from '@arco-design/web-react'; function"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "文本域 [draft]",
+      "_title": {
+        "text": "文本域"
+      },
+      "_summary": {
+        "text": "可以用于多行输入。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something-3",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Input, Space } from '@arco-design/web-react'; const Tex"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "适应文本高度文本域 [draft]",
+      "_title": {
+        "text": "适应文本高度文本域"
+      },
+      "_summary": {
+        "text": "指定 autoSize，文本域会自动根据输入的文本调整文本域的高度。如果指定autoSize={{ minRows, maxRows }}，也能指定最小行数和最大行数。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something-4",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something-5",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "密码输入 [draft]",
+      "_title": {
+        "text": "密码输入"
+      },
+      "_summary": {
+        "text": "用于密码的输入。"
+      }
+    },
+    {
+      "_intent": "格式化输入值 [draft]",
+      "_title": {
+        "text": "格式化输入值"
+      },
+      "_summary": {
+        "text": "在指定时机对用户输入的值进行格式化处理，前后值不一致时，会触发 onChange"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "trim whitespace when out of focus："
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something-6",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "trim whitespace when press enter："
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something-7",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Input, Space,Typography } from '@arco-design/web-react'"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "宽度自适应 [draft]",
+      "_title": {
+        "text": "宽度自适应"
+      },
+      "_summary": {
+        "text": "通过 autoWidth 属性可以设置 Input 的宽度跟随文字自适应"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something-8",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something-9",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something-10",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Before"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-something-11",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Input, Divider, Space,Typography, Popover } from '@arco"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "API [draft]",
+      "_title": {
+        "text": "API"
+      },
+      "_lines": [
+        {
+          "_intent": "Input [draft]",
+          "_title": {
+            "text": "Input"
+          },
+          "_summary": {
+            "text": "Input 接受所有原生的属性值"
+          },
+          "_lines": [
+            {
+              "_intent": "table (27 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "allowClear"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "error"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "readOnly"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showWordLimit"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placeholder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "autoWidth"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "normalizeTrigger"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "status"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "addAfter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "addBefore"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clearIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prefix"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "suffix"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "afterStyle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "beforeStyle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "height"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "maxLength"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "style"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "normalize"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onClear"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onPressEnter"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input.TextArea [draft]",
+          "_title": {
+            "text": "Input.TextArea"
+          },
+          "_lines": [
+            {
+              "_intent": "table (17 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "allowClear"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "error"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placeholder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "status"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clearIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "autoSize"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "maxLength"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "style"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "wrapperStyle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "wordLimitPosition"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onClear"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onPressEnter"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input.Group [draft]",
+          "_title": {
+            "text": "Input.Group"
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "compact"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "style"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input.Search [draft]",
+          "_title": {
+            "text": "Input.Search"
+          },
+          "_summary": {
+            "text": "包含 Input 组件所有参数"
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "loading"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "searchButton"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onSearch"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input.Password [draft]",
+          "_title": {
+            "text": "Input.Password"
+          },
+          "_lines": [
+            {
+              "_intent": "table (4 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "defaultVisibility"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "visibility"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "visibilityToggle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onVisibilityChange"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "方法 [draft]",
+      "_title": {
+        "text": "方法"
+      },
+      "_summary": {
+        "text": "示例"
+      },
+      "_lines": [
+        {
+          "_intent": "table (2 rows): 参数名 / 描述 / 类型 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "focus"
+              }
+            },
+            {
+              "_name": {
+                "text": "blur"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95",
+            "label": "基本用法"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E8%BE%93%E5%85%A5%E6%A1%86%E7%8A%B6%E6%80%81",
+            "label": "输入框状态"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E5%9B%9B%E7%A7%8D%E5%B0%BA%E5%AF%B8",
+            "label": "四种尺寸"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E5%89%8D%E7%BD%AE%E3%80%81%E5%90%8E%E7%BD%AE%E6%A0%87%E7%AD%BE",
+            "label": "前置、后置标签"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E5%89%8D%E5%90%8E%E7%BC%80",
+            "label": "前后缀"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E6%90%9C%E7%B4%A2%E6%A1%86",
+            "label": "搜索框"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E6%90%9C%E7%B4%A2%E6%A1%86-Loading",
+            "label": "搜索框-Loading"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E8%BE%93%E5%85%A5%E6%A1%86%E7%BB%84%E5%90%88",
+            "label": "输入框组合"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1",
+            "label": "字数统计"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E6%96%87%E6%9C%AC%E5%9F%9F",
+            "label": "文本域"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E9%80%82%E5%BA%94%E6%96%87%E6%9C%AC%E9%AB%98%E5%BA%A6%E6%96%87%E6%9C%AC%E5%9F%9F",
+            "label": "适应文本高度文本域"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E5%AF%86%E7%A0%81%E8%BE%93%E5%85%A5",
+            "label": "密码输入"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E5%80%BC",
+            "label": "格式化输入值"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94",
+            "label": "宽度自适应"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#api",
+            "label": "API"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/components/input#%E6%96%B9%E6%B3%95",
+            "label": "方法"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "anchor collapse button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "button to open theme box"
+          }
+        }
+      ]
+    }
+  ]
+}

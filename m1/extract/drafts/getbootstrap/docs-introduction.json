@@ -1,0 +1,445 @@
+{
+  "_intent": "Get started with Bootstrap · Bootstrap v5.3 — Get started with Bootstrap [draft]",
+  "_title": {
+    "text": "Get started with Bootstrap · Bootstrap v5.3"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://getbootstrap.com/docs/5.3/getting-started/introduction/#content",
+        "label": "Skip to main content"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://getbootstrap.com/docs/5.3/getting-started/introduction/#bd-docs-nav",
+        "label": "Skip to docs navigation"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://github.com/twbs/bootstrap/blob/v5.3.8/site/src/content/docs/getting-started/introduction.mdx",
+        "label": "View on GitHub"
+      }
+    },
+    {
+      "_intent": "Get started with Bootstrap [draft]",
+      "_title": {
+        "text": "Get started with Bootstrap"
+      },
+      "_summary": {
+        "text": "Bootstrap is a powerful, feature-packed frontend toolkit. Build anything—from prototype to production—in minutes."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "On this page"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://srv.carbonads.net/ads/click/x/GTND427YF6SIC27ECY74YKQUFTAI42JUFT7DKZ3JCAADLK7EFTYDEK7KF6YI653UCWSDE27YFTSD52QWCE7D65QKC6SIE5QUCEYDTK3EHJNCLSIZ",
+            "label": "ads via Carbon"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://srv.carbonads.net/ads/click/x/GTND427YF6SIC27ECY74YKQUFTAI42JUFT7DKZ3JCAADLK7EFTYDEK7KF6YI653UCWSDE27YFTSD52QWCE7D65QKC6SIE5QUCEYDTK3EHJNCLSIZ",
+            "label": "Join the AMD AI Developer Program and get free cloud credits, monthly GPU sweepstakes, and more."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://carbonads.net/?utm_source=getbootstrapcom&utm_medium=ad_via_link&utm_campaign=in_unit&utm_term=carbon",
+            "label": "ads via Carbon"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Quick start Link to this section: Quick start [draft]",
+      "_title": {
+        "text": "Quick start Link to this section: Quick start"
+      },
+      "_summary": {
+        "text": "Create a new index.html file in your project root. Include the <meta name=\"viewport\"> tag as well for proper responsive behavior in mobile devices."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Get started by including Bootstrap’s production-ready CSS and JavaScript via CDN without the need for any build steps. See it in practice with this Bootstrap CodePen demo."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy"
+          }
+        },
+        {
+          "_text": {
+            "text": "Include Bootstrap’s CSS and JS. Place the <link> tag in the <head> for our CSS, and the <script> tag for our JavaScript bundle (including Popper for positioning dropdowns, popovers, and tooltips) before the closing </body>. Learn more about our CDN links."
+          }
+        },
+        {
+          "_text": {
+            "text": "You can also include Popper and our JS separately. If you don’t plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Popper."
+          }
+        },
+        {
+          "_text": {
+            "text": "Hello, world! Open the page in your browser of choice to see your Bootstrapped page. Now you can start building with Bootstrap by creating your own layout, adding dozens of components, and utilizing our official examples."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "CDN links Link to this section: CDN links [draft]",
+      "_title": {
+        "text": "CDN links Link to this section: CDN links"
+      },
+      "_summary": {
+        "text": "As reference, here are our primary CDN links."
+      },
+      "_lines": [
+        {
+          "_intent": "table (2 rows): Description / URL [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "CSS"
+              }
+            },
+            {
+              "_name": {
+                "text": "JS"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "You can also use the CDN to fetch any of our additional builds listed in the Contents page."
+          }
+        },
+        {
+          "_text": {
+            "text": "When using CDN links, be sure to use the integrity attribute to verify the correct files and versions. These hashes are unique to each file and version of Bootstrap, so when you update to a new version, be sure the integrity attribute is also updated."
+          }
+        },
+        {
+          "_text": {
+            "text": "We also include a crossorigin=\"anonymous\" attribute to prevent CORS errors."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Next steps Link to this section: Next steps [draft]",
+      "_title": {
+        "text": "Next steps Link to this section: Next steps"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/getting-started/introduction/#important-globals",
+            "label": "important global environment settings"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/getting-started/contents/",
+            "label": "contents section"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/getting-started/introduction/#js-components",
+            "label": "components that require JavaScript"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/getting-started/download#package-managers",
+            "label": "including the source files via package manager"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/getting-started/javascript#using-bootstrap-as-a-module",
+            "label": "using Bootstrap as a module"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "JS components Link to this section: JS components [draft]",
+      "_title": {
+        "text": "JS components Link to this section: JS components"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Curious which components explicitly require our JavaScript and Popper? If you’re at all unsure about the general page structure, keep reading for an example page template."
+          }
+        },
+        {
+          "_intent": "list (13 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Accordions for extending our Collapse plugin"
+              }
+            },
+            {
+              "_name": {
+                "text": "Alerts for dismissing"
+              }
+            },
+            {
+              "_name": {
+                "text": "Buttons for toggling states and checkbox/radio functionality"
+              }
+            },
+            {
+              "_name": {
+                "text": "Carousel for all slide behaviors, controls, and indicators"
+              }
+            },
+            {
+              "_name": {
+                "text": "Collapse for toggling visibility of content"
+              }
+            },
+            {
+              "_name": {
+                "text": "Dropdowns for displaying and positioning (also requires Popper)"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md",
+                "label": "Popper"
+              }
+            },
+            {
+              "_name": {
+                "text": "Modals for displaying, positioning, and scroll behavior"
+              }
+            },
+            {
+              "_name": {
+                "text": "Navbar for extending our Collapse and Offcanvas plugins to implement responsive behaviors"
+              }
+            },
+            {
+              "_name": {
+                "text": "Navs with the Tab plugin for toggling content panes"
+              }
+            },
+            {
+              "_name": {
+                "text": "Offcanvases for displaying, positioning, and scroll behavior"
+              }
+            },
+            {
+              "_name": {
+                "text": "Scrollspy for scroll behavior and navigation updates"
+              }
+            },
+            {
+              "_name": {
+                "text": "Toasts for displaying and dismissing"
+              }
+            },
+            {
+              "_name": {
+                "text": "Tooltips and popovers for displaying and positioning (also requires Popper)"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md",
+                "label": "Popper"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Important globals Link to this section: Important globals [draft]",
+      "_title": {
+        "text": "Important globals Link to this section: Important globals"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Bootstrap employs a handful of important global styles and settings, all of which are almost exclusively geared towards the normalization of cross browser styles. Let’s dive in."
+          }
+        },
+        {
+          "_intent": "HTML5 doctype Link to this section: HTML5 doctype [draft]",
+          "_title": {
+            "text": "HTML5 doctype Link to this section: HTML5 doctype"
+          },
+          "_summary": {
+            "text": "Bootstrap requires the use of the HTML5 doctype. Without it, you’ll see some funky and incomplete styling."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Copy"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Viewport meta Link to this section: Viewport meta [draft]",
+          "_title": {
+            "text": "Viewport meta Link to this section: Viewport meta"
+          },
+          "_summary": {
+            "text": "You can see an example of this in action in the quick start."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Bootstrap is developed mobile first, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, add the responsive viewport meta tag to your <head>."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Copy"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Box-sizing Link to this section: Box-sizing [draft]",
+          "_title": {
+            "text": "Box-sizing Link to this section: Box-sizing"
+          },
+          "_summary": {
+            "text": "On the rare occasion you need to override it, use something like the following:"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "For more straightforward sizing in CSS, we switch the global box-sizing value from content-box to border-box. This ensures padding does not affect the final computed width of an element, but it can cause problems with some third-party software like Google Maps and Google Custom Search Engine."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Copy"
+              }
+            },
+            {
+              "_text": {
+                "text": "With the above snippet, nested elements—including generated content via ::before and ::after—will all inherit the specified box-sizing for that .selector-for-some-widget."
+              }
+            },
+            {
+              "_text": {
+                "text": "Learn more about box model and sizing at CSS Tricks."
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Reboot Link to this section: Reboot [draft]",
+          "_title": {
+            "text": "Reboot Link to this section: Reboot"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "For improved cross-browser rendering, we use Reboot to correct inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Community Link to this section: Community [draft]",
+      "_title": {
+        "text": "Community Link to this section: Community"
+      },
+      "_summary": {
+        "text": "Stay up-to-date on the development of Bootstrap and reach out to the community with these helpful resources."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://blog.getbootstrap.com/",
+            "label": "The Official Bootstrap Blog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/twbs/bootstrap/discussions",
+            "label": "our GitHub Discussions"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://discord.gg/bZUvakRU3M",
+            "label": "the community Discord"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.reddit.com/r/bootstrap/",
+            "label": "Bootstrap subreddit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stackoverflow.com/questions/tagged/bootstrap-5",
+            "label": "bootstrap-5"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.npmjs.com/search?q=keywords:bootstrap",
+            "label": "npm"
+          }
+        },
+        {
+          "_text": {
+            "text": "You can also follow @getbootstrap on X for the latest gossip and awesome music videos."
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input",
+            "type": "text"
+          }
+        }
+      ]
+    }
+  ]
+}

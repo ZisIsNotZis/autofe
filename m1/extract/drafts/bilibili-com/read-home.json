@@ -1,0 +1,232 @@
+{
+  "_intent": "B站UP主专栏-个人空间-自媒体-哔哩哔哩官网 [draft]",
+  "_title": {
+    "text": "B站UP主专栏-个人空间-自媒体-哔哩哔哩官网"
+  },
+  "_summary": {
+    "text": "登录 登录后你可以： 免费看高清视频 多端同步播放记录 发表弹幕/评论 热门番剧影视看不停 立即登录 首次使用？ 点我注册"
+  },
+  "_lines": [
+    {
+      "_intent": "list (8 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "首页"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/",
+            "label": "首页"
+          }
+        },
+        {
+          "_name": {
+            "text": "番剧"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/anime/",
+            "label": "番剧"
+          }
+        },
+        {
+          "_name": {
+            "text": "直播"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://live.bilibili.com/",
+            "label": "直播"
+          }
+        },
+        {
+          "_name": {
+            "text": "游戏中心"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://game.bilibili.com/platform",
+            "label": "游戏中心"
+          }
+        },
+        {
+          "_name": {
+            "text": "会员购"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://show.bilibili.com/platform/home.html?msource=pc_web",
+            "label": "会员购"
+          }
+        },
+        {
+          "_name": {
+            "text": "漫画"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://manga.bilibili.com/?from=bill_top_mnav",
+            "label": "漫画"
+          }
+        },
+        {
+          "_name": {
+            "text": "赛事"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/match/home/",
+            "label": "赛事"
+          }
+        },
+        {
+          "_name": {
+            "text": "下载客户端"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://app.bilibili.com/",
+            "label": "下载客户端"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input",
+        "type": "text"
+      }
+    },
+    {
+      "_text": {
+        "text": "登录"
+      }
+    },
+    {
+      "_text": {
+        "text": "登录后你可以："
+      }
+    },
+    {
+      "_text": {
+        "text": "免费看高清视频"
+      }
+    },
+    {
+      "_text": {
+        "text": "多端同步播放记录"
+      }
+    },
+    {
+      "_text": {
+        "text": "发表弹幕/评论"
+      }
+    },
+    {
+      "_text": {
+        "text": "热门番剧影视看不停"
+      }
+    },
+    {
+      "_text": {
+        "text": "立即登录"
+      }
+    },
+    {
+      "_text": {
+        "text": "点我注册"
+      }
+    },
+    {
+      "_text": {
+        "text": "大会员"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://account.bilibili.com/big",
+        "label": "大会员"
+      }
+    },
+    {
+      "_text": {
+        "text": "消息"
+      }
+    },
+    {
+      "_text": {
+        "text": "动态"
+      }
+    },
+    {
+      "_text": {
+        "text": "收藏"
+      }
+    },
+    {
+      "_text": {
+        "text": "历史"
+      }
+    },
+    {
+      "_text": {
+        "text": "创作中心"
+      }
+    },
+    {
+      "_text": {
+        "text": "投稿"
+      }
+    },
+    {
+      "_text": {
+        "text": "推荐文章"
+      }
+    },
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input-2",
+        "type": "text"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/read/cv52753045/",
+        "label": "我收容了100位粉丝到我的一辈子存档里！ 摄影师来啦！我模仿开罗画风，画了一张比奇堡居民大合照。祝阿山和朋友们天天开心！ 薄荷青苹果汽水 全部笔记 2410 4969 3"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/read/cv50900375/",
+        "label": "[小画家的专属绘画大礼包合集处] 自学画画好不容易，我把工作多年所积累到的绘画素材都整理打包好了，涵盖（线稿、色卡、笔刷、软件、资料等等）自取请 保存↓↓↓ [图片] 他是全场最佳 日常 6.5万 1406 6.5万"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/read/cv52470979/",
+        "label": "【小画家的专属绘画大礼包合集】 自学画画好不容易，我把工作多年所积累到的绘画素材都整理打包好了，涵盖（线稿、色卡、笔刷、软件、资料等等）自取请 保存↓↓↓ [图片] 哔哩文艺社 日常 3.1万 821 5.2万"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/read/cv44465388/",
+        "label": "点击领取 看我发的图片 添加时发送「012」才能成功领取哦！ [图片] 学不会就不睡 日常 8.2万 204 405"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/read/cv53033750/",
+        "label": "谢谢大家！ 真的超级感谢大家对我露脸视频的暖心评论！！?? 其实上传之前我纠结了好久，甚至有点想放弃，但看到你们的支持和满满的正能量，我终于鼓起勇气克服了这个小小的恐惧！谢谢你们呀～ ?✨ NixCHINA 日常 6391 478 41"
+      }
+    }
+  ]
+}

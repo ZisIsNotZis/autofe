@@ -1,0 +1,805 @@
+{
+  "_intent": "哔哩哔哩 (゜-゜)つロ 干杯~-bilibili [draft]",
+  "_title": {
+    "text": "哔哩哔哩 (゜-゜)つロ 干杯~-bilibili"
+  },
+  "_summary": {
+    "text": "登录 登录后你可以： 免费看高清视频 多端同步播放记录 发表弹幕/评论 热门番剧影视看不停 立即登录 首次使用？ 点我注册"
+  },
+  "_lines": [
+    {
+      "_intent": "list (8 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "首页"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/",
+            "label": "首页"
+          }
+        },
+        {
+          "_name": {
+            "text": "番剧"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/anime/",
+            "label": "番剧"
+          }
+        },
+        {
+          "_name": {
+            "text": "直播"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://live.bilibili.com/",
+            "label": "直播"
+          }
+        },
+        {
+          "_name": {
+            "text": "游戏中心"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://game.bilibili.com/platform",
+            "label": "游戏中心"
+          }
+        },
+        {
+          "_name": {
+            "text": "会员购"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://show.bilibili.com/platform/home.html?msource=pc_web",
+            "label": "会员购"
+          }
+        },
+        {
+          "_name": {
+            "text": "漫画"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://manga.bilibili.com/?from=bill_top_mnav",
+            "label": "漫画"
+          }
+        },
+        {
+          "_name": {
+            "text": "赛事"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/match/home/",
+            "label": "赛事"
+          }
+        },
+        {
+          "_name": {
+            "text": "下载客户端"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://app.bilibili.com/",
+            "label": "下载客户端"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input",
+        "type": "text"
+      }
+    },
+    {
+      "_text": {
+        "text": "登录"
+      }
+    },
+    {
+      "_text": {
+        "text": "登录后你可以："
+      }
+    },
+    {
+      "_text": {
+        "text": "免费看高清视频"
+      }
+    },
+    {
+      "_text": {
+        "text": "多端同步播放记录"
+      }
+    },
+    {
+      "_text": {
+        "text": "发表弹幕/评论"
+      }
+    },
+    {
+      "_text": {
+        "text": "热门番剧影视看不停"
+      }
+    },
+    {
+      "_text": {
+        "text": "立即登录"
+      }
+    },
+    {
+      "_text": {
+        "text": "点我注册"
+      }
+    },
+    {
+      "_text": {
+        "text": "大会员"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://account.bilibili.com/big",
+        "label": "大会员"
+      }
+    },
+    {
+      "_text": {
+        "text": "消息"
+      }
+    },
+    {
+      "_text": {
+        "text": "动态"
+      }
+    },
+    {
+      "_text": {
+        "text": "收藏"
+      }
+    },
+    {
+      "_text": {
+        "text": "历史"
+      }
+    },
+    {
+      "_text": {
+        "text": "创作中心"
+      }
+    },
+    {
+      "_text": {
+        "text": "投稿"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/",
+        "label": "B站 b站"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://t.bilibili.com/",
+        "label": "动态"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/v/popular/all",
+        "label": "热门"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/anime/",
+        "label": "番剧"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/movie/",
+        "label": "电影"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/guochuang/",
+        "label": "国创"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/tv/",
+        "label": "电视剧"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/variety/",
+        "label": "综艺"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/documentary/",
+        "label": "纪录片"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/douga/",
+        "label": "动画"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/game/",
+        "label": "游戏"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/kichiku/",
+        "label": "鬼畜"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/music/",
+        "label": "音乐"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/dance/",
+        "label": "舞蹈"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/cinephile/",
+        "label": "影视"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/ent/",
+        "label": "娱乐"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/knowledge/",
+        "label": "知识"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/tech/",
+        "label": "科技数码"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/information/",
+        "label": "资讯"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/food/",
+        "label": "美食"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/shortplay/",
+        "label": "小剧场"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/car",
+        "label": "汽车"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/fashion/",
+        "label": "时尚美妆"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/sports/",
+        "label": "体育运动"
+      }
+    },
+    {
+      "_text": {
+        "text": "更多"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/read/home/",
+        "label": "专栏"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://live.bilibili.com/",
+        "label": "直播"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/blackboard/era/reward-activity-list-page.html#/list",
+        "label": "活动"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/cheese/?csource=common_hp_channelclass_icon",
+        "label": "课堂"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/blackboard/activity-5zJxM3spoS.html",
+        "label": "社区中心"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://music.bilibili.com/pc/music-center/",
+        "label": "新歌热榜"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/animal/",
+        "label": "动物"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/cheese/",
+        "label": "课堂"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/vlog/",
+        "label": "vlog"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/painting/",
+        "label": "绘画"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/ai/",
+        "label": "人工智能"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/home/",
+        "label": "家装房产"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/outdoors/",
+        "label": "户外潮流"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/gym/",
+        "label": "健身"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/handmake/",
+        "label": "手工"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/travel/",
+        "label": "旅游出行"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/rural/",
+        "label": "三农"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/parenting/",
+        "label": "亲子"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/health/",
+        "label": "健康"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/emotion/",
+        "label": "情感"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/life_joy/",
+        "label": "生活兴趣"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/c/life_experience/",
+        "label": "生活经验"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://love.bilibili.com/",
+        "label": "公益"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/blackboard/era/Vp41b8bsU9Wkog3X.html",
+        "label": "超高清"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/blackboard/era/jpyPhRRrMn3fmZ2B.html",
+        "label": "视频播客"
+      }
+    },
+    {
+      "_text": {
+        "text": "第五人格亲密之月"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.bilibili.com/video/BV1Dzej6JEG5",
+        "label": "当你带着大运误闯魔族腹地时！ 20.2万 155 07:47"
+      }
+    },
+    {
+      "_intent": "当你带着大运误闯魔族腹地时！ [draft]",
+      "_title": {
+        "text": "当你带着大运误闯魔族腹地时！"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://space.bilibili.com/3493074456021651",
+            "label": "啊力解说 · 09-15"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/video/BV1LZYf65Epq",
+            "label": "【JO家日常】#13 迪亚波罗：我死定了姐妹们……【bilibilionly同人扶持计划】 4.4万 112 01:09"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "【JO家日常】#13 迪亚波罗：我死定了姐妹们……【bilibilionly同人扶持计划】 [draft]",
+      "_title": {
+        "text": "【JO家日常】#13 迪亚波罗：我死定了姐妹们……【bilibilionly同人扶持计划】"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://space.bilibili.com/6768352",
+            "label": "粥粥的奇妙冒险 · 11小时前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/video/BV1chew68EEw",
+            "label": "都在做AI手机，为什么真正能干活的却没几台？【差评君】 18.0万 93 09:28"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "都在做AI手机，为什么真正能干活的却没几台？【差评君】 [draft]",
+      "_title": {
+        "text": "都在做AI手机，为什么真正能干活的却没几台？【差评君】"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://space.bilibili.com/19319172",
+            "label": "差评君 · 09-16"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/video/BV1Qyen6aELC",
+            "label": "老辈子手搓还有人看吗？ 31.9万 108 00:19"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "老辈子手搓还有人看吗？ [draft]",
+      "_title": {
+        "text": "老辈子手搓还有人看吗？"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://space.bilibili.com/65836364",
+            "label": "自醒画画 · 09-15"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/video/BV1yreG6aE99",
+            "label": "这才是正确的粤语读音？Bro你说句话啊！ 6.4万 405 07:05"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "这才是正确的粤语读音？Bro你说句话啊！ [draft]",
+      "_title": {
+        "text": "这才是正确的粤语读音？Bro你说句话啊！"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://space.bilibili.com/95515699",
+            "label": "粤知一二 · 昨天"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/video/BV1xRer6jENr",
+            "label": "新角色【大肥鱼】 1.4万 101 01:13"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "新角色【大肥鱼】 [draft]",
+      "_title": {
+        "text": "新角色【大肥鱼】"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://space.bilibili.com/52034298",
+            "label": "不爱唠嗑的芒果 · 14小时前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/video/BV1znY96NEvn",
+            "label": "《原神》7.1版本「往冥府的安魂歌」前瞻特别节目 150.4万 4.6万 59:46"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "《原神》7.1版本「往冥府的安魂歌」前瞻特别节目 [draft]",
+      "_title": {
+        "text": "《原神》7.1版本「往冥府的安魂歌」前瞻特别节目"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://space.bilibili.com/401742377",
+            "label": "原神 · 09-12"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/video/BV19Fe36rEEK",
+            "label": "曾靠剧情火爆全球的游戏，二十年后重制更新了什么！？ 8.9万 113 02:29"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "曾靠剧情火爆全球的游戏，二十年后重制更新了什么！？ [draft]",
+      "_title": {
+        "text": "曾靠剧情火爆全球的游戏，二十年后重制更新了什么！？"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://space.bilibili.com/172447618",
+            "label": "阿银紫 · 昨天"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/video/BV1SAYd6sEtv",
+            "label": "中国模特勇闯欧洲时装周|面试实录第一集 29.8万 252 07:25"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "中国模特勇闯欧洲时装周|面试实录第一集 [draft]",
+      "_title": {
+        "text": "中国模特勇闯欧洲时装周|面试实录第一集"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://space.bilibili.com/43788290",
+            "label": "李东恒z · 09-12"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.bilibili.com/video/BV1Q6eE64EeE",
+            "label": "这什么物价？！二周年彩蛋终于破解！ 38.0万 94 00:38"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "这什么物价？！二周年彩蛋终于破解！ [draft]",
+      "_title": {
+        "text": "这什么物价？！二周年彩蛋终于破解！"
+      },
+      "_summary": {
+        "text": "直播中 这个维什戴尔跳舞好有劲！"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://space.bilibili.com/492905896",
+            "label": "小普-三角洲重生版 · 09-15"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://live.bilibili.com/1939977064?hotRank=0&live_from=81003",
+            "label": "直播 1.9万 团播"
+          }
+        },
+        {
+          "_text": {
+            "text": "直播中"
+          }
+        },
+        {
+          "_text": {
+            "text": "这个维什戴尔跳舞好有劲！"
+          }
+        },
+        {
+          "_text": {
+            "text": "SG-次元姬"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "换一换"
+          }
+        },
+        {
+          "_text": {
+            "text": "刷新内容"
+          }
+        },
+        {
+          "_text": {
+            "text": "新版反馈 客服"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "顶部"
+          }
+        }
+      ]
+    }
+  ]
+}

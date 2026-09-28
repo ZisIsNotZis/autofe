@@ -1,0 +1,534 @@
+{
+  "_intent": "ApexCharts.js - JavaScript Charts for your website — Beautiful by default. Powerful by design. [draft]",
+  "_title": {
+    "text": "ApexCharts.js - JavaScript Charts for your website"
+  },
+  "_lines": [
+    {
+      "_text": {
+        "text": "DATA VISUALIZATION FOR DEVELOPERS JavaScript charts, grids, and maps. One API. Interactive and beautiful out of the box, from your first line chart to a full data application. Works with Explore Demos"
+      }
+    },
+    {
+      "_intent": "list (4 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "15k+ GitHub stars"
+          }
+        },
+        {
+          "_name": {
+            "text": "8M+ npm downloads / month"
+          }
+        },
+        {
+          "_name": {
+            "text": "238k+ dependent repositories"
+          }
+        },
+        {
+          "_name": {
+            "text": "8+ years of development"
+          }
+        }
+      ]
+    },
+    {
+      "_text": {
+        "text": "BUILD WITH AI Skip the boilerplate. Describe the chart. The charting family that's easiest to build with AI. Tell Claude, Cursor, or ChatGPT what you want, and the MCP server validates every config ag"
+      }
+    },
+    {
+      "_intent": "MCP server [draft]",
+      "_title": {
+        "text": "MCP server"
+      },
+      "_summary": {
+        "text": "Connect once and your agent generates configs, then validates them against the real chart API before you paste, so charts render on the first try."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "$ claude mcp add apexcharts -- npx -y apexcharts-mcp"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Skill files [draft]",
+      "_title": {
+        "text": "Skill files"
+      },
+      "_summary": {
+        "text": "One context file that teaches your assistant the right patterns. Works with Claude Code, Cursor, and Copilot."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "$ npm i apexcharts-skill"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Browser chat [draft]",
+      "_title": {
+        "text": "Browser chat"
+      },
+      "_summary": {
+        "text": "No install. Paste one prompt into any chatbot and start building right away."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "See how it works"
+          }
+        },
+        {
+          "_text": {
+            "text": "THE APEX FAMILY One family, one API Data grids, Gantt charts, trees, flow diagrams, and financial charts, all sharing one API and one design language. Adopt it once and you're covered for whatever you"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/apexgantt/",
+            "label": "ApexGantt: Gantt timeline with progress bars and a milestone ApexGantt Drag-and-drop project timelines"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/apextree/",
+            "label": "ApexTree: root node branching into child and grandchild nodes ApexTree Org charts that fold and zoom"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/apexsankey/",
+            "label": "ApexSankey: two source nodes flowing into three targets ApexSankey Flows you can trace end to end"
+          }
+        },
+        {
+          "_text": {
+            "text": "LOVED IN PUBLIC Don't just take our word for it Unsolicited comments from public developer threads. Every card links straight to its original source."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/apexcharts/vue-apexcharts/issues/60",
+            "label": "Quote by @goalstogrowth on GitHub, opens the original source"
+          }
+        },
+        {
+          "_text": {
+            "text": "NPM DOWNLOADS / MONTH"
+          }
+        },
+        {
+          "_text": {
+            "text": "M+"
+          }
+        },
+        {
+          "_text": {
+            "text": "apexcharts.js"
+          }
+        },
+        {
+          "_text": {
+            "text": "GITHUB STARS"
+          }
+        },
+        {
+          "_text": {
+            "text": "k+"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/apexcharts/apexcharts.js/issues/420",
+            "label": "Quote by @jhuckaby on GitHub, opens the original source"
+          }
+        },
+        {
+          "_text": {
+            "text": "REPOSITORIES"
+          }
+        },
+        {
+          "_text": {
+            "text": "depend on apexcharts.js"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/apexcharts/Blazor-ApexCharts/issues/117",
+            "label": "Quote by @PhyTensor on GitHub, opens the original source"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/apexcharts/apexcharts.js/issues/3946",
+            "label": "Quote by @rudyspies on GitHub, opens the original source"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/apexcharts/Blazor-ApexCharts/issues/191",
+            "label": "Quote by @sweco-bepedm on GitHub, opens the original source"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/apexcharts/apexcharts.js/issues/2409",
+            "label": "Quote by @CreativeWarlock on GitHub, opens the original source"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/apexcharts/apexcharts.js/issues/24",
+            "label": "Quote by @taheri24 on GitHub, opens the original source"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stackoverflow.com/a/69853449",
+            "label": "Quote by Jonny Larsson on Stack Overflow, opens the original source"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stackoverflow.com/a/66482470",
+            "label": "Quote by AksenovAN on Stack Overflow, opens the original source"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/apexcharts/vue-apexcharts/issues/20#issuecomment-706603187",
+            "label": "Quote by @alexpopa-work on GitHub, opens the original source"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.reddit.com/r/vuejs/comments/w2oa4i/best_charting_library_for_vue_3_apexcharts/igrbql1/",
+            "label": "Summary of a comment by u/route-dist on r/vuejs, opens the original source"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/love/",
+            "label": "Read the ApexCharts wall of love"
+          }
+        },
+        {
+          "_text": {
+            "text": "Every quote is real, posted publicly by its author, and links to the original source. If one is yours and you'd like it removed, email support@apexcharts.com."
+          }
+        },
+        {
+          "_text": {
+            "text": "FRAMEWORKS Drop into your stack First-class wrappers for React, Vue and Angular, or plain JavaScript. Same options, same charts, everywhere."
+          }
+        },
+        {
+          "_text": {
+            "text": "CHART TYPES Every chart type you'll need Line, area, candlestick, heatmap, treemap, and 15+ more, plus Gantt, Sankey, Tree, and Grid. If you can picture it, you can build it."
+          }
+        },
+        {
+          "_text": {
+            "text": "CHART TYPES IN APEXCHARTS"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/line-charts/",
+            "label": "Line"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/area-charts/",
+            "label": "Area"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/column-charts/",
+            "label": "Column"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/bar-charts/",
+            "label": "Bar"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/mixed-charts/",
+            "label": "Mixed / Combo"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/candlestick-charts/",
+            "label": "Candlestick"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/boxplot-charts/",
+            "label": "BoxPlot"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/timeline-charts/",
+            "label": "Timeline"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/range-area-charts/",
+            "label": "Range Area"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/bubble-charts/",
+            "label": "Bubble"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/scatter-charts/",
+            "label": "Scatter"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/heatmap-charts/",
+            "label": "Heatmap"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/treemap-charts/",
+            "label": "Treemap"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/pie-charts/",
+            "label": "Pie"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/pie-charts/",
+            "label": "Donut"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/radar-charts/",
+            "label": "Radar"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/polar-area-charts/",
+            "label": "Polar Area"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/radialbar-charts/",
+            "label": "RadialBar"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/gauge-charts/",
+            "label": "Gauge"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/funnel-charts/",
+            "label": "Funnel"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/slope-charts/",
+            "label": "Slope"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/sparklines/",
+            "label": "Sparklines"
+          }
+        },
+        {
+          "_text": {
+            "text": "MORE VISUALIZATIONS, DEDICATED LIBRARIES"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/apexgantt/",
+            "label": "ApexGantt Gantt charts"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/apexsankey/",
+            "label": "ApexSankey Flow diagrams"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/apextree/",
+            "label": "ApexTree Org charts & trees"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/apexgrid/",
+            "label": "ApexGrid Data grids"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/apexmaps/",
+            "label": "ApexMaps Geospatial maps"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/apexstock/",
+            "label": "ApexStock Financial charts"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/features/",
+            "label": "View All Features"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Beautiful by default. Powerful by design. [draft]",
+      "_title": {
+        "text": "Beautiful by default. Powerful by design."
+      },
+      "_summary": {
+        "text": "Everything you need to build modern data-rich applications."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "$ npm i apexcharts"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/javascript-chart-demos/",
+            "label": "Explore Demos"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://apexcharts.com/docs/installation/",
+            "label": "Read the Docs"
+          }
+        },
+        {
+          "_text": {
+            "text": "Community and commercial licenses. See pricing"
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Production-proven Trusted in production for 8+ years."
+              }
+            },
+            {
+              "_name": {
+                "text": "One API. Every framework React, Vue, Angular, or vanilla JavaScript."
+              }
+            },
+            {
+              "_name": {
+                "text": "Built for every data experience. Charts, grids, flows, and gantts."
+              }
+            },
+            {
+              "_name": {
+                "text": "Fast at scale A 100k-point line renders in 29 ms. See the benchmark"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://apexcharts.com/blog/javascript-chart-library-benchmark/",
+                "label": "See the benchmark"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

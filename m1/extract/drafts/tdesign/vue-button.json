@@ -1,0 +1,471 @@
+{
+  "_intent": "Button 按钮 | TDesign [draft]",
+  "_title": {
+    "text": "Button 按钮 | TDesign"
+  },
+  "_summary": {
+    "text": "Button 按钮"
+  },
+  "_lines": [
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input",
+        "type": "text"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "确定"
+      }
+    },
+    {
+      "_intent": "基础按钮 [draft]",
+      "_title": {
+        "text": "基础按钮"
+      },
+      "_summary": {
+        "text": "基础按钮包括填充按钮、描边按钮、虚框按钮、和文字按钮。"
+      }
+    },
+    {
+      "_intent": "填充按钮 [draft]",
+      "_title": {
+        "text": "填充按钮"
+      },
+      "_summary": {
+        "text": "一般用于主按钮，是用户在整个页面需要关注优先级最高的操作，引导用户关注并操作。"
+      }
+    },
+    {
+      "_intent": "描边按钮 [draft]",
+      "_title": {
+        "text": "描边按钮"
+      },
+      "_summary": {
+        "text": "描边按钮常见白底加文字的形式，在视觉强调程度上弱于填充按钮，通常与填充按钮搭配成组使用。"
+      }
+    },
+    {
+      "_intent": "虚框按钮 [draft]",
+      "_title": {
+        "text": "虚框按钮"
+      },
+      "_summary": {
+        "text": "按钮边框线为虚线，常用于表单中的添加配置项。"
+      }
+    },
+    {
+      "_intent": "文字按钮 [draft]",
+      "_title": {
+        "text": "文字按钮"
+      },
+      "_summary": {
+        "text": "直接使用文字作为按钮。是视觉吸引力最弱的一个按钮，通常出现在表格操作栏、标题和字段旁等。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "填充按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "描边按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "虚框按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "文字按钮"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "图标按钮 [draft]",
+      "_title": {
+        "text": "图标按钮"
+      },
+      "_summary": {
+        "text": "图标按钮由图标+文字或图标构成。通过图标可增强识别性，以便直观理解。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "新建"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "上传文件"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "搜索"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "幽灵按钮 [draft]",
+      "_title": {
+        "text": "幽灵按钮"
+      },
+      "_summary": {
+        "text": "幽灵按钮将按钮的内容反色，背景变为透明，一般是底色透明。常用于有色背景上，例如 banner 图等。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "幽灵按钮"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Block 按钮 [draft]",
+      "_title": {
+        "text": "Block 按钮"
+      },
+      "_summary": {
+        "text": "Block 按钮在宽度上充满其所在的父容器（无 padding 和 margin 值）。该按钮常见于移动端和一些表单场景中。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "填充按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "描边按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "虚框按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "文字按钮"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "不同颜色主题按钮 [draft]",
+      "_title": {
+        "text": "不同颜色主题按钮"
+      },
+      "_summary": {
+        "text": "提供浅灰色、蓝色、红色、黄色和绿色为主题的按钮。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "填充按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "描边按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "虚框按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "文字按钮"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "不同状态的按钮 [draft]",
+      "_title": {
+        "text": "不同状态的按钮"
+      },
+      "_summary": {
+        "text": "提供加载、禁用两种状态。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "填充按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "加载中"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "不同尺寸的按钮 [draft]",
+      "_title": {
+        "text": "不同尺寸的按钮"
+      },
+      "_summary": {
+        "text": "提供大、中（默认）、小三种尺寸。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "填充按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "描边按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "虚框按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "文字按钮"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "不同形状的按钮 [draft]",
+      "_title": {
+        "text": "不同形状的按钮"
+      },
+      "_summary": {
+        "text": "提供长方形、正方形、圆角长方形、圆形四种形状。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "填充按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "描边按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "虚框按钮"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "文字按钮"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "加载样式 [draft]",
+      "_title": {
+        "text": "加载样式"
+      },
+      "_summary": {
+        "text": "不同主题的加载样式"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "加载"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "自定义渲染元素 [draft]",
+      "_title": {
+        "text": "自定义渲染元素"
+      },
+      "_summary": {
+        "text": "支持自定义渲染元素，支持 div/a/button"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "div"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://tdesign.tencent.com/vue-next/components/button",
+            "label": "a"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://tdesign.tencent.com/vue-next/components/button#",
+            "label": "a:href"
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "rectangle"
+              }
+            },
+            {
+              "_name": {
+                "text": "square"
+              }
+            },
+            {
+              "_name": {
+                "text": "round"
+              }
+            },
+            {
+              "_name": {
+                "text": "circle"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (5 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "default"
+              }
+            },
+            {
+              "_name": {
+                "text": "primary"
+              }
+            },
+            {
+              "_name": {
+                "text": "danger"
+              }
+            },
+            {
+              "_name": {
+                "text": "warning"
+              }
+            },
+            {
+              "_name": {
+                "text": "success"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "small"
+              }
+            },
+            {
+              "_name": {
+                "text": "medium"
+              }
+            },
+            {
+              "_name": {
+                "text": "large"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "submit"
+              }
+            },
+            {
+              "_name": {
+                "text": "reset"
+              }
+            },
+            {
+              "_name": {
+                "text": "button"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "base"
+              }
+            },
+            {
+              "_name": {
+                "text": "outline"
+              }
+            },
+            {
+              "_name": {
+                "text": "dashed"
+              }
+            },
+            {
+              "_name": {
+                "text": "text"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "_intent": "Checkout example · Bootstrap v5.3 — Checkout form [draft]",
+  "_title": {
+    "text": "Checkout example · Bootstrap v5.3"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Toggle theme (light)"
+      }
+    },
+    {
+      "_intent": "Checkout form [draft]",
+      "_title": {
+        "text": "Checkout form"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it."
+          }
+        },
+        {
+          "_intent": "Your cart 3 [draft]",
+          "_title": {
+            "text": "Your cart 3"
+          },
+          "_lines": [
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Product name Brief description $12"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Second product Brief description $8"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Third item Brief description $5"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Promo code EXAMPLECODE −$5"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Total (USD) $20"
+                  }
+                }
+              ]
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "promo-code",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Redeem"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Billing address [draft]",
+          "_title": {
+            "text": "Billing address"
+          },
+          "_lines": [
+            {
+              "_intent": "Billing address First name Last name Username @ Email (Optional) Address Address 2 (Optional) Country Choose... United States State Choose... California Zip Shipping address is the same as my billing [draft]",
+              "_rel": {
+                "compare": true
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Shipping address is the same as my billing address"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Save this information for next time"
+                  }
+                }
+              ],
+              "_expose": {
+                "name": "billing-address",
+                "type": "text"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

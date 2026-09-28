@@ -2,25 +2,154 @@
   "$comment": "GENERATED DRAFT field dictionary (m3 extraction). Separate from the shared m1/vocab-fields.json: proposals only. Models emit _fields keys that exist in the shared dictionary; everything else here is a proposed vocabulary addition recorded in the extraction report.",
   "version": "0-draft",
   "fields": {
+    "property": {
+      "type": "text",
+      "label": "Property",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "label": "Description",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table",
+        "element-plus/button",
+        "element-plus/date-picker",
+        "element-plus/form",
+        "element-plus/input",
+        "element-plus/select",
+        "element-plus/table",
+        "getbootstrap/docs-introduction"
+      ]
+    },
+    "type": {
+      "type": "text",
+      "label": "Type",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table",
+        "element-plus/button",
+        "element-plus/date-picker",
+        "element-plus/form",
+        "element-plus/input",
+        "element-plus/select",
+        "element-plus/table"
+      ]
+    },
+    "default": {
+      "type": "text",
+      "label": "Default",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table",
+        "element-plus/button",
+        "element-plus/date-picker",
+        "element-plus/form",
+        "element-plus/input",
+        "element-plus/select",
+        "element-plus/table"
+      ]
+    },
+    "version": {
+      "type": "text",
+      "label": "Version",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table"
+      ]
+    },
+    "global-config": {
+      "type": "text",
+      "label": "Global Config",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table"
+      ]
+    },
+    "token-name": {
+      "type": "text",
+      "label": "Token Name",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table"
+      ]
+    },
+    "default-value": {
+      "type": "text",
+      "label": "Default Value",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table"
+      ]
+    },
     "name": {
       "type": "text",
       "label": "Name",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table",
+        "arco-design/components-form",
+        "arco-design/components-table",
+        "element-plus/button",
+        "element-plus/date-picker",
+        "element-plus/form",
+        "element-plus/input",
+        "element-plus/select",
+        "element-plus/table"
+      ]
+    },
+    "parameters": {
+      "type": "text",
+      "label": "Parameters",
+      "pages": [
+        "ant-design/components-input"
       ]
     },
     "age": {
       "type": "num",
       "label": "Age",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "arco-design/components-form",
+        "arco-design/components-table"
       ]
     },
     "address": {
-      "type": "num",
+      "type": "text",
       "label": "Address",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "arco-design/components-table",
+        "element-plus/table"
       ]
     },
     "tags": {
@@ -41,7 +170,9 @@
       "type": "text",
       "label": "col-3",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "arco-design/components-table",
+        "element-plus/table"
       ]
     },
     "select-all": {
@@ -118,7 +249,9 @@
       "type": "text",
       "label": "Email",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "arco-design/components-form",
+        "arco-design/components-table"
       ]
     },
     "cash-assets": {
@@ -133,14 +266,36 @@
       "type": "text",
       "label": "col-1",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "arco-design/components-button",
+        "arco-design/components-form",
+        "arco-design/components-input",
+        "arco-design/components-table",
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "element-plus/table",
+        "getbootstrap/example-dashboard",
+        "getbootstrap/example-pricing",
+        "juejin-cn/post-7686401413472862214",
+        "semi-design/getting-started",
+        "semi-design/table",
+        "tdesign/vue-table"
       ]
     },
     "col-2": {
       "type": "text",
       "label": "col-2",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "arco-design/components-button",
+        "arco-design/components-form",
+        "arco-design/components-input",
+        "arco-design/components-table",
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "juejin-cn/post-7686401413472862214",
+        "semi-design/table",
+        "tdesign/vue-table"
       ]
     },
     "rowhead": {
@@ -329,7 +484,8 @@
       "type": "text",
       "label": "Other",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "arco-design/components-table"
       ]
     },
     "company": {
@@ -343,26 +499,22 @@
       "type": "text",
       "label": "Gender",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "arco-design/components-form",
+        "arco-design/components-table"
       ]
     },
     "operation": {
       "type": "text",
       "label": "operation",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "arco-design/components-table"
       ]
     },
     "platform": {
       "type": "text",
       "label": "Platform",
-      "pages": [
-        "ant-design/components-table"
-      ]
-    },
-    "version": {
-      "type": "text",
-      "label": "Version",
       "pages": [
         "ant-design/components-table"
       ]
@@ -385,7 +537,8 @@
       "type": "text",
       "label": "Date",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "element-plus/table"
       ]
     },
     "long-column-long-column-long-column": {
@@ -405,13 +558,6 @@
     "long-column": {
       "type": "text",
       "label": "Long Column",
-      "pages": [
-        "ant-design/components-table"
-      ]
-    },
-    "description": {
-      "type": "text",
-      "label": "Description",
       "pages": [
         "ant-design/components-table"
       ]
@@ -441,7 +587,8 @@
       "type": "text",
       "label": "ID",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/components-table",
+        "element-plus/table"
       ]
     },
     "fistname": {
@@ -507,34 +654,6 @@
         "ant-design/components-table"
       ]
     },
-    "property": {
-      "type": "text",
-      "label": "Property",
-      "pages": [
-        "ant-design/components-table"
-      ]
-    },
-    "type": {
-      "type": "text",
-      "label": "Type",
-      "pages": [
-        "ant-design/components-table"
-      ]
-    },
-    "default": {
-      "type": "text",
-      "label": "Default",
-      "pages": [
-        "ant-design/components-table"
-      ]
-    },
-    "global-config": {
-      "type": "text",
-      "label": "Global Config",
-      "pages": [
-        "ant-design/components-table"
-      ]
-    },
     "personal-info": {
       "type": "text",
       "label": "Personal Info",
@@ -542,18 +661,476 @@
         "ant-design/components-table"
       ]
     },
-    "token-name": {
+    "edge-edge": {
       "type": "text",
-      "label": "Token Name",
+      "label": "Edge Edge",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/docs-introduce"
       ]
     },
-    "default-value": {
+    "firefox-firefox": {
       "type": "text",
-      "label": "Default Value",
+      "label": "Firefox Firefox",
       "pages": [
-        "ant-design/components-table"
+        "ant-design/docs-introduce",
+        "arco-design/docs-start"
+      ]
+    },
+    "chrome-chrome": {
+      "type": "text",
+      "label": "Chrome Chrome",
+      "pages": [
+        "ant-design/docs-introduce",
+        "arco-design/docs-start"
+      ]
+    },
+    "safari-safari": {
+      "type": "text",
+      "label": "Safari Safari",
+      "pages": [
+        "ant-design/docs-introduce",
+        "arco-design/docs-start"
+      ]
+    },
+    "opera-opera": {
+      "type": "text",
+      "label": "Opera Opera",
+      "pages": [
+        "ant-design/docs-introduce",
+        "arco-design/docs-start"
+      ]
+    },
+    "electron-electron": {
+      "type": "text",
+      "label": "Electron Electron",
+      "pages": [
+        "ant-design/docs-introduce",
+        "arco-design/docs-start"
+      ]
+    },
+    "col-3": {
+      "type": "text",
+      "label": "类型",
+      "pages": [
+        "arco-design/components-button",
+        "arco-design/components-form",
+        "arco-design/components-input",
+        "arco-design/components-table",
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "juejin-cn/post-7686401413472862214",
+        "semi-design/table",
+        "tdesign/vue-table"
+      ]
+    },
+    "col-4": {
+      "type": "text",
+      "label": "默认值",
+      "pages": [
+        "arco-design/components-button",
+        "arco-design/components-form",
+        "arco-design/components-input",
+        "arco-design/components-table",
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "juejin-cn/post-7686401413472862214",
+        "semi-design/table",
+        "tdesign/vue-table"
+      ]
+    },
+    "salary": {
+      "type": "text",
+      "label": "Salary",
+      "pages": [
+        "arco-design/components-form",
+        "arco-design/components-table"
+      ]
+    },
+    "col-5": {
+      "type": "text",
+      "label": "版本",
+      "pages": [
+        "arco-design/components-form",
+        "arco-design/components-input",
+        "arco-design/components-table",
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "juejin-cn/post-7686401413472862214",
+        "semi-design/table",
+        "tdesign/vue-table"
+      ]
+    },
+    "expand": {
+      "type": "text",
+      "label": "Expand",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "score-a": {
+      "type": "num",
+      "label": "Score A",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "score-b": {
+      "type": "num",
+      "label": "Score B",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "score-c": {
+      "type": "num",
+      "label": "Score C",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "other-1": {
+      "type": "text",
+      "label": "Other 1",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "other-2": {
+      "type": "text",
+      "label": "Other 2",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "user-info": {
+      "type": "text",
+      "label": "User Info",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "information": {
+      "type": "text",
+      "label": "Information",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "detail": {
+      "type": "text",
+      "label": "Detail",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "index": {
+      "type": "text",
+      "label": "Index",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "count": {
+      "type": "text",
+      "label": "Count",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "stars": {
+      "type": "text",
+      "label": "Stars",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "ie-edge-ie-edge": {
+      "type": "text",
+      "label": "IE / Edge IE / Edge",
+      "pages": [
+        "arco-design/docs-start"
+      ]
+    },
+    "col-6": {
+      "type": "text",
+      "label": "五",
+      "pages": [
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "semi-design/table",
+        "tdesign/vue-table"
+      ]
+    },
+    "col-7": {
+      "type": "text",
+      "label": "六",
+      "pages": [
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong"
+      ]
+    },
+    "subtags": {
+      "type": "text",
+      "label": "Subtags",
+      "pages": [
+        "element-plus/button",
+        "element-plus/form",
+        "element-plus/select",
+        "element-plus/table"
+      ]
+    },
+    "attribute": {
+      "type": "text",
+      "label": "Attribute",
+      "pages": [
+        "element-plus/select"
+      ]
+    },
+    "select-all-rows": {
+      "type": "text",
+      "label": "Select all rows",
+      "pages": [
+        "element-plus/table",
+        "semi-design/table"
+      ]
+    },
+    "use-show-overflow-tooltip": {
+      "type": "text",
+      "label": "use show-overflow-tooltip",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "state": {
+      "type": "text",
+      "label": "State",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "city": {
+      "type": "text",
+      "label": "City",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "zip": {
+      "type": "text",
+      "label": "Zip",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "operations": {
+      "type": "text",
+      "label": "Operations",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "delivery-info": {
+      "type": "text",
+      "label": "Delivery Info",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "address-info": {
+      "type": "text",
+      "label": "Address Info",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "date-sort-by-date": {
+      "type": "text",
+      "label": "Date Sort by Date",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "date-sort-by-date-filter-by-date": {
+      "type": "text",
+      "label": "Date Sort by Date Filter by Date",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "tag-filter-by-tag": {
+      "type": "text",
+      "label": "Tag Filter by Tag",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "type-to-search": {
+      "type": "text",
+      "label": "Type to search",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "name-sort-by-name": {
+      "type": "text",
+      "label": "Name Sort by Name",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "address-sort-by-address": {
+      "type": "text",
+      "label": "Address Sort by Address",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-1-sort-by-amount-1": {
+      "type": "text",
+      "label": "Amount 1 Sort by Amount 1",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-2-sort-by-amount-2": {
+      "type": "text",
+      "label": "Amount 2 Sort by Amount 2",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-3-sort-by-amount-3": {
+      "type": "text",
+      "label": "Amount 3 Sort by Amount 3",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "cost-1": {
+      "type": "text",
+      "label": "Cost 1 ($)",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "cost-2": {
+      "type": "text",
+      "label": "Cost 2 ($)",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "cost-3": {
+      "type": "text",
+      "label": "Cost 3 ($)",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-1": {
+      "type": "text",
+      "label": "Amount 1",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-2": {
+      "type": "text",
+      "label": "Amount 2",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-3": {
+      "type": "text",
+      "label": "Amount 3",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "extends-table-formatter": {
+      "type": "text",
+      "label": "extends table formatter",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "formatter-object": {
+      "type": "text",
+      "label": "formatter object",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "with-vnode": {
+      "type": "text",
+      "label": "with vnode",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "method": {
+      "type": "text",
+      "label": "Method",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "url": {
+      "type": "text",
+      "label": "URL",
+      "pages": [
+        "getbootstrap/docs-introduction",
+        "semi-design/getting-started"
+      ]
+    },
+    "header": {
+      "type": "text",
+      "label": "Header",
+      "pages": [
+        "getbootstrap/example-dashboard"
+      ]
+    },
+    "free": {
+      "type": "text",
+      "label": "Free",
+      "pages": [
+        "getbootstrap/example-pricing"
+      ]
+    },
+    "pro": {
+      "type": "text",
+      "label": "Pro",
+      "pages": [
+        "getbootstrap/example-pricing"
+      ]
+    },
+    "enterprise": {
+      "type": "text",
+      "label": "Enterprise",
+      "pages": [
+        "getbootstrap/example-pricing"
+      ]
+    },
+    "filter-data-with-this-column": {
+      "type": "text",
+      "label": "标题 ​ Filter data with this column",
+      "pages": [
+        "semi-design/table"
+      ]
+    },
+    "current-sort-order-is-none": {
+      "type": "text",
+      "label": "Current sort order is none",
+      "pages": [
+        "semi-design/table"
+      ]
+    },
+    "current-sort-order-is-none-filter-data-w": {
+      "type": "text",
+      "label": "Current sort order is none ​ Filter data with this column",
+      "pages": [
+        "semi-design/table"
       ]
     }
   }

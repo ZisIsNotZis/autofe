@@ -1,0 +1,1315 @@
+{
+  "_intent": "Ant Design of React - Ant Design — Ant Design of React [draft]",
+  "_title": {
+    "text": "Ant Design of React - Ant Design"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#-features",
+        "label": "✨ Features"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#environment-support",
+        "label": "Environment Support"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#version",
+        "label": "Version"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#installation",
+        "label": "Installation"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#using-npm-or-yarn-or-pnpm-or-bun",
+        "label": "Using npm or yarn or pnpm or bun"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#import-in-browser",
+        "label": "Import in Browser"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#usage",
+        "label": "Usage"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#use-modularized-antd",
+        "label": "Use modularized antd"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#typescript",
+        "label": "TypeScript"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#links",
+        "label": "Links"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#non-react-implementations",
+        "label": "Non-React Implementations"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#companies-using-antd",
+        "label": "Companies using antd"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#contributing",
+        "label": "Contributing"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/docs/react/introduce#need-help",
+        "label": "Need Help?"
+      }
+    },
+    {
+      "_intent": "Ant Design of React [draft]",
+      "_title": {
+        "text": "Ant Design of React"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Following the Ant Design specification, we developed a React UI library antd (Pronunciation ) that contains a set of high quality components and demos for building rich, interactive user interfaces."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "✨ Features [draft]",
+      "_title": {
+        "text": "✨ Features"
+      },
+      "_lines": [
+        {
+          "_intent": "list (6 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "🌈 Enterprise-class UI designed for web applications."
+              }
+            },
+            {
+              "_name": {
+                "text": "📦 A set of high-quality React components out of the box."
+              }
+            },
+            {
+              "_name": {
+                "text": "🛡 Written in TypeScript with predictable static types."
+              }
+            },
+            {
+              "_name": {
+                "text": "⚙️ Whole package of design resources and development tools."
+              }
+            },
+            {
+              "_name": {
+                "text": "🌍 Internationalization support for dozens of languages."
+              }
+            },
+            {
+              "_name": {
+                "text": "🎨 Powerful theme customization in every detail."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Environment Support [draft]",
+      "_title": {
+        "text": "Environment Support"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Modern browsers"
+              }
+            },
+            {
+              "_name": {
+                "text": "Server-side Rendering"
+              }
+            },
+            {
+              "_name": {
+                "text": "Electron"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.electronjs.org/",
+                "label": "Electron"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (1 rows): Edge Edge / Firefox Firefox / Chrome Chrome [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Edge"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "Dropped support of IE8 after antd 2.0. Dropped support of React 15 and IE9/10 after antd 4.0. Dropped support of IE after antd 5.0. Dropped support of React 16/17 after antd 6.0."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Version [draft]",
+      "_title": {
+        "text": "Version"
+      },
+      "_summary": {
+        "text": "Stable:"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "You can subscribe to this feed for new version notifications: https://github.com/ant-design/ant-design/releases.atom"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Installation [draft]",
+      "_title": {
+        "text": "Installation"
+      },
+      "_lines": [
+        {
+          "_intent": "Using npm or yarn or pnpm or bun [draft]",
+          "_title": {
+            "text": "Using npm or yarn or pnpm or bun"
+          },
+          "_summary": {
+            "text": "If you are in a bad network environment, you can try other registries and tools like cnpm."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "We recommend using npm or yarn or pnpm or bun to install, it not only makes development easier, but also allow you to take advantage of the rich ecosystem of JavaScript packages and tooling."
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Import in Browser [draft]",
+          "_title": {
+            "text": "Import in Browser"
+          },
+          "_summary": {
+            "text": "Add script and link tags in your browser and use the global variable antd."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "We provide antd.js and antd.min.js reset.css under dist folder in antd's npm package. You can also download these files directly from , or unpkg."
+              }
+            },
+            {
+              "_text": {
+                "text": "We strongly discourage loading the entire files this will add bloat to your application and make it more difficult to receive bugfixes and updates. Antd is intended to be used in conjunction with a build tool, such as webpack, which will make it easy to import only the parts of antd that you are using."
+              }
+            },
+            {
+              "_text": {
+                "text": "Note: You should import react, react-dom, dayjs before using antd.js."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Usage [draft]",
+      "_title": {
+        "text": "Usage"
+      },
+      "_summary": {
+        "text": "jsx"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "import"
+          }
+        },
+        {
+          "_text": {
+            "text": "React"
+          }
+        },
+        {
+          "_text": {
+            "text": "from"
+          }
+        },
+        {
+          "_text": {
+            "text": "DatePicker"
+          }
+        },
+        {
+          "_text": {
+            "text": "'antd'"
+          }
+        },
+        {
+          "_text": {
+            "text": "const"
+          }
+        },
+        {
+          "_text": {
+            "text": "App"
+          }
+        },
+        {
+          "_text": {
+            "text": "=>"
+          }
+        },
+        {
+          "_text": {
+            "text": "return"
+          }
+        },
+        {
+          "_text": {
+            "text": "/>"
+          }
+        },
+        {
+          "_text": {
+            "text": "export"
+          }
+        },
+        {
+          "_text": {
+            "text": "default"
+          }
+        },
+        {
+          "_intent": "Use modularized antd [draft]",
+          "_title": {
+            "text": "Use modularized antd"
+          },
+          "_summary": {
+            "text": "antd supports ES modules tree shaking by default."
+          }
+        },
+        {
+          "_intent": "TypeScript [draft]",
+          "_title": {
+            "text": "TypeScript"
+          },
+          "_summary": {
+            "text": "antd provides a built-in ts definition, don't install @types/antd."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Links [draft]",
+      "_title": {
+        "text": "Links"
+      },
+      "_lines": [
+        {
+          "_intent": "list (24 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "China Mirrors"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/issues/25661",
+                "label": "China Mirrors"
+              }
+            },
+            {
+              "_name": {
+                "text": "Components"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/overview",
+                "label": "Components"
+              }
+            },
+            {
+              "_name": {
+                "text": "Change Log"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/changelog",
+                "label": "Change Log"
+              }
+            },
+            {
+              "_name": {
+                "text": "rc-components"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://react-component.github.io/",
+                "label": "rc-components"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ant Design Icons"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design-icons",
+                "label": "Ant Design Icons"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ant Design Colors"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design-colors",
+                "label": "Ant Design Colors"
+              }
+            },
+            {
+              "_name": {
+                "text": "🆕 Ant Design X"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://x.ant.design/index-cn",
+                "label": "🆕 Ant Design X"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ant Design Pro"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://pro.ant.design/",
+                "label": "Ant Design Pro"
+              }
+            },
+            {
+              "_name": {
+                "text": "Pro Components"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://procomponents.ant.design/",
+                "label": "Pro Components"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ant Design Mobile"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://mobile.ant.design/",
+                "label": "Ant Design Mobile"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ant Design Mini"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://mini.ant.design/",
+                "label": "Ant Design Mini"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ant Design Charts"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://charts.ant.design/",
+                "label": "Ant Design Charts"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ant Design Web3"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://web3.ant.design/",
+                "label": "Ant Design Web3"
+              }
+            },
+            {
+              "_name": {
+                "text": "🤖 Ant Design CLI"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design-cli",
+                "label": "🤖 Ant Design CLI"
+              }
+            },
+            {
+              "_name": {
+                "text": "Landing Pages"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://landing.ant.design/",
+                "label": "Landing Pages"
+              }
+            },
+            {
+              "_name": {
+                "text": "Ant Motion"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://motion.ant.design/",
+                "label": "Ant Motion"
+              }
+            },
+            {
+              "_name": {
+                "text": "Scaffold Market"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://scaffold.ant.design/",
+                "label": "Scaffold Market"
+              }
+            },
+            {
+              "_name": {
+                "text": "Developer Instruction"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/wiki/Development",
+                "label": "Developer Instruction"
+              }
+            },
+            {
+              "_name": {
+                "text": "Versioning Release Note"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/wiki/%E8%BD%AE%E5%80%BC%E8%A7%84%E5%88%99%E5%92%8C%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E6%B5%81%E7%A8%8B",
+                "label": "Versioning Release Note"
+              }
+            },
+            {
+              "_name": {
+                "text": "FAQ"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/docs/react/faq",
+                "label": "FAQ"
+              }
+            },
+            {
+              "_name": {
+                "text": "CodeSandbox Template for bug reports"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://u.ant.design/reproduce",
+                "label": "CodeSandbox Template"
+              }
+            },
+            {
+              "_name": {
+                "text": "Awesome Ant Design"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/websemantics/awesome-ant-design",
+                "label": "Awesome Ant Design"
+              }
+            },
+            {
+              "_name": {
+                "text": "Customize Theme"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/docs/react/customize-theme",
+                "label": "Customize Theme"
+              }
+            },
+            {
+              "_name": {
+                "text": "How to Apply for Being A Collaborator"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/wiki/Collaborators#how-to-apply-for-being-a-collaborator",
+                "label": "How to Apply for Being A Collaborator"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Non-React Implementations [draft]",
+      "_title": {
+        "text": "Non-React Implementations"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "React is used to encapsulate a library of components which embody our design language. We welcome the community to implement our design system in other front-end frameworks of their choice."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Companies using antd [draft]",
+      "_title": {
+        "text": "Companies using antd"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Ant Design is widely used for building enterprise-level websites both domestically and internationally. You can refer to wappalyzer for reference data. If your company or product uses Ant Design, let us know here!"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Contributing [draft]",
+      "_title": {
+        "text": "Contributing"
+      },
+      "_summary": {
+        "text": "Please read our CONTRIBUTING.md first."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "If you'd like to help us improve antd, just create a Pull Request. Feel free to report bugs and issues here."
+          }
+        },
+        {
+          "_text": {
+            "text": "If you're new to posting issues, we ask that you read How To Ask Questions The Smart Way and How to Ask a Question in Open Source Community and How to Report Bugs Effectively prior to posting. Well written bug reports help us help you!"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Need Help? [draft]",
+      "_title": {
+        "text": "Need Help?"
+      },
+      "_summary": {
+        "text": "For questions on how to use antd, please post questions to GitHub Discussions using the Q&A tag or using the antd tag."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "As always, we encourage experienced users to help those who are not familiar with antd!"
+          }
+        },
+        {
+          "_text": {
+            "text": "contributors"
+          }
+        },
+        {
+          "_intent": "list (36 items) [draft]",
+          "_items": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/QDyanbing",
+                "label": "QDyanbing"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/afc163",
+                "label": "afc163"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/li-jia-nan",
+                "label": "li-jia-nan"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/thinkasany",
+                "label": "thinkasany"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/gin-lsl",
+                "label": "gin-lsl"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/kiner-tang",
+                "label": "kiner-tang"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/luketzh",
+                "label": "luketzh"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/yoyo837",
+                "label": "yoyo837"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/zqran",
+                "label": "zqran"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/zombieJ",
+                "label": "zombieJ"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/lushevol",
+                "label": "lushevol"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/MadCcc",
+                "label": "MadCcc"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/iamkun",
+                "label": "iamkun"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/xrkffgg",
+                "label": "xrkffgg"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/lxfu1",
+                "label": "lxfu1"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/hengkx",
+                "label": "hengkx"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/feengqi",
+                "label": "feengqi"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ycjcl868",
+                "label": "ycjcl868"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/chenshuai2144",
+                "label": "chenshuai2144"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ye4241",
+                "label": "ye4241"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/yesmeck",
+                "label": "yesmeck"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ddcat1115",
+                "label": "ddcat1115"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/benjycui",
+                "label": "benjycui"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ChrisFan",
+                "label": "ChrisFan"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/sorrycc",
+                "label": "sorrycc"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/dogledogle",
+                "label": "dogledogle"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/Attacktive",
+                "label": "Attacktive"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/vixeven",
+                "label": "vixeven"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/Sonjeet",
+                "label": "Sonjeet"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/pvsmounish",
+                "label": "pvsmounish"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/orzyyyy",
+                "label": "orzyyyy"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/henryv0",
+                "label": "henryv0"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/dyhpoon",
+                "label": "dyhpoon"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/bergpete",
+                "label": "bergpete"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/jihdeh",
+                "label": "jihdeh"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/kvetoslavnovak",
+                "label": "kvetoslavnovak"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/changelog",
+            "label": "Changelog right"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Resources [draft]",
+      "_title": {
+        "text": "Resources"
+      },
+      "_summary": {
+        "text": "Landing Templates"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://x.ant.design/",
+            "label": "Ant Design X"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://charts.ant.design/",
+            "label": "Ant Design Charts"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://pro.ant.design/",
+            "label": "Ant Design Pro"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://procomponents.ant.design/",
+            "label": "Pro Components"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://mobile.ant.design/",
+            "label": "Ant Design Mobile"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://mini.ant.design/",
+            "label": "Ant Design Mini"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://web3.ant.design/",
+            "label": "Ant Design Web3"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://landing.ant.design/",
+            "label": "Ant Design Landing"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://scaffold.ant.design/",
+            "label": "Scaffolds"
+          }
+        },
+        {
+          "_text": {
+            "text": "Scaffold Market"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://umijs.org/",
+            "label": "Umi"
+          }
+        },
+        {
+          "_text": {
+            "text": "React Application Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://d.umijs.org/",
+            "label": "dumi"
+          }
+        },
+        {
+          "_text": {
+            "text": "Component doc generator"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://qiankun.umijs.org/",
+            "label": "qiankun"
+          }
+        },
+        {
+          "_text": {
+            "text": "Micro-Frontends Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://motion.ant.design/",
+            "label": "Ant Motion"
+          }
+        },
+        {
+          "_text": {
+            "text": "Motion Solution"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant-design.antgroup.com/",
+            "label": "China Mirror 🇨🇳"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Community [draft]",
+      "_title": {
+        "text": "Community"
+      },
+      "_summary": {
+        "text": "Experience Tech Conference"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/websemantics/awesome-ant-design",
+            "label": "ant-design Awesome Ant Design"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://medium.com/ant-design/",
+            "label": "medium Medium"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://x.com/antdesignui",
+            "label": "x X"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://yuque.com/ant-design/ant-design",
+            "label": "yuque logo Ant Design in YuQue"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.zhihu.com/column/c_1564262000561106944",
+            "label": "zhihu Ant Design in Zhihu"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.zhihu.com/column/c_1543658574504751104",
+            "label": "zhihu Experience Cloud Blog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://seeconf.antfin.com/",
+            "label": "seeconf logo SEE Conf"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Help [draft]",
+      "_title": {
+        "text": "Help"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design",
+            "label": "github GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/changelog",
+            "label": "history Change Log"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/docs/react/faq",
+            "label": "question-circle FAQ"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/docs/react/for-agents.md",
+            "label": "robot For Agents"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://new-issue.ant.design/",
+            "label": "bug Bug Report"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/issues",
+            "label": "issues-close Issues"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/discussions",
+            "label": "message Discussions"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://stackoverflow.com/questions/tagged/antd",
+            "label": "question-circle StackOverflow"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://segmentfault.com/t/antd",
+            "label": "question-circle SegmentFault"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Ant XTech logo More Products [draft]",
+      "_title": {
+        "text": "Ant XTech logo More Products"
+      },
+      "_summary": {
+        "text": "Document Collaboration Platform"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://yuque.com/",
+            "label": "yuque logo YuQue"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://antv.antgroup.com/",
+            "label": "AntV logo AntV"
+          }
+        },
+        {
+          "_text": {
+            "text": "Data Visualization"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://eggjs.org/",
+            "label": "Egg logo Egg"
+          }
+        },
+        {
+          "_text": {
+            "text": "Enterprise Node.js Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://kitchen.alipay.com/",
+            "label": "Kitchen logo Kitchen"
+          }
+        },
+        {
+          "_text": {
+            "text": "Sketch Toolkit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://galacean.antgroup.com/",
+            "label": "Galacean logo Galacean"
+          }
+        },
+        {
+          "_text": {
+            "text": "Interactive Graphics Solution"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://weavefox.cn/",
+            "label": "WeaveFox logo WeaveFox"
+          }
+        },
+        {
+          "_text": {
+            "text": "AI Development with WeaveFox 🦊"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://xtech.antfin.com/",
+            "label": "xtech logo Ant Financial Experience Tech"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/theme-editor",
+            "label": "bg-colors Theme Editor"
+          }
+        },
+        {
+          "_text": {
+            "text": "Ant Group and Ant Design Community"
+          }
+        }
+      ]
+    }
+  ]
+}

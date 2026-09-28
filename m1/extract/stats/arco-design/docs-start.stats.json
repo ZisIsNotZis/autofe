@@ -1,0 +1,117 @@
+{
+  "site": "arco-design",
+  "page": "docs-start",
+  "url": "https://arco.design/react/docs/start",
+  "title": "快速上手 | ArcoDesign",
+  "sourceNodes": 1390,
+  "counts": {
+    "storylines": 13,
+    "items": 11,
+    "actions": 24,
+    "exposes": 0,
+    "images": 0,
+    "facts": 11,
+    "tables": 1,
+    "lists": 3,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 2,
+    "capHits": []
+  },
+  "storylines": 13,
+  "chrome": [
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 6,
+      "examples": [
+        "// npm npm i @arco-design/web-react // yarn yarn add @arco-design/web-react",
+        "import React from \"react\"; import ReactDOM from \"react-dom\"; import { Button } f",
+        "import '@arco-design/web-react/es/_util/react-19-adapter';",
+        "npm i babel-plugin-import -D",
+        "plugins: [ [ 'babel-plugin-import', { libraryName: '@arco-design/web-react', lib"
+      ]
+    },
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 4,
+      "examples": [
+        "Chrome Chrome: 49",
+        "Safari Safari: 31",
+        "Opera Opera: 36",
+        "Electron Electron: last 2 versions"
+      ]
+    },
+    {
+      "kind": "combobox-select",
+      "role": "combobox",
+      "count": 3,
+      "examples": [
+        "Hover to Close",
+        "Toggle light/dark theme",
+        "Toggle lrt/rtl layout"
+      ]
+    },
+    {
+      "kind": "embedded-media",
+      "role": "Iframe",
+      "count": 1,
+      "examples": [
+        "reverent-voice-v2yzx"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "ie-edge-ie-edge",
+      "type": "text",
+      "label": "IE / Edge IE / Edge",
+      "example": "Edge 16"
+    },
+    {
+      "name": "firefox-firefox",
+      "type": "num",
+      "label": "Firefox Firefox",
+      "example": "31"
+    },
+    {
+      "name": "chrome-chrome",
+      "type": "num",
+      "label": "Chrome Chrome",
+      "example": "49"
+    },
+    {
+      "name": "safari-safari",
+      "type": "num",
+      "label": "Safari Safari",
+      "example": "31"
+    },
+    {
+      "name": "opera-opera",
+      "type": "num",
+      "label": "Opera Opera",
+      "example": "36"
+    },
+    {
+      "name": "electron-electron",
+      "type": "text",
+      "label": "Electron Electron",
+      "example": "last 2 versions"
+    }
+  ]
+}

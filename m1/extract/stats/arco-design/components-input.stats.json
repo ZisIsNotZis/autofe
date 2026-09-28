@@ -1,0 +1,106 @@
+{
+  "site": "arco-design",
+  "page": "components-input",
+  "url": "https://arco.design/react/components/input",
+  "title": "输入框 Input | ArcoDesign",
+  "sourceNodes": 5752,
+  "counts": {
+    "storylines": 22,
+    "items": 56,
+    "actions": 22,
+    "exposes": 18,
+    "images": 0,
+    "facts": 20,
+    "tables": 6,
+    "lists": 0,
+    "choiceSets": 0,
+    "inputs": 18,
+    "dupeText": 10,
+    "capHits": []
+  },
+  "storylines": 22,
+  "chrome": [
+    {
+      "role": "LayoutTable",
+      "count": 22
+    },
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 215,
+      "examples": [
+        "描述: 允许清空输入框",
+        "类型: boolean",
+        "默认值: -",
+        "版本: -",
+        "描述: 是否禁用"
+      ]
+    },
+    {
+      "kind": "combobox-select",
+      "role": "combobox",
+      "count": 3,
+      "examples": [
+        "Hover to Open",
+        "Toggle light/dark theme",
+        "Toggle lrt/rtl layout"
+      ]
+    },
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 3,
+      "examples": [
+        "{\"minWidth\":0,\"maxWidth\":500}",
+        "{\"minWidth\":300,\"maxWidth\":500}",
+        "<Input ref={(ref) => (this.input = ref)} />; this.input.focus();"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "参数名",
+      "example": "focus"
+    },
+    {
+      "name": "col-2",
+      "type": "text",
+      "label": "描述",
+      "example": "焦点事件"
+    },
+    {
+      "name": "col-3",
+      "type": "text",
+      "label": "类型",
+      "example": "Function"
+    },
+    {
+      "name": "col-4",
+      "type": "text",
+      "label": "默认值",
+      "example": "-"
+    },
+    {
+      "name": "col-5",
+      "type": "text",
+      "label": "版本",
+      "example": "2.6.0"
+    }
+  ]
+}

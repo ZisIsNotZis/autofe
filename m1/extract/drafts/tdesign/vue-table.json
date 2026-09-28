@@ -1,0 +1,1537 @@
+{
+  "_intent": "Table 表格 | TDesign [draft]",
+  "_title": {
+    "text": "Table 表格 | TDesign"
+  },
+  "_summary": {
+    "text": "Table 表格"
+  },
+  "_lines": [
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input",
+        "type": "text"
+      }
+    },
+    {
+      "_intent": "table (4 rows): 申请人 / 审批状态 / 签署方式 [draft]",
+      "_rel": {
+        "order": "none"
+      },
+      "_items": [
+        {
+          "_name": {
+            "text": "贾明"
+          }
+        },
+        {
+          "_name": {
+            "text": "张三"
+          }
+        },
+        {
+          "_name": {
+            "text": "王芳"
+          }
+        },
+        {
+          "_name": {
+            "text": "贾明"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表格分类 [draft]",
+      "_title": {
+        "text": "表格分类"
+      },
+      "_summary": {
+        "text": "随着表格功能越来越多，如果把所有的功能都集中在一个组件里面，代码文件会越来越臃肿。既不利于维护，也不利于按需引入必要功能的业务。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "因此，表格组件有三个：BaseTable（基础表格）、PrimaryTable（主表格）、EnhancedTable（增强型表格），三种表格都会导出。默认导出 PrimaryTable。"
+          }
+        },
+        {
+          "_text": {
+            "text": "一般情况下，直接使用 PrimaryTable 即可满足 90% 的需求，即默认导出的表格。涉及到非常复杂的需求后，使用 EnhancedTable。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "基础表格 [draft]",
+      "_title": {
+        "text": "基础表格"
+      },
+      "_summary": {
+        "text": "简单表格，使用分页切换数据。使用边框线、斑马纹等清晰呈现各数据单元格边界线，辅助信息区隔。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout",
+            "label": "MDN 详细解释"
+          }
+        },
+        {
+          "_text": {
+            "text": "小尺寸"
+          }
+        },
+        {
+          "_text": {
+            "text": "中尺寸"
+          }
+        },
+        {
+          "_text": {
+            "text": "大尺寸"
+          }
+        },
+        {
+          "_intent": "显示斑马纹 显示表格边框 显示悬浮效果 宽度自适应 显示表头 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "显示斑马纹"
+              }
+            },
+            {
+              "_name": {
+                "text": "显示表格边框"
+              }
+            },
+            {
+              "_name": {
+                "text": "显示悬浮效果"
+              }
+            },
+            {
+              "_name": {
+                "text": "宽度自适应"
+              }
+            },
+            {
+              "_name": {
+                "text": "显示表头"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-1",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "行高亮表格 [draft]",
+      "_title": {
+        "text": "行高亮表格"
+      },
+      "_summary": {
+        "text": "支持鼠标点击或者键盘操作高亮表格行，支持仅高亮一行，或者高亮多行。 键盘操作说明：表格聚焦后，上下键操作切换高亮行，ESC 清空所有高亮行，空格键切换当前停留行高亮状态，Shift 连续选中高亮行。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "不高亮"
+          }
+        },
+        {
+          "_text": {
+            "text": "单行高亮"
+          }
+        },
+        {
+          "_text": {
+            "text": "多行高亮"
+          }
+        },
+        {
+          "_text": {
+            "text": "显示悬浮效果"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可自定义样式的表格 [draft]",
+      "_title": {
+        "text": "可自定义样式的表格"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "使用表格属性 rowClassName 设置行类名。"
+              }
+            },
+            {
+              "_name": {
+                "text": "使用列属性 className 设置列类名，或具体的某一个或某一些单元格类名。"
+              }
+            },
+            {
+              "_name": {
+                "text": "使用列属性 attr: { style: {} } 设置列内联样式，或具体的某一个或某一些单元格内联样式。"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (6 rows): 申请人 / 审批状态 / 申请耗时(天) [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "贾明"
+              }
+            },
+            {
+              "_name": {
+                "text": "张三"
+              }
+            },
+            {
+              "_name": {
+                "text": "王芳"
+              }
+            },
+            {
+              "_name": {
+                "text": "贾明"
+              }
+            },
+            {
+              "_name": {
+                "text": "张三"
+              }
+            },
+            {
+              "_name": {
+                "text": "近期申请耗时较长"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "单元格超出省略的表格 [draft]",
+      "_title": {
+        "text": "单元格超出省略的表格"
+      },
+      "_summary": {
+        "text": "支持单元格文本超出省略、单独控制标题超出省略，单独控制超出省略的浮层内容和背景色等特性，一般用于需要悬浮显示单元格详情信息的场景。"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "使用 ellipsis 设置列文本超出省略显示，默认会同时控制表头的超出省略显示；只要 ellipsis 为真，无论是何种数据类型都会出现超出省略。"
+              }
+            },
+            {
+              "_name": {
+                "text": "使用 ellipsisTitle 单独设置表头超出省略显示，优先级高于 ellipsis。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "固定表头/固定行的表格 [draft]",
+      "_title": {
+        "text": "固定表头/固定行的表格"
+      },
+      "_summary": {
+        "text": "表格内容高度超出后，滚动时表头会自动固定。可通过 height 或 maxHeight 设置表格高度，单位同 CSS 属性。建议使用 maxHeight 自适应高度。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "表格宽度模式有两种：fixed 和 auto，MDN 详细解释，组件默认为 fixed。如果希望表格列宽自适应，设置 table-layout: auto 即可。"
+          }
+        },
+        {
+          "_text": {
+            "text": "刷新表格 DOM 元素请使用组件实例方法 refreshTable。"
+          }
+        },
+        {
+          "_text": {
+            "text": "table-layout: fixed"
+          }
+        },
+        {
+          "_text": {
+            "text": "table-layout: auto"
+          }
+        },
+        {
+          "_text": {
+            "text": "是否冻结首尾两行"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "固定列的表格 [draft]",
+      "_title": {
+        "text": "固定列的表格"
+      },
+      "_summary": {
+        "text": "列的数量过多时，使用固定列方便表格数据内容呈现，支持固定左侧列和固定右侧列。可通过给列属性设置 fixed: 'left' 或 fixed: right 以达成固定列效果。固定列线条宽度可以通过 CSS 控制粗细。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "表格宽度模式有两种：fixed 和 auto，MDN 详细解释，组件默认为 fixed。如果希望表格列宽自适应，设置 table-layout: auto 即可，这种模式下固定列必须指定表格内容的总宽度 tableContentWidth，tableContentWidth 的值必须大于表格可见宽度。"
+          }
+        },
+        {
+          "_text": {
+            "text": "多级表头中的固定列，必须指定每一个固定列的 colKey 和 fixed 属性。"
+          }
+        },
+        {
+          "_text": {
+            "text": "⚠️ Windows 操作系统横向滚动操作：按下 Shift 键的同时，鼠标操作滚轮进行滚动。纵向滚动操作：直接鼠标操作滚轮进行滚动。"
+          }
+        },
+        {
+          "_text": {
+            "text": "左侧固定一列"
+          }
+        },
+        {
+          "_text": {
+            "text": "左侧固定两列"
+          }
+        },
+        {
+          "_text": {
+            "text": "右侧固定一列"
+          }
+        },
+        {
+          "_text": {
+            "text": "右侧固定两列"
+          }
+        },
+        {
+          "_text": {
+            "text": "空数据"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "固定表头和列的表格 [draft]",
+      "_title": {
+        "text": "固定表头和列的表格"
+      },
+      "_summary": {
+        "text": "支持同时固定表头和固定列。fixedRows 用于设置冻结首行和尾行数量，示例：[2, 2]。"
+      }
+    },
+    {
+      "_intent": "自定义单元格的表格 [draft]",
+      "_title": {
+        "text": "自定义单元格的表格"
+      },
+      "_summary": {
+        "text": "单元格默认使用 row[colKey] 渲染数据内容，自定义单元格有以下 3 种方式："
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "使用 cell 作为渲染函数，函数参数为：{col, colIndex, row, rowIndex}。"
+              }
+            },
+            {
+              "_name": {
+                "text": "对于有插槽特性的框架，支持插槽，使用 cell 的值作为插槽名称；如果 cell 值为空，则默认取 colKey 作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。"
+              }
+            },
+            {
+              "_name": {
+                "text": "【不推荐使用】使用 render 渲染函数，函数参数为：{col, colIndex, row, rowIndex, type}，其中 type 的值为 cell。"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (5 rows): 申请人 / 审批状态 / 申请事项 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "贾明"
+              }
+            },
+            {
+              "_name": {
+                "text": "张三"
+              }
+            },
+            {
+              "_name": {
+                "text": "王芳"
+              }
+            },
+            {
+              "_name": {
+                "text": "贾明"
+              }
+            },
+            {
+              "_name": {
+                "text": "张三"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "自定义表头的表格 [draft]",
+      "_title": {
+        "text": "自定义表头的表格"
+      },
+      "_summary": {
+        "text": "标题默认使用 title 渲染，自定义标题则有以下 3 种方式："
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "使用 title 作为渲染函数，函数参数为：title({ col, colIndex })。"
+              }
+            },
+            {
+              "_name": {
+                "text": "对于有插槽特性的框架，支持插槽，使用 title 的值作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。"
+              }
+            },
+            {
+              "_name": {
+                "text": "【不推荐使用】使用 render 作为渲染函数，函数参数为：render({ col, colIndex, row, rowIndex, type })，其中 type 值为 title。使用排序、过滤等功能时不能使用该方法。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "自定义表尾的表格 [draft]",
+      "_title": {
+        "text": "自定义表尾的表格"
+      },
+      "_summary": {
+        "text": "表格提供自定义表尾功能，可用于表尾数据统计等场景。使用 column.foot 定义每一列的表尾内容。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "普通表尾"
+          }
+        },
+        {
+          "_text": {
+            "text": "通栏表尾"
+          }
+        },
+        {
+          "_text": {
+            "text": "自定义表尾合并列"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可表头吸顶/表尾吸顶的表格 [draft]",
+      "_title": {
+        "text": "可表头吸顶/表尾吸顶的表格"
+      },
+      "_lines": [
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "表头吸顶，设置 headerAffixedTop=true 即可。如果需要调整吸顶位置及更多配置，使用 headerAffixedTop: { offsetTop: 80 }。"
+              }
+            },
+            {
+              "_name": {
+                "text": "表尾吸底，设置 footAffixedBottom=true 即可。如果需要调整吸底位置及更多配置，使用 footAffixedBottom: { offsetBottom: 60 }。"
+              }
+            },
+            {
+              "_name": {
+                "text": "滚动条吸底，设置 horizontalScrollAffixedBottom=true 即可。如果需要调整吸底位置及更多配置，使用 horizontalScrollAffixedBottom: { offsetBottom: 60 }。"
+              }
+            },
+            {
+              "_name": {
+                "text": "分页器吸底，设置 paginationAffixedBottom=true 即可。如果需要调整吸底位置及更多配置，使用 paginationAffixedBottom: { offsetBottom: 60 }。"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "表头吸顶 表尾吸底 滚动条吸底 分页器吸底 固定左侧列 固定右侧列 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "表头吸顶"
+              }
+            },
+            {
+              "_name": {
+                "text": "表尾吸底"
+              }
+            },
+            {
+              "_name": {
+                "text": "滚动条吸底"
+              }
+            },
+            {
+              "_name": {
+                "text": "分页器吸底"
+              }
+            },
+            {
+              "_name": {
+                "text": "固定左侧列"
+              }
+            },
+            {
+              "_name": {
+                "text": "固定右侧列"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-2",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可展开和收起的表格 [draft]",
+      "_title": {
+        "text": "可展开和收起的表格"
+      },
+      "_summary": {
+        "text": "表格提供可收纳功能，展开后可以进一步查看详细内容。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "展开行发生变化时会触发展开行变化事件。"
+          }
+        },
+        {
+          "_text": {
+            "text": "显示展开图标"
+          }
+        },
+        {
+          "_text": {
+            "text": "隐藏展开图标"
+          }
+        },
+        {
+          "_text": {
+            "text": "自由控制展开图标"
+          }
+        },
+        {
+          "_intent": "允许点击行之后展开/收起 固定列 空数据 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "允许点击行之后展开/收起"
+              }
+            },
+            {
+              "_name": {
+                "text": "固定列"
+              }
+            },
+            {
+              "_name": {
+                "text": "空数据"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-3",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可进行列配置的表格 [draft]",
+      "_title": {
+        "text": "可进行列配置的表格"
+      },
+      "_summary": {
+        "text": "自定义设置需要展示的列，可以通过 columnController 字段来设置，更多细节可产看 API 文档中的 TableColumnController 描述。"
+      }
+    },
+    {
+      "_intent": "示例一：包含配置按钮的列配置功能示例 [draft]",
+      "_title": {
+        "text": "示例一：包含配置按钮的列配置功能示例"
+      },
+      "_summary": {
+        "text": "左上角"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "右上角"
+          }
+        },
+        {
+          "_text": {
+            "text": "左下角"
+          }
+        },
+        {
+          "_text": {
+            "text": "右下角"
+          }
+        },
+        {
+          "_intent": "分组列配置 是否显示边框 自定义列配置按钮 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "分组列配置"
+              }
+            },
+            {
+              "_name": {
+                "text": "是否显示边框"
+              }
+            },
+            {
+              "_name": {
+                "text": "自定义列配置按钮"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-4",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "示例二：不包含配置按钮的列配置功能示例 [draft]",
+      "_title": {
+        "text": "示例二：不包含配置按钮的列配置功能示例"
+      },
+      "_summary": {
+        "text": "使用 columnControllerVisible 控制是否显示列配置弹框，onColumnControllerVisibleChange 用于监听相关变化。一般应用于需要完全自定义列配置按钮内容和位置的场景。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "显示列配置弹窗"
+          }
+        },
+        {
+          "_text": {
+            "text": "分组列配置"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可排序的表格 [draft]",
+      "_title": {
+        "text": "可排序的表格"
+      },
+      "_summary": {
+        "text": "对先后顺序有要求的场景（如安全策略场景），提供表格排序能力，用户可以调整位置。"
+      }
+    },
+    {
+      "_intent": "单字段排序 [draft]",
+      "_title": {
+        "text": "单字段排序"
+      },
+      "_summary": {
+        "text": "提供列属性 sortType，用于自定义支持排序方式。可选值有 desc/asc/all，分别表示只能降序徘、只能升序徘、降序和升序。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "隐藏排序文本提示"
+          }
+        },
+        {
+          "_text": {
+            "text": "排序：{ \"sortBy\": \"status\", \"descending\": true }"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "多字段排序 [draft]",
+      "_title": {
+        "text": "多字段排序"
+      },
+      "_summary": {
+        "text": "排序方式：[{\"sortBy\":\"status\",\"descending\":true},{\"sortBy\":\"time\",\"de"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "设置表格属性 multipleSort 为 true。"
+              }
+            },
+            {
+              "_name": {
+                "text": "将需要排序的列属性 sorter 设置为 true，可以设置多个列，示例：[{ colKey: 'date', title: '日期', sorter: true }, { colKey: 'cost', title: '花费', sorter: true }]。"
+              }
+            },
+            {
+              "_name": {
+                "text": "设置表格排序属性 sort 的值为 [{ sortBy: 'date', descending: true }, { sortBy: 'cost', descending: false }]"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "本地数据排序 [draft]",
+      "_title": {
+        "text": "本地数据排序"
+      },
+      "_summary": {
+        "text": "本地数据排序，表示组件内部会对参数 data 进行数据排序。如果 data 数据为 10 条，就仅对这 10 条数据进行排序。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "是否允许多字段排序"
+          }
+        },
+        {
+          "_text": {
+            "text": "排序方式：{\"sortBy\":\"status\",\"descending\":true}"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可选中行的表格 [draft]",
+      "_title": {
+        "text": "可选中行的表格"
+      },
+      "_summary": {
+        "text": "在涉及到表单选择、或批量操作场景中，可在数据行前直接单选或多选操作对象。"
+      }
+    },
+    {
+      "_intent": "示例一：单选(Radio) [draft]",
+      "_title": {
+        "text": "示例一：单选(Radio)"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "selectedRowKeys 表示当前选中行的唯一标识数组，支持非受控属性 defaultSelectedRowKeys"
+              }
+            },
+            {
+              "_name": {
+                "text": "onSelectChange 会在选中行发生变化时触发"
+              }
+            },
+            {
+              "_name": {
+                "text": "设置 columns: [{ colKey: 'row-select', type: 'single' }] 可以将任意列定义为行选中操作列。"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "点击行选中 行高亮 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "点击行选中"
+              }
+            },
+            {
+              "_name": {
+                "text": "行高亮"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-5",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "示例二：多选(Checkbox) [draft]",
+      "_title": {
+        "text": "示例二：多选(Checkbox)"
+      },
+      "_lines": [
+        {
+          "_intent": "list (5 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "selectedRowKeys 表示当前选中行的唯一标识数组，支持非受控属性 defaultSelectedRowKeys"
+              }
+            },
+            {
+              "_name": {
+                "text": "onSelectChange 会在选中行发生变化时触发"
+              }
+            },
+            {
+              "_name": {
+                "text": "设置 columns: [{ colKey: 'row-select', type: 'multiple' }] 可以将任意列定义为行选中操作列。"
+              }
+            },
+            {
+              "_name": {
+                "text": "分页场景下的行选中，默认允许跨分页选中，即翻页时，上一页选中结果依然保存。如果希望每一页单独控制选中，互不影响，可设置 reserveSelectedRowOnPaginate=false"
+              }
+            },
+            {
+              "_name": {
+                "text": "注意：如果发现点击某一行便选中了全部，说明 rowKey 设置不正确，或者没有设置，请确保 rowKey 的值为 data 中的字段。"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "点击行选中 行高亮 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "点击行选中"
+              }
+            },
+            {
+              "_name": {
+                "text": "行高亮"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-6",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "示例三：没有操作列的行选中 [draft]",
+      "_title": {
+        "text": "示例三：没有操作列的行选中"
+      },
+      "_summary": {
+        "text": "不带操作列的行选中表格，一般用于一些简要选择场景，通过点击行直接选中。可以通过 rowSelectionType: 'single' | 'multiple' 控制单选或多选。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "单选"
+          }
+        },
+        {
+          "_text": {
+            "text": "多选"
+          }
+        },
+        {
+          "_text": {
+            "text": "是否允许取消选中"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可分页的表格 [draft]",
+      "_title": {
+        "text": "可分页的表格"
+      }
+    },
+    {
+      "_intent": "远程数据分页 [draft]",
+      "_title": {
+        "text": "远程数据分页"
+      },
+      "_summary": {
+        "text": "远程数据分页，表示组件内部不会对参数 data 进行分页。只输出分页信息，以供远程请求进行分页。"
+      }
+    },
+    {
+      "_intent": "本地数据分页 [draft]",
+      "_title": {
+        "text": "本地数据分页"
+      },
+      "_summary": {
+        "text": "当 data.length 长度超过 pageSize，单页已无法完整地显示数据，此时会自动开启本地数据分页，组件内部会对 data 进行分页。 如果希望禁用组件内部分页，可以设置 disableDataPage=true。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "跨分页选中"
+          }
+        },
+        {
+          "_text": {
+            "text": "当前页选中"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可筛选的表格 [draft]",
+      "_title": {
+        "text": "可筛选的表格"
+      },
+      "_summary": {
+        "text": "组件默认内置：复选框、单选按钮、输入框等类型的筛选器。同时，也可以自定义任何筛选器，如示例中的日期选择器。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "左对齐"
+          }
+        },
+        {
+          "_text": {
+            "text": "居中对齐"
+          }
+        },
+        {
+          "_text": {
+            "text": "右对齐"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "清除筛选条件"
+          }
+        },
+        {
+          "_text": {
+            "text": "已选筛选条件：{ \"channel\": [] }"
+          }
+        },
+        {
+          "_text": {
+            "text": "是否显示表格边框"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "带合并单元格的表格 [draft]",
+      "_title": {
+        "text": "带合并单元格的表格"
+      },
+      "_summary": {
+        "text": "根据数据结构，可以将表格中的行列进行合并。"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "使用表格属性 rowspanAndColspan 设置表格内容合并元格。"
+              }
+            },
+            {
+              "_name": {
+                "text": "使用表格属性 rowspanAndColspanInFooter 设置表尾合并单元格。"
+              }
+            },
+            {
+              "_name": {
+                "text": "使用列属性 colspan 设置表头合并。如果是多行表头，请参考下方「多级表头」示例。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "多级表头的表格 [draft]",
+      "_title": {
+        "text": "多级表头的表格"
+      },
+      "_summary": {
+        "text": "表头数据标签可采用多级呈现，表述信息层级包含关系。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "多级表表头中的列宽设置，只需指定最后一层表头宽度。"
+          }
+        },
+        {
+          "_intent": "显示表格边框 显示固定表头 固定左侧列 固定右侧列 表头吸顶 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "显示表格边框"
+              }
+            },
+            {
+              "_name": {
+                "text": "显示固定表头"
+              }
+            },
+            {
+              "_name": {
+                "text": "固定左侧列"
+              }
+            },
+            {
+              "_name": {
+                "text": "固定右侧列"
+              }
+            },
+            {
+              "_name": {
+                "text": "表头吸顶"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-7",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "加载状态的表格 [draft]",
+      "_title": {
+        "text": "加载状态的表格"
+      }
+    },
+    {
+      "_intent": "普通加载 [draft]",
+      "_title": {
+        "text": "普通加载"
+      },
+      "_summary": {
+        "text": "普通加载，会在表格上面显示半透明加载层，表格内容不隐藏。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (0 rows): 类型 / 平台 / 属性 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": []
+        },
+        {
+          "_intent": "table (0 rows): 类型 / 平台 / 属性 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": []
+        },
+        {
+          "_text": {
+            "text": "这里使用插槽自定义加载状态"
+          }
+        },
+        {
+          "_intent": "table (0 rows): 类型 / 平台 / 属性 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": []
+        },
+        {
+          "_text": {
+            "text": "这里使用渲染函数定义加载状态"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "异步加载 [draft]",
+      "_title": {
+        "text": "异步加载"
+      },
+      "_summary": {
+        "text": "使用 asyncLoading 定义异步加载状态。"
+      },
+      "_lines": [
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "asyncLoading='' 表示非加载状态或加载完成状态；"
+              }
+            },
+            {
+              "_name": {
+                "text": "asyncLoading='load-more' 表格底部显示“加载更多”；"
+              }
+            },
+            {
+              "_name": {
+                "text": "asyncLoading='loading' 表格底部显示“正在加载中，请稍后”；"
+              }
+            },
+            {
+              "_name": {
+                "text": "asyncLoading 值类型为函数，则表示完全自定义底部异步加载内容。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "加载更多"
+          }
+        },
+        {
+          "_text": {
+            "text": "加载中"
+          }
+        },
+        {
+          "_text": {
+            "text": "自定义加载更多"
+          }
+        },
+        {
+          "_text": {
+            "text": "加载完成"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "空表格 [draft]",
+      "_title": {
+        "text": "空表格"
+      },
+      "_summary": {
+        "text": "使用默认空表格样式。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (1 rows): 类型 / 平台 / 属性 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "暂无数据"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (1 rows): 类型 / 平台 / 属性 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "😊 我是自定义的空内容 😊: empty function"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "可拖拽排序的表格 [draft]",
+      "_title": {
+        "text": "可拖拽排序的表格"
+      },
+      "_summary": {
+        "text": "通过拖拽表格行调整顺序，拖拽表头表头调整列顺序。"
+      }
+    },
+    {
+      "_intent": "示例一：无手柄列的行拖拽排序 [draft]",
+      "_title": {
+        "text": "示例一：无手柄列的行拖拽排序"
+      },
+      "_summary": {
+        "text": "设置参数 dragSort='row' 即可。"
+      }
+    },
+    {
+      "_intent": "示例二：有手柄列的行拖拽排序 [draft]",
+      "_title": {
+        "text": "示例二：有手柄列的行拖拽排序"
+      },
+      "_summary": {
+        "text": "设置参数 dragSort='row-handler' 的同时，还需要添加手柄列：{ colKey: 'sort', cell: () => <MoveIcon /> }。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "加载状态"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置数据"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "列拖拽排序 [draft]",
+      "_title": {
+        "text": "列拖拽排序"
+      },
+      "_summary": {
+        "text": "【持续完善中】调整列顺序。设置参数 dragSort='col' 即可。列拖拽排序场景中，必须指定列唯一标识 colKey。"
+      }
+    },
+    {
+      "_intent": "懒加载的表格 [draft]",
+      "_title": {
+        "text": "懒加载的表格"
+      },
+      "_summary": {
+        "text": "懒加载一般用于数据量较大的场景，设置 scroll={ type: 'lazy' } 即可开启懒加载模式，通过 scroll.bufferSize 预设加载过程中提前加载的数据数量。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "列表恢复初始状态"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "虚拟滚动的表格 [draft]",
+      "_title": {
+        "text": "虚拟滚动的表格"
+      },
+      "_summary": {
+        "text": "虚拟滚动场景下，支持表格的几乎全部功能，如：固定列、固定表头、固定表尾、表头吸顶、表尾吸底等。实验场地请参看「多级表头的表格」示例。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "滚动到指定元素"
+          }
+        },
+        {
+          "_text": {
+            "text": "是否显示边框"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可编辑的表格 [draft]",
+      "_title": {
+        "text": "可编辑的表格"
+      },
+      "_summary": {
+        "text": "可编辑的表格分为单元格编辑表格和行编辑表格两种。详细完整的接口请查看 API 文档中的 TableEditableCellConfig。"
+      }
+    },
+    {
+      "_intent": "可编辑单元格的表格 [draft]",
+      "_title": {
+        "text": "可编辑单元格的表格"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "校验"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可编辑行的表格 [draft]",
+      "_title": {
+        "text": "可编辑行的表格"
+      },
+      "_summary": {
+        "text": "可对表格进行整行编辑和保存等操作。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "校验全部"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "树形结构的表格 [draft]",
+      "_title": {
+        "text": "树形结构的表格"
+      },
+      "_summary": {
+        "text": "请使用 EnhancedTable，Table/PrimaryTable/BaseTable 等不支持树形结构。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "⚠️ 树形结构的表格，支持添加节点、删除节点、交换同级节点、查询节点、展开/收起节点等丰富特性。为减少每次计算的递归查询，也为以后虚表做准备，故而内部数据为平铺结构，所有数据变化均通过组件实例方法控制，具体实例方法请查看 API 文档 EnhancedTableInstanceFunctions。树形结构细节配置请查看 tree: TableTreeConfig。"
+          }
+        },
+        {
+          "_intent": "list (8 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "treeExpandAndFoldIcon 用于设置树形结构折叠/展开图标，支持全局配置。"
+              }
+            },
+            {
+              "_name": {
+                "text": "子节点字段默认为 children，可以使用 tree.childrenKey 定义字段别名，示例：tree={ childrenKey: 'list' }。"
+              }
+            },
+            {
+              "_name": {
+                "text": "tree.indent 用于设置树结点缩进距离，叶子结点的距离可以通过类名 t-table__tree-leaf-node 单独设置。"
+              }
+            },
+            {
+              "_name": {
+                "text": "tree.treeNodeColumnIndex 用于设置第几列作为树形结构操作列"
+              }
+            },
+            {
+              "_name": {
+                "text": "tree.checkStrictly 表示树形结构的行选中（多选），父子行选中是否独立，默认独立，值为 true。"
+              }
+            },
+            {
+              "_name": {
+                "text": "tree.defaultExpandAll=true 表示默认展开全部节点，后续可通过 expandAll 和 foldAll 控制全部展开或全部收起。使用 toggleExpandData 控制单个节点的展开和收起。"
+              }
+            },
+            {
+              "_name": {
+                "text": "刷新表格数据请使用组件实例方法 resetData。"
+              }
+            },
+            {
+              "_name": {
+                "text": "获取树形结构数据可使用组件实例方法 getTreeNode。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "树形结构显示 [draft]",
+      "_title": {
+        "text": "树形结构显示"
+      },
+      "_summary": {
+        "text": "自定义折叠/展开图标"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "添加根节点"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置/更新数据"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "任意节点展开/收起"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "展开全部"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "获取全部树形结构"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "树形结构行选中 [draft]",
+      "_title": {
+        "text": "树形结构行选中"
+      },
+      "_summary": {
+        "text": "父子行选中独立"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "父子行选中关联"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "获取树形结构展开的节点"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "滚动到指定元素"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "small"
+              }
+            },
+            {
+              "_name": {
+                "text": "medium"
+              }
+            },
+            {
+              "_name": {
+                "text": "large"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "auto"
+              }
+            },
+            {
+              "_name": {
+                "text": "fixed"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "top"
+              }
+            },
+            {
+              "_name": {
+                "text": "middle"
+              }
+            },
+            {
+              "_name": {
+                "text": "bottom"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

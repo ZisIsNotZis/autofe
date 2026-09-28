@@ -1,0 +1,101 @@
+{
+  "site": "element-plus",
+  "page": "form",
+  "url": "https://element-plus.org/en-US/component/form.html",
+  "title": "Form | Element Plus",
+  "sourceNodes": 2349,
+  "counts": {
+    "storylines": 25,
+    "items": 70,
+    "actions": 67,
+    "exposes": 26,
+    "images": 0,
+    "facts": 12,
+    "tables": 8,
+    "lists": 0,
+    "choiceSets": 8,
+    "inputs": 18,
+    "dupeText": 169,
+    "capHits": []
+  },
+  "storylines": 25,
+  "chrome": [
+    {
+      "role": "complementary",
+      "count": 2
+    },
+    {
+      "role": "banner",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 99,
+      "examples": [
+        "Type: object",
+        "Default: —",
+        "Type: boolean",
+        "Default: false",
+        "Type: enum"
+      ]
+    },
+    {
+      "kind": "combobox-select",
+      "role": "combobox",
+      "count": 7,
+      "examples": [
+        "Pick a date",
+        "Pick a time"
+      ]
+    },
+    {
+      "kind": "chart-or-svg",
+      "role": "graphics-document",
+      "count": 1,
+      "examples": []
+    },
+    {
+      "kind": "checkbox-multi-select-as-choice-set",
+      "role": "checkbox",
+      "count": 1,
+      "examples": [
+        "Activity type"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name",
+      "example": "size"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "Form item size."
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "label": "Type",
+      "example": "object"
+    },
+    {
+      "name": "default",
+      "type": "text",
+      "label": "Default",
+      "example": "—"
+    },
+    {
+      "name": "subtags",
+      "type": "text",
+      "label": "Subtags",
+      "example": "FormItem"
+    }
+  ]
+}

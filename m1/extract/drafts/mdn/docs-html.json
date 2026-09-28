@@ -1,0 +1,412 @@
+{
+  "_intent": "HTML: HyperText Markup Language | MDN — HTML: HyperText Markup Language [draft]",
+  "_title": {
+    "text": "HTML: HyperText Markup Language | MDN"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://developer.mozilla.org/en-US/docs/Web/HTML#content",
+        "label": "Skip to main content"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://developer.mozilla.org/en-US/docs/Web/HTML#mdn-search",
+        "label": "Skip to search"
+      }
+    },
+    {
+      "_intent": "HTML: HyperText Markup Language [draft]",
+      "_title": {
+        "text": "HTML: HyperText Markup Language"
+      },
+      "_summary": {
+        "text": "The articles below can help you learn more about HTML."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "HTML (HyperText Markup Language) is the most basic building block of the Web. It defines the meaning and structure of web content. Other technologies besides HTML are generally used to describe a web page's appearance/presentation (CSS) or functionality/behavior (JavaScript)."
+          }
+        },
+        {
+          "_text": {
+            "text": "\"Hypertext\" refers to text containing links that connect web pages to one another, either within a single website or between websites. Links are a fundamental aspect of the Web. By uploading content to the Internet and linking it to pages created by other people, you become an active participant in the World Wide Web."
+          }
+        },
+        {
+          "_text": {
+            "text": "HTML uses \"markup\" to annotate text, images, and other content for display in a Web browser. HTML markup includes special \"elements\" such as <head>, <title>, <body>, <header>, <footer>, <article>, <section>, <p>, <div>, <span>, <img>, <aside>, <audio>, <canvas>, <datalist>, <details>, <embed>, <nav>, <search>, <output>, <progress>, <video>, <ul>, <ol>, <li> and many others."
+          }
+        },
+        {
+          "_text": {
+            "text": "An HTML element is set off from other text in a document by \"tags\", which consist of the element name surrounded by < and >. The name of an element inside a tag is case-insensitive. That is, it can be written in uppercase, lowercase, or a mixture. For example, the <title> tag can be written as <Title>, <TITLE>, or in any other way. However, the convention and recommended practice is to write tags in lowercase."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Beginner's tutorials [draft]",
+      "_title": {
+        "text": "Beginner's tutorials"
+      },
+      "_summary": {
+        "text": "Our learn web development core modules contain modern, up-to-date tutorials covering HTML fundamentals."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Your first website: Creating the content"
+          }
+        },
+        {
+          "_text": {
+            "text": "This article provides a brief tour of what HTML is and how to use it, aimed at people who are completely new to web development."
+          }
+        },
+        {
+          "_text": {
+            "text": "Structuring content with HTML"
+          }
+        },
+        {
+          "_text": {
+            "text": "This module covers the basics of the HTML language, before looking at key areas such as document structure, links, lists, images, forms, and more."
+          }
+        },
+        {
+          "_text": {
+            "text": "HTML forms"
+          }
+        },
+        {
+          "_text": {
+            "text": "Forms are a very important part of the Web — these provide much of the functionality you need for interacting with websites, e.g., registering and logging in, sending feedback, buying products, and more. This module gets you started with creating the client-side/front-end parts of forms."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Guides [draft]",
+      "_title": {
+        "text": "Guides"
+      },
+      "_summary": {
+        "text": "The HTML guides help you build with HTML on the web. They cover topics such as forms, CORS, content preloading, and responsive images."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "HTML cheatsheet for syntax and common tasks"
+          }
+        },
+        {
+          "_text": {
+            "text": "Quick reference for common HTML syntax and tasks."
+          }
+        },
+        {
+          "_text": {
+            "text": "Using HTML comments <!-- … -->"
+          }
+        },
+        {
+          "_text": {
+            "text": "HTML comments are used to add explanatory notes to the markup or to prevent the browser from interpreting specific parts of the document."
+          }
+        },
+        {
+          "_text": {
+            "text": "Using HTML form validation and the Constraint Validation API"
+          }
+        },
+        {
+          "_text": {
+            "text": "HTML5 introduced constraint validation to ease form validation on the client side. Basic constraints can be checked without JavaScript by setting attributes on form elements."
+          }
+        },
+        {
+          "_text": {
+            "text": "Content categories"
+          }
+        },
+        {
+          "_text": {
+            "text": "HTML is comprised of several kinds of content, each of which is allowed to be used in certain contexts and is disallowed in others. Similarly, each context has a set of other content categories it can contain and elements that can or can't be used in them. This is a guide to these categories."
+          }
+        },
+        {
+          "_text": {
+            "text": "Using date and time formats in HTML"
+          }
+        },
+        {
+          "_text": {
+            "text": "Certain HTML elements use date and/or time values. This guide describes the formats of the strings that specify these values."
+          }
+        },
+        {
+          "_text": {
+            "text": "Using microdata in HTML"
+          }
+        },
+        {
+          "_text": {
+            "text": "Microdata is used to nest metadata within existing content on web pages. Search engines and web crawlers can extract and process microdata to provide a richer browsing experience."
+          }
+        },
+        {
+          "_text": {
+            "text": "Using microformats in HTML"
+          }
+        },
+        {
+          "_text": {
+            "text": "Microformats are standards used to embed semantics and structured data in HTML for use by social web applications, search engines, aggregators, and other tools."
+          }
+        },
+        {
+          "_text": {
+            "text": "Understanding quirks and standards modes"
+          }
+        },
+        {
+          "_text": {
+            "text": "Historical information on quirks mode and standards mode."
+          }
+        },
+        {
+          "_text": {
+            "text": "Using responsive images in HTML"
+          }
+        },
+        {
+          "_text": {
+            "text": "Learn about responsive images that work well on devices with widely differing screen sizes, resolutions, and other features, improving performance across different devices."
+          }
+        },
+        {
+          "_text": {
+            "text": "Media types and formats on the web"
+          }
+        },
+        {
+          "_text": {
+            "text": "The <audio> and <video> elements allow you to play audio and video media natively within your content without the need for external software support."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "How to [draft]",
+      "_title": {
+        "text": "How to"
+      },
+      "_summary": {
+        "text": "Define terms with HTML"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "HTML provides several ways to convey description semantics, whether inline or as structured glossaries. This article shows how to properly mark up keywords when defining them."
+          }
+        },
+        {
+          "_text": {
+            "text": "Use data attributes"
+          }
+        },
+        {
+          "_text": {
+            "text": "HTML5 is designed with extensibility in mind for data that should be associated with a particular element but need not have any defined meaning. data-* attributes allow us to store extra information on standard, semantic HTML elements."
+          }
+        },
+        {
+          "_text": {
+            "text": "Use cross-origin images in a canvas"
+          }
+        },
+        {
+          "_text": {
+            "text": "Some HTML elements that provide support for CORS, such as <img> or <video>, have a crossorigin attribute (crossOrigin property), which lets you configure the CORS requests for the element's fetched data."
+          }
+        },
+        {
+          "_text": {
+            "text": "Add a hitmap on top of an image"
+          }
+        },
+        {
+          "_text": {
+            "text": "Image maps allow hyperlinks to be associated with different parts of an image. This article shows how to create and implement them."
+          }
+        },
+        {
+          "_text": {
+            "text": "Author fast-loading HTML pages"
+          }
+        },
+        {
+          "_text": {
+            "text": "These tips are based on common knowledge and experimentation. An optimized web page not only provides for a more responsive site for your visitors but also reduces the load on your web servers and internet connection."
+          }
+        },
+        {
+          "_text": {
+            "text": "Add JavaScript to your web page"
+          }
+        },
+        {
+          "_text": {
+            "text": "This article explains how to add JavaScript code to an HTML file."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Reference [draft]",
+      "_title": {
+        "text": "Reference"
+      },
+      "_summary": {
+        "text": "HTML elements"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "HTML consists of elements, each of which may be modified by some number of attributes. HTML documents are connected to each other with links. Browse the complete HTML reference documentation."
+          }
+        },
+        {
+          "_text": {
+            "text": "Reference for all HTML elements."
+          }
+        },
+        {
+          "_text": {
+            "text": "HTML attributes"
+          }
+        },
+        {
+          "_text": {
+            "text": "Reference for all HTML attributes. Attributes are additional values that configure elements or adjust their behavior in various ways."
+          }
+        },
+        {
+          "_text": {
+            "text": "Global attributes"
+          }
+        },
+        {
+          "_text": {
+            "text": "Reference for global attributes that may be specified on all HTML elements, even those not specified in the standard. This means that any non-standard elements must still permit these attributes, even though those elements make the document HTML5-noncompliant."
+          }
+        },
+        {
+          "_intent": "Attributes by element [draft]",
+          "_title": {
+            "text": "Attributes by element"
+          },
+          "_summary": {
+            "text": "Input types"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Used to create interactive controls for web-based forms."
+              }
+            },
+            {
+              "_text": {
+                "text": "Script types"
+              }
+            },
+            {
+              "_text": {
+                "text": "Indicates the type of script represented by the element."
+              }
+            },
+            {
+              "_text": {
+                "text": "meta name"
+              }
+            },
+            {
+              "_text": {
+                "text": "Provides metadata in name-value pairs for the whole page."
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Attribute values [draft]",
+          "_title": {
+            "text": "Attribute values"
+          },
+          "_summary": {
+            "text": "rel keywords"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Defines the relationship between a linked resource and the current document."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Related topics [draft]",
+      "_title": {
+        "text": "Related topics"
+      },
+      "_summary": {
+        "text": "Applying color to HTML elements using CSS"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "This article covers most of the ways you use CSS to add color to HTML content, listing what parts of HTML documents can be colored and what CSS properties to use when doing so."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Help improve MDN [draft]",
+      "_title": {
+        "text": "Help improve MDN"
+      },
+      "_summary": {
+        "text": "This page was last modified on Sep 11, 2026 by MDN contributors."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/MDN/Community/Getting_started",
+            "label": "Learn how to contribute"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/mdn/content/blob/main/files/en-us/web/html/index.md?plain=1",
+            "label": "View this page on GitHub (external)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/mdn/content/issues/new?template=page-report.yml&mdn-url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FHTML&metadata=%3C%21--+Do+not+make+changes+below+this+line+--%3E%0A%3Cdetails%3E%0A%3Csummary%3EPage+report+details%3C%2Fsummary%3E%0A%0A*+Folder%3A+%60en-us%2Fweb%2Fhtml%60%0A*+MDN+URL%3A+https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FHTML%0A*+GitHub+URL%3A+https%3A%2F%2Fgithub.com%2Fmdn%2Fcontent%2Fblob%2Fmain%2Ffiles%2Fen-us%2Fweb%2Fhtml%2Findex.md%0A*+Last+commit%3A+https%3A%2F%2Fgithub.com%2Fmdn%2Fcontent%2Fcommit%2F8e2fe58f37aad757276d6bfdfa8f2a57aac73749%0A*+Document+last+modified%3A+2026-09-11T01%3A19%3A47.000Z%0A%0A%3C%2Fdetails%3E",
+            "label": "Report a problem with this content (external)"
+          }
+        }
+      ]
+    }
+  ]
+}

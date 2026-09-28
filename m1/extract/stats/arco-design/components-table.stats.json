@@ -1,0 +1,240 @@
+{
+  "site": "arco-design",
+  "page": "components-table",
+  "url": "https://arco.design/react/components/table",
+  "title": "表格 Table | ArcoDesign",
+  "sourceNodes": 18065,
+  "counts": {
+    "storylines": 39,
+    "items": 283,
+    "actions": 69,
+    "exposes": 11,
+    "images": 0,
+    "facts": 32,
+    "tables": 31,
+    "lists": 25,
+    "choiceSets": 0,
+    "inputs": 11,
+    "dupeText": 28,
+    "capHits": []
+  },
+  "storylines": 39,
+  "chrome": [
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 333,
+      "examples": [
+        "Name: Jane Doe",
+        "Name: Alisa Ross",
+        "Name: Kevin Sandra",
+        "Name: Ed Hellen",
+        "Name: William Smith"
+      ]
+    },
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 11,
+      "examples": [
+        "import React from 'react'; import { Table, TableColumnProps } fr",
+        "import React, { useState, useRef, useEffect, useContext, useCall",
+        "import React, { useRef } from 'react'; import { Table, Button, T",
+        "export type ComponentsProps = { table?: any; header?: { operatio",
+        "export interface SorterInfo { direction?: SortDirection; field?:"
+      ]
+    },
+    {
+      "kind": "combobox-select",
+      "role": "combobox",
+      "count": 4,
+      "examples": [
+        "Hover to Open",
+        "Toggle light/dark theme",
+        "Toggle lrt/rtl layout",
+        "10 条/页"
+      ]
+    },
+    {
+      "kind": "table-without-headers",
+      "role": "table",
+      "count": 4,
+      "examples": [
+        "Jane Doe | 32 Park Road, London | jane.doe@example.com | Other | Other 1 | Other",
+        "Jane Doe | 23000 | 32 Park Road, London | jane.doe@example.com",
+        "Jane Doe | 23000 | 66 | 5",
+        "Total | 114000 | 429 | 29"
+      ]
+    },
+    {
+      "kind": "table-extra-header-rows",
+      "role": "columnheader",
+      "count": 2,
+      "examples": [
+        "Birthday|Address|Email|Phone",
+        "City|Road|No."
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name"
+    },
+    {
+      "name": "salary",
+      "type": "text",
+      "label": "Salary"
+    },
+    {
+      "name": "address",
+      "type": "text",
+      "label": "Address"
+    },
+    {
+      "name": "email",
+      "type": "text",
+      "label": "Email"
+    },
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "参数名",
+      "example": "ellipsis"
+    },
+    {
+      "name": "expand",
+      "type": "text",
+      "label": "Expand"
+    },
+    {
+      "name": "age",
+      "type": "num",
+      "label": "Age",
+      "example": "18"
+    },
+    {
+      "name": "score-a",
+      "type": "num",
+      "label": "Score A",
+      "example": "100"
+    },
+    {
+      "name": "score-b",
+      "type": "num",
+      "label": "Score B",
+      "example": "60"
+    },
+    {
+      "name": "score-c",
+      "type": "num",
+      "label": "Score C",
+      "example": "70"
+    },
+    {
+      "name": "col-2",
+      "type": "text",
+      "label": "描述",
+      "example": "单元格内容超出长度后，是否自动省略，显示 ...。设置这个属性后，table 的 table-layout 将自动变成 "
+    },
+    {
+      "name": "other",
+      "type": "text",
+      "label": "Other"
+    },
+    {
+      "name": "other-1",
+      "type": "text",
+      "label": "Other 1"
+    },
+    {
+      "name": "other-2",
+      "type": "text",
+      "label": "Other 2"
+    },
+    {
+      "name": "user-info",
+      "type": "text",
+      "label": "User Info",
+      "example": "1994-04-21"
+    },
+    {
+      "name": "information",
+      "type": "text",
+      "label": "Information",
+      "example": "London"
+    },
+    {
+      "name": "gender",
+      "type": "num",
+      "label": "Gender",
+      "example": "34"
+    },
+    {
+      "type": "text",
+      "label": "col-4",
+      "example": "jane.doe@example.com"
+    },
+    {
+      "name": "detail",
+      "type": "text",
+      "label": "Detail",
+      "example": "32 Park Road, London"
+    },
+    {
+      "name": "operation",
+      "type": "text",
+      "label": "Operation",
+      "example": "Confirm"
+    },
+    {
+      "name": "index",
+      "type": "text",
+      "label": "Index",
+      "example": "1"
+    },
+    {
+      "name": "col-3",
+      "type": "text",
+      "label": "类型",
+      "example": "boolean"
+    },
+    {
+      "name": "count",
+      "type": "text",
+      "label": "Count"
+    },
+    {
+      "name": "stars",
+      "type": "text",
+      "label": "Stars"
+    },
+    {
+      "name": "col-4",
+      "type": "text",
+      "label": "默认值",
+      "example": "-"
+    },
+    {
+      "name": "col-5",
+      "type": "text",
+      "label": "版本",
+      "example": "-"
+    }
+  ]
+}

@@ -1,0 +1,4899 @@
+{
+  "_intent": "DatePicker - Ant Design — DatePicker [draft]",
+  "_title": {
+    "text": "DatePicker - Ant Design"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#when-to-use",
+        "label": "When To Use"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#examples",
+        "label": "Examples"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-basic",
+        "label": "Basic"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-range-picker",
+        "label": "Range Picker"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-multiple",
+        "label": "Multiple"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-needconfirm",
+        "label": "Need Confirm"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-switchable",
+        "label": "Switchable picker"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-format",
+        "label": "Date Format"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-time",
+        "label": "Choose Time"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-mask",
+        "label": "Mask Format"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-date-range",
+        "label": "Limit Date Range"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-disabled",
+        "label": "Disabled"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-disabled-date",
+        "label": "Disabled Date & Time"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-allow-empty",
+        "label": "Allow Empty"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-select-in-range",
+        "label": "Select range dates"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-preset-ranges",
+        "label": "Preset Ranges"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-extra-footer",
+        "label": "Extra Footer"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-size",
+        "label": "Three Sizes"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-cell-render",
+        "label": "Customized Cell Rendering"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-components",
+        "label": "Customize Panel"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-external-panel",
+        "label": "External use panel"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-buddhist-era",
+        "label": "Buddhist Era"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-status",
+        "label": "Status"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-variant",
+        "label": "Variants"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-style-class",
+        "label": "Custom semantic dom styling"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-placement",
+        "label": "Placement"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#date-picker-demo-suffix",
+        "label": "Prefix and Suffix"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#api",
+        "label": "API"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#localization",
+        "label": "Localization"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#common-api",
+        "label": "Common API"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#common-methods",
+        "label": "Common Methods"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#datepicker",
+        "label": "DatePicker"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#datepickerpickeryear",
+        "label": "DatePicker[picker=year]"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#datepickerpickerquarter",
+        "label": "DatePicker[picker=quarter]"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#datepickerpickermonth",
+        "label": "DatePicker[picker=month]"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#datepickerpickerweek",
+        "label": "DatePicker[picker=week]"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#rangepicker",
+        "label": "RangePicker"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#semantic-dom",
+        "label": "Semantic DOM"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#design-token",
+        "label": "Design Token"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#faq",
+        "label": "FAQ"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#faq-mode-cannot-select",
+        "label": "When set mode to DatePicker/RangePicker, cannot select year or month anymore?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#faq-year-to-date-panel",
+        "label": "Why does the date picker switch to the date panel after selecting the year instead of the month panel?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#faq-custom-date-library",
+        "label": "How to use DatePicker with customize date library like Moment.js?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#faq-locale-not-work",
+        "label": "Why config dayjs.locale globally not work?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#faq-week-start-day",
+        "label": "How to modify start day of week?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#faq-panel-render-switch",
+        "label": "Why origin panel don't switch when using panelRender?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/date-picker#faq-disabled-date-time",
+        "label": "How to understand disabled time and date?"
+      }
+    },
+    {
+      "_intent": "DatePicker [draft]",
+      "_title": {
+        "text": "DatePicker"
+      }
+    },
+    {
+      "_intent": "When To Use [draft]",
+      "_title": {
+        "text": "When To Use"
+      },
+      "_summary": {
+        "text": "By clicking the input box, you can select a date from a popup calendar."
+      }
+    },
+    {
+      "_intent": "Examples [draft]",
+      "_title": {
+        "text": "Examples"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "down"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "Basic use case. Users can select or input a date in a panel."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "bug"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-date",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-week",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-month",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-quarter",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-year",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/date-picker#date-picker-demo-basic",
+            "label": "Basic"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/basic.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/date-picker-demo-basic?routeId=components%2Fdate-picker%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Expand Icon"
+          }
+        },
+        {
+          "_text": {
+            "text": "+ 2 ..."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/date-picker#date-picker-demo-multiple",
+            "label": "Multiple"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/multiple.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Multiple selections. Does not support showTime and picker=\"time\"."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/date-picker-demo-multiple?routeId=components%2Fdate-picker%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_text": {
+            "text": "5.14.0"
+          }
+        },
+        {
+          "_text": {
+            "text": "Time"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-time",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/date-picker#date-picker-demo-switchable",
+            "label": "Switchable picker"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/switchable.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Switch in different types of pickers by Select."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/date-picker-demo-switchable?routeId=components%2Fdate-picker%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-date-2",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "start-date",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "end-date",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/date-picker#date-picker-demo-time",
+            "label": "Choose Time"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/time.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "This property provides an additional time selection. When showTime is an Object, its properties will be passed on to the built-in TimePicker."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/date-picker-demo-time?routeId=components%2Fdate-picker%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-date-3",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/date-picker#date-picker-demo-date-range",
+            "label": "Limit Date Range"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/date-range.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Limit the range of available dates by using minDate and maxDate."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/date-picker-demo-date-range?routeId=components%2Fdate-picker%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-date-4",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-month-2",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "start-date-2",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "end-date-2",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "start-date-3",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "end-date-3",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/date-picker#date-picker-demo-disabled-date",
+            "label": "Disabled Date & Time"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/disabled-date.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Disable specific dates and times by using disabledDate and disabledTime respectively, and disabledTime only works with showTime."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/date-picker-demo-disabled-date?routeId=components%2Fdate-picker%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "7 days range [draft]",
+          "_title": {
+            "text": "7 days range"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-4",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-4",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "6 months range [draft]",
+          "_title": {
+            "text": "6 months range"
+          },
+          "_datetime": {
+            "date": "2026-09-14"
+          },
+          "_image": {
+            "list": [
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "down"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "smile"
+              },
+              {
+                "image": "",
+                "alt": "smile"
+              },
+              {
+                "image": "",
+                "alt": "smile"
+              },
+              {
+                "image": "",
+                "alt": "smile"
+              },
+              {
+                "image": "",
+                "alt": "smile"
+              },
+              {
+                "image": "",
+                "alt": "smile"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              }
+            ]
+          },
+          "_summary": {
+            "text": "Using info.from of disabledDate to limit the dynamic date range selection."
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-month",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-month",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-select-in-range",
+                "label": "Select range dates"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/select-in-range.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-select-in-range?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Expand Icon"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-5",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-6",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-5",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-5",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-6",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-6",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-month-3",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-extra-footer",
+                "label": "Extra Footer"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/extra-footer.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Render extra footer in panel for customized requirements."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-extra-footer?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-7",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-7",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-7",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-cell-render",
+                "label": "Customized Cell Rendering"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/cell-render.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "We can customize the rendering of the cells in the calendar by providing a cellRender function to DatePicker."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-cell-render?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_text": {
+                "text": "2026-09-14 ~ 2026-09-15"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-external-panel",
+                "label": "External use panel"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/external-panel.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Custom menu, external selection panel."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-external-panel?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-8",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-9",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-8",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-8",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-9",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-9",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-status",
+                "label": "Status"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/status.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Add status to DatePicker with status, which could be error or warning."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-status?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "object",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "function",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-style-class",
+                "label": "Custom semantic dom styling"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/style-class.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "You can customize the semantic dom style of DatePicker by passing objects/functions through classNames and styles."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-style-class?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_text": {
+                "text": "6.0.0"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-10",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-month-4",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-10",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-10",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-week-2",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-11",
+                "type": "text"
+              }
+            },
+            {
+              "_text": {
+                "text": "ab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-month-5",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-11",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-11",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-week-3",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-week-4",
+                "type": "text"
+              }
+            },
+            {
+              "_text": {
+                "text": "Event Period"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-week-5",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-week",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-week",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-week-2",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-week-2",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-suffix",
+                "label": "Prefix and Suffix"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/suffix.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Custom prefix and suffixIcon."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-suffix?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-12",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-12",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-13",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-13",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-week-3",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-week-3",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-month-2",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-month-2",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-quarter",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-quarter",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-year",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-year",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-range-picker",
+                "label": "Range Picker"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/range-picker.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Set range picker type by picker prop."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-range-picker?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-12",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-needconfirm",
+                "label": "Need Confirm"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/needConfirm.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "DatePicker will automatically determine whether to show a confirm button according to the picker property. You can also set the needConfirm property to determine whether to show a confirm button. When"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-needconfirm?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-13",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-14",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-month-6",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-week-6",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-14",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-14",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-15",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-format",
+                "label": "Date Format"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/format.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "We can set the date format by format. When format is an array, the input box can be entered in any of the valid formats of the array."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-format?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-16",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-17",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-mask",
+                "label": "Mask Format"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/mask.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Align the date format. Switch the selection by arrow keys. Will try to align the date to the last valid date when blur."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-mask?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-18",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-month-7",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-15",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-15",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-16",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-16",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-19",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-disabled",
+                "label": "Disabled"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/disabled.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "A disabled state of the DatePicker. You can also set as array to disable one of input."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-disabled?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-17",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "till-now",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-allow-empty",
+                "label": "Allow Empty"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/allow-empty.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Allow empty for the RangePicker. It's useful when you need to keep the \"to date\"."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-allow-empty?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-20",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-18",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-17",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-19",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-18",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-preset-ranges",
+                "label": "Preset Ranges"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/preset-ranges.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "We can set preset ranges to RangePicker to improve user experience. Since 5.8.0, preset value supports callback function."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-preset-ranges?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_text": {
+                "text": "Large"
+              }
+            },
+            {
+              "_text": {
+                "text": "Medium"
+              }
+            },
+            {
+              "_text": {
+                "text": "Small"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-21",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-month-8",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-20",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-19",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-week-7",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-size",
+                "label": "Three Sizes"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/size.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "The input box comes in three sizes: small, medium and large. The medium size will be used if size is omitted."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-size?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-22",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-components",
+                "label": "Customize Panel"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/components.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Replace panel with components."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-components?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "By locale props [draft]",
+          "_title": {
+            "text": "By locale props"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-23",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-24",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "By ConfigProvider [draft]",
+          "_title": {
+            "text": "By ConfigProvider"
+          },
+          "_image": {
+            "list": [
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              }
+            ]
+          },
+          "_summary": {
+            "text": "Use locale to support special calendar format."
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-25",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-26",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-buddhist-era",
+                "label": "Buddhist Era"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/buddhist-era.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-buddhist-era?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Expand Icon"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "outlined",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "outlined-start",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "outlined-end",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "filled",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "filled-start",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "filled-end",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "borderless",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "borderless-start",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "borderless-end",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "underlined",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "underlined-start",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "underlined-end",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-variant",
+                "label": "Variants"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/variant.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Variants of DatePicker, there are four variants: outlined filled borderless and underlined."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-variant?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_text": {
+                "text": "5.13.0"
+              }
+            },
+            {
+              "_text": {
+                "text": "topLeft"
+              }
+            },
+            {
+              "_text": {
+                "text": "topRight"
+              }
+            },
+            {
+              "_text": {
+                "text": "bottomLeft"
+              }
+            },
+            {
+              "_text": {
+                "text": "bottomRight"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "select-date-27",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "start-date-21",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "end-date-20",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/date-picker#date-picker-demo-placement",
+                "label": "Placement"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/date-picker/demo/placement.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "You can manually specify the position of the popup via placement."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/date-picker-demo-placement?routeId=components%2Fdate-picker%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "API [draft]",
+      "_title": {
+        "text": "API"
+      },
+      "_summary": {
+        "text": "Common props ref：Common props"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "There are five kinds of picker:"
+          }
+        },
+        {
+          "_intent": "list (6 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "DatePicker"
+              }
+            },
+            {
+              "_name": {
+                "text": "DatePicker[picker=\"month\"]"
+              }
+            },
+            {
+              "_name": {
+                "text": "DatePicker[picker=\"week\"]"
+              }
+            },
+            {
+              "_name": {
+                "text": "DatePicker[picker=\"year\"]"
+              }
+            },
+            {
+              "_name": {
+                "text": "DatePicker[picker=\"quarter\"] (Added in 4.1.0)"
+              }
+            },
+            {
+              "_name": {
+                "text": "RangePicker"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Localization [draft]",
+          "_title": {
+            "text": "Localization"
+          },
+          "_image": {
+            "image": "",
+            "alt": "exclamation-circle"
+          },
+          "_summary": {
+            "text": "If there are special needs (only modifying single component language), Please use the property: locale. Example: default."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "The default locale is en-US, if you need to use other languages, recommend to use internationalized components provided by us at the entrance. Look at: ConfigProvider."
+              }
+            },
+            {
+              "_text": {
+                "text": "jsx"
+              }
+            },
+            {
+              "_text": {
+                "text": "// The default locale is en-US, if you want to use other locale,"
+              }
+            },
+            {
+              "_text": {
+                "text": "// Make sure you import the relevant dayjs file as well, otherwi"
+              }
+            },
+            {
+              "_text": {
+                "text": "import"
+              }
+            },
+            {
+              "_text": {
+                "text": "locale"
+              }
+            },
+            {
+              "_text": {
+                "text": "from"
+              }
+            },
+            {
+              "_text": {
+                "text": "'antd/locale/zh_CN'"
+              }
+            },
+            {
+              "_text": {
+                "text": "dayjs"
+              }
+            },
+            {
+              "_text": {
+                "text": "'dayjs/locale/zh-cn'"
+              }
+            },
+            {
+              "_text": {
+                "text": "'zh-cn'"
+              }
+            },
+            {
+              "_text": {
+                "text": "ConfigProvider"
+              }
+            },
+            {
+              "_text": {
+                "text": "defaultValue"
+              }
+            },
+            {
+              "_text": {
+                "text": "'2015-01-01'"
+              }
+            },
+            {
+              "_text": {
+                "text": "'YYYY-MM-DD'"
+              }
+            },
+            {
+              "_text": {
+                "text": "/>"
+              }
+            },
+            {
+              "_text": {
+                "text": "</"
+              }
+            },
+            {
+              "_text": {
+                "text": "WARNING"
+              }
+            },
+            {
+              "_text": {
+                "text": "When using the Next.js App Router, make sure to add 'use client' before importing Day.js locale files. This is because all Ant Design components only work on the client side, so importing locale files"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Common API [draft]",
+          "_title": {
+            "text": "Common API"
+          },
+          "_summary": {
+            "text": "The following APIs are shared by DatePicker, RangePicker."
+          },
+          "_lines": [
+            {
+              "_intent": "table (41 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "allowClear"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "classNames"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#semantic-dom",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#semantic-dom",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "dateRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "cellRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "components"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultOpen"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabledDate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "format"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/docs/en/display/format",
+                          "label": "dayjs#format"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#date-picker-demo-format",
+                          "label": "Custom Format"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#formattype",
+                          "label": "formatType"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://github.com/react-component/picker/blob/f512f18ed59d6791280d1c3d7d37abbb9867eb0b/src/utils/uiUtil.ts#L155-L177",
+                          "label": "@rc-component/picker"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "order"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "preserveInvalidOnBlur"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getPopupContainer"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "inputReadOnly"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "locale"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ant-design/ant-design/blob/master/components/date-picker/locale/example.json",
+                    "label": "default"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "minDate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "maxDate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "mode"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/docs/react/faq#when-set-mode-to-datepickerrangepicker-cannot-select-year-or-month-anymore",
+                    "label": "Cannot select year or month anymore?"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "needConfirm"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "nextIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "open"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "panelRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "picker"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placeholder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placement"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prefix"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "presets"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prevIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "previewValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "status"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "style"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "styles"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#semantic-dom",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#semantic-dom",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "suffixIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "superNextIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "superPrevIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clearIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "variant"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onClear"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onOpenChange"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Common Methods [draft]",
+          "_title": {
+            "text": "Common Methods"
+          },
+          "_lines": [
+            {
+              "_intent": "table (2 rows): Name / Description / Version [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "blur()"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "focus()"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "DatePicker [draft]",
+          "_title": {
+            "text": "DatePicker"
+          },
+          "_lines": [
+            {
+              "_intent": "table (15 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "defaultPickerValue"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultValue"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabledTime"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "format"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/docs/en/display/format",
+                          "label": "dayjs#format"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#formattype",
+                          "label": "formatType"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "multiple"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "pickerValue"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "renderExtraFooter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showNow"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showTime"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/time-picker#api",
+                    "label": "TimePicker Options"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showTime.defaultOpenValue"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#date-picker-demo-disabled-date",
+                          "label": "demo"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showWeek"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onOk"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onPanelChange"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "DatePicker[picker=year] [draft]",
+          "_title": {
+            "text": "DatePicker[picker=year]"
+          },
+          "_lines": [
+            {
+              "_intent": "table (7 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "defaultValue"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "format"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/docs/en/display/format",
+                          "label": "dayjs#format"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#formattype",
+                          "label": "formatType"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "multiple"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "renderExtraFooter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tagRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "DatePicker[picker=quarter] [draft]",
+          "_title": {
+            "text": "DatePicker[picker=quarter]"
+          },
+          "_summary": {
+            "text": "Added in 4.1.0."
+          },
+          "_lines": [
+            {
+              "_intent": "table (7 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "defaultValue"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "format"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/docs/en/display/format",
+                          "label": "dayjs#format"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#formattype",
+                          "label": "formatType"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "multiple"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "renderExtraFooter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tagRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "DatePicker[picker=month] [draft]",
+          "_title": {
+            "text": "DatePicker[picker=month]"
+          },
+          "_lines": [
+            {
+              "_intent": "table (7 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "defaultValue"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "format"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/docs/en/display/format",
+                          "label": "dayjs#format"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#formattype",
+                          "label": "formatType"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "multiple"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "renderExtraFooter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tagRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "DatePicker[picker=week] [draft]",
+          "_title": {
+            "text": "DatePicker[picker=week]"
+          },
+          "_lines": [
+            {
+              "_intent": "table (8 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "defaultValue"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "format"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/docs/en/display/format",
+                          "label": "dayjs#format"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#formattype",
+                          "label": "formatType"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "multiple"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "renderExtraFooter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tagRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://day.js.org/",
+                    "label": "dayjs"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showWeek"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "RangePicker [draft]",
+          "_title": {
+            "text": "RangePicker"
+          },
+          "_lines": [
+            {
+              "_intent": "table (20 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "allowEmpty"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "cellRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "dateRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultPickerValue"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultValue"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabledTime"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "format"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/docs/en/display/format",
+                          "label": "dayjs#format"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#formattype",
+                          "label": "formatType"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "id"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "pickerValue"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "presets"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "renderExtraFooter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "separator"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showTime"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/time-picker#api",
+                    "label": "TimePicker Options"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showTime.defaultOpenValue"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/date-picker#date-picker-demo-disabled-date",
+                          "label": "demo"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://day.js.org/",
+                          "label": "dayjs"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onCalendarChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onFocus"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onBlur"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "formatType [draft]",
+          "_title": {
+            "text": "formatType"
+          },
+          "_summary": {
+            "text": "typescript"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "type"
+              }
+            },
+            {
+              "_text": {
+                "text": "Generic"
+              }
+            },
+            {
+              "_text": {
+                "text": "string"
+              }
+            },
+            {
+              "_text": {
+                "text": "GenericFn"
+              }
+            },
+            {
+              "_text": {
+                "text": "value"
+              }
+            },
+            {
+              "_text": {
+                "text": "=>"
+              }
+            },
+            {
+              "_text": {
+                "text": "export"
+              }
+            },
+            {
+              "_text": {
+                "text": "Array"
+              }
+            },
+            {
+              "_text": {
+                "text": "format"
+              }
+            },
+            {
+              "_text": {
+                "text": "'mask'"
+              }
+            },
+            {
+              "_text": {
+                "text": "Note: type is added in 5.14.0."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Semantic DOM [draft]",
+      "_title": {
+        "text": "Semantic DOM"
+      },
+      "_image": {
+        "image": "",
+        "alt": "smile"
+      },
+      "_summary": {
+        "text": "Single"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "select-date-28",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "list (11 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "root Root element with relative positioning, inline-flex layout, padding, border-radius, transition animations and other basic styles for date picker container"
+              }
+            },
+            {
+              "_name": {
+                "text": "prefix Prefix element with flex layout and margin styles for prefix content layout"
+              }
+            },
+            {
+              "_name": {
+                "text": "input Input element with relative positioning, width, color, font, line-height, transition animations and other core interactive styles for input field"
+              }
+            },
+            {
+              "_name": {
+                "text": "suffix Suffix element with flex layout, color, line-height, pointer events, transition animations and other styles for suffix content"
+              }
+            },
+            {
+              "_name": {
+                "text": "popup.root Popup element"
+              }
+            },
+            {
+              "_name": {
+                "text": "popup.container Container element, set background color, padding, border radius, shadow, border and content display styles"
+              }
+            },
+            {
+              "_name": {
+                "text": "popup.header Popup header element with navigation buttons, month/year selectors and other header control area layout and styles"
+              }
+            },
+            {
+              "_name": {
+                "text": "popup.body Popup body element with container layout and styles for date panel table"
+              }
+            },
+            {
+              "_name": {
+                "text": "popup.content Popup content element with width, border, cell and other content display styles for date table"
+              }
+            },
+            {
+              "_name": {
+                "text": "popup.item Popup item element with size, background, border-radius, hover state, selected state and other interactive styles for date cells"
+              }
+            },
+            {
+              "_name": {
+                "text": "popup.footer Popup footer element with layout styles for bottom operation area including confirm/cancel buttons and shortcuts"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Design Token [draft]",
+      "_title": {
+        "text": "Design Token"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "right"
+          },
+          {
+            "image": "",
+            "alt": "right"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "How to use?"
+      },
+      "_lines": [
+        {
+          "_intent": "table (40 rows): Token Name / Description / Type [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "activeBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "activeBorderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "activeShadow"
+              }
+            },
+            {
+              "_name": {
+                "text": "addonBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellActiveWithRangeBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellBgDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellHeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellHoverBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellHoverWithRangeBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellRangeBorderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellWidth"
+              }
+            },
+            {
+              "_name": {
+                "text": "errorActiveShadow"
+              }
+            },
+            {
+              "_name": {
+                "text": "hoverBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "hoverBorderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "inputFontSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "inputFontSizeLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "inputFontSizeSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "multipleItemBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "multipleItemBorderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "multipleItemBorderColorDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "multipleItemColorDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "multipleItemHeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "multipleItemHeightLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "multipleItemHeightSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "multipleSelectorBgDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingBlock"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingBlockLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingBlockSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingInline"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingInlineLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingInlineSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "presetsMaxWidth"
+              }
+            },
+            {
+              "_name": {
+                "text": "presetsWidth"
+              }
+            },
+            {
+              "_name": {
+                "text": "textHeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "timeCellHeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "timeColumnHeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "timeColumnWidth"
+              }
+            },
+            {
+              "_name": {
+                "text": "warningActiveShadow"
+              }
+            },
+            {
+              "_name": {
+                "text": "withoutTimeCellHeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "zIndexPopup"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (63 rows): Token Name / Description / Type [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "colorBgContainer"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorBgContainerDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorBgElevated"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorBorder"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorBorderDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorError"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorAffix"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorBgHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorBorderHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorText"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorFillSecondary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorFillTertiary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorIcon"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorIconHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorPrimary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorPrimaryBorder"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorSplit"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorText"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextHeading"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextLightSolid"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextPlaceholder"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextQuaternary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextTertiary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorWarning"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorWarningAffix"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorWarningBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorWarningBgHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorWarningBorderHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorWarningText"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadius"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadiusLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadiusSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadiusXS"
+              }
+            },
+            {
+              "_name": {
+                "text": "boxShadowSecondary"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlHeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlHeightLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlHeightSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlItemBgActive"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "FAQ [draft]",
+      "_title": {
+        "text": "FAQ"
+      },
+      "_lines": [
+        {
+          "_intent": "When set mode to DatePicker/RangePicker, cannot select year or month anymore? [draft]",
+          "_title": {
+            "text": "When set mode to DatePicker/RangePicker, cannot select year or month anymore?"
+          },
+          "_summary": {
+            "text": "Please refer FAQ"
+          }
+        },
+        {
+          "_intent": "Why does the date picker switch to the date panel after selecting the year instead of the month panel? [draft]",
+          "_title": {
+            "text": "Why does the date picker switch to the date panel after selecting the year instead of the month panel?"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "After selecting the year, the system directly switches to the date panel instead of month panel. This design is intended to reduce the user's operational burden by allowing them to complete the year m"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "How to use DatePicker with customize date library like Moment.js? [draft]",
+          "_title": {
+            "text": "How to use DatePicker with customize date library like Moment.js?"
+          },
+          "_summary": {
+            "text": "Please refer Use custom date library"
+          }
+        },
+        {
+          "_intent": "Why config dayjs.locale globally not work? [draft]",
+          "_title": {
+            "text": "Why config dayjs.locale globally not work?"
+          },
+          "_summary": {
+            "text": "DatePicker default set locale as en in v4. You can config DatePicker locale prop or ConfigProvider locale prop instead."
+          }
+        },
+        {
+          "_intent": "Date-related components locale is not working? [draft]",
+          "_title": {
+            "text": "Date-related components locale is not working?"
+          },
+          "_summary": {
+            "text": "See FAQ Date-related-components-locale-is-not-working?"
+          }
+        },
+        {
+          "_intent": "How to modify start day of week? [draft]",
+          "_title": {
+            "text": "How to modify start day of week?"
+          },
+          "_summary": {
+            "text": "Please use correct language (#5605), or update dayjs locale config:"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://codesandbox.io/s/dayjs-day-of-week-x9tuj2?file=/demo.tsx",
+                "label": "https://codesandbox.io/s/dayjs-day-of-week-x9tuj2?file=/demo.tsx"
+              }
+            },
+            {
+              "_text": {
+                "text": "js"
+              }
+            },
+            {
+              "_text": {
+                "text": "updateLocale"
+              }
+            },
+            {
+              "_text": {
+                "text": "'dayjs/plugin/updateLocale'"
+              }
+            },
+            {
+              "_text": {
+                "text": "extend"
+              }
+            },
+            {
+              "_text": {
+                "text": "weekStart"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Why origin panel don't switch when using panelRender? [draft]",
+          "_title": {
+            "text": "Why origin panel don't switch when using panelRender?"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "When you change the layout of nodes by panelRender, React will unmount and re-mount it which reset the component state. You should keep the layout stable. Please ref #27263 for more info."
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "How to understand disabled time and date? [draft]",
+          "_title": {
+            "text": "How to understand disabled time and date?"
+          },
+          "_summary": {
+            "text": "Please refer to the blog 'Why is it so hard to disable the date?', to learn how to use it."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "contributors"
+              }
+            },
+            {
+              "_intent": "list (40 items) [draft]",
+              "_items": [
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/QDyanbing",
+                    "label": "QDyanbing"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/lonewolfyx",
+                    "label": "lonewolfyx"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/NoiseFan",
+                    "label": "NoiseFan"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ug-one",
+                    "label": "ug-one"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/guoyunhe",
+                    "label": "guoyunhe"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/aojunhao123",
+                    "label": "aojunhao123"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/coding-ice",
+                    "label": "coding-ice"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/meet-student",
+                    "label": "meet-student"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/EmilyyyLiu",
+                    "label": "EmilyyyLiu"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/thinkasany",
+                    "label": "thinkasany"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/17hz",
+                    "label": "17hz"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/wanpan11",
+                    "label": "wanpan11"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/afc163",
+                    "label": "afc163"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/li-jia-nan",
+                    "label": "li-jia-nan"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ustcfury",
+                    "label": "ustcfury"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/crazyair",
+                    "label": "crazyair"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/zombieJ",
+                    "label": "zombieJ"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/vagusX",
+                    "label": "vagusX"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Jeelex",
+                    "label": "Jeelex"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/thecuvii",
+                    "label": "thecuvii"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/MadCcc",
+                    "label": "MadCcc"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/zbw-zbw",
+                    "label": "zbw-zbw"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/poyiding",
+                    "label": "poyiding"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/kiner-tang",
+                    "label": "kiner-tang"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Wxh16144",
+                    "label": "Wxh16144"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/dayzKo1",
+                    "label": "dayzKo1"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/linxianxi",
+                    "label": "linxianxi"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/stefan-ysh",
+                    "label": "stefan-ysh"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/heiyu4585",
+                    "label": "heiyu4585"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/yoyo837",
+                    "label": "yoyo837"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Lioness100",
+                    "label": "Lioness100"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/PeachScript",
+                    "label": "PeachScript"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/chunsch",
+                    "label": "chunsch"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/iamkun",
+                    "label": "iamkun"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ONLY-yours",
+                    "label": "ONLY-yours"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Oreoz",
+                    "label": "Oreoz"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/LookRain",
+                    "label": "LookRain"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/hengkx",
+                    "label": "hengkx"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/AlanCutFlim",
+                    "label": "AlanCutFlim"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/kerm1it",
+                    "label": "kerm1it"
+                  }
+                }
+              ]
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/color-picker",
+                "label": "left ColorPicker"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/form",
+                "label": "Form right"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Resources [draft]",
+      "_title": {
+        "text": "Resources"
+      },
+      "_summary": {
+        "text": "Landing Templates"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://x.ant.design/",
+            "label": "Ant Design X"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://charts.ant.design/",
+            "label": "Ant Design Charts"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://pro.ant.design/",
+            "label": "Ant Design Pro"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://procomponents.ant.design/",
+            "label": "Pro Components"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://mobile.ant.design/",
+            "label": "Ant Design Mobile"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://mini.ant.design/",
+            "label": "Ant Design Mini"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://web3.ant.design/",
+            "label": "Ant Design Web3"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://landing.ant.design/",
+            "label": "Ant Design Landing"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://scaffold.ant.design/",
+            "label": "Scaffolds"
+          }
+        },
+        {
+          "_text": {
+            "text": "Scaffold Market"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://umijs.org/",
+            "label": "Umi"
+          }
+        },
+        {
+          "_text": {
+            "text": "React Application Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://d.umijs.org/",
+            "label": "dumi"
+          }
+        },
+        {
+          "_text": {
+            "text": "Component doc generator"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://qiankun.umijs.org/",
+            "label": "qiankun"
+          }
+        },
+        {
+          "_text": {
+            "text": "Micro-Frontends Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://motion.ant.design/",
+            "label": "Ant Motion"
+          }
+        },
+        {
+          "_text": {
+            "text": "Motion Solution"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant-design.antgroup.com/",
+            "label": "China Mirror 🇨🇳"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Community [draft]",
+      "_title": {
+        "text": "Community"
+      },
+      "_summary": {
+        "text": "Experience Tech Conference"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/websemantics/awesome-ant-design",
+            "label": "ant-design Awesome Ant Design"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://medium.com/ant-design/",
+            "label": "medium Medium"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://x.com/antdesignui",
+            "label": "x X"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://yuque.com/ant-design/ant-design",
+            "label": "yuque logo Ant Design in YuQue"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.zhihu.com/column/c_1564262000561106944",
+            "label": "zhihu Ant Design in Zhihu"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.zhihu.com/column/c_1543658574504751104",
+            "label": "zhihu Experience Cloud Blog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://seeconf.antfin.com/",
+            "label": "seeconf logo SEE Conf"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Help [draft]",
+      "_title": {
+        "text": "Help"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design",
+            "label": "github GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/changelog",
+            "label": "history Change Log"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/docs/react/faq",
+            "label": "question-circle FAQ"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/docs/react/for-agents.md",
+            "label": "robot For Agents"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://new-issue.ant.design/",
+            "label": "bug Bug Report"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/issues",
+            "label": "issues-close Issues"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/discussions",
+            "label": "message Discussions"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://stackoverflow.com/questions/tagged/antd",
+            "label": "question-circle StackOverflow"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://segmentfault.com/t/antd",
+            "label": "question-circle SegmentFault"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Ant XTech logo More Products [draft]",
+      "_title": {
+        "text": "Ant XTech logo More Products"
+      },
+      "_summary": {
+        "text": "Document Collaboration Platform"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://yuque.com/",
+            "label": "yuque logo YuQue"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://antv.antgroup.com/",
+            "label": "AntV logo AntV"
+          }
+        },
+        {
+          "_text": {
+            "text": "Data Visualization"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://eggjs.org/",
+            "label": "Egg logo Egg"
+          }
+        },
+        {
+          "_text": {
+            "text": "Enterprise Node.js Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://kitchen.alipay.com/",
+            "label": "Kitchen logo Kitchen"
+          }
+        },
+        {
+          "_text": {
+            "text": "Sketch Toolkit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://galacean.antgroup.com/",
+            "label": "Galacean logo Galacean"
+          }
+        },
+        {
+          "_text": {
+            "text": "Interactive Graphics Solution"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://weavefox.cn/",
+            "label": "WeaveFox logo WeaveFox"
+          }
+        },
+        {
+          "_text": {
+            "text": "AI Development with WeaveFox 🦊"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://xtech.antfin.com/",
+            "label": "xtech logo Ant Financial Experience Tech"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/theme-editor",
+            "label": "bg-colors Theme Editor"
+          }
+        },
+        {
+          "_text": {
+            "text": "Ant Group and Ant Design Community"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "site": "apple-com",
+  "page": "home",
+  "url": "https://www.apple.com/",
+  "title": "Apple",
+  "sourceNodes": 1506,
+  "counts": {
+    "storylines": 11,
+    "items": 16,
+    "actions": 35,
+    "exposes": 0,
+    "images": 3,
+    "facts": 12,
+    "tables": 0,
+    "lists": 2,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 2,
+    "capHits": []
+  },
+  "storylines": 11,
+  "chrome": [
+    {
+      "role": "complementary",
+      "count": 1
+    },
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "tabs",
+      "role": "tablist",
+      "count": 1,
+      "examples": [
+        "Item 1 Item 2 Item 3 Item 4 Item 5 Item 6 Item 7 Item 8 Item 9"
+      ]
+    }
+  ],
+  "fieldsDrafted": []
+}

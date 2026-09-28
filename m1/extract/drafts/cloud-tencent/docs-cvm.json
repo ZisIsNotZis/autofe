@@ -1,0 +1,665 @@
+{
+  "_intent": "云服务器简介_云服务器购买指南_云服务器操作指南-腾讯云 — 云服务器 [draft]",
+  "_title": {
+    "text": "云服务器简介_云服务器购买指南_云服务器操作指南-腾讯云"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/document/product/213",
+        "label": "云服务器"
+      }
+    },
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input",
+        "type": "text"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/document/product/213/44971",
+        "label": "新手指引"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "动态与公告"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "产品简介"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "购买指南"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "快速入门"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "操作指南"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "实践教程"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/document/product/213/90264",
+        "label": "第三方教程"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "运维指南"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "故障处理"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "API 文档"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "常见问题"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "视频专区"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "相关协议"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/document/product/213/58600",
+        "label": "联系我们"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/document/product/213/18553",
+        "label": "词汇表"
+      }
+    },
+    {
+      "_intent": "list (6 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "文档中心"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://cloud.tencent.com/document/product",
+            "label": "文档中心"
+          }
+        },
+        {
+          "_name": {
+            "text": "入门中心"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://cloud.tencent.com/guide",
+            "label": "入门中心"
+          }
+        },
+        {
+          "_name": {
+            "text": "API 中心"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://cloud.tencent.com/document/api",
+            "label": "API 中心"
+          }
+        },
+        {
+          "_name": {
+            "text": "SDK 中心"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://cloud.tencent.com/document/sdk",
+            "label": "SDK 中心"
+          }
+        },
+        {
+          "_name": {
+            "text": "文档活动"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://cloud.tencent.com/document/act",
+            "label": "文档活动"
+          }
+        },
+        {
+          "_name": {
+            "text": "我的反馈"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "我的反馈"
+          }
+        }
+      ]
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.workbuddy.cn/",
+        "label": "帮你快速理解、总结文档 立即下载"
+      }
+    },
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input-2",
+        "type": "text"
+      }
+    },
+    {
+      "_intent": "云服务器 [draft]",
+      "_title": {
+        "text": "云服务器"
+      },
+      "_image": {
+        "image": "",
+        "alt": "云服务器"
+      },
+      "_lines": [
+        {
+          "_intent": "了解 [draft]",
+          "_title": {
+            "text": "了解"
+          }
+        },
+        {
+          "_intent": "产品简介 [draft]",
+          "_title": {
+            "text": "产品简介"
+          },
+          "_lines": [
+            {
+              "_intent": "list (6 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "云服务器概述"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/495",
+                    "label": "云服务器概述"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "地域与可用区"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/6091",
+                    "label": "地域与可用区"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "功能与优势"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/3036",
+                    "label": "功能与优势"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "实例规格"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/11518",
+                    "label": "实例规格"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "网络与安全"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/5220",
+                    "label": "网络与安全"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "视频集合"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/18705",
+                    "label": "视频集合"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "进阶实践 [draft]",
+          "_title": {
+            "text": "进阶实践"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "快速入门"
+              }
+            },
+            {
+              "_intent": "list (3 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "1注册与认证 注册腾讯云账号"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "label": "1注册与认证"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "2创建云服务器 快速配置 Linux 云服务器 快速配置 Windows 云服务器"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "label": "2创建云服务器"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "3登录云服务器 登录 Linux 实例 登录 Windows 实例"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "label": "3登录云服务器"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "操作指南 [draft]",
+          "_title": {
+            "text": "操作指南"
+          },
+          "_lines": [
+            {
+              "_intent": "list (6 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "使用限制总览"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/15379",
+                    "label": "使用限制总览"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "调整实例配置"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/2178",
+                    "label": "调整实例配置"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "重置实例密码"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/16566",
+                    "label": "重置实例密码"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "获取公网 IP"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/17940",
+                    "label": "获取公网 IP"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "监控与告警"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/5178",
+                    "label": "监控与告警"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "访问管理示例"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/10312",
+                    "label": "访问管理示例"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "最佳实践 [draft]",
+          "_title": {
+            "text": "最佳实践"
+          },
+          "_lines": [
+            {
+              "_intent": "list (4 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "手动搭建 Discuz! 论坛"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/9753",
+                    "label": "手动搭建 Discuz! 论坛"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "手动搭建 WordPress 个人站点（Linux）"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/9740",
+                    "label": "手动搭建 WordPress 个人站点（Linux）"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "镜像部署 LNMP 环境"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/38053",
+                    "label": "镜像部署 LNMP 环境"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "设置 NTP 服务"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/30392",
+                    "label": "设置 NTP 服务"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "开发者资源 [draft]",
+          "_title": {
+            "text": "开发者资源"
+          }
+        },
+        {
+          "_intent": "API 文档 [draft]",
+          "_title": {
+            "text": "API 文档"
+          },
+          "_lines": [
+            {
+              "_intent": "list (6 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "接口总览"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/15689",
+                    "label": "接口总览"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "调用方式"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/15691",
+                    "label": "调用方式"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "创建实例"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/15730",
+                    "label": "创建实例"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "创建密钥对"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/15702",
+                    "label": "创建密钥对"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "专用宿主机"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/16473",
+                    "label": "专用宿主机"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "错误码"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/30435",
+                    "label": "错误码"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "热点问题 [draft]",
+          "_title": {
+            "text": "热点问题"
+          },
+          "_summary": {
+            "text": "文档内容是否对您有帮助？"
+          },
+          "_lines": [
+            {
+              "_intent": "list (7 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "云服务器如何购买？"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/506",
+                    "label": "云服务器如何购买？"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "无法登录云服务器？"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/34534",
+                    "label": "无法登录云服务器？"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "云服务器如何安装宝塔？"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/45550",
+                    "label": "云服务器如何安装宝塔？"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "云服务器续费有折扣吗？"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/17283#91caab62-8342-4e9d-ba35-d913791003e2",
+                    "label": "云服务器续费有折扣吗？"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "云服务器被安全隔离如何处理？"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/10318",
+                    "label": "云服务器被安全隔离如何处理？"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "如何调整云服务器配置？"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/2178",
+                    "label": "如何调整云服务器配置？"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "更多"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://cloud.tencent.com/document/product/213/107261",
+                    "label": "更多"
+                  }
+                }
+              ]
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "javascript:;",
+                "label": "有帮助"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "javascript:;",
+                "label": "没帮助"
+              }
+            },
+            {
+              "_text": {
+                "text": "如果遇到产品相关问题，您可咨询 在线客服寻求帮助。"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "中国站"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

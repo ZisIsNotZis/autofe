@@ -1,0 +1,122 @@
+{
+  "site": "ant-design",
+  "page": "components-date-picker",
+  "url": "https://ant.design/components/date-picker",
+  "title": "DatePicker - Ant Design",
+  "sourceNodes": 5551,
+  "counts": {
+    "storylines": 33,
+    "items": 243,
+    "actions": 260,
+    "exposes": 116,
+    "images": 87,
+    "facts": 108,
+    "tables": 10,
+    "lists": 3,
+    "choiceSets": 0,
+    "inputs": 116,
+    "dupeText": 99,
+    "capHits": [
+      "itemsPerCollection"
+    ]
+  },
+  "storylines": 33,
+  "chrome": [
+    {
+      "role": "banner",
+      "count": 1
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "LayoutTable",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 335,
+      "examples": [
+        "Version: 5.8.0: Support object type",
+        "Global Config: 6.4.0",
+        "Global Config: DatePicker: 5.7.0, RangePicker: 5.11.0",
+        "Global Config: DatePicker: 5.25.0, RangePicker: 5.25.0",
+        "Version: < 5.4.0"
+      ]
+    },
+    {
+      "kind": "list-item-unlabeled",
+      "role": "listitem",
+      "count": 40,
+      "examples": []
+    },
+    {
+      "kind": "tabs",
+      "role": "tablist",
+      "count": 1,
+      "examples": [
+        "Development Design"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "property",
+      "type": "text",
+      "label": "Property",
+      "example": "allowEmpty"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "Container background color, e.g: default button, input box, "
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "label": "Type",
+      "example": "string"
+    },
+    {
+      "name": "default",
+      "type": "text",
+      "label": "Default",
+      "example": "[false, false]"
+    },
+    {
+      "name": "version",
+      "type": "text",
+      "label": "Version",
+      "example": "5.4.0"
+    },
+    {
+      "name": "global-config",
+      "type": "text",
+      "label": "Global Config",
+      "example": "×"
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name",
+      "example": "blur()"
+    },
+    {
+      "name": "token-name",
+      "type": "text",
+      "label": "Token Name",
+      "example": "colorBgContainer"
+    },
+    {
+      "name": "default-value",
+      "type": "text",
+      "label": "Default Value",
+      "example": "#ffffff"
+    }
+  ]
+}

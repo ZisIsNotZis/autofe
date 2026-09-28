@@ -1,0 +1,754 @@
+{
+  "_intent": "阿北 — 阿北 less is more [draft]",
+  "_title": {
+    "text": "阿北"
+  },
+  "_summary": {
+    "text": "搜索： 搜索你感兴趣的内容和人..."
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://accounts.douban.com/passport/login?source=main",
+        "label": "登录/注册"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.douban.com/doubanapp/app?channel=top-nav",
+        "label": "下载豆瓣客户端"
+      }
+    },
+    {
+      "_intent": "list (11 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "豆瓣"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/",
+            "label": "豆瓣"
+          }
+        },
+        {
+          "_name": {
+            "text": "读书"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/",
+            "label": "读书"
+          }
+        },
+        {
+          "_name": {
+            "text": "电影"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/",
+            "label": "电影"
+          }
+        },
+        {
+          "_name": {
+            "text": "音乐"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/",
+            "label": "音乐"
+          }
+        },
+        {
+          "_name": {
+            "text": "播客"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/podcast/",
+            "label": "播客"
+          }
+        },
+        {
+          "_name": {
+            "text": "同城"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/location",
+            "label": "同城"
+          }
+        },
+        {
+          "_name": {
+            "text": "小组"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group",
+            "label": "小组"
+          }
+        },
+        {
+          "_name": {
+            "text": "阅读"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://read.douban.com/?dcs=top-nav&dcm=douban",
+            "label": "阅读"
+          }
+        },
+        {
+          "_name": {
+            "text": "FM"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://fm.douban.com/?from_=shire_top_nav",
+            "label": "FM"
+          }
+        },
+        {
+          "_name": {
+            "text": "时间"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://time.douban.com/?dt_time_source=douban-web_top_nav",
+            "label": "时间"
+          }
+        },
+        {
+          "_name": {
+            "text": "豆品"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://market.douban.com/?utm_campaign=douban_top_nav&utm_source=douban&utm_medium=pc_web",
+            "label": "豆品"
+          }
+        }
+      ]
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.douban.com/",
+        "label": "豆瓣社区"
+      }
+    },
+    {
+      "_intent": "list (3 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "首页"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/",
+            "label": "首页"
+          }
+        },
+        {
+          "_name": {
+            "text": "浏览发现"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/explore",
+            "label": "浏览发现"
+          }
+        },
+        {
+          "_name": {
+            "text": "话题广场"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/gallery",
+            "label": "话题广场 new"
+          }
+        }
+      ]
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.douban.com/people/ahbei/",
+        "label": "阿北"
+      }
+    },
+    {
+      "_intent": "阿北 less is more [draft]",
+      "_title": {
+        "text": "阿北 less is more"
+      }
+    },
+    {
+      "_intent": "阿北的游戏 · · · · · · ( 想玩1 ) [draft]",
+      "_title": {
+        "text": "阿北的游戏 · · · · · · ( 想玩1 )"
+      },
+      "_summary": {
+        "text": "想玩"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/game/11620741/",
+            "label": "风之旅人 Journey"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "阿北的评论 · · · · · · · · · · ( 评论12 ) [draft]",
+      "_title": {
+        "text": "阿北的评论 · · · · · · · · · · ( 评论12 )"
+      },
+      "_image": {
+        "image": "",
+        "alt": "The Selfish Gene"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/review/2810977/",
+            "label": "关于生命意义的酒后鼓噪"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/people/ahbei/",
+            "label": "阿北"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/1777630/",
+            "label": "The Selfish Gene"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/review/2810977/",
+            "label": "(74回应)"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "阿北的书 · · · · · · ( 60本在读 · 81本想读 · 115本读过 · 15个书单 ) [draft]",
+      "_title": {
+        "text": "阿北的书 · · · · · · ( 60本在读 · 81本想读 · 115本读过 · 15个书单 )"
+      },
+      "_summary": {
+        "text": "在读"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/30403392/",
+            "label": "Exhalation"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/25862578/",
+            "label": "解忧杂货店"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/4728901/",
+            "label": "The Lessons of History"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/30224985/",
+            "label": "The Book of Why"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/26873468/",
+            "label": "From Bacteria to Bach and Back"
+          }
+        },
+        {
+          "_text": {
+            "text": "想读"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/26969582/",
+            "label": "火花"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/27105642/",
+            "label": "回荡的钟摆"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/11907918/",
+            "label": "Daily Rituals"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/3761178/",
+            "label": "One Monster After Another"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/subject/1845935/",
+            "label": "Vagabonding"
+          }
+        },
+        {
+          "_text": {
+            "text": "> 浏览阿北看的杂志(5)"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "阿北的电影 · · · · · · ( 17部在看 · 77部想看 · 218部看过 · 9个片单 ) [draft]",
+      "_title": {
+        "text": "阿北的电影 · · · · · · ( 17部在看 · 77部想看 · 218部看过 · 9个片单 )"
+      },
+      "_summary": {
+        "text": "想看"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/26647117/",
+            "label": "暴裂无声"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/4920389/",
+            "label": "头号玩家"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/27114911/",
+            "label": "猫与桃花源"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/26474254/",
+            "label": "相对宇宙 第一季"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/11502973/",
+            "label": "星际特工：千星之城"
+          }
+        },
+        {
+          "_text": {
+            "text": "看过"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/26752088/",
+            "label": "我不是药神"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/26635329/",
+            "label": "火花"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/26235354/",
+            "label": "权力的游戏 第七季"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/25862357/",
+            "label": "权力的游戏 第六季"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/1889243/",
+            "label": "星际穿越"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "阿北的音乐 · · · · · · ( 21张在听 · 23张想听 · 24张听过 ) [draft]",
+      "_title": {
+        "text": "阿北的音乐 · · · · · · ( 21张在听 · 23张想听 · 24张听过 )"
+      },
+      "_summary": {
+        "text": "在听"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/subject/2040741/",
+            "label": "Jackie McLean - Lights Out!"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/subject/1455793/",
+            "label": "Miles Davis Quintet - Relaxin' with the Miles Davis Quintet"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/subject/3442820/",
+            "label": "Louis Armstrong - The Complete Hot Five and Hot Seven Recordings, Vol. 2"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/subject/1419035/",
+            "label": "Robert Johnson - The Complete Recordings"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/subject/1759007/",
+            "label": "Herbie Hancock - Cantaloupe Island"
+          }
+        },
+        {
+          "_text": {
+            "text": "想听"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/subject/1451477/",
+            "label": "The Raveonettes - Pretty In Black"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/subject/1486172/",
+            "label": "Françoise Hardy - Comment Te Dire Adieu"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/subject/2264960/",
+            "label": "Nomak - Calm"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/subject/6852790/",
+            "label": "王啸坤 - 唱片"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/subject/10428446/",
+            "label": "EXILE Atsushi - Solo"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "阿北的同城活动 · · · · · · ( 24个参加 · 24个感兴趣 ) [draft]",
+      "_title": {
+        "text": "阿北的同城活动 · · · · · · ( 24个参加 · 24个感兴趣 )"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "一次彻底的升级：潮潮豆瓣音乐周 2017年05月18日 周四 20:00-23:30 2017年05月19日 周五 14:00... 北京 东城区 糖果 2278人关注"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/event/28485674/",
+                "label": "一次彻底的升级：潮潮豆瓣音乐周"
+              }
+            },
+            {
+              "_name": {
+                "text": "【路有冻死骨】2011年冬季救助 2011年11月16日 ~ 2012年02月16日 每天17:30-23:30 北京 丰台区 北京南站 1078人关注"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/event/15069059/",
+                "label": "【路有冻死骨】2011年冬季救助"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "阿北的线上活动 · · · · · · ( 全部 ) [draft]",
+      "_title": {
+        "text": "阿北的线上活动 · · · · · · ( 全部 )"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "豆瓣说，再见！ 时间：2011年12月30日 周五 - 2012年2月29日 周三 标签：豆瓣说 下线 阿北 怀念 发起人：LEE-H 1309人参加"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/online/10993945/",
+                "label": "豆瓣说，再见！"
+              }
+            },
+            {
+              "_name": {
+                "text": "就让我一路向北的奔吧 时间：2011年5月11日 周三 - 2011年8月10日 周三 标签：一路向北 找北 创意帝 PS啊 发起人：毛毛 848人参加"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/online/10824177/",
+                "label": "就让我一路向北的奔吧"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "阿北的移动应用 · · · · · · ( 用过3 ) [draft]",
+      "_title": {
+        "text": "阿北的移动应用 · · · · · · ( 用过3 )"
+      },
+      "_summary": {
+        "text": "用过"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/app/11600059/",
+            "label": "Zite (iPhone / iPad)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/app/10770372/",
+            "label": "Things (iPhone / iPad)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/app/11485376/",
+            "label": "Instagram (iPhone / iPad)"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "阿北关注的小站 · · · · · · ( 全部 ) [draft]",
+      "_title": {
+        "text": "阿北关注的小站 · · · · · · ( 全部 )"
+      },
+      "_summary": {
+        "text": "Less is more"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://site.douban.com/wangxiaokun/",
+            "label": "王啸坤"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://site.douban.com/156230/",
+            "label": "简单心理"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://site.douban.com/douban-read/",
+            "label": "豆瓣阅读"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://site.douban.com/106788/",
+            "label": "插画之家"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://site.douban.com/145096/",
+            "label": "北京橙天嘉禾影城凤凰城店"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/people/ahbei/?_i=9742076RIwbiSJ#",
+            "label": "关注此人"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/accounts/register?reason=send-doumail",
+            "label": "发豆邮"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "阿北的广播 · · · · · · ( 全部 ) [draft]",
+      "_title": {
+        "text": "阿北的广播 · · · · · · ( 全部 )"
+      },
+      "_summary": {
+        "text": "- 未登录无法查看更多内容 -"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "> 阿北添加的条目"
+          }
+        },
+        {
+          "_text": {
+            "text": "本页永久链接: https://www.douban.com/people/ahbei/"
+          }
+        },
+        {
+          "_text": {
+            "text": "订阅阿北的收藏: feed: rss 2.0"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript:void(0)",
+            "label": "投诉不良信息"
+          }
+        },
+        {
+          "_text": {
+            "text": "© 2005-2026 douban.com, all rights reserved 北京豆网科技有限公司"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/about",
+            "label": "关于豆瓣"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/jobs",
+            "label": "在豆瓣工作"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/about?topic=contactus",
+            "label": "联系我们"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/about/legal",
+            "label": "法律声明"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://help.douban.com/",
+            "label": "帮助中心"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/",
+            "label": "移动应用"
+          }
+        }
+      ]
+    }
+  ]
+}

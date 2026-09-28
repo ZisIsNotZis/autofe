@@ -1,0 +1,896 @@
+{
+  "_intent": "iPad Air - Apple — iPad Air [draft]",
+  "_title": {
+    "text": "iPad Air - Apple"
+  },
+  "_summary": {
+    "text": "Last chance to get a $100 gift cardΔ when you buy iPad Air with education savings. Ends 9/24. Shop"
+  },
+  "_lines": [
+    {
+      "_intent": "iPad Air [draft]",
+      "_title": {
+        "text": "iPad Air"
+      }
+    },
+    {
+      "_intent": "Whoosh. [draft]",
+      "_title": {
+        "text": "Whoosh."
+      },
+      "_summary": {
+        "text": "<picture class=\"overview-hero-hero-endframe fallback-frame\"> <so"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Now supercharged by M4"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.apple.com/us/shop/goto/buy_ipad/ipad_air",
+            "label": "Buy, iPad Air"
+          }
+        },
+        {
+          "_text": {
+            "text": "From $749 or $62.41/mo. for 12 mo.** Lease from $15.99/mo. for 36 mo. with Apple Upgrade◊"
+          }
+        },
+        {
+          "_text": {
+            "text": "Get the highlights. Watch the film"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Play iPad Air highlights gallery"
+          }
+        },
+        {
+          "_text": {
+            "text": "Take a closer look."
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "<picture class=\"overview-closer-look-all-colors-slide-1A card-image gallery-image-image-1 pin-center-center-small pin-center-center-medium\"> <source srcset=\"/v/"
+              }
+            },
+            {
+              "_name": {
+                "text": "<picture class=\"overview-closer-look-all-colors-slide-2A card-image gallery-image-image-1 pin-bottom-center-small pin-bottom-center-medium\"> <source srcset=\"/v/"
+              }
+            },
+            {
+              "_name": {
+                "text": "<picture class=\"overview-closer-look-all-colors-slide-3A card-image gallery-image-image-1 pin-center-right-medium pin-top-center-small\"> <source srcset=\"/v/ipad"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_action": {
+                "verb": "open",
+                "label": "Previous"
+              }
+            },
+            {
+              "_action": {
+                "verb": "open",
+                "label": "Next"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "All Colors"
+          }
+        },
+        {
+          "_intent": "Select color [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "All Colors"
+              }
+            },
+            {
+              "_name": {
+                "text": "Space Gray"
+              }
+            },
+            {
+              "_name": {
+                "text": "Blue"
+              }
+            },
+            {
+              "_name": {
+                "text": "Purple"
+              }
+            },
+            {
+              "_name": {
+                "text": "Starlight"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "select-color",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "M4. Power up, up, up. [draft]",
+          "_title": {
+            "text": "M4. Power up, up, up."
+          },
+          "_summary": {
+            "text": "<picture class=\"overview-chip-chip-top-endframe fallback-frame\">"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "<picture class=\"overview-chip-chip-middle-top-endframe fallback-"
+              }
+            },
+            {
+              "_text": {
+                "text": "<picture class=\"overview-chip-hero-middle-bottom\"> <source srcse"
+              }
+            },
+            {
+              "_text": {
+                "text": "<picture class=\"overview-chip-hero-bottom\"> <source srcset=\"/v/i"
+              }
+            },
+            {
+              "_text": {
+                "text": "The lightning‑fast M4 chip with 50 percent more unified system memory elevates performance for all the things you love to do on iPad Air. It’s an AI powerhouse, enabling the AI features and capabiliti"
+              }
+            },
+            {
+              "_text": {
+                "text": "2.3x faster"
+              }
+            },
+            {
+              "_text": {
+                "text": "4x faster"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Discover what you can do with the power of M4"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "iPadOS and apps. Fly right through it all. [draft]",
+          "_title": {
+            "text": "iPadOS and apps. Fly right through it all."
+          },
+          "_image": {
+            "image": "",
+            "alt": "Three iPad Air models, front exterior, fanning outward, showcasing different apps and app icons on each screen, colors: starlight, purple, blue"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "iPadOS introduces Liquid Glass, a stunning new design with a vibrant look and game-changing enhancements that put iPad Air productivity on a new level. A reimagined, intuitive windowing system gives y"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Learn more about getting things done with iPad"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Apple Intelligence. Effortlessly helpful every day. [draft]",
+          "_title": {
+            "text": "Apple Intelligence. Effortlessly helpful every day."
+          },
+          "_image": {
+            "list": [
+              {
+                "image": "",
+                "alt": "Landscape view of iPad Air showcasing Apple Intelligence with Image Wand in Notes, Apple Pencil Pro"
+              },
+              {
+                "image": "",
+                "alt": "Landscape view of iPad Air showcasing Apple Intelligence, with Writing Tools and Mail"
+              },
+              {
+                "image": "",
+                "alt": "Landscape view of iPad Air showcasing Apple Intelligence with the Clean up tool in Photos app"
+              }
+            ]
+          },
+          "_summary": {
+            "text": "Image Wand in Notes"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "iPad Air is built for Apple Intelligence, the personal intelligence system that helps you create, communicate, and get things done effortlessly. With groundbreaking privacy protections, it gives you p"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.apple.com/apple-intelligence/",
+                "label": "Learn more about Apple Intelligence"
+              }
+            },
+            {
+              "_text": {
+                "text": "express yourself visually"
+              }
+            },
+            {
+              "_text": {
+                "text": "find just the right words"
+              }
+            },
+            {
+              "_text": {
+                "text": "Writing Tools in Mail"
+              }
+            },
+            {
+              "_text": {
+                "text": "Clean Up in Photos"
+              }
+            },
+            {
+              "_text": {
+                "text": "remove unwanted distractions in your photos"
+              }
+            },
+            {
+              "_text": {
+                "text": "<picture class=\"overview-apple-intelligence-privacy-endframe fal"
+              }
+            },
+            {
+              "_text": {
+                "text": "Apple Intelligence protects your privacy at every step. It’s integrated into the core of iPad through on-device processing, so it’s aware of your personal information without collecting your personal"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Two sizes. Infinite possibilities. [draft]",
+          "_title": {
+            "text": "Two sizes. Infinite possibilities."
+          },
+          "_summary": {
+            "text": "<picture class=\"overview-two-sizes-gallery-toggle-spin-reverse-e"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "11 inch model"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "13 inch model"
+              }
+            },
+            {
+              "_text": {
+                "text": "2360x1640 display resolution"
+              }
+            },
+            {
+              "_text": {
+                "text": "You can choose between an 11-inch and a 13-inch iPad Air, each with a gorgeous, high-resolution Liquid Retina display that brings everything you do to life. Both displays deliver a brilliant, responsi"
+              }
+            },
+            {
+              "_text": {
+                "text": "True Tone"
+              }
+            },
+            {
+              "_text": {
+                "text": "P3"
+              }
+            },
+            {
+              "_text": {
+                "text": "Full lamination"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Connectivity. Far and away faster. [draft]",
+          "_title": {
+            "text": "Connectivity. Far and away faster."
+          },
+          "_measure": {
+            "num": 5,
+            "unit": "G"
+          },
+          "_summary": {
+            "text": "<picture class=\"overview-connectivity-wireless overview-connecti"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Your games, streaming content, and workflows go wherever you do with the better performance and reliability of Wi-Fi 7,8 Bluetooth 6, and Thread — all enabled by N1, our new wireless networking chip."
+              }
+            },
+            {
+              "_text": {
+                "text": "50% faster"
+              }
+            },
+            {
+              "_text": {
+                "text": "Wi-Fi 7"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Apple Pencil Pro. Engineered for limitless creativity. [draft]",
+          "_title": {
+            "text": "Apple Pencil Pro. Engineered for limitless creativity."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Apple Pencil sets the standard for how drawing, painting, handwriting, and note-taking should feel — intuitive, precise, and magical. All with pixel‑perfect precision, low latency, tilt sensitivity, a"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.apple.com/apple-pencil/",
+                "label": "Explore more Apple Pencil features"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "View Apple Pencil Pro in action"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Magic Keyboard. The keys to your best work. [draft]",
+          "_title": {
+            "text": "Magic Keyboard. The keys to your best work."
+          },
+          "_summary": {
+            "text": "<picture class=\"overview-keyboard-magic-keyboard-endframe fallba"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Magic Keyboard — available in black or white — is the perfect companion for iPad Air. It delivers an amazing typing experience and a trackpad for precision tasks in a sleek, portable design. The keybo"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.apple.com/ipad-keyboards/",
+                "label": "Learn more about keyboards for iPad"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Cameras. Capture your imagination. And everything else. [draft]",
+          "_title": {
+            "text": "Cameras. Capture your imagination. And everything else."
+          },
+          "_summary": {
+            "text": "<picture class=\"overview-cameras-cameras-endframe fallback-frame"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Advanced front and back cameras make it easy to shoot and edit incredible content in a snap. Capture audio using the built-in dual mics and play back the rich sound using landscape stereo speakers. An"
+              }
+            },
+            {
+              "_text": {
+                "text": "12MP Center Stage front camera for great video calls"
+              }
+            },
+            {
+              "_text": {
+                "text": "12MP Wide back camera with Smart HDR images and 4K video"
+              }
+            },
+            {
+              "_text": {
+                "text": "Dual mics and stereo speakers for adding rich audio"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Focus in on cameras"
+              }
+            },
+            {
+              "_text": {
+                "text": "Why Apple is the best place to shop iPad. Shop iPad"
+              }
+            },
+            {
+              "_intent": "list (8 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Pay over time, interest‑free. When you choose to check out at Apple with Apple Card Monthly Installments.◊◊"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad-air/#footnote-4",
+                    "label": "Footnote ◊◊ symbol"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Save up to $905 with Apple Trade In. Get credit toward your next iPad when you trade in an eligible device.10"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad-air/#footnote-14",
+                    "label": "Footnote 10"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Save on iPad with education pricing.* College students and educators can save through the Apple Store.*"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad-air/#footnote-1",
+                    "label": "Footnote * symbol"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Get flexible delivery and easy pickup. Choose two‑hour delivery from an Apple Store, free delivery, or easy pickup options."
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Learn more about delivery and pickup options"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Personalize your iPad for free. Engrave your new iPad with a mix of emoji, names, initials, and numbers."
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Learn more about engraving your iPad"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Shop live with a Specialist. Let us guide you live over video and answer all of your questions."
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Learn more about shopping with a Specialist over video"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Join an online Personal Setup session. Talk one on one with a Specialist to set up your iPad and discover new features."
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Learn more about your new iPad"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Explore a shopping experience designed around you. Use the Apple Store app to get a more personal way to shop."
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Learn more about shopping using Apple Store app"
+                  }
+                }
+              ]
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Previous why Apple"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Next why Apple"
+              }
+            },
+            {
+              "_text": {
+                "text": "Keep exploring iPad. Explore all iPad"
+              }
+            },
+            {
+              "_intent": "list (2 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "iPad Air Available in Space gray, Blue, Purple, and Starlight Serious performance in a thin and light design. From $749 or $62.41/mo. for 12 mo.** Lease from $1"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad-air/#footnote-2",
+                    "label": "Footnote ** symbol"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "iPad Pro Available in Space black, and Silver The ultimate iPad experience with the most advanced technology. From $1199 or $99.91/mo. for 12 mo.** Lease from $"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad-air/#footnote-2",
+                    "label": "Footnote ** symbol"
+                  }
+                }
+              ]
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.apple.com/ipad/compare/",
+                "label": "Compare all iPad models"
+              }
+            },
+            {
+              "_text": {
+                "text": "iPad Air and the environment. Learn more in our Product Environmental Report (PDF)"
+              }
+            },
+            {
+              "_intent": "list (3 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Made with 30% recycled material by weight."
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Learn more about recycled material"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Manufactured with 40% renewable electricity."
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Learn more about renewable electricity"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Ships in 100% fiber-based packaging."
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Learn more about packaging"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "Our values lead the way."
+              }
+            },
+            {
+              "_intent": "list (3 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "A plan as innovative as our products. We’re committed to bringing net emissions to zero across our entire carbon footprint by 2030. Learn more about environment"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/environment/",
+                    "label": "Learn more about environment"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Privacy. That’s Apple. Privacy is a fundamental human right. Every product and service is designed to help keep your data safe and secure. Learn more about priv"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/privacy/",
+                    "label": "Learn more about privacy"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Innovation that’s accessible by design. Our products and services are designed for everyone, with built-in features to help you do what you love, your way. Lear"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/accessibility/",
+                    "label": "Learn more about accessibility"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "iPad [draft]",
+      "_title": {
+        "text": "iPad"
+      },
+      "_lines": [
+        {
+          "_intent": "Explore iPad [draft]",
+          "_title": {
+            "text": "Explore iPad"
+          },
+          "_lines": [
+            {
+              "_intent": "list (8 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Explore All iPad"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad/",
+                    "label": "Explore All iPad"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "iPad Pro"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad-pro/",
+                    "label": "iPad Pro"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "iPad Air"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad-air/",
+                    "label": "iPad Air"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "iPad"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad-11/",
+                    "label": "ipad 11"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "iPad mini"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad-mini/",
+                    "label": "iPad mini"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Apple Pencil"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/apple-pencil/",
+                    "label": "Apple Pencil"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Keyboards"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad-keyboards/",
+                    "label": "Keyboards"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Compare iPad"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/ipad/compare/",
+                    "label": "Compare iPad"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Shop iPad [draft]",
+          "_title": {
+            "text": "Shop iPad"
+          },
+          "_lines": [
+            {
+              "_intent": "list (4 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Shop iPad"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/us/shop/goto/buy_ipad",
+                    "label": "Shop iPad"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "iPad Accessories"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/us/shop/goto/ipad/accessories",
+                    "label": "iPad Accessories"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Apple Trade In"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/us/shop/goto/trade_in",
+                    "label": "Apple Trade In"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Financing"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/us/shop/goto/payment_plan",
+                    "label": "Financing"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "More from iPad [draft]",
+          "_title": {
+            "text": "More from iPad"
+          },
+          "_lines": [
+            {
+              "_intent": "list (7 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "iPad Support"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://support.apple.com/ipad?cid=gn-ols-ipad-psp-prodfly",
+                    "label": "iPad Support"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "AppleCare+ for iPad"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/support/products/ipad/",
+                    "label": "AppleCare+ for iPad"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "iPadOS 27"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/os/ipados/",
+                    "label": "iPadOS 27"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Apple Intelligence"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/apple-intelligence/",
+                    "label": "Apple Intelligence"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Apps by Apple"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/apps/",
+                    "label": "Apps by Apple"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "iCloud+"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/icloud/",
+                    "label": "iCloud+"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Education"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.apple.com/education/",
+                    "label": "Education"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
