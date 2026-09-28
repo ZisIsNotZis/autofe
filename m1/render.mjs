@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import {
   isRoleKey, roleOf, resolvePath, resolveWithParent, childrenOf, factsOf,
-  parseExpr, evalExpr, scopeFor,
+  parseExpr, evalExpr, scopeFor, exposeOf,
 } from './model-lib.mjs';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -25,9 +25,9 @@ const factHtml = (role, v) => `<div class="fact fact-${esc(role)}"><span class="
 
 // Renders a node. hide = Map<node, {keys:Set, nodes:Set}> naming facts/subtrees
 // already rendered elsewhere (the _primary hero), so nothing is dropped or duplicated.
-function renderNode(node, chain, isHero, hide) {
+function renderNode(node, chain, isHero, hide, ctx) {
   if (node === null || typeof node !== 'object') return '';
-  const scope = scopeFor([...chain, node]);
+  const scope = { ...ctx.values, ...scopeFor([...chain, node]) };
   if (typeof node._when === 'string') {
     const ast = parseExpr(node._when);
     if (ast.ok && !evalExpr(ast, scope)) return '';
@@ -66,7 +66,7 @@ function renderNode(node, chain, isHero, hide) {
         if (!hide.has(r.holder)) hide.set(r.holder, { keys: new Set(), nodes: new Set() });
         hide.get(r.holder).keys.add(r.lastKey);
       } else {
-        heroHtml = `<div class="hero">${renderNode(r.node, childChain, true, hide)}</div>`;
+        heroHtml = `<div class="hero">${renderNode(r.node, childChain, true, hide, ctx)}</div>`;
         if (!hide.has(r.holder)) hide.set(r.holder, { keys: new Set(), nodes: new Set() });
         hide.get(r.holder).nodes.add(r.node);
       }
@@ -80,10 +80,24 @@ function renderNode(node, chain, isHero, hide) {
   let body = '';
   for (const f of facts) { if (headingKey && f.key === headingKey) continue; body += factHtml(f.role, f.value); }
 
+  const exp = exposeOf(node);
+  if (exp && node._items?.length) {
+    const opts = node._items.map((it, i) => {
+      const v = it._name ?? it._title;
+      const label = v ? fmt(v) : `option ${i + 1}`;
+      const val = v ? v.text : String(i);
+      return `<label class="choice"><input type="radio" name="${esc(exp.name)}" value="${esc(val)}"> ${label}</label>`;
+    }).join('');
+    body += `<fieldset class="expose expose-${esc(exp.name)}"><legend>${esc(exp.name)}</legend>${opts}</fieldset>`;
+  } else if (exp) {
+    body += `<label class="expose expose-${esc(exp.name)}"><span class="role">${esc(exp.name)}</span><input type="text" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></label>`;
+  }
+
   if (kids.length) {
     const parts = [];
     for (const c of kids) {
-      const h = renderNode(c.node, [...chain, node], false, hide);
+      if (exp && c.key.startsWith('_items[')) continue;
+      const h = renderNode(c.node, [...chain, node], false, hide, ctx);
       if (!h) continue;
       if (c.key.startsWith('_lines[')) parts.push(`<section class="line">${h}</section>`);
       else if (c.key.startsWith('_items[')) parts.push(`<div class="item">${h}</div>`);
@@ -103,9 +117,10 @@ function renderNode(node, chain, isHero, hide) {
   return `<article class="${cls.join(' ')}">${heroHtml}${head}${body}${action}</article>`;
 }
 
-export function render(model) {
+export function render(model, context = {}) {
   const hide = new Map();
-  const html = renderNode(model, [], false, hide);
+  const ctx = { values: context.values ?? {} };
+  const html = renderNode(model, [], false, hide, ctx);
   const intent = esc(model._intent ?? '');
   const title = esc(model._title ? fmt(model._title) : (model._intent ?? 'surface'));
   return `<!doctype html>
@@ -133,6 +148,11 @@ h4.intent{margin:.2em 0 .6em;font-weight:500;color:#5b6a78;font-size:.92em}
 .fact{display:flex;gap:10px;align-items:baseline;margin:3px 0}
 .role{min-width:104px;color:#68788a;font-size:.78em;text-transform:uppercase;letter-spacing:.04em}
 .val{font-variant-numeric:tabular-nums}
+.expose{display:block;margin:8px 0}.expose .role{display:block;margin-bottom:4px}
+.choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
+fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
+legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
+input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 img{max-width:100%;border-radius:10px;display:block}
 .level-1{opacity:.92}.level-2{opacity:.85}.level-3{opacity:.78}

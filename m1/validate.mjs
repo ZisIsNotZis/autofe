@@ -3,8 +3,8 @@
 // a warning. Usage: node m1/validate.mjs <model.json> [more.json...]
 import fs from 'node:fs';
 import {
-  VOCAB, ROLES, VERBS, RESERVED, isReserved, isRoleKey, roleOf, isNamedChildKey,
-  valueTypeOf, resolvePath, findKey, childrenOf, walk, parseExpr, exprPaths,
+  VOCAB, ROLES, VERBS, isReserved, isRoleKey, roleOf, isNamedChildKey,
+  valueTypeOf, resolvePath, findKey, childrenOf, walk, parseExpr, exprPaths, exposeOf,
 } from './model-lib.mjs';
 
 export function validate(model) {
@@ -69,6 +69,11 @@ export function validate(model) {
       }
     }
 
+    // _expose
+    if (node._expose !== undefined && exposeOf(node) === null) {
+      err(`${p}._expose`, '_expose must be {name, type}: name is a page-scoped identifier (kebab-case), type is one of the closed value types');
+    }
+
     // _rel
     if (node._rel !== undefined) {
       const r = node._rel;
@@ -97,7 +102,10 @@ export function validate(model) {
     const ast = parseExpr(src);
     if (!ast.ok) { err(at, `condition does not parse: ${ast.why}`); return; }
     const scope = {};
-    for (const n of chain) for (const [k, v] of Object.entries(n)) if (isRoleKey(k)) scope[k.slice(1)] = v;
+    for (const n of chain) {
+      for (const [k, v] of Object.entries(n)) if (isRoleKey(k)) scope[k.slice(1)] = v;
+      const e = exposeOf(n); if (e) scope[e.role] = undefined; // declared exposure satisfies resolution
+    }
     for (const rp of exprPaths(ast)) {
       const base = rp.split(/[\[.]/)[0];
       const segs = rp.split('.');

@@ -11,7 +11,7 @@ const domainPath = path.join(here, 'vocab-domain.json');
 export const DOMAIN = fs.existsSync(domainPath) ? JSON.parse(fs.readFileSync(domainPath, 'utf8')) : { verbs: [] };
 export const VERBS = new Set([...VOCAB.verbs, ...(DOMAIN.verbs ?? [])]);
 
-export const RESERVED = new Set(['_intent', '_primary', '_key', '_when', '_action', '_rel', '_lines', '_items']);
+export const RESERVED = new Set(['_intent', '_primary', '_key', '_when', '_action', '_rel', '_lines', '_items', '_expose']);
 
 export const isReserved = (k) => RESERVED.has(k);
 export const roleOf = (k) => (k.startsWith('_') ? k.slice(1) : null);
@@ -180,4 +180,20 @@ export function resolveWithParent(root, node, p) {
     cur = m[2] === undefined ? v : v[+m[2]];
   }
   return { ok: true, node: cur, holder, lastKey };
+}
+
+// ---- exposed facts (§6.1) -------------------------------------------------
+// A node with _expose declares that interacting with it yields a fact.
+// Groups with _items expose the chosen item's name/title; bare nodes expose an input.
+export function exposeOf(node) {
+  const e = node._expose;
+  if (!e || typeof e !== 'object' || Array.isArray(e)) return null;
+  if (typeof e.name !== 'string' || !/^[a-z][a-z0-9-]*$/.test(e.name)) return null;
+  if (!VOCAB.valueTypes.includes(e.type)) return null;
+  return e;
+}
+export function exposedRoles(chain) {
+  const s = {};
+  for (const n of chain) { const e = exposeOf(n); if (e) s[e.role] = undefined; }
+  return s;
 }
