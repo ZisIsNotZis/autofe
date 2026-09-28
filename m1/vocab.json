@@ -1,0 +1,78 @@
+{
+  "$comment": "AutoFE M1 vocabulary v0 — the closed vocabularies of docs/m1/axioms-v0.md: roles from §3, verbs from §6, value-type names for _action.params from §2. Adding an entry is a VOCABULARY CHANGE: failure log → review first (axioms §0/§3). Never add entries ad hoc while encoding.",
+  "version": "0",
+  "roles": {
+    "identity": [
+      "title",
+      "name",
+      "label",
+      "subtitle"
+    ],
+    "description": [
+      "summary",
+      "detail",
+      "text"
+    ],
+    "classification": [
+      "category",
+      "tag",
+      "status"
+    ],
+    "quantity": [
+      "count",
+      "measure",
+      "stock"
+    ],
+    "money": [
+      "price",
+      "amount"
+    ],
+    "time": [
+      "datetime",
+      "duration",
+      "deadline"
+    ],
+    "attribution": [
+      "author",
+      "source",
+      "brand",
+      "provider"
+    ],
+    "media": [
+      "image",
+      "video",
+      "icon"
+    ],
+    "judgement": [
+      "rating",
+      "rating-count"
+    ],
+    "reference": [
+      "ref"
+    ],
+    "place": [
+      "place"
+    ],
+    "context": [
+      "region",
+      "audience"
+    ]
+  },
+  "verbs": [
+    "navigate",
+    "open",
+    "submit",
+    "select",
+    "toggle",
+    "operate"
+  ],
+  "valueTypes": [
+    "text",
+    "num",
+    "money",
+    "time",
+    "bool",
+    "image",
+    "ref"
+  ]
+}

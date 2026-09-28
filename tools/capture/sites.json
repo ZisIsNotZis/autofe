@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-18",
-  "notes": "Stratified seed for the M0 corpus. CN-first because several global sites are unreliable from this network. URLs were reachability-probed once (HTTP GET) on 2026-09-18; anything that failed the probe is recorded in droppedCandidates instead of being seeded. Unreachable pages during a run are recorded in corpus/failures.json, never dropped silently. Robots-denied pages are kept with `skip: true` plus a droppedCandidates entry, so nothing is silently removed.",
+  "updatedAt": "2026-09-28",
+  "notes": "Stratified seed for the M0 corpus. CN-first because several global sites are unreliable from this network. URLs were reachability-probed once (HTTP GET) on 2026-09-18; anything that failed the probe is recorded in droppedCandidates instead of being seeded. Unreachable pages during a run are recorded in corpus/failures.json, never dropped silently. Robots-denied pages are kept with `skip: true` plus a droppedCandidates entry, so nothing is silently removed. Tier model (2026-09-28): every site is tagged `tier: \"exemplar\"` (industry-recognized top-tier design for a professional/commercial/industrial scenario — the population coverage claims are made against, per design-basis §8) or `tier: \"support\"` (structural coverage: tables/forms/docs/enterprise/utility; real pages, but no coverage claim), each with a one-line `justification`. Seven new exemplar sites (linear-app, stripe-com, stripe-docs, airbnb-com, gov-uk, apple-com-cn, grafana-play) were reachability- and robots-probed on 2026-09-28 before seeding.",
   "primaryStratum": "archetype",
   "secondaryStrata": [
     "region",
@@ -17,6 +17,8 @@
       "language": "zh-CN",
       "industry": "consumer-electronics",
       "styleTag": "minimal-product",
+      "tier": "exemplar",
+      "justification": "Xiaomi.com is a top-tier CN consumer-electronics commerce site; home/product-detail are canonical CN commerce surfaces (M1 set #4)",
       "pages": [
         {
           "slug": "home",
@@ -54,6 +56,8 @@
       "language": "zh-CN",
       "industry": "consumer-electronics",
       "styleTag": "corporate-brand",
+      "tier": "exemplar",
+      "justification": "Huawei is a top-tier CN/global tech brand; corporate home + consumer product-category surfaces are an industry reference",
       "pages": [
         {
           "slug": "home",
@@ -85,6 +89,8 @@
       "language": "en-US",
       "industry": "consumer-electronics",
       "styleTag": "hero-product",
+      "tier": "exemplar",
+      "justification": "Apple.com is the canonical product-marketing narrative and industry-reference hero/product pages (M1 set #1)",
       "pages": [
         {
           "slug": "home",
@@ -116,6 +122,8 @@
       "language": "zh-CN",
       "industry": "e-commerce",
       "styleTag": "dense-marketplace",
+      "tier": "exemplar",
+      "justification": "JD.com is a top-2 CN e-commerce marketplace whose item pages are the canonical dense product-detail surface (captures currently blocked by login redirects, recorded in failures.json)",
       "pages": [
         {
           "slug": "home",
@@ -151,6 +159,8 @@
       "language": "zh-CN",
       "industry": "e-commerce",
       "styleTag": "dense-marketplace",
+      "tier": "exemplar",
+      "justification": "Taobao is the canonical CN marketplace; home is the M1 set #8 marketplace entry",
       "pages": [
         {
           "slug": "home",
@@ -172,6 +182,8 @@
       "language": "zh-CN",
       "industry": "cloud-infrastructure",
       "styleTag": "enterprise-blue",
+      "tier": "exemplar",
+      "justification": "Aliyun is the top CN cloud provider; home/product surfaces are the industrial/cloud commercial exemplar (M1 set #10)",
       "pages": [
         {
           "slug": "home",
@@ -193,6 +205,8 @@
       "language": "zh-CN",
       "industry": "identity",
       "styleTag": "functional-form",
+      "tier": "support",
+      "justification": "Login form kept for auth-form structural coverage; not part of a coverage claim",
       "pages": [
         {
           "slug": "login",
@@ -211,6 +225,8 @@
       "language": "zh-CN",
       "industry": "cloud-infrastructure",
       "styleTag": "enterprise-blue",
+      "tier": "support",
+      "justification": "Second top-tier CN cloud provider kept for console/docs/search structural breadth; the cloud exemplar claim is carried by aliyun-com",
       "pages": [
         {
           "slug": "home",
@@ -248,6 +264,8 @@
       "language": "zh-CN",
       "industry": "search",
       "styleTag": "sparse-utility",
+      "tier": "support",
+      "justification": "Homepage is robots-denied; kept as recorded search-entry structural coverage only",
       "pages": [
         {
           "slug": "home",
@@ -266,6 +284,8 @@
       "language": "zh-CN",
       "industry": "search",
       "styleTag": "sparse-utility",
+      "tier": "support",
+      "justification": "The only robots-permitted search surface in the corpus; sparse-utility structural coverage, not a design exemplar",
       "pages": [
         {
           "slug": "home",
@@ -282,6 +302,8 @@
       "language": "zh-CN",
       "industry": "media-video",
       "styleTag": "playful-dense",
+      "tier": "exemplar",
+      "justification": "Bilibili is the top-tier CN video platform and a recognised reference for media landing/video-detail product design",
       "pages": [
         {
           "slug": "home",
@@ -309,6 +331,8 @@
       "language": "zh-CN",
       "industry": "developer-community",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Developer-community feed/article/profile structural coverage; utility design, not a design exemplar",
       "pages": [
         {
           "slug": "home",
@@ -345,6 +369,8 @@
       "language": "zh-CN",
       "industry": "developer-community",
       "styleTag": "ad-heavy-utility",
+      "tier": "support",
+      "justification": "Developer-blog structural coverage (ad-heavy utility design); pages currently fail with HTTP 521 (recorded)",
       "pages": [
         {
           "slug": "nav-web",
@@ -366,6 +392,8 @@
       "language": "zh-CN",
       "industry": "tech-media",
       "styleTag": "editorial-clean",
+      "tier": "exemplar",
+      "justification": "少数派 sspai.com is the recognised CN tech-media/editorial design reference; post pages are the M1 set #7 article exemplar",
       "pages": [
         {
           "slug": "home",
@@ -408,6 +436,8 @@
       "language": "zh-CN",
       "industry": "business-media",
       "styleTag": "editorial-dense",
+      "tier": "exemplar",
+      "justification": "36Kr is the top CN tech-business media; dense news/index/search surfaces are the business-media reference",
       "pages": [
         {
           "slug": "home",
@@ -439,6 +469,8 @@
       "language": "zh-CN",
       "industry": "design-community",
       "styleTag": "image-gallery",
+      "tier": "support",
+      "justification": "Design-community structural coverage; discover page renders an empty JS-only shell (skip + droppedCandidates)",
       "pages": [
         {
           "slug": "discover",
@@ -457,6 +489,8 @@
       "language": "zh-CN",
       "industry": "design-community",
       "styleTag": "image-gallery",
+      "tier": "support",
+      "justification": "Pinterest-style image-grid/category structural coverage; not a professional-scenario coverage claim",
       "pages": [
         {
           "slug": "discovery",
@@ -480,6 +514,8 @@
       "language": "zh-CN",
       "industry": "e-commerce",
       "styleTag": "dense-marketplace",
+      "tier": "support",
+      "justification": "Search-host structural coverage; robots.txt cross-origin redirect denies the host (skip + recorded)",
       "pages": [
         {
           "slug": "search-phone",
@@ -505,6 +541,8 @@
       "language": "zh-CN",
       "industry": "community",
       "styleTag": "editorial-dense",
+      "tier": "support",
+      "justification": "Profile/community structural coverage (identity, activity lists); consumer-community scenario",
       "pages": [
         {
           "slug": "people-ahbei",
@@ -526,6 +564,8 @@
       "language": "zh-CN",
       "industry": "media-review",
       "styleTag": "editorial-dense",
+      "tier": "support",
+      "justification": "Iconic CN media-review product kept for dense category/list structural coverage; dated utility design is not a design exemplar",
       "pages": [
         {
           "slug": "home",
@@ -542,6 +582,8 @@
       "language": "zh-CN/en-US",
       "industry": "design-system",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Docs/design-system structural coverage; the components-table page additionally serves as the M1 task-surface (table) exemplar",
       "pages": [
         {
           "slug": "docs-introduce",
@@ -583,6 +625,8 @@
       "language": "zh-CN/en-US",
       "industry": "design-system",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Docs/design-system structural coverage (second CN enterprise design system)",
       "pages": [
         {
           "slug": "docs-start",
@@ -619,6 +663,8 @@
       "language": "zh-CN",
       "industry": "design-system",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Docs/design-system structural coverage (Tencent enterprise design system)",
       "pages": [
         {
           "slug": "vue-button",
@@ -650,6 +696,8 @@
       "language": "zh-CN",
       "industry": "design-system",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Docs/design-system structural coverage (ByteDance enterprise design system, includes the 30k-node table page)",
       "pages": [
         {
           "slug": "getting-started",
@@ -676,6 +724,8 @@
       "language": "zh-CN/en-US",
       "industry": "design-system",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Docs/design-system structural coverage; the form page additionally serves as the M1 task-surface (form) exemplar",
       "pages": [
         {
           "slug": "button",
@@ -717,6 +767,8 @@
       "language": "zh-CN/en-US",
       "industry": "admin-template",
       "styleTag": "enterprise-blue",
+      "tier": "support",
+      "justification": "Enterprise admin-template structural coverage; all pages render empty in headless Chrome from this environment (skip + droppedCandidates)",
       "pages": [
         {
           "slug": "dashboard-analysis",
@@ -784,6 +836,8 @@
       "language": "en-US",
       "industry": "data-viz",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Data-viz structural coverage (Apache ECharts examples/handbook); the enterprise data-viz exemplar claim is carried by grafana-play",
       "pages": [
         {
           "slug": "examples",
@@ -810,6 +864,8 @@
       "language": "zh-CN",
       "industry": "data-viz",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Data-viz structural coverage (AntV landing)",
       "pages": [
         {
           "slug": "home",
@@ -826,6 +882,8 @@
       "language": "en-US",
       "industry": "design-system",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Docs + example structural coverage (dashboard/checkout/pricing/forms)",
       "pages": [
         {
           "slug": "docs-introduction",
@@ -848,11 +906,6 @@
           "archetype": "product-detail"
         },
         {
-          "slug": "example-dashboard",
-          "url": "https://getbootstrap.com/docs/5.3/examples/dashboard/",
-          "archetype": "dashboard/data-viz"
-        },
-        {
           "slug": "forms-overview",
           "url": "https://getbootstrap.com/docs/5.3/forms/overview/",
           "archetype": "form/checkout/settings"
@@ -867,6 +920,8 @@
       "language": "en-US",
       "industry": "design-system",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Docs structural coverage; M1 set lists it as support material",
       "pages": [
         {
           "slug": "docs-installation",
@@ -883,6 +938,8 @@
       "language": "en-US",
       "industry": "design-system",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Docs/design-system structural coverage; pages currently time out from this network (recorded)",
       "pages": [
         {
           "slug": "getting-started",
@@ -909,6 +966,8 @@
       "language": "en-US",
       "industry": "framework-docs",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Framework documentation structural coverage",
       "pages": [
         {
           "slug": "learn",
@@ -930,6 +989,8 @@
       "language": "en-US",
       "industry": "framework-docs",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Reference documentation structural coverage",
       "pages": [
         {
           "slug": "docs-css",
@@ -951,6 +1012,8 @@
       "language": "zh-CN",
       "industry": "identity",
       "styleTag": "functional-form",
+      "tier": "support",
+      "justification": "Public login form kept for auth-form structural coverage",
       "pages": [
         {
           "slug": "login",
@@ -968,6 +1031,8 @@
       "language": "zh-CN",
       "industry": "developer-platform",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Code-hosting profile structural coverage; GitHub unreachable from this network (droppedCandidates)",
       "pages": [
         {
           "slug": "oss-profile",
@@ -996,6 +1061,8 @@
       "language": "en-US",
       "industry": "data-viz",
       "styleTag": "editorial-clean",
+      "tier": "support",
+      "justification": "Data-viz structural coverage",
       "pages": [
         {
           "slug": "home",
@@ -1012,6 +1079,8 @@
       "language": "en-US",
       "industry": "data-viz",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Data-viz docs structural coverage",
       "pages": [
         {
           "slug": "docs-latest",
@@ -1033,6 +1102,8 @@
       "language": "en-US",
       "industry": "data-viz",
       "styleTag": "marketing-product",
+      "tier": "support",
+      "justification": "Data-viz marketing/demos structural coverage",
       "pages": [
         {
           "slug": "home",
@@ -1054,6 +1125,8 @@
       "language": "zh-CN",
       "industry": "data-viz",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Data-viz structural coverage",
       "pages": [
         {
           "slug": "home",
@@ -1075,6 +1148,8 @@
       "language": "zh-CN",
       "industry": "developer-community",
       "styleTag": "utility-clean",
+      "tier": "support",
+      "justification": "Developer-blog profile structural coverage",
       "pages": [
         {
           "slug": "blog-cmt",
@@ -1097,6 +1172,8 @@
       "language": "en-US",
       "industry": "data-viz",
       "styleTag": "marketing-product",
+      "tier": "support",
+      "justification": "Data-viz structural coverage; Chromium navigation times out (skip + droppedCandidates)",
       "pages": [
         {
           "slug": "javascript-home",
@@ -1115,6 +1192,8 @@
       "language": "en-US",
       "industry": "data-viz",
       "styleTag": "clean-technical",
+      "tier": "support",
+      "justification": "Data-viz structural coverage; examples page currently times out (recorded)",
       "pages": [
         {
           "slug": "vega-lite-examples",
@@ -1131,6 +1210,8 @@
       "language": "en-US",
       "industry": "data-viz",
       "styleTag": "marketing-product",
+      "tier": "support",
+      "justification": "Data-viz demos structural coverage",
       "pages": [
         {
           "slug": "demos",
@@ -1147,11 +1228,144 @@
       "language": "zh-CN",
       "industry": "consumer-electronics",
       "styleTag": "hero-product",
+      "tier": "support",
+      "justification": "Top-tier brand kept only for CN phone-search structural coverage; no exemplar surface captured",
       "pages": [
         {
           "slug": "search-phone",
           "url": "https://www.oppo.com/cn/search/?q=%E6%89%8B%E6%9C%BA",
           "archetype": "search-results"
+        }
+      ]
+    },
+    {
+      "slug": "linear-app",
+      "domain": "linear.app",
+      "origin": "https://linear.app",
+      "region": "global",
+      "language": "en-US",
+      "industry": "saas-project-management",
+      "styleTag": "dark-minimal",
+      "tier": "exemplar",
+      "justification": "Linear is the industry-reference SaaS product landing (dark, minimal, motion-led) — the canonical SaaS landing narrative (M1 set #2)",
+      "pages": [
+        {
+          "slug": "home",
+          "url": "https://linear.app/",
+          "archetype": "landing/home"
+        }
+      ]
+    },
+    {
+      "slug": "stripe-com",
+      "domain": "stripe.com",
+      "origin": "https://stripe.com",
+      "region": "global",
+      "language": "en-US/zh-CN",
+      "industry": "payments-infrastructure",
+      "styleTag": "clean-gradient",
+      "tier": "exemplar",
+      "justification": "Stripe is the industry-reference payments/commerce brand; its pricing page is the canonical plan-comparison commercial surface (M1 set #3)",
+      "pages": [
+        {
+          "slug": "pricing",
+          "url": "https://stripe.com/pricing",
+          "archetype": "product-detail",
+          "note": "geo-redirects to /cn/pricing from a zh-CN context; same-host redirect is recorded in meta"
+        }
+      ]
+    },
+    {
+      "slug": "stripe-docs",
+      "domain": "docs.stripe.com",
+      "origin": "https://docs.stripe.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "payments-infrastructure",
+      "styleTag": "docs-clean",
+      "tier": "exemplar",
+      "justification": "Stripe Docs is the widely copied reference for developer-documentation design; one payments doc page for docs-surface exemplar coverage",
+      "pages": [
+        {
+          "slug": "payments",
+          "url": "https://docs.stripe.com/payments",
+          "archetype": "docs/design-system",
+          "note": "product docs, not a design system; docs/design-system is the closest archetype"
+        }
+      ]
+    },
+    {
+      "slug": "airbnb-com",
+      "domain": "www.airbnb.com",
+      "origin": "https://www.airbnb.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "travel-marketplace",
+      "styleTag": "image-forward",
+      "tier": "exemplar",
+      "justification": "Airbnb is the industry-reference marketplace listing design (M1 set #8 marketplace/listing-detail)",
+      "pages": [
+        {
+          "slug": "room-28871",
+          "url": "https://www.airbnb.com/rooms/28871",
+          "archetype": "product-detail",
+          "note": "live listing (Amsterdam) discovered via the Inside Airbnb 2026-06-15 scrape; plain /rooms/<id> is allowed by the robots.txt `*` group"
+        }
+      ]
+    },
+    {
+      "slug": "gov-uk",
+      "domain": "www.gov.uk",
+      "origin": "https://www.gov.uk",
+      "region": "global",
+      "language": "en-GB",
+      "industry": "government",
+      "styleTag": "plain-utility",
+      "tier": "exemplar",
+      "justification": "GOV.UK is the international reference for plain-language content design; one live citizen-guidance page as the content-design exemplar",
+      "pages": [
+        {
+          "slug": "register-birth-abroad",
+          "url": "https://www.gov.uk/register-birth-abroad",
+          "archetype": "article/editorial",
+          "note": "guidance document; article/editorial is the closest archetype (long-form structured content)"
+        }
+      ]
+    },
+    {
+      "slug": "apple-com-cn",
+      "domain": "www.apple.com.cn",
+      "origin": "https://www.apple.com.cn",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "consumer-electronics",
+      "styleTag": "hero-product",
+      "tier": "exemplar",
+      "justification": "Apple China is the canonical CN-localised product narrative — the CN counterpart of apple-com/iphone-16 (M1 set #1)",
+      "pages": [
+        {
+          "slug": "iphone-17",
+          "url": "https://www.apple.com.cn/iphone-17/",
+          "archetype": "product-detail"
+        }
+      ]
+    },
+    {
+      "slug": "grafana-play",
+      "domain": "play.grafana.org",
+      "origin": "https://play.grafana.org",
+      "region": "global",
+      "language": "en-US",
+      "industry": "observability",
+      "styleTag": "dark-dashboard",
+      "tier": "exemplar",
+      "justification": "Grafana is the industry-reference enterprise observability dashboard; play.grafana.org is its official public demo instance (robots: Allow /)",
+      "pages": [
+        {
+          "slug": "play-home",
+          "url": "https://play.grafana.org/d/Zb3f4veGk/stats?from=now-6h&to=now&timezone=browser",
+          "archetype": "dashboard/data-viz",
+          "note": "stats/timeseries demo dashboard from the official sitemap (robots: Allow /); seeded at the SPA-canonicalized URL + its default time-range query so re-runs do not trigger late_navigation; the heavier testdata-demo-dashboard exceeds the 45s navigation timeout (recorded in droppedCandidates); heavy JS SPA — capture may flag suspicious_empty_render; recorded, not hidden"
         }
       ]
     }
@@ -1378,6 +1592,30 @@
       "archetype": "dashboard/data-viz",
       "reason": "Chromium navigation fails with a 45s timeout twice while curl and Node fetch return 200; dropped rather than retried forever",
       "checkedAt": "2026-09-18"
+    },
+    {
+      "url": "https://www.airbnb.com/rooms/{2531360, 1071718, 33575329, 44129}",
+      "archetype": "product-detail",
+      "reason": "all HTTP 410 (delisted listings); plain /rooms/<id> is robots-allowed, but famous old listing IDs are gone — live listing found via the Inside Airbnb public scrape (rooms/28871)",
+      "checkedAt": "2026-09-28"
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/content-design[, /content-design-planning-writing-and-managing-content, /content-design]",
+      "archetype": "article/editorial",
+      "reason": "HTTP 404 (guessed slugs — the GDS content-design publication moved); the live style guide now sits on guidance.publishing.service.gov.uk (cross-host), so a same-host live guidance page was chosen instead",
+      "checkedAt": "2026-09-28"
+    },
+    {
+      "url": "https://www.apple.com.cn/iphone-{16-pro, 17-pro}/, https://www.apple.com.cn/iphone-16/",
+      "archetype": "product-detail",
+      "reason": "guessed slugs redirect to the /iphone/ hub or /shop/buy-iphone/; https://www.apple.com.cn/iphone-17/ is the live CN product page",
+      "checkedAt": "2026-09-28"
+    },
+    {
+      "url": "https://www.airbnb.com/sitemap-master-index.xml.gz",
+      "archetype": "product-detail",
+      "reason": "HTTP 403 for non-search-engine agents (sitemap is search-engine-only); listing discovery used the Inside Airbnb public dataset instead",
+      "checkedAt": "2026-09-28"
     }
   ]
 }
