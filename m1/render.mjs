@@ -32,11 +32,8 @@ function renderNode(node, chain, isHero, hide) {
     const ast = parseExpr(node._when);
     if (ast.ok && !evalExpr(ast, scope)) return '';
   }
-  const hid = hide.get(node);
-  const kids = childrenOf(node).filter((c) => !(hid?.nodes.has(c.node)));
-  const facts = factsOf(node).filter((f) => !(hid?.keys.has(f.key)));
   const headingKey = node._title ? '_title' : (node._name ? '_name' : null);
-  const titleText = headingKey && !(hid?.keys.has(headingKey)) ? fmt(node[headingKey]) : null;
+  const titleText = headingKey ? fmt(node[headingKey]) : null;
 
   const cls = ['node'];
   if (isHero) cls.push('hero');
@@ -76,8 +73,12 @@ function renderNode(node, chain, isHero, hide) {
     }
   }
 
+  const hid = hide.get(node);
+  const kids = childrenOf(node).filter((c) => !(hid?.nodes.has(c.node)));
+  const facts = factsOf(node).filter((f) => !(hid?.keys.has(f.key)));
+
   let body = '';
-  for (const f of facts) body += factHtml(f.role, f.value);
+  for (const f of facts) { if (headingKey && f.key === headingKey) continue; body += factHtml(f.role, f.value); }
 
   if (kids.length) {
     const parts = [];
