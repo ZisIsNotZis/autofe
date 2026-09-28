@@ -15,7 +15,7 @@ function fmt(v) {
   if ('list' in v) return v.list.map((e) => `<span class="chip">${fmt(e)}</span>`).join(' ');
   if ('text' in v) return esc(v.text);
   if ('num' in v) return esc(v.num) + (v.unit ? ` ${esc(v.unit)}` : '');
-  if ('money' in v) return esc(v.money) + (v.currency ? ` ${esc(v.currency)}` : '');
+  if ('money' in v) return (v.qualifier ? esc(v.qualifier) + ' ' : '') + esc(v.money) + (v.currency ? ` ${esc(v.currency)}` : '');
   if ('date' in v) return esc(v.date);
   if ('bool' in v) return v.bool ? 'yes' : 'no';
   if ('icon' in v) return esc(v.icon);
@@ -142,6 +142,7 @@ function renderNode(node, chain, isHero, hide, ctx) {
     body += `<label class="expose expose-${esc(exp.name)}"><span class="role">${esc(exp.name)}</span><input type="text" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></label>`;
   }
 
+  body += heroHtml; heroHtml = '';
   for (const run of runs) body += renderRun(run, chain, hide, ctx);
   if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
     body += renderNode(node._empty, [...chain, node], false, hide, ctx);
@@ -149,6 +150,8 @@ function renderNode(node, chain, isHero, hide, ctx) {
 
   for (const c of kids) {
     if (inRun.has(c.node)) continue;
+    if (exp && c.key.startsWith('_items[') && Array.isArray(node._items) && node._items.every((it) =>
+      Object.keys(it).every((k) => ['_name', '_title', '_key', '_intent'].includes(k)))) continue;
     const h = renderNode(c.node, [...chain, node], false, hide, ctx);
     if (h) body += c.key.startsWith('_lines[') ? `<section class="line">${h}</section>` : `<section class="group g-${esc(c.key)}">${h}</section>`;
   }
@@ -156,7 +159,7 @@ function renderNode(node, chain, isHero, hide, ctx) {
   const head = titleText
     ? `<h3 class="title">${titleText}</h3>`
     : (node._intent && kids.length ? `<h4 class="intent">${esc(node._intent)}</h4>` : '');
-  return `<article class="${cls.join(' ')}">${head}${body}${heroHtml}${action}</article>`;
+  return `<article class="${cls.join(' ')}">${head}${body}${action}</article>`;
 }
 
 export function render(model, context = {}) {

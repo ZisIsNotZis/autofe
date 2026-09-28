@@ -1,0 +1,396 @@
+{
+  "_intent": "向企业与开发者推介阿里云：Token Plan 订阅全面升级是当前主推，配热门 AI 应用免费体验、千问 MaaS 平台与超值权益，把访客送进订阅或体验",
+  "_primary": "hero",
+  "_key": "aliyun-home",
+  "_title": {
+    "text": "阿里云-计算，为了无法计算的价值"
+  },
+  "hero": {
+    "_intent": "首屏主推：Token Plan 全面升级，个人版权益加码，立即订阅或在线咨询",
+    "_key": "aliyun-token-plan-hero",
+    "_title": {
+      "text": "Token Plan 全面升级"
+    },
+    "_summary": {
+      "text": "Token Plan 个人版价格不变，权益加码。新增 Agent Harness 工具权益，一站式覆盖模型调用、工具集成与 Agent 编排运行全流程"
+    },
+    "_action": {
+      "verb": "open",
+      "to": "https://www.qianwenai.com/benefits/tokenplan",
+      "label": "立即订阅"
+    },
+    "consult": {
+      "_intent": "售前咨询入口",
+      "_title": {
+        "text": "在线咨询"
+      },
+      "_action": {
+        "verb": "open",
+        "to": "https://smartservice.console.aliyun.com/service/pre-sales-chat?from=ai&displayMode=widget&channelCode=301&topicCode=sales-im&topicServiceId=1&iframe=true",
+        "label": "在线咨询"
+      }
+    }
+  },
+  "promos": {
+    "_intent": "四个精选促销入口：模型、建站、轻量上云、旗舰模型",
+    "_items": [
+      {
+        "_name": {
+          "text": "多模态 MOE 模型 Qwen3.8-Flash"
+        },
+        "_detail": {
+          "text": "支持百万级上下文窗口，能一次性处理超长文档、代码仓库"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.qianwenai.com/models/qwen3.8-flash"
+        }
+      },
+      {
+        "_name": {
+          "text": "万小智 AI 建站，首月低至 9.9 元"
+        },
+        "_detail": {
+          "text": "配套三级域名、数据库和基础云资源，新客加赠 2000 灵感值"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://opc.aliyun.com/activity#J_1"
+        }
+      },
+      {
+        "_name": {
+          "text": "轻量上云 38 元/年，一键部署 AI Agent"
+        },
+        "_detail": {
+          "text": "预装官方热门应用，全程可视化操作，轻量便捷，开箱即用"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.aliyun.com/daily-act/ecs/activity_selection"
+        }
+      },
+      {
+        "_name": {
+          "text": "2.4 万亿参数模型 Qwen3.8-Max"
+        },
+        "_detail": {
+          "text": "编程与办公能力全面跃升，长程任务中自主规划与闭环迭代"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.qianwenai.com/models/qwen3.8-max"
+        }
+      }
+    ]
+  },
+  "ai-exp": {
+    "_intent": "免费体验区：更强模型、更新能力、热门 AI 应用免费体验，六款应用即点即用",
+    "_title": {
+      "text": "更强模型、更新能力、 热门 AI 应用免费体验"
+    },
+    "_action": {
+      "verb": "open",
+      "to": "https://www.aliyun.com/exp",
+      "label": "立即免费体验"
+    },
+    "_items": [
+      {
+        "_key": "exp-llm",
+        "_name": {
+          "text": "大语言模型"
+        },
+        "_subtitle": {
+          "text": "千问大模型 | 达到领域SOTA水平"
+        },
+        "_detail": {
+          "text": "最新千问 Qwen3.8 系列原生多模态大模型，Vibe Coding更强，多模态识别更准"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.aliyun.com/exp/llm"
+        }
+      },
+      {
+        "_key": "exp-wan",
+        "_name": {
+          "text": "视频生成"
+        },
+        "_subtitle": {
+          "text": "HappyHorse 模型 | 影视级创作能力"
+        },
+        "_detail": {
+          "text": "视频生成模型，实现智能分镜调度；支持多镜头叙事，自然高品质音色"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.aliyun.com/exp/wan"
+        }
+      },
+      {
+        "_key": "exp-site",
+        "_name": {
+          "text": "智能建站"
+        },
+        "_subtitle": {
+          "text": "万小智 | 一键生成、轻松上线"
+        },
+        "_detail": {
+          "text": "智能生成对客页面，配套搭建管理后台，开站即经营"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.aliyun.com/exp/xiaozhi"
+        }
+      },
+      {
+        "_key": "exp-ops",
+        "_name": {
+          "text": "智能运维"
+        },
+        "_subtitle": {
+          "text": "STAROps | 问题定位、持续守护"
+        },
+        "_detail": {
+          "text": "从被动响应到智能自治，7×24 小时保障业务连续、稳定运行"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.aliyun.com/exp/starops"
+        }
+      },
+      {
+        "_key": "exp-bi",
+        "_name": {
+          "text": "分析智能体"
+        },
+        "_subtitle": {
+          "text": "智能小Q｜多维分析、深度洞察"
+        },
+        "_detail": {
+          "text": "支持自然语言取数、数据解读、报告生成、看板一键搭建"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.aliyun.com/exp/quick-bi"
+        }
+      },
+      {
+        "_key": "exp-integration",
+        "_name": {
+          "text": "AI 数据集成"
+        },
+        "_subtitle": {
+          "text": "EventBridge | 多源接入、全链路打通"
+        },
+        "_detail": {
+          "text": "零代码接入多源数据，一站式智能清洗转换，让 AI 轻松读懂你的业务数据"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.aliyun.com/exp/eventbridge"
+        }
+      }
+    ]
+  },
+  "maas": {
+    "_intent": "为 Agent 而生的 MaaS 平台：千问AI平台介绍 + Token Plan 与免费额度两张权益卡",
+    "_title": {
+      "text": "为 Agent 而生的 MaaS 平台，驱动 AI 生产力"
+    },
+    "platform": {
+      "_intent": "千问AI平台：模型触手可及",
+      "_title": {
+        "text": "千问AI平台，模型触手可及"
+      },
+      "_summary": {
+        "text": "AI native 的 MaaS 服务平台。提供简单直观的模型调用，和便捷、快速、透明的用量管理。"
+      },
+      "_action": {
+        "verb": "open",
+        "to": "https://www.qianwenai.com/",
+        "label": "前往千问 AI 平台"
+      },
+      "_items": [
+        {
+          "_key": "maas-tokenplan",
+          "_name": {
+            "text": "Token Plan"
+          },
+          "_detail": {
+            "text": "个人版上线，团队版降价，更低成本畅用 Qwen3.8-Max 等先进模型"
+          },
+          "_action": {
+            "verb": "open",
+            "to": "https://platform.qianwenai.com/pricing/token-plan",
+            "label": "查看详情"
+          }
+        },
+        {
+          "_key": "maas-free",
+          "_name": {
+            "text": "免费额度"
+          },
+          "_detail": {
+            "text": "登录即送免费 token，一个 API 调用全部模型，新用户赠千万 tokens 免费额度"
+          },
+          "_action": {
+            "verb": "open",
+            "to": "https://platform.qianwenai.com/home/benefits",
+            "label": "查看详情"
+          }
+        }
+      ]
+    }
+  },
+  "benefits": {
+    "_intent": "全方位云计算和 AI 超值权益：八张优惠卡，价格和折扣都是显性卖点",
+    "_title": {
+      "text": "全方位云计算和 AI 超值权益，助力云上创新"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "Token Plan 首发 Qwen-3.8"
+        },
+        "_detail": {
+          "text": "多模型共享额度，低至 39 元起"
+        }
+      },
+      {
+        "_name": {
+          "text": "Wan3.0重磅发布"
+        },
+        "_detail": {
+          "text": "原生 30 秒，按秒计费，创作更具性价比"
+        }
+      },
+      {
+        "_name": {
+          "text": "大模型优惠，首购低至 4.5 折"
+        },
+        "_detail": {
+          "text": "可抵扣千问 3.5，支持千问、万相等阿里云全量模型"
+        }
+      },
+      {
+        "_name": {
+          "text": "学生免费领取 300 元抵扣金"
+        },
+        "_detail": {
+          "text": "可抵扣大模型、计算、存储等核心产品"
+        }
+      },
+      {
+        "_name": {
+          "text": "AI 建站首月 9.9 元"
+        },
+        "_detail": {
+          "text": "自带数据库，免备案即开即用"
+        }
+      },
+      {
+        "_name": {
+          "text": "160+ 产品免费试用"
+        },
+        "_detail": {
+          "text": "助您快速开启云上实践之旅"
+        }
+      },
+      {
+        "_name": {
+          "text": "长效普惠云服务器"
+        },
+        "_detail": {
+          "text": "ECS 2 核 2G 仅需 99 元/年"
+        }
+      },
+      {
+        "_name": {
+          "text": "QoderCN × 百炼套餐"
+        },
+        "_detail": {
+          "text": "代码写更快，模型跑不停"
+        }
+      },
+      {
+        "_name": {
+          "text": "50+ 技术解决方案免费试用"
+        },
+        "_detail": {
+          "text": "云上 AI 方案快速验证"
+        }
+      },
+      {
+        "_name": {
+          "text": "30+ AI 产品，零成本构建 AI 应用"
+        }
+      }
+    ]
+  },
+  "infra": {
+    "_intent": "安全合规、遍布全球的云计算基础设施：四个规模数字",
+    "_title": {
+      "text": "安全合规、遍布全球的云计算基础设施"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "全球公共云地域"
+        },
+        "_count": {
+          "num": 31,
+          "unit": "个"
+        }
+      },
+      {
+        "_name": {
+          "text": "全球公共云可用区"
+        },
+        "_count": {
+          "num": 106,
+          "unit": "个"
+        }
+      },
+      {
+        "_name": {
+          "text": "边缘节点"
+        },
+        "_count": {
+          "text": "3200+"
+        }
+      },
+      {
+        "_name": {
+          "text": "全网输出带宽"
+        },
+        "_count": {
+          "text": "180+Tbps"
+        }
+      }
+    ]
+  },
+  "analyst": {
+    "_intent": "第三方分析师认可：两条结论，增强企业客户信任",
+    "_items": [
+      {
+        "_name": {
+          "text": "千问大模型，全球基础模型软件领导者"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.aliyun.com/analyst-reports/idc-fms-2026"
+        }
+      },
+      {
+        "_name": {
+          "text": "中国 AI 云市场份额领先，超过2-4名总和"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.aliyun.com/analyst-reports/frost-fsai-2025"
+        }
+      }
+    ]
+  }
+}

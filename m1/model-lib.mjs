@@ -21,7 +21,7 @@ export const isNamedChildKey = (k) => !k.startsWith('_') && /^[A-Za-z][A-Za-z0-9
 
 // ---- typed values (§2, closed) -------------------------------------------
 const VALUE_SHAPE = {
-  text: [], num: ['unit'], money: ['currency'], date: [],
+  text: [], num: ['unit'], money: ['currency', 'qualifier'], date: [],
   bool: [], image: ['alt'], video: [], icon: [], ref: [], list: [],
 };
 export function valueTypeOf(v) {

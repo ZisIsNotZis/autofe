@@ -147,3 +147,13 @@
 ## F-023 根因修正：不是采集截断上限，是 mid-animation 捕获
 - 更正：`MAX_TEXT=1000` 并未截断；Linear 标题是打字机动画，捕获瞬间可见文本只打到 "Designed for t"，而 accName（`name` 字段）携带完整文案。与 mi 轮播同属"JS 动画期捕获"类。
 - 修法（已做）：抽取器取 text/name 中构成前缀关系的较长者。采集侧改进（等动画稳定后再采样）记入 capture 待办。
+
+## F-024 金额限定词（"From/起/每月"）——money 类型扩展
+- **发现于**：策展试点（aliyun "¥99.00/1年起"、apple "From $799"）
+- **修法（采纳）**：money 类型化值增加可选 `qualifier`（文本）。价格限定词是**内容**。
+- **同轮修正**：① 渲染器根 `_primary` 主指块被排到页面底部（head/facts/expose → hero → runs/groups）；② expose-over-items 与集合渲染重复；③ 指标 norm 未反转 `&amp;`（AT&T 类事实永远过不了子串检查）；④ 覆盖豁免的子串阈值过松（短模型串压制源告警）。
+
+## F-025 策展抽查抓到捏造 URL——抽查协议生效
+- **发现于**：策展试点抽查（父级对照 capture DOM）
+- **事实**：huawei 旗舰卡与 aliyun 客服入口的 3 条 URL 是策展者**构造**的（截自截图的品牌名 + 猜测路径），不在 capture DOM 中。
+- **修法（采纳）**：URL 必须逐字来自 capture（相对路径用 DOM 里的原形）；截图可见但 capture 无背书的事实 → 从 capture 补证或丢弃。协议新增此条。

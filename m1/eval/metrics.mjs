@@ -8,7 +8,7 @@
 import fs from 'node:fs';
 import { walk, childrenOf, factsOf, valueTypeOf, parseExpr, evalExpr, scopeFor } from '../model-lib.mjs';
 
-const norm = (s) => String(s).toLowerCase().replace(/[\s\p{P}]+/gu, '');
+const norm = (s) => String(s).toLowerCase().replace(/&amp;/g, '&').replace(/[\s\p{P}]+/gu, '');
 
 function suppressedNodes(model, ctxValues = {}) {
   const out = new Set();

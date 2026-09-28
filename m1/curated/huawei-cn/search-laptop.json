@@ -1,0 +1,38 @@
+{
+  "_intent": "告诉搜索 laptop 的用户站内搜索状态：当前类别下 0 条结果，可更换关键词或按类别重搜",
+  "_primary": "results",
+  "_key": "huawei-site-search",
+  "_title": { "text": "搜索结果" },
+  "query": {
+    "_intent": "输入关键词重新搜索",
+    "_label": { "text": "请输入关键字" },
+    "_expose": { "name": "keyword", "type": "text" }
+  },
+  "filters": {
+    "_intent": "按内容类别过滤搜索结果，类别名后的数字是各类别结果数",
+    "_title": { "text": "类别" },
+    "_rel": { "compare": true },
+    "_items": [
+      { "_key": "cat-all", "_name": { "text": "全部 (0)" } },
+      { "_key": "cat-product", "_name": { "text": "产品与解决方案 (0)" } },
+      { "_key": "cat-support", "_name": { "text": "服务支持 (0)" } },
+      { "_key": "cat-discuss", "_name": { "text": "技术探讨 (0)" } },
+      { "_key": "cat-news", "_name": { "text": "新闻与活动 (0)" } }
+    ],
+    "_expose": { "name": "category", "type": "text" },
+    "reset": {
+      "_intent": "清空类别筛选，回到全部",
+      "_title": { "text": "重置" },
+      "_action": { "verb": "operate", "label": "重置" }
+    }
+  },
+  "results": {
+    "_intent": "当前关键词与类别下的结果状态：0 条，空态文案告诉用户没有找到相关结果",
+    "_count": { "num": 0, "unit": "条结果" },
+    "_items": [],
+    "_empty": {
+      "_intent": "空结果说明",
+      "_summary": { "text": "没有找到相关结果" }
+    }
+  }
+}

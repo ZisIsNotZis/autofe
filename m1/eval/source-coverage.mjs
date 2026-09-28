@@ -45,7 +45,7 @@ export function sourceWarnings(renderHtml, sourceDir, model) {
     if (!key || seen.has(key)) continue;
     seen.add(key);
     if (H.includes(key)) continue;
-    if ([...modelText].some((m) => m && (m.includes(key) || key.includes(m)))) continue;
+    if ([...modelText].some((m) => m && m.length >= 8 && (m.includes(key) || (key.includes(m) && key.length - m.length <= Math.max(20, m.length))))) continue;
     const severity = hasNumber ? 'high' : isHeading ? 'medium' : 'info';
     warnings.push({ severity, role: x.role, text: t.slice(0, 80) });
   }
