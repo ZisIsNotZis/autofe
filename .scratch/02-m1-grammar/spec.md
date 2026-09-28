@@ -1,6 +1,6 @@
 # 02 — M1: first-cut grammar + minimal renderer + failure log
 
-Status: ready-for-agent
+Status: done (2026-09-18) — axioms v0.1 + validator + renderer + 6 exemplar models + failure log F-001..F-019; eval harness (M2) not yet built
 Need-review: yes (user reviews the drafted axioms)
 
 ## Decisions recorded (2026-09-18, user)
