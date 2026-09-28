@@ -74,6 +74,7 @@ export function validate(model) {
       else {
         if (typeof a.verb !== 'string' || !VERBS.has(a.verb)) err(`${p}._action.verb`, `verb "${a.verb}" not in vocabulary (adding one is a vocabulary change, log it first)`);
         if (a.to !== undefined && typeof a.to !== 'string') err(`${p}._action.to`, 'to must be a string (key:, /path or URL)');
+        if (a.label !== undefined && typeof a.label !== 'string') err(`${p}._action.label`, 'label must be a string (the action\'s display copy, F-022)');
         if (a.when !== undefined) checkExpr(a.when, `${p}._action.when`, nodeChain);
         if (a.params !== undefined) {
           if (typeof a.params !== 'object' || a.params === null || Array.isArray(a.params)) err(`${p}._action.params`, 'params must be an object of name -> type');
@@ -81,7 +82,7 @@ export function validate(model) {
             if (!VOCAB.valueTypes.includes(ty)) err(`${p}._action.params.${n}`, `param type "${ty}" not in closed value types`);
           }
         }
-        const extra = Object.keys(a).filter((k) => !['verb', 'to', 'when', 'params'].includes(k));
+        const extra = Object.keys(a).filter((k) => !['verb', 'to', 'when', 'params', 'label'].includes(k));
         for (const k of extra) err(`${p}._action.${k}`, `unknown action key "${k}"`);
       }
     }

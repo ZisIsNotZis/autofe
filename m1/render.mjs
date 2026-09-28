@@ -89,9 +89,10 @@ function renderNode(node, chain, isHero, hide, ctx) {
     }
     if (show) {
       const a = node._action;
+      const copy = a.label ?? a.verb;
       action = a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
-        ? `<a class="action verb-${esc(a.verb)}" href="${esc(a.to)}">${esc(a.verb)}</a>`
-        : `<button class="action verb-${esc(a.verb)}" type="button">${esc(a.verb)}</button>`;
+        ? `<a class="action verb-${esc(a.verb)}" href="${esc(a.to)}">${esc(copy)}</a>`
+        : `<button class="action verb-${esc(a.verb)}" type="button">${esc(copy)}</button>`;
     }
   }
 
@@ -131,8 +132,8 @@ function renderNode(node, chain, isHero, hide, ctx) {
   if (exp && node._items?.length) {
     const multi = exp.multiple === true;
     const opts = node._items.map((it, i) => {
-      const v = it._name ?? it._title;
-      const label = v ? fmt(v) : `option ${i + 1}`;
+      const v = it._name ?? it._title ?? (it._fields ? { text: Object.values(it._fields)[0]?.text ?? Object.values(it._fields)[0]?.num ?? '' } : undefined);
+      const label = v && (v.text !== undefined || v.num !== undefined) ? fmt(v) : `option ${i + 1}`;
       const val = it._key ? `key:${it._key}` : (v ? v.text : String(i));
       return `<label class="choice"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"> ${label}</label>`;
     }).join('');
@@ -155,7 +156,7 @@ function renderNode(node, chain, isHero, hide, ctx) {
   const head = titleText
     ? `<h3 class="title">${titleText}</h3>`
     : (node._intent && kids.length ? `<h4 class="intent">${esc(node._intent)}</h4>` : '');
-  return `<article class="${cls.join(' ')}">${heroHtml}${head}${body}${action}</article>`;
+  return `<article class="${cls.join(' ')}">${head}${body}${heroHtml}${action}</article>`;
 }
 
 export function render(model, context = {}) {
@@ -179,7 +180,7 @@ article{margin:14px 0}
 h3.title{margin:.2em 0 .4em;font-size:1.25em}
 h4.intent{margin:.2em 0 .6em;font-weight:500;color:#5b6a78;font-size:.92em}
 .group{border-top:1px solid #e6eaf0;padding-top:12px}
-.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;align-items:start}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;align-items:start}
 .compare>.node{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
@@ -189,7 +190,8 @@ h4.intent{margin:.2em 0 .6em;font-weight:500;color:#5b6a78;font-size:.92em}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{display:flex;gap:10px;align-items:baseline;margin:3px 0}
 .role{min-width:104px;color:#68788a;font-size:.78em;text-transform:uppercase;letter-spacing:.04em}
-.val{font-variant-numeric:tabular-nums}
+.val{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.fact{flex-wrap:wrap}
 .expose{display:block;margin:8px 0}
 .expose .role{display:block;margin-bottom:4px}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
@@ -206,7 +208,7 @@ table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 .level-1{opacity:.92}.level-2{opacity:.85}.level-3{opacity:.78}
 </style></head>
-<body><main><p class="page-intent">${intent}</p>${html}</main></body></html>
+<body><main><!-- intent: ${intent} -->${html}</main></body></html>
 `;
 }
 
