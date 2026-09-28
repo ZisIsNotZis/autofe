@@ -1,0 +1,65 @@
+{
+  "site": "linear-app",
+  "page": "home",
+  "url": "https://linear.app/",
+  "title": "Linear – The system for product development",
+  "sourceNodes": 3000,
+  "counts": {
+    "storylines": 10,
+    "items": 0,
+    "actions": 51,
+    "exposes": 1,
+    "images": 29,
+    "facts": 64,
+    "tables": 0,
+    "lists": 0,
+    "choiceSets": 0,
+    "inputs": 1,
+    "dupeText": 49,
+    "capHits": []
+  },
+  "storylines": 10,
+  "chrome": [
+    {
+      "role": "presentation",
+      "count": 20
+    },
+    {
+      "role": "banner",
+      "count": 1
+    },
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "chart-or-svg",
+      "role": "graphics-document",
+      "count": 7,
+      "examples": []
+    },
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 2,
+      "examples": [
+        "import React from 'react' import { View, ActivityIndicator } fro"
+      ]
+    },
+    {
+      "kind": "combobox-select",
+      "role": "combobox",
+      "count": 1,
+      "examples": [
+        "Linear"
+      ]
+    }
+  ],
+  "fieldsDrafted": []
+}

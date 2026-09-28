@@ -1,0 +1,560 @@
+{
+  "$comment": "GENERATED DRAFT field dictionary (m3 extraction). Separate from the shared m1/vocab-fields.json: proposals only. Models emit _fields keys that exist in the shared dictionary; everything else here is a proposed vocabulary addition recorded in the extraction report.",
+  "version": "0-draft",
+  "fields": {
+    "name": {
+      "type": "text",
+      "label": "Name",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "age": {
+      "type": "num",
+      "label": "Age",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address": {
+      "type": "num",
+      "label": "Address",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "tags": {
+      "type": "text",
+      "label": "Tags",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "action": {
+      "type": "text",
+      "label": "Action",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "undefined": {
+      "type": "text",
+      "label": "col-3",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "select-all": {
+      "type": "text",
+      "label": "Select all",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "custom-selection-down": {
+      "type": "text",
+      "label": "Custom selection down",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address-filter": {
+      "type": "text",
+      "label": "Address filter",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "name-filter": {
+      "type": "text",
+      "label": "Name filter",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "chinese-score": {
+      "type": "num",
+      "label": "Chinese Score",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "math-score": {
+      "type": "num",
+      "label": "Math Score",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "english-score": {
+      "type": "num",
+      "label": "English Score",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "name-search": {
+      "type": "text",
+      "label": "Name search",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "age-search": {
+      "type": "num",
+      "label": "Age search",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "gender-filter": {
+      "type": "text",
+      "label": "Gender filter",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "email": {
+      "type": "text",
+      "label": "Email",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "cash-assets": {
+      "type": "money",
+      "label": "Cash Assets",
+      "pages": [
+        "ant-design/components-table"
+      ],
+      "currency": "CNY"
+    },
+    "col-1": {
+      "type": "text",
+      "label": "col-1",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "col-2": {
+      "type": "text",
+      "label": "col-2",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "rowhead": {
+      "type": "text",
+      "label": "RowHead",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "home-phone": {
+      "type": "text",
+      "label": "Home phone",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "full-name": {
+      "type": "text",
+      "label": "Full Name",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-1": {
+      "type": "text",
+      "label": "Column 1",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-2": {
+      "type": "text",
+      "label": "Column 2",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-3": {
+      "type": "text",
+      "label": "Column 3",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-4": {
+      "type": "text",
+      "label": "Column 4",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-5": {
+      "type": "text",
+      "label": "Column 5",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-6": {
+      "type": "text",
+      "label": "Column 6",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-7": {
+      "type": "text",
+      "label": "Column 7",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-8": {
+      "type": "text",
+      "label": "Column 8",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-9": {
+      "type": "text",
+      "label": "Column 9",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-10": {
+      "type": "text",
+      "label": "Column 10",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-11": {
+      "type": "text",
+      "label": "Column 11",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-12": {
+      "type": "text",
+      "label": "Column 12",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-13": {
+      "type": "text",
+      "label": "Column 13",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-14": {
+      "type": "text",
+      "label": "Column 14",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-15": {
+      "type": "text",
+      "label": "Column 15",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-16": {
+      "type": "text",
+      "label": "Column 16",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-17": {
+      "type": "text",
+      "label": "Column 17",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-18": {
+      "type": "text",
+      "label": "Column 18",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-19": {
+      "type": "text",
+      "label": "Column 19",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-20": {
+      "type": "text",
+      "label": "Column 20",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "action-1": {
+      "type": "text",
+      "label": "Action 1",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "action-2": {
+      "type": "text",
+      "label": "Action 2",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "action-3": {
+      "type": "text",
+      "label": "Action 3",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "other": {
+      "type": "text",
+      "label": "Other",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "company": {
+      "type": "text",
+      "label": "Company",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "gender": {
+      "type": "text",
+      "label": "Gender",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "operation": {
+      "type": "text",
+      "label": "operation",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "platform": {
+      "type": "text",
+      "label": "Platform",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "version": {
+      "type": "text",
+      "label": "Version",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "upgraded": {
+      "type": "text",
+      "label": "Upgraded",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "creator": {
+      "type": "text",
+      "label": "Creator",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "date": {
+      "type": "text",
+      "label": "Date",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "long-column-long-column-long-column": {
+      "type": "text",
+      "label": "Long Column Long Column Long Column",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "long-column-long-column": {
+      "type": "text",
+      "label": "Long Column Long Column",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "long-column": {
+      "type": "text",
+      "label": "Long Column",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "label": "Description",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "age-filter": {
+      "type": "num",
+      "label": "Age filter",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "borrow": {
+      "type": "num",
+      "label": "Borrow",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "repayment": {
+      "type": "text",
+      "label": "Repayment",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "id": {
+      "type": "text",
+      "label": "ID",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "fistname": {
+      "type": "text",
+      "label": "FistName",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "lastname": {
+      "type": "text",
+      "label": "LastName",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "group": {
+      "type": "text",
+      "label": "Group",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address-1": {
+      "type": "text",
+      "label": "Address 1",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address-2": {
+      "type": "text",
+      "label": "Address 2",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address-3": {
+      "type": "text",
+      "label": "Address 3",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "name-all-screens": {
+      "type": "text",
+      "label": "Name (all screens)",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "age-medium-screen-or-bigger": {
+      "type": "num",
+      "label": "Age (medium screen or bigger)",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address-large-screen-or-bigger": {
+      "type": "text",
+      "label": "Address (large screen or bigger)",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "property": {
+      "type": "text",
+      "label": "Property",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "type": {
+      "type": "text",
+      "label": "Type",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "default": {
+      "type": "text",
+      "label": "Default",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "global-config": {
+      "type": "text",
+      "label": "Global Config",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "personal-info": {
+      "type": "text",
+      "label": "Personal Info",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "token-name": {
+      "type": "text",
+      "label": "Token Name",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "default-value": {
+      "type": "text",
+      "label": "Default Value",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    }
+  }
+}

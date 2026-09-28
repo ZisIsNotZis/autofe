@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Table</title>
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+.page-intent{color:#5b6a78;font-size:.9em;border-bottom:1px solid #e6eaf0;padding-bottom:10px}
+.hero{border-bottom:2px solid #17212b;padding-bottom:18px;margin-bottom:26px}
+.hero .fact .val{font-size:1.9em;font-weight:650}
+article{margin:14px 0}
+h3.title{margin:.2em 0 .4em;font-size:1.25em}
+h4.intent{margin:.2em 0 .6em;font-weight:500;color:#5b6a78;font-size:.92em}
+.group{border-top:1px solid #e6eaf0;padding-top:12px}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;align-items:start}
+.compare>.node{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
+.timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
+.timeline .item{position:relative;padding:6px 0}
+.timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
+.fact{display:flex;gap:10px;align-items:baseline;margin:3px 0}
+.role{min-width:104px;color:#68788a;font-size:.78em;text-transform:uppercase;letter-spacing:.04em}
+.val{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.fact{flex-wrap:wrap}
+.expose{display:block;margin:8px 0}
+.expose .role{display:block;margin-bottom:4px}
+.choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
+fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
+legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
+input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
+.action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
+img{max-width:100%;border-radius:10px;display:block}
+table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
+table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
+table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
+.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.row-ops{display:flex;flex-direction:column;gap:4px}
+.row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+.level-1{opacity:.92}.level-2{opacity:.85}.level-3{opacity:.78}
+</style></head>
+<body><main><!-- intent: 让运营人员在一张数据表中查看人员记录，按需展开详情、多选后批量操作 --><article class="node"><h3 class="title">Table</h3><div class="fact fact-First Name"><span class="role">First Name</span><span class="val">John</span></div><div class="fact fact-Last Name"><span class="role">Last Name</span><span class="val">Brown</span></div><div class="fact fact-Age"><span class="role">Age</span><span class="val">32</span></div><div class="fact fact-Address"><span class="role">Address</span><span class="val">New York No. 1 Lake Park</span></div><section class="group g-add"><article class="node"><h3 class="title">Add a row</h3><label class="expose expose-new-first-name"><span class="role">new-first-name</span><input type="text" name="new-first-name" data-type="text"></label><section class="group g-extra"><article class="node"><label class="expose expose-new-last-name"><span class="role">new-last-name</span><input type="text" name="new-last-name" data-type="text"></label></article></section><button class="action verb-submit" type="button">submit</button></article></section><div class="hero"><article class="node hero"><h4 class="intent">人员名册：列即领域字段，行动作挂在行上</h4><fieldset class="expose expose-selected"><legend>selected</legend><label class="choice"><input type="checkbox" name="selected" value="key:person-john-brown"> John</label><label class="choice"><input type="checkbox" name="selected" value="key:person-jim-green"> Jim</label><label class="choice"><input type="checkbox" name="selected" value="key:person-joe-black"> Joe</label></fieldset><table class="data"><thead><tr><th>First Name</th><th>Last Name</th><th>Age</th><th>Address</th><th>tag</th><th></th></tr></thead><tbody><tr><td>John</td><td>Brown</td><td>32</td><td>New York No. 1 Lake Park</td><td><span class="chip">NICE DEVELOPER</span> <span class="chip">DEVELOPER</span></td><td class="row-ops"><article class="node"><h4 class="intent">单行操作</h4><section class="line"><article class="node"><h3 class="title">Invite</h3><a class="action verb-open" href="https://example.com/invite?user=john-brown">open</a></article></section><section class="line"><article class="node"><h3 class="title">Delete</h3></article></section></article><article class="node"><div class="fact fact-Gender"><span class="role">Gender</span><span class="val">male</span></div><div class="fact fact-Email"><span class="role">Email</span><span class="val">john@example.com</span></div></article></td></tr><tr><td>Jim</td><td>Green</td><td>42</td><td>London No. 1 Lake Park</td><td><span class="chip">KAWAII</span></td><td class="row-ops"><article class="node"><h4 class="intent">单行操作</h4><section class="line"><article class="node"><h3 class="title">Invite</h3><a class="action verb-open" href="https://example.com/invite?user=jim-green">open</a></article></section><section class="line"><article class="node"><h3 class="title">Delete</h3></article></section></article><article class="node"><div class="fact fact-Gender"><span class="role">Gender</span><span class="val">male</span></div><div class="fact fact-Email"><span class="role">Email</span><span class="val">jim@example.com</span></div></article></td></tr><tr><td>Joe</td><td>Black</td><td>32</td><td>Sydney No. 1 Lake Park</td><td><span class="chip">COOL TEACHER</span></td><td class="row-ops"><article class="node compare"><h4 class="intent">按科目展开的成绩（嵌套集合）</h4><section class="group g-_items[0]"><article class="node"><h3 class="title">Chinese</h3><div class="fact fact-Chinese Score"><span class="role">Chinese Score</span><span class="val">98</span></div></article></section><section class="group g-_items[1]"><article class="node"><h3 class="title">Math</h3><div class="fact fact-Math Score"><span class="role">Math Score</span><span class="val">60</span></div></article></section><section class="group g-_items[2]"><article class="node"><h3 class="title">English</h3><div class="fact fact-English Score"><span class="role">English Score</span><span class="val">70</span></div></article></section></article><article class="node"><h4 class="intent">单行操作</h4><section class="line"><article class="node"><h3 class="title">Invite</h3><a class="action verb-open" href="https://example.com/invite?user=joe-black">open</a></article></section><section class="line"><article class="node"><h3 class="title">Delete</h3></article></section></article></td></tr></tbody></table></article></div></article></main></body></html>

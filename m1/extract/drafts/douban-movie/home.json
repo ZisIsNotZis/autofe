@@ -1,0 +1,1213 @@
+{
+  "_intent": "豆瓣电影 — 正在热映全部正在热映»即将上映» [draft]",
+  "_title": {
+    "text": "豆瓣电影"
+  },
+  "_summary": {
+    "text": "搜索："
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://accounts.douban.com/passport/login?source=movie",
+        "label": "登录/注册"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.douban.com/doubanapp/app?channel=top-nav",
+        "label": "下载豆瓣客户端"
+      }
+    },
+    {
+      "_intent": "list (11 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "豆瓣"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/",
+            "label": "豆瓣"
+          }
+        },
+        {
+          "_name": {
+            "text": "读书"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/",
+            "label": "读书"
+          }
+        },
+        {
+          "_name": {
+            "text": "电影"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/",
+            "label": "电影"
+          }
+        },
+        {
+          "_name": {
+            "text": "音乐"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/",
+            "label": "音乐"
+          }
+        },
+        {
+          "_name": {
+            "text": "播客"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/podcast/",
+            "label": "播客"
+          }
+        },
+        {
+          "_name": {
+            "text": "同城"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/location",
+            "label": "同城"
+          }
+        },
+        {
+          "_name": {
+            "text": "小组"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group",
+            "label": "小组"
+          }
+        },
+        {
+          "_name": {
+            "text": "阅读"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://read.douban.com/?dcs=top-nav&dcm=douban",
+            "label": "阅读"
+          }
+        },
+        {
+          "_name": {
+            "text": "FM"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://fm.douban.com/?from_=shire_top_nav",
+            "label": "FM"
+          }
+        },
+        {
+          "_name": {
+            "text": "时间"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://time.douban.com/?dt_time_source=douban-web_top_nav",
+            "label": "时间"
+          }
+        },
+        {
+          "_name": {
+            "text": "豆品"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://market.douban.com/?utm_campaign=douban_top_nav&utm_source=douban&utm_medium=pc_web",
+            "label": "豆品"
+          }
+        }
+      ]
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://movie.douban.com/",
+        "label": "豆瓣电影"
+      }
+    },
+    {
+      "_intent": "list (7 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "影讯&购票"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/cinema/nowplaying/",
+            "label": "影讯&购票"
+          }
+        },
+        {
+          "_name": {
+            "text": "选电影"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/explore",
+            "label": "选电影"
+          }
+        },
+        {
+          "_name": {
+            "text": "选剧集"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/tv/",
+            "label": "选剧集"
+          }
+        },
+        {
+          "_name": {
+            "text": "排行榜"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/chart",
+            "label": "排行榜"
+          }
+        },
+        {
+          "_name": {
+            "text": "影评"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/review/best/",
+            "label": "影评"
+          }
+        },
+        {
+          "_name": {
+            "text": "2025年度榜单"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/annual/2025/?fullscreen=1&dt_from=movie_navigation",
+            "label": "2025年度榜单"
+          }
+        },
+        {
+          "_name": {
+            "text": "2025年度报告"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://c9.douban.com/app/standbyme-2025/?autorotate=false&fullscreen=true&hidenav=true&monitor_screenshot=true&df_from=web_navigation",
+            "label": "2025年度报告"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "正在热映全部正在热映»即将上映» [draft]",
+      "_title": {
+        "text": "正在热映全部正在热映»即将上映»"
+      },
+      "_summary": {
+        "text": "最近热门电影"
+      },
+      "_lines": [
+        {
+          "_intent": "list (40 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "野山 7.9 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/1986919/?from=showing",
+                "label": "野山"
+              }
+            },
+            {
+              "_name": {
+                "text": "电梯上 8.0 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/2282508/?from=showing",
+                "label": "电梯上"
+              }
+            },
+            {
+              "_name": {
+                "text": "丝路花雨 9.0 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/3804492/?from=showing",
+                "label": "丝路花雨"
+              }
+            },
+            {
+              "_name": {
+                "text": "人生 8.0 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/1306914/?from=showing",
+                "label": "人生"
+              }
+            },
+            {},
+            {
+              "_name": {
+                "text": "杀死比尔：血色全传 8.7 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/10756537/?from=showing",
+                "label": "杀死比尔：血色全传"
+              }
+            },
+            {
+              "_name": {
+                "text": "奥德赛 8.6 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36808876/?from=showing",
+                "label": "奥德赛"
+              }
+            },
+            {
+              "_name": {
+                "text": "欢迎来龙餐馆 8.7 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/35811064/?from=showing",
+                "label": "欢迎来龙餐馆"
+              }
+            },
+            {
+              "_name": {
+                "text": "空枪 7.2 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/37508847/?from=showing",
+                "label": "空枪"
+              }
+            },
+            {
+              "_name": {
+                "text": "牛来 6.0 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/38581618/?from=showing",
+                "label": "牛来"
+              }
+            },
+            {
+              "_name": {
+                "text": "坠落2：死点 5.5 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36318704/?from=showing",
+                "label": "坠落2：死点"
+              }
+            },
+            {
+              "_name": {
+                "text": "肖申克的救赎 9.7 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/1292052/?from=showing",
+                "label": "肖申克的救赎"
+              }
+            },
+            {
+              "_name": {
+                "text": "燃烧吧！爸爸 6.8 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36903929/?from=showing",
+                "label": "燃烧吧！爸爸"
+              }
+            },
+            {
+              "_name": {
+                "text": "我想留在你身边 暂无评分 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/35390242/?from=showing",
+                "label": "我想留在你身边"
+              }
+            },
+            {
+              "_name": {
+                "text": "怒之杀 5.7 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36889088/?from=showing",
+                "label": "怒之杀"
+              }
+            },
+            {
+              "_name": {
+                "text": "蜘蛛侠：崭新之日 7.8 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36246195/?from=showing",
+                "label": "蜘蛛侠：崭新之日"
+              }
+            },
+            {
+              "_name": {
+                "text": "密档 6.6 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/35209727/?from=showing",
+                "label": "密档"
+              }
+            },
+            {
+              "_name": {
+                "text": "痴迷 7.6 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/37450627/?from=showing",
+                "label": "痴迷"
+              }
+            },
+            {
+              "_name": {
+                "text": "机器人总动员 9.3 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/2131459/?from=showing",
+                "label": "机器人总动员"
+              }
+            },
+            {
+              "_name": {
+                "text": "年会不能停！2 6.6 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36850814/?from=showing",
+                "label": "年会不能停！2"
+              }
+            },
+            {
+              "_name": {
+                "text": "怪屋 5.8 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/37427091/?from=showing",
+                "label": "怪屋"
+              }
+            },
+            {
+              "_name": {
+                "text": "数到三 暂无评分 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36931140/?from=showing",
+                "label": "数到三"
+              }
+            },
+            {
+              "_name": {
+                "text": "去你的岛 7.6 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/35275131/?from=showing",
+                "label": "去你的岛"
+              }
+            },
+            {
+              "_name": {
+                "text": "八仙！ 8.2 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36882191/?from=showing",
+                "label": "八仙！"
+              }
+            },
+            {
+              "_name": {
+                "text": "床下有人4 暂无评分 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36961914/?from=showing",
+                "label": "床下有人4"
+              }
+            },
+            {
+              "_name": {
+                "text": "大唐妖探 6.4 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/35464353/?from=showing",
+                "label": "大唐妖探"
+              }
+            },
+            {
+              "_name": {
+                "text": "功夫女足 6.3 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36452545/?from=showing",
+                "label": "功夫女足"
+              }
+            },
+            {
+              "_name": {
+                "text": "老师您辛苦了 暂无评分 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/37395367/?from=showing",
+                "label": "老师您辛苦了"
+              }
+            },
+            {
+              "_name": {
+                "text": "四渡 暂无评分 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/37191746/?from=showing",
+                "label": "四渡"
+              }
+            },
+            {
+              "_name": {
+                "text": "汪汪队立大功大电影3：勇闯恐龙岛 7.2 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36791178/?from=showing",
+                "label": "汪汪队立大功大电影3：勇闯恐龙岛"
+              }
+            },
+            {
+              "_name": {
+                "text": "恐怖游轮 8.5 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/3011051/?from=showing",
+                "label": "恐怖游轮"
+              }
+            },
+            {
+              "_name": {
+                "text": "正义必胜 暂无评分 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/38188824/?from=showing",
+                "label": "正义必胜"
+              }
+            },
+            {
+              "_name": {
+                "text": "晒后假日 8.2 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/35876302/?from=showing",
+                "label": "晒后假日"
+              }
+            },
+            {
+              "_name": {
+                "text": "我们好像在哪见过 暂无评分 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/37474694/?from=showing",
+                "label": "我们好像在哪见过"
+              }
+            },
+            {
+              "_name": {
+                "text": "独自在夜晚的海边 7.6 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/26718282/?from=showing",
+                "label": "独自在夜晚的海边"
+              }
+            },
+            {
+              "_name": {
+                "text": "小黄人与大怪兽 6.6 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36962219/?from=showing",
+                "label": "小黄人与大怪兽"
+              }
+            },
+            {
+              "_name": {
+                "text": "蓝白红三部曲之红 8.8 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/1292047/?from=showing",
+                "label": "蓝白红三部曲之红"
+              }
+            },
+            {
+              "_name": {
+                "text": "红高粱 8.5 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/1306505/?from=showing",
+                "label": "红高粱"
+              }
+            },
+            {
+              "_name": {
+                "text": "探戈课 8.1 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/1306960/?from=showing",
+                "label": "探戈课"
+              }
+            },
+            {
+              "_name": {
+                "text": "毕业生 8.0 选座购票"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/1292271/?from=showing",
+                "label": "毕业生"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "热门"
+          }
+        },
+        {
+          "_text": {
+            "text": "最新"
+          }
+        },
+        {
+          "_text": {
+            "text": "豆瓣高分"
+          }
+        },
+        {
+          "_text": {
+            "text": "冷门佳片"
+          }
+        },
+        {
+          "_text": {
+            "text": "华语"
+          }
+        },
+        {
+          "_text": {
+            "text": "欧美"
+          }
+        },
+        {
+          "_text": {
+            "text": "韩国"
+          }
+        },
+        {
+          "_text": {
+            "text": "日本"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/explore?support_type=movie&is_all=false&category=%E7%83%AD%E9%97%A8&type=%E5%85%A8%E9%83%A8",
+            "label": "更多»"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/movie/36439868",
+            "label": "求救信号 求救信号7.1"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/movie/36953973",
+            "label": "特立独行 特立独行6.7"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/movie/36996121",
+            "label": "核战边缘 新 核战边缘6.4"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/movie/38509943",
+            "label": "灵魂摆渡·蝴蝶梦 新 灵魂摆渡·蝴蝶梦6.5"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/movie/35322132",
+            "label": "罗斯 罗斯8.6"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/movie/36179101",
+            "label": "希望 希望5.6"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/movie/36318703",
+            "label": "逃出绝命街 逃出绝命街5.7"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/movie/36812879",
+            "label": "抓特务 抓特务7.4"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/movie/36889088",
+            "label": "怒之杀 怒之杀5.7"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/movie/37227467",
+            "label": "盒子里的羊 盒子里的羊5.7"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Previous slide"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Go to slide 1"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Go to slide 2"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Go to slide 3"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Go to slide 4"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Go to slide 5"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Next slide"
+          }
+        },
+        {
+          "_text": {
+            "text": "最近热门电视剧"
+          }
+        },
+        {
+          "_text": {
+            "text": "综合"
+          }
+        },
+        {
+          "_text": {
+            "text": "国产剧"
+          }
+        },
+        {
+          "_text": {
+            "text": "综艺"
+          }
+        },
+        {
+          "_text": {
+            "text": "欧美剧"
+          }
+        },
+        {
+          "_text": {
+            "text": "日剧"
+          }
+        },
+        {
+          "_text": {
+            "text": "韩剧"
+          }
+        },
+        {
+          "_text": {
+            "text": "动画"
+          }
+        },
+        {
+          "_text": {
+            "text": "纪录片"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/tv?support_type=tv&is_all=false&category=tv&type=tv",
+            "label": "更多»"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/tv/36576514",
+            "label": "深渊无间 16集全 新 深渊无间7.2"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/tv/37501131",
+            "label": "现在不是出轨的问题 现在不是出轨的问题8.7"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/tv/36660844",
+            "label": "早春晴朗 24集全 早春晴朗6.7"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/tv/36449295",
+            "label": "兰香如故 更新至18集 新 兰香如故暂无评分"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/tv/36314809",
+            "label": "交锋 更新至28集 交锋暂无评分"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/tv/38462800",
+            "label": "直到T恤干透 直到T恤干透7.4"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/tv/37264799",
+            "label": "冬城猎凶 更新至14集 新 冬城猎凶暂无评分"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/tv/36810153",
+            "label": "花开锦绣 36集全 花开锦绣7.1"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/tv/37234503",
+            "label": "莫离 莫离6.3"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/dispatch?uri=/tv/36554071",
+            "label": "重器 33集全 重器7.3"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "热门推荐 [draft]",
+      "_title": {
+        "text": "热门推荐"
+      },
+      "_image": {
+        "image": "",
+        "alt": "「豆瓣2025年度电影榜单」正式上线！"
+      },
+      "_summary": {
+        "text": "点击查看完整榜单，开启全年佳片好剧大赏。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/annual/2025/?fullscreen=1&dt_from=doubanmovie?from=gallery",
+            "label": "「豆瓣2025年度电影榜单」正式上线！"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "最受欢迎的影评更多热门影评»新片影评» [draft]",
+      "_title": {
+        "text": "最受欢迎的影评更多热门影评»新片影评»"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/subject/1901896/?from=reviews",
+            "label": "全面退化的人格"
+          }
+        },
+        {
+          "_intent": "尘埃中的心 · 翻译｜观众经验：关于影片《全面退化的人格》的谈话 [draft]",
+          "_title": {
+            "text": "尘埃中的心 · 翻译｜观众经验：关于影片《全面退化的人格》的谈话"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/people/TheDissidents/",
+                "label": "异见者"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/1901896/?from=reviews",
+                "label": "《全面退化的人格》"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/review/17807569/",
+                "label": "(全文)"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36318704/?from=reviews",
+                "label": "坠落2：死点"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "爆米花烂片！全是塑料设定和天降灾难！《坠落2》排雷 [draft]",
+          "_title": {
+            "text": "爆米花烂片！全是塑料设定和天降灾难！《坠落2》排雷"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/people/166426422/",
+                "label": "隔夜也很宅"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/36318704/?from=reviews",
+                "label": "《坠落2：死点》"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/review/17802907/",
+                "label": "(全文)"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/30226070/?from=reviews",
+                "label": "钟馗"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "钟馗|抓的什么鬼 [draft]",
+          "_title": {
+            "text": "钟馗|抓的什么鬼"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/people/45275289/",
+                "label": "eflysky"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/subject/30226070/?from=reviews",
+                "label": "《钟馗》"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://movie.douban.com/review/17797979/",
+                "label": "(全文)"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://blog.douban.com/douban/2015/12/18/3060/",
+                "label": "豆瓣电影评分八问"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "一周口碑榜更多榜单» [draft]",
+      "_title": {
+        "text": "一周口碑榜更多榜单»"
+      }
+    },
+    {
+      "_intent": "热门片单 [draft]",
+      "_title": {
+        "text": "热门片单"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "36推荐 画家-艺术 传记相关"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/doulist/3377729/",
+                "label": "画家-艺术 传记相关"
+              }
+            },
+            {
+              "_name": {
+                "text": "2130推荐 中文电影250强总榜（1905——2012）"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/doulist/380312/",
+                "label": "中文电影250强总榜（1905——2012）"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "合作联系 [draft]",
+      "_title": {
+        "text": "合作联系"
+      },
+      "_summary": {
+        "text": "电影合作邮箱："
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "电视剧合作邮箱："
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "关注我们 [draft]",
+      "_title": {
+        "text": "关注我们"
+      },
+      "_summary": {
+        "text": "广告"
+      },
+      "_lines": [
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "微博"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://weibo.com/doubanfilm",
+                "label": "微博"
+              }
+            },
+            {
+              "_name": {
+                "text": "微信"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "javascript:;",
+                "label": "微信"
+              }
+            },
+            {
+              "_name": {
+                "text": "瓣嘴"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://weibo.com/doubanzui",
+                "label": "瓣嘴"
+              }
+            },
+            {
+              "_name": {
+                "text": "光影club"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/people/nobodyfilm/",
+                "label": "光影club"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "© 2005－2026 douban.com, all rights reserved 北京豆网科技有限公司"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/about",
+            "label": "关于豆瓣"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/jobs",
+            "label": "在豆瓣工作"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/about?topic=contactus",
+            "label": "联系我们"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/about/legal",
+            "label": "法律声明"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://help.douban.com/?app=movie",
+            "label": "帮助中心"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/",
+            "label": "移动应用"
+          }
+        }
+      ]
+    }
+  ]
+}
