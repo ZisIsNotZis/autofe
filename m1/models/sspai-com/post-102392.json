@@ -1,0 +1,39 @@
+{
+  "_intent": "教 Markdown 用户让图片自适配深色模式，并介绍 VLOOK 主题与增强插件",
+  "_key": "sspai-post-vlook-darkmode",
+  "_title": { "text": "Markdown图片魔法：自适配深色模式～优雅好用的Typora主题与增强插件VLOOK™" },
+  "_author": { "text": "MaxChow" },
+  "_source": { "text": "少数派" },
+  "_datetime": { "date": "2025-09-09" },
+  "_tag": { "list": [ { "text": "VLOOK™" }, { "text": "Typora" }, { "text": "Markdown" } ] },
+  "_primary": "body",
+  "lead": {
+    "_intent": "这是什么东西、写给谁",
+    "_summary": { "text": "VLOOK™ 是针对 Typora 的主题包和增强插件，旨在与众 Markdown 粉共创 Markdown 文档的新看(wán)法。" }
+  },
+  "body": {
+    "_intent": "正文：先给问题，再给两种方案，最后收尾给入口",
+    "_rel": { "order": "sequence" },
+    "_lines": [
+      { "_intent": "问题背景", "_text": { "text": "当我们将系统或浏览器开启 Dark Mode（夜间模式）后，图片显示得有点不太和谐，怎么办？" } },
+      { "_intent": "方案一：颜色反转，适合黑/灰白图片", "_title": { "text": "以「反色」方式进行适配" } },
+      { "_intent": "方案二：换图，适合有品牌色的图片", "_title": { "text": "以「替换」方式进行适配" } },
+      { "_intent": "收尾并给出上手入口", "_summary": { "text": "今天的新看(wán)法小专题暂收笔于此，想自己上手玩玩或了解更多 VLOOK™ 的内容，以下入口自行选择。" } }
+    ]
+  },
+  "meta": {
+    "_intent": "阅读成本与许可",
+    "_detail": { "text": "2 分钟阅读 · MIT License" }
+  },
+  "support": {
+    "_intent": "读者可以用充电鼓励作者",
+    "_title": { "text": "充电鼓励" },
+    "_action": { "verb": "operate" }
+  },
+  "related": {
+    "_intent": "同一系列/同一作者的下一篇",
+    "_lines": [
+      { "_intent": "开发者视角的 iPhone 相机猜想", "_title": { "text": "新 iPhone 相机如何记录照片真实性？开发者视角的猜想和尝试" }, "_action": { "verb": "open", "to": "https://sspai.com/post" } }
+    ]
+  }
+}

@@ -2,15 +2,55 @@
   "$comment": "Domain field dictionary (people/HR domain for the antd table exemplar). Fields are open but DECLARED here once per domain, with the column label the engine uses. This is the third fact namespace: semantic roles (closed vocab, engine understands) vs domain fields (declared, engine relays) vs exposed identifiers (page-scoped inputs). Adding a field is a vocabulary change: log it in failures.md first.",
   "version": "0",
   "fields": {
-    "first-name":  { "type": "text", "label": "First Name" },
-    "last-name":   { "type": "text", "label": "Last Name" },
-    "age":         { "type": "num",  "label": "Age", "unit": "years" },
-    "address":     { "type": "text", "label": "Address" },
-    "email":       { "type": "text", "label": "Email" },
-    "gender":      { "type": "text", "label": "Gender" },
-    "score-chinese": { "type": "num", "label": "Chinese Score" },
-    "score-math":    { "type": "num", "label": "Math Score" },
-    "score-english": { "type": "num", "label": "English Score" },
-    "cash-assets": { "type": "money", "label": "Cash Assets", "currency": "USD" }
+    "first-name": {
+      "type": "text",
+      "label": "First Name"
+    },
+    "last-name": {
+      "type": "text",
+      "label": "Last Name"
+    },
+    "age": {
+      "type": "num",
+      "label": "Age",
+      "unit": "years"
+    },
+    "address": {
+      "type": "text",
+      "label": "Address"
+    },
+    "email": {
+      "type": "text",
+      "label": "Email"
+    },
+    "gender": {
+      "type": "text",
+      "label": "Gender"
+    },
+    "score-chinese": {
+      "type": "num",
+      "label": "Chinese Score"
+    },
+    "score-math": {
+      "type": "num",
+      "label": "Math Score"
+    },
+    "score-english": {
+      "type": "num",
+      "label": "English Score"
+    },
+    "cash-assets": {
+      "type": "money",
+      "label": "Cash Assets",
+      "currency": "USD"
+    },
+    "regions": {
+      "type": "num",
+      "label": "Regions"
+    },
+    "zones": {
+      "type": "num",
+      "label": "Zones"
+    }
   }
 }
