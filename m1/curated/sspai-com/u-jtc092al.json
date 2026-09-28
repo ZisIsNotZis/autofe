@@ -1,0 +1,227 @@
+{
+ "_intent": "少数派作者 MaxChow 的个人主页：作者身份、创作数据与文章动态流",
+ "_title": {
+  "text": "MaxChow 的动态 - 少数派"
+ },
+ "_primary": "feed",
+ "_lines": [
+  {
+   "_intent": "作者身份卡：关注入口",
+   "_title": {
+    "text": "MaxChow"
+   },
+   "_summary": {
+    "text": "少数派作者"
+   },
+   "_action": {
+    "verb": "follow",
+    "label": "关注"
+   }
+  },
+  {
+   "_intent": "个人主页标签页",
+   "_lines": [
+    {
+     "_action": {
+      "verb": "navigate",
+      "to": "https://sspai.com/u/jtc092al/updates",
+      "label": "动态"
+     }
+    },
+    {
+     "_action": {
+      "verb": "navigate",
+      "to": "https://sspai.com/u/jtc092al/favorites",
+      "label": "收藏"
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "成就与徽章：作者创作数据面板",
+   "_title": {
+    "text": "成就与徽章"
+   },
+   "_items": [
+    {
+     "_name": {
+      "text": "成为少数派"
+     },
+     "_measure": {
+      "num": 529,
+      "unit": "天"
+     },
+     "_detail": {
+      "text": "SINCE 2025"
+     }
+    },
+    {
+     "_name": {
+      "text": "创作文章"
+     },
+     "_measure": {
+      "num": 25
+     }
+    },
+    {
+     "_name": {
+      "text": "文章阅读量"
+     },
+     "_measure": {
+      "num": 23535
+     }
+    },
+    {
+     "_name": {
+      "text": "获得充电"
+     },
+     "_measure": {
+      "num": 4
+     }
+    },
+    {
+     "_name": {
+      "text": "获得徽章"
+     },
+     "_count": {
+      "num": 0
+     },
+     "_detail": {
+      "text": "暂无徽章"
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "动态流：创作了一篇文章（10 条）",
+   "_title": {
+    "text": "动态"
+   },
+   "_summary": {
+    "text": "创作了一篇文章"
+   },
+   "_items": [
+    {
+     "_name": {
+      "text": "Markdown也可轻松进行「详情折叠」～优雅好用的Typora主题与排版增强插件VLOOK"
+     },
+     "_action": {
+      "verb": "open",
+      "to": "https://sspai.com/post/112770"
+     },
+     "_detail": {
+      "text": "07/27 08:27"
+     }
+    },
+    {
+     "_name": {
+      "text": "VLOOK 2026.7～主题天花板级大焕新+幻灯片视图～优雅好用Typora主题包与排版增强"
+     },
+     "_action": {
+      "verb": "open",
+      "to": "https://sspai.com/post/112753"
+     },
+     "_detail": {
+      "text": "07/26 20:07"
+     }
+    },
+    {
+     "_name": {
+      "text": "Markdown 图片魔法系列 5：明信片～优雅好用的 Typora 主题与增强插件 VLOOK™"
+     },
+     "_action": {
+      "verb": "open",
+      "to": "https://sspai.com/post/108998"
+     },
+     "_detail": {
+      "text": "04/23 08:56"
+     }
+    },
+    {
+     "_name": {
+      "text": "Markdown图片魔法4：图片剪影/轮廓～优雅好用的Typora主题与排版增强插件"
+     },
+     "_action": {
+      "verb": "open",
+      "to": "https://sspai.com/post/108711"
+     },
+     "_detail": {
+      "text": "04/16 13:21"
+     }
+    },
+    {
+     "_name": {
+      "text": "Markdown 图片魔法系列 3：图片缩放的新方式～优雅好用的 Typora 主题与增强插件 VLOOK™"
+     },
+     "_action": {
+      "verb": "open",
+      "to": "https://sspai.com/post/108392"
+     },
+     "_detail": {
+      "text": "04/08 13:27"
+     }
+    },
+    {
+     "_name": {
+      "text": "Markdown 图片魔法系列 2：图文混排新玩法～优雅好用的 Typora 主题与增强插件 VLOOK™"
+     },
+     "_action": {
+      "verb": "open",
+      "to": "https://sspai.com/post/108210"
+     },
+     "_detail": {
+      "text": "04/03 08:49"
+     }
+    },
+    {
+     "_name": {
+      "text": "Markdown图片魔法系列1：图片旋转/反转/滤镜～优雅好用的Typora主题与增强插件VLOOK"
+     },
+     "_action": {
+      "verb": "open",
+      "to": "https://sspai.com/post/105605"
+     },
+     "_detail": {
+      "text": "01/20 10:35"
+     }
+    },
+    {
+     "_name": {
+      "text": "可以这样给Markdown的引用块设置小标题效果～优雅好用的Typora主题与增强插件VLOOK"
+     },
+     "_action": {
+      "verb": "open",
+      "to": "https://sspai.com/post/105393"
+     },
+     "_detail": {
+      "text": "01/12 16:56"
+     }
+    },
+    {
+     "_name": {
+      "text": "Markdown 的引用块可以更出片（样式&颜色）～优雅好用的 Typora 主题与增强插件 VLOOK™"
+     },
+     "_action": {
+      "verb": "open",
+      "to": "https://sspai.com/post/105046"
+     },
+     "_detail": {
+      "text": "2025/12/31 09:43"
+     }
+    },
+    {
+     "_name": {
+      "text": "Markdown 可以这样轻松实现「分栏」排版～优雅好用的 Typora 主题与增强插件 VLOOK™"
+     },
+     "_action": {
+      "verb": "open",
+      "to": "https://sspai.com/post/104834"
+     },
+     "_detail": {
+      "text": "2025/12/23 09:00"
+     }
+    }
+   ]
+  }
+ ]
+}

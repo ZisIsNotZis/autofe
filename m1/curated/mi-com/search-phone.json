@@ -1,0 +1,308 @@
+{
+  "_intent": "在小米商城搜索「手机」的结果页：20 款在售手机的名称与价格一览，可按分类、排序和促销条件筛选，页底另推荐相关好物。关键词「手机」来自 meta.json 的查询 URL，页面未在正文中印出",
+  "_key": "mi-search-phone",
+  "_title": { "text": "所有产品-小米商城" },
+  "_primary": "results",
+  "query": {
+    "_intent": "站内搜索框，可改关键词重新搜索（截图时框内残留词「冰箱」，与本次查询无关，不作为页面事实）",
+    "_label": { "text": "站内搜索" },
+    "_expose": { "name": "keyword", "type": "text" }
+  },
+  "filters": {
+    "_intent": "结果工具栏：按手机分类、排序方式筛选，可勾选促销/分期/仅看有货，并显示收货地",
+    "category": {
+      "_intent": "按手机系列分类筛选，当前为「全部」",
+      "_rel": { "compare": true },
+      "_items": [
+        { "_key": "cat-all", "_name": { "text": "全部" } },
+        { "_key": "cat-redmi", "_name": { "text": "红米手机" } },
+        { "_key": "cat-xiaomi", "_name": { "text": "小米手机" } }
+      ],
+      "_expose": { "name": "phone-category", "type": "text" }
+    },
+    "sort": {
+      "_intent": "结果排序方式（「价格」后为排序方向图标字符，仅保留文字）",
+      "_rel": { "compare": true },
+      "_items": [
+        { "_key": "sort-best", "_name": { "text": "综合" } },
+        { "_key": "sort-new", "_name": { "text": "新品" } },
+        { "_key": "sort-sales", "_name": { "text": "销量" } },
+        { "_key": "sort-price", "_name": { "text": "价格" } }
+      ],
+      "_expose": { "name": "sort-by", "type": "text" }
+    },
+    "promo": {
+      "_intent": "只看促销商品",
+      "_label": { "text": "促销" },
+      "_expose": { "name": "promo-only", "type": "bool" }
+    },
+    "installment": {
+      "_intent": "只看支持分期的商品",
+      "_label": { "text": "分期" },
+      "_expose": { "name": "installment-only", "type": "bool" }
+    },
+    "in-stock": {
+      "_intent": "只看有货商品",
+      "_label": { "text": "仅看有货" },
+      "_expose": { "name": "in-stock-only", "type": "bool" }
+    },
+    "delivery-region": {
+      "_intent": "当前收货地，点击可修改",
+      "_label": { "text": "收货地" },
+      "_region": { "text": "北京 北京市" }
+    }
+  },
+  "results": {
+    "_intent": "关键词「手机」的结果：第一页 20 款在售手机，价格以元计；卡片整体可点进购买页",
+    "_rel": { "order": "none" },
+    "_items": [
+      {
+        "_key": "mi-1230809235",
+        "_name": { "text": "Xiaomi 18 Pro系列 9.9元预约福袋 订金" },
+        "_price": { "money": 9.9, "currency": "CNY", "qualifier": "订金" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230809235&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230803526",
+        "_name": { "text": "Xiaomi 15 Ultra 12GB+256GB" },
+        "_price": { "money": 4999, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230803526&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230808328",
+        "_name": { "text": "REDMI Note 17 Pro 8GB+128GB" },
+        "_price": { "money": 1549, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230808328&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230808907",
+        "_name": { "text": "Xiaomi 18 Fold 16GB+512GB" },
+        "_price": { "money": 12999, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230808907&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230805810",
+        "_name": { "text": "Xiaomi 17 Ultra 12GB+512GB" },
+        "_price": { "money": 6999, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230805810&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230802686",
+        "_name": { "text": "Redmi Note 14 5G 8GB+256GB" },
+        "_price": { "money": 1499, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802686&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230800929",
+        "_name": { "text": "Redmi Note 13 Pro 12GB+256GB" },
+        "_price": { "money": 1699, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230800929&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230801727",
+        "_name": { "text": "Xiaomi Civi 4 Pro 12GB+512GB" },
+        "_price": { "money": 2299, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230801727&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230802937",
+        "_name": { "text": "Xiaomi 15 Pro 12GB+256GB" },
+        "_price": { "money": 4999, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802937&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230802679",
+        "_name": { "text": "Redmi Note 14 Pro 12GB+256GB" },
+        "_price": { "money": 1399, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802679&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230802290",
+        "_name": { "text": "Redmi K70 至尊版 12GB+512GB" },
+        "_price": { "money": 2249, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802290&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230802683",
+        "_name": { "text": "Redmi Note 14 Pro+ 16GB+512GB" },
+        "_price": { "money": 1999, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802683&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230801079",
+        "_name": { "text": "Xiaomi 14 12GB+256GB" },
+        "_price": { "money": 3999, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230801079&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230802946",
+        "_name": { "text": "Xiaomi 15 12GB+256GB" },
+        "_price": { "money": 3599, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802946&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230805813",
+        "_name": { "text": "Xiaomi 17 Ultra 徕卡版 16GB+512GB" },
+        "_price": { "money": 7999, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230805813&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230803209",
+        "_name": { "text": "REDMI K80 Pro 16GB+512GB" },
+        "_price": { "money": 3399, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230803209&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230803367",
+        "_name": { "text": "Redmi 14C 4GB+128GB" },
+        "_price": { "money": 799, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230803367&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230808645",
+        "_name": { "text": "REDMI K100 Pro Max 12GB+256GB" },
+        "_price": { "money": 4499, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230808645&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230804969",
+        "_name": { "text": "Xiaomi 17 12GB+256GB" },
+        "_price": { "money": 5099, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230804969&cfrom=search" }
+      },
+      {
+        "_key": "mi-1230804977",
+        "_name": { "text": "Xiaomi 17 Pro Max 12GB+512GB" },
+        "_price": { "money": 6999, "currency": "CNY" },
+        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230804977&cfrom=search" }
+      }
+    ]
+  },
+  "recommend": {
+    "_intent": "「猜你喜欢」推荐位（轮播共 2 屏 10 件）：带价格与好评数的周边好物，可直接加入购物车",
+    "_title": { "text": "猜你喜欢" },
+    "_primary": {
+      "_key": "rec-1230808886",
+      "_name": { "text": "米家电动剃须刀S100 云纹刀网版" },
+      "_price": { "money": 99, "currency": "CNY" },
+      "_rating-count": { "num": 870, "unit": "人好评" },
+      "cart": {
+        "_intent": "加入购物车（截图时框内残留提示「成功加入购物车」，不作为页面事实）",
+        "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+      },
+      "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230808886" }
+    },
+    "_items": [
+      {
+        "_key": "rec-1230808886",
+        "_name": { "text": "米家电动剃须刀S100 云纹刀网版" },
+        "_price": { "money": 99, "currency": "CNY" },
+        "_rating-count": { "num": 870, "unit": "人好评" },
+        "cart": {
+          "_intent": "加入购物车",
+          "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+        },
+        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230808886" }
+      },
+      {
+        "_key": "rec-1230803485",
+        "_name": { "text": "米家智能血压计" },
+        "_price": { "money": 269, "currency": "CNY" },
+        "_rating-count": { "num": 23.3, "unit": "万人好评" },
+        "cart": {
+          "_intent": "加入购物车",
+          "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+        },
+        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230803485" }
+      },
+      {
+        "_key": "rec-1230808328",
+        "_name": { "text": "REDMI Note 17 Pro" },
+        "_price": { "money": 1599, "currency": "CNY" },
+        "_rating-count": { "num": 32.4, "unit": "万人好评" },
+        "cart": {
+          "_intent": "加入购物车",
+          "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+        },
+        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230808328" }
+      },
+      {
+        "_key": "rec-1230808916",
+        "_name": { "text": "小米手环11 标准版" },
+        "_price": { "money": 299, "currency": "CNY" },
+        "_rating-count": { "num": 2552, "unit": "人好评" },
+        "cart": {
+          "_intent": "加入购物车",
+          "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+        },
+        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230808916" }
+      },
+      {
+        "_key": "rec-1230808535",
+        "_name": { "text": "米家电动剃须刀" },
+        "_price": { "money": 249, "currency": "CNY" },
+        "_rating-count": { "num": 3.2, "unit": "万人好评" },
+        "cart": {
+          "_intent": "加入购物车",
+          "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+        },
+        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230808535" }
+      },
+      {
+        "_key": "rec-1230802335",
+        "_name": { "text": "米家防蓝光眼镜 Pro" },
+        "_price": { "money": 169, "currency": "CNY" },
+        "_rating-count": { "num": 4.8, "unit": "万人好评" },
+        "cart": {
+          "_intent": "加入购物车",
+          "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+        },
+        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230802335" }
+      },
+      {
+        "_key": "rec-1230805246",
+        "_name": { "text": "REDMI Buds 8 Pro" },
+        "_price": { "money": 399, "currency": "CNY" },
+        "_rating-count": { "num": 24.3, "unit": "万人好评" },
+        "cart": {
+          "_intent": "加入购物车",
+          "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+        },
+        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230805246" }
+      },
+      {
+        "_key": "rec-1230805941",
+        "_name": { "text": "REDMI Turbo 5 Max" },
+        "_price": { "money": 3199, "currency": "CNY" },
+        "_rating-count": { "num": 61, "unit": "万人好评" },
+        "cart": {
+          "_intent": "加入购物车",
+          "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+        },
+        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230805941" }
+      },
+      {
+        "_key": "rec-1230804574",
+        "_name": { "text": "小米磁吸支架充电宝10000 7.5W" },
+        "_price": { "money": 169, "currency": "CNY" },
+        "_rating-count": { "num": 11.5, "unit": "万人好评" },
+        "cart": {
+          "_intent": "加入购物车",
+          "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+        },
+        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230804574" }
+      },
+      {
+        "_key": "rec-1230808165",
+        "_name": { "text": "米家电动直柄螺丝刀" },
+        "_price": { "money": 159, "currency": "CNY" },
+        "_rating-count": { "num": 8389, "unit": "人好评" },
+        "cart": {
+          "_intent": "加入购物车",
+          "_action": { "verb": "add-to-cart", "label": "加入购物车" }
+        },
+        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230808165" }
+      }
+    ]
+  }
+}

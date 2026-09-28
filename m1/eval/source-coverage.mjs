@@ -7,7 +7,7 @@
 import fs from 'node:fs';
 import { walk } from '../model-lib.mjs';
 
-const norm = (s) => String(s).toLowerCase().replace(/[\s\p{P}]+/gu, '');
+const norm = (s) => String(s).toLowerCase().replace(/&(amp|quot|apos|lt|gt|nbsp);/g, (m, g) => ({amp:'&',quot:'"',apos:"'",lt:'<',gt:'>',nbsp:' '})[g] ?? g).replace(/[\s\p{P}]+/gu, '');
 const NOISE = /cookie|javascript|版权|©|all rights|skip to|关闭广告|说点什么|登录|注册|搜索/i;
 const CODELIKE = /^(const|let|var|import|function|export|jsx|return\b)|=>|;\s*$|[{}]\s*$/;
 const CODE_OBJECT = /['\"]\s*:|:\s*['\"]|,\s*$/; // object-literal lines from embedded code samples

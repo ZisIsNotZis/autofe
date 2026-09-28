@@ -1,0 +1,614 @@
+{
+  "_intent": "观看页：Rick Astley《Never Gonna Give You Up》官方 MV（索尼音乐中国投稿），播放 1 亿 / 弹幕 14.9 万；含弹幕输入、点赞投币收藏分享、字幕致谢、标签与“接下来播放”推荐列表",
+  "_key": "bilibili-video-bv1gj411x7h7",
+  "_title": {
+    "text": "【官方 MV】Never Gonna Give You Up - Rick Astley"
+  },
+  "_primary": "_title",
+  "_count": {
+    "text": "1亿"
+  },
+  "_measure": {
+    "text": "14.9万"
+  },
+  "_datetime": {
+    "date": "2020-01-01 07:43:23"
+  },
+  "_duration": {
+    "text": "03:33"
+  },
+  "danmaku": {
+    "_intent": "弹幕输入行：未登录状态提示“请先登录或注册”，输入弹幕后发送；发送的弹幕需遵守弹幕礼仪",
+    "_label": {
+      "text": "请先登录或注册"
+    },
+    "_expose": {
+      "name": "danmaku-input",
+      "type": "text"
+    },
+    "send": {
+      "_intent": "发送当前输入的弹幕",
+      "_action": {
+        "verb": "submit",
+        "label": "发送"
+      }
+    },
+    "etiquette": {
+      "_intent": "弹幕礼仪说明",
+      "_action": {
+        "verb": "open",
+        "to": "https://www.bilibili.com/blackboard/help.html#/?qid=359&pid=357",
+        "label": "弹幕礼仪"
+      }
+    },
+    "login": {
+      "_intent": "登录后才能发弹幕（页面内弹层入口，无独立 URL）",
+      "_action": {
+        "verb": "operate",
+        "label": "登录"
+      }
+    },
+    "register": {
+      "_intent": "注册 B 站账号",
+      "_action": {
+        "verb": "navigate",
+        "to": "https://passport.bilibili.com/login?register_page=1",
+        "label": "注册"
+      }
+    }
+  },
+  "stats": {
+    "_intent": "互动工具栏计数值（页面图标顺序：点赞、投币、收藏、分享），以及稿件举报与 UP 笔记入口",
+    "_measure": {
+      "text": "292.1万 127万 153.6万 49.3万"
+    },
+    "report": {
+      "_intent": "举报该稿件",
+      "_action": {
+        "verb": "operate",
+        "label": "稿件举报"
+      }
+    },
+    "notes": {
+      "_intent": "查看 UP 主围绕本视频发布的图文笔记（46 篇）",
+      "_action": {
+        "verb": "operate",
+        "label": "46篇笔记"
+      }
+    }
+  },
+  "live": {
+    "_intent": "捕获时刻的实时观看人数（视频播放器下方实时计数）",
+    "_count": {
+      "text": "96人正在看"
+    }
+  },
+  "credits": {
+    "_intent": "视频字幕致谢：8 位字幕制作者及各自 B 站主页链接",
+    "_items": [
+      {
+        "_name": {
+          "text": "字幕制作者（中文（中国））：账号已注销"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/371800306",
+          "label": "账号已注销"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（中文（中國香港））：FF小黄人"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/592667008",
+          "label": "FF小黄人"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（日本語）：゚゚初音ミク"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/437457729",
+          "label": "゚゚初音ミク"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（한국어）：至放大來演吧"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/16089720",
+          "label": "至放大來演吧"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（Deutsch(DE)）：Microsoft_Win11"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/388428805",
+          "label": "Microsoft_Win11"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（Русский）：无何旧梦"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/369596063",
+          "label": "无何旧梦"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（Català）：D-SHABBY"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/3546965484767441",
+          "label": "D-SHABBY"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（美国手语）：宫十五"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/1486777491",
+          "label": "宫十五"
+        }
+      }
+    ]
+  },
+  "tags": {
+    "_intent": "视频标签：点击标签进入关键词搜索（搜索跳转为导航，不逐条建模）；“发现《Never gonna give you up》”为页内标签栏引导语",
+    "_summary": {
+      "text": "发现《Never gonna give you up》"
+    },
+    "_tag": {
+      "list": [
+        {
+          "text": "Never Gonna Give You Up"
+        },
+        {
+          "text": "Rick Astley"
+        },
+        {
+          "text": "欧美MV"
+        },
+        {
+          "text": "流行音乐"
+        },
+        {
+          "text": "欧美音乐"
+        },
+        {
+          "text": "MV"
+        }
+      ]
+    }
+  },
+  "uploader": {
+    "_intent": "UP主卡片：索尼音乐中国官方账号，粉丝 94.7 万；卡片主链接为 UP 主主页",
+    "_name": {
+      "text": "索尼音乐中国"
+    },
+    "_detail": {
+      "text": "官方营业，欢迎一键三连~~~"
+    },
+    "_count": {
+      "num": 94.7,
+      "unit": "万"
+    },
+    "_action": {
+      "verb": "navigate",
+      "to": "https://space.bilibili.com/486906719/?spm_id_from=333.788.upinfo.detail.click",
+      "label": "索尼音乐中国"
+    },
+    "follow": {
+      "_intent": "关注 UP 主（按钮可见文案含粉丝数 94.7万）",
+      "_action": {
+        "verb": "operate",
+        "label": "关注 94.7万"
+      }
+    },
+    "message": {
+      "_intent": "给 UP 主发私信",
+      "_action": {
+        "verb": "open",
+        "to": "https://message.bilibili.com/?spm_id_from=333.788.upinfo.detail.click#whisper/mid486906719",
+        "label": "发消息"
+      }
+    },
+    "charge": {
+      "_intent": "给 UP 主充电（付费支持）",
+      "_action": {
+        "verb": "operate",
+        "label": "充电"
+      }
+    }
+  },
+  "up-next": {
+    "_intent": "接下来播放：右侧同片推荐列表（20 条），每条含标题、时长、UP 主、播放/弹幕数（合并展示）；“自动连播”开关当前开启",
+    "_title": {
+      "text": "接下来播放"
+    },
+    "_rel": {
+      "order": "sequence"
+    },
+    "_action": {
+      "verb": "toggle",
+      "label": "自动连播"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "视频已失效"
+        },
+        "_duration": {
+          "text": "00:18"
+        },
+        "_author": {
+          "text": "CR400BF-AS-5421"
+        },
+        "_measure": {
+          "text": "50.8万 1078"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1V4UYY5EhD/?spm_id_from=333.788.recommend_more_video.-1&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "奥斯卡金曲《That Girl/那个女孩》#车载音乐 #欧美音乐 #thatgirl"
+        },
+        "_duration": {
+          "text": "04:08"
+        },
+        "_author": {
+          "text": "夜店经典DJ"
+        },
+        "_measure": {
+          "text": "1591.9万 11.3万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1RN4y1n75t/?spm_id_from=333.788.recommend_more_video.0&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "贾斯汀比伯联手The Kid LAROI新单《Stay》官方MV超清大首播"
+        },
+        "_duration": {
+          "text": "02:39"
+        },
+        "_author": {
+          "text": "JustinBieber_CN"
+        },
+        "_measure": {
+          "text": "2083.2万 4.9万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1nh41167Wh/?spm_id_from=333.788.recommend_more_video.1&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "黑人抬棺原版视频"
+        },
+        "_duration": {
+          "text": "03:20"
+        },
+        "_author": {
+          "text": "比划大魔王"
+        },
+        "_measure": {
+          "text": "6903.2万 45.8万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1NZ4y1j7nw/?spm_id_from=333.788.recommend_more_video.2&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "大家好，我是Rick Astley,今天我入驻b站了！ doge"
+        },
+        "_duration": {
+          "text": "03:52"
+        },
+        "_author": {
+          "text": "Rickrocknroll"
+        },
+        "_measure": {
+          "text": "1800万 8.4万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1eS4y157Ey/?spm_id_from=333.788.recommend_more_video.3&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "【4K60FPS】查理·普斯《See You Again》爆火神曲！珍惜身边的人！"
+        },
+        "_duration": {
+          "text": "03:49"
+        },
+        "_author": {
+          "text": "音乐私藏馆"
+        },
+        "_measure": {
+          "text": "2443.7万 11万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1qU4y1F73A/?spm_id_from=333.788.recommend_more_video.4&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "刘德华《恭喜发财》！代入感真强，我已经在超市了！"
+        },
+        "_duration": {
+          "text": "03:18"
+        },
+        "_author": {
+          "text": "4K音乐馆"
+        },
+        "_measure": {
+          "text": "397.4万 7882"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1ad4y1V7wb/?spm_id_from=333.788.recommend_more_video.5&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "youtube（油管）的镇管之宝 （播放量破30亿的视频）"
+        },
+        "_duration": {
+          "text": "04:22"
+        },
+        "_author": {
+          "text": "orange橙汁juice"
+        },
+        "_measure": {
+          "text": "1468.8万 4万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1PW411Q7LB/?spm_id_from=333.788.recommend_more_video.6&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "逮虾户原曲《deja vu》"
+        },
+        "_duration": {
+          "text": "04:48"
+        },
+        "_author": {
+          "text": "Freehub123"
+        },
+        "_measure": {
+          "text": "788万 4.7万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1Lt411y7N4/?spm_id_from=333.788.recommend_more_video.7&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "当我们在校园合唱节中唱你被骗了……"
+        },
+        "_duration": {
+          "text": "04:00"
+        },
+        "_author": {
+          "text": "阳光帅气的龙卷风"
+        },
+        "_measure": {
+          "text": "494.4万 4401"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1mv4y157NA/?spm_id_from=333.788.recommend_more_video.8&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "该视频已失效"
+        },
+        "_duration": {
+          "text": "01:28"
+        },
+        "_author": {
+          "text": "鈡葉"
+        },
+        "_measure": {
+          "text": "1761.9万 9.5万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1jz421R7V2/?spm_id_from=333.788.recommend_more_video.9&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "【每天一遍，网抑再见】万恶之源，抖就完事了"
+        },
+        "_duration": {
+          "text": "02:19"
+        },
+        "_author": {
+          "text": "200斤的五条艾"
+        },
+        "_measure": {
+          "text": "4608.1万 7.8万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1Ax411d7jD/?spm_id_from=333.788.recommend_more_video.10&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "Life Goes On - Oliver Tree"
+        },
+        "_duration": {
+          "text": "03:29"
+        },
+        "_author": {
+          "text": "华纳音乐国际"
+        },
+        "_measure": {
+          "text": "388.8万 5.4万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1DK4y1G7uX/?spm_id_from=333.788.recommend_more_video.11&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "快拿这个视频去诈骗你们化学老师"
+        },
+        "_duration": {
+          "text": "04:01"
+        },
+        "_author": {
+          "text": "根号六十四"
+        },
+        "_measure": {
+          "text": "976.8万 1.5万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1nG4y197jd/?spm_id_from=333.788.recommend_more_video.12&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "见证  新 宝 岛  破 亿！！"
+        },
+        "_duration": {
+          "text": "02:00"
+        },
+        "_author": {
+          "text": "恋の幻想"
+        },
+        "_measure": {
+          "text": "159.2万 3546"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1m5411K76u/?spm_id_from=333.788.recommend_more_video.13&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "【4K】迈克尔·杰克逊《Beat it》1983 AI修复高清收藏版"
+        },
+        "_duration": {
+          "text": "09:57"
+        },
+        "_author": {
+          "text": "KG-Area21"
+        },
+        "_measure": {
+          "text": "901.7万 8552"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1aZ4y1H7CK/?spm_id_from=333.788.recommend_more_video.14&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "【4K60帧】三十五年后Rickroll经典重现！瑞克·埃斯利《Never Gonna Give You Up》2022广告宣传片 AI修复补帧画质增强版"
+        },
+        "_duration": {
+          "text": "02:13"
+        },
+        "_author": {
+          "text": "KG-Area21"
+        },
+        "_measure": {
+          "text": "243.2万 1903"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1Pg411r7V5/?spm_id_from=333.788.recommend_more_video.15&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "【4K60FPS】【3D环绕】鸟叔《江南Style》动次打次神曲！请务必戴上耳机！"
+        },
+        "_duration": {
+          "text": "03:37"
+        },
+        "_author": {
+          "text": "同学们的音乐君"
+        },
+        "_measure": {
+          "text": "1287.5万 13.5万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1ih41147Z6/?spm_id_from=333.788.recommend_more_video.16&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "⚡你！被！骗！啦！⚡"
+        },
+        "_duration": {
+          "text": "01:05"
+        },
+        "_author": {
+          "text": "SoulTorch"
+        },
+        "_measure": {
+          "text": "72.2万 1211"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1EFTx69EDg/?spm_id_from=333.788.recommend_more_video.17&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      },
+      {
+        "_name": {
+          "text": "你没被骗！《Never Gonna Give You Up》谷歌翻译12次翻唱：我们必须玩我的世界！任何形式的汉堡包都值得被歌颂！"
+        },
+        "_duration": {
+          "text": "03:33"
+        },
+        "_author": {
+          "text": "中楠先生胡言乱语"
+        },
+        "_measure": {
+          "text": "233万 1.9万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1s64y1R7V2/?spm_id_from=333.788.recommend_more_video.18&trackid=web_related_0.router-related-2589621-k2x2j.1789741796679.380"
+        }
+      }
+    ]
+  }
+}

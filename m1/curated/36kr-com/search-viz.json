@@ -1,0 +1,401 @@
+{
+  "_intent": "站内搜索“数据可视化”的结果页（关键词来自 meta.json URL，不在可见事实中）：文章标签下 20 条按相关性排序的文章结果，可改关键词、换结果类型或排序",
+  "_key": "36kr-search",
+  "_title": {
+    "text": "数据可视化相关文章_36氪"
+  },
+  "_primary": "results",
+  "query": {
+    "_intent": "输入关键词重新搜索",
+    "_label": {
+      "text": "请输入关键词"
+    },
+    "_expose": {
+      "name": "query",
+      "type": "text"
+    },
+    "submit": {
+      "_intent": "执行站内搜索",
+      "_title": {
+        "text": "站内搜索"
+      },
+      "_action": {
+        "verb": "submit",
+        "label": "站内搜索"
+      }
+    }
+  },
+  "search-type": {
+    "_intent": "搜索结果类型切换：单选",
+    "_items": [
+      {
+        "_name": {
+          "text": "文章"
+        }
+      },
+      {
+        "_name": {
+          "text": "快讯"
+        }
+      },
+      {
+        "_name": {
+          "text": "直播"
+        }
+      },
+      {
+        "_name": {
+          "text": "视频"
+        }
+      },
+      {
+        "_name": {
+          "text": "专题"
+        }
+      },
+      {
+        "_name": {
+          "text": "作者"
+        }
+      },
+      {
+        "_name": {
+          "text": "项目"
+        }
+      },
+      {
+        "_name": {
+          "text": "企业号"
+        }
+      }
+    ],
+    "_expose": {
+      "name": "search-type",
+      "type": "text"
+    }
+  },
+  "sort": {
+    "_intent": "结果排序方式：单选（相关性 | 发布时间）",
+    "_items": [
+      {
+        "_name": {
+          "text": "相关性"
+        }
+      },
+      {
+        "_name": {
+          "text": "发布时间"
+        }
+      }
+    ],
+    "_expose": {
+      "name": "sort",
+      "type": "text"
+    }
+  },
+  "results": {
+    "_intent": "“数据可视化”的文章搜索结果：标题 + 摘要 + 发布日期",
+    "_items": [
+      {
+        "_name": {
+          "text": "讲好数据故事：数据可视化设计终极指南"
+        },
+        "_subtitle": {
+          "text": "数据可视化综合指南：技术结合设计，工具与策略解析。"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3358287655929602"
+        },
+        "_datetime": {
+          "date": "2025-06-30"
+        }
+      },
+      {
+        "_name": {
+          "text": "跳出单点工具，多元时代科技提出“企业级虚实共生AI底座”构想"
+        },
+        "_subtitle": {
+          "text": "多元时代科技推出VeriWeb AI打造企业级虚实共生AI底座"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3981482257660676"
+        },
+        "_datetime": {
+          "date": "2026-09-15"
+        }
+      },
+      {
+        "_name": {
+          "text": "排队乱、管控难、扩张慢！悦剪用自研SaaS+联营模式，要破美发连锁化率不足20%的困局"
+        },
+        "_subtitle": {
+          "text": "悦剪AI社区连锁获Pre-A轮融资，赋能数字化新美业"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3973176326123778"
+        },
+        "_datetime": {
+          "date": "2026-09-09"
+        }
+      },
+      {
+        "_name": {
+          "text": "便宜的电脑，正在消失"
+        },
+        "_subtitle": {
+          "text": "买不起的不只是电脑"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3963109402328453"
+        },
+        "_datetime": {
+          "date": "2026-08-31"
+        }
+      },
+      {
+        "_name": {
+          "text": "麻省理工学院：AI正在倒逼大学教育重新定位"
+        },
+        "_subtitle": {
+          "text": "这不仅是课堂规则的调整，更是一场关于“人类能力”的深层追问。"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3955833576619394"
+        },
+        "_datetime": {
+          "date": "2026-08-26"
+        }
+      },
+      {
+        "_name": {
+          "text": "36氪首发 | 清华系物理AI基建初创再融数千万美元，数据设备进入全球化规模交付"
+        },
+        "_subtitle": {
+          "text": "模型开始从互联网数据转向真实世界经验"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3927411140425861"
+        },
+        "_datetime": {
+          "date": "2026-08-06"
+        }
+      },
+      {
+        "_name": {
+          "text": "下半年，垂直Agent先下牌桌？"
+        },
+        "_subtitle": {
+          "text": "重新洗牌期。"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3916624450662018"
+        },
+        "_datetime": {
+          "date": "2026-07-29"
+        }
+      },
+      {
+        "_name": {
+          "text": "泳池清洁机器人赛道纵深分析：地表科技的技术自研与全品类代工竞争力"
+        },
+        "_subtitle": {
+          "text": "自研技术全自产的地表科技做泳池清洁机器人代工"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3916114992147844"
+        },
+        "_datetime": {
+          "date": "2026-07-29"
+        }
+      },
+      {
+        "_name": {
+          "text": "UCLA博士团队创业做人形机器人基础模型，拿下近5亿元天使++轮融资｜硬氪首发"
+        },
+        "_subtitle": {
+          "text": "“大脑+小脑+力位混合”三层原生协同架构，三层模型分工明确、闭环联动。"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3913213962540164"
+        },
+        "_datetime": {
+          "date": "2026-07-28"
+        }
+      },
+      {
+        "_name": {
+          "text": "林俊旸离职140天，Qwen3.8重回开源，阿里大模型还能打吗？"
+        },
+        "_subtitle": {
+          "text": "阿里着急端上Qwen3.8？"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3908187603621252"
+        },
+        "_datetime": {
+          "date": "2026-07-24"
+        }
+      },
+      {
+        "_name": {
+          "text": "Kimi K3，让谁紧张？"
+        },
+        "_subtitle": {
+          "text": "估值逻辑又变了？"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3905392402748801"
+        },
+        "_datetime": {
+          "date": "2026-07-22"
+        }
+      },
+      {
+        "_name": {
+          "text": "WAICA正式启航：打破全球AI学术版图，上海迎来关键拼图"
+        },
+        "_subtitle": {
+          "text": "2026年首届WAICA将于上海举办，打造全球AI学术新平台"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3903886909064832"
+        },
+        "_datetime": {
+          "date": "2026-07-20"
+        }
+      },
+      {
+        "_name": {
+          "text": "这个机器人的手，有点灵活过头了"
+        },
+        "_subtitle": {
+          "text": "任天堂超级怪手迎来劲敌！"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3889659031845636"
+        },
+        "_datetime": {
+          "date": "2026-07-10"
+        }
+      },
+      {
+        "_name": {
+          "text": "第十一届数据分析行业大会在重庆盛大开幕 多项行业首创成果集中发布，开启AI与数据融合新篇章"
+        },
+        "_subtitle": {
+          "text": "第十一届数据分析行业大会在渝开幕，多项成果发布"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3869643912434951"
+        },
+        "_datetime": {
+          "date": "2026-06-26"
+        }
+      },
+      {
+        "_name": {
+          "text": "实测豆包专业版：327张图3分钟归档，PPT配图“偶开天窗”，数据图表识别仍需“人工兜底”"
+        },
+        "_subtitle": {
+          "text": "豆包专业版上线实测：付费体验待提升，商业化仍需探索"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3868483485160710"
+        },
+        "_datetime": {
+          "date": "2026-06-25"
+        }
+      },
+      {
+        "_name": {
+          "text": "豆包专业版实测：2亿人都可以体验能干活的Agent了"
+        },
+        "_subtitle": {
+          "text": "豆包上线专业版及2.1系列模型，推出Agent办公任务模式"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3867047187420420"
+        },
+        "_datetime": {
+          "date": "2026-06-24"
+        }
+      },
+      {
+        "_name": {
+          "text": "AI大模型平台选型优选指南：聚焦豆包+DeepSeek，2026 智能体应用落地全解"
+        },
+        "_subtitle": {
+          "text": "2026豆包与DeepSeek能力、选型全解析"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3858102947206148"
+        },
+        "_datetime": {
+          "date": "2026-06-18"
+        }
+      },
+      {
+        "_name": {
+          "text": "麻省理工/IBM提出迄今为止最大的合成图表数据集ChartNet，生成150万个多样化图表样本"
+        },
+        "_subtitle": {
+          "text": "内含数据集在线使用地址"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3848566186759176"
+        },
+        "_datetime": {
+          "date": "2026-06-11"
+        }
+      },
+      {
+        "_name": {
+          "text": "知乎、豆阅、小红书：短剧能带网文这门生意走多远？"
+        },
+        "_subtitle": {
+          "text": "知乎盐言故事、豆瓣阅读、小红书抢滩短剧IP池"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3847194467482247"
+        },
+        "_datetime": {
+          "date": "2026-06-10"
+        }
+      },
+      {
+        "_name": {
+          "text": "跳出工具思维，重构产业流通底座：2026年大宗商品数字化迎来新范式"
+        },
+        "_subtitle": {
+          "text": "那时刻“技术+运营”模式，开辟重资产产业数字化新路径"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://36kr.com/p/3847081288157704"
+        },
+        "_datetime": {
+          "date": "2026-06-10"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "_intent": "Apple 官网首页：每条故事线主推一款当季产品或服务（iPhone 18 Pro 打头），页面的任务是分流到各产品页，主旨是 iPhone 18 Pro",
+  "_primary": "iphone-18-pro",
+  "_key": "apple-home",
+  "_title": { "text": "Apple" },
+  "_lines": [
+    {
+      "_intent": "首页主推：iPhone 18 Pro 旗舰横幅，页面以它开场",
+      "_key": "iphone-18-pro",
+      "_title": { "text": "iPhone 18 Pro" },
+      "_subtitle": { "text": "Pro further." },
+      "_action": { "verb": "open", "label": "Learn more", "to": "https://www.apple.com/iphone-18-pro/" },
+      "buy": { "_intent": "购买 iPhone 18 Pro", "_title": { "text": "Buy" }, "_action": { "verb": "buy", "label": "Buy", "to": "https://www.apple.com/us/shop/goto/buy_iphone/iphone_18_pro" } }
+    },
+    {
+      "_intent": "折叠屏新机：预热状态，预售与开售两个日期是本故事线的事实",
+      "_key": "iphone-duo",
+      "_title": { "text": "iPhone Duo" },
+      "_subtitle": { "text": "Hello, hello." },
+      "_summary": { "text": "Pre-order starting 5:00 a.m. PT on 10.16" },
+      "_detail": { "text": "Available starting 10.23" },
+      "_action": { "verb": "open", "label": "Learn more", "to": "https://www.apple.com/iphone-duo/" },
+      "pricing": { "_intent": "查看 iPhone Duo 价格", "_title": { "text": "View pricing" }, "_action": { "verb": "open", "label": "View pricing", "to": "https://www.apple.com/us/shop/goto/buy_iphone/iphone_duo" } }
+    },
+    {
+      "_intent": "Apple Watch Series 12 主推：心率传感精度是本代卖点",
+      "_key": "watch-series-12",
+      "_title": { "text": "Apple Watch Series 12" },
+      "_summary": { "text": "The most accurate heart rate sensing in a wearable." },
+      "_action": { "verb": "open", "label": "Learn more", "to": "https://www.apple.com/apple-watch-series-12/" },
+      "buy": { "_intent": "购买 Apple Watch Series 12", "_title": { "text": "Buy" }, "_action": { "verb": "buy", "label": "Buy", "to": "https://www.apple.com/us/shop/goto/buy_watch/apple_watch_series_12" } }
+    },
+    {
+      "_intent": "产品磁贴：六张并列卡片，每张主推一款产品或一项购买权益",
+      "_key": "tiles",
+      "_rel": { "compare": true },
+      "_items": [
+        {
+          "_key": "tile-watch-ultra-4",
+          "_name": { "text": "Apple Watch Ultra 4" },
+          "_summary": { "text": "A battery you can’t outrun." },
+          "_action": { "verb": "open", "label": "Learn more", "to": "https://www.apple.com/apple-watch-ultra-4/" },
+          "buy": { "_intent": "购买 Apple Watch Ultra 4", "_title": { "text": "Buy" }, "_action": { "verb": "buy", "label": "Buy", "to": "https://www.apple.com/us/shop/goto/buy_watch/apple_watch_ultra_4" } }
+        },
+        {
+          "_key": "tile-airpods-5",
+          "_name": { "text": "AirPods 5" },
+          "_summary": { "text": "Discover the magic of Active Noise Cancellation." },
+          "_action": { "verb": "open", "label": "Learn more", "to": "https://www.apple.com/airpods-5/" },
+          "buy": { "_intent": "购买 AirPods 5", "_title": { "text": "Buy" }, "_action": { "verb": "buy", "label": "Buy", "to": "https://www.apple.com/us/shop/goto/buy_airpods/airpods_5" } }
+        },
+        {
+          "_key": "tile-upgrade",
+          "_name": { "text": "Apple Upgrade" },
+          "_summary": { "text": "Love it. Lease it. Upgrade it." },
+          "_action": { "verb": "open", "label": "Learn more", "to": "https://www.apple.com/us/shop/goto/apple_upgrade" }
+        },
+        {
+          "_key": "tile-carrier-deals",
+          "_name": { "text": "Incredible carrier deals at Apple" },
+          "_summary": { "text": "Explore deals that accept eligible trade-in devices in any condition." },
+          "_action": { "verb": "open", "label": "Find your deal", "to": "https://www.apple.com/us/shop/goto/buy_iphone/carrier_offers" }
+        },
+        {
+          "_key": "tile-macbook-air",
+          "_name": { "text": "MacBook Air" },
+          "_summary": { "text": "Now supercharged by M5." },
+          "_action": { "verb": "open", "label": "Learn more", "to": "https://www.apple.com/macbook-air/" },
+          "buy": { "_intent": "购买 MacBook Air", "_title": { "text": "Buy" }, "_action": { "verb": "buy", "label": "Buy", "to": "https://www.apple.com/us/shop/goto/buy_mac/macbook_air" } }
+        },
+        {
+          "_key": "tile-apple-card",
+          "_name": { "text": "Apple Card" },
+          "_summary": { "text": "Get up to 3% Daily Cash back with every purchase." },
+          "_action": { "verb": "open", "label": "Learn more", "to": "https://www.apple.com/apple-card/" },
+          "apply": { "_intent": "申请 Apple Card", "_title": { "text": "Apply now" }, "_action": { "verb": "open", "label": "Apply now", "to": "https://card.apple.com/apply/application?referrer=cid%3Dapy-200-10000036&start=false" } }
+        }
+      ]
+    },
+    {
+      "_intent": "娱乐内容：Apple TV+ 影视与各服务内容的即时入口，标题即承诺「看不完的娱乐」",
+      "_key": "entertainment",
+      "_title": { "text": "Endless entertainment." },
+      "tv": {
+        "_intent": "Apple TV+ 片单轮播：每张卡片是片名 + 类型 + 一句话看点",
+        "_rel": { "compare": true },
+        "_items": [
+          { "_key": "tv-slow-horses", "_name": { "text": "Slow Horses" }, "_category": { "text": "Thriller" }, "_detail": { "text": "New season." }, "_action": { "verb": "open", "label": "Stream now", "to": "https://tv.apple.com/us/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } },
+          { "_key": "tv-f1", "_name": { "text": "Formula 1" }, "_category": { "text": "F1 on Apple TV" }, "_detail": { "text": "Every Grand Prix™, live and on demand—all in one place, all year long." }, "_action": { "verb": "open", "label": "Stream now", "to": "https://tv.apple.com/us/room/formula-1/uts.room.formula-1?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } },
+          { "_key": "tv-ted-lasso", "_name": { "text": "Ted Lasso" }, "_category": { "text": "Comedy" }, "_detail": { "text": "The hit comedy is back and Tedder than ever." }, "_action": { "verb": "open", "label": "Stream now", "to": "https://tv.apple.com/us/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } },
+          { "_key": "tv-mls", "_name": { "text": "MLS" }, "_category": { "text": "MLS on Apple TV" }, "_detail": { "text": "Watch every club, every match, live—all season long." }, "_action": { "verb": "open", "label": "Stream now", "to": "https://tv.apple.com/us/channel/mls/tvs.sbd.7000?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } },
+          { "_key": "tv-friday-baseball", "_name": { "text": "Friday Night Baseball" }, "_detail": { "text": "Live MLB games, every Friday." }, "_action": { "verb": "open", "label": "See the schedule", "to": "https://tv.apple.com/us/room/friday-night-baseball/edt.item.62327df1-6874-470e-98b2-a5bbeac509a2?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } },
+          { "_key": "tv-mayday", "_name": { "text": "Mayday" }, "_category": { "text": "Action" }, "_detail": { "text": "A friendship with major red flags." }, "_action": { "verb": "open", "label": "Stream now", "to": "https://tv.apple.com/us/movie/mayday/umc.cmc.shin43vzfoz3h4ggx41z8rf?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } },
+          { "_key": "tv-widows-bay", "_name": { "text": "Widow’s Bay" }, "_category": { "text": "Comedy" }, "_detail": { "text": "14 Emmy® Awards Including Best Comedy" }, "_action": { "verb": "open", "label": "Stream now", "to": "https://tv.apple.com/us/show/widows-bay/umc.cmc.1zzly0vah46bnvnwf0qkrjhh2?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } },
+          { "_key": "tv-dark-matter", "_name": { "text": "Dark Matter" }, "_category": { "text": "Sci-Fi" }, "_detail": { "text": "There’s no world like home." }, "_action": { "verb": "open", "label": "Stream now", "to": "https://tv.apple.com/us/show/dark-matter/umc.cmc.4luj45vtqpmjsvb6sc2675oeg?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } },
+          { "_key": "tv-last-seen", "_name": { "text": "Last Seen" }, "_category": { "text": "Thriller" }, "_detail": { "text": "He’s waited years for the truth to call." }, "_action": { "verb": "open", "label": "Stream now", "to": "https://tv.apple.com/us/show/last-seen/umc.cmc.4pbw9c936a4pigdvsg23u2bsa?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } }
+        ]
+      },
+      "services": {
+        "_intent": "服务内容轮播：Arcade 游戏、Fitness+ 课程、Music 歌单等内容入口",
+        "_rel": { "compare": true },
+        "_items": [
+          { "_key": "svc-sabrina", "_name": { "text": "Sabrina Carpenter: The Zane Lowe Interview" }, "_action": { "verb": "open", "label": "Listen now", "to": "https://music.apple.com/us/station/sabrina-carpenter-the-zane-lowe-interview/ra.1837392419?itscg=10000&itsct=am-apl_hp-listen_now--240326" } },
+          { "_key": "svc-hello-kitty", "_name": { "text": "Hello Kitty Island Adventure" }, "_action": { "verb": "open", "label": "Play now", "to": "https://apps.apple.com/us/app/hello-kitty-island-adventure/id1553505132?itscg=10000&itsct=aa-apl_hp-play_now--240326" } },
+          { "_key": "svc-david-bowie", "_name": { "text": "David Bowie" }, "_action": { "verb": "open", "label": "Watch now", "to": "https://fitness.apple.com/us/studio-collection/david-bowie/1896935217?itscg=10000&itsct=afp-apl_hp-watch_now--240326" } },
+          { "_key": "svc-a-list-pop", "_name": { "text": "A-List Pop" }, "_action": { "verb": "open", "label": "Listen now", "to": "https://music.apple.com/us/playlist/a-list-pop/pl.5ee8333dbe944d9f9151e97d92d1ead9?itscg=10000&itsct=am-apl_hp-listen_now--240326" } },
+          { "_key": "svc-powerwash", "_name": { "text": "PowerWash Simulator" }, "_action": { "verb": "open", "label": "Play now", "to": "https://apps.apple.com/us/app/powerwash-simulator/id6477445344?itscg=10000&itsct=aa-apl_hp-play_now--240326" } },
+          { "_key": "svc-hiit", "_name": { "text": "HIIT with Bakari" }, "_action": { "verb": "open", "label": "Watch now", "to": "https://fitness.apple.com/us/workout/hiit-with-bakari/6783451184?itscg=10000&itsct=afp-apl_hp-watch_now--240326" } },
+          { "_key": "svc-new-music-daily", "_name": { "text": "New Music Daily" }, "_action": { "verb": "open", "label": "Listen now", "to": "https://music.apple.com/us/playlist/new-music-daily/pl.2b0e6e332fdf4b7a91164da3162127b5?itscg=10000&itsct=am-apl_hp-listen_now--240326" } },
+          { "_key": "svc-balatro", "_name": { "text": "Balatro+" }, "_action": { "verb": "open", "label": "Play now", "to": "https://apps.apple.com/us/app/balatro/id6502451661?itscg=10000&itsct=aa-apl_hp-play_now--240326" } },
+          { "_key": "svc-programs", "_name": { "text": "Programs" }, "_action": { "verb": "open", "label": "Watch now", "to": "https://fitness.apple.com/us/studio-collection/programs/1896349052?itscg=10000&itsct=afp-apl_hp-watch_now--240326" } }
+        ]
+      }
+    }
+  ]
+}

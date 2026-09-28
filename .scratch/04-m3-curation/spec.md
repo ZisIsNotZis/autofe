@@ -1,6 +1,6 @@
 # 04 — M3 curation pilot (auto draft → curated model)
 
-Status: claimed
+Status: done (2026-09-18) — pilot + 6-batch fan-out: 36/36 exemplar pages curated, fidelity 1.00 (see m1/eval/m3-report.md and m1/curated/curation-log*.md)
 Need-review: yes (parent reviews protocol + spot-checks against source)
 
 ## Objective

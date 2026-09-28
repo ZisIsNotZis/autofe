@@ -1,0 +1,118 @@
+{
+  "_intent": "B 站首页（未登录）：核心故事是推荐视频流——每张卡片回答「看什么、谁发的、多火、多长」，搜索框和直播卡是两个并列入口",
+  "_key": "bilibili-home",
+  "_title": { "text": "哔哩哔哩 (゜-゜)つロ 干杯~-bilibili" },
+  "search": {
+    "_intent": "全站搜索：自由输入关键词（框内灰字是轮播的热搜提示，非固定标签）",
+    "_expose": { "name": "query", "type": "text" }
+  },
+  "banner": {
+    "_intent": "首屏轮播横幅：当前展示「第五人格亲密之月」活动（其余轮播帧为隐藏推广）",
+    "_name": { "text": "第五人格亲密之月" }
+  },
+  "feed": {
+    "_intent": "推荐视频流：标题 + UP主与发布时间 + 播放/弹幕数 + 时长，点击进入视频页",
+    "_rel": { "compare": true },
+    "_items": [
+      {
+        "_key": "v-bv1dzej6jeg5",
+        "_name": { "text": "当你带着大运误闯魔族腹地时！" },
+        "_author": { "text": "啊力解说 · 09-15" },
+        "_count": { "num": 20.2, "unit": "万" },
+        "_measure": { "num": 155 },
+        "_detail": { "text": "07:47" },
+        "_action": { "verb": "open", "to": "https://www.bilibili.com/video/BV1Dzej6JEG5" }
+      },
+      {
+        "_key": "v-bv1lzyf65epq",
+        "_name": { "text": "【JO家日常】#13 迪亚波罗：我死定了姐妹们……【bilibilionly同人扶持计划】" },
+        "_author": { "text": "粥粥的奇妙冒险 · 11小时前" },
+        "_count": { "num": 4.4, "unit": "万" },
+        "_measure": { "num": 112 },
+        "_detail": { "text": "01:09" },
+        "_action": { "verb": "open", "to": "https://www.bilibili.com/video/BV1LZYf65Epq" }
+      },
+      {
+        "_key": "v-bv1chew68eew",
+        "_name": { "text": "都在做AI手机，为什么真正能干活的却没几台？【差评君】" },
+        "_author": { "text": "差评君 · 09-16" },
+        "_count": { "num": 18.0, "unit": "万" },
+        "_measure": { "num": 93 },
+        "_detail": { "text": "09:28" },
+        "_action": { "verb": "open", "to": "https://www.bilibili.com/video/BV1chew68EEw" }
+      },
+      {
+        "_key": "v-bv1qyen6aelc",
+        "_name": { "text": "老辈子手搓还有人看吗？" },
+        "_author": { "text": "自醒画画 · 09-15" },
+        "_count": { "num": 31.9, "unit": "万" },
+        "_measure": { "num": 108 },
+        "_detail": { "text": "00:19" },
+        "_action": { "verb": "open", "to": "https://www.bilibili.com/video/BV1Qyen6aELC" }
+      },
+      {
+        "_key": "v-bv1yreg6ae99",
+        "_name": { "text": "这才是正确的粤语读音？Bro你说句话啊！" },
+        "_author": { "text": "粤知一二 · 昨天" },
+        "_count": { "num": 6.4, "unit": "万" },
+        "_measure": { "num": 405 },
+        "_detail": { "text": "07:05" },
+        "_action": { "verb": "open", "to": "https://www.bilibili.com/video/BV1yreG6aE99" }
+      },
+      {
+        "_key": "v-bv1xrer6jenr",
+        "_name": { "text": "新角色【大肥鱼】" },
+        "_author": { "text": "不爱唠嗑的芒果 · 14小时前" },
+        "_count": { "num": 1.4, "unit": "万" },
+        "_measure": { "num": 101 },
+        "_detail": { "text": "01:13" },
+        "_action": { "verb": "open", "to": "https://www.bilibili.com/video/BV1xRer6jENr" }
+      },
+      {
+        "_key": "v-bv1zny96nevn",
+        "_name": { "text": "《原神》7.1版本「往冥府的安魂歌」前瞻特别节目" },
+        "_author": { "text": "原神 · 09-12" },
+        "_count": { "num": 150.4, "unit": "万" },
+        "_measure": { "num": 4.6, "unit": "万" },
+        "_detail": { "text": "59:46" },
+        "_action": { "verb": "open", "to": "https://www.bilibili.com/video/BV1znY96NEvn" }
+      },
+      {
+        "_key": "v-bv19fe36reek",
+        "_name": { "text": "曾靠剧情火爆全球的游戏，二十年后重制更新了什么！？" },
+        "_author": { "text": "阿银紫 · 昨天" },
+        "_count": { "num": 8.9, "unit": "万" },
+        "_measure": { "num": 113 },
+        "_detail": { "text": "02:29" },
+        "_action": { "verb": "open", "to": "https://www.bilibili.com/video/BV19Fe36rEEK" }
+      },
+      {
+        "_key": "v-bv1q6ee64eee",
+        "_name": { "text": "中国模特勇闯欧洲时装周|面试实录第一集" },
+        "_author": { "text": "李东恒z · 09-12" },
+        "_count": { "num": 29.8, "unit": "万" },
+        "_measure": { "num": 252 },
+        "_detail": { "text": "07:25" },
+        "_action": { "verb": "open", "to": "https://www.bilibili.com/video/BV1Q6eE64EeE" }
+      },
+      {
+        "_key": "v-bv1sayd6setv",
+        "_name": { "text": "这什么物价？！二周年彩蛋终于破解！" },
+        "_author": { "text": "小普-三角洲重生版 · 09-15" },
+        "_count": { "num": 38.0, "unit": "万" },
+        "_measure": { "num": 94 },
+        "_detail": { "text": "00:38" },
+        "_action": { "verb": "open", "to": "https://www.bilibili.com/video/BV1SAYd6sEtv" }
+      },
+      {
+        "_key": "live-1939977064",
+        "_name": { "text": "这个维什戴尔跳舞好有劲！" },
+        "_tag": { "text": "直播中" },
+        "_category": { "text": "团播" },
+        "_author": { "text": "SG-次元姬" },
+        "_count": { "num": 1.9, "unit": "万" },
+        "_action": { "verb": "open", "to": "https://live.bilibili.com/1939977064?hotRank=0&live_from=81003" }
+      }
+    ]
+  }
+}

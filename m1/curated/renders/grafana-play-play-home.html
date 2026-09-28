@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Stats</title>
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+.page-intent{color:#5b6a78;font-size:.9em;border-bottom:1px solid #e6eaf0;padding-bottom:10px}
+.hero{border-bottom:2px solid #17212b;padding-bottom:18px;margin-bottom:26px}
+.hero .fact .val{font-size:1.9em;font-weight:650}
+article{margin:14px 0}
+h3.title{margin:.2em 0 .4em;font-size:1.25em}
+h4.intent{margin:.2em 0 .6em;font-weight:500;color:#5b6a78;font-size:.92em}
+.group{border-top:1px solid #e6eaf0;padding-top:12px}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;align-items:start}
+.compare>.node{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
+.timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
+.timeline .item{position:relative;padding:6px 0}
+.timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
+.fact{display:flex;gap:10px;align-items:baseline;margin:3px 0}
+.role{min-width:104px;color:#68788a;font-size:.78em;text-transform:uppercase;letter-spacing:.04em}
+.val{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.fact{flex-wrap:wrap}
+.expose{display:block;margin:8px 0}
+.expose .role{display:block;margin-bottom:4px}
+.choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
+fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
+legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
+input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
+.action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
+img{max-width:100%;border-radius:10px;display:block}
+table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
+table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
+table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
+.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.row-ops{display:flex;flex-direction:column;gap:4px}
+.row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+.level-1{opacity:.92}.level-2{opacity:.85}.level-3{opacity:.78}
+</style></head>
+<body><main><!-- intent: Grafana Play 的 Stats 示例仪表盘：11 个统计面板（stat panel）布局演示 —— 面板内容是页面主体；时间范围当前为 Last 6 hours --><article class="node"><h3 class="title">Stats</h3><div class="hero"><article class="node hero"><h4 class="intent">Stats 面板示例集：每个面板演示一种统计面板布局形态（介绍、彩色背景、基础、彩色数值、带图横向、横向、名称文本模式、自动网格、仅数值、无文本、名称含 emoji）</h4><section class="group g-_items[0]"><article class="node"><h3 class="title">Introduction</h3></article></section><section class="group g-_items[1]"><article class="node"><h3 class="title">Color background</h3></article></section><section class="group g-_items[2]"><article class="node"><h3 class="title">The Basics</h3></article></section><section class="group g-_items[3]"><article class="node"><h3 class="title">Color value</h3></article></section><section class="group g-_items[4]"><article class="node"><h3 class="title">Horizontal with graph</h3></article></section><section class="group g-_items[5]"><article class="node"><h3 class="title">Horizontal</h3></article></section><section class="group g-_items[6]"><article class="node"><h3 class="title">Text mode name</h3></article></section><section class="group g-_items[7]"><article class="node"><h3 class="title">Auto grid</h3></article></section><section class="group g-_items[8]"><article class="node"><h3 class="title">Value only</h3></article></section><section class="group g-_items[9]"><article class="node"><h3 class="title">No text</h3></article></section><section class="group g-_items[10]"><article class="node"><h3 class="title">Emoji in stat names</h3></article></section></article></div><section class="group g-toolbar"><article class="node"><h4 class="intent">仪表盘工具栏：时间范围选择器与刷新、编辑等控制（仅保留有可见文案的控制项）</h4><div class="fact fact-summary"><span class="role">summary</span><span class="val">Time range selected: Last 6 hours</span></div><section class="group g-_items[0]"><article class="node"><h3 class="title">Last 6 hours</h3><button class="action verb-operate" type="button">Last 6 hours</button></article></section><section class="group g-_items[1]"><article class="node"><h3 class="title">Refresh</h3><button class="action verb-operate" type="button">Refresh</button></article></section><section class="group g-_items[2]"><article class="node"><h3 class="title">Enter edit mode</h3><button class="action verb-operate" type="button">Edit</button></article></section></article></section><section class="group g-banners"><article class="node"><h4 class="intent">页面顶部两条 Grafana 官方引导横幅：免费层注册与学习路径</h4><section class="group g-_items[0]"><article class="node"><h3 class="title">Want to build a dashboard like this? Get started fast with the Grafana Cloud free tier!</h3><a class="action verb-navigate" href="https://grafana.com/auth/sign-up/create-user?pg=play">Want to build a dashboard like this? Get started fast with the Grafana Cloud free tier!</a></article></section><section class="group g-_items[1]"><article class="node"><h3 class="title">Learn about Grafana through our Learning Journeys</h3><a class="action verb-navigate" href="https://grafana.com/docs/learning-journeys/?src=play&amp;camp=learning-journey-button">Learn about Grafana through our Learning Journeys</a></article></section></article></section></article></main></body></html>

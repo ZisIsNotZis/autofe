@@ -1,6 +1,6 @@
 # 03 — M3: extraction pipeline (auto-draft models from captures)
 
-Status: claimed
+Status: done (2026-09-18) — extractor + structure metrics + full-corpus scale run (see m1/eval/m3-report.md); curation fan-out completed under ticket 04
 Need-review: yes
 
 ## Objective

@@ -1,0 +1,174 @@
+{
+  "_intent": "让企业用户理解云服务器 ECS 的价值，按规模选到合适实例，并开始试用或购买",
+  "_key": "aliyun-ecs",
+  "_title": {
+    "text": "安全可靠的云服务器 ECS"
+  },
+  "_summary": {
+    "text": "随时获取更强劲、更灵活、更低成本的澎湃算力。"
+  },
+  "_brand": {
+    "text": "阿里云"
+  },
+  "_primary": "values",
+  "_action": {
+    "verb": "buy",
+    "to": "https://www.aliyun.com/product/ecs/buy",
+    "label": "立即购买"
+  },
+  "values": {
+    "_intent": "四个价值支柱并排：稳定性、性能、安全、成本",
+    "_rel": {
+      "compare": true
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "高稳定性"
+        },
+        "_detail": {
+          "text": "单实例 SLA 达 99.975%，多可用区多实例 SLA 达 99.995%，云盘可靠性达 99.9999999%，宕机自动迁移。"
+        }
+      },
+      {
+        "_name": {
+          "text": "极致性能"
+        },
+        "_detail": {
+          "text": "支持分钟级别创建万台实例，满足突发需求的弹性扩容。"
+        }
+      },
+      {
+        "_name": {
+          "text": "安全可靠"
+        },
+        "_detail": {
+          "text": "DDoS 防护、操作系统漏洞检测、木马查杀，多方国际安全认证。"
+        }
+      },
+      {
+        "_name": {
+          "text": "高性价比"
+        },
+        "_detail": {
+          "text": "多种弹性付费方式，有效降低企业 IT 成本。"
+        }
+      }
+    ]
+  },
+  "scale": {
+    "_intent": "全球基础设施规模",
+    "_fields": {
+      "regions": {
+        "num": 29,
+        "unit": "地域"
+      },
+      "zones": {
+        "num": 90,
+        "unit": "可用区"
+      }
+    },
+    "_summary": {
+      "text": "已为全球 500 万客户提供算力服务。"
+    }
+  },
+  "instances": {
+    "_intent": "按团队规模选实例：从个人开发者到中大型企业",
+    "_rel": {
+      "compare": true
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "e实例"
+        },
+        "_summary": {
+          "text": "个人开发者必选 · ¥99.00/月"
+        },
+        "_action": {
+          "verb": "buy",
+          "to": "https://www.aliyun.com/product/ecs/buy?spec=e"
+        },
+        "_price": {
+          "money": 99.0,
+          "currency": "CNY"
+        }
+      },
+      {
+        "_name": {
+          "text": "u2a实例"
+        },
+        "_summary": {
+          "text": "初创企业优选 · ¥1238.00/月"
+        },
+        "_action": {
+          "verb": "buy",
+          "to": "https://www.aliyun.com/product/ecs/buy?spec=u2a"
+        },
+        "_price": {
+          "money": 1238.0,
+          "currency": "CNY"
+        }
+      },
+      {
+        "_name": {
+          "text": "c9i实例"
+        },
+        "_summary": {
+          "text": "中大型企业首选 · ¥1385.00/月"
+        },
+        "_action": {
+          "verb": "buy",
+          "to": "https://www.aliyun.com/product/ecs/buy?spec=c9i"
+        },
+        "_price": {
+          "money": 1385.0,
+          "currency": "CNY"
+        }
+      },
+      {
+        "_name": {
+          "text": "g9i实例"
+        },
+        "_summary": {
+          "text": "中大型企业首选"
+        },
+        "_action": {
+          "verb": "buy",
+          "to": "https://www.aliyun.com/product/ecs/buy?spec=g9i"
+        }
+      }
+    ]
+  },
+  "news": {
+    "_intent": "产品仍在快速演进：按时间看最新商业化进展",
+    "_title": {
+      "text": "产品动态"
+    },
+    "_rel": {
+      "order": "time"
+    },
+    "_items": [
+      {
+        "_title": {
+          "text": "9代Intel实例g9i正式商业化"
+        }
+      },
+      {
+        "_title": {
+          "text": "9代AMD实例g9a正式商业化"
+        }
+      },
+      {
+        "_title": {
+          "text": "通用算力型实例u2a正式商业化"
+        }
+      },
+      {
+        "_title": {
+          "text": "学生专属算力包正式商业化"
+        }
+      }
+    ]
+  }
+}

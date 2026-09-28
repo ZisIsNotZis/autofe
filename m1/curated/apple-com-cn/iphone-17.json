@@ -1,0 +1,302 @@
+{
+  "_intent": "iPhone 17 中国大陆产品页：以「神通妙彩」为主题讲设计、芯片续航、摄像头的升级，核心交易信息是 RMB 6799 起（或 RMB 284/月 24 期），页面主旨是产品与起售价",
+  "_primary": "_price",
+  "_key": "apple-cn-iphone-17",
+  "_title": { "text": "iPhone 17" },
+  "_subtitle": { "text": "神通妙彩" },
+  "_price": { "money": 6799, "currency": "RMB", "qualifier": "起" },
+  "_summary": { "text": "RMB 6799 起或 RMB 284/月 (24 期) 起" },
+  "_action": { "verb": "buy", "label": "购买", "to": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17" },
+  "_lines": [
+    {
+      "_intent": "页首折抵横幅：旧机换购的预计优惠区间，是价格之外的第一个交易事实",
+      "_key": "tradein-banner",
+      "_summary": { "text": "用 iPhone 13 或后续机型来换购 iPhone 17，预计可享 RMB 900 至 RMB 5100 的折抵优惠。" },
+      "_ref": { "ref": "key:benefits-tradein" }
+    },
+    {
+      "_intent": "先刷重点：六个功能章节的高亮图库，逐条给出本章一句话卖点",
+      "_key": "highlights",
+      "_title": { "text": "先刷重点" },
+      "_rel": { "order": "sequence" },
+      "_items": [
+        {
+          "_key": "hl-display",
+          "_name": { "text": "显示屏" },
+          "_detail": { "text": "屏幕更亮，现还有 ProMotion 技术加持，自适应刷新率最高达 120Hz。坚固耐用的超瓷晶面板 2，抗刮划能力提升至 3 倍。" }
+        },
+        {
+          "_key": "hl-front-camera",
+          "_name": { "text": "Center Stage 前置摄像头" },
+          "_detail": { "text": "全新 Center Stage 前置摄像头。 取景好灵活，自拍合照更智能，玩法花样百出。" }
+        },
+        { "_key": "hl-camera-system", "_name": { "text": "摄像头系统" }, "_detail": { "text": "4800 万像素融合式双摄系统，拍近拍远都惊艳出片。" } },
+        { "_key": "hl-chip", "_name": { "text": "A19 芯片" } },
+        { "_key": "hl-ios", "_name": { "text": "iOS 27" }, "_detail": { "text": "iOS 27，精心优化，体验感愉悦升华。" } },
+        { "_key": "hl-ai", "_name": { "text": "Apple 智能" } }
+      ]
+    },
+    {
+      "_intent": "设计章节：外观好感度与耐用性，五款配色是本页的识别性事实",
+      "_key": "design",
+      "_title": { "text": "设计" },
+      "_subtitle": { "text": "拉高好感度， 再添耐用性。" },
+      "_detail": { "text": "来见见全新 iPhone 17。方方面面都精心设计，机身边缘顺滑称手，屏幕边框更窄更纤细，材质也都超耐用，正面配上了超瓷晶面板 2，好看，还能一直这么好看。6.3 英寸超视网膜 XDR 显示屏，你想看什么都大饱眼福，想做什么可尽情施展。ProMotion 技术也加入，自适应刷新率最高达 120Hz，刷手机超丝滑，玩游戏更畅快。这种感受，一上手就懂。" },
+      "colors": {
+        "_intent": "五款外观配色（配色查看器的图注与色卡）",
+        "_label": { "text": "颜色" },
+        "_summary": { "text": "五款靓色可选。" },
+        "_rel": { "compare": true },
+        "_items": [
+          { "_key": "color-lavender", "_name": { "text": "薰衣草紫色" } },
+          { "_key": "color-sage", "_name": { "text": "鼠尾草绿色" } },
+          { "_key": "color-mist-blue", "_name": { "text": "青雾蓝色" } },
+          { "_key": "color-white", "_name": { "text": "白色" } },
+          { "_key": "color-black", "_name": { "text": "黑色" } }
+        ]
+      }
+    },
+    {
+      "_intent": "芯片与续航章节：A19 的能效故事，充放速度与对比上一代的三个量化提升",
+      "_key": "chip",
+      "_title": { "text": "A19 芯片、全天电池续航" },
+      "_subtitle": { "text": "高能玩家， 高能量专家。" },
+      "_detail": { "text": "A19 芯片，采用第三代 3 纳米制程，让你用 iPhone 做什么都动力满满，还驱动 ProMotion 自适应刷新率技术，助你畅玩 3A 游戏大作。续航挺你一整天，无论是工作、刷视频，还是随便看看，都不用顾虑电量。要飞快地回个血，用高功率电源适配器充上短短 10 分钟，电量就够播放最长 8 小时视频。" },
+      "_items": [
+        { "_key": "charge-20min", "_name": { "text": "最多 充至 50% 电量 仅需 20 分钟" }, "_detail": { "text": "需使用 40 瓦或更大功率的电源适配器" } },
+        { "_key": "vs-cpu", "_name": { "text": "最高 提速 50%" }, "_subtitle": { "text": "中央处理器" } },
+        { "_key": "vs-gpu", "_name": { "text": "最高 提速至 2.1 倍" }, "_subtitle": { "text": "5 核图形处理器" } },
+        { "_key": "vs-battery", "_name": { "text": "增加 11 小时" }, "_subtitle": { "text": "视频播放时间" } }
+      ],
+      "compare": {
+        "_intent": "对比机型选择器：页面默认对比 iPhone 13，可切换为下列任一机型",
+        "_label": { "text": "相比" },
+        "_rel": { "compare": true },
+        "_items": [
+          { "_key": "vs-model-13", "_name": { "text": "iPhone 13" } },
+          { "_key": "vs-model-13-mini", "_name": { "text": "iPhone 13 mini" } },
+          { "_key": "vs-model-14", "_name": { "text": "iPhone 14" } },
+          { "_key": "vs-model-14-plus", "_name": { "text": "iPhone 14 Plus" } },
+          { "_key": "vs-model-15", "_name": { "text": "iPhone 15" } },
+          { "_key": "vs-model-15-plus", "_name": { "text": "iPhone 15 Plus" } }
+        ],
+        "_expose": { "name": "compare-model", "type": "text" }
+      }
+    },
+    {
+      "_intent": "前置摄像头章节：1800 万像素 Center Stage 前摄与四种拍摄模式",
+      "_key": "front-camera",
+      "_title": { "text": "摄像头" },
+      "_summary": { "text": "1800 万像素 Center Stage 前摄，新派摄手破框而出。" },
+      "_detail": { "text": "全新前置摄像头，让你取景构图更灵活，拍照拍视频都有更多花样。无需转动 iPhone，轻轻一点就能扩大取景范围，还能从纵向转到横向。有朋友入镜时，视野会自动扩大，让更多朋友加入你的大合照。" },
+      "modes": {
+        "_intent": "前置摄像头的四种拍摄模式与正方形传感器说明",
+        "_detail": { "text": "全新正方形传感器，支持变焦和旋转选项，玩自拍录视频，取景构图更灵活。大家一起合照时，还会自动调整构图，让每个人都入镜。" },
+        "_rel": { "compare": true },
+        "_items": [
+          { "_key": "mode-photo-center-stage", "_name": { "text": "拍摄 人物居中" } },
+          { "_key": "mode-video-dual", "_name": { "text": "视频 同步双拍" } },
+          { "_key": "mode-video-steady", "_name": { "text": "视频 超稳防抖" } },
+          { "_key": "mode-facetime", "_name": { "text": "视频通话 人物居中" } }
+        ]
+      }
+    },
+    {
+      "_intent": "后置摄像头章节：双 4800 万像素系统与起步容量翻倍到 256GB 的事实",
+      "_key": "rear-camera",
+      "_title": { "text": "后摄全上 4800 万像素， 分辨率大进化。" },
+      "_detail": { "text": "iPhone 17 拥有一颗 4800 万像素融合式主摄，具备 2 倍光学品质变焦功能；它还配备一颗 4800 万像素融合式超广角摄像头，相比 iPhone 16 上的超广角摄像头，分辨率高达 4 倍。而且现在超广角拍摄的默认分辨率就是 2400 万像素，这样照片文件大小刚刚好，既能保存高画质，又便于分享。无论是拍特写还是拉远景，在室内还是在室外，环境是明亮还是低光，都能以超高分辨率惊艳出片。而且相比前代机型，起步容量翻了一倍，最低就有 256GB。" }
+    },
+    {
+      "_intent": "全系标配章节：连接能力与照片功能、安全功能两组图库",
+      "_key": "lineup",
+      "_label": { "text": "全系全配" },
+      "_title": { "text": "全套必备功能， iPhone 全备齐。" },
+      "_detail": { "text": "全新 iPhone 系列机型满载创新功能，让日常生活更简单轻松。还都具备高速无线局域网、蓝牙 6 以及 5G 功能，给你又快又安全的连接体验。" },
+      "photo": {
+        "_intent": "拍摄玩法图库：五项全系具备的照片/视频功能",
+        "_title": { "text": "笑一笑，拍一拍，发一发，再来张。" },
+        "_items": [
+          { "_key": "photo-portrait-light", "_name": { "text": "全新“珠光”摄影风格亮相。" }, "_detail": { "text": "为人物的肤色增添一抹自然柔和的亮色，显得更明媚通透、神采奕奕，让你看起来由内而外光彩夺目。" } },
+          { "_key": "photo-zoom", "_name": { "text": "2 倍长焦功能。" }, "_detail": { "text": "拉近或推远，都能将主体拍得细致入微。" } },
+          { "_key": "photo-night", "_name": { "text": "低光和夜间模式拍摄。" }, "_detail": { "text": "即使光线昏暗，也能拍到清晰锐利、细节丰富、明亮通透的画面，而且色彩自然鲜活，噪点也少。" } },
+          { "_key": "photo-macro", "_name": { "text": "微距。" }, "_detail": { "text": "细节锐利，清晰非常，将特写拍得动人心弦。" } },
+          { "_key": "photo-video", "_name": { "text": "专业感十足的视频。" }, "_detail": { "text": "选择 4K 60 fps 格式或打开电影效果模式，可以把视频拍出大片质感。你还可以使用混音功能，随心调整视频中的人声效果。" } }
+        ]
+      },
+      "safety": {
+        "_intent": "实用安全功能图库：车祸检测与查找 App",
+        "_title": { "text": "实用安全功能， 有备无患。" },
+        "_items": [
+          { "_key": "safety-crash", "_name": { "text": "车祸检测。" }, "_detail": { "text": "硬件传感器结合先进的运动算法，可检测到严重车祸，并主动为你拨打求救电话。" } },
+          { "_key": "safety-find", "_name": { "text": "查找 App。" }, "_detail": { "text": "看看挂着 AirTag 的东西在哪里；以安全可靠的方式与亲友共享你的位置；还能帮你找设备，即使设备离线也没问题。" } }
+        ]
+      }
+    },
+    {
+      "_intent": "Apple 智能章节：产品已就绪，上线时间待审批（页面自带的时效说明）",
+      "_key": "apple-intelligence",
+      "_title": { "text": "为 Apple 智能 预备好" },
+      "_detail": { "text": "Apple 智能是深植于 iPhone 中的个人化智能系统，能根据你的个人情境为你在写作、表达自我、 处理各种事务上提供协助，让一切更简单轻松。" },
+      "_items": [
+        { "_key": "ai-availability", "_name": { "text": "Apple 智能推出时间依监管部门审批情况而定。" } }
+      ]
+    },
+    {
+      "_intent": "升级对比章节：相对上一代（页面默认选 iPhone 13）的六项优点卡与换购入口",
+      "_key": "upgrade-compare",
+      "_title": { "text": "升级值不值？ 自己比比看。" },
+      "_summary": { "text": "将 iPhone 17 与下列 iPhone 比比看：iPhone 17 优点众多，给你精彩更多。" },
+      "selector": {
+        "_intent": "对比机型选择器：与哪款旧 iPhone 比较优点，页面默认 iPhone 13",
+        "_rel": { "compare": true },
+        "_items": [
+          { "_key": "up-model-13", "_name": { "text": "iPhone 13" } },
+          { "_key": "up-model-13-mini", "_name": { "text": "iPhone 13 mini" } },
+          { "_key": "up-model-14", "_name": { "text": "iPhone 14" } },
+          { "_key": "up-model-14-plus", "_name": { "text": "iPhone 14 Plus" } },
+          { "_key": "up-model-15", "_name": { "text": "iPhone 15" } },
+          { "_key": "up-model-15-plus", "_name": { "text": "iPhone 15 Plus" } }
+        ],
+        "_expose": { "name": "upgrade-compare-model", "type": "text" }
+      },
+      "_rel": { "compare": true },
+      "_items": [
+        { "_key": "up-camera", "_name": { "text": "4800 万像素 融合式双摄系统" } },
+        { "_key": "up-front", "_name": { "text": "1800 万像素 Center Stage 前置摄像头" } },
+        { "_key": "up-display", "_name": { "text": "6.3 英寸显示屏支持 ProMotion 技术 自适应刷新率最高达 120Hz" } },
+        { "_key": "up-ceramic", "_name": { "text": "超瓷晶面板 2 抗刮划能力提升至 3 倍" } },
+        { "_key": "up-battery", "_name": { "text": "视频播放最长 增加 11 小时 电池续航" } },
+        { "_key": "up-gpu", "_name": { "text": "图形处理器性能最高 提速至 2.1 倍" } }
+      ],
+      "tradein": {
+        "_intent": "对比区尾部的换购入口",
+        "_key": "upgrade-tradein",
+        "_summary": { "text": "用符合条件的设备换购新 iPhone，可享折抵优惠。" },
+        "_action": { "verb": "open", "label": "了解你设备的折抵金额", "to": "https://www.apple.com.cn/cn/shop/goto/trade_in" }
+      }
+    },
+    {
+      "_intent": "配件章节：三件官方配件的卖点与配件商店入口",
+      "_key": "accessories",
+      "_label": { "text": "配件" },
+      "_title": { "text": "搭起来，炫出来。" },
+      "_action": { "verb": "open", "label": "选购 iPhone 配件", "to": "https://www.apple.com.cn/cn/shop/goto/iphone/accessories" },
+      "_items": [
+        { "_key": "acc-lanyard", "_name": { "text": "好戴，好带感。" }, "_detail": { "text": "全新斜挎挂绳可搭配 Apple 硅胶保护壳，你去哪都能将 iPhone 轻松戴上身，双手好自在。" } },
+        { "_key": "acc-silicone", "_name": { "text": "全面装备起来。" }, "_detail": { "text": "MagSafe 硅胶保护壳靓色缤纷，能与 iPhone 轻松合体，贴身保护。" } },
+        { "_key": "acc-clear", "_name": { "text": "亮出真本色。" }, "_detail": { "text": "随手安上 MagSafe 透明保护壳，让 iPhone 的绚丽色彩一览无余。" } }
+      ]
+    },
+    {
+      "_intent": "在 Apple 购买的七项权益：换购、分期、年年焕新、辅导、物流、导购、App",
+      "_key": "benefits",
+      "_title": { "text": "在 Apple 购买 iPhone 好处多多" },
+      "_items": [
+        {
+          "_key": "benefits-tradein",
+          "_name": { "text": "Apple Trade In 换购计划" },
+          "_subtitle": { "text": "换购新 iPhone， 还能省一笔。" },
+          "_detail": { "text": "用 iPhone 13 或后续机型来换购 iPhone 17，可享预计为 RMB 900 至 RMB 5100 的折抵优惠。" }
+        },
+        { "_key": "benefits-financing", "_name": { "text": "灵活的付款方案" }, "_subtitle": { "text": "多种免息分期可选。" }, "_detail": { "text": "购买 Apple 产品最长可享 24 个月免息分期。支付宝、微信支付及多家合作银行任你选择。" } },
+        { "_key": "benefits-upgrade", "_name": { "text": "iPhone 年年焕新计划" }, "_subtitle": { "text": "新机年年换， 超值更随心。" }, "_detail": { "text": "从 Apple 入手指定新款 iPhone 时加购 AppleCare+ 服务计划，且符合相应条件，购机后 3 至 15 个月内即可升级下一部 iPhone，还可享原设备购买价格至少 50% 的折抵优惠。" } },
+        { "_key": "benefits-setup", "_name": { "text": "个人设置辅导" }, "_subtitle": { "text": "参加在线辅导， 解锁 iPhone 种种精彩。" }, "_detail": { "text": "Specialist 专家与你一对一交流，带你设置手里的 iPhone，探索各种新功能。" }, "_action": { "verb": "open", "label": "进一步了解个人设置辅导" } },
+        { "_key": "benefits-delivery", "_name": { "text": "送货和取货" }, "_subtitle": { "text": "可免费送货， 也可到店取货。" }, "_detail": { "text": "所有订单均可享免费送货。部分订单可选择免费的三小时快送，或亲自到店取货。" } },
+        { "_key": "benefits-specialist", "_name": { "text": "导购" }, "_subtitle": { "text": "Specialist 专家 协助选购。" }, "_detail": { "text": "无论线上还是在 Apple Store 零售店，我们都能帮你找到心仪的产品，并解答你的各种疑问。" }, "_action": { "verb": "open", "label": "进一步了解 Specialist 专家协助选购" } },
+        { "_key": "benefits-app", "_name": { "text": "Apple Store App" }, "_subtitle": { "text": "专属于你的 购物体验。" }, "_detail": { "text": "更个性化的购物方式， 尽在这款 app。" }, "_action": { "verb": "open", "label": "进一步了解 Apple Store App" } }
+      ]
+    },
+    {
+      "_intent": "机型对比：iPhone 17 与 iPhone Air 两张在售机型的定位、起售价与规格速览",
+      "_key": "which-iphone",
+      "_title": { "text": "看看哪款 iPhone 适合你。" },
+      "_action": { "verb": "open", "label": "探索全部 iPhone 机型", "to": "https://www.apple.com.cn/iphone/" },
+      "_items": [
+        {
+          "_key": "cmp-iphone-17",
+          "_name": { "text": "iPhone 17" },
+          "_subtitle": { "text": "拉高好感度， 再添耐用性。" },
+          "_price": { "money": 6799, "currency": "RMB", "qualifier": "起" },
+          "_summary": { "text": "RMB 6799 起或 RMB 284/月 (24 期) 起" },
+          "_tag": { "text": "当前浏览" },
+          "_rel": { "compare": true },
+          "_items": [
+            { "_key": "cmp17-color-lavender", "_name": { "text": "薰衣草紫色" } },
+            { "_key": "cmp17-color-sage", "_name": { "text": "鼠尾草绿色" } },
+            { "_key": "cmp17-color-mist-blue", "_name": { "text": "青雾蓝色" } },
+            { "_key": "cmp17-color-white", "_name": { "text": "白色" } },
+            { "_key": "cmp17-color-black", "_name": { "text": "黑色" } }
+          ],
+          "display": { "_detail": { "text": "6.3 英寸 超视网膜 XDR 显示屏" } },
+          "chip": { "_detail": { "text": "A19 芯片 第三代 3 纳米制程 · 5 核图形处理器 配备神经网络加速器" } },
+          "camera": { "_detail": { "text": "4800 万像素融合式双摄系统 · 4800 万像素融合式主摄 · 4800 万像素融合式超广角" } },
+          "battery": { "_detail": { "text": "视频播放最长可达 30 小时" } },
+          "ai": { "_detail": { "text": "为 Apple 智能预备好" } },
+          "_action": { "verb": "buy", "label": "购买", "to": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17" }
+        },
+        {
+          "_key": "cmp-iphone-air",
+          "_name": { "text": "iPhone Air" },
+          "_subtitle": { "text": "超轻超薄， Pro 级性能表现。" },
+          "_price": { "money": 8799, "currency": "RMB", "qualifier": "起" },
+          "_summary": { "text": "RMB 8799 起或 RMB 367/月 (24 期) 起" },
+          "_rel": { "compare": true },
+          "_items": [
+            { "_key": "cmpair-color-blue", "_name": { "text": "蓝色" } },
+            { "_key": "cmpair-color-gold", "_name": { "text": "金色" } },
+            { "_key": "cmpair-color-white", "_name": { "text": "白色" } },
+            { "_key": "cmpair-color-black", "_name": { "text": "黑色" } }
+          ],
+          "display": { "_detail": { "text": "6.5 英寸 超视网膜 XDR 显示屏" } },
+          "chip": { "_detail": { "text": "A19 Pro 芯片 第三代 3 纳米制程 · 5 核图形处理器 配备神经网络加速器" } },
+          "camera": { "_detail": { "text": "4800 万像素融合式摄像头系统 · 4800 万像素融合式主摄" } },
+          "battery": { "_detail": { "text": "视频播放最长可达 27 小时" } },
+          "ai": { "_detail": { "text": "为 Apple 智能预备好" } },
+          "_action": { "verb": "open", "label": "进一步了解", "to": "https://www.apple.com.cn/iphone-air/" },
+          "buy": { "_intent": "购买 iPhone Air", "_title": { "text": "购买" }, "_action": { "verb": "buy", "label": "购买", "to": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_air" } }
+        }
+      ],
+      "all": {
+        "_intent": "完整机型对比入口",
+        "_action": { "verb": "open", "label": "比较各款 iPhone 机型", "to": "https://www.apple.com.cn/iphone/compare/" }
+      }
+    },
+    {
+      "_intent": "环境章节：三项量化环保事实与产品环境报告",
+      "_key": "environment",
+      "_title": { "text": "iPhone 17 与环境" },
+      "_action": { "verb": "open", "label": "阅读我们的《产品环境报告》(PDF) 了解详情", "to": "https://www.apple.com/environment/pdf/products/iphone/iPhone_17_PER_Sept2025.pdf" },
+      "_items": [
+        { "_key": "env-recycled", "_name": { "text": "制造采用的 回收材料重量 占比达 30%。" } },
+        { "_key": "env-renewable", "_name": { "text": "生产制造 采用 35% 可再生电力。" } },
+        { "_key": "env-packaging", "_name": { "text": "紧凑包装让 每次运输的 货物量增加 35%。" } }
+      ]
+    },
+    {
+      "_intent": "价值观章节：环境责任、隐私、无障碍三项品牌承诺",
+      "_key": "values",
+      "_title": { "text": "我们的价值观，为我们 导航。" },
+      "_items": [
+        {
+          "_key": "value-environment",
+          "_name": { "text": "我们的计划，和我们的产品一样突破创新。" },
+          "_detail": { "text": "我们致力于到 2030 年实现整体碳足迹净零排放的目标。" },
+          "_action": { "verb": "open", "label": "进一步了解环境责任", "to": "https://www.apple.com.cn/environment/" }
+        },
+        {
+          "_key": "value-privacy",
+          "_name": { "text": "力保个人信息安全，这很 Apple。" },
+          "_detail": { "text": "隐私是一项基本人权。我们设计的每一款产品和服务都力求保护你的数据安全。" },
+          "_action": { "verb": "open", "label": "进一步了解隐私安全", "to": "https://www.apple.com.cn/privacy/" }
+        },
+        {
+          "_key": "value-accessibility",
+          "_name": { "text": "种种创新， 为无障碍使用而设计。" },
+          "_detail": { "text": "我们的产品和服务为每一个人而设计，众多内置功能可协助你以适合自己的方式，尽情投入喜欢的事。" },
+          "_action": { "verb": "open", "label": "进一步了解无障碍功能", "to": "https://www.apple.com.cn/accessibility/" }
+        }
+      ]
+    }
+  ]
+}
