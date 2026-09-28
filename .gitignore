@@ -10,3 +10,18 @@ node_modules/
 !/corpus/failures.json
 # run-report.json is a transient per-run artifact; the durable summary is
 # corpus/_evidence/corpus-summary.json.
+
+# Common local caches and temporary workspaces
+__pycache__/
+worktrees/
+.worktrees/
+
+# Local secrets, test caches, and generated logs
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.cache/
+.env
+.env.*
+!.env.example
+*.log
