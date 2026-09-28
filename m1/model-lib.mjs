@@ -11,7 +11,8 @@ const domainPath = path.join(here, 'vocab-domain.json');
 export const DOMAIN = fs.existsSync(domainPath) ? JSON.parse(fs.readFileSync(domainPath, 'utf8')) : { verbs: [] };
 export const VERBS = new Set([...VOCAB.verbs, ...(DOMAIN.verbs ?? [])]);
 
-export const RESERVED = new Set(['_intent', '_primary', '_key', '_when', '_action', '_rel', '_lines', '_items', '_expose']);
+export const RESERVED = new Set(['_intent', '_primary', '_key', '_when', '_action', '_rel', '_lines', '_items', '_expose', '_fields', '_empty']);
+export const FIELDS = fs.existsSync(path.join(here, 'vocab-fields.json')) ? JSON.parse(fs.readFileSync(path.join(here, 'vocab-fields.json'), 'utf8')).fields : {};
 
 export const isReserved = (k) => RESERVED.has(k);
 export const roleOf = (k) => (k.startsWith('_') ? k.slice(1) : null);
@@ -21,7 +22,7 @@ export const isNamedChildKey = (k) => !k.startsWith('_') && /^[A-Za-z][A-Za-z0-9
 // ---- typed values (§2, closed) -------------------------------------------
 const VALUE_SHAPE = {
   text: [], num: ['unit'], money: ['currency'], date: [],
-  bool: [], image: ['alt'], video: [], icon: [], ref: [],
+  bool: [], image: ['alt'], video: [], icon: [], ref: [], list: [],
 };
 export function valueTypeOf(v) {
   if (v === null || typeof v !== 'object' || Array.isArray(v)) return null;
@@ -35,12 +36,14 @@ export function valueTypeOf(v) {
   if (primary === 'money' && typeof val !== 'number') return null;
   if (primary === 'bool' && typeof val !== 'boolean') return null;
   if (primary === 'ref' && typeof val !== 'string') return null;
+  if (primary === 'list' && (!Array.isArray(val) || val.some((e) => valueTypeOf(e) === null))) return null;
   if (['text', 'date', 'image', 'video', 'icon'].includes(primary) && typeof val !== 'string') return null;
   return primary;
 }
 export function scalarOf(v) {
   const t = valueTypeOf(v);
   if (t === null) return undefined;
+  if (t === 'list') return v.list.map(scalarOf);
   return v[t];
 }
 
@@ -111,6 +114,15 @@ export function parseExpr(src) {
     if (tk === 'true' || tk === 'false') { i++; return { ok: true, kind: 'lit', value: tk === 'true' }; }
     if (/^["']/.test(tk)) { i++; return { ok: true, kind: 'lit', value: tk.slice(1, -1) }; }
     if (/^\d/.test(tk)) { i++; return { ok: true, kind: 'lit', value: parseFloat(tk) }; }
+    if (tk === 'count') {
+      i++;
+      if (!eat('(')) return { ok: false, why: 'count( expects (' };
+      const inner = peek();
+      if (!inner || !/^[A-Za-z]/.test(inner)) return { ok: false, why: 'count( expects a path' };
+      i++;
+      if (!eat(')')) return { ok: false, why: 'count( missing )' };
+      return { ok: true, kind: 'count', path: inner };
+    }
     if (/^[A-Za-z]/.test(tk)) { i++; return { ok: true, kind: 'path', path: tk }; }
     return { ok: false, why: `unexpected "${tk}"` };
   }
@@ -129,13 +141,18 @@ export function parseExpr(src) {
 }
 export function exprPaths(ast, out = []) {
   if (!ast || typeof ast !== 'object') return out;
-  if (ast.kind === 'path') out.push(ast.path);
+  if (ast.kind === 'path' || ast.kind === 'count') out.push(ast.path);
   if (ast.a) exprPaths(ast.a, out);
   if (ast.b) exprPaths(ast.b, out);
   return out;
 }
 export function evalExpr(ast, scope) {
-  const val = (n) => (n.kind === 'lit' ? n.value : scope[n.path]);
+  const val = (n) => {
+    if (n.kind === 'lit') return n.value;
+    const v = scope[n.path];
+    if (n.kind === 'count') return Array.isArray(v) ? v.length : (v === undefined ? undefined : 1);
+    return v;
+  };
   switch (ast.kind) {
     case 'lit': return ast.value;
     case 'path': return scope[ast.path];

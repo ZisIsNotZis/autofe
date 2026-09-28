@@ -1,0 +1,306 @@
+{
+  "_intent": "让运营人员在一张数据表中查看人员记录，按需展开详情、多选后批量操作",
+  "_key": "antd-table-people",
+  "_title": {
+    "text": "Table"
+  },
+  "_primary": "roster",
+  "_rel": {
+    "order": "none"
+  },
+  "_fields": {
+    "first-name": {
+      "text": "John"
+    },
+    "last-name": {
+      "text": "Brown"
+    },
+    "age": {
+      "num": 32
+    },
+    "address": {
+      "text": "New York No. 1 Lake Park"
+    }
+  },
+  "roster": {
+    "_intent": "人员名册：列即领域字段，行动作挂在行上",
+    "_rel": {
+      "order": "none"
+    },
+    "_empty": {
+      "_intent": "没有匹配记录时告诉用户下一步",
+      "_title": {
+        "text": "No data"
+      },
+      "_summary": {
+        "text": "Adjust the filters, or add a new record."
+      }
+    },
+    "_items": [
+      {
+        "_key": "person-john-brown",
+        "_fields": {
+          "first-name": {
+            "text": "John"
+          },
+          "last-name": {
+            "text": "Brown"
+          },
+          "age": {
+            "num": 32
+          },
+          "address": {
+            "text": "New York No. 1 Lake Park"
+          }
+        },
+        "_tag": {
+          "list": [
+            {
+              "text": "NICE DEVELOPER"
+            },
+            {
+              "text": "DEVELOPER"
+            }
+          ]
+        },
+        "row-actions": {
+          "_intent": "单行操作",
+          "_lines": [
+            {
+              "_intent": "邀请该成员",
+              "_title": {
+                "text": "Invite"
+              },
+              "_action": {
+                "verb": "open",
+                "to": "https://example.com/invite?user=john-brown"
+              }
+            },
+            {
+              "_intent": "删除该成员",
+              "_title": {
+                "text": "Delete"
+              },
+              "_action": {
+                "verb": "operate",
+                "when": "role == \"admin\""
+              }
+            }
+          ]
+        },
+        "detail": {
+          "_intent": "展开行：该成员的更多字段",
+          "_fields": {
+            "gender": {
+              "text": "male"
+            },
+            "email": {
+              "text": "john@example.com"
+            }
+          }
+        }
+      },
+      {
+        "_key": "person-jim-green",
+        "_fields": {
+          "first-name": {
+            "text": "Jim"
+          },
+          "last-name": {
+            "text": "Green"
+          },
+          "age": {
+            "num": 42
+          },
+          "address": {
+            "text": "London No. 1 Lake Park"
+          }
+        },
+        "_tag": {
+          "list": [
+            {
+              "text": "KAWAII"
+            }
+          ]
+        },
+        "row-actions": {
+          "_intent": "单行操作",
+          "_lines": [
+            {
+              "_intent": "邀请该成员",
+              "_title": {
+                "text": "Invite"
+              },
+              "_action": {
+                "verb": "open",
+                "to": "https://example.com/invite?user=jim-green"
+              }
+            },
+            {
+              "_intent": "删除该成员",
+              "_title": {
+                "text": "Delete"
+              },
+              "_action": {
+                "verb": "operate",
+                "when": "role == \"admin\""
+              }
+            }
+          ]
+        },
+        "detail": {
+          "_intent": "展开行",
+          "_fields": {
+            "gender": {
+              "text": "male"
+            },
+            "email": {
+              "text": "jim@example.com"
+            }
+          }
+        }
+      },
+      {
+        "_key": "person-joe-black",
+        "_fields": {
+          "first-name": {
+            "text": "Joe"
+          },
+          "last-name": {
+            "text": "Black"
+          },
+          "age": {
+            "num": 32
+          },
+          "address": {
+            "text": "Sydney No. 1 Lake Park"
+          }
+        },
+        "_tag": {
+          "list": [
+            {
+              "text": "COOL TEACHER"
+            }
+          ]
+        },
+        "score": {
+          "_intent": "按科目展开的成绩（嵌套集合）",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_title": {
+                "text": "Chinese"
+              },
+              "_fields": {
+                "score-chinese": {
+                  "num": 98
+                }
+              }
+            },
+            {
+              "_title": {
+                "text": "Math"
+              },
+              "_fields": {
+                "score-math": {
+                  "num": 60
+                }
+              }
+            },
+            {
+              "_title": {
+                "text": "English"
+              },
+              "_fields": {
+                "score-english": {
+                  "num": 70
+                }
+              }
+            }
+          ]
+        },
+        "row-actions": {
+          "_intent": "单行操作",
+          "_lines": [
+            {
+              "_intent": "邀请该成员",
+              "_title": {
+                "text": "Invite"
+              },
+              "_action": {
+                "verb": "open",
+                "to": "https://example.com/invite?user=joe-black"
+              }
+            },
+            {
+              "_intent": "删除该成员",
+              "_title": {
+                "text": "Delete"
+              },
+              "_action": {
+                "verb": "operate",
+                "when": "role == \"admin\""
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "_expose": {
+      "name": "selected",
+      "type": "ref",
+      "multiple": true
+    },
+    "bulk": {
+      "_intent": "批量操作：只对选中的行生效",
+      "_key": "bulk",
+      "_when": "count(selected) > 0",
+      "_summary": {
+        "text": "Batch operations apply to every selected row."
+      },
+      "_lines": [
+        {
+          "_intent": "批量删除所选",
+          "_title": {
+            "text": "Delete selected"
+          },
+          "_action": {
+            "verb": "operate",
+            "when": "role == \"admin\""
+          }
+        },
+        {
+          "_intent": "批量邀请所选",
+          "_title": {
+            "text": "Invite selected"
+          },
+          "_action": {
+            "verb": "operate"
+          }
+        }
+      ]
+    }
+  },
+  "add": {
+    "_intent": "新增一条记录：表单提交后由后端把新行并入名册",
+    "_title": {
+      "text": "Add a row"
+    },
+    "_expose": {
+      "name": "new-first-name",
+      "type": "text"
+    },
+    "extra": {
+      "_intent": "其余新增字段",
+      "_expose": {
+        "name": "new-last-name",
+        "type": "text"
+      }
+    },
+    "_action": {
+      "verb": "submit"
+    }
+  }
+}

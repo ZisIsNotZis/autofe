@@ -2,8 +2,11 @@
 // blocking errors: the grammar is closed, so an unknown key is a failure, not
 // a warning. Usage: node m1/validate.mjs <model.json> [more.json...]
 import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const CONTEXT = JSON.parse(fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), 'vocab-context.json'), 'utf8')).context;
 import {
-  VOCAB, ROLES, VERBS, isReserved, isRoleKey, roleOf, isNamedChildKey,
+  VOCAB, ROLES, VERBS, FIELDS, isReserved, isRoleKey, roleOf, isNamedChildKey,
   valueTypeOf, resolvePath, findKey, childrenOf, walk, parseExpr, exprPaths, exposeOf,
 } from './model-lib.mjs';
 
@@ -12,7 +15,7 @@ export function validate(model) {
   const err = (p, msg) => errors.push({ path: p || '/', message: msg });
   const keysSeenByKeyValue = new Map();
 
-  function checkNode(node, p, chain) {
+  function checkNode(node, p, chain, isItemEl = false) {
     if (node === null || typeof node !== 'object' || Array.isArray(node)) {
       err(p, 'node must be an object'); return;
     }
@@ -20,6 +23,20 @@ export function validate(model) {
     const hasChildren = keys.some((k) => !k.startsWith('_')) || Array.isArray(node._lines) || Array.isArray(node._items);
 
     for (const k of keys) {
+      if (k === '_fields') {
+        const f = node[k];
+        if (!f || typeof f !== 'object' || Array.isArray(f)) { err(`${p}._fields`, '_fields must be an object of declared domain fields'); continue; }
+        for (const [fn, fv] of Object.entries(f)) {
+          if (!FIELDS[fn]) err(`${p}._fields.${fn}`, `domain field "${fn}" not declared in vocab-fields.json (declare it there once per domain, with its column label)`);
+          else if (valueTypeOf(fv) === null) err(`${p}._fields.${fn}`, 'field value must be a closed typed value');
+        }
+        continue;
+      }
+      if (k === '_empty') {
+        if (typeof node[k] !== 'object' || node[k] === null || Array.isArray(node[k])) err(`${p}._empty`, '_empty must be a storyline node');
+        if (!Array.isArray(node._items)) err(`${p}._empty`, '_empty is only meaningful on a collection (a node with _items)');
+        continue;
+      }
       if (isReserved(k)) continue;
       if (isRoleKey(k)) {
         const t = valueTypeOf(node[k]);
@@ -31,7 +48,7 @@ export function validate(model) {
       if (typeof node[k] !== 'object' || node[k] === null || Array.isArray(node[k])) err(`${p}.${k}`, 'named child must be a node object');
     }
 
-    if (hasChildren && typeof node._intent !== 'string') err(p, 'missing _intent: every group/storyline node must say why it exists');
+    if (hasChildren && !isItemEl && typeof node._intent !== 'string') err(p, 'missing _intent: every group/storyline node must say why it exists (collection elements are exempt: their reason is the collection intent, F-017)');
 
     if (node._intent !== undefined && typeof node._intent !== 'string') err(`${p}._intent`, '_intent must be a string');
     if (node._key !== undefined && typeof node._key !== 'string') err(`${p}._key`, '_key must be a string');
@@ -94,7 +111,10 @@ export function validate(model) {
     }
 
     const nextChain = [...chain, node];
-    for (const c of childrenOf(node)) checkNode(c.node, p ? `${p}.${c.key}` : c.key, nextChain);
+    for (const c of childrenOf(node)) {
+      const isItem = c.key.startsWith('_items[');
+      checkNode(c.node, p ? `${p}.${c.key}` : c.key, nextChain, isItem);
+    }
   }
 
   function checkExpr(src, at, chain) {
@@ -104,19 +124,16 @@ export function validate(model) {
     const scope = {};
     for (const n of chain) {
       for (const [k, v] of Object.entries(n)) if (isRoleKey(k)) scope[k.slice(1)] = v;
-      const e = exposeOf(n); if (e) scope[e.role] = undefined; // declared exposure satisfies resolution
+      const e = exposeOf(n); if (e) scope[e.name] = undefined; // declared exposure satisfies resolution
     }
+    for (const name of Object.keys(CONTEXT)) scope[name] = scope[name] ?? undefined; // context names always resolve
     for (const rp of exprPaths(ast)) {
-      const base = rp.split(/[\[.]/)[0];
-      const segs = rp.split('.');
-      const head = segs[0].replace(/\[\d+\]$/, '');
-      if (scope[head] === undefined) { err(at, `condition path "${rp}" does not resolve to a fact on this node or an ancestor`); continue; }
-      if (segs.length > 1) err(at, `condition path "${rp}": v0 allows one segment (a role on this node or an ancestor)`);
-      void base;
+      const head = rp.split(/[.\[]/)[0];
+      if (!(head in scope)) err(at, `condition path "${rp}" resolves to no fact, exposure, or context name`);
     }
+    void scope;
   }
 
-  checkNode(model, '', []);
   // refs resolve document-wide
   walk(model, (node, p) => {
     for (const [k, v] of Object.entries(node)) {

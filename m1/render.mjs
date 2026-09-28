@@ -4,12 +4,13 @@
 import fs from 'node:fs';
 import {
   isRoleKey, roleOf, resolvePath, resolveWithParent, childrenOf, factsOf,
-  parseExpr, evalExpr, scopeFor, exposeOf,
+  parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
 } from './model-lib.mjs';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 function fmt(v) {
+  if ('list' in v) return v.list.map((e) => `<span class="chip">${fmt(e)}</span>`).join(' ');
   if ('text' in v) return esc(v.text);
   if ('num' in v) return esc(v.num) + (v.unit ? ` ${esc(v.unit)}` : '');
   if ('money' in v) return esc(v.money) + (v.currency ? ` ${esc(v.currency)}` : '');
@@ -82,17 +83,48 @@ function renderNode(node, chain, isHero, hide, ctx) {
 
   const exp = exposeOf(node);
   if (exp && node._items?.length) {
+    const multi = exp.multiple === true;
     const opts = node._items.map((it, i) => {
       const v = it._name ?? it._title;
       const label = v ? fmt(v) : `option ${i + 1}`;
-      const val = v ? v.text : String(i);
-      return `<label class="choice"><input type="radio" name="${esc(exp.name)}" value="${esc(val)}"> ${label}</label>`;
+      const val = it._key ? `key:${it._key}` : (v ? v.text : String(i));
+      return `<label class="choice"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"> ${label}</label>`;
     }).join('');
     body += `<fieldset class="expose expose-${esc(exp.name)}"><legend>${esc(exp.name)}</legend>${opts}</fieldset>`;
   } else if (exp) {
     body += `<label class="expose expose-${esc(exp.name)}"><span class="role">${esc(exp.name)}</span><input type="text" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></label>`;
   }
 
+  const itemsChildren = kids.filter((c) => c.key.startsWith('_items['));
+  if (itemsChildren.length && itemsChildren.every((c) => c.node._fields)) {
+    const rowsN = itemsChildren.map((c) => c.node);
+    const cols = [...new Set(rowsN.flatMap((r) => [...Object.keys(r._fields), ...factsOf(r).filter((f) => !['_title', '_name'].includes(f.key)).map((f) => f.key)]))];
+    const label = (col) => esc(FIELDS[col]?.label ?? col.replace(/^_/, ''));
+    const head = `<tr>${cols.map((c) => `<th>${label(c)}</th>`).join('')}<th></th></tr>`;
+    const trs = itemsChildren.map((c) => {
+      const r = c.node;
+      const tds = cols.map((col) => {
+        let v = r._fields?.[col];
+        if (v === undefined) { const f = factsOf(r).find((x) => x.key === col); v = f ? f.value : undefined; }
+        return `<td>${v ? fmt(v) : ''}</td>`;
+      }).join('');
+      const ops = childrenOf(r).filter((ch) => !ch.key.startsWith('_items['))
+        .map((ch) => renderNode(ch.node, [...chain, node], false, hide, ctx)).join('');
+      return `<tr>${tds}<td class="row-ops">${ops}</td></tr>`;
+    }).join('');
+    let out = `<table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table>`;
+    if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
+      out += renderNode(node._empty, [...chain, node], false, hide, ctx);
+    }
+    const tail = [];
+    for (const c of kids) {
+      if (c.key.startsWith('_items[')) continue;
+      const h = renderNode(c.node, [...chain, node], false, hide, ctx);
+      if (h) tail.push(c.key.startsWith('_lines[') ? `<section class="line">${h}</section>` : `<section class="group g-${esc(c.key)}">${h}</section>`);
+    }
+    const head0 = titleText ? `<h3 class="title">${titleText}</h3>` : (node._intent ? `<h4 class="intent">${esc(node._intent)}</h4>` : '');
+    return `<article class="${cls.join(' ')}">${heroHtml}${head0}${out}${body}${tail.join('')}${action}</article>`;
+  }
   if (kids.length) {
     const parts = [];
     for (const c of kids) {
@@ -111,6 +143,7 @@ function renderNode(node, chain, isHero, hide, ctx) {
     body += inner;
   }
 
+  if (node._fields) body = `<div class="facts-actions">${body}${action}</div>`;
   const head = titleText
     ? `<h3 class="title">${titleText}</h3>`
     : (node._intent && kids.length ? `<h4 class="intent">${esc(node._intent)}</h4>` : '');
@@ -155,6 +188,12 @@ legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04e
 input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 img{max-width:100%;border-radius:10px;display:block}
+table.data{border-collapse:collapse;width:100%;font-size:.92em}
+table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
+table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
+.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.facts-actions{display:flex;flex-direction:column;gap:4px}
+.facts-actions .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 .level-1{opacity:.92}.level-2{opacity:.85}.level-3{opacity:.78}
 </style></head>
 <body><main><p class="page-intent">${intent}</p>${html}</main></body></html>
