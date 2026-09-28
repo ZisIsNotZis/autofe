@@ -38,6 +38,20 @@ const CAP = {
   textLen: 2000,
 };
 
+
+// F-023: mid-animation captures leave visible text mid-typewhile accName
+// carries the full string. Prefer the longer of text/name when one extends
+// the other; otherwise text.
+function pickText(cap) {
+  const t = String(cap.text ?? '').trim();
+  const n = String(cap.name ?? '').trim();
+  if (!t) return n;
+  if (!n) return t;
+  if (n.startsWith(t) && n.length > t.length) return n;
+  if (t.startsWith(n) && t.length > n.length) return t;
+  return t.length >= n.length ? t : n;
+}
+
 // ---- capture loading -------------------------------------------------------
 function loadCapture(dir) {
   const meta = JSON.parse(fs.readFileSync(path.join(dir, 'meta.json'), 'utf8'));
@@ -570,8 +584,7 @@ class Extractor {
     }
 
     if (TEXT_ROLES.has(role)) {
-      if (visible && (cap.text ?? '').trim()) { this.addTextAtom(cap.text); this.consume(t); return; }
-      if (visible && (cap.name ?? '').trim() && !(cap.text ?? '').trim()) { this.addTextAtom(cap.name); this.consume(t); return; }
+      if (visible && (String(cap.text ?? '').trim() || String(cap.name ?? '').trim())) { this.addTextAtom(pickText(cap)); this.consume(t); return; }
       this.consume(t);
       return;
     }
@@ -631,7 +644,7 @@ class Extractor {
 
     // bare leaf text holders (generic spans/divs with their own text and no
     // element children carrying text): real content in most captures
-    if (visible && String(cap.text ?? '').trim() && !t.children.some((ch) => ch._hasText)) {
+    if (visible && (String(cap.text ?? '').trim() || String(cap.name ?? '').trim()) && !t.children.some((ch) => ch._hasText)) {
       this.addTextAtom(cap.text);
       this.consume(t);
       return;
@@ -640,7 +653,7 @@ class Extractor {
     // container whose ENTIRE aggregated text is one typed value (price strings
     // are often split across child spans): extract it whole, fragments covered
     if (visible) {
-      const agg = String(cap.text ?? '').trim();
+      const agg = pickText(cap);
       if (agg && agg.length <= 48 && t.children.some((ch) => ch._hasText)
         && (parseMoney(agg) || parseMeasure(agg) || parseDate(agg))) {
         this.addTextAtom(agg);
