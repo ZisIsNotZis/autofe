@@ -68,12 +68,22 @@
     "_label": {
       "text": "选择颜色"
     },
-    "_rel": { "compare": true },
+    "_rel": {
+      "compare": true
+    },
     "_primary": "_items[0]",
     "_items": [
-      { "_key": "color-white", "_name": { "text": "白色" } }
+      {
+        "_key": "color-white",
+        "_name": {
+          "text": "白色"
+        }
+      }
     ],
-    "_expose": { "name": "color", "type": "text" }
+    "_expose": {
+      "name": "color",
+      "type": "text"
+    }
   },
   "buy": {
     "_intent": "购买动作区：加入购物车或收藏喜欢",
@@ -107,12 +117,48 @@
   "assurances": {
     "_intent": "购买保障与说明；售后服务政策与 7 天价格保护有独立政策页",
     "_items": [
-      { "_name": { "text": "发货说明" } },
-      { "_name": { "text": "7天无理由退货（到店自取拆封后不支持）" } },
-      { "_name": { "text": "运费说明" } },
-      { "_name": { "text": "企业信息" } },
-      { "_name": { "text": "售后服务政策" }, "_action": { "verb": "open", "to": "https://m.mi.com/aftersale/policy/7" } },
-      { "_name": { "text": "7天价格保护" }, "_action": { "verb": "open", "to": "https://s1.mi.com/m/faq/giving/index.html?project_id=44" } }
+      {
+        "_name": {
+          "text": "发货说明"
+        }
+      },
+      {
+        "_name": {
+          "text": "7天无理由退货（到店自取拆封后不支持）"
+        }
+      },
+      {
+        "_name": {
+          "text": "运费说明"
+        }
+      },
+      {
+        "_name": {
+          "text": "企业信息"
+        }
+      },
+      {
+        "_name": {
+          "text": "售后服务政策"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://m.mi.com/aftersale/policy/7"
+        }
+      },
+      {
+        "_name": {
+          "text": "7天价格保护"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://s1.mi.com/m/faq/giving/index.html?project_id=44"
+        }
+      }
     ]
+  },
+  "_image": {
+    "image": "../assets/mi15-product-hero.png",
+    "alt": "米家宠物空气净化器 产品主图（自原页截图恢复）"
   }
 }
