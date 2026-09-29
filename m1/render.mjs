@@ -204,17 +204,17 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     if (ordered.includes(c) && simpleChoice) continue;
     const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1);
     if (!h) continue;
-    const asAside = demoted || (depth === 0 && !headingKey && false);
     body += c.key.startsWith('_items[')
       ? `<div class="item">${h}</div>`
-      : (asAside ? `<aside class="zone">${h}</aside>` : `<section class="group g-${esc(c.key)}">${h}</section>`);
+      : `<section class="group g-${esc(c.key)}">${h}</section>`;
   }
 
   // root-level trailing groups (after the primary content) render as an aside zone
   if (depth === 0 && !demoted) {
     // visual separation handled by CSS on .zone
   }
-  return `<article class="${cls.join(' ')}">${head}${bodyLead}${heroHtml}${body}${action}</article>`;
+  const article = `<article class="${cls.join(' ')}">${head}${bodyLead}${heroHtml}${body}${action}</article>`;
+  return demoted ? `<aside class="zone">${article}</aside>` : article;
 }
 
 export function render(model, context = {}) {
@@ -271,7 +271,13 @@ table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+aside.zone{margin-top:56px;padding-top:24px;border-top:1px solid #d6dde6}
+aside.zone .title,.aside-h{font-size:1em;color:#5b6a78}
 .depth-2 article,.depth-3 article{margin:8px 0}
+/* proximity follows depth (F-028): deeper relationships sit visually tighter */
+main>article>.group{margin-top:34px}
+main>article .group .group{margin-top:18px}
+main>article .group .group .group{margin-top:10px}
 </style></head>
 <body><main>${brand ? `<header class="site"><span class="brand">${brand}</span></header>` : ''}${html}</main></body></html>
 `;
