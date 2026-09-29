@@ -137,7 +137,15 @@ function buildJobs(sitesDoc, options, corpusDir) {
       }
       jobs.push({
         site,
-        page: { slug: page.slug, url: page.url, archetype: page.archetype, note: page.note ?? null },
+        page: {
+          slug: page.slug,
+          url: page.url,
+          archetype: page.archetype,
+          note: page.note ?? null,
+          // Page-level interaction steps (fill/press/click/waitMs/waitFor), run after
+          // navigation+settle and before analysis (see runInteractions in lib/capture.mjs).
+          interactions: Array.isArray(page.interactions) ? page.interactions : null,
+        },
       });
     }
   }

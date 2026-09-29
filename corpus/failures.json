@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-28T01:38:51.105Z",
-  "count": 9,
+  "generatedAt": "2026-09-29T14:20:05.136Z",
+  "count": 11,
   "failures": [
     {
       "site": "csdn",
@@ -29,6 +29,40 @@
       "partialArtifacts": false,
       "discardedStaleArtifacts": false,
       "at": "2026-09-18T15:28:43.817Z"
+    },
+    {
+      "site": "huawei-cn",
+      "page": "search-laptop",
+      "archetype": "search-results",
+      "url": "https://www.huawei.com/cn/searchresult?keyword=laptop&pageIndex=1&keywords=%E7%AC%94%E8%AE%B0%E6%9C%AC",
+      "stage": "navigation",
+      "reason": "late_navigation",
+      "message": "https://www.huawei.com/cn/searchresult?keyword=laptop&pageIndex=1 -> https://www.huawei.com/cn/searchresult?keyword=laptop&pageIndex=1&keywords=%E7%AC%94%E8%AE%B0%E6%9C%AC after the robots check (re-checked and allowed)",
+      "rule": null,
+      "requestedUrl": null,
+      "partialArtifacts": true,
+      "discardedStaleArtifacts": false,
+      "at": "2026-09-29T14:20:05.122Z",
+      "qualityFlags": [
+        "late_navigation"
+      ]
+    },
+    {
+      "site": "huawei-cn",
+      "page": "search-phone",
+      "archetype": "search-results",
+      "url": "https://www.huawei.com/cn/searchresult?keyword=phone&pageIndex=1&keywords=%E6%89%8B%E6%9C%BA",
+      "stage": "navigation",
+      "reason": "late_navigation",
+      "message": "https://www.huawei.com/cn/searchresult?keyword=phone&pageIndex=1 -> https://www.huawei.com/cn/searchresult?keyword=phone&pageIndex=1&keywords=%E6%89%8B%E6%9C%BA after the robots check (re-checked and allowed)",
+      "rule": null,
+      "requestedUrl": null,
+      "partialArtifacts": true,
+      "discardedStaleArtifacts": false,
+      "at": "2026-09-29T14:20:05.122Z",
+      "qualityFlags": [
+        "late_navigation"
+      ]
     },
     {
       "site": "jd-com",

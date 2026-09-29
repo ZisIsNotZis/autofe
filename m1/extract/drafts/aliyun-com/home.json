@@ -37,15 +37,15 @@
         {
           "_action": {
             "verb": "navigate",
-            "to": "https://www.qianwenai.com/models/qwen3.8-flash",
-            "label": "多模态 MOE 模型 Qwen3.8-Flash 支持百万级上下文窗口，能一次性处理超长文档、代码仓库"
+            "to": "https://www.qianwenai.com/product/qwenbook",
+            "label": "Qwen Book 亮相云栖大会 阿里云 Qwen Book：第一台，每天都会变更聪明的 AI 智能体电脑"
           }
         },
         {
           "_action": {
             "verb": "navigate",
-            "to": "https://opc.aliyun.com/activity#J_1",
-            "label": "万小智 AI 建站，首月低至 9.9 元 配套三级域名、数据库和基础云资源，新客加赠 2000 灵感值"
+            "to": "https://wanwang.aliyun.com/website/xiaozhi",
+            "label": "万小智 3.0，首月低至 15 元 建站+经营，支持 GEO/SEO/内容分发，送域名备案 2000 积分"
           }
         },
         {
@@ -95,7 +95,7 @@
           "_action": {
             "verb": "navigate",
             "to": "https://www.aliyun.com/exp/xiaozhi",
-            "label": "智能建站 万小智 | 一键生成、轻松上线 智能生成对客页面，配套搭建管理后台，开站即经营 封面图"
+            "label": "智能建站 万小智 3.0 | 不止建站，更懂经营 智能生成网站前后台，支持 GEO/SEO，上线即经营 封面图"
           }
         },
         {
@@ -125,7 +125,84 @@
       "_intent": "千问大模型，企业拥抱 AI 时代优选 [draft]",
       "_title": {
         "text": "千问大模型，企业拥抱 AI 时代优选"
-      }
+      },
+      "_lines": [
+        {
+          "_intent": "千问大模型 [draft]",
+          "_title": {
+            "text": "千问大模型"
+          },
+          "_summary": {
+            "text": "全模态高效精准的模型服务调用"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "丰富的多模态大模型，契合更多业务场景"
+              }
+            },
+            {
+              "_text": {
+                "text": "万亿级超大规模数据训练和领先的算法框架"
+              }
+            },
+            {
+              "_text": {
+                "text": "AI 云市场份额超过 2-4 名总和"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.qianwenai.com/models",
+                "label": "访问模型市场"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://platform.qianwenai.com/try-ai?models=qwen3.8-max-0902",
+                "label": "视觉语言大模型 Qwen3.8-Max Qwen3.8-Max-0902 快照版本重磅更新，通过进一步的后训练，重点提升 Coding、Cowork 和视觉理解（VL）能力。"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://platform.qianwenai.com/try-ai?models=qwen3-vl-plus",
+                "label": "视觉理解大模型 Qwen3-VL-Plus Qwen3 系列视觉理解模型，实现思考和非思考模式的有效融合，视觉感知与识别能力大幅提升，支持超长视频理解。"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://platform.qianwenai.com/try-ai/chat?models=qwen-image-3.0-pro",
+                "label": "图片生成大模型 Qwen-Image-3.0-Pro 复杂图文一键生成，细节真实可用；12国语言多字体，网页、游戏、直播界面轻松仿真。"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.qianwenai.com/models/wan3.0-video",
+                "label": "视频生成大模型 Wan3.0-Video 万相3.0邀测中。四模态全能参考，集参考、编辑、复刻、驱动于一体，30秒成片，角色一致，音画震撼。"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://platform.qianwenai.com/try-ai?models=qwen3.5-omni-flash",
+                "label": "全模态大模型 Qwen3.5-Omni-Flash 全模态大模型，支持文本图片音视频理解交互，超长10小时音频理解，支持60多种多语言，体验自然流畅。"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://platform.qianwenai.com/try-ai?models=fun-asr",
+                "label": "语音识别模型 Fun-ASR 新一代端到端语音识别大模型的实时版，基于领先的自研语音技术，具备卓越的上下文感知和高精度语音转写能力。"
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "_intent": "为 Agent 而生的 MaaS 平台，驱动 AI 生产力 [draft]",
@@ -171,25 +248,423 @@
       "_intent": "完整的产品体系，为企业打造技术创新的云 [draft]",
       "_title": {
         "text": "完整的产品体系，为企业打造技术创新的云"
-      }
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/list",
+            "label": "全部云产品"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "精选产品"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "人工智能与机器学习"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "计算"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "存储"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "网络与CDN"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "安全"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "中间件"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "数据库"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "大数据计算"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/ecs",
+            "label": "云服务器 ECS 安全可靠、弹性可伸缩的云计算服务"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ecs-buy.aliyun.com/buyRedirect.htm?period=1&periodType=Yearly",
+            "label": "立即选购"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://free.aliyun.com/?spm&product=1351&crowd",
+            "label": "免费试用"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/tongyi",
+            "label": "千问大模型 大模型 多元化、高性能、安全可靠的大模型服务"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://bailian.console.aliyun.com/cn-beijing/?tab=model#/model-market",
+            "label": "模型体验"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/tongyi",
+            "label": "查看详情"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/bailian",
+            "label": "大模型服务平台百炼 大模型 大模型服务与应用平台"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://bailian.console.aliyun.com/cn-beijing/?tab=app#/app-market/suggest",
+            "label": "应用构建"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/bailian",
+            "label": "查看详情"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://wanwang.aliyun.com/",
+            "label": "域名与网站 提供智能易用的域名与建站服务"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/swas",
+            "label": "轻量应用服务器 快速构建应用程序和网站，即刻迈出上云第一步"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/oss",
+            "label": "对象存储 OSS 稳定、安全、高性价比、高性能的云存储服务"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/rds",
+            "label": "云数据库 RDS 全托管，含MySQL、PostgreSQL、SQL Server、MariaDB多引擎"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/sms",
+            "label": "短信服务 国内短信简单易用，安全可靠，秒级触达，全球覆盖200+国家和地区。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/cas",
+            "label": "数字证书管理服务（原SSL证书） 实现全站HTTPS与全场景一键证书托管"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/ecs/gws",
+            "label": "无影云电脑 随时随地安全接入的云上超级电脑"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/bigdata/learn",
+            "label": "人工智能平台 PAI 大模型 一站式AI开发、训练和推理服务"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/qoder",
+            "label": "Qoder 面向真实软件的智能体编程平台"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/dns",
+            "label": "云解析DNS 覆盖公网/内网、递归/权威、移动APP等全场景解析服务"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/maxcompute",
+            "label": "云原生大数据计算服务 MaxCompute 面向分析的企业级SaaS模式云数据仓库"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/product/polardb",
+            "label": "云原生数据库 PolarDB 100%兼容MySQL、PostgreSQL，兼容Oracle，支持集中和分布式"
+          }
+        }
+      ]
     },
     {
       "_intent": "依托大模型与云计算协同发展，让 AI 触手可及 [draft]",
       "_title": {
         "text": "依托大模型与云计算协同发展，让 AI 触手可及"
-      }
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/solution/tech-solution/ai",
+            "label": "全部 AI 解决方案"
+          }
+        },
+        {
+          "_intent": "分析 Agent 实现一键 AI 数据洞察 [draft]",
+          "_title": {
+            "text": "分析 Agent 实现一键 AI 数据洞察"
+          },
+          "_summary": {
+            "text": "AI 原生的企业级智能分析 Agent，对话完成多轮深度分析，主动洞察、主动巡检、落地执行，并基于企业知识和记忆持续学习，越来越懂您的业务。"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.aliyun.com/solution/tech-solution/quick-bi",
+                "label": "了解详情"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://smartservice.console.aliyun.com/service/pre-sales-chat?from=ai&displayMode=widget&channelCode=301&topicCode=sales-im&topicServiceId=1&iframe=true",
+                "label": "联系 AI 专家"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "漫剧工坊：一站式动画创作平台 [draft]",
+          "_title": {
+            "text": "漫剧工坊：一站式动画创作平台"
+          }
+        },
+        {
+          "_intent": "与 AI 智能体进行实时音视频通话 [draft]",
+          "_title": {
+            "text": "与 AI 智能体进行实时音视频通话"
+          }
+        },
+        {
+          "_intent": "10 分钟在聊天系统中增加一个 AI 助手 [draft]",
+          "_title": {
+            "text": "10 分钟在聊天系统中增加一个 AI 助手"
+          }
+        },
+        {
+          "_intent": "多模态数据信息提取 [draft]",
+          "_title": {
+            "text": "多模态数据信息提取"
+          }
+        }
+      ]
     },
     {
       "_intent": "全方位云计算和 AI 超值权益，助力云上创新 [draft]",
       "_title": {
         "text": "全方位云计算和 AI 超值权益，助力云上创新"
-      }
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/benefit",
+            "label": "全部权益"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.qianwenai.com/benefits/tokenplan",
+            "label": "Token Plan 首发 Qwen-3.8 多模型共享额度，低至 39 元起"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/benefit/scene/wan",
+            "label": "Wan3.0 重磅发布 原生 30 秒，按秒计费，创作更具性价比"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/benefit/ai/discount",
+            "label": "大模型优惠，首购低至 4.5 折 可抵扣千问 3.5，支持千问、万相等阿里云全量模型"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://university.aliyun.com/buycenter/",
+            "label": "学生免费领取 300 元抵扣金 可抵扣大模型、计算、存储等核心产品"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://opc.aliyun.com/activity#J_1",
+            "label": "AI 建站首月 9.9 元 自带数据库，免备案即开即用"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://free.aliyun.com/",
+            "label": "160+ 产品免费试用 助您快速开启云上实践之旅"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/benefit/select/cloud-discount",
+            "label": "长效普惠云服务器 ECS 2 核 2G 仅需 99 元/年"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/benefit/client/package",
+            "label": "QoderCN × 百炼套餐 代码写更快，模型跑不停"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/solution/free",
+            "label": "50+ 技术解决方案免费试用 云上 AI 方案快速验证"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://free.aliyun.com/product/ai",
+            "label": "30+ AI 产品，零成本构建 AI 应用"
+          }
+        }
+      ]
     },
     {
       "_intent": "AI 赋能千行百业，与阿里云一起开拓创新 [draft]",
       "_title": {
         "text": "AI 赋能千行百业，与阿里云一起开拓创新"
-      }
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/customer-stories/customer-case-index",
+            "label": "全部客户案例"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/about/games",
+            "label": "传媒 阿里云持续运用 AI 驱动的云计算技术，全面支持奥林匹克运动会的数字化转型——涵盖奥运会自身运营、转播服务、电力需求优化，以及历史档案的修复与保存。 巴黎奥运会"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/customer-stories/automotive-2025-xiaopeng",
+            "label": "汽车 阿里云服务小鹏汽车百日完成数字员工构建，通过 AI 深度集成企业办公全流程，AI 全栈能力助力小鹏汽车办公进入“数字员工协同时代”。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/customer-stories/internet-and-info-tech-2025-moonshot",
+            "label": "信息技术 月之暗面 Kimi 大模型基于阿里云ACK 实现海量数据预处理。月之暗面在数据处理能力、资源利用效率和运维管理维度实现了全方位升级。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/customer-stories/retail-2024-semir",
+            "label": "零售 森马基于阿里云函数计算，快速实现传统服装行业与 AI “碰撞”，在多场景下以 AIGC 实现生产提效，引领行业数字化、智能化转型的新风尚。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/customer-stories/financial-services-2025-china-insurance",
+            "label": "金融 通过使用通义灵码，中华财险显著提升了研发团队的编码效率，近 60% 员工采纳该工具，不仅减少人工错误，还增强了团队的创新能力。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.aliyun.com/about/gala",
+            "label": "传媒 阿里云以全球云基础设施和千问大模型，支持中央广播电视总台2025年春节联欢晚会，同时满足8K电视大屏、移动小屏等多终端需求。 中央广播电视总台2025年春节联欢晚会"
+          }
+        }
+      ]
     },
     {
       "_intent": "安全合规、遍布全球的云计算基础设施 [draft]",
@@ -198,18 +673,132 @@
       },
       "_lines": [
         {
-          "_action": {
-            "verb": "navigate",
-            "to": "https://www.aliyun.com/analyst-reports/idc-fms-2026",
-            "label": "千问大模型，全球基础模型软件领导者"
+          "_intent": "31个 [draft]",
+          "_title": {
+            "text": "31个"
+          },
+          "_summary": {
+            "text": "全球公共云地域"
           }
         },
         {
-          "_action": {
-            "verb": "navigate",
-            "to": "https://www.aliyun.com/analyst-reports/frost-fsai-2025",
-            "label": "中国 AI 云市场份额领先，超过2-4名总和"
+          "_intent": "107个 [draft]",
+          "_title": {
+            "text": "107个"
+          },
+          "_summary": {
+            "text": "全球公共云可用区"
           }
+        },
+        {
+          "_intent": "3200+ [draft]",
+          "_title": {
+            "text": "3200+"
+          },
+          "_summary": {
+            "text": "边缘节点"
+          }
+        },
+        {
+          "_intent": "180+Tbps [draft]",
+          "_title": {
+            "text": "180+Tbps"
+          },
+          "_image": {
+            "image": "",
+            "alt": "基础设施地图"
+          },
+          "_summary": {
+            "text": "全网输出带宽"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://infrastructure.aliyun.com/",
+                "label": "了解更多全球基础设施"
+              }
+            },
+            {
+              "_text": {
+                "text": "ISO 27001 信息安全管理体系"
+              }
+            },
+            {
+              "_text": {
+                "text": "ISO 27701 隐私信息管理体系"
+              }
+            },
+            {
+              "_text": {
+                "text": "SOC1/2/3报告 第三方审计报告"
+              }
+            },
+            {
+              "_text": {
+                "text": "工信部云计算服务能力评估"
+              }
+            },
+            {
+              "_text": {
+                "text": "PCI DSS 支付卡产业数据安全标准"
+              }
+            },
+            {
+              "_text": {
+                "text": "公安部网络安全等级保护"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://free.aliyun.com/",
+                "label": "立即体验 在阿里云上创造未来 免费体验"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://smartservice.console.aliyun.com/service/robot-chat",
+                "label": "全天候高效服务 7x24 小时为您提供专业服务"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.aliyun.com/service/supportplans",
+                "label": "专属贴身服务 1v1 极速响应、专属保障的贴身服务"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://smartservice.console.aliyun.com/service/self-service-center",
+                "label": "多渠道无忧服务 多种查询、诊断等服务工具，快速解决常见问题"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.aliyun.com/service/list",
+                "label": "专业上云服务 上云全周期的技术咨询与实施服务"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.aliyun.com/analyst-reports/idc-fms-2026",
+                "label": "千问大模型，全球基础模型软件领导者"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.aliyun.com/analyst-reports/frost-fsai-2025",
+                "label": "中国 AI 云市场份额领先，超过2-4名总和"
+              }
+            }
+          ]
         }
       ]
     }

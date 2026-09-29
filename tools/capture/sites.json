@@ -72,12 +72,42 @@
         {
           "slug": "search-phone",
           "url": "https://www.huawei.com/cn/search?keyword=phone",
-          "archetype": "search-results"
+          "archetype": "search-results",
+          "interactions": [
+            {
+              "fill": "#b-search",
+              "value": "手机"
+            },
+            {
+              "click": ".btn-b-search"
+            },
+            {
+              "waitFor": ".result-list a"
+            },
+            {
+              "waitMs": 1500
+            }
+          ]
         },
         {
           "slug": "search-laptop",
           "url": "https://www.huawei.com/cn/search?keyword=laptop",
-          "archetype": "search-results"
+          "archetype": "search-results",
+          "interactions": [
+            {
+              "fill": "#b-search",
+              "value": "笔记本"
+            },
+            {
+              "click": ".btn-b-search"
+            },
+            {
+              "waitFor": ".result-list a"
+            },
+            {
+              "waitMs": 1500
+            }
+          ]
         }
       ]
     },

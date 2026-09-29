@@ -20,7 +20,99 @@ export const FREEZE_CSS = [
   '}',
 ].join('');
 
-export const NORMALIZATIONS = ['reduced-motion', 'animation-freeze', 'color-scheme-light', 'scroll-to-top'];
+export const NORMALIZATIONS = ['reduced-motion', 'animation-freeze', 'color-scheme-light', 'scroll-to-top', 'lazy-load-scroll-pass'];
+
+// Paint-before-shot: a full-page screenshot taken from (0,0) misses content that only renders
+// when scrolled into view (intersection observers, native lazy images) — observed as mosaic
+// placeholder bands in full.png (aliyun home infrastructure band at y≈7800). The pass walks the
+// document in viewport-sized steps with a fixed per-step delay, then returns to the top.
+// Deterministic by policy: fixed delays, fixed cap; only the step count follows the document.
+export const LAZY_LOAD_STEP_MS = 350;
+export const LAZY_LOAD_MAX_STEPS = 60;
+
+// One ceiling for every interaction step (fill/click/waitFor and the post-navigation re-waits
+// share the page default below it): a page that never yields the expected element must not
+// stall a corpus run, and a missing selector is recorded (interaction_failed), never fatal.
+export const INTERACTION_STEP_TIMEOUT_MS = 15000;
+
+// Runs a page-level `interactions` array (sites.json) after navigation+settle and before
+// analysis: {fill,value}|{press}|{click}|{waitMs}|{waitFor}. A step whose selector never
+// appears is recorded and skipped — the capture continues and never crashes. A step that
+// changes the URL re-waits load/networkidle/settle so everything downstream (screenshots,
+// DOM analysis, and the pre-write URL re-check) sees the settled new page.
+export async function runInteractions(browserPage, interactions, { settleMs, networkIdleTimeoutMs, errors, stepTimeoutMs = INTERACTION_STEP_TIMEOUT_MS }) {
+  const steps = Array.isArray(interactions) ? interactions : [];
+  const failed = [];
+  const navigationTargets = [];
+  let executed = 0;
+  let navigatedTo = null;
+  for (const [index, step] of steps.entries()) {
+    if (!step || typeof step !== 'object') {
+      failed.push({ step: index + 1, action: 'invalid', message: 'interaction step is not an object' });
+      continue;
+    }
+    const action = Object.keys(step)[0] ?? 'unknown';
+    try {
+      const urlBefore = browserPage.url();
+      if (step.fill !== undefined) {
+        await browserPage.locator(step.fill).first().fill(String(step.value ?? ''), { timeout: stepTimeoutMs });
+      } else if (step.press !== undefined) {
+        await browserPage.keyboard.press(step.press);
+      } else if (step.click !== undefined) {
+        await browserPage.locator(step.click).first().click({ timeout: stepTimeoutMs });
+      } else if (step.waitMs !== undefined) {
+        await browserPage.waitForTimeout(Math.max(0, Number(step.waitMs) || 0));
+      } else if (step.waitFor !== undefined) {
+        await browserPage.locator(step.waitFor).first().waitFor({ state: 'visible', timeout: stepTimeoutMs });
+      } else {
+        throw new Error(`unknown interaction step keys: ${action}`);
+      }
+      executed += 1;
+      if (browserPage.url() !== urlBefore) {
+        navigatedTo = browserPage.url();
+        if (navigationTargets[navigationTargets.length - 1] !== navigatedTo) navigationTargets.push(navigatedTo);
+        await browserPage.waitForLoadState('load', { timeout: 30000 }).catch(() => {});
+        await browserPage.waitForLoadState('networkidle', { timeout: networkIdleTimeoutMs }).catch(() => {});
+        await browserPage.waitForTimeout(settleMs);
+      }
+    } catch (error) {
+      const message = firstLine(error.message);
+      failed.push({ step: index + 1, action, message });
+      if (errors.length < 25) errors.push(`interaction_failed: step ${index + 1} ${JSON.stringify(step).slice(0, 200)}: ${message}`);
+    }
+  }
+  return { configured: steps.length, executed, failed, navigatedTo, navigationTargets };
+}
+
+// Walks the page to the bottom in viewport steps so lazy regions load, then returns to the top.
+// Runs before BOTH the screenshots and the DOM analysis so they describe the same painted page.
+// Breaks early when the scroll position stops advancing (scroll-locked pages) so the pass costs
+// one step, not the full cap, on pages where window scrolling does nothing.
+export async function autoScrollForLazyLoad(browserPage, { stepMs = LAZY_LOAD_STEP_MS, maxSteps = LAZY_LOAD_MAX_STEPS, evaluateTimeoutMs }) {
+  return withTimeout(
+    browserPage.evaluate(({ stepMs, maxSteps }) => (async () => {
+      window.scrollTo(0, 0);
+      let steps = 0;
+      let previousY = -1;
+      while (steps < maxSteps) {
+        const doc = document.documentElement;
+        const y = window.scrollY;
+        if (y + window.innerHeight >= doc.scrollHeight - 1) break;
+        if (y === previousY) break; // scroll position stopped advancing: nothing more to walk
+        previousY = y;
+        window.scrollBy(0, window.innerHeight);
+        steps += 1;
+        await new Promise((resolve) => setTimeout(resolve, stepMs));
+      }
+      const doc = document.documentElement;
+      const bottomReached = window.scrollY + window.innerHeight >= doc.scrollHeight - 1;
+      window.scrollTo(0, 0);
+      return { steps, bottomReached, scrollHeight: doc.scrollHeight };
+    })(), { stepMs, maxSteps }),
+    evaluateTimeoutMs,
+    'lazy-load scroll pass',
+  );
+}
 
 export const FREEZE_STYLE_MARKER = 'data-af-freeze';
 
@@ -308,11 +400,27 @@ export function createCaptureLogger(enabled) {
   };
 }
 
+// A same-document anchor change moves page.url() without fetching anything; robots decisions
+// must compare on the URL without its fragment so anchors never read as a navigation.
+export function withoutFragment(value) {
+  try {
+    const parsed = new URL(value);
+    parsed.hash = '';
+    return parsed.toString();
+  } catch {
+    return value;
+  }
+}
+
 export async function capturePage({ context, job, corpusDir, throttle, robots, userAgent, options, log = () => {} }) {
   const { site, page } = job;
   const startedAt = Date.now();
   const outDir = path.join(corpusDir, site.slug, page.slug);
   const errors = [];
+  // Captured-but-imperfect events (failed screenshots, interaction steps, asset failures): they
+  // make the page 'partial', never abort it. Declared before the interaction stage, which is the
+  // first stage that can produce them.
+  const failures = [];
   let pageErrorCount = 0;
   // Main-frame navigations seen after the initial load (evidence for the pre-write URL re-check).
   const navigationLog = [];
@@ -489,6 +597,70 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
       await browserPage.addStyleTag({ content: FREEZE_CSS }).catch(() => {});
       errors.push('animation freeze had to be injected after load (init script did not apply)');
     }
+
+    // Page-level interactions (sites.json `interactions`) run first: they can navigate, and every
+    // downstream stage must describe the page the interaction produced, not the landing page.
+    const interactionsStartedAt = Date.now();
+    const interactionOutcome = await runInteractions(browserPage, page.interactions, {
+      settleMs: options.settleMs,
+      networkIdleTimeoutMs: options.networkIdleTimeoutMs,
+      errors,
+    });
+    const interactionsMs = Date.now() - interactionsStartedAt;
+    for (const failure of interactionOutcome.failed) {
+      failures.push({
+        stage: 'interaction',
+        reason: 'interaction_failed',
+        message: `step ${failure.step} (${failure.action}): ${failure.message}`,
+        url: browserPage.url(),
+        partialArtifacts: true,
+      });
+    }
+    // An interaction-triggered navigation is our own top-level fetch: robots-check each new URL
+    // immediately and discard before anything is written if one is disallowed (the write-time
+    // re-check below stays as the TOCTOU net for organic late moves).
+    for (const target of interactionOutcome.navigationTargets) {
+      if (withoutFragment(target) === withoutFragment(finalUrl)) continue;
+      const interactionAccess = await robots.check(target, { maxCrawlDelayMs: options.maxCrawlDelayMs });
+      if (!interactionAccess.allowed) {
+        result.reason = 'robots_redirect_disallowed';
+        result.detail = `interaction navigation ${finalUrl} -> ${target} (${interactionAccess.reason}${interactionAccess.rule ? `: ${interactionAccess.rule}` : ''})`;
+        const failure = terminalFailure({
+          stage: 'robots',
+          reason: 'robots_redirect_disallowed',
+          message: result.detail,
+          url: target,
+          outDir,
+          extra: {
+            requestedUrl: page.url,
+            rule: interactionAccess.rule ?? null,
+            redirectRule: interactionAccess.rule ?? null,
+            redirectDetail: interactionAccess.detail ?? null,
+            lateNavigation: true,
+            navigationLog,
+          },
+        });
+        result.discardedStaleArtifacts = failure.discardedStaleArtifacts;
+        result.failures = [failure];
+        return result;
+      }
+    }
+
+    // Paint-before-shot: walk the page so lazy regions load, then let the network drain before
+    // anything is read. Runs before BOTH screenshots and the DOM analysis.
+    const lazyStartedAt = Date.now();
+    let lazyPass = null;
+    try {
+      lazyPass = await autoScrollForLazyLoad(browserPage, { evaluateTimeoutMs: options.evaluateTimeoutMs });
+    } catch (error) {
+      errors.push(`lazy-load scroll pass failed: ${firstLine(error.message)}`);
+    }
+    const lazyLoadMs = Date.now() - lazyStartedAt;
+    // Lazy loading and interaction navigation both fetch after the initial networkidle; wait again
+    // so the capture sees the settled state rather than a mid-flight one.
+    await browserPage.waitForLoadState('networkidle', { timeout: options.networkIdleTimeoutMs }).catch(() => {});
+    await browserPage.waitForTimeout(options.settleMs);
+
     await browserPage.evaluate(() => window.scrollTo(0, 0)).catch(() => {});
     await browserPage.waitForTimeout(120);
 
@@ -497,7 +669,6 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
 
     const fullPng = path.join(outDir, 'full.png');
     const viewportPng = path.join(outDir, 'viewport.png');
-    const failures = [];
     try {
       await browserPage.screenshot({ path: viewportPng, fullPage: false, timeout: options.screenshotTimeoutMs });
     } catch (error) {
@@ -664,17 +835,6 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
     // identity. A `framenavigated` listener records main-frame navigations for evidence.
     let resolvedUrl = finalUrl;
     const urlBeforeWrite = browserPage.url();
-    // A same-document anchor change moves browserPage.url() without fetching anything; compare on
-    // the URL without its fragment so scrolling/anchor scripts do not read as a late navigation.
-    const withoutFragment = (value) => {
-      try {
-        const parsed = new URL(value);
-        parsed.hash = '';
-        return parsed.toString();
-      } catch {
-        return value;
-      }
-    };
     if (withoutFragment(urlBeforeWrite) !== withoutFragment(finalUrl)) {
       const lateAccess = await robots.check(urlBeforeWrite, { maxCrawlDelayMs: options.maxCrawlDelayMs });
       if (!lateAccess.allowed) {
@@ -776,6 +936,8 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
         deviceScaleFactor: 1,
       },
       normalizations: NORMALIZATIONS,
+      interactions: interactionOutcome,
+      lazyLoad: lazyPass ?? { steps: null, bottomReached: null, scrollHeight: null },
       qualityFlags,
       document: analysis.document,
       counts: {
@@ -814,6 +976,8 @@ export async function capturePage({ context, job, corpusDir, throttle, robots, u
       artifactBytes,
       timings: {
         navigationMs,
+        interactionsMs,
+        lazyLoadScrollMs: lazyLoadMs,
         totalMs: Date.now() - startedAt,
       },
     };

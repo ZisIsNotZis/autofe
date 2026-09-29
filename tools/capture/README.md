@@ -132,6 +132,22 @@ not in `nodes.json`/`dom.html`.
   logs the actual gap for every request.
 - **One browser, one context, sequential pages**; navigation timeout 45 s, one retry on navigation
   failure, `load` then best-effort `networkidle` then a 1.2 s settle.
+- **Page-level interactions** (optional `interactions` array on a page in `sites.json`), executed
+  after navigation+settle and before analysis: `{"fill": "<selector>", "value": "..."}` |
+  `{"press": "Enter"}` | `{"click": "<selector>"}` | `{"waitMs": n}` | `{"waitFor": "<selector>"}`.
+  For search-style pages whose results render only after a typed keyword + submit (observed:
+  huawei-cn search pages captured with zero results). A step whose selector never appears is
+  recorded as `interaction_failed` (page becomes `partial`) and the capture continues — it never
+  crashes. A step that changes the URL re-waits `load`/`networkidle`/settle so the capture
+  continues on the new page; the new URL is robots-checked immediately (and the capture discarded
+  if disallowed), with the write-time re-check below still applying as the TOCTOU net.
+- **Lazy-load scroll pass** (paint-before-shot, always on): before BOTH the screenshots and the
+  DOM analysis, the page is walked to the bottom in viewport-sized steps (350 ms per step, capped
+  at 60 steps, aborting early when the scroll position stops advancing), then returned to the top
+  and re-waited (`networkidle` + settle). This triggers intersection observers and native lazy
+  images so below-the-fold regions are painted instead of captured as blank/blur bands (observed:
+  aliyun home's infrastructure band). Deterministic by policy: fixed delays, fixed cap; recorded
+  in `meta.lazyLoad` and `meta.normalizations` (`lazy-load-scroll-pass`).
 - **Retry pass** (default on): after the main pass, pages that failed for a *transient* reason
   (`robots_unavailable`, `navigation_failed`, `suspicious_empty_render` — anti-bot shells) get
   exactly one more attempt after a 5 s pause with the robots cache dropped. A robots denial, a 404
@@ -267,7 +283,8 @@ decision for the corpus owner.
 
 ## Known limitations
 
-- Single-pass capture at scroll (0,0): lazy content that requires scrolling is not triggered.
+- The lazy-load scroll pass fires lazy loading by scrolling the *window*; content inside inner
+  scroll containers (a scrollable pane that does not grow the document) is not walked.
 - `position: fixed`/`sticky` elements can be painted at a different document position in `full.png`
   than in the live DOM (viewed by the verifier as `fixed-or-sticky-relayout` and a weak frame anchor).
 - The a11y join depends on what Chromium exposes: heavily presentational pages can have low coverage
