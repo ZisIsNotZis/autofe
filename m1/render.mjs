@@ -15,7 +15,7 @@ function fmt(v) {
   if ('list' in v) return v.list.map((e) => `<span class="chip">${fmt(e)}</span>`).join(' ');
   if ('text' in v) return esc(v.text);
   if ('num' in v) return esc(v.num) + (v.unit ? ` ${esc(v.unit)}` : '');
-  if ('money' in v) return (v.qualifier ? esc(v.qualifier) + ' ' : '') + esc(v.money) + (v.currency ? ` ${esc(v.currency)}` : '');
+  if ('money' in v) { const sym = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP: '£' }[v.currency] ?? (v.currency ? esc(v.currency) + ' ' : ''); return (v.qualifier ? esc(v.qualifier) + ' ' : '') + sym + esc(v.money); }
   if ('date' in v) return esc(v.date);
   if ('bool' in v) return v.bool ? 'yes' : 'no';
   if ('icon' in v) return esc(v.icon);
@@ -24,7 +24,7 @@ function fmt(v) {
   if ('ref' in v) return `<span class="ref">${esc(v.ref)}</span>`;
   return esc(JSON.stringify(v));
 }
-const factHtml = (role, v) => `<div class="fact fact-${esc(role)}"><span class="role">${esc(role)}</span><span class="val">${fmt(v)}</span></div>`;
+const factHtml = (role, v) => `<div class="fact fact-${esc(role)}"><span class="val">${fmt(v)}</span></div>`;
 
 // ---- engine heuristic (F-018): discover homogeneous runs among siblings ----
 const fieldKeys = (n) => Object.keys(n._fields ?? {});
@@ -74,8 +74,9 @@ function renderNode(node, chain, isHero, hide, ctx) {
   }
   const headingKey = node._title ? '_title' : (node._name ? '_name' : null);
 
+  const kids0 = childrenOf(node).filter((c) => !(hide.get(node)?.nodes.has(c.node)));
   const cls = ['node'];
-  if (isHero) cls.push('hero');
+  if (isHero) cls.push(kids0.length ? 'hero-branch' : 'hero fact-hero');
   if (node._rel?.compare) cls.push('compare');
   if (node._rel?.order === 'time') cls.push('timeline');
   if (node._rel?.level !== undefined) cls.push(`level-${Math.max(0, Math.min(3, Math.floor(node._rel.level)))}`);
@@ -90,9 +91,14 @@ function renderNode(node, chain, isHero, hide, ctx) {
     if (show) {
       const a = node._action;
       const copy = a.label ?? a.verb;
-      action = a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
-        ? `<a class="action verb-${esc(a.verb)}" href="${esc(a.to)}">${esc(copy)}</a>`
-        : `<button class="action verb-${esc(a.verb)}" type="button">${esc(copy)}</button>`;
+      const regionLike = !a.label && ['navigate', 'open'].includes(a.verb) && kids0.length > 0;
+      if (regionLike && a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))) {
+        action = `<a class="region-link" href="${esc(a.to)}" aria-label="${esc(a.verb)}"></a>`;
+      } else if (a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))) {
+        action = `<a class="action verb-${esc(a.verb)}" href="${esc(a.to)}">${esc(copy)}</a>`;
+      } else {
+        action = `<button class="action verb-${esc(a.verb)}" type="button">${esc(copy)}</button>`;
+      }
     }
   }
 
@@ -167,6 +173,7 @@ export function render(model, context = {}) {
   const ctx = { values: context.values ?? {} };
   const html = renderNode(model, [], false, hide, ctx);
   const intent = esc(model._intent ?? '');
+  const brand = model._brand ? fmt(model._brand) : '';
   const title = esc(model._title ? fmt(model._title) : (model._intent ?? 'surface'));
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
@@ -178,7 +185,12 @@ body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
 .page-intent{color:#5b6a78;font-size:.9em;border-bottom:1px solid #e6eaf0;padding-bottom:10px}
 .hero{border-bottom:2px solid #17212b;padding-bottom:18px;margin-bottom:26px}
-.hero .fact .val{font-size:1.9em;font-weight:650}
+.hero.fact-hero .fact .val{font-size:1.9em;font-weight:650}
+.hero-branch>.title{font-size:1.5em}
+.node{position:relative}
+.region-link{position:absolute;inset:0;z-index:1}
+.site{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #17212b}
+.site .brand{font-weight:700;font-size:1.1em}
 article{margin:14px 0}
 h3.title{margin:.2em 0 .4em;font-size:1.25em}
 h4.intent{margin:.2em 0 .6em;font-weight:500;color:#5b6a78;font-size:.92em}
@@ -211,7 +223,7 @@ table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 .level-1{opacity:.92}.level-2{opacity:.85}.level-3{opacity:.78}
 </style></head>
-<body><main><!-- intent: ${intent} -->${html}</main></body></html>
+<body><main>${brand ? `<header class="site"><span class="brand">${brand}</span></header>` : ''}${html}</main></body></html>
 `;
 }
 

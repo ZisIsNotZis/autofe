@@ -1,0 +1,42 @@
+# Judge–人 校准样本（人工抽检）
+
+目的：测 judge 与人的一致性（design-basis §7 欠账）。**先独立打分，再对照 judge 分数。**
+
+## 样本（3 页，策展后渲染）
+
+| # | 页面 | 原页截图 | 策展渲染截图 | 模型 |
+|---|---|---|---|---|
+| 1 | stripe pricing | `corpus/stripe-com/pricing/full.png` | `m1/curated/renders/stripe-com-pricing.png` | `m1/curated/stripe-com/pricing.json` |
+| 2 | sspai 文章 | `corpus/sspai-com/post-102392/full.png` | `m1/curated/renders/sspai-com-post-102392.png` | `m1/curated/sspai-com/post-102392.json` |
+| 3 | aliyun home | `corpus/aliyun-com/home/full.png` | `m1/curated/renders/aliyun-com-home.png` | `m1/curated/aliyun-com/home.json` |
+
+## 打分（每维 0/1/2；判据见 m1/eval/rubric.md）
+
+| 维度 | 0 = | 1 = | 2 = |
+|---|---|---|---|
+| D1 信息覆盖 | 重要事实大量缺失 | 部分缺失 | 语义等价齐全 |
+| D2 主次强调 | 主旨被埋没 | 有但弱于原页 | 同一主 takeaway 视觉主导 |
+| D3 故事线顺序 | 错乱妨碍理解 | 可读但有倒置 | 与原页一致 |
+| D4 动作可供性 | 关键动作缺失 | 少或主体错 | 同类动作齐全且主体一致 |
+| D5 无捏造 | 有原页没有的事实 | 轻微越界 | 全部有据 |
+| D6 意图保持 | 达不成 `_intent` | 勉强 | 能达成 |
+
+**规则**：只判语义，不判美学（渲染器是刻意的朴素基线）；每个非 2 分必须写一句证据。
+
+## 人工评分（待填）
+
+| 页面 | D1 | D2 | D3 | D4 | D5 | D6 | 备注/证据 |
+|---|---|---|---|---|---|---|---|
+| stripe pricing | | | | | | | |
+| sspai 文章 | | | | | | | |
+| aliyun home | | | | | | | |
+
+## Judge 参考分（M2 轮，基于**自动草稿**渲染，非策展后——仅作方向参考，不可直接对照）
+
+| 页面 | D1 | D2 | D3 | D4 | D5 | D6 |
+|---|---|---|---|---|---|---|
+| stripe pricing | 1 | 2 | 2 | 2 | 2 | 2 |
+| sspai 文章 | 1 | 1 | 1 | 1 | 1 | 1 |
+| aliyun home | 1 | 1 | 1 | 2 | 2 | 1 |
+
+校准流程：人工填表 → 父级对**同一批策展渲染**跑一次 fresh judge → 逐维算一致率 → 报告 judge–人一致性；分歧条目人工仲裁并回写 rubric。

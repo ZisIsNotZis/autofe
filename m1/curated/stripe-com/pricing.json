@@ -37,6 +37,9 @@
         "_action": {
           "verb": "open",
           "to": "https://stripe.com/pricing#standard"
+        },
+        "_detail": {
+          "text": "按支付方式的费率不同：非卡支付交易为 2.2% + HK$2.00（原页费率说明）。"
         }
       },
       {
@@ -51,23 +54,6 @@
           "verb": "open",
           "to": "https://stripe.com/contact/sales"
         }
-      },
-      {
-        "_key": "plan-non-card",
-        "_name": {
-          "text": "非卡支付"
-        },
-        "_measure": {
-          "num": 2.2,
-          "unit": "%"
-        },
-        "_price": {
-          "money": 2.0,
-          "currency": "HKD"
-        },
-        "_summary": {
-          "text": "非卡支付交易费率 2.2% + HK$2.00"
-        }
       }
     ]
   },
@@ -79,32 +65,80 @@
     "_items": [
       {
         "_name": {
-          "text": "全球覆盖"
+          "text": "Payments"
         },
         "_detail": {
-          "text": "接受全球付款，支持超过 195 个国家/地区、135+ 种货币、100+ 种支付方式。"
+          "text": "在线支付"
         }
       },
       {
         "_name": {
-          "text": "内置欺诈防范"
+          "text": "Payment Links"
         },
         "_detail": {
-          "text": "Radar 机器学习在数百万家公司数据上训练，自动适应新的欺诈模式，零额外集成。"
+          "text": "无代码支付"
         }
       },
       {
         "_name": {
-          "text": "优化结账流程"
+          "text": "Checkout"
         },
         "_detail": {
-          "text": "助力营收增长的支付优化工具。"
+          "text": "预构建支付界面"
+        }
+      },
+      {
+        "_name": {
+          "text": "Elements"
+        },
+        "_detail": {
+          "text": "灵活的 UI 组件"
+        }
+      },
+      {
+        "_name": {
+          "text": "Payment Methods"
+        },
+        "_detail": {
+          "text": "接入 125+ 种支付方式"
+        }
+      },
+      {
+        "_name": {
+          "text": "Authorization Boost"
+        },
+        "_detail": {
+          "text": "支付成功率优化"
+        }
+      },
+      {
+        "_name": {
+          "text": "Link"
+        },
+        "_detail": {
+          "text": "加速结账"
+        }
+      },
+      {
+        "_name": {
+          "text": "Billing"
+        },
+        "_detail": {
+          "text": "经常性收入"
+        }
+      },
+      {
+        "_name": {
+          "text": "Metronome"
+        },
+        "_detail": {
+          "text": "按用量计费"
         }
       }
     ]
   },
   "disputes": {
-    "_intent": "争议处理规则：什么情况退费",
+    "_intent": "费率细则（原页为脚注/提示级信息，非主推内容）：争议处理规则与费用",
     "_title": {
       "text": "争议费用"
     },
@@ -153,6 +187,9 @@
           "text": "借助 Visa Verifi 与 Mastercard Ethoca 的防范工具降低争议率。"
         }
       }
-    ]
+    ],
+    "_rel": {
+      "level": 2
+    }
   }
 }
