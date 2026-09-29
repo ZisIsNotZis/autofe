@@ -62,7 +62,7 @@ function renderChecklist(items, chain, hide, ctx) {
   const lis = items.map((it) => {
     const label = it._name ?? it._title;
     const rest = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
-    const inner = (label ? `<strong>${fmt(label.value)}</strong>` : '') +
+    const inner = (label ? `<strong>${fmt(label)}</strong>` : '') +
       rest.map((x) => `<span>${fmt(x.value)}</span>`).join(' ');
     void chain;
     const a = it._action;
@@ -128,13 +128,12 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     const r = resolveWithParent(node, node, node._primary);
     if (r.ok && r.node !== node) {
       if (isRoleKey(r.lastKey)) {
-        heroHtml = `<div class="hero">${factHtml(r.node)}</div>`;
+        heroHtml = `<div class="hero fact-hero">${factHtml(r.node)}</div>`;
         if (!hide.has(r.holder)) hide.set(r.holder, { keys: new Set(), nodes: new Set() });
         hide.get(r.holder).keys.add(r.lastKey);
       } else {
-        heroHtml = `<div class="hero">${renderNode(r.node, [...chain, node], true, hide, ctx, depth + 1)}</div>`;
-        if (!hide.has(r.holder)) hide.set(r.holder, { keys: new Set(), nodes: new Set() });
-        hide.get(r.holder).nodes.add(r.node);
+        // subtree primaries stay in their declared place (no reordering); facts get the hero slot
+        heroHtml = '';
       }
     }
   }
@@ -143,7 +142,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   const kids = childrenOf(node).filter((c) => !(hid?.nodes.has(c.node)));
   const facts = factsOf(node).filter((f) => !(hid?.keys.has(f.key)));
   const titleText = headingKey ? fmt(node[headingKey]) : null;
-  const intentHeading = !titleText && node._intent && kids.length ? esc(node._intent) : null;
+  const intentHeading = null; // _intent is internal planning copy — never rendered (F1)
 
   const cls = ['node', `depth-${Math.min(depth, 4)}`];
   if (isHero) cls.push('hero-branch');
@@ -171,7 +170,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
       const val = it._key ? `key:${it._key}` : (v ? v.text : String(i));
       return `<label class="choice"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"> ${label}</label>`;
     }).join('');
-    body += `<fieldset class="expose expose-${esc(exp.name)}"><legend>${esc(exp.name)}</legend>${opts}</fieldset>`;
+    body += `<fieldset class="expose expose-${esc(exp.name)}"><legend>${esc(node._label ? fmt(node._label) : exp.name)}</legend>${opts}</fieldset>`;
   } else if (exp) {
     body += `<label class="expose expose-${esc(exp.name)}"><span class="val"><input type="text" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></label>`;
   }
@@ -179,8 +178,11 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   // checklist form: simple name/detail item sets
   const itemsKids = kids.filter((c) => c.key.startsWith('_items['));
   const rawItems = (node._items ?? []).filter((it) => !inRun.has(it));
-  if (rawItems.length && isChecklist(rawItems)) {
+  const asChecklist = rawItems.length > 0 && isChecklist(rawItems);
+  const itemsConsumed = new Set();
+  if (asChecklist) {
     body += renderChecklist(rawItems, chain, hide, ctx);
+    rawItems.forEach((it) => itemsConsumed.add(it));
   } else {
     for (const run of runs) body += renderRun(run, chain, hide, ctx);
     if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
@@ -194,13 +196,11 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (titleText) {
     const t = linkTo ? `<a class="self-link" href="${esc(linkTo)}">${titleText}</a>` : titleText;
     head = `<${headingTag} class="title">${t}</${headingTag}>`;
-  } else if (intentHeading) {
-    const t = linkTo ? `<a class="self-link" href="${esc(linkTo)}">${intentHeading}</a>` : intentHeading;
-    head = `<${headingTag} class="intent-h">${t}</${headingTag}>`;
   }
 
   for (const c of kids) {
     if (inRun.has(c.node)) continue;
+    if (itemsConsumed.has(c.node)) continue;
     if (ordered.includes(c) && simpleChoice) continue;
     const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1);
     if (!h) continue;
@@ -213,7 +213,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (depth === 0 && !demoted) {
     // visual separation handled by CSS on .zone
   }
-  const article = `<article class="${cls.join(' ')}">${head}${bodyLead}${heroHtml}${body}${action}</article>`;
+  const anchorId = node._key ? ` id="${esc(String(node._key).replace(/[^A-Za-z0-9_-]/g, '-'))}"` : '';
+  const article = `<article${anchorId} class="${cls.join(' ')}">${head}${bodyLead}${heroHtml}${body}${action}</article>`;
   return demoted ? `<aside class="zone">${article}</aside>` : article;
 }
 
