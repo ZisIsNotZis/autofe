@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updatedAt": "2026-09-28",
-  "notes": "Stratified seed for the M0 corpus. CN-first because several global sites are unreliable from this network. URLs were reachability-probed once (HTTP GET) on 2026-09-18; anything that failed the probe is recorded in droppedCandidates instead of being seeded. Unreachable pages during a run are recorded in corpus/failures.json, never dropped silently. Robots-denied pages are kept with `skip: true` plus a droppedCandidates entry, so nothing is silently removed. Tier model (2026-09-28): every site is tagged `tier: \"exemplar\"` (industry-recognized top-tier design for a professional/commercial/industrial scenario — the population coverage claims are made against, per design-basis §8) or `tier: \"support\"` (structural coverage: tables/forms/docs/enterprise/utility; real pages, but no coverage claim), each with a one-line `justification`. Seven new exemplar sites (linear-app, stripe-com, stripe-docs, airbnb-com, gov-uk, apple-com-cn, grafana-play) were reachability- and robots-probed on 2026-09-28 before seeding.",
+  "notes": "Stratified seed for the M0 corpus. CN-first because several global sites are unreliable from this network. URLs were reachability-probed once (HTTP GET) on 2026-09-18; anything that failed the probe is recorded in droppedCandidates instead of being seeded. Unreachable pages during a run are recorded in corpus/failures.json, never dropped silently. Robots-denied pages are kept with `skip: true` plus a droppedCandidates entry, so nothing is silently removed. Tier model (2026-09-28): every site is tagged `tier: \"exemplar\"` (industry-recognized top-tier design for a professional/commercial/industrial scenario — the population coverage claims are made against, per design-basis §8) or `tier: \"support\"` (structural coverage: tables/forms/docs/enterprise/utility; real pages, but no coverage claim), each with a one-line `justification`. Seven new exemplar sites (linear-app, stripe-com, stripe-docs, airbnb-com, gov-uk, apple-com-cn, grafana-play) were reachability- and robots-probed on 2026-09-28 before seeding. Round 9 (2026-09-29): four further exemplar sites (aliyun-help, aws-amazon, stripe-dashboard, xiaomi-account) plus one gov-uk page were added to close the exemplar-layer evidence gap for the M4 `table` and `login` primitives (before this round: 0 exemplar pages with a <table> or a type=password field). Robots-probed and recorded in .scratch/08-exemplar-expansion/report.md.",
   "primaryStratum": "archetype",
   "secondaryStrata": [
     "region",
@@ -1359,6 +1359,12 @@
           "url": "https://www.gov.uk/register-birth-abroad",
           "archetype": "article/editorial",
           "note": "guidance document; article/editorial is the closest archetype (long-form structured content)"
+        },
+        {
+          "slug": "ni-rates-letters",
+          "url": "https://www.gov.uk/national-insurance-rates-letters",
+          "archetype": "table-heavy/admin",
+          "note": "round 9: real data table (National Insurance categories -> rates) for the M4 `table` primitive; article/editorial would also fit, table-heavy/admin is the table evidence"
         }
       ]
     },
@@ -1396,6 +1402,82 @@
           "url": "https://play.grafana.org/d/Zb3f4veGk/stats?from=now-6h&to=now&timezone=browser",
           "archetype": "dashboard/data-viz",
           "note": "stats/timeseries demo dashboard from the official sitemap (robots: Allow /); seeded at the SPA-canonicalized URL + its default time-range query so re-runs do not trigger late_navigation; the heavier testdata-demo-dashboard exceeds the 45s navigation timeout (recorded in droppedCandidates); heavy JS SPA — capture may flag suspicious_empty_render; recorded, not hidden"
+        }
+      ]
+    },
+    {
+      "slug": "aliyun-help",
+      "domain": "help.aliyun.com",
+      "origin": "https://help.aliyun.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "cloud-infrastructure",
+      "styleTag": "enterprise-blue",
+      "tier": "exemplar",
+      "justification": "Alibaba Cloud's official help centre is the same top-tier CN cloud brand as the aliyun-com exemplar; its ECS instance-family page is the product spec surface, i.e. a real commercial/industrial data table (round 9, fills the exemplar-layer `table` gap)",
+      "pages": [
+        {
+          "slug": "ecs-instance-families",
+          "url": "https://help.aliyun.com/zh/ecs/user-guide/overview-of-instance-families",
+          "archetype": "table-heavy/admin",
+          "note": "round 9: ECS 实例规格族 spec tables (compute/memory/network指标) — `table` exemplar evidence; large page (53k+ nodes) so `artifact_cap_exceeded` is expected and recorded"
+        }
+      ]
+    },
+    {
+      "slug": "aws-amazon",
+      "domain": "aws.amazon.com",
+      "origin": "https://aws.amazon.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "cloud-infrastructure",
+      "styleTag": "enterprise-blue",
+      "tier": "exemplar",
+      "justification": "AWS is the industry-reference enterprise cloud; the EC2 on-demand pricing table is the canonical machine-readable commercial price/spec table (round 9, fills the exemplar-layer `table` gap)",
+      "pages": [
+        {
+          "slug": "ec2-on-demand",
+          "url": "https://aws.amazon.com/ec2/pricing/on-demand/",
+          "archetype": "table-heavy/admin",
+          "note": "round 9: on-demand instance price table (region/instance-type/vCPU/memory/price columns); geo-redirects to the /cn/ locale from this network (same host, recorded in meta)"
+        }
+      ]
+    },
+    {
+      "slug": "stripe-dashboard",
+      "domain": "dashboard.stripe.com",
+      "origin": "https://dashboard.stripe.com",
+      "region": "global",
+      "language": "en-US/zh-CN",
+      "industry": "payments-infrastructure",
+      "styleTag": "clean-gradient",
+      "tier": "exemplar",
+      "justification": "The Stripe Dashboard login is the auth gate of the industry-reference payments platform (same brand as the stripe-com/stripe-docs exemplars); real identifier + password login page (round 9, fills the exemplar-layer `login` gap)",
+      "pages": [
+        {
+          "slug": "login",
+          "url": "https://dashboard.stripe.com/login",
+          "archetype": "form/checkout/settings",
+          "note": "round 9: public login form, no credentials submitted; embeds a third-party identity frame (flagged cross_origin_frame, frame content not persisted)"
+        }
+      ]
+    },
+    {
+      "slug": "xiaomi-account",
+      "domain": "account.xiaomi.com",
+      "origin": "https://account.xiaomi.com",
+      "region": "CN",
+      "language": "zh-CN",
+      "industry": "identity",
+      "styleTag": "functional-form",
+      "tier": "exemplar",
+      "justification": "The Xiaomi account login is the CN identity gateway of a top-tier CN consumer-electronics brand already in the exemplar set; real account + password login page (round 9, fills the exemplar-layer `login` gap)",
+      "pages": [
+        {
+          "slug": "login",
+          "url": "https://account.xiaomi.com/pass/serviceLogin",
+          "archetype": "form/checkout/settings",
+          "note": "round 9: public login form, no credentials submitted"
         }
       ]
     }
