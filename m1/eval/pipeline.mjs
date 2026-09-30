@@ -1,9 +1,10 @@
 // AutoFE 流水线（编排资产）：渲染全部策展模型 → 事实保真 → 源码覆盖 → 视觉自查（可选截图+画廊）
+// 三个渲染目标都跑：HTML（render.mjs）/ 纯文本（render-text.mjs）/ Markdown（render-md.mjs）。
 // 用法:
 //   node m1/eval/pipeline.mjs            仅渲染 + 度量 + 审计（快，约 1 分钟）
 //   node m1/eval/pipeline.mjs --shots    追加全页截图 + 画廊重建（需要 playwright，约 3 分钟）
 //   node m1/eval/pipeline.mjs --only airbnb-com/room-28871,bilibili-com/home
-// 退出码: 0 = 全部通过（保真 1.00 且视觉自查无硬缺陷）; 1 = 有失败项
+// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且七道门禁全过）; 1 = 有失败项
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
@@ -21,7 +22,8 @@ const CHROME = process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell
 const scale = JSON.parse(fs.readFileSync('m1/eval/m3-scale.json', 'utf8')).filter((x) => x.tier === 'exemplar');
 const rows = only ? scale.filter((s) => only.includes(s.k)) : scale;
 
-// ---- 1. render + metrics + coverage ----------------------------------------
+// ---- 1. render + metrics + coverage (three targets) ------------------------
+fs.mkdirSync('.tmp/md-renders', { recursive: true });
 const out = [];
 for (const r of rows) {
   const k = r.k, dash = k.replace(/\//g, '-');
@@ -31,7 +33,11 @@ for (const r of rows) {
     execSync(`node m1/render.mjs ${cm} ${cr}`, { timeout: 60000 });
     const m = JSON.parse(execSync(`node m1/eval/metrics.mjs ${cm} ${cr} corpus/${k}`, { timeout: 60000 }).toString());
     const c = JSON.parse(execSync(`node m1/eval/source-coverage.mjs ${cr} corpus/${k} ${cm}`, { timeout: 60000 }).toString());
-    out.push({ k, autoHigh: r.high, fid: m.factFidelity, facts: `${m.factsRendered}/${m.factsTotal}`, high: c.high, med: c.medium, missing: (m.missing || []).slice(0, 5) });
+    // third target: Markdown. Same model, same evaluator — only the presentation differs.
+    const mr = `.tmp/md-renders/${dash}.md`;
+    execSync(`node m1/render-md.mjs ${cm} ${mr}`, { timeout: 60000 });
+    const mm = JSON.parse(execSync(`node m1/eval/metrics.mjs ${cm} ${mr}`, { timeout: 60000 }).toString());
+    out.push({ k, autoHigh: r.high, fid: m.factFidelity, facts: `${m.factsRendered}/${m.factsTotal}`, mdFid: mm.factFidelity, mdMissing: (mm.missing || []).slice(0, 5), high: c.high, med: c.medium, missing: (m.missing || []).slice(0, 5) });
   } catch (e) { out.push({ k, error: String(e.message).slice(0, 120) }); }
 }
 if (!only) fs.writeFileSync('m1/eval/m3-final.json', JSON.stringify(out, null, 1));
@@ -41,6 +47,12 @@ const under = ok.filter((o) => o.fid !== 1);
 console.log(`[pipeline] 渲染 ${ok.length}/${rows.length} | 错误 ${out.filter((o) => o.error).length}`);
 console.log(`[pipeline] 保真 1.00: ${ok.filter((o) => o.fid === 1).length}/${ok.length}${under.length ? ' | <1: ' + under.map((o) => o.k + ' ' + o.fid).join(', ') : ''}`);
 if (under.length) for (const u of under) console.log('   missing:', u.k, JSON.stringify(u.missing));
+
+// third target (Markdown) fidelity — measured with the SAME evaluator, never a bespoke one
+const mdOk = ok.filter((o) => o.mdFid !== undefined);
+const mdUnder = mdOk.filter((o) => o.mdFid !== 1);
+console.log(`[pipeline] Markdown 目标: 渲染 ${mdOk.length}/${rows.length} | 保真 1.00: ${mdOk.filter((o) => o.mdFid === 1).length}/${mdOk.length}${mdUnder.length ? ' | <1: ' + mdUnder.map((o) => o.k + ' ' + o.mdFid).join(', ') : ''}`);
+if (mdUnder.length) for (const u of mdUnder) console.log('   md missing:', u.k, JSON.stringify(u.mdMissing));
 
 // ---- 1.5 gates: the validator must really refuse, and the M4-a foundations ----
 // A gate that can never fail is not a gate (F-040): these three run every time.
@@ -71,9 +83,14 @@ if (!gTS.ok) console.log(gTS.out);
 // lives once in m1/axis.mjs; this gate fails if a renderer re-derives a copy, or if the
 // targets disagree on a compare-set verdict / degradation reason / form for a model.
 const gAS = gate('node m1/eval/axis-selftest.mjs');
-console.log(`[pipeline] 轴一致性自测(F-031 两目标): ${gAS.ok ? '通过' : '失败'}`);
+console.log(`[pipeline] 轴一致性自测(F-031 三目标): ${gAS.ok ? '通过' : '失败'}`);
 if (!gAS.ok) console.log(gAS.out);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok;
+// 7th gate: the THIRD render target (Markdown, render-md.mjs). It must express the same
+// axis semantics with presentation only, and must not lose facts.
+const gMD = gate('node m1/eval/md-selftest.mjs');
+console.log(`[pipeline] Markdown 目标自测(F-031): ${gMD.ok ? '通过' : '失败'}`);
+if (!gMD.ok) console.log(gMD.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';
@@ -116,5 +133,5 @@ if (wantShots) {
   console.log(`[pipeline] 截图 ${n} 张, 画廊 v=${V}`);
 }
 
-const failed = gatesFailed || under.length > 0 || (hardFails && Number(hardFails) > 0) || out.some((o) => o.error);
+const failed = gatesFailed || under.length > 0 || mdUnder.length > 0 || (hardFails && Number(hardFails) > 0) || out.some((o) => o.error);
 process.exit(failed ? 1 : 0);

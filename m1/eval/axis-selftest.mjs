@@ -1,25 +1,30 @@
-// Axis consistency self-test (round 19, gate 6).
+// Axis consistency self-test (round 19, gate 6; extended to THREE targets in round 21).
 //
-// THE CLAIM UNDER TEST: the two render targets (`render.mjs` → HTML, `render-text.mjs`
-// → plain text) make the SAME axis decision (F-031) for the same node — the same form
-// name, the same compare-set verdict and the same degradation reason. Before round 19
-// that was only true because `selectForm`/`comparable`/`compareSetVerdict` were COPIED
-// into both renderers; a copy can drift. Now the decision lives once in ../axis.mjs and
-// both renderers import it.
+// THE CLAIM UNDER TEST: the render targets (`render.mjs` → HTML, `render-text.mjs`
+// → plain text, `render-md.mjs` → Markdown) make the SAME axis decision (F-031) for the
+// same node — the same form name, the same compare-set verdict and the same degradation
+// reason. Before round 19 that was only true because `selectForm`/`comparable`/
+// `compareSetVerdict` were COPIED into both renderers; a copy can drift. Now the decision
+// lives once in ../axis.mjs and every renderer imports it.
+//
+// Round 21 adds the third target to every half. The stronger claim it tests: a new target
+// is expressible as presentation only. If `render-md.mjs` had to re-write an axis decision
+// the static half fails exactly the way it would for a hand-copied function.
 //
 // Two halves, both falsifiable (F-040):
-//   A. static: both renderers import ./axis.mjs and keep no private copy of any shared
+//   A. static: all renderers import ./axis.mjs and keep no private copy of any shared
 //      decision/constant — this is what makes recurrence impossible, and it FAILS the
 //      moment someone re-derives a function in a renderer.
-//   B/C. dynamic: constructed models are pushed through BOTH targets; their compare
+//   B/C. dynamic: constructed models are pushed through ALL targets; their compare
 //      degradation lists must be identical, and for each form the shared `selectForm`
-//      must classify it while both targets render that form.
+//      must classify it while every target renders that form.
 // Usage: node m1/eval/axis-selftest.mjs
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
+import { renderMarkdown } from '../render-md.mjs';
 import { selectForm, comparable, compareSetVerdict } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -37,6 +42,7 @@ const check = (name, cond, detail = '') => {
 // verdict/constants; round 20 lifted the four remaining decision families that were
 // still duplicated in both renderers: collection grouping, control visibility+scope,
 // `_primary` slot resolution, and the `key:`→label index / visible-text utilities.
+const TARGETS = ['render.mjs', 'render-text.mjs', 'render-md.mjs'];
 const SHARED_NAMES = [
   'selectForm', 'comparable', 'compareSetVerdict', 'compareRowKeys', 'compareStats', 'compareHasCell',
   'shapeKeys', 'textLenOf', 'jaccardOf', 'isProseItem', 'isLabelOnlyItem', 'isImageOnlyItem', 'isPositionalKey',
@@ -46,11 +52,18 @@ const SHARED_NAMES = [
   'seqGroupsOf', 'actionVisible', 'itemScope', 'primarySlot', 'buildRefLabels', 'pageText',
   'groupKind', 'seqGroups', 'indexRefLabels', 'REF_LABELS',
 ];
-for (const f of ['render.mjs', 'render-text.mjs']) {
+for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
   check(`${f} imports the shared axis layer (./axis.mjs)`, /from '\.\/axis\.mjs'/.test(src));
   const dups = SHARED_NAMES.filter((name) => new RegExp(`(function|const|let|var)\\s+${name}\\b`).test(src));
   check(`${f} keeps no private copy of the axis layer`, dups.length === 0, `re-derived: ${dups.join(', ')}`);
+}
+// A1b. a target must not reach for another target's implementation either (round 21:
+// the Markdown target has to be a third presentation, never a wrapper over HTML/text).
+for (const f of ['render-text.mjs', 'render-md.mjs']) {
+  const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
+  check(`${f} does not import another renderer`,
+    !/from '\.\/render(-text)?\.mjs'/.test(src), `imports a sibling renderer`);
 }
 // A2. structural: a private copy is not always a named function — the same decision can
 // be hand-written inline. Round 20: grouping (`_rel.compare`), the primary-slot rule
@@ -61,7 +74,7 @@ const NO_REDERIVE = [
   [/resolveWithParent\s*\(/, 'primary resolution (`resolveWithParent`)'],
   [/\._action\.when\b/, 'action-visibility condition (`_action.when`)'],
 ];
-for (const f of ['render.mjs', 'render-text.mjs']) {
+for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
   for (const [re, what] of NO_REDERIVE) check(`${f} does not re-derive the ${what}`, !re.test(src), `matched ${re}`);
 }
@@ -87,8 +100,13 @@ const listNode = (items, rel = {}) => ({
 const agree = (model) => {
   const h = []; const html = render(model, {}, h);
   const t = []; const text = renderText(model, {}, t);
+  const m = []; const md = renderMarkdown(model, {}, m);
   const rec = (a) => a.map((d) => `${d.key}|${d.entities}|${d.reason}`);
-  return { h: rec(h), t: rec(t), html, text };
+  // `same` is the three-way agreement this gate exists for: no target may report a
+  // different compare-set verdict than another for the SAME node.
+  const hh = rec(h);
+  const same = JSON.stringify(hh) === JSON.stringify(rec(t)) && JSON.stringify(hh) === JSON.stringify(rec(m));
+  return { h: hh, t: rec(t), m: rec(m), same, html, text, md };
 };
 
 // B1. a genuine comparison set: no degradation in either target, both render a table.
@@ -97,10 +115,13 @@ const agree = (model) => {
     { _name: { text: 'Alpha' }, _rating: { num: 4.8 } },
     { _name: { text: 'Beta' }, _rating: { num: 4.9 } },
   ]));
-  check('B1 a valid compare set degrades in neither target',
-    r.h.length === 0 && r.t.length === 0, `html=${JSON.stringify(r.h)} text=${JSON.stringify(r.t)}`);
-  check('B1 both targets lay the entities out as a comparison table',
-    r.html.includes('cmp-table') && r.text.split('\n').some((l) => l.includes('Alpha') && l.includes('Beta')));
+  check('B1 a valid compare set degrades in no target',
+    r.h.length === 0 && r.t.length === 0 && r.m.length === 0,
+    `html=${JSON.stringify(r.h)} text=${JSON.stringify(r.t)} md=${JSON.stringify(r.m)}`);
+  check('B1 all targets lay the entities out as a comparison table',
+    r.html.includes('cmp-table')
+    && r.text.split('\n').some((l) => l.includes('Alpha') && l.includes('Beta'))
+    && r.md.split('\n').some((l) => l.startsWith('|') && l.includes('Alpha') && l.includes('Beta')));
 }
 // B2..B6. each explicit degradation reason arises identically in both targets.
 const degradeCases = [
@@ -127,17 +148,16 @@ const degradeCases = [
 ];
 for (const [label, model, reason] of degradeCases) {
   const r = agree(model);
-  const eq = JSON.stringify(r.h) === JSON.stringify(r.t);
-  check(`${label}: both targets agree, reason "${reason}"`,
-    eq && r.h.length === 1 && r.h[0] === `set|${model.set._items.length}|${reason}`,
-    `html=${JSON.stringify(r.h)} text=${JSON.stringify(r.t)}`);
+  check(`${label}: all targets agree, reason "${reason}"`,
+    r.same && r.h.length === 1 && r.h[0] === `set|${model.set._items.length}|${reason}`,
+    `html=${JSON.stringify(r.h)} text=${JSON.stringify(r.t)} md=${JSON.stringify(r.m)}`);
 }
-// B7. a lone marked leaf: ≥2 entities is required, and both targets say so.
+// B7. a lone marked leaf: ≥2 entities is required, and all targets say so.
 {
   const r = agree(compareNode([{ _name: { text: 'A' }, _rating: { num: 1 } }]));
-  check('B7 fewer-than-2-entities: both targets agree',
-    JSON.stringify(r.h) === JSON.stringify(r.t) && r.h.length === 1 && r.h[0] === 'set|1|fewer-than-2-entities',
-    `html=${JSON.stringify(r.h)} text=${JSON.stringify(r.t)}`);
+  check('B7 fewer-than-2-entities: all targets agree',
+    r.same && r.h.length === 1 && r.h[0] === 'set|1|fewer-than-2-entities',
+    `html=${JSON.stringify(r.h)} text=${JSON.stringify(r.t)} md=${JSON.stringify(r.m)}`);
 }
 
 // C. form name: the shared `selectForm` classifies the set, and BOTH targets render
@@ -146,28 +166,32 @@ const formCases = [
   ['C1 comparable typed records ⇒ table', listNode([
     { _name: { text: 'Basic' }, _fields: { price: { money: 9.99, currency: 'USD' }, seats: { num: 1 } } },
     { _name: { text: 'Pro' }, _fields: { price: { money: 19.99, currency: 'USD' }, seats: { num: 5 } } },
-  ]), undefined, 'table', (r) => r.html.includes('<table class="data"') && r.text.includes('Basic') && r.text.includes('$9.99')],
+  ]), undefined, 'table', (r) => r.html.includes('<table class="data"')
+    && r.text.includes('Basic') && r.text.includes('$9.99')
+    && r.md.split('\n').some((l) => l.startsWith('|') && l.includes('Basic') && l.includes('$9.99'))],
   ['C2 consecutive `_text` members ⇒ prose', listNode([
     { _text: { text: 'para one' } }, { _text: { text: 'para two' } },
-  ]), undefined, 'prose', (r) => r.html.includes('<div class="prose"') && r.text.includes('para one')],
+  ]), undefined, 'prose', (r) => r.html.includes('<div class="prose"') && r.text.includes('para one') && r.md.includes('para one')],
   ['C3 ordered label-only set ⇒ seq', listNode([
     { _name: { text: 'Step' } }, { _name: { text: 'Next' } },
-  ], { order: 'sequence' }), 'sequence', 'seq', (r) => r.html.includes('<ol class="seq"') && r.text.includes('1. Step')],
+  ], { order: 'sequence' }), 'sequence', 'seq', (r) => r.html.includes('<ol class="seq"') && r.text.includes('1. Step') && r.md.includes('1. Step')],
   ['C4 image-only members ⇒ image-strip', listNode([
     { _image: { image: 'a.png', alt: 'ALT' } },
-  ]), undefined, 'image-strip', (r) => r.html.includes('<figure class="strip"') && r.text.includes('[图片] ALT')],
+  ]), undefined, 'image-strip', (r) => r.html.includes('<figure class="strip"') && r.text.includes('[图片] ALT') && r.md.includes('![ALT](a.png)')],
   ['C5 non-comparable members ⇒ stack', listNode([
     { _name: { text: 'Alpha' }, _detail: { text: 'first block' } },
     { _name: { text: 'Beta' }, _summary: { text: 'second' } },
-  ]), undefined, 'stack', (r) => r.html.includes('<section class="block"') && r.text.includes('Alpha') && r.text.includes('Beta')],
+  ]), undefined, 'stack', (r) => r.html.includes('<section class="block"')
+    && r.md.includes('Alpha') && r.md.includes('Beta')
+    && /^\s*#{1,6}\s+Alpha$/m.test(r.md) && /^\s*#{1,6}\s+Beta$/m.test(r.md)],
 ];
 for (const [label, model, order, form, signature] of formCases) {
   const items = model.list._items;
   const chosen = selectForm(items, order);
   const r = agree(model);
-  check(`${label}: shared selectForm + both targets agree`,
+  check(`${label}: shared selectForm + all targets agree`,
     chosen === form && signature(r),
-    `form=${chosen} expected=${form} html=${r.html.includes('<table')} text=…`);
+    `form=${chosen} expected=${form} html=${r.html.includes('<table')} md=${r.md.split('\n').find((l) => l.startsWith('| '))}`);
 }
 
 // The comparability gate itself is the shared one (and agrees with the verdict path).
@@ -180,5 +204,5 @@ check('C7 `compareSetVerdict` returns ok:true for a dense set',
     { _name: { text: 'A' }, _rating: { num: 1 } }, { _name: { text: 'B' }, _rating: { num: 2 } },
   ]).ok === true);
 
-console.log(`\n轴一致性自测: ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);
+console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);
 process.exit(bad ? 1 : 0);
