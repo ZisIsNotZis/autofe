@@ -62,7 +62,12 @@ if (!gFS.ok) console.log(gFS.out);
 const gMS = gate('node m1/eval/metrics-selftest.mjs');
 console.log(`[pipeline] 度量自测(F-052): ${gMS.ok ? '通过' : '失败'}`);
 if (!gMS.ok) console.log(gMS.out);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok;
+// 5th gate: the second render target. Same blueprint, plain-text output — the axis
+// semantics (F-031) must survive a non-HTML target, and the text render must not lose facts.
+const gTS = gate('node m1/eval/text-selftest.mjs');
+console.log(`[pipeline] 文本目标自测(F-031): ${gTS.ok ? '通过' : '失败'}`);
+if (!gTS.ok) console.log(gTS.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';
