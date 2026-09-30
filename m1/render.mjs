@@ -59,10 +59,23 @@ function discoverRuns(orderedChildren) {
 function isLabelOnlyItem(it) {
   return factsOf(it).every((f) => ['_name', '_title'].includes(f.key)) && !it._fields && childrenOf(it).length === 0;
 }
+function isProseItem(it) {
+  const f = factsOf(it);
+  return f.length > 0 && f.every((x) => x.key === '_text') && !it._fields && childrenOf(it).length === 0 && !it._action;
+}
 function selectForm(items) {
   if (!items.length) return 'none';
+  if (items.every(isProseItem)) return 'prose';
   if (items.some((it) => it._fields && Object.keys(it._fields).length)) return 'table';
-  if (items.every(isLabelOnlyItem)) return 'chips';
+  if (items.every(isLabelOnlyItem)) {
+    // long sentence labels are a list of links/questions, not filter chips (F-030)
+    const long = items.every((it) => {
+      const t = labelOf(it);
+      const len = t ? (t.text ?? '').length : 0;
+      return len >= 16 || /[?？]$/.test((t?.text ?? '').trim());
+    });
+    return long ? 'list' : 'chips';
+  }
   if (items.some((it) => it._price)) return 'product-cards';
   const deflist = items.every((it) => {
     if (it._fields || childrenOf(it).length) return false;
@@ -76,32 +89,50 @@ function selectForm(items) {
   return 'cards';
 }
 
+const labelOf = (it) => it._name ?? it._title ?? it._text;
+function renderList(items) {
+  const lis = items.map((it) => {
+    const v = labelOf(it);
+    const label = v ? fmt(v) : '';
+    if (!label) return '';
+    const inner = it._action && hasTarget(it._action) ? `<a href="${esc(it._action.to)}">${label}</a>` : label;
+    return `<li>${inner}</li>`;
+  }).join('');
+  return lis ? `<ul class="linklist">${lis}</ul>` : '';
+}
+function renderProse(items) {
+  return `<div class="prose">${items.map((it) => {
+    const t = labelOf(it);
+    return t ? `<p>${fmt(t)}</p>` : '';
+  }).join('')}</div>`;
+}
 function renderChips(items) {
   const chips = items.map((it) => {
-    const v = it._name ?? it._title;
+    const v = labelOf(it);
     const label = v ? fmt(v) : '';
+    if (!label) return '';            // no label, no chip (never an empty control)
     const a = it._action;
-    const inner = a?.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
-      ? `<a href="${esc(a.to)}">${label}</a>` : label;
+    const inner = hasTarget(a) ? `<a href="${esc(a.to)}">${label}</a>` : label;
     return `<span class="chip-item">${inner}</span>`;
   }).join('');
-  return `<div class="chips">${chips}</div>`;
+  return chips ? `<div class="chips">${chips}</div>` : '';
 }
 function renderDeflist(items) {
   const rows = items.map((it) => {
     const label = it._name ?? it._title;
     const rest = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
-    const l = label ? fmt(label) : '';
+    const l0 = label ? fmt(label) : '';
+    const l = l0 && hasTarget(it._action) ? `<a href="${esc(it._action.to)}">${l0}</a>` : l0;
     const v = rest.map((x) => fmt(x.value)).join(' ').trim();
     if (!l && !v) return '';
     return `<div class="defrow"><div class="deflabel">${l}</div><div class="defval">${v}</div></div>`;
   }).join('');
-  return `<div class="deflist">${rows}</div>`;
+  return rows ? `<div class="deflist">${rows}</div>` : '';
 }
 function renderAccordion(items, chain, hide, ctx) {
   const det = items.map((it) => {
-    const q = it._title ?? it._name;
-    const a = factsOf(it).filter((x) => ['_detail', '_summary', '_text'].includes(x.key));
+    const q = labelOf(it);
+    const a = factsOf(it).filter((x) => ['_detail', '_summary', '_text'].includes(x.key) && x.value !== q);
     const answer = a.map((x) => fmt(x.value)).join(' ');
     if (!q && !answer) return '';
     if (!q) return `<div class="qa-a">${answer}</div>`;
@@ -132,16 +163,20 @@ function renderRun(run, chain, hide, ctx) {
 
 
 function renderSelectTable(items, exp, chain, hide, ctx) {
-  const cols = [...new Set(items.flatMap((it) => [...Object.keys(it._fields ?? {}), ...factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))];
+  const typed = items.some((it) => it._fields && Object.keys(it._fields).length);
+  const cols = typed
+    ? [...new Set(items.flatMap((it) => [...Object.keys(it._fields ?? {}), ...factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))]
+    : ['_name', ...new Set(items.flatMap((it) => factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)))];
   const multi = exp.multiple === true;
   const legend = exp.legend;
   const valuesOf = (n, col) => {
+    if (col === '_name') return n._name ? fmt(n._name) : (n._title ? fmt(n._title) : '');
     const fv = n._fields?.[col];
     if (fv) return fmt(fv);
     const f = factsOf(n).find((x) => x.key === col);
     return f ? fmt(f.value) : '';
   };
-  const head = `<tr><th class="sel"></th>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? c.replace(/^_/, ''))}</th>`).join('')}<th></th></tr>`;
+  const head = `<tr><th class="sel"></th>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? (c === '_name' ? '' : c.replace(/^_/, '')))}</th>`).join('')}<th></th></tr>`;
   const rows = items.map((it) => {
     const tds = cols.map((col) => `<td>${valuesOf(it, col)}</td>`).join('');
     const ops = childrenOf(it).filter((ch) => !ch.key.startsWith('_items['))
@@ -152,11 +187,14 @@ function renderSelectTable(items, exp, chain, hide, ctx) {
   return `<fieldset class="expose expose-${esc(exp.name)}"><legend>${legend}</legend><table class="data"><thead>${head}</thead><tbody>${rows}</tbody></table></fieldset>`;
 }
 
+const hasTarget = (a) => Boolean(a?.to) && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'));
 const actionHtml = (a) => {
   const copy = a.label ?? a.verb;
-  return a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
+  if (!copy && !a.label) return '';   // icon-only link with no captured label: nothing to say
+  // no capture-backed target: keep the source's own words as plain text (T-101)
+  return hasTarget(a)
     ? `<a class="action verb-${esc(a.verb)}" href="${esc(a.to)}">${esc(copy)}</a>`
-    : `<button class="action verb-${esc(a.verb)}" type="button">${esc(copy)}</button>`;
+    : `<span class="action-plain">${esc(copy)}</span>`;
 };
 
 function renderNode(node, chain, isHero, hide, ctx, depth) {
@@ -221,8 +259,6 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (node._fields) for (const [k, v] of Object.entries(node._fields)) bodyLead += factHtml(v);
 
   const ordered = kids.filter((c) => c.key.startsWith('_lines[') || c.key.startsWith('_items['));
-  const runs = discoverRuns(ordered);
-  const inRun = new Set(runs.flat().map((c) => c.node));
 
   let body = '';
   if (exp && node._items?.length && node._items.length < 2) {
@@ -235,6 +271,11 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     itemsConsumed.add(it);
   } else if (exp && node._items?.length && node._items.some((it) => it._fields && Object.keys(it._fields).length)) {
     // typed-field rows with a selection column: the admin-table form
+    const legend = node._label ? fmt(node._label) : esc(exp.name);
+    body += renderSelectTable(node._items, { ...exp, legend }, chain, hide, ctx);
+    node._items.forEach((it) => itemsConsumed.add(it));
+  } else if (exp && node._items?.length && node._items.some((it) => factsOf(it).some((f) => !['_name', '_title'].includes(f.key)))) {
+    // a choice set where options carry their own details is a table, not a chip row (T-107)
     const legend = node._label ? fmt(node._label) : esc(exp.name);
     body += renderSelectTable(node._items, { ...exp, legend }, chain, hide, ctx);
     node._items.forEach((it) => itemsConsumed.add(it));
@@ -258,20 +299,30 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     body += `<label class="expose expose-${esc(exp.name)}"><span class="deflabel">${lbl}</span>${hint}<input type="text" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></label>`;
   }
 
-  const rawItems = (node._items ?? []).filter((it) => !inRun.has(it) && !itemsConsumed.has(it));
-
+  // every sibling block item renders in ONE form; nothing renders twice (T-103)
+  const rawItems = ordered.map((c) => c.node).filter((it) => !itemsConsumed.has(it));
   const form = rawItems.length ? selectForm(rawItems) : 'none';
   if (form === 'chips') {
-    body += renderChips(rawItems);
+    body += renderChips(rawItems, chain, hide, ctx);
+  } else if (form === 'list') {
+    body += renderList(rawItems);
+  } else if (form === 'prose') {
+    body += renderProse(rawItems);
   } else if (form === 'deflist') {
     body += renderDeflist(rawItems);
+  } else if (form === 'accordion') {
     body += renderAccordion(rawItems, chain, hide, ctx);
   } else if (form === 'table') {
-    for (const run of discoverRuns(rawItems.map((it) => ({ key: '_items[x]', node: it })))) body += renderRun(run, chain, hide, ctx);
-    if (node._items.length === 0 && node._empty) body += renderNode(node._empty, [...chain, node], false, hide, ctx, depth + 1);
-  } else if (form === 'cards') {
-    body += `<div class="cards">${rawItems.map((it) => `<div class="item">${renderNode(it, [...chain, node], false, hide, ctx, depth + 1)}</div>`).join('')}</div>`;
+    body += renderRun(rawItems.map((it) => ({ key: '_items[x]', node: it })), chain, hide, ctx);
+    if ((node._items ?? []).length === 0 && node._empty) body += renderNode(node._empty, [...chain, node], false, hide, ctx, depth + 1);
+  } else if (form === 'cards' || form === 'product-cards') {
+    const cards = rawItems.map((it) => {
+      const inner = renderNode(it, [...chain, node], false, hide, ctx, depth + 1);
+      return inner ? `<div class="item">${inner}</div>` : '';
+    }).join('');
+    if (cards) body += `<div class="cards${form === 'product-cards' ? ' product-cards' : ''}">${cards}</div>`;
   }
+  rawItems.forEach((it) => itemsConsumed.add(it));
 
   // toolbar: consecutive action-only children render inline
   const actionKids = kids.filter((c) => !itemsConsumed.has(c.node) && !ordered.includes(c) && c.node._action &&
@@ -288,13 +339,17 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   }
 
   for (const c of kids) {
-    if (inRun.has(c.node) || itemsConsumed.has(c.node) || actionKids.includes(c)) continue;
+    if (itemsConsumed.has(c.node) || actionKids.includes(c)) continue;
     const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1);
     if (!h) continue;
     body += c.key.startsWith('_items[')
       ? `<div class="item">${h}</div>`
       : `<section class="group g-${esc(c.key)}">${h}</section>`;
   }
+
+  // a bare-title block (source banners/ads) is a promo card, never a section heading (T-106)
+  const bareTitle = depth > 0 && titleText && !bodyLead && !heroHtml && !body && !action;
+  if (bareTitle) return `<div class="promo">${titleText}</div>`;
 
   const headingLevel = Math.min(depth + 1, 6);
   const headingTag = depth === 0 ? 'h1' : `h${headingLevel}`;
@@ -305,6 +360,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   }
 
   const anchorId = node._key ? ` id="${esc(String(node._key).replace(/[^A-Za-z0-9_-]/g, '-'))}"` : '';
+  // nothing to say: emit nothing at all (never an empty block)
+  if (!head && !bodyLead && !heroHtml && !body && !action) return '';
   const article = `<article${anchorId} class="${cls.join(' ')}">${head}${bodyLead}${heroHtml}${body}${action}</article>`;
   return demoted ? `<aside class="zone">${article}</aside>` : article;
 }
@@ -341,7 +398,14 @@ article{margin:12px 0}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
-.chips{column-width:190px;column-gap:18px;margin:8px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
+.action-plain{color:#4a5a68;font-size:.95em}
+.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.prose p{margin:.5em 0;line-height:1.75}
+.linklist{margin:8px 0;padding-left:1.1em;columns:2;column-gap:28px}
+.linklist li{margin:5px 0;line-height:1.5}
+.linklist a{color:#0b62d0}
 .chip-item{display:block;break-inside:avoid;padding:4px 0;font-size:.95em}
 .chips a{color:inherit;text-decoration:none}
 .chips a:hover{text-decoration:underline}
