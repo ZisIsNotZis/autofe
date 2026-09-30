@@ -32,7 +32,6 @@
     {
       "_intent": "产品磁贴：六张并列卡片，每张主推一款产品或一项购买权益",
       "_key": "tiles",
-      "_rel": { "compare": true },
       "_items": [
         {
           "_key": "tile-watch-ultra-4",
@@ -82,7 +81,6 @@
       "_title": { "text": "Endless entertainment." },
       "tv": {
         "_intent": "Apple TV+ 片单轮播：每张卡片是片名 + 类型 + 一句话看点",
-        "_rel": { "compare": true },
         "_items": [
           { "_key": "tv-slow-horses", "_name": { "text": "Slow Horses" }, "_category": { "text": "Thriller" }, "_detail": { "text": "New season." }, "_action": { "verb": "open", "label": "Stream now", "to": "https://tv.apple.com/us/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } },
           { "_key": "tv-f1", "_name": { "text": "Formula 1" }, "_category": { "text": "F1 on Apple TV" }, "_detail": { "text": "Every Grand Prix™, live and on demand—all in one place, all year long." }, "_action": { "verb": "open", "label": "Stream now", "to": "https://tv.apple.com/us/room/formula-1/uts.room.formula-1?itscg=10000&itsct=atv-apl_hp-stream_now--220622" } },
@@ -97,7 +95,6 @@
       },
       "services": {
         "_intent": "服务内容轮播：Arcade 游戏、Fitness+ 课程、Music 歌单等内容入口",
-        "_rel": { "compare": true },
         "_items": [
           { "_key": "svc-sabrina", "_name": { "text": "Sabrina Carpenter: The Zane Lowe Interview" }, "_action": { "verb": "open", "label": "Listen now", "to": "https://music.apple.com/us/station/sabrina-carpenter-the-zane-lowe-interview/ra.1837392419?itscg=10000&itsct=am-apl_hp-listen_now--240326" } },
           { "_key": "svc-hello-kitty", "_name": { "text": "Hello Kitty Island Adventure" }, "_action": { "verb": "open", "label": "Play now", "to": "https://apps.apple.com/us/app/hello-kitty-island-adventure/id1553505132?itscg=10000&itsct=aa-apl_hp-play_now--240326" } },

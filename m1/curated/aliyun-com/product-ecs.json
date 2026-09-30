@@ -10,7 +10,6 @@
   "_brand": {
     "text": "阿里云"
   },
-  "_primary": "values",
   "_action": {
     "verb": "buy",
     "to": "https://www.aliyun.com/product/ecs/buy",
@@ -18,9 +17,6 @@
   },
   "values": {
     "_intent": "四个价值支柱并排：稳定性、性能、安全、成本",
-    "_rel": {
-      "compare": true
-    },
     "_items": [
       {
         "_name": {
@@ -74,9 +70,6 @@
   },
   "instances": {
     "_intent": "按团队规模选实例：从个人开发者到中大型企业",
-    "_rel": {
-      "compare": true
-    },
     "_items": [
       {
         "_name": {

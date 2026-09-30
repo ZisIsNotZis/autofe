@@ -27,6 +27,24 @@ const one = { _intent: 'x', _title: { text: 't' }, _expose: { name: 'pick', type
 check('D1 unset single expose ⇒ falsy', !render(one).includes('PICKED'));
 check('D1 injected single expose ⇒ truthy', render(one, { values: { pick: 'a' } }).includes('PICKED'));
 
+// ---- F-042: an item-level `_action.when` is evaluated (same scope as `_when`) ---
+// The condition is read from the same scope the node-level `_when` uses; an unmet
+// condition hides only the control, never the member's own name/content.
+const gatedItems = (common) => ({
+  _intent: 'rows', _title: { text: 'rows' },
+  _items: [
+    { _key: 'a', ...common, _action: { verb: 'open', label: 'Delete', when: 'role == "admin"', to: '/a' } },
+    { _key: 'b', ...common, _action: { verb: 'open', label: 'Delete', when: 'role == "admin"', to: '/b' } },
+  ],
+});
+const dl = gatedItems({ _name: { text: 'Row Alpha' }, _detail: { text: 'detail' } });
+check('F-042 item action with an unmet condition is hidden', !render(dl).includes('>Delete<'));
+check('F-042 item action with the condition met renders', render(dl, { values: { role: 'admin' } }).includes('>Delete<'));
+const ac = gatedItems({ _name: { text: 'Row Alpha' } });
+check('F-042 a suppressed control still shows the member name, without its action',
+  render(ac).includes('<span class="ctl">Row Alpha</span>') && !render(ac).includes('href="/a"'));
+check('F-042 the condition met restores the control target', render(ac, { values: { role: 'admin' } }).includes('href="/a"'));
+
 // ---- D2: position-independence (marker on the collection ≡ on its entities) --
 const collection = (itemMarker) => ({
   _intent: 'compare', _title: { text: 'Pick one' },

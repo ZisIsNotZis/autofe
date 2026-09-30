@@ -121,9 +121,6 @@
    "_detail": {
     "text": "The lightning-fast M4 chip with 50 percent more unified system memory elevates performance for all the things you love to do on iPad Air. It’s an AI powerhouse, enabling the AI features and capabilities you use every day to get things done faster, effortlessly. And the GPU architecture delivers even more fluid advanced graphics whether you’re working, streaming, creating, or gaming. All with amazing efficiency for all-day battery life."
    },
-   "_rel": {
-    "compare": true
-   },
    "_items": [
     {
      "_key": "m4-cpu",
@@ -210,16 +207,13 @@
    }
   },
   {
-   "_intent": "尺寸章节：11 英寸与 13 英寸两种型号，共用 Liquid Retina 显示特性（页面默认展示 11 英寸的分辨率）",
+   "_intent": "尺寸章节（**实体与属性分层**）：11/13 英寸两个型号是实体（源站是两个并列 button），True Tone/P3/全贴合是这块显示屏的共享属性，移到子节点 display；原先把两类混成一个 _rel.compare 单元，已删除标记",
    "_key": "sizes",
    "_title": {
     "text": "Two sizes. Infinite possibilities."
    },
    "_detail": {
     "text": "You can choose between an 11-inch and a 13-inch iPad Air, each with a gorgeous, high-resolution Liquid Retina display that brings everything you do to life. Both displays deliver a brilliant, responsive, and color-accurate viewing experience."
-   },
-   "_rel": {
-    "compare": true
    },
    "_items": [
     {
@@ -236,32 +230,37 @@
      "_name": {
       "text": "13” model"
      }
-    },
-    {
-     "_key": "size-tonetone",
-     "_name": {
-      "text": "True Tone"
-     },
-     "_detail": {
-      "text": "for comfortable viewing"
-     }
-    },
-    {
-     "_key": "size-p3",
-     "_name": {
-      "text": "P3 wide color"
-     }
-    },
-    {
-     "_key": "size-lamination",
-     "_name": {
-      "text": "Full lamination"
-     },
-     "_detail": {
-      "text": "for reduced reflectivity"
-     }
     }
-   ]
+   ],
+   "display": {
+    "_intent": "显示特性：True Tone / P3 广色域 / 全贴合——两种尺寸共享的同一块 Liquid Retina 显示屏属性",
+    "_items": [
+     {
+      "_key": "size-tonetone",
+      "_name": {
+       "text": "True Tone"
+      },
+      "_detail": {
+       "text": "for comfortable viewing"
+      }
+     },
+     {
+      "_key": "size-p3",
+      "_name": {
+       "text": "P3 wide color"
+      }
+     },
+     {
+      "_key": "size-lamination",
+      "_name": {
+       "text": "Full lamination"
+      },
+      "_detail": {
+       "text": "for reduced reflectivity"
+      }
+     }
+    ]
+   }
   },
   {
    "_intent": "连接章节：N1 无线芯片带来 Wi-Fi 7/蓝牙 6/Thread，C1X 蜂窝调制解调器提速 50%",
@@ -335,9 +334,6 @@
    },
    "_detail": {
     "text": "Advanced front and back cameras make it easy to shoot and edit incredible content in a snap. Capture audio using the built-in dual mics and play back the rich sound using landscape stereo speakers. And experience more dynamic video calls with Center Stage."
-   },
-   "_rel": {
-    "compare": true
    },
    "_items": [
     {

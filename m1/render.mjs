@@ -119,33 +119,42 @@ const labelOf = (it) => it._name ?? it._title ?? it._text;
 const labelTextOf = (it) => (labelOf(it)?.text ?? '');
 // 集合条目的动作（F-031-§4 / F-020）：条目名是内容；带 label 的动作是源站自己的控件文字，
 // 必须作为控件出现。二者同字时只渲染一遍（此时条目名降级为链接目标，不新增文案）。
-function itemExtra(it) {
+// F-042: an item-level `_action.when` is a condition like any other (same evaluation
+// path as `_when`): it is evaluated against the same scope, and an unmet condition
+// hides the control. Unparsable expressions are left to the validator, never guessed.
+function actionVisible(a, scope) {
+  if (!a) return false;
+  if (typeof a.when === 'string') { const ast = parseExpr(a.when); if (ast.ok && !evalExpr(ast, scope)) return false; }
+  return true;
+}
+const itemScope = (it, chain, ctx) => ({ ...ctx.values, ...scopeFor([...chain, it], ctx.values) });
+function itemExtra(it, scope) {
   const a = it._action;
   const content = labelTextOf(it);
-  if (!a) return { linkTo: null, ctl: '' };
+  if (!a || !actionVisible(a, scope)) return { linkTo: null, ctl: '' };
   if (a.label && a.label !== content) {
     return { linkTo: null, ctl: hasTarget(a) ? `<a class="ctl" href="${esc(hrefOf(a.to))}">${esc(a.label)}</a>` : `<span class="ctl">${esc(a.label)}</span>` };
   }
   return { linkTo: hasTarget(a) ? hrefOf(a.to) : null, ctl: '' };
 }
-function renderList(items) {
+function renderList(items, chain, ctx) {
   const lis = items.map((it) => {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
     if (!label) return '';
-    const ex = itemExtra(it);
+    const ex = itemExtra(it, itemScope(it, chain, ctx));
     const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     return `<li>${inner}${ex.ctl}</li>`;
   }).join('');
   return lis ? `<ul class="linklist${items.length > 4 && items.every((it) => ((labelOf(it)?.text) ?? '').length <= 12) ? ' cols2' : ''}">${lis}</ul>` : '';
 }
 // 有序集合（_rel.order = sequence|time）：每一项自成一行，顺序即语义（F-031-§1）
-function renderSeq(items) {
+function renderSeq(items, chain, ctx) {
   const lis = items.map((it) => {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
     if (!label) return '';
-    const ex = itemExtra(it);
+    const ex = itemExtra(it, itemScope(it, chain, ctx));
     const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     return `<li>${inner}${ex.ctl}</li>`;
   }).join('');
@@ -215,12 +224,12 @@ function indexRefLabels(model) {
     for (const v of Object.values(n)) walk(v);
   })(model);
 }
-function renderChips(items) {
+function renderChips(items, chain, ctx) {
   const chips = items.map((it) => {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
     if (!label) return '';            // no label, no chip (never an empty control)
-    const ex = itemExtra(it);
+    const ex = itemExtra(it, itemScope(it, chain, ctx));
     const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     return `<span class="chip-item">${inner}${ex.ctl}</span>`;
   }).join('');
@@ -233,12 +242,12 @@ const ROLE_UNIT = { _rating: '分', '_rating-count': '条评价' };
 // 角色单位只是兜底：事实自带 unit 时绝不追加，否则两个单位连排（「870 人好评 条评价」，F-037）
 const hasOwnUnit = (v) => Boolean(v && typeof v === 'object' && !Array.isArray(v) && 'num' in v && v.unit);
 const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] && !hasOwnUnit(f.value) ? ` ${ROLE_UNIT[f.key]}` : ''}`;
-function renderDeflist(items) {
+function renderDeflist(items, chain, ctx) {
   const rows = items.map((it) => {
     const label = it._name ?? it._title;
     const rest = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
     const l0 = label ? fmt(label) : '';
-    const ex = itemExtra(it);
+    const ex = itemExtra(it, itemScope(it, chain, ctx));
     const l = l0 && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${l0}</a>` : l0;
     const v = (rest.map((x) => roleFact(x)).join(' ') + (ex.ctl ? ` ${ex.ctl}` : '')).trim();
     if (!l && !v) return '';
@@ -318,14 +327,14 @@ const hrefOf = (to) => (typeof to === 'string' && to.startsWith('key:') ? '#' + 
 
 function renderForm(form, items, chain, hide, ctx, depth, node) {
   if (form === 'compare-table') return renderCompareTable(items, chain, hide, ctx);
-  if (form === 'chips') return renderChips(items);
-  if (form === 'list') return renderList(items);
-  if (form === 'seq') return renderSeq(items);
-  if (form === 'controls') return renderControls(items);
+  if (form === 'chips') return renderChips(items, chain, ctx);
+  if (form === 'list') return renderList(items, chain, ctx);
+  if (form === 'seq') return renderSeq(items, chain, ctx);
+  if (form === 'controls') return renderControls(items, chain, ctx);
   if (form === 'stack') return renderStack(items, chain, hide, ctx, depth);
   if (form === 'image-strip') return renderImageStrip(items);
   if (form === 'prose') return renderProse(items);
-  if (form === 'deflist') return renderDeflist(items);
+  if (form === 'deflist') return renderDeflist(items, chain, ctx);
   if (form === 'accordion') return renderAccordion(items, chain, hide, ctx);
   if (form === 'table') {
     let out = renderRun(items.map((it) => ({ key: '_items[x]', node: it })), chain, hide, ctx);
@@ -356,15 +365,17 @@ function renderStack(items, chain, hide, ctx, depth) {
 }
 // 控件条：_action-only 成员是控件，不是内容（F-031-§4）；动作 label 是源站自己的控件文字（F-022），
 // 与条目名不是同一事实时另出一枚控件；同一事实的两种写法（一个包含另一个）只渲染信息更全的一处。
-function renderControls(items) {
+function renderControls(items, chain, ctx) {
   const btns = items.map((it) => {
-    const a = it._action;
+    // a conditional action that the scope suppresses hides only the control; the
+    // member's own name is content and still renders (F-042, F-031-§4)
+    const a = actionVisible(it._action, itemScope(it, chain, ctx)) ? it._action : null;
     const name = labelTextOf(it);
     const ctl = a?.label ?? '';
     const otherFact = Boolean(name && ctl && !name.includes(ctl) && !ctl.includes(name));
     const text = name || ctl;
     if (!text) return '';
-    const to = (s) => (hasTarget(a) ? `<a class="ctl" href="${esc(hrefOf(a.to))}">${s}</a>` : `<span class="ctl" data-verb="${esc(a?.verb ?? '')}">${s}</span>`);
+    const to = (s) => (hasTarget(a) ? `<a class="ctl" href="${esc(hrefOf(a.to))}">${s}</a>` : `<span class="ctl"${a?.verb ? ` data-verb="${esc(a.verb)}"` : ''}>${s}</span>`);
     return otherFact ? to(esc(text)) + to(esc(ctl)) : to(esc(text));
   }).join('');
   return btns ? `<div class="controls">${btns}</div>` : '';
@@ -417,7 +428,7 @@ function renderCompareTable(items, chain, hide, ctx) {
   };
   const head = `<tr><th class="cmp-row">${esc(items[0]._name ? '' : '')}</th>${items.map((it) => {
     const name = it._name ?? it._title;
-    const ex = itemExtra(it);          // 实体自己的动作控件不得因进表而丢失（F-033）
+    const ex = itemExtra(it, itemScope(it, chain, ctx));   // 实体自己的动作控件不得因进表而丢失（F-033）
     const label = name ? fmt(name) : '';
     const nm = label && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     const tag = it._tag ? `<span class="cmp-tag">${fmt(it._tag)}</span>` : '';
@@ -620,17 +631,17 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (form === 'chips') {
     body += renderChips(rawItems, chain, hide, ctx);
   } else if (form === 'list') {
-    body += renderList(rawItems);
+    body += renderList(rawItems, chain, ctx);
   } else if (form === 'compare-table') {
     body += renderCompareTable(rawItems, chain, hide, ctx);
   } else if (form === 'controls') {
-    body += renderControls(rawItems);
+    body += renderControls(rawItems, chain, ctx);
   } else if (form === 'stack') {
     body += renderStack(rawItems, chain, hide, ctx, depth);
   } else if (form === 'prose') {
     body += renderProse(rawItems);
   } else if (form === 'deflist') {
-    body += renderDeflist(rawItems);
+    body += renderDeflist(rawItems, chain, ctx);
   } else if (form === 'accordion') {
     body += renderAccordion(rawItems, chain, hide, ctx);
   } else if (form === 'table') {
@@ -648,7 +659,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 
   // toolbar: consecutive action-only children render inline
   const actionKids = kids.filter((c) => !itemsConsumed.has(c.node) && !ordered.includes(c) && c.node._action &&
-    factsOf(c.node).length === 0 && childrenOf(c.node).length === 0);
+    factsOf(c.node).length === 0 && childrenOf(c.node).length === 0 &&
+    actionVisible(c.node._action, { ...ctx.values, ...scopeFor([...chain, node, c.node], ctx.values) }));
   if (actionKids.length >= 2) {
     const tools = actionKids.map((c) => {
       const a = c.node._action;

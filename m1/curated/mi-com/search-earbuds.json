@@ -4,13 +4,11 @@
  "_title": {
   "text": "所有产品-小米商城"
  },
- "_primary": "results",
  "filters": {
   "_intent": "按商品分类过滤结果，当前选中「全部」",
   "_label": {
    "text": "分类"
   },
-  "_primary": "_items[0]",
   "_items": [
    {
     "_key": "cat-all",
@@ -50,7 +48,6 @@
  },
  "sort": {
   "_intent": "结果排序方式，当前按「综合」排序",
-  "_primary": "_items[0]",
   "_items": [
    {
     "_name": {
@@ -468,7 +465,6 @@
  },
  "pages": {
   "_intent": "结果分页展示，当前在第 1 页，可前往第 2 页",
-  "_primary": "_items[0]",
   "_items": [
    {
     "_name": {
