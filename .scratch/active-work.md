@@ -32,7 +32,8 @@
 - **F-042 新登记**：条目级 `_action.when` 从不求值（M4-a 的 D1 构造断言顺带挖出）
 - **已完成并行轨**：M4 复合原语提案 → `docs/m1/m4-composites-proposal.md`（14 候选 → 升格 5 / 否决 7；三条基础缺陷均已复现）
 - **M4-a 之后**：策展回改（55 异质 `_items`）→ 补 exemplar 样本（`table`/`login` 前置证据）→ M4 原语实现
-- **待用户拍板清单（累积）**：① 三条 provisional 语法裁定 P1-P3（`_expose` 作用域优先级 / 字段可引用性按原语类型 / prose 走引擎修法）② ipad-air 实体-属性分层规则 ③ 无标签输入框的受控标签来源 ④ exemplar 补样本范围
+- **待用户拍板：见 `.scratch/decisions-for-user.md`（一页纸，5 条，含建议与后果）**——最关键是 **D-1 是否引入 `_macro` 保留键**（本质是"恒等展开 + 良构校验"，只增强校验、不增表达力）
+- 旧清单（已并入上文件）：① 三条 provisional 语法裁定 P1-P3（`_expose` 作用域优先级 / 字段可引用性按原语类型 / prose 走引擎修法）② ipad-air 实体-属性分层规则 ③ 无标签输入框的受控标签来源 ④ exemplar 补样本范围
 - **父代理裁定汇总**（写于 `rounds.md`）：控件是控件（带 label 的 `_action` 必渲染为控件）／角色单位进 `vocab-units.json` 声明化／集合单位由模型给出不得推定／日期本地化推迟待语言信号／`key:` 目标降为 `#锚点`
 - **未修（已记录）**：ipad-air 实体/属性分层（试过回滚，需要新的渲染规则→待裁定）、R7e 日期、`_count` 单位、3 条采集待办（taobao 会场文案 F-036、airbnb 缩略图分辨率、grafana 面板体/T-109）
 - **每轮硬判据**：`node m1/eval/pipeline.mjs` → **41/41 保真 1.00 且 视觉自查 41/41 干净**（轮 9/11 补样本后，36 → 41；`aliyun-help` 待策展 ⇒ 目标 42）；模型改动必须过 `m1/validate.mjs`
