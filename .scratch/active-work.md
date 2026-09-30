@@ -18,7 +18,11 @@
   5. ✅ `fix-4` 修完 6 项 + 新增两条自查（unit-stack / dup-title），提交 `37d4599`
   6. ✅ `verify` 轮 5 判 **PASS**（0 blocker / 0 major / 5 minor），并发现流程坑：截图未随 HTML 刷新 → 已 `--shots` 并提交 `27153d7`
   7. ✅ **`M4-a` 完成并验收**（提交 `d0b90a4`）：D1 `_expose` 作用域 + `_when` 硬校验、D2 compare 位置无关（13 表 + 显式降级清单）、D3 删除引擎侧价格算术；**恢复被删的校验器根调用**；新增 `validate-selftest.mjs`(10 断言) 与 `foundation-selftest.mjs` 并接入 pipeline
-  8. ⏳ **轮 6 运行中**：策展正确性（可疑 compare 标记复核 / `_primary` 重声明）+ F-042（条目级 `_action.when` 从不求值）
+  8. ✅ **轮 6**（提交 `4cb14b2`）：删 16 处错误 compare 标记、ipad-air 实体/属性分层、删 30 处非法 `_primary`、F-042 求值 + 断言；降级清单 6→0，对比表 13→3（全是真表）
+  9. ✅ **轮 7**（提交 `e451edd`）：三条父代理裁定落地（`_primary` 硬规则+自测、36kr H1 带出处说明、aliyun 域字段）+ 10 个异质集合回改（**如实报剩余 12 个**）；并把 `layout-axes.md` 里过期的 55/98 数字**标注口径**
+ 10. ⏳ **轮 8 运行中**（worker `4cf19fc3`）：收尾 12 个异质集合
+ 11. ⏳ **轮 9 并行运行中**（worker `c6b15d3d`）：补 exemplar 证据样本（`table`/`login` 原语前置，限顶流站点、守 robots/节流、只写 corpus+tools/capture）
+- **下一步**：轮 8/9 完成 → 独立复验 → M4-b 原语实现（仍待用户确认 P1–P3）
 - **F-042 新登记**：条目级 `_action.when` 从不求值（M4-a 的 D1 构造断言顺带挖出）
 - **已完成并行轨**：M4 复合原语提案 → `docs/m1/m4-composites-proposal.md`（14 候选 → 升格 5 / 否决 7；三条基础缺陷均已复现）
 - **M4-a 之后**：策展回改（55 异质 `_items`）→ 补 exemplar 样本（`table`/`login` 前置证据）→ M4 原语实现
