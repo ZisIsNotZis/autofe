@@ -8,7 +8,77 @@
 import fs from 'node:fs';
 import { walk, childrenOf, factsOf, valueTypeOf, parseExpr, evalExpr, scopeFor } from '../model-lib.mjs';
 
-const norm = (s) => String(s).toLowerCase().replace(/&(amp|quot|apos|lt|gt|nbsp);/g, (m, g) => ({amp:'&',quot:'"',apos:"'",lt:'<',gt:'>',nbsp:' '})[g] ?? g).replace(/[\s\p{P}]+/gu, '');
+// F-054 — normalization deletes whitespace and punctuation, so a plain
+// `hay.includes(needle)` accepts a value that only occurs *inside a longer
+// token* (`"0"` matched `2026`, `10.5`, `1,000`), which can hide a genuinely
+// unrendered short number. `indexNorm` keeps the historical normalization and
+// adds a map from each kept character back to its offset in the raw HTML, so a
+// hit can be rejected when the raw characters next to it continue the same
+// token (see `isRendered`). Rubric: `m1/eval/rubric.md` "已渲染" 判定.
+const ENTITIES = { amp: '&', quot: '"', apos: "'", lt: '<', gt: '>', nbsp: ' ' };
+function indexNorm(source) {
+  const raw = String(source);
+  const text = [], start = [], end = [];
+  for (let i = 0; i < raw.length; i++) {
+    let ch = raw[i].toLowerCase(), span = 1;
+    if (ch === '&') {
+      const m = /^&(amp|quot|apos|lt|gt|nbsp);/.exec(raw.slice(i).toLowerCase());
+      if (m) { ch = ENTITIES[m[1]]; span = m[0].length; }
+    }
+    if (!/\s|\p{P}/u.test(ch)) { text.push(ch); start.push(i); end.push(i + span); }
+    i += span - 1;
+  }
+  return { raw, text: text.join(''), start, end };
+}
+const norm = (s) => indexNorm(s).text;
+
+const DIGIT = /[0-9]/;
+const DECIMAL = /[.,]/;
+const LETTER = /\p{L}/u;
+// A neighbouring character continues the token when it extends the matched
+// edge the same way: after/before a digit a digit (or a ./, that itself sits
+// next to a digit) continues a *number*; after/before a non-digit a letter
+// continues a *word*. Nothing else counts — whitespace, tags, `$`, `%`, `°`,
+// CJK unit words (`870人`) and the value's own trailing punctuation (`… M5.`)
+// all delimit.
+function continuesLeft(raw, at, numericEdge) {
+  const c = raw[at - 1];
+  if (c === undefined) return false;
+  if (!numericEdge) return LETTER.test(c);
+  return DIGIT.test(c) || (DECIMAL.test(c) && DIGIT.test(raw[at - 2] ?? ''));
+}
+function continuesRight(raw, at, numericEdge) {
+  const c = raw[at];
+  if (c === undefined) return false;
+  if (!numericEdge) return LETTER.test(c);
+  return DIGIT.test(c) || (DECIMAL.test(c) && DIGIT.test(raw[at + 1] ?? ''));
+}
+// A fact counts as rendered when at least one occurrence of its normalized text
+// is delimited on both sides. The value's own edge decides the continuation
+// class, so multi-word values keep the old substring behaviour (`"Pro further."`
+// in `…>Pro further.<…` still matches across the tag-free span).
+function isRendered(hay, value) {
+  const needle = norm(value);
+  if (!needle) return true;
+  const lNum = DIGIT.test(needle[0]), rNum = DIGIT.test(needle[needle.length - 1]);
+  for (let i = hay.text.indexOf(needle); i >= 0; i = hay.text.indexOf(needle, i + 1)) {
+    const before = hay.start[i], after = hay.end[i + needle.length - 1];
+    if (!continuesLeft(hay.raw, before, lNum) && !continuesRight(hay.raw, after, rNum)) return true;
+  }
+  return false;
+}
+
+// What a fact may be certified by: the page's *visible text*. Style/script
+// bodies and tag attributes are removed — a fact may only be certified by text
+// the reader can see, so `padding:18px` must not vouch for the fact `18` and
+// `class="depth-0"` must not vouch for the fact `0` (exactly the F-054 blind
+// spot). Each tag collapses to `<>` so tags still delimit tokens for
+// `isRendered` (adjacent text nodes stay separate).
+function pageText(html) {
+  return String(html)
+    .replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]*>/g, '<>');
+}
 
 function suppressedNodes(model, ctxValues = {}) {
   const out = new Set();
@@ -69,10 +139,12 @@ function kendallTau(a, b) {
 
 export function evaluate(model, renderHtml, sourceDir) {
   const html = fs.readFileSync(renderHtml, 'utf8');
-  const H = norm(html);
+  // Style/script bodies and attributes are not page content: `<td>0</td>` must
+  // not be certified by `margin:0` in the stylesheet or by `class="depth-0"`.
+  const H = indexNorm(pageText(html));
   const dead = suppressedNodes(model);
   const facts = factValues(model, dead);
-  const missing = facts.filter((f) => !H.includes(norm(f.text))).map((f) => `${f.path} := "${f.text}"`);
+  const missing = facts.filter((f) => !isRendered(H, f.text)).map((f) => `${f.path} := "${f.text}"`);
   let suppressed = 0;
   walk(model, (n) => { if (dead.has(n)) suppressed += factsOf(n).length + Object.keys(n._fields ?? {}).length; });
 
