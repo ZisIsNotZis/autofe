@@ -24,6 +24,10 @@ const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+
 const esc = (s) => decodeEntities(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const CURRENCY_GLYPH = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP: '£' };
+// offer（提案 §4.3，用现有键、零新语法）：`_amount` 的“原价”语义必须由**显式限定词**
+// 给出——`qualifier === 'list'`（引擎**不做金额比较**，M4-a/D3）。该标记是内部语义，
+// 渲染为弱化+删除线但**绝不作为文案输出**。词表闭式化（`vocab.qualifiers`）待人类决策。
+const LIST_QUALIFIER = 'list';
 
 function fmt(v) {
   if (v === null || v === undefined) return '';
@@ -32,7 +36,9 @@ function fmt(v) {
   if ('num' in v) return esc(v.num) + (v.unit ? ` ${esc(v.unit)}` : '');
   if ('money' in v) {
     const sym = CURRENCY_GLYPH[v.currency] ?? (v.currency ? esc(v.currency) + ' ' : '');
-    return (v.qualifier ? esc(v.qualifier) + ' ' : '') + sym + esc(v.money);
+    // `list` 是内部语义标记，不是显示前缀（`from`/`起`/`订金` 等才是）
+    const prefix = v.qualifier && v.qualifier !== LIST_QUALIFIER ? esc(v.qualifier) + ' ' : '';
+    return prefix + sym + esc(v.money);
   }
   if ('date' in v) return esc(v.date);
   if ('bool' in v) return v.bool ? 'yes' : 'no';
@@ -577,6 +583,11 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     }
     if (META_KEYS.has(f.key)) { metaParts.push(factHtmlInline(f.value)); continue; }
     if (ROLE_UNIT[f.key]) { metaParts.push(roleFact(f)); continue; }   // 评分/评分数：带角色与单位，不留裸数字
+    // 显式原价事实 ⇒ 弱化（删除线）；`list` 标记不进文案（fmt 已忽略）
+    if (f.key === '_amount' && f.value?.qualifier === LIST_QUALIFIER) {
+      bodyLead += `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
+      continue;
+    }
     bodyLead += factHtml(f.value);
   }
   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
@@ -636,23 +647,31 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   const rawItems = ordered.map((c) => c.node).filter((it) => !itemsConsumed.has(it));
   // 轴分组：compare 标记的连续成员 = 被对照的实体（表），其余按各自形态（F-031-§3）。
   // D2：标记落在集合节点上等价于“它的全部成员都是对照实体”（位置无关）。
+  // P3（提案 §6 决策 3 方案 A）：连续的 `_text` 段合并为一个正文块——段落不是区块，
+  // 之间不插 `<hr class="region">`。只有**成串（≥2）**的 `_text` 才切出来；孤立的
+  // `_text` 段保持原有集合形态（避免为单个事实改动既有页面）。
   const forcedCmp = node._rel?.compare === true;
+  const isProse = rawItems.map(isProseItem);
+  const groupKind = (i) => {
+    if (forcedCmp || Boolean(rawItems[i]._rel?.compare)) return 'compare';
+    return isProse[i] && (isProse[i - 1] || isProse[i + 1]) ? 'prose' : 'plain';
+  };
   const seqGroups = [];
-  for (const it of rawItems) {
-    const cmp = forcedCmp || Boolean(it._rel?.compare);
+  for (let i = 0; i < rawItems.length; i++) {
+    const kind = groupKind(i);
     const last = seqGroups[seqGroups.length - 1];
-    if (last && last.cmp === cmp) last.items.push(it);
-    else seqGroups.push({ cmp, items: [it] });
+    if (last && last.kind === kind) last.items.push(rawItems[i]);
+    else seqGroups.push({ kind, items: [rawItems[i]] });
   }
   // 单个被标记的成员：如果它自己就是集合（标记说的是“我的成员是实体”，它自己会处理），不当作一组对比实体；
   // 如果它只是一个叶子，那就是一次落空的标记：显式记下理由，不静默变形。
   for (const g of seqGroups) {
     const it = g.items[0];
-    if (g.cmp && g.items.length === 1 && (Array.isArray(it._items) || Array.isArray(it._lines))) g.cmp = false;
+    if (g.kind === 'compare' && g.items.length === 1 && (Array.isArray(it._items) || Array.isArray(it._lines))) g.kind = 'plain';
   }
   const order = node._rel?.order;
   const groupForms = seqGroups.map((g) => {
-    if (!g.cmp) return selectForm(g.items, order);
+    if (g.kind !== 'compare') return selectForm(g.items, order);
     const verdict = compareSetVerdict(g.items);
     if (verdict.ok) return 'compare-table';
     // 不能成表：记下显式降级理由（审计输出），再按普通集合渲染
@@ -788,6 +807,7 @@ article{margin:12px 0}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0}
+.fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .chips-rows{display:block}

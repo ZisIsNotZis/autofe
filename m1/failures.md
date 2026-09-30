@@ -280,3 +280,18 @@
 2. **无 `<th>` 的表头语义丢失**：`aliyun-help/ecs-instance-families` 有 224 个 `<table>`、1340 行、**0 个 `<th>`**（表头是灰底加粗 `<td>`）。提取器的 `buildTable` 找不到 `columnheader` 行 ⇒ 返回 `null`，整张规格表被丢弃（stats 记 `table-without-headers: 217`）。即：表头语义无法从 DOM 结构化判据恢复。
 3. **表列词表爆炸 / 2 列表不能成表**：同一页的 217 张规格表共有 **76 个不同的列标签**（`实例规格` 204 次、`vCPU` 198 次……），且列是“规格属性”而非稳定域字段；用 `_fields` 逐列声明需要一次 76 条的词汇扩张（超出单轮策展的合理范围，且会成为事实上的 `table` 原语）。另外 run-table（`renderRun`）**不把 `_name` 当作列**（cols 只取 `_fields` + 非 name 事实），故“标签 + 值”这种 2 列表最多只能渲染为卡片，无法成表。这两点都由 M4-b 的 `table` 原语解决。
 - **结果**：`aliyun-help/ecs-instance-families` 本轮**未策展**（见 `.scratch/09-new-exemplar-curation/report.md`「未完成页」）。
+
+## F-047 `qualifier` 取值发散 ⇒ 本轮不收紧（M4-b1 测量，待人类决策）
+- **测量**（`m1/curated/**` + `m1/models/**` 全量，2026-10 状态）：`qualifier` 共 **10 个不同取值**：
+  `每 GB`×72、`起始价：`×8、`From`×6、`起`×4、`3.4% +`×3、`per certificate`×1、`订金`×1、`2.2% +`×1、`2.5% +`×1、`+`×1。
+- **判定**：取值数 **>6**，且语义混杂（单位前缀 `每 GB`、显示前缀 `起始价：`、起始价词 `From/起`、**费率表达式** `3.4% +`/`+`、单价 `per certificate`、订金 `订金`）⇒ **不收紧为闭式枚举**（收紧会误伤现有语料）。
+- **建议取值集**（供 M4-c 关词表时裁定，映射为语义 token + 显示映射，而非直接印 token）：
+  `list`（原价/划线价，无显示前缀）、`from`（起始价，显示 `From`/`起`）、`per-unit`（单位价，显示 `每 …`）、`per-period`（按期，显示 `/月` 等）、`tax-incl`（含税）。
+  现有的 `3.4% +` / `+` / `起始价：` / `订金` 属于**费率前缀与业务文案**，应迁到独立的事实/文案位，不能塞进这个闭式枚举。
+- **本轮处置**：不新增/不删除 `qualifier` 值（`vocab.qualifiers` 未建立），只把 `_amount` 的“原价”标记收敛到 `list`（见 F-048）。
+
+## F-048 原价（划线价）的显式标记是临时语义 token（M4-b1，待词表闭式化）
+- **背景**：M4-a/D3 删除了引擎的金额比较后，mi 系列 `<del>` 原价的视觉语义丢失（fix-report-5 §4 已记）。本轮用**现有键**恢复：`_amount` 带显式限定词 `qualifier: "list"` ⇒ 弱化为删除线（`.fact.was`）。
+- **落地**：`m1/render.mjs` 只识别 `list` 这一个显式标记，**不做任何金额比较**；标记本身是内部语义，**不渲染为文案**。`m1/curated/mi-com/{product-detail-mi15,search-earbuds,search-phone}.json` 的 `_amount` 全部改为 `{money, currency, qualifier: "list"}`。
+- **数据缺口同轮补齐**：`mi-com/search-phone` 的 7 处 `<del>` 原价（1599/1799/2799/1799/2899/2399/3899）此前因“闭式词表无 was-price 角色”被策展丢弃（curation-log-ae「was-price vocab gap (7)」），本轮按源站 `<del>` 逐值补回 `_amount`。
+- **缺口（未关）**：`list` 尚未进入任何词表文件；`vocab.qualifiers` 的闭式化 + 显示映射是**词汇变更**，需人类决策（与 F-047 同源）。在词表关闭前，`list` 是一个由引擎硬编码的临时语义 token。

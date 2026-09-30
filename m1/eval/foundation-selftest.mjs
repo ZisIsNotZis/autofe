@@ -136,15 +136,47 @@ console.log(`\n显式降级清单（compare 标记但成不了对比表）:`);
 if (!inventory.length) console.log('  （无）');
 for (const r of inventory) console.log('  · ' + r);
 
-// ---- D3: the renderer does no money arithmetic ------------------------------
+// ---- D3: the renderer does no money arithmetic (offer behavior is fact-driven) ----
 const src = fs.readFileSync(path.join(root, 'm1/render.mjs'), 'utf8');
-check('D3 the renderer compares no money values', !/\.money\s*[<>]/.test(src));
+check('D3 the renderer compares no money values', !/\.money\s*[<>]/.test(src) && !/>\s*node\._price/.test(src));
+
+// ---- offer (proposal §4.3): the list-price semantics come from an explicit fact --
+// `_amount` renders struck through **iff** it carries the explicit qualifier `list`;
+// the renderer never compares amounts. The marker itself is internal, never copy.
+const offerModel = (amountQualifier) => ({
+  _intent: 'offer', _title: { text: 'Offer' },
+  _price: { money: 100, currency: 'CNY' },
+  ...(amountQualifier ? { _amount: { money: 200, currency: 'CNY', qualifier: amountQualifier } } : {}),
+  _duration: { num: 24, unit: '期' },
+  _detail: { text: 'CONDITION COPY' },
+});
+const withList = render(offerModel('list'));
+check('offer an explicit list qualifier renders the struck-through price', withList.includes('<div class="fact was">') && withList.includes('¥200'));
+check('offer the marker itself is never printed as copy', !withList.includes('list ¥200') && !/class="val">list/.test(withList));
+check('offer without a qualifier there is no strike-through', !render(offerModel(null)).includes('class="fact was"'));
+check('offer a non-list qualifier is not a was-price (gov-uk “per certificate”)', !render(offerModel('per certificate')).includes('class="fact was"'));
+check('offer `_duration` renders the period from the model fact', withList.includes('24 期'));
+check('offer changing the fact changes the rendered period', render({ ...offerModel('list'), _duration: { num: 12, unit: '期' } }).includes('12 期'));
+check('offer `_detail` renders as the condition copy', withList.includes('CONDITION COPY'));
 const EARBUDS = JSON.parse(fs.readFileSync(path.join(root, 'm1/curated/mi-com/search-earbuds.json'), 'utf8'));
 const ear = render(EARBUDS);
 const amounts = [];
 (function walk(n) { for (const [k, v] of Object.entries(n)) { if (k === '_amount' && v?.money !== undefined) amounts.push(String(v.money)); else if (v && typeof v === 'object') walk(v); } })(EARBUDS);
-check('D3 `_amount` facts still render (as plain facts)', amounts.length > 0 && amounts.every((m) => ear.includes(m)));
-check('D3 no strike-through branch survives', !/class="fact was"/.test(ear));
+check('offer mi was-prices render (explicit fact, no amount comparison)',
+  amounts.length > 0 && amounts.every((m) => ear.includes(m)) && (ear.match(/class="fact was"/g) || []).length === amounts.length);
+
+// ---- P3 (proposal §6 decision 3, plan A): consecutive `_text` merge ----------
+const proseMix = { _intent: 'prose', _title: { text: 'Article' }, _lines: [
+  { _text: { text: 'para one' } }, { _text: { text: 'para two' } },
+  { _text: { text: 'a metadata line' }, _action: { verb: 'open', label: 'link', to: '/x' } },
+  { _text: { text: 'para three' } }, { _text: { text: 'para four' } },
+]};
+const pm = render(proseMix);
+check('P3 consecutive `_text` segments merge into one body block', pm.includes('<div class="prose"><p>para one</p><p>para two</p></div>'));
+check('P3 no region rule between merged paragraphs', pm.includes('para one</p><p>para two'));
+check('P3 an interrupted run starts a second body block', pm.includes('<p>para three</p><p>para four</p>'));
+const loneText = { _intent: 'lone', _title: { text: 't' }, _lines: [{ _text: { text: 'solo' } }, { _name: { text: 'Item' } }] };
+check('P3 a lone `_text` segment keeps the collection form (no prose split)', !render(loneText).includes('<div class="prose">'));
 
 console.log(`\n地基自测: ${bad === 0 ? '全部通过' : `待修 ${bad}`}`);
 process.exit(bad ? 1 : 0);

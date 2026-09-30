@@ -66,7 +66,7 @@
   "k": "apple-com-cn/iphone-17",
   "autoHigh": 21,
   "fid": 1,
-  "facts": "172/172",
+  "facts": "173/173",
   "high": 99,
   "med": 40,
   "missing": []
@@ -84,7 +84,7 @@
   "k": "apple-com/ipad-air",
   "autoHigh": 32,
   "fid": 1,
-  "facts": "114/114",
+  "facts": "115/115",
   "high": 57,
   "med": 38,
   "missing": []
@@ -102,9 +102,18 @@
   "k": "apple-com/macbook-air",
   "autoHigh": 31,
   "fid": 1,
-  "facts": "166/166",
+  "facts": "167/167",
   "high": 63,
   "med": 41,
+  "missing": []
+ },
+ {
+  "k": "aws-amazon/ec2-on-demand",
+  "autoHigh": 80,
+  "fid": 1,
+  "facts": "154/154",
+  "high": 74,
+  "med": 17,
   "missing": []
  },
  {
@@ -132,6 +141,24 @@
   "facts": "154/154",
   "high": 17,
   "med": 0,
+  "missing": []
+ },
+ {
+  "k": "github-com/login",
+  "autoHigh": 0,
+  "fid": 1,
+  "facts": "9/9",
+  "high": 0,
+  "med": 0,
+  "missing": []
+ },
+ {
+  "k": "gov-uk/ni-rates-letters",
+  "autoHigh": 36,
+  "fid": 1,
+  "facts": "146/146",
+  "high": 34,
+  "med": 14,
   "missing": []
  },
  {
@@ -228,7 +255,7 @@
   "k": "mi-com/search-phone",
   "autoHigh": 0,
   "fid": 1,
-  "facts": "85/85",
+  "facts": "92/92",
   "high": 63,
   "med": 0,
   "missing": []
@@ -306,6 +333,15 @@
   "missing": []
  },
  {
+  "k": "stripe-dashboard/login",
+  "autoHigh": 0,
+  "fid": 1,
+  "facts": "11/11",
+  "high": 0,
+  "med": 0,
+  "missing": []
+ },
+ {
   "k": "stripe-docs/payments",
   "autoHigh": 0,
   "fid": 1,
@@ -320,6 +356,15 @@
   "fid": 1,
   "facts": "136/136",
   "high": 13,
+  "med": 0,
+  "missing": []
+ },
+ {
+  "k": "xiaomi-account/login",
+  "autoHigh": 1,
+  "fid": 1,
+  "facts": "15/15",
+  "high": 1,
   "med": 0,
   "missing": []
  }
