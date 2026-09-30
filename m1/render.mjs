@@ -59,14 +59,21 @@ function discoverRuns(orderedChildren) {
 function isLabelOnlyItem(it) {
   return factsOf(it).every((f) => ['_name', '_title'].includes(f.key)) && !it._fields && childrenOf(it).length === 0;
 }
+function isImageOnlyItem(it) {
+  return Boolean(it._image) && childrenOf(it).length === 0
+    && factsOf(it).every((f) => f.key === '_image');
+}
 function isProseItem(it) {
   const f = factsOf(it);
   return f.length > 0 && f.every((x) => x.key === '_text') && !it._fields && childrenOf(it).length === 0 && !it._action;
 }
 function selectForm(items) {
   if (!items.length) return 'none';
+  if (items.every(isImageOnlyItem)) return 'image-strip';   // 图像主导 ⇒ 满幅（F-031-§7）
   if (items.every(isProseItem)) return 'prose';
   if (items.some((it) => it._fields && Object.keys(it._fields).length)) return 'table';
+  if (items.every((it) => it._action && isLabelOnlyItem(it))) return 'controls';
+  if (!comparable(items)) return 'stack';
   if (items.every(isLabelOnlyItem)) {
     // long sentence labels are a list of links/questions, not filter chips (F-030)
     const long = items.every((it) => {
@@ -100,12 +107,53 @@ function renderList(items) {
   }).join('');
   return lis ? `<ul class="linklist">${lis}</ul>` : '';
 }
+function renderImageStrip(items) {
+  return items.map((it) => `<figure class="strip"><img src="${esc(it._image.image)}" alt="${esc(it._image.alt || '')}"></figure>`).join('');
+}
 function renderProse(items) {
   return `<div class="prose">${items.map((it) => {
     const t = labelOf(it);
     return t ? `<p>${fmt(t)}</p>` : '';
   }).join('')}</div>`;
 }
+
+// ---- 轴语义：可比性闸门（F-031）--------------------------------------------
+function jaccardOf(a, b) {
+  if (!a.length || !b.length) return 0;
+  const inter = a.filter((k) => b.includes(k)).length;
+  return inter / new Set([...a, ...b]).size;
+}
+function shapeKeys(it) {
+  const ks = factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key);
+  for (const c of childrenOf(it)) ks.push('#' + c.key.replace(/\[\d+\]$/, ''));
+  if (it._image) ks.push('#image');
+  if (it._action) ks.push('#action');
+  return [...new Set(ks)].sort();
+}
+function textLenOf(it) {
+  let n = 0;
+  const own = it._name ?? it._title ?? it._text;
+  if (own?.text) n += own.text.length;
+  for (const f of factsOf(it)) {
+    if (['_name', '_title'].includes(f.key)) continue;
+    if (f.value?.text) n += f.value.text.length;
+    if (f.value?.list) n += JSON.stringify(f.value.list).length;
+  }
+  return n;
+}
+// 一行 = 可比：同形 + 同粒度 + 紧凑。任一不满足即序列（堆叠）
+function comparable(items) {
+  if (items.length < 2) return false;
+  if (items.every(isLabelOnlyItem)) return true;
+  const ks = items.map(shapeKeys);
+  const sims = ks.map((k) => ks.reduce((a, b) => a + jaccardOf(k, b), 0) / ks.length);
+  const avgSim = sims.reduce((a, b) => a + b, 0) / sims.length;
+  const lens = items.map(textLenOf);
+  const maxLen = Math.max(...lens), minLen = Math.min(...lens);
+  const childCounts = items.map((it) => childrenOf(it).length);
+  return avgSim >= 0.6 && maxLen <= 400 && (minLen === 0 || maxLen / Math.max(minLen, 40) <= 4) && Math.max(...childCounts) <= 2;
+}
+
 function renderChips(items) {
   const chips = items.map((it) => {
     const v = labelOf(it);
@@ -188,6 +236,100 @@ function renderSelectTable(items, exp, chain, hide, ctx) {
 }
 
 const hasTarget = (a) => Boolean(a?.to) && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'));
+
+
+function renderForm(form, items, chain, hide, ctx, depth, node) {
+  if (form === 'compare-table') return renderCompareTable(items, chain, hide, ctx);
+  if (form === 'chips') return renderChips(items);
+  if (form === 'list') return renderList(items);
+  if (form === 'controls') return renderControls(items);
+  if (form === 'stack') return renderStack(items, chain, hide, ctx, depth);
+  if (form === 'image-strip') return renderImageStrip(items);
+  if (form === 'prose') return renderProse(items);
+  if (form === 'deflist') return renderDeflist(items);
+  if (form === 'accordion') return renderAccordion(items, chain, hide, ctx);
+  if (form === 'table') {
+    let out = renderRun(items.map((it) => ({ key: '_items[x]', node: it })), chain, hide, ctx);
+    if ((node._items ?? []).length === 0 && node._empty) out += renderNode(node._empty, [...chain, node], false, hide, ctx, depth + 1);
+    return out;
+  }
+  const cls = form === 'product-cards' ? 'cards product-cards' : 'cards';
+  const cards = items.map((it) => {
+    const inner = renderNode(it, [...chain, node], false, hide, ctx, depth + 1);
+    return inner ? `<div class="item">${inner}</div>` : '';
+  }).join('');
+  return cards ? `<div class="${cls}">${cards}</div>` : '';
+}
+
+// 序列：不可比的区块各自成立，各带标题；无标题块用区域分隔（F-031-§1/§5）
+function renderStack(items, chain, hide, ctx, depth) {
+  let out = '';
+  let prevHadTitle = false;
+  for (const it of items) {
+    const inner = renderNode(it, [...chain], false, hide, ctx, depth + 1);
+    if (!inner) continue;
+    const hasTitle = Boolean(it._title || it._name || it._text);
+    if (!hasTitle && prevHadTitle) out += '<hr class="region">';
+    out += `<section class="block">${inner}</section>`;
+    prevHadTitle = hasTitle;
+  }
+  return out;
+}
+// 控件条：_action-only 成员是控件，不是内容（F-031-§4）
+function renderControls(items) {
+  const btns = items.map((it) => {
+    const v = labelOf(it);
+    const label = v ? fmt(v) : '';
+    if (!label) return '';
+    return hasTarget(it._action)
+      ? `<a class="ctl" href="${esc(it._action.to)}">${label}</a>`
+      : `<span class="ctl" data-verb="${esc(it._action?.verb ?? '')}">${label}</span>`;
+  }).join('');
+  return btns ? `<div class="controls">${btns}</div>` : '';
+}
+// 横向对比：列 = 实体，行 = 属性；不换行，可横向滚动（F-031-§3）
+function renderCompareTable(items, chain, hide, ctx) {
+  const rowKeys = [];
+  const seen = new Set();
+  for (const it of items) {
+    for (const f of factsOf(it)) {
+      if (['_name', '_title', '_tag', '_price', '_subtitle'].includes(f.key)) continue;
+      if (!seen.has(f.key)) { seen.add(f.key); rowKeys.push(f.key); }
+    }
+    for (const c of childrenOf(it)) {
+      if (!seen.has(c.key)) { seen.add(c.key); rowKeys.push(c.key); }
+    }
+  }
+  const cellOf = (it, key) => {
+    if (it._fields?.[key]) return fmt(it._fields[key]);
+    const f = factsOf(it).find((x) => x.key === key);
+    if (f) return fmt(f.value);
+    const c = childrenOf(it).find((x) => x.key === key) ?? childrenOf(it).find((x) => x.key.replace(/\[\d+\]$/, '') === key);
+    if (!c) return '';
+    const node = c.node;
+    const only = node._detail ?? node._text ?? node._name ?? node._title;
+    const rich = (node._items ?? []).length > 0
+      || Object.keys(node._fields ?? {}).length > 0
+      || childrenOf(node).some((x) => !x.key.startsWith('_items['))
+      || factsOf(node).length > 1;
+    if (only && !rich) return fmt(only);
+    return renderNode(node, [...chain, it], false, hide, ctx, 4);
+  };
+  const head = `<tr><th class="cmp-row">${esc(items[0]._name ? '' : '')}</th>${items.map((it) => {
+    const name = it._name ?? it._title;
+    const tag = it._tag ? `<span class="cmp-tag">${fmt(it._tag)}</span>` : '';
+    const price = it._price ? `<div class="cmp-price">${fmt(it._price)}</div>` : '';
+    const sum = (it._summary ? `<div class="cmp-sub">${fmt(it._summary)}</div>` : '')
+      + (it._subtitle ? `<div class="cmp-sub">${fmt(it._subtitle)}</div>` : '');
+    return `<th class="cmp-col">${name ? fmt(name) : ''}${tag}${price}${sum}</th>`;
+  }).join('')}</tr>`;
+  const body = rowKeys.map((key) => {
+    const label = FIELDS[key]?.label ?? key.replace(/^_/, '').replace(/\[\d+\]$/, '');
+    return `<tr><th class="cmp-row">${esc(label)}</th>${items.map((it) => `<td class="cmp-cell">${cellOf(it, key)}</td>`).join('')}</tr>`;
+  }).join('');
+  return `<div class="cmp-scroll"><table class="cmp-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
+}
+
 const actionHtml = (a) => {
   const copy = a.label ?? a.verb;
   if (!copy && !a.label) return '';   // icon-only link with no captured label: nothing to say
@@ -209,6 +351,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   // explicit labeled actions; label-less navigate/open lowers to the element's own link (F-020)
   let action = '';
   let linkTo = null;
+  let titleIsControl = false;
   if (node._action) {
     let show = true;
     if (typeof node._action.when === 'string') {
@@ -217,11 +360,18 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     }
     if (show) {
       const a = node._action;
+      const titleTxt = headingKey ? (node[headingKey]?.text ?? '') : '';
+      if (a.label && titleTxt && a.label === titleTxt) {
+        // the block's own heading is the control: render it as such, once (F-031-§4)
+        linkTo = hasTarget(a) ? a.to : null;
+        titleIsControl = true;
+      } else {
       const labelless = !a.label && ['navigate', 'open'].includes(a.verb);
       if (labelless && a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))) {
         linkTo = a.to;
       } else {
         action = actionHtml(a);
+      }
       }
     }
   }
@@ -296,16 +446,35 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   } else if (exp) {
     const lbl = node._label ? fmt(node._label) : esc(exp.name);
     const hint = node._summary ? `<span class="hint">${fmt(node._summary)}</span>` : '';
-    body += `<label class="expose expose-${esc(exp.name)}"><span class="deflabel">${lbl}</span>${hint}<input type="text" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></label>`;
+    const itype = exp.type === 'date' ? 'date' : (exp.type === 'time' ? 'datetime-local' : (exp.type === 'num' ? 'number' : 'text'));
+    body += `<span class="expose expose-${esc(exp.name)}"><span class="deflabel">${lbl}</span>${hint}<input type="${itype}" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></span>`;
   }
 
   // every sibling block item renders in ONE form; nothing renders twice (T-103)
   const rawItems = ordered.map((c) => c.node).filter((it) => !itemsConsumed.has(it));
-  const form = rawItems.length ? selectForm(rawItems) : 'none';
+  // 轴分组：compare 标记的连续成员 = 被对照的实体（表），其余按各自形态（F-031-§3）
+  const seqGroups = [];
+  for (const it of rawItems) {
+    const cmp = Boolean(it._rel?.compare);
+    const last = seqGroups[seqGroups.length - 1];
+    if (last && last.cmp === cmp) last.items.push(it);
+    else seqGroups.push({ cmp, items: [it] });
+  }
+  for (const g of seqGroups) {
+    const form = g.cmp && g.items.length >= 2 ? 'compare-table' : selectForm(g.items);
+    body += renderForm(form, g.items, chain, hide, ctx, depth, node);
+  }
+  if (false) {
   if (form === 'chips') {
     body += renderChips(rawItems, chain, hide, ctx);
   } else if (form === 'list') {
     body += renderList(rawItems);
+  } else if (form === 'compare-table') {
+    body += renderCompareTable(rawItems, chain, hide, ctx);
+  } else if (form === 'controls') {
+    body += renderControls(rawItems);
+  } else if (form === 'stack') {
+    body += renderStack(rawItems, chain, hide, ctx, depth);
   } else if (form === 'prose') {
     body += renderProse(rawItems);
   } else if (form === 'deflist') {
@@ -321,6 +490,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
       return inner ? `<div class="item">${inner}</div>` : '';
     }).join('');
     if (cards) body += `<div class="cards${form === 'product-cards' ? ' product-cards' : ''}">${cards}</div>`;
+  }
   }
   rawItems.forEach((it) => itemsConsumed.add(it));
 
@@ -355,8 +525,10 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   const headingTag = depth === 0 ? 'h1' : `h${headingLevel}`;
   let head = '';
   if (titleText) {
-    const t = linkTo ? `<a class="self-link" href="${esc(linkTo)}">${titleText}</a>` : titleText;
-    head = `<${headingTag} class="title">${t}</${headingTag}>`;
+    const t = titleIsControl
+      ? (linkTo ? `<a class="ctl" href="${esc(linkTo)}">${titleText}</a>` : `<span class="ctl">${titleText}</span>`)
+      : (linkTo ? `<a class="self-link" href="${esc(linkTo)}">${titleText}</a>` : titleText);
+    head = `<${headingTag} class="title${titleIsControl ? ' title-control' : ''}">${t}</${headingTag}>`;
   }
 
   const anchorId = node._key ? ` id="${esc(String(node._key).replace(/[^A-Za-z0-9_-]/g, '-'))}"` : '';
@@ -389,12 +561,12 @@ h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
 .hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
 article{margin:12px 0}
-.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;align-items:start}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;align-items:start}
 .compare>.node{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
@@ -402,7 +574,29 @@ article{margin:12px 0}
 .cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
 .action-plain{color:#4a5a68;font-size:.95em}
 .promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
-.prose p{margin:.5em 0;line-height:1.75}
+.prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
+/* F-031-§7 图像主导页：满幅图带 */
+.strip{margin:0;padding:0}
+.strip img{width:100%;height:auto;display:block}
+main>.node>.strip:first-child,article>.strip{margin:0}
+/* F-031: 序列区块（不可比内容各自成立） */
+.block{margin:18px 0;padding:0 0 6px}
+.block>.node{max-width:none}
+hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
+/* F-031-§4 控件条 */
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
+a.ctl{font-weight:600}
+a.ctl:hover{background:#f2f7ff}
+/* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
+.cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
+.cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
+.cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
+.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
+.cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
+.cmp-price{font-weight:700;margin-top:4px}
+.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
 .linklist{margin:8px 0;padding-left:1.1em;columns:2;column-gap:28px}
 .linklist li{margin:5px 0;line-height:1.5}
 .linklist a{color:#0b62d0}

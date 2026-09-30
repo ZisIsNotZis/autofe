@@ -11,6 +11,7 @@ import {
 } from './model-lib.mjs';
 
 export function validate(model) {
+  // _expose.type must be a known value type, else it silently becomes plain text (F-031)
   const errors = [];
   const err = (p, msg) => errors.push({ path: p || '/', message: msg });
   const keysSeenByKeyValue = new Map();

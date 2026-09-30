@@ -14,12 +14,12 @@ h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
 .hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
 article{margin:12px 0}
-.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;align-items:start}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;align-items:start}
 .compare>.node{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
@@ -27,7 +27,29 @@ article{margin:12px 0}
 .cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
 .action-plain{color:#4a5a68;font-size:.95em}
 .promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
-.prose p{margin:.5em 0;line-height:1.75}
+.prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
+/* F-031-§7 图像主导页：满幅图带 */
+.strip{margin:0;padding:0}
+.strip img{width:100%;height:auto;display:block}
+main>.node>.strip:first-child,article>.strip{margin:0}
+/* F-031: 序列区块（不可比内容各自成立） */
+.block{margin:18px 0;padding:0 0 6px}
+.block>.node{max-width:none}
+hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
+/* F-031-§4 控件条 */
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
+a.ctl{font-weight:600}
+a.ctl:hover{background:#f2f7ff}
+/* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
+.cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
+.cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
+.cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
+.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
+.cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
+.cmp-price{font-weight:700;margin-top:4px}
+.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
 .linklist{margin:8px 0;padding-left:1.1em;columns:2;column-gap:28px}
 .linklist li{margin:5px 0;line-height:1.5}
 .linklist a{color:#0b62d0}
@@ -61,4 +83,4 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 </style></head>
-<body><main><article id="grafana-play-stats-dashboard" class="node depth-0"><h1 class="title">Stats</h1><section class="group g-toolbar"><article class="node depth-1"><div class="fact"><span class="val">Time range selected: Last 6 hours</span></div><div class="chips"><span class="chip-item">Last 6 hours</span><span class="chip-item">Refresh</span><span class="chip-item">Enter edit mode</span></div></article></section><section class="group g-banners"><article class="node depth-1"><ul class="linklist"><li><a href="https://grafana.com/auth/sign-up/create-user?pg=play">Want to build a dashboard like this? Get started fast with the Grafana Cloud free tier!</a></li><li><a href="https://grafana.com/docs/learning-journeys/?src=play&amp;camp=learning-journey-button">Learn about Grafana through our Learning Journeys</a></li></ul></article></section><section class="group g-panels"><article class="node depth-1"><div class="chips"><span class="chip-item">Introduction</span><span class="chip-item">Color background</span><span class="chip-item">The Basics</span><span class="chip-item">Color value</span><span class="chip-item">Horizontal with graph</span><span class="chip-item">Horizontal</span><span class="chip-item">Text mode name</span><span class="chip-item">Auto grid</span><span class="chip-item">Value only</span><span class="chip-item">No text</span><span class="chip-item">Emoji in stat names</span></div></article></section></article></main></body></html>
+<body><main><article id="grafana-play-stats-dashboard" class="node depth-0"><h1 class="title">Stats</h1><section class="group g-toolbar"><article class="node depth-1"><div class="fact"><span class="val">Time range selected: Last 6 hours</span></div><div class="controls"><span class="ctl" data-verb="operate">Last 6 hours</span><span class="ctl" data-verb="operate">Refresh</span><span class="ctl" data-verb="operate">Enter edit mode</span></div></article></section><section class="group g-banners"><article class="node depth-1"><div class="controls"><a class="ctl" href="https://grafana.com/auth/sign-up/create-user?pg=play">Want to build a dashboard like this? Get started fast with the Grafana Cloud free tier!</a><a class="ctl" href="https://grafana.com/docs/learning-journeys/?src=play&amp;camp=learning-journey-button">Learn about Grafana through our Learning Journeys</a></div></article></section><section class="group g-panels"><article class="node depth-1"><div class="chips"><span class="chip-item">Introduction</span><span class="chip-item">Color background</span><span class="chip-item">The Basics</span><span class="chip-item">Color value</span><span class="chip-item">Horizontal with graph</span><span class="chip-item">Horizontal</span><span class="chip-item">Text mode name</span><span class="chip-item">Auto grid</span><span class="chip-item">Value only</span><span class="chip-item">No text</span><span class="chip-item">Emoji in stat names</span></div></article></section></article></main></body></html>

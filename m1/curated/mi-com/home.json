@@ -1,15 +1,83 @@
 {
-  "_intent": "小米官网首页的身份与主张：以人为中心，构建人车家全生态。本次采集的首屏 7 张产品大图（SKYNOMAD 小米澎程、Xiaomi 18 Fold、Xiaomi 17 Ultra、Pad 9 Pro Max、REDMI Turbo 5 Max、Smart Band 10 Pro、Sound 2 Max）只有像素、没有任何 DOM/节点文本背书，按 F-025 不从截图转写",
-  "_key": "mi-home",
+ "_intent": "小米官网首页的身份与主张：以人为中心，构建人车家全生态。本次采集的首屏 7 张产品大图（SKYNOMAD 小米澎程、Xiaomi 18 Fold、Xiaomi 17 Ultra、Pad 9 Pro Max、REDMI Turbo 5 Max、Smart Band 10 Pro、Sound 2 Max）只有像素、没有任何 DOM/节点文本背书，按 F-025 不从截图转写",
+ "_key": "mi-home",
+ "_title": {
+  "text": "Xiaomi官方网站 | 以人为中心，构建“人车家全生态”"
+ },
+ "_summary": {
+  "text": "让全球每个人都能享受科技带来的美好生活"
+ },
+ "_primary": "_title",
+ "_image": {
+  "_image": "../assets/mi-home-band1.png",
+  "alt": ""
+ },
+ "showcase": {
+  "_intent": "首屏至页尾的满幅图带：源站为全宽图片展示（10 张 1440x608/664），DOM 无文本背书，按 F-025 不转写文字，仅按抓取 bbox 裁切复原",
   "_title": {
-    "text": "Xiaomi官方网站 | 以人为中心，构建“人车家全生态”"
+   "text": "以人为中心，构建“人车家全生态”"
   },
-  "_summary": {
-    "text": "让全球每个人都能享受科技带来的美好生活"
-  },
-  "_primary": "_summary",
-  "_image": {
-    "image": "../assets/mi-com-home-hero.png",
-    "alt": "小米首页主视觉横幅（自原页截图恢复）"
-  }
+  "_items": [
+   {
+    "_image": {
+     "image": "../assets/mi-home-band1.png",
+     "alt": ""
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi-home-band2.png",
+     "alt": ""
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi-home-band3.png",
+     "alt": ""
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi-home-band4.png",
+     "alt": ""
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi-home-band5.png",
+     "alt": ""
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi-home-band6.png",
+     "alt": ""
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi-home-band7.png",
+     "alt": ""
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi-home-band8.png",
+     "alt": ""
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi-home-band9.png",
+     "alt": ""
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi-home-band10.png",
+     "alt": ""
+    }
+   }
+  ]
+ }
 }

@@ -14,12 +14,12 @@ h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
 .hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
 article{margin:12px 0}
-.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;align-items:start}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;align-items:start}
 .compare>.node{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
@@ -27,7 +27,29 @@ article{margin:12px 0}
 .cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
 .action-plain{color:#4a5a68;font-size:.95em}
 .promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
-.prose p{margin:.5em 0;line-height:1.75}
+.prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
+/* F-031-§7 图像主导页：满幅图带 */
+.strip{margin:0;padding:0}
+.strip img{width:100%;height:auto;display:block}
+main>.node>.strip:first-child,article>.strip{margin:0}
+/* F-031: 序列区块（不可比内容各自成立） */
+.block{margin:18px 0;padding:0 0 6px}
+.block>.node{max-width:none}
+hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
+/* F-031-§4 控件条 */
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
+a.ctl{font-weight:600}
+a.ctl:hover{background:#f2f7ff}
+/* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
+.cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
+.cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
+.cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
+.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
+.cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
+.cmp-price{font-weight:700;margin-top:4px}
+.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
 .linklist{margin:8px 0;padding-left:1.1em;columns:2;column-gap:28px}
 .linklist li{margin:5px 0;line-height:1.5}
 .linklist a{color:#0b62d0}
@@ -61,4 +83,4 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 </style></head>
-<body><main><article id="mi-home" class="node depth-0"><h1 class="title">Xiaomi官方网站 | 以人为中心，构建“人车家全生态”</h1><div class="fact"><span class="val"><img src="../assets/mi-com-home-hero.png" alt="小米首页主视觉横幅（自原页截图恢复）"></span></div><div class="hero fact-hero"><div class="fact"><span class="val">让全球每个人都能享受科技带来的美好生活</span></div></div></article></main></body></html>
+<body><main><article id="mi-home" class="node depth-0"><h1 class="title">Xiaomi官方网站 | 以人为中心，构建“人车家全生态”</h1><div class="fact"><span class="val">让全球每个人都能享受科技带来的美好生活</span></div><div class="fact"><span class="val">{&quot;_image&quot;:&quot;../assets/mi-home-band1.png&quot;,&quot;alt&quot;:&quot;&quot;}</span></div><div class="hero fact-hero"><div class="fact"><span class="val">Xiaomi官方网站 | 以人为中心，构建“人车家全生态”</span></div></div><section class="group g-showcase"><article class="node depth-1"><h2 class="title">以人为中心，构建“人车家全生态”</h2><figure class="strip"><img src="../assets/mi-home-band1.png" alt=""></figure><figure class="strip"><img src="../assets/mi-home-band2.png" alt=""></figure><figure class="strip"><img src="../assets/mi-home-band3.png" alt=""></figure><figure class="strip"><img src="../assets/mi-home-band4.png" alt=""></figure><figure class="strip"><img src="../assets/mi-home-band5.png" alt=""></figure><figure class="strip"><img src="../assets/mi-home-band6.png" alt=""></figure><figure class="strip"><img src="../assets/mi-home-band7.png" alt=""></figure><figure class="strip"><img src="../assets/mi-home-band8.png" alt=""></figure><figure class="strip"><img src="../assets/mi-home-band9.png" alt=""></figure><figure class="strip"><img src="../assets/mi-home-band10.png" alt=""></figure></article></section></article></main></body></html>
