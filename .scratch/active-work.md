@@ -1,10 +1,22 @@
 # 活跃工作（父代理维护 · 供跨会话接续）
 
 ## 当前：06 · 视觉复核与缺陷闭环（自主推进中）
-- 工作流 `3cecb3d8-0338-4eee-ab95-a101693e675b`（async，后台）：P1 四个视觉复核 → P2 修复 → P3 独立验收
-- 任务书：`.scratch/06-visual-review/spec.md`；产出：`findings-1..4.md`、`fix-report.md`、`verification.md`
-- 交接判据：`node m1/eval/pipeline.mjs` 必须输出 **36/36 保真 1.00** 且 **视觉自查 36/36 干净**；`m1/eval/m3-final.json` 是当前度量快照
-- 编排资产：`m1/eval/pipeline.mjs`（渲染+度量+审计+截图+画廊）、`m1/eval/audit-visual.mjs`（9 类检查）、`docs/m1/layout-axes.md`（F-031 轴语义）
+- **发现已归档**：`.scratch/06-visual-review/findings-1..4.md`（**12 blocker / 31 major / 52 minor**），提交 `77cf57a`
+- **根因族（本轮修复主线）**
+  - R1（blocker）promo 分支吞掉控件节点：`bareTitle` 命中了 `titleIsControl` 的节点 → CTA 变成浅灰空横幅且丢链接（36kr 站内搜索、taobao 重置、huawei 购买×45、mi15 四控件、apple Continue/Save for later、linear Contact sales）
+  - R2（blocker）内部动词泄漏：`a.label ?? a.verb` 把 `buy`/`operate` 印到界面（aliyun product-ecs、sspai 文章页）
+  - R3（blocker，采集/模型）B 站首页横幅裁错了区域（裁到顶部导航条截图）
+  - R4（blocker，渲染/模型）grafana play-home：11 个面板名连成一句、面板体丢失
+  - R5（blocker，渲染）mi15「用户评价」入口（`_action`-only 子节点）被静默丢弃
+  - R6（blocker，模型）taobao 四个会场区块渲染成只有价格的空卡片
+  - R7（major 族）`_brand` 重复渲染、对比表行标题印英文键（display/chip/camera）、评分分布挤成一行、裸数字无标签单位、`order: time` 无序感、日期未本地化、deflist 空标签列、无标题尾块缺区域分隔
+- **分轮执行（单写入者，40 分钟一轮，防超时）**：
+  1. `fix-1`（运行中，worker `43a0ee08`）：R1 + R2 (+ deflist 空标签列 / `_brand` 重复) → 产出 `fix-report-1.md`
+  2. `fix-2`：R4/R5/R7 渲染器族
+  3. `fix-3`：R3/R6 + 其它模型侧（airbnb 图墙 alt 串、重复评分事实、ipad-air 行内实体+属性）
+  4. `verify`：fresh 视角独立验收（跑门禁 + 独立看图复验 ≥8 页）→ `verification.md`
+- **每轮硬判据**：`node m1/eval/pipeline.mjs` → 36/36 保真 1.00 且 视觉自查 36/36 干净；模型改动必须过 `m1/validate.mjs`
+- **教训**：100 分钟单轮修复必然超时——改为 40 分钟分片 + 每片先落盘报告
 
 ## 基线（本轮开始时）
 - 36/36 事实保真 1.00；视觉自查 36/36 干净；42/42 模型校验通过；最新提交 `4f62c2e`
