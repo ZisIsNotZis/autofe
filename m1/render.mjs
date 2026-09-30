@@ -1,18 +1,22 @@
 // Minimal deterministic renderer for AutoFE M1 axioms v0 (§9 contract).
 // Pure function: same model + context => byte-identical HTML. No AI, no network, no clock.
-// Hierarchy: root title = H1, top-level storyline headings = H2, deeper = H3+.
-// Group nodes without _title render their _intent as the heading (it IS the
-// storyline's heading when no title exists). Presentation forms (table/cards/
-// checklist/aside) are chosen here by heuristics (F-018); the model never
-// names a presentation form.
+//
+// Form selection (F-030): the model says what item sets ARE; the renderer picks
+// the form — table (typed field sets), chips (label-only lists/menus/credits),
+// product cards (priced items), deflist (name + one detail), accordion (Q&A).
+// No ✓ markers: a checkmark means "included/done" and item sets are not that.
+// Hierarchy: root title H1; depth-1 storyline headings H2; deeper H3+.
+// _intent is internal planning copy and is NEVER rendered (F-029/F1).
 // Usage: node m1/render.mjs <model.json> [out.html]
 import fs from 'node:fs';
 import {
-  isRoleKey, roleOf, resolvePath, resolveWithParent, childrenOf, factsOf,
+  isRoleKey, resolvePath, resolveWithParent, childrenOf, factsOf,
   parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
 } from './model-lib.mjs';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+const CURRENCY_GLYPH = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP: '£' };
 
 function fmt(v) {
   if (v === null || v === undefined) return '';
@@ -20,7 +24,7 @@ function fmt(v) {
   if ('text' in v) return esc(v.text);
   if ('num' in v) return esc(v.num) + (v.unit ? ` ${esc(v.unit)}` : '');
   if ('money' in v) {
-    const sym = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP: '£' }[v.currency] ?? (v.currency ? esc(v.currency) + ' ' : '');
+    const sym = CURRENCY_GLYPH[v.currency] ?? (v.currency ? esc(v.currency) + ' ' : '');
     return (v.qualifier ? esc(v.qualifier) + ' ' : '') + sym + esc(v.money);
   }
   if ('date' in v) return esc(v.date);
@@ -28,12 +32,12 @@ function fmt(v) {
   if ('icon' in v) return esc(v.icon);
   if ('video' in v) return `<a href="${esc(v.video)}">video</a>`;
   if ('image' in v) return `<img src="${esc(v.image)}" alt="${esc(v.alt ?? '')}">`;
-  if ('ref' in v) return `<span class="ref">${esc(v.ref)}</span>`;
+  if ('ref' in v) return `<a class="ref" href="#${esc(String(v.ref).replace(/^key:/, '').replace(/[^A-Za-z0-9_-]/g, '-'))}">${esc(v.ref)}</a>`;
   return esc(JSON.stringify(v));
 }
 const factHtml = (v) => `<div class="fact"><span class="val">${fmt(v)}</span></div>`;
 
-// ---- engine heuristic (F-018): discover homogeneous runs among siblings ----
+// ---- engine heuristic (F-018): homogeneous runs by field-shape similarity ----
 const fieldKeys = (n) => Object.keys(n._fields ?? {});
 function similar(a, b) {
   const ka = fieldKeys(a), kb = fieldKeys(b);
@@ -50,28 +54,57 @@ function discoverRuns(orderedChildren) {
   if (run.length >= 2) runs.push(run);
   return runs;
 }
-// simple-shape items => checklist form (name/detail pairs, no nested structure)
-function isChecklist(items) {
-  if (!items || items.length < 3) return false;
-  return items.every((it) => {
-    const f = factsOf(it).filter((x) => !['_title', '_name'].includes(x.key));
-    return !it._fields && childrenOf(it).length === 0 && factsOf(it).length >= 1 && factsOf(it).length <= 2;
-  });
+
+// ---- item-set form selection (F-030) ---------------------------------------
+function isLabelOnlyItem(it) {
+  return factsOf(it).every((f) => ['_name', '_title'].includes(f.key)) && !it._fields && childrenOf(it).length === 0;
 }
-function renderChecklist(items, chain, hide, ctx) {
-  const lis = items.map((it) => {
+function selectForm(items) {
+  if (!items.length) return 'none';
+  if (items.some((it) => it._fields && Object.keys(it._fields).length)) return 'table';
+  if (items.every(isLabelOnlyItem)) return 'chips';
+  if (items.some((it) => it._price)) return 'product-cards';
+  const deflist = items.every((it) => {
+    if (it._fields || childrenOf(it).length) return false;
+    const f = factsOf(it);
+    if (f.length < 1 || f.length > 2) return false;
+    return JSON.stringify(f.map((x) => x.value.text ?? x.value.num ?? '')).length <= 240;
+  });
+  if (deflist) return 'deflist';
+  const accordion = items.every((it) => factsOf(it).some((f) => f.key === '_title') && factsOf(it).some((f) => f.key === '_detail') && childrenOf(it).length === 0);
+  if (accordion) return 'accordion';
+  return 'cards';
+}
+
+function renderChips(items) {
+  const chips = items.map((it) => {
+    const v = it._name ?? it._title;
+    const label = v ? fmt(v) : '';
+    const a = it._action;
+    const inner = a?.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
+      ? `<a href="${esc(a.to)}">${label}</a>` : label;
+    return `<span class="chip-item">${inner}</span>`;
+  }).join('');
+  return `<div class="chips">${chips}</div>`;
+}
+function renderDeflist(items) {
+  const rows = items.map((it) => {
     const label = it._name ?? it._title;
     const rest = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
-    const inner = (label ? `<strong>${fmt(label)}</strong>` : '') +
-      rest.map((x) => `<span>${fmt(x.value)}</span>`).join(' ');
-    void chain;
-    const a = it._action;
-    return `<li>${inner}${a?.to ? `<a class="check-link" href="${esc(a.to)}">${esc(a.label ?? '→')}</a>` : ''}</li>`;
+    return `<div class="defrow"><div class="deflabel">${label ? fmt(label.value) : ''}</div><div class="defval">${rest.map((x) => fmt(x.value)).join(' ')}</div></div>`;
   }).join('');
-  return `<ul class="checklist">${lis}</ul>`;
+  return `<div class="deflist">${rows}</div>`;
+}
+function renderAccordion(items, chain, hide, ctx) {
+  const det = items.map((it) => {
+    const q = it._title ?? it._name;
+    const a = factsOf(it).filter((x) => ['_detail', '_summary', '_text'].includes(x.key));
+    return `<details class="qa"><summary>${q ? fmt(q.value) : ''}</summary><div class="qa-a">${a.map((x) => fmt(x.value)).join(' ')}</div></details>`;
+  }).join('');
+  return `<div class="accordion">${det}</div>`;
 }
 function renderRun(run, chain, hide, ctx) {
-  const cols = [...new Set(run.flatMap((c) => [...fieldKeys(c.node), ...factsOf(c.node).filter((f) => !['_title', '_name'].includes(f.key)).map((f) => f.key)]))];
+  const cols = [...new Set(run.flatMap((c) => [...fieldKeys(c.node), ...factsOf(c.node).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))];
   const valuesOf = (n, col) => {
     const fv = n._fields?.[col];
     if (fv) return fmt(fv);
@@ -83,13 +116,20 @@ function renderRun(run, chain, hide, ctx) {
     const trs = run.map((c) => {
       const tds = cols.map((col) => `<td>${valuesOf(c.node, col)}</td>`).join('');
       const ops = childrenOf(c.node).filter((ch) => !ch.key.startsWith('_items['))
-        .map((ch) => renderNode(ch.node, [...chain, c.node], false, hide, ctx, 3)).join('');
+        .map((ch) => renderNode(ch.node, [...chain, c.node], false, hide, ctx, 4)).join('');
       return `<tr>${tds}<td class="row-ops">${ops}</td></tr>`;
     }).join('');
     return `<table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table>`;
   }
-  return `<div class="cards">${run.map((c) => `<div class="item">${renderNode(c.node, [...chain, c.node], false, hide, ctx, 3)}</div>`).join('')}</div>`;
+  return `<div class="cards">${run.map((c) => `<div class="item">${renderNode(c.node, [...chain, c.node], false, hide, ctx, 4)}</div>`).join('')}</div>`;
 }
+
+const actionHtml = (a) => {
+  const copy = a.label ?? a.verb;
+  return a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
+    ? `<a class="action verb-${esc(a.verb)}" href="${esc(a.to)}">${esc(copy)}</a>`
+    : `<button class="action verb-${esc(a.verb)}" type="button">${esc(copy)}</button>`;
+};
 
 function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (node === null || typeof node !== 'object') return '';
@@ -100,6 +140,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   }
   const headingKey = node._title ? '_title' : (node._name ? '_name' : null);
 
+  // explicit labeled actions; label-less navigate/open lowers to the element's own link (F-020)
   let action = '';
   let linkTo = null;
   if (node._action) {
@@ -112,29 +153,21 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
       const a = node._action;
       const labelless = !a.label && ['navigate', 'open'].includes(a.verb);
       if (labelless && a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))) {
-        linkTo = a.to; // the element itself is the affordance (F-020) — never an "open" chip
+        linkTo = a.to;
       } else {
-        const copy = a.label ?? a.verb;
-        action = a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
-          ? `<a class="action verb-${esc(a.verb)}" href="${esc(a.to)}">${esc(copy)}</a>`
-          : `<button class="action verb-${esc(a.verb)}" type="button">${esc(copy)}</button>`;
+        action = actionHtml(a);
       }
     }
   }
 
-  // _primary hero: fact or subtree, hidden from its normal position
+  // _primary FACT gets the enlarged hero slot; subtree primaries stay in place (no reordering)
   let heroHtml = '';
   if (typeof node._primary === 'string') {
     const r = resolveWithParent(node, node, node._primary);
-    if (r.ok && r.node !== node) {
-      if (isRoleKey(r.lastKey)) {
-        heroHtml = `<div class="hero fact-hero">${factHtml(r.node)}</div>`;
-        if (!hide.has(r.holder)) hide.set(r.holder, { keys: new Set(), nodes: new Set() });
-        hide.get(r.holder).keys.add(r.lastKey);
-      } else {
-        // subtree primaries stay in their declared place (no reordering); facts get the hero slot
-        heroHtml = '';
-      }
+    if (r.ok && isRoleKey(r.lastKey)) {
+      heroHtml = `<div class="hero fact-hero">${factHtml(r.node)}</div>`;
+      if (!hide.has(r.holder)) hide.set(r.holder, { keys: new Set(), nodes: new Set() });
+      hide.get(r.holder).keys.add(r.lastKey);
     }
   }
 
@@ -142,7 +175,6 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   const kids = childrenOf(node).filter((c) => !(hid?.nodes.has(c.node)));
   const facts = factsOf(node).filter((f) => !(hid?.keys.has(f.key)));
   const titleText = headingKey ? fmt(node[headingKey]) : null;
-  const intentHeading = null; // _intent is internal planning copy — never rendered (F1)
 
   const cls = ['node', `depth-${Math.min(depth, 4)}`];
   if (isHero) cls.push('hero-branch');
@@ -150,44 +182,86 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (node._rel?.order === 'time') cls.push('timeline');
   const demoted = (node._rel?.level ?? 0) >= 2;
 
+  const exp = exposeOf(node);
+  const itemsConsumed = new Set();
   let bodyLead = '';
-  for (const f of facts) { if (headingKey && f.key === headingKey) continue; bodyLead += factHtml(f.value); }
+  for (const f of facts) {
+    if (headingKey && f.key === headingKey) continue;
+    if (exp && (f.key === '_label' || f.key === '_summary')) continue;
+    bodyLead += factHtml(f.value);
+  }
   if (node._fields) for (const [k, v] of Object.entries(node._fields)) bodyLead += factHtml(v);
-  let body = '';
 
   const ordered = kids.filter((c) => c.key.startsWith('_lines[') || c.key.startsWith('_items['));
   const runs = discoverRuns(ordered);
   const inRun = new Set(runs.flat().map((c) => c.node));
 
-  const exp = exposeOf(node);
-  const simpleChoice = exp && node._items?.length && node._items.every((it) =>
-    Object.keys(it).every((k) => ['_name', '_title', '_key', '_intent'].includes(k)));
+  let body = '';
   if (exp && node._items?.length) {
     const multi = exp.multiple === true;
     const opts = node._items.map((it, i) => {
-      const v = it._name ?? it._title;
-      const label = v ? fmt(v) : `option ${i + 1}`;
+      const v = it._name ?? it._title ?? (it._fields ? { text: Object.values(it._fields)[0]?.text ?? Object.values(it._fields)[0]?.num ?? '' } : undefined);
+      const label = v && (v.text !== undefined || v.num !== undefined) ? fmt(v) : `option ${i + 1}`;
       const val = it._key ? `key:${it._key}` : (v ? v.text : String(i));
       return `<label class="choice"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"> ${label}</label>`;
     }).join('');
-    body += `<fieldset class="expose expose-${esc(exp.name)}"><legend>${esc(node._label ? fmt(node._label) : exp.name)}</legend>${opts}</fieldset>`;
+    const legend = node._label ? fmt(node._label) : esc(exp.name);
+    const hint = node._summary ? `<span class="hint">${fmt(node._summary)}</span>` : '';
+    body += `<fieldset class="expose chipbar expose-${esc(exp.name)}"><legend>${legend}</legend>${hint}${opts}</fieldset>`;
+    // choice set covers label-only items; rich items keep their best form
+    // (typed field sets stay a table — the deflist would lose the columns)
+    const rich = node._items.filter((it) => factsOf(it).some((x) => !['_name', '_title'].includes(x.key)));
+    if (rich.length) {
+      const rf = selectForm(rich);
+      if (rf === 'table') {
+        for (const run of discoverRuns(rich.map((it) => ({ key: '_items[x]', node: it })))) body += renderRun(run, chain, hide, ctx);
+      } else {
+        body += renderDeflist(rich);
+      }
+      rich.forEach((it) => itemsConsumed.add(it));
+    }
   } else if (exp) {
-    body += `<label class="expose expose-${esc(exp.name)}"><span class="val"><input type="text" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></label>`;
+    const lbl = node._label ? fmt(node._label) : esc(exp.name);
+    const hint = node._summary ? `<span class="hint">${fmt(node._summary)}</span>` : '';
+    body += `<label class="expose expose-${esc(exp.name)}"><span class="deflabel">${lbl}</span>${hint}<input type="text" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></label>`;
   }
 
-  // checklist form: simple name/detail item sets
-  const itemsKids = kids.filter((c) => c.key.startsWith('_items['));
   const rawItems = (node._items ?? []).filter((it) => !inRun.has(it));
-  const asChecklist = rawItems.length > 0 && isChecklist(rawItems);
-  const itemsConsumed = new Set();
-  if (asChecklist) {
-    body += renderChecklist(rawItems, chain, hide, ctx);
-    rawItems.forEach((it) => itemsConsumed.add(it));
-  } else {
-    for (const run of runs) body += renderRun(run, chain, hide, ctx);
-    if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
-      body += renderNode(node._empty, [...chain, node], false, hide, ctx, depth + 1);
-    }
+
+  const form = rawItems.length ? selectForm(rawItems) : 'none';
+  if (form === 'chips') {
+    body += renderChips(rawItems);
+  } else if (form === 'deflist') {
+    body += renderDeflist(rawItems);
+    body += renderAccordion(rawItems, chain, hide, ctx);
+  } else if (form === 'table') {
+    for (const run of discoverRuns(rawItems.map((it) => ({ key: '_items[x]', node: it })))) body += renderRun(run, chain, hide, ctx);
+    if (node._items.length === 0 && node._empty) body += renderNode(node._empty, [...chain, node], false, hide, ctx, depth + 1);
+  } else if (form === 'cards') {
+    body += `<div class="cards">${rawItems.map((it) => `<div class="item">${renderNode(it, [...chain, node], false, hide, ctx, depth + 1)}</div>`).join('')}</div>`;
+  }
+
+  // toolbar: consecutive action-only children render inline
+  const actionKids = kids.filter((c) => !itemsConsumed.has(c.node) && !ordered.includes(c) && c.node._action &&
+    factsOf(c.node).length === 0 && childrenOf(c.node).length === 0);
+  if (actionKids.length >= 2) {
+    const tools = actionKids.map((c) => {
+      const a = c.node._action;
+      const copy = a.label ?? a.verb;
+      return a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
+        ? `<a class="tool" href="${esc(a.to)}">${esc(copy)}</a>` : `<span class="tool">${esc(copy)}</span>`;
+    }).join('');
+    body += `<div class="toolbar">${tools}</div>`;
+    actionKids.forEach((c) => itemsConsumed.add(c.node));
+  }
+
+  for (const c of kids) {
+    if (inRun.has(c.node) || itemsConsumed.has(c.node) || actionKids.includes(c)) continue;
+    const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1);
+    if (!h) continue;
+    body += c.key.startsWith('_items[')
+      ? `<div class="item">${h}</div>`
+      : `<section class="group g-${esc(c.key)}">${h}</section>`;
   }
 
   const headingLevel = Math.min(depth + 1, 6);
@@ -198,26 +272,12 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     head = `<${headingTag} class="title">${t}</${headingTag}>`;
   }
 
-  for (const c of kids) {
-    if (inRun.has(c.node)) continue;
-    if (itemsConsumed.has(c.node)) continue;
-    if (ordered.includes(c) && simpleChoice) continue;
-    const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1);
-    if (!h) continue;
-    body += c.key.startsWith('_items[')
-      ? `<div class="item">${h}</div>`
-      : `<section class="group g-${esc(c.key)}">${h}</section>`;
-  }
-
-  // root-level trailing groups (after the primary content) render as an aside zone
-  if (depth === 0 && !demoted) {
-    // visual separation handled by CSS on .zone
-  }
   const anchorId = node._key ? ` id="${esc(String(node._key).replace(/[^A-Za-z0-9_-]/g, '-'))}"` : '';
   const article = `<article${anchorId} class="${cls.join(' ')}">${head}${bodyLead}${heroHtml}${body}${action}</article>`;
   return demoted ? `<aside class="zone">${article}</aside>` : article;
 }
 
+// expose groups skip their label/summary facts in bodyLead (they become legend/hint)
 export function render(model, context = {}) {
   const hide = new Map();
   const ctx = { values: context.values ?? {} };
@@ -234,35 +294,40 @@ body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang 
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
 header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
-h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .3em;font-weight:750}
-h2.title,h2.intent-h{font-size:1.45em;margin:1.2em 0 .5em;font-weight:700}
-h3.title,h3.intent-h{font-size:1.15em;margin:.9em 0 .4em;font-weight:650}
-h4.title,h4.intent-h{font-size:1em;margin:.7em 0 .3em;font-weight:600;color:#3c4a58}
-.hero{margin:6px 0 26px}
+h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
+h2.title{font-size:1.45em;margin:1.1em 0 .45em;font-weight:700}
+h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
+.hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
-article{margin:14px 0}
-.group{margin:10px 0 22px}
-.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;align-items:start}
+article{margin:12px 0}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;align-items:start}
 .compare>.node{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
-.fact{margin:4px 0}
+.fact{margin:3px 0}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
-.fact .val{font-size:.98em}
-.checklist{list-style:none;padding:0;margin:8px 0}
-.checklist li{padding:7px 0 7px 30px;position:relative;border-bottom:1px dashed #eef1f5}
-.checklist li::before{content:"✓";position:absolute;left:6px;color:#2e7d32;font-weight:700}
-.checklist li strong{margin-right:8px}
-.checklist li span{color:#5b6a78}
-.check-link{margin-left:8px;font-size:.85em}
+.chips{column-width:190px;column-gap:18px;margin:8px 0}
+.chip-item{display:block;break-inside:avoid;padding:4px 0;font-size:.95em}
+.chips a{color:inherit;text-decoration:none}
+.chips a:hover{text-decoration:underline}
+.deflist{margin:8px 0}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
+.deflabel{min-width:130px;font-weight:600}
+.defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
+.accordion{margin:8px 0}
+details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
+details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
+details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;align-items:center}
+.toolbar .tool{padding:6px 14px;border:1px solid #d6dde6;border-radius:8px;text-decoration:none;color:inherit;font-size:.9em}
 .expose{display:block;margin:8px 0}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
 legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
 input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 img{max-width:100%;border-radius:10px;display:block}
@@ -272,13 +337,6 @@ table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
-aside.zone{margin-top:56px;padding-top:24px;border-top:1px solid #d6dde6}
-aside.zone .title,.aside-h{font-size:1em;color:#5b6a78}
-.depth-2 article,.depth-3 article{margin:8px 0}
-/* proximity follows depth (F-028): deeper relationships sit visually tighter */
-main>article>.group{margin-top:34px}
-main>article .group .group{margin-top:18px}
-main>article .group .group .group{margin-top:10px}
 </style></head>
 <body><main>${brand ? `<header class="site"><span class="brand">${brand}</span></header>` : ''}${html}</main></body></html>
 `;
