@@ -8,7 +8,7 @@
 
 ## 0. 结论摘要
 
-1. **被测量的候选模式 14 个** = 任务给的 10 个 + 测量中发现的 4 个（单选组、控制条、横向对比、查询字段）；其中 12 个在模型层（36 策展页）有样本，`table`/`login` 只有抓取层证据。
+1. **被测量的候选模式 14 个** = 任务给的 10 个（登录、问答、正文、评分、价格、步骤/配置器、数据表、时间线、分页、图墙）+ 测量中发现的 4 个（单选组、控制条、横向对比、查询字段）；其中"步骤/配置器"被测量拆成 `form` 面板与 `choice-group` 两类。14 个里 12 个在模型层（36 策展页）有样本，`table`/`login` **只有抓取层证据**。
 2. **建议升为声明式复合原语：5 个** —— `form`、`table`、`offer`、`paginator`、`login`。
    其中 `login` 有**证据缺口**（36 策展页里 0 个登录块），必须先补策展页才允许命名（见 §5.4）。
 3. **不建议升原语：7 个** —— `qa`、`prose`、`image-gallery`、`rating-row`、`timeline`、`compare`、`control-bar`；其中 4 个的正确处置是**修引擎/修数据**，不是加语法（§5.6）。
@@ -61,28 +61,38 @@
 
 ### 2.3 抓取层总表（corpus 104 页；exemplar 36 / support 68）`[A.2]`
 
-| 结构证据 | 页数 | exemplar | support | 站点数 | 最大次数 |
+下表 = 附录 A.2 脚本**逐字输出**（`pages/exemplar/support/sites/occ` 五列原样转写，仅加中文名）：
+
+| 结构证据 | 页数 | exemplar | support | 站点数 | 元素/匹配数 |
 |---|---|---|---|---|---|
-| `<table>` | 28 | **0** | 28 | 9 | 331 个元素 |
-| `<table>` 且行内勾选列 | 4 | 0 | 4 | 4 | 42 |
-| `<input type=password>` | 8 | **0** | 8 | 5 | 38 |
-| `<details>/<summary>` | 6 | 0 | 6 | 3 | 133 |
+| `<img>` ≥20 | 58 | 29 | 29 | 26 | 5038 |
 | `aria-expanded` | 52 | 15 | 37 | 20 | 617 |
-| `<time>` / `datetime=` | 7 / 6 | 0 | 7 / 6 | 3 / 2 | 22 |
-| `<p>` ≥ 20 | 47 | 22 | 25 | 22 | 3673 |
-| `<blockquote>/<cite>` | 15 | 2 | 13 | 8 | 57 |
-| `<pre>/<code>` | 36 | 1 | 35 | 14 | 4725 |
-| `<figure>` | 9 | 8 | 1 | 5 | 62 |
-| `<img>` ≥ 20 | 56 | 26 | 30 | 26 | 5203 |
-| `<del>/<s>`（原价） | 3 | 3 | 0 | 1 | 18 |
-| 评分线索（ratingValue / 评分为 / 星） | 10 | 1 | 9 | 5 | 39 |
-| "条评价/人评分" | 23 | 6 | 17 | 16 | 465 |
-| 分页/继续（`rel=next`/aria-pagination/数字页） | 37 | —— | —— | 17 | 1624 |
-| "查看更多/加载更多/显示全部" | 23 | **14** | 9 | 14 | 62 |
-| 搜索框（`type=search` 或占位含"搜索/Search"） | 38 | 15 | 23 | 21 | 62 |
-| `<select>`/`role=combobox` | 22 | 4 | 18 | 9 | 199 |
-| `role=radiogroup` | 17 | 1 | 16 | 5 | 145 |
+| `<p>` ≥20 | 47 | 19 | 28 | 22 | 3293 |
+| 搜索框（`type=search` 或占位"搜索/Search"） | 38 | 15 | 23 | 21 | 62 |
 | 面包屑 | 36 | 14 | 22 | 13 | 163 |
+| `<pre>`/`<code>` | 36 | 1 | 35 | 14 | 4725 |
+| `<table>` 元素 | 28 | 0 | 28 | 9 | 331 |
+| `<table>` 且表头列 ≥3 | 26 | 0 | 26 | 8 | 1287 |
+| 货币字形 ≥3 | 25 | 10 | 15 | 14 | 1104 |
+| `<table>` 且行 ≥5 | 25 | 0 | 25 | 9 | 2659 |
+| "查看更多/加载更多/显示全部" | 23 | 14 | 9 | 14 | 62 |
+| "条评价/人评分" | 23 | 6 | 17 | 16 | 465 |
+| `role=radiogroup` | 17 | 1 | 16 | 5 | 145 |
+| `<blockquote>`/`<cite>` | 15 | 2 | 13 | 8 | 57 |
+| 分页：数字页（page=N/下一页） | 10 | 3 | 7 | 8 | 36 |
+| `<select>`/`role=combobox` ≥3 | 10 | 0 | 10 | 3 | 181 |
+| `<figure>` | 9 | 8 | 1 | 5 | 62 |
+| `<input type=password>` | 8 | 0 | 8 | 5 | 38 |
+| `<time>` 元素 | 7 | 0 | 7 | 3 | 22 |
+| `datetime=` 属性 | 6 | 0 | 6 | 2 | 6 |
+| `<details>/<summary>` | 6 | 0 | 6 | 3 | 133 |
+| 分页：`rel=next`/aria-pagination | 4 | 0 | 4 | 3 | 31 |
+| `<table>` 且行内勾选列 | 4 | 0 | 4 | 4 | 42 |
+| `<del>`/`<s>`（原价） | 3 | 3 | 0 | 1 | 18 |
+| 评分线索（ratingValue/评分为/星） | 2 | 2 | 0 | 2 | 12 |
+| `<time>` ≥3 | 1 | 0 | 1 | 1 | 15 |
+
+读法：`exemplar` 列 = 该结构出现在 36 个**策展页**上的页数；`support` 列 = 出现在 support 68 页上的页数。
 
 **两个必须写进报告的落差**：
 - **exemplar 层 0 个 `<table>`，support 层 28 个** ⇒ 现有"M3 覆盖率声明只在 exemplar 36 页上算"的口径下，**数据表这类原语从未被 exemplar 覆盖过**。这不是语法缺陷，是**语料分层缺陷**。
@@ -90,7 +100,7 @@
 
 ### 2.4 状态组合机制的实测状态 `[A.3]`
 
-- `_expose` 节点 49 个 / 22 页 / 站点覆盖广（13+ 站）。
+- `_expose` 节点 **49** 个 / **22** 页 / **11** 站（`[A.3b]`）。
 - `_expose` 产出的**事实能被下游 `_when` 引用**的实例：**1 处**（antd 手写模型的 `bulk`），且**渲染时整块消失**（作用域里没有该名字，`count(undefined) > 0` = false）。
 - `m1/vocab-context.json` 里 `signed-in` 是**上下文事实**（引擎注入），`design-basis §3.7` 里 `signed-in` 是**登录复合原语引入的页面状态**。同一名字两套来源，当前 `render.mjs` 的作用域规则是 `{...ctx.values, ...scopeFor(chain)}`（节点祖先链的**角色事实**覆盖上下文）——`_expose` 既不进 `ctx.values` 也不被 `scopeFor` 收集 ⇒ **两份定义都没接通**。这是 `login` 原语的前置阻塞项（§6 决策 1）。
 
@@ -121,12 +131,13 @@
 
 ## 4. 候选原语设计
 
-**共同语法新增（一次性，四个原语共用）**
+**共同语法新增（一次性，五个原语共用；`record` 值类型只被 `form` 使用）**
 
 | 新增 | 内容 | 性质 |
 |---|---|---|
 | 保留键 `_macro` | 值 ∈ `vocab.macros`（闭式：`form`/`table`/`offer`/`paginator`/`login`） | 语法（保留键表 +1） |
 | `vocab.valueTypes` + `"record"` | `_expose.type` 的新取值：一组具名字段的提交载荷 | 词表（valueTypes +1） |
+| 关系谓词 `_rel.detail`（可选，见 §5.5） | `true` = 此节点有一个更深的细节层（回答/补充），由模型显式声明；不声明 ⇒ 引擎不得折叠 | 语法（`_rel` 谓词 +1，替代已否决的 `expandable`） |
 | 校验器规则 | `_macro` **不得嵌套**（`_macro` 子树里再出现 `_macro` = 校验失败）；`_macro` 实例必须满足该宏的定义条件，否则校验失败 | 校验 |
 
 `_macro` 是**名字**：它不新增节点种类、不新增语义角色、不改变任何事实的渲染。展开规则是**恒等展开 + 良构检查**（`expand(node)` = 校验该节点满足宏条件后原样返回子树），因此**展开必终止**（宏不递归 ⇒ 树深有限），**全函数**（无匹配 = 校验期报错，不是运行期猜测）。
@@ -252,7 +263,7 @@
 
 ### 4.4 `paginator`（分页/继续控件）—— 建议升级（小件，但关闭 v0 最大"不作表达"缺口）
 
-**证据**：模型层 4 页/3 站（华为 `results.pagination` 7 项、`_primary` = 当前页；mi `pages` 2 项；stripe）；抓取层 14/36 **exemplar** 页源码里有"查看更多/加载更多/显示全部"，10 页/8 站有数字分页，2 页 `rel=next`。**当前**：v0 axioms §8 明写"分页控件"不作表达；策展照办 ⇒ 抓取真相与模型之间**已知的、最大的**缺口。现状表达是"把页码写成 `_items` 的 `_name` + `_rel.order: sequence`"，语义丢了：**当前页**只能靠 `_primary` 暗示，**被分页的对象**没有声明。
+**证据**：模型层 4 页/3 站（华为 `results.pagination` 7 项、`_primary` = 当前页；mi `pages` 2 项；stripe）；抓取层 14/36 **exemplar** 页源码里有"查看更多/加载更多/显示全部"，10 页/8 站有数字分页，4 页有 `rel=next`/aria-pagination。**当前**：v0 axioms §8 明写"分页控件"不作表达；策展照办 ⇒ 抓取真相与模型之间**已知的、最大的**缺口。现状表达是"把页码写成 `_items` 的 `_name` + `_rel.order: sequence`"，语义丢了：**当前页**只能靠 `_primary` 暗示，**被分页的对象**没有声明。
 
 **语法**
 
@@ -285,7 +296,7 @@
 
 ### 4.5 `login`（登录/注册块）—— 建议升级，**但先补样本（证据缺口）**
 
-**证据（诚实版）**：36 策展页里 **0 个登录块**；只有 4 个登录**入口动作**（2 站：bilibili 弹幕区 `login`/`register` 对、linear "Get started"、stripe "使用 Metronome 注册"）。抓取层：`type=password` 8 页（**全是 support 层的组件文档 demo**：ant-design/arco/element-plus/getbootstrap/tdesign）；`passport-baidu/login` 是**唯一真实登录页**（扫码登录 + "用户名登录" + QQ/新浪微博/微信第三方入口 + "立即注册" + 安全/高效/便捷价值主张），而它**不在 exemplar 36 里**。
+**证据（诚实版）**：36 策展页里 **0 个登录块**；只有 4 个登录**入口动作**（3 页/3 站：bilibili 弹幕区 `login`/`register` 对、linear "Get started"、stripe "使用 Metronome 注册"）。抓取层：`type=password` 8 页（**全是 support 层的组件文档 demo**：ant-design/arco/element-plus/getbootstrap/tdesign）；`passport-baidu/login` 是**唯一真实登录页**（扫码登录 + "用户名登录" + QQ/新浪微博/微信第三方入口 + "立即注册" + 安全/高效/便捷价值主张），而它**不在 exemplar 36 里**。
 
 ⇒ 按 C1，`login` **当前不成立**；建议**先策展 `passport-baidu/login` + 1 个第三方登录页进 exemplar，再命名**。用户既定语（"login 暴露 `signed-in`"）是产品决定，本轮照此设计，但**证据必须补齐**（§5.4）。
 
@@ -346,7 +357,7 @@
 
 ### 5.3 建议实施顺序（四个理由，不是拍脑袋）
 
-1. **先修地基：`_expose` → 下游作用域**（§0 缺陷 1）。否则 5 个原语里 3 个（`form`/`table`/`paginator`/`login` 中的 4 个）声明的状态是死的。**工作量最小、解除阻塞最大**。
+1. **先修地基：`_expose` → 下游作用域**（§0 缺陷 1）。否则 `form`/`table`/`paginator`/`login` 这 4 个原语声明的状态全是死的。**工作量最小、解除阻塞最大**。
 2. **`offer`**（正确性）：删掉引擎的业务判断，是**唯一"不改语法也立刻更正确"**的改动；且不动形态表（风险最低）。
 3. **`form`**（结构收益最大）：8 面板/5 站，消除"字段与提交归属"的猜；与 F-031 §6 是同一条线的收敛。
 4. **`paginator`**（关闭声明缺口）：小件，但把"声明不作表达"改成"声明可表达"，同时暴露 14 页的静默丢弃。
@@ -367,7 +378,7 @@
 | `qa`（题+答） | 15 组 / 12 页 / 5 站，形态 0 次 accordion | 无状态、形状与营销块重合（apple 的 title+detail 是卖点不是问答）⇒ **C3 靠猜、C6 反例写不清** | **引擎不猜**；加**唯一一个新关系谓词** `_rel.detail: true`（"此节点有一个更深的细节层"——design-basis §3.4 早已声明语义、但 v0 没实现），由模型显式标记；标记存在 ⇒ 引擎可折叠 |
 | `prose`（正文序列） | 9 段 / 1 页；抓取层 `<p>`≥20 有 47 页/22 站 | 无状态；**形状可确定性判定**（连续 `_text` 条目）⇒ 不该加语法 | **修引擎**：把"全条目都是 `_text` 才 prose"改成"连续 `_text` **段**合并"，段间**不插** `<hr class="region">`（现状把段落读成区块，违反 F-031 §5 的意图） |
 | `image-gallery`（图墙） | 3 页/3 站；抓取层 `<figure>` 9 页（8 在 exemplar） | C1 勉强，C3 不成立（纯形状判定已确定性）；状态无 | **不升**；缺口只是"计数 + 全部展开"：用 `_count` + 子件 `_action`（airbnb `show-all` 现状）即可。混排集合降级为 cards 是已知边界 |
-| `rating-row`（评分行） | 模型层 1 页/1 站（airbnb）；抓取层评分线索 10 页/5 站 | **C1 不成立**（1 站）；结构（分数+单位+分布+分项）稳定但样本不足 | **不升**；先修：`_rating` 必须带单位/满分（`render.mjs` 已用 `ROLE_UNIT` 注入"分"），并补策展样本后再谈 |
+| `rating-row`（评分行） | 模型层 1 页/1 站（airbnb）；抓取层严口径评分线索 **2 页/2 站**（宽松口径"条评价/人评分" 23 页/16 站） | **C1 不成立**（1 站）；结构（分数+单位+分布+分项）稳定但样本不足 | **不升**；先修：`_rating` 必须带单位/满分（`render.mjs` 已用 `ROLE_UNIT` 注入"分"），并补策展样本后再谈 |
 | `timeline`（动态列表） | 5 集合/5 页/4 站；**0/61 条目标注 `_datetime`**，36kr 30/30 把时间写在 `_detail` 文本里 | 语法已存在（`_rel.order: time`），缺的是**数据** | **不升**；**加校验警告 + 策展规则**：`order: time` 集合的条目须带 `_datetime`，否则出 ticket（当前导轨渲染出来却没有可读时间） |
 | `compare`（横向对比） | 20 标记，1 处成表 | 形态已存在，缺的是**规范化** | **不升**；**修引擎**：集合节点上的 `_rel.compare` 必须等价于"其条目是实体"（或校验器强制标记只能落在条目上）。19 处由一条规则修复 |
 | `control-bar`（控件条） | 12 组/7 页/5 站；已由 `controls`/`toolbar` 确定性处理 | C3 不成立 | **不升** |
@@ -469,7 +480,7 @@ node /tmp/m4scan.mjs | grep -c 'compare-table'   # 1
 
 ```bash
 cd /home/z/vibe/autofe
-cat > /tmp/corpus-comps.mjs <<'EOF'
+cat > /tmp/a2ext.mjs <<'EOF'
 import fs from 'node:fs'; import path from 'node:path';
 const exemplar = new Set(fs.readdirSync('m1/curated').flatMap(s => {
   const d = 'm1/curated/' + s; if (!fs.statSync(d).isDirectory()) return [];
@@ -479,7 +490,7 @@ const pages = [];
 for (const site of fs.readdirSync('corpus')) {
   const sd = path.join('corpus', site); if (!fs.statSync(sd).isDirectory()) continue;
   for (const p of fs.readdirSync(sd)) { const d = path.join(sd, p);
-    if (fs.existsSync(path.join(d, 'dom.html'))) pages.push({ site, key: `${site}/${p}`, dom: path.join(d, 'dom.html'), layer: exemplar.has(`${site}/${p}`) ? 'exemplar' : 'support' }); }
+    if (fs.existsSync(path.join(d, 'dom.html'))) pages.push({ site, key: `${site}/${p}`, dom: path.join(d, 'dom.html'), nodes: path.join(d, 'nodes.json'), layer: exemplar.has(`${site}/${p}`) ? 'exemplar' : 'support' }); }
 }
 const tests = {
   'table-el': /<table[\s>]/i,
@@ -488,29 +499,49 @@ const tests = {
   'details': /<details[\s>]/i,
   'aria-expanded': /aria-expanded=/i,
   'time-element': /<time[\s>]/i,
+  'datetime-attr': /datetime=["']\d{4}-\d{2}-\d{2}/i,
   'blockquote': /<blockquote|<cite[\s>]/i,
   'code-block': /<pre[\s>]|<code[\s>]/i,
   'figure': /<figure[\s>]/i,
-  'del': /<del[\s>]|<s[\s>]/i,
-  'rating': /ratingValue|rating-value|评分为/,
+  'del-was-price': /<del[\s>]|<s[\s>]/i,
+  'rating-text': /ratingValue|rating-value|评分为|aria-label=["'][^"']*星/i,
   'rating-count-word': /(条评价|条评论|reviews?|人评分)/i,
   'pagination': /rel=["']next["']|aria-label=["'](pagination|Pagination|下一页|Next page)["']/i,
+  'numeric-paging': /(page=\d|\/page\/\d|>下一页<|>Next<)/i,
   'load-more': /(加载更多|查看更多|load more|show more|see all|显示全部)/i,
   'search-input': /<input[^>]*(type=["']search["']|placeholder=["'][^"']*(搜索|Search)[^"']*["'])/i,
   'radiogroup': /role=["']radiogroup["']/i,
   'breadcrumb': /(breadcrumb|面包屑)/i,
 };
+const thresholds = {
+  'p>=20': [/<p[\s>]/gi, 20],
+  'img>=20': [/<img[\s>]/gi, 20],
+  'time>=3': [/<time[\s>]/gi, 3],
+  'datetime>=3': [/datetime=["']\d{4}-\d{2}-\d{2}/gi, 3],
+  'select-or-combobox>=3': [/role=["']combobox["']|<select[\s>]/gi, 3],
+  'price-glyph>=3': [/[¥￥$€£]/g, 3],
+};
 const res = {};
-for (const [name, re] of Object.entries(tests)) res[name] = { pages: new Set(), sites: new Set(), ex: new Set(), supp: new Set() };
+const bump = (name, pg, occ) => { const r = res[name] ??= { pages: new Set(), sites: new Set(), ex: new Set(), supp: new Set(), occ: 0 }; r.pages.add(pg.key); r.sites.add(pg.site); (pg.layer === 'exemplar' ? r.ex : r.supp).add(pg.key); r.occ += occ; };
 for (const pg of pages) {
   const html = fs.readFileSync(pg.dom, 'utf8');
   for (const [name, re] of Object.entries(tests)) {
-    if (new RegExp(re.source, 'gi').test(html)) { const r = res[name]; r.pages.add(pg.key); r.sites.add(pg.site); (pg.layer === 'exemplar' ? r.ex : r.supp).add(pg.key); }
+    const m = html.match(new RegExp(re.source, 'gi'));
+    if (m) bump(name, pg, m.length);
   }
+  for (const [name, [re, k]] of Object.entries(thresholds)) {
+    const m = html.match(new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g'));
+    if (m && m.length >= k) bump(name, pg, m.length);
+  }
+  const nodes = JSON.parse(fs.readFileSync(pg.nodes, 'utf8'));
+  const roles = {}; for (const n of nodes) roles[n.role] = (roles[n.role] || 0) + 1;
+  if ((roles.columnheader || 0) >= 3) bump('columnheader>=3', pg, roles.columnheader || 0);
+  if ((roles.row || 0) >= 5) bump('row>=5', pg, roles.row || 0);
+  for (const [n, r] of Object.entries(res)) if (r.occ > 1e9) r.occ = 0;
 }
-for (const [n, r] of Object.entries(res)) console.log(n.padEnd(20), 'pages=' + r.pages.size, 'exemplar=' + r.ex.size, 'support=' + r.supp.size, 'sites=' + r.sites.size);
+for (const [n, r] of Object.entries(res)) console.log(n.padEnd(22), 'pages=' + r.pages.size, 'exemplar=' + r.ex.size, 'support=' + r.supp.size, 'sites=' + r.sites.size, 'occ=' + r.occ);
 EOF
-node /tmp/corpus-comps.mjs
+node /tmp/a2ext.mjs
 ```
 
 ### A.3 复合模式计数（面板 / 状态 / 时间线 / 评价）`[§2.2/2.4]`
@@ -543,7 +574,7 @@ for(const site of fs.readdirSync("m1/curated")){const d=path.join("m1/curated",s
    Object.values(n).forEach(w);})(m);}}
 console.log("timeline items",tot,"with _datetime",dt);'
 # 3d) _expose 事实是否进下游作用域（基座缺陷实测）：输出里没有 Batch operations
-node m1/render.mjs m1/models/ant-design/components-table.json | grep -c 'Batch operations'   # => 0
+node m1/render.mjs m1/models/ant-design/components-table.json | grep -c 'Batch operations' || true   # => 0
 ```
 
 ---

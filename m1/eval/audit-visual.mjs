@@ -52,7 +52,7 @@ for (const f of files) {
   await page.goto('file://' + path.resolve(f));
   const probe = await page.evaluate(() => {
     const T = (el) => (el.textContent || '').replace(/\s+/g, ' ').trim();
-    const out = { fabricated: 0, emptyAnchors: 0, checkmarks: 0, emptyText: [], dups: [], durOptions: [], frag: [], imgVar: [], broken: [] };
+    const out = { fabricated: 0, emptyAnchors: 0, checkmarks: 0, emptyText: [], dups: [], durOptions: [], frag: [], imgVar: [], broken: [], unitStack: [], titleDup: [] };
     out.fabricated = document.querySelectorAll('button.action').length;
     // T-101/T-104: controls the source never had
     out.emptyAnchors = [...document.querySelectorAll('a')].filter((a) => !T(a) && !a.querySelector('img')).length;
@@ -91,6 +91,16 @@ for (const f of files) {
       const t = T(el);
       if (!t && !el.querySelector('img,input,button,a')) out.emptyText.push(el.tagName + '.' + (el.className || '').split(' ')[0]);
     }
+    // F-037 unit stacking: a number followed by TWO adjacent unit tokens (never legitimate).
+    const UNIT = '(?:条评价|人好评|万人好评|条|次|项|个|件|分|元|星|人|万|张|间|位|年|月|日|天|公里|千米|米|厘米|小时|分钟|秒|%)';
+    const stackRe = new RegExp('\\d[\\d.,]*\\s+' + UNIT + '\\s+' + UNIT);
+    for (const el of document.querySelectorAll('.val,.meta,.defval,.chip-item,td,.fact,.promo,.prose p')) {
+      const t = T(el);
+      if (t && t.length < 80 && stackRe.test(t)) out.unitStack.push(t.slice(0, 60));
+    }
+    // F-038 same-page duplicate heading (one title text should appear once per page)
+    const titles = [...document.querySelectorAll('h1,h2,h3,h4,h5')].map(T).filter((t) => t.length >= 6);
+    out.titleDup = [...new Set(titles.filter((t) => titles.filter((x) => x === t).length > 1))].slice(0, 3);
     out.emptyText = [...new Set(out.emptyText)].slice(0, 4);
     out.dups = [...new Set(out.dups)].slice(0, 3);
     out.broken = [...new Set(out.broken)].slice(0, 2);
@@ -106,6 +116,9 @@ for (const f of files) {
   }
   const optionsIntroduced = probe.durOptions.filter((t) => !(cap && captureCount(cap, t) >= 2));
   const optionsSourceTrue = probe.durOptions.filter((t) => cap && captureCount(cap, t) >= 2);
+  const titleIntroduced = probe.titleDup.filter((t) => !(cap && captureCount(cap, t) >= 2));
+  const titleSourceTrue = probe.titleDup.filter((t) => cap && captureCount(cap, t) >= 2);
+  probe.unitStack = [...new Set(probe.unitStack)].slice(0, 3);
   probe.sourceTrue = sourceTrue; probe.introduced = introduced;
   const flags = [
     ...cssFlag,
@@ -113,6 +126,9 @@ for (const f of files) {
     probe.emptyAnchors && 'empty-anchors:' + probe.emptyAnchors,
     probe.checkmarks && 'checkmarks:' + probe.checkmarks,
     probe.emptyText.length && 'empty-text:' + probe.emptyText.join(','),
+    probe.unitStack.length && 'unit-stack:' + probe.unitStack.length,
+    titleIntroduced.length && 'dup-title:' + titleIntroduced.length,
+    titleSourceTrue.length && 'dup-title-source-true(info):' + titleSourceTrue.length,
     probe.introduced.length && 'dup-content:' + probe.introduced.length,
     probe.sourceTrue.length && 'dup-source-true(info):' + probe.sourceTrue.length,
     optionsIntroduced.length && 'dup-options:' + optionsIntroduced.length,
@@ -131,6 +147,8 @@ for (const r of rows) {
   if (r.flags.length) {
     console.log((hard.length ? '⚠ ' : '· ') + r.page.padEnd(46) + r.flags.join(' '));
     if (r.detail.introduced.length) console.log('    renderer-dup: ' + r.detail.introduced.join('\n                  '));
+    if (r.detail.unitStack?.length) console.log('    unit-stack: ' + r.detail.unitStack.join(' | '));
+    if (r.detail.titleDup?.length) console.log('    dup-title: ' + r.detail.titleDup.join(' | '));
   }
 }
 console.log('\n视觉自查: ' + (rows.length - bad) + '/' + rows.length + ' 干净' + (bad ? ' | 待修 ' + bad : ''));

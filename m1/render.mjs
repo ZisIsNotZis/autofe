@@ -230,7 +230,9 @@ function renderChips(items) {
 }
 // 数值事实必须带角色/单位（F-031-§6）：裸数字在屏幕上没有归属
 const ROLE_UNIT = { _rating: '分', '_rating-count': '条评价' };
-const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] ? ` ${ROLE_UNIT[f.key]}` : ''}`;
+// 角色单位只是兜底：事实自带 unit 时绝不追加，否则两个单位连排（「870 人好评 条评价」，F-037）
+const hasOwnUnit = (v) => Boolean(v && typeof v === 'object' && !Array.isArray(v) && 'num' in v && v.unit);
+const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] && !hasOwnUnit(f.value) ? ` ${ROLE_UNIT[f.key]}` : ''}`;
 function renderDeflist(items) {
   const rows = items.map((it) => {
     const label = it._name ?? it._title;
@@ -559,7 +561,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
       body += `<label class="choice expose-${esc(exp.name)}"><input type="checkbox" name="${esc(exp.name)}" value="true"> ${name}</label>`;
     } else {
       const itype = exp.type === 'date' ? 'date' : (exp.type === 'time' ? 'datetime-local' : (exp.type === 'num' ? 'number' : 'text'));
-      body += `<span class="expose expose-${esc(exp.name)}">${lbl ? `<span class="deflabel">${lbl}</span>` : ''}${hint}<input type="${itype}" name="${esc(exp.name)}" data-type="${esc(exp.type)}" aria-label="${esc(lbl || String(exp.name))}"></span>`;
+      // aria-label 只放源站文案；无文案时绝不把内部标识符（expose name）写进属性
+      body += `<span class="expose expose-${esc(exp.name)}">${lbl ? `<span class="deflabel">${lbl}</span>` : ''}${hint}<input type="${itype}" name="${esc(exp.name)}" data-type="${esc(exp.type)}"${lbl ? ` aria-label="${esc(lbl)}"` : ''}></span>`;
     }
   }
 
