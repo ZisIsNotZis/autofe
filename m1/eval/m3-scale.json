@@ -216,6 +216,14 @@
   "ok": true
  },
  {
+  "k": "aws-amazon/ec2-on-demand",
+  "tier": "exemplar",
+  "high": 80,
+  "med": 2,
+  "info": 92,
+  "ok": true
+ },
+ {
   "k": "bilibili-com/home",
   "tier": "exemplar",
   "high": 1,
@@ -352,19 +360,19 @@
   "ok": true
  },
  {
-  "k": "echarts/examples-zh",
-  "tier": "support",
-  "high": 23,
-  "med": 39,
-  "info": 30,
-  "ok": true
- },
- {
   "k": "echarts/examples",
   "tier": "support",
   "high": 10,
   "med": 39,
   "info": 38,
+  "ok": true
+ },
+ {
+  "k": "echarts/examples-zh",
+  "tier": "support",
+  "high": 23,
+  "med": 39,
+  "info": 30,
   "ok": true
  },
  {
@@ -501,6 +509,22 @@
   "high": 14,
   "med": 0,
   "info": 31,
+  "ok": true
+ },
+ {
+  "k": "github-com/login",
+  "tier": "exemplar",
+  "high": 0,
+  "med": 0,
+  "info": 5,
+  "ok": true
+ },
+ {
+  "k": "gov-uk/ni-rates-letters",
+  "tier": "exemplar",
+  "high": 36,
+  "med": 4,
+  "info": 33,
   "ok": true
  },
  {
@@ -776,6 +800,14 @@
   "ok": true
  },
  {
+  "k": "stripe-dashboard/login",
+  "tier": "exemplar",
+  "high": 0,
+  "med": 0,
+  "info": 2,
+  "ok": true
+ },
+ {
   "k": "stripe-docs/payments",
   "tier": "exemplar",
   "high": 0,
@@ -829,6 +861,14 @@
   "high": 20,
   "med": 0,
   "info": 4,
+  "ok": true
+ },
+ {
+  "k": "xiaomi-account/login",
+  "tier": "exemplar",
+  "high": 1,
+  "med": 0,
+  "info": 9,
   "ok": true
  }
 ]

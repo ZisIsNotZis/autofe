@@ -61,6 +61,30 @@
       "type": "num",
       "label": "内存",
       "unit": "GB"
+    },
+    "category-letter": {
+      "type": "text",
+      "label": "Category letter"
+    },
+    "employee-rate-low": {
+      "type": "text",
+      "label": "£129 to £242 (£559 to £1,048 a month)"
+    },
+    "employee-rate-mid": {
+      "type": "text",
+      "label": "£242.01 to £967 (£1,048.01 to £4,189 a month)"
+    },
+    "employer-rate-low": {
+      "type": "text",
+      "label": "£96 to £481 (£417 to £2,083 a month)"
+    },
+    "employer-rate-mid": {
+      "type": "text",
+      "label": "£481.01 to £967 (£2,083.01 to £4,189 a month)"
+    },
+    "rate-over-967": {
+      "type": "text",
+      "label": "Over £967 a week (£4,189 a month)"
     }
   }
 }

@@ -1,0 +1,139 @@
+{
+  "_intent": "让用户登录小米账号",
+  "_title": {
+    "text": "小米账号"
+  },
+  "login": {
+    "_intent": "登录块：账号 + 密码 + 协议勾选 + 提交；并提供手机号/扫码切换、第三方登录、忘记密码与注册入口",
+    "_title": {
+      "text": "登录"
+    },
+    "identifier": {
+      "_intent": "账号标识符（邮箱/手机号码/小米ID）输入",
+      "_label": {
+        "text": "邮箱/手机号码/小米ID"
+      },
+      "_expose": {
+        "name": "account",
+        "type": "text"
+      }
+    },
+    "secret": {
+      "_intent": "密码输入",
+      "_label": {
+        "text": "密码"
+      },
+      "_expose": {
+        "name": "password",
+        "type": "text"
+      }
+    },
+    "agreement": {
+      "_intent": "勾选已阅读并同意小米账号使用协议与隐私政策",
+      "_label": {
+        "text": "已阅读并同意小米账号使用协议和小米账号隐私政策"
+      },
+      "_expose": {
+        "name": "agreement",
+        "type": "bool"
+      }
+    },
+    "submit": {
+      "_intent": "提交凭据登录",
+      "_title": {
+        "text": "登录"
+      },
+      "_action": {
+        "verb": "submit",
+        "label": "登录"
+      }
+    },
+    "forgot": {
+      "_intent": "找回密码",
+      "_title": {
+        "text": "忘记密码？"
+      },
+      "_action": {
+        "verb": "navigate",
+        "to": "https://account.xiaomi.com/pass/forgetPassword",
+        "label": "忘记密码？"
+      }
+    },
+    "phone-login": {
+      "_intent": "切换到手机号登录",
+      "_title": {
+        "text": "手机号登录"
+      },
+      "_action": {
+        "verb": "navigate",
+        "to": "https://account.xiaomi.com/fe/service/login/phone",
+        "label": "手机号登录"
+      }
+    },
+    "scan-login": {
+      "_intent": "切换到扫码登录",
+      "_title": {
+        "text": "扫码登录"
+      },
+      "_action": {
+        "verb": "operate",
+        "label": "扫码登录"
+      }
+    },
+    "alternatives": {
+      "_intent": "第三方账号登录：支付宝、微信、QQ、微博",
+      "_title": {
+        "text": "其他方式登录"
+      },
+      "_items": [
+        {
+          "_name": {
+            "text": "支付宝登录"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "支付宝登录"
+          }
+        },
+        {
+          "_name": {
+            "text": "微信登录"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "微信登录"
+          }
+        },
+        {
+          "_name": {
+            "text": "QQ登录"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "QQ登录"
+          }
+        },
+        {
+          "_name": {
+            "text": "微博登录"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "微博登录"
+          }
+        }
+      ]
+    },
+    "signup": {
+      "_intent": "没有账号时注册",
+      "_title": {
+        "text": "注册"
+      },
+      "_action": {
+        "verb": "navigate",
+        "to": "https://account.xiaomi.com/pass/register",
+        "label": "注册"
+      }
+    }
+  }
+}

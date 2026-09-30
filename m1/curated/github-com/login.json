@@ -1,0 +1,94 @@
+{
+  "_intent": "让开发者登录 GitHub",
+  "_title": {
+    "text": "Sign in to GitHub"
+  },
+  "login": {
+    "_intent": "登录块：用户名/邮箱 + 密码 + 提交；并提供 Google/Apple、通行密钥、创建账户与忘记密码入口",
+    "identifier": {
+      "_intent": "用户名或邮箱标识符输入",
+      "_label": {
+        "text": "Username or email address"
+      },
+      "_expose": {
+        "name": "login",
+        "type": "text"
+      }
+    },
+    "secret": {
+      "_intent": "密码输入",
+      "_label": {
+        "text": "Password"
+      },
+      "_expose": {
+        "name": "password",
+        "type": "text"
+      }
+    },
+    "submit": {
+      "_intent": "提交凭据登录",
+      "_title": {
+        "text": "Sign in"
+      },
+      "_action": {
+        "verb": "submit",
+        "label": "Sign in"
+      }
+    },
+    "forgot": {
+      "_intent": "找回忘记的密码",
+      "_title": {
+        "text": "Forgot password?"
+      },
+      "_action": {
+        "verb": "navigate",
+        "to": "https://github.com/password_reset",
+        "label": "Forgot password?"
+      }
+    },
+    "alternatives": {
+      "_intent": "其他登录方式：Google、Apple",
+      "_items": [
+        {
+          "_name": {
+            "text": "Continue with Google"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Continue with Google"
+          }
+        },
+        {
+          "_name": {
+            "text": "Continue with Apple"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Continue with Apple"
+          }
+        }
+      ]
+    },
+    "passkey": {
+      "_intent": "用通行密钥登录",
+      "_title": {
+        "text": "Sign in with a passkey"
+      },
+      "_action": {
+        "verb": "operate",
+        "label": "Sign in with a passkey"
+      }
+    },
+    "signup": {
+      "_intent": "没有账号时创建账户",
+      "_title": {
+        "text": "Create an account"
+      },
+      "_action": {
+        "verb": "navigate",
+        "to": "https://github.com/signup",
+        "label": "Create an account"
+      }
+    }
+  }
+}

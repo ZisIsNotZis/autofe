@@ -1,0 +1,85 @@
+{
+  "_intent": "Sign in to GitHub · GitHub — Sign in to GitHub [draft]",
+  "_title": {
+    "text": "Sign in to GitHub · GitHub"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://github.com/login#start-of-content",
+        "label": "Skip to content"
+      }
+    },
+    {
+      "_intent": "Sign in to GitHub [draft]",
+      "_title": {
+        "text": "Sign in to GitHub"
+      },
+      "_summary": {
+        "text": "Username or email address"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "username-or",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Password"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "password",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/password_reset",
+            "label": "Forgot password?"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Sign in"
+          }
+        },
+        {
+          "_text": {
+            "text": "or"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Continue with Google"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Continue with Apple"
+          }
+        },
+        {
+          "_text": {
+            "text": "New to GitHub? Create an account"
+          }
+        },
+        {
+          "_text": {
+            "text": "Sign in with a passkey"
+          }
+        }
+      ]
+    }
+  ]
+}

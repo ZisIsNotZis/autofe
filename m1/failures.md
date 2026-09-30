@@ -267,3 +267,16 @@
   - 断代：轮 6–8 期间两页 HTML 无字节变化 ⇒ 既有引擎行为，非回归。
 - **定案**：见 `docs/m1/layout-axes.md §3.1/§3.2`。`_items[i]`/`_lines[i]` 位置键不是可比属性；实体嵌套集合渲染在该实体列内。对比集若 `有效行(被≥2实体共享)==0` ⇒ `degenerate-no-shared-attribute`，或 `填充率 < 0.4` ⇒ `degenerate-fill-rate:<rate>`，则回退到该集合的正常形态，并在 pipeline「显式降级清单」输出带理由的一条。
 - **防回归**：`foundation-selftest.mjs` D2b 四条构造断言（稀疏集不进表 / 稠密集进表 / 低填充带率降级 / 位置集合留在列内）。
+
+## F-045 词汇增长（域字段，非失败模式）：GOV.UK 国民保险费率表
+- **背景**：轮 12 策展 `gov-uk/ni-rates-letters`（NH 费率表：每行一个类别字母，列为三段周收入区间的费率）。当前语法中“行=记录、列=属性”的数据表只能由 `_fields`（已声明域字段）表达；`_name` 在 run-table 渲染里不是列（见 F-046）。
+- **变更**：`m1/vocab-fields.json` 新增 6 个域字段，标签一律取自抓取的表头 `<th>` 文本：`category-letter`（"Category letter"）、`employee-rate-low`（"£129 to £242 (£559 to £1,048 a month)"）、`employee-rate-mid`（"£242.01 to £967 (£1,048.01 to £4,189 a month)"）、`employer-rate-low`（"£96 to £481 (£417 to £2,083 a month)"）、`employer-rate-mid`（"£481.01 to £967 (£2,083.01 to £4,189 a month)"）、`rate-over-967`（"Over £967 a week (£4,189 a month)"，两张表共用）。
+- **抓取背书**：`corpus/gov-uk/ni-rates-letters/dom.html` 两个 `<table>` 表头行逐字节见报告 §1；单元值（"0%"/"8%"/"1.85%"/"N/A"/"15%"）逐格照抄，未换算。
+- **状态**：已采纳（轮 12）。非失败模式，按 `vocab-fields.json` 纪律留痕。
+
+## F-046 登录/数据表的当前语法缺口（轮 12 策展新 exemplar 页挖出，未修）
+三处结构性缺口，`m1/curated/**` 用当前语法如实建模并在此登记，**不造键**：
+1. **secret 输入无类型**：`_expose.type` 的闭式值类型（§2 `text|num|money|date|time|bool|image|ref`）里**没有 password/secret**。三个登录页（stripe-dashboard / xiaomi-account / github-com）的密码框都只能声明为 `text`。引擎因此无法区分“普通文本输入”与“秘密输入”（无法决定掩码、不记录、不回填）。缺口归属 M4-b 的 `login` 原语（§4.5），本轮不预埋。
+2. **无 `<th>` 的表头语义丢失**：`aliyun-help/ecs-instance-families` 有 224 个 `<table>`、1340 行、**0 个 `<th>`**（表头是灰底加粗 `<td>`）。提取器的 `buildTable` 找不到 `columnheader` 行 ⇒ 返回 `null`，整张规格表被丢弃（stats 记 `table-without-headers: 217`）。即：表头语义无法从 DOM 结构化判据恢复。
+3. **表列词表爆炸 / 2 列表不能成表**：同一页的 217 张规格表共有 **76 个不同的列标签**（`实例规格` 204 次、`vCPU` 198 次……），且列是“规格属性”而非稳定域字段；用 `_fields` 逐列声明需要一次 76 条的词汇扩张（超出单轮策展的合理范围，且会成为事实上的 `table` 原语）。另外 run-table（`renderRun`）**不把 `_name` 当作列**（cols 只取 `_fields` + 非 name 事实），故“标签 + 值”这种 2 列表最多只能渲染为卡片，无法成表。这两点都由 M4-b 的 `table` 原语解决。
+- **结果**：`aliyun-help/ecs-instance-families` 本轮**未策展**（见 `.scratch/09-new-exemplar-curation/report.md`「未完成页」）。

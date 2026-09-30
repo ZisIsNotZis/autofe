@@ -1,0 +1,114 @@
+{
+  "_intent": "Stripe 登录 | 登录 Stripe 管理平台 [draft]",
+  "_title": {
+    "text": "Stripe 登录 | 登录 Stripe 管理平台"
+  },
+  "_summary": {
+    "text": "登录您的账户"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://stripe.com/",
+        "label": "Stripe 主页"
+      }
+    },
+    {
+      "_text": {
+        "text": "邮件地址"
+      }
+    },
+    {
+      "_text": {
+        "text": "email input"
+      }
+    },
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "email-input",
+        "type": "text"
+      }
+    },
+    {
+      "_text": {
+        "text": "密码 忘记密码？"
+      }
+    },
+    {
+      "_text": {
+        "text": "password input"
+      }
+    },
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "password-input",
+        "type": "text"
+      }
+    },
+    {
+      "_text": {
+        "text": "在此设备上记住我"
+      }
+    },
+    {
+      "_intent": "toggle [draft]",
+      "_expose": {
+        "name": "toggle",
+        "type": "bool"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "​ 登录"
+      }
+    },
+    {
+      "_text": {
+        "text": "或使用以下方式登录"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "​ Google"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "​ 通行密钥"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "​ SSO"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://dashboard.stripe.com/register",
+        "label": "创建账户"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://stripe.com/",
+        "label": "© Stripe"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://stripe.com/privacy",
+        "label": "隐私和条款"
+      }
+    }
+  ]
+}

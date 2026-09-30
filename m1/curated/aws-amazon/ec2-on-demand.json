@@ -1,0 +1,782 @@
+{
+  "_intent": "让开发者查清 Amazon EC2 按需实例与数据传输的按需价格（本次建模覆盖数据传输与同区域传输两张价目表）",
+  "_title": {
+    "text": "Amazon EC2 按需定价"
+  },
+  "data-transfer": {
+    "_intent": "与互联网之间的数据传输费：传入免费，传出按每月累计用量分档",
+    "_title": {
+      "text": "数据传输"
+    },
+    "inbound": {
+      "_intent": "从互联网传入 Amazon EC2 的数据不分档，每 GB 免费",
+      "_items": [
+        {
+          "_name": {
+            "text": "所有传入数据"
+          },
+          "_price": {
+            "money": 0,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      ]
+    },
+    "outbound": {
+      "_intent": "从 Amazon EC2 传出至互联网按每月累计量分档计费",
+      "_summary": {
+        "text": "AWS 客户每月可免费将 100GB 的数据传出至互联网，所有 AWS 服务和区域（中国区域和 GovCloud 区域除外）合并计算。100GB 免费传出至互联网的数据额度全球适用，不单独或分别适用于 AWS 区域。"
+      },
+      "_items": [
+        {
+          "_name": {
+            "text": "每月前 10TB"
+          },
+          "_price": {
+            "money": 0.09,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        },
+        {
+          "_name": {
+            "text": "每月随后的 40TB"
+          },
+          "_price": {
+            "money": 0.085,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        },
+        {
+          "_name": {
+            "text": "每月随后的 100TB"
+          },
+          "_price": {
+            "money": 0.07,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        },
+        {
+          "_name": {
+            "text": "每月超出 150TB 的部分"
+          },
+          "_price": {
+            "money": 0.05,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      ]
+    }
+  },
+  "region-egress": {
+    "_intent": "按区域列出「从 Amazon EC2 传出至互联网」的每 GB 价格（源站 67 个区域/本地扩展区一行一个）",
+    "_title": {
+      "text": "数据自 Amazon EC2 传出至"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "Amazon CloudFront"
+        },
+        "_price": {
+          "money": 0,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "AWS European Sovereign Cloud（德国）"
+        },
+        "_price": {
+          "money": 0.05,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "AWS GovCloud（美国西部）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "AWS GovCloud（美国东部）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "非洲（开普敦）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（香港）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（海得拉巴）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（雅加达）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（马来西亚）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（墨尔本）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（孟买）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（新西兰）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（大阪）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（首尔）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（新加坡）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（悉尼）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（台北）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（泰国）"
+        },
+        "_price": {
+          "money": 0.08,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（东京）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "加拿大（中部）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "加拿大西部（卡尔加里）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲（法兰克福）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲（爱尔兰）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲（伦敦）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲（米兰）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲（巴黎）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲（西班牙）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲（斯德哥尔摩）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲（苏黎世）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "以色列（特拉维夫）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "墨西哥（中部）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "中东（巴林）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "中东（阿联酋）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "南美洲（圣保罗）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（弗吉尼亚州北部）"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国西部（洛杉矶）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国西部（北加利福尼亚）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国西部（俄勒冈州）"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（KDDI）– 大阪"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（KDDI）– 东京"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（SKT）– 大田"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "亚太地区（SKT）– 首尔"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "加拿大（BELL）– 多伦多"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲（英国电信）- 曼彻斯特"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲 (Vodafone) – 伦敦"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "欧洲（Vodafone）– 曼彻斯特"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "塞内加尔（达喀尔）"
+        },
+        "_price": {
+          "money": 0.05,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（列涅萨）"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 亚特兰大"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 波士顿"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 夏洛特"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 芝加哥"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 达拉斯"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 底特律"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部 (Verizon) – 休斯顿"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 迈阿密"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 明尼阿波利斯"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）- 纳什维尔"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 纽约"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 坦帕"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国东部（威瑞森）– 华盛顿特区"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国西部（威瑞森）- 丹佛"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国西部（威瑞森）- 拉斯维加斯"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国西部（威瑞森）– 洛杉矶"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国西部 (Verizon) – 菲尼克斯"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国西部（威瑞森）– 旧金山港湾区"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国西部（威瑞森）- 西雅图"
+        },
+        "_price": {
+          "money": 0.02,
+          "currency": "USD",
+          "qualifier": "每 GB"
+        }
+      }
+    ]
+  },
+  "same-region": {
+    "_intent": "同一 AWS 区域内，本地区域与可用区之间传输的数据按每 GB 双向计费",
+    "_title": {
+      "text": "在同一 AWS 区域内传输数据"
+    },
+    "_summary": {
+      "text": "在同一 AWS 区域内的本地区域和可用区之间传输的数据，从本地区域中的 Amazon EC2“传入”和“传出”"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "数据传入"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD"
+        }
+      },
+      {
+        "_name": {
+          "text": "数据传出"
+        },
+        "_price": {
+          "money": 0.01,
+          "currency": "USD"
+        }
+      }
+    ]
+  }
+}

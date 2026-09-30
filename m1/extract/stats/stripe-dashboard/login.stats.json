@@ -1,0 +1,49 @@
+{
+  "site": "stripe-dashboard",
+  "page": "login",
+  "url": "https://dashboard.stripe.com/login",
+  "title": "Stripe 登录 | 登录 Stripe 管理平台",
+  "sourceNodes": 178,
+  "counts": {
+    "storylines": 0,
+    "items": 0,
+    "actions": 8,
+    "exposes": 3,
+    "images": 0,
+    "facts": 1,
+    "tables": 0,
+    "lists": 0,
+    "choiceSets": 0,
+    "inputs": 3,
+    "dupeText": 0,
+    "capHits": []
+  },
+  "storylines": 0,
+  "chrome": [
+    {
+      "role": "presentation",
+      "count": 2
+    },
+    {
+      "role": "dialog",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "chart-or-svg",
+      "role": "graphics-document",
+      "count": 2,
+      "examples": []
+    },
+    {
+      "kind": "embedded-media",
+      "role": "iframe",
+      "count": 1,
+      "examples": [
+        "hCaptcha challenge"
+      ]
+    }
+  ],
+  "fieldsDrafted": []
+}

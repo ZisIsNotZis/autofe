@@ -271,6 +271,7 @@
         "arco-design/components-form",
         "arco-design/components-input",
         "arco-design/components-table",
+        "aws-amazon/ec2-on-demand",
         "cnblogs/blog-cmt",
         "cnblogs/blog-duwenlong",
         "element-plus/table",
@@ -291,6 +292,7 @@
         "arco-design/components-form",
         "arco-design/components-input",
         "arco-design/components-table",
+        "aws-amazon/ec2-on-demand",
         "cnblogs/blog-cmt",
         "cnblogs/blog-duwenlong",
         "juejin-cn/post-7686401413472862214",
@@ -851,6 +853,20 @@
         "arco-design/docs-start"
       ]
     },
+    "amazon-ec2": {
+      "type": "text",
+      "label": "数据自 Amazon EC2 传出至",
+      "pages": [
+        "aws-amazon/ec2-on-demand"
+      ]
+    },
+    "aws-amazon-ec2": {
+      "type": "text",
+      "label": "在同一 AWS 区域内的本地区域和可用区之间传输的数据，从本地区域中的 Amazon EC2“传入”和“传出”",
+      "pages": [
+        "aws-amazon/ec2-on-demand"
+      ]
+    },
     "col-6": {
       "type": "text",
       "label": "五",
@@ -1110,6 +1126,48 @@
       "label": "Enterprise",
       "pages": [
         "getbootstrap/example-pricing"
+      ]
+    },
+    "category-letter": {
+      "type": "text",
+      "label": "Category letter",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "129-to-242-559-to-1-048-a-month": {
+      "type": "text",
+      "label": "£129 to £242 (£559 to £1,048 a month)",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "242-01-to-967-1-048-01-to-4-189-a-month": {
+      "type": "text",
+      "label": "£242.01 to £967 (£1,048.01 to £4,189 a month)",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "over-967-a-week-4-189-a-month": {
+      "type": "num",
+      "label": "Over £967 a week (£4,189 a month)",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "96-to-481-417-to-2-083-a-month": {
+      "type": "num",
+      "label": "£96 to £481 (£417 to £2,083 a month)",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "481-01-to-967-2-083-01-to-4-189-a-month": {
+      "type": "num",
+      "label": "£481.01 to £967 (£2,083.01 to £4,189 a month)",
+      "pages": [
+        "gov-uk/ni-rates-letters"
       ]
     },
     "filter-data-with-this-column": {

@@ -2,7 +2,9 @@
 
 状态：**设计稿，只做设计与论证**。本轮不改模型、不改代码、不跑 `m1/eval/pipeline.mjs`。
 依据：`docs/design-basis.md`（§3.6/§3.7/§6）、`docs/m1/axioms-v0.md`、`docs/m1/layout-axes.md`（F-031）、`m1/vocab*.json`、`m1/render.mjs`（F-030 形态表）、`m1/eval/m3-report.md`。
-数据层：**模型层** = `m1/curated/**`（36 页 / 15 站，M3 验收后快照）+ `m1/models/**`（8 个早期手写模型）；**抓取层** = `corpus/**`（104 页 = exemplar 36 + support 68，`dom.html` + `nodes.json` 为真相）。
+数据层：**模型层** = `m1/curated/**`（M3 验收后快照 36 页 / 15 站；**轮 12 后为 41 页 / 22 站**）+ `m1/models/**`（8 个早期手写模型）；**抓取层** = `corpus/**`（M4-a 快照 104 页 = exemplar 36 + support 68；**轮 9/11 补采后 110 页 = exemplar 42 + support 68**，`dom.html` + `nodes.json` 为真相）。
+
+> **口径提示（轮 12 补记）**：本文全部测量基于 **M4-a 快照（exemplar 36 页 / corpus 104 页）**，故下文出现的 "36"/"104" 均指该快照分母。**轮 9/11 采集 + 轮 12 策展后**：`table`/`login` 在**模型层**已有样本——`table` 3 页（`gov-uk/ni-rates-letters` 语义 `<th>` 表、`aws-amazon/ec2-on-demand` 价目表、另见 §2.3 抓取层）、`login` 3 页（`stripe-dashboard/login`、`xiaomi-account/login`、`github-com/login`）；门禁现为 **41 页**（`aliyun-help/ecs-instance-families` 待策展⇒目标 42）。发现的结构缺口（无 `<th>` 表头语义、secret 输入无类型、表列词表爆炸）见 `m1/failures.md` F-046。
 
 ---
 
