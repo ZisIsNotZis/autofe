@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-28",
-  "notes": "Stratified seed for the M0 corpus. CN-first because several global sites are unreliable from this network. URLs were reachability-probed once (HTTP GET) on 2026-09-18; anything that failed the probe is recorded in droppedCandidates instead of being seeded. Unreachable pages during a run are recorded in corpus/failures.json, never dropped silently. Robots-denied pages are kept with `skip: true` plus a droppedCandidates entry, so nothing is silently removed. Tier model (2026-09-28): every site is tagged `tier: \"exemplar\"` (industry-recognized top-tier design for a professional/commercial/industrial scenario — the population coverage claims are made against, per design-basis §8) or `tier: \"support\"` (structural coverage: tables/forms/docs/enterprise/utility; real pages, but no coverage claim), each with a one-line `justification`. Seven new exemplar sites (linear-app, stripe-com, stripe-docs, airbnb-com, gov-uk, apple-com-cn, grafana-play) were reachability- and robots-probed on 2026-09-28 before seeding. Round 9 (2026-09-29): four further exemplar sites (aliyun-help, aws-amazon, stripe-dashboard, xiaomi-account) plus one gov-uk page were added to close the exemplar-layer evidence gap for the M4 `table` and `login` primitives (before this round: 0 exemplar pages with a <table> or a type=password field). Robots-probed and recorded in .scratch/08-exemplar-expansion/report.md.",
+  "updatedAt": "2026-10-01",
+  "notes": "Stratified seed for the M0 corpus. CN-first because several global sites are unreliable from this network. URLs were reachability-probed once (HTTP GET) on 2026-09-18; anything that failed the probe is recorded in droppedCandidates instead of being seeded. Unreachable pages during a run are recorded in corpus/failures.json, never dropped silently. Robots-denied pages are kept with `skip: true` plus a droppedCandidates entry, so nothing is silently removed. Tier model (2026-09-28): every site is tagged `tier: \"exemplar\"` (industry-recognized top-tier design for a professional/commercial/industrial scenario — the population coverage claims are made against, per design-basis §8) or `tier: \"support\"` (structural coverage: tables/forms/docs/enterprise/utility; real pages, but no coverage claim), each with a one-line `justification`. Seven new exemplar sites (linear-app, stripe-com, stripe-docs, airbnb-com, gov-uk, apple-com-cn, grafana-play) were reachability- and robots-probed on 2026-09-28 before seeding. Round 9 (2026-09-29): four further exemplar sites (aliyun-help, aws-amazon, stripe-dashboard, xiaomi-account) plus one gov-uk page were added to close the exemplar-layer evidence gap for the M4 `table` and `login` primitives (before this round: 0 exemplar pages with a <table> or a type=password field). Robots-probed and recorded in .scratch/08-exemplar-expansion/report.md. Round 11 (2026-10-01): one further exemplar site (github-com, page /login) added as the third exemplar `login` site; github.com was re-probed reachable (HTTP 200) after the 2026-09-18 unreachable record. Recorded in .scratch/08-exemplar-expansion/report.md.",
   "primaryStratum": "archetype",
   "secondaryStrata": [
     "region",
@@ -1480,6 +1480,25 @@
           "note": "round 9: public login form, no credentials submitted"
         }
       ]
+    },
+    {
+      "slug": "github-com",
+      "domain": "github.com",
+      "origin": "https://github.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "developer-platform",
+      "styleTag": "functional-form",
+      "tier": "exemplar",
+      "justification": "GitHub is the industry-reference developer platform and one of the most-copied sign-in surfaces in professional software; its /login page is a real server-rendered identifier + password form (round 11, third exemplar `login` site). NOTE: github.com was previously recorded unreachable from this network (2026-09-18); re-probed reachable (HTTP 200) on 2026-10-01.",
+      "pages": [
+        {
+          "slug": "login",
+          "url": "https://github.com/login",
+          "archetype": "form/checkout/settings",
+          "note": "round 11: public login form, no credentials submitted; passkey/forgot-password/create-account entries; no OAuth third-party buttons on this page"
+        }
+      ]
     }
   ],
   "droppedCandidates": [
@@ -1582,7 +1601,7 @@
     {
       "url": "https://github.com/*",
       "archetype": "profile/account",
-      "reason": "github.com unreachable from this network (known environment fact)",
+      "reason": "github.com was unreachable from this network (known environment fact at the time); SUPERSEDED for the /login page: re-probed reachable HTTP 200 on 2026-10-01 and seeded as github-com/login (round 11). Other github.com routes were not re-probed.",
       "checkedAt": "2026-09-18"
     },
     {

@@ -65,6 +65,48 @@ const deg = renderWithAudit(noAttrs);
 check('D2 entities with no comparable attribute degrade explicitly', !deg.html.includes('<table class="cmp-table">') && deg.degradations.length === 1 && deg.degradations[0].reason === 'no-comparable-attribute',
   JSON.stringify(deg.degradations));
 
+// ---- D2b: a comparison table with no shared attribute row is an empty shell -----
+// (the `_rel.compare` declaration is honest, but the entities share no comparable
+// attribute: each row is filled by one entity only ⇒ degrade, with an explicit reason)
+const sparse = { _intent: 'sparse', _title: { text: 't' }, _rel: { compare: true }, _items: [
+  { _key: 'a', _name: { text: 'A' }, _detail: { text: 'only A' } },
+  { _key: 'b', _name: { text: 'B' }, _text: { text: 'only B' } },
+]};
+const sp = renderWithAudit(sparse);
+check('D2b a sparse set (no shared attribute row) does not become a table',
+  !sp.html.includes('<table class="cmp-table">') && sp.degradations.length === 1 && sp.degradations[0].reason === 'degenerate-no-shared-attribute',
+  JSON.stringify(sp.degradations));
+// a dense set (every entity declares the same attributes) still becomes a table
+const dense = { _intent: 'dense', _title: { text: 't' }, _rel: { compare: true }, _items: [
+  { _key: 'a', _name: { text: 'A' }, _fields: { cpu: { num: 2, unit: '核' }, memory: { num: 4, unit: 'GB' } } },
+  { _key: 'b', _name: { text: 'B' }, _fields: { cpu: { num: 4, unit: '核' }, memory: { num: 8, unit: 'GB' } } },
+]};
+const dn = renderWithAudit(dense);
+check('D2b a dense set (shared attributes) becomes a comparison table',
+  dn.html.includes('<table class="cmp-table">') && dn.degradations.length === 0, JSON.stringify(dn.degradations));
+// low fill (one shared row under a mass of one-entity attributes) degrades with the rate
+const thin = { _intent: 'thin', _title: { text: 't' }, _rel: { compare: true }, _items: [
+  { _key: 'a', _name: { text: 'A' }, _fields: { k1: { text: 'A1' }, k2: { text: 'A2' }, k3: { text: 'A3' }, k4: { text: 'A4' }, k5: { text: 'A5' }, k6: { text: 'A6' } } },
+  { _key: 'b', _name: { text: 'B' }, _fields: { k1: { text: 'B1' } } },
+  { _key: 'c', _name: { text: 'C' }, _fields: { k1: { text: 'C1' } } },
+  { _key: 'd', _name: { text: 'D' }, _fields: { k1: { text: 'D1' } } },
+]};
+const th = renderWithAudit(thin);
+check('D2b a thin table (fill < 0.4) degrades with its fill rate',
+  !th.html.includes('<table class="cmp-table">') && th.degradations.length === 1 && th.degradations[0].reason === 'degenerate-fill-rate:0.38',
+  JSON.stringify(th.degradations));
+// positional array elements are not attributes: an entity's own collection stays in its column
+const withColors = { _intent: 'colors', _title: { text: 't' }, _rel: { compare: true }, _items: [
+  { _key: 'a', _name: { text: 'A' }, display: { _title: { text: '显示屏' }, _detail: { text: 'A screen' } }, _items: [{ _key: 'a1', _name: { text: '红' } }, { _key: 'a2', _name: { text: '蓝' } }] },
+  { _key: 'b', _name: { text: 'B' }, display: { _title: { text: '显示屏' }, _detail: { text: 'B screen' } }, _items: [{ _key: 'b1', _name: { text: '绿' } }] },
+]};
+const wc = renderWithAudit(withColors);
+const wcRows = [...wc.html.matchAll(/<th class="cmp-row">([^<]*)<\/th>/g)].map((m) => m[1]);
+check('D2b nested collections are not index-paired rows (colors stay in their column)',
+  wc.html.includes('<table class="cmp-table">') && !['红', '蓝', '绿'].some((c) => wcRows.includes(c))
+  && wc.html.includes('红') && wc.html.includes('蓝') && wc.html.includes('绿'),
+  JSON.stringify(wcRows));
+
 // ---- D2: the whole curated library is accounted for -------------------------
 const models = [];
 for (const site of fs.readdirSync(path.join(root, 'm1/curated')).sort()) {
@@ -82,7 +124,8 @@ for (const [key, file] of models) {
   (function walk(n) {
     for (const c of Object.values(n)) {
       if (!c || typeof c !== 'object' || Array.isArray(c)) continue;
-      if (c._rel?.compare === true && Array.isArray(c._items) && c._items.length >= 2 && !html.includes('<table class="cmp-table">') && !degradations.some((d) => d.key === c._key)) silent++;
+      const identified = (d) => (c._key != null ? d.key === c._key : d.key == null);
+      if (c._rel?.compare === true && Array.isArray(c._items) && c._items.length >= 2 && !html.includes('<table class="cmp-table">') && !degradations.some(identified)) silent++;
       walk(c);
     }
   })(model);

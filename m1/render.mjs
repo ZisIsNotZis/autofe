@@ -382,6 +382,9 @@ function renderControls(items, chain, ctx) {
 }
 // 横向对比：列 = 实体，行 = 属性；不换行，可横向滚动（F-031-§3）
 // 行 = 两个以上实体共有的可对照属性；实体名/标签/价格/副标题/摘要进表头，不当行（F-031-§3）
+// 数组元素（`_items[i]`/`_lines[i]`）**不是**可比属性：按下标对齐两个无关列表是“配对”而非对照。
+// 实体的嵌套集合属于该实体自己的内容，渲染在该实体的列内（见 renderCompareTable）。
+const isPositionalKey = (k) => /^_(items|lines)\[\d+\]$/.test(k);
 function compareRowKeys(items) {
   const rowKeys = [];
   const seen = new Set();
@@ -392,20 +395,46 @@ function compareRowKeys(items) {
       if (!seen.has(f.key)) { seen.add(f.key); rowKeys.push(f.key); }
     }
     for (const c of childrenOf(it)) {
+      if (isPositionalKey(c.key)) continue;
       if (!seen.has(c.key)) { seen.add(c.key); rowKeys.push(c.key); }
     }
   }
   return rowKeys;
 }
 
+// 单元格是否有值（口径与 renderCompareTable.cellOf 一致：类型化字段 / 角色事实 / 命名子节点）
+function compareHasCell(it, key) {
+  if (it._fields?.[key]) return true;
+  if (factsOf(it).some((f) => f.key === key)) return true;
+  return childrenOf(it).some((c) => c.key === key);
+}
+
+// 退化判据（明文规则见 docs/m1/layout-axes.md §3）：一个对比集若渲染出的表没有一条被 ≥2 个实体
+// 共享的属性行（“空壳”，哪怕每格都填了字），或整体填充率低于阈值，就不成其为对照表。
+const COMPARE_MIN_FILL = 0.4;
+function compareStats(items) {
+  const rowKeys = compareRowKeys(items);
+  let filledCells = 0, sharedRows = 0;
+  for (const k of rowKeys) {
+    const n = items.filter((it) => compareHasCell(it, k)).length;
+    filledCells += n;
+    if (n >= 2) sharedRows += 1;
+  }
+  const cells = rowKeys.length * items.length;
+  return { rowKeys, rows: rowKeys.length, sharedRows, fill: cells ? filledCells / cells : 0 };
+}
+
 // D2：对照语义与位置无关。一组 ≥2 个被标为对照实体的条目要么成对比表（列=实体、行=属性），
 // 要么带着显式理由降级——绝不静默变形。能成表的条件：每个实体有名字（表头）、没有成员是控件、
-// 至少有一个可对照属性（否则只剩表头，成不了表）。
+// 至少有一个可对照属性（否则只剩表头，成不了表），且该表不是空壳。
 function compareSetVerdict(items) {
   if (items.length < 2) return { ok: false, reason: 'fewer-than-2-entities' };
   if (items.some((it) => it._expose)) return { ok: false, reason: 'member-is-a-control' };
   if (items.some((it) => !(it._name ?? it._title))) return { ok: false, reason: 'member-has-no-name' };
-  if (!compareRowKeys(items).length) return { ok: false, reason: 'no-comparable-attribute' };
+  const st = compareStats(items);
+  if (!st.rows) return { ok: false, reason: 'no-comparable-attribute' };
+  if (!st.sharedRows) return { ok: false, reason: 'degenerate-no-shared-attribute' };
+  if (st.fill < COMPARE_MIN_FILL) return { ok: false, reason: `degenerate-fill-rate:${st.fill.toFixed(2)}` };
   return { ok: true };
 }
 
@@ -435,8 +464,18 @@ function renderCompareTable(items, chain, hide, ctx) {
     const price = it._price ? `<div class="cmp-price">${fmt(it._price)}</div>` : '';
     const sum = (it._summary ? `<div class="cmp-sub">${fmt(it._summary)}</div>` : '')
       + (it._subtitle ? `<div class="cmp-sub">${fmt(it._subtitle)}</div>` : '');
+    // 实体自己的嵌套集合（如机身颜色）属于该实体，渲染在它的列内——绝不与另一实体的列表按下标配对
+    let nested = '';
+    for (const arrKey of ['_items', '_lines']) {
+      const arr = it[arrKey];
+      if (Array.isArray(arr) && arr.length) {
+        const f = selectForm(arr, it._rel?.order);
+        nested += renderForm(f, arr, [...chain, it], hide, ctx, 5, it);
+      }
+    }
+    const nestedHtml = nested ? `<div class="cmp-nested">${nested}</div>` : '';
     const ctl = ex.ctl ? `<div class="cmp-ctl">${ex.ctl}</div>` : '';
-    return `<th class="cmp-col">${nm}${tag}${price}${sum}${ctl}</th>`;
+    return `<th class="cmp-col">${nm}${tag}${price}${sum}${nestedHtml}${ctl}</th>`;
   }).join('')}</tr>`;
   // row label: prefer the child block's own title/name (F-031-§3), then the declared field label
   const childLabel = (key) => {

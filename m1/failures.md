@@ -259,3 +259,11 @@
 - **变更**：`m1/vocab-fields.json` 新增 `cpu`（`{type:num, label:"CPU", unit:"核"}`）与 `memory`（`{type:num, label:"内存", unit:"GB"}`）；`m1/curated/aliyun-com/product-ecs.json` 四张报价卡补 `_fields`（抓取背书：`corpus/aliyun-com/product-ecs/nodes.json` 每卡 `p 实例 : N核NG`：e=2核2G / u2a=2核4G / c9i=4核8G / g9i=2核8G），并声明 `_rel.compare: true`。
 - **结果**：`instances` 由“一排报价卡”变为对比表（列=实例，行=CPU/内存），有抓取与 `_intent` 双重背书。
 - **状态**：已采纳（2026-xx-xx，父代理裁定·轮 7）。非失败模式，仅按 `vocab-fields.json` 纪律留痕。
+
+## F-044 退化对比表：空壳表 + 位置行配对（引擎，第 6 轮独立验收挖出）
+- **现象**（`_rel.compare` 声明正确，但渲染出的表退化）：
+  - **空壳**（stripe-com/pricing `plans`）：两列各说各话——`标准定价` 的 `_detail`/`_text` 只在左列有值，`定制化定价` 的四个子项只在右列有值；**没有任何一行被两列同时填充**，表只是把两组无关事实并排。
+  - **位置配对**（apple-com-cn/iphone-17 `which-iphone`）：实体各自的颜色集合按 `_items[i]` **下标**配对成行（薰衣草紫 ↔ 蓝），把两个无关列表强行对齐。
+  - 断代：轮 6–8 期间两页 HTML 无字节变化 ⇒ 既有引擎行为，非回归。
+- **定案**：见 `docs/m1/layout-axes.md §3.1/§3.2`。`_items[i]`/`_lines[i]` 位置键不是可比属性；实体嵌套集合渲染在该实体列内。对比集若 `有效行(被≥2实体共享)==0` ⇒ `degenerate-no-shared-attribute`，或 `填充率 < 0.4` ⇒ `degenerate-fill-rate:<rate>`，则回退到该集合的正常形态，并在 pipeline「显式降级清单」输出带理由的一条。
+- **防回归**：`foundation-selftest.mjs` D2b 四条构造断言（稀疏集不进表 / 稠密集进表 / 低填充带率降级 / 位置集合留在列内）。

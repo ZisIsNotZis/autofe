@@ -233,3 +233,130 @@ Last-line counters: `new_pages=5` captured, `table_pages=3` / `login_pages=2` am
 probe candidates; see §4), all of them recorded rather than hidden.
 
 CAPTURE_DONE new_pages=5 table_pages=3 login_pages=2 failures=7
+
+---
+
+# Round 11 — third `login` exemplar site (GitHub `/login`)
+
+Scope: **add exactly 1 new page** to close the last `login` slot (round 9 left `login` at 2/3 exemplar
+sites), using the existing `tools/capture/` chain with robots pre-check → real capture; no re-capture
+or overwrite of any existing page, no credentials submitted, login page only (no post-login content).
+
+## 11.1 Candidate choice (top-tier design + real form + capturable)
+
+Evaluation of the four candidates from the brief:
+
+| candidate | verdict | reason |
+|---|---|---|
+| GOV.UK One Login (`home.account.gov.uk` / `signin.account.gov.uk`) | set aside | reachability probe: `home.account.gov.uk` → HTTP 400, `signin.account.gov.uk` → HTTP 403 for a plain client (JS/Next SPA, low capture confidence in the time box); **and** brand-ambiguous: it is the GOV.UK identity surface, so an independent reviewer can argue it is the *same* site/brand as the existing `gov-uk` exemplar — the brief says to pick another if that is the case |
+| **GitHub `/login`** (`github.com/login`) | **chosen** | reachability probe: HTTP 200, real server-rendered form; GitHub is the industry-reference developer platform (top-tier professional/commercial), unambiguously a *new* site (new domain, new brand), and the page carries the full `login` shape (identifier + secret + submit + third-party + signup) |
+| Aliyun / Tencent Cloud account login | rejected | `account.aliyun.com/login/login.htm` is robots-denied (`Disallow: /*`, already in `droppedCandidates`); `cloud.tencent.com/login` reachable (200) but the auth is a JS app behind redirects — kept as fallback, not needed |
+| re-try `play.grafana.org/login` | not needed | round 9 already recorded it as `navigation_failed`; GitHub worked on the first attempt, so no retry was spent |
+
+A previously-recorded environment fact had to be corrected: `sites.json` `droppedCandidates` said
+"github.com unreachable from this network (2026-09-18)". It was re-probed reachable (HTTP 200) on
+2026-10-01 and the `/login` page was seeded; the droppedCandidates entry now records the
+supersession (other github.com routes were **not** re-probed).
+
+## 11.2 robots pre-check (before capture) + throttling
+
+Pre-check via the pipeline's own `RobotsClient` (product token `AutoFE-Research-Bot`):
+
+```bash
+node tools/capture/index.mjs --dry-run --sites /tmp/probe-sites-r11.json --out /tmp/af-probe-r11
+# ALLOW github-com/login [form/checkout/settings]
+
+node tools/capture/index.mjs --dry-run --page github-com/login
+# ALLOW github-com/login [form/checkout/settings]
+```
+
+`meta.robots`: `fetch: ok`, `status 200`, `matchedAgent: "*"`, `fetchedVia: node` (github.com/robots.txt
+disallows `/account-login` but **not** `/login`, so the `*` group allows it).
+Throttling: `corpus/run-report.json.hostPacing` shows the two github.com requests 1501 ms apart
+(floor 1500 ms, `waitedMs: 897` on the second) — one browser, sequential, defaults unchanged. No
+`Crawl-delay` was raised for our agent.
+
+## 11.3 Capture + evidence (reproducible)
+
+```bash
+node tools/capture/index.mjs --page github-com/login
+# OK [1/1] github-com/login [form/checkout/settings] nodes=82 dom=397 ax=136
+# done: ok=1 partial=0 failed=0; failures recorded=11   (unchanged: all 11 pre-existing)
+```
+
+New page dir: `corpus/github-com/login/` (`dom.html`, `nodes.json`, `a11y.json`, `jsonld.json`,
+`full.png`, `viewport.png`, `meta.json`).
+
+| metric | value |
+|---|---|
+| status / title | 200 / `Sign in to GitHub · GitHub` |
+| `redirectedUrl` | `https://github.com/login` (no redirect) |
+| `type="password"` | **1** |
+| `name="login"` (identifier field) | 1 |
+| `<form>` | 4 (1 credential form + 2 third-party OAuth forms + footer cookie form) |
+| qualityFlags | **[] (clean)** |
+| `axCoverageRatio` | 0.867 |
+| renderedNodes / visible | 83 / 82 |
+| pageErrors / assetLoadFailures | 0 / 0 |
+| verify-alignment | `aligned-painted-features`, **0 blockers / 0 warnings** |
+
+```bash
+grep -o 'type="password"' corpus/github-com/login/dom.html | wc -l        # 1
+grep -o 'name="login"'     corpus/github-com/login/dom.html | wc -l        # 1
+grep -o '<form'            corpus/github-com/login/dom.html | wc -l        # 4
+node tools/capture/verify-alignment.mjs corpus/github-com/login            # verdict aligned-painted-features, 0 blockers
+```
+
+### What the page actually proves (checked in the delivered `dom.html`, not assumed)
+
+A complete `login` block in the §4.5 sense:
+
+- **identifier**: label `Username or email address` (`name="login"`);
+- **secret**: label `Password`, `type="password"`;
+- **submit**: `input[type=button]` "Sign in" (`type="submit"` styled as button — the only submit);
+- **third-party entries**: `Continue with Google` and `Continue with Apple` (each its own form);
+- **passkey entry**: `Sign in with a passkey`;
+- **signup entry**: `Create an account` (link) + `New to GitHub?`;
+- **forgot password**: `Forgot password?`.
+
+So GitHub `/login` carries every sub-part the two round-9 login pages carry (identifier + secret +
+submit + third-party + signup), i.e. it is at least as strong as `stripe-dashboard/login` and
+`xiaomi-account/login`.
+
+## 11.4 Isolation (only added, nothing overwritten)
+
+```bash
+find corpus -name meta.json | wc -l          # 109 before -> 110 after (exactly +1)
+node -e "...run-report results..."           # this run: results len = 1, github-com/login:ok
+node -e "console.log(require('./corpus/failures.json').count)"   # 11 before and after
+```
+
+`corpus/run-report.json` was overwritten by the 1-page run (documented transient); the previous file
+is archived at `/tmp/run-report-before-round11.json` for this session only. `corpus/failures.json`
+is unchanged (11 entries), and no page of the existing 36 exemplar pages was re-captured.
+
+## 11.5 Failures / non-acceptance this round
+
+None to record for the chosen page: GitHub `/login` was ALLOW → OK on the first attempt. The
+candidate evaluation above records why One Login / Aliyun / Tencent were not used; no failure was
+faked and no half-evidence was seeded.
+
+## 11.6 Is the `login` threshold met? — **YES, 3/3**
+
+Reproducible count over the seeded corpus (exemplar pages with `type="password"`):
+
+```bash
+# for every seeded page dir, count type="password" in dom.html and keep tier=exemplar
+# -> stripe-dashboard/login (1), xiaomi-account/login (1), github-com/login (1)
+# -> exemplar login sites = 3  ["stripe-dashboard","xiaomi-account","github-com"]
+```
+
+`login` now has **3 exemplar-tier sites**, each a real identifier + secret form on a top-tier
+professional/commercial surface, satisfying `docs/m1/m4-composites-proposal.md` §4.5 acceptance #4
+(`exemplar 层 ≥3 页含 login 块`). Remaining (unchanged, not a capture task): the two new round-9 and
+this round-11 page must still be *curated* into the model set (`m1/**`, owned by another worker), and
+the `signed-in` context-vs-`_expose` decision (§6 decision 1) still stands.
+
+Last line:
+
+CAPTURE2_DONE new_login_pages=1 login_sites_total=3 threshold=met
