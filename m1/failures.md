@@ -190,6 +190,12 @@
 - **F6**：`key:` 引用渲染成死链/字面文本 → 现在节点输出 `id` 锚点，`key:` 解析为页内锚。
 - 另：legend 改用模型 `_label`（原页标签）优先；无 label 且无目标的 navigate/open 不再渲染按钮。
 
+## F-032 控件被吞与内部标识符泄漏（视觉复核挖出，均为我方 bug）
+- **R1 控件被 promo 吞掉**：一个「只有标题 + `_action.label` 与标题同名」的节点先被判为 `titleIsControl`（`action` 留空）→ 再命中 `bareTitle` → `return <div class="promo">`，控件外观和链接一起丢失。修正：`bareTitle` 增加 `!node._action`（有动作的节点永远不是 promo），并在标题控件/纯链接分支前先输出 `<div class="controls"><span|a class="ctl">` 控件条（F-031-§4：控件不是内容，也不得占满整行的浅灰空框）。受影响页：36kr search-ai/viz「站内搜索」、taobao「更多低价商品」、huawei consumer-phones「购买」、mi15「立即领取/修改/加入购物车/喜欢」、apple iphone-16「Continue/Save for later」、linear「Contact sales」、huawei search「重置」。
+- **R2 内部动词泄漏**：`const copy = a.label ?? a.verb` 把 `buy`/`operate`/`open` 等内部词表动词印到界面（aliyun product-ecs 三个 `buy`、sspai 文章页 `operate`）。修正：动作文案只取 `label`，无 `label` 绝不打印 `verb`（`actionHtml` 与 `actionKids` 工具条两处都禁掉 verb 兜底；无文案的控件不渲染）。模型侧同轮补 label（aliyun「立即购买」、sspai「充电」）。
+- **同族**：`renderDeflist` 标签为空仍输出 `.deflabel`（`min-width:130px` 构成无由缩进）→ 标签为空就不出该列；页头已渲染根 `_brand` 时根节点 meta 行不再重复输出 `_brand`（同一事实一处渲染）。
+- **验证**：见 `.scratch/06-visual-review/fix-report-1.md`（门禁 `node m1/eval/pipeline.mjs`：保真 36/36、视觉自查 36/36 干净）。
+
 ## 评测口径（F4 澄清）
 覆盖数字存在两个口径：试点日志（旧指标）与画廊（F-024 收紧豁免后的严口径）。**验收声明一律采用严口径**，`m1/eval/m3-final.json` 为准。
 

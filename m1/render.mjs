@@ -595,11 +595,12 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (actionKids.length >= 2) {
     const tools = actionKids.map((c) => {
       const a = c.node._action;
-      const copy = a.label ?? a.verb;
+      // `verb` is internal semantics, never visible copy (F-022/F-029): no label ⇒ no tool
+      if (!a.label) return '';
       return a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
-        ? `<a class="tool" href="${esc(a.to)}">${esc(copy)}</a>` : `<span class="tool">${esc(copy)}</span>`;
-    }).join('');
-    body += `<div class="toolbar">${tools}</div>`;
+        ? `<a class="tool" href="${esc(a.to)}">${esc(a.label)}</a>` : `<span class="tool">${esc(a.label)}</span>`;
+    }).filter(Boolean).join('');
+    if (tools) body += `<div class="toolbar">${tools}</div>`;
     actionKids.forEach((c) => itemsConsumed.add(c.node));
   }
 
