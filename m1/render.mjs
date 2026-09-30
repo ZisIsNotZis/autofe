@@ -124,9 +124,9 @@ function itemExtra(it) {
   const content = labelTextOf(it);
   if (!a) return { linkTo: null, ctl: '' };
   if (a.label && a.label !== content) {
-    return { linkTo: null, ctl: hasTarget(a) ? `<a class="ctl" href="${esc(a.to)}">${esc(a.label)}</a>` : `<span class="ctl">${esc(a.label)}</span>` };
+    return { linkTo: null, ctl: hasTarget(a) ? `<a class="ctl" href="${esc(hrefOf(a.to))}">${esc(a.label)}</a>` : `<span class="ctl">${esc(a.label)}</span>` };
   }
-  return { linkTo: hasTarget(a) ? a.to : null, ctl: '' };
+  return { linkTo: hasTarget(a) ? hrefOf(a.to) : null, ctl: '' };
 }
 function renderList(items) {
   const lis = items.map((it) => {
@@ -310,6 +310,8 @@ function renderSelectTable(items, exp, chain, hide, ctx) {
 }
 
 const hasTarget = (a) => Boolean(a?.to) && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'));
+// `key:` 目标是页内引用（id 由 `_key` 生成）：降为 `#锚点`，与 fmt() 的 ref 处理一致（父代理裁定 5）
+const hrefOf = (to) => (typeof to === 'string' && to.startsWith('key:') ? '#' + to.slice(4).replace(/[^A-Za-z0-9_-]/g, '-') : to);
 
 
 function renderForm(form, items, chain, hide, ctx, depth, node) {
@@ -360,7 +362,7 @@ function renderControls(items) {
     const otherFact = Boolean(name && ctl && !name.includes(ctl) && !ctl.includes(name));
     const text = name || ctl;
     if (!text) return '';
-    const to = (s) => (hasTarget(a) ? `<a class="ctl" href="${esc(a.to)}">${s}</a>` : `<span class="ctl" data-verb="${esc(a?.verb ?? '')}">${s}</span>`);
+    const to = (s) => (hasTarget(a) ? `<a class="ctl" href="${esc(hrefOf(a.to))}">${s}</a>` : `<span class="ctl" data-verb="${esc(a?.verb ?? '')}">${s}</span>`);
     return otherFact ? to(esc(text)) + to(esc(ctl)) : to(esc(text));
   }).join('');
   return btns ? `<div class="controls">${btns}</div>` : '';
@@ -423,7 +425,7 @@ const actionHtml = (a) => {
   if (!a.label) return '';
   // no capture-backed target: keep the source's own words, shaped like a control (T-101/F-031-§4)
   return hasTarget(a)
-    ? `<a class="action verb-${esc(a.verb)}" href="${esc(a.to)}">${esc(a.label)}</a>`
+    ? `<a class="action verb-${esc(a.verb)}" href="${esc(hrefOf(a.to))}">${esc(a.label)}</a>`
     : `<span class="action-plain">${esc(a.label)}</span>`;
 };
 
@@ -451,12 +453,12 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
       const titleTxt = headingKey ? (node[headingKey]?.text ?? '') : '';
       if (a.label && titleTxt && a.label === titleTxt) {
         // the block's own heading is the control: render it as such, once (F-031-§4)
-        linkTo = hasTarget(a) ? a.to : null;
+        linkTo = hasTarget(a) ? hrefOf(a.to) : null;
         titleIsControl = true;
       } else {
       const labelless = !a.label && ['navigate', 'open'].includes(a.verb);
       if (labelless && a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))) {
-        linkTo = a.to;
+        linkTo = hrefOf(a.to);
       } else {
         action = actionHtml(a);
       }
@@ -623,19 +625,26 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
       // `verb` is internal semantics, never visible copy (F-022/F-029): no label ⇒ no tool
       if (!a.label) return '';
       return a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
-        ? `<a class="tool" href="${esc(a.to)}">${esc(a.label)}</a>` : `<span class="tool">${esc(a.label)}</span>`;
+        ? `<a class="tool" href="${esc(hrefOf(a.to))}">${esc(a.label)}</a>` : `<span class="tool">${esc(a.label)}</span>`;
     }).filter(Boolean).join('');
     if (tools) body += `<div class="toolbar">${tools}</div>`;
     actionKids.forEach((c) => itemsConsumed.add(c.node));
   }
 
+  let prevGroupHadTitle = false;
   for (const c of kids) {
     if (itemsConsumed.has(c.node)) continue;
     const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1);
     if (!h) continue;
-    body += c.key.startsWith('_items[')
-      ? `<div class="item">${h}</div>`
-      : `<section class="group g-${esc(c.key)}">${h}</section>`;
+    if (c.key.startsWith('_items[')) {
+      body += `<div class="item">${h}</div>`;
+      continue;
+    }
+    // 兄弟区块：无标题块紧随有标题块 ⇒ 区域分隔，读者不把两段读成一串（F-031-§5）
+    const hasTitle = Boolean(c.node._title || c.node._name || c.node._text);
+    if (!hasTitle && prevGroupHadTitle) body += '<hr class="region">';
+    body += `<section class="group g-${esc(c.key)}">${h}</section>`;
+    prevGroupHadTitle = hasTitle;
   }
 
   // a control whose only content is its own title renders as a control bar, not a promo card (F-031-§4)
