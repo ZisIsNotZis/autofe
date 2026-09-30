@@ -20,9 +20,10 @@
   7. ✅ **`M4-a` 完成并验收**（提交 `d0b90a4`）：D1 `_expose` 作用域 + `_when` 硬校验、D2 compare 位置无关（13 表 + 显式降级清单）、D3 删除引擎侧价格算术；**恢复被删的校验器根调用**；新增 `validate-selftest.mjs`(10 断言) 与 `foundation-selftest.mjs` 并接入 pipeline
   8. ✅ **轮 6**（提交 `4cb14b2`）：删 16 处错误 compare 标记、ipad-air 实体/属性分层、删 30 处非法 `_primary`、F-042 求值 + 断言；降级清单 6→0，对比表 13→3（全是真表）
   9. ✅ **轮 7**（提交 `e451edd`）：三条父代理裁定落地（`_primary` 硬规则+自测、36kr H1 带出处说明、aliyun 域字段）+ 10 个异质集合回改（**如实报剩余 12 个**）；并把 `layout-axes.md` 里过期的 55/98 数字**标注口径**
- 10. ⏳ **轮 8 运行中**（worker `4cf19fc3`）：收尾 12 个异质集合
- 11. ⏳ **轮 9 并行运行中**（worker `c6b15d3d`）：补 exemplar 证据样本（`table`/`login` 原语前置，限顶流站点、守 robots/节流、只写 corpus+tools/capture）
-- **下一步**：轮 8/9 完成 → 独立复验 → M4-b 原语实现（仍待用户确认 P1–P3）
+ 10. ✅ **轮 8**（提交 `5a6d57f`）：12 个集合全部有结论（6 改 `_lines`、6 有判据理由保留、1 豁免）；**重要洞察**：`stack` 混了"语义不可比"与"表现太富"两种原因，已写入 `layout-axes.md`，M4 的网格类原语必须区分二者
+ 11. ⏳ **轮 9 运行中**（worker `c6b15d3d`）：补 exemplar 证据样本（`table`/`login` 前置；已做 robots 预检：华为云/小米/gov.uk 表格页/AWS EC2 价目/阿里云规格/stripe docs/apple 对比 = ALLOW；AWS signin = DENY 跨域跳转）
+ 12. ⏳ **验收轮 6 运行中**（worker `b1b87087`）：独立复验轮 6/7/8 → `verification-3.md`
+- **下一步**：验收 PASS 后 → M4-b 原语实现（`form`/`offer`/`paginator` 可先做；`table`/`login` 视轮 9 证据是否达标）
 - **F-042 新登记**：条目级 `_action.when` 从不求值（M4-a 的 D1 构造断言顺带挖出）
 - **已完成并行轨**：M4 复合原语提案 → `docs/m1/m4-composites-proposal.md`（14 候选 → 升格 5 / 否决 7；三条基础缺陷均已复现）
 - **M4-a 之后**：策展回改（55 异质 `_items`）→ 补 exemplar 样本（`table`/`login` 前置证据）→ M4 原语实现
