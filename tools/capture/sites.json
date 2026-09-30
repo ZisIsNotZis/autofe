@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updatedAt": "2026-10-01",
-  "notes": "Stratified seed for the M0 corpus. CN-first because several global sites are unreliable from this network. URLs were reachability-probed once (HTTP GET) on 2026-09-18; anything that failed the probe is recorded in droppedCandidates instead of being seeded. Unreachable pages during a run are recorded in corpus/failures.json, never dropped silently. Robots-denied pages are kept with `skip: true` plus a droppedCandidates entry, so nothing is silently removed. Tier model (2026-09-28): every site is tagged `tier: \"exemplar\"` (industry-recognized top-tier design for a professional/commercial/industrial scenario — the population coverage claims are made against, per design-basis §8) or `tier: \"support\"` (structural coverage: tables/forms/docs/enterprise/utility; real pages, but no coverage claim), each with a one-line `justification`. Seven new exemplar sites (linear-app, stripe-com, stripe-docs, airbnb-com, gov-uk, apple-com-cn, grafana-play) were reachability- and robots-probed on 2026-09-28 before seeding. Round 9 (2026-09-29): four further exemplar sites (aliyun-help, aws-amazon, stripe-dashboard, xiaomi-account) plus one gov-uk page were added to close the exemplar-layer evidence gap for the M4 `table` and `login` primitives (before this round: 0 exemplar pages with a <table> or a type=password field). Robots-probed and recorded in .scratch/08-exemplar-expansion/report.md. Round 11 (2026-10-01): one further exemplar site (github-com, page /login) added as the third exemplar `login` site; github.com was re-probed reachable (HTTP 200) after the 2026-09-18 unreachable record. Recorded in .scratch/08-exemplar-expansion/report.md.",
+  "notes": "Stratified seed for the M0 corpus. CN-first because several global sites are unreliable from this network. URLs were reachability-probed once (HTTP GET) on 2026-09-18; anything that failed the probe is recorded in droppedCandidates instead of being seeded. Unreachable pages during a run are recorded in corpus/failures.json, never dropped silently. Robots-denied pages are kept with `skip: true` plus a droppedCandidates entry, so nothing is silently removed. Tier model (2026-09-28): every site is tagged `tier: \"exemplar\"` (industry-recognized top-tier design for a professional/commercial/industrial scenario — the population coverage claims are made against, per design-basis §8) or `tier: \"support\"` (structural coverage: tables/forms/docs/enterprise/utility; real pages, but no coverage claim), each with a one-line `justification`. Seven new exemplar sites (linear-app, stripe-com, stripe-docs, airbnb-com, gov-uk, apple-com-cn, grafana-play) were reachability- and robots-probed on 2026-09-28 before seeding. Round 9 (2026-09-29): four further exemplar sites (aliyun-help, aws-amazon, stripe-dashboard, xiaomi-account) plus one gov-uk page were added to close the exemplar-layer evidence gap for the M4 `table` and `login` primitives (before this round: 0 exemplar pages with a <table> or a type=password field). Robots-probed and recorded in .scratch/08-exemplar-expansion/report.md. Round 11 (2026-10-01): one further exemplar site (github-com, page /login) added as the third exemplar `login` site; github.com was re-probed reachable (HTTP 200) after the 2026-09-18 unreachable record. Recorded in .scratch/08-exemplar-expansion/report.md. Round 15 (2026-10-01): one further exemplar site (learn-microsoft, page /en-us/azure/virtual-machines/sizes) added as the third exemplar `table` site — the Azure VM-size specification tables are real `<table>/<thead>/<th>` (8 tables / 24 header cells / 3 stable column labels). cloud.google.com/compute/vm-instance-pricing failed the robots pre-check (robots.txt unreachable, twice, connect timeout) and is recorded in droppedCandidates; azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/ passed robots and was left unused (first allowed candidate was taken per the round-15 rule). Recorded in .scratch/11-table-sample/report.md.",
   "primaryStratum": "archetype",
   "secondaryStrata": [
     "region",
@@ -1499,9 +1499,34 @@
           "note": "round 11: public login form, no credentials submitted; passkey/forgot-password/create-account entries; no OAuth third-party buttons on this page"
         }
       ]
+    },
+    {
+      "slug": "learn-microsoft",
+      "domain": "learn.microsoft.com",
+      "origin": "https://learn.microsoft.com",
+      "region": "global",
+      "language": "en-US",
+      "industry": "cloud-infrastructure",
+      "styleTag": "docs-clean",
+      "tier": "exemplar",
+      "justification": "Microsoft Learn is the industry-reference enterprise product-documentation surface and Microsoft is a top-tier cloud vendor; the Azure VM-sizes page is a real read-only specification table (size -> vCPU/memory/temp-disk/bandwidth columns), the third exemplar site for the M4 `table` primitive (round 15, third `table` site).",
+      "pages": [
+        {
+          "slug": "vm-sizes",
+          "url": "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes",
+          "archetype": "table-heavy/admin",
+          "note": "round 15: Azure VM size specification tables generated from markdown grid tables (real `<thead>/<th>`), read-only product/spec data table — `table` exemplar evidence for a new domain"
+        }
+      ]
     }
   ],
   "droppedCandidates": [
+    {
+      "url": "https://cloud.google.com/compute/vm-instance-pricing",
+      "archetype": "table-heavy/admin",
+      "reason": "robots pre-check failed: robots.txt fetch attempt 1 and 2 both failed with UND_ERR_CONNECT_TIMEOUT, so the page could not be cleared for capture (robots_unavailable, not a robots denial); not seeded, round-15 table probe — the single round-15 slot went to learn-microsoft/vm-sizes",
+      "checkedAt": "2026-10-01"
+    },
     {
       "url": "https://search.bilibili.com/all?keyword=...",
       "archetype": "search-results",
