@@ -1,6 +1,8 @@
 # M3 报告：自动抽取 vs 人工编码（结构质量指标版）
 
 > **口径提示（轮 12 补记）**：本报告是 **M3 验收快照**（策展 36 页，2026-09-18 冻结）。其后轮 9/11 补采 6 个 exemplar 样本、轮 12 策展其中 5 页（`gov-uk/ni-rates-letters`、`aws-amazon/ec2-on-demand`、`stripe-dashboard/login`、`xiaomi-account/login`、`github-com/login`）、轮 15 策展 1 页（`learn-microsoft/vm-sizes`）⇒ **门禁现为 42 页 / 23 站**；`aliyun-help/ecs-instance-families` 仍待策展 ⇒ 目标 43。**下文中出现的 "36"/"104" 均为该 36 页快照口径**，非当前分母；当前分母见 `.scratch/09-new-exemplar-curation/report.md` 与 `m1/eval/m3-scale.json`。
+>
+> **auto 快照口径（轮 17 补记）**：`m1/extract/tmp/*.auto.html` 与 `m1/curated/renders/auto-*.html` 是**抽取器草稿层**的渲染快照（draft → 当前渲染器 `m1/render.mjs`，2026-10-01 全量刷新），只用于观察抽取器在未见页面上的表现；它们**不进覆盖率/保真宣称**，其缺陷率不得与 42 页策展层（`m1/curated/renders/*.html`）的口径混淆。缺陷类别/页数见 `.scratch/17-auto-refresh/report.md`。
 
 前置：F-023 根因修正后重抽 6 页；新指标 `m1/eval/structure.mjs`（intent 覆盖 / chrome 动作比 / 松散动作比 / 截断率）。
 对照 = 源覆盖告警（high/med）+ 结构质量。

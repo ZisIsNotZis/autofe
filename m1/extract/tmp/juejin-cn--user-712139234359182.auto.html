@@ -4,41 +4,100 @@
 <style>
 :root{color-scheme:light}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
-.page-intent{color:#5b6a78;font-size:.9em;border-bottom:1px solid #e6eaf0;padding-bottom:10px}
-.hero{border-bottom:2px solid #17212b;padding-bottom:18px;margin-bottom:26px}
-.hero .fact .val{font-size:1.9em;font-weight:650}
-article{margin:14px 0}
-h3.title{margin:.2em 0 .4em;font-size:1.25em}
-h4.intent{margin:.2em 0 .6em;font-weight:500;color:#5b6a78;font-size:.92em}
-.group{border-top:1px solid #e6eaf0;padding-top:12px}
-.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;align-items:start}
-.compare>.node{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
+header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
+header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
+h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
+h2.title{font-size:1.45em;margin:1.1em 0 .45em;font-weight:700}
+h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
+.hero{margin:4px 0 24px}
+.hero.fact-hero .fact .val{font-size:2em;font-weight:700}
+article{margin:12px 0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
-.fact{display:flex;gap:10px;align-items:baseline;margin:3px 0}
-.role{min-width:104px;color:#68788a;font-size:.78em;text-transform:uppercase;letter-spacing:.04em}
-.val{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.fact{flex-wrap:wrap}
+.fact{margin:3px 0}
+.fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
+.val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips-rows{display:block}
+.chips-rows .chip-item{padding:3px 0}
+.cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
+.action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
+.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.promo-image{padding:0;overflow:hidden}
+.promo-image img{width:100%;height:auto;display:block;border-radius:9px}
+.promo-label{display:block;padding:8px 12px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
+.meta .sep{color:#c2ccd6}
+.prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
+/* F-031-§7 图像主导页：满幅图带 */
+.strip{margin:0;padding:0}
+.strip img{width:100%;height:auto;display:block}
+/* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
+.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.promo-image .img-alt{padding:10px 14px;border-radius:0}
+main>.node>.strip:first-child,article>.strip{margin:0}
+/* F-031: 序列区块（不可比内容各自成立） */
+.block{margin:18px 0;padding:0 0 6px}
+.block>.node{max-width:none}
+hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
+/* F-031-§4 控件条 */
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
+a.ctl{font-weight:600}
+a.ctl:hover{background:#f2f7ff}
+/* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
+.cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
+.cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
+.cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
+.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
+.cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
+.cmp-price{font-weight:700;margin-top:4px}
+.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
+.cmp-ctl{margin-top:6px}
+.linklist{margin:8px 0;padding-left:1.1em}
+.linklist.cols2{columns:2;column-gap:28px}
+.linklist li{margin:5px 0;line-height:1.5}
+.linklist a{color:#0b62d0}
+.seq{margin:8px 0;padding-left:1.5em}
+.seq li{margin:4px 0;line-height:1.55}
+.seq a{color:#0b62d0}
+.chip-item{display:block;break-inside:avoid;padding:4px 0;font-size:.95em}
+.chips a{color:inherit;text-decoration:none}
+.chips a:hover{text-decoration:underline}
+.deflist{margin:8px 0}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
+.deflabel{min-width:130px;font-weight:600}
+.deflabel a{color:inherit;text-decoration:none}
+.timeline .defrow{position:relative}
+.timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
+.accordion{margin:8px 0}
+details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
+details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
+details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;align-items:center}
+.toolbar .tool{padding:6px 14px;border:1px solid #d6dde6;border-radius:8px;text-decoration:none;color:inherit;font-size:.9em}
 .expose{display:block;margin:8px 0}
-.expose .role{display:block;margin-bottom:4px}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
 legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
 input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 img{max-width:100%;border-radius:10px;display:block}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
 table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
+table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
-.level-1{opacity:.92}.level-2{opacity:.85}.level-3{opacity:.78}
 </style></head>
-<body><main><!-- intent: 冴羽 的个人主页 - 动态 - 掘金 — 冴羽 [draft] --><article class="node"><h3 class="title">冴羽 的个人主页 - 动态 - 掘金</h3><div class="fact fact-image"><span class="role">image</span><span class="val"><img src="" alt="冴羽的个人资料头像"></span></div><section class="line"><article class="node"><h3 class="title">冴羽</h3><div class="fact fact-measure"><span class="role">measure</span><span class="val"><span class="chip">1 K</span> <span class="chip">10</span> <span class="chip">11</span> <span class="chip">36</span> <span class="chip">34458</span> <span class="chip">2214658</span></span></div><div class="fact fact-datetime"><span class="role">datetime</span><span class="val">2017-04-05</span></div><div class="fact fact-image"><span class="role">image</span><span class="val"><span class="chip"><img src="" alt="创作等级LV.7"></span> <span class="chip"><img src="" alt="掘友7级：荣誉掘友"></span> <span class="chip"><img src="" alt="笔耕不辍"></span></span></div><div class="fact fact-summary"><span class="role">summary</span><span class="val">公众号@yayujs</span></div><section class="line"><article class="node"><a class="action verb-navigate" href="https://github.com/mqyqingfeng">GitHub</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://yayujs.com/">个人主页</a></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">🏅掘金签约作者</span></div></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">掘金前端领域关注数 Top 1，GitHub 中国 Top 30，小册《Next.js 开发指南》《Svelte 开发指南》《A</span></div></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">关注</span></div></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/notification/im?participantId=712139234359182">私信 私信</a></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">屏蔽作者: 冴羽</span></div></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/badge/712139234359182">获得徽章 25</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182">动态</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/posts">文章</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/columns">专栏</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/pins">沸点</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/course">课程</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/collections">收藏集</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/tags">关注</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182">冴羽的头像</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182">冴羽</a></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">公众号@yayujs @🏅掘金签约作者</span></div></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/pin/7654319240120844297">2月前</a></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">开更一个 AI Agent 系列</span></div></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://link.juejin.cn/?target=https%3A%2F%2Ft.zsxq.com%2FMWqcR">https://t.zsxq.com/MWqcR t.zsxq.com</a></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">分享</span></div></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">评论</span></div></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">点赞</span></div></article></section><section class="line"><article class="node"><button class="action verb-navigate" type="button">关注</button></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/post/7646958530655518730">博主放飞自我了 我以前玩过一款游戏，叫饥荒。 我玩得的是单机版，玩得不亦乐乎，生存了 300 多天。 有一天，我突发奇想，装了不少 Mod。 有些是影响平衡的，尽管我看到了提示，但我还是想... image</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/post/7644470027207852059">我一直想搞套自动化创作工作流，结果…… 我一直想搞套自动化选题、创作、发布的工作流。 n8n 火的时候，我就想搞，但我懒。 后来龙虾火了，但说真的，我一时间真没想到用龙虾干什么。 后来我又想了想，那就搞套自动化创... image</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/post/7637839076004806707">AI 编程的 30 条最佳实践 你好，我是冴羽。 在《超越 Vibe Coding —— AI 辅助编程指南》，我们介绍了 AI 编程的 4 大坑和提示词 5 大原则。 在《超越 Vibe Coding ... image</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/post/7633644966020218932">AI 需要学，你更需要学的 56 条软件工程定律 你好，我是冴羽。 AI 写代码越来越猛了，但它懂软件工程的基本定律吗？ 它不懂。 AI 可以写出语法正确的代码，但它缺少人类程序员用血泪换来的工程经验。 这些经验被总结成了... image</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/post/7631125072367239168">写了 10 年代码，我才发现最该学的其实是… 很长一段时间，我以为成为“更优秀的开发者”就是学更多工具。 更多框架、更多库、更多教程。如果我不持续升级技术栈，我就会感觉自己在落后。 所以我不停地切换，尝试新东西…… 结... image</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/post/7629863917263388707">最大的 React 性能杀手不就是你？ 你好，我是冴羽。 你写的 React.memo 可能根本没用！ 你可能觉得自己已经做了性能优化——给组件包了 React.memo，给回调加了 useCallback，给计... image</a></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">个人成就</span></div></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">2022年度人气作者No.4</span></div></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">2021年度人气作者No.9</span></div></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">社区共建者</span></div></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">优秀创作者</span></div></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/book/6844733795329900551/section/6844733795371843597">掘力值 99,125</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/following">关注了 43</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/followers">关注者 41,672</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/collections">收藏集 17</a></article></section><section class="line"><article class="node"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/tags">关注标签 13</a></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">加入于</span></div></article></section><section class="line"><article class="node"><button class="action verb-navigate" type="button">建议反馈</button></article></section><section class="line"><article class="node"><div class="fact fact-text"><span class="role">text</span><span class="val">下载APP 下载APP 微信扫一扫 微信公众号 新浪微博</span></div></article></section></article></section></article></main></body></html>
+<body><main><article class="node depth-0"><h1 class="title">冴羽 的个人主页 - 动态 - 掘金</h1><figure class="strip"><span class="img-alt">冴羽的个人资料头像</span></figure><section class="block"><article class="node depth-1"><h2 class="title">冴羽</h2><div class="fact"><span class="val">2017-04-05</span></div><div class="fact"><span class="val"><span class="chip"><span class="img-alt">创作等级LV.7</span></span> <span class="chip"><span class="img-alt">掘友7级：荣誉掘友</span></span> <span class="chip"><span class="img-alt">笔耕不辍</span></span></span></div><div class="fact"><span class="val">公众号@yayujs</span></div><div class="meta"><span class="chip">1 K</span> <span class="chip">10</span> <span class="chip">11</span> <span class="chip">36</span> <span class="chip">34458</span> <span class="chip">2214658</span></div><div class="controls"><a class="ctl" href="https://github.com/mqyqingfeng">GitHub</a><a class="ctl" href="https://yayujs.com/">个人主页</a></div><div class="prose"><p>🏅掘金签约作者</p><p>掘金前端领域关注数 Top 1，GitHub 中国 Top 30，小册《Next.js 开发指南》《Svelte 开发指南》《A</p><p>关注</p></div><div class="cards"><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/notification/im?participantId=712139234359182">私信 私信</a></article></div><div class="item"><article class="node depth-2"><div class="fact"><span class="val">屏蔽作者: 冴羽</span></div></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/badge/712139234359182">获得徽章 25</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182">动态</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/posts">文章</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/columns">专栏</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/pins">沸点</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/course">课程</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/collections">收藏集</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/tags">关注</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182">冴羽的头像</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182">冴羽</a></article></div><div class="item"><article class="node depth-2"><div class="fact"><span class="val">公众号@yayujs @🏅掘金签约作者</span></div></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/pin/7654319240120844297">2月前</a></article></div><div class="item"><article class="node depth-2"><div class="fact"><span class="val">开更一个 AI Agent 系列</span></div></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://link.juejin.cn/?target=https%3A%2F%2Ft.zsxq.com%2FMWqcR">https://t.zsxq.com/MWqcR t.zsxq.com</a></article></div></div><div class="prose"><p>分享</p><p>评论</p><p>点赞</p></div><div class="controls"><span class="ctl" data-verb="navigate">关注</span><a class="ctl" href="https://juejin.cn/post/7646958530655518730">博主放飞自我了 我以前玩过一款游戏，叫饥荒。 我玩得的是单机版，玩得不亦乐乎，生存了 300 多天。 有一天，我突发奇想，装了不少 Mod。 有些是影响平衡的，尽管我看到了提示，但我还是想... image</a><a class="ctl" href="https://juejin.cn/post/7644470027207852059">我一直想搞套自动化创作工作流，结果…… 我一直想搞套自动化选题、创作、发布的工作流。 n8n 火的时候，我就想搞，但我懒。 后来龙虾火了，但说真的，我一时间真没想到用龙虾干什么。 后来我又想了想，那就搞套自动化创... image</a><a class="ctl" href="https://juejin.cn/post/7637839076004806707">AI 编程的 30 条最佳实践 你好，我是冴羽。 在《超越 Vibe Coding —— AI 辅助编程指南》，我们介绍了 AI 编程的 4 大坑和提示词 5 大原则。 在《超越 Vibe Coding ... image</a><a class="ctl" href="https://juejin.cn/post/7633644966020218932">AI 需要学，你更需要学的 56 条软件工程定律 你好，我是冴羽。 AI 写代码越来越猛了，但它懂软件工程的基本定律吗？ 它不懂。 AI 可以写出语法正确的代码，但它缺少人类程序员用血泪换来的工程经验。 这些经验被总结成了... image</a><a class="ctl" href="https://juejin.cn/post/7631125072367239168">写了 10 年代码，我才发现最该学的其实是… 很长一段时间，我以为成为“更优秀的开发者”就是学更多工具。 更多框架、更多库、更多教程。如果我不持续升级技术栈，我就会感觉自己在落后。 所以我不停地切换，尝试新东西…… 结... image</a><a class="ctl" href="https://juejin.cn/post/7629863917263388707">最大的 React 性能杀手不就是你？ 你好，我是冴羽。 你写的 React.memo 可能根本没用！ 你可能觉得自己已经做了性能优化——给组件包了 React.memo，给回调加了 useCallback，给计... image</a></div><div class="prose"><p>个人成就</p><p>2022年度人气作者No.4</p><p>2021年度人气作者No.9</p><p>社区共建者</p><p>优秀创作者</p></div><div class="cards"><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/book/6844733795329900551/section/6844733795371843597">掘力值 99,125</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/following">关注了 43</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/followers">关注者 41,672</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/collections">收藏集 17</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://juejin.cn/user/712139234359182/tags">关注标签 13</a></article></div><div class="item"><article class="node depth-2"><div class="fact"><span class="val">加入于</span></div></article></div><div class="item"><article class="node depth-2"><span class="action-plain">建议反馈</span></article></div><div class="item"><article class="node depth-2"><div class="fact"><span class="val">下载APP 下载APP 微信扫一扫 微信公众号 新浪微博</span></div></article></div></div></article></section></article></main></body></html>
