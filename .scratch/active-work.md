@@ -10,11 +10,14 @@
   - R5（blocker，渲染）mi15「用户评价」入口（`_action`-only 子节点）被静默丢弃
   - R6（blocker，模型）taobao 四个会场区块渲染成只有价格的空卡片
   - R7（major 族）`_brand` 重复渲染、对比表行标题印英文键（display/chip/camera）、评分分布挤成一行、裸数字无标签单位、`order: time` 无序感、日期未本地化、deflist 空标签列、无标题尾块缺区域分隔
-- **分轮执行（单写入者，40 分钟一轮，防超时）**：
-  1. `fix-1`（运行中，worker `43a0ee08`）：R1 + R2 (+ deflist 空标签列 / `_brand` 重复) → 产出 `fix-report-1.md`
-  2. `fix-2`：R4/R5/R7 渲染器族
-  3. `fix-3`：R3/R6 + 其它模型侧（airbnb 图墙 alt 串、重复评分事实、ipad-air 行内实体+属性）
-  4. `verify`：fresh 视角独立验收（跑门禁 + 独立看图复验 ≥8 页）→ `verification.md`
+- **分轮执行（单写入者，40 分钟一轮）——进展**：
+  1. ✅ `fix-1` R1+R2（提交 `dd5b94e`，父代理实证验收）
+  2. ✅ `fix-2` 对比表行标签/角色单位/逐项动作控件/句读集合竖排（提交 `41ebd1c`）
+  3. ✅ `fix-3` B 站横幅重裁、airbnb 图墙、R7f 区域分隔、`key:` 锚点、36kr H1（提交 `cd8f94d`，父代理看图验收）
+  4. ⏳ `verify` 运行中（worker `0acadcb0`）→ `verification.md`，判据 PASS/FAIL
+- **并行轨（运行中）**：M4 复合原语提案 `48f190de` → `docs/m1/m4-composites-proposal.md`（只设计不实现）
+- **父代理裁定汇总**（写于 `rounds.md`）：控件是控件（带 label 的 `_action` 必渲染为控件）／角色单位进 `vocab-units.json` 声明化／集合单位由模型给出不得推定／日期本地化推迟待语言信号／`key:` 目标降为 `#锚点`
+- **未修（已记录）**：ipad-air 实体/属性分层（试过回滚，需要新的渲染规则→待裁定）、R7e 日期、`_count` 单位、3 条采集待办（taobao 会场文案 F-036、airbnb 缩略图分辨率、grafana 面板体/T-109）
 - **每轮硬判据**：`node m1/eval/pipeline.mjs` → 36/36 保真 1.00 且 视觉自查 36/36 干净；模型改动必须过 `m1/validate.mjs`
 - **教训**：100 分钟单轮修复必然超时——改为 40 分钟分片 + 每片先落盘报告
 
