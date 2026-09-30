@@ -165,6 +165,46 @@ const amounts = [];
 check('offer mi was-prices render (explicit fact, no amount comparison)',
   amounts.length > 0 && amounts.every((m) => ear.includes(m)) && (ear.match(/class="fact was"/g) || []).length === amounts.length);
 
+// ---- paginator (proposal §4.4): a page-control set is a control row ---------
+// Zero new syntax: the pagination is expressed with the existing item-level
+// `_action`. A member with no capture-backed target keeps the control shape
+// (never a fabricated `<a href>`); a captured target becomes a real link. The
+// internal verb is semantics, never visible copy (F-022/F-029).
+const pager = (item) => ({
+  _intent: 'pagination', _title: { text: 'Search results' },
+  pages: { _intent: 'result pagination', _items: item },
+});
+const noTarget = pager([
+  { _name: { text: '1' }, _action: { verb: 'navigate' } },
+  { _name: { text: '2' }, _action: { verb: 'navigate' } },
+  { _name: { text: '3' }, _action: { verb: 'navigate' } },
+]);
+const nt = render(noTarget);
+check('paginator a page set with actions renders as a control row',
+  nt.includes('<div class="controls">') && nt.includes('>1</span>') && nt.includes('>2</span>') && nt.includes('>3</span>'));
+check('paginator an uncaptured target is a control shape, never an `<a href>`',
+  !nt.includes('<a class="ctl"') && !/<a[^>]+href="#[^"]*">[123]</.test(nt));
+check('paginator the internal verb is never printed as copy', !/>navigate</.test(nt) && !/>open</.test(nt));
+const withTarget = pager([
+  { _name: { text: 'Next' }, _action: { verb: 'navigate', to: 'https://example.com/results/2', label: 'Category letters' } },
+]);
+const wt = render(withTarget);
+check('paginator a captured target renders as a real link',
+  wt.includes('<a class="ctl" href="https://example.com/results/2">'));
+// the curated pages that model pagination facts render as control rows, not lists
+const HUAWEI = JSON.parse(fs.readFileSync(path.join(root, 'm1/curated/huawei-cn/search-laptop.json'), 'utf8'));
+const MI = JSON.parse(fs.readFileSync(path.join(root, 'm1/curated/mi-com/search-earbuds.json'), 'utf8'));
+const GOV = JSON.parse(fs.readFileSync(path.join(root, 'm1/curated/gov-uk/ni-rates-letters.json'), 'utf8'));
+const row = (html) => (html.match(/<div class="controls">[\s\S]*?<\/div>/) || [''])[0];
+const rowWith = (html, needle) => (html.match(/<div class="controls">[\s\S]*?<\/div>/g) || []).find((d) => d.includes(needle)) || '';
+const hwRow = rowWith(render(HUAWEI), '>8</span>');
+check('paginator huawei page controls render as a control row',
+  hwRow.includes('>1</span>') && hwRow.includes('>8</span>') && !hwRow.includes('<a class="ctl"'));
+check('paginator mi page controls render as a control row',
+  row(render(MI)).includes('>1</span>') && row(render(MI)).includes('>2</span>') && !row(render(MI)).includes('<a class="ctl"'));
+check('paginator gov-uk next-page control carries its captured target',
+  row(render(GOV)).includes('<a class="ctl" href="https://www.gov.uk/national-insurance-rates-letters/category-letters">'));
+
 // ---- P3 (proposal §6 decision 3, plan A): consecutive `_text` merge ----------
 const proseMix = { _intent: 'prose', _title: { text: 'Article' }, _lines: [
   { _text: { text: 'para one' } }, { _text: { text: 'para two' } },

@@ -474,16 +474,22 @@
   ]
  },
  "pages": {
-  "_intent": "结果分页展示，当前在第 1 页，可前往第 2 页",
+  "_intent": "结果分页控件行：当前在第 1 页（源站 current 高亮），可前往第 2 页；分页控件为 javascript:void(0) 链接，未捕获真实地址 ⇒ 保持控件观感（不造 <a href>）",
   "_items": [
    {
     "_name": {
      "text": "1"
+    },
+    "_action": {
+     "verb": "navigate"
     }
    },
    {
     "_name": {
      "text": "2"
+    },
+    "_action": {
+     "verb": "navigate"
     }
    }
   ]

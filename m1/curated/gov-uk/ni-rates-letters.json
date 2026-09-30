@@ -604,5 +604,20 @@
     "_text": {
       "text": "This means your National Insurance payment will be £58.66 for the week."
     }
+  },
+  "pagination": {
+    "_intent": "分页导航：源站 <nav aria-label=\"Pagination\"> 的下一页控件（Next / Category letters），捕获到真实目标地址 ⇒ 渲染为链接（此前策展静默丢弃，本轮如实补回）",
+    "_items": [
+      {
+        "_name": {
+          "text": "Next"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.gov.uk/national-insurance-rates-letters/category-letters",
+          "label": "Category letters"
+        }
+      }
+    ]
   }
 }

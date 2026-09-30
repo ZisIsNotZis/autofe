@@ -267,6 +267,8 @@
 
 **证据**：模型层 4 页/3 站（华为 `results.pagination` 7 项、`_primary` = 当前页；mi `pages` 2 项；stripe）；抓取层 14/36 **exemplar** 页源码里有"查看更多/加载更多/显示全部"，10 页/8 站有数字分页，4 页有 `rel=next`/aria-pagination。**当前**：v0 axioms §8 明写"分页控件"不作表达；策展照办 ⇒ 抓取真相与模型之间**已知的、最大的**缺口。现状表达是"把页码写成 `_items` 的 `_name` + `_rel.order: sequence`"，语义丢了：**当前页**只能靠 `_primary` 暗示，**被分页的对象**没有声明。
 
+> **更正（轮 14，fix-report-11 §2）**：上述"4 页/3 站"的第 4 页写的是 `stripe-com/pricing` —— 实测该页**无分页节点**，其 DOM 的 `NextSiblings`/`Next` 是**粘性导航的滚动目标**（`data-js-scroll-target`），非分页。抓取层 `rel=next`/`aria-label=Pagination` 的唯一命中 exemplar 页是 **`gov-uk/ni-rates-letters`**（其分页控件此前被策展静默丢弃，轮 14 已如实补回）。故真实的分页 4 页 = 华为 `search-laptop`/`search-phone`、mi `search-earbuds`、gov-uk `ni-rates-letters`。
+
 **语法**
 
 ```jsonc

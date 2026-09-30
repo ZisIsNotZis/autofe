@@ -225,45 +225,63 @@
    }
   ],
   "pagination": {
-   "_intent": "结果分页：第 1 页（当前页），共 8 页；分页控件目标未在捕获 DOM 中给出真实地址，不建模跳转",
-   "_rel": {
-    "order": "sequence"
-   },
+   "_intent": "结果分页控件行：第 1 页（当前页），共 8 页；源站为 javascript:void 链接，捕获 DOM 未给出真实地址 ⇒ 保持控件观感（不造 <a href>）",
    "_items": [
     {
      "_key": "page-1",
      "_name": {
       "text": "1"
+     },
+     "_action": {
+      "verb": "navigate"
      }
     },
     {
      "_name": {
       "text": "2"
+     },
+     "_action": {
+      "verb": "navigate"
      }
     },
     {
      "_name": {
       "text": "3"
+     },
+     "_action": {
+      "verb": "navigate"
      }
     },
     {
      "_name": {
       "text": "4"
+     },
+     "_action": {
+      "verb": "navigate"
      }
     },
     {
      "_name": {
       "text": "5"
+     },
+     "_action": {
+      "verb": "navigate"
      }
     },
     {
      "_name": {
       "text": "..."
+     },
+     "_action": {
+      "verb": "navigate"
      }
     },
     {
      "_name": {
       "text": "8"
+     },
+     "_action": {
+      "verb": "navigate"
      }
     }
    ]

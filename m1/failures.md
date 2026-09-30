@@ -289,9 +289,23 @@
   `list`（原价/划线价，无显示前缀）、`from`（起始价，显示 `From`/`起`）、`per-unit`（单位价，显示 `每 …`）、`per-period`（按期，显示 `/月` 等）、`tax-incl`（含税）。
   现有的 `3.4% +` / `+` / `起始价：` / `订金` 属于**费率前缀与业务文案**，应迁到独立的事实/文案位，不能塞进这个闭式枚举。
 - **本轮处置**：不新增/不删除 `qualifier` 值（`vocab.qualifiers` 未建立），只把 `_amount` 的“原价”标记收敛到 `list`（见 F-048）。
+- **交叉引用**：`vocab.qualifiers` 的闭式化与 `_macro` 保留键同属“词汇/语法闭式化”待决项 —— 见 `.scratch/decisions-for-user.md` **D-1**（`_macro` 保留键）。
 
 ## F-048 原价（划线价）的显式标记是临时语义 token（M4-b1，待词表闭式化）
 - **背景**：M4-a/D3 删除了引擎的金额比较后，mi 系列 `<del>` 原价的视觉语义丢失（fix-report-5 §4 已记）。本轮用**现有键**恢复：`_amount` 带显式限定词 `qualifier: "list"` ⇒ 弱化为删除线（`.fact.was`）。
 - **落地**：`m1/render.mjs` 只识别 `list` 这一个显式标记，**不做任何金额比较**；标记本身是内部语义，**不渲染为文案**。`m1/curated/mi-com/{product-detail-mi15,search-earbuds,search-phone}.json` 的 `_amount` 全部改为 `{money, currency, qualifier: "list"}`。
 - **数据缺口同轮补齐**：`mi-com/search-phone` 的 7 处 `<del>` 原价（1599/1799/2799/1799/2899/2399/3899）此前因“闭式词表无 was-price 角色”被策展丢弃（curation-log-ae「was-price vocab gap (7)」），本轮按源站 `<del>` 逐值补回 `_amount`。
 - **缺口（未关）**：`list` 尚未进入任何词表文件；`vocab.qualifiers` 的闭式化 + 显示映射是**词汇变更**，需人类决策（与 F-047 同源）。在词表关闭前，`list` 是一个由引擎硬编码的临时语义 token。
+- **交叉引用**：见 `.scratch/decisions-for-user.md` **D-1**（`_macro` 保留键）—— 同一类“闭式化需人类拍板”的项，同批上报。
+
+## F-049 页面相对 URL（`/path`）不能作为 `_action.to`（M4-b2，gov-uk 分页控件命中）
+- **发现于**：`m1/curated/gov-uk/ni-rates-letters.json` 的分页节点。源站 `<a href="/national-insurance-rates-letters/category-letters">` 是**站点相对 URL**。
+- **缺什么**：`m1/validate.mjs` 把以 `/` 开头的 `_action.to`（以及 `ref`）**当作页内节点路径**去 `resolvePath` 解析（`/national-insurance-rates-letters/category-letters` → `bad segment`），因此**站点相对 URL 无法入库**。全库既有链接都是绝对 `https://…`（见 `gov-uk/register-birth-abroad.json`）。
+- **本轮处置**：按 capture 的页面 origin（`https://www.gov.uk`）+ 捕获到的相对 href 拼成绝对 URL（`https://www.gov.uk/national-insurance-rates-letters/category-letters`），不捏造路径。
+- **候选修法（未采纳，待裁定）**：区分"页内路径"与"站点相对 URL"的语法（如 `/…` 一律当 URL、页内引用只走 `key:`），或给 `_action.to` 增加站点基址解析。属语法/校验口径变更，不本轮即席发明。
+
+## F-050 `paginator` 的"当前页 / 被分页集合"没有现成的表达位（M4-b2，受阻于 D-1）
+- **背景**：`axioms-v0 §8` 原声明"分页控件不作表达"。本轮用**现有键**把页码集合渲染成控件行（条目级 `_action`；无捕获目标 ⇒ 控件观感，有目标 ⇒ `<a>`），但**"第 N 页为当前页""本控件分页的是哪一组结果"**没有可渲染的事实位：
+  - 页码是 `_items` 的 `_name`；`_rel.order` 只表达顺序，不表达"选中页"；`_expose`（暴露状态）与 `_ref`（指向被分页集合）虽存在，但把一个**分页控件**声明为表单暴露状态/引用，是**原语级语义决策**，与 D-2（字段可引用性）同源。
+- **本轮处置**：当前页与总数写入节点 `_intent`（**显式记录，不静默丢弃**），渲染只出控件行。
+- **缺口归属**：命名原语 `paginator`（`_macro` = `paginator` + `_expose page` + `_ref` + `_count`）需要 **D-1 引入 `_macro` 保留键**的裁定；被 D-1 阻塞，本轮不预埋。与 F-047/F-048 同属"词表/语法闭式化"待决项。
