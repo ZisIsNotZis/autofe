@@ -370,10 +370,12 @@ function renderControls(items) {
   return btns ? `<div class="controls">${btns}</div>` : '';
 }
 // 横向对比：列 = 实体，行 = 属性；不换行，可横向滚动（F-031-§3）
-function renderCompareTable(items, chain, hide, ctx) {
+// 行 = 两个以上实体共有的可对照属性；实体名/标签/价格/副标题/摘要进表头，不当行（F-031-§3）
+function compareRowKeys(items) {
   const rowKeys = [];
   const seen = new Set();
   for (const it of items) {
+    for (const k of Object.keys(it._fields ?? {})) if (!seen.has(k)) { seen.add(k); rowKeys.push(k); }
     for (const f of factsOf(it)) {
       if (['_name', '_title', '_tag', '_price', '_subtitle', '_summary'].includes(f.key)) continue;
       if (!seen.has(f.key)) { seen.add(f.key); rowKeys.push(f.key); }
@@ -382,6 +384,22 @@ function renderCompareTable(items, chain, hide, ctx) {
       if (!seen.has(c.key)) { seen.add(c.key); rowKeys.push(c.key); }
     }
   }
+  return rowKeys;
+}
+
+// D2：对照语义与位置无关。一组 ≥2 个被标为对照实体的条目要么成对比表（列=实体、行=属性），
+// 要么带着显式理由降级——绝不静默变形。能成表的条件：每个实体有名字（表头）、没有成员是控件、
+// 至少有一个可对照属性（否则只剩表头，成不了表）。
+function compareSetVerdict(items) {
+  if (items.length < 2) return { ok: false, reason: 'fewer-than-2-entities' };
+  if (items.some((it) => it._expose)) return { ok: false, reason: 'member-is-a-control' };
+  if (items.some((it) => !(it._name ?? it._title))) return { ok: false, reason: 'member-has-no-name' };
+  if (!compareRowKeys(items).length) return { ok: false, reason: 'no-comparable-attribute' };
+  return { ok: true };
+}
+
+function renderCompareTable(items, chain, hide, ctx) {
+  const rowKeys = compareRowKeys(items);
   const cellOf = (it, key) => {
     if (it._fields?.[key]) return fmt(it._fields[key]);
     const f = factsOf(it).find((x) => x.key === key);
@@ -399,11 +417,15 @@ function renderCompareTable(items, chain, hide, ctx) {
   };
   const head = `<tr><th class="cmp-row">${esc(items[0]._name ? '' : '')}</th>${items.map((it) => {
     const name = it._name ?? it._title;
+    const ex = itemExtra(it);          // 实体自己的动作控件不得因进表而丢失（F-033）
+    const label = name ? fmt(name) : '';
+    const nm = label && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     const tag = it._tag ? `<span class="cmp-tag">${fmt(it._tag)}</span>` : '';
     const price = it._price ? `<div class="cmp-price">${fmt(it._price)}</div>` : '';
     const sum = (it._summary ? `<div class="cmp-sub">${fmt(it._summary)}</div>` : '')
       + (it._subtitle ? `<div class="cmp-sub">${fmt(it._subtitle)}</div>` : '');
-    return `<th class="cmp-col">${name ? fmt(name) : ''}${tag}${price}${sum}</th>`;
+    const ctl = ex.ctl ? `<div class="cmp-ctl">${ex.ctl}</div>` : '';
+    return `<th class="cmp-col">${nm}${tag}${price}${sum}${ctl}</th>`;
   }).join('')}</tr>`;
   // row label: prefer the child block's own title/name (F-031-§3), then the declared field label
   const childLabel = (key) => {
@@ -433,7 +455,7 @@ const actionHtml = (a) => {
 
 function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (node === null || typeof node !== 'object') return '';
-  const scope = { ...ctx.values, ...scopeFor([...chain, node]) };
+  const scope = { ...ctx.values, ...scopeFor([...chain, node], ctx.values) };
   if (typeof node._when === 'string') {
     const ast = parseExpr(node._when);
     if (ast.ok && !evalExpr(ast, scope)) return '';
@@ -487,7 +509,6 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 
   const cls = ['node', `depth-${Math.min(depth, 4)}`];
   if (isHero) cls.push('hero-branch');
-  if (node._rel?.compare) cls.push('compare');
   const demoted = (node._rel?.level ?? 0) >= 2;
 
   const exp = exposeOf(node);
@@ -506,11 +527,6 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     }
     if (META_KEYS.has(f.key)) { metaParts.push(factHtmlInline(f.value)); continue; }
     if (ROLE_UNIT[f.key]) { metaParts.push(roleFact(f)); continue; }   // 评分/评分数：带角色与单位，不留裸数字
-    // a higher secondary amount is the "was" price: de-emphasise it (F-031-§6). Not a computation of the price itself.
-    if (f.key === '_amount' && node._price && typeof f.value?.money === 'number' && typeof node._price.money === 'number' && f.value.money > node._price.money) {
-      bodyLead += `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
-      continue;
-    }
     bodyLead += factHtml(f.value);
   }
   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
@@ -568,19 +584,30 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 
   // every sibling block item renders in ONE form; nothing renders twice (T-103)
   const rawItems = ordered.map((c) => c.node).filter((it) => !itemsConsumed.has(it));
-  // 轴分组：compare 标记的连续成员 = 被对照的实体（表），其余按各自形态（F-031-§3）
+  // 轴分组：compare 标记的连续成员 = 被对照的实体（表），其余按各自形态（F-031-§3）。
+  // D2：标记落在集合节点上等价于“它的全部成员都是对照实体”（位置无关）。
+  const forcedCmp = node._rel?.compare === true;
   const seqGroups = [];
   for (const it of rawItems) {
-    const cmp = Boolean(it._rel?.compare);
+    const cmp = forcedCmp || Boolean(it._rel?.compare);
     const last = seqGroups[seqGroups.length - 1];
     if (last && last.cmp === cmp) last.items.push(it);
     else seqGroups.push({ cmp, items: [it] });
   }
+  // 单个被标记的成员：如果它自己就是集合（标记说的是“我的成员是实体”，它自己会处理），不当作一组对比实体；
+  // 如果它只是一个叶子，那就是一次落空的标记：显式记下理由，不静默变形。
+  for (const g of seqGroups) {
+    const it = g.items[0];
+    if (g.cmp && g.items.length === 1 && (Array.isArray(it._items) || Array.isArray(it._lines))) g.cmp = false;
+  }
   const order = node._rel?.order;
   const groupForms = seqGroups.map((g) => {
-    const entityRun = g.cmp && g.items.length >= 2
-      && g.items.every((it) => it._name && !it._expose);          // 对比表：列必须是实体
-    return entityRun ? 'compare-table' : selectForm(g.items, order);
+    if (!g.cmp) return selectForm(g.items, order);
+    const verdict = compareSetVerdict(g.items);
+    if (verdict.ok) return 'compare-table';
+    // 不能成表：记下显式降级理由（审计输出），再按普通集合渲染
+    ctx.degradations.push({ key: node._key ?? null, entities: g.items.length, reason: verdict.reason });
+    return selectForm(g.items, order);
   });
   seqGroups.forEach((g, i) => { body += renderForm(groupForms[i], g.items, chain, hide, ctx, depth, node); });
   // order:time shows a time axis only over a vertical sequence — never a stray rail across a grid (F-031-§1)
@@ -680,10 +707,11 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 }
 
 // expose groups skip their label/summary facts in bodyLead (they become legend/hint)
-export function render(model, context = {}) {
+// `report` (optional): an array the renderer appends compare degradations to (D2 audit)
+export function render(model, context = {}, report = null) {
   indexRefLabels(model);
   const hide = new Map();
-  const ctx = { values: context.values ?? {} };
+  const ctx = { values: context.values ?? {}, degradations: report ?? [] };
   const html = renderNode(model, [], false, hide, ctx, 0);
   const title = esc(model._title ? fmt(model._title) : (model._intent ?? 'surface'));
   const brand = model._brand ? fmt(model._brand) : '';
@@ -703,15 +731,12 @@ h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
 .hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
 article{margin:12px 0}
-.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;align-items:start}
-.compare>.node{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0}
-.fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .chips-rows{display:block}
@@ -747,6 +772,7 @@ a.ctl:hover{background:#f2f7ff}
 .cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
 .cmp-price{font-weight:700;margin-top:4px}
 .cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
+.cmp-ctl{margin-top:6px}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
 .linklist li{margin:5px 0;line-height:1.5}
@@ -789,6 +815,14 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 </style></head>
 <body><main>${brand ? `<header class="site"><span class="brand">${brand}</span></header>` : ''}${html}</main></body></html>
 `;
+}
+
+// Same render, plus the explicit compare-degradation list (D2). The HTML of
+// render(model, ctx) is unchanged: the audit only observes what the renderer did.
+export function renderWithAudit(model, context = {}) {
+  const degradations = [];
+  const html = render(model, context, degradations);
+  return { html, degradations };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

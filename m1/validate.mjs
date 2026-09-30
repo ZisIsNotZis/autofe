@@ -146,9 +146,9 @@ export function validate(model) {
       const head = rp.split(/[.\[]/)[0];
       if (!(head in scope)) err(at, `condition path "${rp}" resolves to no fact, exposure, or context name`);
     }
-    void scope;
-  }
+    void scope;  }
 
+  checkNode(model, '', []);
   // refs resolve document-wide
   walk(model, (node, p) => {
     for (const [k, v] of Object.entries(node)) {

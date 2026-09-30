@@ -171,10 +171,19 @@ export function evalExpr(ast, scope) {
     case 'or': return evalExpr(ast.a, scope) || evalExpr(ast.b, scope);
   }
 }
-// scope: role -> scalar, nearest ancestor/node wins
-export function scopeFor(chain) {
+// scope: role -> scalar, nearest ancestor/node wins.
+// An `_expose` declaration puts its name in scope too (D1): a node declaring
+// `{name: "selected"}` makes `selected` referenceable by conditions. The VALUE is
+// the context injection of that name (the backend's known state, design-basis §6
+// 交互回路) when present; otherwise the declared-but-unset default ([] for a
+// multiple choice, undefined for a single one). Nearest declaration wins.
+export function scopeFor(chain, context = {}) {
   const s = {};
-  for (const node of chain) for (const f of factsOf(node)) s[f.role] = scalarOf(f.value);
+  for (const node of chain) {
+    for (const f of factsOf(node)) s[f.role] = scalarOf(f.value);
+    const e = exposeOf(node);
+    if (e) s[e.name] = e.name in context ? context[e.name] : (e.multiple === true ? [] : undefined);
+  }
   return s;
 }
 

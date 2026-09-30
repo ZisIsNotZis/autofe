@@ -235,3 +235,21 @@
 ## F-039 airbnb 图墙第 5 张缩略图烘进了源站按钮（资产裁切，第 4 轮验收挖出）
 - **现象**：`assets/airbnb-room-photo-5.png` 的裁切区把源站自己的「显示所有照片」按钮像素一起裁进去 → 页面上出现"图内假按钮 + 图外真控件"两个同名控件。
 - **定案**：从 `corpus/airbnb-com/room-28871/full.png` 重裁该缩略图**按钮以上**的净区（272×178，`+1000+317`；按钮像素在 y≈500-528，裁到 y495 止），read 成品确认无内置 UI、分辨率与其余缩略图同级。资产选择须逐张 read 确认，不得凭 bbox 直接采信。
+
+## F-040 校验器根调用缺失 ⇒ 校验空真（自 `6740f1c` 起，M4-a 发现）
+- **现象**：`m1/validate.mjs` 的 `checkNode(model, '', [])` 根调用在提交 `6740f1c`（"encode antd table"）的 diff 里被顺手删掉。此后 `validate()` 只剩文末 `walk(model,…)` 的 ref / `_action.to` 目标解析，**全部节点级检查（未知键、`_intent`、`_primary`、`_when`、`_expose`、`_rel`、身份寄存）都是死代码**：`{"_intent":"x","_bogus":1}` 也判 `ok`。`node m1/validate.mjs` 的退出码恒为 0 ⇒ 2026-09-28 起的"42/42 模型校验通过"是**空真**，闭式语法的强制手段一直没在跑。
+- **定案**：恢复 `checkNode(model,'',[])`；新增 `m1/eval/validate-selftest.mjs`（8 个坏样例必须被拒 + 2 个合法样例必须通过），并入 `m1/eval/pipeline.mjs`（失败即 pipeline 失败）。**gate 不会失败就不是 gate。**
+- **影响面**：所有依赖"校验器会拦"的结论都不成立——包括 F-031 的"闭式枚举""形态谓词封闭"和 `axioms-v0.md §126`（"校验器必须解析全部 `_primary`/`ref`/`_when` 路径，解析失败 = 阻断"）。不是渲染缺陷，是**证明强度**缺陷。
+
+## F-041 被 F-040 掩盖的 9 处模型缺陷（M4-a 发现）
+- **事实**：恢复根调用后，36 策展模型里有 9 个不通过：
+  - 5 处**悬空根 `_primary`**：`apple-com/home`="iphone-18-pro"、`sspai-com/post-114716`="intro"、`sspai-com/u-jtc092al`="feed"、`stripe-docs/payments`="intro"、`taobao-com/home`="search"（像是 `_lines` 重构前旧版命名子键的残留）；
+  - 4 处 `_primary` **写成了对象而不是路径**：`sspai-com/home` banner + feed、`sspai-com/matrix` feed、`mi-com/search-phone` recommend（其中 3 处与同节点的 `_items[0]` 逐字相同）；
+  - 1 处 `36kr-com/home` `hot._rel.order: "hot"` 不在闭式枚举 `sequence|time|none` 内。
+- **定案（父代理裁定）**：**删除**非法/悬空声明（不改成"能解析但语义错"的引用）。渲染器早已忽略这些值 ⇒ **渲染零变化**（逐文件 `git show HEAD:` 渲染对比，9/9 字节相同）。真正该有 hero 的页面由策展 ticket 按语义重新声明 `_primary`（指主**事实**）。
+- **验证**：`.scratch/07-m4/fix-report-5.md`。
+
+## F-042 条目级 `_action.when` 从不求值（M4-a 的 D1 构造断言顺带挖出）
+- **现象**：`renderControls` 与 `itemExtra`（`chips/list/seq/deflist/compare-table` 共用）直接读 `it._action`，**不求值 `_action.when`**；只有 `renderNode` 自己的 `_action` 走了 `evalExpr`。于是 `m1/models/ant-design/components-table.json` 的 "Delete selected"（`when: role == "admin"`、`role` 未注入）照样渲染成控件 —— 条件门形同虚设。
+- **未修原因**：不属于 M4-a 的 D1-D3 范围（是"条目动作的条件求值"这条独立线），且修它会改动控件可见性语义、需先定"上下文未注入时 `role` 的默认值"（deny 还是 allow）。记为 ticket，交 M4 原语轮一起处理。
+- **证据**：`/tmp/s-antd-bulk.png`（D1 断言截图里两个控件同时出现）。

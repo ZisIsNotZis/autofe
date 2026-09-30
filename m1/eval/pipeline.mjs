@@ -42,6 +42,25 @@ console.log(`[pipeline] 渲染 ${ok.length}/${rows.length} | 错误 ${out.filter
 console.log(`[pipeline] 保真 1.00: ${ok.filter((o) => o.fid === 1).length}/${ok.length}${under.length ? ' | <1: ' + under.map((o) => o.k + ' ' + o.fid).join(', ') : ''}`);
 if (under.length) for (const u of under) console.log('   missing:', u.k, JSON.stringify(u.missing));
 
+// ---- 1.5 gates: the validator must really refuse, and the M4-a foundations ----
+// A gate that can never fail is not a gate (F-040): these three run every time.
+const gate = (cmd) => {
+  try { return { ok: true, out: execSync(cmd, { timeout: 300000 }).toString().trim() }; }
+  catch (e) { return { ok: false, out: ((e.stdout ?? '').toString() + (e.stderr ?? '').toString()).trim() }; }
+};
+const gValid = gate(`node m1/validate.mjs $(find m1/curated -maxdepth 2 -name '*.json') m1/models/*/*.json`);
+const nOk = gValid.out.split('\n').filter((l) => l.startsWith('ok ')).length;
+console.log(`[pipeline] 模型校验: ${gValid.ok ? `${nOk} 个全通过` : '失败'}`);
+if (!gValid.ok) console.log(gValid.out.split('\n').filter((l) => !l.startsWith('ok ')).join('\n'));
+const gVST = gate('node m1/eval/validate-selftest.mjs');
+console.log(`[pipeline] 校验器自测: ${gVST.ok ? '通过' : '失败'}`);
+if (!gVST.ok) console.log(gVST.out);
+const gFS = gate('node m1/eval/foundation-selftest.mjs');
+console.log(`[pipeline] 地基自测(D1/D2/D3): ${gFS.ok ? '通过' : '失败'}`);
+for (const l of gFS.out.split('\n')) if (l.startsWith('  ·') || l.includes('显式降级') || l.includes('地基自测')) console.log(`[pipeline] ${l.trim()}`);
+if (!gFS.ok) console.log(gFS.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok;
+
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';
 const auditTail = execSync('node m1/eval/audit-visual.mjs ' + auditTargets + ' 2>&1 | tail -4', { timeout: 900000 }).toString();
@@ -83,5 +102,5 @@ if (wantShots) {
   console.log(`[pipeline] 截图 ${n} 张, 画廊 v=${V}`);
 }
 
-const failed = under.length > 0 || (hardFails && Number(hardFails) > 0) || out.some((o) => o.error);
+const failed = gatesFailed || under.length > 0 || (hardFails && Number(hardFails) > 0) || out.some((o) => o.error);
 process.exit(failed ? 1 : 0);

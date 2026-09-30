@@ -14,7 +14,7 @@ function suppressedNodes(model, ctxValues = {}) {
   const out = new Set();
   (function rec(n, chain) {
     if (out.has(n)) return;
-    const scope = { ...ctxValues, ...scopeFor([...chain, n]) };
+    const scope = { ...ctxValues, ...scopeFor([...chain, n], ctxValues) };
     let dead = false;
     if (typeof n._when === 'string') { const a = parseExpr(n._when); if (a.ok && !evalExpr(a, scope)) dead = true; }
     if (dead) { walk(n, (x) => out.add(x)); return; }
