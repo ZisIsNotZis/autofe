@@ -14,7 +14,14 @@ import {
   parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
 } from './model-lib.mjs';
 
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
+  const map = { nbsp: ' ', amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" };
+  const k = e.toLowerCase();
+  if (k in map) return map[k];
+  const code = k.startsWith('#x') ? parseInt(k.slice(2), 16) : parseInt(k.slice(1), 10);
+  return Number.isFinite(code) ? String.fromCodePoint(code) : m;
+});
+const esc = (s) => decodeEntities(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const CURRENCY_GLYPH = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP: '£' };
 
@@ -75,24 +82,27 @@ function isProseItem(it) {
   const f = factsOf(it);
   return f.length > 0 && f.every((x) => x.key === '_text') && !it._fields && childrenOf(it).length === 0 && !it._action;
 }
-function selectForm(items) {
+function selectForm(items, order) {
   if (!items.length) return 'none';
   if (items.every(isImageOnlyItem)) return 'image-strip';   // 图像主导 ⇒ 满幅（F-031-§7）
   if (items.every(isProseItem)) return 'prose';
   if (items.some((it) => it._fields && Object.keys(it._fields).length)) return 'table';
-  if (items.every((it) => it._action && isLabelOnlyItem(it))) return 'controls';
   if (items.length > 1 && items.some((it) => it._expose)) return 'stack';   // 表单步骤是序列，不是一行
-  if (!comparable(items)) return 'stack';
   if (items.every(isLabelOnlyItem)) {
-    // long sentence labels are a list of links/questions, not filter chips (F-030)
+    // long sentence labels are a list/sequence of links/questions, not filter chips or control pills (F-030)
     const long = items.every((it) => {
       const t = labelOf(it);
       const len = t ? (t.text ?? '').length : 0;
       return len >= 16 || /[?？]$/.test((t?.text ?? '').trim());
     });
-    return long ? 'list' : 'chips';
+    if (order === 'sequence' || order === 'time') return 'seq';   // 有序集合 ⇒ 序列，不是一行 chip（F-031-§1）
+    if (long) return 'list';
+    if (items.every((it) => it._action)) return 'controls';        // 只有短标签的控件集合才走控件条
+    return 'chips';
   }
-  if (items.some((it) => it._price)) return 'product-cards';
+  if (!comparable(items)) return 'stack';
+  // a "product card" needs a name: a price with no named product is not a card (F-030)
+  if (items.some((it) => it._price) && items.every((it) => it._name || it._title)) return 'product-cards';
   const deflist = items.every((it) => {
     if (it._fields || childrenOf(it).length) return false;
     const f = factsOf(it);
@@ -114,7 +124,18 @@ function renderList(items) {
     const inner = it._action && hasTarget(it._action) ? `<a href="${esc(it._action.to)}">${label}</a>` : label;
     return `<li>${inner}</li>`;
   }).join('');
-  return lis ? `<ul class="linklist">${lis}</ul>` : '';
+  return lis ? `<ul class="linklist${items.length > 4 && items.every((it) => ((labelOf(it)?.text) ?? '').length <= 12) ? ' cols2' : ''}">${lis}</ul>` : '';
+}
+// 有序集合（_rel.order = sequence|time）：每一项自成一行，顺序即语义（F-031-§1）
+function renderSeq(items) {
+  const lis = items.map((it) => {
+    const v = labelOf(it);
+    const label = v ? fmt(v) : '';
+    if (!label) return '';
+    const inner = it._action && hasTarget(it._action) ? `<a href="${esc(it._action.to)}">${label}</a>` : label;
+    return `<li>${inner}</li>`;
+  }).join('');
+  return lis ? `<ol class="seq">${lis}</ol>` : '';
 }
 function renderImageStrip(items) {
   return items.map((it) => `<figure class="strip"><img src="${esc(it._image.image)}" alt="${esc(it._image.alt || '')}"></figure>`).join('');
@@ -199,7 +220,8 @@ function renderDeflist(items) {
     const l = l0 && hasTarget(it._action) ? `<a href="${esc(it._action.to)}">${l0}</a>` : l0;
     const v = rest.map((x) => fmt(x.value)).join(' ').trim();
     if (!l && !v) return '';
-    return `<div class="defrow"><div class="deflabel">${l}</div><div class="defval">${v}</div></div>`;
+    // no empty label cell: an unlabeled row keeps its full width (F-031-§5)
+    return `<div class="defrow">${l ? `<div class="deflabel">${l}</div>` : ''}<div class="defval">${v}</div></div>`;
   }).join('');
   return rows ? `<div class="deflist">${rows}</div>` : '';
 }
@@ -224,7 +246,8 @@ function renderRun(run, chain, hide, ctx) {
   };
   if (cols.length >= 3) {
     const anyOps = run.some((c) => childrenOf(c.node).some((ch) => !ch.key.startsWith('_items[')));
-    const head = `<tr>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? '')}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>`;
+    const showHead = cols.some((c) => FIELDS[c]?.label) || anyOps;
+    const head = showHead ? `<tr>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? '')}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>` : '';
     const trs = run.map((c) => {
       const tds = cols.map((col) => `<td>${valuesOf(c.node, col)}</td>`).join('');
       const ops = childrenOf(c.node).filter((ch) => !ch.key.startsWith('_items['))
@@ -253,7 +276,9 @@ function renderSelectTable(items, exp, chain, hide, ctx) {
   };
   const labelOfKey = (c) => FIELDS[c]?.label ?? (c === '_name' ? '' : '');
   const anyOps = items.some((it) => childrenOf(it).some((ch) => !ch.key.startsWith('_items[')));
-  const head = `<tr><th class="sel"></th>${cols.map((c) => `<th>${esc(labelOfKey(c))}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>`;
+  // an all-blank header row is visual noise: emit the header only when a column is labeled (T-107)
+  const showHead = cols.some((c) => labelOfKey(c)) || anyOps;
+  const head = showHead ? `<tr><th class="sel"></th>${cols.map((c) => `<th>${esc(labelOfKey(c))}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>` : '';
   const rows = items.map((it) => {
     const tds = cols.map((col) => `<td>${valuesOf(it, col)}</td>`).join('');
     const ops = childrenOf(it).filter((ch) => !ch.key.startsWith('_items['))
@@ -271,6 +296,7 @@ function renderForm(form, items, chain, hide, ctx, depth, node) {
   if (form === 'compare-table') return renderCompareTable(items, chain, hide, ctx);
   if (form === 'chips') return renderChips(items);
   if (form === 'list') return renderList(items);
+  if (form === 'seq') return renderSeq(items);
   if (form === 'controls') return renderControls(items);
   if (form === 'stack') return renderStack(items, chain, hide, ctx, depth);
   if (form === 'image-strip') return renderImageStrip(items);
@@ -322,7 +348,7 @@ function renderCompareTable(items, chain, hide, ctx) {
   const seen = new Set();
   for (const it of items) {
     for (const f of factsOf(it)) {
-      if (['_name', '_title', '_tag', '_price', '_subtitle'].includes(f.key)) continue;
+      if (['_name', '_title', '_tag', '_price', '_subtitle', '_summary'].includes(f.key)) continue;
       if (!seen.has(f.key)) { seen.add(f.key); rowKeys.push(f.key); }
     }
     for (const c of childrenOf(it)) {
@@ -352,20 +378,29 @@ function renderCompareTable(items, chain, hide, ctx) {
       + (it._subtitle ? `<div class="cmp-sub">${fmt(it._subtitle)}</div>` : '');
     return `<th class="cmp-col">${name ? fmt(name) : ''}${tag}${price}${sum}</th>`;
   }).join('')}</tr>`;
+  // row label: prefer the child block's own title/name (F-031-§3), then the declared field label
+  const childLabel = (key) => {
+    for (const it of items) {
+      const c = childrenOf(it).find((x) => x.key === key || x.key.replace(/\[\d+\]$/, '') === key);
+      const t = c && (c.node._title ?? c.node._name);
+      if (t?.text) return t.text;
+    }
+    return null;
+  };
   const body = rowKeys.map((key) => {
-    const label = FIELDS[key]?.label ?? key.replace(/^_/, '').replace(/\[\d+\]$/, '');
+    const label = childLabel(key) ?? FIELDS[key]?.label ?? key.replace(/^_/, '').replace(/\[\d+\]$/, '');
     return `<tr><th class="cmp-row">${esc(label)}</th>${items.map((it) => `<td class="cmp-cell">${cellOf(it, key)}</td>`).join('')}</tr>`;
   }).join('');
   return `<div class="cmp-scroll"><table class="cmp-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
 }
 
 const actionHtml = (a) => {
-  const copy = a.label ?? a.verb;
-  if (!copy && !a.label) return '';   // icon-only link with no captured label: nothing to say
-  // no capture-backed target: keep the source's own words as plain text (T-101)
+  // `verb` is internal semantics, never visible copy (F-022/F-029): no label ⇒ no text
+  if (!a.label) return '';
+  // no capture-backed target: keep the source's own words, shaped like a control (T-101/F-031-§4)
   return hasTarget(a)
-    ? `<a class="action verb-${esc(a.verb)}" href="${esc(a.to)}">${esc(copy)}</a>`
-    : `<span class="action-plain">${esc(copy)}</span>`;
+    ? `<a class="action verb-${esc(a.verb)}" href="${esc(a.to)}">${esc(a.label)}</a>`
+    : `<span class="action-plain">${esc(a.label)}</span>`;
 };
 
 function renderNode(node, chain, isHero, hide, ctx, depth) {
@@ -409,7 +444,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   let heroHtml = '';
   if (typeof node._primary === 'string') {
     const r = resolveWithParent(node, node, node._primary);
-    if (r.ok && isRoleKey(r.lastKey)) {
+    // when the primary IS the node's own heading, the heading slot already shows it — never twice
+    if (r.ok && isRoleKey(r.lastKey) && !(r.holder === node && r.lastKey === headingKey)) {
       heroHtml = `<div class="hero fact-hero">${factHtml(r.node)}</div>`;
       if (!hide.has(r.holder)) hide.set(r.holder, { keys: new Set(), nodes: new Set() });
       hide.get(r.holder).keys.add(r.lastKey);
@@ -419,23 +455,33 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   const hid = hide.get(node);
   const kids = childrenOf(node).filter((c) => !(hid?.nodes.has(c.node)));
   const facts = factsOf(node).filter((f) => !(hid?.keys.has(f.key)));
-  const titleText = headingKey ? fmt(node[headingKey]) : null;
+  let titleText = headingKey ? fmt(node[headingKey]) : null;
 
   const cls = ['node', `depth-${Math.min(depth, 4)}`];
   if (isHero) cls.push('hero-branch');
   if (node._rel?.compare) cls.push('compare');
-  if (node._rel?.order === 'time') cls.push('timeline');
   const demoted = (node._rel?.level ?? 0) >= 2;
 
   const exp = exposeOf(node);
   const itemsConsumed = new Set();
   const META_KEYS = new Set(['_count', '_measure', '_duration', '_deadline', '_author', '_source', '_provider', '_brand', '_stock']);
   let bodyLead = '';
+  let heroImage = '';
   const metaParts = [];
   for (const f of facts) {
     if (headingKey && f.key === headingKey) continue;
     if (exp && (f.key === '_label' || f.key === '_summary')) continue;
+    if (f.key === '_brand' && depth === 0) continue;   // the site header already carries the brand (one fact, one place)
+    if (f.key === '_image' && depth === 0) {           // image-dominant main visual: edge-to-edge (F-031-§7)
+      heroImage = `<figure class="strip"><img src="${esc(f.value.image)}" alt="${esc(f.value.alt || '')}"></figure>`;
+      continue;
+    }
     if (META_KEYS.has(f.key)) { metaParts.push(factHtmlInline(f.value)); continue; }
+    // a higher secondary amount is the "was" price: de-emphasise it (F-031-§6). Not a computation of the price itself.
+    if (f.key === '_amount' && node._price && typeof f.value?.money === 'number' && typeof node._price.money === 'number' && f.value.money > node._price.money) {
+      bodyLead += `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
+      continue;
+    }
     bodyLead += factHtml(f.value);
   }
   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
@@ -479,8 +525,15 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   } else if (exp) {
     const lbl = node._label ? fmt(node._label) : '';   // never print a raw identifier as a label
     const hint = node._summary ? `<span class="hint">${fmt(node._summary)}</span>` : '';
-    const itype = exp.type === 'date' ? 'date' : (exp.type === 'time' ? 'datetime-local' : (exp.type === 'num' ? 'number' : 'text'));
-    body += `<span class="expose expose-${esc(exp.name)}">${lbl ? `<span class="deflabel">${lbl}</span>` : ''}${hint}<input type="${itype}" name="${esc(exp.name)}" data-type="${esc(exp.type)}" aria-label="${esc(String(exp.name))}"></span>`;
+    if (exp.type === 'bool') {
+      // a boolean switch is a checkbox with its name on the control (F-031-§6), not an empty text box
+      const name = lbl || (node._name ? fmt(node._name) : (node._title ? fmt(node._title) : ''));
+      if (headingKey) titleText = null;   // the heading IS the switch label: show it once, on the control
+      body += `<label class="choice expose-${esc(exp.name)}"><input type="checkbox" name="${esc(exp.name)}" value="true"> ${name}</label>`;
+    } else {
+      const itype = exp.type === 'date' ? 'date' : (exp.type === 'time' ? 'datetime-local' : (exp.type === 'num' ? 'number' : 'text'));
+      body += `<span class="expose expose-${esc(exp.name)}">${lbl ? `<span class="deflabel">${lbl}</span>` : ''}${hint}<input type="${itype}" name="${esc(exp.name)}" data-type="${esc(exp.type)}" aria-label="${esc(lbl || String(exp.name))}"></span>`;
+    }
   }
 
   // every sibling block item renders in ONE form; nothing renders twice (T-103)
@@ -493,11 +546,18 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     if (last && last.cmp === cmp) last.items.push(it);
     else seqGroups.push({ cmp, items: [it] });
   }
-  for (const g of seqGroups) {
+  const order = node._rel?.order;
+  const groupForms = seqGroups.map((g) => {
     const entityRun = g.cmp && g.items.length >= 2
       && g.items.every((it) => it._name && !it._expose);          // 对比表：列必须是实体
-    const form = entityRun ? 'compare-table' : selectForm(g.items);
-    body += renderForm(form, g.items, chain, hide, ctx, depth, node);
+    return entityRun ? 'compare-table' : selectForm(g.items, order);
+  });
+  seqGroups.forEach((g, i) => { body += renderForm(groupForms[i], g.items, chain, hide, ctx, depth, node); });
+  // order:time shows a time axis only over a vertical sequence — never a stray rail across a grid (F-031-§1)
+  if (order === 'time' && groupForms.length && groupForms.every((f) => f === 'deflist' || f === 'seq')) cls.push('timeline');
+  // an empty collection still renders its empty-state storyline (F-013): every declared fact must render
+  if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
+    body += renderNode(node._empty, [...chain, node], false, hide, ctx, depth + 1);
   }
   if (false) {
   if (form === 'chips') {
@@ -544,7 +604,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   }
 
   for (const c of kids) {
-    if (itemsConsumed.has(c.node) || actionKids.includes(c)) continue;
+    if (itemsConsumed.has(c.node)) continue;
     const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1);
     if (!h) continue;
     body += c.key.startsWith('_items[')
@@ -552,8 +612,13 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
       : `<section class="group g-${esc(c.key)}">${h}</section>`;
   }
 
+  // a control whose only content is its own title renders as a control bar, not a promo card (F-031-§4)
+  if (depth > 0 && titleText && (titleIsControl || linkTo) && !bodyLead && !heroHtml && !heroImage && !body && !action) {
+    const inner = linkTo ? `<a class="ctl" href="${esc(linkTo)}">${titleText}</a>` : `<span class="ctl">${titleText}</span>`;
+    return `<div class="controls">${inner}</div>`;
+  }
   // a bare-title block (source banners/ads) is a promo card, never a section heading (T-106)
-  const bareTitle = depth > 0 && titleText && !bodyLead && !heroHtml && !body && !action;
+  const bareTitle = depth > 0 && titleText && !bodyLead && !heroHtml && !heroImage && !body && !action && !node._action;
   if (bareTitle) {
     const img = node._image ? `<img src="${esc(node._image.image)}" alt="${esc(node._image.alt || '')}">` : '';
     return `<div class="promo${img ? ' promo-image' : ''}">${img}${titleText ? `<span class="promo-label">${titleText}</span>` : ''}</div>`;
@@ -571,8 +636,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 
   const anchorId = node._key ? ` id="${esc(String(node._key).replace(/[^A-Za-z0-9_-]/g, '-'))}"` : '';
   // nothing to say: emit nothing at all (never an empty block)
-  if (!head && !bodyLead && !heroHtml && !body && !action) return '';
-  const article = `<article${anchorId} class="${cls.join(' ')}">${head}${bodyLead}${heroHtml}${body}${action}</article>`;
+  if (!head && !bodyLead && !heroHtml && !heroImage && !body && !action) return '';
+  const article = `<article${anchorId} class="${cls.join(' ')}">${head}${heroImage}${bodyLead}${heroHtml}${body}${action}</article>`;
   return demoted ? `<aside class="zone">${article}</aside>` : article;
 }
 
@@ -608,10 +673,11 @@ article{margin:12px 0}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0}
+.fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
-.action-plain{color:#4a5a68;font-size:.95em}
+.action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
 .promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
 .promo-image{padding:0;overflow:hidden}
 .promo-image img{width:100%;height:auto;display:block;border-radius:9px}
@@ -641,15 +707,22 @@ a.ctl:hover{background:#f2f7ff}
 .cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
 .cmp-price{font-weight:700;margin-top:4px}
 .cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
-.linklist{margin:8px 0;padding-left:1.1em;columns:2;column-gap:28px}
+.linklist{margin:8px 0;padding-left:1.1em}
+.linklist.cols2{columns:2;column-gap:28px}
 .linklist li{margin:5px 0;line-height:1.5}
 .linklist a{color:#0b62d0}
+.seq{margin:8px 0;padding-left:1.5em}
+.seq li{margin:4px 0;line-height:1.55}
+.seq a{color:#0b62d0}
 .chip-item{display:block;break-inside:avoid;padding:4px 0;font-size:.95em}
 .chips a{color:inherit;text-decoration:none}
 .chips a:hover{text-decoration:underline}
 .deflist{margin:8px 0}
 .defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
 .deflabel{min-width:130px;font-weight:600}
+.deflabel a{color:inherit;text-decoration:none}
+.timeline .defrow{position:relative}
+.timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
 .accordion{margin:8px 0}
 details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
