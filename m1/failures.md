@@ -201,3 +201,18 @@
 
 ## 文本 judge 的能力边界（重要）
 本 harness 的 judge 模型**无视觉能力**（读图被拒），故 layer-3 的**视觉主次判定只能由人完成**；agent judge 只能做 HTML/DOM 层面的确定性与捏造核查。校准记录须区分"人（视觉）"与"agent（文本）"两类判定。
+
+## F-033 内部键当行标题 + 集合形态丢弃带 label 的动作（视觉复核 R7a/父代理裁定）
+- **发现于**：四组视觉复核（apple-com-cn/iphone-17 对比表行标题印 `display/chip/camera/battery/ai/buy`；集合条目带 `_action.label` 时控件文字被条目 `_name` 顶替，约 30 处）。
+- **两条根因**：① `renderCompareTable` 行标签 `FIELDS[key]?.label ?? key.replace(/^_/,'')` —— 词典没有该键时把内部键印上屏；② `renderChips/renderList/renderSeq/renderDeflist/renderControls` 只用条目自身的 `_name/_title` 作文本，动作 `label`（源站自己的控件文字，F-022）被丢掉。
+- **修法（采纳）**：① 行标签只取「子节点 `_title` → `FIELDS` 词典标签 → 无标签」，**绝不印内部键**；② 新增 `itemExtra(it)`：条目名照常作内容，带 `label` 的动作另出控件（`a.ctl`/`span.ctl`）；`label` 与条目名同字（或互为子串，即同一事实的两种写法）时只渲染信息更全的一处，并由条目名降级为链接目标（F-020）。
+- **验证**：见 `.scratch/06-visual-review/fix-report-2.md`；门禁 `node m1/eval/pipeline.mjs` 保真 36/36 + 视觉自查 36/36 干净。
+
+## F-034 裸数字无标签/单位 + 句读成员排成一行 chip 流（视觉复核 R7b/R7c）
+- **发现于**：airbnb room-28871 —— `4.86` / `815` 各占一行且无标签无单位、同一数值在「总体评分」与英雄区各渲染一遍；评分分布「5 星，88% 的评价 4 星，11% 的评价 …」被 `.chips{display:flex}` 排成一行连续文字（`.chip-item{display:block}` 在 flex 容器里不生效，故仍是一行）。
+- **修法（采纳）**：① 角色数值事实 `_rating`/`_rating-count` 进 meta 行并带单位 ——「4.86 分 · 815 条评价」；deflist 里的分项评分同样带「分」；② 句读（，。；、）成员集合走 `chips-rows`（纵向，每条一行）；③ 模型侧去重：删掉 `overview.rating` 的裸 `_rating`/`_rating-count`（保留源站句子与评价入口），删掉 `reviews._detail`（与 meta 行同事实）。
+- **验证**：同上；截图 `/tmp/fix2-airbnb-com-room-28871.png` 裁切确认「4.86 分 · 815 条评价」+ 5 行评分分布 + 分项「干净卫生 4.8 分」。
+
+## F-035 grafana play-home 面板体在抓取里就是加载态（采集缺口，非模型/渲染器缺陷）
+- **事实**：`corpus/grafana-play/play-home/dom.html` 每个 panel content 为 `<div>Loading plugin panel...</div>`（`data-testid="loading-plugin-panel-18"`）；即源站自身处于插件加载态时被截取。与 bilibili「弹幕列表填充中…」同例。
+- **定案**：加载态文案不是内容事实（F-031/F-013），**不补进模型**（补即抄加载态）；渲染器已有面板名 `ol.seq` 序列。记入采集待办：截图前等待面板插件渲染完成。

@@ -116,13 +116,26 @@ function selectForm(items, order) {
 }
 
 const labelOf = (it) => it._name ?? it._title ?? it._text;
+const labelTextOf = (it) => (labelOf(it)?.text ?? '');
+// 集合条目的动作（F-031-§4 / F-020）：条目名是内容；带 label 的动作是源站自己的控件文字，
+// 必须作为控件出现。二者同字时只渲染一遍（此时条目名降级为链接目标，不新增文案）。
+function itemExtra(it) {
+  const a = it._action;
+  const content = labelTextOf(it);
+  if (!a) return { linkTo: null, ctl: '' };
+  if (a.label && a.label !== content) {
+    return { linkTo: null, ctl: hasTarget(a) ? `<a class="ctl" href="${esc(a.to)}">${esc(a.label)}</a>` : `<span class="ctl">${esc(a.label)}</span>` };
+  }
+  return { linkTo: hasTarget(a) ? a.to : null, ctl: '' };
+}
 function renderList(items) {
   const lis = items.map((it) => {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
     if (!label) return '';
-    const inner = it._action && hasTarget(it._action) ? `<a href="${esc(it._action.to)}">${label}</a>` : label;
-    return `<li>${inner}</li>`;
+    const ex = itemExtra(it);
+    const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
+    return `<li>${inner}${ex.ctl}</li>`;
   }).join('');
   return lis ? `<ul class="linklist${items.length > 4 && items.every((it) => ((labelOf(it)?.text) ?? '').length <= 12) ? ' cols2' : ''}">${lis}</ul>` : '';
 }
@@ -132,8 +145,9 @@ function renderSeq(items) {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
     if (!label) return '';
-    const inner = it._action && hasTarget(it._action) ? `<a href="${esc(it._action.to)}">${label}</a>` : label;
-    return `<li>${inner}</li>`;
+    const ex = itemExtra(it);
+    const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
+    return `<li>${inner}${ex.ctl}</li>`;
   }).join('');
   return lis ? `<ol class="seq">${lis}</ol>` : '';
 }
@@ -206,19 +220,25 @@ function renderChips(items) {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
     if (!label) return '';            // no label, no chip (never an empty control)
-    const a = it._action;
-    const inner = hasTarget(a) ? `<a href="${esc(a.to)}">${label}</a>` : label;
-    return `<span class="chip-item">${inner}</span>`;
+    const ex = itemExtra(it);
+    const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
+    return `<span class="chip-item">${inner}${ex.ctl}</span>`;
   }).join('');
-  return chips ? `<div class="chips">${chips}</div>` : '';
+  // 成员是句子（含句读）时不排成一行 chip 流：每条自成一行（F-031-§1）
+  const rows = items.some((it) => /[，。；、]/.test(labelTextOf(it)));
+  return chips ? `<div class="chips${rows ? ' chips-rows' : ''}">${chips}</div>` : '';
 }
+// 数值事实必须带角色/单位（F-031-§6）：裸数字在屏幕上没有归属
+const ROLE_UNIT = { _rating: '分', '_rating-count': '条评价' };
+const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] ? ` ${ROLE_UNIT[f.key]}` : ''}`;
 function renderDeflist(items) {
   const rows = items.map((it) => {
     const label = it._name ?? it._title;
     const rest = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
     const l0 = label ? fmt(label) : '';
-    const l = l0 && hasTarget(it._action) ? `<a href="${esc(it._action.to)}">${l0}</a>` : l0;
-    const v = rest.map((x) => fmt(x.value)).join(' ').trim();
+    const ex = itemExtra(it);
+    const l = l0 && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${l0}</a>` : l0;
+    const v = (rest.map((x) => roleFact(x)).join(' ') + (ex.ctl ? ` ${ex.ctl}` : '')).trim();
     if (!l && !v) return '';
     // no empty label cell: an unlabeled row keeps its full width (F-031-§5)
     return `<div class="defrow">${l ? `<div class="deflabel">${l}</div>` : ''}<div class="defval">${v}</div></div>`;
@@ -330,15 +350,18 @@ function renderStack(items, chain, hide, ctx, depth) {
   }
   return out;
 }
-// 控件条：_action-only 成员是控件，不是内容（F-031-§4）
+// 控件条：_action-only 成员是控件，不是内容（F-031-§4）；动作 label 是源站自己的控件文字（F-022），
+// 与条目名不是同一事实时另出一枚控件；同一事实的两种写法（一个包含另一个）只渲染信息更全的一处。
 function renderControls(items) {
   const btns = items.map((it) => {
-    const v = labelOf(it);
-    const label = v ? fmt(v) : '';
-    if (!label) return '';
-    return hasTarget(it._action)
-      ? `<a class="ctl" href="${esc(it._action.to)}">${label}</a>`
-      : `<span class="ctl" data-verb="${esc(it._action?.verb ?? '')}">${label}</span>`;
+    const a = it._action;
+    const name = labelTextOf(it);
+    const ctl = a?.label ?? '';
+    const otherFact = Boolean(name && ctl && !name.includes(ctl) && !ctl.includes(name));
+    const text = name || ctl;
+    if (!text) return '';
+    const to = (s) => (hasTarget(a) ? `<a class="ctl" href="${esc(a.to)}">${s}</a>` : `<span class="ctl" data-verb="${esc(a?.verb ?? '')}">${s}</span>`);
+    return otherFact ? to(esc(text)) + to(esc(ctl)) : to(esc(text));
   }).join('');
   return btns ? `<div class="controls">${btns}</div>` : '';
 }
@@ -388,7 +411,8 @@ function renderCompareTable(items, chain, hide, ctx) {
     return null;
   };
   const body = rowKeys.map((key) => {
-    const label = childLabel(key) ?? FIELDS[key]?.label ?? key.replace(/^_/, '').replace(/\[\d+\]$/, '');
+    // never print an internal key as a row label (F-022/F-029): child title → declared field label → no label
+    const label = childLabel(key) ?? FIELDS[key]?.label ?? '';
     return `<tr><th class="cmp-row">${esc(label)}</th>${items.map((it) => `<td class="cmp-cell">${cellOf(it, key)}</td>`).join('')}</tr>`;
   }).join('');
   return `<div class="cmp-scroll"><table class="cmp-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
@@ -477,6 +501,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
       continue;
     }
     if (META_KEYS.has(f.key)) { metaParts.push(factHtmlInline(f.value)); continue; }
+    if (ROLE_UNIT[f.key]) { metaParts.push(roleFact(f)); continue; }   // 评分/评分数：带角色与单位，不留裸数字
     // a higher secondary amount is the "was" price: de-emphasise it (F-031-§6). Not a computation of the price itself.
     if (f.key === '_amount' && node._price && typeof f.value?.money === 'number' && typeof node._price.money === 'number' && f.value.money > node._price.money) {
       bodyLead += `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
@@ -677,6 +702,8 @@ article{margin:12px 0}
 .fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips-rows{display:block}
+.chips-rows .chip-item{padding:3px 0}
 .cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
 .action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
 .promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
