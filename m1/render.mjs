@@ -10,8 +10,7 @@
 // Usage: node m1/render.mjs <model.json> [out.html]
 import fs from 'node:fs';
 import {
-  isRoleKey, resolvePath, resolveWithParent, childrenOf, factsOf,
-  parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
+  childrenOf, factsOf, parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
 } from './model-lib.mjs';
 // The axis-decision layer is shared, not re-derived per target (round 19): form
 // selection, comparability, compare-set verdict, shared constants and the
@@ -19,7 +18,8 @@ import {
 // HTML presentation of those decisions.
 import {
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, META_KEYS, hasOwnUnit, hasTarget, hrefOf,
-  labelOf, labelTextOf, isProseItem, selectForm, compareRowKeys, compareSetVerdict,
+  labelOf, labelTextOf, selectForm, compareRowKeys,
+  actionVisible, itemScope, seqGroupsOf, primarySlot, buildRefLabels,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -73,7 +73,7 @@ function fmt(v) {
     const raw = String(v.ref);
     const id = raw.replace(/^key:/, '').replace(/[^A-Za-z0-9_-]/g, '-');
     if (raw.startsWith('key:')) {
-      const label = REF_LABELS.get(raw.slice(4));
+      const label = refLabels.get(raw.slice(4));
       return label ? `<a class="ref" href="#${esc(id)}">${esc(label)}</a>` : '';  // never print the raw key
     }
     return `<a class="ref" href="#${esc(id)}">${esc(raw)}</a>`;
@@ -102,15 +102,7 @@ function discoverRuns(orderedChildren) {
 
 // 集合条目的动作（F-031-§4 / F-020）：条目名是内容；带 label 的动作是源站自己的控件文字，
 // 必须作为控件出现。二者同字时只渲染一遍（此时条目名降级为链接目标，不新增文案）。
-// F-042: an item-level `_action.when` is a condition like any other (same evaluation
-// path as `_when`): it is evaluated against the same scope, and an unmet condition
-// hides the control. Unparsable expressions are left to the validator, never guessed.
-function actionVisible(a, scope) {
-  if (!a) return false;
-  if (typeof a.when === 'string') { const ast = parseExpr(a.when); if (ast.ok && !evalExpr(ast, scope)) return false; }
-  return true;
-}
-const itemScope = (it, chain, ctx) => ({ ...ctx.values, ...scopeFor([...chain, it], ctx.values) });
+// 可见性与作用域判定在 axis.mjs（actionVisible/itemScope, F-042）；这里只管 HTML 呈现。
 function itemExtra(it, scope) {
   const a = it._action;
   const content = labelTextOf(it);
@@ -157,19 +149,8 @@ function renderProse(items) {
   }).join('')}</div>`;
 }
 
-const REF_LABELS = new Map();
-function indexRefLabels(model) {
-  REF_LABELS.clear();
-  (function walk(n) {
-    if (Array.isArray(n)) { n.forEach(walk); return; }
-    if (!n || typeof n !== 'object') return;
-    if (n._key) {
-      const t = n._title ?? n._name;
-      if (t?.text) REF_LABELS.set(String(n._key), t.text);
-    }
-    for (const v of Object.values(n)) walk(v);
-  })(model);
-}
+// `key:` 标签索引：构建规则在 axis.mjs（buildRefLabels）；这里只保存结果供 fmt() 使用。
+let refLabels = new Map();
 function renderChips(items, chain, ctx) {
   const chips = items.map((it) => {
     const v = labelOf(it);
@@ -405,40 +386,31 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   let action = '';
   let linkTo = null;
   let titleIsControl = false;
-  if (node._action) {
-    let show = true;
-    if (typeof node._action.when === 'string') {
-      const ast = parseExpr(node._action.when);
-      if (ast.ok) show = Boolean(evalExpr(ast, scope));
+  if (actionVisible(node._action, scope)) {
+    const a = node._action;
+    const titleTxt = headingKey ? (node[headingKey]?.text ?? '') : '';
+    if (a.label && titleTxt && a.label === titleTxt) {
+      // the block's own heading is the control: render it as such, once (F-031-§4)
+      linkTo = hasTarget(a) ? hrefOf(a.to) : null;
+      titleIsControl = true;
+    } else {
+    const labelless = !a.label && ['navigate', 'open'].includes(a.verb);
+    if (labelless && a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))) {
+      linkTo = hrefOf(a.to);
+    } else {
+      action = actionHtml(a);
     }
-    if (show) {
-      const a = node._action;
-      const titleTxt = headingKey ? (node[headingKey]?.text ?? '') : '';
-      if (a.label && titleTxt && a.label === titleTxt) {
-        // the block's own heading is the control: render it as such, once (F-031-§4)
-        linkTo = hasTarget(a) ? hrefOf(a.to) : null;
-        titleIsControl = true;
-      } else {
-      const labelless = !a.label && ['navigate', 'open'].includes(a.verb);
-      if (labelless && a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))) {
-        linkTo = hrefOf(a.to);
-      } else {
-        action = actionHtml(a);
-      }
-      }
     }
   }
 
-  // _primary FACT gets the enlarged hero slot; subtree primaries stay in place (no reordering)
+  // _primary FACT gets the enlarged hero slot (axis.mjs primarySlot); subtree primaries
+  // stay in place (no reordering). Hiding the shown fact is per-target storage.
   let heroHtml = '';
-  if (typeof node._primary === 'string') {
-    const r = resolveWithParent(node, node, node._primary);
-    // when the primary IS the node's own heading, the heading slot already shows it — never twice
-    if (r.ok && isRoleKey(r.lastKey) && !(r.holder === node && r.lastKey === headingKey)) {
-      heroHtml = `<div class="hero fact-hero">${factHtml(r.node)}</div>`;
-      if (!hide.has(r.holder)) hide.set(r.holder, { keys: new Set(), nodes: new Set() });
-      hide.get(r.holder).keys.add(r.lastKey);
-    }
+  const slot = primarySlot(node, headingKey);
+  if (slot) {
+    heroHtml = `<div class="hero fact-hero">${factHtml(slot.value)}</div>`;
+    if (!hide.has(slot.holder)) hide.set(slot.holder, { keys: new Set(), nodes: new Set() });
+    hide.get(slot.holder).keys.add(slot.key);
   }
 
   const hid = hide.get(node);
@@ -533,37 +505,10 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   // P3（提案 §6 决策 3 方案 A）：连续的 `_text` 段合并为一个正文块——段落不是区块，
   // 之间不插 `<hr class="region">`。只有**成串（≥2）**的 `_text` 才切出来；孤立的
   // `_text` 段保持原有集合形态（避免为单个事实改动既有页面）。
-  const forcedCmp = node._rel?.compare === true;
-  const isProse = rawItems.map(isProseItem);
-  const groupKind = (i) => {
-    if (forcedCmp || Boolean(rawItems[i]._rel?.compare)) return 'compare';
-    return isProse[i] && (isProse[i - 1] || isProse[i + 1]) ? 'prose' : 'plain';
-  };
-  const seqGroups = [];
-  for (let i = 0; i < rawItems.length; i++) {
-    const kind = groupKind(i);
-    const last = seqGroups[seqGroups.length - 1];
-    if (last && last.kind === kind) last.items.push(rawItems[i]);
-    else seqGroups.push({ kind, items: [rawItems[i]] });
-  }
-  // 单个被标记的成员：如果它自己就是集合（标记说的是“我的成员是实体”，它自己会处理），不当作一组对比实体；
-  // 如果它只是一个叶子，那就是一次落空的标记：显式记下理由，不静默变形。
-  for (const g of seqGroups) {
-    const it = g.items[0];
-    if (g.kind === 'compare' && g.items.length === 1 && (Array.isArray(it._items) || Array.isArray(it._lines))) g.kind = 'plain';
-  }
-  const order = node._rel?.order;
-  const groupForms = seqGroups.map((g) => {
-    if (g.kind !== 'compare') return selectForm(g.items, order);
-    const verdict = compareSetVerdict(g.items);
-    if (verdict.ok) return 'compare-table';
-    // 不能成表：记下显式降级理由（审计输出），再按普通集合渲染
-    ctx.degradations.push({ key: node._key ?? null, entities: g.items.length, reason: verdict.reason });
-    return selectForm(g.items, order);
-  });
-  seqGroups.forEach((g, i) => { body += renderForm(groupForms[i], g.items, chain, hide, ctx, depth, node); });
+  const { groups, order } = seqGroupsOf(rawItems, node, ctx.degradations);
+  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node);
   // order:time shows a time axis only over a vertical sequence — never a stray rail across a grid (F-031-§1)
-  if (order === 'time' && groupForms.length && groupForms.every((f) => f === 'deflist' || f === 'seq')) cls.push('timeline');
+  if (order === 'time' && groups.length && groups.every((g) => g.form === 'deflist' || g.form === 'seq')) cls.push('timeline');
   // an empty collection still renders its empty-state storyline (F-013): every declared fact must render
   if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
     body += renderNode(node._empty, [...chain, node], false, hide, ctx, depth + 1);
@@ -662,7 +607,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 // expose groups skip their label/summary facts in bodyLead (they become legend/hint)
 // `report` (optional): an array the renderer appends compare degradations to (D2 audit)
 export function render(model, context = {}, report = null) {
-  indexRefLabels(model);
+  refLabels = buildRefLabels(model);
   const hide = new Map();
   const ctx = { values: context.values ?? {}, degradations: report ?? [] };
   const html = renderNode(model, [], false, hide, ctx, 0);

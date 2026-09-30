@@ -14,7 +14,9 @@
 // any target must make identically. What does NOT belong here: HTML `<table>` markup,
 // text-table column alignment, `<span class="was">` strikethrough — those are the
 // presentation of a decision, and there is exactly one per target.
-import { childrenOf, factsOf } from './model-lib.mjs';
+import {
+  childrenOf, factsOf, resolveWithParent, isRoleKey, parseExpr, evalExpr, scopeFor,
+} from './model-lib.mjs';
 
 // ---- shared display constants (target-neutral semantics) -------------------
 export const CURRENCY_GLYPH = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP: '£' };
@@ -175,4 +177,103 @@ export function compareSetVerdict(items) {
   if (!st.sharedRows) return { ok: false, reason: 'degenerate-no-shared-attribute' };
   if (st.fill < COMPARE_MIN_FILL) return { ok: false, reason: `degenerate-fill-rate:${st.fill.toFixed(2)}` };
   return { ok: true };
+}
+
+// ---- ordered item-set grouping (F-031 §1/§3, D2, P3) -----------------------
+// An ordered collection splits into consecutive runs that each render in ONE form:
+//   compare — members marked as compared entities (marker on the set ⇒ all members;
+//             on a member ⇒ that member); a lone marked member that is itself a
+//             collection is NOT an entity (its marker describes ITS members) ⇒ plain.
+//   prose   — consecutive `_text` paragraphs merge into one block (≥2 required, else plain).
+//   plain   — everything else, form chosen by `selectForm`.
+// The form for a run is decided here too, and a compare run that cannot become a table
+// records its explicit degradation reason (D2: never silently deform).
+// Returns `{ groups: [{ kind, items, form }], order }` — the order is the `_rel.order`
+// the forms were selected with (targets still need it, e.g. for the timeline rail).
+export function seqGroupsOf(items, node, degradations = null) {
+  const rel = node?._rel;
+  const forcedCmp = rel?.compare === true;
+  const isProse = items.map(isProseItem);
+  const kindOf = (i) => {
+    if (forcedCmp || Boolean(items[i]._rel?.compare)) return 'compare';
+    return isProse[i] && (isProse[i - 1] || isProse[i + 1]) ? 'prose' : 'plain';
+  };
+  const groups = [];
+  for (let i = 0; i < items.length; i++) {
+    const kind = kindOf(i);
+    const last = groups[groups.length - 1];
+    if (last && last.kind === kind) last.items.push(items[i]);
+    else groups.push({ kind, items: [items[i]] });
+  }
+  for (const g of groups) {
+    const it = g.items[0];
+    if (g.kind === 'compare' && g.items.length === 1 && (Array.isArray(it._items) || Array.isArray(it._lines))) g.kind = 'plain';
+  }
+  const order = rel?.order;
+  for (const g of groups) {
+    if (g.kind !== 'compare') { g.form = selectForm(g.items, order); continue; }
+    const verdict = compareSetVerdict(g.items);
+    if (verdict.ok) { g.form = 'compare-table'; continue; }
+    // 不能成表：记下显式降级理由（审计输出），再按普通集合渲染
+    if (degradations) degradations.push({ key: node?._key ?? null, entities: g.items.length, reason: verdict.reason });
+    g.form = selectForm(g.items, order);
+  }
+  return { groups, order };
+}
+
+// ---- action visibility & item scope (F-031 §4 / F-020 / F-042) -------------
+// An item/node `_action.when` is a condition like any other: evaluated against the
+// same scope, and an unmet condition hides the control. Unparsable expressions are
+// left to the validator, never guessed (an unparsable `when` stays visible).
+export function actionVisible(a, scope) {
+  if (!a) return false;
+  if (typeof a.when === 'string') { const ast = parseExpr(a.when); if (ast.ok && !evalExpr(ast, scope)) return false; }
+  return true;
+}
+// Scope of a member item: the context values plus everything the ancestor chain and
+// the item itself contribute (`_fields`/role facts/its own `_expose`).
+export const itemScope = (it, chain, ctx) => ({ ...ctx.values, ...scopeFor([...chain, it], ctx.values) });
+
+// ---- `_primary` slot resolution (hide the fact the hero already shows) -----
+// `_primary` names the storyline's main FACT. Resolving it and deciding whether it
+// gets a hero slot (must resolve to a role fact; the node's own heading slot already
+// shows it ⇒ no slot) is the same for every target. Each target stores the "hidden"
+// fact in its own way (HTML: {keys,nodes}; text: a Set) — that storage is presentation.
+// Returns `{ holder, key, value }` (the node holding the resolved fact, the fact key,
+// and the resolved fact node), or null when there is no valid slot.
+export function primarySlot(node, headingKey) {
+  if (typeof node._primary !== 'string') return null;
+  const r = resolveWithParent(node, node, node._primary);
+  if (!r.ok || !isRoleKey(r.lastKey)) return null;
+  if (r.holder === node && r.lastKey === headingKey) return null;
+  return { holder: r.holder, key: r.lastKey, value: r.node };
+}
+
+// ---- model-wide `key:` → label index (target-neutral) ----------------------
+// A `key:` target points at an element identified by `_key`; on screen the raw key must
+// never leak (F-022) — the label is that element's own title/name. Building this index
+// walks the whole model, so it is done once per render and shared by any target that
+// has to print such a reference.
+export function buildRefLabels(model) {
+  const labels = new Map();
+  (function walk(n) {
+    if (Array.isArray(n)) { n.forEach(walk); return; }
+    if (!n || typeof n !== 'object') return;
+    if (n._key) {
+      const t = n._title ?? n._name;
+      if (t?.text) labels.set(String(n._key), t.text);
+    }
+    for (const v of Object.values(n)) walk(v);
+  })(model);
+  return labels;
+}
+
+// ---- visible page text (metric caliber, target-neutral) --------------------
+// What a fact may be certified by: the page's *visible text* — style/script bodies and
+// tag attributes removed. Only WELL-FORMED tags are stripped (`<[a-zA-Z/][^>]*>`); the
+// old `/<[^>]*>/g` erased anything between a `<` and a `>` (round-19 report §5).
+export function pageText(html) {
+  return String(html)
+    .replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[a-zA-Z/][^>]*>/g, '<>');
 }

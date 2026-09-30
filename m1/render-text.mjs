@@ -8,7 +8,7 @@
 // Axis semantics (docs/m1/layout-axes.md F-031) expressed in plain text:
 //   comparable ("同一行")   -> text table laid out HORIZONTALLY (members = columns)
 //   stack / not comparable  -> vertical sections, each with its own heading
-//   _rel.compare entities   -> table with the entities as COLUMNS
+//   _rel {compare:true}    -> table with the entities as COLUMNS
 //   image                   -> its alt text, annotated [图片]
 //   control (_action.label) -> [标签]
 //   _expose                 -> "( ) option" (single) / "[ ] option" (multiple)
@@ -18,16 +18,17 @@
 // Usage: node m1/render-text.mjs <model.json> <out.txt>
 import fs from 'node:fs';
 import {
-  childrenOf, factsOf, isRoleKey, parseExpr, evalExpr, scopeFor,
-  exposeOf, resolveWithParent, FIELDS,
+  childrenOf, factsOf, parseExpr, evalExpr, scopeFor,
+  exposeOf, FIELDS,
 } from './model-lib.mjs';
 // The axis-decision layer is SHARED with the HTML target (round 19): this file no
 // longer re-copies `selectForm`/`comparable`/`compareSetVerdict`/constants from
 // `render.mjs`. It imports only the shared model layer and ./axis.mjs — never a
 // renderer. See .scratch/19-shared-axis/report.md.
 import {
-  labelOf, labelTextOf, isProseItem, selectForm, compareRowKeys, compareSetVerdict,
+  labelOf, labelTextOf, selectForm, compareRowKeys,
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, META_KEYS, hasOwnUnit,
+  actionVisible, itemScope, seqGroupsOf, primarySlot,
 } from './axis.mjs';
 
 // role-fact display (target-local): the human `ROLE_LABEL` map is text-only copy.
@@ -91,12 +92,7 @@ const roleLabel = (key) => (key in ROLE_LABEL ? ROLE_LABEL[key] : '');
 // from render.mjs; that duplication is gone — the axis layer is imported, not copied.)
 
 // ---- actions / controls (F-031-§4) ----------------------------------------
-function actionVisible(a, scope) {
-  if (!a) return false;
-  if (typeof a.when === 'string') { const ast = parseExpr(a.when); if (ast.ok && !evalExpr(ast, scope)) return false; }
-  return true;
-}
-const itemScope = (it, chain, ctx) => ({ ...ctx.values, ...scopeFor([...chain, it], ctx.values) });
+// 可见性与作用域判定在 axis.mjs（actionVisible/itemScope, F-042/F-020）；这里只管文本呈现。
 // control text: "[标签]"; returns the empty string when the action has no visible label
 function controlOf(a) { return a?.label ? `[${a.label}]` : ''; }
 function itemControl(it, chain, ctx) {
@@ -297,14 +293,13 @@ function renderNode(node, chain, isHero, ctx, depth) {
   let titleText = headingKey ? fmt(node[headingKey]) : null;
   const demoted = (node._rel?.level ?? 0) >= 2;
 
-  // _primary: the one point the storyline conveys; hide it from the normal fact flow
-  if (typeof node._primary === 'string') {
-    const r = resolveWithParent(node, node, node._primary);
-    if (r.ok && isRoleKey(r.lastKey) && !(r.holder === node && r.lastKey === headingKey)) {
-      ctx.hide.get(r.holder) ?? ctx.hide.set(r.holder, new Set());
-      ctx.hide.get(r.holder).add(r.lastKey);
-      blocks.push(line(depth, `★ 主指: ${modelScalar(r.node)}`));
-    }
+  // _primary: the one point the storyline conveys; hide it from the normal fact flow.
+  // 解析与「槽位是否有效」在 axis.mjs（primarySlot）；隐藏的存储方式（Set）属本目标。
+  const slot = primarySlot(node, headingKey);
+  if (slot) {
+    ctx.hide.get(slot.holder) ?? ctx.hide.set(slot.holder, new Set());
+    ctx.hide.get(slot.holder).add(slot.key);
+    blocks.push(line(depth, `★ 主指: ${modelScalar(slot.value)}`));
   }
 
   // action that is the heading itself, or a labelled action on this node
@@ -358,35 +353,12 @@ function renderNode(node, chain, isHero, ctx, depth) {
   const factLines = factsLines(node, chain, ctx, depth, hidden, exp);
   if (factLines.length) blocks.push(factLines.map((t) => line(depth, t)).join('\n'));
 
-  // ordered item sets + compare grouping (ported from render.mjs)
+  // ordered item sets + compare grouping (shared in axis.mjs: seqGroupsOf)
   const ordered = childrenOf(node).filter((c) => (c.key.startsWith('_lines[') || c.key.startsWith('_items[')) && !itemsConsumed.has(c.node));
   const rawItems = ordered.map((c) => c.node);
-  const forcedCmp = node._rel?.compare === true;
-  const isProse = rawItems.map(isProseItem);
-  const groupKind = (i) => {
-    if (forcedCmp || Boolean(rawItems[i]._rel?.compare)) return 'compare';
-    return isProse[i] && (isProse[i - 1] || isProse[i + 1]) ? 'prose' : 'plain';
-  };
-  const seqGroups = [];
-  for (let i = 0; i < rawItems.length; i++) {
-    const kind = groupKind(i);
-    const last = seqGroups[seqGroups.length - 1];
-    if (last && last.kind === kind) last.items.push(rawItems[i]);
-    else seqGroups.push({ kind, items: [rawItems[i]] });
-  }
-  for (const g of seqGroups) {
-    const it = g.items[0];
-    if (g.kind === 'compare' && g.items.length === 1 && (Array.isArray(it._items) || Array.isArray(it._lines))) g.kind = 'plain';
-  }
-  const order = node._rel?.order;
-  for (const g of seqGroups) {
-    let form;
-    if (g.kind === 'compare') {
-      const verdict = compareSetVerdict(g.items);
-      if (verdict.ok) form = 'compare-table';
-      else { ctx.degradations.push({ key: node._key ?? null, entities: g.items.length, reason: verdict.reason }); form = selectForm(g.items, order); }
-    } else form = selectForm(g.items, order);
-    const body = renderForm(form, g.items, [...chain, node], ctx, depth + (form === 'compare-table' || form === 'table' ? 0 : 0), node);
+  const { groups } = seqGroupsOf(rawItems, node, ctx.degradations);
+  for (const g of groups) {
+    const body = renderForm(g.form, g.items, [...chain, node], ctx, depth, node);
     if (body) blocks.push(body);
     g.items.forEach((it) => itemsConsumed.add(it));
   }

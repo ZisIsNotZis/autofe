@@ -7,6 +7,7 @@
 // Usage: node m1/eval/metrics.mjs <model.json> <render.html> [sourceDir]
 import fs from 'node:fs';
 import { walk, childrenOf, factsOf, valueTypeOf, parseExpr, evalExpr, scopeFor } from '../model-lib.mjs';
+import { pageText } from '../axis.mjs';  // visible-text extraction is a shared, target-neutral utility
 
 // F-054 — normalization deletes whitespace and punctuation, so a plain
 // `hay.includes(needle)` accepts a value that only occurs *inside a longer
@@ -68,24 +69,11 @@ function isRendered(hay, value) {
   return false;
 }
 
-// What a fact may be certified by: the page's *visible text*. Style/script
-// bodies and tag attributes are removed — a fact may only be certified by text
-// the reader can see, so `padding:18px` must not vouch for the fact `18` and
-// `class="depth-0"` must not vouch for the fact `0` (exactly the F-054 blind
-// spot). Each tag collapses to `<>` so tags still delimit tokens for
-// `isRendered` (adjacent text nodes stay separate).
-//
-// Round 19: only WELL-FORMED tags are stripped (`<[a-zA-Z/][^>]*>`). The old
-// `/<[^>]*>/g` deleted anything between a `<` and a `>`, so a fact whose own text
-// contains angle brackets (`a < b > c`) was erased before matching — a real
-// false-negative for the text target (round-18 report §3 residual coupling).
-// `<` followed by a non-letter stays literal page text; a `<` inside a fact can
-// no longer hide the fact.
-function pageText(html) {
-  return String(html)
-    .replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
-    .replace(/<[a-zA-Z/][^>]*>/g, '<>');
-}
+// What a fact may be certified by: the page's *visible text*. `pageText` (style/script
+// bodies and tag attributes removed; only well-formed tags stripped, so a fact whose
+// own text contains `<`/`>` is not erased) is the shared utility from ../axis.mjs, so
+// the metric caliber exists once. Each tag collapses to `<>` so tags still delimit
+// tokens for `isRendered` (adjacent text nodes stay separate).
 
 function suppressedNodes(model, ctxValues = {}) {
   const out = new Set();

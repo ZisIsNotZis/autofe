@@ -25,23 +25,52 @@ import { selectForm, comparable, compareSetVerdict } from '../axis.mjs';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
 let bad = 0;
+let assertions = 0;
 const check = (name, cond, detail = '') => {
+  assertions++;
   if (cond) console.log(`ok   ${name}`);
   else { bad++; console.log(`FAIL ${name}${detail ? ` — ${detail}` : ''}`); }
 };
 
 // ---- A. single implementation (anti-recurrence) ----------------------------
+// Every axis DECISION is named here. Round 19 lifted form selection/comparability/
+// verdict/constants; round 20 lifted the four remaining decision families that were
+// still duplicated in both renderers: collection grouping, control visibility+scope,
+// `_primary` slot resolution, and the `key:`→label index / visible-text utilities.
 const SHARED_NAMES = [
   'selectForm', 'comparable', 'compareSetVerdict', 'compareRowKeys', 'compareStats', 'compareHasCell',
   'shapeKeys', 'textLenOf', 'jaccardOf', 'isProseItem', 'isLabelOnlyItem', 'isImageOnlyItem', 'isPositionalKey',
   'CURRENCY_GLYPH', 'ROLE_UNIT', 'META_KEYS', 'LIST_QUALIFIER', 'COMPARE_MIN_FILL', 'hasTarget', 'hrefOf', 'hasOwnUnit',
   'labelOf', 'labelTextOf',
+  // round 20
+  'seqGroupsOf', 'actionVisible', 'itemScope', 'primarySlot', 'buildRefLabels', 'pageText',
+  'groupKind', 'seqGroups', 'indexRefLabels', 'REF_LABELS',
 ];
 for (const f of ['render.mjs', 'render-text.mjs']) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
   check(`${f} imports the shared axis layer (./axis.mjs)`, /from '\.\/axis\.mjs'/.test(src));
-  const dups = SHARED_NAMES.filter((name) => new RegExp(`(function|const)\\s+${name}\\b`).test(src));
+  const dups = SHARED_NAMES.filter((name) => new RegExp(`(function|const|let|var)\\s+${name}\\b`).test(src));
   check(`${f} keeps no private copy of the axis layer`, dups.length === 0, `re-derived: ${dups.join(', ')}`);
+}
+// A2. structural: a private copy is not always a named function — the same decision can
+// be hand-written inline. Round 20: grouping (`_rel.compare`), the primary-slot rule
+// (`_primary`), its resolution, and the action-visibility condition must not reappear.
+const NO_REDERIVE = [
+  [/_rel\?\.compare|_rel\.compare/, 'compare grouping (`_rel.compare`)'],
+  [/typeof\s+\w+\._primary/, 'primary-slot rule (`_primary`)'],
+  [/resolveWithParent\s*\(/, 'primary resolution (`resolveWithParent`)'],
+  [/\._action\.when\b/, 'action-visibility condition (`_action.when`)'],
+];
+for (const f of ['render.mjs', 'render-text.mjs']) {
+  const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
+  for (const [re, what] of NO_REDERIVE) check(`${f} does not re-derive the ${what}`, !re.test(src), `matched ${re}`);
+}
+// A3. the metric's visible-text caliber is shared too (no private `pageText` in the evaluator).
+{
+  const src = fs.readFileSync(path.join(root, 'm1', 'eval', 'metrics.mjs'), 'utf8');
+  check('metrics.mjs imports `pageText` from the shared axis layer',
+    /import\s*\{[^}]*\bpageText\b[^}]*\}\s*from\s*'\.\.\/axis\.mjs'/.test(src));
+  check('metrics.mjs keeps no private `pageText` copy', !/(function|const|let|var)\s+pageText\b/.test(src));
 }
 
 // ---- B/C. both targets agree on constructed models -------------------------
@@ -151,6 +180,5 @@ check('C7 `compareSetVerdict` returns ok:true for a dense set',
     { _name: { text: 'A' }, _rating: { num: 1 } }, { _name: { text: 'B' }, _rating: { num: 2 } },
   ]).ok === true);
 
-const assertions = 2 * 2 + 1 + degradeCases.length + 1 + formCases.length + 2;
 console.log(`\n轴一致性自测: ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);
 process.exit(bad ? 1 : 0);
