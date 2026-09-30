@@ -24,8 +24,10 @@
  11. ⏳ **轮 9 运行中**（worker `c6b15d3d`）：补 exemplar 证据样本（`table`/`login` 前置；已做 robots 预检：华为云/小米/gov.uk 表格页/AWS EC2 价目/阿里云规格/stripe docs/apple 对比 = ALLOW；AWS signin = DENY 跨域跳转）
  12. ✅ **验收轮 6**（提交 `2608137`）：**PASS**（0 blocker / 0 major / 3 minor），并纠正我 brief 的数字（compare 标记 5 处而非 3）
  13. ✅ **轮 9 采集**（提交 `7464646`）：新增 5 个 exemplar 页（gov.uk 表格 / 阿里云帮助规格表 224 表但 0 `<th>` / AWS EC2 价目表 / stripe-dashboard 登录 / 小米账号登录），robots+节流+先干跑到 /tmp，7 条拒绝如实记录，既有 36 页未动。**`table` 达 C1（3 站点）；`login` 达 2/3**
- 14. ⏳ **轮 10 运行中**（worker `136a478b`）：退化对比表规则（填充率阈值 + 断言 + 写进 layout-axes §3）+ 3 条 minor
- 15. ⏳ **轮 11 运行中**（worker `26874b0a`）：补第 3 个登录 exemplar 站点（GOV.UK One Login / GitHub / 云厂商账号页候选；守顶流约束与 robots）
+ 14. ✅ **轮 10**（提交 `663c14f`）：退化对比表规则（`sharedRows == 0 || fill < 0.4`，屋顶证据见 layout-axes §3.1/§3.2）+ 3 条 minor；**它纠正了父代理 brief 里的错误阈值**（"有效行<2"会误伤 airbnb 已验收的表）
+ 15. ✅ **轮 11**（提交 `162ef7e`）：`github.com/login` 采集 → **login 3/3、table 3/3 exemplar 站点，M4 证据门槛达标**
+ 16. ⏳ **轮 12 运行中**（worker `5558a3f4`）：6 个新 exemplar 页策展 → 门禁 36 → **42 页** + 同步所有"36 页"引用
+- **⚠ 编排事故（我的，已记账）**：`162ef7e` 提交信息标的是轮 11 采集，实际把我 `git add -A` 时扫入的轮 10 在途改动一起提交了（内容正确、标签不准）。**新规矩：有 `m1/**` 写入者运行时不得 `git add -A`**，只提交明确路径或等其结束。
 - **下一步**：轮 10/11 完成 → **新页策展**（把 5-6 个新页做成模型并纳入门禁，届时候选集从 36 → 41/42 页，须同步更新引用"36 页"的文档与报告）→ **M4-b 原语实现**（`form`/`offer`/`paginator` 先做；`table` 已达标，`login` 待第 3 站点）→ 独立验收
 - **F-042 新登记**：条目级 `_action.when` 从不求值（M4-a 的 D1 构造断言顺带挖出）
 - **已完成并行轨**：M4 复合原语提案 → `docs/m1/m4-composites-proposal.md`（14 候选 → 升格 5 / 否决 7；三条基础缺陷均已复现）
