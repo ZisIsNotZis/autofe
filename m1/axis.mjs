@@ -5,18 +5,23 @@
 // `selectForm` / `comparable` / `compareSetVerdict` (and their constants/predicates)
 // used to live inside `render.mjs`, so the second target (`render-text.mjs`) had to
 // RE-COPY them to agree. A claim that only survives by duplication is not a shared
-// layer. This module is the single implementation; both renderers import it and
-// neither keeps a private copy. It imports ONLY `model-lib.mjs` — never a renderer —
-// so it stays target-neutral by construction.
+// layer. This module is the single implementation; every renderer imports it and
+// none keeps a private copy. It imports only `model-lib.mjs` (plus node builtins to
+// read the declarative vocab files) — never a renderer — so it stays target-neutral.
 //
 // What belongs here: "is this set one comparable row or a stack?", "does this compare
 // set form a table or degrade, and why?", "what is a member's label?" — i.e. decisions
 // any target must make identically. What does NOT belong here: HTML `<table>` markup,
 // text-table column alignment, `<span class="was">` strikethrough — those are the
 // presentation of a decision, and there is exactly one per target.
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   childrenOf, factsOf, resolveWithParent, isRoleKey, parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
 } from './model-lib.mjs';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
 
 // ---- shared display constants (target-neutral semantics) -------------------
 export const CURRENCY_GLYPH = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP: '£' };
@@ -30,6 +35,18 @@ export const ROLE_UNIT = { _rating: '分', '_rating-count': '条评价' };
 export const META_KEYS = new Set(['_count', '_measure', '_duration', '_deadline', '_author', '_source', '_provider', '_brand', '_stock']);
 // 角色单位只是兜底：事实自带 unit 时绝不追加，否则两个单位连排（「870 人好评 条评价」，F-037）
 export const hasOwnUnit = (v) => Boolean(v && typeof v === 'object' && !Array.isArray(v) && 'num' in v && v.unit);
+// Role-label vocabulary (round 24): the human label of an internal role fact is ENGINE
+// VOCABULARY, so it is DECLARED in m1/vocab-role-labels.json and read here once — not
+// hand-copied into each render target (the copy is what let HTML print an empty compare
+// row label while text/Markdown printed `评分`, airbnb-com/room-28871).
+export const ROLE_LABEL = JSON.parse(fs.readFileSync(path.join(here, 'vocab-role-labels.json'), 'utf8')).labels;
+export const roleLabel = (key) => (typeof key === 'string' && key in ROLE_LABEL ? ROLE_LABEL[key] : '');
+// The identity column of a data table is named `名称` in text-like targets; HTML used to
+// leave that header blank, which is the same class of target-local label decision.
+export const NAME_COLUMN_LABEL = '名称';
+// A run-table COLUMN header: identity column → `名称`, else the shared role vocabulary,
+// then the declared domain field dictionary, then blank. One decision, three drawings.
+export const columnLabel = (key) => (key === '_name' ? NAME_COLUMN_LABEL : (roleLabel(key) || FIELDS[key]?.label || ''));
 
 // ---- link targets (target validation + `key:` → in-page anchor) ------------
 export const hasTarget = (a) => Boolean(a?.to) && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'));
@@ -396,8 +413,8 @@ export function compareCellOf(it, key) {
   if (only && !rich) return { kind: 'text', value: only };
   return { kind: 'node', node: n };
 }
-// Compare-set row label: the child block's own title/name wins, then the declared field
-// label, then no label — an internal key is never printed (F-022/F-029).
+// Compare-set row label — child-block title/name only: the row's own child block's
+// `_title`/`_name`, or null when the row has none. Never prints an internal key (F-022/F-029).
 export function compareRowLabel(items, key) {
   for (const it of items) {
     const c = childrenOf(it).find((x) => x.key === key || x.key.replace(/\[\d+\]$/, '') === key);
@@ -405,6 +422,13 @@ export function compareRowLabel(items, key) {
     if (t?.text) return t.text;
   }
   return null;
+}
+// The full compare-set ROW-LABEL DECISION every target must apply identically: the row's
+// own child title/name wins, then the shared role-label vocabulary, then the declared
+// domain field dictionary, then no label. Empty is a shared outcome too — all three
+// targets must print an empty label together, never one empty and two filled.
+export function resolveRowLabel(items, key) {
+  return compareRowLabel(items, key) ?? (roleLabel(key) || FIELDS[key]?.label || '');
 }
 
 // The whole node plan. `ctx`: { chain, values, hidden (Set of already-hidden fact keys),

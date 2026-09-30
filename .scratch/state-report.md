@@ -65,7 +65,8 @@
 | 地基 D1/D2/D3/F-051/F-042/F-055 | `foundation-selftest` 构造断言（49） | 旧渲染器/旧口径跑同输入**必须失败** |
 
 ### **尚未**被证伪测试（证明洞，如实列出）
-1. **产物级同构**：门禁 A1 是**按名字**检测私有副本；真正的洞（`ROLE_LABEL` 目标本地标签、`_expose` 带 `_fields` 时 HTML 走选择表 / 文本·MD 走选项列表）**抓不住** ⇒ `isomorphism = partial`。
+1. **产物级同构**：门禁 A1 是按名字检测私有副本；真正的洞（`ROLE_LABEL` 目标本地标签、`_expose` 带 `_fields` 时 HTML 走选择表 / 文本·MD 走选项列表）**抓不住** ⇒ `isomorphism = partial`。
+   - **更正（轮 24，2026-10-01）**：`ROLE_LABEL` 这一洞已被填补——词汇声明化为 `m1/vocab-role-labels.json`、行/列标签链上移进 `m1/axis.mjs`（`resolveRowLabel` / `columnLabel`），`axis-selftest` G 段（含一次证伪）现在能抓住「同一行三目标标签不一致」。判定更新为 `holds（已行使路径）`；`_expose` 带 `_fields` 的「选择表 vs 选项列表」是同一共享决策的两种画法，保留为已登记画法差异。
 2. **F-042**：条目级 `_action.when` **从不求值**（antd "Delete selected" 的 `role=="admin"` 门形同虚设）——"条件可见性"这条门未证。
 3. **F-054 残余**：度量**路径无关**（同页同值两格，一格真缺也报已渲染）；字母紧贴的数字（`ID0` 里的 `0`）仍算命中。
 4. **F-053 / F-049**：表格单元格内的链接目标无表达位；站点相对 URL（`/path`）不能入库。
@@ -79,6 +80,7 @@
 ## 4. 诚实清单（每条一句 + 影响）
 
 - **`isomorphism=partial` 之残余①**：`ROLE_LABEL`/`名称` 列标签仍目标本地（只在文本/MD）；当 `table` 形态的列含内部角色事实（`_count`/`_price`）时三目标表头不一致。**影响**：当前 42 页 **0/42 触发**（无产物差异），但保证非结构性——未来合法模型可达。
+  - **更正（轮 24，2026-10-01）**：本条的「42 页 0/42 触发」**已被证伪**。当初的扫描只覆盖了 `table` 形态的**列**；**对比表行标签**这条路径上 `ROLE_LABEL` 同样只在文本/MD，而 `airbnb-com/room-28871` 的 `reviews.aspects` 对比集有行键 `_rating`（无子节点 `_title`/`_name`、非域字段）⇒ **HTML 实际产出空行标签**（`<th class="cmp-row"></th>`），文本/MD 为 `评分`。这是**已发生的产物分歧**，不是「未来合法模型可达」。轮 24 已把角色标签词汇声明化为 `m1/vocab-role-labels.json`、把行标签链上移为 `axis.mjs` 的 `resolveRowLabel`（列标签同链 `columnLabel`），并加显式门禁（`axis-selftest` G 段）+ 一次证伪；`isomorphism` 结论随上文更新。剩余的**列标签**残余（HTML 数据表在无列标签时不画表头行等）见轮 24 报告。
 - **`isomorphism=partial` 之残余②**：8 个形态各自的画法不同（元素/对齐/GFM 记号），本就是目标差异。**影响**：无（这是"一对多"的应有之义）。
 - **F-057 截图非确定性**：模型/渲染器未变时 `aliyun-com-home.png` 仍可能字节变化。**影响**：不影响门禁（保真看 HTML），但提交的证据图漂移、diff 噪音变大。
 - **留出集 3 页本机取不到 URL**：douban 418、byteimg 403（带 Referer 时 douban 200）；`<img>` 携带的是逐字捕获的 URL。**影响**：离线渲染拒载，属**源站可达性**，非引擎发明（明文例外）。

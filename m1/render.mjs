@@ -10,7 +10,7 @@
 // Usage: node m1/render.mjs <model.json> [out.html]
 import fs from 'node:fs';
 import {
-  factsOf, FIELDS,
+  factsOf,
 } from './model-lib.mjs';
 // The axis-decision layer is shared, not re-derived per target (round 19; the node render
 // plan round 22). This renderer consumes `nodePlan` and the plan helpers and only DRAWS
@@ -18,7 +18,7 @@ import {
 import {
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
-  nodePlan, itemActionPlan, runPlan, compareCellOf, compareRowLabel, buildRefLabels,
+  nodePlan, itemActionPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -175,8 +175,8 @@ function renderRun(items, chain, hide, ctx) {
   const rp = runPlan(items);
   if (rp.isTable) {
     const anyOps = items.some((it) => namedChildEntries(it).length > 0);
-    const showHead = rp.cols.some((c) => FIELDS[c]?.label) || anyOps;
-    const head = showHead ? `<tr>${rp.cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? '')}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>` : '';
+    const showHead = rp.cols.some((c) => columnLabel(c)) || anyOps;
+    const head = showHead ? `<tr>${rp.cols.map((c) => `<th>${esc(columnLabel(c))}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>` : '';
     const trs = items.map((it) => {
       const tds = rp.cols.map((col) => { const v = rp.cellValue(it, col); return `<td>${v ? fmt(v) : ''}</td>`; }).join('');
       const ops = namedChildEntries(it).map((ch) => renderNode(ch.node, [...chain, it], false, hide, ctx, 4)).join('');
@@ -309,8 +309,9 @@ function renderCompareTable(items, chain, hide, ctx) {
     return `<th class="cmp-col">${nm}${rest}${nestedHtml}${ctl}</th>`;
   }).join('')}</tr>`;
   const body = rowKeys.map((key) => {
-    // never print an internal key as a row label (F-022/F-029): child title → declared field label → no label
-    const label = compareRowLabel(items, key) ?? FIELDS[key]?.label ?? '';
+    // never print an internal key as a row label (F-022/F-029): the SAME shared chain every
+    // target applies — child title → role vocabulary → domain field dictionary → empty
+    const label = resolveRowLabel(items, key);
     const cells = items.map((it) => {
       const c = compareCellOf(it, key);
       if (c.kind === 'empty') return '<td class="cmp-cell"></td>';

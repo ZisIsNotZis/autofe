@@ -1,6 +1,7 @@
 // Second render target for the SAME M1 blueprint (round-18 "one model, any target" test).
 //
-// HARD CONSTRAINT: imports ONLY ./model-lib.mjs (shared model semantics).
+// HARD CONSTRAINT: imports ONLY ./model-lib.mjs + ./axis.mjs (shared model semantics and
+// the shared axis-decision layer).
 // It must NOT import ./render.mjs. Every piece of axis/decision knowledge this file had
 // to RE-DERIVE from render.mjs is recorded in .scratch/18-second-target/report.md
 // §语义泄漏清单 — that list is the point of this exercise, not an accident.
@@ -18,25 +19,17 @@
 // Usage: node m1/render-text.mjs <model.json> <out.txt>
 import fs from 'node:fs';
 import {
-  factsOf, FIELDS,
+  factsOf,
 } from './model-lib.mjs';
 // The axis-decision layer is SHARED with the HTML target (round 19); the node render plan
 // (round 22) lets this target draw the decisions without re-deriving any of them.
+// Role labels / table column labels / compare row labels come from the same layer
+// (round 24) — this target keeps no label vocabulary of its own.
 import {
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections,
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
-  itemActionPlan, nodePlan, runPlan, compareCellOf, compareRowLabel,
+  itemActionPlan, nodePlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, roleLabel,
 } from './axis.mjs';
-
-// role-fact display (target-local): the human `ROLE_LABEL` map is text-only copy.
-const ROLE_LABEL = {
-  _title: '', _name: '', _label: '', _subtitle: '副标题', _summary: '', _detail: '', _text: '',
-  _category: '分类', _tag: '标签', _status: '状态', _variant: '版本', _option: '选项',
-  _count: '数量', _measure: '规格', _stock: '库存', _price: '价格', _amount: '金额',
-  _datetime: '时间', _duration: '时长', _deadline: '截止', _author: '作者', _source: '来源',
-  _provider: '提供方', _brand: '品牌', _image: '图片', _video: '视频', _icon: '图标',
-  _rating: '评分', '_rating-count': '评价数', _ref: '引用', _place: '地点', _region: '地区', _audience: '受众',
-};
 
 // ---- width-aware plain-text table ------------------------------------------
 const WIDE = /[\u1100-\u115f\u2e80-\ua4cf\uac00-\ud7a3\uf900-\ufaff\ufe30-\ufe4f\uff00-\uff60\uffe0-\uffe6]/;
@@ -82,7 +75,6 @@ function fmt(v) {
 }
 // role fact, with the fallback unit for numbers that would otherwise be bare (F-031-§6)
 const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] && !hasOwnUnit(f.value) ? ` ${ROLE_UNIT[f.key]}` : ''}`;
-const roleLabel = (key) => (key in ROLE_LABEL ? ROLE_LABEL[key] : '');
 
 // ---- item-set form selection and compare verdict: shared in ./axis.mjs ----
 // (round 19: `selectForm`/`comparable`/`compareSetVerdict` used to be ported here
@@ -106,7 +98,7 @@ function renderTable(items, chain, ctx, depth, node) {
   // F-051 table/card threshold is shared (`runPlan` in axis.mjs); this is only the text layout.
   const rp = runPlan(items);
   if (!rp.isTable) return items.map((it) => renderNode(it, [...chain], false, ctx, depth + 1)).filter(Boolean).join('\n');
-  const header = rp.cols.map((c) => (c === '_name' ? '名称' : (ROLE_LABEL[c] ?? FIELDS[c]?.label ?? '')));
+  const header = rp.cols.map((c) => columnLabel(c));
   const rows = items.map((it) => rp.cols.map((col) => { const v = rp.cellValue(it, col); return v ? fmt(v) : ''; }));
   return textTable(header, rows, IND(depth));
 }
@@ -126,7 +118,7 @@ function renderCompareTable(items, chain, ctx, depth) {
     return parts.join(' ');
   })];
   const rows = rowKeys.map((key) => {
-    const label = compareRowLabel(items, key) ?? ROLE_LABEL[key] ?? FIELDS[key]?.label ?? '';
+    const label = resolveRowLabel(items, key);
     const cells = items.map((it) => {
       const c = compareCellOf(it, key);
       if (c.kind === 'empty') return '';

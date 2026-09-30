@@ -126,3 +126,35 @@ FAIL F2 all three targets draw every header attribute (identical set) — … md
 ### 残留（下一轮可登记）
 - 上表 ①：把 `table` 表头列标签（身份列 `名称` + `ROLE_LABEL`）也上移为共享决策
   （`runPlan` 可携带 `labelOf(col)`），即可让三目标 table 表头一致 ⇒ 产物级同构。
+
+---
+
+## 更正（轮 24，2026-10-01）：本报告 §5 的「0/42 触发」结论已被证伪
+
+本报告 §5 与 `docs/three-targets.md`（生成件）当时写道：
+
+> `ROLE_LABEL` 标签词汇仍是目标本地……**当前 42 个策展页 0/42 触发**（全库扫描：`valid tables with role-key columns: 0`），故无当前产物差异，但保证非结构性。
+
+**更正：这个结论是错的。** 那次扫描只覆盖了 `table` 形态的**列**标签（列键含角色事实），
+漏掉了**对比表（compare-table）的行标签**这条同样消费 `ROLE_LABEL` 的路径：
+
+- `m1/render.mjs:313`（旧）：`compareRowLabel(items,key) ?? FIELDS[key]?.label ?? ''` —— **只查域字段词典**，没有角色标签兜底；
+- `m1/render-text.mjs:129` / `m1/render-md.mjs:146`（旧）：多了一步 target-local `ROLE_LABEL[key]`。
+
+**证据（真实发生，不是构造）**：`airbnb-com/room-28871` 的 `reviews.aspects` 对比集
+（6 个实体、行键 `_rating`，无子节点 `_title`/`_name`，`_rating` 不在域字段词典）：
+
+| 目标 | 该行标签（修复前） |
+|---|---|
+| HTML | `<th class="cmp-row"></th>`（空） |
+| 纯文本 | `评分  4.8  4.9 …` |
+| Markdown | `| 评分 | 4.8 | … |` |
+
+⇒ 同一模型、同一对比集，三目标给出的**行标签决策不一致**；`0/42 触发` 不成立。
+
+**处置（轮 24）**：把角色标签词汇**声明化**为 `m1/vocab-role-labels.json`，把行标签完整链
+（子节点 `_title`/`_name` → 共享角色词汇 → 域字段词典 → 空）上移为 `m1/axis.mjs` 的
+`resolveRowLabel`，列标签同链为 `columnLabel`；三渲染器删除本地 `ROLE_LABEL`；
+`axis-selftest` 新增 G 段（构造 G1–G4 + corpus G5/G6）并做了一次证伪（临时让 HTML 跳过共享链 → 门禁 FAIL）。
+本报告 §5 的「结论」与「残余①」按上述更新；`isomorphism` 随之从 `partial` 更新为 `holds（已行使路径）`
+（仍未共享的部分见 `.scratch/24-row-label/report.md`）。

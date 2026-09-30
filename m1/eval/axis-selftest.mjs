@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
 import { renderMarkdown } from '../render-md.mjs';
-import { selectForm, comparable, compareSetVerdict, nodePlan, compareHeaderEntries, COMPARE_HEADER_KEYS } from '../axis.mjs';
+import { selectForm, comparable, compareSetVerdict, nodePlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
@@ -57,6 +57,8 @@ const SHARED_NAMES = [
   'arrayChildEntries', 'isActionOnlyNode',
   // round 23: the compare-table entity header attribute set (was re-written per target)
   'compareHeaderEntries', 'COMPARE_HEADER_KEYS',
+  // round 24: the role-label vocabulary and the compare row-label / table column-label decisions
+  'ROLE_LABEL', 'roleLabel', 'NAME_COLUMN_LABEL', 'columnLabel', 'resolveRowLabel',
 ];
 for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
@@ -84,6 +86,16 @@ for (const f of TARGETS) {
 for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
   check(`${f} consumes the shared node plan`, /\bnodePlan\s*\(/.test(src));
+}
+// A1d. the compare-set ROW LABEL and the data-table COLUMN LABEL are one shared decision
+// (round 24). This is the half that would have failed before the role-label vocabulary
+// moved to axis.mjs: HTML resolved the row label through the domain dict only, so the
+// identical row printed `评分` in text/Markdown and empty in HTML (airbnb-com/room-28871).
+for (const f of TARGETS) {
+  const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
+  check(`${f} consumes the shared compare row-label decision`, /\bresolveRowLabel\s*\(/.test(src));
+  check(`${f} consumes the shared role-label vocabulary`, /\b(columnLabel|roleLabel)\s*\(/.test(src));
+  check(`${f} keeps no private role-label map`, !/ROLE_LABEL|const\s+roleLabel\b/.test(src));
 }
 // A2b. STRUCTURAL (round 22): the forbidden set is the model-semantic KEYS, not the function
 // names. A renamed private copy of a decision still has to read the model (`.\_expose`,
@@ -359,6 +371,108 @@ const headerHalf = () => {
     && JSON.stringify(seen(r.text)) === JSON.stringify(allTrue)
     && JSON.stringify(seen(r.md)) === JSON.stringify(allTrue),
     `html=${JSON.stringify(seen(r.html))} text=${JSON.stringify(seen(r.text))} md=${JSON.stringify(seen(r.md))}`);
+}
+
+// G. compare-set ROW LABEL: one decision, three drawings (round 24). The chain
+// (row's child title/name → shared role vocabulary → domain field dictionary → empty) is
+// the same for every target; these halves fail if a target prints a different label for
+// the same row, INCLUDING the case where every target must print an empty label.
+const htmlRowLabels = (html) => [...html.matchAll(/<th class="cmp-row">([^<]*)<\/th>/g)].map((m) => m[1]);
+const htmlRowLabelOf = (html, cell) => {
+  const i = html.indexOf(cell);
+  if (i < 0) return null;
+  const ms = [...html.slice(0, i).matchAll(/<th class="cmp-row">([^<]*)<\/th>/g)];
+  return ms.length ? ms[ms.length - 1][1] : null;
+};
+const textRowLabelOf = (text, cell) => {
+  const line = text.split('\n').find((l) => l.includes(cell));
+  if (line == null) return null;
+  const t = line.trimStart();
+  if (t.startsWith(cell)) return '';
+  const cut = t.indexOf(cell);
+  return cut < 0 ? null : t.slice(0, cut).replace(/\s+$/, '');
+};
+const mdRowLabelOf = (md, cell) => {
+  const line = md.split('\n').find((l) => l.startsWith('|') && l.includes(cell));
+  return line == null ? null : (line.split('|')[1] ?? '').trim();
+};
+const rowLabelCase = (label, items, key, cell, expect) => {
+  const r = agree(compareNode(items));
+  const got = { html: htmlRowLabelOf(r.html, cell), md: mdRowLabelOf(r.md, cell) };
+  // text: a node cell renders multi-line, so the exact "label immediately before the cell"
+  // probe only works for single-line rows; fall back to "a line begins with this label".
+  const textExact = textRowLabelOf(r.text, cell);
+  const textOk = expect === '' ? textExact === '' : new RegExp('^\\s*' + expect.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=\\s|$)', 'm').test(r.text);
+  check(`${label}: shared decision says ${JSON.stringify(expect)}`,
+    resolveRowLabel(items, key) === expect, `resolveRowLabel=${JSON.stringify(resolveRowLabel(items, key))}`);
+  check(`${label}: all three targets print ${JSON.stringify(expect)}`,
+    got.html === expect && got.md === expect && textOk,
+    `html=${JSON.stringify(got.html)} text=${JSON.stringify(textExact)} md=${JSON.stringify(got.md)}`);
+};
+// G1 role-fact row (the airbnb case): no child title ⇒ the shared role vocabulary names it.
+rowLabelCase('G1 role-fact row', [
+  { _name: { text: 'A' }, _rating: { num: 4.8 } },
+  { _name: { text: 'B' }, _rating: { num: 4.9 } },
+], '_rating', '4.8', '评分');
+// G2 child block's own title wins over the vocabulary.
+rowLabelCase('G2 child-title row', [
+  { _name: { text: 'A' }, widget: { _title: { text: '部件' }, _detail: { text: 'W1' } } },
+  { _name: { text: 'B' }, widget: { _title: { text: '部件' }, _detail: { text: 'W2' } } },
+], 'widget', 'W1', '部件');
+// G3 declared domain field ⇒ its own dictionary label.
+rowLabelCase('G3 domain-field row', [
+  { _name: { text: 'A' }, _fields: { email: { text: 'zz@zz' } } },
+  { _name: { text: 'B' }, _fields: { email: { text: 'yy@yy' } } },
+], 'email', 'zz@zz', 'Email');
+// G4 no label anywhere ⇒ ALL THREE must print an empty row label together.
+rowLabelCase('G4 unlabeled row', [
+  { _name: { text: 'A' }, widget: { _detail: { text: 'W1' } } },
+  { _name: { text: 'B' }, widget: { _detail: { text: 'W2' } } },
+], 'widget', 'W1', '');
+
+// G5/G6. corpus: on every real curated page, every resolved compare-set row label must
+// reach every target. G5 is exact for HTML (the label must appear in a row-header cell,
+// not merely somewhere on the page — plain `includes` would have passed the airbnb bug
+// because `总体评分` happens to contain `评分`).
+const compareGroups = (model) => {
+  const out = [];
+  (function visit(node, chain, depth) {
+    if (!node || typeof node !== 'object' || Array.isArray(node)) return;
+    const plan = nodePlan(node, { chain, values: {}, depth });
+    if (!plan.visible) return;
+    for (const g of plan.items.groups) {
+      if (g.form === 'compare-table') out.push(g);
+      for (const it of g.items) visit(it, [...chain, node], depth + 1);
+    }
+    if (plan.emptyState) visit(plan.emptyState, [...chain, node], depth + 1);
+    for (const c of plan.namedChildren) visit(c.node, [...chain, node], depth + 1);
+  })(model, [], 0);
+  return out;
+};
+{
+  const scale = JSON.parse(fs.readFileSync(path.join(root, 'm1', 'eval', 'm3-scale.json'), 'utf8')).filter((x) => x.tier === 'exemplar');
+  let tables = 0, rows = 0, htmlMiss = 0, anywhereMiss = 0;
+  for (const r of scale) {
+    const mp = path.join(root, 'm1', 'curated', `${r.k}.json`);
+    if (!fs.existsSync(mp)) continue;
+    const model = JSON.parse(fs.readFileSync(mp, 'utf8'));
+    const h = []; const html = render(model, {}, h);
+    const t = []; const text = renderText(model, {}, t);
+    const m = []; const md = renderMarkdown(model, {}, m);
+    const inRowHeader = new Set(htmlRowLabels(html).filter(Boolean));
+    for (const g of compareGroups(model)) {
+      tables++;
+      for (const key of compareRowKeys(g.items)) {
+        const label = resolveRowLabel(g.items, key);
+        if (!label) continue;                                // empty is covered by G4
+        rows++;
+        if (!inRowHeader.has(label)) htmlMiss++;
+        if (!text.includes(label) || !md.includes(label)) anywhereMiss++;
+      }
+    }
+  }
+  check(`G5 all ${rows} resolved compare row labels on ${tables} real compare tables appear as HTML row headers`, htmlMiss === 0, `${htmlMiss} missing from HTML row headers`);
+  check(`G6 all ${rows} resolved compare row labels reach all three targets`, anywhereMiss === 0, `${anywhereMiss} missing from text/Markdown`);
 }
 
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);

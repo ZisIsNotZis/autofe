@@ -86,3 +86,13 @@
 - 全库 `m1/**/*.html` 空/undefined `src` = **0**（auto 快照已刷新；auto 层审计 92/104 干净，仅重复类缺陷）
 - 留出集泛化（69 页未策展）：抽取/校验/渲染 **69/69**，裂图页 **25 → 3**（3 页为本机取不到的源 URL，明文例外）
 - **轮 18 进行中**：第二渲染目标（`m1/render-text.mjs`，纯文本）——用实现检验"同构引擎"这一核心主张；**硬约束：只允许 import `model-lib`，不得 import `render.mjs`**（若写不出来，那就是最有价值的发现）
+
+## 最新快照（轮 24 后 · 行标签决策共享）
+- **轮 24 完成**：角色标签词汇声明化为 `m1/vocab-role-labels.json`；行/列标签链上移 `m1/axis.mjs`
+  （`resolveRowLabel` / `columnLabel`）；三渲染器删除本地 `ROLE_LABEL`。
+- **行为变化仅 1 页**：`airbnb-com/room-28871` HTML 对比表行标签 `空 → 评分`（修正，非回归）；
+  其余 41 页三目标逐字节不变。
+- 门禁：`axis-selftest` 55 → **74** 断言（A1d 静态 + G1–G4 构造 + G5/G6 corpus），并经一次**证伪**；
+  `node m1/eval/pipeline.mjs --shots` 全绿（42/42 HTML · 42/42 MD · 48 模型 · 七套自测 · 视觉 42/42 干净）。
+- **isomorphism：`partial` → `holds（已行使路径）`**；仍未共享项见 `.scratch/24-row-label/report.md` §5。
+- 更正记录：`.scratch/state-report.md` §3/§4、`.scratch/23-closeup-demo/report.md`（原「0/42 触发」已证伪）。

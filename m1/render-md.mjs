@@ -22,25 +22,13 @@
 // Usage: node m1/render-md.mjs <model.json> <out.md>
 import fs from 'node:fs';
 import {
-  factsOf, FIELDS,
+  factsOf,
 } from './model-lib.mjs';
 import {
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections,
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
-  itemActionPlan, nodePlan, runPlan, compareCellOf, compareRowLabel, buildRefLabels,
+  itemActionPlan, nodePlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, roleLabel, buildRefLabels,
 } from './axis.mjs';
-
-// role-fact display copy (target-local, like render-text.mjs's ROLE_LABEL): which
-// human label precedes a weak fact. Declared-domain `_fields` labels come from the
-// shared vocab (`FIELDS`); this map is only the language of the Markdown target.
-const ROLE_LABEL = {
-  _title: '', _name: '', _label: '', _subtitle: '副标题', _summary: '', _detail: '', _text: '',
-  _category: '分类', _tag: '标签', _status: '状态', _variant: '版本', _option: '选项',
-  _count: '数量', _measure: '规格', _stock: '库存', _price: '价格', _amount: '金额',
-  _datetime: '时间', _duration: '时长', _deadline: '截止', _author: '作者', _source: '来源',
-  _provider: '提供方', _brand: '品牌', _image: '图片', _video: '视频', _icon: '图标',
-  _rating: '评分', '_rating-count': '评价数', _ref: '引用', _place: '地点', _region: '地区', _audience: '受众',
-};
 
 // `key:` label index (axis.mjs buildRefLabels) — held for the duration of one render.
 let refLabels = new Map();
@@ -103,7 +91,6 @@ function fmt(v) {
   return JSON.stringify(v);
 }
 const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] && !hasOwnUnit(f.value) ? ` ${ROLE_UNIT[f.key]}` : ''}`;
-const roleLabel = (key) => (key in ROLE_LABEL ? ROLE_LABEL[key] : '');
 
 // ---- actions / controls (F-031-§4) ----------------------------------------
 // Visibility + scope are shared (axis.mjs itemActionPlan); Markdown only decides the
@@ -123,7 +110,7 @@ function renderTable(items, chain, ctx, depth, node) {
   // F-051 table/card threshold is shared (`runPlan` in axis.mjs); this is only the GFM layout.
   const rp = runPlan(items);
   if (!rp.isTable) return items.map((it) => renderNode(it, [...chain], false, ctx, depth + 1)).filter(Boolean).join('\n\n');
-  const header = rp.cols.map((c) => (c === '_name' ? '名称' : (ROLE_LABEL[c] ?? FIELDS[c]?.label ?? '')));
+  const header = rp.cols.map((c) => columnLabel(c));
   const rows = items.map((it) => rp.cols.map((col) => { const v = rp.cellValue(it, col); return v ? fmt(v) : ''; }));
   return mdTable(header, rows);
 }
@@ -143,7 +130,7 @@ function renderCompareTable(items, chain, ctx) {
     return parts.filter(Boolean).join(' ');
   })];
   const rows = rowKeys.map((key) => {
-    const label = compareRowLabel(items, key) ?? ROLE_LABEL[key] ?? FIELDS[key]?.label ?? '';
+    const label = resolveRowLabel(items, key);
     const cells = items.map((it) => {
       const c = compareCellOf(it, key);
       if (c.kind === 'empty') return '';
