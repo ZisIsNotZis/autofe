@@ -431,11 +431,11 @@
   }
  },
  "compare": {
-  "_intent": "还在选型？一眼对比五款在售 iPhone 的定位与起售价",
+  "_intent": "还在选型？一眼对比五款在售 iPhone 的定位与起售价（原 `_items` 误标为可互换实例：五款机型形状不同——部分带 `_tag`、iPhone Duo 多一个 `display` 子块，且各带 4–5 个规格子块，不可一行紧凑排比；回改为 `_lines` 有序序列）",
   "_title": {
    "text": "Which iPhone is right for you?"
   },
-  "_items": [
+  "_lines": [
    {
     "_key": "cmp-duo",
     "_name": {
@@ -475,7 +475,8 @@
      "_detail": {
       "text": "12MP Center Stage front camera"
      }
-    }
+    },
+    "_intent": "选型对照：iPhone Duo——定位标签、起售价与五项规格子块（含 display）"
    },
    {
     "_key": "cmp-18pro",
@@ -511,7 +512,8 @@
      "_detail": {
       "text": "18MP Center Stage front camera"
      }
-    }
+    },
+    "_intent": "选型对照：iPhone 18 Pro——定位标签、起售价与四项规格子块"
    },
    {
     "_key": "cmp-air",
@@ -544,7 +546,8 @@
      "_detail": {
       "text": "18MP Center Stage front camera"
      }
-    }
+    },
+    "_intent": "选型对照：iPhone Air——起售价与四项规格子块"
    },
    {
     "_key": "cmp-17",
@@ -577,7 +580,8 @@
      "_detail": {
       "text": "18MP Center Stage front camera"
      }
-    }
+    },
+    "_intent": "选型对照：iPhone 17——起售价与四项规格子块"
    },
    {
     "_key": "cmp-17e",
@@ -610,7 +614,8 @@
      "_detail": {
       "text": "12MP TrueDepth camera"
      }
-    }
+    },
+    "_intent": "选型对照：iPhone 17e——起售价与四项规格子块"
    }
   ],
   "all": {

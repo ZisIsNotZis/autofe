@@ -452,7 +452,7 @@
    ]
   },
   {
-   "_intent": "机型对比：iPad Air（当前浏览）与 iPad Pro 的定位、起售价与规格速览",
+   "_intent": "机型对比：iPad Air（当前浏览）与 iPad Pro 的定位、起售价与规格速览（原 `_items` 误标为可互换实例：两台机型形状不同——iPad Air 带 `_tag`、iPad Pro 带独立 `buy` 子块，且各带 7/8 个规格子块，不可一行紧凑排比；回改为 `_lines` 有序序列）",
    "_key": "explore",
    "_title": {
     "text": "Keep exploring iPad."
@@ -462,7 +462,7 @@
     "label": "Explore all iPad",
     "to": "https://www.apple.com/ipad/"
    },
-   "_items": [
+   "_lines": [
     {
      "_key": "cmp-ipad-air",
      "_name": {
@@ -521,7 +521,8 @@
       "_detail": {
        "text": "Supports Magic Keyboard for iPad Air"
       }
-     }
+     },
+     "_intent": "对照实体：iPad Air（本页浏览机型）——定位标签、起售价与七项规格子块"
     },
     {
      "_key": "cmp-ipad-pro",
@@ -589,7 +590,8 @@
       "_detail": {
        "text": "Supports Magic Keyboard for iPad Pro"
       }
-     }
+     },
+     "_intent": "对照实体：iPad Pro（替代机型）——定位、起售价、独立购买入口与八项规格子块"
     }
    ],
    "all": {
