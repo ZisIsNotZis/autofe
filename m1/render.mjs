@@ -32,7 +32,15 @@ function fmt(v) {
   if ('icon' in v) return esc(v.icon);
   if ('video' in v) return `<a href="${esc(v.video)}">video</a>`;
   if ('image' in v) return `<img src="${esc(v.image)}" alt="${esc(v.alt ?? '')}">`;
-  if ('ref' in v) return `<a class="ref" href="#${esc(String(v.ref).replace(/^key:/, '').replace(/[^A-Za-z0-9_-]/g, '-'))}">${esc(v.ref)}</a>`;
+  if ('ref' in v) {
+    const raw = String(v.ref);
+    const id = raw.replace(/^key:/, '').replace(/[^A-Za-z0-9_-]/g, '-');
+    if (raw.startsWith('key:')) {
+      const label = REF_LABELS.get(raw.slice(4));
+      return label ? `<a class="ref" href="#${esc(id)}">${esc(label)}</a>` : '';  // never print the raw key
+    }
+    return `<a class="ref" href="#${esc(id)}">${esc(raw)}</a>`;
+  }
   return esc(JSON.stringify(v));
 }
 const factHtml = (v) => `<div class="fact"><span class="val">${fmt(v)}</span></div>`;
@@ -73,6 +81,7 @@ function selectForm(items) {
   if (items.every(isProseItem)) return 'prose';
   if (items.some((it) => it._fields && Object.keys(it._fields).length)) return 'table';
   if (items.every((it) => it._action && isLabelOnlyItem(it))) return 'controls';
+  if (items.length > 1 && items.some((it) => it._expose)) return 'stack';   // 表单步骤是序列，不是一行
   if (!comparable(items)) return 'stack';
   if (items.every(isLabelOnlyItem)) {
     // long sentence labels are a list of links/questions, not filter chips (F-030)
@@ -109,6 +118,10 @@ function renderList(items) {
 }
 function renderImageStrip(items) {
   return items.map((it) => `<figure class="strip"><img src="${esc(it._image.image)}" alt="${esc(it._image.alt || '')}"></figure>`).join('');
+}
+function factHtmlInline(v) {
+  const h = factHtml(v);
+  return h.replace(/^<div class="fact">|<\/div>$/g, '').replace(/^<span class="val">|<\/span>$/g, '');
 }
 function renderProse(items) {
   return `<div class="prose">${items.map((it) => {
@@ -154,6 +167,19 @@ function comparable(items) {
   return avgSim >= 0.6 && maxLen <= 400 && (minLen === 0 || maxLen / Math.max(minLen, 40) <= 4) && Math.max(...childCounts) <= 2;
 }
 
+const REF_LABELS = new Map();
+function indexRefLabels(model) {
+  REF_LABELS.clear();
+  (function walk(n) {
+    if (Array.isArray(n)) { n.forEach(walk); return; }
+    if (!n || typeof n !== 'object') return;
+    if (n._key) {
+      const t = n._title ?? n._name;
+      if (t?.text) REF_LABELS.set(String(n._key), t.text);
+    }
+    for (const v of Object.values(n)) walk(v);
+  })(model);
+}
 function renderChips(items) {
   const chips = items.map((it) => {
     const v = labelOf(it);
@@ -197,12 +223,13 @@ function renderRun(run, chain, hide, ctx) {
     return f ? fmt(f.value) : '';
   };
   if (cols.length >= 3) {
-    const head = `<tr>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? c.replace(/^_/, ''))}</th>`).join('')}<th></th></tr>`;
+    const anyOps = run.some((c) => childrenOf(c.node).some((ch) => !ch.key.startsWith('_items[')));
+    const head = `<tr>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? '')}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>`;
     const trs = run.map((c) => {
       const tds = cols.map((col) => `<td>${valuesOf(c.node, col)}</td>`).join('');
       const ops = childrenOf(c.node).filter((ch) => !ch.key.startsWith('_items['))
         .map((ch) => renderNode(ch.node, [...chain, c.node], false, hide, ctx, 4)).join('');
-      return `<tr>${tds}<td class="row-ops">${ops}</td></tr>`;
+      return `<tr>${tds}${anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
     }).join('');
     return `<table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table>`;
   }
@@ -224,13 +251,15 @@ function renderSelectTable(items, exp, chain, hide, ctx) {
     const f = factsOf(n).find((x) => x.key === col);
     return f ? fmt(f.value) : '';
   };
-  const head = `<tr><th class="sel"></th>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? (c === '_name' ? '' : c.replace(/^_/, '')))}</th>`).join('')}<th></th></tr>`;
+  const labelOfKey = (c) => FIELDS[c]?.label ?? (c === '_name' ? '' : '');
+  const anyOps = items.some((it) => childrenOf(it).some((ch) => !ch.key.startsWith('_items[')));
+  const head = `<tr><th class="sel"></th>${cols.map((c) => `<th>${esc(labelOfKey(c))}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>`;
   const rows = items.map((it) => {
     const tds = cols.map((col) => `<td>${valuesOf(it, col)}</td>`).join('');
     const ops = childrenOf(it).filter((ch) => !ch.key.startsWith('_items['))
       .map((ch) => renderNode(ch.node, [...chain, it], false, hide, ctx, 4)).join('');
     const val = it._key ? `key:${it._key}` : String(items.indexOf(it));
-    return `<tr><td class="sel"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"></td>${tds}<td class="row-ops">${ops}</td></tr>`;
+    return `<tr><td class="sel"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"></td>${tds}${anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
   }).join('');
   return `<fieldset class="expose expose-${esc(exp.name)}"><legend>${legend}</legend><table class="data"><thead>${head}</thead><tbody>${rows}</tbody></table></fieldset>`;
 }
@@ -400,12 +429,16 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 
   const exp = exposeOf(node);
   const itemsConsumed = new Set();
+  const META_KEYS = new Set(['_count', '_measure', '_duration', '_deadline', '_author', '_source', '_provider', '_brand', '_stock']);
   let bodyLead = '';
+  const metaParts = [];
   for (const f of facts) {
     if (headingKey && f.key === headingKey) continue;
     if (exp && (f.key === '_label' || f.key === '_summary')) continue;
+    if (META_KEYS.has(f.key)) { metaParts.push(factHtmlInline(f.value)); continue; }
     bodyLead += factHtml(f.value);
   }
+  if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
   if (node._fields) for (const [k, v] of Object.entries(node._fields)) bodyLead += factHtml(v);
 
   const ordered = kids.filter((c) => c.key.startsWith('_lines[') || c.key.startsWith('_items['));
@@ -416,8 +449,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     const it = node._items[0];
     const v = it._name ?? it._title;
     const extra = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
-    const lbl = node._label ? fmt(node._label) : esc(exp.name);
-    body += `<div class="defrow"><div class="deflabel">${lbl}</div><div class="defval">${v ? fmt(v) : ''} ${extra.map((x) => fmt(x.value)).join(' ')}</div></div>`;
+    const lbl = node._label ? fmt(node._label) : '';
+    body += `<div class="defrow">${lbl ? `<div class="deflabel">${lbl}</div>` : ''}<div class="defval">${v ? fmt(v) : ''} ${extra.map((x) => fmt(x.value)).join(' ')}</div></div>`;
     itemsConsumed.add(it);
   } else if (exp && node._items?.length && node._items.some((it) => it._fields && Object.keys(it._fields).length)) {
     // typed-field rows with a selection column: the admin-table form
@@ -438,16 +471,16 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
       const val = it._key ? `key:${it._key}` : (v ? v.text : String(i));
       return `<label class="choice"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"> ${label}</label>`;
     }).join('');
-    const legend = node._label ? fmt(node._label) : esc(exp.name);
+    const legend = node._label ? fmt(node._label) : '';
     const hint = node._summary ? `<span class="hint">${fmt(node._summary)}</span>` : '';
-    body += `<fieldset class="expose chipbar expose-${esc(exp.name)}"><legend>${legend}</legend>${hint}${opts}</fieldset>`;
+    body += `<fieldset class="expose chipbar expose-${esc(exp.name)}">${legend ? `<legend>${legend}</legend>` : ''}${hint}${opts}</fieldset>`;
     // the choice set IS the rendering of these items — nothing renders again below
     node._items.forEach((it) => itemsConsumed.add(it));
   } else if (exp) {
-    const lbl = node._label ? fmt(node._label) : esc(exp.name);
+    const lbl = node._label ? fmt(node._label) : '';   // never print a raw identifier as a label
     const hint = node._summary ? `<span class="hint">${fmt(node._summary)}</span>` : '';
     const itype = exp.type === 'date' ? 'date' : (exp.type === 'time' ? 'datetime-local' : (exp.type === 'num' ? 'number' : 'text'));
-    body += `<span class="expose expose-${esc(exp.name)}"><span class="deflabel">${lbl}</span>${hint}<input type="${itype}" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></span>`;
+    body += `<span class="expose expose-${esc(exp.name)}">${lbl ? `<span class="deflabel">${lbl}</span>` : ''}${hint}<input type="${itype}" name="${esc(exp.name)}" data-type="${esc(exp.type)}" aria-label="${esc(String(exp.name))}"></span>`;
   }
 
   // every sibling block item renders in ONE form; nothing renders twice (T-103)
@@ -461,7 +494,9 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     else seqGroups.push({ cmp, items: [it] });
   }
   for (const g of seqGroups) {
-    const form = g.cmp && g.items.length >= 2 ? 'compare-table' : selectForm(g.items);
+    const entityRun = g.cmp && g.items.length >= 2
+      && g.items.every((it) => it._name && !it._expose);          // 对比表：列必须是实体
+    const form = entityRun ? 'compare-table' : selectForm(g.items);
     body += renderForm(form, g.items, chain, hide, ctx, depth, node);
   }
   if (false) {
@@ -519,7 +554,10 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 
   // a bare-title block (source banners/ads) is a promo card, never a section heading (T-106)
   const bareTitle = depth > 0 && titleText && !bodyLead && !heroHtml && !body && !action;
-  if (bareTitle) return `<div class="promo">${titleText}</div>`;
+  if (bareTitle) {
+    const img = node._image ? `<img src="${esc(node._image.image)}" alt="${esc(node._image.alt || '')}">` : '';
+    return `<div class="promo${img ? ' promo-image' : ''}">${img}${titleText ? `<span class="promo-label">${titleText}</span>` : ''}</div>`;
+  }
 
   const headingLevel = Math.min(depth + 1, 6);
   const headingTag = depth === 0 ? 'h1' : `h${headingLevel}`;
@@ -540,6 +578,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 
 // expose groups skip their label/summary facts in bodyLead (they become legend/hint)
 export function render(model, context = {}) {
+  indexRefLabels(model);
   const hide = new Map();
   const ctx = { values: context.values ?? {} };
   const html = renderNode(model, [], false, hide, ctx, 0);
@@ -574,6 +613,11 @@ article{margin:12px 0}
 .cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
 .action-plain{color:#4a5a68;font-size:.95em}
 .promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.promo-image{padding:0;overflow:hidden}
+.promo-image img{width:100%;height:auto;display:block;border-radius:9px}
+.promo-label{display:block;padding:8px 12px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
+.meta .sep{color:#c2ccd6}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
 /* F-031-§7 图像主导页：满幅图带 */
 .strip{margin:0;padding:0}

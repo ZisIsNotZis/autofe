@@ -1,222 +1,692 @@
 {
-  "_intent": "iPad Air 产品页：M4 芯片是本代主叙事（性能、AI、图形），核心交易信息 From $749（可租赁），页面按亮点→芯片→系统→AI→尺寸→连接→配件→相机→购买理由→机型对比→环保推进",
-  "_primary": "_price",
-  "_key": "apple-ipad-air",
-  "_title": { "text": "iPad Air" },
-  "_subtitle": { "text": "Whoosh." },
-  "_price": { "money": 749, "currency": "USD", "qualifier": "From" },
-  "_summary": { "text": "From $749 or $62.41/mo. for 12 mo. Lease from $15.99/mo. for 36 mo. with Apple Upgrade" },
-  "_action": { "verb": "buy", "label": "Buy", "to": "https://www.apple.com/us/shop/goto/buy_ipad/ipad_air" },
-  "_lines": [
+ "_intent": "iPad Air 产品页：M4 芯片是本代主叙事（性能、AI、图形），核心交易信息 From $749（可租赁），页面按亮点→芯片→系统→AI→尺寸→连接→配件→相机→购买理由→机型对比→环保推进",
+ "_primary": "_price",
+ "_key": "apple-ipad-air",
+ "_title": {
+  "text": "iPad Air"
+ },
+ "_subtitle": {
+  "text": "Whoosh."
+ },
+ "_price": {
+  "money": 749,
+  "currency": "USD",
+  "qualifier": "From"
+ },
+ "_summary": {
+  "text": "From $749 or $62.41/mo. for 12 mo. Lease from $15.99/mo. for 36 mo. with Apple Upgrade"
+ },
+ "_action": {
+  "verb": "buy",
+  "label": "Buy",
+  "to": "https://www.apple.com/us/shop/goto/buy_ipad/ipad_air"
+ },
+ "_lines": [
+  {
+   "_intent": "亮点轮播：五张要点卡覆盖芯片、AI、配件、系统、尺寸",
+   "_key": "highlights",
+   "_title": {
+    "text": "Get the highlights."
+   },
+   "_rel": {
+    "order": "sequence"
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Watch the film",
+    "to": "https://www.apple.com/105/media/us/ipad-air/2026/fe27e8b5-d1fd-4e76-82a5-4ee1120a4d97/films/product/ipad-air-product-tpl-us-2026_16x9.m3u8"
+   },
+   "_items": [
     {
-      "_intent": "亮点轮播：五张要点卡覆盖芯片、AI、配件、系统、尺寸",
-      "_key": "highlights",
-      "_title": { "text": "Get the highlights." },
-      "_rel": { "order": "sequence" },
-      "_action": { "verb": "open", "label": "Watch the film", "to": "https://www.apple.com/105/media/us/ipad-air/2026/fe27e8b5-d1fd-4e76-82a5-4ee1120a4d97/films/product/ipad-air-product-tpl-us-2026_16x9.m3u8" },
-      "_items": [
-        { "_key": "hl-m4", "_name": { "text": "M4 powers incredible performance, and advanced graphics with hardware-accelerated ray tracing. Built for Apple Intelligence." } },
-        { "_key": "hl-ai", "_name": { "text": "Apple Intelligence. Create, communicate, and get things done effortlessly." } },
-        { "_key": "hl-keyboard", "_name": { "text": "Magic Keyboard with a 14-key function row and large trackpad. Apple Pencil Pro for next-level creativity." } },
-        { "_key": "hl-ipados", "_name": { "text": "iPadOS and amazing apps let you get things done in magical, intuitive ways." } },
-        { "_key": "hl-sizes", "_name": { "text": "Available in 11-inch and 13-inch models. Both with a stunning Liquid Retina display." } }
-      ]
+     "_key": "hl-m4",
+     "_name": {
+      "text": "M4 powers incredible performance, and advanced graphics with hardware-accelerated ray tracing. Built for Apple Intelligence."
+     }
     },
     {
-      "_intent": "外观特写：四款配色的产品查看器（颜色选择器是本故事线的交互）",
-      "_key": "closer-look",
-      "_title": { "text": "Take a closer look." },
-      "_rel": { "compare": true },
-      "_items": [
-        { "_key": "color-all", "_name": { "text": "All Colors" } },
-        { "_key": "color-space-gray", "_name": { "text": "Space Gray" } },
-        { "_key": "color-blue", "_name": { "text": "Blue" } },
-        { "_key": "color-purple", "_name": { "text": "Purple" } },
-        { "_key": "color-starlight", "_name": { "text": "Starlight" } }
-      ],
-      "_expose": { "name": "color", "type": "text" }
+     "_key": "hl-ai",
+     "_name": {
+      "text": "Apple Intelligence. Create, communicate, and get things done effortlessly."
+     }
     },
     {
-      "_intent": "M4 章节：统一内存提升 50%、AI 算力、光追图形与全天续航，附对上一代 M1 的两个量化倍数",
-      "_key": "m4",
-      "_title": { "text": "M4. Power up, up, up." },
-      "_detail": { "text": "The lightning-fast M4 chip with 50 percent more unified system memory elevates performance for all the things you love to do on iPad Air. It’s an AI powerhouse, enabling the AI features and capabilities you use every day to get things done faster, effortlessly. And the GPU architecture delivers even more fluid advanced graphics whether you’re working, streaming, creating, or gaming. All with amazing efficiency for all-day battery life." },
-      "_rel": { "compare": true },
-      "_items": [
-        { "_key": "m4-cpu", "_name": { "text": "Up to 2.3x faster" }, "_detail": { "text": "than iPad Air with M1" } },
-        { "_key": "m4-gpu", "_name": { "text": "Over 4x faster 3D pro rendering with ray tracing" }, "_detail": { "text": "than iPad Air with M1" } }
-      ]
+     "_key": "hl-keyboard",
+     "_name": {
+      "text": "Magic Keyboard with a 14-key function row and large trackpad. Apple Pencil Pro for next-level creativity."
+     }
     },
     {
-      "_intent": "iPadOS 章节：Liquid Glass 新设计与窗口化带来的生产力",
-      "_key": "ipados",
-      "_title": { "text": "iPadOS and apps. Fly right through it all." },
-      "_detail": { "text": "iPadOS introduces Liquid Glass, a stunning new design with a vibrant look and game-changing enhancements that put iPad Air productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games, and take on creative projects of any size with a natural, touch-first experience." },
-      "_action": { "verb": "open", "label": "Learn more about getting things done with iPad" }
+     "_key": "hl-ipados",
+     "_name": {
+      "text": "iPadOS and amazing apps let you get things done in magical, intuitive ways."
+     }
     },
     {
-      "_intent": "Apple Intelligence 章节：内置 AI 的三大功能与隐私承诺",
-      "_key": "ai",
-      "_title": { "text": "Apple Intelligence. Effortlessly helpful every day." },
-      "_detail": { "text": "iPad Air is built for Apple Intelligence, the personal intelligence system that helps you create, communicate, and get things done effortlessly. With groundbreaking privacy protections, it gives you peace of mind that no one else can access your data — not even Apple." },
-      "_action": { "verb": "open", "label": "Learn more about Apple Intelligence", "to": "https://www.apple.com/apple-intelligence/" },
-      "_items": [
-        { "_key": "ai-image-wand", "_name": { "text": "Image Wand in Notes" }, "_detail": { "text": "Apple Intelligence enables delightful ways to express yourself visually. Turn a rough sketch into a related image with Image Wand. And create new images based on descriptions, suggested concepts, and even a person from your Photos library with Image Playground." } },
-        { "_key": "ai-writing-tools", "_name": { "text": "Writing Tools in Mail" }, "_detail": { "text": "Writing Tools help you find just the right words and transform the way you communicate. Proofread your text, rewrite different versions to get the right tone, and summarize selected text with a tap." } },
-        { "_key": "ai-clean-up", "_name": { "text": "Clean Up in Photos" }, "_detail": { "text": "With the Clean Up tool in the Photos app, you can easily remove unwanted distractions in your photos. Apple Intelligence identifies background objects so you can delete them with a tap for the perfect shot — while staying true to the original image." } }
-      ],
-      "privacy": {
-        "_intent": "AI 隐私说明：端侧处理与 Private Cloud Compute",
-        "_detail": { "text": "Apple Intelligence protects your privacy at every step. It’s integrated into the core of iPad through on-device processing, so it’s aware of your personal information without collecting your personal information. And with groundbreaking Private Cloud Compute, Apple Intelligence can draw on larger, Apple-designed server-based models, running on Apple silicon, to handle more complex requests while protecting your privacy." }
-      }
-    },
-    {
-      "_intent": "尺寸章节：11 英寸与 13 英寸两种型号，共用 Liquid Retina 显示特性（页面默认展示 11 英寸的分辨率）",
-      "_key": "sizes",
-      "_title": { "text": "Two sizes. Infinite possibilities." },
-      "_detail": { "text": "You can choose between an 11-inch and a 13-inch iPad Air, each with a gorgeous, high-resolution Liquid Retina display that brings everything you do to life. Both displays deliver a brilliant, responsive, and color-accurate viewing experience." },
-      "_rel": { "compare": true },
-      "_items": [
-        { "_key": "size-11", "_name": { "text": "11” model" }, "_detail": { "text": "2360x1640 display resolution" } },
-        { "_key": "size-13", "_name": { "text": "13” model" } },
-        { "_key": "size-tonetone", "_name": { "text": "True Tone" }, "_detail": { "text": "for comfortable viewing" } },
-        { "_key": "size-p3", "_name": { "text": "P3 wide color" } },
-        { "_key": "size-lamination", "_name": { "text": "Full lamination" }, "_detail": { "text": "for reduced reflectivity" } }
-      ]
-    },
-    {
-      "_intent": "连接章节：N1 无线芯片带来 Wi-Fi 7/蓝牙 6/Thread，C1X 蜂窝调制解调器提速 50%",
-      "_key": "connectivity",
-      "_title": { "text": "Connectivity. Far and away faster." },
-      "_measure": { "num": 5, "unit": "G" },
-      "_detail": { "text": "Your games, streaming content, and workflows go wherever you do with the better performance and reliability of Wi-Fi 7, Bluetooth 6, and Thread — all enabled by N1, our new wireless networking chip. And you can easily connect to external displays, drives, and devices with USB-C. The new C1X cellular modem supports 50 percent faster data speeds at greater efficiency while maintaining worldwide 5G coverage. So you can securely access files, communicate with collaborators, and back up data while out and about. And eSIM enables a fast, convenient, and secure way to activate a cellular data plan directly on your device." },
-      "_items": [
-        { "_key": "conn-cellular", "_name": { "text": "Up to 50% faster cellular data performance" } },
-        { "_key": "conn-wifi7", "_name": { "text": "Wi-Fi 7" } },
-        { "_key": "conn-5g", "_name": { "text": "5G" } }
-      ]
-    },
-    {
-      "_intent": "Apple Pencil Pro 章节：绘画书写体验与 Pencil Pro 新能力",
-      "_key": "pencil",
-      "_title": { "text": "Apple Pencil Pro. Engineered for limitless creativity." },
-      "_detail": { "text": "Apple Pencil sets the standard for how drawing, painting, handwriting, and note-taking should feel — intuitive, precise, and magical. All with pixel-perfect precision, low latency, tilt sensitivity, and support for palm rejection. And Apple Pencil Pro adds even more capabilities to bring your ideas to life like never before." },
-      "_action": { "verb": "open", "label": "Explore more Apple Pencil features", "to": "https://www.apple.com/apple-pencil/" }
-    },
-    {
-      "_intent": "Magic Keyboard 章节：键盘与触控板体验、14 键功能行与 USB-C 供电",
-      "_key": "keyboard",
-      "_title": { "text": "Magic Keyboard. The keys to your best work." },
-      "_detail": { "text": "Magic Keyboard — available in black or white — is the perfect companion for iPad Air. It delivers an amazing typing experience and a trackpad for precision tasks in a sleek, portable design. The keyboard includes a 14-key function row, a USB-C connector for pass-through charging, and front and back protection for your iPad Air. The floating cantilever design smoothly adjusts to multiple viewing angles, and a large glass trackpad expands how you can work with iPadOS." },
-      "_action": { "verb": "open", "label": "Learn more about keyboards for iPad", "to": "https://www.apple.com/ipad-keyboards/" }
-    },
-    {
-      "_intent": "相机章节：前后置相机、麦克风与扬声器的三条规格事实",
-      "_key": "cameras",
-      "_title": { "text": "Cameras. Capture your imagination. And everything else." },
-      "_detail": { "text": "Advanced front and back cameras make it easy to shoot and edit incredible content in a snap. Capture audio using the built-in dual mics and play back the rich sound using landscape stereo speakers. And experience more dynamic video calls with Center Stage." },
-      "_rel": { "compare": true },
-      "_items": [
-        { "_key": "cam-front", "_name": { "text": "12MP Center Stage front camera" }, "_detail": { "text": "for great video calls" } },
-        { "_key": "cam-back", "_name": { "text": "12MP Wide back camera" }, "_detail": { "text": "with Smart HDR images and 4K video" } },
-        { "_key": "cam-audio", "_name": { "text": "Dual mics and stereo speakers" }, "_detail": { "text": "for adding rich audio" } }
-      ]
-    },
-    {
-      "_intent": "购买理由：在 Apple 选购 iPad 的八项权益",
-      "_key": "why-apple",
-      "_title": { "text": "Why Apple is the best place to shop iPad." },
-      "_action": { "verb": "open", "label": "Shop iPad", "to": "https://www.apple.com/us/shop/goto/buy_ipad" },
-      "_items": [
-        { "_key": "why-financing", "_name": { "text": "Pay over time, interest-free." }, "_detail": { "text": "When you choose to check out at Apple with Apple Card Monthly Installments." } },
-        { "_key": "why-tradein", "_name": { "text": "Save up to $905 with Apple Trade In." }, "_detail": { "text": "Get credit toward your next iPad when you trade in an eligible device." } },
-        { "_key": "why-education", "_name": { "text": "Save on iPad with education pricing." }, "_detail": { "text": "College students and educators can save through the Apple Store." } },
-        { "_key": "why-delivery", "_name": { "text": "Get flexible delivery and easy pickup." }, "_detail": { "text": "Choose two-hour delivery from an Apple Store, free delivery, or easy pickup options." } },
-        { "_key": "why-engraving", "_name": { "text": "Personalize your iPad for free." }, "_detail": { "text": "Engrave your new iPad with a mix of emoji, names, initials, and numbers." } },
-        { "_key": "why-specialist", "_name": { "text": "Shop live with a Specialist." }, "_detail": { "text": "Let us guide you live over video and answer all of your questions." } },
-        { "_key": "why-setup", "_name": { "text": "Join an online Personal Setup session." }, "_detail": { "text": "Talk one on one with a Specialist to set up your iPad and discover new features." } },
-        { "_key": "why-store-app", "_name": { "text": "Explore a shopping experience designed around you." }, "_detail": { "text": "Use the Apple Store app to get a more personal way to shop." } }
-      ]
-    },
-    {
-      "_intent": "机型对比：iPad Air（当前浏览）与 iPad Pro 的定位、起售价与规格速览",
-      "_key": "explore",
-      "_title": { "text": "Keep exploring iPad." },
-      "_action": { "verb": "open", "label": "Explore all iPad", "to": "https://www.apple.com/ipad/" },
-      "_items": [
-        {
-          "_key": "cmp-ipad-air",
-          "_name": { "text": "iPad Air" },
-          "_summary": { "text": "Serious performance in a thin and light design. From $749 or $62.41/mo. for 12 mo. Lease from $15.99/mo. for 36 mo. with Apple Upgrade" },
-          "_price": { "money": 749, "currency": "USD", "qualifier": "From" },
-          "_tag": { "text": "Currently viewing" },
-          "_subtitle": { "text": "Available in Space gray, Blue, Purple, and Starlight" },
-          "_action": { "verb": "buy", "label": "Buy", "to": "https://www.apple.com/us/shop/goto/buy_ipad/ipad_air" },
-          "display": { "_detail": { "text": "13” or 11” Liquid Retina display · P3 wide color · True Tone · Antireflective coating" } },
-          "chip": { "_detail": { "text": "M4 chip · 8-core CPU · 9-core GPU · 16-core Neural Engine" } },
-          "ai": { "_detail": { "text": "Apple Intelligence" } },
-          "camera": { "_detail": { "text": "12MP Wide camera · 4K video" } },
-          "front": { "_detail": { "text": "Landscape 12MP Center Stage camera" } },
-          "pencil": { "_detail": { "text": "Supports Apple Pencil Pro · Supports Apple Pencil (USB-C)" } },
-          "keyboard": { "_detail": { "text": "Supports Magic Keyboard for iPad Air" } }
-        },
-        {
-          "_key": "cmp-ipad-pro",
-          "_name": { "text": "iPad Pro" },
-          "_summary": { "text": "The ultimate iPad experience with the most advanced technology. From $1199 or $99.91/mo. for 12 mo. Lease from $24.99/mo. for 36 mo. with Apple Upgrade" },
-          "_price": { "money": 1199, "currency": "USD", "qualifier": "From" },
-          "_subtitle": { "text": "Available in Space black, and Silver" },
-          "_action": { "verb": "open", "label": "Learn more", "to": "https://www.apple.com/ipad-pro/" },
-          "buy": { "_intent": "购买 iPad Pro", "_title": { "text": "Buy" }, "_action": { "verb": "buy", "label": "Buy", "to": "https://www.apple.com/us/shop/goto/ipad_pro/select" } },
-          "display": { "_detail": { "text": "13” or 11” Ultra Retina XDR display · ProMotion technology · P3 wide color · True Tone · Antireflective coating · Nano-texture display glass option on 1TB and 2TB models" } },
-          "chip": { "_detail": { "text": "M5 chip · Up to 10-core CPU · 10-core GPU · 16-core Neural Engine" } },
-          "ai": { "_detail": { "text": "Apple Intelligence" } },
-          "camera": { "_detail": { "text": "12MP Wide camera · 4K video, ProRes" } },
-          "front": { "_detail": { "text": "Landscape 12MP Center Stage camera · TrueDepth camera system" } },
-          "pencil": { "_detail": { "text": "Supports Apple Pencil Pro · Supports Apple Pencil (USB-C)" } },
-          "keyboard": { "_detail": { "text": "Supports Magic Keyboard for iPad Pro" } }
-        }
-      ],
-      "all": {
-        "_intent": "完整机型对比入口",
-        "_action": { "verb": "open", "label": "Compare all iPad models", "to": "https://www.apple.com/ipad/compare/" }
-      }
-    },
-    {
-      "_intent": "环保章节：三项量化环保事实与产品环境报告",
-      "_key": "environment",
-      "_title": { "text": "iPad Air and the environment." },
-      "_action": { "verb": "open", "label": "Learn more in our Product Environmental Report (PDF)", "to": "https://www.apple.com/environment/pdf/products/ipad/iPad_Air_11-inch_and_13-inch_M4_PER_Mar2026.pdf" },
-      "_items": [
-        { "_key": "env-recycled", "_name": { "text": "Made with 30% recycled material by weight." } },
-        { "_key": "env-renewable", "_name": { "text": "Manufactured with 40% renewable electricity." } },
-        { "_key": "env-fiber", "_name": { "text": "Ships in 100% fiber-based packaging." } }
-      ]
-    },
-    {
-      "_intent": "价值观章节：环境、隐私、无障碍三项品牌承诺",
-      "_key": "values",
-      "_title": { "text": "Our values lead the way." },
-      "_items": [
-        {
-          "_key": "value-environment",
-          "_name": { "text": "A plan as innovative as our products." },
-          "_detail": { "text": "We’re committed to bringing net emissions to zero across our entire carbon footprint by 2030." },
-          "_action": { "verb": "open", "label": "Learn more about environment", "to": "https://www.apple.com/environment/" }
-        },
-        {
-          "_key": "value-privacy",
-          "_name": { "text": "Privacy. That’s Apple." },
-          "_detail": { "text": "Privacy is a fundamental human right. Every product and service is designed to help keep your data safe and secure." },
-          "_action": { "verb": "open", "label": "Learn more about privacy", "to": "https://www.apple.com/privacy/" }
-        },
-        {
-          "_key": "value-accessibility",
-          "_name": { "text": "Innovation that’s accessible by design." },
-          "_detail": { "text": "Our products and services are designed for everyone, with built-in features to help you do what you love, your way." },
-          "_action": { "verb": "open", "label": "Learn more about accessibility", "to": "https://www.apple.com/accessibility/" }
-        }
-      ]
+     "_key": "hl-sizes",
+     "_name": {
+      "text": "Available in 11-inch and 13-inch models. Both with a stunning Liquid Retina display."
+     }
     }
-  ]
+   ]
+  },
+  {
+   "_intent": "外观特写：四款配色的产品查看器（颜色选择器是本故事线的交互）",
+   "_key": "closer-look",
+   "_title": {
+    "text": "Take a closer look."
+   },
+   "_items": [
+    {
+     "_key": "color-all",
+     "_name": {
+      "text": "All Colors"
+     }
+    },
+    {
+     "_key": "color-space-gray",
+     "_name": {
+      "text": "Space Gray"
+     }
+    },
+    {
+     "_key": "color-blue",
+     "_name": {
+      "text": "Blue"
+     }
+    },
+    {
+     "_key": "color-purple",
+     "_name": {
+      "text": "Purple"
+     }
+    },
+    {
+     "_key": "color-starlight",
+     "_name": {
+      "text": "Starlight"
+     }
+    }
+   ],
+   "_expose": {
+    "name": "color",
+    "type": "text"
+   }
+  },
+  {
+   "_intent": "M4 章节：统一内存提升 50%、AI 算力、光追图形与全天续航，附对上一代 M1 的两个量化倍数",
+   "_key": "m4",
+   "_title": {
+    "text": "M4. Power up, up, up."
+   },
+   "_detail": {
+    "text": "The lightning-fast M4 chip with 50 percent more unified system memory elevates performance for all the things you love to do on iPad Air. It’s an AI powerhouse, enabling the AI features and capabilities you use every day to get things done faster, effortlessly. And the GPU architecture delivers even more fluid advanced graphics whether you’re working, streaming, creating, or gaming. All with amazing efficiency for all-day battery life."
+   },
+   "_rel": {
+    "compare": true
+   },
+   "_items": [
+    {
+     "_key": "m4-cpu",
+     "_name": {
+      "text": "Up to 2.3x faster"
+     },
+     "_detail": {
+      "text": "than iPad Air with M1"
+     }
+    },
+    {
+     "_key": "m4-gpu",
+     "_name": {
+      "text": "Over 4x faster 3D pro rendering with ray tracing"
+     },
+     "_detail": {
+      "text": "than iPad Air with M1"
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "iPadOS 章节：Liquid Glass 新设计与窗口化带来的生产力",
+   "_key": "ipados",
+   "_title": {
+    "text": "iPadOS and apps. Fly right through it all."
+   },
+   "_detail": {
+    "text": "iPadOS introduces Liquid Glass, a stunning new design with a vibrant look and game-changing enhancements that put iPad Air productivity on a new level. A reimagined, intuitive windowing system gives you greater power and flexibility than ever before. Run pro apps, play high-performance games, and take on creative projects of any size with a natural, touch-first experience."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Learn more about getting things done with iPad"
+   }
+  },
+  {
+   "_intent": "Apple Intelligence 章节：内置 AI 的三大功能与隐私承诺",
+   "_key": "ai",
+   "_title": {
+    "text": "Apple Intelligence. Effortlessly helpful every day."
+   },
+   "_detail": {
+    "text": "iPad Air is built for Apple Intelligence, the personal intelligence system that helps you create, communicate, and get things done effortlessly. With groundbreaking privacy protections, it gives you peace of mind that no one else can access your data — not even Apple."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Learn more about Apple Intelligence",
+    "to": "https://www.apple.com/apple-intelligence/"
+   },
+   "_items": [
+    {
+     "_key": "ai-image-wand",
+     "_name": {
+      "text": "Image Wand in Notes"
+     },
+     "_detail": {
+      "text": "Apple Intelligence enables delightful ways to express yourself visually. Turn a rough sketch into a related image with Image Wand. And create new images based on descriptions, suggested concepts, and even a person from your Photos library with Image Playground."
+     }
+    },
+    {
+     "_key": "ai-writing-tools",
+     "_name": {
+      "text": "Writing Tools in Mail"
+     },
+     "_detail": {
+      "text": "Writing Tools help you find just the right words and transform the way you communicate. Proofread your text, rewrite different versions to get the right tone, and summarize selected text with a tap."
+     }
+    },
+    {
+     "_key": "ai-clean-up",
+     "_name": {
+      "text": "Clean Up in Photos"
+     },
+     "_detail": {
+      "text": "With the Clean Up tool in the Photos app, you can easily remove unwanted distractions in your photos. Apple Intelligence identifies background objects so you can delete them with a tap for the perfect shot — while staying true to the original image."
+     }
+    }
+   ],
+   "privacy": {
+    "_intent": "AI 隐私说明：端侧处理与 Private Cloud Compute",
+    "_detail": {
+     "text": "Apple Intelligence protects your privacy at every step. It’s integrated into the core of iPad through on-device processing, so it’s aware of your personal information without collecting your personal information. And with groundbreaking Private Cloud Compute, Apple Intelligence can draw on larger, Apple-designed server-based models, running on Apple silicon, to handle more complex requests while protecting your privacy."
+    }
+   }
+  },
+  {
+   "_intent": "尺寸章节：11 英寸与 13 英寸两种型号，共用 Liquid Retina 显示特性（页面默认展示 11 英寸的分辨率）",
+   "_key": "sizes",
+   "_title": {
+    "text": "Two sizes. Infinite possibilities."
+   },
+   "_detail": {
+    "text": "You can choose between an 11-inch and a 13-inch iPad Air, each with a gorgeous, high-resolution Liquid Retina display that brings everything you do to life. Both displays deliver a brilliant, responsive, and color-accurate viewing experience."
+   },
+   "_rel": {
+    "compare": true
+   },
+   "_items": [
+    {
+     "_key": "size-11",
+     "_name": {
+      "text": "11” model"
+     },
+     "_detail": {
+      "text": "2360x1640 display resolution"
+     }
+    },
+    {
+     "_key": "size-13",
+     "_name": {
+      "text": "13” model"
+     }
+    },
+    {
+     "_key": "size-tonetone",
+     "_name": {
+      "text": "True Tone"
+     },
+     "_detail": {
+      "text": "for comfortable viewing"
+     }
+    },
+    {
+     "_key": "size-p3",
+     "_name": {
+      "text": "P3 wide color"
+     }
+    },
+    {
+     "_key": "size-lamination",
+     "_name": {
+      "text": "Full lamination"
+     },
+     "_detail": {
+      "text": "for reduced reflectivity"
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "连接章节：N1 无线芯片带来 Wi-Fi 7/蓝牙 6/Thread，C1X 蜂窝调制解调器提速 50%",
+   "_key": "connectivity",
+   "_title": {
+    "text": "Connectivity. Far and away faster."
+   },
+   "_measure": {
+    "num": 5,
+    "unit": "G"
+   },
+   "_detail": {
+    "text": "Your games, streaming content, and workflows go wherever you do with the better performance and reliability of Wi-Fi 7, Bluetooth 6, and Thread — all enabled by N1, our new wireless networking chip. And you can easily connect to external displays, drives, and devices with USB-C. The new C1X cellular modem supports 50 percent faster data speeds at greater efficiency while maintaining worldwide 5G coverage. So you can securely access files, communicate with collaborators, and back up data while out and about. And eSIM enables a fast, convenient, and secure way to activate a cellular data plan directly on your device."
+   },
+   "_items": [
+    {
+     "_key": "conn-cellular",
+     "_name": {
+      "text": "Up to 50% faster cellular data performance"
+     }
+    },
+    {
+     "_key": "conn-wifi7",
+     "_name": {
+      "text": "Wi-Fi 7"
+     }
+    },
+    {
+     "_key": "conn-5g",
+     "_name": {
+      "text": "5G"
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "Apple Pencil Pro 章节：绘画书写体验与 Pencil Pro 新能力",
+   "_key": "pencil",
+   "_title": {
+    "text": "Apple Pencil Pro. Engineered for limitless creativity."
+   },
+   "_detail": {
+    "text": "Apple Pencil sets the standard for how drawing, painting, handwriting, and note-taking should feel — intuitive, precise, and magical. All with pixel-perfect precision, low latency, tilt sensitivity, and support for palm rejection. And Apple Pencil Pro adds even more capabilities to bring your ideas to life like never before."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Explore more Apple Pencil features",
+    "to": "https://www.apple.com/apple-pencil/"
+   }
+  },
+  {
+   "_intent": "Magic Keyboard 章节：键盘与触控板体验、14 键功能行与 USB-C 供电",
+   "_key": "keyboard",
+   "_title": {
+    "text": "Magic Keyboard. The keys to your best work."
+   },
+   "_detail": {
+    "text": "Magic Keyboard — available in black or white — is the perfect companion for iPad Air. It delivers an amazing typing experience and a trackpad for precision tasks in a sleek, portable design. The keyboard includes a 14-key function row, a USB-C connector for pass-through charging, and front and back protection for your iPad Air. The floating cantilever design smoothly adjusts to multiple viewing angles, and a large glass trackpad expands how you can work with iPadOS."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Learn more about keyboards for iPad",
+    "to": "https://www.apple.com/ipad-keyboards/"
+   }
+  },
+  {
+   "_intent": "相机章节：前后置相机、麦克风与扬声器的三条规格事实",
+   "_key": "cameras",
+   "_title": {
+    "text": "Cameras. Capture your imagination. And everything else."
+   },
+   "_detail": {
+    "text": "Advanced front and back cameras make it easy to shoot and edit incredible content in a snap. Capture audio using the built-in dual mics and play back the rich sound using landscape stereo speakers. And experience more dynamic video calls with Center Stage."
+   },
+   "_rel": {
+    "compare": true
+   },
+   "_items": [
+    {
+     "_key": "cam-front",
+     "_name": {
+      "text": "12MP Center Stage front camera"
+     },
+     "_detail": {
+      "text": "for great video calls"
+     }
+    },
+    {
+     "_key": "cam-back",
+     "_name": {
+      "text": "12MP Wide back camera"
+     },
+     "_detail": {
+      "text": "with Smart HDR images and 4K video"
+     }
+    },
+    {
+     "_key": "cam-audio",
+     "_name": {
+      "text": "Dual mics and stereo speakers"
+     },
+     "_detail": {
+      "text": "for adding rich audio"
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "购买理由：在 Apple 选购 iPad 的八项权益",
+   "_key": "why-apple",
+   "_title": {
+    "text": "Why Apple is the best place to shop iPad."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Shop iPad",
+    "to": "https://www.apple.com/us/shop/goto/buy_ipad"
+   },
+   "_items": [
+    {
+     "_key": "why-financing",
+     "_name": {
+      "text": "Pay over time, interest-free."
+     },
+     "_detail": {
+      "text": "When you choose to check out at Apple with Apple Card Monthly Installments."
+     }
+    },
+    {
+     "_key": "why-tradein",
+     "_name": {
+      "text": "Save up to $905 with Apple Trade In."
+     },
+     "_detail": {
+      "text": "Get credit toward your next iPad when you trade in an eligible device."
+     }
+    },
+    {
+     "_key": "why-education",
+     "_name": {
+      "text": "Save on iPad with education pricing."
+     },
+     "_detail": {
+      "text": "College students and educators can save through the Apple Store."
+     }
+    },
+    {
+     "_key": "why-delivery",
+     "_name": {
+      "text": "Get flexible delivery and easy pickup."
+     },
+     "_detail": {
+      "text": "Choose two-hour delivery from an Apple Store, free delivery, or easy pickup options."
+     }
+    },
+    {
+     "_key": "why-engraving",
+     "_name": {
+      "text": "Personalize your iPad for free."
+     },
+     "_detail": {
+      "text": "Engrave your new iPad with a mix of emoji, names, initials, and numbers."
+     }
+    },
+    {
+     "_key": "why-specialist",
+     "_name": {
+      "text": "Shop live with a Specialist."
+     },
+     "_detail": {
+      "text": "Let us guide you live over video and answer all of your questions."
+     }
+    },
+    {
+     "_key": "why-setup",
+     "_name": {
+      "text": "Join an online Personal Setup session."
+     },
+     "_detail": {
+      "text": "Talk one on one with a Specialist to set up your iPad and discover new features."
+     }
+    },
+    {
+     "_key": "why-store-app",
+     "_name": {
+      "text": "Explore a shopping experience designed around you."
+     },
+     "_detail": {
+      "text": "Use the Apple Store app to get a more personal way to shop."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "机型对比：iPad Air（当前浏览）与 iPad Pro 的定位、起售价与规格速览",
+   "_key": "explore",
+   "_title": {
+    "text": "Keep exploring iPad."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Explore all iPad",
+    "to": "https://www.apple.com/ipad/"
+   },
+   "_items": [
+    {
+     "_key": "cmp-ipad-air",
+     "_name": {
+      "text": "iPad Air"
+     },
+     "_summary": {
+      "text": "Serious performance in a thin and light design. From $749 or $62.41/mo. for 12 mo. Lease from $15.99/mo. for 36 mo. with Apple Upgrade"
+     },
+     "_price": {
+      "money": 749,
+      "currency": "USD",
+      "qualifier": "From"
+     },
+     "_tag": {
+      "text": "Currently viewing"
+     },
+     "_subtitle": {
+      "text": "Available in Space gray, Blue, Purple, and Starlight"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "Buy",
+      "to": "https://www.apple.com/us/shop/goto/buy_ipad/ipad_air"
+     },
+     "display": {
+      "_detail": {
+       "text": "13” or 11” Liquid Retina display · P3 wide color · True Tone · Antireflective coating"
+      }
+     },
+     "chip": {
+      "_detail": {
+       "text": "M4 chip · 8-core CPU · 9-core GPU · 16-core Neural Engine"
+      }
+     },
+     "ai": {
+      "_detail": {
+       "text": "Apple Intelligence"
+      }
+     },
+     "camera": {
+      "_detail": {
+       "text": "12MP Wide camera · 4K video"
+      }
+     },
+     "front": {
+      "_detail": {
+       "text": "Landscape 12MP Center Stage camera"
+      }
+     },
+     "pencil": {
+      "_detail": {
+       "text": "Supports Apple Pencil Pro · Supports Apple Pencil (USB-C)"
+      }
+     },
+     "keyboard": {
+      "_detail": {
+       "text": "Supports Magic Keyboard for iPad Air"
+      }
+     }
+    },
+    {
+     "_key": "cmp-ipad-pro",
+     "_name": {
+      "text": "iPad Pro"
+     },
+     "_summary": {
+      "text": "The ultimate iPad experience with the most advanced technology. From $1199 or $99.91/mo. for 12 mo. Lease from $24.99/mo. for 36 mo. with Apple Upgrade"
+     },
+     "_price": {
+      "money": 1199,
+      "currency": "USD",
+      "qualifier": "From"
+     },
+     "_subtitle": {
+      "text": "Available in Space black, and Silver"
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more",
+      "to": "https://www.apple.com/ipad-pro/"
+     },
+     "buy": {
+      "_intent": "购买 iPad Pro",
+      "_title": {
+       "text": "Buy"
+      },
+      "_action": {
+       "verb": "buy",
+       "label": "Buy",
+       "to": "https://www.apple.com/us/shop/goto/ipad_pro/select"
+      }
+     },
+     "display": {
+      "_detail": {
+       "text": "13” or 11” Ultra Retina XDR display · ProMotion technology · P3 wide color · True Tone · Antireflective coating · Nano-texture display glass option on 1TB and 2TB models"
+      }
+     },
+     "chip": {
+      "_detail": {
+       "text": "M5 chip · Up to 10-core CPU · 10-core GPU · 16-core Neural Engine"
+      }
+     },
+     "ai": {
+      "_detail": {
+       "text": "Apple Intelligence"
+      }
+     },
+     "camera": {
+      "_detail": {
+       "text": "12MP Wide camera · 4K video, ProRes"
+      }
+     },
+     "front": {
+      "_detail": {
+       "text": "Landscape 12MP Center Stage camera · TrueDepth camera system"
+      }
+     },
+     "pencil": {
+      "_detail": {
+       "text": "Supports Apple Pencil Pro · Supports Apple Pencil (USB-C)"
+      }
+     },
+     "keyboard": {
+      "_detail": {
+       "text": "Supports Magic Keyboard for iPad Pro"
+      }
+     }
+    }
+   ],
+   "all": {
+    "_intent": "完整机型对比入口",
+    "_action": {
+     "verb": "open",
+     "label": "Compare all iPad models",
+     "to": "https://www.apple.com/ipad/compare/"
+    }
+   }
+  },
+  {
+   "_intent": "环保章节：三项量化环保事实与产品环境报告",
+   "_key": "environment",
+   "_title": {
+    "text": "iPad Air and the environment."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Learn more in our Product Environmental Report (PDF)",
+    "to": "https://www.apple.com/environment/pdf/products/ipad/iPad_Air_11-inch_and_13-inch_M4_PER_Mar2026.pdf"
+   },
+   "_items": [
+    {
+     "_key": "env-recycled",
+     "_name": {
+      "text": "Made with 30% recycled material by weight."
+     }
+    },
+    {
+     "_key": "env-renewable",
+     "_name": {
+      "text": "Manufactured with 40% renewable electricity."
+     }
+    },
+    {
+     "_key": "env-fiber",
+     "_name": {
+      "text": "Ships in 100% fiber-based packaging."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "价值观章节：环境、隐私、无障碍三项品牌承诺",
+   "_key": "values",
+   "_title": {
+    "text": "Our values lead the way."
+   },
+   "_items": [
+    {
+     "_key": "value-environment",
+     "_name": {
+      "text": "A plan as innovative as our products."
+     },
+     "_detail": {
+      "text": "We’re committed to bringing net emissions to zero across our entire carbon footprint by 2030."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more about environment",
+      "to": "https://www.apple.com/environment/"
+     }
+    },
+    {
+     "_key": "value-privacy",
+     "_name": {
+      "text": "Privacy. That’s Apple."
+     },
+     "_detail": {
+      "text": "Privacy is a fundamental human right. Every product and service is designed to help keep your data safe and secure."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more about privacy",
+      "to": "https://www.apple.com/privacy/"
+     }
+    },
+    {
+     "_key": "value-accessibility",
+     "_name": {
+      "text": "Innovation that’s accessible by design."
+     },
+     "_detail": {
+      "text": "Our products and services are designed for everyone, with built-in features to help you do what you love, your way."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more about accessibility",
+      "to": "https://www.apple.com/accessibility/"
+     }
+    }
+   ]
+  }
+ ]
 }

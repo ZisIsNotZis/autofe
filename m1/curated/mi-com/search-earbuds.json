@@ -1,268 +1,753 @@
 {
-  "_intent": "小米商城搜索「耳机」的结果页：第 1 页 20 款在售耳机，可按分类筛选、切换排序与促销条件，翻到第 2 页，或浏览猜你喜欢推荐",
-  "_key": "mi-search-earbuds",
-  "_title": {
-    "text": "所有产品-小米商城"
+ "_intent": "小米商城搜索「耳机」的结果页：第 1 页 20 款在售耳机，可按分类筛选、切换排序与促销条件，翻到第 2 页，或浏览猜你喜欢推荐",
+ "_key": "mi-search-earbuds",
+ "_title": {
+  "text": "所有产品-小米商城"
+ },
+ "_primary": "results",
+ "filters": {
+  "_intent": "按商品分类过滤结果，当前选中「全部」",
+  "_label": {
+   "text": "分类"
   },
-  "_primary": "results",
-  "filters": {
-    "_intent": "按商品分类过滤结果，当前选中「全部」",
-    "_label": {
-      "text": "分类"
-    },
-    "_rel": { "compare": true },
-    "_primary": "_items[0]",
-    "_items": [
-      { "_key": "cat-all", "_name": { "text": "全部" } },
-      { "_key": "cat-in-ear", "_name": { "text": "入耳式耳机" } },
-      { "_key": "cat-other", "_name": { "text": "其他" } },
-      { "_key": "cat-headphone", "_name": { "text": "头戴式耳机" } },
-      { "_key": "cat-youpin", "_name": { "text": "有品商品" } }
-    ],
-    "_expose": { "name": "category", "type": "text" }
-  },
-  "sort": {
-    "_intent": "结果排序方式，当前按「综合」排序",
-    "_rel": { "compare": true },
-    "_primary": "_items[0]",
-    "_items": [
-      { "_name": { "text": "综合" } },
-      { "_name": { "text": "新品" } },
-      { "_name": { "text": "销量" } },
-      { "_name": { "text": "价格" } }
-    ],
-    "_expose": { "name": "sort", "type": "text" }
-  },
-  "delivery": {
-    "_intent": "收货地决定库存与运费，当前收货地：北京 北京市",
-    "_label": {
-      "text": "收货地"
-    },
-    "_place": {
-      "text": "北京 北京市"
+  "_primary": "_items[0]",
+  "_items": [
+   {
+    "_key": "cat-all",
+    "_name": {
+     "text": "全部"
     }
-  },
-  "conditions": {
-    "_intent": "三个独立的促销条件开关，勾选后过滤结果",
-    "_items": [
-      { "_name": { "text": "促销" }, "_expose": { "name": "promo-only", "type": "bool" } },
-      { "_name": { "text": "分期" }, "_expose": { "name": "installments", "type": "bool" } },
-      { "_name": { "text": "仅看有货" }, "_expose": { "name": "in-stock-only", "type": "bool" } }
-    ]
-  },
-  "results": {
-    "_intent": "关键词「耳机」的第 1 页结果：20 款商品，整卡链接到商品购买页，划线价为原价",
-    "_rel": { "order": "none" },
-    "_items": [
-      {
-        "_name": { "text": "耳机新品1元权益定金（不发货） 订金" },
-        "_price": { "money": 1, "currency": "CNY" },
-        "_tag": { "text": "新品预约" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230800701&cfrom=search" }
-      },
-      {
-        "_name": { "text": "REDMI Buds 8 Pro 冰釉白" },
-        "_price": { "money": 369, "currency": "CNY" },
-        "_amount": { "money": 399, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230805246&cfrom=search" }
-      },
-      {
-        "_name": { "text": "REDMI Buds 8 脂白" },
-        "_price": { "money": 229, "currency": "CNY" },
-        "_amount": { "money": 249, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230807198&cfrom=search" }
-      },
-      {
-        "_name": { "text": "REDMI Buds 8 青春版 迷雾黑" },
-        "_price": { "money": 139, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230806461&cfrom=search" }
-      },
-      {
-        "_name": { "text": "REDMI Buds 8 活力版 哑黑" },
-        "_price": { "money": 99, "currency": "CNY" },
-        "_amount": { "money": 119, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230806464&cfrom=search" }
-      },
-      {
-        "_name": { "text": "Xiaomi 耳夹式耳机 缎光金" },
-        "_price": { "money": 799, "currency": "CNY" },
-        "_amount": { "money": 849, "currency": "CNY" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230807926&cfrom=search" }
-      },
-      {
-        "_name": { "text": "REDMI Buds 6 活力版 白色" },
-        "_price": { "money": 99, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802087&cfrom=search" }
-      },
-      {
-        "_name": { "text": "Xiaomi Buds 6 月影黑" },
-        "_price": { "money": 649, "currency": "CNY" },
-        "_amount": { "money": 699, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230805791&cfrom=search" }
-      },
-      {
-        "_name": { "text": "REDMI 头戴降噪耳机 爵士蓝" },
-        "_price": { "money": 349, "currency": "CNY" },
-        "_tag": { "text": "补贴15%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230807919&cfrom=search" }
-      },
-      {
-        "_name": { "text": "Xiaomi Air 5 白色" },
-        "_price": { "money": 569, "currency": "CNY" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230808910&cfrom=search" }
-      },
-      {
-        "_name": { "text": "Xiaomi Buds 5 Pro 钛光金" },
-        "_price": { "money": 899, "currency": "CNY" },
-        "_amount": { "money": 1299, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230803509&cfrom=search" }
-      },
-      {
-        "_name": { "text": "REDMI Buds 6 青春版 子夜黑" },
-        "_price": { "money": 139, "currency": "CNY" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802274&cfrom=search" }
-      },
-      {
-        "_name": { "text": "Xiaomi 开放式耳机 Pro 曜石黑" },
-        "_price": { "money": 699, "currency": "CNY" },
-        "_amount": { "money": 999, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230804182&cfrom=search" }
-      },
-      {
-        "_name": { "text": "Xiaomi 骨传导耳机2 燕麦白" },
-        "_price": { "money": 599, "currency": "CNY" },
-        "_amount": { "money": 699, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230804459&cfrom=search" }
-      },
-      {
-        "_name": { "text": "REDMI Buds 7S 晴雪白" },
-        "_price": { "money": 179, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230803725&cfrom=search" }
-      },
-      {
-        "_name": { "text": "小米Type-C耳机（数字耳机） 黑色" },
-        "_price": { "money": 39, "currency": "CNY" },
-        "_amount": { "money": 69, "currency": "CNY" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802828&cfrom=search" }
-      },
-      {
-        "_name": { "text": "REDMI Buds 6 子夜黑" },
-        "_price": { "money": 189, "currency": "CNY" },
-        "_amount": { "money": 199, "currency": "CNY" },
-        "_tag": { "text": "补贴10%" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802690&cfrom=search" }
-      },
-      {
-        "_name": { "text": "小米尊享礼盒 黑色" },
-        "_price": { "money": 399, "currency": "CNY" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230800564&cfrom=search" }
-      },
-      {
-        "_name": { "text": "小米活塞耳机 黑色" },
-        "_price": { "money": 29, "currency": "CNY" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1165100001&cfrom=search" }
-      },
-      {
-        "_name": { "text": "小米臻享礼盒 黑色" },
-        "_price": { "money": 399, "currency": "CNY" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/shop/buy?product_id=1230802480&cfrom=search" }
-      }
-    ]
-  },
-  "pages": {
-    "_intent": "结果分页展示，当前在第 1 页，可前往第 2 页",
-    "_primary": "_items[0]",
-    "_items": [
-      { "_name": { "text": "1" } },
-      { "_name": { "text": "2" } }
-    ]
-  },
-  "recommended": {
-    "_intent": "猜你喜欢：跨品类的站内推荐（第 1 屏 10 款），整卡链接到商品页，可直接加入购物车",
-    "_title": {
-      "text": "猜你喜欢"
-    },
-    "_items": [
-      {
-        "_name": { "text": "米家电动剃须刀S100 云纹刀网版" },
-        "_price": { "money": 99, "currency": "CNY" },
-        "_rating-count": { "num": 870, "unit": "人好评" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230808886" },
-        "cart": { "_title": { "text": "加入购物车" }, "_action": { "verb": "add-to-cart", "label": "加入购物车" } }
-      },
-      {
-        "_name": { "text": "米家智能血压计" },
-        "_price": { "money": 269, "currency": "CNY" },
-        "_rating-count": { "num": 23.3, "unit": "万人好评" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230803485" },
-        "cart": { "_title": { "text": "加入购物车" }, "_action": { "verb": "add-to-cart", "label": "加入购物车" } }
-      },
-      {
-        "_name": { "text": "小米手环11 标准版" },
-        "_price": { "money": 299, "currency": "CNY" },
-        "_rating-count": { "num": 2552, "unit": "人好评" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230808916" },
-        "cart": { "_title": { "text": "加入购物车" }, "_action": { "verb": "add-to-cart", "label": "加入购物车" } }
-      },
-      {
-        "_name": { "text": "米家防蓝光眼镜 Pro" },
-        "_price": { "money": 169, "currency": "CNY" },
-        "_rating-count": { "num": 4.8, "unit": "万人好评" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230802335" },
-        "cart": { "_title": { "text": "加入购物车" }, "_action": { "verb": "add-to-cart", "label": "加入购物车" } }
-      },
-      {
-        "_name": { "text": "REDMI Note 17 Pro" },
-        "_price": { "money": 1599, "currency": "CNY" },
-        "_rating-count": { "num": 32.4, "unit": "万人好评" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230808328" },
-        "cart": { "_title": { "text": "加入购物车" }, "_action": { "verb": "add-to-cart", "label": "加入购物车" } }
-      },
-      {
-        "_name": { "text": "REDMI Buds 8 Pro" },
-        "_price": { "money": 399, "currency": "CNY" },
-        "_rating-count": { "num": 24.3, "unit": "万人好评" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230805246" },
-        "cart": { "_title": { "text": "加入购物车" }, "_action": { "verb": "add-to-cart", "label": "加入购物车" } }
-      },
-      {
-        "_name": { "text": "米家电饭煲N1 3L/4L" },
-        "_price": { "money": 169, "currency": "CNY" },
-        "_rating-count": { "num": 10.2, "unit": "万人好评" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230802283" },
-        "cart": { "_title": { "text": "加入购物车" }, "_action": { "verb": "add-to-cart", "label": "加入购物车" } }
-      },
-      {
-        "_name": { "text": "小米磁吸支架充电宝10000 7.5W" },
-        "_price": { "money": 169, "currency": "CNY" },
-        "_rating-count": { "num": 11.5, "unit": "万人好评" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230804574" },
-        "cart": { "_title": { "text": "加入购物车" }, "_action": { "verb": "add-to-cart", "label": "加入购物车" } }
-      },
-      {
-        "_name": { "text": "REDMI Turbo 5 Max" },
-        "_price": { "money": 3199, "currency": "CNY" },
-        "_rating-count": { "num": 61, "unit": "万人好评" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230805941" },
-        "cart": { "_title": { "text": "加入购物车" }, "_action": { "verb": "add-to-cart", "label": "加入购物车" } }
-      },
-      {
-        "_name": { "text": "米家磁吸茶仓杯" },
-        "_price": { "money": 119, "currency": "CNY" },
-        "_rating-count": { "num": 5.6, "unit": "万人好评" },
-        "_action": { "verb": "open", "to": "https://www.mi.com/buy?product_id=1230804912" },
-        "cart": { "_title": { "text": "加入购物车" }, "_action": { "verb": "add-to-cart", "label": "加入购物车" } }
-      }
-    ]
+   },
+   {
+    "_key": "cat-in-ear",
+    "_name": {
+     "text": "入耳式耳机"
+    }
+   },
+   {
+    "_key": "cat-other",
+    "_name": {
+     "text": "其他"
+    }
+   },
+   {
+    "_key": "cat-headphone",
+    "_name": {
+     "text": "头戴式耳机"
+    }
+   },
+   {
+    "_key": "cat-youpin",
+    "_name": {
+     "text": "有品商品"
+    }
+   }
+  ],
+  "_expose": {
+   "name": "category",
+   "type": "text"
   }
+ },
+ "sort": {
+  "_intent": "结果排序方式，当前按「综合」排序",
+  "_primary": "_items[0]",
+  "_items": [
+   {
+    "_name": {
+     "text": "综合"
+    }
+   },
+   {
+    "_name": {
+     "text": "新品"
+    }
+   },
+   {
+    "_name": {
+     "text": "销量"
+    }
+   },
+   {
+    "_name": {
+     "text": "价格"
+    }
+   }
+  ],
+  "_expose": {
+   "name": "sort",
+   "type": "text"
+  }
+ },
+ "delivery": {
+  "_intent": "收货地决定库存与运费，当前收货地：北京 北京市",
+  "_label": {
+   "text": "收货地"
+  },
+  "_place": {
+   "text": "北京 北京市"
+  }
+ },
+ "conditions": {
+  "_intent": "三个独立的促销条件开关，勾选后过滤结果",
+  "_items": [
+   {
+    "_name": {
+     "text": "促销"
+    },
+    "_expose": {
+     "name": "promo-only",
+     "type": "bool"
+    }
+   },
+   {
+    "_name": {
+     "text": "分期"
+    },
+    "_expose": {
+     "name": "installments",
+     "type": "bool"
+    }
+   },
+   {
+    "_name": {
+     "text": "仅看有货"
+    },
+    "_expose": {
+     "name": "in-stock-only",
+     "type": "bool"
+    }
+   }
+  ]
+ },
+ "results": {
+  "_intent": "关键词「耳机」的第 1 页结果：20 款商品，整卡链接到商品购买页，划线价为原价",
+  "_rel": {
+   "order": "none"
+  },
+  "_items": [
+   {
+    "_name": {
+     "text": "耳机新品1元权益定金（不发货） 订金"
+    },
+    "_price": {
+     "money": 1,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "新品预约"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230800701&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Buds 8 Pro 冰釉白"
+    },
+    "_price": {
+     "money": 369,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 399,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230805246&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Buds 8 脂白"
+    },
+    "_price": {
+     "money": 229,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 249,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230807198&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Buds 8 青春版 迷雾黑"
+    },
+    "_price": {
+     "money": 139,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230806461&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Buds 8 活力版 哑黑"
+    },
+    "_price": {
+     "money": 99,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 119,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230806464&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "Xiaomi 耳夹式耳机 缎光金"
+    },
+    "_price": {
+     "money": 799,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 849,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230807926&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Buds 6 活力版 白色"
+    },
+    "_price": {
+     "money": 99,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802087&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "Xiaomi Buds 6 月影黑"
+    },
+    "_price": {
+     "money": 649,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 699,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230805791&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI 头戴降噪耳机 爵士蓝"
+    },
+    "_price": {
+     "money": 349,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴15%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230807919&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "Xiaomi Air 5 白色"
+    },
+    "_price": {
+     "money": 569,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230808910&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "Xiaomi Buds 5 Pro 钛光金"
+    },
+    "_price": {
+     "money": 899,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 1299,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230803509&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Buds 6 青春版 子夜黑"
+    },
+    "_price": {
+     "money": 139,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802274&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "Xiaomi 开放式耳机 Pro 曜石黑"
+    },
+    "_price": {
+     "money": 699,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 999,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230804182&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "Xiaomi 骨传导耳机2 燕麦白"
+    },
+    "_price": {
+     "money": 599,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 699,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230804459&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Buds 7S 晴雪白"
+    },
+    "_price": {
+     "money": 179,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230803725&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "小米Type-C耳机（数字耳机） 黑色"
+    },
+    "_price": {
+     "money": 39,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 69,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802828&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Buds 6 子夜黑"
+    },
+    "_price": {
+     "money": 189,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 199,
+     "currency": "CNY"
+    },
+    "_tag": {
+     "text": "补贴10%"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802690&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "小米尊享礼盒 黑色"
+    },
+    "_price": {
+     "money": 399,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230800564&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "小米活塞耳机 黑色"
+    },
+    "_price": {
+     "money": 29,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1165100001&cfrom=search"
+    }
+   },
+   {
+    "_name": {
+     "text": "小米臻享礼盒 黑色"
+    },
+    "_price": {
+     "money": 399,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802480&cfrom=search"
+    }
+   }
+  ]
+ },
+ "pages": {
+  "_intent": "结果分页展示，当前在第 1 页，可前往第 2 页",
+  "_primary": "_items[0]",
+  "_items": [
+   {
+    "_name": {
+     "text": "1"
+    }
+   },
+   {
+    "_name": {
+     "text": "2"
+    }
+   }
+  ]
+ },
+ "recommended": {
+  "_intent": "猜你喜欢：跨品类的站内推荐（第 1 屏 10 款），整卡链接到商品页，可直接加入购物车",
+  "_title": {
+   "text": "猜你喜欢"
+  },
+  "_items": [
+   {
+    "_name": {
+     "text": "米家电动剃须刀S100 云纹刀网版"
+    },
+    "_price": {
+     "money": 99,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 870,
+     "unit": "人好评"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230808886"
+    },
+    "cart": {
+     "_title": {
+      "text": "加入购物车"
+     },
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "米家智能血压计"
+    },
+    "_price": {
+     "money": 269,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 23.3,
+     "unit": "万人好评"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230803485"
+    },
+    "cart": {
+     "_title": {
+      "text": "加入购物车"
+     },
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "小米手环11 标准版"
+    },
+    "_price": {
+     "money": 299,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 2552,
+     "unit": "人好评"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230808916"
+    },
+    "cart": {
+     "_title": {
+      "text": "加入购物车"
+     },
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "米家防蓝光眼镜 Pro"
+    },
+    "_price": {
+     "money": 169,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 4.8,
+     "unit": "万人好评"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230802335"
+    },
+    "cart": {
+     "_title": {
+      "text": "加入购物车"
+     },
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Note 17 Pro"
+    },
+    "_price": {
+     "money": 1599,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 32.4,
+     "unit": "万人好评"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230808328"
+    },
+    "cart": {
+     "_title": {
+      "text": "加入购物车"
+     },
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Buds 8 Pro"
+    },
+    "_price": {
+     "money": 399,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 24.3,
+     "unit": "万人好评"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230805246"
+    },
+    "cart": {
+     "_title": {
+      "text": "加入购物车"
+     },
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "米家电饭煲N1 3L/4L"
+    },
+    "_price": {
+     "money": 169,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 10.2,
+     "unit": "万人好评"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230802283"
+    },
+    "cart": {
+     "_title": {
+      "text": "加入购物车"
+     },
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "小米磁吸支架充电宝10000 7.5W"
+    },
+    "_price": {
+     "money": 169,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 11.5,
+     "unit": "万人好评"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230804574"
+    },
+    "cart": {
+     "_title": {
+      "text": "加入购物车"
+     },
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "REDMI Turbo 5 Max"
+    },
+    "_price": {
+     "money": 3199,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 61,
+     "unit": "万人好评"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230805941"
+    },
+    "cart": {
+     "_title": {
+      "text": "加入购物车"
+     },
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "米家磁吸茶仓杯"
+    },
+    "_price": {
+     "money": 119,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 5.6,
+     "unit": "万人好评"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230804912"
+    },
+    "cart": {
+     "_title": {
+      "text": "加入购物车"
+     },
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    }
+   }
+  ]
+ }
 }

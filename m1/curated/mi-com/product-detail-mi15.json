@@ -1,164 +1,161 @@
 {
-  "_intent": "米家宠物空气净化器的商品详情与购买页（目录 slug product-detail-mi15 为历史误名，页面实际是这款净化器）：当前优惠价、国补促销、库存与配送地、颜色选择、购买动作与服务承诺",
-  "_key": "mi-pet-air-purifier",
+ "_intent": "米家宠物空气净化器的商品详情与购买页（目录 slug product-detail-mi15 为历史误名，页面实际是这款净化器）：当前优惠价、国补促销、库存与配送地、颜色选择、购买动作与服务承诺",
+ "_key": "mi-pet-air-purifier",
+ "_title": {
+  "text": "米家宠物空气净化器"
+ },
+ "_primary": "product",
+ "product": {
+  "_intent": "在售商品：小米自营，国补资格下单省10%，主打净味除毛除敏",
   "_title": {
-    "text": "米家宠物空气净化器"
+   "text": "米家宠物空气净化器"
   },
-  "_primary": "product",
-  "product": {
-    "_intent": "在售商品：小米自营，国补资格下单省10%，主打净味除毛除敏",
-    "_title": {
-      "text": "米家宠物空气净化器"
-    },
-    "_summary": {
-      "text": "产品站领国补资格下单省10%净除多种宠物异味丨快速吸附毛发皮屑丨双重消杀技术丨四大权威机构认可"
-    },
-    "_provider": {
-      "text": "小米自营"
-    },
-    "_price": {
-      "money": 1439,
-      "currency": "CNY"
-    },
-    "_amount": {
-      "money": 2999,
-      "currency": "CNY"
-    }
+  "_summary": {
+   "text": "产品站领国补资格下单省10%净除多种宠物异味丨快速吸附毛发皮屑丨双重消杀技术丨四大权威机构认可"
   },
-  "coupons": {
-    "_intent": "下单前可领店铺优惠券",
-    "_label": {
-      "text": "优惠券"
-    },
-    "_detail": {
-      "text": "【惊喜券】智能好物20元券等6 种优惠券"
-    },
-    "claim": {
-      "_intent": "领取优惠券",
-      "_title": {
-        "text": "立即领取"
-      },
-      "_action": {
-        "verb": "operate",
-        "label": "立即领取"
-      }
-    }
+  "_provider": {
+   "text": "小米自营"
   },
-  "delivery": {
-    "_intent": "按收货地址给出的库存状态：北京 北京市 海淀区 清河街道 有现货",
-    "_place": {
-      "text": "北京 北京市 海淀区 清河街道"
-    },
-    "_status": {
-      "text": "有现货"
-    },
-    "modify": {
-      "_intent": "修改收货地址",
-      "_title": {
-        "text": "修改"
-      },
-      "_action": {
-        "verb": "operate",
-        "label": "修改"
-      }
-    }
+  "_price": {
+   "money": 1439,
+   "currency": "CNY"
   },
-  "options": {
-    "_intent": "颜色选择：本 capture 中仅一种颜色「白色」",
-    "_label": {
-      "text": "选择颜色"
-    },
-    "_rel": {
-      "compare": true
-    },
-    "_primary": "_items[0]",
-    "_items": [
-      {
-        "_key": "color-white",
-        "_name": {
-          "text": "白色"
-        }
-      }
-    ],
-    "_expose": {
-      "name": "color",
-      "type": "text"
-    }
-  },
-  "buy": {
-    "_intent": "购买动作区：加入购物车或收藏喜欢",
-    "cart": {
-      "_title": {
-        "text": "加入购物车"
-      },
-      "_action": {
-        "verb": "add-to-cart",
-        "label": "加入购物车"
-      }
-    },
-    "like": {
-      "_title": {
-        "text": "喜欢"
-      },
-      "_action": {
-        "verb": "toggle",
-        "label": "喜欢"
-      }
-    }
-  },
-  "reviews": {
-    "_intent": "查看已购用户的评价",
-    "_action": {
-      "verb": "open",
-      "to": "https://www.mi.com/shop/comment/21096.html",
-      "label": "用户评价"
-    }
-  },
-  "assurances": {
-    "_intent": "购买保障与说明；售后服务政策与 7 天价格保护有独立政策页",
-    "_items": [
-      {
-        "_name": {
-          "text": "发货说明"
-        }
-      },
-      {
-        "_name": {
-          "text": "7天无理由退货（到店自取拆封后不支持）"
-        }
-      },
-      {
-        "_name": {
-          "text": "运费说明"
-        }
-      },
-      {
-        "_name": {
-          "text": "企业信息"
-        }
-      },
-      {
-        "_name": {
-          "text": "售后服务政策"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://m.mi.com/aftersale/policy/7"
-        }
-      },
-      {
-        "_name": {
-          "text": "7天价格保护"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://s1.mi.com/m/faq/giving/index.html?project_id=44"
-        }
-      }
-    ]
-  },
-  "_image": {
-    "image": "../assets/mi15-product-hero.png",
-    "alt": "米家宠物空气净化器 产品主图（自原页截图恢复）"
+  "_amount": {
+   "money": 2999,
+   "currency": "CNY"
   }
+ },
+ "coupons": {
+  "_intent": "下单前可领店铺优惠券",
+  "_label": {
+   "text": "优惠券"
+  },
+  "_detail": {
+   "text": "【惊喜券】智能好物20元券等6 种优惠券"
+  },
+  "claim": {
+   "_intent": "领取优惠券",
+   "_title": {
+    "text": "立即领取"
+   },
+   "_action": {
+    "verb": "operate",
+    "label": "立即领取"
+   }
+  }
+ },
+ "delivery": {
+  "_intent": "按收货地址给出的库存状态：北京 北京市 海淀区 清河街道 有现货",
+  "_place": {
+   "text": "北京 北京市 海淀区 清河街道"
+  },
+  "_status": {
+   "text": "有现货"
+  },
+  "modify": {
+   "_intent": "修改收货地址",
+   "_title": {
+    "text": "修改"
+   },
+   "_action": {
+    "verb": "operate",
+    "label": "修改"
+   }
+  }
+ },
+ "options": {
+  "_intent": "颜色选择：本 capture 中仅一种颜色「白色」",
+  "_label": {
+   "text": "选择颜色"
+  },
+  "_primary": "_items[0]",
+  "_items": [
+   {
+    "_key": "color-white",
+    "_name": {
+     "text": "白色"
+    }
+   }
+  ],
+  "_expose": {
+   "name": "color",
+   "type": "text"
+  }
+ },
+ "buy": {
+  "_intent": "购买动作区：加入购物车或收藏喜欢",
+  "cart": {
+   "_title": {
+    "text": "加入购物车"
+   },
+   "_action": {
+    "verb": "add-to-cart",
+    "label": "加入购物车"
+   }
+  },
+  "like": {
+   "_title": {
+    "text": "喜欢"
+   },
+   "_action": {
+    "verb": "toggle",
+    "label": "喜欢"
+   }
+  }
+ },
+ "reviews": {
+  "_intent": "查看已购用户的评价",
+  "_action": {
+   "verb": "open",
+   "to": "https://www.mi.com/shop/comment/21096.html",
+   "label": "用户评价"
+  }
+ },
+ "assurances": {
+  "_intent": "购买保障与说明；售后服务政策与 7 天价格保护有独立政策页",
+  "_items": [
+   {
+    "_name": {
+     "text": "发货说明"
+    }
+   },
+   {
+    "_name": {
+     "text": "7天无理由退货（到店自取拆封后不支持）"
+    }
+   },
+   {
+    "_name": {
+     "text": "运费说明"
+    }
+   },
+   {
+    "_name": {
+     "text": "企业信息"
+    }
+   },
+   {
+    "_name": {
+     "text": "售后服务政策"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://m.mi.com/aftersale/policy/7"
+    }
+   },
+   {
+    "_name": {
+     "text": "7天价格保护"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://s1.mi.com/m/faq/giving/index.html?project_id=44"
+    }
+   }
+  ]
+ },
+ "_image": {
+  "image": "../assets/mi15-product-hero.png",
+  "alt": "米家宠物空气净化器 产品主图（自原页截图恢复）"
+ }
 }

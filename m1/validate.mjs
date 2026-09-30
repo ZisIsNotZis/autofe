@@ -10,7 +10,15 @@ import {
   valueTypeOf, resolvePath, findKey, childrenOf, walk, parseExpr, exprPaths, exposeOf,
 } from './model-lib.mjs';
 
+// typed values are a closed set: a reserved key holding a non-typed object is a hard error (F-031)
+const VALUE_KEYS = ['text', 'num', 'money', 'date', 'time', 'bool', 'image', 'video', 'icon', 'ref', 'list'];
+function isTypedValue(v) {
+  if (v === null || typeof v !== 'object' || Array.isArray(v)) return false;
+  return Object.keys(v).some((k) => VALUE_KEYS.includes(k));
+}
+const VALUE_HOLDERS = ['_image', '_video', '_icon', '_name', '_title', '_label', '_text', '_subtitle', '_detail', '_summary', '_price', '_count', '_measure', '_author', '_category', '_tag', '_status', '_variant', '_option'];
 export function validate(model) {
+  const shapeErrors = [];
   // _expose.type must be a known value type, else it silently becomes plain text (F-031)
   const errors = [];
   const err = (p, msg) => errors.push({ path: p || '/', message: msg });
@@ -36,6 +44,11 @@ export function validate(model) {
       if (k === '_empty') {
         if (typeof node[k] !== 'object' || node[k] === null || Array.isArray(node[k])) err(`${p}._empty`, '_empty must be a storyline node');
         if (!Array.isArray(node._items)) err(`${p}._empty`, '_empty is only meaningful on a collection (a node with _items)');
+        continue;
+      }
+      if (VALUE_HOLDERS.includes(k)) {
+        // a malformed typed value would silently print as raw JSON in the render
+        if (valueTypeOf(node[k]) === null) err(`${p}.${k}`, `${k} must hold a closed typed value`);
         continue;
       }
       if (isReserved(k)) continue;
