@@ -233,8 +233,8 @@ function renderChips(items, chain, ctx) {
     const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     return `<span class="chip-item">${inner}${ex.ctl}</span>`;
   }).join('');
-  // 成员是句子（含句读）时不排成一行 chip 流：每条自成一行（F-031-§1）
-  const rows = items.some((it) => /[，。；、]/.test(labelTextOf(it)));
+  // 成员是句子或带旁注（含句读/括号）时不排成一行 chip 流：每条自成一行（F-031-§1）
+  const rows = items.some((it) => /[，。；、（）：]/.test(labelTextOf(it)));
   return chips ? `<div class="chips${rows ? ' chips-rows' : ''}">${chips}</div>` : '';
 }
 // 数值事实必须带角色/单位（F-031-§6）：裸数字在屏幕上没有归属
