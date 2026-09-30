@@ -96,3 +96,12 @@
   `node m1/eval/pipeline.mjs --shots` 全绿（42/42 HTML · 42/42 MD · 48 模型 · 七套自测 · 视觉 42/42 干净）。
 - **isomorphism：`partial` → `holds（已行使路径）`**；仍未共享项见 `.scratch/24-row-label/report.md` §5。
 - 更正记录：`.scratch/state-report.md` §3/§4、`.scratch/23-closeup-demo/report.md`（原「0/42 触发」已证伪）。
+
+---
+## 收尾快照（2026-10-01，父代理；工作树干净，最新提交 `663ca48`）
+- **门禁**：`node m1/eval/pipeline.mjs [--shots]` → 42/42 HTML 保真 · 42/42 Markdown 保真 · 48 模型校验 · **七套自测**（校验器/地基/度量/文本目标/轴一致性/Markdown 目标/视觉自查）· 视觉自查 42/42 干净
+- **架构**：`m1/axis.mjs` = 唯一决策层（轴语义 + 节点渲染契约 + 对比表契约 + 行标签解析）；`render.mjs`/`render-text.mjs`/`render-md.mjs` 只画图（去注释后模型语义 token = 0）
+- **同构结论**：`holds（已行使路径）`——已行使路径上三目标决策一致；仍未共享的部分逐条列在 `.scratch/24-row-label/report.md`
+- **夜间轮次**（1–24）：视觉缺陷闭环 → 校验器空转重大发现 → M4-a 地基 → 模型说真话 → 采集补样本 → 门禁诚实性（分母 +233、匹配边界化、门禁可证伪）→ 留出集泛化（裂图 25→3）→ 同构架构（决策层抽出、三目标、词汇声明化）
+- **已停在此处等待用户决策**：`D-1 _macro`（阻塞 M4-b 命名原语 + `form`/`table`/`paginator`/`login` 的良构校验）、`D-2` 字段可引用性、`D-6` 金额字形/精度（M5）。其余（结算/设置页样本、M5 其余 token）在无决策下边际收益低。
+- **入口**：`.scratch/state-report.md`（5 分钟版，`unverified_claims=0`）· `.scratch/decisions-for-user.md`（6 条）· `docs/three-targets.md`（三目标演示，可重生成）
