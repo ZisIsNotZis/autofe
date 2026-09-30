@@ -17,7 +17,9 @@
   4. ✅ `verify` 轮 4 判 FAIL（抓到我们引入的单位叠加回归 + 4 项漏修），提交 `3f0a986`
   5. ✅ `fix-4` 修完 6 项 + 新增两条自查（unit-stack / dup-title），提交 `37d4599`
   6. ✅ `verify` 轮 5 判 **PASS**（0 blocker / 0 major / 5 minor），并发现流程坑：截图未随 HTML 刷新 → 已 `--shots` 并提交 `27153d7`
-  7. ⏳ **`M4-a` 运行中**（worker `6826f6e5`）：D1 `_expose` 作用域 + `_when` 硬校验、D2 compare 语义与位置无关、D3 删除引擎侧价格算术 → `.scratch/07-m4/fix-report-5.md`
+  7. ✅ **`M4-a` 完成并验收**（提交 `d0b90a4`）：D1 `_expose` 作用域 + `_when` 硬校验、D2 compare 位置无关（13 表 + 显式降级清单）、D3 删除引擎侧价格算术；**恢复被删的校验器根调用**；新增 `validate-selftest.mjs`(10 断言) 与 `foundation-selftest.mjs` 并接入 pipeline
+  8. ⏳ **轮 6 运行中**：策展正确性（可疑 compare 标记复核 / `_primary` 重声明）+ F-042（条目级 `_action.when` 从不求值）
+- **F-042 新登记**：条目级 `_action.when` 从不求值（M4-a 的 D1 构造断言顺带挖出）
 - **已完成并行轨**：M4 复合原语提案 → `docs/m1/m4-composites-proposal.md`（14 候选 → 升格 5 / 否决 7；三条基础缺陷均已复现）
 - **M4-a 之后**：策展回改（55 异质 `_items`）→ 补 exemplar 样本（`table`/`login` 前置证据）→ M4 原语实现
 - **待用户拍板清单（累积）**：① 三条 provisional 语法裁定 P1-P3（`_expose` 作用域优先级 / 字段可引用性按原语类型 / prose 走引擎修法）② ipad-air 实体-属性分层规则 ③ 无标签输入框的受控标签来源 ④ exemplar 补样本范围
