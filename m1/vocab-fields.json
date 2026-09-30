@@ -51,6 +51,16 @@
     "zones": {
       "type": "num",
       "label": "Zones"
+    },
+    "cpu": {
+      "type": "num",
+      "label": "CPU",
+      "unit": "核"
+    },
+    "memory": {
+      "type": "num",
+      "label": "内存",
+      "unit": "GB"
     }
   }
 }

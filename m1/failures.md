@@ -253,3 +253,9 @@
 - **现象**：`renderControls` 与 `itemExtra`（`chips/list/seq/deflist/compare-table` 共用）直接读 `it._action`，**不求值 `_action.when`**；只有 `renderNode` 自己的 `_action` 走了 `evalExpr`。于是 `m1/models/ant-design/components-table.json` 的 "Delete selected"（`when: role == "admin"`、`role` 未注入）照样渲染成控件 —— 条件门形同虚设。
 - **未修原因**：不属于 M4-a 的 D1-D3 范围（是"条目动作的条件求值"这条独立线），且修它会改动控件可见性语义、需先定"上下文未注入时 `role` 的默认值"（deny 还是 allow）。记为 ticket，交 M4 原语轮一起处理。
 - **证据**：`/tmp/s-antd-bulk.png`（D1 断言截图里两个控件同时出现）。
+
+## F-043 词汇增长（域字段，非失败模式）：aliyun 实例规格 `cpu` / `memory`
+- **背景**：轮 6 把 aliyun `instances` 的 `_rel.compare` 删除，理由是“实例规格（2核2G）要成对照行必须在 `vocab-fields.json` 新增域字段（词汇变更）”。父代理裁定（轮 7 §3）：**允许**，属常规词汇增长。
+- **变更**：`m1/vocab-fields.json` 新增 `cpu`（`{type:num, label:"CPU", unit:"核"}`）与 `memory`（`{type:num, label:"内存", unit:"GB"}`）；`m1/curated/aliyun-com/product-ecs.json` 四张报价卡补 `_fields`（抓取背书：`corpus/aliyun-com/product-ecs/nodes.json` 每卡 `p 实例 : N核NG`：e=2核2G / u2a=2核4G / c9i=4核8G / g9i=2核8G），并声明 `_rel.compare: true`。
+- **结果**：`instances` 由“一排报价卡”变为对比表（列=实例，行=CPU/内存），有抓取与 `_intent` 双重背书。
+- **状态**：已采纳（2026-xx-xx，父代理裁定·轮 7）。非失败模式，仅按 `vocab-fields.json` 纪律留痕。

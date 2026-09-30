@@ -8,6 +8,8 @@ import { validate } from '../validate.mjs';
 const REJECT = [
   ['unknown reserved-style key', { _intent: 'x', _title: { text: 't' }, _bogus: { text: 'b' } }, '_bogus'],
   ['dangling _primary', { _intent: 'x', _title: { text: 't' }, _primary: 'nope', a: { _text: { text: 'a' } } }, '_primary'],
+  ['_primary pointing at a named child node (not a role fact)', { _intent: 'x', _key: 'k', _title: { text: 't' }, featured: { _intent: 'f', _text: { text: 'b' } }, _primary: 'featured' }, '_primary'],
+  ['_primary pointing at a collection element', { _intent: 'x', _key: 'k', _title: { text: 't' }, _items: [{ _name: { text: 'a' } }], _primary: '_items[0]' }, '_primary'],
   ['_when names an undeclared fact', { _intent: 'x', _title: { text: 't' }, _when: 'count(nope) > 0' }, '_when'],
   ['_expose with an unknown value type', { _intent: 'x', _title: { text: 't' }, _expose: { name: 'q', type: 'whatever' } }, '_expose'],
   ['_rel.order outside the closed enum', { _intent: 'x', _title: { text: 't' }, _rel: { order: 'hot' } }, '_rel.order'],

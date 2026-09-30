@@ -262,7 +262,7 @@
    }
   },
   {
-   "_intent": "AI 章节：从芯片开始的 AI 平台叙事与隐私承诺",
+   "_intent": "AI 章节：从芯片开始的 AI 平台叙事与隐私承诺（原 `_items` 误标为可互换实例：四张要点卡不同粒度——前三张名+述、末张只有名，引擎已自愈成序列；回改为 `_lines` 有序序列）",
    "_key": "ai",
    "_title": {
     "text": "AI"
@@ -278,7 +278,7 @@
     "label": "Learn more about Apple Intelligence",
     "to": "https://www.apple.com/apple-intelligence/"
    },
-   "_items": [
+   "_lines": [
     {
      "_key": "ai-apps",
      "_name": {
@@ -369,7 +369,7 @@
    ]
   },
   {
-   "_intent": "Continuity 章节：Mac 与 iPhone 协同的五项能力",
+   "_intent": "Continuity 章节：Mac 与 iPhone 协同的五项能力（原 `_items` 误标为可互换实例：五项能力不同形——首项只有名、其余名+述，引擎已自愈成序列；回改为 `_lines` 有序序列）",
    "_key": "continuity",
    "_title": {
     "text": "Continuity"
@@ -385,7 +385,7 @@
     "label": "Learn more about Continuity",
     "to": "https://www.apple.com/macos/continuity/"
    },
-   "_items": [
+   "_lines": [
     {
      "_key": "cont-calls",
      "_name": {
@@ -490,7 +490,7 @@
    ]
   },
   {
-   "_intent": "换新章节：从旧 MacBook Air 换到 M5 机型得到的四项升级与折抵入口",
+   "_intent": "换新章节：从旧 MacBook Air 换到 M5 机型得到的四项升级与折抵入口（原 `_items` 误标为可互换实例：四项升级不同形——仅一项带 `_detail`，另有折抵入口控件，引擎已自愈成序列；回改为 `_lines` 有序序列）",
    "_key": "upgrade",
    "_title": {
     "text": "There’s never been a better time to upgrade."
@@ -528,7 +528,7 @@
      "type": "text"
     }
    },
-   "_items": [
+   "_lines": [
     {
      "_key": "up-display",
      "_name": {

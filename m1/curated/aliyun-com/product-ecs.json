@@ -69,11 +69,18 @@
     }
   },
   "instances": {
-    "_intent": "按团队规模选实例：从个人开发者到中大型企业",
+    "_intent": "按团队规模选实例：从个人开发者到中大型企业。四个实例是同一类实体（规格 + 价格），抓取得 `实例 : N核NG` 规格行（e=2核2G / u2a=2核4G / c9i=4核8G / g9i=2核8G），故声明 `_rel.compare` 让规格成为可对照行（列=实例，行=规格）；域字段 cpu/memory 见 `vocab-fields.json`（父代理裁定·轮 7）。",
+    "_rel": {
+      "compare": true
+    },
     "_items": [
       {
         "_name": {
           "text": "e实例"
+        },
+        "_fields": {
+          "cpu": { "num": 2, "unit": "核" },
+          "memory": { "num": 2, "unit": "GB" }
         },
         "_summary": {
           "text": "个人开发者必选 · ¥99.00/月"
@@ -92,6 +99,10 @@
         "_name": {
           "text": "u2a实例"
         },
+        "_fields": {
+          "cpu": { "num": 2, "unit": "核" },
+          "memory": { "num": 4, "unit": "GB" }
+        },
         "_summary": {
           "text": "初创企业优选 · ¥1238.00/月"
         },
@@ -109,6 +120,10 @@
         "_name": {
           "text": "c9i实例"
         },
+        "_fields": {
+          "cpu": { "num": 4, "unit": "核" },
+          "memory": { "num": 8, "unit": "GB" }
+        },
         "_summary": {
           "text": "中大型企业首选 · ¥1385.00/月"
         },
@@ -125,6 +140,10 @@
       {
         "_name": {
           "text": "g9i实例"
+        },
+        "_fields": {
+          "cpu": { "num": 2, "unit": "核" },
+          "memory": { "num": 8, "unit": "GB" }
         },
         "_summary": {
           "text": "中大型企业首选"

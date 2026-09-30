@@ -74,6 +74,9 @@ export function validate(model) {
         const r = resolvePath(node, node, node._primary);
         if (!r.ok) err(`${p}._primary`, `_primary does not resolve: ${r.why} (${node._primary})`);
         else if (r.node === node) err(`${p}._primary`, '_primary must point at a descendant, not at itself');
+        // 父代理裁定（轮 6/7）：_primary 的语义是“主事实”，必须解析到一个角色事实
+        // （§2 的封闭类型化值）。指向节点或内联对象是非法声明，硬报错。
+        else if (valueTypeOf(r.node) === null) err(`${p}._primary`, `_primary must resolve to a role fact (a closed typed value), not a node or inline object (${node._primary})`);
       }
     }
 

@@ -207,7 +207,7 @@
    }
   },
   {
-   "_intent": "尺寸章节（**实体与属性分层**）：11/13 英寸两个型号是实体（源站是两个并列 button），True Tone/P3/全贴合是这块显示屏的共享属性，移到子节点 display；原先把两类混成一个 _rel.compare 单元，已删除标记",
+   "_intent": "尺寸章节（**实体与属性分层**）：11/13 英寸两个型号是实体（源站是两个并列 button），True Tone/P3/全贴合是这块显示屏的共享属性，移到子节点 display；原先把两类混成一个 _rel.compare 单元，已删除标记（原 `_items` 误标为可互换实例：两个型号带不同 `_detail`、不可一行紧凑排比；回改为 `_lines` 有序序列，轮 7）",
    "_key": "sizes",
    "_title": {
     "text": "Two sizes. Infinite possibilities."
@@ -215,7 +215,7 @@
    "_detail": {
     "text": "You can choose between an 11-inch and a 13-inch iPad Air, each with a gorgeous, high-resolution Liquid Retina display that brings everything you do to life. Both displays deliver a brilliant, responsive, and color-accurate viewing experience."
    },
-   "_items": [
+   "_lines": [
     {
      "_key": "size-11",
      "_name": {
@@ -233,8 +233,8 @@
     }
    ],
    "display": {
-    "_intent": "显示特性：True Tone / P3 广色域 / 全贴合——两种尺寸共享的同一块 Liquid Retina 显示屏属性",
-    "_items": [
+    "_intent": "显示特性：True Tone / P3 广色域 / 全贴合——两种尺寸共享的同一块 Liquid Retina 显示屏属性（原 `_items` 误标为可互换实例：三条显示特性不同形——仅两条带 `_detail`，不是同一行可比的实例；回改为 `_lines` 有序序列）",
+    "_lines": [
      {
       "_key": "size-tonetone",
       "_name": {

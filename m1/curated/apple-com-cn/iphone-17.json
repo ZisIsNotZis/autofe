@@ -33,7 +33,7 @@
    }
   },
   {
-   "_intent": "先刷重点：六个功能章节的高亮图库，逐条给出本章一句话卖点",
+   "_intent": "先刷重点：六个功能章节的高亮图库，逐条给出本章一句话卖点（原 `_items` 误标为可互换实例：六条卖点不同形——部分带 `_detail`，是章节高亮的长条目流，非同一行可比的实例；回改为 `_lines` 有序序列，`_rel.order: sequence` 语义不变）",
    "_key": "highlights",
    "_title": {
     "text": "先刷重点"
@@ -41,7 +41,7 @@
    "_rel": {
     "order": "sequence"
    },
-   "_items": [
+   "_lines": [
     {
      "_key": "hl-display",
      "_name": {
