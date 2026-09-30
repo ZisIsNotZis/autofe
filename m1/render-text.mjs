@@ -21,13 +21,16 @@ import {
   childrenOf, factsOf, isRoleKey, parseExpr, evalExpr, scopeFor,
   exposeOf, resolveWithParent, FIELDS,
 } from './model-lib.mjs';
+// The axis-decision layer is SHARED with the HTML target (round 19): this file no
+// longer re-copies `selectForm`/`comparable`/`compareSetVerdict`/constants from
+// `render.mjs`. It imports only the shared model layer and ./axis.mjs — never a
+// renderer. See .scratch/19-shared-axis/report.md.
+import {
+  labelOf, labelTextOf, isProseItem, selectForm, compareRowKeys, compareSetVerdict,
+  CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, META_KEYS, hasOwnUnit,
+} from './axis.mjs';
 
-// ---- display constants duplicated from render.mjs (NOT in the model) -------
-const CURRENCY_GLYPH = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP: '£' };
-const ROLE_UNIT = { _rating: '分', '_rating-count': '条评价' };
-const META_KEYS = new Set(['_count', '_measure', '_duration', '_deadline', '_author', '_source', '_provider', '_brand', '_stock']);
-const LIST_QUALIFIER = 'list';
-// human labels for semantic roles so a text reader is not left with bare values
+// role-fact display (target-local): the human `ROLE_LABEL` map is text-only copy.
 const ROLE_LABEL = {
   _title: '', _name: '', _label: '', _subtitle: '副标题', _summary: '', _detail: '', _text: '',
   _category: '分类', _tag: '标签', _status: '状态', _variant: '版本', _option: '选项',
@@ -80,129 +83,12 @@ function fmt(v) {
   return JSON.stringify(v);
 }
 // role fact, with the fallback unit for numbers that would otherwise be bare (F-031-§6)
-const hasOwnUnit = (v) => Boolean(v && typeof v === 'object' && !Array.isArray(v) && 'num' in v && v.unit);
 const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] && !hasOwnUnit(f.value) ? ` ${ROLE_UNIT[f.key]}` : ''}`;
 const roleLabel = (key) => (key in ROLE_LABEL ? ROLE_LABEL[key] : '');
 
-// ---- item-set form selection (ported from render.mjs; see §语义泄漏清单) ----
-const labelOf = (it) => it._name ?? it._title ?? it._text;
-const labelTextOf = (it) => (labelOf(it)?.text ?? '');
-function isLabelOnlyItem(it) {
-  return factsOf(it).every((f) => ['_name', '_title'].includes(f.key)) && !it._fields && childrenOf(it).length === 0;
-}
-function isImageOnlyItem(it) {
-  return Boolean(it._image) && childrenOf(it).length === 0 && factsOf(it).every((f) => f.key === '_image');
-}
-function isProseItem(it) {
-  const f = factsOf(it);
-  return f.length > 0 && f.every((x) => x.key === '_text') && !it._fields && childrenOf(it).length === 0 && !it._action;
-}
-function jaccardOf(a, b) {
-  if (!a.length || !b.length) return 0;
-  const inter = a.filter((k) => b.includes(k)).length;
-  return inter / new Set([...a, ...b]).size;
-}
-function shapeKeys(it) {
-  const ks = factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key);
-  for (const c of childrenOf(it)) ks.push('#' + c.key.replace(/\[\d+\]$/, ''));
-  if (it._image) ks.push('#image');
-  if (it._action) ks.push('#action');
-  return [...new Set(ks)].sort();
-}
-function textLenOf(it) {
-  let n = 0;
-  const own = it._name ?? it._title ?? it._text;
-  if (own?.text) n += own.text.length;
-  for (const f of factsOf(it)) {
-    if (['_name', '_title'].includes(f.key)) continue;
-    if (f.value?.text) n += f.value.text.length;
-    if (f.value?.list) n += JSON.stringify(f.value.list).length;
-  }
-  return n;
-}
-function comparable(items) {
-  if (items.length < 2) return false;
-  if (items.every(isLabelOnlyItem)) return true;
-  const ks = items.map(shapeKeys);
-  const sims = ks.map((k) => ks.reduce((a, b) => a + jaccardOf(k, b), 0) / ks.length);
-  const avgSim = sims.reduce((a, b) => a + b, 0) / sims.length;
-  const lens = items.map(textLenOf);
-  const maxLen = Math.max(...lens), minLen = Math.min(...lens);
-  const childCounts = items.map((it) => childrenOf(it).length);
-  return avgSim >= 0.6 && maxLen <= 400 && (minLen === 0 || maxLen / Math.max(minLen, 40) <= 4) && Math.max(...childCounts) <= 2;
-}
-function selectForm(items, order) {
-  if (!items.length) return 'none';                                   // F-018/F-030 form heuristic
-  if (items.every(isImageOnlyItem)) return 'image-strip';
-  if (items.every(isProseItem)) return 'prose';
-  if (items.some((it) => it._fields && Object.keys(it._fields).length)) return 'table';
-  if (items.length > 1 && items.some((it) => it._expose)) return 'stack';
-  if (items.every(isLabelOnlyItem)) {
-    const long = items.every((it) => {
-      const t = labelOf(it);
-      const len = t ? (t.text ?? '').length : 0;
-      return len >= 16 || /[?？]$/.test((t?.text ?? '').trim());
-    });
-    if (order === 'sequence' || order === 'time') return 'seq';
-    if (long) return 'list';
-    if (items.every((it) => it._action)) return 'controls';
-    return 'chips';
-  }
-  if (!comparable(items)) return 'stack';
-  if (items.some((it) => it._price) && items.every((it) => it._name || it._title)) return 'product-cards';
-  const deflist = items.every((it) => {
-    if (it._fields || childrenOf(it).length) return false;
-    const f = factsOf(it);
-    if (f.length < 1 || f.length > 2) return false;
-    return JSON.stringify(f.map((x) => x.value.text ?? x.value.num ?? '')).length <= 240;
-  });
-  if (deflist) return 'deflist';
-  const accordion = items.every((it) => factsOf(it).some((f) => f.key === '_title') && factsOf(it).some((f) => f.key === '_detail') && childrenOf(it).length === 0);
-  if (accordion) return 'accordion';
-  return 'cards';
-}
-
-// ---- compare-set verdict (ported from render.mjs; D2 / layout-axes §3) -----
-const isPositionalKey = (k) => /^_(items|lines)\[\d+\]$/.test(k);
-function compareRowKeys(items) {
-  const rowKeys = []; const seen = new Set();
-  for (const it of items) {
-    for (const k of Object.keys(it._fields ?? {})) if (!seen.has(k)) { seen.add(k); rowKeys.push(k); }
-    for (const f of factsOf(it)) {
-      if (['_name', '_title', '_tag', '_price', '_subtitle', '_summary'].includes(f.key)) continue;
-      if (!seen.has(f.key)) { seen.add(f.key); rowKeys.push(f.key); }
-    }
-    for (const c of childrenOf(it)) { if (isPositionalKey(c.key)) continue; if (!seen.has(c.key)) { seen.add(c.key); rowKeys.push(c.key); } }
-  }
-  return rowKeys;
-}
-function compareHasCell(it, key) {
-  if (it._fields?.[key]) return true;
-  if (factsOf(it).some((f) => f.key === key)) return true;
-  return childrenOf(it).some((c) => c.key === key);
-}
-const COMPARE_MIN_FILL = 0.4;
-function compareStats(items) {
-  const rowKeys = compareRowKeys(items);
-  let filledCells = 0, sharedRows = 0;
-  for (const k of rowKeys) {
-    const n = items.filter((it) => compareHasCell(it, k)).length;
-    filledCells += n;
-    if (n >= 2) sharedRows += 1;
-  }
-  const cells = rowKeys.length * items.length;
-  return { rowKeys, rows: rowKeys.length, sharedRows, fill: cells ? filledCells / cells : 0 };
-}
-function compareSetVerdict(items) {
-  if (items.length < 2) return { ok: false, reason: 'fewer-than-2-entities' };
-  if (items.some((it) => it._expose)) return { ok: false, reason: 'member-is-a-control' };
-  if (items.some((it) => !(it._name ?? it._title))) return { ok: false, reason: 'member-has-no-name' };
-  const st = compareStats(items);
-  if (!st.rows) return { ok: false, reason: 'no-comparable-attribute' };
-  if (!st.sharedRows) return { ok: false, reason: 'degenerate-no-shared-attribute' };
-  if (st.fill < COMPARE_MIN_FILL) return { ok: false, reason: `degenerate-fill-rate:${st.fill.toFixed(2)}` };
-  return { ok: true };
-}
+// ---- item-set form selection and compare verdict: shared in ./axis.mjs ----
+// (round 19: `selectForm`/`comparable`/`compareSetVerdict` used to be ported here
+// from render.mjs; that duplication is gone — the axis layer is imported, not copied.)
 
 // ---- actions / controls (F-031-§4) ----------------------------------------
 function actionVisible(a, scope) {

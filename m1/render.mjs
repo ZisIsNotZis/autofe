@@ -13,6 +13,14 @@ import {
   isRoleKey, resolvePath, resolveWithParent, childrenOf, factsOf,
   parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
 } from './model-lib.mjs';
+// The axis-decision layer is shared, not re-derived per target (round 19): form
+// selection, comparability, compare-set verdict, shared constants and the
+// `key:`→`#` target normalization live in ./axis.mjs. This renderer owns only the
+// HTML presentation of those decisions.
+import {
+  CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, META_KEYS, hasOwnUnit, hasTarget, hrefOf,
+  labelOf, labelTextOf, isProseItem, selectForm, compareRowKeys, compareSetVerdict,
+} from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
   const map = { nbsp: ' ', amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" };
@@ -22,12 +30,6 @@ const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+
   return Number.isFinite(code) ? String.fromCodePoint(code) : m;
 });
 const esc = (s) => decodeEntities(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-const CURRENCY_GLYPH = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP: '£' };
-// offer（提案 §4.3，用现有键、零新语法）：`_amount` 的“原价”语义必须由**显式限定词**
-// 给出——`qualifier === 'list'`（引擎**不做金额比较**，M4-a/D3）。该标记是内部语义，
-// 渲染为弱化+删除线但**绝不作为文案输出**。词表闭式化（`vocab.qualifiers`）待人类决策。
-const LIST_QUALIFIER = 'list';
 
 // An `<img>` with no usable src is a broken icon in every browser (round-15 holdout
 // finding: 25/69 uncrafted pages). The capture's alt text is a captured fact, so an
@@ -98,53 +100,6 @@ function discoverRuns(orderedChildren) {
   return runs;
 }
 
-// ---- item-set form selection (F-030) ---------------------------------------
-function isLabelOnlyItem(it) {
-  return factsOf(it).every((f) => ['_name', '_title'].includes(f.key)) && !it._fields && childrenOf(it).length === 0;
-}
-function isImageOnlyItem(it) {
-  return Boolean(it._image) && childrenOf(it).length === 0
-    && factsOf(it).every((f) => f.key === '_image');
-}
-function isProseItem(it) {
-  const f = factsOf(it);
-  return f.length > 0 && f.every((x) => x.key === '_text') && !it._fields && childrenOf(it).length === 0 && !it._action;
-}
-function selectForm(items, order) {
-  if (!items.length) return 'none';
-  if (items.every(isImageOnlyItem)) return 'image-strip';   // 图像主导 ⇒ 满幅（F-031-§7）
-  if (items.every(isProseItem)) return 'prose';
-  if (items.some((it) => it._fields && Object.keys(it._fields).length)) return 'table';
-  if (items.length > 1 && items.some((it) => it._expose)) return 'stack';   // 表单步骤是序列，不是一行
-  if (items.every(isLabelOnlyItem)) {
-    // long sentence labels are a list/sequence of links/questions, not filter chips or control pills (F-030)
-    const long = items.every((it) => {
-      const t = labelOf(it);
-      const len = t ? (t.text ?? '').length : 0;
-      return len >= 16 || /[?？]$/.test((t?.text ?? '').trim());
-    });
-    if (order === 'sequence' || order === 'time') return 'seq';   // 有序集合 ⇒ 序列，不是一行 chip（F-031-§1）
-    if (long) return 'list';
-    if (items.every((it) => it._action)) return 'controls';        // 只有短标签的控件集合才走控件条
-    return 'chips';
-  }
-  if (!comparable(items)) return 'stack';
-  // a "product card" needs a name: a price with no named product is not a card (F-030)
-  if (items.some((it) => it._price) && items.every((it) => it._name || it._title)) return 'product-cards';
-  const deflist = items.every((it) => {
-    if (it._fields || childrenOf(it).length) return false;
-    const f = factsOf(it);
-    if (f.length < 1 || f.length > 2) return false;
-    return JSON.stringify(f.map((x) => x.value.text ?? x.value.num ?? '')).length <= 240;
-  });
-  if (deflist) return 'deflist';
-  const accordion = items.every((it) => factsOf(it).some((f) => f.key === '_title') && factsOf(it).some((f) => f.key === '_detail') && childrenOf(it).length === 0);
-  if (accordion) return 'accordion';
-  return 'cards';
-}
-
-const labelOf = (it) => it._name ?? it._title ?? it._text;
-const labelTextOf = (it) => (labelOf(it)?.text ?? '');
 // 集合条目的动作（F-031-§4 / F-020）：条目名是内容；带 label 的动作是源站自己的控件文字，
 // 必须作为控件出现。二者同字时只渲染一遍（此时条目名降级为链接目标，不新增文案）。
 // F-042: an item-level `_action.when` is a condition like any other (same evaluation
@@ -202,43 +157,6 @@ function renderProse(items) {
   }).join('')}</div>`;
 }
 
-// ---- 轴语义：可比性闸门（F-031）--------------------------------------------
-function jaccardOf(a, b) {
-  if (!a.length || !b.length) return 0;
-  const inter = a.filter((k) => b.includes(k)).length;
-  return inter / new Set([...a, ...b]).size;
-}
-function shapeKeys(it) {
-  const ks = factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key);
-  for (const c of childrenOf(it)) ks.push('#' + c.key.replace(/\[\d+\]$/, ''));
-  if (it._image) ks.push('#image');
-  if (it._action) ks.push('#action');
-  return [...new Set(ks)].sort();
-}
-function textLenOf(it) {
-  let n = 0;
-  const own = it._name ?? it._title ?? it._text;
-  if (own?.text) n += own.text.length;
-  for (const f of factsOf(it)) {
-    if (['_name', '_title'].includes(f.key)) continue;
-    if (f.value?.text) n += f.value.text.length;
-    if (f.value?.list) n += JSON.stringify(f.value.list).length;
-  }
-  return n;
-}
-// 一行 = 可比：同形 + 同粒度 + 紧凑。任一不满足即序列（堆叠）
-function comparable(items) {
-  if (items.length < 2) return false;
-  if (items.every(isLabelOnlyItem)) return true;
-  const ks = items.map(shapeKeys);
-  const sims = ks.map((k) => ks.reduce((a, b) => a + jaccardOf(k, b), 0) / ks.length);
-  const avgSim = sims.reduce((a, b) => a + b, 0) / sims.length;
-  const lens = items.map(textLenOf);
-  const maxLen = Math.max(...lens), minLen = Math.min(...lens);
-  const childCounts = items.map((it) => childrenOf(it).length);
-  return avgSim >= 0.6 && maxLen <= 400 && (minLen === 0 || maxLen / Math.max(minLen, 40) <= 4) && Math.max(...childCounts) <= 2;
-}
-
 const REF_LABELS = new Map();
 function indexRefLabels(model) {
   REF_LABELS.clear();
@@ -265,10 +183,7 @@ function renderChips(items, chain, ctx) {
   const rows = items.some((it) => /[，。；、（）：]/.test(labelTextOf(it)));
   return chips ? `<div class="chips${rows ? ' chips-rows' : ''}">${chips}</div>` : '';
 }
-// 数值事实必须带角色/单位（F-031-§6）：裸数字在屏幕上没有归属
-const ROLE_UNIT = { _rating: '分', '_rating-count': '条评价' };
-// 角色单位只是兜底：事实自带 unit 时绝不追加，否则两个单位连排（「870 人好评 条评价」，F-037）
-const hasOwnUnit = (v) => Boolean(v && typeof v === 'object' && !Array.isArray(v) && 'num' in v && v.unit);
+// 角色单位兜底（ROLE_UNIT / hasOwnUnit 见 axis.mjs）：事实自带 unit 时绝不追加，否则两个单位连排（「870 人好评 条评价」，F-037）
 const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] && !hasOwnUnit(f.value) ? ` ${ROLE_UNIT[f.key]}` : ''}`;
 function renderDeflist(items, chain, ctx) {
   const rows = items.map((it) => {
@@ -356,11 +271,6 @@ function renderSelectTable(items, exp, chain, hide, ctx) {
   return `<fieldset class="expose expose-${esc(exp.name)}"><legend>${legend}</legend><table class="data"><thead>${head}</thead><tbody>${rows}</tbody></table></fieldset>`;
 }
 
-const hasTarget = (a) => Boolean(a?.to) && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'));
-// `key:` 目标是页内引用（id 由 `_key` 生成）：降为 `#锚点`，与 fmt() 的 ref 处理一致（父代理裁定 5）
-const hrefOf = (to) => (typeof to === 'string' && to.startsWith('key:') ? '#' + to.slice(4).replace(/[^A-Za-z0-9_-]/g, '-') : to);
-
-
 function renderForm(form, items, chain, hide, ctx, depth, node) {
   if (form === 'compare-table') return renderCompareTable(items, chain, hide, ctx);
   if (form === 'chips') return renderChips(items, chain, ctx);
@@ -416,64 +326,7 @@ function renderControls(items, chain, ctx) {
   }).join('');
   return btns ? `<div class="controls">${btns}</div>` : '';
 }
-// 横向对比：列 = 实体，行 = 属性；不换行，可横向滚动（F-031-§3）
-// 行 = 两个以上实体共有的可对照属性；实体名/标签/价格/副标题/摘要进表头，不当行（F-031-§3）
-// 数组元素（`_items[i]`/`_lines[i]`）**不是**可比属性：按下标对齐两个无关列表是“配对”而非对照。
-// 实体的嵌套集合属于该实体自己的内容，渲染在该实体的列内（见 renderCompareTable）。
-const isPositionalKey = (k) => /^_(items|lines)\[\d+\]$/.test(k);
-function compareRowKeys(items) {
-  const rowKeys = [];
-  const seen = new Set();
-  for (const it of items) {
-    for (const k of Object.keys(it._fields ?? {})) if (!seen.has(k)) { seen.add(k); rowKeys.push(k); }
-    for (const f of factsOf(it)) {
-      if (['_name', '_title', '_tag', '_price', '_subtitle', '_summary'].includes(f.key)) continue;
-      if (!seen.has(f.key)) { seen.add(f.key); rowKeys.push(f.key); }
-    }
-    for (const c of childrenOf(it)) {
-      if (isPositionalKey(c.key)) continue;
-      if (!seen.has(c.key)) { seen.add(c.key); rowKeys.push(c.key); }
-    }
-  }
-  return rowKeys;
-}
-
-// 单元格是否有值（口径与 renderCompareTable.cellOf 一致：类型化字段 / 角色事实 / 命名子节点）
-function compareHasCell(it, key) {
-  if (it._fields?.[key]) return true;
-  if (factsOf(it).some((f) => f.key === key)) return true;
-  return childrenOf(it).some((c) => c.key === key);
-}
-
-// 退化判据（明文规则见 docs/m1/layout-axes.md §3）：一个对比集若渲染出的表没有一条被 ≥2 个实体
-// 共享的属性行（“空壳”，哪怕每格都填了字），或整体填充率低于阈值，就不成其为对照表。
-const COMPARE_MIN_FILL = 0.4;
-function compareStats(items) {
-  const rowKeys = compareRowKeys(items);
-  let filledCells = 0, sharedRows = 0;
-  for (const k of rowKeys) {
-    const n = items.filter((it) => compareHasCell(it, k)).length;
-    filledCells += n;
-    if (n >= 2) sharedRows += 1;
-  }
-  const cells = rowKeys.length * items.length;
-  return { rowKeys, rows: rowKeys.length, sharedRows, fill: cells ? filledCells / cells : 0 };
-}
-
-// D2：对照语义与位置无关。一组 ≥2 个被标为对照实体的条目要么成对比表（列=实体、行=属性），
-// 要么带着显式理由降级——绝不静默变形。能成表的条件：每个实体有名字（表头）、没有成员是控件、
-// 至少有一个可对照属性（否则只剩表头，成不了表），且该表不是空壳。
-function compareSetVerdict(items) {
-  if (items.length < 2) return { ok: false, reason: 'fewer-than-2-entities' };
-  if (items.some((it) => it._expose)) return { ok: false, reason: 'member-is-a-control' };
-  if (items.some((it) => !(it._name ?? it._title))) return { ok: false, reason: 'member-has-no-name' };
-  const st = compareStats(items);
-  if (!st.rows) return { ok: false, reason: 'no-comparable-attribute' };
-  if (!st.sharedRows) return { ok: false, reason: 'degenerate-no-shared-attribute' };
-  if (st.fill < COMPARE_MIN_FILL) return { ok: false, reason: `degenerate-fill-rate:${st.fill.toFixed(2)}` };
-  return { ok: true };
-}
-
+// 横向对比表（F-031-§3）：对照集的行键/退化判定在 axis.mjs；这里只管 HTML 呈现。
 function renderCompareTable(items, chain, hide, ctx) {
   const rowKeys = compareRowKeys(items);
   const cellOf = (it, key) => {
@@ -599,7 +452,6 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 
   const exp = exposeOf(node);
   const itemsConsumed = new Set();
-  const META_KEYS = new Set(['_count', '_measure', '_duration', '_deadline', '_author', '_source', '_provider', '_brand', '_stock']);
   let bodyLead = '';
   let heroImage = '';
   const metaParts = [];

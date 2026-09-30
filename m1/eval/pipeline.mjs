@@ -67,7 +67,13 @@ if (!gMS.ok) console.log(gMS.out);
 const gTS = gate('node m1/eval/text-selftest.mjs');
 console.log(`[pipeline] 文本目标自测(F-031): ${gTS.ok ? '通过' : '失败'}`);
 if (!gTS.ok) console.log(gTS.out);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok;
+// 6th gate: the two targets must make the SAME axis decision (F-031). The decision now
+// lives once in m1/axis.mjs; this gate fails if a renderer re-derives a copy, or if the
+// targets disagree on a compare-set verdict / degradation reason / form for a model.
+const gAS = gate('node m1/eval/axis-selftest.mjs');
+console.log(`[pipeline] 轴一致性自测(F-031 两目标): ${gAS.ok ? '通过' : '失败'}`);
+if (!gAS.ok) console.log(gAS.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';

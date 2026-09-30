@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { render } from '../render.mjs';
+import { renderText } from '../render-text.mjs';
 import { evaluate } from './metrics.mjs';
 
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'autofe-metrics-'));
@@ -107,6 +108,24 @@ check('a multi-word value matches across its own punctuation',
   score(sub, subHtml).factFidelity === 1, `fidelity=${score(sub, subHtml).factFidelity}`);
 check('the same value glued into a longer word does NOT count (word edge)',
   score(sub, subHtml.replace('Pro further.', 'Profurtherx')).factFidelity < 1);
+
+// ---- round 19: `pageText` strips only well-formed tags ----------------------
+// A fact whose own text contains `<…>` used to be erased by the greedy
+// `/<[^>]*>/g`, so the gate could report a present fact as missing (round-18
+// report §3 residual coupling). The plain-text target emits raw fact text, so it
+// is the honest place to pin the fix. Under the old rule the first assertion
+// fails (`age < 18 or age > 65` loses everything between `<` and `>`).
+const angleModel = { _intent: 'angle', _key: 'angle', _title: { text: 'Angle' }, _summary: { text: 'age < 18 or age > 65' } };
+const angleTxt = path.join(dir, 'angle.txt');
+fs.writeFileSync(angleTxt, renderText(angleModel));
+check('a fact whose own text contains `<`/`>` still counts as rendered (text target)',
+  evaluate(angleModel, angleTxt).factFidelity === 1, JSON.stringify(evaluate(angleModel, angleTxt).missing));
+// …but a real, well-formed tag is still removed: an attribute cannot vouch for a value.
+const attrModel = { _intent: 'attr', _key: 'attr', _title: { text: 'Attr' }, _count: { num: 999 } };
+const attrTxt = path.join(dir, 'attr.txt');
+fs.writeFileSync(attrTxt, '<div data-x="999">nothing</div>');
+check('a value occurring only inside a tag/attribute does NOT count as rendered',
+  evaluate(attrModel, attrTxt).factFidelity < 1, `fidelity=${evaluate(attrModel, attrTxt).factFidelity}`);
 
 console.log(`\n度量自测: ${bad === 0 ? '全部通过' : `待修 ${bad}`}`);
 process.exit(bad ? 1 : 0);

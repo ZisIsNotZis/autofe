@@ -74,10 +74,17 @@ function isRendered(hay, value) {
 // `class="depth-0"` must not vouch for the fact `0` (exactly the F-054 blind
 // spot). Each tag collapses to `<>` so tags still delimit tokens for
 // `isRendered` (adjacent text nodes stay separate).
+//
+// Round 19: only WELL-FORMED tags are stripped (`<[a-zA-Z/][^>]*>`). The old
+// `/<[^>]*>/g` deleted anything between a `<` and a `>`, so a fact whose own text
+// contains angle brackets (`a < b > c`) was erased before matching — a real
+// false-negative for the text target (round-18 report §3 residual coupling).
+// `<` followed by a non-letter stays literal page text; a `<` inside a fact can
+// no longer hide the fact.
 function pageText(html) {
   return String(html)
     .replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
-    .replace(/<[^>]*>/g, '<>');
+    .replace(/<[a-zA-Z/][^>]*>/g, '<>');
 }
 
 function suppressedNodes(model, ctxValues = {}) {
