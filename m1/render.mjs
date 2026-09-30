@@ -91,7 +91,10 @@ function renderDeflist(items) {
   const rows = items.map((it) => {
     const label = it._name ?? it._title;
     const rest = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
-    return `<div class="defrow"><div class="deflabel">${label ? fmt(label.value) : ''}</div><div class="defval">${rest.map((x) => fmt(x.value)).join(' ')}</div></div>`;
+    const l = label ? fmt(label) : '';
+    const v = rest.map((x) => fmt(x.value)).join(' ').trim();
+    if (!l && !v) return '';
+    return `<div class="defrow"><div class="deflabel">${l}</div><div class="defval">${v}</div></div>`;
   }).join('');
   return `<div class="deflist">${rows}</div>`;
 }
@@ -99,7 +102,10 @@ function renderAccordion(items, chain, hide, ctx) {
   const det = items.map((it) => {
     const q = it._title ?? it._name;
     const a = factsOf(it).filter((x) => ['_detail', '_summary', '_text'].includes(x.key));
-    return `<details class="qa"><summary>${q ? fmt(q.value) : ''}</summary><div class="qa-a">${a.map((x) => fmt(x.value)).join(' ')}</div></details>`;
+    const answer = a.map((x) => fmt(x.value)).join(' ');
+    if (!q && !answer) return '';
+    if (!q) return `<div class="qa-a">${answer}</div>`;
+    return `<details class="qa"><summary>${fmt(q)}</summary><div class="qa-a">${answer}</div></details>`;
   }).join('');
   return `<div class="accordion">${det}</div>`;
 }
@@ -122,6 +128,28 @@ function renderRun(run, chain, hide, ctx) {
     return `<table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table>`;
   }
   return `<div class="cards">${run.map((c) => `<div class="item">${renderNode(c.node, [...chain, c.node], false, hide, ctx, 4)}</div>`).join('')}</div>`;
+}
+
+
+function renderSelectTable(items, exp, chain, hide, ctx) {
+  const cols = [...new Set(items.flatMap((it) => [...Object.keys(it._fields ?? {}), ...factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))];
+  const multi = exp.multiple === true;
+  const legend = exp.legend;
+  const valuesOf = (n, col) => {
+    const fv = n._fields?.[col];
+    if (fv) return fmt(fv);
+    const f = factsOf(n).find((x) => x.key === col);
+    return f ? fmt(f.value) : '';
+  };
+  const head = `<tr><th class="sel"></th>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? c.replace(/^_/, ''))}</th>`).join('')}<th></th></tr>`;
+  const rows = items.map((it) => {
+    const tds = cols.map((col) => `<td>${valuesOf(it, col)}</td>`).join('');
+    const ops = childrenOf(it).filter((ch) => !ch.key.startsWith('_items['))
+      .map((ch) => renderNode(ch.node, [...chain, it], false, hide, ctx, 4)).join('');
+    const val = it._key ? `key:${it._key}` : String(items.indexOf(it));
+    return `<tr><td class="sel"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"></td>${tds}<td class="row-ops">${ops}</td></tr>`;
+  }).join('');
+  return `<fieldset class="expose expose-${esc(exp.name)}"><legend>${legend}</legend><table class="data"><thead>${head}</thead><tbody>${rows}</tbody></table></fieldset>`;
 }
 
 const actionHtml = (a) => {
@@ -197,36 +225,40 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   const inRun = new Set(runs.flat().map((c) => c.node));
 
   let body = '';
-  if (exp && node._items?.length) {
+  if (exp && node._items?.length && node._items.length < 2) {
+    // a one-option "choice" is not a choice: render the fact plainly (F-030)
+    const it = node._items[0];
+    const v = it._name ?? it._title;
+    const extra = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
+    const lbl = node._label ? fmt(node._label) : esc(exp.name);
+    body += `<div class="defrow"><div class="deflabel">${lbl}</div><div class="defval">${v ? fmt(v) : ''} ${extra.map((x) => fmt(x.value)).join(' ')}</div></div>`;
+    itemsConsumed.add(it);
+  } else if (exp && node._items?.length && node._items.some((it) => it._fields && Object.keys(it._fields).length)) {
+    // typed-field rows with a selection column: the admin-table form
+    const legend = node._label ? fmt(node._label) : esc(exp.name);
+    body += renderSelectTable(node._items, { ...exp, legend }, chain, hide, ctx);
+    node._items.forEach((it) => itemsConsumed.add(it));
+  } else if (exp && node._items?.length) {
     const multi = exp.multiple === true;
     const opts = node._items.map((it, i) => {
       const v = it._name ?? it._title ?? (it._fields ? { text: Object.values(it._fields)[0]?.text ?? Object.values(it._fields)[0]?.num ?? '' } : undefined);
-      const label = v && (v.text !== undefined || v.num !== undefined) ? fmt(v) : `option ${i + 1}`;
+      const extra = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key)).map((x) => fmt(x.value)).join(' ');
+      const label = (v && (v.text !== undefined || v.num !== undefined) ? fmt(v) : `option ${i + 1}`) + (extra ? ` <span class="choice-extra">${extra}</span>` : '');
       const val = it._key ? `key:${it._key}` : (v ? v.text : String(i));
       return `<label class="choice"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"> ${label}</label>`;
     }).join('');
     const legend = node._label ? fmt(node._label) : esc(exp.name);
     const hint = node._summary ? `<span class="hint">${fmt(node._summary)}</span>` : '';
     body += `<fieldset class="expose chipbar expose-${esc(exp.name)}"><legend>${legend}</legend>${hint}${opts}</fieldset>`;
-    // choice set covers label-only items; rich items keep their best form
-    // (typed field sets stay a table — the deflist would lose the columns)
-    const rich = node._items.filter((it) => factsOf(it).some((x) => !['_name', '_title'].includes(x.key)));
-    if (rich.length) {
-      const rf = selectForm(rich);
-      if (rf === 'table') {
-        for (const run of discoverRuns(rich.map((it) => ({ key: '_items[x]', node: it })))) body += renderRun(run, chain, hide, ctx);
-      } else {
-        body += renderDeflist(rich);
-      }
-      rich.forEach((it) => itemsConsumed.add(it));
-    }
+    // the choice set IS the rendering of these items — nothing renders again below
+    node._items.forEach((it) => itemsConsumed.add(it));
   } else if (exp) {
     const lbl = node._label ? fmt(node._label) : esc(exp.name);
     const hint = node._summary ? `<span class="hint">${fmt(node._summary)}</span>` : '';
     body += `<label class="expose expose-${esc(exp.name)}"><span class="deflabel">${lbl}</span>${hint}<input type="text" name="${esc(exp.name)}" data-type="${esc(exp.type)}"></label>`;
   }
 
-  const rawItems = (node._items ?? []).filter((it) => !inRun.has(it));
+  const rawItems = (node._items ?? []).filter((it) => !inRun.has(it) && !itemsConsumed.has(it));
 
   const form = rawItems.length ? selectForm(rawItems) : 'none';
   if (form === 'chips') {
@@ -328,12 +360,14 @@ details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
 legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
 .expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
 input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 img{max-width:100%;border-radius:10px;display:block}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
 table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
+table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
