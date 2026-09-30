@@ -22,8 +22,11 @@
   9. ✅ **轮 7**（提交 `e451edd`）：三条父代理裁定落地（`_primary` 硬规则+自测、36kr H1 带出处说明、aliyun 域字段）+ 10 个异质集合回改（**如实报剩余 12 个**）；并把 `layout-axes.md` 里过期的 55/98 数字**标注口径**
  10. ✅ **轮 8**（提交 `5a6d57f`）：12 个集合全部有结论（6 改 `_lines`、6 有判据理由保留、1 豁免）；**重要洞察**：`stack` 混了"语义不可比"与"表现太富"两种原因，已写入 `layout-axes.md`，M4 的网格类原语必须区分二者
  11. ⏳ **轮 9 运行中**（worker `c6b15d3d`）：补 exemplar 证据样本（`table`/`login` 前置；已做 robots 预检：华为云/小米/gov.uk 表格页/AWS EC2 价目/阿里云规格/stripe docs/apple 对比 = ALLOW；AWS signin = DENY 跨域跳转）
- 12. ⏳ **验收轮 6 运行中**（worker `b1b87087`）：独立复验轮 6/7/8 → `verification-3.md`
-- **下一步**：验收 PASS 后 → M4-b 原语实现（`form`/`offer`/`paginator` 可先做；`table`/`login` 视轮 9 证据是否达标）
+ 12. ✅ **验收轮 6**（提交 `2608137`）：**PASS**（0 blocker / 0 major / 3 minor），并纠正我 brief 的数字（compare 标记 5 处而非 3）
+ 13. ✅ **轮 9 采集**（提交 `7464646`）：新增 5 个 exemplar 页（gov.uk 表格 / 阿里云帮助规格表 224 表但 0 `<th>` / AWS EC2 价目表 / stripe-dashboard 登录 / 小米账号登录），robots+节流+先干跑到 /tmp，7 条拒绝如实记录，既有 36 页未动。**`table` 达 C1（3 站点）；`login` 达 2/3**
+ 14. ⏳ **轮 10 运行中**（worker `136a478b`）：退化对比表规则（填充率阈值 + 断言 + 写进 layout-axes §3）+ 3 条 minor
+ 15. ⏳ **轮 11 运行中**（worker `26874b0a`）：补第 3 个登录 exemplar 站点（GOV.UK One Login / GitHub / 云厂商账号页候选；守顶流约束与 robots）
+- **下一步**：轮 10/11 完成 → **新页策展**（把 5-6 个新页做成模型并纳入门禁，届时候选集从 36 → 41/42 页，须同步更新引用"36 页"的文档与报告）→ **M4-b 原语实现**（`form`/`offer`/`paginator` 先做；`table` 已达标，`login` 待第 3 站点）→ 独立验收
 - **F-042 新登记**：条目级 `_action.when` 从不求值（M4-a 的 D1 构造断言顺带挖出）
 - **已完成并行轨**：M4 复合原语提案 → `docs/m1/m4-composites-proposal.md`（14 候选 → 升格 5 / 否决 7；三条基础缺陷均已复现）
 - **M4-a 之后**：策展回改（55 异质 `_items`）→ 补 exemplar 样本（`table`/`login` 前置证据）→ M4 原语实现
