@@ -274,14 +274,22 @@ function renderAccordion(items, chain, hide, ctx) {
   return `<div class="accordion">${det}</div>`;
 }
 function renderRun(run, chain, hide, ctx) {
-  const cols = [...new Set(run.flatMap((c) => [...fieldKeys(c.node), ...factsOf(c.node).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))];
+  // F-051（明文规则见 docs/m1/layout-axes.md §3.3）：表 = 身份列（成员名，有则必含）+ 已声明属性列。
+  // 属性列 = `_fields` 的键 ∪ 非 name 角色事实。成立条件：有身份列 ⇒ 属性列 ≥2；无身份列 ⇒ 属性列 ≥2
+  // 且至少一列有已声明列标签（列名只来自已声明域字段，不印内部键）。单列不是表（那是列表）；
+  // 身份列 + 1 个属性列不是表（那是 deflist）。旧的「≥3 列」阈值把源站 2 列价目表（标签|价格）一律降级成卡片。
+  const named = run.some((c) => Boolean(c.node._name ?? c.node._title));
+  const attrs = [...new Set(run.flatMap((c) => [...fieldKeys(c.node), ...factsOf(c.node).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))];
+  const cols = named ? ['_name', ...attrs] : attrs;
+  const isTable = attrs.length >= 2 && (named || attrs.some((c) => FIELDS[c]?.label));
   const valuesOf = (n, col) => {
+    if (col === '_name') return n._name ? fmt(n._name) : (n._title ? fmt(n._title) : '');
     const fv = n._fields?.[col];
     if (fv) return fmt(fv);
     const f = factsOf(n).find((x) => x.key === col);
     return f ? fmt(f.value) : '';
   };
-  if (cols.length >= 3) {
+  if (isTable) {
     const anyOps = run.some((c) => childrenOf(c.node).some((ch) => !ch.key.startsWith('_items[')));
     const showHead = cols.some((c) => FIELDS[c]?.label) || anyOps;
     const head = showHead ? `<tr>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? '')}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>` : '';

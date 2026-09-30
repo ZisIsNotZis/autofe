@@ -85,6 +85,52 @@
     "rate-over-967": {
       "type": "text",
       "label": "Over £967 a week (£4,189 a month)"
+    },
+    "transfer-tier": {
+      "type": "text",
+      "label": ""
+    },
+    "data-transfer-price": {
+      "type": "money",
+      "currency": "USD",
+      "label": "定价"
+    },
+    "egress-destination": {
+      "type": "text",
+      "label": "数据自 Amazon EC2 传出至"
+    },
+    "egress-price": {
+      "type": "money",
+      "currency": "USD",
+      "label": ""
+    },
+    "local-zone-direction": {
+      "type": "text",
+      "label": "在同一 AWS 区域内的本地区域和可用区之间传输的数据，从本地区域中的 Amazon EC2“传入”和“传出”"
+    },
+    "category": {
+      "type": "text",
+      "label": "Category"
+    },
+    "description": {
+      "type": "text",
+      "label": "Description"
+    },
+    "links": {
+      "type": "list",
+      "label": "Links"
+    },
+    "family": {
+      "type": "text",
+      "label": "Family"
+    },
+    "workloads": {
+      "type": "list",
+      "label": "Workloads"
+    },
+    "series-list": {
+      "type": "list",
+      "label": "Series List"
     }
   }
 }

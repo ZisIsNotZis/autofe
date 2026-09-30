@@ -1,6 +1,6 @@
 # M3 报告：自动抽取 vs 人工编码（结构质量指标版）
 
-> **口径提示（轮 12 补记）**：本报告是 **M3 验收快照**（策展 36 页，2026-09-18 冻结）。其后轮 9/11 补采 6 个 exemplar 样本、轮 12 策展其中 5 页 ⇒ **门禁现为 41 页**（`gov-uk/ni-rates-letters`、`aws-amazon/ec2-on-demand`、`stripe-dashboard/login`、`xiaomi-account/login`、`github-com/login`）；第 6 页 `aliyun-help/ecs-instance-families` 待策展 ⇒ 目标 42。**下文中出现的 "36"/"104" 均为该 36 页快照口径**，非当前分母；当前分母见 `.scratch/09-new-exemplar-curation/report.md` 与 `m1/eval/m3-scale.json`。
+> **口径提示（轮 12 补记）**：本报告是 **M3 验收快照**（策展 36 页，2026-09-18 冻结）。其后轮 9/11 补采 6 个 exemplar 样本、轮 12 策展其中 5 页（`gov-uk/ni-rates-letters`、`aws-amazon/ec2-on-demand`、`stripe-dashboard/login`、`xiaomi-account/login`、`github-com/login`）、轮 15 策展 1 页（`learn-microsoft/vm-sizes`）⇒ **门禁现为 42 页 / 23 站**；`aliyun-help/ecs-instance-families` 仍待策展 ⇒ 目标 43。**下文中出现的 "36"/"104" 均为该 36 页快照口径**，非当前分母；当前分母见 `.scratch/09-new-exemplar-curation/report.md` 与 `m1/eval/m3-scale.json`。
 
 前置：F-023 根因修正后重抽 6 页；新指标 `m1/eval/structure.mjs`（intent 覆盖 / chrome 动作比 / 松散动作比 / 截断率）。
 对照 = 源覆盖告警（high/med）+ 结构质量。
@@ -107,7 +107,7 @@
 ## 指标口径（F4 澄清）
 数字存在两个口径：早期试点日志（旧指标）与 `m1/eval/m3-final.json`（F-024 收紧子串豁免后的**严口径**）。**一切验收声明以严口径为准。**
 
-## 严口径终值（36 页策展后 · 轮 12 后当前口径为 41 页）
+## 严口径终值（36 页策展后 · 轮 15 后当前口径为 42 页）
 | 指标 | 值 |
 |---|---|
 | 校验 | 36/36 零错误 |

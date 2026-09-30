@@ -107,6 +107,37 @@ check('D2b nested collections are not index-paired rows (colors stay in their co
   && wc.html.includes('红') && wc.html.includes('蓝') && wc.html.includes('绿'),
   JSON.stringify(wcRows));
 
+// ---- F-051 (docs/m1/layout-axes.md §3.3): a run of typed records is a table ---
+// Two declared attribute columns with declared labels are a table even when the
+// source table has no separate name column (the aws 2-column price tables); one
+// column is not a table; `identity + 1 attribute` stays a deflist. When members
+// carry a name the identity column is rendered, so becoming a table never drops
+// the row's name (the aliyun `cpu|memory` set keeps its instance names).
+const runSet = (items) => ({ _intent: 'rows', _title: { text: 'rows' }, _items: items });
+const twoCols = render(runSet([
+  { _fields: { family: { text: 'A-family' }, workloads: { text: 'Entry level' } } },
+  { _fields: { family: { text: 'B-family' }, workloads: { text: 'Burstable' } } },
+]));
+check('F-051 two declared + labeled columns are a data table',
+  twoCols.includes('<table class="data">') && twoCols.includes('A-family') && twoCols.includes('<th>Family</th>'));
+const oneCol = render(runSet([
+  { _fields: { family: { text: 'A-family' } } },
+  { _fields: { family: { text: 'B-family' } } },
+]));
+check('F-051 a single column is not a table', !oneCol.includes('<table class="data">'));
+const namedOneCol = render(runSet([
+  { _name: { text: 'e4' }, _fields: { cpu: { num: 2, unit: '核' } } },
+  { _name: { text: 'u2a' }, _fields: { cpu: { num: 2, unit: '核' } } },
+]));
+check('F-051 identity column + one attribute column is a deflist, not a table',
+  !namedOneCol.includes('<table class="data">') && namedOneCol.includes('e4'));
+const namedTwoCols = render(runSet([
+  { _name: { text: 'e4' }, _fields: { cpu: { num: 2, unit: '核' }, memory: { num: 2, unit: 'GB' } } },
+  { _name: { text: 'u2a' }, _fields: { cpu: { num: 2, unit: '核' }, memory: { num: 4, unit: 'GB' } } },
+]));
+check('F-051 named members keep their name column when the set becomes a table',
+  namedTwoCols.includes('<table class="data">') && namedTwoCols.includes('<td>e4</td>') && namedTwoCols.includes('<td>u2a</td>'));
+
 // ---- D2: the whole curated library is accounted for -------------------------
 const models = [];
 for (const site of fs.readdirSync(path.join(root, 'm1/curated')).sort()) {

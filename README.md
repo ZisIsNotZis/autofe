@@ -2,7 +2,7 @@
 
 Intent-driven frontend: a business/intent intermediate language plus an isomorphic engine that renders it to a frontend form, decoupled from presentation.
 
-Status: M1–M3 done — closed grammar (`docs/m1/axioms-v0.md`) + isomorphic renderer (`m1/render.mjs`) + **41 curated exemplar models**; M4 composite primitives (`form`/`table`/`offer`/`paginator`/`login`) in progress as **behavior-only** changes, awaiting the `_macro` reserved-key decision (`.scratch/decisions-for-user.md` D-1).
+Status: M1–M3 done — closed grammar (`docs/m1/axioms-v0.md`) + isomorphic renderer (`m1/render.mjs`) + **42 curated exemplar models**; M4 composite primitives (`form`/`table`/`offer`/`paginator`/`login`) in progress as **behavior-only** changes, awaiting the `_macro` reserved-key decision (`.scratch/decisions-for-user.md` D-1).
 
 - Design basis: `docs/design-basis.md`
 - Provenance (superseded draft): `docs/sources/draft-doubao.md`
@@ -26,11 +26,11 @@ Tools: `tools/capture/index.mjs` (capture), `verify-alignment.mjs`, `verify-dete
 
 ## 当前状态与门禁命令
 
-**41 页策展模型**（exemplar 层，22 站；第 42 页 `aliyun-help/ecs-instance-families` 有意推迟到 M4-b `table` 原语）。
+**42 页策展模型**（exemplar 层，23 站；第 43 页 `aliyun-help/ecs-instance-families` 有意推迟到 M4-b `table` 原语的后续裁定）。
 当前门禁全绿：
 
-- 事实保真 **41/41 = 1.00**（模型 → 渲染，逐事实）
-- 视觉自查 **41/41 干净**（9 类缺陷自审）
+- 事实保真 **42/42 = 1.00**（模型 → 渲染，逐事实）
+- 视觉自查 **42/42 干净**（9 类缺陷自审）
 - 模型校验 **47 个全通过** + 校验器自测（坏样例必被拒）
 - 地基自测（`_expose` 作用域 / `compare` 位置无关 / 无金额算术）全通过
 

@@ -1,5 +1,8 @@
 # 09 · 新 exemplar 页策展（36 → 42 页）
 
+> **口径提示（轮 15 补记）**：本文件是**当时轮次的快照**，文中 `41`/`41/41` 均为轮 12 口径；轮 15 策展 `learn-microsoft/vm-sizes` + 修 F-051 后**当前门禁为 42 页**（保真 42/42 = 1.00、视觉自查 42/42 干净）。当前分母见 `m1/eval/m3-scale.json`。
+
+
 轮 12，worker 唯一写入者。**交付 5/6 页**：`gov-uk/ni-rates-letters`、`aws-amazon/ec2-on-demand`、
 `stripe-dashboard/login`、`xiaomi-account/login`、`github-com/login` 已策展并纳入门禁（36 → **41**
 页）；第 6 页 `aliyun-help/ecs-instance-families` **未策展**，原因见文末「未完成页」。

@@ -1,5 +1,8 @@
 # 07 · M4-b2 报告（fix-report-11）— `paginator` 行为（零新语法）+ apple 分期去重 + 文档一致性
 
+> **口径提示（轮 15 补记）**：本文件是**当时轮次的快照**，文中 `41`/`41/41` 均为轮 12 口径；轮 15 策展 `learn-microsoft/vm-sizes` + 修 F-051 后**当前门禁为 42 页**（保真 42/42 = 1.00、视觉自查 42/42 干净）。当前分母见 `m1/eval/m3-scale.json`。
+
+
 作者：worker `M4-b2`（唯一写入者）。任务书：本轮 brief（paginator 行为 / apple 去重 / 文档 41 一致性 / 交叉引用）。
 纪律：只碰 `m1/**`、`docs/**`、`README.md`、`.scratch/**`；不动 `corpus/`；不 git 提交；40 分钟分片，每片先落盘。
 
