@@ -249,5 +249,41 @@ check('P3 an interrupted run starts a second body block', pm.includes('<p>para t
 const loneText = { _intent: 'lone', _title: { text: 't' }, _lines: [{ _text: { text: 'solo' } }, { _name: { text: 'Item' } }] };
 check('P3 a lone `_text` segment keeps the collection form (no prose split)', !render(loneText).includes('<div class="prose">'));
 
+// ---- F-055: an image without a src degrades to its captured alt text ---------
+// 69 uncrafted holdout pages had exactly one systematic hard defect: `<img>` with no
+// source (520 of them). The guard is asserted on the two `_image` shapes the engine
+// produces — a single image value and a `list` of them.
+const noSrcItem = { _intent: 'strip', _title: { text: 'shots' }, _items: [
+  { _image: { image: '', alt: 'MIRROR SHOT' } },
+  { _image: { image: '', alt: 'SECOND SHOT' } },
+]};
+const noSrc = render(noSrcItem);
+check('F-055 an empty-src image renders no `<img>` element', !noSrc.includes('<img'));
+check('F-055 an empty-src image renders its captured alt text as visible copy',
+  noSrc.includes('class="img-alt">MIRROR SHOT<') && noSrc.includes('class="img-alt">SECOND SHOT<'));
+check('F-055 an empty-src image never prints a literal `undefined` src', !noSrc.includes('undefined'));
+const noSrcList = render({ _intent: 'strip', _title: { text: 'shots' },
+  _image: { list: [{ image: '', alt: 'LIST SHOT A' }, { image: '', alt: 'LIST SHOT B' }] } });
+check('F-055 a list-valued image with no srcs renders no `<img>` either', !noSrcList.includes('<img'));
+check('F-055 a list-valued image keeps every captured alt',
+  noSrcList.includes('LIST SHOT A') && noSrcList.includes('LIST SHOT B'));
+const srcList = render({ _intent: 'strip', _title: { text: 'shots' },
+  _image: { list: [{ image: 'https://example.com/a.png', alt: 'A' }, { image: 'https://example.com/b.png', alt: 'B' }] } });
+check('F-055 a list-valued image with srcs renders one `<img>` per entry (never one dropped)',
+  (srcList.match(/<img /g) || []).length === 2 && srcList.includes('src="https://example.com/b.png"'));
+const curatedSrcs = [];
+(function walk(v) {
+  if (!v || typeof v !== 'object') return;
+  if (Array.isArray(v.list)) return;
+  for (const [k, val] of Object.entries(v)) {
+    if (k === '_image' && val && typeof val === 'object') curatedSrcs.push(val.image);
+    else walk(val);
+  }
+})(JSON.parse(fs.readFileSync(path.join(root, 'm1/curated/aliyun-com/home.json'), 'utf8')));
+const aliyunHome = render(JSON.parse(fs.readFileSync(path.join(root, 'm1/curated/aliyun-com/home.json'), 'utf8')));
+check('F-055 a captured src is rendered verbatim, not degraded',
+  curatedSrcs.length > 0 && curatedSrcs.every((s) => aliyunHome.includes(`src="${s}"`)),
+  JSON.stringify(curatedSrcs.slice(0, 2)));
+
 console.log(`\n地基自测: ${bad === 0 ? '全部通过' : `待修 ${bad}`}`);
 process.exit(bad ? 1 : 0);

@@ -52,6 +52,102 @@ function pickText(cap) {
   return t.length >= n.length ? t : n;
 }
 
+// ---- image src recovery (F-055 follow-up) ---------------------------------
+// `nodes.json` carries the alt text of an image but never its URL; the URL only
+// exists in `dom.html`. `cleanedIndex` is the element's position in the page's
+// document order (`document.querySelectorAll('*')`), so the pairing is per-element,
+// not per-position. It is accepted for a page only when every node's own tag matches
+// the scanned tag at its index: if the index space does not line up, the page is
+// abandoned entirely (an image without a src renders as its alt text — never a
+// wrong-URL guess).
+const RAW_TEXT = new Set(['script', 'style']);
+function scanElementTags(html) {
+  const out = [];
+  let i = 0;
+  const n = html.length;
+  while (i < n) {
+    const lt = html.indexOf('<', i);
+    if (lt < 0) break;
+    i = lt + 1;
+    const c = html[i];
+    if (c === '!') {
+      if (html.startsWith('!--', i)) { const e = html.indexOf('-->', i); i = e < 0 ? n : e + 3; } else { const e = html.indexOf('>', i); i = e < 0 ? n : e + 1; }
+      continue;
+    }
+    if (c === '?' || c === '/') { const e = html.indexOf('>', i); i = e < 0 ? n : e + 1; continue; }
+    if (!/[A-Za-z]/.test(c)) continue;                     // a stray '<' in text
+    let j = i;
+    while (j < n && !/[\s/>]/.test(html[j])) j++;
+    const name = html.slice(i, j).toLowerCase();
+    const gt = html.indexOf('>', j);
+    const end = gt < 0 ? n : gt;
+    const attrs = html.slice(j, end);
+    const src = (attrs.match(/\ssrc\s*=\s*"([^"]*)"/) ?? attrs.match(/\ssrc\s*=\s*'([^']*)'/) ?? [])[1];
+    out.push({ name, src });
+    i = end + 1;
+    if (RAW_TEXT.has(name)) {
+      const close = html.indexOf('</' + name, i);
+      if (close >= 0) { const e = html.indexOf('>', close); i = e < 0 ? n : e + 1; }
+    }
+  }
+  return out;
+}
+
+// A captured src is kept verbatim when it is already absolute; root-relative,
+// protocol-relative and path-relative forms are resolved against the page URL
+// (the F-025 absolutization rule). Data/blob URIs are real sources and stay as-is.
+// `dom.html` is a serialization, so attribute values arrive entity-escaped
+// (`&amp;`) — they are unescaped back to the verbatim URL.
+function decodeAttrEntities(s) {
+  return String(s).replace(/&(amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
+    const map = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" };
+    const k = e.toLowerCase();
+    if (k in map) return map[k];
+    const code = k.startsWith('#x') ? parseInt(k.slice(2), 16) : parseInt(k.slice(1), 10);
+    return Number.isFinite(code) ? String.fromCodePoint(code) : m;
+  });
+}
+
+function absolutizeSrc(rawSrc, baseUrl) {
+  const s = decodeAttrEntities(String(rawSrc ?? '').trim());
+  if (!s) return '';
+  if (/^(data|blob):/i.test(s)) return s;
+  if (/^javascript:/i.test(s)) return '';
+  if (/^[a-z][a-z0-9+.-]*:/i.test(s)) return s;
+  try { return new URL(s, baseUrl).href; } catch { return ''; }
+}
+
+function joinImageSrcs(dir, meta, nodes) {
+  const join = { page: meta.site + '/' + meta.page, state: 'no-dom', nodes: 0, tags: 0, resolved: 0, unattributed: 0, map: new Map() };
+  let html;
+  try { html = fs.readFileSync(path.join(dir, 'dom.html'), 'utf8'); } catch { return join; }
+  const tags = scanElementTags(html);
+  join.tags = tags.length;
+  const imgs = nodes.filter((n) => n.tag === 'img');
+  join.nodes = imgs.length;
+  let aligned = 0, checked = 0;
+  let firstBad = '';
+  for (const n of nodes) {
+    if (typeof n.cleanedIndex !== 'number' || !n.tag) continue;
+    checked++;
+    const got = tags[n.cleanedIndex];
+    if (got && got.name === String(n.tag).toLowerCase()) aligned++;
+    else if (!firstBad) firstBad = `idx ${n.cleanedIndex} tag=${n.tag} scan=${got ? got.name : 'out-of-range'}`;
+  }
+  if (checked && aligned !== checked) {
+    join.state = 'abandoned';                 // no mis-pairing is ever worth a guessed URL
+    join.reason = `index-alignment ${aligned}/${checked} (${firstBad})`;
+    return join;
+  }
+  join.state = 'ok';
+  for (const n of imgs) {
+    const got = tags[n.cleanedIndex];
+    const url = got ? absolutizeSrc(got.src, meta.url) : '';
+    if (url) { join.map.set(n.cleanedIndex, url); join.resolved++; } else join.unattributed++;
+  }
+  return join;
+}
+
 // ---- capture loading -------------------------------------------------------
 function loadCapture(dir) {
   const meta = JSON.parse(fs.readFileSync(path.join(dir, 'meta.json'), 'utf8'));
@@ -64,7 +160,7 @@ function loadCapture(dir) {
       if (n.role === 'link' && typeof u === 'string') urlByDomIndex.set(n.domIndex, u);
     }
   } catch { /* a11y.json optional for extraction; hrefs then absent */ }
-  return { meta, nodes, urlByDomIndex };
+  return { meta, nodes, urlByDomIndex, imageJoin: joinImageSrcs(dir, meta, nodes) };
 }
 
 // Reconstruct the element tree from cleanedPath ("html/body[1]/div[0]/...").
@@ -168,6 +264,7 @@ class Extractor {
     this.meta = capture.meta;
     this.nodes = capture.nodes;
     this.urls = capture.urlByDomIndex;
+    this.imageJoin = capture.imageJoin;
     this.tree = buildTree(capture.nodes);
     this.consumed = new Set();
     this.seenText = new Set(); // per-page dedupe of rendered text atoms
@@ -177,7 +274,7 @@ class Extractor {
     this.topLines = [];
     this.unmapped = new Map(); // kind -> {kind, role, examples:[], count}
     this.chrome = new Map(); // role -> count
-    this.counts = { storylines: 0, items: 0, actions: 0, exposes: 0, images: 0, facts: 0, tables: 0, lists: 0, choiceSets: 0, inputs: 0, dupeText: 0, capHits: [] };
+    this.counts = { storylines: 0, items: 0, actions: 0, exposes: 0, images: 0, imageSrcsResolved: 0, imageSrcsAbsent: 0, facts: 0, tables: 0, lists: 0, choiceSets: 0, inputs: 0, dupeText: 0, capHits: [] };
     this.fieldsDraft = new Map(); // slug -> {type,label,unit?,currency?,examples}
     this.firstH1 = null;
     this.choiceSeq = 0;
@@ -279,10 +376,12 @@ class Extractor {
     cur.blocks.push({ type: 'action', action, label });
     this.counts.actions++;
   }
-  addImage(alt) {
-    const a = String(alt ?? '').replace(/\s+/g, ' ').trim();
+  addImage(cap) {
+    const a = String(cap?.name ?? '').replace(/\s+/g, ' ').trim();
     if (!a) { this.note('image-without-alt', 'image', ''); return; }
-    this.current().image.push({ image: '', alt: a.slice(0, 200) }); // capture carries no src URL (nodes.json)
+    const src = this.imageJoin.map.get(cap.cleanedIndex) ?? '';
+    if (src) this.counts.imageSrcsResolved++; else this.counts.imageSrcsAbsent++;
+    this.current().image.push({ image: src, alt: a.slice(0, 200) });
     this.counts.images++;
     this.counts.facts++;
   }
@@ -534,7 +633,7 @@ class Extractor {
         return;
       }
       case 'image': case 'img': {
-        if (visible && (cap.name ?? '').trim()) { this.addImage(cap.name); this.consume(t); return; }
+        if (visible && (cap.name ?? '').trim()) { this.addImage(cap); this.consume(t); return; }
         if (role === 'img') { this.consume(t); return; } // presentational svg/img
         break;
       }
@@ -725,6 +824,8 @@ class Extractor {
       storylines: this.counts.storylines,
       chrome: [...this.chrome.entries()].map(([role, count]) => ({ role, count })).sort((a, b) => b.count - a.count),
       unmapped: [...this.unmapped.values()].sort((a, b) => b.count - a.count),
+      imageJoin: { state: this.imageJoin.state, reason: this.imageJoin.reason, domElements: this.imageJoin.tags,
+        imgNodes: this.imageJoin.nodes, resolved: this.imageJoin.resolved, unattributed: this.imageJoin.unattributed },
       fieldsDrafted: [...this.fieldsDraft.entries()].map(([name, f]) => ({ name, ...f })),
     };
   }

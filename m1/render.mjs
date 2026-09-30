@@ -29,6 +29,28 @@ const CURRENCY_GLYPH = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP: '£' 
 // 渲染为弱化+删除线但**绝不作为文案输出**。词表闭式化（`vocab.qualifiers`）待人类决策。
 const LIST_QUALIFIER = 'list';
 
+// An `<img>` with no usable src is a broken icon in every browser (round-15 holdout
+// finding: 25/69 uncrafted pages). The capture's alt text is a captured fact, so an
+// image without a URL degrades to its alt text — never to `<img src="">`, and never
+// to a made-up URL (F-055).
+function imgHtml(src, alt) {
+  const s = typeof src === 'string' ? src.trim() : '';
+  const a = alt == null ? '' : String(alt);
+  if (!s) return a ? `<span class="img-alt">${esc(a)}</span>` : '';
+  return `<img src="${esc(s)}" alt="${esc(a)}">`;
+}
+
+// An `_image` fact value is either an image value or a `list` of them (the extractor
+// collapses several images of one storyline into a list value). Both shapes are images.
+function imageEntries(v) {
+  if (!v || typeof v !== 'object') return [];
+  if (Array.isArray(v.list)) return v.list.filter((e) => e && typeof e === 'object' && 'image' in e);
+  return 'image' in v ? [v] : [];
+}
+const imageFigures = (v) => imageEntries(v)
+  .map((e) => imgHtml(e.image, e.alt)).filter(Boolean)
+  .map((img) => `<figure class="strip">${img}</figure>`).join('');
+
 function fmt(v) {
   if (v === null || v === undefined) return '';
   if ('list' in v) return v.list.map((e) => `<span class="chip">${fmt(e)}</span>`).join(' ');
@@ -44,7 +66,7 @@ function fmt(v) {
   if ('bool' in v) return v.bool ? 'yes' : 'no';
   if ('icon' in v) return esc(v.icon);
   if ('video' in v) return `<a href="${esc(v.video)}">video</a>`;
-  if ('image' in v) return `<img src="${esc(v.image)}" alt="${esc(v.alt ?? '')}">`;
+  if ('image' in v) return imgHtml(v.image, v.alt);
   if ('ref' in v) {
     const raw = String(v.ref);
     const id = raw.replace(/^key:/, '').replace(/[^A-Za-z0-9_-]/g, '-');
@@ -167,7 +189,7 @@ function renderSeq(items, chain, ctx) {
   return lis ? `<ol class="seq">${lis}</ol>` : '';
 }
 function renderImageStrip(items) {
-  return items.map((it) => `<figure class="strip"><img src="${esc(it._image.image)}" alt="${esc(it._image.alt || '')}"></figure>`).join('');
+  return items.map((it) => imageFigures(it._image)).join('');
 }
 function factHtmlInline(v) {
   const h = factHtml(v);
@@ -586,7 +608,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     if (exp && (f.key === '_label' || f.key === '_summary')) continue;
     if (f.key === '_brand' && depth === 0) continue;   // the site header already carries the brand (one fact, one place)
     if (f.key === '_image' && depth === 0) {           // image-dominant main visual: edge-to-edge (F-031-§7)
-      heroImage = `<figure class="strip"><img src="${esc(f.value.image)}" alt="${esc(f.value.alt || '')}"></figure>`;
+      const heroInner = imageFigures(f.value);
+      heroImage = heroInner;
       continue;
     }
     if (META_KEYS.has(f.key)) { metaParts.push(factHtmlInline(f.value)); continue; }
@@ -763,7 +786,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   // a bare-title block (source banners/ads) is a promo card, never a section heading (T-106)
   const bareTitle = depth > 0 && titleText && !bodyLead && !heroHtml && !heroImage && !body && !action && !node._action;
   if (bareTitle) {
-    const img = node._image ? `<img src="${esc(node._image.image)}" alt="${esc(node._image.alt || '')}">` : '';
+    const img = node._image ? imageEntries(node._image).map((e) => imgHtml(e.image, e.alt)).join('') : '';
     return `<div class="promo${img ? ' promo-image' : ''}">${img}${titleText ? `<span class="promo-label">${titleText}</span>` : ''}</div>`;
   }
 
@@ -832,6 +855,9 @@ article{margin:12px 0}
 /* F-031-§7 图像主导页：满幅图带 */
 .strip{margin:0;padding:0}
 .strip img{width:100%;height:auto;display:block}
+/* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
+.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.promo-image .img-alt{padding:10px 14px;border-radius:0}
 main>.node>.strip:first-child,article>.strip{margin:0}
 /* F-031: 序列区块（不可比内容各自成立） */
 .block{margin:18px 0;padding:0 0 6px}

@@ -37,6 +37,9 @@ article{margin:12px 0}
 /* F-031-§7 图像主导页：满幅图带 */
 .strip{margin:0;padding:0}
 .strip img{width:100%;height:auto;display:block}
+/* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
+.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.promo-image .img-alt{padding:10px 14px;border-radius:0}
 main>.node>.strip:first-child,article>.strip{margin:0}
 /* F-031: 序列区块（不可比内容各自成立） */
 .block{margin:18px 0;padding:0 0 6px}
