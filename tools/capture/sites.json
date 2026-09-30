@@ -1728,6 +1728,48 @@
       "archetype": "product-detail",
       "reason": "HTTP 403 for non-search-engine agents (sitemap is search-engine-only); listing discovery used the Inside Airbnb public dataset instead",
       "checkedAt": "2026-09-28"
+    },
+    {
+      "url": "https://signin.aws.amazon.com/signin",
+      "archetype": "form/checkout/settings",
+      "reason": "robots.txt on this host redirects cross-origin to a non-robots resource ⇒ host denied and recorded as robots_cross_origin_redirect (round-9 login probe; `node tools/capture/index.mjs --dry-run --sites /tmp/probe-sites.json --out /tmp/af-probe`)",
+      "checkedAt": "2026-09-29"
+    },
+    {
+      "url": "https://play.grafana.org/login",
+      "archetype": "form/checkout/settings",
+      "reason": "navigation_failed: Chromium navigation to /login timed out in both the main pass and the retry pass (the sibling play-home dashboard captures fine), so no artifacts were written; round-9 login probe",
+      "checkedAt": "2026-09-29"
+    },
+    {
+      "url": "https://linear.app/login",
+      "archetype": "form/checkout/settings",
+      "reason": "captured (HTTP 200) but renders a 21-node JS shell with no input and no password field (Linear signs in by email/magic link) ⇒ cannot carry `login` evidence (a `login` block requires an identifier + secret field); not seeded, round-9 login probe",
+      "checkedAt": "2026-09-29"
+    },
+    {
+      "url": "https://auth.huaweicloud.com/authui/login.html",
+      "archetype": "form/checkout/settings",
+      "reason": "captured (HTTP 200, hash route #/login) but flagged suspicious_empty_render: 140 nodes, 2 text inputs, 0 password fields — the credential form is not in the render; not seeded, round-9 login probe",
+      "checkedAt": "2026-09-29"
+    },
+    {
+      "url": "https://www.apple.com/iphone/compare/",
+      "archetype": "table-heavy/admin",
+      "reason": "captured (HTTP 200, 3799 nodes) but contains 0 `<table>` elements: Apple's model-comparison grid is CSS/div based, so it is NOT `table` evidence (it stays a candidate for the `compare` form only); not seeded, round-9 table probe",
+      "checkedAt": "2026-09-29"
+    },
+    {
+      "url": "https://docs.stripe.com/payments/payment-methods",
+      "archetype": "table-heavy/admin",
+      "reason": "captured (HTTP 200) but holds a single 4-row table (4 header cells) — too small to serve as `table` exemplar evidence; the stripe-docs site already has its exemplar page and no second corpus slot was spent, round-9 table probe",
+      "checkedAt": "2026-09-29"
+    },
+    {
+      "url": "https://www.gov.uk/income-tax-rates",
+      "archetype": "table-heavy/admin",
+      "reason": "captured in the round-9 probe (1 table / 5 rows / 8 header cells) and left as an unused alternative: gov-uk/national-insurance-rates-letters carries the stronger data table (2 tables / 34 rows / 42 header cells) for the same site",
+      "checkedAt": "2026-09-29"
     }
   ]
 }

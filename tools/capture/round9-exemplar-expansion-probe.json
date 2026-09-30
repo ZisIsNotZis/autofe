@@ -1,0 +1,231 @@
+{
+  "generatedAt": "2026-09-30T17:29:29.742Z",
+  "round": 9,
+  "kind": "exemplar-expansion-probe",
+  "note": "Round-9 probe evidence for the M4 table/login exemplar gap. Rendered into /tmp/af-probe (NOT corpus) so no existing page could be overwritten; pages accepted for the corpus were re-captured into corpus/ by the same pipeline.",
+  "robotsDryRun": {
+    "command": "node tools/capture/index.mjs --dry-run --sites /tmp/probe-sites.json --out /tmp/af-probe"
+  },
+  "rendered": [
+    {
+      "candidate": "probe-apple-compare/iphone-compare",
+      "serves": "table",
+      "finalUrl": "https://www.apple.com/iphone/compare/",
+      "status": 200,
+      "title": "iPhone - Compare Models - Apple",
+      "qualityFlags": [
+        "artifact_cap_exceeded"
+      ],
+      "counts": {
+        "tables": 0,
+        "rows": 0,
+        "headerCells": 0,
+        "cells": 0,
+        "passwordInputs": 0,
+        "inputs": 2,
+        "forms": 4
+      },
+      "renderedNodes": 3799
+    },
+    {
+      "candidate": "probe-aws-ec2-price/ec2-on-demand",
+      "serves": "table",
+      "finalUrl": "https://aws.amazon.com/cn/ec2/pricing/on-demand/",
+      "status": 200,
+      "title": "EC2 按需实例定价",
+      "qualityFlags": [
+        "ax_coverage_low",
+        "cross_origin_frame",
+        "artifact_cap_exceeded"
+      ],
+      "counts": {
+        "tables": 3,
+        "rows": 80,
+        "headerCells": 9,
+        "cells": 154,
+        "passwordInputs": 0,
+        "inputs": 1,
+        "forms": 1
+      },
+      "renderedNodes": 2003
+    },
+    {
+      "candidate": "probe-govuk-itr/income-tax-rates",
+      "serves": "table",
+      "finalUrl": "https://www.gov.uk/income-tax-rates",
+      "status": 200,
+      "title": "Income Tax rates and Personal Allowances : Current rates and allowances - GOV.UK",
+      "qualityFlags": [],
+      "counts": {
+        "tables": 1,
+        "rows": 5,
+        "headerCells": 8,
+        "cells": 8,
+        "passwordInputs": 0,
+        "inputs": 3,
+        "forms": 1
+      },
+      "renderedNodes": 311
+    },
+    {
+      "candidate": "probe-govuk-ni/ni-rates-letters",
+      "serves": "table",
+      "finalUrl": "https://www.gov.uk/national-insurance-rates-letters",
+      "status": 200,
+      "title": "National Insurance rates and categories: Contribution rates - GOV.UK",
+      "qualityFlags": [],
+      "counts": {
+        "tables": 2,
+        "rows": 34,
+        "headerCells": 42,
+        "cells": 96,
+        "passwordInputs": 0,
+        "inputs": 3,
+        "forms": 1
+      },
+      "renderedNodes": 565
+    },
+    {
+      "candidate": "probe-help-aliyun/ecs-instance-families",
+      "serves": "table",
+      "finalUrl": "https://help.aliyun.com/zh/ecs/user-guide/overview-of-instance-families",
+      "status": 200,
+      "title": "ECS实例规格族的特点和指标数据-云服务器 ECS(ECS)-阿里云帮助中心",
+      "qualityFlags": [
+        "cross_origin_frame",
+        "artifact_cap_exceeded"
+      ],
+      "counts": {
+        "tables": 224,
+        "rows": 1340,
+        "headerCells": 0,
+        "cells": 14677,
+        "passwordInputs": 0,
+        "inputs": 1,
+        "forms": 0
+      },
+      "renderedNodes": 53812
+    },
+    {
+      "candidate": "probe-huaweicloud-auth/login",
+      "serves": "login",
+      "finalUrl": "https://auth.huaweicloud.com/authui/login.html#/login",
+      "status": 200,
+      "title": "用户登录—华为云",
+      "qualityFlags": [
+        "suspicious_empty_render"
+      ],
+      "counts": {
+        "tables": 0,
+        "rows": 0,
+        "headerCells": 0,
+        "cells": 0,
+        "passwordInputs": 0,
+        "inputs": 2,
+        "forms": 0
+      },
+      "renderedNodes": 140
+    },
+    {
+      "candidate": "probe-linear/login",
+      "serves": "login",
+      "finalUrl": "https://linear.app/login",
+      "status": 200,
+      "title": "Linear",
+      "qualityFlags": [],
+      "counts": {
+        "tables": 0,
+        "rows": 0,
+        "headerCells": 0,
+        "cells": 0,
+        "passwordInputs": 0,
+        "inputs": 0,
+        "forms": 0
+      },
+      "renderedNodes": 21
+    },
+    {
+      "candidate": "probe-stripe-dash/login",
+      "serves": "login",
+      "finalUrl": "https://dashboard.stripe.com/login",
+      "status": 200,
+      "title": "Stripe 登录 | 登录 Stripe 管理平台",
+      "qualityFlags": [
+        "cross_origin_frame"
+      ],
+      "counts": {
+        "tables": 0,
+        "rows": 0,
+        "headerCells": 0,
+        "cells": 0,
+        "passwordInputs": 1,
+        "inputs": 3,
+        "forms": 1
+      },
+      "renderedNodes": 178
+    },
+    {
+      "candidate": "probe-stripe-docs/payment-methods",
+      "serves": "table",
+      "finalUrl": "https://docs.stripe.com/payments/payment-methods",
+      "status": 200,
+      "title": "Payment Methods API | Stripe 文档",
+      "qualityFlags": [
+        "cross_origin_frame"
+      ],
+      "counts": {
+        "tables": 1,
+        "rows": 4,
+        "headerCells": 4,
+        "cells": 9,
+        "passwordInputs": 0,
+        "inputs": 1,
+        "forms": 0
+      },
+      "renderedNodes": 697
+    },
+    {
+      "candidate": "probe-xiaomi-account/login",
+      "serves": "login",
+      "finalUrl": "https://account.xiaomi.com/fe/service/login/password?sid=passport&qs=%253Fsid%253Dpassport&callback=https%3A%2F%2Faccount.xiaomi.com&_sign=2%26V1_passport%26wqS4omyjALxMm%2F%2F3wLXcVcITjEc%3D&serviceParam=%7B%22checkSafePhone%22%3Afalse%2C%22checkSafeAddress%22%3Afalse%2C%22lsrp_score%22%3A0.0%7D&showActiveX=false&theme=&needTheme=false&bizDeviceType=&_locale=zh_CN",
+      "status": 200,
+      "title": "小米账号 - 登录",
+      "qualityFlags": [],
+      "counts": {
+        "tables": 0,
+        "rows": 0,
+        "headerCells": 0,
+        "cells": 0,
+        "passwordInputs": 1,
+        "inputs": 3,
+        "forms": 1
+      },
+      "renderedNodes": 123
+    }
+  ],
+  "failures": [
+    {
+      "candidate": "probe-aws-signin/signin",
+      "stage": "robots",
+      "reason": "robots_cross_origin_redirect",
+      "url": "https://signin.aws.amazon.com/signin",
+      "qualityFlags": []
+    },
+    {
+      "candidate": "probe-grafana-play/login",
+      "stage": "navigation",
+      "reason": "navigation_failed",
+      "url": "https://play.grafana.org/login",
+      "qualityFlags": []
+    },
+    {
+      "candidate": "probe-huaweicloud-auth/login",
+      "stage": "render",
+      "reason": "suspicious_empty_render",
+      "url": "https://auth.huaweicloud.com/authui/login.html#/login",
+      "qualityFlags": [
+        "suspicious_empty_render"
+      ]
+    }
+  ]
+}
