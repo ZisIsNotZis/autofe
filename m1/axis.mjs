@@ -122,6 +122,26 @@ export function comparable(items) {
   return avgSim >= 0.6 && maxLen <= 400 && (minLen === 0 || maxLen / Math.max(minLen, 40) <= 4) && Math.max(...childCounts) <= 2;
 }
 
+// ---- compare-table entity header attributes (F-031 §3, round 23) ------------
+// 哪些属性描述「实体本身」因而进对比表**列头**（而不是可比的行）：实体名 + 标签/价格/
+// 副标题/摘要。这份清单是**一个**决策：`compareRowKeys` 据它排除表头键，三个目标据
+// `compareHeaderEntries` 画出同一集合。上移前它被三个渲染器各写一遍（且顺序不同），
+// 只有保真门禁兜着；现在它是共享层的单一实现（门禁 F 断言三目标同集合）。
+export const COMPARE_HEADER_KEYS = ['_name', '_title', '_tag', '_price', '_subtitle', '_summary'];
+// 一个实体**实际存在**的表头属性（`null`/`undefined` 不产出），按共享的规范顺序排列：
+// 名称 → 标签 → 价格 → 副标题 → 摘要。`_name`/`_title` 坍缩为同一个「名称」位（名优先）。
+// 目标只负责把 `{ key, value }` 画成自己的记号（HTML 元素 / 文本空格拼接 / Markdown 语法），
+// 绝不再自行决定「哪些键属于表头」。
+export function compareHeaderEntries(entity) {
+  const out = [];
+  if (entity?._name != null) out.push({ key: '_name', value: entity._name });
+  else if (entity?._title != null) out.push({ key: '_title', value: entity._title });
+  for (const key of ['_tag', '_price', '_subtitle', '_summary']) {
+    if (entity?.[key] != null) out.push({ key, value: entity[key] });
+  }
+  return out;
+}
+
 // ---- compare-set verdict (D2 / layout-axes §3) -----------------------------
 // 行 = 两个以上实体共有的可对照属性；实体名/标签/价格/副标题/摘要进表头，不当行（F-031-§3）
 // 数组元素（`_items[i]`/`_lines[i]`）**不是**可比属性：按下标对齐两个无关列表是“配对”而非对照。
@@ -132,7 +152,7 @@ export function compareRowKeys(items) {
   for (const it of items) {
     for (const k of Object.keys(it._fields ?? {})) if (!seen.has(k)) { seen.add(k); rowKeys.push(k); }
     for (const f of factsOf(it)) {
-      if (['_name', '_title', '_tag', '_price', '_subtitle', '_summary'].includes(f.key)) continue;
+      if (COMPARE_HEADER_KEYS.includes(f.key)) continue;   // 表头属性不是行（compareHeaderEntries）
       if (!seen.has(f.key)) { seen.add(f.key); rowKeys.push(f.key); }
     }
     for (const c of childrenOf(it)) {

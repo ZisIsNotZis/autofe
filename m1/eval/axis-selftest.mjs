@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
 import { renderMarkdown } from '../render-md.mjs';
-import { selectForm, comparable, compareSetVerdict, nodePlan } from '../axis.mjs';
+import { selectForm, comparable, compareSetVerdict, nodePlan, compareHeaderEntries, COMPARE_HEADER_KEYS } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
@@ -55,6 +55,8 @@ const SHARED_NAMES = [
   'nodePlan', 'headingKeyOf', 'isDemoted', 'actionPlan', 'itemActionPlan', 'choicePlan', 'runPlan',
   'selectTablePlan', 'compareCellOf', 'compareRowLabel', 'nestedCollections', 'namedChildEntries',
   'arrayChildEntries', 'isActionOnlyNode',
+  // round 23: the compare-table entity header attribute set (was re-written per target)
+  'compareHeaderEntries', 'COMPARE_HEADER_KEYS',
 ];
 for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
@@ -68,6 +70,14 @@ for (const f of ['render-text.mjs', 'render-md.mjs']) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
   check(`${f} does not import another renderer`,
     !/from '\.\/render(-text)?\.mjs'/.test(src), `imports a sibling renderer`);
+}
+// A1c-b. the compare-table header decision is consumed, not re-derived (round 23). The
+// header ATTRIBUTE SET (`_name`/`_tag`/`_price`/`_subtitle`/`_summary`) used to be spelled
+// out inside all three targets with a different order per target; now `compareHeaderEntries`
+// is the one decision and every target draws it.
+for (const f of TARGETS) {
+  const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
+  check(`${f} consumes the shared compare-header decision`, /\bcompareHeaderEntries\s*\(/.test(src));
 }
 // A1c. the node render plan is imported and actually consumed (round 22): the eleven
 // node-level decisions must be drawn, not re-derived.
@@ -253,21 +263,102 @@ check('C7 `compareSetVerdict` returns ok:true for a dense set',
 }
 
 // E. corpus-wide: on the real curated models, all three targets must record the SAME
-// compare-set degradation list (the round-20 debt that started this axis layer).
-{
+// compare-set degradation list AND draw the SAME compare-table header set (round 23).
+// The header half is the explicit three-target assertion the round-22 residual asked for:
+// for every compare entity on every real page, each of its header attributes (name/tag/
+// price/subtitle/summary) reaches ALL THREE outputs — no target silently drops one.
+const plainValue = (v) => {
+  if (v == null) return null;
+  if (typeof v !== 'object') return String(v);
+  if ('text' in v) return String(v.text ?? '');
+  if ('num' in v) return String(v.num ?? '');
+  if ('money' in v) return String(v.money ?? '');
+  if ('date' in v) return String(v.date ?? '');
+  return null;
+};
+const escaped = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const containsHeaderValue = (out, v) => {
+  const t = plainValue(v);
+  if (!t || !t.trim()) return true;
+  return out.includes(t) || out.includes(escaped(t));
+};
+const compareEntities = (model) => {
+  const out = [];
+  const isCompareSet = (n) => n && typeof n === 'object' && !Array.isArray(n)
+    && (n._rel?.compare === true || (Array.isArray(n._items) && n._items.some((it) => it?._rel?.compare === true)));
+  (function walk(n) {
+    if (Array.isArray(n)) { n.forEach(walk); return; }
+    if (!n || typeof n !== 'object') return;
+    if (isCompareSet(n) && Array.isArray(n._items)) out.push(...n._items.filter((it) => it && typeof it === 'object'));
+    for (const v of Object.values(n)) walk(v);
+  })(model);
+  return out;
+};
+const headerHalf = () => {
   const scale = JSON.parse(fs.readFileSync(path.join(root, 'm1', 'eval', 'm3-scale.json'), 'utf8')).filter((x) => x.tier === 'exemplar');
-  let mismatches = 0, n = 0;
+  let decisionMismatch = 0, headerMismatch = 0, n = 0, entities = 0;
   for (const r of scale) {
     const mp = path.join(root, 'm1', 'curated', `${r.k}.json`);
     if (!fs.existsSync(mp)) continue;
     const model = JSON.parse(fs.readFileSync(mp, 'utf8'));
-    const h = []; render(model, {}, h);
-    const t = []; renderText(model, {}, t);
-    const m = []; renderMarkdown(model, {}, m);
+    const h = []; const html = render(model, {}, h);
+    const t = []; const text = renderText(model, {}, t);
+    const m = []; const md = renderMarkdown(model, {}, m);
     n++;
-    if (JSON.stringify(h) !== JSON.stringify(t) || JSON.stringify(h) !== JSON.stringify(m)) mismatches++;
+    if (JSON.stringify(h) !== JSON.stringify(t) || JSON.stringify(h) !== JSON.stringify(m)) decisionMismatch++;
+    for (const it of compareEntities(model)) {
+      entities++;
+      for (const e of compareHeaderEntries(it)) {
+        if (!containsHeaderValue(html, e.value) || !containsHeaderValue(text, e.value) || !containsHeaderValue(md, e.value)) headerMismatch++;
+      }
+    }
   }
-  check(`E1 all ${n} curated models make the same axis decision in every target`, mismatches === 0, `${mismatches} mismatched`);
+  return { n, entities, decisionMismatch, headerMismatch };
+};
+
+// E0. the decision itself: a full entity yields exactly the canonical header key set, and
+// `_name`/`_title` collapse to one name slot (never both).
+{
+  const full = { _name: { text: 'N' }, _title: { text: 'T' }, _tag: { text: 'g' }, _price: { money: 1, currency: 'USD' }, _subtitle: { text: 's' }, _summary: { text: 'm' } };
+  const keys = compareHeaderEntries(full).map((e) => e.key);
+  check('E0 compareHeaderEntries yields the canonical header key set (name collapses)',
+    JSON.stringify(keys) === JSON.stringify(['_name', '_tag', '_price', '_subtitle', '_summary'])
+    && COMPARE_HEADER_KEYS.includes('_tag') && COMPARE_HEADER_KEYS.includes('_subtitle')
+    && compareHeaderEntries({ _title: { text: 'T' } }).map((e) => e.key).join(',') === '_title',
+    JSON.stringify(keys));
+}
+// E1/E2. corpus: same axis decision in every target, and every header attribute of every
+// real compare entity reaches all three outputs.
+{
+  const { n, entities, decisionMismatch, headerMismatch } = headerHalf();
+  check(`E1 all ${n} curated models make the same axis decision in every target`, decisionMismatch === 0, `${decisionMismatch} mismatched`);
+  check(`E2 all ${entities} compare entities draw the same header set in every target`, headerMismatch === 0, `${headerMismatch} mismatched header values`);
+}
+
+// F. constructed compare set carrying ALL five header attributes (round 23). The strongest
+// form of "one decision, three drawings": the SAME attribute set must appear in ALL THREE
+// outputs. A target that drops `_tag`/`_subtitle`/`_summary` — or draws a different set —
+// fails here even though the fidelity gate might not notice on a page without those keys.
+{
+  const ent = (n, tag, price, sub, sum) => ({
+    _key: 'e' + n, _name: { text: 'EntName' + n }, _tag: { text: tag },
+    _price: { money: price, currency: 'USD' }, _subtitle: { text: sub }, _summary: { text: sum },
+    _rating: { num: 4 + n / 10 },
+  });
+  const model = compareNode([ent(1, 'TagOne', '11.11', 'SubOne', 'SumOne'), ent(2, 'TagTwo', '22.22', 'SubTwo', 'SumTwo')]);
+  const r = agree(model);
+  const vals = ['EntName1', 'TagOne', '11.11', 'SubOne', 'SumOne'];
+  const seen = (out) => vals.map((v) => containsHeaderValue(out, { text: v }) || out.includes(v));
+  const allTrue = vals.map(() => true);
+  check('F1 the shared header function yields the canonical set for a full entity',
+    JSON.stringify(compareHeaderEntries(model.set._items[0]).map((e) => e.key))
+      === JSON.stringify(['_name', '_tag', '_price', '_subtitle', '_summary']),
+    JSON.stringify(compareHeaderEntries(model.set._items[0]).map((e) => e.key)));
+  check('F2 all three targets draw every header attribute (identical set)',
+    JSON.stringify(seen(r.html)) === JSON.stringify(allTrue)
+    && JSON.stringify(seen(r.text)) === JSON.stringify(allTrue)
+    && JSON.stringify(seen(r.md)) === JSON.stringify(allTrue),
+    `html=${JSON.stringify(seen(r.html))} text=${JSON.stringify(seen(r.text))} md=${JSON.stringify(seen(r.md))}`);
 }
 
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);

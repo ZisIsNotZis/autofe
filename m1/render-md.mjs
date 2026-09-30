@@ -25,7 +25,7 @@ import {
   factsOf, FIELDS,
 } from './model-lib.mjs';
 import {
-  labelOf, labelTextOf, compareRowKeys, nestedCollections,
+  labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections,
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
   itemActionPlan, nodePlan, runPlan, compareCellOf, compareRowLabel, buildRefLabels,
 } from './axis.mjs';
@@ -130,12 +130,9 @@ function renderTable(items, chain, ctx, depth, node) {
 
 function renderCompareTable(items, chain, ctx) {
   const rowKeys = compareRowKeys(items);
+  // 表头属性集合是共享决策（compareHeaderEntries）；这里只把它画成 GFM 表头文本。
   const header = ['', ...items.map((it) => {
-    const parts = [fmt(it._name ?? it._title ?? { text: '' })];
-    if (it._tag) parts.push(fmt(it._tag));
-    if (it._price) parts.push(fmt(it._price));
-    if (it._subtitle) parts.push(fmt(it._subtitle));
-    if (it._summary) parts.push(fmt(it._summary));
+    const parts = compareHeaderEntries(it).map((e) => fmt(e.value));
     const ctl = itemControl(it, chain, ctx);
     if (ctl) parts.push(ctl);
     // an entity's own nested collection belongs inside its own column (F-031-§3.1)

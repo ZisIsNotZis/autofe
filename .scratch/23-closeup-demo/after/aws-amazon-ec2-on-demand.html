@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Amazon EC2 按需定价</title>
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
+header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
+h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
+h2.title{font-size:1.45em;margin:1.1em 0 .45em;font-weight:700}
+h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
+.hero{margin:4px 0 24px}
+.hero.fact-hero .fact .val{font-size:2em;font-weight:700}
+article{margin:12px 0}
+.timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
+.timeline .item{position:relative;padding:6px 0}
+.timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
+.fact{margin:3px 0}
+.fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
+.val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips-rows{display:block}
+.chips-rows .chip-item{padding:3px 0}
+.cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
+.action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
+.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.promo-image{padding:0;overflow:hidden}
+.promo-image img{width:100%;height:auto;display:block;border-radius:9px}
+.promo-label{display:block;padding:8px 12px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
+.meta .sep{color:#c2ccd6}
+.prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
+/* F-031-§7 图像主导页：满幅图带 */
+.strip{margin:0;padding:0}
+.strip img{width:100%;height:auto;display:block}
+/* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
+.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.promo-image .img-alt{padding:10px 14px;border-radius:0}
+main>.node>.strip:first-child,article>.strip{margin:0}
+/* F-031: 序列区块（不可比内容各自成立） */
+.block{margin:18px 0;padding:0 0 6px}
+.block>.node{max-width:none}
+hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
+/* F-031-§4 控件条 */
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
+a.ctl{font-weight:600}
+a.ctl:hover{background:#f2f7ff}
+/* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
+.cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
+.cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
+.cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
+.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
+.cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
+.cmp-price{font-weight:700;margin-top:4px}
+.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
+.cmp-ctl{margin-top:6px}
+.linklist{margin:8px 0;padding-left:1.1em}
+.linklist.cols2{columns:2;column-gap:28px}
+.linklist li{margin:5px 0;line-height:1.5}
+.linklist a{color:#0b62d0}
+.seq{margin:8px 0;padding-left:1.5em}
+.seq li{margin:4px 0;line-height:1.55}
+.seq a{color:#0b62d0}
+.chip-item{display:block;break-inside:avoid;padding:4px 0;font-size:.95em}
+.chips a{color:inherit;text-decoration:none}
+.chips a:hover{text-decoration:underline}
+.deflist{margin:8px 0}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
+.deflabel{min-width:130px;font-weight:600}
+.deflabel a{color:inherit;text-decoration:none}
+.timeline .defrow{position:relative}
+.timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
+.accordion{margin:8px 0}
+details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
+details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
+details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;align-items:center}
+.toolbar .tool{padding:6px 14px;border:1px solid #d6dde6;border-radius:8px;text-decoration:none;color:inherit;font-size:.9em}
+.expose{display:block;margin:8px 0}
+.choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
+fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
+legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
+input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
+.action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
+img{max-width:100%;border-radius:10px;display:block}
+table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
+table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
+table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
+table.data td.sel,table.data th.sel{width:34px;text-align:center}
+.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.row-ops{display:flex;flex-direction:column;gap:4px}
+.row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+</style></head>
+<body><main><article class="node depth-0"><h1 class="title">Amazon EC2 按需定价</h1><section class="group g-data-transfer"><article class="node depth-1"><h2 class="title">数据传输</h2><div class="fact"><span class="val">AWS 客户每月可免费将 100GB 的数据传出至互联网，所有 AWS 服务和区域（中国区域和 GovCloud 区域除外）合并计算。100GB 免费传出至互联网的数据额度全球适用，不单独或分别适用于 AWS 区域。</span></div><table class="data"><thead><tr><th></th><th>定价</th></tr></thead><tbody><tr><td>数据自互联网传入 Amazon EC2</td><td></td></tr><tr><td>所有传入数据</td><td>每 GB $0</td></tr><tr><td>数据自 Amazon EC2 传出至互联网</td><td></td></tr><tr><td>每月前 10TB</td><td>每 GB $0.09</td></tr><tr><td>每月随后的 40TB</td><td>每 GB $0.085</td></tr><tr><td>每月随后的 100TB</td><td>每 GB $0.07</td></tr><tr><td>每月超出 150TB 的部分</td><td>每 GB $0.05</td></tr></tbody></table></article></section><section class="group g-region-egress"><article class="node depth-1"><h2 class="title">数据自 Amazon EC2 传出至</h2><table class="data"><thead><tr><th>数据自 Amazon EC2 传出至</th><th></th></tr></thead><tbody><tr><td>Amazon CloudFront</td><td>每 GB $0</td></tr><tr><td>AWS European Sovereign Cloud（德国）</td><td>每 GB $0.05</td></tr><tr><td>AWS GovCloud（美国西部）</td><td>每 GB $0.02</td></tr><tr><td>AWS GovCloud（美国东部）</td><td>每 GB $0.02</td></tr><tr><td>非洲（开普敦）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（香港）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（海得拉巴）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（雅加达）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（马来西亚）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（墨尔本）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（孟买）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（新西兰）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（大阪）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（首尔）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（新加坡）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（悉尼）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（台北）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（泰国）</td><td>每 GB $0.08</td></tr><tr><td>亚太地区（东京）</td><td>每 GB $0.02</td></tr><tr><td>加拿大（中部）</td><td>每 GB $0.02</td></tr><tr><td>加拿大西部（卡尔加里）</td><td>每 GB $0.02</td></tr><tr><td>欧洲（法兰克福）</td><td>每 GB $0.02</td></tr><tr><td>欧洲（爱尔兰）</td><td>每 GB $0.02</td></tr><tr><td>欧洲（伦敦）</td><td>每 GB $0.02</td></tr><tr><td>欧洲（米兰）</td><td>每 GB $0.02</td></tr><tr><td>欧洲（巴黎）</td><td>每 GB $0.02</td></tr><tr><td>欧洲（西班牙）</td><td>每 GB $0.02</td></tr><tr><td>欧洲（斯德哥尔摩）</td><td>每 GB $0.02</td></tr><tr><td>欧洲（苏黎世）</td><td>每 GB $0.02</td></tr><tr><td>以色列（特拉维夫）</td><td>每 GB $0.02</td></tr><tr><td>墨西哥（中部）</td><td>每 GB $0.02</td></tr><tr><td>中东（巴林）</td><td>每 GB $0.02</td></tr><tr><td>中东（阿联酋）</td><td>每 GB $0.02</td></tr><tr><td>南美洲（圣保罗）</td><td>每 GB $0.02</td></tr><tr><td>美国东部（弗吉尼亚州北部）</td><td>每 GB $0.01</td></tr><tr><td>美国西部（洛杉矶）</td><td>每 GB $0.02</td></tr><tr><td>美国西部（北加利福尼亚）</td><td>每 GB $0.02</td></tr><tr><td>美国西部（俄勒冈州）</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（KDDI）– 大阪</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（KDDI）– 东京</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（SKT）– 大田</td><td>每 GB $0.02</td></tr><tr><td>亚太地区（SKT）– 首尔</td><td>每 GB $0.02</td></tr><tr><td>加拿大（BELL）– 多伦多</td><td>每 GB $0.02</td></tr><tr><td>欧洲（英国电信）- 曼彻斯特</td><td>每 GB $0.02</td></tr><tr><td>欧洲 (Vodafone) – 伦敦</td><td>每 GB $0.02</td></tr><tr><td>欧洲（Vodafone）– 曼彻斯特</td><td>每 GB $0.02</td></tr><tr><td>塞内加尔（达喀尔）</td><td>每 GB $0.05</td></tr><tr><td>美国东部（列涅萨）</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 亚特兰大</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 波士顿</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 夏洛特</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 芝加哥</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 达拉斯</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 底特律</td><td>每 GB $0.01</td></tr><tr><td>美国东部 (Verizon) – 休斯顿</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 迈阿密</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 明尼阿波利斯</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）- 纳什维尔</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 纽约</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 坦帕</td><td>每 GB $0.01</td></tr><tr><td>美国东部（威瑞森）– 华盛顿特区</td><td>每 GB $0.01</td></tr><tr><td>美国西部（威瑞森）- 丹佛</td><td>每 GB $0.02</td></tr><tr><td>美国西部（威瑞森）- 拉斯维加斯</td><td>每 GB $0.02</td></tr><tr><td>美国西部（威瑞森）– 洛杉矶</td><td>每 GB $0.02</td></tr><tr><td>美国西部 (Verizon) – 菲尼克斯</td><td>每 GB $0.02</td></tr><tr><td>美国西部（威瑞森）– 旧金山港湾区</td><td>每 GB $0.02</td></tr><tr><td>美国西部（威瑞森）- 西雅图</td><td>每 GB $0.02</td></tr></tbody></table></article></section><section class="group g-same-region"><article class="node depth-1"><h2 class="title">在同一 AWS 区域内传输数据</h2><table class="data"><thead><tr><th>在同一 AWS 区域内的本地区域和可用区之间传输的数据，从本地区域中的 Amazon EC2“传入”和“传出”</th><th>定价</th></tr></thead><tbody><tr><td>数据传入</td><td>$0.01</td></tr><tr><td>数据传出</td><td>$0.01</td></tr></tbody></table></article></section></article></main></body></html>

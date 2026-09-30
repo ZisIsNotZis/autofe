@@ -17,7 +17,7 @@ import {
 // the decisions as HTML — it holds no model semantics of its own.
 import {
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
-  labelOf, labelTextOf, compareRowKeys, nestedCollections, namedChildEntries,
+  labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
   nodePlan, itemActionPlan, runPlan, compareCellOf, compareRowLabel, buildRefLabels,
 } from './axis.mjs';
 
@@ -284,24 +284,29 @@ function renderControls(items, chain, ctx) {
   }).join('');
   return btns ? `<div class="controls">${btns}</div>` : '';
 }
-// 横向对比表（F-031-§3）：行键/单元格/行标题/退化判定均在 axis.mjs；这里只管 HTML 呈现。
+// 横向对比表（F-031-§3）：行键/单元格/行标题/退化判定/**实体表头属性集**均在 axis.mjs；
+// 这里只管 HTML 呈现。表头集合是共享决策 `compareHeaderEntries`，本函数只把每个入口画成
+// 自己的记号（名称→链接，标签/价格/副标题/摘要→各自块）——绝不再自己决定哪些键属于表头。
 function renderCompareTable(items, chain, hide, ctx) {
   const rowKeys = compareRowKeys(items);
   const head = `<tr><th class="cmp-row"></th>${items.map((it) => {
-    const name = it._name ?? it._title;
     const ex = itemExtra(it, chain, ctx);   // 实体自己的动作控件不得因进表而丢失（F-033）
-    const label = name ? fmt(name) : '';
-    const nm = label && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
-    const tag = it._tag ? `<span class="cmp-tag">${fmt(it._tag)}</span>` : '';
-    const price = it._price ? `<div class="cmp-price">${fmt(it._price)}</div>` : '';
-    const sum = (it._summary ? `<div class="cmp-sub">${fmt(it._summary)}</div>` : '')
-      + (it._subtitle ? `<div class="cmp-sub">${fmt(it._subtitle)}</div>` : '');
+    let nm = '';
+    let rest = '';
+    for (const e of compareHeaderEntries(it)) {
+      if (e.key === '_name' || e.key === '_title') {
+        const label = fmt(e.value);
+        nm = label && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
+      } else if (e.key === '_tag') rest += `<span class="cmp-tag">${fmt(e.value)}</span>`;
+      else if (e.key === '_price') rest += `<div class="cmp-price">${fmt(e.value)}</div>`;
+      else rest += `<div class="cmp-sub">${fmt(e.value)}</div>`;   // _subtitle / _summary
+    }
     // 实体自己的嵌套集合（如机身颜色）属于该实体，渲染在它的列内——绝不与另一实体的列表按下标配对
     let nested = '';
     for (const col of nestedCollections(it)) nested += renderForm(col.form, col.items, [...chain, it], hide, ctx, 5, it);
     const nestedHtml = nested ? `<div class="cmp-nested">${nested}</div>` : '';
     const ctl = ex.ctl ? `<div class="cmp-ctl">${ex.ctl}</div>` : '';
-    return `<th class="cmp-col">${nm}${tag}${price}${sum}${nestedHtml}${ctl}</th>`;
+    return `<th class="cmp-col">${nm}${rest}${nestedHtml}${ctl}</th>`;
   }).join('')}</tr>`;
   const body = rowKeys.map((key) => {
     // never print an internal key as a row label (F-022/F-029): child title → declared field label → no label

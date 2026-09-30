@@ -1,0 +1,32 @@
+# The product development system for teams and agents
+
+> **主指**: A new species of product tool. Purpose-built for modern teams with AI workflows at its core, Linear sets a new standard for planning and building products.
+
+1. Intake and integrations
+2. Planning and monitoring
+3. AI and automations
+4. Build, review, and ship
+
+## Purpose-built
+
+Linear is shaped by the practices and principles of world-class teams.
+
+- Designed for workflows shared by humans and agents, from drafting to review.
+- Reduces noise and restores momentum to help teams ship with high standards.
+
+## Changelog
+
+- **Faster app launch**: Render UI before vehicle_state sync when minimum required state is present.
+- **Ride rows reset fix**: Fix the dimmed ride rows that never reset and open a PR.
+
+[Contact sales](https://linear.app/contact-sales)
+
+## Powering the companies building the future
+
+- OpenAI
+- Vercel
+- Figma
+- Coinbase
+- Ramp
+
+[Get started](https://linear.app/signup)
