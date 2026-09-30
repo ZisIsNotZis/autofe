@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>科技频道</title>
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
+header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
+h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
+h2.title{font-size:1.45em;margin:1.1em 0 .45em;font-weight:700}
+h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
+.hero{margin:4px 0 24px}
+.hero.fact-hero .fact .val{font-size:2em;font-weight:700}
+article{margin:12px 0}
+.timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
+.timeline .item{position:relative;padding:6px 0}
+.timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
+.fact{margin:3px 0}
+.fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
+.val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips-rows{display:block}
+.chips-rows .chip-item{padding:3px 0}
+.cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
+.action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
+.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.promo-image{padding:0;overflow:hidden}
+.promo-image img{width:100%;height:auto;display:block;border-radius:9px}
+.promo-label{display:block;padding:8px 12px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
+.meta .sep{color:#c2ccd6}
+.prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
+/* F-031-§7 图像主导页：满幅图带 */
+.strip{margin:0;padding:0}
+.strip img{width:100%;height:auto;display:block}
+/* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
+.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.promo-image .img-alt{padding:10px 14px;border-radius:0}
+main>.node>.strip:first-child,article>.strip{margin:0}
+/* F-031: 序列区块（不可比内容各自成立） */
+.block{margin:18px 0;padding:0 0 6px}
+.block>.node{max-width:none}
+hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
+/* F-031-§4 控件条 */
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
+a.ctl{font-weight:600}
+a.ctl:hover{background:#f2f7ff}
+/* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
+.cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
+.cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
+.cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
+.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
+.cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
+.cmp-price{font-weight:700;margin-top:4px}
+.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
+.cmp-ctl{margin-top:6px}
+.linklist{margin:8px 0;padding-left:1.1em}
+.linklist.cols2{columns:2;column-gap:28px}
+.linklist li{margin:5px 0;line-height:1.5}
+.linklist a{color:#0b62d0}
+.seq{margin:8px 0;padding-left:1.5em}
+.seq li{margin:4px 0;line-height:1.55}
+.seq a{color:#0b62d0}
+.chip-item{display:block;break-inside:avoid;padding:4px 0;font-size:.95em}
+.chips a{color:inherit;text-decoration:none}
+.chips a:hover{text-decoration:underline}
+.deflist{margin:8px 0}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
+.deflabel{min-width:130px;font-weight:600}
+.deflabel a{color:inherit;text-decoration:none}
+.timeline .defrow{position:relative}
+.timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
+.accordion{margin:8px 0}
+details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
+details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
+details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;align-items:center}
+.toolbar .tool{padding:6px 14px;border:1px solid #d6dde6;border-radius:8px;text-decoration:none;color:inherit;font-size:.9em}
+.expose{display:block;margin:8px 0}
+.choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
+fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
+legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
+input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
+.action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
+img{max-width:100%;border-radius:10px;display:block}
+table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
+table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
+table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
+table.data td.sel,table.data th.sel{width:34px;text-align:center}
+.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.row-ops{display:flex;flex-direction:column;gap:4px}
+.row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+</style></head>
+<body><main><article id="36kr-tech-channel" class="node depth-0"><h1 class="title">科技频道</h1><section class="group g-channels"><article class="node depth-1"><h2 class="title">资讯频道</h2><fieldset class="expose chipbar expose-channel"><label class="choice"><input type="radio" name="channel" value="最新"> 最新</label><label class="choice"><input type="radio" name="channel" value="推荐"> 推荐</label><label class="choice"><input type="radio" name="channel" value="创投"> 创投</label><label class="choice"><input type="radio" name="channel" value="财经"> 财经</label><label class="choice"><input type="radio" name="channel" value="汽车"> 汽车</label><label class="choice"><input type="radio" name="channel" value="AI"> AI</label><label class="choice"><input type="radio" name="channel" value="科技"> 科技</label><label class="choice"><input type="radio" name="channel" value="项目推荐"> 项目推荐</label><label class="choice"><input type="radio" name="channel" value="专精特新"> 专精特新</label><label class="choice"><input type="radio" name="channel" value="创新"> 创新</label><label class="choice"><input type="radio" name="channel" value="企服"> 企服</label><label class="choice"><input type="radio" name="channel" value="消费"> 消费</label><label class="choice"><input type="radio" name="channel" value="城市"> 城市</label><label class="choice"><input type="radio" name="channel" value="职场"> 职场</label><label class="choice"><input type="radio" name="channel" value="企业号"> 企业号</label><label class="choice"><input type="radio" name="channel" value="红人"> 红人</label><label class="choice"><input type="radio" name="channel" value="其他"> 其他</label></fieldset></article></section><section class="group g-feed"><article class="node depth-1"><h2 class="title">最新</h2><div class="cards"><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988814727773192">曾经的&quot;安卓表皇&quot;回来了，但有两道难关需要闯</a></h3><div class="fact"><span class="val">要想回归“表皇”地位，Moto还有很多事要做。</span></div><div class="fact"><span class="val">三易生活 · 56分钟前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988842701208581">140亿独角兽亲儿子破产：欠员工2300万</a></h3><div class="fact"><span class="val">一家明星公司，最后连工资都发不出来了。</span></div><div class="fact"><span class="val">铅笔道 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988694215982083">RFID老牌大厂断臂投身Physical AI明星企业，一场物联网产业链的价值迁移</a></h3><div class="fact"><span class="val">硬件与软件的价值关系正在重新定义</span></div><div class="fact"><span class="val">物联网智库 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988684985334792">赛力斯康波首度回应“问界单飞”，择机进入轿车、MPV市场</a></h3><div class="fact"><span class="val">问界专属专营后，下一步怎么走？</span></div><div class="fact"><span class="val">出行一客 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988684304005895">AI风口下，上海蜂窝连接芯片龙头赴港IPO，阿里巴巴入股</a></h3><div class="fact"><span class="val">经营现金流持续为负</span></div><div class="fact"><span class="val">格隆汇新股 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988645180111617">威马、高合的剧本，哪吒躲得开吗？</a></h3><div class="fact"><span class="val">几十万老车主的售后，30亿够还吗？</span></div><div class="fact"><span class="val">豹变 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988793109379845">AI进入物理世界，京东物流为什么选择了一条「不性感」的路</a></h3><div class="fact"><span class="val">物理AI的下一场硬仗，在仓库里。</span></div><div class="fact"><span class="val">晓曦 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988633438436100">DLSS 5 把显卡干趴下了，英伟达却觉得这很重要</a></h3><div class="fact"><span class="val">英伟达的野心，让数字世界逼近真实。</span></div><div class="fact"><span class="val">果壳 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988438306388737">谷歌终于支棱起来了，Gemini 4 Pro空降Arena榜单，13项跑分碾压GPT-6和Fable</a></h3><div class="fact"><span class="val">13项跑分全面碾压GPT-6和Fable，成本近五分之一</span></div><div class="fact"><span class="val">AI前线 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988815751805954">88小时抵一个人思考4000年，OpenAI核心研究员：除了自我进化，更可怕的是AI正学会“隐藏自己”</a></h3><div class="fact"><span class="val">AI正在把4000年的人类认知劳动压缩进88小时，OpenAI研究员Noam Brown坦言连他自己也被进展速度持续震惊。</span></div><div class="fact"><span class="val">36氪的朋友们 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988814724496388">掌机兼顾游戏和生产力？宏碁有点异想天开</a></h3><div class="fact"><span class="val">两头都想顾的下场，只能是一根筋变两头堵。</span></div><div class="fact"><span class="val">三易生活 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988805898868609">理想告别，吉利合体，宁王还是那个宁王</a></h3><div class="fact"><span class="val">电池行业的游戏规则变了</span></div><div class="fact"><span class="val">市值水晶 · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988805621087239">“我决定退出PS5破解圈，”PS5 Linux大神被AI搞到“退圈”：有人用LLM找Bug写Hack，几个月心血“全打水漂”</a></h3><div class="fact"><span class="val">一个本可以等到《GTA6》的项目，为什么会在一夜之间“崩盘”？</span></div><div class="fact"><span class="val">CSDN · 1小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988796233415684">AI扼杀了React Native？</a></h3><div class="fact"><span class="val">React Native 在 2020 年是正确的选择，而原生开发在今天是正确的选择。</span></div><div class="fact"><span class="val">CSDN · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988791872043784">Figure租了30套房，让机器人挨家“考核家务”</a></h3><div class="fact"><span class="val">这次，机器人进门直接干活。</span></div><div class="fact"><span class="val">36氪的朋友们 · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988791341398792">GPT-5.6被抓现行，偷教AI瞒报撒谎，OpenAI曝光6起失控实录</a></h3><div class="fact"><span class="val">OpenAI自曝家丑，急踩刹车</span></div><div class="fact"><span class="val">新智元 · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988777960356613">投资人想劝劝AI创业者，理性看待自己的估值吧</a></h3><div class="fact"><span class="val">泡沫破了之后，你还能穿越周期吗？</span></div><div class="fact"><span class="val">最话FunTalk · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988770718382857">本末动力通过上市聆讯：上半年营收2亿，净亏3.9亿，大疆教父李泽湘又要收获IPO</a></h3><div class="fact"><span class="val">联想之星与君联投资是股东</span></div><div class="fact"><span class="val">雷帝触网 · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988763626077191">新能源车险定价区间对标燃油车，车主续保保费要变</a></h3><div class="fact"><span class="val">保费是否整体下行要看风险和成本</span></div><div class="fact"><span class="val">36氪的朋友们 · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988751295281928">华为放手之后，赛力斯能接住问界吗？</a></h3><div class="fact"><span class="val">赛力斯的“独立”大考</span></div><div class="fact"><span class="val">市值榜 · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988743172815620">不反对AI，只反对万物皆AI</a></h3><div class="fact"><span class="val">当AI成为默认答案，“不用”成了稀缺选择</span></div><div class="fact"><span class="val">亿欧网 · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988743034616840">雷军猛踢一脚，宇树终于止跌了</a></h3><div class="fact"><span class="val">机器人的故事越来越难讲</span></div><div class="fact"><span class="val">财天COVER · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988742919355141">AI补上了建模短板，消费级3D打印来到爆发前夜</a></h3><div class="fact"><span class="val">在AI大模型3D生成能力持续提升的背景下，一台3D打印机加上一台激光雕刻机、一台3D扫描仪和一套AI建模工具，就构成了一个普通人的桌面制造中心。</span></div><div class="fact"><span class="val">36氪的朋友们 · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988705190057605">国产手机Agent系统大战开打，从“懂P图”到“能办事”，华米OV荣谁更强？</a></h3><div class="fact"><span class="val">有人梭哈，有人试探。</span></div><div class="fact"><span class="val">雷科技 · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988719505964039">Claude，黑进了OpenAI</a></h3><div class="fact"><span class="val">3个人，72小时，模型是 Claude Opus，赏金6500美元</span></div><div class="fact"><span class="val">机器之心 · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988720824473477">何小鹏，哄好了王凤英</a></h3><div class="fact"><span class="val">中国汽车行业，正在告别一个人定义一家车企的时代。</span></div><div class="fact"><span class="val">版面之外 · 2小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988723585455746">字节历史上最大一次押注</a></h3><div class="fact"><span class="val">张一鸣不走回头路。</span></div><div class="fact"><span class="val">未来之地 · 3小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988725504792456">机器人的数据生意：真需求，还是自循环？</a></h3><div class="fact"><span class="val">具身智能数采存乱象，业内聚焦真实数据价值</span></div><div class="fact"><span class="val">霞光AI实验室 · 3小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988730896160642">AI回答准确率仅21.2%，联合国联手谷歌救场，重构全球公开数据</a></h3><div class="fact"><span class="val">联合国联手谷歌改造公开数据。</span></div><div class="fact"><span class="val">雷科技 · 3小时前</span></div></article></div><div class="item"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://36kr.com/p/3988732005972999">“只剩一群用 LLM 的菜鸟”：顶级黑客怒退 PS5 Linux 项目，几个月心血全打水漂</a></h3><div class="fact"><span class="val">开喷的人，真的有资格看不起“AI 菜鸟”</span></div><div class="fact"><span class="val">极客邦科技InfoQ · 3小时前</span></div></article></div></div></article></section><section class="group g-companies"><article class="node depth-1"><h2 class="title">推荐企业</h2><div class="deflist"><div class="defrow"><div class="deflabel"><a href="https://36kr.com/user/6396564">行业新知</a></div><div class="defval">跨行业资讯精选，快人一步，知新知远。</div></div><div class="defrow"><div class="deflabel"><a href="https://36kr.com/user/6308858">氪睿研究院</a></div><div class="defval">氪睿研究院由36氪与RET睿意德共同创立</div></div></div><a class="action verb-open" href="https://36kr.com/enterprises-list">查看更多企业</a></article></section></article></main></body></html>

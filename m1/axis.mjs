@@ -15,7 +15,7 @@
 // text-table column alignment, `<span class="was">` strikethrough — those are the
 // presentation of a decision, and there is exactly one per target.
 import {
-  childrenOf, factsOf, resolveWithParent, isRoleKey, parseExpr, evalExpr, scopeFor,
+  childrenOf, factsOf, resolveWithParent, isRoleKey, parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
 } from './model-lib.mjs';
 
 // ---- shared display constants (target-neutral semantics) -------------------
@@ -247,6 +247,203 @@ export function primarySlot(node, headingKey) {
   if (!r.ok || !isRoleKey(r.lastKey)) return null;
   if (r.holder === node && r.lastKey === headingKey) return null;
   return { holder: r.holder, key: r.lastKey, value: r.node };
+}
+
+// ==== node render plan (round 22) ===========================================
+// THE CONTRACT: a render target must not decide anything about the MODEL. `nodePlan`
+// folds the eleven node-level decisions that used to be re-derived inside every target
+// (heading key, node visibility, visible/hidden facts, choice-set form, compare cell +
+// row label, control-toolbar grouping, demotion, title-is-control, `_empty`, boolean
+// title consumption, F-051 table/card threshold) into ONE pure, target-neutral object.
+// A target receives the plan and only DRAWS it: HTML elements, text columns, Markdown
+// syntax. Before this round `_expose` was a select table in HTML and an option list in
+// text/Markdown — the same model, two different AXIS decisions; now all three consume
+// one `choice.kind` and only their drawing differs.
+
+export function headingKeyOf(node) { return node._title ? '_title' : (node._name ? '_name' : null); }
+export function isDemoted(node) { return (node?._rel?.level ?? 0) >= 2; }
+export const isActionOnlyNode = (n) => Boolean(n?._action) && factsOf(n).length === 0 && childrenOf(n).length === 0;
+export const arrayChildEntries = (node) => childrenOf(node).filter((c) => c.key.startsWith('_items[') || c.key.startsWith('_lines['));
+export const namedChildEntries = (node) => childrenOf(node).filter((c) => !c.key.startsWith('_items[') && !c.key.startsWith('_lines['));
+// An entity's own nested collections (`_items`/`_lines` arrays) belong inside its column;
+// each run's form is the shared `selectForm` (F-031-§3.1) — never paired by index across entities.
+export function nestedCollections(it) {
+  const out = [];
+  for (const k of ['_items', '_lines']) {
+    const arr = it?.[k];
+    if (Array.isArray(arr) && arr.length) out.push({ key: k, items: arr, form: selectForm(arr, it._rel?.order) });
+  }
+  return out;
+}
+
+// A control: visibility + scope are decided here; label/target stay raw data shaped by
+// each target ([标签] / `[标签](href)` / `<a class="ctl">`).
+export function actionPlan(node, chain, values = {}) {
+  const a = node?._action;
+  if (!a) return null;
+  if (!actionVisible(a, { ...values, ...scopeFor([...chain, node], values) })) return null;
+  const has = hasTarget(a);
+  return { label: typeof a.label === 'string' ? a.label : '', verb: a.verb ?? null, hasTarget: has, href: has ? hrefOf(a.to) : null };
+}
+// An item's action: same as actionPlan, plus whether it is the source's own control copy.
+// A label identical to the item's own name is the same fact twice, not a control.
+export function itemActionPlan(it, chain, values = {}) {
+  const a = actionPlan(it, chain, values);
+  if (!a) return null;
+  return { ...a, isControl: Boolean(a.label) && a.label !== labelTextOf(it) };
+}
+
+// F-051: a set of records is a table only when it has an identity column (member name) or
+// at least one DECLARED domain label, and at least two attribute columns. One column is a
+// list, identity+one attribute is a deflist — neither is a table. Decision, not markup.
+export function runPlan(items) {
+  const named = items.some((it) => Boolean(it._name ?? it._title));
+  const attrs = [...new Set(items.flatMap((it) => [...Object.keys(it._fields ?? {}), ...factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))];
+  const cols = named ? ['_name', ...attrs] : attrs;
+  const isTable = attrs.length >= 2 && (named || attrs.some((c) => FIELDS[c]?.label));
+  const cellValue = (n, col) => {
+    if (col === '_name') return n._name ?? n._title ?? null;
+    if (n._fields?.[col]) return n._fields[col];
+    const f = factsOf(n).find((x) => x.key === col);
+    return f ? f.value : null;
+  };
+  return { named, attrs, cols, isTable, cellValue };
+}
+
+// A choice set's form (F-030): one option is not a choice (plain fact); two or more are a
+// choice set; a bare `_expose` is a boolean switch or an input. `rich` says the options
+// carry their own attributes — a target may draw those as a table or as annotated options.
+function optionOf(it, i) {
+  const fieldsFirst = it._fields ? Object.values(it._fields)[0] : undefined;
+  return {
+    node: it, index: i,
+    key: typeof it._key === 'string' ? it._key : null,
+    name: it._name ?? it._title ?? null,
+    fieldsName: it._fields ? { text: String(fieldsFirst?.text ?? fieldsFirst?.num ?? '') } : null,
+    extra: factsOf(it).filter((x) => !['_name', '_title'].includes(x.key)),
+    ops: namedChildEntries(it).map((c) => c.node),
+  };
+}
+function selectTablePlan(items, options) {
+  const typed = items.some((it) => it._fields && Object.keys(it._fields).length);
+  const cols = typed
+    ? [...new Set(items.flatMap((it) => [...Object.keys(it._fields ?? {}), ...factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))]
+    : ['_name', ...new Set(items.flatMap((it) => factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)))];
+  const cellValue = (n, col) => {
+    if (col === '_name') return n._name ?? n._title ?? null;
+    if (n._fields?.[col]) return n._fields[col];
+    const f = factsOf(n).find((x) => x.key === col);
+    return f ? f.value : null;
+  };
+  const labelKey = (c) => FIELDS[c]?.label ?? (c === '_name' ? '' : '');
+  const anyOps = options.some((o) => o.ops.length > 0);
+  return { cols, cellValue, labelKey, anyOps, showHead: cols.some((c) => labelKey(c)) || anyOps, typed };
+}
+export function choicePlan(node, exp) {
+  if (!exp) return null;
+  const items = Array.isArray(node._items) ? node._items : [];
+  const legend = node._label ?? null;
+  const hint = node._summary ?? null;
+  const multi = exp.multiple === true;
+  if (items.length) {
+    if (items.length < 2) {
+      return { kind: 'plain-fact', items, item: items[0], legend, hint, multi, name: exp.name,
+        itemName: items[0]._name ?? items[0]._title ?? null,
+        itemExtra: factsOf(items[0]).filter((x) => !['_name', '_title'].includes(x.key)) };
+    }
+    const options = items.map(optionOf);
+    const rich = items.some((it) => (it._fields && Object.keys(it._fields).length))
+      || items.some((it) => factsOf(it).some((f) => !['_name', '_title'].includes(f.key)));
+    return { kind: 'choice', items, options, legend, hint, multi, name: exp.name, type: exp.type, rich,
+      table: rich ? selectTablePlan(items, options) : null };
+  }
+  if (exp.type === 'bool') return { kind: 'bool', items, legend, hint, name: exp.name, nodeName: node._name ?? node._title ?? null };
+  return { kind: 'input', items, legend, hint, name: exp.name, type: exp.type };
+}
+
+// Compare-set cell: a declared field / role fact is a VALUE; a named child is either its
+// own simple text (when it has a single plain fact and no structure) or a NODE to render.
+export function compareCellOf(it, key) {
+  if (it._fields?.[key]) return { kind: 'value', value: it._fields[key] };
+  const f = factsOf(it).find((x) => x.key === key);
+  if (f) return { kind: 'value', value: f.value };
+  const c = childrenOf(it).find((x) => x.key === key) ?? childrenOf(it).find((x) => x.key.replace(/\[\d+\]$/, '') === key);
+  if (!c) return { kind: 'empty' };
+  const n = c.node;
+  const only = n._detail ?? n._text ?? n._name ?? n._title;
+  const rich = (n._items ?? []).length > 0 || Object.keys(n._fields ?? {}).length > 0
+    || childrenOf(n).some((x) => !x.key.startsWith('_items[')) || factsOf(n).length > 1;
+  if (only && !rich) return { kind: 'text', value: only };
+  return { kind: 'node', node: n };
+}
+// Compare-set row label: the child block's own title/name wins, then the declared field
+// label, then no label — an internal key is never printed (F-022/F-029).
+export function compareRowLabel(items, key) {
+  for (const it of items) {
+    const c = childrenOf(it).find((x) => x.key === key || x.key.replace(/\[\d+\]$/, '') === key);
+    const t = c && (c.node._title ?? c.node._name);
+    if (t?.text) return t.text;
+  }
+  return null;
+}
+
+// The whole node plan. `ctx`: { chain, values, hidden (Set of already-hidden fact keys),
+// depth, degradations }. Returns `{ ok:false, visible:false }` for a hidden/invalid node.
+export function nodePlan(node, ctx = {}) {
+  const chain = ctx.chain ?? [];
+  const values = ctx.values ?? {};
+  const depth = ctx.depth ?? 0;
+  const hidden = ctx.hidden instanceof Set ? ctx.hidden : new Set();
+  if (!node || typeof node !== 'object' || Array.isArray(node)) return { ok: false, visible: false };
+  const scope = { ...values, ...scopeFor([...chain, node], values) };
+  if (typeof node._when === 'string') {
+    const ast = parseExpr(node._when);
+    if (ast.ok && !evalExpr(ast, scope)) return { ok: false, visible: false };
+  }
+  const headingKey = headingKeyOf(node);
+  const exp = exposeOf(node);
+  const primary = primarySlot(node, headingKey);
+  const hid = new Set(hidden);
+  if (primary && primary.holder === node) hid.add(primary.key);
+
+  const facts = { list: [], hero: null, fields: [] };
+  for (const f of factsOf(node)) {
+    if (hid.has(f.key)) continue;                                   // already shown (e.g. hero/primary)
+    if (f.key === headingKey) continue;                             // the heading carries it
+    if (exp && (f.key === '_label' || f.key === '_summary')) continue;  // legend/hint, not body
+    if (f.key === '_brand' && depth === 0) continue;                // the site header carries the brand
+    if (f.key === '_image' && depth === 0) { facts.hero = f.value; continue; }  // edge-to-edge hero (F-031-§7)
+    if (f.key === '_amount' && f.value?.qualifier === LIST_QUALIFIER) { facts.list.push({ ...f, category: 'was' }); continue; }
+    if (META_KEYS.has(f.key)) { facts.list.push({ ...f, category: 'meta' }); continue; }
+    if (ROLE_UNIT[f.key]) { facts.list.push({ ...f, category: 'unit' }); continue; }
+    facts.list.push({ ...f, category: 'body' });
+  }
+  for (const [k, v] of Object.entries(node._fields ?? {})) facts.fields.push({ key: k, value: v, label: FIELDS[k]?.label ?? '' });
+
+  const ap = actionPlan(node, chain, values);
+  const headingText = headingKey ? (node[headingKey]?.text ?? '') : '';
+  const titleIsControl = Boolean(ap && ap.label && headingText && ap.label === headingText);
+  const labellessLink = Boolean(ap && !ap.label && ['navigate', 'open'].includes(ap.verb) && ap.hasTarget);
+  const action = ap ? {
+    ...ap, isTitleControl: titleIsControl, isLabellessLink: labellessLink,
+    linkTo: titleIsControl ? (ap.hasTarget ? ap.href : null) : (labellessLink ? ap.href : null),
+  } : null;
+
+  const choice = choicePlan(node, exp);
+  const toolbar = namedChildEntries(node)
+    .filter((c) => isActionOnlyNode(c.node) && actionPlan(c.node, [...chain, node], values))
+    .map((c) => c.node);
+  const consumedArray = new Set(exp && Array.isArray(node._items) ? node._items : []);
+  const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it));
+  const items = seqGroupsOf(rawItems, node, ctx.degradations ?? null);
+  const namedChildren = namedChildEntries(node);
+  const emptyState = (Array.isArray(node._items) && node._items.length === 0 && node._empty) ? node._empty : null;
+  const titleConsumed = Boolean(choice && choice.kind === 'bool' && headingKey);
+  return {
+    ok: true, visible: true, scope, headingKey, headingValue: headingKey ? node[headingKey] : null,
+    headingText, demoted: isDemoted(node), primary, facts, action, hasAction: Boolean(node._action),
+    titleIsControl, choice, toolbar, items, namedChildren, emptyState, titleConsumed,
+  };
 }
 
 // ---- model-wide `key:` → label index (target-neutral) ----------------------

@@ -22,12 +22,12 @@
 // Usage: node m1/render-md.mjs <model.json> <out.md>
 import fs from 'node:fs';
 import {
-  childrenOf, factsOf, parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
+  factsOf, FIELDS,
 } from './model-lib.mjs';
 import {
-  labelOf, labelTextOf, selectForm, compareRowKeys,
-  CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, META_KEYS, hasOwnUnit, hasTarget, hrefOf,
-  actionVisible, itemScope, seqGroupsOf, primarySlot, buildRefLabels,
+  labelOf, labelTextOf, compareRowKeys, nestedCollections,
+  CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
+  itemActionPlan, nodePlan, runPlan, compareCellOf, compareRowLabel, buildRefLabels,
 } from './axis.mjs';
 
 // role-fact display copy (target-local, like render-text.mjs's ROLE_LABEL): which
@@ -106,66 +106,30 @@ const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] && !hasOwnUnit(f.valu
 const roleLabel = (key) => (key in ROLE_LABEL ? ROLE_LABEL[key] : '');
 
 // ---- actions / controls (F-031-§4) ----------------------------------------
-// Visibility + scope are shared (axis.mjs actionVisible/itemScope); Markdown only
-// decides the notation: a real target is a link, a target-less control keeps the
-// source's own words in brackets.
-const controlMd = (a, label) => {
-  const t = escTilde(label);
-  return hasTarget(a) ? `[${t}](${hrefOf(a.to)})` : `[${t}]`;
+// Visibility + scope are shared (axis.mjs itemActionPlan); Markdown only decides the
+// notation: a real target is a link, a target-less control keeps the source's own words.
+const controlMd = (a) => {
+  const t = escTilde(a.label);
+  return a.hasTarget ? `[${t}](${a.href})` : `[${t}]`;
 };
-const controlOf = (a) => (a?.label ? controlMd(a, a.label) : '');
+const controlOf = (a) => (a?.label ? controlMd(a) : '');
 function itemControl(it, chain, ctx) {
-  const a = it._action;
-  if (!a || !actionVisible(a, itemScope(it, chain, ctx))) return '';
-  const text = labelTextOf(it);
-  if (!a.label) return '';
-  if (a.label === text) return '';   // same fact twice => keep the content alone
-  return controlOf(a);
+  const a = itemActionPlan(it, chain, ctx.values);
+  return a && a.isControl ? controlMd(a) : '';
 }
 
 // ---- item-set forms: all chosen in ./axis.mjs, only written out here -------
 function renderTable(items, chain, ctx, depth, node) {
-  const named = items.some((it) => Boolean(it._name ?? it._title));
-  const attrs = [...new Set(items.flatMap((it) => [
-    ...Object.keys(it._fields ?? {}),
-    ...factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key),
-  ]))];
-  const isTable = attrs.length >= 2 && (named || attrs.some((c) => FIELDS[c]?.label));
-  const valuesOf = (n, col) => {
-    if (col === '_name') return n._name ? fmt(n._name) : (n._title ? fmt(n._title) : '');
-    if (n._fields?.[col]) return fmt(n._fields[col]);
-    const f = factsOf(n).find((x) => x.key === col);
-    return f ? fmt(f.value) : '';
-  };
-  if (!isTable) return items.map((it) => renderNode(it, [...chain], false, ctx, depth + 1)).filter(Boolean).join('\n\n');
-  const cols = named ? ['_name', ...attrs] : attrs;
-  const header = cols.map((c) => (c === '_name' ? '名称' : (ROLE_LABEL[c] ?? FIELDS[c]?.label ?? '')));
-  return mdTable(header, items.map((it) => cols.map((col) => valuesOf(it, col))));
+  // F-051 table/card threshold is shared (`runPlan` in axis.mjs); this is only the GFM layout.
+  const rp = runPlan(items);
+  if (!rp.isTable) return items.map((it) => renderNode(it, [...chain], false, ctx, depth + 1)).filter(Boolean).join('\n\n');
+  const header = rp.cols.map((c) => (c === '_name' ? '名称' : (ROLE_LABEL[c] ?? FIELDS[c]?.label ?? '')));
+  const rows = items.map((it) => rp.cols.map((col) => { const v = rp.cellValue(it, col); return v ? fmt(v) : ''; }));
+  return mdTable(header, rows);
 }
 
 function renderCompareTable(items, chain, ctx) {
   const rowKeys = compareRowKeys(items);
-  const cellOf = (it, key) => {
-    if (it._fields?.[key]) return fmt(it._fields[key]);
-    const f = factsOf(it).find((x) => x.key === key);
-    if (f) return fmt(f.value);
-    const c = childrenOf(it).find((x) => x.key === key) ?? childrenOf(it).find((x) => x.key.replace(/\[\d+\]$/, '') === key);
-    if (!c) return '';
-    const n = c.node;
-    const only = n._detail ?? n._text ?? n._name ?? n._title;
-    const rich = (n._items ?? []).length > 0 || Object.keys(n._fields ?? {}).length > 0
-      || childrenOf(n).some((x) => !x.key.startsWith('_items[')) || factsOf(n).length > 1;
-    if (only && !rich) return fmt(only);
-    return renderNode(n, [...chain, it], false, ctx, 5);
-  };
-  const childLabel = (key) => {
-    for (const it of items) {
-      const c = childrenOf(it).find((x) => x.key === key || x.key.replace(/\[\d+\]$/, '') === key);
-      const t = c && (c.node._title ?? c.node._name);
-      if (t?.text) return t.text;
-    }
-    return null;
-  };
   const header = ['', ...items.map((it) => {
     const parts = [fmt(it._name ?? it._title ?? { text: '' })];
     if (it._tag) parts.push(fmt(it._tag));
@@ -175,19 +139,22 @@ function renderCompareTable(items, chain, ctx) {
     const ctl = itemControl(it, chain, ctx);
     if (ctl) parts.push(ctl);
     // an entity's own nested collection belongs inside its own column (F-031-§3.1)
-    for (const arrKey of ['_items', '_lines']) {
-      const arr = it[arrKey];
-      if (Array.isArray(arr) && arr.length) {
-        const nested = renderForm(selectForm(arr, it._rel?.order), arr, [...chain, it], ctx, 5, it);
-        if (nested) parts.push(oneLine(nested));
-      }
+    for (const col of nestedCollections(it)) {
+      const nested = renderForm(col.form, col.items, [...chain, it], ctx, 5, it);
+      if (nested) parts.push(oneLine(nested));
     }
     return parts.filter(Boolean).join(' ');
   })];
-  const rows = rowKeys.map((key) => [
-    childLabel(key) ?? ROLE_LABEL[key] ?? FIELDS[key]?.label ?? '',
-    ...items.map((it) => cellOf(it, key)),
-  ]);
+  const rows = rowKeys.map((key) => {
+    const label = compareRowLabel(items, key) ?? ROLE_LABEL[key] ?? FIELDS[key]?.label ?? '';
+    const cells = items.map((it) => {
+      const c = compareCellOf(it, key);
+      if (c.kind === 'empty') return '';
+      if (c.kind === 'node') return renderNode(c.node, [...chain, it], false, ctx, 5);
+      return fmt(c.value);
+    });
+    return [label, ...cells];
+  });
   return mdTable(header, rows);
 }
 
@@ -206,7 +173,7 @@ function renderForm(form, items, chain, ctx, depth, node) {
   if (form === 'controls') {
     // the member's own name is content; the action label is the source's control copy
     return items.map((it) => {
-      const a = actionVisible(it._action, itemScope(it, chain, ctx)) ? it._action : null;
+      const a = itemActionPlan(it, chain, ctx.values);
       const name = labelTextOf(it);
       const ctl = a?.label ?? '';
       const other = Boolean(name && ctl && !name.includes(ctl) && !ctl.includes(name));
@@ -253,132 +220,94 @@ function renderAccordion(items, chain, ctx) {
   }).filter(Boolean).join('\n\n');
 }
 
-function factsLines(node, depth, hidden, exp = null) {
-  const out = [];
-  const headingKey = node._title ? '_title' : (node._name ? '_name' : null);
-  for (const f of factsOf(node)) {
-    if (hidden.has(f.key)) continue;
-    if (f.key === headingKey) continue;                                  // the heading already carries it
-    if (exp && (f.key === '_label' || f.key === '_summary')) continue;   // expose legend/hint, not body facts
-    if (f.key === '_image' && depth === 0) continue;      // hero image handled separately (F-031-§7)
-    if (f.key === '_brand' && depth === 0) continue;      // header carries the brand once
-    if (f.key === '_amount' && f.value?.qualifier === LIST_QUALIFIER) { out.push(`~~${fmt(f.value)}~~`); continue; }
-    if (META_KEYS.has(f.key) || ROLE_UNIT[f.key]) { out.push(roleFact(f)); continue; }
-    const lab = roleLabel(f.key);
-    out.push(lab ? `${lab}: ${fmt(f.value)}` : roleFact(f));
-  }
-  for (const [k, v] of Object.entries(node._fields ?? {})) {
-    const lab = FIELDS[k]?.label ?? '';
-    out.push(`${lab ? lab + ': ' : ''}${fmt(v)}`);
-  }
-  return out;
-}
-
 function renderNode(node, chain, isHero, ctx, depth) {
-  if (node === null || typeof node !== 'object' || Array.isArray(node)) return '';
-  const scope = { ...ctx.values, ...scopeFor([...chain, node], ctx.values) };
-  if (typeof node._when === 'string') {
-    const ast = parseExpr(node._when);
-    if (ast.ok && !evalExpr(ast, scope)) return '';
-  }
-  const headingKey = node._title ? '_title' : (node._name ? '_name' : null);
-  if (!ctx.hide.has(node)) ctx.hide.set(node, new Set());
-  const hidden = ctx.hide.get(node);
-  const exp = exposeOf(node);
-  const itemsConsumed = new Set();
-
+  // The whole node decision is the shared plan (axis.mjs); this function draws it as Markdown.
+  const plan = nodePlan(node, { chain, values: ctx.values, hidden: ctx.hide.get(node), depth, degradations: ctx.degradations });
+  if (!plan.visible) return '';
   const blocks = [];
-  let titleText = headingKey ? fmt(node[headingKey]) : null;
-  const demoted = (node._rel?.level ?? 0) >= 2;
+  const consumed = new Set();
+  let titleText = plan.headingValue ? fmt(plan.headingValue) : null;
+  const demoted = plan.demoted;
 
   // _primary: the storyline's main fact. Resolution + slot validity are shared
   // (axis.mjs primarySlot); the hidden-key storage (a Set) is this target's own.
-  const slot = primarySlot(node, headingKey);
-  if (slot) {
-    ctx.hide.get(slot.holder) ?? ctx.hide.set(slot.holder, new Set());
-    ctx.hide.get(slot.holder).add(slot.key);
-    blocks.push(`> **主指**: ${fmt(slot.value)}`);
+  if (plan.primary) {
+    if (!ctx.hide.has(plan.primary.holder)) ctx.hide.set(plan.primary.holder, new Set());
+    ctx.hide.get(plan.primary.holder).add(plan.primary.key);
+    blocks.push(`> **主指**: ${fmt(plan.primary.value)}`);
   }
 
   let actionText = '';
-  let titleIsControl = false;
-  if (node._action && actionVisible(node._action, scope)) {
-    const a = node._action;
-    if (a.label && titleText && a.label === titleText) { titleIsControl = true; actionText = controlOf(a); }
-    else if (a.label) actionText = controlOf(a);
-  }
+  const titleIsControl = plan.titleIsControl;
+  if (plan.action && plan.action.label) actionText = controlOf(plan.action);
 
-  // expose widget -> an option list
-  if (exp) {
-    const lbl = node._label ? fmt(node._label) : '';
-    const hint = node._summary ? fmt(node._summary) : '';
-    if (node._items?.length === 1) {
-      // a one-option "choice" is not a choice: render the fact plainly (F-030)
-      const it = node._items[0];
-      const v = it._name ?? it._title;
-      const extra = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
-      blocks.push(`${lbl ? lbl + ': ' : ''}${v ? fmt(v) : ''} ${extra.map((x) => fmt(x.value)).join(' ')}`.trim());
-      itemsConsumed.add(it);
-    } else if (node._items?.length) {
-      const multi = exp.multiple === true;
-      blocks.push(`${lbl || (multi ? '可多选' : '单选')}${hint ? ` (${hint})` : ''}`);
-      blocks.push(node._items.map((it) => {
-        const v = it._name ?? it._title;
-        const extra = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key)).map((x) => fmt(x.value)).join(' ');
-        return `- ${multi ? '[ ]' : '( )'} ${v ? fmt(v) : '选项'}${extra ? ' ' + extra : ''}`;
+  // expose widget -> an option list (the form decision is shared: kind + legend/hint + options)
+  if (plan.choice) {
+    const ch = plan.choice;
+    const lbl = ch.legend ? fmt(ch.legend) : '';
+    const hint = ch.hint ? fmt(ch.hint) : '';
+    if (ch.kind === 'plain-fact') {
+      const v = ch.itemName;
+      blocks.push(`${lbl ? lbl + ': ' : ''}${v ? fmt(v) : ''} ${ch.itemExtra.map((x) => fmt(x.value)).join(' ')}`.trim());
+    } else if (ch.kind === 'choice') {
+      blocks.push(`${lbl || (ch.multi ? '可多选' : '单选')}${hint ? ` (${hint})` : ''}`);
+      blocks.push(ch.options.map((o) => {
+        const v = o.name;
+        const extra = o.extra.map((x) => fmt(x.value)).join(' ');
+        return `- ${ch.multi ? '[ ]' : '( )'} ${v ? fmt(v) : '选项'}${extra ? ' ' + extra : ''}`;
       }).join('\n'));
-      node._items.forEach((it) => itemsConsumed.add(it));
-    } else if (exp.type === 'bool') {
-      const name = lbl || (node._name ? fmt(node._name) : '');
+    } else if (ch.kind === 'bool') {
+      const name = lbl || (ch.nodeName ? fmt(ch.nodeName) : '');
       blocks.push(`- [ ] ${name}`.trim());
-      if (headingKey) titleText = null;   // the heading IS the switch label
     } else {
-      blocks.push(`${lbl ? lbl + ': ' : ''}________${hint ? ` (${hint})` : ''} \`[${exp.type}]\``);
+      blocks.push(`${lbl ? lbl + ': ' : ''}________${hint ? ` (${hint})` : ''} \`[${ch.type}]\``);
     }
   }
+  if (plan.titleConsumed) titleText = null;   // the heading IS the switch label
 
-  // consecutive action-only children -> one control line
-  const actionKids = childrenOf(node).filter((c) => !itemsConsumed.has(c.node) && c.node._action &&
-    factsOf(c.node).length === 0 && childrenOf(c.node).length === 0 &&
-    actionVisible(c.node._action, { ...ctx.values, ...scopeFor([...chain, node, c.node], ctx.values) }));
-  if (actionKids.length >= 2) {
-    const tools = actionKids.map((c) => controlOf(c.node._action)).filter(Boolean);
-    if (tools.length) { blocks.push(tools.join(' ')); actionKids.forEach((c) => itemsConsumed.add(c.node)); }
+  // consecutive action-only children -> one control line (grouping decided in plan.toolbar)
+  if (plan.toolbar.length >= 2) {
+    const tools = plan.toolbar.map((n) => { const a = itemActionPlan(n, [...chain, node], ctx.values); return a && a.label ? controlOf(a) : ''; }).filter(Boolean);
+    if (tools.length) { blocks.push(tools.join(' ')); plan.toolbar.forEach((n) => consumed.add(n)); }
   }
 
-  const factLines = factsLines(node, depth, hidden, exp);
+  const factLines = [];
+  for (const f of plan.facts.list) {
+    if (f.category === 'meta' || f.category === 'unit') { factLines.push(roleFact(f)); continue; }
+    if (f.category === 'was') { factLines.push(`~~${fmt(f.value)}~~`); continue; }
+    const lab = roleLabel(f.key);
+    factLines.push(lab ? `${lab}: ${fmt(f.value)}` : roleFact(f));
+  }
+  for (const f of plan.facts.fields) factLines.push(`${f.label ? f.label + ': ' : ''}${fmt(f.value)}`);
   if (factLines.length) blocks.push(factLines.join('\n\n'));
 
   // ordered item sets + compare grouping (axis.mjs seqGroupsOf)
-  const ordered = childrenOf(node).filter((c) => (c.key.startsWith('_lines[') || c.key.startsWith('_items[')) && !itemsConsumed.has(c.node));
-  const rawItems = ordered.map((c) => c.node);
-  const { groups } = seqGroupsOf(rawItems, node, ctx.degradations);
+  const { groups } = plan.items;
   for (const g of groups) {
     const body = renderForm(g.form, g.items, [...chain, node], ctx, depth, node);
     if (body) blocks.push(body);
-    g.items.forEach((it) => itemsConsumed.add(it));
   }
-  if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
-    const inner = renderNode(node._empty, [...chain, node], false, ctx, depth + 1);
+  if (plan.emptyState) {
+    const inner = renderNode(plan.emptyState, [...chain, node], false, ctx, depth + 1);
     if (inner) blocks.push(inner);
   }
 
   // named child groups (non-array children)
-  for (const c of childrenOf(node)) {
-    if (itemsConsumed.has(c.node) || c.key.startsWith('_items[') || c.key.startsWith('_lines[')) continue;
+  for (const c of plan.namedChildren) {
+    if (consumed.has(c.node)) continue;
     const inner = renderNode(c.node, [...chain, node], false, ctx, depth + 1);
     if (inner) blocks.push(inner);
   }
 
   const parts = [];
   if (titleText && !titleIsControl) parts.push(`${'#'.repeat(Math.min(depth + 1, 6))} ${titleText}`);
-  if (node._image && depth === 0) { const hero = imageMd(node._image); if (hero) parts.push(hero); }
+  if (plan.facts.hero) { const hero = imageMd(plan.facts.hero); if (hero) parts.push(hero); }
   for (const b of blocks) if (b && b.trim()) parts.push(b);
-  if (titleIsControl) parts.push(controlOf(node._action) || `[${titleText}]`);
+  if (titleIsControl) parts.push(controlOf(plan.action) || `[${titleText}]`);
   else if (actionText) parts.push(actionText);
   const out = parts.join('\n\n');
   if (!out.trim()) return '';
-  // _rel.level >= 2: a demoted branch is a reference aside -> blockquote (Markdown's aside)
+  // demotion ≥2: a demoted branch is a reference aside -> blockquote (Markdown's aside)
   return demoted ? out.split('\n').map((l) => (l.trim() ? `> ${l}` : '>')).join('\n') : out;
 }
 

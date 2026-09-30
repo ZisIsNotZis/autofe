@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
 import { renderMarkdown } from '../render-md.mjs';
-import { selectForm, comparable, compareSetVerdict } from '../axis.mjs';
+import { selectForm, comparable, compareSetVerdict, nodePlan } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
@@ -51,6 +51,10 @@ const SHARED_NAMES = [
   // round 20
   'seqGroupsOf', 'actionVisible', 'itemScope', 'primarySlot', 'buildRefLabels', 'pageText',
   'groupKind', 'seqGroups', 'indexRefLabels', 'REF_LABELS',
+  // round 22: the node render plan and every plan helper it exports
+  'nodePlan', 'headingKeyOf', 'isDemoted', 'actionPlan', 'itemActionPlan', 'choicePlan', 'runPlan',
+  'selectTablePlan', 'compareCellOf', 'compareRowLabel', 'nestedCollections', 'namedChildEntries',
+  'arrayChildEntries', 'isActionOnlyNode',
 ];
 for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
@@ -64,6 +68,25 @@ for (const f of ['render-text.mjs', 'render-md.mjs']) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
   check(`${f} does not import another renderer`,
     !/from '\.\/render(-text)?\.mjs'/.test(src), `imports a sibling renderer`);
+}
+// A1c. the node render plan is imported and actually consumed (round 22): the eleven
+// node-level decisions must be drawn, not re-derived.
+for (const f of TARGETS) {
+  const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
+  check(`${f} consumes the shared node plan`, /\bnodePlan\s*\(/.test(src));
+}
+// A2b. STRUCTURAL (round 22): the forbidden set is the model-semantic KEYS, not the function
+// names. A renamed private copy of a decision still has to read the model (`.\_expose`,
+// `.\_when`, `.\_fields`, `.\_rel`, `.\_primary`, `.\_empty`, `.\_items`, `.\_lines`, `.\_action`),
+// so scanning comment-free source for those tokens catches the copy that the old name-based
+// half could not. A target may still read `_name`/`_title`/`_label`... for display copy — those
+// are allowed and are listed in the round-22 report §exceptions.
+const FORBIDDEN_TOKENS = ['_rel', '_when', '_expose', '_fields', '_primary', '_empty', '_items', '_lines', '_action'];
+const stripComments = (s) => s.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/\/\/[^\n]*/g, ' ');
+for (const f of TARGETS) {
+  const code = stripComments(fs.readFileSync(path.join(root, 'm1', f), 'utf8'));
+  const found = FORBIDDEN_TOKENS.filter((t) => new RegExp(`(?<![\\w$])${t}\\b`).test(code));
+  check(`${f} holds no model-semantic token (${FORBIDDEN_TOKENS.join(' ')})`, found.length === 0, `found: ${found.join(', ')}`);
 }
 // A2. structural: a private copy is not always a named function — the same decision can
 // be hand-written inline. Round 20: grouping (`_rel.compare`), the primary-slot rule
@@ -194,7 +217,6 @@ for (const [label, model, order, form, signature] of formCases) {
     `form=${chosen} expected=${form} html=${r.html.includes('<table')} md=${r.md.split('\n').find((l) => l.startsWith('| '))}`);
 }
 
-// The comparability gate itself is the shared one (and agrees with the verdict path).
 check('C6 `comparable` is the same function the form gate uses',
   comparable([{ _name: { text: 'A' }, _rating: { num: 1 } }, { _name: { text: 'B' }, _rating: { num: 2 } }]) === true
   && comparable([{ _name: { text: 'A' }, _detail: { text: 'x' } }, { _name: { text: 'B' } }]) === false,
@@ -203,6 +225,50 @@ check('C7 `compareSetVerdict` returns ok:true for a dense set',
   compareSetVerdict([
     { _name: { text: 'A' }, _rating: { num: 1 } }, { _name: { text: 'B' }, _rating: { num: 2 } },
   ]).ok === true);
+
+// D. choice-set form (round 22). Before this round `_expose` was TWO axis decisions: HTML made
+// a select table when the options carried attributes, text/Markdown made an option list. Now
+// there is ONE plan decision (`choice.kind === 'choice'`), and each target only chooses a
+// drawing: a select table (HTML) vs an option list (text `( )`, Markdown `- ( )`).
+{
+  const model = { _intent: 'x', _title: { text: 'Pick' }, pick: {
+    _intent: 'p', _label: { text: 'Size' }, _expose: { name: 'size', type: 'text' }, _items: [
+      { _name: { text: 'Small' }, _detail: { text: 'fits' } },
+      { _name: { text: 'Large' }, _detail: { text: 'roomy' } },
+    ] } };
+  const p = nodePlan(model.pick, { chain: [], values: {}, depth: 1 });
+  const h = []; const html = render(model, {}, h);
+  const t = []; const text = renderText(model, {}, t);
+  const m = []; const md = renderMarkdown(model, {}, m);
+  check('D1 one shared choice-set decision for every target',
+    p.ok && p.choice && p.choice.kind === 'choice' && p.choice.rich === true && p.choice.multi === false,
+    JSON.stringify(p.choice && { kind: p.choice.kind, rich: p.choice.rich, multi: p.choice.multi }));
+  check('D2 HTML draws the shared decision as a select table',
+    html.includes('table class="data"') && html.includes('type="radio"') && html.includes('Small') && html.includes('fits'),
+    'no select table');
+  check('D3 text draws the shared decision as an option list',
+    text.includes('( ) Small') && text.includes('( ) Large'), 'no option list');
+  check('D4 Markdown draws the shared decision as an option list',
+    md.includes('- ( ) Small') && md.includes('- ( ) Large'), 'no option list');
+}
+
+// E. corpus-wide: on the real curated models, all three targets must record the SAME
+// compare-set degradation list (the round-20 debt that started this axis layer).
+{
+  const scale = JSON.parse(fs.readFileSync(path.join(root, 'm1', 'eval', 'm3-scale.json'), 'utf8')).filter((x) => x.tier === 'exemplar');
+  let mismatches = 0, n = 0;
+  for (const r of scale) {
+    const mp = path.join(root, 'm1', 'curated', `${r.k}.json`);
+    if (!fs.existsSync(mp)) continue;
+    const model = JSON.parse(fs.readFileSync(mp, 'utf8'));
+    const h = []; render(model, {}, h);
+    const t = []; renderText(model, {}, t);
+    const m = []; renderMarkdown(model, {}, m);
+    n++;
+    if (JSON.stringify(h) !== JSON.stringify(t) || JSON.stringify(h) !== JSON.stringify(m)) mismatches++;
+  }
+  check(`E1 all ${n} curated models make the same axis decision in every target`, mismatches === 0, `${mismatches} mismatched`);
+}
 
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);
 process.exit(bad ? 1 : 0);

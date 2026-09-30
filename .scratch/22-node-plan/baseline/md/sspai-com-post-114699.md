@@ -1,0 +1,136 @@
+# 派早报：欧盟拟禁止 13 岁以下儿童使用社交媒体等
+
+少数派编辑部
+
+时间: 2026-09-18
+
+标签: 派早报
+
+副标题: 周五 18
+
+08:17 8 分钟阅读
+
+本文责编： @北鸮
+
+### 欧盟拟禁止 13 岁以下儿童使用社交媒体
+
+9 月 17 日，欧盟委员会通过《欧盟儿童法案》（EU KIDS Act）提案，拟禁止社交媒体平台向 13 岁以下儿童开放，并将独立开户的最低年龄统一设为 15 岁。提案还要求平台证明其服务适合相应年龄用户，并在设计阶段保障安全。按照提案，13 至未满 15 岁儿童可通过监护人开设和管理的子账户使用适龄社交媒体及视频分享服务，但须限制社交联系人，每日使用不超过一小时。
+
+[来源](https://sspai.com/link?target=https%3A%2F%2Fdigital-strategy.ec.europa.eu%2Fen%2Fnews%2Feu-kids-act-restrict-social-media-platforms-access-children-eu)
+
+### 月之暗面发布 Kimi 金融行业 AI 解决方案
+
+月之暗面于 9 月 17 日宣布推出 Kimi 金融行业解决方案，整合 Kimi 金融行业的产品与能力，涵盖 10+ 权威数据源、9 项金融技能和 5 项合规安全措施，以及机构级的数据建模和报告交付能力。该解决方案将提供持仓早报、财报点评、项目筛选、深度研究和组合复盘等，将数据获取、专业分析与成果交付连接起来。该方案可将此前以天计的资料处理和初稿制作压缩到小时级，帮交易员减少工作压力。
+
+[来源](https://mp.weixin.qq.com/s/ooqI84c0PRMl7f-DvDjMog)
+
+### Mistral 与 Mozilla 展开 AI 合作
+
+[发表首评] [来源](https://sspai.com/link?target=https%3A%2F%2Fmistral.ai%2Fnews%2Fmistral-x-mozilla%2F)
+
+9 月 16 日，Mistral 与 Mozilla 宣布合作，为 Firefox 的 AI 浏览助手 Smart Window 测试版提供模型支持。合作首批覆盖法国和北美用户，预计今年晚些时候扩展至英国和德国。Smart Window 可协助用户处理复杂搜索、找回此前浏览过的内容，以及根据需求从标签页中搜集信息。
+
+### 松下发布 LUMIX S 20mm F2.5 超广角镜头
+
+9 月 16 日，松下推出 LUMIX S 20mm F2.5 镜头，这款镜头专为街拍创作者打造，F2.5 光圈适合在光线较弱的环境使用。规格方面，该镜头最近对焦距离为 0.18m，整机重量仅 142g，长度仅 40.9mm，体积与此前配合 LUMIX S9 推出的 18-40mm F4.5-6.3 变焦头、40mm F2 基本一致，方便随身携带。
+
+[来源](https://mp.weixin.qq.com/s/Lhm_l2FCUzt9HsObRRQ2_w)
+
+### Bose 发布两款开放式无线耳机
+
+9 月 17 日，Bose 发布 Bose Sport Open Earbuds 与 Bose Ultra Open Earbuds (2nd Gen) 两款开放式无线耳机。Sport Open Earbuds 针对运动场景设计，注重佩戴稳定性、舒适度与耐用性，采用弹性耳夹与实体按键设计。单次续航 7 小时，有黑白绿三色可选，定价 199 美元。
+
+副标题: 左：Sports Open Earbuds；右：Ultra Open Earbuds (2nd Gen)
+
+[发表首评]
+
+### OpenAI 推出 Astra for Law
+
+9 月 17 日，OpenAI 发布面向律师事务所和法律科技公司的 Astra for Law，将 GPT‑6 Astra 与法律检索索引、专业分析及写作指令结合，用于法律研究和工作流程。其法律检索索引覆盖超过 2.3 亿个网址，可查询美国判例、成文法、法规等资料，并每日补充来源。
+
+[来源](https://sspai.com/link?target=https%3A%2F%2Fopenai.com%2Findex%2Fastra-for-law%2F)
+
+### 全国网安标委秘书处发布三项与电子设备回收相关的网络安全标准实践
+
+为配套 GB 46864-2025《数据安全技术 电子产品信息清除技术要求》强制性国家标准落地实施，全国网安标委秘书处组织 30 余家存储芯片厂商、电子产品制造商、回收经营者和第三方机构等，编制了 3 项网络安全标准实践指南供参考使用。
+
+[来源](https://sspai.com/link?target=https%3A%2F%2Fwww.tc260.org.cn%2Ftc260%2Ftzgg%2F202609%2F63bba278d8164fa08388b530b894a563.shtml)
+
+## 不妨一看的简讯
+
+据 The Information 报道，知情人士透露 Apple 正筹划推出企业级服务器，计划面向 AI 开发者、企业和政府机构销售。
+
+[来源](https://m.ithome.com/html/1003297.htm)
+
+据 Bleeping Computer，微软承认适用于 Windows 11 系统的 9 月累计更新 KB5124008 存在问题，可能会导致域信任关系故障。
+
+[来源](https://sspai.com/link?target=https%3A%2F%2Fwww.bleepingcomputer.com%2Fnews%2Fmicrosoft%2Fwindows-11-kb5124008-update-breaks-domain-trust-for-some-use)
+
+抖音上线声音侵权举报入口，可在网页端批量侵权举报工具选择「冒用声音」发起投诉。
+
+[来源](https://sspai.com/link?target=https%3A%2F%2Fwww.douyin.com%2Fuser%2FMS4wLjABAAAANDEWKpWPI1HZOYhDHzk-u-n4QapA7hhx4MMmLUBGa4EgmNJfRLo2XrGnIU54PfrB%3Ffro)
+
+反盗版方案公司 Denuvo 于 9 月 14 日在美国加州北区地方法院起诉匿名游戏破解者 voices38，指控其在至少 26 款游戏中绕过反篡改保护。Denuvo 希望获得经济赔偿，并对其施加游戏破解禁令。
+
+[来源](https://sspai.com/link?target=https%3A%2F%2Fwww.techpowerup.com%2F352762%2Fdenuvo-files-lawsuit-against-anonymous-game-cracker-voices38)
+
+广电总局在 17 日举行的「开局起步『十五五』」系列主题新闻发布会上介绍，广电总局将在今年同工业和信息化部制定一体化电视技术标准，将机顶盒功能以软件形态内置于电视机中，打造极简终端形态，用户将使用通用遥控器，一台电视享受全类型电视业务。
+
+[来源](https://mp.weixin.qq.com/s/El1LvYU_Ti-haUhIAp3YnA)
+
+Kimi 上线了新的会员计划，价格从 49 每月至 699 每月不等。
+
+[来源](https://www.kimi.com/help/membership/membership-pricing)
+
+GoPro 于 9 月 17 日正式加入 M43 联盟。
+
+[来源](https://sspai.com/link?target=https%3A%2F%2Fwww.four-thirds.org%2Fen%2Fnews%2F.assets%2Fgopro-micro-four-thirds-mission-1-pro-ils-EN-20260917.pdf)
+
+9 月 17 日，据每日经济新闻，有接近赛力斯的知情人士在接受采访时透露，明年 1 月 1 日起，华为专营店将分为专卖问界车型与混卖其他「四界」车型两种。
+
+[来源](https://sspai.com/link?target=https%3A%2F%2Fwww.nbd.com.cn%2Farticles%2F2026-09-17%2F4584388.html)
+
+## 少数派的近期动态
+
+口袋先知新版本 1.3.3 上线，你可以自定义任何你想展示的屏幕效果。
+
+[了解更多](https://sspai.com/link?target=https%3A%2F%2Fdot.mindreset.tech%2Fdocs%2Frand_0%2Fstart%2Ffeatures%2Fdisplay_mode)
+
+能让 AI 助手通过自然语言指令直接与您的 Quote/0 摘录墨水屏交互的 Dot Skill 已上线。
+
+[点击了解](https://sspai.com/link?target=https%3A%2F%2Fdot.mindreset.tech%2Fdocs%2Fservice%2Fopen%2Fskill)
+
+八月买了什么好东西？
+
+[来晒你的成绩单](https://sspai.com/bullet/1787798597)
+
+iPhone 少数派共创配件上新，自由选择保护、充电、线缆和支架组合。
+
+[欢迎选购](https://sspai.com/post/114414)
+
+## 你可能错过的文章
+
+- 一个小创意的诞生：雪漫天 BeatBox 外壳定制指南
+- 具透 | macOS 27 正式版来了，这些是你值得了解新细节
+- 城市漫步指南 | 威海初秋，看海玩沙
+
+## 往期派早报
+
+- **派早报：佳能发布 EOS R8 Mark II、GPT-5.5 即将下线等**: 周四 17
+- **派早报：Steam Frame 开启预购、WPS 多端支持 Markdown 等**: 周三 16
+- **派早报：中国联通宣布支持所有国行设备 eSIM 业务办理、Homebrew 7.0.0 发布等**: 周二 15
+- **派早报：美国 AI 高管呼吁放缓研发，特朗普反对**: 周一 14
+- **派早报：商务部回应美国 AI 蒸馏指控**: 周五 11
+
+[查看全部](https://sspai.com/tag/派早报)
+
+11 位派友已充电
+
+暂时还没有评论，先来评论一条吧
+
+说点什么...: ________ `[text]`
+
+单选
+
+- ( ) 默认
+- ( ) 热门

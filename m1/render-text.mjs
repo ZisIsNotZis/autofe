@@ -18,17 +18,14 @@
 // Usage: node m1/render-text.mjs <model.json> <out.txt>
 import fs from 'node:fs';
 import {
-  childrenOf, factsOf, parseExpr, evalExpr, scopeFor,
-  exposeOf, FIELDS,
+  factsOf, FIELDS,
 } from './model-lib.mjs';
-// The axis-decision layer is SHARED with the HTML target (round 19): this file no
-// longer re-copies `selectForm`/`comparable`/`compareSetVerdict`/constants from
-// `render.mjs`. It imports only the shared model layer and ./axis.mjs — never a
-// renderer. See .scratch/19-shared-axis/report.md.
+// The axis-decision layer is SHARED with the HTML target (round 19); the node render plan
+// (round 22) lets this target draw the decisions without re-deriving any of them.
 import {
-  labelOf, labelTextOf, selectForm, compareRowKeys,
-  CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, META_KEYS, hasOwnUnit,
-  actionVisible, itemScope, seqGroupsOf, primarySlot,
+  labelOf, labelTextOf, compareRowKeys, nestedCollections,
+  CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
+  itemActionPlan, nodePlan, runPlan, compareCellOf, compareRowLabel,
 } from './axis.mjs';
 
 // role-fact display (target-local): the human `ROLE_LABEL` map is text-only copy.
@@ -92,16 +89,12 @@ const roleLabel = (key) => (key in ROLE_LABEL ? ROLE_LABEL[key] : '');
 // from render.mjs; that duplication is gone — the axis layer is imported, not copied.)
 
 // ---- actions / controls (F-031-§4) ----------------------------------------
-// 可见性与作用域判定在 axis.mjs（actionVisible/itemScope, F-042/F-020）；这里只管文本呈现。
-// control text: "[标签]"; returns the empty string when the action has no visible label
+// 可见性与作用域判定在 axis.mjs（itemActionPlan, F-042/F-020）；这里只管文本呈现。
+// control text: "[标签]"; returns the empty string when the action is not a control
 function controlOf(a) { return a?.label ? `[${a.label}]` : ''; }
 function itemControl(it, chain, ctx) {
-  const a = it._action;
-  if (!a || !actionVisible(a, itemScope(it, chain, ctx))) return '';
-  const text = labelTextOf(it);
-  if (!a.label) return '';                      // label-less navigate/open has no text of its own
-  if (a.label === text) return '';              // same fact twice => keep the content alone
-  return controlOf(a);
+  const a = itemActionPlan(it, chain, ctx.values);
+  return a && a.isControl ? controlOf(a) : '';
 }
 
 // ---- node renderer ---------------------------------------------------------
@@ -110,45 +103,16 @@ const head = (depth, text) => `${IND(depth)}${'#'.repeat(Math.min(depth + 1, 6))
 const line = (depth, text) => `${IND(depth)}${text}`;
 
 function renderTable(items, chain, ctx, depth, node) {
-  const named = items.some((it) => Boolean(it._name ?? it._title));
-  const attrs = [...new Set(items.flatMap((it) => [...Object.keys(it._fields ?? {}), ...factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))];
-  const isTable = attrs.length >= 2 && (named || attrs.some((c) => FIELDS[c]?.label));
-  const valuesOf = (n, col) => {
-    if (col === '_name') return n._name ? fmt(n._name) : (n._title ? fmt(n._title) : '');
-    if (n._fields?.[col]) return fmt(n._fields[col]);
-    const f = factsOf(n).find((x) => x.key === col);
-    return f ? fmt(f.value) : '';
-  };
-  if (!isTable) return items.map((it) => renderNode(it, [...chain], false, ctx, depth + 1)).filter(Boolean).join('\n');
-  const cols = named ? ['_name', ...attrs] : attrs;
-  const header = cols.map((c) => (c === '_name' ? '名称' : (ROLE_LABEL[c] ?? FIELDS[c]?.label ?? '')));
-  const rows = items.map((it) => cols.map((col) => valuesOf(it, col)));
+  // F-051 table/card threshold is shared (`runPlan` in axis.mjs); this is only the text layout.
+  const rp = runPlan(items);
+  if (!rp.isTable) return items.map((it) => renderNode(it, [...chain], false, ctx, depth + 1)).filter(Boolean).join('\n');
+  const header = rp.cols.map((c) => (c === '_name' ? '名称' : (ROLE_LABEL[c] ?? FIELDS[c]?.label ?? '')));
+  const rows = items.map((it) => rp.cols.map((col) => { const v = rp.cellValue(it, col); return v ? fmt(v) : ''; }));
   return textTable(header, rows, IND(depth));
 }
 
 function renderCompareTable(items, chain, ctx, depth) {
   const rowKeys = compareRowKeys(items);
-  const cellOf = (it, key) => {
-    if (it._fields?.[key]) return fmt(it._fields[key]);
-    const f = factsOf(it).find((x) => x.key === key);
-    if (f) return fmt(f.value);
-    const c = childrenOf(it).find((x) => x.key === key) ?? childrenOf(it).find((x) => x.key.replace(/\[\d+\]$/, '') === key);
-    if (!c) return '';
-    const n = c.node;
-    const only = n._detail ?? n._text ?? n._name ?? n._title;
-    const rich = (n._items ?? []).length > 0 || Object.keys(n._fields ?? {}).length > 0
-      || childrenOf(n).some((x) => !x.key.startsWith('_items[')) || factsOf(n).length > 1;
-    if (only && !rich) return fmt(only);
-    return renderNode(n, [...chain, it], false, ctx, depth + 1);
-  };
-  const childLabel = (key) => {
-    for (const it of items) {
-      const c = childrenOf(it).find((x) => x.key === key || x.key.replace(/\[\d+\]$/, '') === key);
-      const t = c && (c.node._title ?? c.node._name);
-      if (t?.text) return t.text;
-    }
-    return null;
-  };
   const header = ['', ...items.map((it) => {
     const parts = [fmt(it._name ?? it._title ?? { text: '' })];
     if (it._tag) parts.push(`[${fmt(it._tag)}]`);
@@ -158,17 +122,22 @@ function renderCompareTable(items, chain, ctx, depth) {
     const ctl = itemControl(it, chain, ctx);
     if (ctl) parts.push(ctl);
     // an entity's own nested collection belongs inside its own column (F-031-§3.1)
-    for (const arrKey of ['_items', '_lines']) {
-      const arr = it[arrKey];
-      if (Array.isArray(arr) && arr.length) {
-        const nf = selectForm(arr, it._rel?.order);
-        const nested = renderForm(nf, arr, [...chain, it], ctx, depth + 1, it);
-        if (nested) parts.push(nested.split('\n').map((s) => s.trim()).filter(Boolean).join(' / '));
-      }
+    for (const col of nestedCollections(it)) {
+      const nested = renderForm(col.form, col.items, [...chain, it], ctx, depth + 1, it);
+      if (nested) parts.push(nested.split('\n').map((s) => s.trim()).filter(Boolean).join(' / '));
     }
     return parts.join(' ');
   })];
-  const rows = rowKeys.map((key) => [childLabel(key) ?? ROLE_LABEL[key] ?? FIELDS[key]?.label ?? '', ...items.map((it) => cellOf(it, key))]);
+  const rows = rowKeys.map((key) => {
+    const label = compareRowLabel(items, key) ?? ROLE_LABEL[key] ?? FIELDS[key]?.label ?? '';
+    const cells = items.map((it) => {
+      const c = compareCellOf(it, key);
+      if (c.kind === 'empty') return '';
+      if (c.kind === 'node') return renderNode(c.node, [...chain, it], false, ctx, depth + 1);
+      return fmt(c.value);
+    });
+    return [label, ...cells];
+  });
   return textTable(header, rows, IND(depth));
 }
 
@@ -186,7 +155,7 @@ function renderForm(form, items, chain, ctx, depth, node) {
     // F-031-§4: controls. The member's own name is content (still a fact); the action
     // label is the source's control copy. Both render when they differ (mirrors render.mjs).
     const parts = items.map((it) => {
-      const a = actionVisible(it._action, itemScope(it, chain, ctx)) ? it._action : null;
+      const a = itemActionPlan(it, chain, ctx.values);
       const name = labelTextOf(it);
       const ctl = a?.label ?? '';
       const other = Boolean(name && ctl && !name.includes(ctl) && !ctl.includes(name));
@@ -248,23 +217,6 @@ function renderStack(items, chain, ctx, depth) {
   return out;
 }
 
-function factsLines(node, chain, ctx, depth, hidden, exp = null) {
-  const out = [];
-  const headingKey = node._title ? '_title' : (node._name ? '_name' : null);
-  for (const f of factsOf(node)) {
-    if (hidden.has(f.key)) continue;
-    if (f.key === headingKey) continue;                                  // the heading already carries it
-    if (exp && (f.key === '_label' || f.key === '_summary')) continue;   // expose legend/hint, not body facts
-    if (f.key === '_image' && depth === 0) continue;      // hero image handled separately (F-031-§7)
-    if (f.key === '_brand' && depth === 0) continue;      // site header carries the brand once
-    if (META_KEYS.has(f.key) || ROLE_UNIT[f.key]) { out.push(roleFact(f)); continue; }
-    if (f.key === '_amount' && f.value?.qualifier === LIST_QUALIFIER) { out.push(`(原价) ${fmt(f.value)}`); continue; }
-    const lab = roleLabel(f.key);
-    out.push(lab ? `${lab}: ${modelScalar(f.value)}` : roleFact(f));
-  }
-  for (const [k, v] of Object.entries(node._fields ?? {})) out.push(`${FIELDS[k]?.label ?? ''}${FIELDS[k]?.label ? ': ' : ''}${fmt(v)}`);
-  return out;
-}
 function modelScalar(v) {
   if (v?.text !== undefined) return v.text;
   if (v?.num !== undefined) return fmt(v);
@@ -275,102 +227,84 @@ function modelScalar(v) {
 }
 
 function renderNode(node, chain, isHero, ctx, depth) {
-  if (node === null || typeof node !== 'object' || Array.isArray(node)) return '';
-  const scope = { ...ctx.values, ...scopeFor([...chain, node], ctx.values) };
-  if (typeof node._when === 'string') {
-    const ast = parseExpr(node._when);
-    if (ast.ok && !evalExpr(ast, scope)) return '';
-  }
-  const headingKey = node._title ? '_title' : (node._name ? '_name' : null);
-  if (!ctx.hide.has(node)) ctx.hide.set(node, new Set());
-  const hidden = ctx.hide.get(node);
-  const exp = exposeOf(node);
-  const itemsConsumed = new Set();
-
+  // The whole node decision is the shared plan (axis.mjs); this function draws it as text.
+  const plan = nodePlan(node, { chain, values: ctx.values, hidden: ctx.hide.get(node), depth, degradations: ctx.degradations });
+  if (!plan.visible) return '';
   const blocks = [];
+  const consumed = new Set();
 
   // title / heading
-  let titleText = headingKey ? fmt(node[headingKey]) : null;
-  const demoted = (node._rel?.level ?? 0) >= 2;
+  let titleText = plan.headingValue ? fmt(plan.headingValue) : null;
+  const demoted = plan.demoted;
 
   // _primary: the one point the storyline conveys; hide it from the normal fact flow.
-  // 解析与「槽位是否有效」在 axis.mjs（primarySlot）；隐藏的存储方式（Set）属本目标。
-  const slot = primarySlot(node, headingKey);
-  if (slot) {
-    ctx.hide.get(slot.holder) ?? ctx.hide.set(slot.holder, new Set());
-    ctx.hide.get(slot.holder).add(slot.key);
-    blocks.push(line(depth, `★ 主指: ${modelScalar(slot.value)}`));
+  if (plan.primary) {
+    if (!ctx.hide.has(plan.primary.holder)) ctx.hide.set(plan.primary.holder, new Set());
+    ctx.hide.get(plan.primary.holder).add(plan.primary.key);
+    blocks.push(line(depth, `★ 主指: ${modelScalar(plan.primary.value)}`));
   }
 
   // action that is the heading itself, or a labelled action on this node
   let actionText = '';
-  let titleIsControl = false;
-  if (node._action && actionVisible(node._action, scope)) {
-    const a = node._action;
-    if (a.label && titleText && a.label === titleText) { titleIsControl = true; actionText = controlOf(a); }
-    else if (a.label) actionText = controlOf(a);
-  }
+  const titleIsControl = plan.titleIsControl;
+  if (plan.action && plan.action.label) actionText = controlOf(plan.action);
 
-  // expose widget
-  if (exp) {
-    const lbl = node._label ? fmt(node._label) : '';
-    const hint = node._summary ? fmt(node._summary) : '';
-    if (node._items?.length === 1 && exp.type) {
-      const it = node._items[0];
-      const v = it._name ?? it._title;
-      const extra = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
-      blocks.push(line(depth, `${lbl ? lbl + ': ' : ''}${v ? fmt(v) : ''} ${extra.map((x) => fmt(x.value)).join(' ')}`.trim()));
-      itemsConsumed.add(it);
-    } else if (node._items?.length) {
-      const multi = exp.multiple === true;
-      blocks.push(line(depth, `${lbl || (multi ? '可多选' : '单选')}${hint ? ` (${hint})` : ''}`));
-      for (const it of node._items) {
-        const v = it._name ?? it._title;
-        const extra = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key)).map((x) => fmt(x.value)).join(' ');
-        blocks.push(line(depth + 1, `${multi ? '[ ]' : '( )'} ${v ? fmt(v) : '选项'}${extra ? ' ' + extra : ''}`));
-        itemsConsumed.add(it);
+  // expose widget (the form decision is shared: chapter kind + legend/hint + options)
+  if (plan.choice) {
+    const ch = plan.choice;
+    const lbl = ch.legend ? fmt(ch.legend) : '';
+    const hint = ch.hint ? fmt(ch.hint) : '';
+    if (ch.kind === 'plain-fact') {
+      const v = ch.itemName;
+      blocks.push(line(depth, `${lbl ? lbl + ': ' : ''}${v ? fmt(v) : ''} ${ch.itemExtra.map((x) => fmt(x.value)).join(' ')}`.trim()));
+    } else if (ch.kind === 'choice') {
+      blocks.push(line(depth, `${lbl || (ch.multi ? '可多选' : '单选')}${hint ? ` (${hint})` : ''}`));
+      for (const o of ch.options) {
+        const v = o.name;
+        const extra = o.extra.map((x) => fmt(x.value)).join(' ');
+        blocks.push(line(depth + 1, `${ch.multi ? '[ ]' : '( )'} ${v ? fmt(v) : '选项'}${extra ? ' ' + extra : ''}`));
       }
-    } else if (exp.type === 'bool') {
-      const name = lbl || (node._name ? fmt(node._name) : '');
+    } else if (ch.kind === 'bool') {
+      const name = lbl || (ch.nodeName ? fmt(ch.nodeName) : '');
       blocks.push(line(depth, `[ ] ${name}`.trim()));
-      if (headingKey) titleText = null;
     } else {
-      blocks.push(line(depth, `${lbl ? lbl + ': ' : ''}__________${hint ? ` (${hint})` : ''} [${exp.type}]`));
+      blocks.push(line(depth, `${lbl ? lbl + ': ' : ''}__________${hint ? ` (${hint})` : ''} [${ch.type}]`));
     }
   }
+  if (plan.titleConsumed) titleText = null;   // the heading IS the switch label: show it once, on the control
 
-  // consecutive action-only children -> a control toolbar (must consume them BEFORE
-  // the named-child pass below, or the same control renders twice)
-  const actionKids = childrenOf(node).filter((c) => !itemsConsumed.has(c.node) && c.node._action &&
-    factsOf(c.node).length === 0 && childrenOf(c.node).length === 0 &&
-    actionVisible(c.node._action, { ...ctx.values, ...scopeFor([...chain, node, c.node], ctx.values) }));
-  if (actionKids.length >= 2) {
-    const tools = actionKids.map((c) => controlOf(c.node._action)).filter(Boolean);
-    if (tools.length) { blocks.push(line(depth, tools.join(' '))); actionKids.forEach((c) => itemsConsumed.add(c.node)); }
+  // consecutive action-only children -> a control toolbar (grouping decided in plan.toolbar)
+  if (plan.toolbar.length >= 2) {
+    const tools = plan.toolbar.map((n) => { const a = itemActionPlan(n, [...chain, node], ctx.values); return a && a.label ? controlOf(a) : ''; }).filter(Boolean);
+    if (tools.length) { blocks.push(line(depth, tools.join(' '))); plan.toolbar.forEach((n) => consumed.add(n)); }
   }
 
-  // facts
-  const factLines = factsLines(node, chain, ctx, depth, hidden, exp);
+  // facts (visible / hidden slots decided in the plan)
+  const factLines = [];
+  for (const f of plan.facts.list) {
+    if (f.category === 'meta' || f.category === 'unit') { factLines.push(roleFact(f)); continue; }
+    if (f.category === 'was') { factLines.push(`(原价) ${fmt(f.value)}`); continue; }
+    const lab = roleLabel(f.key);
+    factLines.push(lab ? `${lab}: ${modelScalar(f.value)}` : roleFact(f));
+  }
+  for (const f of plan.facts.fields) factLines.push(`${f.label}${f.label ? ': ' : ''}${fmt(f.value)}`);
   if (factLines.length) blocks.push(factLines.map((t) => line(depth, t)).join('\n'));
 
   // ordered item sets + compare grouping (shared in axis.mjs: seqGroupsOf)
-  const ordered = childrenOf(node).filter((c) => (c.key.startsWith('_lines[') || c.key.startsWith('_items[')) && !itemsConsumed.has(c.node));
-  const rawItems = ordered.map((c) => c.node);
-  const { groups } = seqGroupsOf(rawItems, node, ctx.degradations);
+  const { groups } = plan.items;
   for (const g of groups) {
     const body = renderForm(g.form, g.items, [...chain, node], ctx, depth, node);
     if (body) blocks.push(body);
-    g.items.forEach((it) => itemsConsumed.add(it));
   }
-  if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
-    const inner = renderNode(node._empty, [...chain, node], false, ctx, depth + 1);
+  if (plan.emptyState) {
+    const inner = renderNode(plan.emptyState, [...chain, node], false, ctx, depth + 1);
     if (inner) blocks.push(inner);
   }
 
   // named child groups (non-array children)
   let prevGroupHadTitle = false;
-  for (const c of childrenOf(node)) {
-    if (itemsConsumed.has(c.node) || c.key.startsWith('_items[') || c.key.startsWith('_lines[')) continue;
+  for (const c of plan.namedChildren) {
+    if (consumed.has(c.node)) continue;
     const inner = renderNode(c.node, [...chain, node], false, ctx, depth + 1);
     if (!inner) continue;
     const hasTitle = Boolean(c.node._title || c.node._name || c.node._text);
@@ -384,7 +318,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
   // re-render at the (possibly deeper) indent so a demoted branch is visibly a reference section
   let parts = [];
   if (titleText && !titleIsControl) parts.push(head(innerD, titleText));
-  const heroImg = node._image && depth === 0 ? imageText(node._image) : '';
+  const heroImg = plan.facts.hero ? imageText(plan.facts.hero) : '';
   if (heroImg) parts.push(line(innerD, heroImg));
   for (const b of blocks) parts.push(shiftBlock(b, demoted ? 1 : 0));
   // a control whose heading IS its own label renders as a control, never as a section heading (F-031-§4)

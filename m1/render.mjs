@@ -10,16 +10,15 @@
 // Usage: node m1/render.mjs <model.json> [out.html]
 import fs from 'node:fs';
 import {
-  childrenOf, factsOf, parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
+  factsOf, FIELDS,
 } from './model-lib.mjs';
-// The axis-decision layer is shared, not re-derived per target (round 19): form
-// selection, comparability, compare-set verdict, shared constants and the
-// `key:`→`#` target normalization live in ./axis.mjs. This renderer owns only the
-// HTML presentation of those decisions.
+// The axis-decision layer is shared, not re-derived per target (round 19; the node render
+// plan round 22). This renderer consumes `nodePlan` and the plan helpers and only DRAWS
+// the decisions as HTML — it holds no model semantics of its own.
 import {
-  CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, META_KEYS, hasOwnUnit, hasTarget, hrefOf,
-  labelOf, labelTextOf, selectForm, compareRowKeys,
-  actionVisible, itemScope, seqGroupsOf, primarySlot, buildRefLabels,
+  CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
+  labelOf, labelTextOf, compareRowKeys, nestedCollections, namedChildEntries,
+  nodePlan, itemActionPlan, runPlan, compareCellOf, compareRowLabel, buildRefLabels,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -82,42 +81,21 @@ function fmt(v) {
 }
 const factHtml = (v) => `<div class="fact"><span class="val">${fmt(v)}</span></div>`;
 
-// ---- engine heuristic (F-018): homogeneous runs by field-shape similarity ----
-const fieldKeys = (n) => Object.keys(n._fields ?? {});
-function similar(a, b) {
-  const ka = fieldKeys(a), kb = fieldKeys(b);
-  if (!ka.length || !kb.length) return false;
-  const inter = ka.filter((k) => kb.includes(k)).length;
-  return inter / new Set([...ka, ...kb]).size >= 0.6;
-}
-function discoverRuns(orderedChildren) {
-  const runs = []; let run = [];
-  for (const c of orderedChildren) {
-    if (run.length === 0 || similar(run[run.length - 1].node, c.node)) run.push(c);
-    else { if (run.length >= 2) runs.push(run); run = [c]; }
-  }
-  if (run.length >= 2) runs.push(run);
-  return runs;
-}
-
 // 集合条目的动作（F-031-§4 / F-020）：条目名是内容；带 label 的动作是源站自己的控件文字，
 // 必须作为控件出现。二者同字时只渲染一遍（此时条目名降级为链接目标，不新增文案）。
-// 可见性与作用域判定在 axis.mjs（actionVisible/itemScope, F-042）；这里只管 HTML 呈现。
-function itemExtra(it, scope) {
-  const a = it._action;
-  const content = labelTextOf(it);
-  if (!a || !actionVisible(a, scope)) return { linkTo: null, ctl: '' };
-  if (a.label && a.label !== content) {
-    return { linkTo: null, ctl: hasTarget(a) ? `<a class="ctl" href="${esc(hrefOf(a.to))}">${esc(a.label)}</a>` : `<span class="ctl">${esc(a.label)}</span>` };
-  }
-  return { linkTo: hasTarget(a) ? hrefOf(a.to) : null, ctl: '' };
+// 可见性/作用域/「是否源站控件」在 axis.mjs（itemActionPlan）；这里只管 HTML 呈现。
+function itemExtra(it, chain, ctx) {
+  const a = itemActionPlan(it, chain, ctx.values);
+  if (!a) return { linkTo: null, ctl: '' };
+  const ctl = a.hasTarget ? `<a class="ctl" href="${esc(a.href)}">${esc(a.label)}</a>` : `<span class="ctl">${esc(a.label)}</span>`;
+  return a.isControl ? { linkTo: null, ctl } : { linkTo: a.hasTarget ? a.href : null, ctl: '' };
 }
 function renderList(items, chain, ctx) {
   const lis = items.map((it) => {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
     if (!label) return '';
-    const ex = itemExtra(it, itemScope(it, chain, ctx));
+    const ex = itemExtra(it, chain, ctx);
     const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     return `<li>${inner}${ex.ctl}</li>`;
   }).join('');
@@ -129,7 +107,7 @@ function renderSeq(items, chain, ctx) {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
     if (!label) return '';
-    const ex = itemExtra(it, itemScope(it, chain, ctx));
+    const ex = itemExtra(it, chain, ctx);
     const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     return `<li>${inner}${ex.ctl}</li>`;
   }).join('');
@@ -156,7 +134,7 @@ function renderChips(items, chain, ctx) {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
     if (!label) return '';            // no label, no chip (never an empty control)
-    const ex = itemExtra(it, itemScope(it, chain, ctx));
+    const ex = itemExtra(it, chain, ctx);
     const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     return `<span class="chip-item">${inner}${ex.ctl}</span>`;
   }).join('');
@@ -171,7 +149,7 @@ function renderDeflist(items, chain, ctx) {
     const label = it._name ?? it._title;
     const rest = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
     const l0 = label ? fmt(label) : '';
-    const ex = itemExtra(it, itemScope(it, chain, ctx));
+    const ex = itemExtra(it, chain, ctx);
     const l = l0 && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${l0}</a>` : l0;
     const v = (rest.map((x) => roleFact(x)).join(' ') + (ex.ctl ? ` ${ex.ctl}` : '')).trim();
     if (!l && !v) return '';
@@ -191,65 +169,68 @@ function renderAccordion(items, chain, hide, ctx) {
   }).join('');
   return `<div class="accordion">${det}</div>`;
 }
-function renderRun(run, chain, hide, ctx) {
-  // F-051（明文规则见 docs/m1/layout-axes.md §3.3）：表 = 身份列（成员名，有则必含）+ 已声明属性列。
-  // 属性列 = `_fields` 的键 ∪ 非 name 角色事实。成立条件：有身份列 ⇒ 属性列 ≥2；无身份列 ⇒ 属性列 ≥2
-  // 且至少一列有已声明列标签（列名只来自已声明域字段，不印内部键）。单列不是表（那是列表）；
-  // 身份列 + 1 个属性列不是表（那是 deflist）。旧的「≥3 列」阈值把源站 2 列价目表（标签|价格）一律降级成卡片。
-  const named = run.some((c) => Boolean(c.node._name ?? c.node._title));
-  const attrs = [...new Set(run.flatMap((c) => [...fieldKeys(c.node), ...factsOf(c.node).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))];
-  const cols = named ? ['_name', ...attrs] : attrs;
-  const isTable = attrs.length >= 2 && (named || attrs.some((c) => FIELDS[c]?.label));
-  const valuesOf = (n, col) => {
-    if (col === '_name') return n._name ? fmt(n._name) : (n._title ? fmt(n._title) : '');
-    const fv = n._fields?.[col];
-    if (fv) return fmt(fv);
-    const f = factsOf(n).find((x) => x.key === col);
-    return f ? fmt(f.value) : '';
-  };
-  if (isTable) {
-    const anyOps = run.some((c) => childrenOf(c.node).some((ch) => !ch.key.startsWith('_items[')));
-    const showHead = cols.some((c) => FIELDS[c]?.label) || anyOps;
-    const head = showHead ? `<tr>${cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? '')}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>` : '';
-    const trs = run.map((c) => {
-      const tds = cols.map((col) => `<td>${valuesOf(c.node, col)}</td>`).join('');
-      const ops = childrenOf(c.node).filter((ch) => !ch.key.startsWith('_items['))
-        .map((ch) => renderNode(ch.node, [...chain, c.node], false, hide, ctx, 4)).join('');
+function renderRun(items, chain, hide, ctx) {
+  // F-051 table/card threshold is a shared decision (`runPlan` in axis.mjs); this is only
+  // the HTML shape of it: a `<table class="data">` with an optional row-ops column.
+  const rp = runPlan(items);
+  if (rp.isTable) {
+    const anyOps = items.some((it) => namedChildEntries(it).length > 0);
+    const showHead = rp.cols.some((c) => FIELDS[c]?.label) || anyOps;
+    const head = showHead ? `<tr>${rp.cols.map((c) => `<th>${esc(FIELDS[c]?.label ?? '')}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>` : '';
+    const trs = items.map((it) => {
+      const tds = rp.cols.map((col) => { const v = rp.cellValue(it, col); return `<td>${v ? fmt(v) : ''}</td>`; }).join('');
+      const ops = namedChildEntries(it).map((ch) => renderNode(ch.node, [...chain, it], false, hide, ctx, 4)).join('');
       return `<tr>${tds}${anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
     }).join('');
     return `<table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table>`;
   }
-  return `<div class="cards">${run.map((c) => `<div class="item">${renderNode(c.node, [...chain, c.node], false, hide, ctx, 4)}</div>`).join('')}</div>`;
+  return `<div class="cards">${items.map((it) => `<div class="item">${renderNode(it, [...chain, it], false, hide, ctx, 4)}</div>`).join('')}</div>`;
 }
 
-
-function renderSelectTable(items, exp, chain, hide, ctx) {
-  const typed = items.some((it) => it._fields && Object.keys(it._fields).length);
-  const cols = typed
-    ? [...new Set(items.flatMap((it) => [...Object.keys(it._fields ?? {}), ...factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)]))]
-    : ['_name', ...new Set(items.flatMap((it) => factsOf(it).filter((f) => !['_name', '_title'].includes(f.key)).map((f) => f.key)))];
-  const multi = exp.multiple === true;
-  const legend = exp.legend;
-  const valuesOf = (n, col) => {
-    if (col === '_name') return n._name ? fmt(n._name) : (n._title ? fmt(n._title) : '');
-    const fv = n._fields?.[col];
-    if (fv) return fmt(fv);
-    const f = factsOf(n).find((x) => x.key === col);
-    return f ? fmt(f.value) : '';
-  };
-  const labelOfKey = (c) => FIELDS[c]?.label ?? (c === '_name' ? '' : '');
-  const anyOps = items.some((it) => childrenOf(it).some((ch) => !ch.key.startsWith('_items[')));
+// The choice-set decision (`kind`, `rich`, options, columns) is shared in axis.mjs; this is
+// the HTML drawing of it: a select table for rich options, a chipbar fieldset otherwise.
+function renderSelectTable(ch, node, chain, hide, ctx) {
+  const t = ch.table;
+  const legend = ch.legend ? fmt(ch.legend) : esc(ch.name);
   // an all-blank header row is visual noise: emit the header only when a column is labeled (T-107)
-  const showHead = cols.some((c) => labelOfKey(c)) || anyOps;
-  const head = showHead ? `<tr><th class="sel"></th>${cols.map((c) => `<th>${esc(labelOfKey(c))}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>` : '';
-  const rows = items.map((it) => {
-    const tds = cols.map((col) => `<td>${valuesOf(it, col)}</td>`).join('');
-    const ops = childrenOf(it).filter((ch) => !ch.key.startsWith('_items['))
-      .map((ch) => renderNode(ch.node, [...chain, it], false, hide, ctx, 4)).join('');
-    const val = it._key ? `key:${it._key}` : String(items.indexOf(it));
-    return `<tr><td class="sel"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"></td>${tds}${anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
+  const head = t.showHead ? `<tr><th class="sel"></th>${t.cols.map((c) => `<th>${esc(t.labelKey(c))}</th>`).join('')}${t.anyOps ? '<th></th>' : ''}</tr>` : '';
+  const rows = ch.options.map((o) => {
+    const tds = t.cols.map((col) => { const v = t.cellValue(o.node, col); return `<td>${v ? fmt(v) : ''}</td>`; }).join('');
+    const ops = o.ops.map((n) => renderNode(n, [...chain, o.node], false, hide, ctx, 4)).join('');
+    const val = o.key ? `key:${o.key}` : String(o.index);
+    return `<tr><td class="sel"><input type="${ch.multi ? 'checkbox' : 'radio'}" name="${esc(ch.name)}" value="${esc(val)}"></td>${tds}${t.anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
   }).join('');
-  return `<fieldset class="expose expose-${esc(exp.name)}"><legend>${legend}</legend><table class="data"><thead>${head}</thead><tbody>${rows}</tbody></table></fieldset>`;
+  return `<fieldset class="expose expose-${esc(ch.name)}"><legend>${legend}</legend><table class="data"><thead>${head}</thead><tbody>${rows}</tbody></table></fieldset>`;
+}
+function renderChoice(ch, node, chain, hide, ctx) {
+  if (ch.kind === 'plain-fact') {
+    const lbl = ch.legend ? fmt(ch.legend) : '';
+    const v = ch.itemName;
+    return `<div class="defrow">${lbl ? `<div class="deflabel">${lbl}</div>` : ''}<div class="defval">${v ? fmt(v) : ''} ${ch.itemExtra.map((x) => fmt(x.value)).join(' ')}</div></div>`;
+  }
+  if (ch.kind === 'choice') {
+    if (ch.rich) return renderSelectTable(ch, node, chain, hide, ctx);
+    const opts = ch.options.map((o) => {
+      const v = o.name ?? o.fieldsName;
+      const extra = o.extra.map((x) => fmt(x.value)).join(' ');
+      const label = (v && (v.text !== undefined || v.num !== undefined) ? fmt(v) : `option ${o.index + 1}`) + (extra ? ` <span class="choice-extra">${extra}</span>` : '');
+      const val = o.key ? `key:${o.key}` : (v ? v.text : String(o.index));
+      return `<label class="choice"><input type="${ch.multi ? 'checkbox' : 'radio'}" name="${esc(ch.name)}" value="${esc(val)}"> ${label}</label>`;
+    }).join('');
+    const legend = ch.legend ? fmt(ch.legend) : '';
+    const hint = ch.hint ? `<span class="hint">${fmt(ch.hint)}</span>` : '';
+    return `<fieldset class="expose chipbar expose-${esc(ch.name)}">${legend ? `<legend>${legend}</legend>` : ''}${hint}${opts}</fieldset>`;
+  }
+  if (ch.kind === 'bool') {
+    // a boolean switch is a checkbox with its name on the control (F-031-§6), not an empty text box
+    const name = (ch.legend ? fmt(ch.legend) : '') || (ch.nodeName ? fmt(ch.nodeName) : '');
+    return `<label class="choice expose-${esc(ch.name)}"><input type="checkbox" name="${esc(ch.name)}" value="true"> ${name}</label>`;
+  }
+  const lbl = ch.legend ? fmt(ch.legend) : '';   // never print a raw identifier as a label
+  const hint = ch.hint ? `<span class="hint">${fmt(ch.hint)}</span>` : '';
+  const itype = ch.type === 'date' ? 'date' : (ch.type === 'time' ? 'datetime-local' : (ch.type === 'num' ? 'number' : 'text'));
+  // aria-label 只放源站文案；无文案时绝不把内部标识符（expose name）写进属性
+  return `<span class="expose expose-${esc(ch.name)}">${lbl ? `<span class="deflabel">${lbl}</span>` : ''}${hint}<input type="${itype}" name="${esc(ch.name)}" data-type="${esc(ch.type)}"${lbl ? ` aria-label="${esc(lbl)}"` : ''}></span>`;
 }
 
 function renderForm(form, items, chain, hide, ctx, depth, node) {
@@ -263,11 +244,7 @@ function renderForm(form, items, chain, hide, ctx, depth, node) {
   if (form === 'prose') return renderProse(items);
   if (form === 'deflist') return renderDeflist(items, chain, ctx);
   if (form === 'accordion') return renderAccordion(items, chain, hide, ctx);
-  if (form === 'table') {
-    let out = renderRun(items.map((it) => ({ key: '_items[x]', node: it })), chain, hide, ctx);
-    if ((node._items ?? []).length === 0 && node._empty) out += renderNode(node._empty, [...chain, node], false, hide, ctx, depth + 1);
-    return out;
-  }
+  if (form === 'table') return renderRun(items, chain, hide, ctx);
   const cls = form === 'product-cards' ? 'cards product-cards' : 'cards';
   const cards = items.map((it) => {
     const inner = renderNode(it, [...chain, node], false, hide, ctx, depth + 1);
@@ -296,38 +273,23 @@ function renderControls(items, chain, ctx) {
   const btns = items.map((it) => {
     // a conditional action that the scope suppresses hides only the control; the
     // member's own name is content and still renders (F-042, F-031-§4)
-    const a = actionVisible(it._action, itemScope(it, chain, ctx)) ? it._action : null;
+    const a = itemActionPlan(it, chain, ctx.values);
     const name = labelTextOf(it);
     const ctl = a?.label ?? '';
     const otherFact = Boolean(name && ctl && !name.includes(ctl) && !ctl.includes(name));
     const text = name || ctl;
     if (!text) return '';
-    const to = (s) => (hasTarget(a) ? `<a class="ctl" href="${esc(hrefOf(a.to))}">${s}</a>` : `<span class="ctl"${a?.verb ? ` data-verb="${esc(a.verb)}"` : ''}>${s}</span>`);
+    const to = (s) => (a?.hasTarget ? `<a class="ctl" href="${esc(a.href)}">${s}</a>` : `<span class="ctl"${a?.verb ? ` data-verb="${esc(a.verb)}"` : ''}>${s}</span>`);
     return otherFact ? to(esc(text)) + to(esc(ctl)) : to(esc(text));
   }).join('');
   return btns ? `<div class="controls">${btns}</div>` : '';
 }
-// 横向对比表（F-031-§3）：对照集的行键/退化判定在 axis.mjs；这里只管 HTML 呈现。
+// 横向对比表（F-031-§3）：行键/单元格/行标题/退化判定均在 axis.mjs；这里只管 HTML 呈现。
 function renderCompareTable(items, chain, hide, ctx) {
   const rowKeys = compareRowKeys(items);
-  const cellOf = (it, key) => {
-    if (it._fields?.[key]) return fmt(it._fields[key]);
-    const f = factsOf(it).find((x) => x.key === key);
-    if (f) return fmt(f.value);
-    const c = childrenOf(it).find((x) => x.key === key) ?? childrenOf(it).find((x) => x.key.replace(/\[\d+\]$/, '') === key);
-    if (!c) return '';
-    const node = c.node;
-    const only = node._detail ?? node._text ?? node._name ?? node._title;
-    const rich = (node._items ?? []).length > 0
-      || Object.keys(node._fields ?? {}).length > 0
-      || childrenOf(node).some((x) => !x.key.startsWith('_items['))
-      || factsOf(node).length > 1;
-    if (only && !rich) return fmt(only);
-    return renderNode(node, [...chain, it], false, hide, ctx, 4);
-  };
-  const head = `<tr><th class="cmp-row">${esc(items[0]._name ? '' : '')}</th>${items.map((it) => {
+  const head = `<tr><th class="cmp-row"></th>${items.map((it) => {
     const name = it._name ?? it._title;
-    const ex = itemExtra(it, itemScope(it, chain, ctx));   // 实体自己的动作控件不得因进表而丢失（F-033）
+    const ex = itemExtra(it, chain, ctx);   // 实体自己的动作控件不得因进表而丢失（F-033）
     const label = name ? fmt(name) : '';
     const nm = label && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     const tag = it._tag ? `<span class="cmp-tag">${fmt(it._tag)}</span>` : '';
@@ -336,238 +298,108 @@ function renderCompareTable(items, chain, hide, ctx) {
       + (it._subtitle ? `<div class="cmp-sub">${fmt(it._subtitle)}</div>` : '');
     // 实体自己的嵌套集合（如机身颜色）属于该实体，渲染在它的列内——绝不与另一实体的列表按下标配对
     let nested = '';
-    for (const arrKey of ['_items', '_lines']) {
-      const arr = it[arrKey];
-      if (Array.isArray(arr) && arr.length) {
-        const f = selectForm(arr, it._rel?.order);
-        nested += renderForm(f, arr, [...chain, it], hide, ctx, 5, it);
-      }
-    }
+    for (const col of nestedCollections(it)) nested += renderForm(col.form, col.items, [...chain, it], hide, ctx, 5, it);
     const nestedHtml = nested ? `<div class="cmp-nested">${nested}</div>` : '';
     const ctl = ex.ctl ? `<div class="cmp-ctl">${ex.ctl}</div>` : '';
     return `<th class="cmp-col">${nm}${tag}${price}${sum}${nestedHtml}${ctl}</th>`;
   }).join('')}</tr>`;
-  // row label: prefer the child block's own title/name (F-031-§3), then the declared field label
-  const childLabel = (key) => {
-    for (const it of items) {
-      const c = childrenOf(it).find((x) => x.key === key || x.key.replace(/\[\d+\]$/, '') === key);
-      const t = c && (c.node._title ?? c.node._name);
-      if (t?.text) return t.text;
-    }
-    return null;
-  };
   const body = rowKeys.map((key) => {
     // never print an internal key as a row label (F-022/F-029): child title → declared field label → no label
-    const label = childLabel(key) ?? FIELDS[key]?.label ?? '';
-    return `<tr><th class="cmp-row">${esc(label)}</th>${items.map((it) => `<td class="cmp-cell">${cellOf(it, key)}</td>`).join('')}</tr>`;
+    const label = compareRowLabel(items, key) ?? FIELDS[key]?.label ?? '';
+    const cells = items.map((it) => {
+      const c = compareCellOf(it, key);
+      if (c.kind === 'empty') return '<td class="cmp-cell"></td>';
+      if (c.kind === 'node') return `<td class="cmp-cell">${renderNode(c.node, [...chain, it], false, hide, ctx, 4)}</td>`;
+      return `<td class="cmp-cell">${fmt(c.value)}</td>`;
+    }).join('');
+    return `<tr><th class="cmp-row">${esc(label)}</th>${cells}</tr>`;
   }).join('');
   return `<div class="cmp-scroll"><table class="cmp-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
 }
 
-const actionHtml = (a) => {
+const renderAction = (a) => {
   // `verb` is internal semantics, never visible copy (F-022/F-029): no label ⇒ no text
   if (!a.label) return '';
   // no capture-backed target: keep the source's own words, shaped like a control (T-101/F-031-§4)
-  return hasTarget(a)
-    ? `<a class="action verb-${esc(a.verb)}" href="${esc(hrefOf(a.to))}">${esc(a.label)}</a>`
+  return a.hasTarget
+    ? `<a class="action verb-${esc(a.verb)}" href="${esc(a.href)}">${esc(a.label)}</a>`
     : `<span class="action-plain">${esc(a.label)}</span>`;
 };
 
 function renderNode(node, chain, isHero, hide, ctx, depth) {
-  if (node === null || typeof node !== 'object') return '';
-  const scope = { ...ctx.values, ...scopeFor([...chain, node], ctx.values) };
-  if (typeof node._when === 'string') {
-    const ast = parseExpr(node._when);
-    if (ast.ok && !evalExpr(ast, scope)) return '';
-  }
-  const headingKey = node._title ? '_title' : (node._name ? '_name' : null);
+  // The whole node decision is the shared plan (axis.mjs); this function draws it.
+  const plan = nodePlan(node, { chain, values: ctx.values, hidden: hide.get(node), depth, degradations: ctx.degradations });
+  if (!plan.visible) return '';
 
   // explicit labeled actions; label-less navigate/open lowers to the element's own link (F-020)
   let action = '';
   let linkTo = null;
-  let titleIsControl = false;
-  if (actionVisible(node._action, scope)) {
-    const a = node._action;
-    const titleTxt = headingKey ? (node[headingKey]?.text ?? '') : '';
-    if (a.label && titleTxt && a.label === titleTxt) {
-      // the block's own heading is the control: render it as such, once (F-031-§4)
-      linkTo = hasTarget(a) ? hrefOf(a.to) : null;
-      titleIsControl = true;
-    } else {
-    const labelless = !a.label && ['navigate', 'open'].includes(a.verb);
-    if (labelless && a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))) {
-      linkTo = hrefOf(a.to);
-    } else {
-      action = actionHtml(a);
-    }
-    }
+  const titleIsControl = plan.titleIsControl;
+  if (plan.action) {
+    if (plan.action.isTitleControl || plan.action.isLabellessLink) linkTo = plan.action.linkTo;
+    else if (plan.action.label) action = renderAction(plan.action);
   }
 
   // _primary FACT gets the enlarged hero slot (axis.mjs primarySlot); subtree primaries
   // stay in place (no reordering). Hiding the shown fact is per-target storage.
   let heroHtml = '';
-  const slot = primarySlot(node, headingKey);
-  if (slot) {
-    heroHtml = `<div class="hero fact-hero">${factHtml(slot.value)}</div>`;
-    if (!hide.has(slot.holder)) hide.set(slot.holder, { keys: new Set(), nodes: new Set() });
-    hide.get(slot.holder).keys.add(slot.key);
+  if (plan.primary) {
+    heroHtml = `<div class="hero fact-hero">${factHtml(plan.primary.value)}</div>`;
+    if (!hide.has(plan.primary.holder)) hide.set(plan.primary.holder, new Set());
+    hide.get(plan.primary.holder).add(plan.primary.key);
   }
 
-  const hid = hide.get(node);
-  const kids = childrenOf(node).filter((c) => !(hid?.nodes.has(c.node)));
-  const facts = factsOf(node).filter((f) => !(hid?.keys.has(f.key)));
-  let titleText = headingKey ? fmt(node[headingKey]) : null;
-
+  let titleText = plan.headingValue ? fmt(plan.headingValue) : null;
   const cls = ['node', `depth-${Math.min(depth, 4)}`];
   if (isHero) cls.push('hero-branch');
-  const demoted = (node._rel?.level ?? 0) >= 2;
+  const demoted = plan.demoted;
 
-  const exp = exposeOf(node);
   const itemsConsumed = new Set();
   let bodyLead = '';
   let heroImage = '';
   const metaParts = [];
-  for (const f of facts) {
-    if (headingKey && f.key === headingKey) continue;
-    if (exp && (f.key === '_label' || f.key === '_summary')) continue;
-    if (f.key === '_brand' && depth === 0) continue;   // the site header already carries the brand (one fact, one place)
-    if (f.key === '_image' && depth === 0) {           // image-dominant main visual: edge-to-edge (F-031-§7)
-      const heroInner = imageFigures(f.value);
-      heroImage = heroInner;
-      continue;
-    }
-    if (META_KEYS.has(f.key)) { metaParts.push(factHtmlInline(f.value)); continue; }
-    if (ROLE_UNIT[f.key]) { metaParts.push(roleFact(f)); continue; }   // 评分/评分数：带角色与单位，不留裸数字
+  for (const f of plan.facts.list) {
+    if (f.category === 'meta') metaParts.push(factHtmlInline(f.value));
+    else if (f.category === 'unit') metaParts.push(roleFact(f));   // 评分/评分数：带角色与单位，不留裸数字
     // 显式原价事实 ⇒ 弱化（删除线）；`list` 标记不进文案（fmt 已忽略）
-    if (f.key === '_amount' && f.value?.qualifier === LIST_QUALIFIER) {
-      bodyLead += `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
-      continue;
-    }
-    bodyLead += factHtml(f.value);
+    else if (f.category === 'was') bodyLead += `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
+    else bodyLead += factHtml(f.value);
   }
   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
-  if (node._fields) for (const [k, v] of Object.entries(node._fields)) bodyLead += factHtml(v);
-
-  const ordered = kids.filter((c) => c.key.startsWith('_lines[') || c.key.startsWith('_items['));
+  for (const f of plan.facts.fields) bodyLead += factHtml(f.value);
+  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero);   // image-dominant main visual: edge-to-edge (F-031-§7)
 
   let body = '';
-  if (exp && node._items?.length && node._items.length < 2) {
-    // a one-option "choice" is not a choice: render the fact plainly (F-030)
-    const it = node._items[0];
-    const v = it._name ?? it._title;
-    const extra = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
-    const lbl = node._label ? fmt(node._label) : '';
-    body += `<div class="defrow">${lbl ? `<div class="deflabel">${lbl}</div>` : ''}<div class="defval">${v ? fmt(v) : ''} ${extra.map((x) => fmt(x.value)).join(' ')}</div></div>`;
-    itemsConsumed.add(it);
-  } else if (exp && node._items?.length && node._items.some((it) => it._fields && Object.keys(it._fields).length)) {
-    // typed-field rows with a selection column: the admin-table form
-    const legend = node._label ? fmt(node._label) : esc(exp.name);
-    body += renderSelectTable(node._items, { ...exp, legend }, chain, hide, ctx);
-    node._items.forEach((it) => itemsConsumed.add(it));
-  } else if (exp && node._items?.length && node._items.some((it) => factsOf(it).some((f) => !['_name', '_title'].includes(f.key)))) {
-    // a choice set where options carry their own details is a table, not a chip row (T-107)
-    const legend = node._label ? fmt(node._label) : esc(exp.name);
-    body += renderSelectTable(node._items, { ...exp, legend }, chain, hide, ctx);
-    node._items.forEach((it) => itemsConsumed.add(it));
-  } else if (exp && node._items?.length) {
-    const multi = exp.multiple === true;
-    const opts = node._items.map((it, i) => {
-      const v = it._name ?? it._title ?? (it._fields ? { text: Object.values(it._fields)[0]?.text ?? Object.values(it._fields)[0]?.num ?? '' } : undefined);
-      const extra = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key)).map((x) => fmt(x.value)).join(' ');
-      const label = (v && (v.text !== undefined || v.num !== undefined) ? fmt(v) : `option ${i + 1}`) + (extra ? ` <span class="choice-extra">${extra}</span>` : '');
-      const val = it._key ? `key:${it._key}` : (v ? v.text : String(i));
-      return `<label class="choice"><input type="${multi ? 'checkbox' : 'radio'}" name="${esc(exp.name)}" value="${esc(val)}"> ${label}</label>`;
-    }).join('');
-    const legend = node._label ? fmt(node._label) : '';
-    const hint = node._summary ? `<span class="hint">${fmt(node._summary)}</span>` : '';
-    body += `<fieldset class="expose chipbar expose-${esc(exp.name)}">${legend ? `<legend>${legend}</legend>` : ''}${hint}${opts}</fieldset>`;
-    // the choice set IS the rendering of these items — nothing renders again below
-    node._items.forEach((it) => itemsConsumed.add(it));
-  } else if (exp) {
-    const lbl = node._label ? fmt(node._label) : '';   // never print a raw identifier as a label
-    const hint = node._summary ? `<span class="hint">${fmt(node._summary)}</span>` : '';
-    if (exp.type === 'bool') {
-      // a boolean switch is a checkbox with its name on the control (F-031-§6), not an empty text box
-      const name = lbl || (node._name ? fmt(node._name) : (node._title ? fmt(node._title) : ''));
-      if (headingKey) titleText = null;   // the heading IS the switch label: show it once, on the control
-      body += `<label class="choice expose-${esc(exp.name)}"><input type="checkbox" name="${esc(exp.name)}" value="true"> ${name}</label>`;
-    } else {
-      const itype = exp.type === 'date' ? 'date' : (exp.type === 'time' ? 'datetime-local' : (exp.type === 'num' ? 'number' : 'text'));
-      // aria-label 只放源站文案；无文案时绝不把内部标识符（expose name）写进属性
-      body += `<span class="expose expose-${esc(exp.name)}">${lbl ? `<span class="deflabel">${lbl}</span>` : ''}${hint}<input type="${itype}" name="${esc(exp.name)}" data-type="${esc(exp.type)}"${lbl ? ` aria-label="${esc(lbl)}"` : ''}></span>`;
-    }
-  }
+  if (plan.choice) body += renderChoice(plan.choice, node, chain, hide, ctx);
+  if (plan.titleConsumed) titleText = null;   // the heading IS the switch label: show it once, on the control
 
   // every sibling block item renders in ONE form; nothing renders twice (T-103)
-  const rawItems = ordered.map((c) => c.node).filter((it) => !itemsConsumed.has(it));
-  // 轴分组：compare 标记的连续成员 = 被对照的实体（表），其余按各自形态（F-031-§3）。
-  // D2：标记落在集合节点上等价于“它的全部成员都是对照实体”（位置无关）。
-  // P3（提案 §6 决策 3 方案 A）：连续的 `_text` 段合并为一个正文块——段落不是区块，
-  // 之间不插 `<hr class="region">`。只有**成串（≥2）**的 `_text` 才切出来；孤立的
-  // `_text` 段保持原有集合形态（避免为单个事实改动既有页面）。
-  const { groups, order } = seqGroupsOf(rawItems, node, ctx.degradations);
+  // 轴分组（compare 实体/连续正文段/普通集合）在 axis.mjs seqGroupsOf；D2/P3 同理。
+  const { groups, order } = plan.items;
   for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node);
+  for (const g of groups) g.items.forEach((it) => itemsConsumed.add(it));
   // order:time shows a time axis only over a vertical sequence — never a stray rail across a grid (F-031-§1)
   if (order === 'time' && groups.length && groups.every((g) => g.form === 'deflist' || g.form === 'seq')) cls.push('timeline');
   // an empty collection still renders its empty-state storyline (F-013): every declared fact must render
-  if (Array.isArray(node._items) && node._items.length === 0 && node._empty) {
-    body += renderNode(node._empty, [...chain, node], false, hide, ctx, depth + 1);
-  }
-  if (false) {
-  if (form === 'chips') {
-    body += renderChips(rawItems, chain, hide, ctx);
-  } else if (form === 'list') {
-    body += renderList(rawItems, chain, ctx);
-  } else if (form === 'compare-table') {
-    body += renderCompareTable(rawItems, chain, hide, ctx);
-  } else if (form === 'controls') {
-    body += renderControls(rawItems, chain, ctx);
-  } else if (form === 'stack') {
-    body += renderStack(rawItems, chain, hide, ctx, depth);
-  } else if (form === 'prose') {
-    body += renderProse(rawItems);
-  } else if (form === 'deflist') {
-    body += renderDeflist(rawItems, chain, ctx);
-  } else if (form === 'accordion') {
-    body += renderAccordion(rawItems, chain, hide, ctx);
-  } else if (form === 'table') {
-    body += renderRun(rawItems.map((it) => ({ key: '_items[x]', node: it })), chain, hide, ctx);
-    if ((node._items ?? []).length === 0 && node._empty) body += renderNode(node._empty, [...chain, node], false, hide, ctx, depth + 1);
-  } else if (form === 'cards' || form === 'product-cards') {
-    const cards = rawItems.map((it) => {
-      const inner = renderNode(it, [...chain, node], false, hide, ctx, depth + 1);
-      return inner ? `<div class="item">${inner}</div>` : '';
-    }).join('');
-    if (cards) body += `<div class="cards${form === 'product-cards' ? ' product-cards' : ''}">${cards}</div>`;
-  }
-  }
-  rawItems.forEach((it) => itemsConsumed.add(it));
+  if (plan.emptyState) body += renderNode(plan.emptyState, [...chain, node], false, hide, ctx, depth + 1);
 
-  // toolbar: consecutive action-only children render inline
-  const actionKids = kids.filter((c) => !itemsConsumed.has(c.node) && !ordered.includes(c) && c.node._action &&
-    factsOf(c.node).length === 0 && childrenOf(c.node).length === 0 &&
-    actionVisible(c.node._action, { ...ctx.values, ...scopeFor([...chain, node, c.node], ctx.values) }));
-  if (actionKids.length >= 2) {
-    const tools = actionKids.map((c) => {
-      const a = c.node._action;
+  // toolbar: consecutive action-only children render inline (grouping decided in plan.toolbar)
+  if (plan.toolbar.length >= 2) {
+    const tools = plan.toolbar.filter((n) => !itemsConsumed.has(n)).map((n) => {
+      const a = itemActionPlan(n, [...chain, node], ctx.values);
       // `verb` is internal semantics, never visible copy (F-022/F-029): no label ⇒ no tool
-      if (!a.label) return '';
-      return a.to && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'))
-        ? `<a class="tool" href="${esc(hrefOf(a.to))}">${esc(a.label)}</a>` : `<span class="tool">${esc(a.label)}</span>`;
+      if (!a || !a.label) return '';
+      return a.hasTarget ? `<a class="tool" href="${esc(a.href)}">${esc(a.label)}</a>` : `<span class="tool">${esc(a.label)}</span>`;
     }).filter(Boolean).join('');
     if (tools) body += `<div class="toolbar">${tools}</div>`;
-    actionKids.forEach((c) => itemsConsumed.add(c.node));
+    plan.toolbar.forEach((n) => itemsConsumed.add(n));
   }
 
   let prevGroupHadTitle = false;
-  for (const c of kids) {
+  for (const c of plan.namedChildren) {
     if (itemsConsumed.has(c.node)) continue;
     const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1);
     if (!h) continue;
-    if (c.key.startsWith('_items[')) {
-      body += `<div class="item">${h}</div>`;
-      continue;
-    }
     // 兄弟区块：无标题块紧随有标题块 ⇒ 区域分隔，读者不把两段读成一串（F-031-§5）
     const hasTitle = Boolean(c.node._title || c.node._name || c.node._text);
     if (!hasTitle && prevGroupHadTitle) body += '<hr class="region">';
@@ -581,7 +413,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     return `<div class="controls">${inner}</div>`;
   }
   // a bare-title block (source banners/ads) is a promo card, never a section heading (T-106)
-  const bareTitle = depth > 0 && titleText && !bodyLead && !heroHtml && !heroImage && !body && !action && !node._action;
+  const bareTitle = depth > 0 && titleText && !bodyLead && !heroHtml && !heroImage && !body && !action && !plan.hasAction;
   if (bareTitle) {
     const img = node._image ? imageEntries(node._image).map((e) => imgHtml(e.image, e.alt)).join('') : '';
     return `<div class="promo${img ? ' promo-image' : ''}">${img}${titleText ? `<span class="promo-label">${titleText}</span>` : ''}</div>`;
