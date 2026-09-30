@@ -14,8 +14,13 @@
   1. ✅ `fix-1` R1+R2（提交 `dd5b94e`，父代理实证验收）
   2. ✅ `fix-2` 对比表行标签/角色单位/逐项动作控件/句读集合竖排（提交 `41ebd1c`）
   3. ✅ `fix-3` B 站横幅重裁、airbnb 图墙、R7f 区域分隔、`key:` 锚点、36kr H1（提交 `cd8f94d`，父代理看图验收）
-  4. ⏳ `verify` 运行中（worker `0acadcb0`）→ `verification.md`，判据 PASS/FAIL
-- **并行轨（运行中）**：M4 复合原语提案 `48f190de` → `docs/m1/m4-composites-proposal.md`（只设计不实现）
+  4. ✅ `verify` 轮 4 判 FAIL（抓到我们引入的单位叠加回归 + 4 项漏修），提交 `3f0a986`
+  5. ✅ `fix-4` 修完 6 项 + 新增两条自查（unit-stack / dup-title），提交 `37d4599`
+  6. ✅ `verify` 轮 5 判 **PASS**（0 blocker / 0 major / 5 minor），并发现流程坑：截图未随 HTML 刷新 → 已 `--shots` 并提交 `27153d7`
+  7. ⏳ **`M4-a` 运行中**（worker `6826f6e5`）：D1 `_expose` 作用域 + `_when` 硬校验、D2 compare 语义与位置无关、D3 删除引擎侧价格算术 → `.scratch/07-m4/fix-report-5.md`
+- **已完成并行轨**：M4 复合原语提案 → `docs/m1/m4-composites-proposal.md`（14 候选 → 升格 5 / 否决 7；三条基础缺陷均已复现）
+- **M4-a 之后**：策展回改（55 异质 `_items`）→ 补 exemplar 样本（`table`/`login` 前置证据）→ M4 原语实现
+- **待用户拍板清单（累积）**：① 三条 provisional 语法裁定 P1-P3（`_expose` 作用域优先级 / 字段可引用性按原语类型 / prose 走引擎修法）② ipad-air 实体-属性分层规则 ③ 无标签输入框的受控标签来源 ④ exemplar 补样本范围
 - **父代理裁定汇总**（写于 `rounds.md`）：控件是控件（带 label 的 `_action` 必渲染为控件）／角色单位进 `vocab-units.json` 声明化／集合单位由模型给出不得推定／日期本地化推迟待语言信号／`key:` 目标降为 `#锚点`
 - **未修（已记录）**：ipad-air 实体/属性分层（试过回滚，需要新的渲染规则→待裁定）、R7e 日期、`_count` 单位、3 条采集待办（taobao 会场文案 F-036、airbnb 缩略图分辨率、grafana 面板体/T-109）
 - **每轮硬判据**：`node m1/eval/pipeline.mjs` → 36/36 保真 1.00 且 视觉自查 36/36 干净；模型改动必须过 `m1/validate.mjs`
