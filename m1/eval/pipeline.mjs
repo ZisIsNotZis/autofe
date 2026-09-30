@@ -59,7 +59,10 @@ const gFS = gate('node m1/eval/foundation-selftest.mjs');
 console.log(`[pipeline] 地基自测(D1/D2/D3): ${gFS.ok ? '通过' : '失败'}`);
 for (const l of gFS.out.split('\n')) if (l.startsWith('  ·') || l.includes('显式降级') || l.includes('地基自测')) console.log(`[pipeline] ${l.trim()}`);
 if (!gFS.ok) console.log(gFS.out);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok;
+const gMS = gate('node m1/eval/metrics-selftest.mjs');
+console.log(`[pipeline] 度量自测(F-052): ${gMS.ok ? '通过' : '失败'}`);
+if (!gMS.ok) console.log(gMS.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';

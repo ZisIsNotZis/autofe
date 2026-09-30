@@ -22,23 +22,24 @@ function suppressedNodes(model, ctxValues = {}) {
   })(model, []);
   return out;
 }
+// One typed value can contribute several expected fragments (a list contributes
+// one per element). Role facts and `_fields` entries go through the same walk so
+// no value type can silently fall out of the fidelity denominator (F-052: a
+// `{money}`/`{list}` under `_fields` used to be invisible). `_fields` keys are
+// disjoint from role keys in the corpus, so nothing is counted twice.
+function pushFact(out, path, value) {
+  const t = valueTypeOf(value);
+  if (t === 'text' || t === 'date') out.push({ path, text: value[t] });
+  else if (t === 'money') out.push({ path, text: String(value.money) });
+  else if (t === 'num') out.push({ path, text: String(value.num) });
+  else if (t === 'list') value.list.forEach((e, i) => pushFact(out, `${path}[${i}]`, e));
+}
 function factValues(model, dead) {
   const out = [];
   walk(model, (n, p) => {
     if (dead.has(n)) return;
-    for (const f of factsOf(n)) {
-      const v = f.value;
-      const t = valueTypeOf(v);
-      if (t === 'text' || t === 'date') out.push({ path: `${p}.${f.key}`, text: v[t] });
-      else if (t === 'money') out.push({ path: `${p}.${f.key}`, text: String(v.money) });
-      else if (t === 'num') out.push({ path: `${p}._fields?${f.key}`, text: String(v.num), skip: f.key.startsWith('_') === false && !n._fields?.[f.key.slice(1)] });
-      else if (t === 'list') v.list.forEach((e, i) => { const tt = valueTypeOf(e); if (tt === 'text') out.push({ path: `${p}.${f.key}[${i}]`, text: e.text }); });
-    }
-    if (n._fields) for (const [k, v] of Object.entries(n._fields)) {
-      const t = valueTypeOf(v);
-      if (t === 'text' || t === 'date') out.push({ path: `${p}._fields.${k}`, text: v[t] });
-      else if (t === 'num') out.push({ path: `${p}._fields.${k}`, text: String(v.num) });
-    }
+    for (const f of factsOf(n)) pushFact(out, `${p}.${f.key}`, f.value);
+    for (const [k, v] of Object.entries(n._fields ?? {})) pushFact(out, `${p}._fields.${k}`, v);
   });
   return out;
 }
