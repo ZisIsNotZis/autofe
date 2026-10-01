@@ -260,6 +260,9 @@ function renderNode(node, chain, isHero, ctx, depth) {
     } else if (ch.kind === 'bool') {
       const name = lbl || (ch.nodeName ? fmt(ch.nodeName) : '');
       blocks.push(line(depth, `[ ] ${name}`.trim()));
+    } else if (ch.type === 'secret') {
+      // A secret field never echoes its value in the text target: only a placeholder (round 46).
+      blocks.push(line(depth, `${lbl ? lbl + ': ' : ''}(密码)${hint ? ` (${hint})` : ''}`));
     } else {
       blocks.push(line(depth, `${lbl ? lbl + ': ' : ''}__________${hint ? ` (${hint})` : ''} [${ch.type}]`));
     }

@@ -1,58 +1,58 @@
 {
- "_intent": "小米官网首页的身份与主张：以人为中心，构建人车家全生态。本次采集的首屏 7 张产品大图（SKYNOMAD 小米澎程、Xiaomi 18 Fold、Xiaomi 17 Ultra、Pad 9 Pro Max、REDMI Turbo 5 Max、Smart Band 10 Pro、Sound 2 Max）只有像素、没有任何 DOM/节点文本背书，按 F-025 不从截图转写。页面 H1 来源：dom.html 无 <h1>，nodes.json 无任何 heading 节点、可见文本中亦无「以人为中心」等页头文案，故 `_title` 取文档 `<title>`（轮 27b 补记来源）。",
- "_key": "mi-home",
- "_title": {
-  "text": "Xiaomi官方网站 | 以人为中心，构建“人车家全生态”"
- },
- "_summary": {
-  "text": "让全球每个人都能享受科技带来的美好生活"
- },
- "_primary": "_summary",
- "showcase": {
-  "_intent": "首屏至页尾的满幅图带：源站为全宽图片展示。band1 原裁切（`full.png` y=0–664）连源站顶部导航条一起裁了进来（y=0–49 是站点头：橙色 logo + 小米官网/小米商城/… 导航词 + 登录/注册），渲染后页内又冒出一条网页页眉 ⇒ 轮 37b 重裁为 `full.png` y=66–664（y=66 是页头阴影结束后的首行纯白；y=50–206 本就无任何暗像素内容），重裁后暗像素包围盒 y=140–553 正好是 SKYNOMAD 小米澎程首图与轮播指示条，不丢内容。本次采集的 10 条裁切带中末 3 条（band8/9/10）是整幅纯白像素——它们落在 `corpus/mi-com/home/full.png` y≈4400–6360 的**采集空洞**里（该区间逐行采样非白像素占比 0.000，源站懒加载区块未绘制），无任何内容可裁 ⇒ 已移除，并把该采集缺口记入 `m1/failures.md`（轮 34）。DOM 无文本背书，按 F-025 不转写文字，仅按抓取 bbox 裁切复原。",
-  "_items": [
-   {
-    "_image": {
-     "image": "../assets/mi-home-band1.png",
-     "alt": ""
-    }
-   },
-   {
-    "_image": {
-     "image": "../assets/mi-home-band2.png",
-     "alt": ""
-    }
-   },
-   {
-    "_image": {
-     "image": "../assets/mi-home-band3.png",
-     "alt": ""
-    }
-   },
-   {
-    "_image": {
-     "image": "../assets/mi-home-band4.png",
-     "alt": ""
-    }
-   },
-   {
-    "_image": {
-     "image": "../assets/mi-home-band5.png",
-     "alt": ""
-    }
-   },
-   {
-    "_image": {
-     "image": "../assets/mi-home-band6.png",
-     "alt": ""
-    }
-   },
-   {
-    "_image": {
-     "image": "../assets/mi-home-band7.png",
-     "alt": ""
-    }
-   }
-  ]
- }
+  "_intent": "小米官网首页的身份与主张：以人为中心，构建人车家全生态。本次采集的首屏 7 张产品大图（SKYNOMAD 小米澎程、Xiaomi 18 Fold、Xiaomi 17 Ultra、Pad 9 Pro Max、REDMI Turbo 5 Max、Smart Band 10 Pro、Sound 2 Max）只有像素、没有任何 DOM/节点文本背书，按 F-025 不从截图转写。页面 H1 来源：dom.html 无 <h1>，nodes.json 无任何 heading 节点、可见文本中亦无「以人为中心」等页头文案，故 `_title` 取文档 `<title>` 的**首段**（轮 46：无可见标题回退到文档标题时按 `|`/`｜`/`_`/` - ` 切分取第一段；完整标题「Xiaomi官方网站 | 以人为中心，构建“人车家全生态”」保留为 provenance）。",
+  "_key": "mi-home",
+  "_title": {
+    "text": "Xiaomi官方网站"
+  },
+  "_summary": {
+    "text": "让全球每个人都能享受科技带来的美好生活"
+  },
+  "_primary": "_summary",
+  "showcase": {
+    "_intent": "首屏至页尾的满幅图带：源站为全宽图片展示。band1 原裁切（`full.png` y=0–664）连源站顶部导航条一起裁了进来（y=0–49 是站点头：橙色 logo + 小米官网/小米商城/… 导航词 + 登录/注册），渲染后页内又冒出一条网页页眉 ⇒ 轮 37b 重裁为 `full.png` y=66–664（y=66 是页头阴影结束后的首行纯白；y=50–206 本就无任何暗像素内容），重裁后暗像素包围盒 y=140–553 正好是 SKYNOMAD 小米澎程首图与轮播指示条，不丢内容。本次采集的 10 条裁切带中末 3 条（band8/9/10）是整幅纯白像素——它们落在 `corpus/mi-com/home/full.png` y≈4400–6360 的**采集空洞**里（该区间逐行采样非白像素占比 0.000，源站懒加载区块未绘制），无任何内容可裁 ⇒ 已移除，并把该采集缺口记入 `m1/failures.md`（轮 34）。DOM 无文本背书，按 F-025 不转写文字，仅按抓取 bbox 裁切复原。",
+    "_items": [
+      {
+        "_image": {
+          "image": "../assets/mi-home-band1.png",
+          "alt": ""
+        }
+      },
+      {
+        "_image": {
+          "image": "../assets/mi-home-band2.png",
+          "alt": ""
+        }
+      },
+      {
+        "_image": {
+          "image": "../assets/mi-home-band3.png",
+          "alt": ""
+        }
+      },
+      {
+        "_image": {
+          "image": "../assets/mi-home-band4.png",
+          "alt": ""
+        }
+      },
+      {
+        "_image": {
+          "image": "../assets/mi-home-band5.png",
+          "alt": ""
+        }
+      },
+      {
+        "_image": {
+          "image": "../assets/mi-home-band6.png",
+          "alt": ""
+        }
+      },
+      {
+        "_image": {
+          "image": "../assets/mi-home-band7.png",
+          "alt": ""
+        }
+      }
+    ]
+  }
 }

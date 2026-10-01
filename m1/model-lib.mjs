@@ -22,7 +22,7 @@ export const isNamedChildKey = (k) => !k.startsWith('_') && /^[A-Za-z][A-Za-z0-9
 // ---- typed values (§2, closed) -------------------------------------------
 const VALUE_SHAPE = {
   text: [], num: ['unit'], money: ['currency', 'qualifier'], date: [],
-  bool: [], image: ['alt'], video: [], icon: [], ref: [], list: [],
+  bool: [], image: ['alt'], video: [], icon: [], ref: [], list: [], secret: [],
 };
 export function valueTypeOf(v) {
   if (v === null || typeof v !== 'object' || Array.isArray(v)) return null;
@@ -37,7 +37,7 @@ export function valueTypeOf(v) {
   if (primary === 'bool' && typeof val !== 'boolean') return null;
   if (primary === 'ref' && typeof val !== 'string') return null;
   if (primary === 'list' && (!Array.isArray(val) || val.some((e) => valueTypeOf(e) === null))) return null;
-  if (['text', 'date', 'image', 'video', 'icon'].includes(primary) && typeof val !== 'string') return null;
+  if (['text', 'date', 'image', 'video', 'icon', 'secret'].includes(primary) && typeof val !== 'string') return null;
   return primary;
 }
 export function scalarOf(v) {

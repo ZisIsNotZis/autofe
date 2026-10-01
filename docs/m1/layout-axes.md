@@ -158,8 +158,12 @@ titleIsControl 而吞掉同一元素上的其它控件。
 - **确无可见标题**才用文档 `<title>`，且 `_intent` 必须注明来源与"无可见标题"的证据；
 - 不得由截图或 SEO 串接串**编造**标题。
 
-复核结果：`36kr-com/{home,information-technology,search-ai,search-viz}` 已注明（合规）；
-`mi-com/home` 补记来源；`mi-com/shop-category-list` 改用可见文本「全部商品分类」（原为文档 `<title>`）。
+**首段规则（轮 46 明文规则）**：回退到文档 `<title>` 时，H1 **取首段**——按 `|` / `｜` / `_` / ` - ` 切分后的
+第一段。理由：站点把「页面名 + 站点名/口号」拼成 SEO 串（`Xiaomi官方网站 | 以人为中心…`、`华为 - 构建…`、
+`36氪_让一部分人先看到未来`），整串当 H1 会把口号/Slogan 读成标题。完整标题**不丢弃**，作为 provenance 写进 `_intent`。
+
+复核结果：`36kr-com/{home,information-technology,search-ai,search-viz}` 已注明（合规；轮 46 起统一取首段）；
+`mi-com/home` 补记来源并取首段「Xiaomi官方网站」；`mi-com/shop-category-list` 改用可见文本「全部商品分类」（原为文档 `<title>`）。
 
 **层级塌陷**：`_primary` 的 hero 放大只适用于**短值/数字**。一句**导语**（长文本）若按 H1 字号（2em）渲染，
 页面就没有了真正的标题层级；故长句 `_primary` 降为可读导语字号（`.hero-prose`，1.15em/600），实测修 `linear-app/home`。
@@ -175,7 +179,9 @@ titleIsControl 而吞掉同一元素上的其它控件。
 
 ## 6. 暴露字段按类型渲染真实控件
 
-- `type: date` ⇒ `<input type="date">`，`num` ⇒ `number`，`text` ⇒ `text`；
+- `type: date` ⇒ `<input type="date">`，`num` ⇒ `number`，`text` ⇒ `text`，`secret` ⇒ `<input type="password">`；
+- `secret`（密码/秘密输入，闭式枚举新增值 · 轮 46）：渲染为 **password** 控件，**其取值永不进入条件语法/日志/aria/文本目标**
+  （HTML 不写 `value`/`aria`，文本/Markdown 目标只出占位 `(密码)`）。仅“秘密输入”用 `secret`；普通文本框不得用它（它只是把明文换成密文，不改变“文本输入”语义）。
 - 只有一个选项的"选择"不是选择 ⇒ 渲染为规格行（`颜色：白色`），不渲染成不可用的单选；
 - 标签与提示必须在控件上（legend/hint），不能让用户看到两个无归属的日期。 ← Airbnb 入住/退房
 
@@ -341,6 +347,9 @@ mi 商品详情长图被复制进“7天价格保护”条目）。修法：`sca
 
 **引擎落点**：`render.mjs` 里正文事实（`.fact`/`.prose` 的 `.val`）内的链接一律行内显示；只有 `_action` / 动作行（`renderControls`、`actionRow`）才产出 `.ctl`/`.action`。**模型落点**：把"补充信息的引用"建模为正文的一部分（`_text`/`_summary` 等文本里），不要拆成带 `_action` 的独立条目；只有真正的翻页/跳转控件才建 `_action` 条目。
 
+**判定条件（轮 46 明文规则，为什么旧规则没生效）**：轮 35 只规定了“正文链接要行内”，但**没有给出引擎能自判的判据**——`gov-uk` 的 `approved translator`/`apply for a UK passport` 被建成节点自己的 `_action`，于是 `actionRow` 一律当动作控件画成实心按钮（终审 g3）。现补上可计算判据（`axis.inlineBodyLinkKey`）：
+一个 `_action` 的 `label` 若是本节点某条**正文文本事实**（`_detail`/`_summary`/`_text`）的**真子串**（即它出现在句子里，而非独立成句），它就是**行内链接**：HTML 在该句内把 label 渲染成 `<a class="body-link">`，**不**再产出 `.ctl`/`.action`；文本/Markdown 目标保持原句、不另起控件行。`label` 整句等于正文（标题即控件）或等于 item 名（标题控件）的不适用。实测：`gov-uk/register-birth-abroad` 的三个句内引用改行内，实心按钮只剩真正的 CTA `Start now`。门禁：`axis-selftest.mjs` P0–P2。
+
 **行宽测度（measure）**：连续正文（`.fact`、`.prose`）的**最大行宽**限制在 **≤74ch**（约等于源站正文栏宽）；表头/卡片/hero 不受此限（`render.mjs` CSS：`.fact{max-width:74ch}` 且 `.hero .fact`/`.cards .fact` 重置为 `none`）。一屏 1000+px 的正文行是**可读性缺陷**，不是"用满宽度"。
 
 ## 10. 轮 37 明文规则（引导语/脚注顺序 · 榜单编号 · 默认值 · 标签 vs 水印）
@@ -379,3 +388,9 @@ mi 商品详情长图被复制进“7天价格保护”条目）。修法：`sca
 **现象**：`stripe-dashboard/login` 的源站有独立可见标签（`<label>` 邮件地址 / 密码），却被降级成框内 placeholder。
 
 **判据**（D-3 原话："没有给默认值、只给了名称 ⇒ 可把名称当水印"）：`_label` 是**可见标签**（命名了字段主语的名词：`邮件地址`/`密码`/`Username`/`分类`/`颜色`…）时**保留可见标签**；只有当 `_label` 是**占位/示例文案**（源站没有可见标签：`请输入关键词`/`搜索专栏文章`/`站内搜索`/`说点什么...`/`磊哥游戏`）时才把名称水印进框内。共享判定 `axis.isVisibleFieldName` 修正 §6.1 的 `labelAsPlaceholder`：`labelAsPlaceholder = 文本输入 && 有 _label && !isVisibleFieldName(_label)`。实测：`stripe-dashboard/login`、`github-com/login`、`xiaomi-account/login`、`mi-com/{product-detail-mi15,search-earbuds}` 恢复可见标签；`36kr`/`huawei`/`bilibili`/`mi search-phone`/`sspai` 的搜索框仍走水印。
+
+### 10.5 时间流文本（弹幕/滚动评论）限量+紧凑，不铺成竖排墙（轮 46 明文规则）
+
+**现象**：`bilibili-com/video-bv1gj411x7h7` 的弹幕样本 44 条被 `renderChips` 判成 `chips-rows`（成员含《》？！等句读⇒每条自成一行），铺成 ~50 行竖排文本墙（终审 g3）。
+
+**判据（声明，不推断）**：把一条**时间流文本**（弹幕、滚动评论、直播聊天）**声明**为 `_rel.order = "stream"`。引擎据此把它渲染成**行内紧凑流**（`.stream` → `.stream-item`，`flex-wrap` 多行多列，每条 `white-space:nowrap; text-overflow:ellipsis` 限一行），**不再**一条一行。这正是 §1 的“行=可比”原则：弹幕不是可比的记录，把它逐行编号/竖排会读成目录；行内流保持“一串短句”的观感。与 `order: time` 不同：`time` 是有序内容清单（时间线，走 `seq`/`.timeline` 竖排），`stream` 是**短文本流**（走 `.stream` 行内）。仅“成员都是裸标签（`_name`/`_title`/`_text`）”的集合走 `.stream`，带结构/带图/带动作的集合仍走原形态（不吞事实）。模型侧声明：`m1/curated/bilibili-com/video-bv1gj411x7h7.json` 的 `danmaku-sample`。门禁：`axis-selftest.mjs` R0–R1。

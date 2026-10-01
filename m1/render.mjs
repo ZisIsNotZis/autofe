@@ -84,6 +84,15 @@ function fmt(v) {
   return esc(JSON.stringify(v));
 }
 const factHtml = (v) => `<div class="fact"><span class="val">${fmt(v)}</span></div>`;
+// §9 正文链接（轮 46）：句子里的链接保持**行内**——句中的动作 label 换成一个行内 `<a>`，
+// 而不是句后的实心按钮。发生在句内的链接由 axis.inlineBodyLinkKey 判定。
+function inlineLinkFactHtml(v, action) {
+  const t = v && typeof v === 'object' && typeof v.text === 'string' ? v.text : null;
+  if (!t || !action || !action.href || !action.label || !t.includes(action.label)) return factHtml(v);
+  const at = t.indexOf(action.label);
+  const before = t.slice(0, at), after = t.slice(at + action.label.length);
+  return `<div class="fact"><span class="val">${esc(before)}<a class="body-link" href="${esc(action.href)}">${esc(action.label)}</a>${esc(after)}</span></div>`;
+}
 
 // 集合条目的动作（F-031-§4 / F-020）：条目名是内容；带 label 的动作是源站自己的控件文字，
 // 必须作为控件出现。二者同字时只渲染一遍（此时条目名降级为链接目标，不新增文案）。
@@ -280,7 +289,9 @@ function renderChoice(ch, node, chain, hide, ctx) {
   }
   const lbl = ch.legend ? fmt(ch.legend) : '';   // never print a raw identifier as a label
   const hint = ch.hint ? `<span class="hint">${fmt(ch.hint)}</span>` : '';
-  const itype = ch.type === 'date' ? 'date' : (ch.type === 'time' ? 'datetime-local' : (ch.type === 'num' ? 'number' : 'text'));
+  // `secret` is the semantic "secret input": it must render as a password field so the value is
+  // never shown in clear (round 46, F-046 closed-type addition). It is NOT text.
+  const itype = ch.type === 'secret' ? 'password' : (ch.type === 'date' ? 'date' : (ch.type === 'time' ? 'datetime-local' : (ch.type === 'num' ? 'number' : 'text')));
   // D-3: a text field's captured label is the in-box watermark (placeholder); a date/number
   // field keeps an external label where a watermark can't carry the name. Shared decision:
   // `ch.labelAsPlaceholder` (axis.mjs choicePlan).
@@ -289,7 +300,7 @@ function renderChoice(ch, node, chain, hide, ctx) {
   const outside = lbl ? `<span class="deflabel${ch.labelAsPlaceholder ? ' sr-only' : ''}">${lbl}</span>` : '';
   const watermark = lbl && ch.labelAsPlaceholder ? ` placeholder="${esc(lbl)}"` : '';
   // D-3 默认值：抓取到的输入框当前值作为可见的 value（不丢事实）
-  const defVal = ch.value && typeof ch.value === 'object' && typeof ch.value.text === 'string' ? ch.value.text : '';
+  const defVal = ch.type === 'secret' ? '' : (ch.value && typeof ch.value === 'object' && typeof ch.value.text === 'string' ? ch.value.text : '');
   const value = defVal ? ` value="${esc(defVal)}"` : '';
   // 默认值属于控件内部，用可见的 value 呈现；同时在文档里留一份文本（sr-only），
   // 使“抓取到的默认值”在可见文本口径下也不丢失（F-064 同例）。
@@ -298,7 +309,19 @@ function renderChoice(ch, node, chain, hide, ctx) {
   return `<span class="expose expose-input expose-${esc(ch.name)}">${outside}${hint}${docVal}<input type="${itype}" name="${esc(ch.name)}" data-type="${esc(ch.type)}"${value}${lbl ? ` aria-label="${esc(lbl)}"` : ''}${watermark}></span>`;
 }
 
+// 时间流文本（弹幕/滚动评论，`_rel.order = "stream"`，轮 46）：短文本按**行内流**紧凑排列，
+// 绝不铺成几十行竖排墙；每条限一行（CSS 单行省略），事实一条不丢。
+function renderStream(items) {
+  const cells = items.map((it) => {
+    const v = labelOf(it);
+    const label = v ? fmt(v) : '';
+    return label ? `<span class="stream-item">${label}</span>` : '';
+  }).join('');
+  return cells ? `<div class="stream">${cells}</div>` : '';
+}
+
 function renderForm(form, items, chain, hide, ctx, depth, node, order) {
+  if (order === 'stream' && items.every(isBareLabel)) return renderStream(items);
   if (form === 'compare-table') return renderCompareTable(items, chain, hide, ctx);
   if (form === 'chips') return renderChips(items, chain, ctx);
   if (form === 'list') return renderList(items, chain, ctx);
@@ -492,6 +515,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     if (f.category === 'unit') html = roleLabeled(f, roleFact(f));               // 评分/评分数：带角色与单位，不留裸数字
     // 显式原价事实 ⇒ 弱化（删除线）；`list` 标记不进文案（fmt 已忽略）
     else if (f.category === 'was') html = `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
+    else if (plan.action && plan.action.inlineInto === f.key) html = inlineLinkFactHtml(f.value, plan.action);
     else html = factHtml(f.value);
     if (trailingFacts.has(f)) bodyFoot += html; else bodyLead += html;
   }
@@ -636,6 +660,9 @@ hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
    （无目标不得造真实按钮标签；强调是样式，不是新控件，T-101/F-031-§4） */
 .controls .action-plain{margin:0;background:#17212b;color:#fff;border-color:#17212b}
 .ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
+/* 时间流文本（弹幕）：行内紧凑流，每条单行省略——不铺成竖排文本墙（§10.5） */
+.stream{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0}
+.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#eef2f7;border-radius:999px;padding:2px 10px;font-size:.85em}
 a.ctl{font-weight:600}
 a.ctl:hover{background:#f2f7ff}
 /* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
@@ -693,8 +720,10 @@ span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8
 legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
 .expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
 .choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
-input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
+input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
+/* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮） */
+.val a.body-link{color:#0b62d0;text-decoration:underline}
 /* 不放大（round 45 · F-082）：图片按自身自然尺寸显示，容器更窄时才收缩——width:auto
    + max-width:100% 合起来保证 displayed = min(naturalWidth, container)，绝不把 234×176 的
    源缩略图拉到容器宽（旧规则 width:100% 会把封面放大 2~3 倍、发虚并把页面撑到 1.4 万像素）。

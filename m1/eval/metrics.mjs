@@ -26,7 +26,10 @@ function indexNorm(source) {
       const m = /^&(amp|quot|apos|lt|gt|nbsp);/.exec(raw.slice(i).toLowerCase());
       if (m) { ch = ENTITIES[m[1]]; span = m[0].length; }
     }
-    if (!/\s|\p{P}/u.test(ch)) { text.push(ch); start.push(i); end.push(i + span); }
+    // `<`/`>` are the visible-text tag placeholder `<>` (axis.pageText): drop them from the
+    // normalized text so a value inside an inline element (e.g. a body link's label) is still
+    // found, while `continuesLeft/Right` keep seeing the raw placeholder as a token boundary.
+    if (!/[\s\p{P}<>]/u.test(ch)) { text.push(ch); start.push(i); end.push(i + span); }
     i += span - 1;
   }
   return { raw, text: text.join(''), start, end };

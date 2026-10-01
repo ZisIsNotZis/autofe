@@ -21,6 +21,7 @@ const REJECT = [
 const ACCEPT = [
   ['a minimal legal page', { _intent: 'x', _key: 'k', _title: { text: 't' }, _primary: '_title', _lines: [{ _intent: 'l', _title: { text: 'l' }, _text: { text: 'b' } }] }],
   ['_when naming a declared exposure', { _intent: 'x', _key: 'k', _title: { text: 't' }, _expose: { name: 'picked', type: 'ref', multiple: true }, roster: { _intent: 'r', _items: [{ _key: 'a', _name: { text: 'a' } }], bulk: { _intent: 'b', _when: 'count(picked) > 0', _summary: { text: 's' } } } }],
+  ['the closed `secret` value type (round 46)', { _intent: 'x', _key: 'k', _title: { text: 't' }, pw: { _intent: 'p', _label: { text: '密码' }, _expose: { name: 'password', type: 'secret' } } }],
 ];
 
 let bad = 0;

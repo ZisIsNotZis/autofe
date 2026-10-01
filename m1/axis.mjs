@@ -111,7 +111,7 @@ export function selectForm(items, order) {
       const len = t ? (t.text ?? '').length : 0;
       return len >= 16 || /[?？]$/.test((t?.text ?? '').trim());
     });
-    if (order === 'sequence' || order === 'time' || order === 'rank') return 'seq';   // 有序集合（含榜单）⇒ 序列，不是一行 chip（F-031-§1）
+    if (order === 'sequence' || order === 'time' || order === 'rank' || order === 'stream') return 'seq';   // 有序集合（含榜单/时间流）⇒ 序列，不是一行 chip（F-031-§1）
     // 长标签列表（长句子）是列表；一长串短标签的**链接菜单**（如类目/推荐词导航）也不是
     // 一排 pill 控件条——它是一份导航清单，分栏成紧凑形态（轮 35，taobao 首屏）。
     if (long || (items.length >= 8 && items.every((it) => it._action))) return 'list';
@@ -380,6 +380,21 @@ export function itemActionPlan(it, chain, values = {}) {
   if (!a) return null;
   return { ...a, isControl: Boolean(a.label) && a.label !== labelTextOf(it) };
 }
+// §9 正文链接 vs 动作控件（轮 46）：一个 `_action` 的 label 若是本节点某条**正文文本事实**
+// 的真子串（`_detail`/`_summary`/`_text` 里句子的一部分，如 gov-uk “approved translator”、
+// “apply for a UK passport”），它就是句子里的**行内链接**，不是动作控件：
+// 不得抽成独立按钮行；HTML 在句子里行内渲染 `<a>`，文本/Markdown 保持原句文本。
+// label 整句等于文本（标题即控件）或等于 item 名的不算——那是标题控件，不是正文链接。
+export function inlineBodyLinkKey(node) {
+  const a = node?._action;
+  if (!a || typeof a.label !== 'string' || !a.label) return null;
+  const lab = a.label;
+  for (const k of ['_detail', '_summary', '_text']) {
+    const t = node[k]?.text;
+    if (typeof t === 'string' && t.length > lab.length && t.includes(lab)) return k;
+  }
+  return null;
+}
 
 // F-051: a set of records is a table only when it has an identity column (member name) or
 // at least one DECLARED domain label, and at least two attribute columns. One column is a
@@ -515,7 +530,9 @@ export function choicePlan(node, exp) {
   const labelAsPlaceholder = (exp.type === 'text' || exp.type == null) && Boolean(legend) && !isVisibleFieldName(legend);
   // `_text` on a bare text input is the field's current/default value (D-3: a name AND a default),
   // drawn as the input's value attribute — a captured default must never be dropped (round 37).
-  const value = node._text ?? null;
+  // A SECRET field is the one exception: its value must never enter the document (no value attr,
+  // no sr-only copy, no condition/log echoing), so no target ever draws it (round 46).
+  const value = exp.type === 'secret' ? null : (node._text ?? null);
   return { kind: 'input', items, legend, hint, name: exp.name, type: exp.type, labelAsPlaceholder, value };
 }
 
@@ -593,12 +610,18 @@ export function nodePlan(node, ctx = {}) {
     ...ap, isTitleControl: titleIsControl, isLabellessLink: labellessLink,
     linkTo: titleIsControl ? (ap.hasTarget ? ap.href : null) : (labellessLink ? ap.href : null),
   } : null;
+  // §9: a label embedded in a body sentence is an inline link, not a control (round 46).
+  const inlineInto = action ? inlineBodyLinkKey(node) : null;
+  if (action && inlineInto) action.inlineInto = inlineInto;
 
   const choice = choicePlan(node, exp);
+  // A secret field's captured default is never drawn by ANY target (round 46): drop it from the
+  // body facts so text/Markdown cannot echo it either (HTML already skips a bare input's `_text`).
+  if (choice && choice.type === 'secret') facts.list = facts.list.filter((f) => f.key !== '_text');
   const toolbar = namedChildEntries(node)
     .filter((c) => isActionOnlyNode(c.node) && actionPlan(c.node, [...chain, node], values))
     .map((c) => c.node);
-  const actionRow = actionRowOf(node, chain, values, action, toolbar);
+  const actionRow = actionRowOf(node, chain, values, inlineInto ? null : action, toolbar);
   const consumedArray = new Set(exp && Array.isArray(node._items) ? node._items : []);
   const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it));
   // A description fact declared AFTER this node's collection is the collection's FOOTNOTE, not

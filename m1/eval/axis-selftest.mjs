@@ -706,5 +706,53 @@ const primaryActionRows = (model) => {
     && isVisibleFieldName({ text: '邮箱/手机号码/小米ID' }) === true && isVisibleFieldName({ text: '磊哥游戏' }) === false, '');
 }
 
+// O. secret field (round 46 / F-046 closed-type addition). `secret` is the semantic "secret
+// input": HTML must draw <input type="password">, and the field's value must never be drawn
+// in ANY target (no value attr, no sr-only copy); text/Markdown degrade to a `(密码)` placeholder.
+{
+  const model = { _intent: 'x', _title: { text: 'Login' }, pw: { _intent: 'p', _label: { text: '密码' }, _text: { text: 'hunter2' }, _expose: { name: 'password', type: 'secret' } } };
+  const html = render(model);
+  check('O0 a `secret` field renders as <input type="password">', /<input[^>]*type="password"/.test(html), html.match(/<input[^>]*>/)?.[0] ?? '');
+  check('O1 the secret value never enters the HTML document', !html.includes('hunter2'), '');
+  const txt = renderText(model);
+  check('O2 the text target shows a secret placeholder, never the value', txt.includes('(密码)') && !txt.includes('hunter2'), txt);
+  const md = renderMarkdown(model);
+  check('O3 the Markdown target shows a secret placeholder, never the value', md.includes('(密码)') && !md.includes('hunter2'), md);
+}
+
+// P. inline body link (round 46 / §9). An `_action` whose label is part of the node's OWN body
+// sentence is an INLINE link: HTML draws it inside the sentence and no standalone button appears.
+{
+  const model = { _intent: 'x', _title: { text: 'Doc' },
+    para: { _intent: 'p', _detail: { text: 'You need an approved translator.' },
+      _action: { verb: 'open', to: 'https://x.test/t', label: 'approved translator' } } };
+  const html = render(model);
+  check('P0 an action label embedded in a body sentence renders inline', /<a class="body-link"[^>]*>approved translator<\/a>/.test(html), html);
+  check('P1 that inline link is NOT also drawn as a standalone button',
+    !/>approved translator<\/a><\/div><a class="action/.test(html) && !/class="ctl"[^>]*>approved translator</.test(html), html);
+  const txt = renderText(model);
+  check('P2 the text target keeps the sentence and adds no bracketed control',
+    txt.includes('approved translator') && !txt.includes('[approved translator]'), txt);
+}
+
+// Q. sort control (round 46). A declared sort field is a real control, not a plain fact.
+{
+  const model = { _intent: 'x', _title: { text: '结果' }, sort: { _intent: 's', _label: { text: '排序' }, _text: { text: '相关性' }, _expose: { name: 'sort', type: 'text' } } };
+  const html = render(model);
+  check('Q0 a declared sort field renders as an <input> control carrying the current value',
+    /<input[^>]*name="sort"[^>]*>/.test(html) && /value="相关性"/.test(html), html.match(/<input[^>]*>/)?.[0] ?? '');
+}
+
+// R. time-flow text (弹幕, round 46). `_rel.order = "stream"` renders a compact INLINE flow,
+// never the dozens-of-rows vertical wall the plain chips-rows form produced.
+{
+  const items = Array.from({ length: 40 }, (_, i) => ({ _name: { text: `弹幕第${i}条` } }));
+  const model = { _intent: 'x', _title: { text: '视频' }, danmaku: { _intent: 'd', _rel: { order: 'stream' }, _title: { text: '弹幕' }, _items: items } };
+  const html = render(model);
+  check('R0 a stream renders as an inline compact flow (every item kept)',
+    /<div class="stream">/.test(html) && (html.match(/<span class="stream-item">/g) || []).length === 40, '');
+  check('R1 a stream is NOT a rows wall', !/class="chips chips-rows"/.test(html), '');
+}
+
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);
 process.exit(bad ? 1 : 0);

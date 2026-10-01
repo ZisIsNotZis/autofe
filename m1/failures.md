@@ -637,3 +637,34 @@
 
 - `36kr-com/search-*`、`bilibili-com/*` 的**既有**图仍是**远程热链**（`img.36krcdn.com` / `i2.hdslb.com`），离线渲染会裂。
   本轮只镜像了**新挂**的 11 张（apple/aliyun）；既有热链的逐字节本地化不在本轮授权口径（"新挂的图"）内，故如实登记。
+
+## F-084 密码字段渲染成 `type="text"`（明文可见）· 闭式类型新增 `secret`（轮 46）
+
+- **现象**（终审 g2）：`xiaomi-account/login` 等登录页的密码输入框渲染为 `<input type="text">`，取值可见。
+- **根因**：`_expose` 的**闭式类型枚举**里没有“秘密输入”——`password` 只能写成 `type:"text"`（F-046 已登记此缺口）。
+- **修法（本轮授权 · 新增闭式枚举值 `secret`）**：
+  - **理由**：句法需要一个能陈述“这是秘密输入”的值；把它写成 `text` + 渲染侧猜字段名（密码/password）既不可陈述也不可靠（英文/多语站点会漏判）。新增枚举值比隐式启发式更忠实——它让**语义进模型**。
+  - `vocab.json.valueTypes` 增 `"secret"`（同为字符串承载，形如 `{"secret":"…"}`）；`model-lib.valueTypeOf` / `validate.VALUE_KEYS` / `validate._rel` 同步；`axis.choicePlan` 对 `secret` 的 `value` **强制为 null**（取值永不进正文事实）；`render.mjs` 映到 `<input type="password">`，**不写** `value`/sr-only、CSS 与 text 同款；`render-text.mjs`/`render-md.mjs` 只出占位 `(密码)`，不回显值。
+  - 模型：`xiaomi-account/login`、`github-com/login`、`stripe-dashboard/login` 的 `password` 字段 `type: text→secret`（源站均为 `<input type="password">`，已核实）。
+- **门禁**：`axis-selftest.mjs` O0–O3（`secret ⇒ <input type="password">`；HTML/文本/Markdown 三目标均**不出现**秘密值）；`validate-selftest.mjs` 新增 ACCEPT：`secret` 是合法闭式类型。
+
+## F-085 文档标题当 H1 时整串渲染（SEO 串 + 口号）（轮 46）
+
+- **现象**（终审 g3）：`mi-com/home` 的 H1 = 完整 `<title>`「Xiaomi官方网站 | 以人为中心，构建“人车家全生态”」，口号被读成标题。
+- **修法**：无可见标题、回退文档 `<title>` 时 **H1 取首段**（按 `|`/`｜`/`_`/` - ` 切分第一段），完整标题作 provenance 写入 `_intent`。规则见 `layout-axes §5.3`。实测：`mi-com/home`→「Xiaomi官方网站」；`36kr-com/{home,search-ai,search-viz}` 同步取首段（`36氪` / `人工智能相关文章` / `数据可视化相关文章`）。
+
+## F-086 `gov-uk` 正文内链接渲染成实心按钮（轮 46）
+
+- **现象**（终审 g3）：`gov-uk/register-birth-abroad` 句内引用（`approved translator`、`apply for a UK passport`）被建成节点 `_action`，`actionRow` 一律当动作控件画成实心深色按钮，割断句子。
+- **修法**：补上 §9 缺的**可计算判据**（`axis.inlineBodyLinkKey`）：`_action.label` 是本节点正文文本事实（`_detail`/`_summary`/`_text`）的**真子串** ⇒ 行内链接，HTML 在句内画 `<a class="body-link">`，不出按钮；文本/Markdown 保持原句。实测则该页实心按钮只剩真正的 CTA `Start now`。门禁 `axis-selftest.mjs` P0–P2。
+
+## F-087 `huawei-cn/search-laptop` 排序控件缺失（轮 46）
+
+- **现象**（终审 g3）：源站 `filter-sortby/sortbyText` 有排序（当前「相关性」），模型没有该控件。
+- **判层**：抓取里有该控件的可见文案（`nodes.json` 20 处「相关性」），**模型漏建** ⇒ 补模型（非渲染）。
+- **修法**：`search-laptop` 增 `sort` 节点（`_label 排序` + `_text 相关性` + `_expose text`）⇒ 渲染为真实控件（`<input name="sort" value="相关性">`）。只建抓取里真有的当前值，不发明选项。门禁 `axis-selftest.mjs` Q0（声明排序字段 ⇒ 渲染出控件）。**残余**：`search-phone`（源站同款排序）本轮未同步补——不在本轮点名范围，登记待办。
+
+## F-088 弹幕渲染成 ~50 行竖排文本墙（轮 46）
+
+- **现象**（终审 g3）：`bilibili-com/video-bv1gj411x7h7` 44 条弹幕被 `chips-rows` 逐条竖排成文本墙。
+- **修法**：新增**声明式** `_rel.order = "stream"`（时间流文本）；引擎渲染成**行内紧凑流** `.stream/.stream-item`（多行多列、每条单行省略），事实一条不丢。规则见 `layout-axes §10.5`；模型侧 `danmaku-sample` 声明 `stream`。门禁 `axis-selftest.mjs` R0–R1。

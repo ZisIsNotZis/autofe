@@ -5,7 +5,7 @@
 //   node m1/eval/pipeline.mjs --shots    追加全页截图 + 画廊重建 + 证据清单（需要 playwright，约 3 分钟）
 //   node m1/eval/pipeline.mjs --check-shots  仅断言截图（PNG）与当前 HTML 同源，不重渲染（快）
 //   node m1/eval/pipeline.mjs --only airbnb-com/room-28871,bilibili-com/home
-// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且九道门禁全过且截图与 HTML 同源）; 1 = 有失败项
+// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且十道自测全过且截图与 HTML 同源）; 1 = 有失败项
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -194,7 +194,13 @@ if (!gCI.ok) console.log(gCI.out);
 const gCIS = gate('node m1/eval/capture-integrity-selftest.mjs');
 console.log(`[pipeline] 采集一致性自测(F-078): ${gCIS.ok ? '通过' : '失败'}`);
 if (!gCIS.ok) console.log(gCIS.out);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok;
+// 10th self-test suite (round 46): images must never be upscaled (F-082). The renderer rule
+// it pins existed since round 45 but had no gate in the pipeline; registering it keeps the
+// "every rule has a gate" invariant — a regressed `width:100%` now fails the pipeline here.
+const gNU = gate('node m1/eval/no-upscale-selftest.mjs');
+console.log(`[pipeline] 图片不放大自测(F-082 · 第10道): ${gNU.ok ? '通过' : '失败'}`);
+if (!gNU.ok) console.log(gNU.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';
