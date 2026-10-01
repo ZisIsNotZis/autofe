@@ -202,3 +202,10 @@ $ git diff --cached --name-only | wc -l
 ---
 
 STATE_REPORT_DONE sections=7 verified_commands=8 unverified_claims=3
+
+---
+## 补充（轮 53 后，父代理追加）
+- 门禁从 **11 道 → 12 道**：新增 **控件渲染自测**（凡 `axis` 判定应渲染成控件的 `_expose`，三目标必须都画出控件）。对账：**应渲染 56 / HTML 命中 56 / 不一致 0**；另透明列出"单项降级为事实 2"与"`state` 槽不画控件 3"。
+- 同类盲区共补了 **3 处**：`_fields` 里的金额（F-052）、单位叠加（F-054 边界匹配）、**控件消失（本轮）** —— 都是"度量看不见"的类型。
+- 校验器健壮性：对**非模型 JSON**（如 `renders/manifest.json`）不再栈溢出，改为 `E_NOT_MODEL` + skip（根因：`childrenOf` 对字符串返回其字符 ⇒ 无限递归）。
+- 第 11 轮独立验收 **6/6 accept**（含"用 `git archive` 取本线之前版本做逐字节对照"与"复制仓库改副本注册表验证 role 双向生效"）。
