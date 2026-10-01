@@ -17,6 +17,7 @@ import {
 // the decisions as HTML — it holds no model semantics of its own.
 import {
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
+  qualifierPlacement, quantityLabel,
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
   nodePlan, itemActionPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
 } from './axis.mjs';
@@ -60,8 +61,10 @@ function fmt(v) {
   if ('money' in v) {
     const sym = CURRENCY_GLYPH[v.currency] ?? (v.currency ? esc(v.currency) + ' ' : '');
     // `list` 是内部语义标记，不是显示前缀（`from`/`起`/`订金` 等才是）
-    const prefix = v.qualifier && v.qualifier !== LIST_QUALIFIER ? esc(v.qualifier) + ' ' : '';
-    return prefix + sym + esc(v.money);
+    const q = v.qualifier && v.qualifier !== LIST_QUALIFIER ? esc(v.qualifier) : '';
+    // 限定词的位置是词本身的语法（axis.qualifierPlacement）：`起/含税/每…` 后置，`从/From/订金/起始价：` 前置。
+    if (!q) return sym + esc(v.money);
+    return qualifierPlacement(v.qualifier) === 'post' ? `${sym}${esc(v.money)} ${q}` : `${q} ${sym}${esc(v.money)}`;
   }
   if ('date' in v) return esc(v.date);
   if ('bool' in v) return v.bool ? 'yes' : 'no';
@@ -144,6 +147,22 @@ function renderChips(items, chain, ctx) {
 }
 // 角色单位兜底（ROLE_UNIT / hasOwnUnit 见 axis.mjs）：事实自带 unit 时绝不追加，否则两个单位连排（「870 人好评 条评价」，F-037）
 const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] && !hasOwnUnit(f.value) ? ` ${ROLE_UNIT[f.key]}` : ''}`;
+// 词表眼里数值角色事实的标签（axis.quantityLabel）：预览/列表里的裸数字“播放/弹幕数”缺一个归属词。
+// 无词表标签的不加（不发明，F-031-§6）。
+const roleLabeled = (f, html) => { const l = quantityLabel(f.key, f.value); return l ? `<span class="role-label">${esc(l)}</span> ${html}` : html; };
+// 一个值的可见纯文本（供去重比较；无标签、无实体转义）。
+function plainValue(v) {
+  if (!v || typeof v !== 'object' || Array.isArray(v)) return '';
+  if ('text' in v) return String(v.text);
+  if ('num' in v) return String(v.num) + (v.unit ? ` ${v.unit}` : '');
+  if ('money' in v) {
+    const sym = CURRENCY_GLYPH[v.currency] ?? (v.currency ? v.currency + ' ' : '');
+    const q = v.qualifier && v.qualifier !== LIST_QUALIFIER ? String(v.qualifier) : '';
+    if (!q) return `${sym}${v.money}`;
+    return qualifierPlacement(v.qualifier) === 'post' ? `${sym}${v.money} ${q}` : `${q} ${sym}${v.money}`;
+  }
+  return '';
+}
 function renderDeflist(items, chain, ctx) {
   const rows = items.map((it) => {
     const label = it._name ?? it._title;
@@ -369,19 +388,51 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 
   // _primary FACT gets the enlarged hero slot (axis.mjs primarySlot); subtree primaries
   // stay in place (no reordering). Hiding the shown fact is per-target storage.
+  // round 30: the same AMOUNT must not render twice in one node. When a body fact already
+  // states the hero's amount verbatim (the `_summary` is the same price fact with more —
+  // `RMB 6799 起或 RMB 284/月 起`), the hero adds nothing: its fact is still on the page
+  // (the summary carries it), only the duplicate hero line is dropped. The body fact is a
+  // model fact that must render byte-for-byte, so the RICHER form wins the one slot.
+  const heroText = plan.primary ? plainValue(plan.primary.value).replace(/\s+/g, '') : '';
+  const heroDup = Boolean(plan.primary) && plan.primary.holder === node && heroText.length >= 4
+    && Boolean(plan.primary.value) && typeof plan.primary.value === 'object' && 'money' in plan.primary.value
+    && plan.facts.list.some((f) => {
+      const t = f.value && typeof f.value === 'object' && 'text' in f.value ? String(f.value.text).replace(/\s+/g, '') : '';
+      return t.length > heroText.length && t.includes(heroText);
+    });
   let heroHtml = '';
-  if (plan.primary) {
+  if (plan.primary && !heroDup) {
     // A sentence-long `_primary` is the page's lead paragraph, not a headline: keep it as a
     // readable lead (H1-sized prose collapses the level hierarchy). Short/numeric primaries
     // keep the enlarged hero slot.
     const pv = plan.primary.value;
     const leadProse = Boolean(pv && typeof pv === 'object' && typeof pv.text === 'string' && pv.text.length > 48);
     heroHtml = `<div class="hero fact-hero${leadProse ? ' hero-prose' : ''}">${factHtml(pv)}</div>`;
+  }
+  if (plan.primary && !heroDup) {
     if (!hide.has(plan.primary.holder)) hide.set(plan.primary.holder, new Set());
     hide.get(plan.primary.holder).add(plan.primary.key);
   }
 
   let titleText = plan.headingValue ? fmt(plan.headingValue) : null;
+  // round 30: a heading that says nothing new is not drawn twice (F-038).
+  //   (a) identical to an ANCESTOR's heading → keep the outer one (`支付方式` h2 … h3);
+  //   (b) identical to a heading already drawn on THIS PAGE and the node carries no facts of
+  //       its own (a bare group label over controls, e.g. the `更多指南` group “支付方式”) →
+  //       keep the first. A fact-bearing re-used heading is a different section, so it stays.
+  // The fact text remains on the page either way, so fidelity is untouched. The ancestor set
+  // lives on `ctx` and is popped before every return.
+  const headingTextValue = plan.headingValue ? plan.headingValue.text : null;
+  const nodeHasFacts = plan.facts.list.length > 0 || plan.facts.fields.length > 0 || Boolean(plan.facts.hero);
+  let headingAdded = false;
+  if (titleText && headingTextValue && ctx.headings) {
+    const ancestorDup = ctx.headings.has(headingTextValue);
+    const pageLabelDup = !nodeHasFacts && ctx.seenHeadings && ctx.seenHeadings.has(headingTextValue);
+    if (ancestorDup || pageLabelDup) titleText = null;
+    else { ctx.headings.add(headingTextValue); headingAdded = true; }
+    ctx.seenHeadings?.add(headingTextValue);
+  }
+  const done = (out) => { if (headingAdded) ctx.headings.delete(headingTextValue); return out; };
   const cls = ['node', `depth-${Math.min(depth, 4)}`];
   if (isHero) cls.push('hero-branch');
   const demoted = plan.demoted;
@@ -391,8 +442,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   let heroImage = '';
   const metaParts = [];
   for (const f of plan.facts.list) {
-    if (f.category === 'meta') metaParts.push(factHtmlInline(f.value));
-    else if (f.category === 'unit') metaParts.push(roleFact(f));   // 评分/评分数：带角色与单位，不留裸数字
+    if (f.category === 'meta') metaParts.push(roleLabeled(f, factHtmlInline(f.value)));
+    else if (f.category === 'unit') metaParts.push(roleLabeled(f, roleFact(f)));   // 评分/评分数：带角色与单位，不留裸数字
     // 显式原价事实 ⇒ 弱化（删除线）；`list` 标记不进文案（fmt 已忽略）
     else if (f.category === 'was') bodyLead += `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
     else bodyLead += factHtml(f.value);
@@ -433,7 +484,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   // a control whose only content is its own title renders as a control bar, not a promo card (F-031-§4)
   if (depth > 0 && titleText && (titleIsControl || linkTo) && !bodyLead && !heroHtml && !heroImage && !body && !action) {
     const inner = linkTo ? `<a class="ctl" href="${esc(linkTo)}">${titleText}</a>` : `<span class="ctl">${titleText}</span>`;
-    return `<div class="controls">${inner}</div>`;
+    return done(`<div class="controls">${inner}</div>`);
   }
   // a bare-title block is a promo card ONLY when the source has an image (T-106): the
   // measured set was 8/8 image-less collection members, which are ordinary text and must
@@ -441,7 +492,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   const bareTitle = depth > 0 && titleText && !bodyLead && !heroHtml && !heroImage && !body && !action && !plan.hasAction;
   if (bareTitle && node._image) {
     const img = imageEntries(node._image).map((e) => imgHtml(e.image, e.alt)).join('');
-    return `<div class="promo${img ? ' promo-image' : ''}">${img}</div>`;
+    return done(`<div class="promo${img ? ' promo-image' : ''}">${img}</div>`);
   }
 
   const headingLevel = Math.min(depth + 1, 6);
@@ -456,9 +507,9 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 
   const anchorId = node._key ? ` id="${esc(String(node._key).replace(/[^A-Za-z0-9_-]/g, '-'))}"` : '';
   // nothing to say: emit nothing at all (never an empty block)
-  if (!head && !bodyLead && !heroHtml && !heroImage && !body && !action) return '';
+  if (!head && !bodyLead && !heroHtml && !heroImage && !body && !action) return done('');
   const article = `<article${anchorId} class="${cls.join(' ')}">${head}${heroImage}${bodyLead}${heroHtml}${body}${action}</article>`;
-  return demoted ? `<aside class="zone">${article}</aside>` : article;
+  return done(demoted ? `<aside class="zone">${article}</aside>` : article);
 }
 
 // expose groups skip their label/summary facts in bodyLead (they become legend/hint)
@@ -466,7 +517,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
 export function render(model, context = {}, report = null) {
   refLabels = buildRefLabels(model);
   const hide = new Map();
-  const ctx = { values: context.values ?? {}, degradations: report ?? [] };
+  const ctx = { values: context.values ?? {}, degradations: report ?? [], headings: new Set(), seenHeadings: new Set() };
   const html = renderNode(model, [], false, hide, ctx, 0);
   const title = esc(model._title ? fmt(model._title) : (model._intent ?? 'surface'));
   const brand = model._brand ? fmt(model._brand) : '';
@@ -477,6 +528,12 @@ export function render(model, context = {}, report = null) {
 :root{color-scheme:light}
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+/* 站点级链接样式（轮 30）：链接继承文字色、默认无下划线，hover 才下划线——标题/条目名绝不整条蓝。
+   可点击性靠 hover 下划线 + 指针（<a href> 自带），不靠默认蓝；行内引用 .ref 保留可辨色。 */
+a{color:inherit;text-decoration:none;cursor:pointer}
+a:hover{text-decoration:underline}
+a.ref{color:#0b62d0}
+.role-label{color:#68788a;font-size:.9em;margin-right:2px}
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
 header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
@@ -543,10 +600,11 @@ a.ctl:hover{background:#f2f7ff}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
 .linklist li{margin:5px 0;line-height:1.5}
-.linklist a{color:#0b62d0}
+.linklist a{color:inherit}
 .seq{margin:8px 0;padding-left:1.5em}
 .seq li{margin:4px 0;line-height:1.55}
-.seq a{color:#0b62d0}
+.seq a{color:inherit}
+.seq a:hover{text-decoration:underline}
 .chip-item{break-inside:avoid}
 .chips a{color:inherit;text-decoration:none}
 .chips a:hover{text-decoration:underline}

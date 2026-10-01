@@ -31,10 +31,31 @@ export const CURRENCY_GLYPH = { CNY: '¥', USD: '$', HKD: 'HK$', EUR: '€', GBP
 export const LIST_QUALIFIER = 'list';
 // 数值事实必须带角色/单位（F-031-§6）：裸数字在屏幕上没有归属
 export const ROLE_UNIT = { _rating: '分', '_rating-count': '条评价' };
+// ---- price qualifier placement (round 30) ----------------------------------
+// A money qualifier's POSITION is a grammatical fact about the word, not a target-local
+// whim (docs/m1/layout-axes.md §「价格限定词的位置」). A Chinese lower-bound/per-unit
+// modifier TRAILS the numeral (`RMB 6799 起`, `$0.09 每 GB`, `£50 per certificate`); a
+// leading label or rate READS IN FRONT (`From $749`, `起始价：HK$4`, `订金 ¥…`,
+// `3.4% + HK$2.35`). Default front; only a trailing modifier is postposed. This is why
+// `起 RMB 6799` (front) was wrong for `RMB 6799 起`.
+export const POSTPOSED_QUALIFIER = /^(?:起|含税|每月|每\s*\S+|per\s+\S+|each)$/i;
+export const qualifierPlacement = (q) => (typeof q === 'string' && POSTPOSED_QUALIFIER.test(q.trim()) ? 'post' : 'pre');
+// ---- role labels on bare numeric role facts (round 30) ---------------------
+// A bare number has no owner (F-031-§6): a NUMERIC role fact that has a declared,
+// non-empty role label prints that label so the reader knows what the number counts.
+// Facts without a label keep their own unit untouched — nothing is invented
+// (m1/vocab-role-labels.json, `roleLabel`). One shared decision, drawn by every target.
+export const NUMERIC_LABEL_KEYS = new Set(['_count', '_measure', '_rating', '_rating-count', '_stock']);
+const isQuantityValue = (v) => Boolean(v) && typeof v === 'object' && !Array.isArray(v)
+  && ('num' in v || ('text' in v && /^\s*[\d.,]/.test(String(v.text)) && !/[A-Za-z]{2}/.test(String(v.text))));
+// `roleLabel` is declared below (the vocabulary file read); this arrow only CALLS it at
+// render time, after the module has finished evaluating, so there is no TDZ surprise.
+export const quantityLabel = (key, value) => (NUMERIC_LABEL_KEYS.has(key) && isQuantityValue(value) ? roleLabel(key) : '');
 // 哪些角色事实进「meta」这类弱化分组——目标差异可接受，但分组依据必须一致
 export const META_KEYS = new Set(['_count', '_measure', '_duration', '_deadline', '_author', '_source', '_provider', '_brand', '_stock']);
 // 角色单位只是兜底：事实自带 unit 时绝不追加，否则两个单位连排（「870 人好评 条评价」，F-037）
 export const hasOwnUnit = (v) => Boolean(v && typeof v === 'object' && !Array.isArray(v) && 'num' in v && v.unit);
+
 // Role-label vocabulary (round 24): the human label of an internal role fact is ENGINE
 // VOCABULARY, so it is DECLARED in m1/vocab-role-labels.json and read here once — not
 // hand-copied into each render target (the copy is what let HTML print an empty compare
@@ -381,10 +402,19 @@ function actionRowOf(node, chain, values, action, toolbar) {
   for (const n of toolbar) push(itemActionPlan(n, [...chain, node], values), 'inner');
   const inner = namedChildEntries(node).filter((c) => isInnerControlChild(c.node, [...chain, node], values));
   for (const c of inner) push(itemActionPlan(c.node, [...chain, node], values), 'inner');
-  let pi = row.findIndex((c) => COMMIT_VERBS.has(c.verb));
-  if (pi < 0) pi = row.findIndex((c) => c.from === 'own');
+  // 同一容器内完全相同的控件（同 label 同目标）只出现一次（轮 30）：重复即冗余。
+  // 不同目标的同名控件（如 sspai 每条各自的「来源」链接）**不是**重复，不得合并。
+  const seenCtl = new Set();
+  const unique = row.filter((c) => {
+    const sig = `${c.label}\u0000${c.href ?? ''}`;
+    if (seenCtl.has(sig)) return false;
+    seenCtl.add(sig);
+    return true;
+  });
+  let pi = unique.findIndex((c) => COMMIT_VERBS.has(c.verb));
+  if (pi < 0) pi = unique.findIndex((c) => c.from === 'own');
   if (pi < 0) pi = 0;
-  return { row: row.map((c, i) => ({ ...c, primary: i === pi })), consumed: [...toolbar, ...inner.map((c) => c.node)] };
+  return { row: unique.map((c, i) => ({ ...c, primary: i === pi })), consumed: [...toolbar, ...inner.map((c) => c.node)] };
 }
 
 // A choice set's form (F-030): one option is not a choice (plain fact); two or more are a
