@@ -254,6 +254,17 @@ export function compareSetVerdict(items) {
 }
 
 // ---- ordered item-set grouping (F-031 §1/§3, D2, P3) -----------------------
+// ---- ranked（榜单）sequence decision (round 37) ------------------------------
+// A `sequence`-ordered set is numbered ONLY when it is a leaderboard (榜单/热榜/排行榜):
+// its members are the SAME KIND of textual, rankable entries. A carousel/hero/feature band
+// whose members are distinct visual promos (each carries its own `_image`) has a display
+// order, not a RANK — numbering a banner carousel reads as a table of contents (round 37:
+// `huawei-cn/home` hero rendered `1. / 2.`). The decision lives here, once, for every target;
+// renderers only draw it.
+export function rankedSequence(items, order) {
+  return order === 'sequence' && items.length > 1 && !items.some((it) => it._image);
+}
+
 // An ordered collection splits into consecutive runs that each render in ONE form:
 //   compare — members marked as compared entities (marker on the set ⇒ all members;
 //             on a member ⇒ that member); a lone marked member that is itself a
@@ -468,6 +479,14 @@ function selectTablePlan(items, options) {
   const anyOps = options.some((o) => o.ops.length > 0);
   return { cols, cellValue, labelKey, anyOps, showHead: cols.some((c) => labelKey(c)) || anyOps, typed };
 }
+// A text field's `_label` is a VISIBLE label when the source showed a real `<label>` naming the
+// field's subject (邮件地址 / 密码 / Username…); it is placeholder copy (an instruction or example
+// shown only inside the box: 请输入关键词 / 搜索专栏文章 / 磊哥游戏) when the source showed no
+// visible label. D-3 的水印启发式只适用于后者（轮 37：stripe-dashboard/login 的邮件地址/密码被误降水印）。
+const VISIBLE_FIELD_NAME = /(密码|邮件|邮箱|手机|账号|账户|用户|姓名|名称|地址|电话|号码|验证码|身份证|公司|城市|国家|地区|分类|颜色|尺寸|规格|\b(?:password|username|user|email|account|address|phone|mobile|name|code|login|sign\s?in)\b)/i;
+export function isVisibleFieldName(label) {
+  return Boolean(label && label.text && VISIBLE_FIELD_NAME.test(label.text));
+}
 export function choicePlan(node, exp) {
   if (!exp) return null;
   const items = Array.isArray(node._items) ? node._items : [];
@@ -489,8 +508,12 @@ export function choicePlan(node, exp) {
   if (exp.type === 'bool') return { kind: 'bool', items, legend, hint, name: exp.name, nodeName: node._name ?? node._title ?? null };
   // D-3: for a TEXT input the captured label is the field's watermark (placeholder), not an
   // external caption; a date/number input keeps the label outside where a watermark can't read.
-  const labelAsPlaceholder = (exp.type === 'text' || exp.type == null) && Boolean(legend);
-  return { kind: 'input', items, legend, hint, name: exp.name, type: exp.type, labelAsPlaceholder };
+  // The watermark applies ONLY when the source had no visible label (no field-subject name).
+  const labelAsPlaceholder = (exp.type === 'text' || exp.type == null) && Boolean(legend) && !isVisibleFieldName(legend);
+  // `_text` on a bare text input is the field's current/default value (D-3: a name AND a default),
+  // drawn as the input's value attribute — a captured default must never be dropped (round 37).
+  const value = node._text ?? null;
+  return { kind: 'input', items, legend, hint, name: exp.name, type: exp.type, labelAsPlaceholder, value };
 }
 
 // Compare-set cell: a declared field / role fact is a VALUE; a named child is either its
@@ -575,13 +598,20 @@ export function nodePlan(node, ctx = {}) {
   const actionRow = actionRowOf(node, chain, values, action, toolbar);
   const consumedArray = new Set(exp && Array.isArray(node._items) ? node._items : []);
   const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it));
+  // A description fact declared AFTER this node's collection is the collection's FOOTNOTE, not
+  // its lead-in: it must render directly BELOW the collection, never float above it and split
+  // the lead-in from its own list (round 37: gov-uk `…for example when you:` + its bullets).
+  // The split is by DECLARATION ORDER, the same order every renderer already trusts for facts.
+  const ownKeys = Object.keys(node);
+  const collAt = ownKeys.findIndex((k) => k === '_items' || k === '_lines');
+  const trailing = collAt >= 0 ? facts.list.filter((f) => ownKeys.indexOf(f.key) > collAt) : [];
   const items = seqGroupsOf(rawItems, node, ctx.degradations ?? null);
   const namedChildren = namedChildEntries(node);
   const emptyState = (Array.isArray(node._items) && node._items.length === 0 && node._empty) ? node._empty : null;
   const titleConsumed = Boolean(choice && choice.kind === 'bool' && headingKey);
   return {
     ok: true, visible: true, scope, headingKey, headingValue: headingKey ? node[headingKey] : null,
-    headingText, demoted: isDemoted(node), primary, facts, action, hasAction: Boolean(node._action),
+    headingText, demoted: isDemoted(node), primary, facts: { ...facts, trailing }, action, hasAction: Boolean(node._action),
     titleIsControl, choice, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
     items, namedChildren, emptyState, titleConsumed,
   };

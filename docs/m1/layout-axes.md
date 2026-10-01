@@ -305,3 +305,29 @@ titleIsControl 而吞掉同一元素上的其它控件。
 **引擎落点**：`render.mjs` 里正文事实（`.fact`/`.prose` 的 `.val`）内的链接一律行内显示；只有 `_action` / 动作行（`renderControls`、`actionRow`）才产出 `.ctl`/`.action`。**模型落点**：把"补充信息的引用"建模为正文的一部分（`_text`/`_summary` 等文本里），不要拆成带 `_action` 的独立条目；只有真正的翻页/跳转控件才建 `_action` 条目。
 
 **行宽测度（measure）**：连续正文（`.fact`、`.prose`）的**最大行宽**限制在 **≤74ch**（约等于源站正文栏宽）；表头/卡片/hero 不受此限（`render.mjs` CSS：`.fact{max-width:74ch}` 且 `.hero .fact`/`.cards .fact` 重置为 `none`）。一屏 1000+px 的正文行是**可读性缺陷**，不是"用满宽度"。
+
+## 10. 轮 37 明文规则（引导语/脚注顺序 · 榜单编号 · 默认值 · 标签 vs 水印）
+
+### 10.1 集合的引导语紧邻集合，脚注在集合之后（`nodePlan().facts.trailing`）
+
+**现象**：`gov-uk/register-birth-abroad` 的引导句 `This birth certificate should be accepted in the UK, for example when you:`（源站的 `<p>` + `<ul>`）与它自己的项目符号列表被拆开——节点的 `_detail` 脚注插在引导句与列表之间（源站顺序是 `引导句 → 列表 → 脚注`）。
+
+**判据（声明顺序 = 源站顺序）**：同一节点内，**声明在集合键（`_items`/`_lines`）之后**的描述事实（`_summary`/`_detail`/`_text`）是该集合的**脚注**，渲染在该集合**正下方**；声明在集合键之前的描述事实是**引导语**，渲染在集合**正上方**。引擎**不得**把所有正文事实统排到集合之前——那会让脚注割裂引导语与列表。共享决策落在 `axis.mjs` 的 `nodePlan().facts.trailing`（三个目标都拿到它；HTML 消费它画出先后，文本/Markdown 的事实块仍按声明顺序输出，事实不丢）。**注意**：事实的声明顺序既是本规则的依据，也是各渲染器早已依赖的顺序，故这是"读同一份顺序"，不是新语法。
+
+### 10.2 只有"榜单类"有序集合才编号（`rankedSequence`）
+
+**现象**：轮 35 给 36kr「24小时热榜」加序号的逻辑（`order === "sequence"` ⇒ 编号）套到了 `huawei-cn/home` 的 hero 轮播上，首屏出现 `1. / 2.`。
+
+**判据**：`sequence` 有序集合**当且仅当是榜单**（热榜/排行榜：成员是**同类、可排序的文本条目**）才编号。**轮播/首屏/特性带**的成员是各带自身 `_image` 的**视觉促销图**，它的顺序是**展示顺序**而非**位次**——给横幅轮播编号会被读成目录页。故：`axis.rankedSequence(items, order) = order === "sequence" && items.length > 1 && 无成员带 _image`。共享判定在 `axis.mjs`，`renderDeflist` 只消费它。实测：36kr 热榜 8 项仍编号；`huawei-cn/home` hero（2 项，各带图）与 `apple-com/macbook-air` 特性带（6 项，各带图）不再编号。
+
+### 10.3 抓取到的输入框默认值必须作为 value 呈现（既有键 `_text`）
+
+**现象**：`36kr-com/search-*` 的源站 `input` 有 `value="人工智能"`/`value="数据可视化"`，我们渲染成空框。
+
+**规则**（用户 D-3："复合元语应有名称与默认值"）：一个裸文本输入节点的 `_text` 事实是它的**当前/默认值**，渲染为该输入框**可见的 `value`**（`choicePlan().value`）。**只补抓取里真实存在的默认值**，不发明。默认值不是新保留键：用既有描述角色 `_text` 表达（`_default` 是 M4 复合元语的提案键，本轮不引入）。可见文本口径下 `pageText` 不读属性，故值在文档里另留一份 `.sr-only` 文本（同 §6.1 水印名的做法），事实不丢。
+
+### 10.4 §6.1 修订：只在源站**没有可见标签**时把名称当水印
+
+**现象**：`stripe-dashboard/login` 的源站有独立可见标签（`<label>` 邮件地址 / 密码），却被降级成框内 placeholder。
+
+**判据**（D-3 原话："没有给默认值、只给了名称 ⇒ 可把名称当水印"）：`_label` 是**可见标签**（命名了字段主语的名词：`邮件地址`/`密码`/`Username`/`分类`/`颜色`…）时**保留可见标签**；只有当 `_label` 是**占位/示例文案**（源站没有可见标签：`请输入关键词`/`搜索专栏文章`/`站内搜索`/`说点什么...`/`磊哥游戏`）时才把名称水印进框内。共享判定 `axis.isVisibleFieldName` 修正 §6.1 的 `labelAsPlaceholder`：`labelAsPlaceholder = 文本输入 && 有 _label && !isVisibleFieldName(_label)`。实测：`stripe-dashboard/login`、`github-com/login`、`xiaomi-account/login`、`mi-com/{product-detail-mi15,search-earbuds}` 恢复可见标签；`36kr`/`huawei`/`bilibili`/`mi search-phone`/`sspai` 的搜索框仍走水印。

@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
 import { renderMarkdown } from '../render-md.mjs';
-import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS } from '../axis.mjs';
+import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
@@ -624,6 +624,75 @@ const primaryActionRows = (model) => {
   check('J2 text draws the same row on one line with no primary marker', Boolean(tLine) && !tLine.includes('*['), JSON.stringify(tLine));
   const mdLine = renderMarkdown(model).split('\n').find((l) => l.includes('共享') && l.includes('添加至心愿单'));
   check('J3 Markdown draws the same row on one line with no bold marker', Boolean(mdLine) && !mdLine.includes('**['), JSON.stringify(mdLine));
+}
+
+// K. lead-in / footnote order (round 37). A description fact declared AFTER the collection is
+// the collection's footnote and must render BELOW it; the lead-in declared before stays directly
+// above. gov-uk register-birth-abroad was split because its trailing `_detail` interrupted the
+// lead-in (`…for example when you:`) and its own bullet list.
+{
+  const model = {
+    _intent: 'x', _title: { text: 'T' },
+    sec: {
+      _intent: 's',
+      _summary: { text: '…for example when you:' },
+      _items: [{ _name: { text: 'apply for a passport' } }, { _name: { text: 'register with a school or doctor' } }],
+      _detail: { text: 'If it’s not in English, translate it.' },
+    },
+  };
+  const plan = nodePlan(model.sec, { chain: [], values: {}, depth: 1 });
+  check('K0 the fact declared after the collection is the plan footnote (facts.trailing)',
+    plan.facts.trailing.length === 1 && plan.facts.trailing[0].key === '_detail',
+    JSON.stringify(plan.facts.trailing.map((f) => f.key)));
+  const html = render(model);
+  const iS = html.indexOf('for example when you:');
+  const iL = html.indexOf('apply for a passport');
+  const iD = html.indexOf('If it’s not in English');
+  check('K1 HTML draws lead-in → list → footnote (the lead-in stays adjacent to its list)',
+    iS >= 0 && iL > iS && iD > iL, `summary=${iS} list=${iL} detail=${iD}`);
+}
+
+// L. ranked sequence (round 37). Only a leaderboard (same-kind TEXTUAL entries) is numbered;
+// a hero/carousel whose members carry their own image is a display order, not a rank.
+{
+  const plain = [1, 2, 3].map((i) => ({ _name: { text: `item ${i}` } }));
+  const banner = plain.map((it, i) => ({ ...it, _image: { image: `https://x.test/${i}.png`, alt: `a${i}` } }));
+  check('L0 a textual sequence is a ranked 榜单', rankedSequence(plain, 'sequence') === true);
+  check('L1 an image-bearing (hero/carousel) sequence is NOT ranked', rankedSequence(banner, 'sequence') === false);
+  check('L2 a non-sequence order is never numbered', rankedSequence(plain, 'none') === false);
+  const hero = {
+    _intent: 'x', _title: { text: 'Hero' },
+    hero: { _intent: 'h', _rel: { order: 'sequence' }, _items: banner.map((it) => ({ _name: it._name, _image: it._image, _action: { verb: 'open', label: '了解更多', to: 'https://x.test' } })) },
+  };
+  const html = render(hero);
+  check('L3 a hero-like sequence renders with no ordinals',
+    !html.includes('class="rank"') && !/<ol class="seq">/.test(html),
+    html.match(/<div class="deflist[^"]*"[^>]*>/)?.[0] ?? '');
+}
+
+// M. captured input default value (round 37). `_text` on a bare text input is the field's
+// current value and must be drawn as the input's VISIBLE `value` (D-3: a name AND a default).
+{
+  const model = { _intent: 'x', _title: { text: 'Search' }, query: { _intent: 'q', _label: { text: '请输入关键词' }, _text: { text: '人工智能' }, _expose: { name: 'query', type: 'text' } } };
+  const plan = nodePlan(model.query, { chain: [], values: {}, depth: 1 });
+  check('M0 the bare text input carries the captured default value', plan.choice?.value?.text === '人工智能', JSON.stringify(plan.choice?.value ?? null));
+  const html = render(model);
+  check('M1 HTML draws the default value as the input value', /<input[^>]*value="人工智能"/.test(html), html.match(/<input[^>]*>/)?.[0] ?? '');
+  check('M2 the default value stays a certified fact in the document', html.includes('人工智能'), '');
+}
+
+// N. label vs watermark (round 37 / §6.1 revised). A visible field label stays visible; only
+// placeholder/example copy (the source had no visible label) becomes the in-box watermark.
+{
+  const mk = (label) => ({ _intent: 'x', _title: { text: 'Form' }, field: { _intent: 'f', _label: { text: label }, _expose: { name: 'field', type: 'text' } } });
+  const visible = render(mk('邮件地址'));
+  check('N0 a visible field label (邮件地址) is NOT demoted to a watermark',
+    visible.includes('<span class="deflabel">邮件地址</span>') && !visible.includes('placeholder="邮件地址"'), '');
+  const ph = render(mk('请输入关键词'));
+  check('N1 placeholder copy (请输入关键词) still becomes the in-box watermark', ph.includes('placeholder="请输入关键词"'), '');
+  check('N2 isVisibleFieldName classifies field names, not placeholder copy',
+    isVisibleFieldName({ text: 'Password' }) === true && isVisibleFieldName({ text: '说点什么...' }) === false
+    && isVisibleFieldName({ text: '邮箱/手机号码/小米ID' }) === true && isVisibleFieldName({ text: '磊哥游戏' }) === false, '');
 }
 
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);

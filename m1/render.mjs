@@ -20,6 +20,7 @@ import {
   qualifierPlacement, quantityLabel,
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
   nodePlan, itemActionPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
+  rankedSequence,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -178,10 +179,11 @@ function plainValue(v) {
   return '';
 }
 function renderDeflist(items, chain, ctx, order) {
-  // An ordered (ranked/step) list of name+detail rows reads as a leaderboard only when each
-  // row carries its ordinal (axioms §4: `order: sequence` ⇒ 编号). Unordered deflists stay as
-  // they are; a `time` order is a timeline rail (linear-app changelog), not a ranking.
-  const ranked = order === 'sequence';
+  // An ordered list of name+detail rows is a leaderboard ONLY when it is a 榜单
+  // (axis.mjs `rankedSequence`): a textual, rankable set. A hero/feature carousel whose
+  // members carry their own images is a display sequence, not a rank — numbering it reads
+  // as a table of contents (round 37: `huawei-cn/home` hero rendered `1. / 2.`).
+  const ranked = rankedSequence(items, order);
   const rows = items.map((it, i) => {
     const label = it._name ?? it._title;
     const rest = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
@@ -286,8 +288,14 @@ function renderChoice(ch, node, chain, hide, ctx) {
   // label keeps the name in the document (a placeholder alone is not a label — F-064).
   const outside = lbl ? `<span class="deflabel${ch.labelAsPlaceholder ? ' sr-only' : ''}">${lbl}</span>` : '';
   const watermark = lbl && ch.labelAsPlaceholder ? ` placeholder="${esc(lbl)}"` : '';
+  // D-3 默认值：抓取到的输入框当前值作为可见的 value（不丢事实）
+  const defVal = ch.value && typeof ch.value === 'object' && typeof ch.value.text === 'string' ? ch.value.text : '';
+  const value = defVal ? ` value="${esc(defVal)}"` : '';
+  // 默认值属于控件内部，用可见的 value 呈现；同时在文档里留一份文本（sr-only），
+  // 使“抓取到的默认值”在可见文本口径下也不丢失（F-064 同例）。
+  const docVal = defVal ? `<span class="sr-only">${esc(defVal)}</span>` : '';
   // aria-label 只放源站文案；无文案时绝不把内部标识符（expose name）写进属性
-  return `<span class="expose expose-input expose-${esc(ch.name)}">${outside}${hint}<input type="${itype}" name="${esc(ch.name)}" data-type="${esc(ch.type)}"${lbl ? ` aria-label="${esc(lbl)}"` : ''}${watermark}></span>`;
+  return `<span class="expose expose-input expose-${esc(ch.name)}">${outside}${hint}${docVal}<input type="${itype}" name="${esc(ch.name)}" data-type="${esc(ch.type)}"${value}${lbl ? ` aria-label="${esc(lbl)}"` : ''}${watermark}></span>`;
 }
 
 function renderForm(form, items, chain, hide, ctx, depth, node, order) {
@@ -469,15 +477,23 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   const demoted = plan.demoted;
 
   const itemsConsumed = new Set(plan.rowConsumed);
+  // Facts declared before the collection are the lead-in; facts declared after it are the
+  // node's footnote (plan.facts.trailing, axis.mjs) and must render BELOW the collection —
+  // otherwise a trailing description splits the collection's lead-in from its own list.
+  const trailingFacts = new Set(plan.facts.trailing);
   let bodyLead = '';
+  let bodyFoot = '';
   let heroImage = '';
   const metaParts = [];
   for (const f of plan.facts.list) {
-    if (f.category === 'meta') metaParts.push(roleLabeled(f, factHtmlInline(f.value)));
-    else if (f.category === 'unit') metaParts.push(roleLabeled(f, roleFact(f)));   // 评分/评分数：带角色与单位，不留裸数字
+    if (plan.choice && plan.choice.kind === 'input' && f.key === '_text') continue;  // the field's default value (drawn on the input below)
+    if (f.category === 'meta') { metaParts.push(roleLabeled(f, factHtmlInline(f.value))); continue; }
+    let html;
+    if (f.category === 'unit') html = roleLabeled(f, roleFact(f));               // 评分/评分数：带角色与单位，不留裸数字
     // 显式原价事实 ⇒ 弱化（删除线）；`list` 标记不进文案（fmt 已忽略）
-    else if (f.category === 'was') bodyLead += `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
-    else bodyLead += factHtml(f.value);
+    else if (f.category === 'was') html = `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
+    else html = factHtml(f.value);
+    if (trailingFacts.has(f)) bodyFoot += html; else bodyLead += html;
   }
   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
   for (const f of plan.facts.fields) bodyLead += factHtml(f.value);
@@ -539,7 +555,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   const anchorId = node._key ? ` id="${esc(String(node._key).replace(/[^A-Za-z0-9_-]/g, '-'))}"` : '';
   // nothing to say: emit nothing at all (never an empty block)
   if (!head && !bodyLead && !heroHtml && !heroImage && !body && !action) return done('');
-  const article = `<article${anchorId} class="${cls.join(' ')}">${head}${heroImage}${bodyLead}${heroHtml}${body}${action}</article>`;
+  const article = `<article${anchorId} class="${cls.join(' ')}">${head}${heroImage}${bodyLead}${heroHtml}${body}${bodyFoot}${action}</article>`;
   return done(demoted ? `<aside class="zone">${article}</aside>` : article);
 }
 
