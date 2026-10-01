@@ -147,8 +147,9 @@ function renderChips(items, chain, ctx) {
 }
 // 角色单位兜底（ROLE_UNIT / hasOwnUnit 见 axis.mjs）：事实自带 unit 时绝不追加，否则两个单位连排（「870 人好评 条评价」，F-037）
 const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] && !hasOwnUnit(f.value) ? ` ${ROLE_UNIT[f.key]}` : ''}`;
-// 词表眼里数值角色事实的标签（axis.quantityLabel）：预览/列表里的裸数字“播放/弹幕数”缺一个归属词。
-// 无词表标签的不加（不发明，F-031-§6）。
+// 词表眼里数值角色事实的标签（axis.quantityLabel）：只给**语义无歧义**的数值角色加前缀
+// （`_rating`→评分 / `_rating-count`→评价数 / `_stock`→库存）。`_count`/`_measure` 这类通用计数
+// 站点语义因页面而异（播放/弹幕/点赞…），默认不加标签（不发明、更不误导，轮 32）。
 const roleLabeled = (f, html) => { const l = quantityLabel(f.key, f.value); return l ? `<span class="role-label">${esc(l)}</span> ${html}` : html; };
 // 一个值的可见纯文本（供去重比较；无标签、无实体转义）。
 function plainValue(v) {
@@ -661,5 +662,15 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const [inp, out] = process.argv.slice(2);
   if (!inp) { console.error('usage: node m1/render.mjs <model.json> [out.html]'); process.exit(2); }
   const html = render(JSON.parse(fs.readFileSync(inp, 'utf8')));
-  if (out) fs.writeFileSync(out, html); else process.stdout.write(html);
+  // An idempotent write keeps the file's mtime honest: the evidence-consistency gate
+  // (`pipeline --check-shots`) reads mtime as "was the HTML rewritten after its PNG?",
+  // so a byte-identical rerender must not bump it (otherwise every default pipeline run
+  // would look like a stale screenshot).
+  if (out) writeIfChanged(out, html); else process.stdout.write(html);
+}
+
+function writeIfChanged(file, content) {
+  try { if (fs.readFileSync(file, 'utf8') === content) return false; } catch { /* not there yet */ }
+  fs.writeFileSync(file, content);
+  return true;
 }

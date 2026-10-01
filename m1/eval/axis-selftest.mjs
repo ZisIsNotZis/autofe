@@ -536,17 +536,20 @@ const rowLine = (out, labels) => out.split('\n').find((l) => labels.every((x) =>
 // yields equals the number of grouped rows each of text and Markdown actually draws. A target
 // that splits a row into pieces, drops a lone toolbar child, or groups without the decision
 // changes the count and fails here even when no constructed case covers that page.
+// Round 32: a multi-control row with NO commitment verb has no primary (docs §4.1), so the
+// marker count can only be pinned for rows that DO have a shared primary; H6/H7 cover the
+// primary-less rows in a constructed model.
 // Only nodes the node renderer actually draws count. A collection member in an inline form
 // (list/deflist/table/chips/controls/compare-table entity) is a cell, not a node block, and
 // its action row is drawn by that form in every target — so it must not be counted here.
 const NODE_FORMS = new Set(['cards', 'product-cards', 'stack']);
-const multiActionRows = (model) => {
+const primaryActionRows = (model) => {
   let multi = 0;
   (function visit(node, chain, depth) {
     if (!node || typeof node !== 'object' || Array.isArray(node)) return;
     const plan = nodePlan(node, { chain, values: {}, depth });
     if (!plan.visible) return;
-    if (plan.actionRow.length > 1) multi++;
+    if (plan.actionRow.length > 1 && plan.actionRow.some((c) => c.primary)) multi++;
     for (const g of plan.items.groups) {
       if (g.form === 'compare-table') continue;
       if (NODE_FORMS.has(g.form) || (g.form === 'table' && !runPlan(g.items).isTable))
@@ -565,7 +568,7 @@ const multiActionRows = (model) => {
     const mp = path.join(root, 'm1', 'curated', `${r.k}.json`);
     if (!fs.existsSync(mp)) continue;
     const model = JSON.parse(fs.readFileSync(mp, 'utf8'));
-    const n = multiActionRows(model);
+    const n = primaryActionRows(model);
     if (!n) continue;
     pages++; rows += n;
     const text = renderText(model);
@@ -575,8 +578,52 @@ const multiActionRows = (model) => {
     if (tCount !== n) textMiss++;
     if (mCount !== n) mdMiss++;
   }
-  check(`H4 all ${rows} multi-control rows on ${pages} curated pages are grouped in text`, textMiss === 0, `${textMiss} pages mismatched`);
-  check(`H5 all ${rows} multi-control rows on ${pages} curated pages are grouped in Markdown`, mdMiss === 0, `${mdMiss} pages mismatched`);
+  check(`H4 all ${rows} multi-control rows with a shared primary on ${pages} curated pages are grouped in text`, textMiss === 0, `${textMiss} pages mismatched`);
+  check(`H5 all ${rows} multi-control rows with a shared primary on ${pages} curated pages are grouped in Markdown`, mdMiss === 0, `${mdMiss} pages mismatched`);
+}
+
+// I. FORM SELECTION must not swallow declared facts (round 32). A member that carries an
+// `_image` or an `_action` is not a help-doc Q&A line: putting it in a `<details>` accordion
+// silently drops the image and the control it declared (huawei 推荐信息 lost all four of
+// each). Only a bare title+detail(+more facts) member with neither becomes an accordion; a
+// titled set with images/actions becomes cards and keeps them, in every target.
+{
+  const bare = [1, 2, 3, 4].map((i) => ({ _title: { text: `Q${i}` }, _detail: { text: `A${i}` }, _summary: { text: `s${i}` } }));
+  const media = bare.map((it, i) => ({ ...it, _image: { image: `https://x.test/${i}.png`, alt: `alt ${i}` }, _action: { verb: 'open', label: '了解更多', to: `https://x.test/${i}` } }));
+  check('I0 a bare title+detail set is still an accordion', selectForm(bare) === 'accordion', selectForm(bare));
+  check('I1 a titled set whose members carry an image/action is NOT an accordion', selectForm(media) === 'stack', selectForm(media));
+  const html = render({ _intent: 'x', _title: { text: 'Top' }, featured: { _intent: 'f', _title: { text: '推荐信息' }, _items: media } });
+  const imgs = (html.match(/<img /g) || []).length;
+  const ctls = (html.match(/了解更多/g) || []).length;
+  check('I2 the members render with every image and every action (no <details>)',
+    !html.includes('<details') && imgs === 4 && ctls === 4, `imgs=${imgs} ctls=${ctls}`);
+}
+
+// J. PRIMARY CTA is claimed only by a commitment verb (round 32). A row whose controls are
+// property actions (`共享` / `添加至心愿单`, both `operate`) must have NO solid primary — the
+// old "else the element's own action, else the first" fallback promoted `共享` on
+// airbnb-com/room-28871. Text/Markdown draw the same row on one line with no marker.
+{
+  const model = {
+    _intent: 'x', _title: { text: 'Share' },
+    actions: {
+      _intent: 'a',
+      share: { _action: { verb: 'operate', label: '共享' } },
+      save: { _action: { verb: 'operate', label: '添加至心愿单' } },
+    },
+  };
+  const plan = nodePlan(model.actions, { chain: ['actions'], values: {}, depth: 1 });
+  check('J0 a row with no commitment verb has NO primary',
+    plan.actionRow.length === 2 && plan.actionRow.every((c) => !c.primary), JSON.stringify(plan.actionRow));
+  const html = render(model);
+  check('J1 HTML draws both as secondary .ctl (no solid .action/.action-plain)',
+    /<span class="ctl"[^>]*>共享<\/span>/.test(html) && /<span class="ctl"[^>]*>添加至心愿单<\/span>/.test(html)
+    && !/<span class="action-plain">共享<\/span>/.test(html) && !/class="action[^"]*"[^>]*>共享/.test(html),
+    html.match(/<div class="controls">[\s\S]*?<\/div>/)?.[0] ?? '');
+  const tLine = renderText(model).split('\n').find((l) => l.includes('共享') && l.includes('添加至心愿单'));
+  check('J2 text draws the same row on one line with no primary marker', Boolean(tLine) && !tLine.includes('*['), JSON.stringify(tLine));
+  const mdLine = renderMarkdown(model).split('\n').find((l) => l.includes('共享') && l.includes('添加至心愿单'));
+  check('J3 Markdown draws the same row on one line with no bold marker', Boolean(mdLine) && !mdLine.includes('**['), JSON.stringify(mdLine));
 }
 
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);

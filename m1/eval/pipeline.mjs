@@ -2,16 +2,19 @@
 // 三个渲染目标都跑：HTML（render.mjs）/ 纯文本（render-text.mjs）/ Markdown（render-md.mjs）。
 // 用法:
 //   node m1/eval/pipeline.mjs            仅渲染 + 度量 + 审计（快，约 1 分钟）
-//   node m1/eval/pipeline.mjs --shots    追加全页截图 + 画廊重建（需要 playwright，约 3 分钟）
+//   node m1/eval/pipeline.mjs --shots    追加全页截图 + 画廊重建 + 证据清单（需要 playwright，约 3 分钟）
+//   node m1/eval/pipeline.mjs --check-shots  仅断言截图（PNG）与当前 HTML 同源，不重渲染（快）
 //   node m1/eval/pipeline.mjs --only airbnb-com/room-28871,bilibili-com/home
-// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且七道门禁全过）; 1 = 有失败项
+// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且七道门禁全过且截图与 HTML 同源）; 1 = 有失败项
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { execSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 
 const args = process.argv.slice(2);
 const wantShots = args.includes('--shots');
+const wantCheck = args.includes('--check-shots');
 const onlyArg = args.find((a) => a.startsWith('--only'));
 const only = onlyArg ? (onlyArg.includes('=') ? onlyArg.split('=')[1] : args[args.indexOf(onlyArg) + 1]).split(',').map((s) => s.trim()).filter(Boolean) : null;
 
@@ -21,6 +24,59 @@ const CHROME = process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell
 
 const scale = JSON.parse(fs.readFileSync('m1/eval/m3-scale.json', 'utf8')).filter((x) => x.tier === 'exemplar');
 const rows = only ? scale.filter((s) => only.includes(s.k)) : scale;
+
+// ---- 0. evidence consistency (PNG ⇄ HTML) ----------------------------------
+// Reviewers (round 31, all four independently) found the committed `renders/*.png` OLDER
+// than the `.html` beside them: the gallery/screenshots still showed round-30's default blue
+// underline while the HTML/CSS had the fix. `--shots` writes a manifest binding every page's
+// HTML content hash to the PNG generated from it; `--check-shots` (and every default run)
+// refuses to pass when the HTML has moved on without a re-shoot. This is the gate that makes
+// "code fixed but screenshot stale" impossible to ship silently.
+const RENDERS = 'm1/curated/renders';
+const MANIFEST = `${RENDERS}/manifest.json`;
+const sha256 = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const fileInfo = (p) => ({ sha256: sha256(p), bytes: fs.statSync(p).size, mtimeMs: Math.round(fs.statSync(p).mtimeMs) });
+function writeShotsManifest(version) {
+  const pages = {};
+  for (const r of rows) {
+    const dash = r.k.replace(/\//g, '-');
+    const html = `${RENDERS}/${dash}.html`, png = `${RENDERS}/${dash}.png`;
+    if (!fs.existsSync(html) || !fs.existsSync(png)) continue;
+    pages[dash] = { key: r.k, html: fileInfo(html), png: fileInfo(png) };
+  }
+  const gallery = fs.existsSync(`${RENDERS}/index.html`) ? { version, ...fileInfo(`${RENDERS}/index.html`) } : { version };
+  const man = { version, generatedAt: new Date().toISOString(), pages, gallery };
+  fs.writeFileSync(MANIFEST, JSON.stringify(man, null, 1));
+  return man;
+}
+function checkShots() {
+  if (!fs.existsSync(MANIFEST)) return { ok: false, stale: rows.map((r) => ({ k: r.k, why: 'no manifest (run --shots)' })), version: null };
+  const man = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
+  const stale = [];
+  for (const r of rows) {
+    const dash = r.k.replace(/\//g, '-');
+    const html = `${RENDERS}/${dash}.html`, png = `${RENDERS}/${dash}.png`;
+    const e = man.pages?.[dash];
+    if (!e) { stale.push({ k: r.k, why: 'no manifest entry' }); continue; }
+    if (!fs.existsSync(html)) { stale.push({ k: r.k, why: 'html missing' }); continue; }
+    if (sha256(html) !== e.html?.sha256) { stale.push({ k: r.k, why: 'html changed since shots' }); continue; }
+    if (!fs.existsSync(png)) { stale.push({ k: r.k, why: 'png missing' }); continue; }
+    if (e.png?.sha256 && sha256(png) !== e.png.sha256) { stale.push({ k: r.k, why: 'png changed since manifest' }); continue; }
+    if (fs.statSync(png).mtimeMs + 1 < fs.statSync(html).mtimeMs) { stale.push({ k: r.k, why: 'png older than html' }); continue; }
+  }
+  return { ok: stale.length === 0, stale, version: man.version, generatedAt: man.generatedAt };
+}
+// `--check-shots` is the fast, self-contained form: it never re-renders (so a hand-edited
+// HTML is not silently overwritten before it is judged) and exits with the verdict.
+if (wantCheck && !wantShots) {
+  const res = checkShots();
+  if (res.ok) console.log(`[pipeline] 证据一致性（PNG ⇄ HTML）: 通过（${rows.length} 页, 画廊 v=${res.version}）`);
+  else {
+    console.log(`[pipeline] 证据一致性（PNG ⇄ HTML）: 失败 ${res.stale.length}/${rows.length} 页（HTML 更新了但截图未重出）`);
+    for (const s of res.stale) console.log(`   ✗ ${s.k} — ${s.why}`);
+  }
+  process.exit(res.ok ? 0 : 1);
+}
 
 // ---- 1. render + metrics + coverage (three targets) ------------------------
 fs.mkdirSync('.tmp/md-renders', { recursive: true });
@@ -60,7 +116,7 @@ const gate = (cmd) => {
   try { return { ok: true, out: execSync(cmd, { timeout: 300000 }).toString().trim() }; }
   catch (e) { return { ok: false, out: ((e.stdout ?? '').toString() + (e.stderr ?? '').toString()).trim() }; }
 };
-const gValid = gate(`node m1/validate.mjs $(find m1/curated -maxdepth 2 -name '*.json') m1/models/*/*.json`);
+const gValid = gate(`node m1/validate.mjs $(find m1/curated -maxdepth 2 -name '*.json' -not -path '*/renders/*') m1/models/*/*.json`);
 const nOk = gValid.out.split('\n').filter((l) => l.startsWith('ok ')).length;
 console.log(`[pipeline] 模型校验: ${gValid.ok ? `${nOk} 个全通过` : '失败'}`);
 if (!gValid.ok) console.log(gValid.out.split('\n').filter((l) => !l.startsWith('ok ')).join('\n'));
@@ -131,7 +187,29 @@ if (wantShots) {
     html0.slice(html0.indexOf('<style>'), gridStart).replace(/<h1>[^<]*<\/h1>/, '<h1>AutoFE · M3 蓝图渲染画廊（' + all.length + ' 页 · F-031 轴语义 · 版本 ' + V + '）</h1>');
   fs.writeFileSync('m1/curated/renders/index.html', head + '<div class=grid>' + cards + '</div>');
   console.log(`[pipeline] 截图 ${n} 张, 画廊 v=${V}`);
+  // The manifest binds the shots to the exact HTML they were taken from. Written after the
+  // gallery so `gallery.version` is the version that is now on disk.
+  if (!only) {
+    writeShotsManifest(V);
+    console.log(`[pipeline] 证据清单 renders/manifest.json 已写（${n} 页, v=${V}）`);
+  }
 }
 
-const failed = gatesFailed || under.length > 0 || mdUnder.length > 0 || (hardFails && Number(hardFails) > 0) || out.some((o) => o.error);
+// ---- 4. evidence consistency: every default run checks PNG ⇄ HTML -----------
+// An updated HTML that has not been re-shot must fail the pipeline here, not silently ship
+// a stale gallery. `--shots` has just regenerated both, so it passes; a plain run after a
+// renderer change fails until the screenshots are rebuilt.
+let evidenceStale = false;
+if (!only) {
+  const res = checkShots();
+  if (res.ok) console.log(`[pipeline] 证据一致性（PNG ⇄ HTML）: 通过（${rows.length} 页与截图同源, 画廊 v=${res.version}）`);
+  else {
+    evidenceStale = true;
+    console.log(`[pipeline] 证据一致性（PNG ⇄ HTML）: 失败 ${res.stale.length}/${rows.length} 页（HTML 更新了但截图未重出）`);
+    for (const s of res.stale.slice(0, 10)) console.log(`   ✗ ${s.k} — ${s.why}`);
+    if (res.stale.length > 10) console.log(`   … 另 ${res.stale.length - 10} 页`);
+  }
+}
+
+const failed = gatesFailed || under.length > 0 || mdUnder.length > 0 || (hardFails && Number(hardFails) > 0) || out.some((o) => o.error) || evidenceStale;
 process.exit(failed ? 1 : 0);

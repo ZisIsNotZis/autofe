@@ -45,7 +45,11 @@ export const qualifierPlacement = (q) => (typeof q === 'string' && POSTPOSED_QUA
 // non-empty role label prints that label so the reader knows what the number counts.
 // Facts without a label keep their own unit untouched — nothing is invented
 // (m1/vocab-role-labels.json, `roleLabel`). One shared decision, drawn by every target.
-export const NUMERIC_LABEL_KEYS = new Set(['_count', '_measure', '_rating', '_rating-count', '_stock']);
+// Round 32: only UNAMBIGUOUS numeric roles carry a label. `_count`/`_measure` are generic
+// counters whose meaning is site-specific (a bilibili `_count` is a view count, a `_measure`
+// is the danmaku count — NOT a product spec); a generic `数量`/`规格` there is worse than the
+// bare number (reviewers, round 31). They stay label-less unless the model gives its own copy.
+export const NUMERIC_LABEL_KEYS = new Set(['_rating', '_rating-count', '_stock']);
 const isQuantityValue = (v) => Boolean(v) && typeof v === 'object' && !Array.isArray(v)
   && ('num' in v || ('text' in v && /^\s*[\d.,]/.test(String(v.text)) && !/[A-Za-z]{2}/.test(String(v.text))));
 // `roleLabel` is declared below (the vocabulary file read); this arrow only CALLS it at
@@ -96,6 +100,10 @@ export function selectForm(items, order) {
   if (items.every(isProseItem)) return 'prose';
   if (items.some((it) => it._fields && Object.keys(it._fields).length)) return 'table';
   if (items.length > 1 && items.some((it) => it._expose)) return 'stack';   // 表单步骤是序列，不是一行
+  // A member carrying an image or an action is not a Q&A line: collapsing it into a
+  // `<details>` drops the very facts the model declared (round 32: huawei 推荐信息 lost its
+  // four images and four `了解更多` links). Only a title+detail member with neither becomes
+  // an accordion; such members render as cards and keep the image and the control.
   if (items.every(isLabelOnlyItem)) {
     // long sentence labels are a list/sequence of links/questions, not filter chips or control pills (F-030)
     const long = items.every((it) => {
@@ -118,8 +126,14 @@ export function selectForm(items, order) {
     return JSON.stringify(f.map((x) => x.value.text ?? x.value.num ?? '')).length <= 240;
   });
   if (deflist) return 'deflist';
-  const accordion = items.every((it) => factsOf(it).some((f) => f.key === '_title') && factsOf(it).some((f) => f.key === '_detail') && childrenOf(it).length === 0);
-  if (accordion) return 'accordion';
+  const titleDetail = items.every((it) => factsOf(it).some((f) => f.key === '_title') && factsOf(it).some((f) => f.key === '_detail') && childrenOf(it).length === 0);
+  // A title+detail member is a Q&A line ONLY when it is bare. One that carries an `_image`
+  // or an `_action` is a content card: folding it into `<details>` silently drops the image
+  // and the control (round 32, huawei 推荐信息 lost all four of each). Such a set renders as
+  // a vertical SEQUENCE — each item stands on its own with its heading, image and control —
+  // never as a `cards` grid: a grid of content images whose aspect ratios differ trips the
+  // T-105 image-variance gate, and cropping to even them out is banned (F-031-§7.1).
+  if (titleDetail) return items.every((it) => !it._image && !it._action) ? 'accordion' : 'stack';
   return 'cards';
 }
 
@@ -374,8 +388,9 @@ export function runPlan(items) {
 // ("view details"), while a child whose whole content is its own control copy is a BUTTON
 // inside it (axioms §6 example: `"buy": { "_title": { "text": "购买" }, "_action": { "verb": "buy" } }`).
 // Emphasis therefore has to be DRAWN, and this is the one shared rule for it
-// (docs/m1/layout-axes.md §4.1): one row per element; primary = first commitment verb,
-// else the element's own action, else the first control; the rest are secondary.
+// (docs/m1/layout-axes.md §4.1): one row per element; the primary CTA is the first
+// commitment verb; a row with no commitment verb has NO primary (round 32); a lone
+// control is the element's own action and keeps its original shape; the rest are secondary.
 // Measured effect (round 27): `apple-com/home` draws `Buy` (child, `buy`) and `Learn more`
 // (own, `open`) as two stacked lines with the emphasis inverted — the user-visible defect.
 export const COMMIT_VERBS = new Set(['buy', 'preorder', 'add-to-cart', 'submit']);
@@ -411,9 +426,14 @@ function actionRowOf(node, chain, values, action, toolbar) {
     seenCtl.add(sig);
     return true;
   });
+  // Round 32: primary emphasis is claimed ONLY by a commitment verb. The old fallback
+  // ("else the element's own action, else the first control") promoted a property control
+  // to a solid CTA — airbnb `共享` (a room attribute, not an action) became the page's main
+  // button and the real wish-list control was demoted. A row with no commitment verb now has
+  // NO primary: every control is secondary. A LONE control is not a choice — it is the
+  // element's own action and keeps its original shape (docs/m1/layout-axes.md §4.1 rule 3).
   let pi = unique.findIndex((c) => COMMIT_VERBS.has(c.verb));
-  if (pi < 0) pi = unique.findIndex((c) => c.from === 'own');
-  if (pi < 0) pi = 0;
+  if (pi < 0 && unique.length === 1) pi = 0;
   return { row: unique.map((c, i) => ({ ...c, primary: i === pi })), consumed: [...toolbar, ...inner.map((c) => c.node)] };
 }
 
