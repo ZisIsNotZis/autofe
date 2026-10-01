@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const CONTEXT = JSON.parse(fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), 'vocab-context.json'), 'utf8')).context;
 import {
-  VOCAB, ROLES, VERBS, FIELDS, isReserved, isRoleKey, roleOf, isNamedChildKey,
+  VOCAB, ROLES, VERBS, FIELDS, COMPOSITES, isReserved, isRoleKey, roleOf, isNamedChildKey,
   valueTypeOf, resolvePath, findKey, childrenOf, walk, parseExpr, exprPaths, exposeOf,
 } from './model-lib.mjs';
 
@@ -16,12 +16,12 @@ function isTypedValue(v) {
   if (v === null || typeof v !== 'object' || Array.isArray(v)) return false;
   return Object.keys(v).some((k) => VALUE_KEYS.includes(k));
 }
-const VALUE_HOLDERS = ['_image', '_video', '_icon', '_name', '_title', '_label', '_text', '_subtitle', '_detail', '_summary', '_price', '_count', '_measure', '_author', '_category', '_tag', '_status', '_variant', '_option'];
+const VALUE_HOLDERS = ['_image', '_video', '_icon', '_name', '_title', '_label', '_text', '_subtitle', '_detail', '_summary', '_price', '_count', '_measure', '_author', '_category', '_tag', '_status', '_variant', '_option', '_default'];
 export function validate(model) {
   const shapeErrors = [];
   // _expose.type must be a known value type, else it silently becomes plain text (F-031)
   const errors = [];
-  const err = (p, msg) => errors.push({ path: p || '/', message: msg });
+  const err = (p, msg, code) => errors.push(code ? { path: p || '/', message: msg, code } : { path: p || '/', message: msg });
   const keysSeenByKeyValue = new Map();
 
   function checkNode(node, p, chain, isItemEl = false) {
@@ -30,8 +30,15 @@ export function validate(model) {
     }
     const keys = Object.keys(node);
     const hasChildren = keys.some((k) => !k.startsWith('_')) || Array.isArray(node._lines) || Array.isArray(node._items);
+    if (node._composite !== undefined) checkCompositeNode(node, p);
 
     for (const k of keys) {
+      if (k === '_composite') {
+        if (typeof node[k] !== 'string' || !Object.prototype.hasOwnProperty.call(COMPOSITES.composites ?? {}, node[k])) {
+          err(`${p}._composite`, `_composite type "${node[k]}" is not a key of the closed registry m1/composites.json (adding a type is a grammar+vocabulary change)`, 'E_COMPOSITE_UNKNOWN_TYPE');
+        }
+        continue;
+      }
       if (k === '_fields') {
         const f = node[k];
         if (!f || typeof f !== 'object' || Array.isArray(f)) { err(`${p}._fields`, '_fields must be an object of declared domain fields'); continue; }
@@ -145,11 +152,141 @@ export function validate(model) {
       const e = exposeOf(n); if (e) scope[e.name] = undefined; // declared exposure satisfies resolution
     }
     for (const name of Object.keys(CONTEXT)) scope[name] = scope[name] ?? undefined; // context names always resolve
+    const root = chain[0];
     for (const rp of exprPaths(ast)) {
-      const head = rp.split(/[.\[]/)[0];
-      if (!(head in scope)) err(at, `condition path "${rp}" resolves to no fact, exposure, or context name`);
+      // A bare identifier is a fact name (role / _expose.name / context): unchanged (§4.2).
+      if (/^[A-Za-z][A-Za-z0-9_-]*$/.test(rp)) {
+        if (!(rp in scope)) err(at, `condition path "${rp}" resolves to no fact, exposure, or context name`, 'E_EXPR_PATH');
+        continue;
+      }
+      // A dotted/indexed path (or an absolute `/…` path) is a TREE path (§4.2): relative to the
+      // node writing the condition, climbing to each ancestor; leading `/` from the document root.
+      let r = null;
+      if (rp.startsWith('/')) r = resolvePath(root, root, rp);
+      else for (let i = chain.length - 1; i >= 0 && !r; i--) { const t = resolvePath(root, chain[i], rp); if (t.ok) r = t; }
+      if (!r || !r.ok) { err(at, `condition path "${rp}" resolves to no node (${r ? r.why : 'relative resolution failed'})`, 'E_PATH_UNRESOLVED'); continue; }
+      const term = r.node;
+      const isFact = Array.isArray(term)
+        || (term && typeof term === 'object' && (term._expose !== undefined || valueTypeOf(term) !== null || Array.isArray(term._items)));
+      if (!isFact) err(at, `condition path "${rp}" does not end at an exposed fact (a node with _expose or a role fact)`, 'E_PATH_NOT_A_FACT');
     }
     void scope;  }
+
+  // ---- composite instances (docs/m1/composites.md §2/§3) -------------------
+  // The registry is the single closed source of truth. An instance is projected onto its
+  // type's schema; every declared-but-missing REQUIRED slot is a hard error (that IS what
+  // "missing a required part" means), every schema-undeclared field slot is a hard error,
+  // and nesting is refused. Hard errors carry a stable `code` so gates/fixtures can assert by code.
+  const CCODE = {
+    UNKNOWN: 'E_COMPOSITE_UNKNOWN_TYPE', MISSING: 'E_COMPOSITE_MISSING_REQUIRED', BAD: 'E_COMPOSITE_BAD_FIELD',
+    NOT_ALLOWED: 'E_COMPOSITE_NOT_ALLOWED', NESTED: 'E_COMPOSITE_NESTED', EXPOSE: 'E_COMPOSITE_EXPOSE_MISSING',
+    ROWS: 'E_COMPOSITE_ROWS_INCONSISTENT', FIELD: 'E_COMPOSITE_FIELD_UNDECLARED',
+    ACTION: 'E_COMPOSITE_ACTION_CARDINALITY', REF: 'E_COMPOSITE_REF_UNRESOLVED',
+  };
+  const FIELDISH = ['_items', '_fields', '_action', '_expose', '_ref', '_count', '_empty', '_default'];
+  const expMatch = (e, d) => {
+    if (!e || !d) return false;
+    if (typeof d.name === 'string' && d.name !== '*' && e.name !== d.name) return false;
+    if (d.type) { const ts = Array.isArray(d.type) ? d.type : [d.type]; if (!ts.includes(e.type)) return false; }
+    return true;
+  };
+  function checkCompositeNode(inst, ip) {
+    const type = inst._composite;
+    const registry = COMPOSITES.composites ?? {};
+    // the key loop already reports an unknown/non-string type as E_COMPOSITE_UNKNOWN_TYPE
+    if (typeof type !== 'string' || !Object.prototype.hasOwnProperty.call(registry, type)) return;
+    const schema = registry[type];
+    const fields = schema.fields ?? {};
+    const nodes = [];
+    walk(inst, (n, dp) => nodes.push({ n, p: dp ? `${ip}.${dp}` : ip }));
+    for (const { n, p } of nodes) {
+      if (n !== inst && n._composite !== undefined) err(p, `composite "${type}" must not nest another composite ("${n._composite}")`, CCODE.NESTED);
+    }
+    const exposures = nodes.filter(({ n }) => exposeOf(n));
+    const actions = nodes.filter(({ n }) => n._action && typeof n._action === 'object' && typeof n._action.verb === 'string');
+    const declaredKeys = new Set(Object.values(fields).map((f) => f.key));
+    const covered = (k) => {
+      for (const f of Object.values(fields)) {
+        if (f.key === k) return true;
+        if (k === '_expose' && (f.key === '<expose>' || (f.key === '<child>' && f.expose))) return true;
+        if (k === '_action' && f.action && (f.key === '<child>' || f.key === '_action')) return true;
+        if (k === '_items' && f.key === '<child>' && f.shape === 'collection') return true;
+      }
+      return false;
+    };
+    for (const k of FIELDISH) {
+      if (!nodes.some(({ n }) => n && typeof n === 'object' && n[k] !== undefined)) continue;
+      if (declaredKeys.has(k) || covered(k)) continue;
+      err(ip, `composite "${type}" has no field slot for "${k}" (declared slots: ${[...declaredKeys].join(', ')})`, CCODE.NOT_ALLOWED);
+    }
+    const presence = {};
+    for (const [slot, f] of Object.entries(fields)) {
+      if (f.derived) { presence[slot] = true; continue; }
+      const matches = (d) => exposures.filter(({ n }) => expMatch(exposeOf(n), d ?? {}));
+      const expCount = matches(f.expose).length;
+      let present;
+      if (f.key === '<expose>') present = expCount > 0;
+      else if (f.key === '<child>') {
+        if (f.action) present = actions.some(({ n }) => (f.action.verbs ?? []).includes(n._action.verb));
+        else if (f.expose) present = matches(f.expose).length > 0;
+        else present = Object.keys(inst).some((k) => !k.startsWith('_'));
+      } else if (f.key === '_expose') present = matches(f.expose).length > 0;
+      else if (f.key === '_action') present = actions.some(({ n }) => (f.action?.verbs ?? []).includes(n._action.verb));
+      else if (f.key === '_items') present = Array.isArray(inst._items) && inst._items.length > 0;
+      else if (f.key === '_fields') present = Array.isArray(inst._items) && inst._items.some((r) => r && r._fields);
+      else present = inst[f.key] !== undefined;
+      presence[slot] = present;
+      if (f.action) {
+        const verbs = f.action.verbs ?? [];
+        const matched = actions.filter(({ n }) => verbs.includes(n._action.verb));
+        if (f.action.cardinality !== undefined) {
+          if (matched.length !== f.action.cardinality) err(ip, `composite "${type}" field "${slot}" expects exactly ${f.action.cardinality} action(s) with verb ∈ {${verbs.join(', ')}}, found ${matched.length}`, CCODE.ACTION);
+          continue;
+        }
+        if (!present && f.required) err(ip, `composite "${type}" is missing required field "${slot}" (schema m1/composites.json#${type}.fields.${slot})`, CCODE.MISSING);
+        continue;
+      }
+      if (!present) {
+        if (f.required) {
+          const named = typeof f.expose?.name === 'string' && f.expose.name !== '*';
+          err(ip, `composite "${type}" is missing required field "${slot}" (schema m1/composites.json#${type}.fields.${slot})`, named ? CCODE.EXPOSE : CCODE.MISSING);
+        }
+        continue;
+      }
+      if (f.type && inst[f.key] !== undefined) {
+        const got = valueTypeOf(inst[f.key]);
+        const want = Array.isArray(f.type) ? f.type : [f.type];
+        if (got === null || !want.includes(got)) err(`${ip}.${f.key}`, `composite "${type}" field "${slot}" must hold a ${want.join('|')} value (got ${got ?? 'a non-value'})`, CCODE.BAD);
+      }
+      if (f.min !== undefined && expCount > 0 && expCount < f.min) err(ip, `composite "${type}" field "${slot}" needs ≥${f.min} fields, found ${expCount}`, CCODE.BAD);
+    }
+    for (const group of schema.requireOneOf ?? []) {
+      if (!group.some((s) => presence[s])) err(ip, `composite "${type}" requires at least one of: ${group.join(', ')}`, CCODE.MISSING);
+    }
+    if (type === 'table') {
+      const rows = Array.isArray(inst._items) ? inst._items.filter((r) => r && typeof r === 'object') : [];
+      const withF = rows.filter((r) => r._fields);
+      if (withF.length) {
+        const sigs = [...new Set(withF.map((r) => Object.keys(r._fields).sort().join('|')))];
+        if (sigs.length > 1) err(ip, `table rows declare inconsistent field sets: ${sigs.map((s) => `[${s}]`).join(' vs ')}`, CCODE.ROWS);
+        for (const r of withF) for (const [fn, fv] of Object.entries(r._fields)) {
+          const decl = FIELDS[fn];
+          if (!decl) { err(`${ip}._fields.${fn}`, `table field "${fn}" not declared in vocab-fields.json`, CCODE.FIELD); continue; }
+          const vt = valueTypeOf(fv);
+          const blank = vt === 'text' && fv.text === '';   // an explicit blank cell (S0: aws data-transfer group rows)
+          if (vt === null) err(`${ip}._fields.${fn}`, `table field "${fn}" value must be a closed typed value`, CCODE.FIELD);
+          else if (!blank && decl.type && vt !== decl.type) err(`${ip}._fields.${fn}`, `table field "${fn}" value type "${vt}" does not match declared "${decl.type}"`, CCODE.FIELD);
+        }
+      }
+    }
+    if (type === 'paginator' && inst._ref && valueTypeOf(inst._ref) === 'ref') {
+      const target = inst._ref.ref;
+      const dangling = target.startsWith('key:')
+        ? !findKey(model, target.slice(4))
+        : (target.startsWith('/') ? !resolvePath(model, model, target).ok : true);
+      if (dangling) err(ip, `paginator _ref "${target}" does not resolve to a page collection`, CCODE.REF);
+    }
+  }
 
   checkNode(model, '', []);
   // refs resolve document-wide
@@ -178,7 +315,7 @@ export function validateFiles(files) {
     if (!r.ok) {
       bad++;
       console.error(`FAIL ${f}`);
-      for (const e of r.errors) console.error(`   ${e.path}: ${e.message}`);
+      for (const e of r.errors) console.error(`   ${e.path}: ${e.message}${e.code ? ` (${e.code})` : ''}`);
     } else console.log(`ok   ${f}`);
   }
   return bad;

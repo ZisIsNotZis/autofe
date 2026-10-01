@@ -668,3 +668,17 @@
 
 - **现象**（终审 g3）：`bilibili-com/video-bv1gj411x7h7` 44 条弹幕被 `chips-rows` 逐条竖排成文本墙。
 - **修法**：新增**声明式** `_rel.order = "stream"`（时间流文本）；引擎渲染成**行内紧凑流** `.stream/.stream-item`（多行多列、每条单行省略），事实一条不丢。规则见 `layout-axes §10.5`；模型侧 `danmaku-sample` 声明 `stream`。门禁 `axis-selftest.mjs` R0–R1。
+
+## F-089 复合元语 S1：注册表 + 校验器 + 路径引用（轮 47）
+
+- **做的事**：建 `m1/composites.json`（5 类型 / 29 槽，闭式）；`_composite`、`_default` 进保留键；`validate.mjs` 新增 `code` 与复合件投影校验（10 个 `E_COMPOSITE_*` 码 + 2 个 `E_PATH_*` 码）；条件点路径按 §4.2 双命名空间解析；`composite-selftest.mjs` 19 断言接入 pipeline 第 11 道门禁。零实例、零渲染变化。
+- **S0.1**：`aws-amazon/ec2-on-demand.data-transfer` 7 行 `_fields` 键集补齐一致；两处源站分组行（第二格为空）补 `{"text":""}`（显式空，不编造）；table 校验把声明字段里的空文本当**空格**。
+- **F-089.a（设计差异，登记）**：`login.secret` 的暴露类型取 `secret`（正文 §5.4 写 `text`）。依据：轮 46 闭式值类型已有 `secret`，3 张策展登录页实测均为 `_expose{type:"secret"}`；不这样写，缺 `secret` 的登录块无法与缺 `identifier` 区分（S3 验收）。
+- **F-089.b（S0.2 顺延，登记）**：把 6 处 placeholder 从 `_label` 拆到 `_default` 需要渲染器把 `_default` 画成名称水印（§6.4 S0 的"placeholder 展示不变"），属**渲染语义变更**，与本轮"不得改渲染器语义"冲突；且 6 个受影响策展文件不在本轮写入白名单。本轮只备好语法与注册表槽，迁移顺延 S4。涉及：`bilibili-com/home`、`bilibili-com/read-home`、`36kr-com/search-ai`、`36kr-com/search-viz`、`huawei-cn/search-laptop`、`huawei-cn/search-phone`、`mi-com/search-phone`、`sspai-com/post-114699`（`[A.6]`）。
+
+## F-089.c 空单元格 = 已声明但为空 + `hasValue` 共享判定（轮 47 裁定 C）
+
+- **发现**：给 `aws data-transfer` 分组行补 `{"text":""}` 后，HTML 的**轮 35 分组行规则失效**——`render.mjs` 的 `rowLabel` 用 `v !== null && v !== undefined` 判"有值"，`{text:""}` 被算作有值，两行从跨列表头退化为"缺价数据行"（正是轮 35 修的缺陷）。
+- **裁定**（父代理）：`{"text":""}` 是**已声明但为空**；"有值"判定是**语义**不是渲染偏好。落地为 `m1/axis.mjs#hasValue`（`null`/`undefined`/空文本/空列表 ⇒ 无值），并抬出共享行判定 `tableRowLabel`，**三目标共同消费**（不再只改 `render.mjs`）。
+- **授权范围**：本轮特批改 `m1/axis.mjs` + 三个渲染器，**仅限**这一项（空值判定及其消费）。
+- **门禁**：`axis-selftest.mjs` T0–T3b；证伪已做（临时让空文本算有值 ⇒ T0/T1/T2 失败；撤销后全过）。约定写入 `docs/m1/composites.md §10`（S2 迁移用）。

@@ -18,7 +18,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  childrenOf, factsOf, resolveWithParent, isRoleKey, parseExpr, evalExpr, scopeFor, exposeOf, FIELDS,
+  childrenOf, factsOf, resolveWithParent, isRoleKey, parseExpr, evalExpr, scopeFor, exposeOf, valueTypeOf, FIELDS,
 } from './model-lib.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -411,6 +411,31 @@ export function runPlan(items) {
     return f ? f.value : null;
   };
   return { named, attrs, cols, isTable, cellValue };
+}
+
+// ---- declared-but-empty values (round 47 S0.1, docs/m1/composites.md §空值约定) ----------
+// `{text:""}` / `{list:[]}` mean "declared but empty": the S0.1 aws fix fills a missing
+// column with an explicit blank (key set then consistent) WITHOUT fabricating content.
+// "Has a value" is therefore ONE shared decision, not a per-target rendering preference:
+// null/undefined/empty text/empty list are not values; num/money/bool (incl. 0/false) are.
+// Every target consumes it (HTML group-row detection; text/Markdown cell + row).
+export function hasValue(v) {
+  if (v === null || v === undefined) return false;
+  const t = valueTypeOf(v);
+  if (t === null) return true;            // a node / non-typed object is present
+  if (t === 'list') return (v.list ?? []).length > 0;
+  if (t === 'text') return v.text !== '';
+  return true;
+}
+
+// A table row is the source's own GROUP row when the only cell carrying a value is the
+// first column (round 35 rule: a pric-less row must not read like a product with a missing
+// price). An explicitly-empty second cell does not turn it into a data row. Round 47 lifts
+// the decision here so HTML/text/Markdown make it identically instead of one renderer owning it.
+export function tableRowLabel(rp, it) {
+  const vals = rp.cols.map((col) => rp.cellValue(it, col));
+  const present = vals.filter((v) => hasValue(v));
+  return present.length === 1 && hasValue(vals[0]) ? vals[0] : null;
 }
 
 // ==== action row (round 27) ==================================================

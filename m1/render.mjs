@@ -20,7 +20,7 @@ import {
   qualifierPlacement, quantityLabel,
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
   nodePlan, itemActionPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
-  rankedSequence,
+  rankedSequence, hasValue, tableRowLabel,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -227,19 +227,14 @@ function renderRun(items, chain, hide, ctx) {
     const showHead = rp.cols.some((c) => columnLabel(c)) || anyOps;
     const head = showHead ? `<tr>${rp.cols.map((c) => `<th>${esc(columnLabel(c))}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>` : '';
     // A row whose ONLY value is the identity column is the source's own group row (the
-    // second cell is empty). Drawing it as a data row makes it read like a product with a
-    // missing price (round 35, aws ec2: 「数据自互联网传入 Amazon EC2」 rendered as a
-    // pric-less row). It is an inline group heading: one cell spanning the table.
-    const rowLabel = (it) => {
-      const vals = rp.cols.map((col) => rp.cellValue(it, col));
-      const present = vals.filter((v) => v !== null && v !== undefined);
-      return present.length === 1 && vals[0] != null ? vals[0] : null;
-    };
+    // second cell is empty). Shared decision (`tableRowLabel` in axis.mjs, round 47): an
+    // explicitly-empty cell (`{text:""}`) is not a value, so S0.1's filled blank does not
+    // turn the group heading into a pric-less data row (round 35).
     const span = rp.cols.length + (anyOps ? 1 : 0);
     const trs = items.map((it) => {
-      const grp = rowLabel(it);
+      const grp = tableRowLabel(rp, it);
       if (grp) return `<tr class="row-group"><th colspan="${span}">${fmt(grp)}</th></tr>`;
-      const tds = rp.cols.map((col) => { const v = rp.cellValue(it, col); return `<td>${v ? fmt(v) : ''}</td>`; }).join('');
+      const tds = rp.cols.map((col) => { const v = rp.cellValue(it, col); return `<td>${hasValue(v) ? fmt(v) : ''}</td>`; }).join('');
       const ops = namedChildEntries(it).map((ch) => renderNode(ch.node, [...chain, it], false, hide, ctx, 4)).join('');
       return `<tr>${tds}${anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
     }).join('');

@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
 import { renderMarkdown } from '../render-md.mjs';
-import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName } from '../axis.mjs';
+import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName, hasValue, tableRowLabel } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
@@ -59,6 +59,8 @@ const SHARED_NAMES = [
   'compareHeaderEntries', 'COMPARE_HEADER_KEYS',
   // round 24: the role-label vocabulary and the compare row-label / table column-label decisions
   'ROLE_LABEL', 'roleLabel', 'NAME_COLUMN_LABEL', 'columnLabel', 'resolveRowLabel',
+  // round 47: the declared-but-empty decision
+  'hasValue', 'tableRowLabel',
 ];
 for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
@@ -752,6 +754,37 @@ const primaryActionRows = (model) => {
   check('R0 a stream renders as an inline compact flow (every item kept)',
     /<div class="stream">/.test(html) && (html.match(/<span class="stream-item">/g) || []).length === 40, '');
   check('R1 a stream is NOT a rows wall', !/class="chips chips-rows"/.test(html), '');
+}
+
+// T. declared-but-empty value (round 47 S0.1, docs/m1/composites.md §空值约定). `{text:""}`
+// means "declared but empty" (the aws `data-transfer` group rows get an explicit blank so the
+// row key sets are consistent). It must NOT turn the source's group row into a pric-less data
+// row — and the value/row decision is shared by all three targets (axis.hasValue/tableRowLabel).
+{
+  const groupRow = { _fields: { 'transfer-tier': { text: '数据自互联网传入 Amazon EC2' }, 'data-transfer-price': { text: '' } } };
+  const dataRow = { _fields: { 'transfer-tier': { text: '每月前 10TB' }, 'data-transfer-price': { money: 0.09, currency: 'USD', qualifier: '每 GB' } } };
+  const model = { _intent: 'x', _title: { text: '价格' }, table: { _intent: 't', _title: { text: '数据传输' }, _items: [groupRow, dataRow] } };
+  const rp = runPlan([groupRow, dataRow]);
+  check('T0 a declared-but-empty cell / list is not a value; 0 / false / text are',
+    hasValue({ text: '' }) === false && hasValue({ list: [] }) === false && hasValue(null) === false
+    && hasValue({ money: 0 }) === true && hasValue({ text: 'x' }) === true && hasValue({ bool: false }) === true);
+  check('T1 the group-row decision is shared: only the first-column value ⇒ group; a real second value ⇒ data row',
+    tableRowLabel(rp, groupRow) !== null && tableRowLabel(rp, dataRow) === null);
+  const html = render(model);
+  check('T2 HTML still draws the explicitly-empty row as a spanning group row',
+    /<tr class="row-group"><th colspan="2">数据自互联网传入 Amazon EC2<\/th><\/tr>/.test(html),
+    html.match(/<tr class="row-group">[\s\S]*?<\/tr>/)?.[0] ?? '(no group row)');
+  check('T2b HTML draws the row with a real price as a normal data row (no row-group)',
+    /<tr><td>每月前 10TB<\/td><td>\$0\.09 每 GB<\/td><\/tr>/.test(html),
+    html.match(/<tr><td>每月前 10TB[\s\S]*?<\/tr>/)?.[0] ?? '');
+  const txt = renderText(model);
+  const md = renderMarkdown(model);
+  const tLine = txt.split('\n').find((l) => l.includes('数据自互联网传入 Amazon EC2'));
+  const mdLine = md.split('\n').find((l) => l.includes('数据自互联网传入 Amazon EC2'));
+  check('T3 text makes the same decision (group label on its own line, no phantom price)',
+    Boolean(tLine) && tLine.trim() === '数据自互联网传入 Amazon EC2', JSON.stringify(tLine ?? null));
+  check('T3b Markdown makes the same decision (label in the first cell, empty second cell)',
+    Boolean(mdLine) && /^\|\s*数据自互联网传入 Amazon EC2\s*\|\s*\|/.test(mdLine), JSON.stringify(mdLine ?? null));
 }
 
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);

@@ -11,7 +11,14 @@ const domainPath = path.join(here, 'vocab-domain.json');
 export const DOMAIN = fs.existsSync(domainPath) ? JSON.parse(fs.readFileSync(domainPath, 'utf8')) : { verbs: [] };
 export const VERBS = new Set([...VOCAB.verbs, ...(DOMAIN.verbs ?? [])]);
 
-export const RESERVED = new Set(['_intent', '_primary', '_key', '_when', '_action', '_rel', '_lines', '_items', '_expose', '_fields', '_empty']);
+// `_composite` (round 47): an instance declares its composite TYPE; the type lives in
+// m1/composites.json (closed). `_default` (round 47): the default-value slot of a composite
+// (name and default are two parts, D-3) — a new reserved key, grammar change logged in
+// docs/m1/composites.md §2.4. Both are grammar changes: log + review first (axioms §0).
+export const RESERVED = new Set(['_intent', '_primary', '_key', '_when', '_action', '_rel', '_lines', '_items', '_expose', '_fields', '_empty', '_composite', '_default']);
+export const COMPOSITES = fs.existsSync(path.join(here, 'composites.json'))
+  ? JSON.parse(fs.readFileSync(path.join(here, 'composites.json'), 'utf8'))
+  : { composites: {} };
 export const FIELDS = fs.existsSync(path.join(here, 'vocab-fields.json')) ? JSON.parse(fs.readFileSync(path.join(here, 'vocab-fields.json'), 'utf8')).fields : {};
 
 export const isReserved = (k) => RESERVED.has(k);

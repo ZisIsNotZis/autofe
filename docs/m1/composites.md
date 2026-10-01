@@ -585,3 +585,43 @@ node m1/eval/pipeline.mjs                                 # 期望退出码 0（
 - D-6：*"显示 USD 也好、显示 $ 也好，不都是一个风格吗……更像是一种风格/用户偏好，而不是在源语里写死的。源语里撑死就是币种，币种可能是一个标准枚举。"*
 
 COMPOSITES_DESIGN_DONE primitives=5 schema_fields=29 migration_pages=18 decisions=3
+
+---
+
+## 9. 实现状态（轮 47：S0 + S1）
+
+**本轮落地的**（S1 = 注册表 + 校验器 + 路径引用，零实例；front-matter 的"本轮不改代码"仅适用于轮 47 之前的**设计稿**轮次）：
+
+- **注册表** `m1/composites.json`：5 个类型（`search`/`form`/`table`/`login`/`paginator`），共 **29 个字段槽**，按 §2.2 的描述符（`required`/`key`/`type`/`action.verbs`/`expose`/`allowed`/`addressable`/`min`/`sensitive` 等）。键集即闭式枚举；`model-lib.mjs` 一次读入导出 `COMPOSITES`。
+- **语法增量**：`_composite`、`_default` 加入 `RESERVED`（`m1/model-lib.mjs`）。`_default` 是 §2.4 的第二个保留键；本轮无实例，渲染层对它的支持排在 S4。
+- **校验器**（`m1/validate.mjs`）：错误对象新增 `code`；复合件按 schema 投影逐项校验，实现的硬错误码：
+  `E_COMPOSITE_UNKNOWN_TYPE` / `E_COMPOSITE_MISSING_REQUIRED` / `E_COMPOSITE_BAD_FIELD` / `E_COMPOSITE_NOT_ALLOWED` / `E_COMPOSITE_NESTED` / `E_COMPOSITE_EXPOSE_MISSING` / `E_COMPOSITE_ROWS_INCONSISTENT` / `E_COMPOSITE_FIELD_UNDECLARED` / `E_COMPOSITE_ACTION_CARDINALITY` / `E_COMPOSITE_REF_UNRESOLVED`。
+  **"缺少必需的部件" = `required:true` 的槽在实例里不存在**（§3.4）：缺 `name`/`secret` 之类报 `E_COMPOSITE_MISSING_REQUIRED`；缺**固定名**的对外状态（如 `signed-in`）报 `E_COMPOSITE_EXPOSE_MISSING`；提交动作数 ≠ 1 报 `E_COMPOSITE_ACTION_CARDINALITY`。
+- **路径引用**（§4.2 双命名空间）：条件 token 若为裸标识符仍按 fact 名解析（`E_EXPR_PATH`，现状不变）；含 `.`/`[` 的 token 或 `/…` 绝对路径按**树路径**解析（相对写出条件的节点，可逐级向上穿到祖先；`/` 从文档根），解析不到报 `E_PATH_UNRESOLVED`，终点不是 `_expose`/角色事实/集合报 `E_PATH_NOT_A_FACT`。现有语料 0 处点路径条件，故零回归。
+- **自测** `m1/eval/composite-selftest.mjs`：19 条断言（14 拒 + 5 收），接入 `m1/eval/pipeline.mjs` 作为**第 11 道自测**。
+- **S0.1（模型侧）**：`aws-amazon/ec2-on-demand.data-transfer` 7 行的 `_fields` 键集补齐为一致（`uniqFieldSets=1`）。
+
+**与设计的差异（逐条登记，均不改变本轮行为——零实例）**：
+
+1. **`login.secret` 的暴露类型是 `secret`，不是正文 §5.4 写的 `text`。** 依据：轮 46 已把 `secret` 加入闭式值类型，且 3 张策展登录页（github/stripe/xiaomi）实测都用 `_expose{type:"secret"}`；用 `secret` 才能把"密码位"与"账号位"分开计数，缺 `secret` 才可机检（S3 验收）。记入 `failures.md` F-089。
+2. **S0.2（6 处 placeholder 从 `_label` 拆出）本轮未做模型迁移。** §6.4 S0 要求把它迁到 `_default` 且"placeholder 展示不变"，但渲染器画出 `_default`（名称水印回退）属于**渲染语义变更**，与本轮"不得改渲染器语义"冲突；且受影响的 6 个策展文件不在本轮写入白名单内（白名单只含 `aws-amazon/ec2-on-demand.json`，仅 S0.1）。本轮只把 `_default` 的**语法与注册表槽**备好，迁移顺延到 S4（S4 本就要拆名称/默认值）。
+3. **S0.1 的空格表示**：分组行缺失的 `data-transfer-price` 补为 `{"text":""}`（**显式空**，不编造金额）。配套：table 校验把"声明字段里的空文本"视为**空格**而非类型不符；渲染侧新增共享判定 `axis.hasValue`（`null`/`undefined`/空文本/空列表 ⇒ 无值），三目标同判 ⇒ 显式空不会把源站分组行变成"缺价数据行"（轮 35 规则保留）。约定见 §10。
+4. **`E_COMPOSITE_NOT_ALLOWED` 的投影口径**：只把**结构槽键**（`_items`/`_fields`/`_action`/`_expose`/`_ref`/`_count`/`_empty`/`_default`）当作"字段槽"检查；`_label` 是通用角色事实、不算槽标记，故登录页子节点的 `_label` 不会被误报。
+5. **`paginator.items`/`more` 的"至少一个"** 用注册表的 `requireOneOf` 表达（§5.5 的 `✅*`），缺两者时报 `E_COMPOSITE_MISSING_REQUIRED`。
+
+## 10. 空值约定：`{text:""}` = 已声明但为空（轮 47 S0.1）
+
+**约定**：一个**已声明但内容为空**的字段槽写成空的封闭类型化值——`{"text": ""}`（空文本）或 `{"list": []}`（空列表）。它表示"这一格在源站就是空的"，**不是**未声明、也**不是**编造。
+
+**为什么需要它**：`table` schema 要求 `columns`（每行 `_fields` 的键集）**完全一致**（§5.3）。`aws-amazon/ec2-on-demand.data-transfer` 的两行源站分组行第二格为空（§6.3），若不补键则行键集不一致（schema 硬报错）；补一个真实金额又是编造。显式空是唯一既满足"键集一致"又不撒谎的写法。S2 迁移 `table` 时会大量用到：**空单元格一律写 `{"text": ""}`**。
+
+**判定（语义，非某个渲染器的偏好）**：`m1/axis.mjs#hasValue(v)` 是唯一的"有值"判定——
+- `null` / `undefined` ⇒ 无值；
+- 空文本（`{"text": ""}`）/ 空列表（`{"list": []}`）⇒ 无值；
+- 其余类型化值（含 `{"num": 0}` / `{"money": 0}` / `{"bool": false}`、非空 text/list）⇒ 有值；非类型化对象（节点）⇒ 有值（由调用方决定）。
+
+**三个目标都消费它**（§6.4 S0 的"渲染 diff 为 0"）：HTML 的分组行判定 `tableRowLabel(rp, it)`、文本/Markdown 的同一行判定与单元格取值，全部走 `hasValue`。因此一轮 35 的规则（"唯一值在第一列的行 = 源站自己的分组行，画成跨列表头"）在补列**之后仍然成立**：`aws data-transfer` 的两行仍旧渲染 `<tr class="row-group"><th colspan="2">…</th></tr>`，而真正有价的行是普通数据行。
+
+**校验器侧**：`table` 的 `E_COMPOSITE_FIELD_UNDECLARED` 对"声明字段里的空文本"**豁免类型检查**（空文本在 money/text 列里都合法），因为 `{"text": ""}` 是空格而不是 `money`/`text` 的值类型冲突。
+
+**门禁**：`m1/eval/axis-selftest.mjs` T0–T3b（`hasValue` 真值表、共享行判定、HTML 仍出跨列分组行、有真实值出普通数据行、text/Markdown 同判定）；已做证伪（临时让空文本算有值 ⇒ T0/T1/T2 失败，已撤销）。

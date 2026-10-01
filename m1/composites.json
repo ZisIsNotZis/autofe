@@ -1,0 +1,71 @@
+{
+ "$comment": "Composite TYPE registry (docs/m1/composites.md §2). CLOSED: an instance's `_composite` value must be a key under `composites`; there is no second enum. Adding/removing a type is a GRAMMAR+VOCABULARY change (axioms §0): failure log -> review first. `fields` keys are schema slots (semantic); `key` is the existing syntax key the slot projects onto ('<expose>' = a node carrying _expose, '<child>' = any named child). Descriptors: required / type (closed value type) / action{verbs,cardinality} / expose{name,type,multiple} / allowed / addressable (default true) / min,max / sensitive / derived / render. The validator (m1/validate.mjs) projects an instance onto these and emits E_COMPOSITE_* codes.",
+ "version": "0",
+ "composites": {
+  "search": {
+   "intent": "一个检索框：有名称、可选默认值，向页面引入查询状态",
+   "fields": {
+    "name": { "key": "_label", "required": true, "type": "text", "role": "name", "note": "可访问名称；源站没有可见名称时用闭式词表兜底（D-3）" },
+    "default": { "key": "_default", "required": false, "type": "text", "role": "value", "render": "watermark-fallback" },
+    "query": { "key": "<expose>", "required": true, "expose": { "name": "*", "type": "text" }, "addressable": true },
+    "scope": { "key": "<child>", "required": false, "shape": "expose-collection" },
+    "submit": { "key": "_action", "required": false, "action": { "verbs": ["submit", "navigate", "open"] } }
+   },
+   "forbid": ["_composite"],
+   "render": { "watermarkFromName": true }
+  },
+  "form": {
+   "intent": "多字段面板：≥2 个输入字段，一次提交一起上行",
+   "fields": {
+    "fields": { "key": "<expose>", "required": true, "min": 2, "note": "实例自己的 _expose 字段集合（不含嵌套复合件）" },
+    "submit": { "key": "_action", "required": true, "action": { "verbs": ["submit", "operate", "select"], "cardinality": 1 } },
+    "name": { "key": "_label", "required": false, "type": "text" },
+    "reset": { "key": "<child>", "required": false, "shape": "action", "action": { "verbs": ["select", "operate", "toggle", "navigate", "open", "submit"] } },
+    "state": { "derived": "union(_expose.name)", "required": true, "note": "字段暴露的并集；不新增值类型" }
+   },
+   "forbid": ["_composite"],
+   "render": { "group": "fieldset" }
+  },
+  "table": {
+   "intent": "声明字段的数据表：行集合 + 逐行完全一致的字段键集",
+   "fields": {
+    "rows": { "key": "_items", "required": true },
+    "columns": { "key": "_fields", "required": true, "allowed": "@vocab-fields", "consistent": true, "note": "列 = 每行 _fields 的键；键集必须完全一致" },
+    "identity": { "key": "_name", "required": false, "type": "text", "note": "身份列；行有名字时使用 _name/_title" },
+    "selection": { "key": "_expose", "required": false, "expose": { "type": ["ref", "list"] } },
+    "empty": { "key": "_empty", "required": false },
+    "row-actions": { "key": "<child>", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open", "submit", "select", "operate", "toggle"] } }
+   },
+   "forbid": ["_composite"],
+   "render": { "columnsFromFields": true }
+  },
+  "login": {
+   "intent": "门禁块：账号位 + 密码位 + 提交 + signed-in 状态",
+   "fields": {
+    "identifier": { "key": "<expose>", "required": true, "expose": { "type": "text" }, "addressable": true },
+    "secret": { "key": "<expose>", "required": true, "expose": { "type": "secret" }, "sensitive": true, "addressable": true, "note": "密码位的值类型是封闭值类型 secret（轮 46 语法；三张策展登录页实测均用 _expose{type:secret}）" },
+    "submit": { "key": "_action", "required": true, "action": { "verbs": ["submit", "operate"], "cardinality": 1 } },
+    "state": { "key": "_expose", "required": true, "expose": { "name": "signed-in", "type": "bool" }, "note": "唯一对外状态（名字固定）" },
+    "alternatives": { "key": "<child>", "required": false, "shape": "collection" },
+    "signup": { "key": "<child>", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open"] } },
+    "forgot": { "key": "<child>", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open"] } },
+    "remember": { "key": "<child>", "required": false, "expose": { "type": "bool" } }
+   },
+   "forbid": ["_composite"],
+   "render": { "secretControl": true }
+  },
+  "paginator": {
+   "intent": "分页/继续：指向被分页集合的 _ref + 页目标或「加载更多」",
+   "fields": {
+    "ref": { "key": "_ref", "required": true, "addressable": false },
+    "items": { "key": "_items", "required": false },
+    "more": { "key": "<child>", "required": false, "shape": "action", "action": { "verbs": ["submit", "operate"] } },
+    "page": { "key": "_expose", "required": false, "expose": { "name": "page", "type": "text" } },
+    "count": { "key": "_count", "required": false, "type": "num" }
+   },
+   "requireOneOf": [["items", "more"]],
+   "forbid": ["_composite"],
+   "render": { "nonLinkPageItems": true }
+  }
+ }
+}

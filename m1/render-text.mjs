@@ -29,6 +29,7 @@ import {
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections,
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
   itemActionPlan, nodePlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, roleLabel,
+  hasValue, tableRowLabel,
 } from './axis.mjs';
 
 // ---- width-aware plain-text table ------------------------------------------
@@ -105,7 +106,12 @@ function renderTable(items, chain, ctx, depth, node) {
   const rp = runPlan(items);
   if (!rp.isTable) return items.map((it) => renderNode(it, [...chain], false, ctx, depth + 1)).filter(Boolean).join('\n');
   const header = rp.cols.map((c) => columnLabel(c));
-  const rows = items.map((it) => rp.cols.map((col) => { const v = rp.cellValue(it, col); return v ? fmt(v) : ''; }));
+  // The group-row / empty-cell decision is shared (axis.hasValue / tableRowLabel, round 47).
+  const rows = items.map((it) => {
+    const g = tableRowLabel(rp, it);
+    if (g) return [fmt(g)];
+    return rp.cols.map((col) => { const v = rp.cellValue(it, col); return hasValue(v) ? fmt(v) : ''; });
+  });
   return textTable(header, rows, IND(depth));
 }
 
