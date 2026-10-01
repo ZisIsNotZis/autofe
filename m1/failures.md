@@ -388,3 +388,50 @@
   **没有一个是带图广告位** ⇒ 旧规则把"没有内容的普通条目"误当成了"广告位"。
 - **修复**：`bareTitle` 只在**源站有图**时成立（有图用图 `promo-image`）；**没有图 ⇒ 按普通文本/小标题渲染**（绝不空盒）。
 - **验证**：8 处全部变为正常条目（标题进正文，保真不缺事实）；`.promo-label`/`.toolbar`/`.tool` 三条死 CSS 一并删除。
+
+## F-061 动作行只有 HTML 消费，三目标对同一节点给出不同控件分组（轮 27b，已修）
+- **现象**：轮 27 把"动作行 + 主 CTA"决策放进 `nodePlan().actionRow`，但**只有 HTML 渲染器消费**：
+  `render-text.mjs`/`render-md.mjs` 里 `actionRow` 出现 **0 次**。两目标各自为政：
+  自身 `_action` 单独一处；`plan.toolbar` 仅在 `length >= 2` 时另起一行（**单个 toolbar 子控件被丢弃**）；
+  "标题即自身控件"的子节点按普通子节点渲染 ⇒ 与自身动作被拆成两处。
+- **影响**：同一模型在三个目标下"动作分组与主次"可能不一致（`apple-com/home` 文本目标把 `[Learn more]` 与 `[Buy]` 分成两行；
+  bilibili 视频页 a 块的多控件在文本/Markdown 里丢失）。
+- **修复**：`render-text.mjs`/`render-md.mjs` 改为消费 `plan.actionRow` + `plan.rowConsumed`（文本一行并列、Markdown 行内链接，
+  共享主 CTA 分别以 `*` / 加粗标出）；`nodePlan` **移除 `toolbar` 字段**，杜绝目标自行分组；
+  titleIsControl 的元素**不再吞掉**同一元素上的其余控件。
+- **验证**：`axis-selftest.mjs` A4 静态禁止私有分组（`actionKids`/`actionRowOf`/`plan.toolbar`），
+  H0–H5 断言三目标在构造模型与全库 **68 个多控件行 / 17 页**上分组与主次一致；
+  证伪：临时在 Markdown 里加私有 `actionKids` ⇒ 3 条断言失败，撤销后 86 条全过。
+
+## F-062 chip 无视觉样式，特性标签连成一串裸文字（轮 27b，已修）
+- **现象**：`.chip-item{display:block;padding:4px 0}` **无背景/边框/圆角**。`stripe-com/pricing` 的
+  「1C+ 定价 交易量折扣 多产品组合折扣 …」、`aliyun-com/home` 的 6 个 ISO/PCI 认证都读成一串裸文字。
+- **修复**：label chip（`.chips .chip-item`）加背景/边框/圆角/内边距，成为可辨的胶囊；句子成员（`.chips-rows .chip-item`）
+  仍是纯文字行；换行由 `.chips{flex-wrap:wrap}` 保证，长列表不挤成一行。
+
+## F-063 块级 chipbar 容器比内容宽，右侧空一大片（轮 27b，已修）
+- **现象**：`fieldset.expose.chipbar` 是块级 ⇒ 铺满 ~1100 宽；`apple-com/ipad-air` 5 个单选组、
+  `36kr-com/search-*` 的 search-type/sort、`huawei-cn/search-*` 的 `类别` 都是"外框很宽、内容只剩左侧"。
+- **修复**：`fieldset.expose.chipbar{display:inline-block;max-width:100%}` 按内容收缩；需要满宽的选择表/数据表 fieldset 不受影响。
+- **验证**：见 `docs/m1/layout-axes.md` §5.2；截图自查覆盖 ipad-air / 36kr / huawei。
+
+## F-064 搜索框标签外置、提交控件另起一行（轮 27b · 用户 D-3，已修）
+- **现象**：`_label` 走外部 `<span class="deflabel">`；`.expose{display:block}` 让输入框独占一行，
+  提交控件（`站内搜索`/`重置`）另起一行；`bilibili-com/home` 的「磊哥游戏」也被外置。
+- **用户裁定（D-3）**：搜索框应有名称；只有名称无默认值时，可把名称**当水印放进框内**节省空间。
+- **修复**：共享判定 `choicePlan().labelAsPlaceholder`（`text`/未声明类型且有名 ⇒ 标签作 `placeholder`，保留 `aria-label`；
+  `date`/`time`/`num` 仍外置）；`.expose-input` 行内化使提交控件与输入框同栏；有提交动作时提交控件**必须出现**（分组仍走 `actionRow`）。
+- **验证**：`36kr-com/search-*`、`huawei-cn/search-*`、`bilibili-com/home` 均变为 `placeholder` + 同栏提交控件。
+
+## F-065 `_primary` 长句导语按 H1 字号渲染 ⇒ 层级塌陷（轮 27b，已修）
+- **现象**：`linear-app/home` 的 `_summary`（一句导语）被 `_primary` + `.hero.fact-hero .val{font-size:2em}` 渲染成 H1 字号，
+  读者读不出真正的 H1（`The product development system for teams and agents`）。
+- **修复**：hero 放大只适用于短值/数字；长文本 `_primary`（> 48 字）走 `.hero-prose`（1.15em/600），是导语不是标题。
+
+## F-066 H1 采用文档 `<title>` 未注明来源 / SEO 串接串当 H1（轮 27b，复核并修正）
+- **现象**：`mi-com/home`、`mi-com/shop-category-list` 用文档 `<title>` 当 H1，但 `_intent` 未注明来源；
+  `mi-com/shop-category-list` 的 `<title>`「全部商品分类-小米商城」是 SEO 串接串，而 `nodes.json` 里「全部商品分类」是可见文本。
+- **裁定（既有）**：H1 用抓取可见文本；确无可见标题才用文档标题并注明出处；不得编造。
+- **修正**：`mi-com/home` 补记 `_intent` 来源（无任何 heading 节点、可见文本无页头文案 ⇒ 文档 `<title>`）；
+  `mi-com/shop-category-list` 的 `_title` 改用可见文本「全部商品分类」并在 `_intent` 记明。
+  复核 `36kr-com/{home,information-technology,search-ai,search-viz}` 已注明来源（合规，未改）。

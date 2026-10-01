@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
 import { renderMarkdown } from '../render-md.mjs';
-import { selectForm, comparable, compareSetVerdict, nodePlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS } from '../axis.mjs';
+import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
@@ -123,6 +123,17 @@ for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
   for (const [re, what] of NO_REDERIVE) check(`${f} does not re-derive the ${what}`, !re.test(src), `matched ${re}`);
 }
+// A4. the ACTION ROW is one shared decision (round 27). Before this round only HTML consumed
+// `nodePlan().actionRow`; text/Markdown grouped controls on their own (a `plan.toolbar` line
+// when ≥2, the own action separately, a lone toolbar child dropped), so the same node could
+// get a different control grouping per target. Every target must now draw the SAME row and
+// none may group actions itself.
+for (const f of TARGETS) {
+  const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
+  check(`${f} consumes the shared action row`, /\bplan\.actionRow\b/.test(src));
+  check(`${f} keeps no private action grouping`, !/\b(actionKids|actionRowOf|plan\.toolbar)\b/.test(src));
+}
+
 // A3. the metric's visible-text caliber is shared too (no private `pageText` in the evaluator).
 {
   const src = fs.readFileSync(path.join(root, 'm1', 'eval', 'metrics.mjs'), 'utf8');
@@ -473,6 +484,99 @@ const compareGroups = (model) => {
   }
   check(`G5 all ${rows} resolved compare row labels on ${tables} real compare tables appear as HTML row headers`, htmlMiss === 0, `${htmlMiss} missing from HTML row headers`);
   check(`G6 all ${rows} resolved compare row labels reach all three targets`, anywhereMiss === 0, `${anywhereMiss} missing from text/Markdown`);
+}
+
+// H. ACTION ROW: one decision, three drawings (round 27). The row grouping and the primary
+// CTA are decided once (`nodePlan().actionRow`); each target only chooses the drawing — HTML
+// `.action`/`.ctl` in one `.controls`, text `*[primary] [secondary]` on one line, Markdown a
+// bold primary link beside the rest. These halves fail if any target re-groups or re-orders.
+const actionLabels = (row) => row.map((c) => c.label);
+const htmlActionRow = (html) => {
+  const m = html.match(/<div class="controls">([\s\S]*?)<\/div>/);
+  if (!m) return null;
+  return [...m[1].matchAll(/<(a|span) class="([^"]*)"[^>]*>([^<]*)<\/\1>/g)].map((x) => ({ cls: x[2], label: x[3] }));
+};
+const rowLine = (out, labels) => out.split('\n').find((l) => labels.every((x) => l.includes(x))) ?? null;
+{
+  const model = {
+    _intent: 'x', _title: { text: 'Actions' },
+    hero: {
+      _intent: 'h', _title: { text: 'iPhone' },
+      _action: { verb: 'open', label: 'Learn more', to: 'https://x.test/learn' },
+      buy: { _title: { text: 'Buy' }, _action: { verb: 'buy', label: 'Buy', to: 'https://x.test/buy' } },
+    },
+  };
+  const plan = nodePlan(model.hero, { chain: [], values: {}, depth: 1 });
+  const labels = actionLabels(plan.actionRow);
+  const primaryLabel = plan.actionRow.find((c) => c.primary)?.label;
+  const html = render(model);
+  const text = renderText(model);
+  const md = renderMarkdown(model);
+  const hRow = htmlActionRow(html);
+  check('H0 the shared row holds both controls with exactly one primary',
+    labels.length === 2 && labels[0] === 'Learn more' && labels[1] === 'Buy' && primaryLabel === 'Buy',
+    JSON.stringify(plan.actionRow));
+  check('H1 HTML draws that one row (own=ctl, inner commit=action)',
+    Boolean(hRow) && hRow.map((x) => x.label).join('|') === labels.join('|')
+    && hRow.filter((x) => /(^|\s)action(\s|$)/.test(x.cls)).length === 1
+    && hRow.find((x) => /(^|\s)action(\s|$)/.test(x.cls)).label === primaryLabel,
+    JSON.stringify(hRow));
+  const tLine = rowLine(text, labels);
+  const tPrimary = tLine ? (tLine.match(/\*\[([^\]]*)\]/) || [])[1] : null;
+  check('H2 text draws that one row on one line, primary marked once',
+    Boolean(tLine) && tPrimary === primaryLabel && (tLine.match(/\*\[/g) || []).length === 1,
+    `line=${JSON.stringify(tLine)}`);
+  const mLine = rowLine(md, labels);
+  const mPrimary = mLine ? (mLine.match(/\*\*\[([^\]]*)\]/) || [])[1] : null;
+  check('H3 Markdown draws that one row on one line, primary bold once',
+    Boolean(mLine) && mPrimary === primaryLabel && (mLine.match(/\*\*\[/g) || []).length === 1,
+    `line=${JSON.stringify(mLine)}`);
+}
+// H4. corpus: on every curated page, the number of multi-control rows the shared decision
+// yields equals the number of grouped rows each of text and Markdown actually draws. A target
+// that splits a row into pieces, drops a lone toolbar child, or groups without the decision
+// changes the count and fails here even when no constructed case covers that page.
+// Only nodes the node renderer actually draws count. A collection member in an inline form
+// (list/deflist/table/chips/controls/compare-table entity) is a cell, not a node block, and
+// its action row is drawn by that form in every target — so it must not be counted here.
+const NODE_FORMS = new Set(['cards', 'product-cards', 'stack']);
+const multiActionRows = (model) => {
+  let multi = 0;
+  (function visit(node, chain, depth) {
+    if (!node || typeof node !== 'object' || Array.isArray(node)) return;
+    const plan = nodePlan(node, { chain, values: {}, depth });
+    if (!plan.visible) return;
+    if (plan.actionRow.length > 1) multi++;
+    for (const g of plan.items.groups) {
+      if (g.form === 'compare-table') continue;
+      if (NODE_FORMS.has(g.form) || (g.form === 'table' && !runPlan(g.items).isTable))
+        for (const it of g.items) visit(it, [...chain, node], depth + 1);
+    }
+    if (plan.emptyState) visit(plan.emptyState, [...chain, node], depth + 1);
+    const consumed = new Set(plan.rowConsumed);
+    for (const c of plan.namedChildren) if (!consumed.has(c.node)) visit(c.node, [...chain, node], depth + 1);
+  })(model, [], 0);
+  return multi;
+};
+{
+  const scale = JSON.parse(fs.readFileSync(path.join(root, 'm1', 'eval', 'm3-scale.json'), 'utf8')).filter((x) => x.tier === 'exemplar');
+  let pages = 0, rows = 0, textMiss = 0, mdMiss = 0;
+  for (const r of scale) {
+    const mp = path.join(root, 'm1', 'curated', `${r.k}.json`);
+    if (!fs.existsSync(mp)) continue;
+    const model = JSON.parse(fs.readFileSync(mp, 'utf8'));
+    const n = multiActionRows(model);
+    if (!n) continue;
+    pages++; rows += n;
+    const text = renderText(model);
+    const md = renderMarkdown(model);
+    const tCount = text.split('\n').filter((l) => l.includes('*[')).length;
+    const mCount = (md.match(/\*\*\[/g) || []).length;
+    if (tCount !== n) textMiss++;
+    if (mCount !== n) mdMiss++;
+  }
+  check(`H4 all ${rows} multi-control rows on ${pages} curated pages are grouped in text`, textMiss === 0, `${textMiss} pages mismatched`);
+  check(`H5 all ${rows} multi-control rows on ${pages} curated pages are grouped in Markdown`, mdMiss === 0, `${mdMiss} pages mismatched`);
 }
 
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);

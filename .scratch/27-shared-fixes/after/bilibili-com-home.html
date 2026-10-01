@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
+header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
+h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
+h2.title{font-size:1.45em;margin:1.1em 0 .45em;font-weight:700}
+h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
+.hero{margin:4px 0 24px}
+.hero.fact-hero .fact .val{font-size:2em;font-weight:700}
+/* a lead sentence is not a headline: H1-sized prose collapses the page's heading levels */
+.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:#33475b}
+article{margin:12px 0}
+.timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
+.timeline .item{position:relative;padding:6px 0}
+.timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
+.fact{margin:3px 0}
+.fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
+.val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+/* label chips need a visible chip body, or the row reads as one bare string of text (round 27) */
+.chips .chip-item{display:inline-block;background:#eef2f7;border:1px solid #dbe3ec;border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
+/* a sentence member is prose, not a tag: keep it on its own plain line */
+.chips-rows{display:block}
+.chips-rows .chip-item{display:block;background:none;border:0;border-radius:0;padding:3px 0;font-size:.95em}
+.cards .item img,.run .item img,.cards img{width:100%;height:auto;display:block;border-radius:8px}
+.action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
+.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.promo-image{padding:0;overflow:hidden}
+.promo-image img{width:100%;height:auto;display:block;border-radius:9px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
+.meta .sep{color:#c2ccd6}
+.prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
+/* F-031-§7 图像主导页：满幅图带 */
+.strip{margin:0;padding:0}
+.strip img{width:100%;height:auto;display:block}
+/* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
+.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.promo-image .img-alt{padding:10px 14px;border-radius:0}
+main>.node>.strip:first-child,article>.strip{margin:0}
+/* F-031: 序列区块（不可比内容各自成立） */
+.block{margin:18px 0;padding:0 0 6px}
+.block>.node{max-width:none}
+hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
+/* F-031-§4 控件条 */
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0;align-items:center}
+.controls .action{margin:0}
+/* 行内的主 CTA 必须可辨：无抓取目标的动作（.action-plain）在行内也按实心强调
+   （无目标不得造真实按钮标签；强调是样式，不是新控件，T-101/F-031-§4） */
+.controls .action-plain{margin:0;background:#17212b;color:#fff;border-color:#17212b}
+.ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
+a.ctl{font-weight:600}
+a.ctl:hover{background:#f2f7ff}
+/* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
+.cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
+.cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
+.cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
+.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
+.cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
+.cmp-price{font-weight:700;margin-top:4px}
+.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
+.cmp-ctl{margin-top:6px}
+.linklist{margin:8px 0;padding-left:1.1em}
+.linklist.cols2{columns:2;column-gap:28px}
+.linklist li{margin:5px 0;line-height:1.5}
+.linklist a{color:#0b62d0}
+.seq{margin:8px 0;padding-left:1.5em}
+.seq li{margin:4px 0;line-height:1.55}
+.seq a{color:#0b62d0}
+.chip-item{break-inside:avoid}
+.chips a{color:inherit;text-decoration:none}
+.chips a:hover{text-decoration:underline}
+.deflist{margin:8px 0}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
+.deflabel{min-width:130px;font-weight:600}
+.deflabel a{color:inherit;text-decoration:none}
+.timeline .defrow{position:relative}
+.timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
+.accordion{margin:8px 0}
+details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
+details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
+details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
+.expose{display:block;margin:8px 0}
+.choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
+fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
+/* a few short options must not sit inside a full-width frame with a dead right half:
+   the fieldset hugs its content and only wraps when the content itself is wider (round 27) */
+fieldset.expose.chipbar{display:inline-block;max-width:100%}
+/* D-3: a text input is an inline field so its submit control sits on the same bar */
+span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
+legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
+input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
+.action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
+img{max-width:100%;border-radius:10px;display:block}
+/* 图片按容器宽度铺满、保持自身比例（round 27）：小图不再缩在中间，也绝不 object-fit:cover 裁剪内容 */
+.fact img,.cards img,.cards .item img,.run .item img{width:100%;height:auto}
+table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
+table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
+table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
+table.data td.sel,table.data th.sel{width:34px;text-align:center}
+.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.row-ops{display:flex;flex-direction:column;gap:4px}
+.row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+</style></head>
+<body><main><article id="bilibili-home" class="node depth-0"><h1 class="title">哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</h1><section class="group g-search"><article class="node depth-1"><span class="expose expose-input expose-query"><input type="text" name="query" data-type="text" aria-label="磊哥游戏" placeholder="磊哥游戏"></span></article></section><section class="group g-banner"><article class="node depth-1"><h2 class="title">第五人格亲密之月</h2><div class="fact"><span class="val"><img src="../assets/bilibili-banner.png" alt=""></span></div></article></section><hr class="region"><section class="group g-feed"><article class="node depth-1"><div class="cards"><div class="item"><article id="v-bv1dzej6jeg5" class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/video/BV1Dzej6JEG5">当你带着大运误闯魔族腹地时！</a></h3><div class="fact"><span class="val">07:47</span></div><div class="meta">啊力解说 · 09-15<span class="sep">·</span>20.2 万<span class="sep">·</span>155</div></article></div><div class="item"><article id="v-bv1lzyf65epq" class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/video/BV1LZYf65Epq">【JO家日常】#13 迪亚波罗：我死定了姐妹们……【bilibilionly同人扶持计划】</a></h3><div class="fact"><span class="val">01:09</span></div><div class="meta">粥粥的奇妙冒险 · 11小时前<span class="sep">·</span>4.4 万<span class="sep">·</span>112</div></article></div><div class="item"><article id="v-bv1chew68eew" class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/video/BV1chew68EEw">都在做AI手机，为什么真正能干活的却没几台？【差评君】</a></h3><div class="fact"><span class="val">09:28</span></div><div class="meta">差评君 · 09-16<span class="sep">·</span>18 万<span class="sep">·</span>93</div></article></div><div class="item"><article id="v-bv1qyen6aelc" class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/video/BV1Qyen6aELC">老辈子手搓还有人看吗？</a></h3><div class="fact"><span class="val">00:19</span></div><div class="meta">自醒画画 · 09-15<span class="sep">·</span>31.9 万<span class="sep">·</span>108</div></article></div><div class="item"><article id="v-bv1yreg6ae99" class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/video/BV1yreG6aE99">这才是正确的粤语读音？Bro你说句话啊！</a></h3><div class="fact"><span class="val">07:05</span></div><div class="meta">粤知一二 · 昨天<span class="sep">·</span>6.4 万<span class="sep">·</span>405</div></article></div><div class="item"><article id="v-bv1xrer6jenr" class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/video/BV1xRer6jENr">新角色【大肥鱼】</a></h3><div class="fact"><span class="val">01:13</span></div><div class="meta">不爱唠嗑的芒果 · 14小时前<span class="sep">·</span>1.4 万<span class="sep">·</span>101</div></article></div><div class="item"><article id="v-bv1zny96nevn" class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/video/BV1znY96NEvn">《原神》7.1版本「往冥府的安魂歌」前瞻特别节目</a></h3><div class="fact"><span class="val">59:46</span></div><div class="meta">原神 · 09-12<span class="sep">·</span>150.4 万<span class="sep">·</span>4.6 万</div></article></div><div class="item"><article id="v-bv19fe36reek" class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/video/BV19Fe36rEEK">曾靠剧情火爆全球的游戏，二十年后重制更新了什么！？</a></h3><div class="fact"><span class="val">02:29</span></div><div class="meta">阿银紫 · 昨天<span class="sep">·</span>8.9 万<span class="sep">·</span>113</div></article></div><div class="item"><article id="v-bv1q6ee64eee" class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/video/BV1Q6eE64EeE">中国模特勇闯欧洲时装周|面试实录第一集</a></h3><div class="fact"><span class="val">07:25</span></div><div class="meta">李东恒z · 09-12<span class="sep">·</span>29.8 万<span class="sep">·</span>252</div></article></div><div class="item"><article id="v-bv1sayd6setv" class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/video/BV1SAYd6sEtv">这什么物价？！二周年彩蛋终于破解！</a></h3><div class="fact"><span class="val">00:38</span></div><div class="meta">小普-三角洲重生版 · 09-15<span class="sep">·</span>38 万<span class="sep">·</span>94</div></article></div><div class="item"><article id="live-1939977064" class="node depth-2"><h3 class="title"><a class="self-link" href="https://live.bilibili.com/1939977064?hotRank=0&amp;live_from=81003">这个维什戴尔跳舞好有劲！</a></h3><div class="fact"><span class="val">直播中</span></div><div class="fact"><span class="val">团播</span></div><div class="meta">SG-次元姬<span class="sep">·</span>1.9 万</div></article></div></div></article></section></article></main></body></html>

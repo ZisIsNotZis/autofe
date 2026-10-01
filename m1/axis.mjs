@@ -435,7 +435,10 @@ export function choicePlan(node, exp) {
       table: rich ? selectTablePlan(items, options) : null };
   }
   if (exp.type === 'bool') return { kind: 'bool', items, legend, hint, name: exp.name, nodeName: node._name ?? node._title ?? null };
-  return { kind: 'input', items, legend, hint, name: exp.name, type: exp.type };
+  // D-3: for a TEXT input the captured label is the field's watermark (placeholder), not an
+  // external caption; a date/number input keeps the label outside where a watermark can't read.
+  const labelAsPlaceholder = (exp.type === 'text' || exp.type == null) && Boolean(legend);
+  return { kind: 'input', items, legend, hint, name: exp.name, type: exp.type, labelAsPlaceholder };
 }
 
 // Compare-set cell: a declared field / role fact is a VALUE; a named child is either its
@@ -527,7 +530,7 @@ export function nodePlan(node, ctx = {}) {
   return {
     ok: true, visible: true, scope, headingKey, headingValue: headingKey ? node[headingKey] : null,
     headingText, demoted: isDemoted(node), primary, facts, action, hasAction: Boolean(node._action),
-    titleIsControl, choice, toolbar, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
+    titleIsControl, choice, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
     items, namedChildren, emptyState, titleConsumed,
   };
 }

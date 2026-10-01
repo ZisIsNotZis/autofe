@@ -229,8 +229,15 @@ function renderChoice(ch, node, chain, hide, ctx) {
   const lbl = ch.legend ? fmt(ch.legend) : '';   // never print a raw identifier as a label
   const hint = ch.hint ? `<span class="hint">${fmt(ch.hint)}</span>` : '';
   const itype = ch.type === 'date' ? 'date' : (ch.type === 'time' ? 'datetime-local' : (ch.type === 'num' ? 'number' : 'text'));
+  // D-3: a text field's captured label is the in-box watermark (placeholder); a date/number
+  // field keeps an external label where a watermark can't carry the name. Shared decision:
+  // `ch.labelAsPlaceholder` (axis.mjs choicePlan).
+  // The label is never lost: as a watermark it moves into the field, and a screen-reader
+  // label keeps the name in the document (a placeholder alone is not a label — F-064).
+  const outside = lbl ? `<span class="deflabel${ch.labelAsPlaceholder ? ' sr-only' : ''}">${lbl}</span>` : '';
+  const watermark = lbl && ch.labelAsPlaceholder ? ` placeholder="${esc(lbl)}"` : '';
   // aria-label 只放源站文案；无文案时绝不把内部标识符（expose name）写进属性
-  return `<span class="expose expose-${esc(ch.name)}">${lbl ? `<span class="deflabel">${lbl}</span>` : ''}${hint}<input type="${itype}" name="${esc(ch.name)}" data-type="${esc(ch.type)}"${lbl ? ` aria-label="${esc(lbl)}"` : ''}></span>`;
+  return `<span class="expose expose-input expose-${esc(ch.name)}">${outside}${hint}<input type="${itype}" name="${esc(ch.name)}" data-type="${esc(ch.type)}"${lbl ? ` aria-label="${esc(lbl)}"` : ''}${watermark}></span>`;
 }
 
 function renderForm(form, items, chain, hide, ctx, depth, node) {
@@ -364,7 +371,12 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   // stay in place (no reordering). Hiding the shown fact is per-target storage.
   let heroHtml = '';
   if (plan.primary) {
-    heroHtml = `<div class="hero fact-hero">${factHtml(plan.primary.value)}</div>`;
+    // A sentence-long `_primary` is the page's lead paragraph, not a headline: keep it as a
+    // readable lead (H1-sized prose collapses the level hierarchy). Short/numeric primaries
+    // keep the enlarged hero slot.
+    const pv = plan.primary.value;
+    const leadProse = Boolean(pv && typeof pv === 'object' && typeof pv.text === 'string' && pv.text.length > 48);
+    heroHtml = `<div class="hero fact-hero${leadProse ? ' hero-prose' : ''}">${factHtml(pv)}</div>`;
     if (!hide.has(plan.primary.holder)) hide.set(plan.primary.holder, new Set());
     hide.get(plan.primary.holder).add(plan.primary.key);
   }
@@ -403,8 +415,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   // an empty collection still renders its empty-state storyline (F-013): every declared fact must render
   if (plan.emptyState) body += renderNode(plan.emptyState, [...chain, node], false, hide, ctx, depth + 1);
 
-  // toolbar controls are the SAME row as the element's own action (round 27):
-  // `plan.toolbar` stays the shared grouping for text/Markdown, HTML draws `actionRow`.
+  // toolbar controls are the SAME row as the element's own action (round 27): the grouping
+  // and the primary CTA come from the shared `plan.actionRow` (axis.mjs) for every target.
 
   let prevGroupHadTitle = false;
   for (const c of plan.namedChildren) {
@@ -473,6 +485,8 @@ h2.title{font-size:1.45em;margin:1.1em 0 .45em;font-weight:700}
 h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
 .hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
+/* a lead sentence is not a headline: H1-sized prose collapses the page's heading levels */
+.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:#33475b}
 article{margin:12px 0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
@@ -482,9 +496,12 @@ article{margin:12px 0}
 .fact{margin:3px 0}
 .fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+/* label chips need a visible chip body, or the row reads as one bare string of text (round 27) */
+.chips .chip-item{display:inline-block;background:#eef2f7;border:1px solid #dbe3ec;border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
+/* a sentence member is prose, not a tag: keep it on its own plain line */
 .chips-rows{display:block}
-.chips-rows .chip-item{padding:3px 0}
+.chips-rows .chip-item{display:block;background:none;border:0;border-radius:0;padding:3px 0;font-size:.95em}
 .cards .item img,.run .item img,.cards img{width:100%;height:auto;display:block;border-radius:8px}
 .action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
 .promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
@@ -530,7 +547,7 @@ a.ctl:hover{background:#f2f7ff}
 .seq{margin:8px 0;padding-left:1.5em}
 .seq li{margin:4px 0;line-height:1.55}
 .seq a{color:#0b62d0}
-.chip-item{display:block;break-inside:avoid;padding:4px 0;font-size:.95em}
+.chip-item{break-inside:avoid}
 .chips a{color:inherit;text-decoration:none}
 .chips a:hover{text-decoration:underline}
 .deflist{margin:8px 0}
@@ -547,6 +564,13 @@ details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
 .expose{display:block;margin:8px 0}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
+/* a few short options must not sit inside a full-width frame with a dead right half:
+   the fieldset hugs its content and only wraps when the content itself is wider (round 27) */
+fieldset.expose.chipbar{display:inline-block;max-width:100%}
+/* D-3: a text input is an inline field so its submit control sits on the same bar */
+span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
+/* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
 .expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
 .choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}

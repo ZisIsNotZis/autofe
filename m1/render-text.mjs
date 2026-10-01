@@ -88,6 +88,12 @@ function itemControl(it, chain, ctx) {
   const a = itemActionPlan(it, chain, ctx.values);
   return a && a.isControl ? controlOf(a) : '';
 }
+// One line for every control of THIS element (round 27). The row/primary decision is the
+// shared `plan.actionRow` (axis.mjs), exactly as HTML draws it: text writes the same row
+// on one line, and marks the shared primary with a leading `*` once the row has a choice.
+function actionRowText(row) {
+  return row.map((c) => `${row.length > 1 && c.primary ? '*' : ''}[${c.label}]`).join(' ');
+}
 
 // ---- node renderer ---------------------------------------------------------
 const IND = (d) => '  '.repeat(d);
@@ -234,9 +240,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
   }
 
   // action that is the heading itself, or a labelled action on this node
-  let actionText = '';
   const titleIsControl = plan.titleIsControl;
-  if (plan.action && plan.action.label) actionText = controlOf(plan.action);
 
   // expose widget (the form decision is shared: chapter kind + legend/hint + options)
   if (plan.choice) {
@@ -262,11 +266,10 @@ function renderNode(node, chain, isHero, ctx, depth) {
   }
   if (plan.titleConsumed) titleText = null;   // the heading IS the switch label: show it once, on the control
 
-  // consecutive action-only children -> a control toolbar (grouping decided in plan.toolbar)
-  if (plan.toolbar.length >= 2) {
-    const tools = plan.toolbar.map((n) => { const a = itemActionPlan(n, [...chain, node], ctx.values); return a && a.label ? controlOf(a) : ''; }).filter(Boolean);
-    if (tools.length) { blocks.push(line(depth, tools.join(' '))); plan.toolbar.forEach((n) => consumed.add(n)); }
-  }
+  // every control of this element is ONE row, from the shared `plan.actionRow` (round 27):
+  // own `_action` + toolbar children + inner-control children. No target groups here.
+  const actionRow = plan.actionRow.length ? actionRowText(plan.actionRow) : '';
+  for (const n of plan.rowConsumed) consumed.add(n);
 
   // facts (visible / hidden slots decided in the plan)
   const factLines = [];
@@ -311,8 +314,10 @@ function renderNode(node, chain, isHero, ctx, depth) {
   if (heroImg) parts.push(line(innerD, heroImg));
   for (const b of blocks) parts.push(shiftBlock(b, demoted ? 1 : 0));
   // a control whose heading IS its own label renders as a control, never as a section heading (F-031-§4)
+  // a control whose heading IS its own label is the heading's link; any further controls of
+  // the same element are still the SAME row, never dropped (bilibili video channel block).
   if (titleIsControl) parts.push(line(innerD, `[${titleText}]`));
-  else if (actionText) parts.push(line(innerD, actionText));
+  if (actionRow) parts.push(line(innerD, actionRow));
   const out = parts.filter(Boolean).join('\n');
   if (!out.trim()) return '';
   return demotedPrefix + out;

@@ -104,6 +104,15 @@ function itemControl(it, chain, ctx) {
   const a = itemActionPlan(it, chain, ctx.values);
   return a && a.isControl ? controlMd(a) : '';
 }
+// One line for every control of THIS element (round 27). The row/primary decision is the
+// shared `plan.actionRow` (axis.mjs), exactly as HTML draws it: Markdown writes the same
+// row as inline links, and bolds the shared primary once the row has a real choice.
+function actionRowMd(row) {
+  return row.map((c) => {
+    const link = c.href ? controlMd({ label: c.label, hasTarget: true, href: c.href }) : `[${escTilde(c.label)}]`;
+    return row.length > 1 && c.primary ? `**${link}**` : link;
+  }).join(' ');
+}
 
 // ---- item-set forms: all chosen in ./axis.mjs, only written out here -------
 function renderTable(items, chain, ctx, depth, node) {
@@ -221,9 +230,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
     blocks.push(`> **主指**: ${fmt(plan.primary.value)}`);
   }
 
-  let actionText = '';
   const titleIsControl = plan.titleIsControl;
-  if (plan.action && plan.action.label) actionText = controlOf(plan.action);
 
   // expose widget -> an option list (the form decision is shared: kind + legend/hint + options)
   if (plan.choice) {
@@ -249,11 +256,9 @@ function renderNode(node, chain, isHero, ctx, depth) {
   }
   if (plan.titleConsumed) titleText = null;   // the heading IS the switch label
 
-  // consecutive action-only children -> one control line (grouping decided in plan.toolbar)
-  if (plan.toolbar.length >= 2) {
-    const tools = plan.toolbar.map((n) => { const a = itemActionPlan(n, [...chain, node], ctx.values); return a && a.label ? controlOf(a) : ''; }).filter(Boolean);
-    if (tools.length) { blocks.push(tools.join(' ')); plan.toolbar.forEach((n) => consumed.add(n)); }
-  }
+  // every control of this element is ONE row, from the shared `plan.actionRow` (round 27).
+  const actionRow = plan.actionRow.length ? actionRowMd(plan.actionRow) : '';
+  for (const n of plan.rowConsumed) consumed.add(n);
 
   const factLines = [];
   for (const f of plan.facts.list) {
@@ -287,8 +292,10 @@ function renderNode(node, chain, isHero, ctx, depth) {
   if (titleText && !titleIsControl) parts.push(`${'#'.repeat(Math.min(depth + 1, 6))} ${titleText}`);
   if (plan.facts.hero) { const hero = imageMd(plan.facts.hero); if (hero) parts.push(hero); }
   for (const b of blocks) if (b && b.trim()) parts.push(b);
+  // a control whose heading IS its own label is the heading's link; any further controls of
+  // the same element are still the SAME row, never dropped (bilibili video channel block).
   if (titleIsControl) parts.push(controlOf(plan.action) || `[${titleText}]`);
-  else if (actionText) parts.push(actionText);
+  if (actionRow) parts.push(actionRow);
   const out = parts.join('\n\n');
   if (!out.trim()) return '';
   // demotion ≥2: a demoted branch is a reference aside -> blockquote (Markdown's aside)
