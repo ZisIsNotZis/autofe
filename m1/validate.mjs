@@ -203,10 +203,26 @@ export function validate(model) {
     if (typeof type !== 'string' || !Object.prototype.hasOwnProperty.call(registry, type)) return;
     const schema = registry[type];
     const fields = schema.fields ?? {};
-    const nodes = [];
-    walk(inst, (n, dp) => nodes.push({ n, p: dp ? `${ip}.${dp}` : ip }));
-    for (const { n, p } of nodes) {
-      if (n !== inst && n._composite !== undefined) err(p, `composite "${type}" must not nest another composite ("${n._composite}")`, CCODE.NESTED);
+    // Nesting (round 51, ruling A.(4)): a composite MAY contain another composite iff the
+    // outer schema declares a slot that carries that child type (e.g. form.pagination for a
+    // nested paginator). A nested composite's own subtree is OUT OF the outer's field scope
+    // (docs/m1/composites.md §5: "字段 = 子树减去任何嵌套复合件的子树"), so we stop collecting
+    // there — its `_items`/`_ref`/`_expose` belong to the child, not the parent.
+    const nodes = [], nested = [];
+    (function collect(n, dp) {
+      nodes.push({ n, p: dp ? `${ip}.${dp}` : ip });
+      for (const c of childrenOf(n)) {
+        const child = c.node;
+        if (child && typeof child === 'object' && !Array.isArray(child) && child._composite !== undefined) {
+          nested.push({ n: child, p: dp ? `${ip}.${dp}.${c.key}` : `${ip}.${c.key}` });
+          continue;
+        }
+        collect(child, dp ? `${dp}.${c.key}` : c.key);
+      }
+    })(inst, '');
+    for (const { n, p } of nested) {
+      const declaredNested = Object.values(fields).some((f) => f.composite === n._composite);
+      if (!declaredNested) err(p, `composite "${type}" must not nest another composite ("${n._composite}"): no slot declares it`, CCODE.NESTED);
     }
     const exposures = nodes.filter(({ n }) => exposeOf(n));
     const actions = nodes.filter(({ n }) => n._action && typeof n._action === 'object' && typeof n._action.verb === 'string');
@@ -216,7 +232,10 @@ export function validate(model) {
         if (f.key === k) return true;
         if (k === '_expose' && (f.key === '<expose>' || (f.key === '<child>' && f.expose))) return true;
         if (k === '_action' && f.action && (f.key === '<child>' || f.key === '_action')) return true;
-        if (k === '_items' && f.key === '<child>' && f.shape === 'collection') return true;
+        // Round 51 (ruling A.(1)): a slot DECLARED with shape 'expose-collection' (e.g.
+        // search.scope: an …_items node that also carries _expose) covers its `_items`. The
+        // validator previously honoured only 'collection', silently refusing a declared slot.
+        if (k === '_items' && f.key === '<child>' && (f.shape === 'collection' || f.shape === 'expose-collection')) return true;
       }
       return false;
     };
@@ -247,6 +266,13 @@ export function validate(model) {
         const matched = actions.filter(({ n }) => verbs.includes(n._action.verb));
         if (f.action.cardinality !== undefined) {
           if (matched.length !== f.action.cardinality) err(ip, `composite "${type}" field "${slot}" expects exactly ${f.action.cardinality} action(s) with verb ∈ {${verbs.join(', ')}}, found ${matched.length}`, CCODE.ACTION);
+          continue;
+        }
+        // Round 51 (ruling A.(2)): `atMost` = "never two submits", optional when zero.
+        // Many real forms apply instantly (a filter panel is one); the hard invariant worth
+        // enforcing is that no form carries TWO submit actions. login keeps exact `cardinality`.
+        if (f.action.atMost !== undefined) {
+          if (matched.length > f.action.atMost) err(ip, `composite "${type}" field "${slot}" allows at most ${f.action.atMost} action(s) with verb ∈ {${verbs.join(', ')}}, found ${matched.length}`, CCODE.ACTION);
           continue;
         }
         if (!present && f.required) err(ip, `composite "${type}" is missing required field "${slot}" (schema m1/composites.json#${type}.fields.${slot})`, CCODE.MISSING);

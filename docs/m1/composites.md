@@ -246,6 +246,7 @@
 | `default` | `_default`（新） | — | `text` | 默认值；**缺省不是错误**，引擎可按启发式把名称水印在框内 |
 | `query` | 命名子件 | ✅ | `_expose {type:"text"}` | 查询位；`addressable: true` |
 | `scope` | 命名子件 | — | `_expose` + `_items` | 搜索范围选择（如"宝贝/天猫/店铺"） |
+| `results` | 命名子件 | — | `_items` 集合 | 该搜索**产出的结果列表**（轮 51 裁定 A.(3)："输入 + 产出的结果列表"归 `search`；`role:"field"`，照常渲染；`covered()` 因此认 `expose-collection`/`collection` 的 `_items`） |
 | `submit` | `_action` | — | `verb ∈ {submit, navigate, open}` | 提交动作 |
 
 **暴露状态**：`query`（及其它字段）的 `_expose.name`；下游可用 `search.query` 或裸名引用。
@@ -260,9 +261,10 @@
 | 字段槽 | key | 必需 | 类型/形状 | 说明 |
 |---|---|---|---|---|
 | `fields` | 子树内 `_expose` | ✅ | `min: 2` | 一次提交一起上行的字段集合 |
-| `submit` | `_action` | ✅ | `verb ∈ {submit, operate, select}`，恰 1 个 | 字段或面板节点上的提交动作 |
+| `submit` | `_action` | — | `verb:"submit"`，**至多 1 个** | 提交动作（轮 51 裁定 A.(2)：真实表单常**即时生效** ⇒ 可缺省；硬不变量是"绝不两个"；`operate` 不是提交） |
 | `name` | `_label` | — | `text` | 面板名称 |
-| `reset` | 子件 `_action` | — | 任意动词 | 清除/重置（不合并进提交） |
+| `reset` | 子件 `_action` | — | 任意动词 | 清除/重置（不合并进提交；作为命名子件允许） |
+| `pagination` | 命名子件 | — | 嵌套 `paginator` | 带分页的结果/字段（外层 `composite:"paginator"` 声明后嵌套合法；内层子树移出本 form 字段作用域，轮 51 裁定 A.(4)） |
 | `state` | （派生） | ✅（派生） | 字段暴露的并集 | 每个字段的 `_expose.name` 是页面状态 |
 
 **暴露状态**：字段暴露的并集；**不**新增 `record` 值类型（§2.4）。下游可用 `form.size` / `size` 引用。
@@ -697,3 +699,38 @@ COMPOSITES_DESIGN_DONE primitives=5 schema_fields=29 migration_pages=18 decision
 
 **用户问的"缺少必要的部件"实拍**：`search` 首次遇到真实语料即抓到 1 页缺 `name`；`paginator` 首次遇到即抓到 3 页缺可解析的 `_ref`（其中 2 页补上真实集合后通过，1 页无对象可指）。这正是 schema 相对"引擎按形状猜"的价值：**类型不全 = 报错**，而不是静默渲染成半个搜索框。
 
+
+### 9.4 S5（轮 51）：`form` 迁移受阻 + 三项语义修正（裁定 A）+ 两页收口
+
+**结论先说**：把 `_composite:"form"` 注入 §6.2(c) 的 8 个候选面板，**0/8 通过 schema**（逐页穷举子树含 ≥2 `_expose` 的节点）。这不是"引擎不肯迁移"，而是 **schema 有三处与实测不符** + **两页确实是不同语义**。父代理裁定 A 落地三项**修正**（非放宽），随后 `form` 成功迁移 **1/8**、`search` 迁移 **5 页**（原被 §6.2(c) 记作 form）。
+
+**A. 三处修正（`m1/validate.mjs` + `m1/composites.json`）**
+
+| # | 修什么 | 为什么（实测） | 性质 |
+|---|---|---|---|
+| 1 | `covered()` 认 `shape:"expose-collection"` | `search.scope` **已声明**该形状（`_expose`+`_items` 的选择控件），但 `covered()` 只认 `collection` ⇒ **声明了却认不出**，带选择控件的面板一律 `E_COMPOSITE_NOT_ALLOWED` | **修正缺陷** |
+| 2 | `form.submit` = 可选、**至多 1**、verbs `["submit"]` | 华为/小米/少数派面板没有提交动作（**即时生效**）；airbnb `booking` 有 2 个 `operate`（可订状态 + 举报）。硬不变量是"**绝不出现两个提交**"，不是"必须有提交"。`operate` 是通用动词，与轮 49 对 login 的收窄同理 | 收紧（verbs）+ 放宽（可缺省） |
+| 3 | 嵌套 = **由外层槽位声明**（`composite:"<type>"`），否则仍 `E_COMPOSITE_NESTED`；内层子树移出外层字段作用域 | §5"字段 = 子树减去嵌套复合件子树"；`form.pagination` 声明后方可承载 `results.pagination` | 修正 |
+
+**B. 迁移进度表（诚实账）**
+
+| 类型 | 已迁移 | 未迁移（原因） | 该类型 `_composite` 实例数 |
+|---|---|---|---|
+| `table` | **13** | 1（`aws…data-transfer`：§6.4 S2 明写维持裸 `_fields`） | 13 |
+| `login` | **3** | 0 | 3 |
+| `search` | **8** | 1（`mi-com/search-earbuds` 无输入节点 ⇒ 不像 search） | 8 |
+| `paginator` | **2** | 1（`gov-uk…pagination`：`_ref` 指向的集合**不在模型里** ⇒ 声明会撒谎，采集/模型缺口） | 2 |
+| `form` | **1** | 7（见下） | 1 |
+| **合计** | **27** | — | **27** |
+
+`form` 的 7 个"未迁移"逐个有据（**不许为凑数硬套**）：
+- `36kr-com/search-ai|search-viz`、`huawei-cn/search-laptop|search-phone`、`mi-com/search-phone`：**"输入 + 产出的结果列表" ⇒ 归 `search`**（裁定 A.(3)），其输入节点（带 `_label`+`_expose`）升 `_composite:"search"`。
+- `airbnb-com/room-28871.booking`：**✅ 迁移为 `form`**（3 个 `_expose`，无 `_items`，即时生效 ⇒ 0 submit 合法）。
+- `mi-com/search-earbuds`：无输入节点（既不像 search）、字段是 `_items` 选择控件 + 结果/推荐列表（`form` 保持"字段为主"、无 `_items` 槽）⇒ **不像 search 也不像 form，不迁移**。
+- `sspai-com/post-114699.discussion`：评论输入 + 排序，但 §5.1 明列"评论框不是 search"（无检索语义）；其 `_items:[]`+`_empty` 在 `form` 无对应槽 ⇒ **不迁移**。
+
+**C. 两页收口**
+- `taobao-com/home._lines[0]`：源站抓取里**真有**可访问名 `aria-label="请输入搜索文字"`（`corpus/taobao-com/home/dom.html`）⇒ 补 `_label` 后升 `_composite:"search"`。**渲染变更（唯一一处）**：input 增加 `aria-label`/`placeholder="请输入搜索文字"` 与一个 `sr-only` 名称；理由 = 源站本就有该名称、此前策展丢失，补回后**与源站一致**（未自编）。
+- `gov-uk/ni-rates-letters.pagination`：**裁定不迁移**。`_ref` 指向的**被分页集合不在我们的模型里**（源站分页指向未采集的其它页）⇒ 声明 `paginator` 会撒谎。保留裸 `_items`+`_action`，**不放宽** `_ref` 必需性；登记为**采集/模型缺口**（F-094）。
+
+**D. 验收**：`node m1/eval/pipeline.mjs --shots` → HTML 保真 **42/42=1.00** + Markdown **42/42=1.00** + 模型校验 **48/48** + **十一道自测** + 警告 **10 条**（8 条 `W_COMPOSITE_NAME_ONLY_WATERMARK` + 2 条 `W_COMPOSITE_ROWS_TOO_FEW`）+ 视觉自查 **42/42 干净** + 采集↔模型一致性 **未命中 0** + 证据一致性通过。6 个纯 `_composite` 迁移页三目标（HTML 剥 `<style>` 后 body / text / Markdown）与 HEAD **逐字节一致**；taobao 按上记 before/after。

@@ -733,3 +733,19 @@
   - `taobao-com/home._lines[0]`（搜索位）缺必需槽 `name`：源站把热搜占位文案放在 `_summary`、**没有** `_label`（§5.1 `[A.6]` 已记载）。补 `_label` 会新增可见标签/水印 = 渲染变更 ⇒ **不迁移**。实测 `E_COMPOSITE_MISSING_REQUIRED`（附 `E_COMPOSITE_NOT_ALLOWED`：该实例的 `_items` 无槽）。
   - `gov-uk/ni-rates-letters.pagination` 缺可解析的必需槽 `ref`：它是**页面级 Next**（多页指南），本页没有代表"被分页页面序列"的集合节点。`_ref:{ref:"/"}` 实测 `E_COMPOSITE_REF_UNRESOLVED`（`ref /: empty`）；唯一能解析的路径是页内表格（`/employee-rates` 等），但那不是被翻页对象 ⇒ **不迁移**（如实，不编造目标）。
 - **影响面**：`m1/composites.json`、`m1/axis.mjs`、`m1/validate.mjs`、`m1/eval/axis-selftest.mjs`、`m1/eval/composite-selftest.mjs`、`m1/curated/{bilibili-com/home,bilibili-com/read-home,huawei-cn/search-laptop,huawei-cn/search-phone}.json`、`docs/m1/composites.md`。未改渲染器文件（role 判定的消费点在 `axis.mjs#nodePlan`）；未 git 提交。
+
+## F-094 复合元语 S5：`covered()` 漏认已声明槽位 + 三项语义修正（轮 51，裁定 A）
+
+- **发现**：把 `_composite:"form"` 注入 §6.2(c) 的 8 个候选面板后**0/8 通过 schema**（每页穷举子树含 ≥2 `_expose` 的节点，逐页 `node m1/validate.mjs`）。两个独立根因：
+  1. **`covered()` 漏认已声明的 `shape:"expose-collection"` 槽**（校验器缺陷，非 schema 太紧）：`search.scope` 声明了该形状（`_expose` + `_items` 的选择控件），但 `covered()` 只把 `_items` 映射到 `shape==='collection'`，于是**声明了却认不出** ⇒ 每页带选择控件的面板都报 `E_COMPOSITE_NOT_ALLOWED`。
+  2. **`form.submit` 过于刚性**：`required:true` 且恰 1（verbs `{submit,operate,select}`）——华为/小米/少数派面板根本没有提交动作（即时生效），airbnb `booking` 有 2 个 `operate`（可订状态 + 举报）⇒ `E_COMPOSITE_ACTION_CARDINALITY`。
+- **裁定 A（父代理）**：`m1/validate.mjs` 加入轮 51 写入白名单，**仅限**三项修正 + 必要断言：
+  - **(1) 修 `covered()`**：`_items` 覆盖 `shape ∈ {collection, expose-collection}`（已声明槽位必须被认）。
+  - **(2) `form.submit` 可选、至多 1**：verbs **只留 `["submit"]`**（`operate` 是通用动词，不是提交——与轮 49 对 login 的收窄同理），`required:false` + `atMost:1`。理由：**很多真实表单即时生效**（筛选面板就是），"必须有提交"太紧；**值得强制的硬不变量是"绝不出现两个提交"**。`reset` 之类作为命名子件仍允许。
+  - **(4) 嵌套改为"由外层槽位声明"**：外层 schema 声明了承载该子件类型的槽（`composite:"<type>"`，如 `form.pagination`）⇒ 允许；未声明 ⇒ 仍 `E_COMPOSITE_NESTED`。内层复合件的子树**移出外层字段作用域**（§5"字段 = 子树减去嵌套复合件子树"）。
+- **F-094.a（报告口径，非缺陷）**：§6.2(c) 点名的 8 个 "form" 候选中，**6 个其实是"输入 + 产出的结果列表"**（36kr×2 / 华为×2 / mi-search-phone 有输入节点；mi-search-earbuds 无输入节点）⇒ 按裁定 (3) 归 `search`；只有 `airbnb-com/room-28871.booking` 是纯字段面板 ⇒ 归 `form`。**未迁移**：`mi-com/search-earbuds`（无输入节点，不像 search；其字段是 `_items` 选择控件 + 结果/推荐列表，`form` 保持字段为主、无 `_items` 槽 ⇒ 不像 form）、`sspai-com/post-114699.discussion`（评论输入 + 排序，但是"评论框"非检索，§5.1 反例 ⇒ 非 search；`discussion` 含 `_items:[]` + `_empty`，form 无对应槽 ⇒ 非 form）。**不许为凑数硬套 schema**。
+- **F-094.b（`search.results` 槽当前未被实例使用）**：裁定 (3) 要求 `search` 允许可选 `results` 槽（`shape:"collection"`, `role:"field"`）。6 个迁移的搜索实例的**结果列表都是输入节点的兄弟**（不在输入节点子树内），故该槽**已声明、暂无实例占用**——登记备查（不是脚手架，是裁定要求的表达位；一旦有"结果在搜索节点内"的页即可直接声明）。
+- **taobao（本轮流已迁移）**：`taobao-com/home._lines[0]` 用抓取里**真实存在**的可访问名 `aria-label="请输入搜索文字"`（`corpus/taobao-com/home/dom.html`）补 `_label` 后升 `_composite:"search"`。**渲染变更（唯一一处，已记 before/after）**：input 由 `<input type="text" name="query" data-type="text">` 变为 `<input ... aria-label="请输入搜索文字" placeholder="请输入搜索文字">`，并在前插入 `<span class="deflabel sr-only">请输入搜索文字</span>`（`sr-only` 不可见）；text/MD 由 `__________ (...)` 变为 `请输入搜索文字: __________ (...)`。理由：源站 `aria-label` 就是"请输入搜索文字"，此前策展把它丢了；补回即**与源站一致**，未自编名称。
+- **gov-uk paginator（按前裁定不迁移，记为采集/模型缺口）**：`gov-uk/ni-rates-letters.pagination` 是页面级 Next（多页指南），`_ref` 指向的**被分页集合不在我们的模型里**（源站分页指向未采集的其它页）⇒ 声明 `paginator` 会撒谎。保留裸 `_items`+`_action`，**不放宽** `_ref` 必需性。
+- **门禁**：`composite-selftest.mjs` 26 → **32**（新增：search 的 `scope` 暴露集合收下；form 无 submit 收下；form 恰 1 submit 收下；form 声明的 `pagination` 槽承载嵌套 paginator 收下；form 两个 submit 拒；form 嵌套未声明类型拒；原"search `_items` 未声明槽"用例改为 `_fields`，因 `search.results` 现已声明 `_items` 覆盖）。
+- **影响面**：`m1/validate.mjs`、`m1/composites.json`、`m1/eval/composite-selftest.mjs`、`m1/curated/{36kr-com/search-ai,36kr-com/search-viz,huawei-cn/search-laptop,huawei-cn/search-phone,mi-com/search-phone,airbnb-com/room-28871,taobao-com/home}.json`、`docs/m1/composites.md`。未改渲染器/axis 语义（新增 `results`/`pagination` 槽的 `key` 是 `<child>`，不命中 `slotRoleOf` 的 `_expose`/`_ref`）；未 git 提交。

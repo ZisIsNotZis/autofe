@@ -1,6 +1,9 @@
 // Composite-metaphor self-test (round 47, docs/m1/composites.md §2/§3/§4;
 // round 49 adds the warning channel + the "whole _fields block missing" refusal, F-091;
-// round 50 adds W_COMPOSITE_NAME_ONLY_WATERMARK, §6.4 S4①).
+// round 50 adds W_COMPOSITE_NAME_ONLY_WATERMARK, §6.4 S4①;
+// round 51 adds the three ruling-A corrections: covered() honours a declared 'expose-collection'
+// slot, form.submit is optional/atMost-1 with verbs [submit], and nesting is legal iff the
+// outer schema declares the child type).
 // A gate that can never fail is not a gate (F-040): this pins the validator's composite
 // behaviour — unknown type / missing required part / nesting / undeclared field slot /
 // cardinality / table row consistency / unresolved path references — with inline fixtures,
@@ -13,8 +16,10 @@ const REJECT = [
   ['unknown _composite type', { _intent: 'x', _composite: 'searchbox', _label: { text: 's' } }, 'E_COMPOSITE_UNKNOWN_TYPE'],
   ['missing required field (search has no name)', { _intent: 'x', _composite: 'search', query: { _expose: { name: 'q', type: 'text' } } }, 'E_COMPOSITE_MISSING_REQUIRED'],
   ['nested composite', { _intent: 'x', _composite: 'search', _label: { text: 's' }, query: { _expose: { name: 'q', type: 'text' }, _composite: 'form' } }, 'E_COMPOSITE_NESTED'],
-  ['undeclared field slot on a search (_items)', { _intent: 'x', _composite: 'search', _label: { text: 's' }, query: { _expose: { name: 'q', type: 'text' } }, _items: [{ _text: { text: 'z' } }] }, 'E_COMPOSITE_NOT_ALLOWED'],
+  ['undeclared field slot on a search (_fields)', { _intent: 'x', _composite: 'search', _label: { text: 's' }, query: { _expose: { name: 'q', type: 'text' } }, _fields: { 'first-name': { text: 'z' } } }, 'E_COMPOSITE_NOT_ALLOWED'],
   ['form with a single field (needs ≥2)', { _intent: 'x', _composite: 'form', one: { _expose: { name: 'a', type: 'text' } }, submit: { _action: { verb: 'submit' } } }, 'E_COMPOSITE_BAD_FIELD'],
+  ['form with two submit actions (atMost 1 — round 51 ruling A.2)', { _intent: 'x', _composite: 'form', a: { _expose: { name: 'a', type: 'text' } }, b: { _expose: { name: 'b', type: 'text' } }, go: { _action: { verb: 'submit' } }, go2: { _action: { verb: 'submit' } } }, 'E_COMPOSITE_ACTION_CARDINALITY'],
+  ['nested composite whose type the outer schema does not declare (round 51 ruling A.4)', { _intent: 'x', _composite: 'form', a: { _expose: { name: 'a', type: 'text' } }, b: { _expose: { name: 'b', type: 'text' } }, inner: { _composite: 'table', _items: [] } }, 'E_COMPOSITE_NESTED'],
   ['_default that is not a closed typed value', { _intent: 'x', _composite: 'search', _label: { text: 's' }, _default: 'abc', query: { _expose: { name: 'q', type: 'text' } } }, 'E_COMPOSITE_BAD_FIELD'],
   ['login never declares its signed-in state', { _intent: 'x', _composite: 'login', identifier: { _expose: { name: 'id', type: 'text' } }, secret: { _expose: { name: 'pw', type: 'secret' } }, submit: { _action: { verb: 'submit' } } }, 'E_COMPOSITE_EXPOSE_MISSING'],
   ['login missing its secret part', { _intent: 'x', _composite: 'login', _expose: { name: 'signed-in', type: 'bool' }, identifier: { _expose: { name: 'id', type: 'text' } }, submit: { _action: { verb: 'submit' } } }, 'E_COMPOSITE_MISSING_REQUIRED'],
@@ -35,6 +40,15 @@ const ACCEPT = [
   ['a legal single-row table (legal, just warns — F-091.b)', { _intent: 'x', _key: 't1', _composite: 'table', _title: { text: 'one' }, _items: [{ _fields: { 'first-name': { text: 'A' }, 'last-name': { text: 'B' } } }] }],
   ['a legal paginator instance', { _intent: 'x', _key: 'pg', _composite: 'paginator', _ref: { ref: '/results' }, _items: [{ _key: '1', _text: { text: '1' } }], results: { _intent: 'r', _items: [{ _text: { text: 'row' } }] } }],
   ['a dot-path condition climbing to the search instance (search.query)', { _intent: 'x', _key: 'p', _title: { text: '页' }, search: { _intent: 'r', _key: 's', _composite: 'search', _label: { text: '搜索' }, query: { _expose: { name: 'q', type: 'text' } } }, go: { _intent: '跳', _when: 'search.query', _text: { text: 'x' } } }],
+  // Round 51 ruling A.1: search.scope declares shape 'expose-collection' — an _items node that also
+  // carries _expose. The slot is declared, so its `_items` is covered (previously refused silently).
+  ['a search whose scope is an exposed _items collection (ruling A.1)', { _intent: 'x', _key: 'ss', _composite: 'search', _label: { text: '搜索' }, _default: { text: '关键词' }, query: { _expose: { name: 'q', type: 'text' } }, scope: { _intent: '搜索范围', _expose: { name: 'scope', type: 'text' }, _items: [{ _name: { text: '宝贝' } }, { _name: { text: '店铺' } }] } }],
+  // Round 51 ruling A.2: a form applies instantly — no submit is legal; the hard invariant is "never two".
+  ['a form with no submit action (instant-apply filter panel — ruling A.2)', { _intent: 'x', _key: 'f0', _composite: 'form', a: { _expose: { name: 'a', type: 'text' } }, b: { _expose: { name: 'b', type: 'text' } } }],
+  ['a form with exactly one submit action (atMost 1)', { _intent: 'x', _key: 'f1', _composite: 'form', a: { _expose: { name: 'a', type: 'text' } }, b: { _expose: { name: 'b', type: 'text' } }, go: { _action: { verb: 'submit', label: '提交' } } }],
+  // Round 51 ruling A.4: form declares a `pagination` slot carrying a nested paginator — legal;
+  // the child's subtree is out of the form's field scope (the paginator's own _items is not counted).
+  ['a form whose declared pagination slot carries a nested paginator (ruling A.4)', { _intent: 'x', _key: 'fp', panel: { _intent: '面板', _composite: 'form', f1: { _expose: { name: 'f1', type: 'text' } }, f2: { _expose: { name: 'f2', type: 'text' } }, pagination: { _intent: '分页', _composite: 'paginator', _ref: { ref: '/results' }, _items: [{ _key: '1', _text: { text: '1' } }] } }, results: { _intent: 'r', _items: [{ _text: { text: 'row' } }] } }],
 ];
 
 // Round 49: warning-channel assertions (F-091.b). W_COMPOSITE_ROWS_TOO_FEW fires on a
