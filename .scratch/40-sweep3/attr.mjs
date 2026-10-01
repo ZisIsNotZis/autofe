@@ -22,6 +22,19 @@ const minH = Number((args.find((a) => a.startsWith('--minh=')) || '').slice(7) |
 const only = (args.find((a) => a.startsWith('--only=')) || '').slice(7);
 const mirrors = args.filter((a) => a.startsWith('--mirror=')).map((a) => new RegExp(a.slice(9)));
 const assetPrefix = (args.find((a) => a.startsWith('--asset-prefix=')) || '').slice(15);
+// Round 41 additions (mirror of sspai's CDN, which answers 403 to a Referer-less fetch and
+// serves `format/webp` bytes under a `.png`/`.jpg` URL):
+//   --referer=<url>     send `Referer: <url>` on the mirror fetch
+//   --mirror-ext=<ext>  rewrite the mirrored file's extension (e.g. `.webp`), so the asset's
+//                       name matches the bytes actually stored
+const referer = (args.find((a) => a.startsWith('--referer=')) || '').slice(10);
+const mirrorExt = (args.find((a) => a.startsWith('--mirror-ext=')) || '').slice(13);
+//   --yband=<min>-<max>  keep only captured candidates whose bbox.y is inside the band. Needed when
+//                        the page's other candidate images sit in unrelated DOM regions (every method
+//                        below only ever sees the filtered set), so geometric (M4) attribution can be
+//                        scoped to one list instead of the whole page.
+const ybandArg = (args.find((a) => a.startsWith('--yband=')) || '').slice(8);
+const [bandMin, bandMax] = ybandArg ? ybandArg.split('-').map(Number) : [null, null];
 const [dir, modelPath] = args.filter((a) => !a.startsWith('--'));
 
 const norm = (s) => String(s ?? '')
@@ -38,7 +51,10 @@ function absolutize(u) {
   if (!s) return '';
   if (/^(data|blob):/i.test(s)) return '';
   if (/^[a-z][a-z0-9+.-]*:/i.test(s)) return s;
-  try { return new URL(s, meta.url).href; } catch { return ''; }
+  // Relative URLs resolve against the document's FINAL url, not the one that redirected to it
+  // (`sizes` -> `sizes/overview?tabs=…`): learn.microsoft's `media/x.png` only exists under the
+  // post-redirect path.
+  try { return new URL(s, meta.redirectedUrl || meta.url).href; } catch { return ''; }
 }
 const GENERIC = new Set(['cn', 'en', 'phones', 'phone', 'product', 'products', 'detail', 'html', 'htm', 'index', 'www', 'com', 'http', 'https']);
 function keysOf(u) {
@@ -122,6 +138,7 @@ const nodes = JSON.parse(fs.readFileSync(path.join(dir, 'nodes.json'), 'utf8'));
 const rows = JSON.parse(execFileSync('node', ['.scratch/38-images-sweep/imgattr.mjs', dir, String(minW), String(minH)], { encoding: 'utf8', maxBuffer: 1 << 28 }));
 const groups = new Map();
 for (const r of rows) {
+  if (bandMin != null && (r.y < bandMin || r.y > bandMax)) continue;
   const placeholder = !r.src || /^data:image\/gif/i.test(r.src);
   const url = absolutize(placeholder ? (r.dataSrc || r.src) : r.src);
   if (!url || /^data:/i.test(url)) continue;
@@ -204,7 +221,8 @@ for (const e of planMirrors) e.newImage.image0 = e.newImage.image;
 function tmpOf(dest) { return dest + '.part'; }
 function curlTo(url, dest) {
   return new Promise((res, rej) => {
-    const p = spawn('curl', ['-sSfL', '--max-time', '120', '-o', tmpOf(dest), url], { stdio: ['ignore', 'ignore', 'inherit'] });
+    const hdr = referer ? ['-H', `Referer: ${referer}`] : [];
+    const p = spawn('curl', ['-sSfL', '--max-time', '120', ...hdr, '-o', tmpOf(dest), url], { stdio: ['ignore', 'ignore', 'inherit'] });
     p.on('close', (code) => (code === 0 ? res() : rej(new Error(`curl exit ${code} for ${url}`))));
   });
 }
@@ -212,7 +230,8 @@ if (apply) {
   const jobs = [];
   for (const e of planMirrors) {
     if (!mirrors.some((re) => re.test(e.newImage.image))) continue;
-    const base = e.newImage.image.split('?')[0].split('/').pop();
+    let base = e.newImage.image.split('?')[0].split('/').pop();
+    if (mirrorExt) base = base.replace(/\.[a-z0-9]+$/i, '') + (mirrorExt.startsWith('.') ? mirrorExt : '.' + mirrorExt);
     const name = `${assetPrefix}${base}`;
     const dest = path.join(assetDir, name);
     e.newImage.image = `../assets/${name}`;
