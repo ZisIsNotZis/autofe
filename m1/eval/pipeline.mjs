@@ -5,7 +5,7 @@
 //   node m1/eval/pipeline.mjs --shots    追加全页截图 + 画廊重建 + 证据清单（需要 playwright，约 3 分钟）
 //   node m1/eval/pipeline.mjs --check-shots  仅断言截图（PNG）与当前 HTML 同源，不重渲染（快）
 //   node m1/eval/pipeline.mjs --only airbnb-com/room-28871,bilibili-com/home
-// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且七道门禁全过且截图与 HTML 同源）; 1 = 有失败项
+// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且九道门禁全过且截图与 HTML 同源）; 1 = 有失败项
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -180,7 +180,21 @@ if (!gSH.ok) console.log(gSH.out);
 const gIA = gate('node m1/eval/imgattr-selftest.mjs');
 console.log(`[pipeline] 归属工具自测(闭合标签): ${gIA.ok ? '通过' : '失败'}`);
 if (!gIA.ok) console.log(gIA.out);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok;
+// 9th gate (round 43): capture↔model integrity (F-078). Fidelity certifies MODEL→RENDER;
+// this certifies MODEL→CAPTURE, so a curator can no longer write a value the capture
+// never carried (the `aliyun-com/product-ecs` 1238/1385 price stayed at 1.00 because
+// the render agreed with the model). Every typed fact value must be traceable to
+// corpus/<page>/dom.html|nodes.json under the declared normalization; misses must be a
+// declared conversion/gap in capture-integrity-allow.json or the gate fails.
+const gCI = gate('node m1/eval/capture-integrity.mjs');
+console.log(`[pipeline] 采集↔模型一致性(F-078 · 第9道门禁): ${gCI.ok ? '通过' : '失败'}`);
+for (const l of gCI.out.split('\n')) if (l.includes('[采集↔模型一致性]')) console.log(`[pipeline] ${l.trim()}`);
+if (!gCI.ok) console.log(gCI.out);
+// 9th self-test suite: the capture-integrity gate itself must be able to fail (F-040).
+const gCIS = gate('node m1/eval/capture-integrity-selftest.mjs');
+console.log(`[pipeline] 采集一致性自测(F-078): ${gCIS.ok ? '通过' : '失败'}`);
+if (!gCIS.ok) console.log(gCIS.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';

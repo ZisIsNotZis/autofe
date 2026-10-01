@@ -75,7 +75,7 @@ function isRendered(hay, value) {
 // the metric caliber exists once. Each tag collapses to `<>` so tags still delimit
 // tokens for `isRendered` (adjacent text nodes stay separate).
 
-function suppressedNodes(model, ctxValues = {}) {
+export function suppressedNodes(model, ctxValues = {}) {
   const out = new Set();
   (function rec(n, chain) {
     if (out.has(n)) return;
@@ -92,14 +92,17 @@ function suppressedNodes(model, ctxValues = {}) {
 // no value type can silently fall out of the fidelity denominator (F-052: a
 // `{money}`/`{list}` under `_fields` used to be invisible). `_fields` keys are
 // disjoint from role keys in the corpus, so nothing is counted twice.
-function pushFact(out, path, value) {
+export function pushFact(out, path, value) {
   const t = valueTypeOf(value);
-  if (t === 'text' || t === 'date') out.push({ path, text: value[t] });
-  else if (t === 'money') out.push({ path, text: String(value.money) });
-  else if (t === 'num') out.push({ path, text: String(value.num) });
+  if (t === 'text' || t === 'date') out.push({ path, type: t, text: value[t] });
+  else if (t === 'money') out.push({ path, type: 'money', text: String(value.money) });
+  else if (t === 'num') out.push({ path, type: 'num', text: String(value.num) });
   else if (t === 'list') value.list.forEach((e, i) => pushFact(out, `${path}[${i}]`, e));
 }
-function factValues(model, dead) {
+// `type` is carried alongside each fragment so the capture-integrity gate
+// (`capture-integrity.mjs`, F-078) can pick the right matching rule (numbers vs
+// text vs date) without re-deriving the value type.
+export function factValues(model, dead) {
   const out = [];
   walk(model, (n, p) => {
     if (dead.has(n)) return;
