@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
 import { renderMarkdown } from '../render-md.mjs';
-import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName, hasValue, tableRowLabel, exposeRendersAsControl } from '../axis.mjs';
+import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName, hasValue, tableRowLabel, exposeRendersAsControl, refRendersAsFact } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
@@ -61,8 +61,8 @@ const SHARED_NAMES = [
   'ROLE_LABEL', 'roleLabel', 'NAME_COLUMN_LABEL', 'columnLabel', 'resolveRowLabel',
   // round 47: the declared-but-empty decision
   'hasValue', 'tableRowLabel',
-  // round 49: `_expose` is a control on a plain node, declared state on a composite (F-092)
-  'exposeRendersAsControl',
+  // round 49/50: a slot's ROLE (state|field|pointer, m1/composites.json) decides how its key renders
+  'exposeRendersAsControl', 'refRendersAsFact',
 ];
 for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
@@ -789,11 +789,9 @@ const primaryActionRows = (model) => {
     Boolean(mdLine) && /^\|\s*数据自互联网传入 Amazon EC2\s*\|\s*\|/.test(mdLine), JSON.stringify(mdLine ?? null));
 }
 
-// U. `_expose` dual meaning (round 49, F-092): on a PLAIN node it is the user's input slot (a
-// control); on a COMPOSITE node it is the state the composite declares to the page (referable
-// by `_when`/paths), never a widget — the composite's inputs are its schema `fields`. One shared
-// decision (`axis.exposeRendersAsControl`) is consumed by every target, so a composite's state
-// can never silently become a checkbox on the page.
+// U. `_expose` dual meaning (round 49 F-092, refined by round 50 ruling A — see V below): on a
+// PLAIN node it is the user's input slot (a control); on a COMPOSITE node its meaning is decided by
+// the schema SLOT it projects onto (`state` ⇒ declared output, never a widget; `field` ⇒ input).
 {
   const composite = { _intent: 'x', _composite: 'login', _expose: { name: 'signed-in', type: 'bool' },
     identifier: { _expose: { name: 'id', type: 'text' } }, secret: { _expose: { name: 'pw', type: 'secret' } }, submit: { _action: { verb: 'submit' } } };
@@ -816,6 +814,41 @@ const primaryActionRows = (model) => {
   const seen = (v) => nodePlan(gated.note, { chain: [gated], values: { 'signed-in': v }, depth: 2 }).visible;
   check('U4 the composite state is referable by `_when` (true⇒visible, false/undefined⇒hidden)',
     seen(true) === true && seen(false) === false && seen(undefined) === false, JSON.stringify([seen(true), seen(false), seen(undefined)]));
+}
+
+// V. a schema slot's ROLE decides how its key renders (round 50 ruling A, docs/m1/composites.md
+// §5.4/§9). Three roles, declared per slot in m1/composites.json: `state` (the composite's declared
+// output — an `_expose` is not a widget), `field` (input/surface — `_expose` renders a control,
+// plain-node semantics), `pointer` (structural — `_ref` is never drawn as a fact). This replaces
+// round 49's blanket "composite ⇒ state", which swallowed `search`'s query input whole. Driven by
+// the registry, so a role change moves all three targets at once (nodePlan consumes it).
+{
+  const search = { _intent: 'x', _key: 's', _composite: 'search', _label: { text: '搜索' }, _expose: { name: 'query', type: 'text' } };
+  const login = { _intent: 'x', _key: 'l', _composite: 'login', _expose: { name: 'signed-in', type: 'bool' },
+    identifier: { _expose: { name: 'id', type: 'text' } }, secret: { _expose: { name: 'pw', type: 'secret' } }, submit: { _action: { verb: 'submit' } } };
+  const pager = { _intent: 'x', _key: 'pg', _composite: 'paginator', _ref: { ref: '/results' },
+    _items: [{ _name: { text: '1' } }], results: { _intent: 'r', _key: 'results', _items: [{ _text: { text: 'row' } }] } };
+  const plainRef = { _intent: 'x', _key: 'pr', _title: { text: 't' }, _ref: { ref: 'key:s' } };
+
+  check('V0 slot role drives the decision: `field` ⇒ control, `state` ⇒ no control',
+    exposeRendersAsControl(search)?.name === 'query' && exposeRendersAsControl(login) === null,
+    JSON.stringify([exposeRendersAsControl(search)?.name ?? null, exposeRendersAsControl(login)]));
+  const ps = nodePlan(search, { chain: [], values: {}, depth: 1 });
+  check('V1 a `field` slot draws its input control (search query)',
+    ps.ok && ps.choice?.kind === 'input' && ps.choice.name === 'query', JSON.stringify(ps.choice && ps.choice.kind));
+  const htmlS = render(search);
+  check('V2 HTML draws the search input with the name as watermark (field slot)',
+    /<input type="text" name="query"/.test(htmlS) && /placeholder="搜索"/.test(htmlS), htmlS.slice(0, 200));
+  const htmlL = render(login);
+  check('V3 the composite state still draws no widget (login unchanged by the role rule)',
+    !htmlL.includes('type="checkbox"') && !htmlL.includes('expose-signed-in'), '');
+  const pp = nodePlan(pager, { chain: [], values: {}, depth: 1 });
+  check('V4 a `pointer` `_ref` is never drawn as a fact (no internal path on any target)',
+    refRendersAsFact(pager) === false && !pp.facts.list.some((f) => f.key === '_ref')
+    && !/class="ref"/.test(render(pager)) && !renderText(pager).includes('/results') && !renderMarkdown(pager).includes('/results'), '');
+  check('V5 a PLAIN node `_ref` is still a visible reference fact (existing behaviour intact)',
+    refRendersAsFact(plainRef) === true
+    && nodePlan(plainRef, { chain: [], values: {}, depth: 1 }).facts.list.some((f) => f.key === '_ref'), '');
 }
 
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);

@@ -307,6 +307,16 @@
 **渲染提示**：门禁块 = 字段组 + 提交 + 第三方入口行 + 注册入口；`secret` 渲染为密码控件。
 
 **`_expose` 的双重语义（轮 49 ≥5.4 补充，F-092）**：`submit` 槽只认 `verb:submit`——`operate` 是**通用动词**（执行某控件），放进 submit 动词集会让任意被 operate 的控件冒充提交动作；实测三张策展登录页的提交**全部**是 `verb:submit`，而 `operate` **全部**是额外登录方式（github 的 passkey、小米的扫码登录）。passkey/扫码/第三方入口是**命名子件**（各自带 `_action`），不是 submit 的替代形态。同理，`state` 槽的 `_expose` 写在**复合件节点**上：对**普通节点** `_expose` = 用户要填的**输入位**（渲染成控件）；对**复合件** `_expose` = 该复合件对外**声明的状态/输出**（可被 `_when`/路径引用），**不是输入位**（复合件的输入是它 schema 里的 `fields`）。所以登录块声明 `signed-in` 后，页面上**不会**多出一个 `signed-in` 复选框（若多出，就是语义错误）。这条区分由 `m1/axis.mjs#exposeRendersAsControl` 与三个目标共享。
+
+**槽位角色：由 schema 决定，不由"是不是复合件"决定（轮 50 裁定 A，取代轮 49 的宽规则）**：`_expose`／`_ref` 怎么渲染，取决于它所投影到的 **schema 槽位的角色**，而**不是**节点是不是复合件。轮 49 的宽规则（"复合件的 `_expose` 一律是 state"）**过粗**——它会把 `search` 的查询输入整个吞掉（实测：`<input type="text" name="query" placeholder="…">` 消失）。注册表 `m1/composites.json` 的每个槽位显式声明 `role`，三选一：
+
+| `role` | 含义 | 投影键的渲染 |
+|---|---|---|
+| `state` | 复合件的对外状态/输出 | 该 `_expose` **不画控件**（login 的 `signed-in`；仍可被 `_when`/路径引用） |
+| `field` | 用户输入/交互面 | 该 `_expose` **照旧画控件**（search 的 `query`；名称→水印启发式仍然适用） |
+| `pointer` | 结构指针 | 该 `_ref` **不作为事实渲染**（paginator 指向被分页集合；`/contribution-rates` 这类内部路径绝不印上屏） |
+
+落地：`m1/axis.mjs#exposeRendersAsControl` / `refRendersAsFact`（**注册表驱动**，`slotRoleOf(node,key)` 查槽位角色），由 `nodePlan` **三目标共同消费**；非复合节点的 `_ref` 照旧是可见事实（既有行为不变）。
 **证据**：**3 个策展页**真实含登录块——`github-com/login`（`login.identifier` + `login.secret` + submit + Google/Apple 第三方 + passkey + signup + forgot）、`stripe-dashboard/login`（email/password/remember-me）、`xiaomi-account/login`（account/password/agreement）`[A.2]`；**8 个 login 字段 `_expose`**`[A.4]`。抓取层 `type=password` support 层 8 页（组件文档 demo），真实登录页仅 `passport-baidu/login`（未策展，m4 §4.5 已记录）。相对 M4 提案"证据缺口"，本轮已有 **3 个策展页**（补样本已完成，C1 ≥3 站成立：github.com / stripe.com / xiaomi.com）。
 **反例**：只提供"登录/注册"入口动作的节点（`bilibili-com/video-bv1gj411x7h7` 的登录/注册对）**不是** `login`——没有 `secret`、没有 `signed-in` ⇒ 缺必需部件被拒绝；否则会制造**假门禁**，让下游条件被"未定义"污染。
 
@@ -661,3 +671,29 @@ COMPOSITES_DESIGN_DONE primitives=5 schema_fields=29 migration_pages=18 decision
 **校验器侧**：`table` 的 `E_COMPOSITE_FIELD_UNDECLARED` 对"声明字段里的空文本"**豁免类型检查**（空文本在 money/text 列里都合法），因为 `{"text": ""}` 是空格而不是 `money`/`text` 的值类型冲突。
 
 **门禁**：`m1/eval/axis-selftest.mjs` T0–T3b（`hasValue` 真值表、共享行判定、HTML 仍出跨列分组行、有真实值出普通数据行、text/Markdown 同判定）；已做证伪（临时让空文本算有值 ⇒ T0/T1/T2 失败，已撤销）。
+
+### 9.3 S4（轮 50）：`search` + `paginator` 首次迁移 + 槽位角色（裁定 A）
+
+**A. 槽位角色取代轮 49 宽规则（F-093）**
+- 注册表 5 类型 **30 个槽位**补 `role ∈ {state, field, pointer}`（语义澄清，非放宽；`login.state` = `state`，`search.query` = `field`，`paginator.ref` = `pointer`，其余交互面 = `field`）。
+- `m1/axis.mjs`：`slotRoleOf` + `exposeRendersAsControl`（复合件的 `_expose` 仅当槽位角色是 `field` 才画控件）+ `refRendersAsFact`（`pointer` 槽的 `_ref` 不入 `facts.list`），`nodePlan` 三目标共同消费。
+- **零影响**：42 页三目标（HTML 剥 `<style>` 后 body / text / Markdown）与 HEAD **逐字节一致**；3 张 login 页仍**不**出现 `signed-in` 控件。
+- **门禁**：`axis-selftest.mjs` 129 → **135** 条（V0 `field`⇒控件 / `state`⇒无控件；V1 输入计划；V2 HTML 名称作水印；V3 login 不变；V4 `pointer` 不印内部路径（三目标）；V5 非复合节点 `_ref` 照旧渲染）。**反向证伪**：把 `search.query` 临时标成 `state` ⇒ V0/V1/V2 失败（已撤销，135 全过）。
+
+**B. `W_COMPOSITE_NAME_ONLY_WATERMARK`（§6.4 S4①）**
+- `validate.mjs` 实现该**已定义**警告：复合件声明了名称却无默认值 ⇒ 引擎回退把名称当框内水印（§5.1 `render: "watermark-fallback"`）。**注册表 marker 驱动**，非硬编码类型名；不阻断退出码。
+- `composite-selftest.mjs` 24 → **26**（必须告警：search 有名称无 `_default`；必须不告警：给了 `_default`）。
+
+**C. 迁移结果（部分迁移，逐页有据）**
+
+| 页 | 类型 | 结果 |
+|---|---|---|
+| `bilibili-com/home.search` | `search` | ✅ 迁移；schema `ok`；三目标逐字节不变；出 1 条 `W_COMPOSITE_NAME_ONLY_WATERMARK` |
+| `bilibili-com/read-home.search` | `search` | ✅ 同上 |
+| `huawei-cn/search-laptop.results.pagination` | `paginator` | ✅ 迁移（`_ref: /results`）；schema `ok`；三目标逐字节不变 |
+| `huawei-cn/search-phone.results.pagination` | `paginator` | ✅ 同上 |
+| `taobao-com/home._lines[0]`（搜索位） | `search` | ❌ **不迁移**：缺必需槽 `name`（源站把热搜占位文案放在 `_summary`，**没有** `_label`）；补 `_label` 会新增可见标签/水印 ⇒ 渲染变更。实测报 `E_COMPOSITE_MISSING_REQUIRED`（并附 `E_COMPOSITE_NOT_ALLOWED`：该实例的 `_items` 无槽） |
+| `gov-uk/ni-rates-letters.pagination` | `paginator` | ❌ **不迁移**：`ref` 必需槽——它是**页面级 Next**（多页指南），本页没有代表"被分页页面序列"的集合节点；`_ref:{ref:"/"}` 实测 `E_COMPOSITE_REF_UNRESOLVED`（`ref /: empty`），唯一能解析的路径是页内表格（`/employee-rates` 等）但那不是被翻页对象 ⇒ 缺必需槽，不迁移 |
+
+**用户问的"缺少必要的部件"实拍**：`search` 首次遇到真实语料即抓到 1 页缺 `name`；`paginator` 首次遇到即抓到 3 页缺可解析的 `_ref`（其中 2 页补上真实集合后通过，1 页无对象可指）。这正是 schema 相对"引擎按形状猜"的价值：**类型不全 = 报错**，而不是静默渲染成半个搜索框。
+

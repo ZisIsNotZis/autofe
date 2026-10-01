@@ -269,6 +269,16 @@ export function validate(model) {
     for (const group of schema.requireOneOf ?? []) {
       if (!group.some((s) => presence[s])) err(ip, `composite "${type}" requires at least one of: ${group.join(', ')}`, CCODE.MISSING);
     }
+    // W_COMPOSITE_NAME_ONLY_WATERMARK (round 50, S4; docs §3.3 / §6.4 S4①): a composite that
+    // declares its NAME but no default value falls back to the engine watermarking the name
+    // inside the box (§5.1 `render: watermark-fallback`). Structurally legal — it warns, never
+    // blocks. Driven by the registry's own `render` marker, not a hardcoded type name.
+    const nameSlot = Object.entries(fields).find(([, f]) => f.key === '_label');
+    for (const [slot, f] of Object.entries(fields)) {
+      if (f.render !== 'watermark-fallback' || presence[slot]) continue;
+      if (!nameSlot || !presence[nameSlot[0]]) continue;
+      warn(ip, `composite "${type}" declares its name but no "${slot}" value — the engine falls back to watermarking the name in the box (schema m1/composites.json#${type}.fields.${slot})`, 'W_COMPOSITE_NAME_ONLY_WATERMARK');
+    }
     if (type === 'table') {
       const rows = Array.isArray(inst._items) ? inst._items.filter((r) => r && typeof r === 'object') : [];
       const withF = rows.filter((r) => r._fields);

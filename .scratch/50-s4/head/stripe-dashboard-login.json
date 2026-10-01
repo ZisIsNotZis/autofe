@@ -1,0 +1,111 @@
+{
+  "_intent": "让商家登录 Stripe 管理平台（Dashboard）",
+  "_title": {
+    "text": "Stripe 登录"
+  },
+  "login": {
+    "_intent": "登录块：邮箱标识符 + 密码 + 记忆 + 提交；并提供 Google / 通行密钥 / SSO 与创建账户入口",
+    "_composite": "login",
+    "_expose": {
+      "name": "signed-in",
+      "type": "bool"
+    },
+    "_title": {
+      "text": "登录您的账户"
+    },
+    "identifier": {
+      "_intent": "邮箱标识符输入",
+      "_label": {
+        "text": "邮件地址"
+      },
+      "_expose": {
+        "name": "email",
+        "type": "text"
+      }
+    },
+    "secret": {
+      "_intent": "密码输入",
+      "_label": {
+        "text": "密码"
+      },
+      "_expose": {
+        "name": "password",
+        "type": "secret"
+      }
+    },
+    "remember": {
+      "_intent": "在此设备上记住登录",
+      "_label": {
+        "text": "在此设备上记住我"
+      },
+      "_expose": {
+        "name": "remember-me",
+        "type": "bool"
+      }
+    },
+    "submit": {
+      "_intent": "提交凭据登录管理平台",
+      "_title": {
+        "text": "登录"
+      },
+      "_action": {
+        "verb": "submit",
+        "label": "登录"
+      }
+    },
+    "forgot": {
+      "_intent": "找回忘记的密码",
+      "_title": {
+        "text": "忘记密码？"
+      },
+      "_action": {
+        "verb": "navigate",
+        "to": "https://dashboard.stripe.com/reset",
+        "label": "忘记密码？"
+      }
+    },
+    "alternatives": {
+      "_intent": "其他登录方式：Google、通行密钥、SSO",
+      "_items": [
+        {
+          "_name": {
+            "text": "Google"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Google"
+          }
+        },
+        {
+          "_name": {
+            "text": "通行密钥"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "通行密钥"
+          }
+        },
+        {
+          "_name": {
+            "text": "SSO"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "SSO"
+          }
+        }
+      ]
+    },
+    "signup": {
+      "_intent": "没有账户时创建账户",
+      "_title": {
+        "text": "创建账户"
+      },
+      "_action": {
+        "verb": "navigate",
+        "to": "https://dashboard.stripe.com/register",
+        "label": "创建账户"
+      }
+    }
+  }
+}

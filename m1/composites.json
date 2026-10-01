@@ -1,15 +1,15 @@
 {
- "$comment": "Composite TYPE registry (docs/m1/composites.md §2). CLOSED: an instance's `_composite` value must be a key under `composites`; there is no second enum. Adding/removing a type is a GRAMMAR+VOCABULARY change (axioms §0): failure log -> review first. `fields` keys are schema slots (semantic); `key` is the existing syntax key the slot projects onto ('<expose>' = a node carrying _expose, '<child>' = any named child). Descriptors: required / type (closed value type) / action{verbs,cardinality} / expose{name,type,multiple} / allowed / addressable (default true) / min,max / sensitive / derived / render. The validator (m1/validate.mjs) projects an instance onto these and emits E_COMPOSITE_* codes. Round 49: `login.submit` accepts only verb:submit (was {submit,operate}) — take that as the slot's definition, not just a migration convenience.",
+ "$comment": "Composite TYPE registry (docs/m1/composites.md §2). CLOSED: an instance's `_composite` value must be a key under `composites`; there is no second enum. Adding/removing a type is a GRAMMAR+VOCABULARY change (axioms §0): failure log -> review first. `fields` keys are schema slots (semantic); `key` is the existing syntax key the slot projects onto ('<expose>' = a node carrying _expose, '<child>' = any named child). Descriptors: required / type (closed value type) / action{verbs,cardinality} / expose{name,type,multiple} / allowed / addressable (default true) / min,max / sensitive / derived / render. The validator (m1/validate.mjs) projects an instance onto these and emits E_COMPOSITE_* codes. Round 49: `login.submit` accepts only verb:submit (was {submit,operate}) — take that as the slot's definition, not just a migration convenience. Round 50 (ruling A): every slot carries `role` = state|field|pointer — the slot's ROLE decides how its projected key renders, NOT whether the node is a composite: `state` (the composite's declared output — an `_expose` is not a widget), `field` (an input/surface slot — `_expose` renders as a control, existing semantics), `pointer` (a structural pointer to another node — `_ref` is never drawn as a fact). Consumed by m1/axis.mjs (exposeRendersAsControl / refRendersAsFact) and shared by all three targets. This replaces the round-49 blanket \"composite ⇒ _expose is state\" rule and the earlier descriptive role:name/value marker.",
  "version": "0",
  "composites": {
   "search": {
    "intent": "一个检索框：有名称、可选默认值，向页面引入查询状态",
    "fields": {
-    "name": { "key": "_label", "required": true, "type": "text", "role": "name", "note": "可访问名称；源站没有可见名称时用闭式词表兜底（D-3）" },
-    "default": { "key": "_default", "required": false, "type": "text", "role": "value", "render": "watermark-fallback" },
-    "query": { "key": "<expose>", "required": true, "expose": { "name": "*", "type": "text" }, "addressable": true },
-    "scope": { "key": "<child>", "required": false, "shape": "expose-collection" },
-    "submit": { "key": "_action", "required": false, "action": { "verbs": ["submit", "navigate", "open"] } }
+    "name": { "key": "_label", "role": "field", "required": true, "type": "text", "note": "可访问名称；源站没有可见名称时用闭式词表兜底（D-3）" },
+    "default": { "key": "_default", "role": "field", "required": false, "type": "text", "render": "watermark-fallback" },
+    "query": { "key": "<expose>", "role": "field", "required": true, "expose": { "name": "*", "type": "text" }, "addressable": true },
+    "scope": { "key": "<child>", "role": "field", "required": false, "shape": "expose-collection" },
+    "submit": { "key": "_action", "role": "field", "required": false, "action": { "verbs": ["submit", "navigate", "open"] } }
    },
    "forbid": ["_composite"],
    "render": { "watermarkFromName": true }
@@ -17,11 +17,11 @@
   "form": {
    "intent": "多字段面板：≥2 个输入字段，一次提交一起上行",
    "fields": {
-    "fields": { "key": "<expose>", "required": true, "min": 2, "note": "实例自己的 _expose 字段集合（不含嵌套复合件）" },
-    "submit": { "key": "_action", "required": true, "action": { "verbs": ["submit", "operate", "select"], "cardinality": 1 } },
-    "name": { "key": "_label", "required": false, "type": "text" },
-    "reset": { "key": "<child>", "required": false, "shape": "action", "action": { "verbs": ["select", "operate", "toggle", "navigate", "open", "submit"] } },
-    "state": { "derived": "union(_expose.name)", "required": true, "note": "字段暴露的并集；不新增值类型" }
+    "fields": { "key": "<expose>", "role": "field", "required": true, "min": 2, "note": "实例自己的 _expose 字段集合（不含嵌套复合件）" },
+    "submit": { "key": "_action", "role": "field", "required": true, "action": { "verbs": ["submit", "operate", "select"], "cardinality": 1 } },
+    "name": { "key": "_label", "role": "field", "required": false, "type": "text" },
+    "reset": { "key": "<child>", "role": "field", "required": false, "shape": "action", "action": { "verbs": ["select", "operate", "toggle", "navigate", "open", "submit"] } },
+    "state": { "role": "state", "derived": "union(_expose.name)", "required": true, "note": "字段暴露的并集；不新增值类型" }
    },
    "forbid": ["_composite"],
    "render": { "group": "fieldset" }
@@ -29,12 +29,12 @@
   "table": {
    "intent": "声明字段的数据表：行集合 + 逐行完全一致的字段键集",
    "fields": {
-    "rows": { "key": "_items", "required": true },
-    "columns": { "key": "_fields", "required": true, "allowed": "@vocab-fields", "consistent": true, "note": "列 = 每行 _fields 的键；键集必须完全一致" },
-    "identity": { "key": "_name", "required": false, "type": "text", "note": "身份列；行有名字时使用 _name/_title" },
-    "selection": { "key": "_expose", "required": false, "expose": { "type": ["ref", "list"] } },
-    "empty": { "key": "_empty", "required": false },
-    "row-actions": { "key": "<child>", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open", "submit", "select", "operate", "toggle"] } }
+    "rows": { "key": "_items", "role": "field", "required": true },
+    "columns": { "key": "_fields", "role": "field", "required": true, "allowed": "@vocab-fields", "consistent": true, "note": "列 = 每行 _fields 的键；键集必须完全一致" },
+    "identity": { "key": "_name", "role": "field", "required": false, "type": "text", "note": "身份列；行有名字时使用 _name/_title" },
+    "selection": { "key": "_expose", "role": "field", "required": false, "expose": { "type": ["ref", "list"] } },
+    "empty": { "key": "_empty", "role": "field", "required": false },
+    "row-actions": { "key": "<child>", "role": "field", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open", "submit", "select", "operate", "toggle"] } }
    },
    "forbid": ["_composite"],
    "render": { "columnsFromFields": true }
@@ -42,14 +42,14 @@
   "login": {
    "intent": "门禁块：账号位 + 密码位 + 提交 + signed-in 状态",
    "fields": {
-    "identifier": { "key": "<expose>", "required": true, "expose": { "type": "text" }, "addressable": true },
-    "secret": { "key": "<expose>", "required": true, "expose": { "type": "secret" }, "sensitive": true, "addressable": true, "note": "密码位的值类型是封闭值类型 secret（轮 46 语法；三张策展登录页实测均用 _expose{type:secret}）" },
-    "submit": { "key": "_action", "required": true, "action": { "verbs": ["submit"], "cardinality": 1 }, "note": "唯一提交动作；只认 verb:submit（轮 49 裁定 A）。passkey/扫码/第三方入口是额外登录方式，作为命名子件各自带 _action，不是 submit 的替代形态——operate 是通用动词，放进 submit 槽会让任意被 operate 的控件冒充提交" },
-    "state": { "key": "_expose", "required": true, "expose": { "name": "signed-in", "type": "bool" }, "note": "唯一对外状态（名字固定）" },
-    "alternatives": { "key": "<child>", "required": false, "shape": "collection" },
-    "signup": { "key": "<child>", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open"] } },
-    "forgot": { "key": "<child>", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open"] } },
-    "remember": { "key": "<child>", "required": false, "expose": { "type": "bool" } }
+    "identifier": { "key": "<expose>", "role": "field", "required": true, "expose": { "type": "text" }, "addressable": true },
+    "secret": { "key": "<expose>", "role": "field", "required": true, "expose": { "type": "secret" }, "sensitive": true, "addressable": true, "note": "密码位的值类型是封闭值类型 secret（轮 46 语法；三张策展登录页实测均用 _expose{type:secret}）" },
+    "submit": { "key": "_action", "role": "field", "required": true, "action": { "verbs": ["submit"], "cardinality": 1 }, "note": "唯一提交动作；只认 verb:submit（轮 49 裁定 A）。passkey/扫码/第三方入口是额外登录方式，作为命名子件各自带 _action，不是 submit 的替代形态——operate 是通用动词，放进 submit 槽会让任意被 operate 的控件冒充提交" },
+    "state": { "key": "_expose", "role": "state", "required": true, "expose": { "name": "signed-in", "type": "bool" }, "note": "唯一对外状态（名字固定）" },
+    "alternatives": { "key": "<child>", "role": "field", "required": false, "shape": "collection" },
+    "signup": { "key": "<child>", "role": "field", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open"] } },
+    "forgot": { "key": "<child>", "role": "field", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open"] } },
+    "remember": { "key": "<child>", "role": "field", "required": false, "expose": { "type": "bool" } }
    },
    "forbid": ["_composite"],
    "render": { "secretControl": true }
@@ -57,11 +57,11 @@
   "paginator": {
    "intent": "分页/继续：指向被分页集合的 _ref + 页目标或「加载更多」",
    "fields": {
-    "ref": { "key": "_ref", "required": true, "addressable": false },
-    "items": { "key": "_items", "required": false },
-    "more": { "key": "<child>", "required": false, "shape": "action", "action": { "verbs": ["submit", "operate"] } },
-    "page": { "key": "_expose", "required": false, "expose": { "name": "page", "type": "text" } },
-    "count": { "key": "_count", "required": false, "type": "num" }
+    "ref": { "key": "_ref", "role": "pointer", "required": true, "addressable": false },
+    "items": { "key": "_items", "role": "field", "required": false },
+    "more": { "key": "<child>", "role": "field", "required": false, "shape": "action", "action": { "verbs": ["submit", "operate"] } },
+    "page": { "key": "_expose", "role": "field", "required": false, "expose": { "name": "page", "type": "text" } },
+    "count": { "key": "_count", "role": "field", "required": false, "type": "num" }
    },
    "requireOneOf": [["items", "more"]],
    "forbid": ["_composite"],

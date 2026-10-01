@@ -18,7 +18,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  childrenOf, factsOf, resolveWithParent, isRoleKey, parseExpr, evalExpr, scopeFor, exposeOf, valueTypeOf, FIELDS,
+  childrenOf, factsOf, resolveWithParent, isRoleKey, parseExpr, evalExpr, scopeFor, exposeOf, valueTypeOf, FIELDS, COMPOSITES,
 } from './model-lib.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -594,14 +594,44 @@ export function resolveRowLabel(items, key) {
   return compareRowLabel(items, key) ?? (roleLabel(key) || FIELDS[key]?.label || '');
 }
 
-// Round 49 (F-092): what `_expose` MEANS depends on the node type, and the render target is
-// the wrong place to decide it. A plain node's `_expose` is a user input slot → a control.
-// A composite node's `_expose` is the state the composite declares to the page (referable by
-// `_when`/paths, gated by the schema's `state` slot) → NOT a widget; the composite's inputs
-// are its schema `fields`. Returns the exposure object when it should render as a control,
-// else null. Shared so HTML/text/Markdown cannot disagree.
+// Round 49 (F-092) / round 50 (ruling A): what a slot's key MEANS depends on the SLOT's role,
+// and the render target is the wrong place to decide it. The role is declared per slot in
+// m1/composites.json: `state` = the composite's declared output (login's `signed-in`) → its
+// `_expose` is NOT a widget; `field` = an input/surface slot (search's `query`) → its `_expose`
+// renders as a control, exactly like a plain node's; `pointer` = a structural pointer (see
+// refRendersAsFact). Round 49's blanket "a composite's `_expose` is state" was too coarse: it
+// swallowed search's query input. One implementation; every target consumes it (nodePlan).
+// Returns the exposure object when it should render as a control, else null.
+const slotExposureMatches = (e, d) => {
+  if (!e || !d) return false;
+  if (typeof d.name === 'string' && d.name !== '*' && e.name !== d.name) return false;
+  if (d.type) { const ts = Array.isArray(d.type) ? d.type : [d.type]; if (!ts.includes(e.type)) return false; }
+  return true;
+};
+// The role of the schema slot a node's `key` projects onto, or null (plain node / no such slot).
+function slotRoleOf(node, key) {
+  const type = node?._composite;
+  const schema = typeof type === 'string' ? (COMPOSITES.composites ?? {})[type] : null;
+  if (!schema) return null;
+  const exp = key === '_expose' ? exposeOf(node) : null;
+  for (const f of Object.values(schema.fields ?? {})) {
+    if (key === '_expose' ? (f.key !== '_expose' && f.key !== '<expose>') : f.key !== key) continue;
+    if (exp && f.expose && !slotExposureMatches(exp, f.expose)) continue;
+    if (f.role) return f.role;
+  }
+  return null;
+}
 export function exposeRendersAsControl(node) {
-  return node && node._composite === undefined ? exposeOf(node) : null;
+  if (!node) return null;
+  if (node._composite === undefined) return exposeOf(node);   // plain node: unchanged
+  return slotRoleOf(node, '_expose') === 'field' ? exposeOf(node) : null;
+}
+// A `_ref` is a visible reference fact on a plain node (unchanged). On a paginator it is a
+// POINTER at the paged collection → never drawn: printing `/contribution-rates` (or its
+// `#-path` anchor) would put an internal path on the page. Shared by all three targets.
+export function refRendersAsFact(node) {
+  if (!node || node._ref === undefined || node._composite === undefined) return true;
+  return slotRoleOf(node, '_ref') !== 'pointer';
 }
 
 // The whole node plan. `ctx`: { chain, values, hidden (Set of already-hidden fact keys),
@@ -632,6 +662,7 @@ export function nodePlan(node, ctx = {}) {
   for (const f of factsOf(node)) {
     if (hid.has(f.key)) continue;                                   // already shown (e.g. hero/primary)
     if (f.key === headingKey) continue;                             // the heading carries it
+    if (f.key === '_ref' && !refRendersAsFact(node)) continue;      // a pointer slot is never drawn
     if (controlExp && (f.key === '_label' || f.key === '_summary')) continue;  // legend/hint, not body
     if (f.key === '_brand' && depth === 0) continue;                // the site header carries the brand
     if (f.key === '_image' && depth === 0) { facts.hero = f.value; continue; }  // edge-to-edge hero (F-031-§7)

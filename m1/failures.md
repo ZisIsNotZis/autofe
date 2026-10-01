@@ -718,3 +718,18 @@
   - **裁定 A**：`_expose` 语义按**节点类型**区分——普通节点 = 用户输入位（画控件）；**复合件** = 对外声明的状态/输出（**不画控件**，可被 `_when`/路径引用；复合件的输入是其 schema `fields`）。落地为 `m1/axis.mjs#exposeRendersAsControl`，由 `nodePlan.choice` **三目标共同消费**（不在 render.mjs 打补丁）。
   - **授权范围**：本轮特批改 `m1/axis.mjs` + 三个渲染器，**仅限这一条规则**。对既有 42 页**零影响**（全库 0 个节点同时带 `_composite`+`_expose`）。
   - **门禁**：`axis-selftest.mjs` U0–U4（复合件 `_expose` 不画控件 / 普通节点同构仍画控件 / 三目标一致 / 状态可被 `_when` 引用）；**已证伪**（临时反转 `exposeRendersAsControl` ⇒ U0/U1/U3 失败，撤销后 129 条全过）。
+
+## F-093 复合元语 S4：`search`/`paginator` 迁移 + 槽位角色取代轮 49 宽规则（轮 50）
+
+- **裁定 A（父代理）**：`_expose`/`_ref` 的渲染由 **schema 槽位角色**决定，不由"节点是不是复合件"决定。注册表每个槽位补 `role ∈ {state, field, pointer}`（**语义澄清**，非放宽）：`state`（对外状态/输出 ⇒ `_expose` 不画控件）、`field`（用户输入 ⇒ `_expose` 照旧画控件 + 名称→水印）、`pointer`（结构指针 ⇒ `_ref` 不作为事实渲染）。
+  - **为什么**：轮 49 的宽规则（`axis.exposeRendersAsControl` = "复合件的 `_expose` 一律是 state"）**过粗**——`search` 的 `query` 正是节点自身的 `_expose`，加 `_composite:"search"` 后**输入框整个消失**（before `<input type="text" name="query" placeholder="磊哥游戏">`；after 只剩 `<div class="fact">磊哥游戏</div>`）。同一冲突族也在 `paginator` 上出现：`_ref` 是角色事实，补上会把内部集合路径印上屏（`<a class="ref" href="#-contribution-rates">/contribution-rates</a>`）。
+  - **落地**：`m1/axis.mjs` 新增 `slotRoleOf` + `exposeRendersAsControl`（复合件 `_expose` 仅当槽位角色为 `field` 才画控件）+ `refRendersAsFact`（`pointer` 槽的 `_ref` 不入 `facts.list`）；`nodePlan` 三目标共同消费。`m1/composites.json` 30 个槽位补 `role`。**注册表描述符 `role` 的语义被澄清**：原 `role:"name"/"value"`（§2.2 描述符，无消费者）被渲染角色取代（`key` 已足以定位名称槽）。
+  - **授权范围**：`m1/axis.mjs` + `m1/composites.json` + 三渲染器消费点，**仅限**这条 role 判定。
+  - **零影响**：42 页三目标（HTML 剥 `<style>` 后 body / text / Markdown）与 HEAD **逐字节一致**；3 张 login 页仍不出现 `signed-in` 控件。
+  - **门禁**：`axis-selftest.mjs` 129 → **135**；**反向证伪**：临时把 `search.query.role` 标成 `state` ⇒ V0/V1/V2 失败（已撤销）。
+- **`W_COMPOSITE_NAME_ONLY_WATERMARK`（§6.4 S4①，已定义警告）**：`validate.mjs` 实现——复合件声明名称但无默认值 ⇒ 名称回退作水印。**注册表 `render:"watermark-fallback"` 驱动**（非硬编码类型名）；警告不阻断。`composite-selftest.mjs` 24 → **26**（双向：有名称无 `_default` ⇒ 告警；给了 `_default` ⇒ 静默）。
+- **迁移（部分）**：`bilibili-com/home.search`、`bilibili-com/read-home.search` 升 `_composite:"search"`（各出 1 条水印警告）；`huawei-cn/search-laptop|search-phone.results.pagination` 升 `_composite:"paginator"` + `_ref:{ref:"/results"}`。四页 schema `ok`、三目标逐字节不变。
+- **F-093.a（不迁移，schema 抓到缺件）**：
+  - `taobao-com/home._lines[0]`（搜索位）缺必需槽 `name`：源站把热搜占位文案放在 `_summary`、**没有** `_label`（§5.1 `[A.6]` 已记载）。补 `_label` 会新增可见标签/水印 = 渲染变更 ⇒ **不迁移**。实测 `E_COMPOSITE_MISSING_REQUIRED`（附 `E_COMPOSITE_NOT_ALLOWED`：该实例的 `_items` 无槽）。
+  - `gov-uk/ni-rates-letters.pagination` 缺可解析的必需槽 `ref`：它是**页面级 Next**（多页指南），本页没有代表"被分页页面序列"的集合节点。`_ref:{ref:"/"}` 实测 `E_COMPOSITE_REF_UNRESOLVED`（`ref /: empty`）；唯一能解析的路径是页内表格（`/employee-rates` 等），但那不是被翻页对象 ⇒ **不迁移**（如实，不编造目标）。
+- **影响面**：`m1/composites.json`、`m1/axis.mjs`、`m1/validate.mjs`、`m1/eval/axis-selftest.mjs`、`m1/eval/composite-selftest.mjs`、`m1/curated/{bilibili-com/home,bilibili-com/read-home,huawei-cn/search-laptop,huawei-cn/search-phone}.json`、`docs/m1/composites.md`。未改渲染器文件（role 判定的消费点在 `axis.mjs#nodePlan`）；未 git 提交。

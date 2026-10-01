@@ -1,5 +1,6 @@
 // Composite-metaphor self-test (round 47, docs/m1/composites.md §2/§3/§4;
-// round 49 adds the warning channel + the "whole _fields block missing" refusal, F-091).
+// round 49 adds the warning channel + the "whole _fields block missing" refusal, F-091;
+// round 50 adds W_COMPOSITE_NAME_ONLY_WATERMARK, §6.4 S4①).
 // A gate that can never fail is not a gate (F-040): this pins the validator's composite
 // behaviour — unknown type / missing required part / nesting / undeclared field slot /
 // cardinality / table row consistency / unresolved path references — with inline fixtures,
@@ -40,9 +41,13 @@ const ACCEPT = [
 // structurally legal single-row table; a multi-row table must stay silent (both directions).
 const WARN = [
   ['single-row table emits W_COMPOSITE_ROWS_TOO_FEW', { _intent: 'x', _composite: 'table', _title: { text: 't' }, _items: [{ _fields: { 'first-name': { text: 'A' }, 'last-name': { text: 'B' } } }] }, 'W_COMPOSITE_ROWS_TOO_FEW'],
+  // Round 50: a search with a name but no default value = the name-only watermark fallback (§6.4 S4①).
+  ['search with a name but no _default emits W_COMPOSITE_NAME_ONLY_WATERMARK', { _intent: 'x', _composite: 'search', _label: { text: '搜索' }, query: { _expose: { name: 'q', type: 'text' } } }, 'W_COMPOSITE_NAME_ONLY_WATERMARK'],
 ];
 const NOWARN = [
   ['two-row table emits no W_COMPOSITE_ROWS_TOO_FEW', { _intent: 'x', _composite: 'table', _title: { text: 't' }, _items: [{ _fields: { 'first-name': { text: 'A' }, 'last-name': { text: 'B' } } }, { _fields: { 'first-name': { text: 'C' }, 'last-name': { text: 'D' } } }] }, 'W_COMPOSITE_ROWS_TOO_FEW'],
+  // Round 50: supplying the default silences the watermark warning (both directions pinned).
+  ['search with a _default emits no W_COMPOSITE_NAME_ONLY_WATERMARK', { _intent: 'x', _composite: 'search', _label: { text: '搜索' }, _default: { text: '搜索关键词' }, query: { _expose: { name: 'q', type: 'text' } } }, 'W_COMPOSITE_NAME_ONLY_WATERMARK'],
 ];
 
 let bad = 0;
