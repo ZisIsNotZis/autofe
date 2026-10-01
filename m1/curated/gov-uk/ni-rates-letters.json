@@ -28,6 +28,7 @@
     }
   },
   "employee-rates": {
+    "_composite": "table",
     "_intent": "雇员 Class 1 缴款率表：每行一个类别字母，列为三段周收入区间（受雇方各段费率）",
     "_title": {
       "text": "Employee National Insurance rates"
@@ -298,6 +299,7 @@
     ]
   },
   "employer-rates": {
+    "_composite": "table",
     "_intent": "雇主 Class 1 缴款率表：每行一个类别字母，列为三段周收入区间（雇主方各段费率）",
     "_title": {
       "text": "Employer National Insurance rates"

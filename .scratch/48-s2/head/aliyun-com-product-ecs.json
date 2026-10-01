@@ -1,0 +1,219 @@
+{
+  "_intent": "让企业用户理解云服务器 ECS 的价值，按规模选到合适实例，并开始试用或购买",
+  "_key": "aliyun-ecs",
+  "_title": {
+    "text": "安全可靠的云服务器 ECS"
+  },
+  "_summary": {
+    "text": "随时获取更强劲、更灵活、更低成本的澎湃算力。"
+  },
+  "_brand": {
+    "text": "阿里云"
+  },
+  "_action": {
+    "verb": "buy",
+    "to": "https://www.aliyun.com/product/ecs/buy",
+    "label": "立即购买"
+  },
+  "values": {
+    "_intent": "四个价值支柱并排：稳定性、性能、安全、成本",
+    "_items": [
+      {
+        "_name": {
+          "text": "高稳定性"
+        },
+        "_detail": {
+          "text": "单实例 SLA 达 99.975%，多可用区多实例 SLA 达 99.995%，云盘可靠性达 99.9999999%，宕机自动迁移。"
+        }
+      },
+      {
+        "_name": {
+          "text": "极致性能"
+        },
+        "_detail": {
+          "text": "支持分钟级别创建万台实例，满足突发需求的弹性扩容。"
+        }
+      },
+      {
+        "_name": {
+          "text": "安全可靠"
+        },
+        "_detail": {
+          "text": "DDoS 防护、操作系统漏洞检测、木马查杀，多方国际安全认证。"
+        }
+      },
+      {
+        "_name": {
+          "text": "高性价比"
+        },
+        "_detail": {
+          "text": "多种弹性付费方式，有效降低企业 IT 成本。"
+        }
+      }
+    ]
+  },
+  "scale": {
+    "_intent": "全球基础设施规模",
+    "_fields": {
+      "regions": {
+        "num": 29,
+        "unit": "地域"
+      },
+      "zones": {
+        "num": 90,
+        "unit": "可用区"
+      }
+    },
+    "_summary": {
+      "text": "已为全球 500 万客户提供算力服务。"
+    }
+  },
+  "instances": {
+    "_intent": "按团队规模选实例：从个人开发者到中大型企业。四个实例是同一类实体（规格 + 价格），抓取得 `实例 : N核NG` 规格行（e=2核2G / u2a=2核4G / c9i=4核8G / g9i=2核8G），故声明 `_rel.compare` 让规格成为可对照行（列=实例，行=规格）；域字段 cpu/memory 见 `vocab-fields.json`（父代理裁定·轮 7）。g9i 列的系统价空缺非漏采：源站该卡无金额（见该条 `_intent`）。价格只留结构化 `_price` 一处（轮 37b）：源站每卡只有一处价格（DOM 里 `￥xx/1年…` + 官网折扣价两行），本模型原先在 `_summary` 里又印了一遍同额价格，已删；`_price` 的金额按 `corpus/aliyun-com/product-ecs/nodes.json` 逐卡核准（此前 u2a/c9i 的 1238/1385 在该 corpus 中查无此数）。源站价格原文：e=`￥99.00/1年起`+`官网折扣价: ¥1009.19/1年`；u2a=`￥1438.68/1年`+`官网折扣价: ¥1438.68/1年`；c9i=`￥3459.90/1年`+`官网折扣价: ¥3459.90/1年`（y=693/725 行，x 293/765/1237）。源站的 `购买时长 : 1年` 与「官网折扣价」行本模型未建模（`_price` 只有 money+currency，无周期字段），故不写入。",
+    "_rel": {
+      "compare": true
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "e实例"
+        },
+        "_fields": {
+          "cpu": {
+            "num": 2,
+            "unit": "核"
+          },
+          "memory": {
+            "num": 2,
+            "unit": "GB"
+          }
+        },
+        "_summary": {
+          "text": "个人开发者必选"
+        },
+        "_action": {
+          "verb": "buy",
+          "to": "https://www.aliyun.com/product/ecs/buy?spec=e",
+          "label": "立即购买"
+        },
+        "_price": {
+          "money": 99,
+          "currency": "CNY"
+        }
+      },
+      {
+        "_name": {
+          "text": "u2a实例"
+        },
+        "_fields": {
+          "cpu": {
+            "num": 2,
+            "unit": "核"
+          },
+          "memory": {
+            "num": 4,
+            "unit": "GB"
+          }
+        },
+        "_summary": {
+          "text": "初创企业优选"
+        },
+        "_action": {
+          "verb": "buy",
+          "to": "https://www.aliyun.com/product/ecs/buy?spec=u2a",
+          "label": "立即购买"
+        },
+        "_price": {
+          "money": 1438.68,
+          "currency": "CNY"
+        }
+      },
+      {
+        "_name": {
+          "text": "c9i实例"
+        },
+        "_fields": {
+          "cpu": {
+            "num": 4,
+            "unit": "核"
+          },
+          "memory": {
+            "num": 8,
+            "unit": "GB"
+          }
+        },
+        "_summary": {
+          "text": "中大型企业首选"
+        },
+        "_action": {
+          "verb": "buy",
+          "to": "https://www.aliyun.com/product/ecs/buy?spec=c9i",
+          "label": "立即购买"
+        },
+        "_price": {
+          "money": 3459.9,
+          "currency": "CNY"
+        }
+      },
+      {
+        "_intent": "中大型企业首选实例（规格 2核8G）；源站该卡未给出价格（corpus/aliyun-com/product-ecs 的 dom.html 与 nodes.json 中该块文本止于「立即购买」，无 ￥/¥ 金额），故 `_price` 空缺——不编造价格。",
+        "_name": {
+          "text": "g9i实例"
+        },
+        "_fields": {
+          "cpu": {
+            "num": 2,
+            "unit": "核"
+          },
+          "memory": {
+            "num": 8,
+            "unit": "GB"
+          }
+        },
+        "_summary": {
+          "text": "中大型企业首选"
+        },
+        "_action": {
+          "verb": "buy",
+          "to": "https://www.aliyun.com/product/ecs/buy?spec=g9i",
+          "label": "立即购买"
+        }
+      }
+    ]
+  },
+  "news": {
+    "_intent": "产品仍在快速演进：按时间看最新商业化进展",
+    "_title": {
+      "text": "产品动态"
+    },
+    "_rel": {
+      "order": "time"
+    },
+    "_items": [
+      {
+        "_title": {
+          "text": "9代Intel实例g9i正式商业化"
+        }
+      },
+      {
+        "_title": {
+          "text": "9代AMD实例g9a正式商业化"
+        }
+      },
+      {
+        "_title": {
+          "text": "通用算力型实例u2a正式商业化"
+        }
+      },
+      {
+        "_title": {
+          "text": "学生专属算力包正式商业化"
+        }
+      }
+    ]
+  },
+  "_image": {
+    "image": "../assets/aliyun-ecs-hero.png",
+    "alt": "云服务器 ECS"
+  }
+}

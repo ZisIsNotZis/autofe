@@ -1,0 +1,937 @@
+{
+  "_intent": "让开发者查清 Amazon EC2 按需数据传输的价格：与互联网之间的传入/传出、按区域的传出、同一 AWS 区域内本地区域与可用区之间的传输（源站三张价目表 1:1）",
+  "_title": {
+    "text": "Amazon EC2 按需定价"
+  },
+  "data-transfer": {
+    "_intent": "源站一张 2 列表（表头「空 | 定价」）：先列互联网传入（每 GB 免费），再列传出至互联网的每月分档；段首两行是源站自己的分组行（第二格为空）",
+    "_title": {
+      "text": "数据传输"
+    },
+    "_summary": {
+      "text": "AWS 客户每月可免费将 100GB 的数据传出至互联网，所有 AWS 服务和区域（中国区域和 GovCloud 区域除外）合并计算。100GB 免费传出至互联网的数据额度全球适用，不单独或分别适用于 AWS 区域。"
+    },
+    "_items": [
+      {
+        "_fields": {
+          "transfer-tier": {
+            "text": "数据自互联网传入 Amazon EC2"
+          },
+          "data-transfer-price": {
+            "text": ""
+          }
+        }
+      },
+      {
+        "_fields": {
+          "transfer-tier": {
+            "text": "所有传入数据"
+          },
+          "data-transfer-price": {
+            "money": 0.0,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "transfer-tier": {
+            "text": "数据自 Amazon EC2 传出至互联网"
+          },
+          "data-transfer-price": {
+            "text": ""
+          }
+        }
+      },
+      {
+        "_fields": {
+          "transfer-tier": {
+            "text": "每月前 10TB"
+          },
+          "data-transfer-price": {
+            "money": 0.09,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "transfer-tier": {
+            "text": "每月随后的 40TB"
+          },
+          "data-transfer-price": {
+            "money": 0.085,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "transfer-tier": {
+            "text": "每月随后的 100TB"
+          },
+          "data-transfer-price": {
+            "money": 0.07,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "transfer-tier": {
+            "text": "每月超出 150TB 的部分"
+          },
+          "data-transfer-price": {
+            "money": 0.05,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      }
+    ]
+  },
+  "region-egress": {
+    "_composite": "table",
+    "_intent": "源站一张 2 列表（表头「数据自 Amazon EC2 传出至 | 空」）：自 Amazon EC2 传出到互联网的每 GB 价格，67 个区域/本地扩展区一行一个，逐字照抄",
+    "_items": [
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "Amazon CloudFront"
+          },
+          "egress-price": {
+            "money": 0.0,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "AWS European Sovereign Cloud（德国）"
+          },
+          "egress-price": {
+            "money": 0.05,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "AWS GovCloud（美国西部）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "AWS GovCloud（美国东部）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "非洲（开普敦）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（香港）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（海得拉巴）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（雅加达）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（马来西亚）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（墨尔本）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（孟买）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（新西兰）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（大阪）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（首尔）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（新加坡）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（悉尼）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（台北）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（泰国）"
+          },
+          "egress-price": {
+            "money": 0.08,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（东京）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "加拿大（中部）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "加拿大西部（卡尔加里）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲（法兰克福）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲（爱尔兰）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲（伦敦）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲（米兰）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲（巴黎）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲（西班牙）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲（斯德哥尔摩）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲（苏黎世）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "以色列（特拉维夫）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "墨西哥（中部）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "中东（巴林）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "中东（阿联酋）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "南美洲（圣保罗）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（弗吉尼亚州北部）"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国西部（洛杉矶）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国西部（北加利福尼亚）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国西部（俄勒冈州）"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（KDDI）– 大阪"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（KDDI）– 东京"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（SKT）– 大田"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "亚太地区（SKT）– 首尔"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "加拿大（BELL）– 多伦多"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲（英国电信）- 曼彻斯特"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲 (Vodafone) – 伦敦"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "欧洲（Vodafone）– 曼彻斯特"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "塞内加尔（达喀尔）"
+          },
+          "egress-price": {
+            "money": 0.05,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（列涅萨）"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 亚特兰大"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 波士顿"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 夏洛特"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 芝加哥"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 达拉斯"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 底特律"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部 (Verizon) – 休斯顿"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 迈阿密"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 明尼阿波利斯"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）- 纳什维尔"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 纽约"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 坦帕"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国东部（威瑞森）– 华盛顿特区"
+          },
+          "egress-price": {
+            "money": 0.01,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国西部（威瑞森）- 丹佛"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国西部（威瑞森）- 拉斯维加斯"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国西部（威瑞森）– 洛杉矶"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国西部 (Verizon) – 菲尼克斯"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国西部（威瑞森）– 旧金山港湾区"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "egress-destination": {
+            "text": "美国西部（威瑞森）- 西雅图"
+          },
+          "egress-price": {
+            "money": 0.02,
+            "currency": "USD",
+            "qualifier": "每 GB"
+          }
+        }
+      }
+    ]
+  },
+  "same-region": {
+    "_composite": "table",
+    "_intent": "源站一张 2 列表（表头「…本地区域和可用区之间传输的数据… | 定价」）：同一区域内本地区域与可用区之间的双向传输单价",
+    "_title": {
+      "text": "在同一 AWS 区域内传输数据"
+    },
+    "_items": [
+      {
+        "_fields": {
+          "local-zone-direction": {
+            "text": "数据传入"
+          },
+          "data-transfer-price": {
+            "text": "free"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "local-zone-direction": {
+            "text": "数据传出"
+          },
+          "data-transfer-price": {
+            "money": 0.01,
+            "currency": "USD"
+          }
+        }
+      }
+    ]
+  }
+}

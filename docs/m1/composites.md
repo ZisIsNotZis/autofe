@@ -609,6 +609,26 @@ COMPOSITES_DESIGN_DONE primitives=5 schema_fields=29 migration_pages=18 decision
 4. **`E_COMPOSITE_NOT_ALLOWED` 的投影口径**：只把**结构槽键**（`_items`/`_fields`/`_action`/`_expose`/`_ref`/`_count`/`_empty`/`_default`）当作"字段槽"检查；`_label` 是通用角色事实、不算槽标记，故登录页子节点的 `_label` 不会被误报。
 5. **`paginator.items`/`more` 的"至少一个"** 用注册表的 `requireOneOf` 表达（§5.5 的 `✅*`），缺两者时报 `E_COMPOSITE_MISSING_REQUIRED`。
 
+### 9.1 S2（轮 48）：`table` 首次真实迁移 —— 11 个实例
+
+**已迁移**（加 `_composite: "table"`，4 页 11 个集合节点）：
+
+| 页 | 集合节点 | 行数 |
+|---|---|---|
+| `aliyun-com/product-ecs` | `instances` | 4（有身份列 `_name`）|
+| `aws-amazon/ec2-on-demand` | `region-egress` / `same-region` | 67 / 2 |
+| `gov-uk/ni-rates-letters` | `employee-rates` / `employer-rates` | 16 / 16 |
+| `learn-microsoft/vm-sizes` | `general-purpose` / `compute-optimized` / `memory-optimized` / `gpu-accelerated` / `high-performance-compute` / `name-structure-breakdown` | 4 / 2 / 5 / 4 / 3 / 3 |
+
+**验收（全绿）**：① 4 文件 schema 校验 `ok`（11/11 实例通过，0 个 `E_COMPOSITE_*`）；② 三目标**零渲染变化**——`render*.mjs`/`axis.mjs` 不读 `_composite`，逐页 HTML（剥 `<style>` 前后）与 HEAD **逐字节一致**，文本/Markdown 同；③ 列名仍只来自 `vocab-fields.json`（`axis.columnLabel`，无内部键上屏）；④ 行缺列负例报 `E_COMPOSITE_ROWS_INCONSISTENT`（实测）。
+
+**schema 的价值证据（首次真实校验）**：11 个实例本身均已一致 —— 迁移**零报错**正说明 schema 只拒绝真缺陷而不误伤（若集合真缺列，硬报错；`aws data-transfer` 的类型混用列早已在轮 47 S0.1 修好）。负例实测：删一列 ⇒ `E_COMPOSITE_ROWS_INCONSISTENT`；加未声明列名 / `money` 列塞 `text` ⇒ `E_COMPOSITE_FIELD_UNDECLARED`。
+
+**未迁移与理由**（诚实优先，详见 `failures.md` F-090）：
+- `aws-amazon/ec2-on-demand.data-transfer`：§6.4 S2 明写"维持裸 `_fields` 直至 S0 完成"——本轮范围只含 `region-egress`/`same-region`，不迁移。
+- `learn-microsoft…storage-optimized` / `fpga-accelerated`（各 1 行）：§6.2(a) 设计它们应出 `W_COMPOSITE_ROWS_TOO_FEW`，但该校验器**只有错误通道、无警告通道**（`validate.mjs`），升 table 会被静默接受而零提示 ⇒ 不迁移（与 §6.4 S2 的"11 个合格集合节点"计数一致），保留裸 `_fields`。
+- **schema 缺口（F-090.b）**：行一致性只比对带 `_fields` 的行；某行**整块 `_fields` 缺失**不被捕获（负例 `row_without_fields.json` = `ok`）。未放宽任何条件。
+
 ## 10. 空值约定：`{text:""}` = 已声明但为空（轮 47 S0.1）
 
 **约定**：一个**已声明但内容为空**的字段槽写成空的封闭类型化值——`{"text": ""}`（空文本）或 `{"list": []}`（空列表）。它表示"这一格在源站就是空的"，**不是**未声明、也**不是**编造。

@@ -1,0 +1,622 @@
+{
+  "_intent": "让雇主与雇员查清 2026–2027 年度国民保险（NI）各类别字母、各收入档的缴款率",
+  "_title": {
+    "text": "National Insurance rates and categories"
+  },
+  "contribution-rates": {
+    "_intent": "说明 Class 1 缴款由雇员与雇主两部分构成，费率取决于类别字母与收入所在档",
+    "_title": {
+      "text": "Contribution rates"
+    },
+    "_summary": {
+      "text": "An employee’s Class 1 National Insurance is made up of contributions:"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "deducted from their pay (employee’s National Insurance)"
+        }
+      },
+      {
+        "_name": {
+          "text": "paid by their employer (employer’s National Insurance)"
+        }
+      }
+    ],
+    "_text": {
+      "text": "The amounts deducted and paid depend on: the category letter, and how much of the employee’s earnings falls within each band."
+    }
+  },
+  "employee-rates": {
+    "_composite": "table",
+    "_intent": "雇员 Class 1 缴款率表：每行一个类别字母，列为三段周收入区间（受雇方各段费率）",
+    "_title": {
+      "text": "Employee National Insurance rates"
+    },
+    "_summary": {
+      "text": "This table shows how much employers deduct from employees’ pay from 6 April 2026 to 5 April 2027."
+    },
+    "_rel": {
+      "order": "none"
+    },
+    "_items": [
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "A"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "8%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "B"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "1.85%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "C"
+          },
+          "employee-rate-low": {
+            "text": "N/A"
+          },
+          "employee-rate-mid": {
+            "text": "N/A"
+          },
+          "rate-over-967": {
+            "text": "N/A"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "D"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "2%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "E"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "1.85%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "F"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "8%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "H"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "8%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "I"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "1.85%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "J"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "2%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "K"
+          },
+          "employee-rate-low": {
+            "text": "N/A"
+          },
+          "employee-rate-mid": {
+            "text": "N/A"
+          },
+          "rate-over-967": {
+            "text": "N/A"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "L"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "2%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "M"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "8%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "N"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "8%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "S"
+          },
+          "employee-rate-low": {
+            "text": "N/A"
+          },
+          "employee-rate-mid": {
+            "text": "N/A"
+          },
+          "rate-over-967": {
+            "text": "N/A"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "V"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "8%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "Z"
+          },
+          "employee-rate-low": {
+            "text": "0%"
+          },
+          "employee-rate-mid": {
+            "text": "2%"
+          },
+          "rate-over-967": {
+            "text": "2%"
+          }
+        }
+      }
+    ]
+  },
+  "employer-rates": {
+    "_composite": "table",
+    "_intent": "雇主 Class 1 缴款率表：每行一个类别字母，列为三段周收入区间（雇主方各段费率）",
+    "_title": {
+      "text": "Employer National Insurance rates"
+    },
+    "_summary": {
+      "text": "This table shows how much employers pay towards employees’ National Insurance from 6 April 2026 to 5 April 2027."
+    },
+    "_rel": {
+      "order": "none"
+    },
+    "_items": [
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "A"
+          },
+          "employer-rate-low": {
+            "text": "15%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "B"
+          },
+          "employer-rate-low": {
+            "text": "15%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "C"
+          },
+          "employer-rate-low": {
+            "text": "15%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "D"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "E"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "F"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "H"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "0%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "I"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "J"
+          },
+          "employer-rate-low": {
+            "text": "15%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "K"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "L"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "M"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "0%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "N"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "S"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "15%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "V"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "0%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      },
+      {
+        "_fields": {
+          "category-letter": {
+            "text": "Z"
+          },
+          "employer-rate-low": {
+            "text": "0%"
+          },
+          "employer-rate-mid": {
+            "text": "0%"
+          },
+          "rate-over-967": {
+            "text": "15%"
+          }
+        }
+      }
+    ]
+  },
+  "class-1a-1b": {
+    "_intent": "费用与福利（expenses and benefits）的 Class 1A/1B 单一费率",
+    "_title": {
+      "text": "Class 1A and Class 1B rates"
+    },
+    "_text": {
+      "text": "Employers pay Class 1A and 1B National Insurance on expenses and benefits they give to their employees. The rate from 6 April 2026 to 5 April 2027 on expenses and benefits is 15%."
+    }
+  },
+  "example": {
+    "_intent": "用一个年度示例说明分段累进如何得出周缴款额",
+    "_title": {
+      "text": "Example"
+    },
+    "_summary": {
+      "text": "If you’re in category A and you earn £1,000 in a week you’ll pay:"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "nothing on the first £242"
+        }
+      },
+      {
+        "_name": {
+          "text": "8% (£58) on your earnings between £242.01 and £967"
+        }
+      },
+      {
+        "_name": {
+          "text": "2% (£0.66) on the remaining earnings above £967"
+        }
+      }
+    ],
+    "_text": {
+      "text": "This means your National Insurance payment will be £58.66 for the week."
+    }
+  },
+  "pagination": {
+    "_intent": "分页导航：源站 <nav aria-label=\"Pagination\"> 的下一页控件（Next / Category letters），捕获到真实目标地址 ⇒ 渲染为链接（此前策展静默丢弃，本轮如实补回）",
+    "_items": [
+      {
+        "_name": {
+          "text": "Next"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.gov.uk/national-insurance-rates-letters/category-letters",
+          "label": "Category letters"
+        }
+      }
+    ]
+  }
+}

@@ -682,3 +682,15 @@
 - **裁定**（父代理）：`{"text":""}` 是**已声明但为空**；"有值"判定是**语义**不是渲染偏好。落地为 `m1/axis.mjs#hasValue`（`null`/`undefined`/空文本/空列表 ⇒ 无值），并抬出共享行判定 `tableRowLabel`，**三目标共同消费**（不再只改 `render.mjs`）。
 - **授权范围**：本轮特批改 `m1/axis.mjs` + 三个渲染器，**仅限**这一项（空值判定及其消费）。
 - **门禁**：`axis-selftest.mjs` T0–T3b；证伪已做（临时让空文本算有值 ⇒ T0/T1/T2 失败；撤销后全过）。约定写入 `docs/m1/composites.md §10`（S2 迁移用）。
+
+## F-090 复合元语 S2：`table` 首次真实迁移（11 个实例，轮 48）
+
+- **做的事**：给 11 个合格集合节点加 `_composite: "table"`（`aliyun-com/product-ecs.instances`；`aws-amazon/ec2-on-demand.{region-egress,same-region}`；`gov-uk/ni-rates-letters.{employee-rates,employer-rates}`；`learn-microsoft/vm-sizes.{general-purpose,compute-optimized,memory-optimized,gpu-accelerated,high-performance-compute,name-structure-breakdown}`）。四个文件 schema 校验 `ok`，**零渲染变化**：`render*.mjs`/`axis.mjs` 不读 `_composite`（grep 计数 0），逐页 HTML（剥 `<style>` 前后均逐字节一致）+ 文本 + Markdown 三目标与 HEAD **逐字节相同**。
+- **schema 的价值证据**（本轮首次真实校验，负例实测，不放宽 schema）：
+  - 删一行的一列 ⇒ `E_COMPOSITE_ROWS_INCONSISTENT`（带路径 `employer-rates`）。
+  - 加未声明列名 ⇒ `E_COMPOSITE_FIELD_UNDECLARED`（`instances._fields.bogus-col`）。
+  - `money` 列塞 `{"text":…}` ⇒ `E_COMPOSITE_FIELD_UNDECLARED`（值类型不符）。
+  - 这正是 §1.3 承诺的"行缺列从静默填空白格变成带路径的错误"。
+- **F-090.a（设计差异，登记）**：`W_COMPOSITE_ROWS_TOO_FEW` 是 §3.3 的**设计警告**，但 `validate.mjs` **只有错误通道、没有警告通道** ⇒ 单行族（`learn-microsoft…storage-optimized`/`fpga-accelerated`，各 1 行）若升 table 会被**静默接受**，得不到任何提示。因此**不迁移**这两个单行族（与 §6.4 S2 的"11 个合格集合节点"计数一致），保留裸 `_fields`。要落地该警告 = 给校验器加警告通道（本轮写入白名单不含 `validate.mjs`，故不做）。
+- **F-090.b（schema 缺口，登记）**：`table` 的行一致性只比较**带 `_fields` 的行**；某行**整块 `_fields` 缺失**时校验通过（负例 `row_without_fields.json` = `ok`）。即 schema 能抓"缺列"，抓不到"缺整行字段块"。未放宽任何条件；登记待 S3+ 评估。
+- **不迁移清单**：`aws-amazon/ec2-on-demand.data-transfer`（§6.4 S2 明写维持裸 `_fields`；其 7 行虽已在轮 47 S0.1 补齐一致，但本轮范围只含 `region-egress`/`same-region`）、`learn-microsoft…{storage-optimized,fpga-accelerated}`（见 F-090.a）。

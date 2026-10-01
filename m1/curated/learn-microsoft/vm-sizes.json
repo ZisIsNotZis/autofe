@@ -9,6 +9,7 @@
       "text": "VM size and series naming"
     },
     "name-structure-breakdown": {
+    "_composite": "table",
       "_intent": "三层命名分类表：Type 按工作负载、Series 分组硬件相近的尺寸、Size 是具体配置（源站 3 列表 Category/Description/Links）",
       "_title": {
         "text": "Name structure breakdown"
@@ -89,6 +90,7 @@
       "text": "List of VM size families by type"
     },
     "general-purpose": {
+    "_composite": "table",
       "_intent": "通用型族：均衡 CPU/内存比，覆盖入门到企业级负载（A/B/D/DC 族）",
       "_title": {
         "text": "General purpose"
@@ -268,6 +270,7 @@
       ]
     },
     "compute-optimized": {
+    "_composite": "table",
       "_intent": "计算优化型族：高 CPU/内存比（F/FX 族）",
       "_title": {
         "text": "Compute optimized"
@@ -357,6 +360,7 @@
       ]
     },
     "memory-optimized": {
+    "_composite": "table",
       "_intent": "内存优化型族：高内存/CPU 比，用于大型缓存与内存数据库（E/Eb/EC/M 及旧代内存族）",
       "_title": {
         "text": "Memory optimized"
@@ -604,6 +608,7 @@
       ]
     },
     "gpu-accelerated": {
+    "_composite": "table",
       "_intent": "GPU 加速型族：图形/可视化与大规模并行计算（NC/ND/NG/NV 族）",
       "_title": {
         "text": "GPU accelerated"
@@ -800,6 +805,7 @@
       ]
     },
     "high-performance-compute": {
+    "_composite": "table",
       "_intent": "高性能计算族：高内存带宽与高密度计算（HB/HC/HX 族）",
       "_title": {
         "text": "High performance compute"

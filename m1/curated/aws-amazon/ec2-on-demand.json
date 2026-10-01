@@ -95,6 +95,7 @@
   ]
  },
  "region-egress": {
+  "_composite": "table",
   "_intent": "源站一张 2 列表（表头「数据自 Amazon EC2 传出至 | 空」）：自 Amazon EC2 传出到互联网的每 GB 价格，67 个区域/本地扩展区一行一个，逐字照抄",
   "_items": [
    {
@@ -904,6 +905,7 @@
   ]
  },
  "same-region": {
+  "_composite": "table",
   "_intent": "源站一张 2 列表（表头「…本地区域和可用区之间传输的数据… | 定价」）：同一区域内本地区域与可用区之间的双向传输单价",
   "_title": {
    "text": "在同一 AWS 区域内传输数据"
