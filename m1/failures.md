@@ -546,3 +546,9 @@
 - **修法**：`axis.mjs` 把 `_datetime` 并入 `META_KEYS`；纯标签集合中「≥8 条且每条带 `_action`」的链接菜单走 `list`。`render.mjs`：`renderDeflist` 在 `order==="sequence"` 时出 `.ranked` 序号；`renderRun` 把「唯一取值在身份列」的行出为 `<tr class="row-group">` 跨列小节标题；`.fact/.prose` 加 `max-width:74ch`（hero/cards 重置）；`renderList` 短标签按条数分栏 `cols2/3/4`。模型侧：36kr feed `_detail` 拆成 `_source/_author/_datetime`；`home.hot` 加 `_rel.order:"sequence"`；删 `aws region-egress._title`（抄自列头的重复标题）。
 - **验证**：pipeline `--shots` ⇒ HTML 42/42 + MD 42/42 保真、48 模型通过、七套自测通过、视觉自查 42/42 干净、证据一致性通过。
 
+
+## F-078 保真度量只测"模型↔渲染"，不测"模型↔抓取"（轮 37b 发现，待修）
+- **现象**：`aliyun-com/product-ecs` 的实例卡价格在模型里是 `1238` / `1385`，而**抓取的价格行**写的是 `￥1438.68/1年` / `￥3459.90/1年`（corpus 里 `1438.68` 出现 42 次、`3459.90` 34 次）。**保真度始终 1.00**，因为度量只校验"模型事实是否出现在渲染里"（模型↔渲染自洽），**从不校验"模型事实是否来自抓取"**。
+- **影响**：F-025（抓取即真相）目前只靠**流程纪律**保证，**没有门禁**。这意味着任何一轮策展写错数字/文案，只要渲染一致就全绿——**证明强度上的真实漏洞**。
+- **候选修法（下一轮）**：新增**采集↔模型一致性审计**（`m1/eval/capture-integrity.mjs`）——对每个策展模型的**每个事实值**（text/num/money/date/list 元素），在 `corpus/<page>/dom.html|nodes.json` 中做规范化查找；不命中 ⇒ 输出为**待核清单**（允许白名单：截图派生资产、聚合/推导值如分期文案，且每条必须写明理由）。接入 pipeline 作为第 9 道门禁。
+- **本轮已修**：该卡价格按 corpus 价格行改正（99 / 1438.68 / 3459.9），源站原文（`1年/1年起`、官网折扣价）记入 `_intent`。
