@@ -144,6 +144,14 @@ const gValid = gate(`node m1/validate.mjs $(find m1/curated -maxdepth 2 -name '*
 const nOk = gValid.out.split('\n').filter((l) => l.startsWith('ok ')).length;
 console.log(`[pipeline] 模型校验: ${gValid.ok ? `${nOk} 个全通过` : '失败'}`);
 if (!gValid.ok) console.log(gValid.out.split('\n').filter((l) => !l.startsWith('ok ')).join('\n'));
+// warnings never block, but they must be visible in the run summary (F-091.b). The validator
+// prints them on stdout as `   warn <path>: <msg> (W_COMPOSITE_*)` lines; the exit-code count
+// above only looks at `ok `/`FAIL ` lines, so a warning can never flip the gate here.
+const warnLines = gValid.out.split('\n').filter((l) => /\(W_COMPOSITE_/.test(l));
+if (warnLines.length) {
+  console.log(`[pipeline] 模型校验警告（不阻断）: ${warnLines.length} 条`);
+  for (const l of warnLines) console.log(`   ! ${l.trim()}`);
+}
 const gVST = gate('node m1/eval/validate-selftest.mjs');
 console.log(`[pipeline] 校验器自测: ${gVST.ok ? '通过' : '失败'}`);
 if (!gVST.ok) console.log(gVST.out);

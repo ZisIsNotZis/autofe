@@ -161,7 +161,7 @@
 | `E_COMPOSITE_NOT_ALLOWED` | 出现 schema 未声明的字段槽 | `search` 子树里写 `_items`（未声明 `rows`） |
 | `E_COMPOSITE_NESTED` | 复合件子树里再有 `_composite` | `form` 里嵌 `search` |
 | `E_COMPOSITE_EXPOSE_MISSING` | schema 强制暴露某状态而实例没声明 | `login` 没声明 `signed-in` |
-| `E_COMPOSITE_ROWS_INCONSISTENT` | `table` 各行 `_fields` 键集不一致 | aws `data-transfer`（7 行里有 2 行少一列） |
+| `E_COMPOSITE_ROWS_INCONSISTENT` | `table` 各行 `_fields` 键集不一致，**或某行整块缺 `_fields`**（轮 49 修：F-091.a） | aws `data-transfer`（7 行里有 2 行少一列）；构造 1 行有列 + 1 行无 `_fields` 也必须报错，不得静默通过 |
 | `E_COMPOSITE_FIELD_UNDECLARED` | `table` 字段不在 `vocab-fields.json`，或类型不符 | 新字段未登记 |
 | `E_COMPOSITE_ACTION_CARDINALITY` | `form`/`login` 的提交动作 ≠ 1 | 0 个或 2 个 `submit` |
 | `E_COMPOSITE_REF_UNRESOLVED` | `paginator._ref` 解析不到本页集合 | 引用悬空 |
@@ -173,7 +173,7 @@
 | `W_COMPOSITE_NAME_ONLY_WATERMARK` | 有名称、无默认值 | 引擎可把名称水印在框内（用户的启发式）；模型可补 `_default` 或不补 |
 | `W_COMPOSITE_STATE_UNREFERENCED` | 声明的暴露状态全页无人引用 | 提示模型/引擎；不改渲染 |
 | `W_COMPOSITE_NAME_FALLBACK` | 源站无可见名称，名称来自闭式词表兜底（D-3 A） | 记录可访问性来源，不阻断 |
-| `W_COMPOSITE_ROWS_TOO_FEW` | `table` 只有 1 行（如 learn-microsoft 的两个 n=1 族） | 提示"这更像 deflist 而非表"，由策展裁量 |
+| `W_COMPOSITE_ROWS_TOO_FEW` | `table` 只有 1 行（如 learn-microsoft 的两个 n=1 族） | 提示"这更像 deflist 而非表"，由策展裁量（**轮 49 已实现**：`validate()` 返回 `warnings`，`validateFiles` 打印，pipeline 汇总可见；不阻断、不影响退出码） |
 
 ### 3.4 "缺少必需的部件"在 schema 里怎么表达（直接回答用户疑问）
 
@@ -296,8 +296,8 @@
 |---|---|---|---|---|
 | `identifier` | 命名子件 | ✅ | `_expose {type:"text"}` | 账号位 |
 | `secret` | 命名子件 | ✅ | `_expose {type:"text"}`，`sensitive: true` | 密码位（渲染成密码控件；值类型仍是 text） |
-| `submit` | `_action` | ✅ | `verb ∈ {submit, operate}`，恰 1 个 | 提交登录 |
-| `state` | `_expose` | ✅ | `{name: "signed-in", type: "bool"}` | **唯一对外状态**（名字固定，这就是"必须声明它暴露的状态"的机检形式） |
+| `submit` | `_action` | ✅ | `verb: "submit"`，恰 1 个 | 提交登录（**只认 `verb:submit`**；轮 49 裁定 A） |
+| `state` | `_expose` | ✅ | `{name: "signed-in", type: "bool"}` | **唯一对外状态**（名字固定，这就是"必须声明它暴露的状态"的机检形式；复合件的 `_expose` 是**声明状态**，不渲染成控件，见下） |
 | `alternatives` | 命名子件 | — | `_items` + 各自 `_action` | 第三方入口（**不新增角色**，避免语义角色膨胀） |
 | `signup` | 子件 `_action` | — | `navigate`/`open` | 注册入口 |
 | `forgot` | 子件 `_action` | — | `navigate`/`open` | 找回密码 |
@@ -305,6 +305,8 @@
 
 **暴露状态**：`signed-in`（未登录 = 未定义 ⇒ 依赖它的条件不成立）。与 `vocab-context.json` 的注入事实 `signed-in` 同名；优先级按已实现的 P1 = **最近声明祖先链 > 上下文注入**。
 **渲染提示**：门禁块 = 字段组 + 提交 + 第三方入口行 + 注册入口；`secret` 渲染为密码控件。
+
+**`_expose` 的双重语义（轮 49 ≥5.4 补充，F-092）**：`submit` 槽只认 `verb:submit`——`operate` 是**通用动词**（执行某控件），放进 submit 动词集会让任意被 operate 的控件冒充提交动作；实测三张策展登录页的提交**全部**是 `verb:submit`，而 `operate` **全部**是额外登录方式（github 的 passkey、小米的扫码登录）。passkey/扫码/第三方入口是**命名子件**（各自带 `_action`），不是 submit 的替代形态。同理，`state` 槽的 `_expose` 写在**复合件节点**上：对**普通节点** `_expose` = 用户要填的**输入位**（渲染成控件）；对**复合件** `_expose` = 该复合件对外**声明的状态/输出**（可被 `_when`/路径引用），**不是输入位**（复合件的输入是它 schema 里的 `fields`）。所以登录块声明 `signed-in` 后，页面上**不会**多出一个 `signed-in` 复选框（若多出，就是语义错误）。这条区分由 `m1/axis.mjs#exposeRendersAsControl` 与三个目标共享。
 **证据**：**3 个策展页**真实含登录块——`github-com/login`（`login.identifier` + `login.secret` + submit + Google/Apple 第三方 + passkey + signup + forgot）、`stripe-dashboard/login`（email/password/remember-me）、`xiaomi-account/login`（account/password/agreement）`[A.2]`；**8 个 login 字段 `_expose`**`[A.4]`。抓取层 `type=password` support 层 8 页（组件文档 demo），真实登录页仅 `passport-baidu/login`（未策展，m4 §4.5 已记录）。相对 M4 提案"证据缺口"，本轮已有 **3 个策展页**（补样本已完成，C1 ≥3 站成立：github.com / stripe.com / xiaomi.com）。
 **反例**：只提供"登录/注册"入口动作的节点（`bilibili-com/video-bv1gj411x7h7` 的登录/注册对）**不是** `login`——没有 `secret`、没有 `signed-in` ⇒ 缺必需部件被拒绝；否则会制造**假门禁**，让下游条件被"未定义"污染。
 
@@ -354,7 +356,7 @@
 | `aliyun-com/product-ecs` | `instances._items`（4 行，cpu|memory 一致，有名字） | ✅ 直接升级 |
 | `aws-amazon/ec2-on-demand` | `region-egress`（67 行一致）、`same-region`（2 行一致） | ✅ 升级；`data-transfer`（7 行不一致）**先修模型** |
 | `gov-uk/ni-rates-letters` | `employee-rates`（16 行一致）、`employer-rates`（16 行一致） | ✅ 直接升级 |
-| `learn-microsoft/vm-sizes` | 9 个族集合（8 一致 + 2 单行） | ✅ 升级；单行族出 `W_COMPOSITE_ROWS_TOO_FEW` |
+| `learn-microsoft/vm-sizes` | 9 个族集合（8 一致 + 2 单行） | ✅ 升级；单行族出 `W_COMPOSITE_ROWS_TOO_FEW`（轮 49 已补警告通道并升级这两个族） |
 
 预估收益：**11/14 个集合节点**受 schema 保护（行缺列从此硬报错）；`_rel.compare`/形状启发式的误判面缩小 4 页。
 
@@ -628,6 +630,20 @@ COMPOSITES_DESIGN_DONE primitives=5 schema_fields=29 migration_pages=18 decision
 - `aws-amazon/ec2-on-demand.data-transfer`：§6.4 S2 明写"维持裸 `_fields` 直至 S0 完成"——本轮范围只含 `region-egress`/`same-region`，不迁移。
 - `learn-microsoft…storage-optimized` / `fpga-accelerated`（各 1 行）：§6.2(a) 设计它们应出 `W_COMPOSITE_ROWS_TOO_FEW`，但该校验器**只有错误通道、无警告通道**（`validate.mjs`），升 table 会被静默接受而零提示 ⇒ 不迁移（与 §6.4 S2 的"11 个合格集合节点"计数一致），保留裸 `_fields`。
 - **schema 缺口（F-090.b）**：行一致性只比对带 `_fields` 的行；某行**整块 `_fields` 缺失**不被捕获（负例 `row_without_fields.json` = `ok`）。未放宽任何条件。
+
+### 9.2 S3（轮 49）：`login` 首次真实迁移 + schema 补漏 + `_expose` 双重语义
+
+**A. 补两个 schema 漏洞（F-091）**
+- **漏洞 A（静默接受 = 漏洞）**：`table` 行一致性只比对带 `_fields` 的行；某行**整块缺 `_fields`** 时静默通过。**修**：`withF.length && noFields.length` ⇒ 硬报错 `E_COMPOSITE_ROWS_INCONSISTENT`。
+- **漏洞 B（无警告通道）**：设计 §3.3 的 `W_COMPOSITE_ROWS_TOO_FEW` 无处输出，轮 48 因此拒绝迁移两个单行族。**修**：`validate()` 返回 `warnings`；`validateFiles()` 打印（不改退出码）；`pipeline.mjs` 汇总打印 `[pipeline] 模型校验警告（不阻断）: N 条`。
+- **升级**：`learn-microsoft/vm-sizes.{storage-optimized,fpga-accelerated}`（各 1 行）升 `_composite:"table"`，校验 `ok` 且**实测打印两条警告**。
+- **门禁**：`composite-selftest.mjs` 23→24 条（新增整行缺 `_fields` 拒例 + 单行正例/两行反例）。
+
+**B. `login` 3 页迁移（F-092）**
+- 给 `github-com/login`、`stripe-dashboard/login`、`xiaomi-account/login` 加 `_composite:"login"` + `_expose:{name:"signed-in",type:"bool"}`；`secret` 槽用轮 46 的封闭值类型 `secret`（`type="password"`，值不回显）。3/3 通过 schema。
+- **注册表收窄（裁定 A）**：`login.submit.verbs` 由 `["submit","operate"]` 收窄为 `["submit"]`。理由：`operate` 是**通用动词**，放进 submit 槽会让任意被 operate 的控件冒充提交——github 的 passkey / 小米的扫码登录就是被这条卡住的；实测三页提交**全部**是 `verb:submit`，`operate` **全部**是额外登录方式。**这是收紧而非放宽表达力**（"恰 1 个 submit" 变成精确保证）。
+- **`_expose` 双重语义（裁定 A）**：普通节点 `_expose` = 输入位（画控件）；复合件 `_expose` = 声明状态/输出（**不画控件**，可被路径引用）。落地为 `axis.mjs#exposeRendersAsControl`，**三目标共同消费**（`nodePlan.choice`）。对既有 42 页**零影响**（全库 0 个节点同时带 `_composite`+`_expose`）。
+- **验收（全绿）**：① 3 文件 schema `ok`；② 三目标**逐字节不变**（HTML 剥 `<style>` 后 body、text、Markdown 与 HEAD 一致）；③ `signed-in` 可被 `_when` 引用（构造用例：true⇒可见，false/undefined⇒不可见）；④ `axis-selftest.mjs` 新增 U0–U4（129 条断言）且已证伪（临时反转规则 ⇒ U0/U1/U3 失败，已撤销）。
 
 ## 10. 空值约定：`{text:""}` = 已声明但为空（轮 47 S0.1）
 

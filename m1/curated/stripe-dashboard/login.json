@@ -5,6 +5,11 @@
   },
   "login": {
     "_intent": "登录块：邮箱标识符 + 密码 + 记忆 + 提交；并提供 Google / 通行密钥 / SSO 与创建账户入口",
+    "_composite": "login",
+    "_expose": {
+      "name": "signed-in",
+      "type": "bool"
+    },
     "_title": {
       "text": "登录您的账户"
     },

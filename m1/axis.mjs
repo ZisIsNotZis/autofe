@@ -594,6 +594,16 @@ export function resolveRowLabel(items, key) {
   return compareRowLabel(items, key) ?? (roleLabel(key) || FIELDS[key]?.label || '');
 }
 
+// Round 49 (F-092): what `_expose` MEANS depends on the node type, and the render target is
+// the wrong place to decide it. A plain node's `_expose` is a user input slot → a control.
+// A composite node's `_expose` is the state the composite declares to the page (referable by
+// `_when`/paths, gated by the schema's `state` slot) → NOT a widget; the composite's inputs
+// are its schema `fields`. Returns the exposure object when it should render as a control,
+// else null. Shared so HTML/text/Markdown cannot disagree.
+export function exposeRendersAsControl(node) {
+  return node && node._composite === undefined ? exposeOf(node) : null;
+}
+
 // The whole node plan. `ctx`: { chain, values, hidden (Set of already-hidden fact keys),
 // depth, degradations }. Returns `{ ok:false, visible:false }` for a hidden/invalid node.
 export function nodePlan(node, ctx = {}) {
@@ -608,7 +618,12 @@ export function nodePlan(node, ctx = {}) {
     if (ast.ok && !evalExpr(ast, scope)) return { ok: false, visible: false };
   }
   const headingKey = headingKeyOf(node);
-  const exp = exposeOf(node);
+  // `_expose` has two meanings by node type (round 49, F-092): on a plain node it is the
+  // user's input slot and renders as a control; on a composite node it is the composite's
+  // DECLARED STATE/OUTPUT (referable by path), never a widget — its inputs are its schema
+  // `fields`. Consuming the control-only exposure here means all three targets agree by
+  // construction (a renderer that re-derived this would be a private copy).
+  const controlExp = exposeRendersAsControl(node);
   const primary = primarySlot(node, headingKey);
   const hid = new Set(hidden);
   if (primary && primary.holder === node) hid.add(primary.key);
@@ -617,7 +632,7 @@ export function nodePlan(node, ctx = {}) {
   for (const f of factsOf(node)) {
     if (hid.has(f.key)) continue;                                   // already shown (e.g. hero/primary)
     if (f.key === headingKey) continue;                             // the heading carries it
-    if (exp && (f.key === '_label' || f.key === '_summary')) continue;  // legend/hint, not body
+    if (controlExp && (f.key === '_label' || f.key === '_summary')) continue;  // legend/hint, not body
     if (f.key === '_brand' && depth === 0) continue;                // the site header carries the brand
     if (f.key === '_image' && depth === 0) { facts.hero = f.value; continue; }  // edge-to-edge hero (F-031-§7)
     if (f.key === '_amount' && f.value?.qualifier === LIST_QUALIFIER) { facts.list.push({ ...f, category: 'was' }); continue; }
@@ -639,7 +654,7 @@ export function nodePlan(node, ctx = {}) {
   const inlineInto = action ? inlineBodyLinkKey(node) : null;
   if (action && inlineInto) action.inlineInto = inlineInto;
 
-  const choice = choicePlan(node, exp);
+  const choice = choicePlan(node, controlExp);
   // A secret field's captured default is never drawn by ANY target (round 46): drop it from the
   // body facts so text/Markdown cannot echo it either (HTML already skips a bare input's `_text`).
   if (choice && choice.type === 'secret') facts.list = facts.list.filter((f) => f.key !== '_text');
@@ -647,7 +662,7 @@ export function nodePlan(node, ctx = {}) {
     .filter((c) => isActionOnlyNode(c.node) && actionPlan(c.node, [...chain, node], values))
     .map((c) => c.node);
   const actionRow = actionRowOf(node, chain, values, inlineInto ? null : action, toolbar);
-  const consumedArray = new Set(exp && Array.isArray(node._items) ? node._items : []);
+  const consumedArray = new Set(controlExp && Array.isArray(node._items) ? node._items : []);
   const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it));
   // A description fact declared AFTER this node's collection is the collection's FOOTNOTE, not
   // its lead-in: it must render directly BELOW the collection, never float above it and split

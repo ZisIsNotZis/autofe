@@ -5,6 +5,11 @@
   },
   "login": {
     "_intent": "登录块：账号 + 密码 + 协议勾选 + 提交；并提供手机号/扫码切换、第三方登录、忘记密码与注册入口",
+    "_composite": "login",
+    "_expose": {
+      "name": "signed-in",
+      "type": "bool"
+    },
     "_title": {
       "text": "登录"
     },

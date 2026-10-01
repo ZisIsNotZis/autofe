@@ -5,6 +5,11 @@
   },
   "login": {
     "_intent": "登录块：用户名/邮箱 + 密码 + 提交；并提供 Google/Apple、通行密钥、创建账户与忘记密码入口",
+    "_composite": "login",
+    "_expose": {
+      "name": "signed-in",
+      "type": "bool"
+    },
     "identifier": {
       "_intent": "用户名或邮箱标识符输入",
       "_label": {

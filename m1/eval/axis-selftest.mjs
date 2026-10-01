@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
 import { renderMarkdown } from '../render-md.mjs';
-import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName, hasValue, tableRowLabel } from '../axis.mjs';
+import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName, hasValue, tableRowLabel, exposeRendersAsControl } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
@@ -61,6 +61,8 @@ const SHARED_NAMES = [
   'ROLE_LABEL', 'roleLabel', 'NAME_COLUMN_LABEL', 'columnLabel', 'resolveRowLabel',
   // round 47: the declared-but-empty decision
   'hasValue', 'tableRowLabel',
+  // round 49: `_expose` is a control on a plain node, declared state on a composite (F-092)
+  'exposeRendersAsControl',
 ];
 for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
@@ -785,6 +787,35 @@ const primaryActionRows = (model) => {
     Boolean(tLine) && tLine.trim() === '数据自互联网传入 Amazon EC2', JSON.stringify(tLine ?? null));
   check('T3b Markdown makes the same decision (label in the first cell, empty second cell)',
     Boolean(mdLine) && /^\|\s*数据自互联网传入 Amazon EC2\s*\|\s*\|/.test(mdLine), JSON.stringify(mdLine ?? null));
+}
+
+// U. `_expose` dual meaning (round 49, F-092): on a PLAIN node it is the user's input slot (a
+// control); on a COMPOSITE node it is the state the composite declares to the page (referable
+// by `_when`/paths), never a widget — the composite's inputs are its schema `fields`. One shared
+// decision (`axis.exposeRendersAsControl`) is consumed by every target, so a composite's state
+// can never silently become a checkbox on the page.
+{
+  const composite = { _intent: 'x', _composite: 'login', _expose: { name: 'signed-in', type: 'bool' },
+    identifier: { _expose: { name: 'id', type: 'text' } }, secret: { _expose: { name: 'pw', type: 'secret' } }, submit: { _action: { verb: 'submit' } } };
+  const canvas = { _intent: 'x', _title: { text: 'Gate' }, gate: composite };
+  const plainCanvas = { _intent: 'x', _title: { text: 'Gate' }, gate: { _intent: 'g', _label: { text: 'Signed in' }, _expose: { name: 'signed-in', type: 'bool' } } };
+  check('U0 exposeRendersAsControl: composite `_expose` is state (null), plain `_expose` is a control',
+    exposeRendersAsControl(composite) === null && exposeRendersAsControl(plainCanvas.gate)?.name === 'signed-in');
+  const pc = nodePlan(composite, { chain: [], values: {}, depth: 1 });
+  const pp = nodePlan(plainCanvas.gate, { chain: [], values: {}, depth: 1 });
+  check('U1 a composite with `_expose` draws NO choice control', pc.ok && pc.choice === null, JSON.stringify(pc.choice));
+  check('U2 an isomorphic plain node still draws its control (bool switch)', pp.ok && pp.choice?.kind === 'bool', JSON.stringify(pp.choice && pp.choice.kind));
+  const html = render(canvas), text = renderText(canvas), md = renderMarkdown(canvas);
+  check('U3 the composite state adds no widget in any target',
+    !html.includes('type="checkbox"') && !html.includes('expose-signed-in') && !/\[\s*\]/.test(text) && !/- \[\s*\]/.test(md),
+    JSON.stringify({ html: /checkbox/.test(html), text: /\[\s*\]/.test(text), md: /- \[\s*\]/.test(md) }));
+  const html2 = render(plainCanvas), text2 = renderText(plainCanvas);
+  check('U3b the plain node still renders a checkbox in HTML and `[ ]` in text', html2.includes('type="checkbox"') && text2.includes('[ ]'), 'control missing for the plain node');
+  // the state is still a referable FACT: a descendant `_when` on it is gated by its value
+  const gated = { ...composite, note: { _intent: 'n', _when: 'signed-in', _text: { text: 'dashboard' } } };
+  const seen = (v) => nodePlan(gated.note, { chain: [gated], values: { 'signed-in': v }, depth: 2 }).visible;
+  check('U4 the composite state is referable by `_when` (true⇒visible, false/undefined⇒hidden)',
+    seen(true) === true && seen(false) === false && seen(undefined) === false, JSON.stringify([seen(true), seen(false), seen(undefined)]));
 }
 
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);

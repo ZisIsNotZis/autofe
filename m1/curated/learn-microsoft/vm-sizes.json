@@ -547,6 +547,7 @@
     },
     "storage-optimized": {
       "_intent": "存储优化型族：高磁盘吞吐与 IO（L 族）",
+      "_composite": "table",
       "_title": {
         "text": "Storage optimized"
       },
@@ -771,6 +772,7 @@
     },
     "fpga-accelerated": {
       "_intent": "FPGA 加速型族：机器学习推理与视频转码（NP 族）",
+      "_composite": "table",
       "_title": {
         "text": "FPGA accelerated"
       },

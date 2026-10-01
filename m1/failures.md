@@ -694,3 +694,27 @@
 - **F-090.a（设计差异，登记）**：`W_COMPOSITE_ROWS_TOO_FEW` 是 §3.3 的**设计警告**，但 `validate.mjs` **只有错误通道、没有警告通道** ⇒ 单行族（`learn-microsoft…storage-optimized`/`fpga-accelerated`，各 1 行）若升 table 会被**静默接受**，得不到任何提示。因此**不迁移**这两个单行族（与 §6.4 S2 的"11 个合格集合节点"计数一致），保留裸 `_fields`。要落地该警告 = 给校验器加警告通道（本轮写入白名单不含 `validate.mjs`，故不做）。
 - **F-090.b（schema 缺口，登记）**：`table` 的行一致性只比较**带 `_fields` 的行**；某行**整块 `_fields` 缺失**时校验通过（负例 `row_without_fields.json` = `ok`）。即 schema 能抓"缺列"，抓不到"缺整行字段块"。未放宽任何条件；登记待 S3+ 评估。
 - **不迁移清单**：`aws-amazon/ec2-on-demand.data-transfer`（§6.4 S2 明写维持裸 `_fields`；其 7 行虽已在轮 47 S0.1 补齐一致，但本轮范围只含 `region-egress`/`same-region`）、`learn-microsoft…{storage-optimized,fpga-accelerated}`（见 F-090.a）。
+
+## F-091 复合元语 schema 补漏：警告通道 + 整行缺 `_fields`（轮 49）
+
+- **F-091.a（漏洞 A：静默接受 = 漏洞）**：`table` 的行一致性校验只比对**带 `_fields` 的行**（`withF`）；某行**整块 `_fields` 缺失**时（`rows.filter(r=>r._fields)` 把它排除）**静默通过**——负例 fixture（1 行有列 + 1 行无 `_fields`）在轮 48 是 `ok`。
+  - **修**：`m1/validate.mjs` 的 table 分支新增 `noFields = rows.filter(r => !r._fields)`；`withF.length && noFields.length` ⇒ 硬报错 `E_COMPOSITE_ROWS_INCONSISTENT`（沿用既有码，不扩充闭式错误码集；语义：无 `_fields` 的行其列集为 ∅，与其余行不一致）。仅当有行声明了列集时才报（若所有行都无列集，`columns` 槽的 `E_COMPOSITE_MISSING_REQUIRED` 已覆盖，避免重复噪音）。
+  - **门禁**：`composite-selftest.mjs` 新增拒例 `table row with no _fields block at all (F-091.a)` ⇒ `E_COMPOSITE_ROWS_INCONSISTENT`（实测）。
+- **F-091.b（漏洞 B：无警告通道）**：设计 §3.3 的 `W_COMPOSITE_ROWS_TOO_FEW`（`table` 只有 1 行）**无处输出**——`validate.mjs` 只有 `errors`，故轮 48 因此**拒绝迁移**两个单行族（F-090.a）。
+  - **修**：`validate()` 返回新增 **`warnings` 数组**（与 `errors` 同形，带 `code`）；`validateFiles()` **打印** `   warn <path>: … (W_*)`，且**不影响 `ok`/退出码**（`bad` 仍只计 FAIL 文件）；`pipeline.mjs` 从校验输出中提取 `(W_COMPOSITE_` 行，汇总打印 `[pipeline] 模型校验警告（不阻断）: N 条`，使警告在流水线可见（"没人看到的警告 = 变相的错误"，正是 F-090.a 的教训）。
+  - 新增 `W_COMPOSITE_ROWS_TOO_FEW`：`rows.length === 1` 时告警（阈值按 §3.3"只有 1 行"）。
+  - **升级两个单行族**：`learn-microsoft/vm-sizes.{storage-optimized,fpga-accelerated}` 加 `_composite:"table"`；校验 `ok` 且**实测打印两条警告**（见构建日志）。`render*.mjs`/`axis.mjs` 不读 `_composite` ⇒ 零渲染变化。
+  - **门禁**：`composite-selftest.mjs` 新增正例（单行表出 `W_COMPOSITE_ROWS_TOO_FEW`）与反例（两行表不出该警告），**双向**断言。
+- **影响面**：`m1/validate.mjs`、`m1/eval/pipeline.mjs`、`m1/eval/composite-selftest.mjs`、`m1/curated/learn-microsoft/vm-sizes.json`。错误码集未扩充；`validate()` 返回值向后兼容（调用方只读 `.ok`/`.errors`）。
+
+## F-092 复合元语 S3：`login` 首次真实迁移 + `_expose` 双重语义 + 注册表收窄（轮 49）
+
+- **做的事**：`github-com/login`、`stripe-dashboard/login`、`xiaomi-account/login` 升 `_composite:"login"` + 声明 `state` = `_expose{name:"signed-in",type:"bool"}`；`secret` 槽用轮 46 的封闭值类型 `secret`。3/3 通过 schema；三目标（HTML 剥 `<style>` 后 body / text / Markdown）与 HEAD **逐字节一致**。
+- **F-092.a（闭式注册表收窄，登记）**：`m1/composites.json#login.fields.submit.verbs` 由 `["submit","operate"]` **收窄**为 `["submit"]`。
+  - **依据**：① 实测三张登录页的提交动作**全部**是 `verb:"submit"`，`operate` **全部**是"额外登录方式"（github 的 `passkey`、小米的 `scan-login`）；② 语义上 `operate` 是**通用动词**（执行某控件），放进 submit 槽 = 允许任意被 operate 的控件冒充提交动作——这正是 github/xiaomi 卡在 `E_COMPOSITE_ACTION_CARDINALITY` 的原因。
+  - **性质**：**收紧**，不是放宽表达力。"恰 1 个 submit"从"恰 1 个 submit|operate"变成**精确**的"恰 1 个 verb:submit"。passkey/扫码/第三方入口作为**命名子件**（各自 `_action`）仍被允许（`E_COMPOSITE_NOT_ALLOWED` 只查结构槽键）。
+  - **父代理裁定 A**（axioms §0：闭式注册表变更需 review）。既有 selftest fixture "login with two submit actions" 已改为两个 `verb:"submit"`；新增正例"1 个 submit + 命名 operate 子件 ⇒ 通过"。**已证伪**：临时放宽回 `["submit","operate"]` ⇒ 新正例失败（23/24），撤销后 24/24。
+- **F-092.b（`_expose` 双重语义，登记）**：设计要求 login 在复合节点上声明 `state`，但渲染器把任何 `_expose` 当控件画（bool→复选框）⇒ 三目标各多出一个复选框（stripe/xiaomi 更把标题画成复选框标签），"声明 state"与"渲染逐字节不变"不可兼得。既有先例（stripe `remember`、bilibili `danmaku/query/filters`）证实这是**现有约定**而非本轮引入的差异。
+  - **裁定 A**：`_expose` 语义按**节点类型**区分——普通节点 = 用户输入位（画控件）；**复合件** = 对外声明的状态/输出（**不画控件**，可被 `_when`/路径引用；复合件的输入是其 schema `fields`）。落地为 `m1/axis.mjs#exposeRendersAsControl`，由 `nodePlan.choice` **三目标共同消费**（不在 render.mjs 打补丁）。
+  - **授权范围**：本轮特批改 `m1/axis.mjs` + 三个渲染器，**仅限这一条规则**。对既有 42 页**零影响**（全库 0 个节点同时带 `_composite`+`_expose`）。
+  - **门禁**：`axis-selftest.mjs` U0–U4（复合件 `_expose` 不画控件 / 普通节点同构仍画控件 / 三目标一致 / 状态可被 `_when` 引用）；**已证伪**（临时反转 `exposeRendersAsControl` ⇒ U0/U1/U3 失败，撤销后 129 条全过）。

@@ -22,6 +22,12 @@ export function validate(model) {
   // _expose.type must be a known value type, else it silently becomes plain text (F-031)
   const errors = [];
   const err = (p, msg, code) => errors.push(code ? { path: p || '/', message: msg, code } : { path: p || '/', message: msg });
+  // Warning channel (round 49, F-091.b): a composite can be structurally legal yet worth
+  // telling the curator (docs/m1/composites.md §3.3). Warnings never affect `ok`/exit code,
+  // but they MUST be printed and surfaced in the pipeline summary — a warning no one sees
+  // is an error in disguise (the round-48 reason two single-row families were not migrated).
+  const warnings = [];
+  const warn = (p, msg, code) => warnings.push(code ? { path: p || '/', message: msg, code } : { path: p || '/', message: msg });
   const keysSeenByKeyValue = new Map();
 
   function checkNode(node, p, chain, isItemEl = false) {
@@ -266,6 +272,13 @@ export function validate(model) {
     if (type === 'table') {
       const rows = Array.isArray(inst._items) ? inst._items.filter((r) => r && typeof r === 'object') : [];
       const withF = rows.filter((r) => r._fields);
+      // F-091.a: a row with no `_fields` block at all must not slip past the per-row
+      // consistency check. "every row declares the same column set" only holds if every
+      // row declares a set; comparing just the rows that happen to have one is silent.
+      const noFields = rows.filter((r) => !r._fields);
+      if (withF.length && noFields.length) err(ip, `table row(s) declare no _fields at all: ${noFields.length} of ${rows.length} rows are missing their field block (every row must declare the same column set)`, CCODE.ROWS);
+      // F-091.b: single-row table is legal but reads more like a deflist (docs §3.3).
+      if (rows.length === 1) warn(ip, 'table has a single row — closer to a deflist than a table (structure is still legal; a curator call)', 'W_COMPOSITE_ROWS_TOO_FEW');
       if (withF.length) {
         const sigs = [...new Set(withF.map((r) => Object.keys(r._fields).sort().join('|')))];
         if (sigs.length > 1) err(ip, `table rows declare inconsistent field sets: ${sigs.map((s) => `[${s}]`).join(' vs ')}`, CCODE.ROWS);
@@ -304,7 +317,7 @@ export function validate(model) {
       else { const r = resolvePath(model, model, t); if (!r.ok) err(`${p}._action.to`, `action target ${t}: ${r.why}`); }
     }
   });
-  return { ok: errors.length === 0, errors };
+  return { ok: errors.length === 0, errors, warnings };
 }
 
 export function validateFiles(files) {
@@ -316,7 +329,10 @@ export function validateFiles(files) {
       bad++;
       console.error(`FAIL ${f}`);
       for (const e of r.errors) console.error(`   ${e.path}: ${e.message}${e.code ? ` (${e.code})` : ''}`);
-    } else console.log(`ok   ${f}`);
+    } else {
+      console.log(`ok   ${f}`);
+      for (const w of r.warnings) console.log(`   warn ${w.path}: ${w.message}${w.code ? ` (${w.code})` : ''}`);
+    }
   }
   return bad;
 }

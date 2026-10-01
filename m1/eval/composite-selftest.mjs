@@ -1,4 +1,5 @@
-// Composite-metaphor self-test (round 47, docs/m1/composites.md §2/§3/§4).
+// Composite-metaphor self-test (round 47, docs/m1/composites.md §2/§3/§4;
+// round 49 adds the warning channel + the "whole _fields block missing" refusal, F-091).
 // A gate that can never fail is not a gate (F-040): this pins the validator's composite
 // behaviour — unknown type / missing required part / nesting / undeclared field slot /
 // cardinality / table row consistency / unresolved path references — with inline fixtures,
@@ -16,8 +17,9 @@ const REJECT = [
   ['_default that is not a closed typed value', { _intent: 'x', _composite: 'search', _label: { text: 's' }, _default: 'abc', query: { _expose: { name: 'q', type: 'text' } } }, 'E_COMPOSITE_BAD_FIELD'],
   ['login never declares its signed-in state', { _intent: 'x', _composite: 'login', identifier: { _expose: { name: 'id', type: 'text' } }, secret: { _expose: { name: 'pw', type: 'secret' } }, submit: { _action: { verb: 'submit' } } }, 'E_COMPOSITE_EXPOSE_MISSING'],
   ['login missing its secret part', { _intent: 'x', _composite: 'login', _expose: { name: 'signed-in', type: 'bool' }, identifier: { _expose: { name: 'id', type: 'text' } }, submit: { _action: { verb: 'submit' } } }, 'E_COMPOSITE_MISSING_REQUIRED'],
-  ['login with two submit actions', { _intent: 'x', _composite: 'login', _expose: { name: 'signed-in', type: 'bool' }, identifier: { _expose: { name: 'id', type: 'text' } }, secret: { _expose: { name: 'pw', type: 'secret' } }, submit: { _action: { verb: 'submit' } }, again: { _action: { verb: 'operate' } } }, 'E_COMPOSITE_ACTION_CARDINALITY'],
+  ['login with two submit actions', { _intent: 'x', _composite: 'login', _expose: { name: 'signed-in', type: 'bool' }, identifier: { _expose: { name: 'id', type: 'text' } }, secret: { _expose: { name: 'pw', type: 'secret' } }, submit: { _action: { verb: 'submit' } }, again: { _action: { verb: 'submit' } } }, 'E_COMPOSITE_ACTION_CARDINALITY'],
   ['table rows with inconsistent field sets', { _intent: 'x', _composite: 'table', _title: { text: 't' }, _items: [{ _fields: { 'first-name': { text: 'A' }, 'last-name': { text: 'B' } } }, { _fields: { 'first-name': { text: 'C' } } }] }, 'E_COMPOSITE_ROWS_INCONSISTENT'],
+  ['table row with no _fields block at all (F-091.a)', { _intent: 'x', _composite: 'table', _title: { text: 't' }, _items: [{ _fields: { 'first-name': { text: 'A' }, 'last-name': { text: 'B' } } }, { _name: { text: 'row with no field block' } }] }, 'E_COMPOSITE_ROWS_INCONSISTENT'],
   ['table field not declared in vocab-fields.json', { _intent: 'x', _composite: 'table', _title: { text: 't' }, _items: [{ _fields: { 'first-name': { text: 'A' }, 'nope-col': { text: 'B' } } }, { _fields: { 'first-name': { text: 'C' }, 'nope-col': { text: 'D' } } }] }, 'E_COMPOSITE_FIELD_UNDECLARED'],
   ['paginator whose _ref resolves to nothing', { _intent: 'x', _composite: 'paginator', _ref: { ref: '/no/such/collection' }, _items: [{ _text: { text: 'Next' } }] }, 'E_COMPOSITE_REF_UNRESOLVED'],
   ['condition dot-path that resolves to no node', { _intent: 'x', _key: 'k', _title: { text: 't' }, _when: 'nope.thing' }, 'E_PATH_UNRESOLVED'],
@@ -27,13 +29,24 @@ const REJECT = [
 const ACCEPT = [
   ['a legal search instance', { _intent: 'x', _key: 's', _composite: 'search', _label: { text: '搜索' }, query: { _expose: { name: 'query', type: 'text' } } }],
   ['a legal login instance', { _intent: 'x', _key: 'l', _composite: 'login', _title: { text: 'Sign in' }, _expose: { name: 'signed-in', type: 'bool' }, identifier: { _expose: { name: 'id', type: 'text' } }, secret: { _expose: { name: 'pw', type: 'secret' } }, submit: { _action: { verb: 'submit' } } }],
+  ['a legal login with an extra operate sign-in method (passkey — round 49 ruling A)', { _intent: 'x', _key: 'lp', _composite: 'login', _title: { text: 'Sign in' }, _expose: { name: 'signed-in', type: 'bool' }, identifier: { _expose: { name: 'id', type: 'text' } }, secret: { _expose: { name: 'pw', type: 'secret' } }, submit: { _action: { verb: 'submit' } }, passkey: { _intent: 'p', _title: { text: 'passkey' }, _action: { verb: 'operate', label: 'Sign in with a passkey' } } }],
   ['a legal table instance (consistent rows, declared fields)', { _intent: 'x', _key: 't', _composite: 'table', _title: { text: 'tbl' }, _items: [{ _fields: { 'first-name': { text: 'A' }, 'last-name': { text: 'B' } } }, { _fields: { 'first-name': { text: 'C' }, 'last-name': { text: 'D' } } }] }],
+  ['a legal single-row table (legal, just warns — F-091.b)', { _intent: 'x', _key: 't1', _composite: 'table', _title: { text: 'one' }, _items: [{ _fields: { 'first-name': { text: 'A' }, 'last-name': { text: 'B' } } }] }],
   ['a legal paginator instance', { _intent: 'x', _key: 'pg', _composite: 'paginator', _ref: { ref: '/results' }, _items: [{ _key: '1', _text: { text: '1' } }], results: { _intent: 'r', _items: [{ _text: { text: 'row' } }] } }],
   ['a dot-path condition climbing to the search instance (search.query)', { _intent: 'x', _key: 'p', _title: { text: '页' }, search: { _intent: 'r', _key: 's', _composite: 'search', _label: { text: '搜索' }, query: { _expose: { name: 'q', type: 'text' } } }, go: { _intent: '跳', _when: 'search.query', _text: { text: 'x' } } }],
 ];
 
+// Round 49: warning-channel assertions (F-091.b). W_COMPOSITE_ROWS_TOO_FEW fires on a
+// structurally legal single-row table; a multi-row table must stay silent (both directions).
+const WARN = [
+  ['single-row table emits W_COMPOSITE_ROWS_TOO_FEW', { _intent: 'x', _composite: 'table', _title: { text: 't' }, _items: [{ _fields: { 'first-name': { text: 'A' }, 'last-name': { text: 'B' } } }] }, 'W_COMPOSITE_ROWS_TOO_FEW'],
+];
+const NOWARN = [
+  ['two-row table emits no W_COMPOSITE_ROWS_TOO_FEW', { _intent: 'x', _composite: 'table', _title: { text: 't' }, _items: [{ _fields: { 'first-name': { text: 'A' }, 'last-name': { text: 'B' } } }, { _fields: { 'first-name': { text: 'C' }, 'last-name': { text: 'D' } } }] }, 'W_COMPOSITE_ROWS_TOO_FEW'],
+];
+
 let bad = 0;
-const total = REJECT.length + ACCEPT.length;
+const total = REJECT.length + ACCEPT.length + WARN.length + NOWARN.length;
 for (const [name, model, code] of REJECT) {
   const r = validate(model);
   const hit = r.ok ? null : r.errors.find((e) => e.code === code);
@@ -47,6 +60,18 @@ for (const [name, model] of ACCEPT) {
   const r = validate(model);
   if (r.ok) console.log(`ok   accepts: ${name}`);
   else { bad++; console.log(`FAIL must-accept: ${name} — ${r.errors.map((e) => `${e.path}: ${e.message}`).join(' | ')}`); }
+}
+for (const [name, model, code] of WARN) {
+  const r = validate(model);
+  const hit = r.warnings.find((w) => w.code === code);
+  if (r.ok && hit) console.log(`ok   warns: ${name}  (${hit.path}: ${code})`);
+  else { bad++; console.log(`FAIL must-warn [${code}]: ${name} — ${r.ok ? 'no warning emitted' : 'unexpectedly rejected'}`); }
+}
+for (const [name, model, code] of NOWARN) {
+  const r = validate(model);
+  const hit = r.warnings.find((w) => w.code === code);
+  if (r.ok && !hit) console.log(`ok   no-warn: ${name}`);
+  else { bad++; console.log(`FAIL must-not-warn [${code}]: ${name} — ${r.ok ? 'warning emitted' : 'unexpectedly rejected'}`); }
 }
 console.log(`\n复合元语自测: ${total - bad}/${total} 通过${bad ? ` | 待修 ${bad}` : ''}`);
 process.exit(bad ? 1 : 0);
