@@ -332,19 +332,33 @@ const renderAction = (a) => {
     : `<span class="action-plain">${esc(a.label)}</span>`;
 };
 
+// One row for every control of this element (round 27). The row/primary decision is the
+// shared `plan.actionRow` (axis.mjs); this draws it: the primary CTA is the solid
+// `.action`, the rest are the light `.ctl` pills. Fixes the two stacked, inverted actions
+// on apple-com/home (source: `Buy` filled + `Learn more` light).
+function renderActionRow(row) {
+  if (!row.length) return '';
+  const btns = row.map((c) => (c.primary
+    ? renderAction({ label: c.label, verb: c.verb, hasTarget: Boolean(c.href), href: c.href })
+    : (c.href ? `<a class="ctl" href="${esc(c.href)}">${esc(c.label)}</a>` : `<span class="ctl"${c.verb ? ` data-verb="${esc(c.verb)}"` : ''}>${esc(c.label)}</span>`))).join('');
+  // a lone control keeps its own shape (byte-identical to a single-action element before
+  // round 27); only a real row is wrapped, so the change stays where the defect was.
+  return row.length > 1 ? `<div class="controls">${btns}</div>` : btns;
+}
+
 function renderNode(node, chain, isHero, hide, ctx, depth) {
   // The whole node decision is the shared plan (axis.mjs); this function draws it.
   const plan = nodePlan(node, { chain, values: ctx.values, hidden: hide.get(node), depth, degradations: ctx.degradations });
   if (!plan.visible) return '';
 
   // explicit labeled actions; label-less navigate/open lowers to the element's own link (F-020)
-  let action = '';
   let linkTo = null;
   const titleIsControl = plan.titleIsControl;
   if (plan.action) {
     if (plan.action.isTitleControl || plan.action.isLabellessLink) linkTo = plan.action.linkTo;
-    else if (plan.action.label) action = renderAction(plan.action);
   }
+  // every control of this element is ONE row (round 27): own `_action` + inner controls
+  const action = renderActionRow(plan.actionRow);
 
   // _primary FACT gets the enlarged hero slot (axis.mjs primarySlot); subtree primaries
   // stay in place (no reordering). Hiding the shown fact is per-target storage.
@@ -360,7 +374,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (isHero) cls.push('hero-branch');
   const demoted = plan.demoted;
 
-  const itemsConsumed = new Set();
+  const itemsConsumed = new Set(plan.rowConsumed);
   let bodyLead = '';
   let heroImage = '';
   const metaParts = [];
@@ -389,17 +403,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   // an empty collection still renders its empty-state storyline (F-013): every declared fact must render
   if (plan.emptyState) body += renderNode(plan.emptyState, [...chain, node], false, hide, ctx, depth + 1);
 
-  // toolbar: consecutive action-only children render inline (grouping decided in plan.toolbar)
-  if (plan.toolbar.length >= 2) {
-    const tools = plan.toolbar.filter((n) => !itemsConsumed.has(n)).map((n) => {
-      const a = itemActionPlan(n, [...chain, node], ctx.values);
-      // `verb` is internal semantics, never visible copy (F-022/F-029): no label ⇒ no tool
-      if (!a || !a.label) return '';
-      return a.hasTarget ? `<a class="tool" href="${esc(a.href)}">${esc(a.label)}</a>` : `<span class="tool">${esc(a.label)}</span>`;
-    }).filter(Boolean).join('');
-    if (tools) body += `<div class="toolbar">${tools}</div>`;
-    plan.toolbar.forEach((n) => itemsConsumed.add(n));
-  }
+  // toolbar controls are the SAME row as the element's own action (round 27):
+  // `plan.toolbar` stays the shared grouping for text/Markdown, HTML draws `actionRow`.
 
   let prevGroupHadTitle = false;
   for (const c of plan.namedChildren) {
@@ -418,11 +423,13 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     const inner = linkTo ? `<a class="ctl" href="${esc(linkTo)}">${titleText}</a>` : `<span class="ctl">${titleText}</span>`;
     return `<div class="controls">${inner}</div>`;
   }
-  // a bare-title block (source banners/ads) is a promo card, never a section heading (T-106)
+  // a bare-title block is a promo card ONLY when the source has an image (T-106): the
+  // measured set was 8/8 image-less collection members, which are ordinary text and must
+  // never become an empty grey box (round 27).
   const bareTitle = depth > 0 && titleText && !bodyLead && !heroHtml && !heroImage && !body && !action && !plan.hasAction;
-  if (bareTitle) {
-    const img = node._image ? imageEntries(node._image).map((e) => imgHtml(e.image, e.alt)).join('') : '';
-    return `<div class="promo${img ? ' promo-image' : ''}">${img}${titleText ? `<span class="promo-label">${titleText}</span>` : ''}</div>`;
+  if (bareTitle && node._image) {
+    const img = imageEntries(node._image).map((e) => imgHtml(e.image, e.alt)).join('');
+    return `<div class="promo${img ? ' promo-image' : ''}">${img}</div>`;
   }
 
   const headingLevel = Math.min(depth + 1, 6);
@@ -478,12 +485,11 @@ article{margin:12px 0}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .chips-rows{display:block}
 .chips-rows .chip-item{padding:3px 0}
-.cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
+.cards .item img,.run .item img,.cards img{width:100%;height:auto;display:block;border-radius:8px}
 .action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
 .promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
 .promo-image{padding:0;overflow:hidden}
 .promo-image img{width:100%;height:auto;display:block;border-radius:9px}
-.promo-label{display:block;padding:8px 12px}
 .meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
@@ -499,7 +505,11 @@ main>.node>.strip:first-child,article>.strip{margin:0}
 .block>.node{max-width:none}
 hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
 /* F-031-§4 控件条 */
-.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0;align-items:center}
+.controls .action{margin:0}
+/* 行内的主 CTA 必须可辨：无抓取目标的动作（.action-plain）在行内也按实心强调
+   （无目标不得造真实按钮标签；强调是样式，不是新控件，T-101/F-031-§4） */
+.controls .action-plain{margin:0;background:#17212b;color:#fff;border-color:#17212b}
 .ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
 a.ctl{font-weight:600}
 a.ctl:hover{background:#f2f7ff}
@@ -534,8 +544,6 @@ a.ctl:hover{background:#f2f7ff}
 details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
 details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
 details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
-.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;align-items:center}
-.toolbar .tool{padding:6px 14px;border:1px solid #d6dde6;border-radius:8px;text-decoration:none;color:inherit;font-size:.9em}
 .expose{display:block;margin:8px 0}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
@@ -545,6 +553,8 @@ legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04e
 input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 img{max-width:100%;border-radius:10px;display:block}
+/* 图片按容器宽度铺满、保持自身比例（round 27）：小图不再缩在中间，也绝不 object-fit:cover 裁剪内容 */
+.fact img,.cards img,.cards .item img,.run .item img{width:100%;height:auto}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
 table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}

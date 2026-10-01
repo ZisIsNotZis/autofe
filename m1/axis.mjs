@@ -347,6 +347,46 @@ export function runPlan(items) {
   return { named, attrs, cols, isTable, cellValue };
 }
 
+// ==== action row (round 27) ==================================================
+// MEASURED, not assumed: the model has NO "which CTA is the main one" marker. What it has
+// is F-020's two-element split — the element's own `_action` is the element's OWN action
+// ("view details"), while a child whose whole content is its own control copy is a BUTTON
+// inside it (axioms §6 example: `"buy": { "_title": { "text": "购买" }, "_action": { "verb": "buy" } }`).
+// Emphasis therefore has to be DRAWN, and this is the one shared rule for it
+// (docs/m1/layout-axes.md §4.1): one row per element; primary = first commitment verb,
+// else the element's own action, else the first control; the rest are secondary.
+// Measured effect (round 27): `apple-com/home` draws `Buy` (child, `buy`) and `Learn more`
+// (own, `open`) as two stacked lines with the emphasis inverted — the user-visible defect.
+export const COMMIT_VERBS = new Set(['buy', 'preorder', 'add-to-cart', 'submit']);
+// An INNER CONTROL is a named child that renders as nothing but its own control copy: its
+// heading IS its action label and it holds no other fact and no child. That is the
+// renderer's "control bar" case, decided here so no target has to re-derive it.
+export function isInnerControlChild(child, parentChain, values = {}) {
+  const key = headingKeyOf(child);
+  if (!key) return false;
+  const ap = actionPlan(child, parentChain, values);
+  if (!ap || !ap.label || (child[key]?.text ?? '') !== ap.label) return false;
+  const f = factsOf(child);
+  return f.length === 1 && f[0].key === key && childrenOf(child).length === 0;
+}
+// The controls of ONE element as one row: the element's own action, its `_action`-only
+// children (the toolbar), and its inner-control children. `primary` marks exactly one.
+function actionRowOf(node, chain, values, action, toolbar) {
+  const row = [];
+  const push = (a, from) => {
+    if (!a || !a.label) return;
+    row.push({ label: a.label, href: a.hasTarget ? a.href : null, verb: a.verb ?? null, from });
+  };
+  if (action && action.label && !action.isTitleControl && !action.isLabellessLink) push(action, 'own');
+  for (const n of toolbar) push(itemActionPlan(n, [...chain, node], values), 'inner');
+  const inner = namedChildEntries(node).filter((c) => isInnerControlChild(c.node, [...chain, node], values));
+  for (const c of inner) push(itemActionPlan(c.node, [...chain, node], values), 'inner');
+  let pi = row.findIndex((c) => COMMIT_VERBS.has(c.verb));
+  if (pi < 0) pi = row.findIndex((c) => c.from === 'own');
+  if (pi < 0) pi = 0;
+  return { row: row.map((c, i) => ({ ...c, primary: i === pi })), consumed: [...toolbar, ...inner.map((c) => c.node)] };
+}
+
 // A choice set's form (F-030): one option is not a choice (plain fact); two or more are a
 // choice set; a bare `_expose` is a boolean switch or an input. `rich` says the options
 // carry their own attributes — a target may draw those as a table or as annotated options.
@@ -477,6 +517,7 @@ export function nodePlan(node, ctx = {}) {
   const toolbar = namedChildEntries(node)
     .filter((c) => isActionOnlyNode(c.node) && actionPlan(c.node, [...chain, node], values))
     .map((c) => c.node);
+  const actionRow = actionRowOf(node, chain, values, action, toolbar);
   const consumedArray = new Set(exp && Array.isArray(node._items) ? node._items : []);
   const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it));
   const items = seqGroupsOf(rawItems, node, ctx.degradations ?? null);
@@ -486,7 +527,8 @@ export function nodePlan(node, ctx = {}) {
   return {
     ok: true, visible: true, scope, headingKey, headingValue: headingKey ? node[headingKey] : null,
     headingText, demoted: isDemoted(node), primary, facts, action, hasAction: Boolean(node._action),
-    titleIsControl, choice, toolbar, items, namedChildren, emptyState, titleConsumed,
+    titleIsControl, choice, toolbar, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
+    items, namedChildren, emptyState, titleConsumed,
   };
 }
 

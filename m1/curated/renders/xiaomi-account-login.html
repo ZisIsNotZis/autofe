@@ -25,12 +25,11 @@ article{margin:12px 0}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .chips-rows{display:block}
 .chips-rows .chip-item{padding:3px 0}
-.cards .item img,.run .item img,.cards img{width:100%;height:150px;object-fit:cover;border-radius:8px;display:block}
+.cards .item img,.run .item img,.cards img{width:100%;height:auto;display:block;border-radius:8px}
 .action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
 .promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
 .promo-image{padding:0;overflow:hidden}
 .promo-image img{width:100%;height:auto;display:block;border-radius:9px}
-.promo-label{display:block;padding:8px 12px}
 .meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
@@ -46,7 +45,11 @@ main>.node>.strip:first-child,article>.strip{margin:0}
 .block>.node{max-width:none}
 hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
 /* F-031-§4 控件条 */
-.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0;align-items:center}
+.controls .action{margin:0}
+/* 行内的主 CTA 必须可辨：无抓取目标的动作（.action-plain）在行内也按实心强调
+   （无目标不得造真实按钮标签；强调是样式，不是新控件，T-101/F-031-§4） */
+.controls .action-plain{margin:0;background:#17212b;color:#fff;border-color:#17212b}
 .ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
 a.ctl{font-weight:600}
 a.ctl:hover{background:#f2f7ff}
@@ -81,8 +84,6 @@ a.ctl:hover{background:#f2f7ff}
 details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
 details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
 details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
-.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;align-items:center}
-.toolbar .tool{padding:6px 14px;border:1px solid #d6dde6;border-radius:8px;text-decoration:none;color:inherit;font-size:.9em}
 .expose{display:block;margin:8px 0}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
@@ -92,6 +93,8 @@ legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04e
 input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 img{max-width:100%;border-radius:10px;display:block}
+/* 图片按容器宽度铺满、保持自身比例（round 27）：小图不再缩在中间，也绝不 object-fit:cover 裁剪内容 */
+.fact img,.cards img,.cards .item img,.run .item img{width:100%;height:auto}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
 table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
@@ -100,4 +103,4 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 </style></head>
-<body><main><article class="node depth-0"><h1 class="title">小米账号</h1><section class="group g-login"><article class="node depth-1"><h2 class="title">登录</h2><section class="group g-identifier"><article class="node depth-2"><span class="expose expose-account"><span class="deflabel">邮箱/手机号码/小米ID</span><input type="text" name="account" data-type="text" aria-label="邮箱/手机号码/小米ID"></span></article></section><section class="group g-secret"><article class="node depth-2"><span class="expose expose-password"><span class="deflabel">密码</span><input type="text" name="password" data-type="text" aria-label="密码"></span></article></section><section class="group g-agreement"><article class="node depth-2"><label class="choice expose-agreement"><input type="checkbox" name="agreement" value="true"> 已阅读并同意小米账号使用协议和小米账号隐私政策</label></article></section><section class="group g-submit"><div class="controls"><span class="ctl">登录</span></div></section><section class="group g-forgot"><div class="controls"><a class="ctl" href="https://account.xiaomi.com/pass/forgetPassword">忘记密码？</a></div></section><section class="group g-phone-login"><div class="controls"><a class="ctl" href="https://account.xiaomi.com/fe/service/login/phone">手机号登录</a></div></section><section class="group g-scan-login"><div class="controls"><span class="ctl">扫码登录</span></div></section><section class="group g-alternatives"><article class="node depth-2"><h3 class="title">其他方式登录</h3><div class="controls"><span class="ctl" data-verb="open">支付宝登录</span><span class="ctl" data-verb="open">微信登录</span><span class="ctl" data-verb="open">QQ登录</span><span class="ctl" data-verb="open">微博登录</span></div></article></section><section class="group g-signup"><div class="controls"><a class="ctl" href="https://account.xiaomi.com/pass/register">注册</a></div></section></article></section></article></main></body></html>
+<body><main><article class="node depth-0"><h1 class="title">小米账号</h1><section class="group g-login"><article class="node depth-1"><h2 class="title">登录</h2><section class="group g-identifier"><article class="node depth-2"><span class="expose expose-account"><span class="deflabel">邮箱/手机号码/小米ID</span><input type="text" name="account" data-type="text" aria-label="邮箱/手机号码/小米ID"></span></article></section><section class="group g-secret"><article class="node depth-2"><span class="expose expose-password"><span class="deflabel">密码</span><input type="text" name="password" data-type="text" aria-label="密码"></span></article></section><section class="group g-agreement"><article class="node depth-2"><label class="choice expose-agreement"><input type="checkbox" name="agreement" value="true"> 已阅读并同意小米账号使用协议和小米账号隐私政策</label></article></section><section class="group g-alternatives"><article class="node depth-2"><h3 class="title">其他方式登录</h3><div class="controls"><span class="ctl" data-verb="open">支付宝登录</span><span class="ctl" data-verb="open">微信登录</span><span class="ctl" data-verb="open">QQ登录</span><span class="ctl" data-verb="open">微博登录</span></div></article></section><div class="controls"><span class="action-plain">登录</span><a class="ctl" href="https://account.xiaomi.com/pass/forgetPassword">忘记密码？</a><a class="ctl" href="https://account.xiaomi.com/fe/service/login/phone">手机号登录</a><span class="ctl" data-verb="operate">扫码登录</span><a class="ctl" href="https://account.xiaomi.com/pass/register">注册</a></div></article></section></article></main></body></html>
