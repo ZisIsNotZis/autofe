@@ -761,3 +761,17 @@
 - **F-093（S4，轮 50）**：`search`/`paginator` 迁移 + 槽位角色取代轮 49 的宽规则。每个槽补 `role ∈ {state,field,pointer}`：`search.query` 是 `field`（**必须**照旧画输入框，否则整个搜索框消失）、`login.state` 是 `state`、`paginator.ref` 是 `pointer`（`_ref` 不印上屏）。新增 `W_COMPOSITE_NAME_ONLY_WATERMARK`（注册表 marker 驱动）。**反向证伪**：临时把 `search.query.role` 标成 `state` ⇒ V0/V1/V2 失败。
 - **F-094（S5，轮 51）**：把 `form` 注入 8 个候选面板，**0/8 通过** —— 不是引擎不肯迁，而是 schema 三处与实测不符 + 两页确属不同语义。父代理裁定 A 落地三项**修正**：`covered()` 认回已声明的 `shape:"expose-collection"` 槽（缺陷修）；`form.submit` 改为**可选、至多 1**、verbs 收窄 `["submit"]`（很多表单即时生效，"绝不出现两个提交"才是不变量）；嵌套改由**外层槽位声明**（`composite:"<type>"`），未声明仍拒。结果 `form` 迁移 1/8，另外 5 页按「输入 + 产出结果列表 = search」归 `search`，2 页如实不迁移。**不许为凑数硬套 schema。**
 - **贯穿的对象语义**：这类"类型不全 ⇒ 报错、而不是静默渲染成半成品"的价值，在真实语料上被反复实拍——`search` 首次遇到即抓到 taobao 缺 `name`（后凭抓取里真实存在的 `aria-label` 补回），`paginator` 首次遇到即抓到 3 页缺可解析 `_ref`（2 页补真实集合后通过，gov-uk 无对象可指 ⇒ 记采集缺口）。
+
+## F-095 校验器在非模型 JSON 上栈溢出（轮 53 修正）
+- **发现**：第 11 轮验收按字面跑 `node m1/validate.mjs m1/curated/*/*.json`——该 glob 连带 `m1/curated/renders/manifest.json`（**生成物，不是模型**）⇒ `Maximum call stack size exceeded`，exit=2。pipeline 口径本身已排除 `renders/**`（未改动）。
+- **根因**：refs 解析段的兜底遍历 `walk(model,…)` 经共享 `childrenOf` 递归，而 `childrenOf` 对**字符串**做 `Object.entries` 会拆成它的**字符** ⇒ 字符串被当成集合无限递归。manifest 顶层 `version:"mupct4wn"` 是**非下划线命名子件**，被 `childrenOf` 收进遍历，首击即爆栈。
+- **修**（只动 `m1/validate.mjs`）：① 入口守卫，顶层非 node 对象（数组/标量/null）⇒ `notModel` + `E_NOT_MODEL`，不遍历；② "清单/数据袋"启发——模型节点的**非保留成员必是 node 对象**，某个非保留键的值是标量/数组即判 `notModel`（manifest 的 `version` 命中）；③ 兜底遍历改为**受保护的 `walkNodes`**，只下钻 plain object，**绝不把标量当集合递归**；④ 复合件 `collect` 同样先跳过非对象子件；⑤ `validateFiles` 对 `notModel` 打印 `skip <file>: <原因>(E_NOT_MODEL)` 并**不计为失败**（校验器契约只覆盖模型）。
+- **行为**：`node m1/validate.mjs m1/curated/*/*.json` ⇒ exit=0，42 个模型 `ok` + 1 行 `skip …/renders/manifest.json`（附原因），不崩溃。
+- **门禁**：`validate-selftest.mjs` 新增 5 条（数组顶层 / 标量顶层 / null 顶层 / manifest 形数据袋 / 真模型里的深层字符串子件），均**不抛异常**且给出预期结论（前四者 skip，末者正常报错）。
+
+## F-096 保真度量看不见输入控件消失（轮 53 修正）
+- **发现**：第 11 轮验收实测，把 `search.query` 的 role 从 `field` 改成 `state` 后**输入框整块消失**，而**保真度不变**——保真只数字符文本，对"控件消失"完全盲。
+- **修**：新增**第 12 道自测** `m1/eval/control-render-selftest.mjs` 并接入 `pipeline.mjs`。规则：`axis.exposeRendersAsControl(node) !== null` 的每个 `_expose` 都必须在**三个目标**里画成控件——HTML：`<input|select|textarea … name="<洞名>">`；文本/MD：可辨识的输入占位标记（`_____…` / `(密码)` / `[ ]` / `( )`）。同时反向断言：`state` 槽的 `_expose` **不得**画控件（`login.signed-in` 三页）。单项 `_items` 集合是 `choicePlan` 有意的 `plain-fact` 事实（非控件），单独计数并要求其事实文本在场。
+- **覆盖**：全 **42 页**跑一遍，报告"控件数 = 应渲染的 `_expose` 数"：应渲染 **56**、HTML 命中 **56**、单项降级为事实 **2**（`apple-com/iphone-16#storage`、`mi-com/product-detail-mi15#color`）、`state` 不画控件 **3**，不一致清单为空。
+- **可失败（F-040 证伪）**：① 构造"声明了 field 但产物里控件被剥掉"的场景 ⇒ `auditPage` 必报缺失（自测内，实测失败）；② 临时把 `m1/composites.json#search.fields.query.role` 改成 `state` ⇒ 断言 B/D 失败（`待修 2`），撤销后全过（同时 `axis-selftest` V0/V1/V2 也失败，见 F-093）。
+- **范围**：门禁护的是"axis 判定为控件的 `_expose` 在渲染器/三目标里被吞掉"这一接缝；**schema 角色声明写错**（field↔state）由 `axis-selftest` V0–V2 与采集一致性门禁护，不是本门禁的职责。

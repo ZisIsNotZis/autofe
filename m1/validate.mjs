@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const CONTEXT = JSON.parse(fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), 'vocab-context.json'), 'utf8')).context;
 import {
   VOCAB, ROLES, VERBS, FIELDS, COMPOSITES, isReserved, isRoleKey, roleOf, isNamedChildKey,
-  valueTypeOf, resolvePath, findKey, childrenOf, walk, parseExpr, exprPaths, exposeOf,
+  valueTypeOf, resolvePath, findKey, childrenOf, parseExpr, exprPaths, exposeOf,
 } from './model-lib.mjs';
 
 // typed values are a closed set: a reserved key holding a non-typed object is a hard error (F-031)
@@ -17,8 +17,29 @@ function isTypedValue(v) {
   return Object.keys(v).some((k) => VALUE_KEYS.includes(k));
 }
 const VALUE_HOLDERS = ['_image', '_video', '_icon', '_name', '_title', '_label', '_text', '_subtitle', '_detail', '_summary', '_price', '_count', '_measure', '_author', '_category', '_tag', '_status', '_variant', '_option', '_default'];
+// A node (and every value it holds) is a plain object; a scalar/array member is not a subtree.
+// The shared `childrenOf`/`walk` in model-lib treat a STRING as an indexable collection, so
+// recursing into one loops forever (`Object.entries('ab')` → its characters). The validator is
+// the entry point users point at arbitrary JSON, so it must never hand a non-object to the walk.
+const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
+const jsonKind = (v) => Array.isArray(v) ? 'array' : (v === null ? 'null' : typeof v);
 export function validate(model) {
   const shapeErrors = [];
+  // Non-model input must be refused gracefully, never walked. `node m1/validate.mjs
+  // m1/curated/*/*.json` also matches the generation manifest (`renders/manifest.json`,
+  // which is output, not a curated model): walking its scalar members as if they were
+  // nodes used to recurse into a string forever and exit 2 with a stack overflow.
+  // A model's top level is a node object: every non-reserved key holds a node object (a role
+  // fact's typed value or a named child). Anything else (array/scalar, or a manifest/data bag
+  // with scalar members like `version`) is out of scope → reported as `notModel`, not walked.
+  if (!isPlainObject(model)) {
+    return { ok: false, notModel: true, errors: [{ path: '/', message: `not a model: top level must be a node object (got ${jsonKind(model)})`, code: 'E_NOT_MODEL' }], warnings: [] };
+  }
+  const scalarMember = Object.entries(model).find(([k, v]) => !k.startsWith('_') && !isPlainObject(v));
+  if (scalarMember) {
+    const [k, v] = scalarMember;
+    return { ok: false, notModel: true, errors: [{ path: `/${k}`, message: `not a model: top-level "${k}" is a ${jsonKind(v)}; a node's non-reserved members must be node objects (a role fact or a child). A generation manifest or other data bag is not a model.`, code: 'E_NOT_MODEL' }], warnings: [] };
+  }
   // _expose.type must be a known value type, else it silently becomes plain text (F-031)
   const errors = [];
   const err = (p, msg, code) => errors.push(code ? { path: p || '/', message: msg, code } : { path: p || '/', message: msg });
@@ -213,7 +234,8 @@ export function validate(model) {
       nodes.push({ n, p: dp ? `${ip}.${dp}` : ip });
       for (const c of childrenOf(n)) {
         const child = c.node;
-        if (child && typeof child === 'object' && !Array.isArray(child) && child._composite !== undefined) {
+        if (!isPlainObject(child)) continue;   // a scalar member is not a subtree (never recurse)
+        if (child._composite !== undefined) {
           nested.push({ n: child, p: dp ? `${ip}.${dp}.${c.key}` : `${ip}.${c.key}` });
           continue;
         }
@@ -338,8 +360,14 @@ export function validate(model) {
   }
 
   checkNode(model, '', []);
-  // refs resolve document-wide
-  walk(model, (node, p) => {
+  // refs resolve document-wide. A guarded walk: only node objects are descended into, so a
+  // stray scalar member can never be treated as a collection (see isPlainObject above).
+  const walkNodes = (n, fn, p = '') => {
+    if (!isPlainObject(n)) return;
+    fn(n, p);
+    for (const c of childrenOf(n)) walkNodes(c.node, fn, p ? `${p}.${c.key}` : c.key);
+  };
+  walkNodes(model, (node, p) => {
     for (const [k, v] of Object.entries(node)) {
       if (!isRoleKey(k) || valueTypeOf(v) !== 'ref') continue;
       const target = v.ref;
@@ -361,7 +389,12 @@ export function validateFiles(files) {
   for (const f of files) {
     const model = JSON.parse(fs.readFileSync(f, 'utf8'));
     const r = validate(model);
-    if (!r.ok) {
+    if (r.notModel) {
+      // A non-model JSON (generation manifest, array, scalar) is SKIPPED, not a validation
+      // failure: the validator's contract is over models. Printed so the skip is never silent.
+      console.log(`skip ${f}`);
+      for (const e of r.errors) console.log(`   ${e.message}${e.code ? ` (${e.code})` : ''}`);
+    } else if (!r.ok) {
       bad++;
       console.error(`FAIL ${f}`);
       for (const e of r.errors) console.error(`   ${e.path}: ${e.message}${e.code ? ` (${e.code})` : ''}`);

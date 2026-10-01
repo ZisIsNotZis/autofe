@@ -24,7 +24,31 @@ const ACCEPT = [
   ['the closed `secret` value type (round 46)', { _intent: 'x', _key: 'k', _title: { text: 't' }, pw: { _intent: 'p', _label: { text: '密码' }, _expose: { name: 'password', type: 'secret' } } }],
 ];
 
+// Non-model input (round 53): `node m1/validate.mjs m1/curated/*/*.json` also matches
+// `m1/curated/renders/manifest.json` (output, not a model). The validator must refuse/skip
+// it with a clear verdict and never walk it as a tree — walking a string recurses forever
+// (`Object.entries('ab')` → its characters) and used to exit 2 with a stack overflow.
+// Each case asserts BOTH halves: no throw, and the expected notModel verdict (or, for a
+// model with a deep scalar member, a normal error instead of a crash).
+const NONMODEL = [
+  ['array top level', [1, 2, 3], (r) => r.notModel === true && r.errors.some((e) => e.code === 'E_NOT_MODEL')],
+  ['scalar top level', 'hello', (r) => r.notModel === true && r.errors.some((e) => e.code === 'E_NOT_MODEL')],
+  ['null top level', null, (r) => r.notModel === true],
+  ['a manifest-like bag (the real breakage: renders/manifest.json)', { version: 'mupct4wn', generatedAt: 'x', pages: { 'a-b': { key: 'a/b', html: { sha256: 'z', bytes: 1 } } } }, (r) => r.notModel === true && /version/.test(r.errors[0].message)],
+  // a real model whose subtree holds a stray string: it IS a model, so the top-level guard
+  // lets it through and the member check reports it — the walk must not recurse into the
+  // string (that was the stack overflow).
+  ['a model with a string child', { _intent: 'x', _key: 'k', _title: { text: 't' }, child: { _intent: 'c', deep: 'oops' } }, (r) => r.ok === false && !r.notModel && r.errors.some((e) => e.path.includes('deep'))],
+];
+
 let bad = 0;
+for (const [name, model, ok] of NONMODEL) {
+  let r, threw = null;
+  try { r = validate(model); } catch (e) { threw = e; }
+  if (threw) { bad++; console.log(`FAIL non-model (threw): ${name} — ${threw.message}`); }
+  else if (!ok(r)) { bad++; console.log(`FAIL non-model: ${name} — got ${JSON.stringify({ ok: r.ok, notModel: r.notModel, errs: r.errors.map((e) => e.path + ':' + e.code) })}`); }
+  else console.log(`ok   non-model: ${name}  (${r.notModel ? 'skip' : r.errors[0]?.path + ': ' + r.errors[0]?.message.slice(0, 56)})`);
+}
 for (const [name, model, needle] of REJECT) {
   const r = validate(model);
   const hit = r.ok ? null : r.errors.find((e) => e.path.includes(needle) || e.message.includes(needle));
@@ -36,5 +60,6 @@ for (const [name, model] of ACCEPT) {
   if (!r.ok) { bad++; console.log(`FAIL must-accept: ${name} — ${r.errors.map((e) => `${e.path}: ${e.message}`).join(' | ')}`); }
   else console.log(`ok   accepts: ${name}`);
 }
-console.log(`\n校验器自测: ${REJECT.length + ACCEPT.length - bad}/${REJECT.length + ACCEPT.length} 通过${bad ? ` | 待修 ${bad}` : ''}`);
+const total = REJECT.length + ACCEPT.length + NONMODEL.length;
+console.log(`\n校验器自测: ${total - bad}/${total} 通过${bad ? ` | 待修 ${bad}` : ''}`);
 process.exit(bad ? 1 : 0);
