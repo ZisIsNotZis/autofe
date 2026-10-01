@@ -175,7 +175,12 @@ if (!gMD.ok) console.log(gMD.out);
 const gSH = gate('node m1/eval/shots-selftest.mjs');
 console.log(`[pipeline] 证据门禁自测(哈希优先): ${gSH.ok ? '通过' : '失败'}`);
 if (!gSH.ok) console.log(gSH.out);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok;
+// 8th gate (round 42): the image-attribution scanner must record closing tags and pop, so an
+// image after a closed <a> is never attributed to that (preceding) anchor. F-081.
+const gIA = gate('node m1/eval/imgattr-selftest.mjs');
+console.log(`[pipeline] 归属工具自测(闭合标签): ${gIA.ok ? '通过' : '失败'}`);
+if (!gIA.ok) console.log(gIA.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';
