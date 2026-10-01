@@ -102,7 +102,12 @@ function renderList(items, chain, ctx) {
     const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
     return `<li>${inner}${ex.ctl}</li>`;
   }).join('');
-  return lis ? `<ul class="linklist${items.length > 4 && items.every((it) => ((labelOf(it)?.text) ?? '').length <= 12) ? ' cols2' : ''}">${lis}</ul>` : '';
+  // 长标签列表（导航/类目菜单）分栏成紧凑形态：条目越多，列数越多（轮 35，taobao 首屏
+  // 60+ 类目标签竖排成 sitemap）；短标签（≤12 字）才敢多列，长句子仍单列可读。
+  const short = items.every((it) => ((labelOf(it)?.text) ?? '').length <= 12);
+  const n = items.length;
+  const cols = short && n > 4 ? (n >= 24 ? 4 : n >= 12 ? 3 : 2) : 0;
+  return lis ? `<ul class="linklist${cols ? ` cols${cols}` : ''}">${lis}</ul>` : '';
 }
 // 有序集合（_rel.order = sequence|time）：每一项自成一行，顺序即语义（F-031-§1）
 function renderSeq(items, chain, ctx) {
@@ -172,8 +177,12 @@ function plainValue(v) {
   }
   return '';
 }
-function renderDeflist(items, chain, ctx) {
-  const rows = items.map((it) => {
+function renderDeflist(items, chain, ctx, order) {
+  // An ordered (ranked/step) list of name+detail rows reads as a leaderboard only when each
+  // row carries its ordinal (axioms §4: `order: sequence` ⇒ 编号). Unordered deflists stay as
+  // they are; a `time` order is a timeline rail (linear-app changelog), not a ranking.
+  const ranked = order === 'sequence';
+  const rows = items.map((it, i) => {
     const label = it._name ?? it._title;
     const rest = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
     const l0 = label ? fmt(label) : '';
@@ -181,10 +190,11 @@ function renderDeflist(items, chain, ctx) {
     const l = l0 && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${l0}</a>` : l0;
     const v = (rest.map((x) => roleFact(x)).join(' ') + (ex.ctl ? ` ${ex.ctl}` : '')).trim();
     if (!l && !v) return '';
+    const rank = ranked ? `<span class="rank">${i + 1}</span>` : '';
     // no empty label cell: an unlabeled row keeps its full width (F-031-§5)
-    return `<div class="defrow">${l ? `<div class="deflabel">${l}</div>` : ''}<div class="defval">${v}</div></div>`;
+    return `<div class="defrow">${rank}${l ? `<div class="deflabel">${l}</div>` : ''}<div class="defval">${v}</div></div>`;
   }).join('');
-  return rows ? `<div class="deflist">${rows}</div>` : '';
+  return rows ? `<div class="deflist${ranked ? ' ranked' : ''}">${rows}</div>` : '';
 }
 function renderAccordion(items, chain, hide, ctx) {
   const det = items.map((it) => {
@@ -205,7 +215,19 @@ function renderRun(items, chain, hide, ctx) {
     const anyOps = items.some((it) => namedChildEntries(it).length > 0);
     const showHead = rp.cols.some((c) => columnLabel(c)) || anyOps;
     const head = showHead ? `<tr>${rp.cols.map((c) => `<th>${esc(columnLabel(c))}</th>`).join('')}${anyOps ? '<th></th>' : ''}</tr>` : '';
+    // A row whose ONLY value is the identity column is the source's own group row (the
+    // second cell is empty). Drawing it as a data row makes it read like a product with a
+    // missing price (round 35, aws ec2: 「数据自互联网传入 Amazon EC2」 rendered as a
+    // pric-less row). It is an inline group heading: one cell spanning the table.
+    const rowLabel = (it) => {
+      const vals = rp.cols.map((col) => rp.cellValue(it, col));
+      const present = vals.filter((v) => v !== null && v !== undefined);
+      return present.length === 1 && vals[0] != null ? vals[0] : null;
+    };
+    const span = rp.cols.length + (anyOps ? 1 : 0);
     const trs = items.map((it) => {
+      const grp = rowLabel(it);
+      if (grp) return `<tr class="row-group"><th colspan="${span}">${fmt(grp)}</th></tr>`;
       const tds = rp.cols.map((col) => { const v = rp.cellValue(it, col); return `<td>${v ? fmt(v) : ''}</td>`; }).join('');
       const ops = namedChildEntries(it).map((ch) => renderNode(ch.node, [...chain, it], false, hide, ctx, 4)).join('');
       return `<tr>${tds}${anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
@@ -268,7 +290,7 @@ function renderChoice(ch, node, chain, hide, ctx) {
   return `<span class="expose expose-input expose-${esc(ch.name)}">${outside}${hint}<input type="${itype}" name="${esc(ch.name)}" data-type="${esc(ch.type)}"${lbl ? ` aria-label="${esc(lbl)}"` : ''}${watermark}></span>`;
 }
 
-function renderForm(form, items, chain, hide, ctx, depth, node) {
+function renderForm(form, items, chain, hide, ctx, depth, node, order) {
   if (form === 'compare-table') return renderCompareTable(items, chain, hide, ctx);
   if (form === 'chips') return renderChips(items, chain, ctx);
   if (form === 'list') return renderList(items, chain, ctx);
@@ -277,7 +299,7 @@ function renderForm(form, items, chain, hide, ctx, depth, node) {
   if (form === 'stack') return renderStack(items, chain, hide, ctx, depth);
   if (form === 'image-strip') return renderImageStrip(items);
   if (form === 'prose') return renderProse(items);
-  if (form === 'deflist') return renderDeflist(items, chain, ctx);
+  if (form === 'deflist') return renderDeflist(items, chain, ctx, order);
   if (form === 'accordion') return renderAccordion(items, chain, hide, ctx);
   if (form === 'table') return renderRun(items, chain, hide, ctx);
   const cls = form === 'product-cards' ? 'cards product-cards' : 'cards';
@@ -468,7 +490,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   // every sibling block item renders in ONE form; nothing renders twice (T-103)
   // 轴分组（compare 实体/连续正文段/普通集合）在 axis.mjs seqGroupsOf；D2/P3 同理。
   const { groups, order } = plan.items;
-  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node);
+  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node, order);
   for (const g of groups) g.items.forEach((it) => itemsConsumed.add(it));
   // order:time shows a time axis only over a vertical sequence — never a stray rail across a grid (F-031-§1)
   if (order === 'time' && groups.length && groups.every((g) => g.form === 'deflist' || g.form === 'seq')) cls.push('timeline');
@@ -559,7 +581,8 @@ article{margin:12px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
-.fact{margin:3px 0}
+.fact{margin:3px 0;max-width:74ch}
+.hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
 .fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
@@ -614,6 +637,8 @@ a.ctl:hover{background:#f2f7ff}
 .manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:#33475b;overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
+.linklist.cols3{columns:3;column-gap:24px}
+.linklist.cols4{columns:4;column-gap:20px}
 .linklist li{margin:5px 0;line-height:1.5}
 .linklist a{color:inherit}
 .seq{margin:8px 0;padding-left:1.5em}
@@ -624,6 +649,8 @@ a.ctl:hover{background:#f2f7ff}
 .chips a{color:inherit;text-decoration:none}
 .chips a:hover{text-decoration:underline}
 .deflist{margin:8px 0}
+.deflist.ranked .rank{min-width:1.5em;color:#8493a3;font-weight:700;font-variant-numeric:tabular-nums}
+.deflist.ranked .deflabel{font-weight:500}
 .defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
 .deflabel{min-width:130px;font-weight:600}
 .deflabel a{color:inherit;text-decoration:none}
@@ -658,6 +685,7 @@ img{max-width:100%;border-radius:10px;display:block}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
 table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
+table.data tr.row-group th{text-align:left;color:#33475b;font-weight:700;background:#eef2f7}
 table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}

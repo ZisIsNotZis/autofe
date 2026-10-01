@@ -27,7 +27,8 @@ article{margin:12px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
-.fact{margin:3px 0}
+.fact{margin:3px 0;max-width:74ch}
+.hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
 .fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
@@ -82,6 +83,8 @@ a.ctl:hover{background:#f2f7ff}
 .manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:#33475b;overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
+.linklist.cols3{columns:3;column-gap:24px}
+.linklist.cols4{columns:4;column-gap:20px}
 .linklist li{margin:5px 0;line-height:1.5}
 .linklist a{color:inherit}
 .seq{margin:8px 0;padding-left:1.5em}
@@ -92,6 +95,8 @@ a.ctl:hover{background:#f2f7ff}
 .chips a{color:inherit;text-decoration:none}
 .chips a:hover{text-decoration:underline}
 .deflist{margin:8px 0}
+.deflist.ranked .rank{min-width:1.5em;color:#8493a3;font-weight:700;font-variant-numeric:tabular-nums}
+.deflist.ranked .deflabel{font-weight:500}
 .defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
 .deflabel{min-width:130px;font-weight:600}
 .deflabel a{color:inherit;text-decoration:none}
@@ -126,6 +131,7 @@ img{max-width:100%;border-radius:10px;display:block}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
 table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
+table.data tr.row-group th{text-align:left;color:#33475b;font-weight:700;background:#eef2f7}
 table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}

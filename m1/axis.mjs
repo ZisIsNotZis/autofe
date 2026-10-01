@@ -56,7 +56,7 @@ const isQuantityValue = (v) => Boolean(v) && typeof v === 'object' && !Array.isA
 // render time, after the module has finished evaluating, so there is no TDZ surprise.
 export const quantityLabel = (key, value) => (NUMERIC_LABEL_KEYS.has(key) && isQuantityValue(value) ? roleLabel(key) : '');
 // 哪些角色事实进「meta」这类弱化分组——目标差异可接受，但分组依据必须一致
-export const META_KEYS = new Set(['_count', '_measure', '_duration', '_deadline', '_author', '_source', '_provider', '_brand', '_stock']);
+export const META_KEYS = new Set(['_count', '_measure', '_duration', '_deadline', '_datetime', '_author', '_source', '_provider', '_brand', '_stock']);
 // 角色单位只是兜底：事实自带 unit 时绝不追加，否则两个单位连排（「870 人好评 条评价」，F-037）
 export const hasOwnUnit = (v) => Boolean(v && typeof v === 'object' && !Array.isArray(v) && 'num' in v && v.unit);
 
@@ -112,7 +112,9 @@ export function selectForm(items, order) {
       return len >= 16 || /[?？]$/.test((t?.text ?? '').trim());
     });
     if (order === 'sequence' || order === 'time') return 'seq';   // 有序集合 ⇒ 序列，不是一行 chip（F-031-§1）
-    if (long) return 'list';
+    // 长标签列表（长句子）是列表；一长串短标签的**链接菜单**（如类目/推荐词导航）也不是
+    // 一排 pill 控件条——它是一份导航清单，分栏成紧凑形态（轮 35，taobao 首屏）。
+    if (long || (items.length >= 8 && items.every((it) => it._action))) return 'list';
     if (items.every((it) => it._action)) return 'controls';        // 只有短标签的控件集合才走控件条
     return 'chips';
   }

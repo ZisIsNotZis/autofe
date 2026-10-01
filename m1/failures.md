@@ -539,3 +539,10 @@
 - **根因**：`_rel.order=sequence` + 纯标签成员 ⇒ `renderSeq` 一律编号；编号把「一组面板名」读成「章节目录」。
 - **修法**：`renderSeq` 中「成员 ≥6 且每项只有名字（无其他事实）」⇒ 渲染为 `.manifest` 等格清单（名字、DOM 顺序都不变，只是不编号）。
 - **验证**：grafana 页现为 11 格清单，无 `<ol>`；`axis-selftest` C3（2 项纯标签序列）仍要求 `<ol class="seq">` 并通过（未改轴决策）。
+
+## F-078 元数据与正文同级 + 表格分组行/长导航清单（轮 35 修正，终审 major）
+- **现象**：(a) 36kr feed 卡片里 `来自主题：X|作者 · 时间` 与正文摘要**同字号同字重**、`|` 硬串成一句；(b) 24小时热榜无序号；(c) aws ec2 表段首「分组行」（第二格空）渲染成**漏价的数据行**；第二张表 h2 与列头复读；(d) gov-uk 正文行宽铺满 ~1060px；(e) taobao 首屏 62 个类目/推荐词链接渲染成一排排 `.ctl` 胶囊 ⇒ 像 sitemap。
+- **根因**：(a) 元数据落成通用 `_detail` 文本、且 `_datetime` 未进 `META_KEYS`；(b) 有序 `_rel.order` 的 deflist 不编号；(c) `renderRun` 把单列行当普通数据行；(d) `.fact/.prose` 无最大测度；(e) 长串纯标签**链接菜单**被当控件集（`controls`）出胶囊。
+- **修法**：`axis.mjs` 把 `_datetime` 并入 `META_KEYS`；纯标签集合中「≥8 条且每条带 `_action`」的链接菜单走 `list`。`render.mjs`：`renderDeflist` 在 `order==="sequence"` 时出 `.ranked` 序号；`renderRun` 把「唯一取值在身份列」的行出为 `<tr class="row-group">` 跨列小节标题；`.fact/.prose` 加 `max-width:74ch`（hero/cards 重置）；`renderList` 短标签按条数分栏 `cols2/3/4`。模型侧：36kr feed `_detail` 拆成 `_source/_author/_datetime`；`home.hot` 加 `_rel.order:"sequence"`；删 `aws region-egress._title`（抄自列头的重复标题）。
+- **验证**：pipeline `--shots` ⇒ HTML 42/42 + MD 42/42 保真、48 模型通过、七套自测通过、视觉自查 42/42 干净、证据一致性通过。
+
