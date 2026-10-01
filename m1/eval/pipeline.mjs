@@ -32,6 +32,21 @@ const rows = only ? scale.filter((s) => only.includes(s.k)) : scale;
 // HTML content hash to the PNG generated from it; `--check-shots` (and every default run)
 // refuses to pass when the HTML has moved on without a re-shoot. This is the gate that makes
 // "code fixed but screenshot stale" impossible to ship silently.
+//
+// The verdict is HASH-FIRST (round 33). Two failure criteria and nothing else:
+//   1. sha256(current HTML) != manifest html.sha256  -> 'html changed since shots'
+//   2. sha256(current PNG)  != manifest png.sha256   -> 'png changed since shots'
+// File mtime is NOT a failure reason: restoring the byte-identical file (`cat`-ing the same
+// content, or any tool that rewrites it) used to trip 'png older than html' even though every
+// byte still matched the manifest. mtime is now printed as a hint banner ("HTML 比 PNG 新 N 秒")
+// because a stale-looking mtime is still worth a human look — but it never fails the gate.
+//
+// Manifest path: `m1/curated/renders/manifest.json` (beside the renders it describes).
+// NOTE for other tools: `m1/curated/renders/**` is generation output, not a curated model.
+// The validator gate below therefore walks curated models with
+// `find m1/curated -maxdepth 2 -name '*.json' -not -path '*/renders/*'` — adding new JSON
+// under `m1/curated/renders/` stays out of model validation, but any model JSON placed
+// directly in `m1/curated/<site>/` IS picked up.
 const RENDERS = 'm1/curated/renders';
 const MANIFEST = `${RENDERS}/manifest.json`;
 const sha256 = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
@@ -50,9 +65,9 @@ function writeShotsManifest(version) {
   return man;
 }
 function checkShots() {
-  if (!fs.existsSync(MANIFEST)) return { ok: false, stale: rows.map((r) => ({ k: r.k, why: 'no manifest (run --shots)' })), version: null };
+  if (!fs.existsSync(MANIFEST)) return { ok: false, stale: rows.map((r) => ({ k: r.k, why: 'no manifest (run --shots)' })), hints: [], version: null };
   const man = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
-  const stale = [];
+  const stale = [], hints = [];
   for (const r of rows) {
     const dash = r.k.replace(/\//g, '-');
     const html = `${RENDERS}/${dash}.html`, png = `${RENDERS}/${dash}.png`;
@@ -61,10 +76,18 @@ function checkShots() {
     if (!fs.existsSync(html)) { stale.push({ k: r.k, why: 'html missing' }); continue; }
     if (sha256(html) !== e.html?.sha256) { stale.push({ k: r.k, why: 'html changed since shots' }); continue; }
     if (!fs.existsSync(png)) { stale.push({ k: r.k, why: 'png missing' }); continue; }
-    if (e.png?.sha256 && sha256(png) !== e.png.sha256) { stale.push({ k: r.k, why: 'png changed since manifest' }); continue; }
-    if (fs.statSync(png).mtimeMs + 1 < fs.statSync(html).mtimeMs) { stale.push({ k: r.k, why: 'png older than html' }); continue; }
+    if (e.png?.sha256 && sha256(png) !== e.png.sha256) { stale.push({ k: r.k, why: 'png changed since shots' }); continue; }
+    const ageSec = Math.round((fs.statSync(html).mtimeMs - fs.statSync(png).mtimeMs) / 1000);
+    if (ageSec > 0) hints.push({ k: r.k, why: `HTML 比 PNG 新 ${ageSec} 秒（两向哈希都与清单一致，仅提示）` });
   }
-  return { ok: stale.length === 0, stale, version: man.version, generatedAt: man.generatedAt };
+  return { ok: stale.length === 0, stale, hints, version: man.version, generatedAt: man.generatedAt };
+}
+// mtime hints are advisory: they are printed so a human can spot a suspicious write order,
+// but they are never part of `ok`.
+function printShotsHints(res) {
+  const hints = res.hints ?? [];
+  for (const h of hints.slice(0, 5)) console.log(`   · 提示（不判失败）: ${h.k} — ${h.why}`);
+  if (hints.length > 5) console.log(`   · 另 ${hints.length - 5} 页 HTML 比 PNG 新（仅提示，不判失败）`);
 }
 // `--check-shots` is the fast, self-contained form: it never re-renders (so a hand-edited
 // HTML is not silently overwritten before it is judged) and exits with the verdict.
@@ -72,9 +95,10 @@ if (wantCheck && !wantShots) {
   const res = checkShots();
   if (res.ok) console.log(`[pipeline] 证据一致性（PNG ⇄ HTML）: 通过（${rows.length} 页, 画廊 v=${res.version}）`);
   else {
-    console.log(`[pipeline] 证据一致性（PNG ⇄ HTML）: 失败 ${res.stale.length}/${rows.length} 页（HTML 更新了但截图未重出）`);
+    console.log(`[pipeline] 证据一致性（PNG ⇄ HTML）: 失败 ${res.stale.length}/${rows.length} 页（HTML/PNG 与清单哈希不一致）`);
     for (const s of res.stale) console.log(`   ✗ ${s.k} — ${s.why}`);
   }
+  printShotsHints(res);
   process.exit(res.ok ? 0 : 1);
 }
 
@@ -146,7 +170,12 @@ if (!gAS.ok) console.log(gAS.out);
 const gMD = gate('node m1/eval/md-selftest.mjs');
 console.log(`[pipeline] Markdown 目标自测(F-031): ${gMD.ok ? '通过' : '失败'}`);
 if (!gMD.ok) console.log(gMD.out);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok;
+// 8th gate (round 33): the evidence gate itself must be able to fail AND must not fail on a
+// byte-identical restore. Pins both refusal scenarios against the real `--check-shots` code path.
+const gSH = gate('node m1/eval/shots-selftest.mjs');
+console.log(`[pipeline] 证据门禁自测(哈希优先): ${gSH.ok ? '通过' : '失败'}`);
+if (!gSH.ok) console.log(gSH.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';
@@ -205,10 +234,11 @@ if (!only) {
   if (res.ok) console.log(`[pipeline] 证据一致性（PNG ⇄ HTML）: 通过（${rows.length} 页与截图同源, 画廊 v=${res.version}）`);
   else {
     evidenceStale = true;
-    console.log(`[pipeline] 证据一致性（PNG ⇄ HTML）: 失败 ${res.stale.length}/${rows.length} 页（HTML 更新了但截图未重出）`);
+    console.log(`[pipeline] 证据一致性（PNG ⇄ HTML）: 失败 ${res.stale.length}/${rows.length} 页（HTML/PNG 与清单哈希不一致）`);
     for (const s of res.stale.slice(0, 10)) console.log(`   ✗ ${s.k} — ${s.why}`);
     if (res.stale.length > 10) console.log(`   … 另 ${res.stale.length - 10} 页`);
   }
+  printShotsHints(res);
 }
 
 const failed = gatesFailed || under.length > 0 || mdUnder.length > 0 || (hardFails && Number(hardFails) > 0) || out.some((o) => o.error) || evidenceStale;
