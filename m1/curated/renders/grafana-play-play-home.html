@@ -44,13 +44,16 @@ article{margin:12px 0}
 .meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
-/* F-031-§7 图像主导页：满幅图带 */
-.strip{margin:0;padding:0}
-.strip img{width:100%;height:auto;display:block}
+/* F-031-§7 图像主导页：满幅图带——图带是页面的框，展开到视口宽（左右不留白边）。
+   卡片/表格/推广盒里的图不是页框，由下面一条覆盖回容器宽（轮 34）。 */
+.strip{margin:0;padding:0;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+.strip img{width:100%;height:auto;display:block;border-radius:0}
+.cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip{width:auto;margin-left:0;margin-right:0}
+.cards .strip img{border-radius:8px}
 /* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
 .img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
 .promo-image .img-alt{padding:10px 14px;border-radius:0}
-main>.node>.strip:first-child,article>.strip{margin:0}
+main>.node>.strip:first-child,article>.strip{margin-top:0;margin-bottom:0}
 /* F-031: 序列区块（不可比内容各自成立） */
 .block{margin:18px 0;padding:0 0 6px}
 .block>.node{max-width:none}
@@ -74,6 +77,9 @@ a.ctl:hover{background:#f2f7ff}
 .cmp-price{font-weight:700;margin-top:4px}
 .cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
 .cmp-ctl{margin-top:6px}
+/* 纯标签清单：一组等格条目名，读作"一组面板/条目"，不是 1..N 的目录（轮 34 grafana） */
+.manifest{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
+.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:#33475b;overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
 .linklist li{margin:5px 0;line-height:1.5}
@@ -102,6 +108,9 @@ fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
 /* a few short options must not sit inside a full-width frame with a dead right half:
    the fieldset hugs its content and only wraps when the content itself is wider (round 27) */
 fieldset.expose.chipbar{display:inline-block;max-width:100%}
+/* 一组标签里有可点条目时，可点的那个必须看得出来（F-031-§4）：其余是死文本，
+   继承同色 + 无下划线会让读者以为不能点（轮 34，mi15「售后服务政策」实测同色无下划线）。 */
+.chips a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:#9db0c4}
 /* D-3: a text input is an inline field so its submit control sits on the same bar */
 span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
 /* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
@@ -122,4 +131,4 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 </style></head>
-<body><main><article id="grafana-play-stats-dashboard" class="node depth-0"><h1 class="title">Stats</h1><section class="group g-toolbar"><article class="node depth-1"><div class="fact"><span class="val">Time range selected: Last 6 hours</span></div><div class="controls"><span class="ctl" data-verb="operate">Last 6 hours</span><span class="ctl" data-verb="operate">Refresh</span><span class="ctl" data-verb="operate">Enter edit mode</span><span class="ctl" data-verb="operate">Edit</span></div></article></section><section class="group g-banners"><article class="node depth-1"><ul class="linklist"><li><a href="https://grafana.com/auth/sign-up/create-user?pg=play">Want to build a dashboard like this? Get started fast with the Grafana Cloud free tier!</a></li><li><a href="https://grafana.com/docs/learning-journeys/?src=play&amp;camp=learning-journey-button">Learn about Grafana through our Learning Journeys</a></li></ul></article></section><section class="group g-panels"><article class="node depth-1"><ol class="seq"><li>Introduction</li><li>Color background</li><li>The Basics</li><li>Color value</li><li>Horizontal with graph</li><li>Horizontal</li><li>Text mode name</li><li>Auto grid</li><li>Value only</li><li>No text</li><li>Emoji in stat names</li></ol></article></section></article></main></body></html>
+<body><main><article id="grafana-play-stats-dashboard" class="node depth-0"><h1 class="title">Stats</h1><section class="group g-toolbar"><article class="node depth-1"><div class="fact"><span class="val">Time range selected: Last 6 hours</span></div><div class="controls"><span class="ctl" data-verb="operate">Last 6 hours</span><span class="ctl" data-verb="operate">Refresh</span><span class="ctl" data-verb="operate">Enter edit mode</span><span class="ctl" data-verb="operate">Edit</span></div></article></section><section class="group g-banners"><article class="node depth-1"><ul class="linklist"><li><a href="https://grafana.com/auth/sign-up/create-user?pg=play">Want to build a dashboard like this? Get started fast with the Grafana Cloud free tier!</a></li><li><a href="https://grafana.com/docs/learning-journeys/?src=play&amp;camp=learning-journey-button">Learn about Grafana through our Learning Journeys</a></li></ul></article></section><section class="group g-panels"><article class="node depth-1"><div class="manifest"><span class="manifest-item">Introduction</span><span class="manifest-item">Color background</span><span class="manifest-item">The Basics</span><span class="manifest-item">Color value</span><span class="manifest-item">Horizontal with graph</span><span class="manifest-item">Horizontal</span><span class="manifest-item">Text mode name</span><span class="manifest-item">Auto grid</span><span class="manifest-item">Value only</span><span class="manifest-item">No text</span><span class="manifest-item">Emoji in stat names</span></div></article></section></article></main></body></html>

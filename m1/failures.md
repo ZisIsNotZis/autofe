@@ -500,3 +500,42 @@
 - **修法（明文规则 §9.6，无模型/语法变更）**：accordion 分支要求每个成员**既无 `_image` 也无 `_action`**；否则按卡片/列表渲染，
   保留图与动作。真 FAQ（标题+详情、无图无动作）仍走 accordion。
 - **验证**：`axis-selftest.mjs` I0–I2（构造集：带图+动作 ⇒ 非 accordion，4 图 4 动作均在）；huawei「推荐信息」渲染为卡片，4 图 4 链接俱在。
+
+## F-074 图带缩在文本栏里、左右留白边（轮 34 修正）
+- **现象**：`mi-com/home` 的 10 条 `<figure class="strip">` 实测宽 **1060px**（视口 1280/1440）⇒ 左右各约 **110/190px 白边**；
+  g3 终审量到「左右各约 107px」。违反 `layout-axes §7`「图像主导页 ⇒ 满幅」。
+- **根因**：`.strip` 没有自己的宽度，继承 `main{max-width:1100px;padding:0 20px}` 的**文本栏**宽度。
+- **修法（明文规则 §7 补充，无模型/语法变更）**：`.strip` = `width:100vw` + `margin:0 calc(50% - 50vw)`（负 margin 居中展开到视口）；
+  卡片/表格/推广盒内的图不是「页框」，由 `.cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip` 还原为容器宽。
+- **验证**：`node .scratch/34-layout/measure.mjs m1/curated/renders/mi-com-home.html 1280 900` ⇒ 7 条带子全部 `l=0 r=1280 w=1280`；
+  `scrollWidth == clientWidth`（无横向溢出）；`audit-visual` 42/42 仍干净。
+
+## F-075 纯白裁切带被当内容渲染成页尾空白（轮 34 修正）；同时是**采集缺口**记录位
+- **现象**：`mi-com/home` 页尾 **1420px（约 30%）纯白**。逐张量资产：`mi-home-band8/9/10` **整幅只有一种颜色 `(255,255,255)`**（暗像素 0.00%）。
+- **根因**：这三条带子是 `corpus/mi-com/home/full.png` 里**源站自己的空白空洞**（y≈4400–6360，逐行采样非白像素占比 0.000）原样裁进来的——
+  源站懒加载区块在采集时未绘制。空白**在裁切图的像素里**，且该区域**没有任何内容可裁**（重裁结果是空集）。
+- **修法**：从模型 `showcase._items` 移除这三条空带（不做任何像素合成），并在本文件记录采集缺口。
+- **验证**：`measure.mjs` ⇒ `scrollHeight 4095`、末内容底 `y=4003`、`tailDead=92px`（= `main` 的 80px 下内边距 + 12px 外边距，正常）。
+
+### 采集缺口（capture gaps，供采集侧修，本轮不编造内容）
+1. `mi-com/home`：`full.png` y≈4400–6360 为空（源站懒加载区块未绘制）；源站 footer 区 y≈6360–6858 未进任何裁切带 ⇒ 模型里没有这一段。
+2. `mi-com/product-detail-mi15`：`full.png` y≳2400 全空——详情 20 张长图（`dom.html` 里有真实 `src`）在采集时未绘制。
+   本轮按任务授权只换掉 hero（见 F-076 相邻记录），**未**把这 20 张图补进渲染（会引入采集未验证的 2 万像素内容）。
+3. `grafana-play/play-home`：**面板内容没有进抓取**。证据：
+   `grep -c 'Loading plugin panel' corpus/grafana-play/play-home/dom.html` ⇒ **1 行**（该 DOM 是单行文件），
+   `grep -o ... | wc -l` ⇒ **2 处**；`nodes.json` 里 80 处提到该 loading 文案，且**纯数字节点 0 个**——
+   即 11 个 stat 面板的**数值一个都没被采集到**（面板未加载完）。⇒ 渲染侧只能给出**面板名清单**（F-077），
+   面板数值/底色属采集待办，**不得从截图转写**。
+
+## F-076 一格里可点的条目与周边死文本完全同款（隐形链接）（轮 34 修正）
+- **现象**：`mi-com/product-detail-mi15` 页尾保障组里 `售后服务政策`/`7天价格保护` 是真链接，实测 `color: rgb(23,33,43)`（与死文本同色）、`text-decoration-line: none` ⇒ 读者以为不能点。
+- **根因**：轮 30 的站点级规则「链接继承文字色、默认无下划线」在**混排集合**（有的成员是链接、有的是死文本）里没有可辨性。
+- **修法**：`.chips a{text-decoration:underline; text-underline-offset:2px; text-decoration-color:#9db0c4}`——只在「标签组」里补可辨下划线；
+  标题/条目名/整列皆链接的清单维持轮 30 的「继承色、hover 下划线」不变。
+- **验证**：playwright 取样式 ⇒ 两条链接 `text-decoration-line: underline`；`audit-visual` 无 `empty-anchors`。
+
+## F-077 长串纯标签渲染成 1..N 编号目录（轮 34 修正）
+- **现象**：`grafana-play/play-home` 的 11 个面板名渲染成 `<ol class="seq">1. Introduction … 11. Emoji in stat names` ⇒ 整页像技术文档的目录页（g4 唯一 untouched 的 major）。
+- **根因**：`_rel.order=sequence` + 纯标签成员 ⇒ `renderSeq` 一律编号；编号把「一组面板名」读成「章节目录」。
+- **修法**：`renderSeq` 中「成员 ≥6 且每项只有名字（无其他事实）」⇒ 渲染为 `.manifest` 等格清单（名字、DOM 顺序都不变，只是不编号）。
+- **验证**：grafana 页现为 11 格清单，无 `<ol>`；`axis-selftest` C3（2 项纯标签序列）仍要求 `<ol class="seq">` 并通过（未改轴决策）。

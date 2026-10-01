@@ -1,1123 +1,1147 @@
 {
-  "_intent": "帮用户按系列挑选华为手机：从旗舰 Mate XTs 到入门畅享，对比各机型起售价，进详情或直接购买",
-  "_key": "huawei-phones",
-  "_title": {
-    "text": "华为手机"
+ "_intent": "帮用户按系列挑选华为手机：从旗舰 Mate XTs 到入门畅享，对比各机型起售价，进详情或直接购买（轮 34：hero、5 条理由行、2 条 Mate 机型的 .jpg 由源站 CDN **逐字节镜像**到 assets——该 CDN 的 .jpg 在本环境单张 8–58 秒，直接引 URL 会打死截图门禁；镜像文件未裁切/未重编码/未合成。）",
+ "_key": "huawei-phones",
+ "_title": {
+  "text": "华为手机"
+ },
+ "series": {
+  "_intent": "六大系列入口：点系列名跳到该系列机型区，配件跳转配件频道",
+  "_rel": {
+   "order": "none"
   },
-  "series": {
-    "_intent": "六大系列入口：点系列名跳到该系列机型区，配件跳转配件频道",
-    "_rel": {
-      "order": "none"
-    },
-    "_items": [
-      {
-        "_key": "tab-mate",
-        "_name": {
-          "text": "Mate 系列"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "key:catalog-mate"
-        }
-      },
-      {
-        "_key": "tab-pura",
-        "_name": {
-          "text": "Pura 系列"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "key:catalog-pura"
-        }
-      },
-      {
-        "_key": "tab-pocket",
-        "_name": {
-          "text": "Pocket 系列"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "key:catalog-pocket"
-        }
-      },
-      {
-        "_key": "tab-nova",
-        "_name": {
-          "text": "nova 系列"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "key:catalog-nova"
-        }
-      },
-      {
-        "_key": "tab-enjoy",
-        "_name": {
-          "text": "畅享系列"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "key:catalog-enjoy"
-        }
-      },
-      {
-        "_key": "tab-accessories",
-        "_name": {
-          "text": "配件"
-        },
-        "_action": {
-          "verb": "navigate",
-          "to": "https://consumer.huawei.com/cn/accessories/?type=phone-accessories"
-        }
-      }
-    ]
-  },
-  "flagship": {
-    "_intent": "本页主推的旗舰机型：HUAWEI Mate XT 2 非凡大师，了解更多或直接购买",
-    "_key": "hw-mate-xt-2",
-    "_title": {
-      "text": "HUAWEI Mate XT 2 非凡大师"
-    },
-    "_tag": {
-      "text": "最新"
-    },
-    "_price": {
-      "money": 19999,
-      "currency": "CNY",
-      "qualifier": "起"
+  "_items": [
+   {
+    "_key": "tab-mate",
+    "_name": {
+     "text": "Mate 系列"
     },
     "_action": {
-      "verb": "open",
-      "to": "https://consumer.huawei.com/cn/phones/mate-xt-2-ultimate-design/",
-      "label": "了解更多"
+     "verb": "open",
+     "to": "key:catalog-mate"
+    }
+   },
+   {
+    "_key": "tab-pura",
+    "_name": {
+     "text": "Pura 系列"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "key:catalog-pura"
+    }
+   },
+   {
+    "_key": "tab-pocket",
+    "_name": {
+     "text": "Pocket 系列"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "key:catalog-pocket"
+    }
+   },
+   {
+    "_key": "tab-nova",
+    "_name": {
+     "text": "nova 系列"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "key:catalog-nova"
+    }
+   },
+   {
+    "_key": "tab-enjoy",
+    "_name": {
+     "text": "畅享系列"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "key:catalog-enjoy"
+    }
+   },
+   {
+    "_key": "tab-accessories",
+    "_name": {
+     "text": "配件"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://consumer.huawei.com/cn/accessories/?type=phone-accessories"
+    }
+   }
+  ]
+ },
+ "flagship": {
+  "_intent": "本页主推的旗舰机型：HUAWEI Mate XT 2 非凡大师，了解更多或直接购买",
+  "_key": "hw-mate-xt-2",
+  "_title": {
+   "text": "HUAWEI Mate XT 2 非凡大师"
+  },
+  "_tag": {
+   "text": "最新"
+  },
+  "_price": {
+   "money": 19999,
+   "currency": "CNY",
+   "qualifier": "起"
+  },
+  "_action": {
+   "verb": "open",
+   "to": "https://consumer.huawei.com/cn/phones/mate-xt-2-ultimate-design/",
+   "label": "了解更多"
+  },
+  "buy": {
+   "_title": {
+    "text": "购买"
+   },
+   "_action": {
+    "verb": "buy",
+    "to": "https://consumer.huawei.com/cn/phones/mate-xt-2-ultimate-design/",
+    "label": "购买"
+   }
+  },
+  "_image": {
+   "image": "../assets/hw-hero-mate-xt-2.jpg"
+  }
+ },
+ "catalog-mate": {
+  "_intent": "Mate 系列：非凡旗舰与折叠旗舰，按起售价对比",
+  "_key": "catalog-mate",
+  "_title": {
+   "text": "Mate 系列"
+  },
+  "_subtitle": {
+   "text": "非凡旗舰"
+  },
+  "_items": [
+   {
+    "_name": {
+     "text": "HUAWEI Mate XTs 非凡大师"
+    },
+    "_image": {
+     "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/250904/glb/phones/all-mate-xts-ultimate-design.png"
+    },
+    "_price": {
+     "money": 17999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
     },
     "buy": {
-      "_title": {
-        "text": "购买"
-      },
-      "_action": {
-        "verb": "buy",
-        "to": "https://consumer.huawei.com/cn/phones/mate-xt-2-ultimate-design/",
-        "label": "购买"
-      }
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
     }
-  },
-  "catalog-mate": {
-    "_intent": "Mate 系列：非凡旗舰与折叠旗舰，按起售价对比",
-    "_key": "catalog-mate",
-    "_title": {
-      "text": "Mate 系列"
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate XT 2 非凡大师"
     },
-    "_subtitle": {
-      "text": "非凡旗舰"
+    "_image": {
+     "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/260907/laputa/phones/mate-xt-2-ultimate-design.png"
     },
-    "_items": [
-      {
-        "_name": {
-          "text": "HUAWEI Mate XTs 非凡大师"
-        },
-        "_image": {
-          "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/250904/glb/phones/all-mate-xts-ultimate-design.png"
-        },
-        "_price": {
-          "money": 17999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate XT 2 非凡大师"
-        },
-        "_image": {
-          "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/260907/laputa/phones/mate-xt-2-ultimate-design.png"
-        },
-        "_price": {
-          "money": 19999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate X7"
-        },
-        "_price": {
-          "money": 12999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate X6"
-        },
-        "_price": {
-          "money": 12999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate 80 RS 非凡大师"
-        },
-        "_price": {
-          "money": 11999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate 80 Pro Max 风驰版"
-        },
-        "_image": {
-          "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/260323/phones/mate80-pro-max-fengchiban.png"
-        },
-        "_price": {
-          "money": 9499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate 80 Pro Max"
-        },
-        "_image": {
-          "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/251118/vosa/phones/mate80-pro-max.png"
-        },
-        "_price": {
-          "money": 8999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate 70 Pro+"
-        },
-        "_price": {
-          "money": 8499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate 80 Pro"
-        },
-        "_image": {
-          "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/251118/vosa/phones/mate80-pro.png"
-        },
-        "_price": {
-          "money": 6999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate 70 Pro"
-        },
-        "_price": {
-          "money": 6499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate 70 Pro 优享版"
-        },
-        "_price": {
-          "money": 6199,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate 80"
-        },
-        "_price": {
-          "money": 5499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate 70 Air"
-        },
-        "_price": {
-          "money": 4199,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Mate 70 RS 非凡大师"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        }
-      }
-    ]
-  },
-  "catalog-pura": {
-    "_intent": "Pura 系列：影像旗舰，按起售价对比",
-    "_key": "catalog-pura",
-    "_title": {
-      "text": "Pura 系列"
+    "_price": {
+     "money": 19999,
+     "currency": "CNY"
     },
-    "_items": [
-      {
-        "_name": {
-          "text": "HUAWEI Pura X Max"
-        },
-        "_price": {
-          "money": 10999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Pura 80 Ultra"
-        },
-        "_price": {
-          "money": 9999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Pura X"
-        },
-        "_price": {
-          "money": 7499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Pura 80 Pro+"
-        },
-        "_price": {
-          "money": 7999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Pura 90 Pro Max"
-        },
-        "_price": {
-          "money": 6499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Pura 80 Pro"
-        },
-        "_price": {
-          "money": 6499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Pura X View"
-        },
-        "_price": {
-          "money": 5999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Pura 90 Pro"
-        },
-        "_price": {
-          "money": 5499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Pura 90"
-        },
-        "_price": {
-          "money": 4699,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI Pura 80"
-        },
-        "_price": {
-          "money": 4699,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      }
-    ]
-  },
-  "catalog-pocket": {
-    "_intent": "Pocket 系列：美学新篇，竖折时尚机型",
-    "_key": "catalog-pocket",
-    "_title": {
-      "text": "Pocket 系列"
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
     },
-    "_subtitle": {
-      "text": "美学新篇"
-    },
-    "_items": [
-      {
-        "_name": {
-          "text": "HUAWEI Pocket 2 优享版"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        }
-      }
-    ],
-    "all": {
-      "_intent": "查看 Pocket 系列全部机型",
-      "_action": {
-        "verb": "open",
-        "label": "查看全部"
-      }
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
     }
-  },
-  "catalog-nova": {
-    "_intent": "nova 系列：年轻时尚机型，按起售价对比",
-    "_key": "catalog-nova",
-    "_title": {
-      "text": "nova 系列"
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate X7"
     },
-    "_items": [
-      {
-        "_name": {
-          "text": "HUAWEI nova 16 Ultra"
-        },
-        "_price": {
-          "money": 4699,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI nova 16 Pro"
-        },
-        "_price": {
-          "money": 3899,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI nova 16"
-        },
-        "_price": {
-          "money": 2999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI nova 16 SE"
-        },
-        "_tag": {
-          "text": "最新"
-        },
-        "_price": {
-          "money": 2499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI nova 16z"
-        },
-        "_price": {
-          "money": 2699,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI nova 15 Ultra"
-        },
-        "_price": {
-          "money": 4499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI nova 15 Pro"
-        },
-        "_price": {
-          "money": 3799,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI nova 15"
-        },
-        "_price": {
-          "money": 2999,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI nova 14 Ultra"
-        },
-        "_price": {
-          "money": 4199,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI nova 14 Pro"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI nova 14 活力版"
-        },
-        "_price": {
-          "money": 2399,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      }
-    ]
-  },
-  "catalog-enjoy": {
-    "_intent": "畅享系列：超能续航的大众机型，部分机型仅提供详情",
-    "_key": "catalog-enjoy",
-    "_title": {
-      "text": "畅享系列"
+    "_price": {
+     "money": 12999,
+     "currency": "CNY"
     },
-    "_subtitle": {
-      "text": "超能续航"
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
     },
-    "_items": [
-      {
-        "_name": {
-          "text": "华为畅享 90 Pro Max"
-        },
-        "_price": {
-          "money": 1899,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "华为畅享 90 Plus"
-        },
-        "_price": {
-          "money": 1499,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "华为畅享 90"
-        },
-        "_price": {
-          "money": 1299,
-          "currency": "CNY"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        },
-        "buy": {
-          "_title": {
-            "text": "购买"
-          },
-          "_action": {
-            "verb": "buy",
-            "label": "购买"
-          }
-        }
-      },
-      {
-        "_name": {
-          "text": "华为畅享 80"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        }
-      },
-      {
-        "_name": {
-          "text": "华为畅享 70X 尊享版"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        }
-      },
-      {
-        "_name": {
-          "text": "华为畅享 90m Plus"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        }
-      },
-      {
-        "_name": {
-          "text": "华为畅享 70X"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        }
-      },
-      {
-        "_name": {
-          "text": "华为畅享 70S"
-        },
-        "_action": {
-          "verb": "open",
-          "label": "了解更多"
-        }
-      }
-    ],
-    "all": {
-      "_intent": "查看畅享系列全部机型",
-      "_action": {
-        "verb": "open",
-        "label": "查看全部"
-      }
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    },
+    "_image": {
+     "image": "../assets/hw-product-mate-x7.jpg"
     }
-  },
-  "why": {
-    "_intent": "为什么选择华为手机：七个买点一句话说明",
-    "_title": {
-      "text": "为什么选择华为手机?"
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate X6"
     },
-    "_items": [
-      {
-        "_name": {
-          "text": "影像"
-        },
-        "_detail": {
-          "text": "全焦段，出片真实有质感"
-        }
-      },
-      {
-        "_name": {
-          "text": "设计"
-        },
-        "_detail": {
-          "text": "美学新风向，款款有新意"
-        }
-      },
-      {
-        "_name": {
-          "text": "通信"
-        },
-        "_image": {
-          "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/plp/new-phones/images/reason/huawei-phones-communication.jpeg",
-          "alt": "通信"
-        },
-        "_detail": {
-          "text": "信号好，还有卫星通信"
-        }
-      },
-      {
-        "_name": {
-          "text": "可靠性"
-        },
-        "_detail": {
-          "text": "抗刮耐摔，硬实力"
-        }
-      },
-      {
-        "_name": {
-          "text": "AI"
-        },
-        "_detail": {
-          "text": "鸿蒙 AI，智慧新世界"
-        }
-      },
-      {
-        "_name": {
-          "text": "续航"
-        },
-        "_detail": {
-          "text": "长续航，充电快"
-        }
-      },
-      {
-        "_name": {
-          "text": "隐私"
-        },
-        "_detail": {
-          "text": "应用管得住"
-        }
-      }
-    ]
+    "_price": {
+     "money": 12999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate 80 RS 非凡大师"
+    },
+    "_price": {
+     "money": 11999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    },
+    "_image": {
+     "image": "../assets/hw-product-mate80-rs.jpg"
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate 80 Pro Max 风驰版"
+    },
+    "_image": {
+     "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/260323/phones/mate80-pro-max-fengchiban.png"
+    },
+    "_price": {
+     "money": 9499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate 80 Pro Max"
+    },
+    "_image": {
+     "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/251118/vosa/phones/mate80-pro-max.png"
+    },
+    "_price": {
+     "money": 8999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate 70 Pro+"
+    },
+    "_price": {
+     "money": 8499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate 80 Pro"
+    },
+    "_image": {
+     "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/251118/vosa/phones/mate80-pro.png"
+    },
+    "_price": {
+     "money": 6999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate 70 Pro"
+    },
+    "_price": {
+     "money": 6499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate 70 Pro 优享版"
+    },
+    "_price": {
+     "money": 6199,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate 80"
+    },
+    "_price": {
+     "money": 5499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate 70 Air"
+    },
+    "_price": {
+     "money": 4199,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Mate 70 RS 非凡大师"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    }
+   }
+  ]
+ },
+ "catalog-pura": {
+  "_intent": "Pura 系列：影像旗舰，按起售价对比",
+  "_key": "catalog-pura",
+  "_title": {
+   "text": "Pura 系列"
+  },
+  "_items": [
+   {
+    "_name": {
+     "text": "HUAWEI Pura X Max"
+    },
+    "_price": {
+     "money": 10999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura 80 Ultra"
+    },
+    "_price": {
+     "money": 9999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura X"
+    },
+    "_price": {
+     "money": 7499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura 80 Pro+"
+    },
+    "_price": {
+     "money": 7999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura 90 Pro Max"
+    },
+    "_price": {
+     "money": 6499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura 80 Pro"
+    },
+    "_price": {
+     "money": 6499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura X View"
+    },
+    "_price": {
+     "money": 5999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura 90 Pro"
+    },
+    "_price": {
+     "money": 5499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura 90"
+    },
+    "_price": {
+     "money": 4699,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura 80"
+    },
+    "_price": {
+     "money": 4699,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   }
+  ]
+ },
+ "catalog-pocket": {
+  "_intent": "Pocket 系列：美学新篇，竖折时尚机型",
+  "_key": "catalog-pocket",
+  "_title": {
+   "text": "Pocket 系列"
+  },
+  "_subtitle": {
+   "text": "美学新篇"
+  },
+  "_items": [
+   {
+    "_name": {
+     "text": "HUAWEI Pocket 2 优享版"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    }
+   }
+  ],
+  "all": {
+   "_intent": "查看 Pocket 系列全部机型",
+   "_action": {
+    "verb": "open",
+    "label": "查看全部"
+   }
   }
+ },
+ "catalog-nova": {
+  "_intent": "nova 系列：年轻时尚机型，按起售价对比",
+  "_key": "catalog-nova",
+  "_title": {
+   "text": "nova 系列"
+  },
+  "_items": [
+   {
+    "_name": {
+     "text": "HUAWEI nova 16 Ultra"
+    },
+    "_price": {
+     "money": 4699,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI nova 16 Pro"
+    },
+    "_price": {
+     "money": 3899,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI nova 16"
+    },
+    "_price": {
+     "money": 2999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI nova 16 SE"
+    },
+    "_tag": {
+     "text": "最新"
+    },
+    "_price": {
+     "money": 2499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI nova 16z"
+    },
+    "_price": {
+     "money": 2699,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI nova 15 Ultra"
+    },
+    "_price": {
+     "money": 4499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI nova 15 Pro"
+    },
+    "_price": {
+     "money": 3799,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI nova 15"
+    },
+    "_price": {
+     "money": 2999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI nova 14 Ultra"
+    },
+    "_price": {
+     "money": 4199,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI nova 14 Pro"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    }
+   },
+   {
+    "_name": {
+     "text": "HUAWEI nova 14 活力版"
+    },
+    "_price": {
+     "money": 2399,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   }
+  ]
+ },
+ "catalog-enjoy": {
+  "_intent": "畅享系列：超能续航的大众机型，部分机型仅提供详情",
+  "_key": "catalog-enjoy",
+  "_title": {
+   "text": "畅享系列"
+  },
+  "_subtitle": {
+   "text": "超能续航"
+  },
+  "_items": [
+   {
+    "_name": {
+     "text": "华为畅享 90 Pro Max"
+    },
+    "_price": {
+     "money": 1899,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "华为畅享 90 Plus"
+    },
+    "_price": {
+     "money": 1499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "华为畅享 90"
+    },
+    "_price": {
+     "money": 1299,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    },
+    "buy": {
+     "_title": {
+      "text": "购买"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "购买"
+     }
+    }
+   },
+   {
+    "_name": {
+     "text": "华为畅享 80"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    }
+   },
+   {
+    "_name": {
+     "text": "华为畅享 70X 尊享版"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    }
+   },
+   {
+    "_name": {
+     "text": "华为畅享 90m Plus"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    }
+   },
+   {
+    "_name": {
+     "text": "华为畅享 70X"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    }
+   },
+   {
+    "_name": {
+     "text": "华为畅享 70S"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "了解更多"
+    }
+   }
+  ],
+  "all": {
+   "_intent": "查看畅享系列全部机型",
+   "_action": {
+    "verb": "open",
+    "label": "查看全部"
+   }
+  }
+ },
+ "why": {
+  "_intent": "为什么选择华为手机：七个买点一句话说明",
+  "_title": {
+   "text": "为什么选择华为手机?"
+  },
+  "_items": [
+   {
+    "_name": {
+     "text": "影像"
+    },
+    "_detail": {
+     "text": "全焦段，出片真实有质感"
+    },
+    "_image": {
+     "image": "../assets/hw-reason-camera.jpg"
+    }
+   },
+   {
+    "_name": {
+     "text": "设计"
+    },
+    "_detail": {
+     "text": "美学新风向，款款有新意"
+    },
+    "_image": {
+     "image": "../assets/hw-reason-design.jpg"
+    }
+   },
+   {
+    "_name": {
+     "text": "通信"
+    },
+    "_image": {
+     "image": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/plp/new-phones/images/reason/huawei-phones-communication.jpeg",
+     "alt": "通信"
+    },
+    "_detail": {
+     "text": "信号好，还有卫星通信"
+    }
+   },
+   {
+    "_name": {
+     "text": "可靠性"
+    },
+    "_detail": {
+     "text": "抗刮耐摔，硬实力"
+    },
+    "_image": {
+     "image": "../assets/hw-reason-reliable.jpg"
+    }
+   },
+   {
+    "_name": {
+     "text": "AI"
+    },
+    "_detail": {
+     "text": "鸿蒙 AI，智慧新世界"
+    },
+    "_image": {
+     "image": "../assets/hw-reason-ai.jpg"
+    }
+   },
+   {
+    "_name": {
+     "text": "续航"
+    },
+    "_detail": {
+     "text": "长续航，充电快"
+    },
+    "_image": {
+     "image": "../assets/hw-reason-battery.jpg"
+    }
+   },
+   {
+    "_name": {
+     "text": "隐私"
+    },
+    "_detail": {
+     "text": "应用管得住"
+    }
+   }
+  ]
+ }
 }

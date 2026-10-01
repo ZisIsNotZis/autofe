@@ -1,5 +1,5 @@
 {
- "_intent": "小米官网首页的身份与主张：以人为中心，构建人车家全生态。本次采集的首屏 7 张产品大图（SKYNOMAD 小米澎程、Xiaomi 18 Fold、Xiaomi 17 Ultra、Pad 9 Pro Max、REDMI Turbo 5 Max、Smart Band 10 Pro、Sound 2 Max）只有像素、没有任何 DOM/节点文本背书，按 F-025 不从截图转写。页面 H1 来源：dom.html 无 <h1>，nodes.json 无任何 heading 节点、可见文本中亦无「以人为中心」等页头文案，故 \u0060_title\u0060 取文档 `<title>`（轮 27b 补记来源）。",
+ "_intent": "小米官网首页的身份与主张：以人为中心，构建人车家全生态。本次采集的首屏 7 张产品大图（SKYNOMAD 小米澎程、Xiaomi 18 Fold、Xiaomi 17 Ultra、Pad 9 Pro Max、REDMI Turbo 5 Max、Smart Band 10 Pro、Sound 2 Max）只有像素、没有任何 DOM/节点文本背书，按 F-025 不从截图转写。页面 H1 来源：dom.html 无 <h1>，nodes.json 无任何 heading 节点、可见文本中亦无「以人为中心」等页头文案，故 `_title` 取文档 `<title>`（轮 27b 补记来源）。",
  "_key": "mi-home",
  "_title": {
   "text": "Xiaomi官方网站 | 以人为中心，构建“人车家全生态”"
@@ -9,7 +9,7 @@
  },
  "_primary": "_summary",
  "showcase": {
-  "_intent": "首屏至页尾的满幅图带：源站为全宽图片展示（10 张 1440x608/664），DOM 无文本背书，按 F-025 不转写文字，仅按抓取 bbox 裁切复原",
+  "_intent": "首屏至页尾的满幅图带：源站为全宽图片展示。本次采集的 10 条裁切带中末 3 条（band8/9/10）是整幅纯白像素——它们落在 `corpus/mi-com/home/full.png` y≈4400–6360 的**采集空洞**里（该区间逐行采样非白像素占比 0.000，源站懒加载区块未绘制），无任何内容可裁 ⇒ 已移除，并把该采集缺口记入 `m1/failures.md`（轮 34）。DOM 无文本背书，按 F-025 不转写文字，仅按抓取 bbox 裁切复原。",
   "_items": [
    {
     "_image": {
@@ -50,24 +50,6 @@
    {
     "_image": {
      "image": "../assets/mi-home-band7.png",
-     "alt": ""
-    }
-   },
-   {
-    "_image": {
-     "image": "../assets/mi-home-band8.png",
-     "alt": ""
-    }
-   },
-   {
-    "_image": {
-     "image": "../assets/mi-home-band9.png",
-     "alt": ""
-    }
-   },
-   {
-    "_image": {
-     "image": "../assets/mi-home-band10.png",
      "alt": ""
     }
    }

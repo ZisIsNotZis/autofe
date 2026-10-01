@@ -106,6 +106,11 @@ function renderList(items, chain, ctx) {
 }
 // 有序集合（_rel.order = sequence|time）：每一项自成一行，顺序即语义（F-031-§1）
 function renderSeq(items, chain, ctx) {
+  // 长串纯标签 ⇒ 清单格（名字仍是源站文案，顺序仍是 DOM 顺序，只是不再编号）
+  if (items.length >= 6 && items.every(isBareLabel)) {
+    const cells = items.map((it) => `<span class="manifest-item">${fmt(labelOf(it))}</span>`).join('');
+    return `<div class="manifest">${cells}</div>`;
+  }
   const lis = items.map((it) => {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
@@ -145,6 +150,9 @@ function renderChips(items, chain, ctx) {
   const rows = items.some((it) => /[，。；、（）：]/.test(labelTextOf(it)));
   return chips ? `<div class="chips${rows ? ' chips-rows' : ''}">${chips}</div>` : '';
 }
+// 长串纯标签（≥6 项、每项只有名字）是**清单**（一组面板/条目名），不是编号目录：一项一行加序号会被读成"目录页"
+// （轮 34：grafana 11 个面板名渲染成 1–11 的裸串，整页像技术文档的目录）。轴不变，只换形状：网格条目格。
+const isBareLabel = (it) => factsOf(it).every((f) => ['_name', '_title', '_text'].includes(f.key));
 // 角色单位兜底（ROLE_UNIT / hasOwnUnit 见 axis.mjs）：事实自带 unit 时绝不追加，否则两个单位连排（「870 人好评 条评价」，F-037）
 const roleFact = (f) => `${fmt(f.value)}${ROLE_UNIT[f.key] && !hasOwnUnit(f.value) ? ` ${ROLE_UNIT[f.key]}` : ''}`;
 // 词表眼里数值角色事实的标签（axis.quantityLabel）：只给**语义无歧义**的数值角色加前缀
@@ -568,13 +576,16 @@ article{margin:12px 0}
 .meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
-/* F-031-§7 图像主导页：满幅图带 */
-.strip{margin:0;padding:0}
-.strip img{width:100%;height:auto;display:block}
+/* F-031-§7 图像主导页：满幅图带——图带是页面的框，展开到视口宽（左右不留白边）。
+   卡片/表格/推广盒里的图不是页框，由下面一条覆盖回容器宽（轮 34）。 */
+.strip{margin:0;padding:0;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+.strip img{width:100%;height:auto;display:block;border-radius:0}
+.cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip{width:auto;margin-left:0;margin-right:0}
+.cards .strip img{border-radius:8px}
 /* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
 .img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
 .promo-image .img-alt{padding:10px 14px;border-radius:0}
-main>.node>.strip:first-child,article>.strip{margin:0}
+main>.node>.strip:first-child,article>.strip{margin-top:0;margin-bottom:0}
 /* F-031: 序列区块（不可比内容各自成立） */
 .block{margin:18px 0;padding:0 0 6px}
 .block>.node{max-width:none}
@@ -598,6 +609,9 @@ a.ctl:hover{background:#f2f7ff}
 .cmp-price{font-weight:700;margin-top:4px}
 .cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
 .cmp-ctl{margin-top:6px}
+/* 纯标签清单：一组等格条目名，读作"一组面板/条目"，不是 1..N 的目录（轮 34 grafana） */
+.manifest{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
+.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:#33475b;overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
 .linklist li{margin:5px 0;line-height:1.5}
@@ -626,6 +640,9 @@ fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
 /* a few short options must not sit inside a full-width frame with a dead right half:
    the fieldset hugs its content and only wraps when the content itself is wider (round 27) */
 fieldset.expose.chipbar{display:inline-block;max-width:100%}
+/* 一组标签里有可点条目时，可点的那个必须看得出来（F-031-§4）：其余是死文本，
+   继承同色 + 无下划线会让读者以为不能点（轮 34，mi15「售后服务政策」实测同色无下划线）。 */
+.chips a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:#9db0c4}
 /* D-3: a text input is an inline field so its submit control sits on the same bar */
 span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
 /* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
