@@ -2,7 +2,7 @@
 
 Intent-driven frontend: a business/intent intermediate language plus an isomorphic engine that renders it to a frontend form, decoupled from presentation.
 
-Status: M1–M3 done — closed grammar (`docs/m1/axioms-v0.md`) + isomorphic renderer (`m1/render.mjs`) + **42 curated exemplar models**; M4 composite primitives (`form`/`table`/`offer`/`paginator`/`login`) in progress as **behavior-only** changes, awaiting the `_macro` reserved-key decision (`.scratch/decisions-for-user.md` D-1).
+Status: M1–M3 done — closed grammar (`docs/m1/axioms-v0.md`) + isomorphic engine (`m1/axis.mjs` decides, `render.mjs` / `render-text.mjs` / `render-md.mjs` draw) + **42 curated exemplar models** · **27 composite instances over 16 pages** declared against the closed registry `m1/composites.json` (`search` 8 · `table` 13 · `login` 3 · `paginator` 2 · `form` 1), validated field-by-field by schema (a missing required part is a hard error naming its schema path). Gates: `node m1/eval/pipeline.mjs [--shots]` → 42/42 fidelity on both targets, 48 models, 11 self-test gates, capture↔model integrity, evidence hash consistency, visual self-audit. See `.scratch/state-report.md`.
 
 - Design basis: `docs/design-basis.md`
 - Provenance (superseded draft): `docs/sources/draft-doubao.md`
@@ -46,6 +46,6 @@ node m1/validate.mjs <model.json>…   # 单模型语法/语义校验
 `m1/eval/audit-visual.mjs`（视觉自查）、`m1/eval/validate-selftest.mjs`、`m1/eval/foundation-selftest.mjs`。
 
 - 活跃工作与轮次进展：`.scratch/active-work.md`
-- 待用户拍板的决策（含 `_macro` 保留键）：`.scratch/decisions-for-user.md`
+- 决策记录（D-1 `_macro` **已被用户否决**，改为 Schema 式复合元语，见裁定记录）：`.scratch/decisions-for-user.md`
 - 表达失败日志（F-0xx）：`m1/failures.md`
 - M3 验收报告（快照口径提示见文首）：`m1/eval/m3-report.md`

@@ -734,3 +734,43 @@ COMPOSITES_DESIGN_DONE primitives=5 schema_fields=29 migration_pages=18 decision
 - `gov-uk/ni-rates-letters.pagination`：**裁定不迁移**。`_ref` 指向的**被分页集合不在我们的模型里**（源站分页指向未采集的其它页）⇒ 声明 `paginator` 会撒谎。保留裸 `_items`+`_action`，**不放宽** `_ref` 必需性；登记为**采集/模型缺口**（F-094）。
 
 **D. 验收**：`node m1/eval/pipeline.mjs --shots` → HTML 保真 **42/42=1.00** + Markdown **42/42=1.00** + 模型校验 **48/48** + **十一道自测** + 警告 **10 条**（8 条 `W_COMPOSITE_NAME_ONLY_WATERMARK` + 2 条 `W_COMPOSITE_ROWS_TOO_FEW`）+ 视觉自查 **42/42 干净** + 采集↔模型一致性 **未命中 0** + 证据一致性通过。6 个纯 `_composite` 迁移页三目标（HTML 剥 `<style>` 后 body / text / Markdown）与 HEAD **逐字节一致**；taobao 按上记 before/after。
+
+### 9.5 S6（轮 52）：定稿 —— 迁移进度总表（给用户看的诚实账）
+
+**一句话**：5 个类型共 **27 个 `_composite` 实例，覆盖 16 页**；逐类型给出「已迁移 / 未迁移」，未迁移的**每一条都有据**（真实语义不匹配 / 缺必需槽 / 采集缺口 / 设计推迟），**没有一处为凑数硬套 schema**。本表是 S0–S5 的最终口径，取代 §9.4.B 的在途版。
+
+**A. 已迁移（27 实例 / 16 页）**
+
+| 类型 | 实例 | 覆盖页 | 具体节点 |
+|---|---|---|---|
+| `search` | **8** | 8 页 | `bilibili-com/home.search` · `bilibili-com/read-home.search` · `taobao-com/home._lines[0]` · `36kr-com/search-ai` · `36kr-com/search-viz` · `huawei-cn/search-laptop` · `huawei-cn/search-phone` · `mi-com/search-phone` |
+| `table` | **13** | 4 页 | `aliyun-com/product-ecs.instances` · `aws-amazon/ec2-on-demand.{region-egress,same-region}` · `gov-uk/ni-rates-letters.{employee-rates,employer-rates}` · `learn-microsoft/vm-sizes.{general-purpose,compute-optimized,memory-optimized,gpu-accelerated,high-performance-compute,name-structure-breakdown,storage-optimized,fpga-accelerated}` |
+| `login` | **3** | 3 页 | `github-com/login` · `stripe-dashboard/login` · `xiaomi-account/login` |
+| `paginator` | **2** | 2 页 | `huawei-cn/search-laptop.results.pagination` · `huawei-cn/search-phone.results.pagination` |
+| `form` | **1** | 1 页 | `airbnb-com/room-28871.booking` |
+| **合计** | **27** | **16 页**（去重后）| |
+
+**B. 未迁移（候选人次：table 1 / login 0 / search 1 / paginator 1 / form 7 = 10）**
+
+| 对象 | 拟类型 | 原因类别 | 逐条依据（不臆测） |
+|---|---|---|---|
+| `aws-amazon/ec2-on-demand.data-transfer` | `table` | **设计推迟**（非缺陷） | §6.4 S2 明写「维持裸 `_fields`，直至 S0 完成」；其 7 行键集已在轮 47 S0.1 补齐一致（`uniqFieldSets=1`）⇒ 现在**具备**升级条件，只是本轮范围只含 `region-egress`/`same-region`。**不属于**语义不匹配/缺槽/采集缺口 |
+| `mi-com/search-earbuds` | `search` | **真实语义不匹配** | 无输入节点（无 `_expose` 输入位）⇒ 不像 `search`；其字段是 `_items` 选择控件 + 结果/推荐列表，而 `form` 保持「字段为主」、无 `_items` 槽 ⇒ 也不像 `form`。不硬套 |
+| `gov-uk/ni-rates-letters.pagination` | `paginator` | **采集缺口（同时缺必需槽）** | `ref` 必需槽要求指向「被分页集合」，但该页是**页面级 Next**（多页指南），被分页集合**不在模型里**（源站分页指向未采集的其它页）⇒ 声明会撒谎。实测 `_ref:{ref:"/"}` ⇒ `E_COMPOSITE_REF_UNRESOLVED`（`ref /: empty`）。**不放宽** `_ref` 必需性 |
+| `36kr-com/search-ai` · `36kr-com/search-viz` · `huawei-cn/search-laptop` · `huawei-cn/search-phone` · `mi-com/search-phone` | `form` | **真实语义不匹配**（归 `search`） | §6.2(c) 曾把它们记作 `form` 候选，实测是「**输入 + 它产出的结果列表**」；按裁定 A.(3) 这是 `search` 而非 `form`（`form` 的字段槽不含结果集合）⇒ 已作为 `search` 迁移（计入 A 表），在 `form` 口径下记为未迁移 |
+| `sspai-com/post-114699.discussion` | `form` | **真实语义不匹配** | 评论输入 + 排序，但 §5.1 明列「评论框不是 search」（无检索语义）；其 `_items:[]`+`_empty` 在 `form` 无对应槽 ⇒ 既非 search 也非 form |
+
+> **去重口径**：B 表是「候选人次」（同一节点可能被两类各记一次）。**未落到任何类型**的不同节点只有 **4 个**：`aws…data-transfer`、`mi-com/search-earbuds`、`gov-uk…pagination`、`sspai…discussion`；其余 5 条（36kr×2 / huawei×2 / mi-search-phone）已作为 `search` 迁移。
+
+**C. 明确「不该升级」而非「未迁移」**（§6.3，防止复合件变成逃生口）
+
+| 对象 | 数量 | 为什么不该 |
+|---|---|---|
+| 裸 `_expose` 非复合件 | 19（12 页） | 频道条、tab、颜色/机型选择器、弹幕框、评论框、支付区：单字段或已由 `_items`+`_expose` 确定性表达，包成复合件是膨胀 |
+| 商品卡列表（华为/小米/苹果） | 多页 | 无一致领域字段集（Jaccard 0.44–0.92 波动）⇒ 不满足 `table` 的 `columns` 一致条件 |
+| apple 配置器 6 步 | 1 页 | 每步独立决策、跨步定价在后端 ⇒ 不满足 `form` 的「一次提交」必需部件 |
+| bilibili 弹幕登录入口 | 1 处 | 无 `secret`/`signed-in` ⇒ `login` 缺件被拒；否则制造假门禁 |
+| 面包屑 | 14/36 exemplar 页 | axioms §8 明示「导航历史不作表达」，保留为「已声明的不作表达」 |
+| `offer` | 41 价格节点 | 本轮不升类型（§5.6）；角色事实 + `qualifier:list` 已覆盖正确性 |
+
+**D. 注册表格式整理（无语义变化）**：`m1/composites.json` 在轮 51 被 `JSON.stringify(..., null, 1)` 重排成多行（~340 行纯 cosmetic churn）。轮 52 把它压回原来的紧凑可读格式（**字段对象单行**，顶层按 1 空格缩进），用 `.scratch/52-s6/compact.mjs` 完成，并先在 `5663da6`（轮 50 版本）上**逐字节复现**旧格式以自证。**`JSON.parse` 前后深比较为 `true`**，语义**零变化**；`node m1/validate.mjs` 仍 **48/48 `ok`**、`composite-selftest` 仍 **32/32**、`pipeline` 仍全绿。这是**格式整理**，不是语法/词汇变更。

@@ -749,3 +749,15 @@
 - **gov-uk paginator（按前裁定不迁移，记为采集/模型缺口）**：`gov-uk/ni-rates-letters.pagination` 是页面级 Next（多页指南），`_ref` 指向的**被分页集合不在我们的模型里**（源站分页指向未采集的其它页）⇒ 声明 `paginator` 会撒谎。保留裸 `_items`+`_action`，**不放宽** `_ref` 必需性。
 - **门禁**：`composite-selftest.mjs` 26 → **32**（新增：search 的 `scope` 暴露集合收下；form 无 submit 收下；form 恰 1 submit 收下；form 声明的 `pagination` 槽承载嵌套 paginator 收下；form 两个 submit 拒；form 嵌套未声明类型拒；原"search `_items` 未声明槽"用例改为 `_fields`，因 `search.results` 现已声明 `_items` 覆盖）。
 - **影响面**：`m1/validate.mjs`、`m1/composites.json`、`m1/eval/composite-selftest.mjs`、`m1/curated/{36kr-com/search-ai,36kr-com/search-viz,huawei-cn/search-laptop,huawei-cn/search-phone,mi-com/search-phone,airbnb-com/room-28871,taobao-com/home}.json`、`docs/m1/composites.md`。未改渲染器/axis 语义（新增 `results`/`pagination` 槽的 `key` 是 `<child>`，不命中 `slotRoleOf` 的 `_expose`/`_ref`）；未 git 提交。
+
+## 复合元语 S0–S5 小结（轮 52 定稿整理；F-089…F-094 要点，非新增条目）
+
+- **一句话**：这条线把「宏/展开」改成了用户要的 **Schema 式复合元语**——5 个闭式类型（`search`/`form`/`table`/`login`/`paginator`），实例用 `_composite:"<类型>"` 声明，校验器按 schema 逐项判定，缺必需槽 = 硬错误。最终 **27 个实例覆盖 16 页**（搜索 8 / 表 13 / 登录 3 / 分页 2 / 表单 1），逐类型迁移账见 `docs/m1/composites.md §9.5`。
+- **F-089（S0+S1，轮 47）**：注册表 + 校验器 `code` + 双命名空间点路径；`composite-selftest` 首建并入第 11 道门禁；零实例零渲染变化。差异登记：`login.secret` 暴露类型取闭式 `secret`（非正文 §5.4 的 `text`）；6 处 placeholder 从 `_label` 拆 `_default` 因涉渲染语义而顺延。
+- **F-089.c（轮 47 裁定 C，先行地基）**：`{"text":""}` = **已声明但为空**（不是缺、不是编造）；「有值」判定抬为 `axis.hasValue` 共享，三目标同判——否则补列会让轮 35 的分组行规则失效。约定写入 §10。
+- **F-090（S2，轮 48）**：`table` 首次真实迁移 11 实例、4 页，零渲染变化；schema 价值证据 = 行缺列/未声明列/money 列塞 text 均**硬报错带路径**。暴露两个登记项：`W_COMPOSITE_ROWS_TOO_FEW` 无输出通道（故暂不迁两个单行族）、行一致性只比对带 `_fields` 的行。
+- **F-091（轮 49 补漏）**：把上面两个漏洞都堵上——整行缺 `_fields` 块 ⇒ `E_COMPOSITE_ROWS_INCONSISTENT`；校验器新增 **`warnings` 通道**（不阻断退出码，pipeline 汇总打印）。教训：**没人看到的警告 = 变相的错误**。随后两个单行族升 `table` 并实测出两条警告。
+- **F-092（S3，轮 49）**：`login` 3 页迁移；两处裁定——`login.submit.verbs` **收窄**为 `["submit"]`（`operate` 是通用动词，放进提交槽会让任意控件冒充提交；**收紧而非放宽**）；`_expose` 按**节点类型**双重语义（普通节点=输入控件；复合件=声明状态不画控件，落地 `axis.exposeRendersAsControl`，三目标共同消费）。已证伪（放宽回 ⇒ 正例失败；反转画控件规则 ⇒ 断言失败）。
+- **F-093（S4，轮 50）**：`search`/`paginator` 迁移 + 槽位角色取代轮 49 的宽规则。每个槽补 `role ∈ {state,field,pointer}`：`search.query` 是 `field`（**必须**照旧画输入框，否则整个搜索框消失）、`login.state` 是 `state`、`paginator.ref` 是 `pointer`（`_ref` 不印上屏）。新增 `W_COMPOSITE_NAME_ONLY_WATERMARK`（注册表 marker 驱动）。**反向证伪**：临时把 `search.query.role` 标成 `state` ⇒ V0/V1/V2 失败。
+- **F-094（S5，轮 51）**：把 `form` 注入 8 个候选面板，**0/8 通过** —— 不是引擎不肯迁，而是 schema 三处与实测不符 + 两页确属不同语义。父代理裁定 A 落地三项**修正**：`covered()` 认回已声明的 `shape:"expose-collection"` 槽（缺陷修）；`form.submit` 改为**可选、至多 1**、verbs 收窄 `["submit"]`（很多表单即时生效，"绝不出现两个提交"才是不变量）；嵌套改由**外层槽位声明**（`composite:"<type>"`），未声明仍拒。结果 `form` 迁移 1/8，另外 5 页按「输入 + 产出结果列表 = search」归 `search`，2 页如实不迁移。**不许为凑数硬套 schema。**
+- **贯穿的对象语义**：这类"类型不全 ⇒ 报错、而不是静默渲染成半成品"的价值，在真实语料上被反复实拍——`search` 首次遇到即抓到 taobao 缺 `name`（后凭抓取里真实存在的 `aria-label` 补回），`paginator` 首次遇到即抓到 3 页缺可解析 `_ref`（2 页补真实集合后通过，gov-uk 无对象可指 ⇒ 记采集缺口）。

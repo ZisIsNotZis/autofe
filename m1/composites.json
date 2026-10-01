@@ -5,336 +5,69 @@
   "search": {
    "intent": "一个检索框：有名称、可选默认值，向页面引入查询状态",
    "fields": {
-    "name": {
-     "key": "_label",
-     "role": "field",
-     "required": true,
-     "type": "text",
-     "note": "可访问名称；源站没有可见名称时用闭式词表兜底（D-3）"
-    },
-    "default": {
-     "key": "_default",
-     "role": "field",
-     "required": false,
-     "type": "text",
-     "render": "watermark-fallback"
-    },
-    "query": {
-     "key": "<expose>",
-     "role": "field",
-     "required": true,
-     "expose": {
-      "name": "*",
-      "type": "text"
-     },
-     "addressable": true
-    },
-    "scope": {
-     "key": "<child>",
-     "role": "field",
-     "required": false,
-     "shape": "expose-collection"
-    },
-    "results": {
-     "key": "<child>",
-     "role": "field",
-     "required": false,
-     "shape": "collection",
-     "note": "Round 51 (ruling A.(3)): 'input + its produced result list' is a search, not a form. role:\"field\" (not pointer) because the result list IS drawn; the slot covers the result collection's `_items` so a search node may carry its own results."
-    },
-    "submit": {
-     "key": "_action",
-     "role": "field",
-     "required": false,
-     "action": {
-      "verbs": [
-       "submit",
-       "navigate",
-       "open"
-      ]
-     }
-    }
+    "name": { "key": "_label", "role": "field", "required": true, "type": "text", "note": "可访问名称；源站没有可见名称时用闭式词表兜底（D-3）" },
+    "default": { "key": "_default", "role": "field", "required": false, "type": "text", "render": "watermark-fallback" },
+    "query": { "key": "<expose>", "role": "field", "required": true, "expose": { "name": "*", "type": "text" }, "addressable": true },
+    "scope": { "key": "<child>", "role": "field", "required": false, "shape": "expose-collection" },
+    "results": { "key": "<child>", "role": "field", "required": false, "shape": "collection", "note": "Round 51 (ruling A.(3)): 'input + its produced result list' is a search, not a form. role:\"field\" (not pointer) because the result list IS drawn; the slot covers the result collection's `_items` so a search node may carry its own results." },
+    "submit": { "key": "_action", "role": "field", "required": false, "action": { "verbs": ["submit", "navigate", "open"] } }
    },
-   "forbid": [
-    "_composite"
-   ],
-   "render": {
-    "watermarkFromName": true
-   }
+   "forbid": ["_composite"],
+   "render": { "watermarkFromName": true }
   },
   "form": {
    "intent": "多字段面板：≥2 个输入字段，一次提交一起上行",
    "fields": {
-    "fields": {
-     "key": "<expose>",
-     "role": "field",
-     "required": true,
-     "min": 2,
-     "note": "实例自己的 _expose 字段集合（不含嵌套复合件）"
-    },
-    "submit": {
-     "key": "_action",
-     "role": "field",
-     "required": false,
-     "action": {
-      "verbs": [
-       "submit"
-      ],
-      "atMost": 1
-     },
-     "note": "Round 51 (ruling A.(2)): OPTIONAL and AT MOST one. Verbs narrowed to [submit] (operate is a generic verb, not a submit — same narrowing as login in round 49). Many real forms apply instantly (a filter panel), so 'must have a submit' was too tight; the hard invariant worth enforcing is 'never two submits'. reset etc. stay as named children."
-    },
-    "name": {
-     "key": "_label",
-     "role": "field",
-     "required": false,
-     "type": "text"
-    },
-    "reset": {
-     "key": "<child>",
-     "role": "field",
-     "required": false,
-     "shape": "action",
-     "action": {
-      "verbs": [
-       "select",
-       "operate",
-       "toggle",
-       "navigate",
-       "open",
-       "submit"
-      ]
-     }
-    },
-    "pagination": {
-     "key": "<child>",
-     "role": "field",
-     "required": false,
-     "composite": "paginator",
-     "note": "Round 51 (ruling A.(4)): a form may contain a paginator (e.g. a filtered result list with pages). Declaring the child type here is what makes the nesting legal; the child's own subtree is out of this form's field scope."
-    },
-    "state": {
-     "role": "state",
-     "derived": "union(_expose.name)",
-     "required": true,
-     "note": "字段暴露的并集；不新增值类型"
-    }
+    "fields": { "key": "<expose>", "role": "field", "required": true, "min": 2, "note": "实例自己的 _expose 字段集合（不含嵌套复合件）" },
+    "submit": { "key": "_action", "role": "field", "required": false, "action": { "verbs": ["submit"], "atMost": 1 }, "note": "Round 51 (ruling A.(2)): OPTIONAL and AT MOST one. Verbs narrowed to [submit] (operate is a generic verb, not a submit — same narrowing as login in round 49). Many real forms apply instantly (a filter panel), so 'must have a submit' was too tight; the hard invariant worth enforcing is 'never two submits'. reset etc. stay as named children." },
+    "name": { "key": "_label", "role": "field", "required": false, "type": "text" },
+    "reset": { "key": "<child>", "role": "field", "required": false, "shape": "action", "action": { "verbs": ["select", "operate", "toggle", "navigate", "open", "submit"] } },
+    "pagination": { "key": "<child>", "role": "field", "required": false, "composite": "paginator", "note": "Round 51 (ruling A.(4)): a form may contain a paginator (e.g. a filtered result list with pages). Declaring the child type here is what makes the nesting legal; the child's own subtree is out of this form's field scope." },
+    "state": { "role": "state", "derived": "union(_expose.name)", "required": true, "note": "字段暴露的并集；不新增值类型" }
    },
-   "forbid": [
-    "_composite"
-   ],
-   "render": {
-    "group": "fieldset"
-   }
+   "forbid": ["_composite"],
+   "render": { "group": "fieldset" }
   },
   "table": {
    "intent": "声明字段的数据表：行集合 + 逐行完全一致的字段键集",
    "fields": {
-    "rows": {
-     "key": "_items",
-     "role": "field",
-     "required": true
-    },
-    "columns": {
-     "key": "_fields",
-     "role": "field",
-     "required": true,
-     "allowed": "@vocab-fields",
-     "consistent": true,
-     "note": "列 = 每行 _fields 的键；键集必须完全一致"
-    },
-    "identity": {
-     "key": "_name",
-     "role": "field",
-     "required": false,
-     "type": "text",
-     "note": "身份列；行有名字时使用 _name/_title"
-    },
-    "selection": {
-     "key": "_expose",
-     "role": "field",
-     "required": false,
-     "expose": {
-      "type": [
-       "ref",
-       "list"
-      ]
-     }
-    },
-    "empty": {
-     "key": "_empty",
-     "role": "field",
-     "required": false
-    },
-    "row-actions": {
-     "key": "<child>",
-     "role": "field",
-     "required": false,
-     "shape": "action",
-     "action": {
-      "verbs": [
-       "navigate",
-       "open",
-       "submit",
-       "select",
-       "operate",
-       "toggle"
-      ]
-     }
-    }
+    "rows": { "key": "_items", "role": "field", "required": true },
+    "columns": { "key": "_fields", "role": "field", "required": true, "allowed": "@vocab-fields", "consistent": true, "note": "列 = 每行 _fields 的键；键集必须完全一致" },
+    "identity": { "key": "_name", "role": "field", "required": false, "type": "text", "note": "身份列；行有名字时使用 _name/_title" },
+    "selection": { "key": "_expose", "role": "field", "required": false, "expose": { "type": ["ref", "list"] } },
+    "empty": { "key": "_empty", "role": "field", "required": false },
+    "row-actions": { "key": "<child>", "role": "field", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open", "submit", "select", "operate", "toggle"] } }
    },
-   "forbid": [
-    "_composite"
-   ],
-   "render": {
-    "columnsFromFields": true
-   }
+   "forbid": ["_composite"],
+   "render": { "columnsFromFields": true }
   },
   "login": {
    "intent": "门禁块：账号位 + 密码位 + 提交 + signed-in 状态",
    "fields": {
-    "identifier": {
-     "key": "<expose>",
-     "role": "field",
-     "required": true,
-     "expose": {
-      "type": "text"
-     },
-     "addressable": true
-    },
-    "secret": {
-     "key": "<expose>",
-     "role": "field",
-     "required": true,
-     "expose": {
-      "type": "secret"
-     },
-     "sensitive": true,
-     "addressable": true,
-     "note": "密码位的值类型是封闭值类型 secret（轮 46 语法；三张策展登录页实测均用 _expose{type:secret}）"
-    },
-    "submit": {
-     "key": "_action",
-     "role": "field",
-     "required": true,
-     "action": {
-      "verbs": [
-       "submit"
-      ],
-      "cardinality": 1
-     },
-     "note": "唯一提交动作；只认 verb:submit（轮 49 裁定 A）。passkey/扫码/第三方入口是额外登录方式，作为命名子件各自带 _action，不是 submit 的替代形态——operate 是通用动词，放进 submit 槽会让任意被 operate 的控件冒充提交"
-    },
-    "state": {
-     "key": "_expose",
-     "role": "state",
-     "required": true,
-     "expose": {
-      "name": "signed-in",
-      "type": "bool"
-     },
-     "note": "唯一对外状态（名字固定）"
-    },
-    "alternatives": {
-     "key": "<child>",
-     "role": "field",
-     "required": false,
-     "shape": "collection"
-    },
-    "signup": {
-     "key": "<child>",
-     "role": "field",
-     "required": false,
-     "shape": "action",
-     "action": {
-      "verbs": [
-       "navigate",
-       "open"
-      ]
-     }
-    },
-    "forgot": {
-     "key": "<child>",
-     "role": "field",
-     "required": false,
-     "shape": "action",
-     "action": {
-      "verbs": [
-       "navigate",
-       "open"
-      ]
-     }
-    },
-    "remember": {
-     "key": "<child>",
-     "role": "field",
-     "required": false,
-     "expose": {
-      "type": "bool"
-     }
-    }
+    "identifier": { "key": "<expose>", "role": "field", "required": true, "expose": { "type": "text" }, "addressable": true },
+    "secret": { "key": "<expose>", "role": "field", "required": true, "expose": { "type": "secret" }, "sensitive": true, "addressable": true, "note": "密码位的值类型是封闭值类型 secret（轮 46 语法；三张策展登录页实测均用 _expose{type:secret}）" },
+    "submit": { "key": "_action", "role": "field", "required": true, "action": { "verbs": ["submit"], "cardinality": 1 }, "note": "唯一提交动作；只认 verb:submit（轮 49 裁定 A）。passkey/扫码/第三方入口是额外登录方式，作为命名子件各自带 _action，不是 submit 的替代形态——operate 是通用动词，放进 submit 槽会让任意被 operate 的控件冒充提交" },
+    "state": { "key": "_expose", "role": "state", "required": true, "expose": { "name": "signed-in", "type": "bool" }, "note": "唯一对外状态（名字固定）" },
+    "alternatives": { "key": "<child>", "role": "field", "required": false, "shape": "collection" },
+    "signup": { "key": "<child>", "role": "field", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open"] } },
+    "forgot": { "key": "<child>", "role": "field", "required": false, "shape": "action", "action": { "verbs": ["navigate", "open"] } },
+    "remember": { "key": "<child>", "role": "field", "required": false, "expose": { "type": "bool" } }
    },
-   "forbid": [
-    "_composite"
-   ],
-   "render": {
-    "secretControl": true
-   }
+   "forbid": ["_composite"],
+   "render": { "secretControl": true }
   },
   "paginator": {
    "intent": "分页/继续：指向被分页集合的 _ref + 页目标或「加载更多」",
    "fields": {
-    "ref": {
-     "key": "_ref",
-     "role": "pointer",
-     "required": true,
-     "addressable": false
-    },
-    "items": {
-     "key": "_items",
-     "role": "field",
-     "required": false
-    },
-    "more": {
-     "key": "<child>",
-     "role": "field",
-     "required": false,
-     "shape": "action",
-     "action": {
-      "verbs": [
-       "submit",
-       "operate"
-      ]
-     }
-    },
-    "page": {
-     "key": "_expose",
-     "role": "field",
-     "required": false,
-     "expose": {
-      "name": "page",
-      "type": "text"
-     }
-    },
-    "count": {
-     "key": "_count",
-     "role": "field",
-     "required": false,
-     "type": "num"
-    }
+    "ref": { "key": "_ref", "role": "pointer", "required": true, "addressable": false },
+    "items": { "key": "_items", "role": "field", "required": false },
+    "more": { "key": "<child>", "role": "field", "required": false, "shape": "action", "action": { "verbs": ["submit", "operate"] } },
+    "page": { "key": "_expose", "role": "field", "required": false, "expose": { "name": "page", "type": "text" } },
+    "count": { "key": "_count", "role": "field", "required": false, "type": "num" }
    },
-   "requireOneOf": [
-    [
-     "items",
-     "more"
-    ]
-   ],
-   "forbid": [
-    "_composite"
-   ],
-   "render": {
-    "nonLinkPageItems": true
-   }
+   "requireOneOf": [["items", "more"]],
+   "forbid": ["_composite"],
+   "render": { "nonLinkPageItems": true }
   }
  }
 }
