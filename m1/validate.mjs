@@ -115,7 +115,7 @@ export function validate(model) {
       if (r === null || typeof r !== 'object' || Array.isArray(r)) err(`${p}._rel`, '_rel must be an object');
       else {
         if (r.compare !== undefined && typeof r.compare !== 'boolean') err(`${p}._rel.compare`, 'compare must be boolean');
-        if (r.order !== undefined && !['sequence', 'time', 'none'].includes(r.order)) err(`${p}._rel.order`, 'order must be sequence|time|none');
+        if (r.order !== undefined && !['sequence', 'time', 'rank', 'none'].includes(r.order)) err(`${p}._rel.order`, 'order must be sequence|time|rank|none');
         if (r.level !== undefined && (typeof r.level !== 'number' || r.level < 0)) err(`${p}._rel.level`, 'level must be a non-negative number');
         for (const k of Object.keys(r)) if (!['compare', 'order', 'level'].includes(k)) err(`${p}._rel.${k}`, `unknown relation predicate "${k}" (§4 is closed; presentation predicates are banned)`);
       }

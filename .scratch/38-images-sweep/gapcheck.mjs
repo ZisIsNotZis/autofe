@@ -1,0 +1,10 @@
+import { execFileSync } from 'node:child_process';
+const dir = process.argv[2];
+const rows = JSON.parse(execFileSync('node', ['.scratch/38-images-sweep/imgattr.mjs', dir, '1', '1'], { encoding: 'utf8', maxBuffer: 1 << 28 }));
+const small = rows.filter((r) => r.w < 120 || r.h < 120);
+console.log('total', rows.length, 'small', small.length);
+const withDataSrc = small.filter((r) => r.dataSrc);
+console.log('small with data-src (lazy, no real src):', withDataSrc.length);
+withDataSrc.slice(0, 3).forEach((r) => console.log('  ', r.idx, r.w + 'x' + r.h, 'dataSrc=' + r.dataSrc.slice(0, 90), 'src=' + String(r.src).slice(0, 40)));
+const noSrc = rows.filter((r) => !r.src);
+console.log('nodes with empty src:', noSrc.length);

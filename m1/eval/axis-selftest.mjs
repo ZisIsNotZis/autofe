@@ -652,22 +652,33 @@ const primaryActionRows = (model) => {
     iS >= 0 && iL > iS && iD > iL, `summary=${iS} list=${iL} detail=${iD}`);
 }
 
-// L. ranked sequence (round 37). Only a leaderboard (same-kind TEXTUAL entries) is numbered;
-// a hero/carousel whose members carry their own image is a display order, not a rank.
+// L. ranked sequence (round 37; DECLARED in round 39). Only a set DECLARED as a leaderboard
+// (`_rel.order: 'rank'`) is numbered; `sequence` is a display order and is never numbered.
+// Round 37 guessed "leaderboard" from "no member carries an image"; the declaration replaces
+// the guess, so a leaderboard keeps its ordinals when its entries have thumbnails.
 {
   const plain = [1, 2, 3].map((i) => ({ _name: { text: `item ${i}` } }));
   const banner = plain.map((it, i) => ({ ...it, _image: { image: `https://x.test/${i}.png`, alt: `a${i}` } }));
-  check('L0 a textual sequence is a ranked 榜单', rankedSequence(plain, 'sequence') === true);
-  check('L1 an image-bearing (hero/carousel) sequence is NOT ranked', rankedSequence(banner, 'sequence') === false);
-  check('L2 a non-sequence order is never numbered', rankedSequence(plain, 'none') === false);
+  check('L0 a declared leaderboard (rank) is numbered', rankedSequence(plain, 'rank') === true);
+  check('L1 a declared leaderboard keeps its ordinals when its entries carry images', rankedSequence(banner, 'rank') === true);
+  check('L2 a display sequence is never numbered, even without images', rankedSequence(plain, 'sequence') === false);
+  check('L3 a non-ordinal order is never numbered', rankedSequence(plain, 'none') === false);
   const hero = {
     _intent: 'x', _title: { text: 'Hero' },
     hero: { _intent: 'h', _rel: { order: 'sequence' }, _items: banner.map((it) => ({ _name: it._name, _image: it._image, _action: { verb: 'open', label: '了解更多', to: 'https://x.test' } })) },
   };
   const html = render(hero);
-  check('L3 a hero-like sequence renders with no ordinals',
+  check('L4 a hero-like sequence renders with no ordinals',
     !html.includes('class="rank"') && !/<ol class="seq">/.test(html),
     html.match(/<div class="deflist[^"]*"[^>]*>/)?.[0] ?? '');
+  const board = {
+    _intent: 'x', _title: { text: 'Board' },
+    hot: { _intent: 'h', _rel: { order: 'rank' }, _title: { text: '热榜' }, _items: banner.map((it) => ({ _name: it._name, _image: it._image, _action: { verb: 'open', to: 'https://x.test' } })) },
+  };
+  const boardHtml = render(board);
+  check('L5 a declared leaderboard with thumbnails draws BOTH ordinals and images',
+    boardHtml.includes('class="deflist ranked"') && boardHtml.includes('class="rank">1<') && /<img[^>]*src="https:\/\/x\.test\/0\.png"/.test(boardHtml),
+    boardHtml.match(/<div class="deflist[^"]*"[^>]*>/)?.[0] ?? '');
 }
 
 // M. captured input default value (round 37). `_text` on a bare text input is the field's

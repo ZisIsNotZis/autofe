@@ -111,7 +111,7 @@ export function selectForm(items, order) {
       const len = t ? (t.text ?? '').length : 0;
       return len >= 16 || /[?？]$/.test((t?.text ?? '').trim());
     });
-    if (order === 'sequence' || order === 'time') return 'seq';   // 有序集合 ⇒ 序列，不是一行 chip（F-031-§1）
+    if (order === 'sequence' || order === 'time' || order === 'rank') return 'seq';   // 有序集合（含榜单）⇒ 序列，不是一行 chip（F-031-§1）
     // 长标签列表（长句子）是列表；一长串短标签的**链接菜单**（如类目/推荐词导航）也不是
     // 一排 pill 控件条——它是一份导航清单，分栏成紧凑形态（轮 35，taobao 首屏）。
     if (long || (items.length >= 8 && items.every((it) => it._action))) return 'list';
@@ -254,15 +254,18 @@ export function compareSetVerdict(items) {
 }
 
 // ---- ordered item-set grouping (F-031 §1/§3, D2, P3) -----------------------
-// ---- ranked（榜单）sequence decision (round 37) ------------------------------
-// A `sequence`-ordered set is numbered ONLY when it is a leaderboard (榜单/热榜/排行榜):
-// its members are the SAME KIND of textual, rankable entries. A carousel/hero/feature band
-// whose members are distinct visual promos (each carries its own `_image`) has a display
-// order, not a RANK — numbering a banner carousel reads as a table of contents (round 37:
-// `huawei-cn/home` hero rendered `1. / 2.`). The decision lives here, once, for every target;
-// renderers only draw it.
+// ---- ranked（榜单）decision (round 37; declared in round 39) -----------------
+// A leaderboard (榜单/热榜/排行榜) is DECLARED: `_rel.order === 'rank'` — its members are the
+// SAME KIND of rankable entries, so the set is numbered AND may carry its own thumbnails.
+// `sequence` is a display order only and is NEVER numbered. Round 37 inferred "leaderboard"
+// from "no member carries an `_image`", which made the rule unstateable the moment a
+// leaderboard has a thumbnail (round 39: `36kr-com/home` hot list). A declaration says what
+// it means; inferring it from a picture is a guess (docs/m1/layout-axes.md §「榜单 vs 轮播」).
+// A carousel/hero/feature band is `sequence` even though its members are distinct visual
+// promos: numbering a banner carousel reads as a table of contents (round 37: `huawei-cn/home`
+// hero rendered `1. / 2.`). The decision lives here, once, for every target; renderers draw it.
 export function rankedSequence(items, order) {
-  return order === 'sequence' && items.length > 1 && !items.some((it) => it._image);
+  return order === 'rank' && items.length > 1;
 }
 
 // An ordered collection splits into consecutive runs that each render in ONE form:
