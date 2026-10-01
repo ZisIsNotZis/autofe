@@ -601,3 +601,39 @@
      全部通过（包含性锚点 `href` **逐字等于**条目 `_action.to`）。
 - **验证**：`node m1/eval/pipeline.mjs --shots` ⇒ 保真 42/42（HTML）+ 42/42（MD）+ 48 模型 + **八套自测** + 视觉自查 42/42 干净 + 证据一致性通过。
 - **残余**：本轮只复核了"有反证风险/轮 40 后新增"的范围；全库其余页的既有 `_image` 未逐条重扫（不在本轮授权与时限内）。
+
+## F-082 图片被 `width:100%` 放大到容器宽（轮 45 修正）
+
+- **现象**：`bilibili-com/read-home` 的 19 张封面源素材只有 `@234w_176h`（缩略图），全局 CSS `.fact img{width:100%}` 把它们
+  拉到 677px 宽（**放大 2~3 倍、发虚**），并把每一条列表项撑高，页面总高被无谓拉到 **14394px**（终审 g3 finding）。
+  同类：`bilibili-com/home` 有一张 516×290 横幅被拉到 677px。
+- **根因**：图像规则一律 `width:100%; height:auto`——容器比自然宽更宽时**拉伸上采样**。
+- **修法**：图像显示宽 = `min(naturalWidth, 容器宽)`：`render.mjs` 的 `img{max-width:100%;width:auto}` 与
+  `.fact img` / `.cards img` / `.promo-image img` / `.strip img` 四条规则改 `width:100%` ⇒ `width:auto;max-width:100%`。
+  自然宽 ≥ 容器的满幅图/卡片图仍铺满（不改观感），自然宽 < 容器时按自然尺寸显示，**绝不放大、不裁内容**。
+  规则写入 `docs/m1/layout-axes.md §7.1`。
+- **门禁**：`m1/eval/no-upscale-selftest.mjs`——**构造** `200px` 宽图 + `1000px` 容器，Chromium 实测显示宽 `≤200px`
+  （回归 `width:100%` 时立即 FAIL，实测被量到 `677px`，可证伪）。
+- **验证**（playwright，1280 视口）：`bilibili-com/read-home` 封面 `234×176 → 234×176`（改前 `677×509`），
+  页面总高 **14394px → 8060px**；`bilibili-com/read-home` 放大张数 `19 → 0`；`huawei-cn/consumer-phones`(51)、
+  `mi-com/home`(7)、`36kr-com/search-*`(9) 放大张数均 `0`。
+
+## F-083 三处「图片缺口」终审点名的复核（轮 45）
+
+- **`apple-com/iphone-16`**：终审判定零产品图。源站 44 个 img 中 13 个 ≥120px。**本轮补 10 张**（逐字节镜像）：
+  主视觉 1（`iphone-16-finish-select`，alt=「iPhone 16, all five finishes…」）+ 机型对比缩略图 5（iPhone Duo / 18 Pro /
+  Air / 17 / 17e，源站 5 图 y=5202 同 y 带、条目 5 行 1:1）+ 服务图 1（alt=「Apple TV, Apple Music…」）+
+  What's in the Box 2（iPhone 16 / USB-C 线）+ recap 1。归属依据**源站 bbox y 序 + alt 文案**（无锚点，故非 M1/M3；
+  M2 因 alt 长于标题不命中，按同 y 带 1:1 手动挂载）。渲染 `<img>` 0 → **10**，保真 122/122，自查干净。
+- **`aliyun-com/product-ecs`**：终审「缺 hero」。补 **1** 张主视觉（`O1CN01rdFGco…tps-4640-2448.png`，源站 alt=「云服务器 ECS」
+  = 页面标题；源站 bbox 1111×586，在标题正下方 y=1558）。渲染 `<img>` 0 → **1**，保真 38/38，自查干净。
+  源站另外 6 张 696×400「价值卡」图 alt 全为 generic `img`、且源站卡数与模型 `values` 4 项不一致 ⇒ **不挂**（宁可少图不留错挂）。
+- **`36kr-com/search-ai` / `search-viz`**：终审「只挂了 9/25」实为**误判**——源站 25 个 img 节点里只有 **9 个**
+  `<img class="scaleBig">`（结果缩略图，**直接 src**），另 11 个是 `<div class="kr-default-img-no-logo scaleBig">` **占位块（无 src）**，
+  其余为 partner logo（68×30）与 `36氪APP` 图标（120×120）。两页模型各已挂 **9/9 可挂内容图**（其余 16 个节点是站点 chrome）。
+  ⇒ **无图片缺口，不补**（补 logo 才是错挂）。各页 9 张 URL 与源站逐条一致。
+
+## 残余风险（轮 45 登记）
+
+- `36kr-com/search-*`、`bilibili-com/*` 的**既有**图仍是**远程热链**（`img.36krcdn.com` / `i2.hdslb.com`），离线渲染会裂。
+  本轮只镜像了**新挂**的 11 张（apple/aliyun）；既有热链的逐字节本地化不在本轮授权口径（"新挂的图"）内，故如实登记。

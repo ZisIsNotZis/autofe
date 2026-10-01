@@ -216,16 +216,25 @@ titleIsControl 而吞掉同一元素上的其它控件。
 - **长串纯标签（≥6 项、每项只有名字）是清单，不是目录**：渲染成等格清单（`.manifest`），不编 1..N 号。
   编号会把「一组面板名」读成「章节目录」（实测 `grafana-play/play-home` 的 11 个面板名）。
 
-### 7.1 图片按容器宽度铺满、保持自身比例（轮 27 明文规则）
+### 7.1 图片保持自身比例、且**绝不放大**（轮 27 规则 + 轮 45 修订）
 
-- 图片默认 `width:100%; height:auto`（保持原比例）：**不留横向灰底**，也**不把小图缩在中间**；
+- 图片默认 `width:auto; max-width:100%; height:auto`：于是**实际显示宽 = min(naturalWidth, 容器宽)**——
+  容器比自然宽更窄时才收缩（不留横向灰底）；自然宽 < 容器时**按自然尺寸显示，绝不拉伸**。
 - **绝不**用 `object-fit:cover` 限高：那会**裁掉内容**（长图两侧/上下被切），是丢信息，不是排版；
 - 因此**不设固定高度**（没有 letterbox、没有裁剪），图片高度由比例决定；
 - **例外**：`deflist` 的 `.defval` 行内缩略图（图 + 一个控件成一行，如 apple 服务区）保持自身宽度，
   它是行内小图不是区块主视觉。
-- 实测（轮 27，playwright 量测 42 页 `naturalWidth/Height`）：改前 22 张图被 `height:150px + object-fit:cover` 裁剪
-  （aliyun 首页 6、apple 首页 16），`bilibili-com/home` 的 516×290 横幅缩在 1060 宽的容器里（"小、居中、四周大片灰底"）；
-  改后全库 0 张被裁、0 张未铺满。
+- **轮 45 新增**:**不放大是硬规则**（F-082）。旧规则 `width:100%` 会把 234×176 的源缩略图拉到容器宽
+  （2~3 倍放大、发虚），并把每条列表项撑高，页面被无谓拉到 1.4 万像素。
+  实测（1280 视口，playwright 量 `naturalWidth` vs `displayed`）：`bilibili-com/read-home` 的 19 张
+  `@234w_176h` 封面由 `234×176 → 677×509` 改为 `234×176 → 234×176`，页面总高 **14394px → 8060px**；
+  全库放大张数 `19 → 0`（`bilibili-com/home` 的 516✗290 横幅也从 516→677 的放大中修正）。
+- 轮 27 的实测（42 页 `naturalWidth/Height`）：改前 22 张图被 `height:150px + object-fit:cover` 裁剪
+  （aliyun 首页 6、apple 首页 16）；改后全库 0 张被裁。
+- **引擎落点**:`render.mjs` 的 `img{max-width:100%;width:auto}` 与 `.fact img` / `.cards img` /
+  `.promo-image img` / `.strip img` 四条同规则。**门禁**:`m1/eval/no-upscale-selftest.mjs`——**构造**
+  `200px` 宽图 + `1000px` 容器，在 Chromium 中量得显示宽 `≤200px`（回归 `width:100%` 时立刻 FAIL，
+  实测被量到 `677px`）；Chromium 不可用时退化为同一 CSS 的非静态级联断言。
 
 ## 9. 轮 30 明文规则（价格限定词位置 / 去重 / 数值角色标签 / 卡片主视觉）
 

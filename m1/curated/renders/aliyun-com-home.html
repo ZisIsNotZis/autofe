@@ -37,18 +37,18 @@ article{margin:12px 0}
 /* a sentence member is prose, not a tag: keep it on its own plain line */
 .chips-rows{display:block}
 .chips-rows .chip-item{display:block;background:none;border:0;border-radius:0;padding:3px 0;font-size:.95em}
-.cards .item img,.run .item img,.cards img{width:100%;height:auto;display:block;border-radius:8px}
+.cards .item img,.run .item img,.cards img{width:auto;max-width:100%;height:auto;display:block;border-radius:8px}
 .action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
 .promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
 .promo-image{padding:0;overflow:hidden}
-.promo-image img{width:100%;height:auto;display:block;border-radius:9px}
+.promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
 .meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
 /* F-031-§7 图像主导页：满幅图带——图带是页面的框，展开到视口宽（左右不留白边）。
    卡片/表格/推广盒里的图不是页框，由下面一条覆盖回容器宽（轮 34）。 */
 .strip{margin:0;padding:0;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
-.strip img{width:100%;height:auto;display:block;border-radius:0}
+.strip img{width:auto;max-width:100%;height:auto;display:block;border-radius:0}
 .cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip{width:auto;margin-left:0;margin-right:0}
 .cards .strip img{border-radius:8px}
 /* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
@@ -125,9 +125,13 @@ legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04e
 .choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
 input[type=text]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
-img{max-width:100%;border-radius:10px;display:block}
-/* 图片按容器宽度铺满、保持自身比例（round 27）：小图不再缩在中间，也绝不 object-fit:cover 裁剪内容 */
-.fact img,.cards img,.cards .item img,.run .item img{width:100%;height:auto}
+/* 不放大（round 45 · F-082）：图片按自身自然尺寸显示，容器更窄时才收缩——width:auto
+   + max-width:100% 合起来保证 displayed = min(naturalWidth, container)，绝不把 234×176 的
+   源缩略图拉到容器宽（旧规则 width:100% 会把封面放大 2~3 倍、发虚并把页面撑到 1.4 万像素）。
+   同时保留原比例（不 object-fit:cover），不裁内容；自然宽 ≥ 容器的满幅图仍铺满。 */
+img{max-width:100%;width:auto;border-radius:10px;display:block}
+/* 同一条「不放大」规则覆盖卡片/条目/正文图：自然宽 ≥ 容器则铺满，否则按自然尺寸居中显示 */
+.fact img,.cards img,.cards .item img,.run .item img{width:auto;max-width:100%;height:auto}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
 table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}

@@ -1,0 +1,733 @@
+{
+ "_intent": "引导用户完成 iPhone 16 的配置与购买：选颜色、选容量、折抵、支付、运营商、保障，最后确认下单；页面主旨是 iPhone 16 从 $799 起",
+ "_primary": "_price",
+ "_key": "apple-buy-iphone-16",
+ "_title": {
+  "text": "Buy iPhone 16"
+ },
+ "_price": {
+  "money": 799,
+  "currency": "USD"
+ },
+ "_summary": {
+  "text": "Buy from $799 or $33.29/mo. per month for 24 mo."
+ },
+ "ai": {
+  "_intent": "购买页上的 AI 卖点提示",
+  "_name": {
+   "text": "Apple Intelligence and Siri AI"
+  },
+  "_action": {
+   "verb": "open",
+   "label": "Learn more about Apple Intelligence for iPhone"
+  }
+ },
+ "deals": {
+  "_intent": "页首运营商优惠横幅：折抵后最高省 $799",
+  "_title": {
+   "text": "Carrier Deals at Apple"
+  },
+  "_summary": {
+   "text": "Save up to $799 after an eligible trade-in in any condition."
+  },
+  "_primary": "_summary",
+  "_action": {
+   "verb": "open",
+   "label": "See all deals"
+  }
+ },
+ "steps": {
+  "_intent": "配置流程：每一步回答一个购买决策问题，顺序即页面顺序",
+  "_rel": {
+   "order": "sequence"
+  },
+  "_lines": [
+   {
+    "_intent": "用户想知道：有哪些颜色、哪款适合我",
+    "_key": "step-finish",
+    "_title": {
+     "text": "Finish. Pick your favorite."
+    },
+    "_label": {
+     "text": "Color"
+    },
+    "_items": [
+     {
+      "_key": "finish-ultramarine",
+      "_name": {
+       "text": "Ultramarine"
+      }
+     },
+     {
+      "_key": "finish-teal",
+      "_name": {
+       "text": "Teal"
+      }
+     },
+     {
+      "_key": "finish-pink",
+      "_name": {
+       "text": "Pink"
+      }
+     },
+     {
+      "_key": "finish-white",
+      "_name": {
+       "text": "White"
+      }
+     },
+     {
+      "_key": "finish-black",
+      "_name": {
+       "text": "Black"
+      }
+     }
+    ],
+    "_expose": {
+     "name": "finish",
+     "type": "text"
+    }
+   },
+   {
+    "_intent": "用户想知道：需要多少容量、多少钱",
+    "_key": "step-storage",
+    "_title": {
+     "text": "Storage. How much space do you need?"
+    },
+    "_items": [
+     {
+      "_key": "storage-128",
+      "_name": {
+       "text": "128GB"
+      },
+      "_price": {
+       "money": 799,
+       "currency": "USD"
+      },
+      "_summary": {
+       "text": "or $33.29 per month for 24 months"
+      }
+     }
+    ],
+    "_expose": {
+     "name": "storage",
+     "type": "text"
+    },
+    "_label": {
+     "text": "Storage"
+    }
+   },
+   {
+    "_intent": "用户想知道：旧机能抵多少",
+    "_key": "step-tradein",
+    "_title": {
+     "text": "Apple Trade In."
+    },
+    "_summary": {
+     "text": "Get $35–$885 credit towards your new iPhone."
+    },
+    "_primary": "_summary",
+    "_items": [
+     {
+      "_key": "tradein-estimate",
+      "_name": {
+       "text": "Select a smartphone"
+      },
+      "_detail": {
+       "text": "Answer a few questions to get your estimate."
+      },
+      "_action": {
+       "verb": "open"
+      }
+     },
+     {
+      "_key": "tradein-none",
+      "_name": {
+       "text": "No trade-in"
+      }
+     }
+    ],
+    "_expose": {
+     "name": "trade-in",
+     "type": "text"
+    },
+    "_detail": {
+     "text": "Save even more when you trade in and finance with select carrier deals at Apple."
+    },
+    "_label": {
+     "text": "Trade In"
+    }
+   },
+   {
+    "_intent": "用户想知道：怎么付、有没有免息",
+    "_key": "step-payment",
+    "_title": {
+     "text": "Payment options. Select the one that works for you."
+    },
+    "_items": [
+     {
+      "_key": "pay-buy",
+      "_name": {
+       "text": "Buy"
+      },
+      "_detail": {
+       "text": "Pay with Apple Pay or other payment methods."
+      }
+     },
+     {
+      "_key": "pay-finance",
+      "_name": {
+       "text": "Finance"
+      },
+      "_detail": {
+       "text": "Pay over time at 0% APR."
+      }
+     }
+    ],
+    "_expose": {
+     "name": "payment-method",
+     "type": "text"
+    },
+    "_action": {
+     "verb": "open",
+     "label": "See how to pay monthly."
+    },
+    "_detail": {
+     "text": "Not sure which payment option to choose? Compare all pricing and deals to find the option that’s right for you."
+    },
+    "_label": {
+     "text": "Payment"
+    }
+   },
+   {
+    "_intent": "用户想知道：怎么连网、各家运营商优惠",
+    "_key": "step-connectivity",
+    "_title": {
+     "text": "Connectivity. Choose a carrier."
+    },
+    "_items": [
+     {
+      "_key": "carrier-att",
+      "_name": {
+       "text": "AT&T"
+      },
+      "_detail": {
+       "text": "Includes $30 connectivity discount (requires carrier activation)"
+      }
+     },
+     {
+      "_key": "carrier-tmobile",
+      "_name": {
+       "text": "T-Mobile"
+      },
+      "_detail": {
+       "text": "Includes $30 connectivity discount (requires carrier activation)"
+      }
+     },
+     {
+      "_key": "carrier-verizon",
+      "_name": {
+       "text": "Verizon"
+      },
+      "_detail": {
+       "text": "Includes $30 connectivity discount (requires carrier activation)"
+      }
+     },
+     {
+      "_key": "carrier-later",
+      "_name": {
+       "text": "Connect to any carrier later"
+      }
+     }
+    ],
+    "_expose": {
+     "name": "carrier",
+     "type": "text"
+    },
+    "_detail": {
+     "text": "Is it easy to get connected? Yes. We’ll help you set up your carrier, number, and rate plan — you even get a discount. And your new iPhone will be unlocked."
+    },
+    "_label": {
+     "text": "Carrier"
+    }
+   },
+   {
+    "_intent": "用户想知道：坏了怎么办、保障值不值",
+    "_key": "step-applecare",
+    "_title": {
+     "text": "AppleCare coverage. Peace of mind in every plan."
+    },
+    "_items": [
+     {
+      "_key": "care-theft-loss",
+      "_name": {
+       "text": "AppleCare+ with Theft and Loss"
+      },
+      "_subtitle": {
+       "text": "Cover this product only"
+      },
+      "_detail": {
+       "text": "Unlimited repairs for accidents like drops and spills. Theft and loss coverage for up to 2 claims every 12 months. 24/7 priority support from Apple experts. Express Replacement Service — we’ll ship you a replacement so you don’t have to wait for a repair."
+      }
+     },
+     {
+      "_key": "care-one",
+      "_name": {
+       "text": "AppleCare One"
+      },
+      "_subtitle": {
+       "text": "Cover multiple products, including this iPhone with AppleCare One"
+      },
+      "_detail": {
+       "text": "All the benefits of AppleCare+ for up to 3 products, including your current devices, at one low price. Theft and loss coverage for iPhone, iPad, and Apple Watch up to 3 total claims every 12 months. Add more products anytime for $5.99/mo. per month each."
+      }
+     },
+     {
+      "_key": "care-none",
+      "_name": {
+       "text": "No AppleCare coverage"
+      }
+     }
+    ],
+    "_expose": {
+     "name": "care-plan",
+     "type": "text"
+    },
+    "_detail": {
+     "text": "How does AppleCare work? Explore the features and coverage of AppleCare. Fees and deductibles apply."
+    },
+    "_label": {
+     "text": "AppleCare coverage"
+    }
+   }
+  ]
+ },
+ "recap": {
+  "_intent": "下单前确认：这就是你的新 iPhone，含物流与支付权益",
+  "_key": "step-recap",
+  "_title": {
+   "text": "Your new iPhone 16."
+  },
+  "_subtitle": {
+   "text": "Just the way you want it."
+  },
+  "_ref": {
+   "ref": "key:apple-buy-iphone-16"
+  },
+  "_action": {
+   "verb": "open",
+   "label": "Get 3% Daily Cash with Apple Card"
+  },
+  "delivery": {
+   "_intent": "收货方式",
+   "_items": [
+    {
+     "_key": "delivery-shipping",
+     "_name": {
+      "text": "Free shipping"
+     }
+    },
+    {
+     "_key": "delivery-pickup",
+     "_name": {
+      "text": "Pick up from Store"
+     }
+    }
+   ]
+  },
+  "save": {
+   "_intent": "暂时拿不定主意：保存配置，之后再继续",
+   "_title": {
+    "text": "Need a moment?"
+   },
+   "_summary": {
+    "text": "Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off."
+   },
+   "save-later": {
+    "_intent": "保存到 Your Saves",
+    "_title": {
+     "text": "Save for later"
+    },
+    "_action": {
+     "verb": "operate",
+     "label": "Save for later"
+    }
+   },
+   "continue": {
+    "_intent": "继续购买流程",
+    "_title": {
+     "text": "Continue"
+    },
+    "_action": {
+     "verb": "submit",
+     "label": "Continue"
+    }
+   }
+  },
+  "specialist": {
+   "_intent": "人工咨询入口",
+   "_detail": {
+    "text": "Have more questions?"
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Connect with a Specialist"
+   }
+  }
+ },
+ "inbox": {
+  "_intent": "盒内有什么",
+  "_title": {
+   "text": "What’s in the Box"
+  },
+  "_items": [
+   {
+    "_key": "inbox-iphone",
+    "_name": {
+     "text": "iPhone 16"
+    }
+   },
+   {
+    "_key": "inbox-cable",
+    "_name": {
+     "text": "USB-C Charge Cable"
+    }
+   }
+  ]
+ },
+ "environment": {
+  "_intent": "环保说明：不配充电器与 EarPods 的原因",
+  "_title": {
+   "text": "Our environmental goals."
+  },
+  "_detail": {
+   "text": "As part of our efforts to reach carbon neutrality by 2030, iPhone 16 does not include a power adapter or EarPods."
+  },
+  "_action": {
+   "verb": "open",
+   "label": "carbon neutrality by 2030"
+  }
+ },
+ "setup": {
+  "_intent": "免费 Personal Setup 一对一设置服务",
+  "_title": {
+   "text": "Set up your device with one-on-one sessions with a Specialist."
+  },
+  "_detail": {
+   "text": "When you buy directly from Apple, you can get help transferring your data and making the most of your new device with our free online Personal Setup sessions."
+  },
+  "_action": {
+   "verb": "open",
+   "label": "Learn more about Personal Setup"
+  }
+ },
+ "services": {
+  "_intent": "购机附赠服务试用",
+  "_title": {
+   "text": "Your new iPhone comes with so much more."
+  },
+  "_detail": {
+   "text": "Get 3 months of select services free when you purchase an Apple device."
+  }
+ },
+ "compare": {
+  "_intent": "还在选型？一眼对比五款在售 iPhone 的定位与起售价（原 `_items` 误标为可互换实例：五款机型形状不同——部分带 `_tag`、iPhone Duo 多一个 `display` 子块，且各带 4–5 个规格子块，不可一行紧凑排比；回改为 `_lines` 有序序列）",
+  "_title": {
+   "text": "Which iPhone is right for you?"
+  },
+  "_lines": [
+   {
+    "_key": "cmp-duo",
+    "_name": {
+     "text": "iPhone Duo"
+    },
+    "_tag": {
+     "text": "New"
+    },
+    "_subtitle": {
+     "text": "The largest display of any iPhone. Foldable. Posable. And durable."
+    },
+    "_price": {
+     "money": 1999,
+     "currency": "USD"
+    },
+    "display": {
+     "_detail": {
+      "text": "7.6-inch Super Retina XDR folding display with nano-texture · 5.4-inch Super Retina XDR outer display"
+     }
+    },
+    "battery": {
+     "_detail": {
+      "text": "Up to 44 hours video playback when using the outer display · Up to 31 hours video playback when using the inner display"
+     }
+    },
+    "chip": {
+     "_detail": {
+      "text": "A20 Pro chip · 6-core CPU · 7-core GPU with Neural Accelerators · Dual 16-core Neural Engine"
+     }
+    },
+    "camera": {
+     "_detail": {
+      "text": "48MP Dual Fusion camera system · Super-high-resolution photos (24MP and 48MP)"
+     }
+    },
+    "front": {
+     "_detail": {
+      "text": "12MP Center Stage front camera"
+     }
+    },
+    "_intent": "选型对照：iPhone Duo——定位标签、起售价与五项规格子块（含 display）"
+   },
+   {
+    "_key": "cmp-18pro",
+    "_name": {
+     "text": "iPhone 18 Pro"
+    },
+    "_tag": {
+     "text": "New"
+    },
+    "_subtitle": {
+     "text": "The ultimate battery life, performance, and camera of any iPhone."
+    },
+    "_price": {
+     "money": 1199,
+     "currency": "USD"
+    },
+    "battery": {
+     "_detail": {
+      "text": "Up to 45 hours video playback"
+     }
+    },
+    "chip": {
+     "_detail": {
+      "text": "A20 Pro chip · 6-core CPU · 7-core GPU with Neural Accelerators · Dual 16-core Neural Engine"
+     }
+    },
+    "camera": {
+     "_detail": {
+      "text": "48MP Pro Fusion camera system · 48MP Fusion Main with variable aperture | 48MP Fusion Ultra Wide | 48MP Fusion Telephoto"
+     }
+    },
+    "front": {
+     "_detail": {
+      "text": "18MP Center Stage front camera"
+     }
+    },
+    "_intent": "选型对照：iPhone 18 Pro——定位标签、起售价与四项规格子块"
+   },
+   {
+    "_key": "cmp-air",
+    "_name": {
+     "text": "iPhone Air"
+    },
+    "_subtitle": {
+     "text": "Incredibly light and thin with pro performance."
+    },
+    "_price": {
+     "money": 1099,
+     "currency": "USD"
+    },
+    "battery": {
+     "_detail": {
+      "text": "Up to 27 hours video playback"
+     }
+    },
+    "chip": {
+     "_detail": {
+      "text": "A19 Pro chip · 6-core CPU · 5-core GPU with Neural Accelerators · 16-core Neural Engine"
+     }
+    },
+    "camera": {
+     "_detail": {
+      "text": "48MP Fusion camera system · 48MP Fusion Main"
+     }
+    },
+    "front": {
+     "_detail": {
+      "text": "18MP Center Stage front camera"
+     }
+    },
+    "_intent": "选型对照：iPhone Air——起售价与四项规格子块"
+   },
+   {
+    "_key": "cmp-17",
+    "_name": {
+     "text": "iPhone 17"
+    },
+    "_subtitle": {
+     "text": "Powerful, durable, and delightful."
+    },
+    "_price": {
+     "money": 899,
+     "currency": "USD"
+    },
+    "battery": {
+     "_detail": {
+      "text": "Up to 30 hours video playback"
+     }
+    },
+    "chip": {
+     "_detail": {
+      "text": "A19 chip · 6-core CPU · 5-core GPU with Neural Accelerators · 16-core Neural Engine"
+     }
+    },
+    "camera": {
+     "_detail": {
+      "text": "48MP Dual Fusion camera system · 48MP Fusion Main | 48MP Fusion Ultra Wide"
+     }
+    },
+    "front": {
+     "_detail": {
+      "text": "18MP Center Stage front camera"
+     }
+    },
+    "_intent": "选型对照：iPhone 17——起售价与四项规格子块"
+   },
+   {
+    "_key": "cmp-17e",
+    "_name": {
+     "text": "iPhone 17e"
+    },
+    "_subtitle": {
+     "text": "Feature stacked. Value packed."
+    },
+    "_price": {
+     "money": 699,
+     "currency": "USD"
+    },
+    "battery": {
+     "_detail": {
+      "text": "Up to 26 hours video playback"
+     }
+    },
+    "chip": {
+     "_detail": {
+      "text": "A19 chip · 6-core CPU · 4-core GPU with Neural Accelerators · 16-core Neural Engine"
+     }
+    },
+    "camera": {
+     "_detail": {
+      "text": "48MP Fusion camera system · 48MP Fusion Main"
+     }
+    },
+    "front": {
+     "_detail": {
+      "text": "12MP TrueDepth camera"
+     }
+    },
+    "_intent": "选型对照：iPhone 17e——起售价与四项规格子块"
+   }
+  ],
+  "all": {
+   "_intent": "完整规格对比在对比页",
+   "_action": {
+    "verb": "open",
+    "label": "Compare all iPhone models"
+   }
+  }
+ },
+ "faq": {
+  "_intent": "购买前常见疑问，点开看答案",
+  "_title": {
+   "text": "Frequently Asked Questions"
+  },
+  "_items": [
+   {
+    "_name": {
+     "text": "Can I activate an iPhone 16 outside of the United States?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "Will my new iPhone be unlocked?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "When I buy from apple.com, does my iPhone come ready to use?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "Will my iPhone work worldwide?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "Can I return my iPhone?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "I’m buying an iPhone as a gift. Can it be activated at a later date?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "What resources are available to me to quickly get set up, transfer existing files, and make the most of my new iPhone?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "Are there differences between an iPhone for AT&T, T-Mobile, or Verizon?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "Can I easily switch my carrier when I purchase an iPhone?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "What are connectivity discounts?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "Which network providers offer 5G service?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   },
+   {
+    "_name": {
+     "text": "What products can be covered by AppleCare One?"
+    },
+    "_action": {
+     "verb": "open"
+    }
+   }
+  ]
+ }
+}
