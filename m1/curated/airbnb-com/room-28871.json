@@ -23,35 +23,35 @@
   }
  },
  "gallery": {
-  "_intent": "房源照片墙：5 张照片，可打开全部照片",
+  "_intent": "房源照片墙（源站为 1 大 + 4 小的照片墙，共 5 张；本轮按抓取真相重镜像为原图尺寸，其余图库照片在本次抓取中未出现=采集缺口）",
   "_items": [
    {
     "_image": {
-     "image": "../assets/airbnb-room-photo-1.png",
+     "image": "../assets/airbnb-room-photo-1.jpg",
      "alt": ""
     }
    },
    {
     "_image": {
-     "image": "../assets/airbnb-room-photo-2.png",
+     "image": "../assets/airbnb-room-photo-2.jpg",
      "alt": ""
     }
    },
    {
     "_image": {
-     "image": "../assets/airbnb-room-photo-3.png",
+     "image": "../assets/airbnb-room-photo-3.jpg",
      "alt": ""
     }
    },
    {
     "_image": {
-     "image": "../assets/airbnb-room-photo-4.png",
+     "image": "../assets/airbnb-room-photo-4.jpg",
      "alt": ""
     }
    },
    {
     "_image": {
-     "image": "../assets/airbnb-room-photo-5.png",
+     "image": "../assets/airbnb-room-photo-5.jpg",
      "alt": ""
     }
    }
@@ -61,6 +61,9 @@
     "verb": "operate",
     "label": "显示所有照片"
    }
+  },
+  "_rel": {
+   "order": "sequence"
   }
  },
  "overview": {
@@ -152,7 +155,8 @@
   "more": {
    "_action": {
     "verb": "operate",
-    "label": "显示更多"
+    "label": "显示更多",
+    "to": "https://www.airbnb.com/rooms/28871?modal=DESCRIPTION"
    }
   }
  },
@@ -271,11 +275,17 @@
   "_title": {
    "text": "总体评分"
   },
-  "_rating": {
-   "num": 4.86
+  "score": {
+   "_intent": "住客评分（满分 5 星）",
+   "_rating": {
+    "num": 4.86
+   }
   },
-  "_rating-count": {
-   "num": 815
+  "count": {
+   "_intent": "评价条数",
+   "_rating-count": {
+    "num": 815
+   }
   },
   "distribution": {
    "_intent": "评分分布",

@@ -19,18 +19,30 @@
     "_key": "view-featured",
     "_name": {
      "text": "精选"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://sspai.com/matrix"
     }
    },
    {
     "_key": "view-hot",
     "_name": {
      "text": "热门"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://sspai.com/matrix/hot"
     }
    },
    {
     "_key": "view-random",
     "_name": {
      "text": "随便看看"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://sspai.com/matrix/random"
     }
    }
   ],

@@ -19,7 +19,8 @@
     },
     "_action": {
       "verb": "open",
-      "label": "Learn more about Apple Intelligence for iPhone"
+      "label": "Learn more about Apple Intelligence for iPhone",
+      "to": "https://www.apple.com/shop/browse/overlay/iphone/domore/apple_intelligence"
     }
   },
   "deals": {
@@ -33,7 +34,8 @@
     "_primary": "_summary",
     "_action": {
       "verb": "open",
-      "label": "See all deals"
+      "label": "See all deals",
+      "to": "https://www.apple.com/shop/buy-iphone/carrier-offers"
     }
   },
   "steps": {
@@ -190,7 +192,8 @@
         },
         "_action": {
           "verb": "open",
-          "label": "See how to pay monthly."
+          "label": "See how to pay monthly.",
+          "to": "https://www.apple.com/shop/browse/overlay/iphone/payment_options"
         },
         "_detail": {
           "text": "Not sure which payment option to choose? Compare all pricing and deals to find the option that’s right for you."
@@ -417,7 +420,8 @@
     },
     "_action": {
       "verb": "open",
-      "label": "carbon neutrality by 2030"
+      "label": "carbon neutrality by 2030",
+      "to": "https://www.apple.com/environment"
     }
   },
   "setup": {
@@ -430,7 +434,8 @@
     },
     "_action": {
       "verb": "open",
-      "label": "Learn more about Personal Setup"
+      "label": "Learn more about Personal Setup",
+      "to": "https://www.apple.com/shop/browse/overlay/store/step_1/personal_setup"
     }
   },
   "services": {
@@ -658,7 +663,8 @@
       "_intent": "完整规格对比在对比页",
       "_action": {
         "verb": "open",
-        "label": "Compare all iPhone models"
+        "label": "Compare all iPhone models",
+        "to": "https://www.apple.com/iphone/compare"
       }
     }
   },

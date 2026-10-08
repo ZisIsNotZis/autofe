@@ -4,6 +4,158 @@
  "_title": {
   "text": "米家宠物空气净化器"
  },
+ "header": {
+  "_intent": "页眉：小米站内导航与账号入口（源站 header；登录/注册在源站为 javascript:void(0)，无目标可回填，不编造）",
+  "_lines": [
+   {
+    "_intent": "站内导航（源站 header 链接，逐条取自 dom.html href）",
+    "_items": [
+     {
+      "_name": {
+       "text": "小米官网"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米商城"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/shop"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米澎湃OS"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://hyperos.mi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米汽车"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.xiaomiev.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "云服务"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://i.mi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "IoT"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://iot.mi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "有品"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://youpin.mi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "小爱开放平台"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://xiaoai.mi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "资质证照"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/aptitude/list/?id=88"
+      }
+     },
+     {
+      "_name": {
+       "text": "协议规则"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/aptitude/list"
+      }
+     },
+     {
+      "_name": {
+       "text": "下载app 小米商城APP"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/appdownload"
+      }
+     },
+     {
+      "_name": {
+       "text": "购物车 （0）"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/shop/buy/cart"
+      }
+     }
+    ]
+   },
+   {
+    "_intent": "账号入口（源站为 javascript:void(0)，无 href）",
+    "_items": [
+     {
+      "_name": {
+       "text": "登录"
+      }
+     },
+     {
+      "_name": {
+       "text": "注册"
+      }
+     },
+     {
+      "_name": {
+       "text": "消息通知"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "gallery": {
+  "_intent": "商品图库：源站为轮播（class=\"product-imglist J_imgListBox\"），本次抓取只加载了 1 张主图；其余轮播帧与缩略图未出现在 dom.html（采集缺口，不编造）",
+  "_rel": {
+   "order": "sequence"
+  },
+  "_items": [
+   {
+    "_image": {
+     "image": "../assets/mi15-gallery-01.png",
+     "alt": "米家宠物空气净化器（源站商品图库首帧，CDN 原图逐字节镜像）"
+    }
+   }
+  ]
+ },
  "product": {
   "_intent": "在售商品：小米自营，国补资格下单省10%，主打净味除毛除敏",
   "_summary": {
@@ -150,8 +302,712 @@
    }
   ]
  },
- "_image": {
-  "image": "../assets/mi15-detail-01.jpg",
-  "alt": "米家宠物空气净化器（源站商品详情首图，CDN 原图逐字节镜像，未经裁切/重编码）"
+ "detail": {
+  "_intent": "图文详情：源站 21 张长图（data-src），逐张按抓取 URL 本地镜像",
+  "_rel": {
+   "order": "sequence"
+  },
+  "_items": [
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-01.jpg",
+     "alt": "图文详情第 1 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-02.jpg",
+     "alt": "图文详情第 2 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-03.jpg",
+     "alt": "图文详情第 3 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-04.jpg",
+     "alt": "图文详情第 4 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-05.jpg",
+     "alt": "图文详情第 5 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-06.jpg",
+     "alt": "图文详情第 6 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-07.jpg",
+     "alt": "图文详情第 7 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-08.jpg",
+     "alt": "图文详情第 8 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-09.jpg",
+     "alt": "图文详情第 9 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-10.jpg",
+     "alt": "图文详情第 10 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-11.jpg",
+     "alt": "图文详情第 11 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-12.jpg",
+     "alt": "图文详情第 12 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-13.jpg",
+     "alt": "图文详情第 13 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-14.jpg",
+     "alt": "图文详情第 14 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-15.jpg",
+     "alt": "图文详情第 15 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-16.jpg",
+     "alt": "图文详情第 16 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-17.jpg",
+     "alt": "图文详情第 17 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-18.jpg",
+     "alt": "图文详情第 18 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-19.jpg",
+     "alt": "图文详情第 19 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-20.jpg",
+     "alt": "图文详情第 20 张（源站 data-src 原图镜像）"
+    }
+   },
+   {
+    "_image": {
+     "image": "../assets/mi15-detail-21.jpg",
+     "alt": "图文详情第 21 张（源站 data-src 原图镜像）"
+    }
+   }
+  ]
+ },
+ "footer": {
+  "_intent": "页脚：服务承诺、产品直达、帮助与售后、小米产品、隐私与反馈、法律与备案（源站页脚链接逐条取自 dom.html href）",
+  "_lines": [
+   {
+    "_intent": "服务承诺条",
+    "_items": [
+     {
+      "_name": {
+       "text": "预约维修服务"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/aftersale/front"
+      }
+     },
+     {
+      "_name": {
+       "text": "7天无理由退货"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/exchange#back"
+      }
+     },
+     {
+      "_name": {
+       "text": "15天免费换货"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/exchange#back"
+      }
+     },
+     {
+      "_name": {
+       "text": "满69包邮"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/buy/Postal%20policy"
+      }
+     },
+     {
+      "_name": {
+       "text": "1100余家售后网点"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/sitelist"
+      }
+     }
+    ]
+   },
+   {
+    "_intent": "产品直达",
+    "_items": [
+     {
+      "_name": {
+       "text": "手机"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/search?keyword=%E6%89%8B%E6%9C%BA"
+      }
+     },
+     {
+      "_name": {
+       "text": "电视"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/search?keyword=%E7%94%B5%E8%A7%86"
+      }
+     },
+     {
+      "_name": {
+       "text": "笔记本"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/search?keyword=%E7%AC%94%E8%AE%B0%E6%9C%AC"
+      }
+     },
+     {
+      "_name": {
+       "text": "平板"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/search?keyword=%E5%B9%B3%E6%9D%BF"
+      }
+     },
+     {
+      "_name": {
+       "text": "穿戴"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/search?keyword=%E6%99%BA%E8%83%BD%E7%A9%BF%E6%88%B4"
+      }
+     },
+     {
+      "_name": {
+       "text": "耳机"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/search?keyword=%E8%80%B3%E6%9C%BA"
+      }
+     },
+     {
+      "_name": {
+       "text": "家电"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/search?keyword=%E5%AE%B6%E7%94%B5"
+      }
+     },
+     {
+      "_name": {
+       "text": "路由器"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/search?keyword=%E8%B7%AF%E7%94%B1%E5%99%A8"
+      }
+     },
+     {
+      "_name": {
+       "text": "音箱"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/search?keyword=%E9%9F%B3%E7%AE%B1"
+      }
+     },
+     {
+      "_name": {
+       "text": "配件"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/search?keyword=%E9%85%8D%E4%BB%B6"
+      }
+     }
+    ]
+   },
+   {
+    "_intent": "帮助与售后",
+    "_items": [
+     {
+      "_name": {
+       "text": "申请售后"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/aftersale/front"
+      }
+     },
+     {
+      "_name": {
+       "text": "服务政策"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/exchange"
+      }
+     },
+     {
+      "_name": {
+       "text": "服务价格"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://m.mi.com/aftersale/new-service#/pages/service-charge/product-search/index"
+      }
+     },
+     {
+      "_name": {
+       "text": "订单查询"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/user/orderList"
+      }
+     },
+     {
+      "_name": {
+       "text": "以旧换新"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/a/h/16769.html"
+      }
+     },
+     {
+      "_name": {
+       "text": "保障服务"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://micare.mi.com.cn"
+      }
+     },
+     {
+      "_name": {
+       "text": "防伪查询"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/imei"
+      }
+     },
+     {
+      "_name": {
+       "text": "F码通道"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/order/fcode"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米之家"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/mihome/list"
+      }
+     },
+     {
+      "_name": {
+       "text": "服务网点"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/sitelist"
+      }
+     },
+     {
+      "_name": {
+       "text": "授权体验店/专区"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/service/family-location"
+      }
+     },
+     {
+      "_name": {
+       "text": "了解小米"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/about"
+      }
+     },
+     {
+      "_name": {
+       "text": "加入小米"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://hr.xiaomi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "投资者关系"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://ir.mi.com/zh-hans"
+      }
+     },
+     {
+      "_name": {
+       "text": "ESG与可持续发展"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/csr"
+      }
+     },
+     {
+      "_name": {
+       "text": "廉洁举报"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/integrity"
+      }
+     },
+     {
+      "_name": {
+       "text": "新浪微博"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://weibo.com/xiaomishangcheng"
+      }
+     },
+     {
+      "_name": {
+       "text": "官方微信"
+      }
+     },
+     {
+      "_name": {
+       "text": "联系我们"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/about/contact"
+      }
+     },
+     {
+      "_name": {
+       "text": "公益基金会"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/foundation/index"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米高校合作"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://utc.xiaomi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "人工客服"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米商城"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/shop"
+      }
+     }
+    ]
+   },
+   {
+    "_intent": "小米产品与服务",
+    "_items": [
+     {
+      "_name": {
+       "text": "多看"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.duokan.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "游戏"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://game.xiaomi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "音乐"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/music"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米智能存储"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://smartstorage.xiaomi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "政企服务"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://b.mi.com/?client_id=180100031058&masid=17409.0358"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米天猫店"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://xiaomi.tmall.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米集团隐私政策"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://privacy.mi.com/all/zh_CN"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米公司儿童信息保护规则"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html"
+      }
+     },
+     {
+      "_name": {
+       "text": "小米商城隐私政策"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://m.mi.com/support/module?id=63&headless=1"
+      }
+     }
+    ]
+   },
+   {
+    "_intent": "隐私与反馈",
+    "_items": [
+     {
+      "_name": {
+       "text": "小米商城用户协议"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/aptitude/list?id=62"
+      }
+     },
+     {
+      "_name": {
+       "text": "问题反馈"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://static.mi.com/feedback"
+      }
+     },
+     {
+      "_name": {
+       "text": "Select Location"
+      }
+     },
+     {
+      "_name": {
+       "text": "北京互联网法院法律服务工作站"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "http://www.mi.com/beihu"
+      }
+     },
+     {
+      "_name": {
+       "text": "中国消费者协会"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "http://www.cca.org.cn"
+      }
+     }
+    ]
+   },
+   {
+    "_intent": "法律与备案链接",
+    "_items": [
+     {
+      "_name": {
+       "text": "mi.com"
+      }
+     },
+     {
+      "_name": {
+       "text": "京ICP备10046444号"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "http://beian.miit.gov.cn"
+      }
+     },
+     {
+      "_name": {
+       "text": "京公网安备11010802020134号"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134"
+      }
+     },
+     {
+      "_name": {
+       "text": "药品医疗器械网络信息服务备案 (京)网药械信息备字（2024）第00478号"
+      }
+     },
+     {
+      "_name": {
+       "text": "营业执照"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/business-license"
+      }
+     },
+     {
+      "_name": {
+       "text": "食品经营许可证"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/article/detail/972d1e084d35.html"
+      }
+     },
+     {
+      "_name": {
+       "text": "知识产权侵权投诉"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/intellectual"
+      }
+     },
+     {
+      "_name": {
+       "text": "扫码领取新人百元礼包"
+      }
+     }
+    ]
+   },
+   {
+    "_intent": "备案与资质编号（源站无 href 的备案信息，逐条取自页脚文本）",
+    "_items": [
+     {
+      "_name": {
+       "text": "医疗器械质量公告"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://www.mi.com/medical/list"
+      }
+     },
+     {
+      "_name": {
+       "text": "增值电信业务经营许可证编号：京B2-20180851"
+      },
+      "_action": {
+       "verb": "navigate",
+       "to": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/pc/5f93056c-bc30-401e-9526-66839114ffb9.png"
+      }
+     }
+    ]
+   }
+  ]
  }
 }

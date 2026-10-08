@@ -5,7 +5,7 @@
 //   node m1/eval/pipeline.mjs --shots    追加全页截图 + 画廊重建 + 证据清单（需要 playwright，约 3 分钟）
 //   node m1/eval/pipeline.mjs --check-shots  仅断言截图（PNG）与当前 HTML 同源，不重渲染（快）
 //   node m1/eval/pipeline.mjs --only airbnb-com/room-28871,bilibili-com/home
-// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且十二道自测全过且截图与 HTML 同源）; 1 = 有失败项
+// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且十三道自测全过且截图与 HTML 同源）; 1 = 有失败项
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -224,7 +224,17 @@ const gCR = gate('node m1/eval/control-render-selftest.mjs');
 console.log(`[pipeline] 控件渲染自测(轮53 · 第12道): ${gCR.ok ? '通过' : '失败'}`);
 if (!gCR.ok) console.log(gCR.out);
 for (const l of gCR.out.split('\n')) if (l.startsWith('控件对照') || l.includes('不一致清单:')) console.log(`[pipeline] ${l.trim()}`);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok;
+// 13th self-test suite (round 55): LINK COVERAGE. When the capture made a text a link (a real
+// href) and the model carries that text as a fact, the node must carry a target or the
+// difference must be declared in writing. Fidelity counts fact text and the capture gate
+// counts values, so both were blind to the user's U-01/U-03/U-04 (anchors arriving as dead
+// text). The gate audits all 42 exemplar pages and is falsifiable (a dropped target in the
+// model MUST be reported; a fabricated link domain MUST be reported).
+const gLC = gate('node m1/eval/link-coverage-selftest.mjs');
+console.log(`[pipeline] 链接覆盖自测(轮55 · 第13道): ${gLC.ok ? '通过' : '失败'}`);
+if (!gLC.ok) console.log(gLC.out);
+for (const l of gLC.out.split('\n')) if (l.startsWith('链接对照') || l.includes('未声明差额清单')) console.log(`[pipeline] ${l.trim()}`);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';

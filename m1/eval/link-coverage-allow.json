@@ -1,0 +1,152 @@
+{
+ "note": "链接覆盖白名单（第 13 道门禁 G-1）。每条必须带 kind（anchor-dropped|wrong-target）、page、text 与书面理由 reason，并记录 round：未声明的差额会失败并点名到页面/节点。真实错误（漏链、编造 URL）必须改模型，不得入此表。",
+ "entries": [
+  {
+   "page": "36kr-com/information-technology",
+   "kind": "anchor-dropped",
+   "text": "项目推荐",
+   "reason": "源站同一可见文本对应 3 个不同目标（36kr.com/seek-report-new / 36kr.com/information/aireport / 36kr.com/seek-report-new?t=1789742035236），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "36kr-com/information-technology",
+   "kind": "anchor-dropped",
+   "text": "企业号",
+   "reason": "源站同一可见文本对应 2 个不同目标（q.36kr.com / 36kr.com/information/qiyehao），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "36kr-com/search-ai",
+   "kind": "anchor-dropped",
+   "text": "企业号",
+   "reason": "源站同一可见文本对应 2 个不同目标（q.36kr.com / 36kr.com/search/company/人工智能），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "36kr-com/search-viz",
+   "kind": "anchor-dropped",
+   "text": "企业号",
+   "reason": "源站同一可见文本对应 2 个不同目标（q.36kr.com / 36kr.com/search/company/数据可视化），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "aliyun-com/home",
+   "kind": "anchor-dropped",
+   "text": "数据库",
+   "reason": "源站同一可见文本对应 2 个不同目标（www.aliyun.com/product/outline/index?spm=5176.19720258.J_2686872250.45.3f0e4ff6AwBQKs / market.aliyun.com/products/56024006?scene=market），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "apple-com-cn/iphone-17",
+   "kind": "anchor-dropped",
+   "text": "Apple Trade In 换购计划",
+   "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com.cn/cn/shop/goto/trade_in / www.apple.com.cn/shop/goto/trade_in），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "apple-com/ipad-air",
+   "kind": "anchor-dropped",
+   "text": "Apple Intelligence",
+   "reason": "该文本是 _detail 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+   "round": 55
+  },
+  {
+   "page": "apple-com/iphone-16",
+   "kind": "anchor-dropped",
+   "text": "Apple Trade In.",
+   "reason": "源站同一可见文本对应 6 个不同目标（www.apple.com/shop/trade-in / www.apple.com/us/shop/goto/trade_in#mac / www.apple.com/us/shop/goto/trade_in#ipad / …），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "apple-com/iphone-16",
+   "kind": "anchor-dropped",
+   "text": "iPhone 16",
+   "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/us/shop/goto/buy_iphone/iphone_16 / www.apple.com/iphone-16），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "apple-com/iphone-16",
+   "kind": "anchor-dropped",
+   "text": "iPhone Duo",
+   "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/iphone-duo / www.apple.com/shop/buy-iphone/iphone-duo），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "apple-com/iphone-16",
+   "kind": "anchor-dropped",
+   "text": "iPhone 18 Pro",
+   "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/iphone-18-pro / www.apple.com/shop/buy-iphone/iphone-18-pro），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "apple-com/iphone-16",
+   "kind": "anchor-dropped",
+   "text": "iPhone Air",
+   "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/iphone-air / www.apple.com/shop/buy-iphone/iphone-air），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "apple-com/iphone-16",
+   "kind": "anchor-dropped",
+   "text": "iPhone 17",
+   "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/iphone-17 / www.apple.com/shop/buy-iphone/iphone-17），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "apple-com/iphone-16",
+   "kind": "anchor-dropped",
+   "text": "iPhone 17e",
+   "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/iphone-17e / www.apple.com/shop/buy-iphone/iphone-17e），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "apple-com/macbook-air",
+   "kind": "anchor-dropped",
+   "text": "Education",
+   "reason": "源站同一可见文本对应 3 个不同目标（www.apple.com/us/shop/goto/educationrouting / www.apple.com/education / www.apple.com/education-initiative），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "huawei-cn/consumer-phones",
+   "kind": "anchor-dropped",
+   "text": "HUAWEI Mate 70 Pro",
+   "reason": "源站同一可见文本对应 2 个不同目标（consumer.huawei.com/cn/phones/mate70-pro-plus / consumer.huawei.com/cn/phones/mate70-pro），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "huawei-cn/consumer-phones",
+   "kind": "anchor-dropped",
+   "text": "HUAWEI Pura 80 Pro",
+   "reason": "源站同一可见文本对应 2 个不同目标（consumer.huawei.com/cn/phones/pura80-pro-plus / consumer.huawei.com/cn/phones/pura80-pro），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+   "round": 55
+  },
+  {
+   "page": "sspai-com/home",
+   "kind": "anchor-dropped",
+   "text": "PRIME",
+   "reason": "该文本是 _tag 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+   "round": 55
+  },
+  {
+   "page": "sspai-com/post-102392",
+   "kind": "anchor-dropped",
+   "text": "MaxChow",
+   "reason": "该文本是 _author 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+   "round": 55
+  },
+  {
+   "page": "sspai-com/post-114699",
+   "kind": "anchor-dropped",
+   "text": "派早报",
+   "reason": "该文本是 _tag 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+   "round": 55
+  },
+  {
+   "page": "sspai-com/post-114716",
+   "kind": "anchor-dropped",
+   "text": "少数派编辑部",
+   "reason": "该文本是 _summary 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+   "round": 55
+  }
+ ]
+}

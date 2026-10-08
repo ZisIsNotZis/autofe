@@ -1052,6 +1052,10 @@
         "_name": {
           "text": "资金管理"
         },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://stripe.com/cn/money-management/availability"
+        },
         "_summary": {
           "text": "通过嵌入金融服务增强您的平台能力：开设金融账户、发卡并提供融资服务。"
         },
@@ -2017,26 +2021,46 @@
           {
             "_name": {
               "text": "Payments"
+            },
+            "_action": {
+              "verb": "navigate",
+              "to": "https://stripe.com/cn/payments"
             }
           },
           {
             "_name": {
               "text": "Radar"
+            },
+            "_action": {
+              "verb": "navigate",
+              "to": "https://stripe.com/cn/radar"
             }
           },
           {
             "_name": {
               "text": "Connect"
+            },
+            "_action": {
+              "verb": "navigate",
+              "to": "https://stripe.com/cn/connect"
             }
           },
           {
             "_name": {
               "text": "Invoicing"
+            },
+            "_action": {
+              "verb": "navigate",
+              "to": "https://stripe.com/cn/invoicing"
             }
           },
           {
             "_name": {
               "text": "Billing"
+            },
+            "_action": {
+              "verb": "navigate",
+              "to": "https://stripe.com/cn/billing"
             }
           },
           {

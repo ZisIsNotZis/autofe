@@ -13,36 +13,64 @@
    {
     "_name": {
      "text": "最新"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/web_news/latest"
     }
    },
    {
     "_name": {
      "text": "推荐"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/web_recommend"
     }
    },
    {
     "_name": {
      "text": "创投"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/contact"
     }
    },
    {
     "_name": {
      "text": "财经"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/ccs"
     }
    },
    {
     "_name": {
      "text": "汽车"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/travel"
     }
    },
    {
     "_name": {
      "text": "AI"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/AI"
     }
    },
    {
     "_name": {
      "text": "科技"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/technology"
     }
    },
    {
@@ -53,31 +81,55 @@
    {
     "_name": {
      "text": "专精特新"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/shuzihua"
     }
    },
    {
     "_name": {
      "text": "创新"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/innovate"
     }
    },
    {
     "_name": {
      "text": "企服"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/enterpriseservice"
     }
    },
    {
     "_name": {
      "text": "消费"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/happy_life"
     }
    },
    {
     "_name": {
      "text": "城市"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/real_estate"
     }
    },
    {
     "_name": {
      "text": "职场"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/web_zhichang"
     }
    },
    {
@@ -88,11 +140,19 @@
    {
     "_name": {
      "text": "红人"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/sensation"
     }
    },
    {
     "_name": {
      "text": "其他"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://36kr.com/information/other"
     }
    }
   ],
@@ -105,6 +165,10 @@
   "_intent": "科技频道文章流：标题 + 导语 + 作者 + 发布时间，按时间倒序",
   "_title": {
    "text": "最新"
+  },
+  "_action": {
+   "verb": "navigate",
+   "to": "https://36kr.com/information/web_news/latest"
   },
   "_rel": {
    "order": "time"
@@ -123,7 +187,10 @@
     "_subtitle": {
      "text": "要想回归“表皇”地位，Moto还有很多事要做。"
     },
-    "_image": {"image":"https://img.36krcdn.com/hsossms/20260918/v2_22de9f1a159f471db0ab11aa6b62c8e5@5888275@ai_oswg904742oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp","alt":"曾经的\"安卓表皇\"回来了，但有两道难关需要闯"},
+    "_image": {
+     "image": "https://img.36krcdn.com/hsossms/20260918/v2_22de9f1a159f471db0ab11aa6b62c8e5@5888275@ai_oswg904742oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp",
+     "alt": "曾经的\"安卓表皇\"回来了，但有两道难关需要闯"
+    },
     "_action": {
      "verb": "open",
      "to": "https://36kr.com/p/3988814727773192"
@@ -142,7 +209,10 @@
     "_subtitle": {
      "text": "一家明星公司，最后连工资都发不出来了。"
     },
-    "_image": {"image":"https://img.36krcdn.com/hsossms/20260918/v2_d65f5e25c9fa4723a304fbac3d032a9a@5888275@ai_oswg837491oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp","alt":"140亿独角兽亲儿子破产：欠员工2300万"},
+    "_image": {
+     "image": "https://img.36krcdn.com/hsossms/20260918/v2_d65f5e25c9fa4723a304fbac3d032a9a@5888275@ai_oswg837491oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp",
+     "alt": "140亿独角兽亲儿子破产：欠员工2300万"
+    },
     "_action": {
      "verb": "open",
      "to": "https://36kr.com/p/3988842701208581"
@@ -161,7 +231,10 @@
     "_subtitle": {
      "text": "硬件与软件的价值关系正在重新定义"
     },
-    "_image": {"image":"https://img.36krcdn.com/hsossms/20260918/v2_ff2838de17714461a0821391ef80ca9e@5888275@ai_oswg796221oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp","alt":"RFID老牌大厂断臂投身Physical AI明星企业，一场物联网产业链的价值迁移"},
+    "_image": {
+     "image": "https://img.36krcdn.com/hsossms/20260918/v2_ff2838de17714461a0821391ef80ca9e@5888275@ai_oswg796221oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp",
+     "alt": "RFID老牌大厂断臂投身Physical AI明星企业，一场物联网产业链的价值迁移"
+    },
     "_action": {
      "verb": "open",
      "to": "https://36kr.com/p/3988694215982083"
@@ -180,7 +253,10 @@
     "_subtitle": {
      "text": "问界专属专营后，下一步怎么走？"
     },
-    "_image": {"image":"https://img.36krcdn.com/hsossms/20260918/v2_4106739ada384284a1bb4f766b7d1611@5888275@ai_oswg804069oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp","alt":"赛力斯康波首度回应“问界单飞”，择机进入轿车、MPV市场"},
+    "_image": {
+     "image": "https://img.36krcdn.com/hsossms/20260918/v2_4106739ada384284a1bb4f766b7d1611@5888275@ai_oswg804069oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp",
+     "alt": "赛力斯康波首度回应“问界单飞”，择机进入轿车、MPV市场"
+    },
     "_action": {
      "verb": "open",
      "to": "https://36kr.com/p/3988684985334792"
@@ -199,7 +275,10 @@
     "_subtitle": {
      "text": "经营现金流持续为负"
     },
-    "_image": {"image":"https://img.36krcdn.com/hsossms/20260918/v2_e62f32f608424758b3116f35fbe836fe@5888275@ai_oswg773710oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp","alt":"AI风口下，上海蜂窝连接芯片龙头赴港IPO，阿里巴巴入股"},
+    "_image": {
+     "image": "https://img.36krcdn.com/hsossms/20260918/v2_e62f32f608424758b3116f35fbe836fe@5888275@ai_oswg773710oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp",
+     "alt": "AI风口下，上海蜂窝连接芯片龙头赴港IPO，阿里巴巴入股"
+    },
     "_action": {
      "verb": "open",
      "to": "https://36kr.com/p/3988684304005895"
@@ -218,7 +297,10 @@
     "_subtitle": {
      "text": "几十万老车主的售后，30亿够还吗？"
     },
-    "_image": {"image":"https://img.36krcdn.com/hsossms/20260918/v2_ac776e5cb0e84793adcac94513f46ba2@5888275@ai_oswg873195oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp","alt":"威马、高合的剧本，哪吒躲得开吗？"},
+    "_image": {
+     "image": "https://img.36krcdn.com/hsossms/20260918/v2_ac776e5cb0e84793adcac94513f46ba2@5888275@ai_oswg873195oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp",
+     "alt": "威马、高合的剧本，哪吒躲得开吗？"
+    },
     "_action": {
      "verb": "open",
      "to": "https://36kr.com/p/3988645180111617"
@@ -237,7 +319,10 @@
     "_subtitle": {
      "text": "物理AI的下一场硬仗，在仓库里。"
     },
-    "_image": {"image":"https://img.36krcdn.com/hsossms/20260918/v2_5e1360c8809c4f348fd80797447f97bf@000000_oswg58182oswg900oswg383_img_000?x-oss-process=image/resize,m_mfit,w_600,h_400,limit_0/crop,w_600,h_400,g_center","alt":"AI进入物理世界，京东物流为什么选择了一条「不性感」的路"},
+    "_image": {
+     "image": "https://img.36krcdn.com/hsossms/20260918/v2_5e1360c8809c4f348fd80797447f97bf@000000_oswg58182oswg900oswg383_img_000?x-oss-process=image/resize,m_mfit,w_600,h_400,limit_0/crop,w_600,h_400,g_center",
+     "alt": "AI进入物理世界，京东物流为什么选择了一条「不性感」的路"
+    },
     "_action": {
      "verb": "open",
      "to": "https://36kr.com/p/3988793109379845"
@@ -256,7 +341,10 @@
     "_subtitle": {
      "text": "英伟达的野心，让数字世界逼近真实。"
     },
-    "_image": {"image":"https://img.36krcdn.com/hsossms/20260918/v2_18d9daa3f81941abac0c22e998092074@5888275@ai_oswg979693oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp","alt":"DLSS 5 把显卡干趴下了，英伟达却觉得这很重要"},
+    "_image": {
+     "image": "https://img.36krcdn.com/hsossms/20260918/v2_18d9daa3f81941abac0c22e998092074@5888275@ai_oswg979693oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp",
+     "alt": "DLSS 5 把显卡干趴下了，英伟达却觉得这很重要"
+    },
     "_action": {
      "verb": "open",
      "to": "https://36kr.com/p/3988633438436100"
@@ -275,7 +363,10 @@
     "_subtitle": {
      "text": "13项跑分全面碾压GPT-6和Fable，成本近五分之一"
     },
-    "_image": {"image":"https://img.36krcdn.com/hsossms/20260918/v2_fb165ccb43324e78939dfb167c354f62@5888275@ai_oswg961205oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp","alt":"谷歌终于支棱起来了，Gemini 4 Pro空降Arena榜单，13项跑分碾压GPT-6和Fable"},
+    "_image": {
+     "image": "https://img.36krcdn.com/hsossms/20260918/v2_fb165ccb43324e78939dfb167c354f62@5888275@ai_oswg961205oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp",
+     "alt": "谷歌终于支棱起来了，Gemini 4 Pro空降Arena榜单，13项跑分碾压GPT-6和Fable"
+    },
     "_action": {
      "verb": "open",
      "to": "https://36kr.com/p/3988438306388737"
@@ -294,7 +385,10 @@
     "_subtitle": {
      "text": "AI正在把4000年的人类认知劳动压缩进88小时，OpenAI研究员Noam Brown坦言连他自己也被进展速度持续震惊。"
     },
-    "_image": {"image":"https://img.36krcdn.com/hsossms/20260918/v2_f80f6d5ed6914299bae1c9b3e94f8573@5888275@ai_oswg1068755oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp","alt":"88小时抵一个人思考4000年，OpenAI核心研究员：除了自我进化，更可怕的是AI正学会“隐藏自己”"},
+    "_image": {
+     "image": "https://img.36krcdn.com/hsossms/20260918/v2_f80f6d5ed6914299bae1c9b3e94f8573@5888275@ai_oswg1068755oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp",
+     "alt": "88小时抵一个人思考4000年，OpenAI核心研究员：除了自我进化，更可怕的是AI正学会“隐藏自己”"
+    },
     "_action": {
      "verb": "open",
      "to": "https://36kr.com/p/3988815751805954"
