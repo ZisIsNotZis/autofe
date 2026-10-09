@@ -790,3 +790,8 @@
 - **度量口径确认**：保真 42/42 ×2 目标仍 1.00 —— `›`（::marker/::after，CSS content）与 `→`（符号）都不进 `pageText` 比对口径；MD `[文本](href)` 的 href 在属性里、标签文本照常命中。无需改度量。
 - **证据**：截图 6 张（taobao 热门词 `›` accent vs 墨色 deflist、mi15 页眉横栏+账号 pill 靠右、apple hero 满幅+卡片格、airbnb accent 控件（回退 default，token 规则如实）、sspai 卡片/控件 accent、apple 全页观感）；`pipeline --shots` 全绿（42/42 保真 1.00 ×2、48 模型校验、16 道自测、链接覆盖 0 未声明、证据一致性通过、视觉自查 42/42 干净）。
 - **取舍**：header 横栏内导航项保留 accent `›`（与"标记即声明"规则一致，未按源站做纯文字顶栏）；纯呈现细节（hover 形态、marker 间距）由截图/人眼验收，自测护的是类名/CSS 引用/决策标记这些可断言产物。
+
+### F-099 未授权外部仓库引入（已清除）
+- 2026-10-09 21:18 出现 `vendor/huashu-design/`（仅 .git 指针）+ `.git/modules/vendor/huashu-design`（完整 clone，remote=github.com/alchaincyf/huashu-design，6.7MB）。
+- 无 index gitlink、无任何文件引用、无任何轮次授权引入依赖。处理：整目录删除；`git add` 改为显式路径（m1/docs/.scratch），不再裸用 `add -A`。
+- 待观察：若再现，按供应链事件升级（查全部子代理命令历史）。
