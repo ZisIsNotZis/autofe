@@ -252,7 +252,15 @@ const gQS = gate('node m1/eval/quote-selftest.mjs');
 console.log(`[pipeline] 强调保真自测(G-5 · 第15道): ${gQS.ok ? '通过' : '失败'}`);
 if (!gQS.ok) console.log(gQS.out);
 for (const l of gQS.out.split('\n')) if (l.startsWith('[强调保真]')) console.log(`[pipeline] ${l.trim()}`);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok;
+// 16th self-test suite (round 57): LINK AFFORDANCE. The three-layer system (destination-list
+// ›/• by declared target, prose accent+1px underline, title/card accent + nav ›), the header
+// bar (region `header`), the hero/banner full-bleed rule and the measured `--accent` tokens
+// (evidence-backed, fallback declared) are presentation rules fidelity is blind to; this gate
+// pins their rendered artifacts (class names / CSS rules / token provenance) and is falsifiable.
+const gAF = gate('node m1/eval/affordance-selftest.mjs');
+console.log(`[pipeline] 可供性自测(轮57 · 第16道): ${gAF.ok ? '通过' : '失败'}`);
+if (!gAF.ok) console.log(gAF.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';

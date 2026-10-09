@@ -782,3 +782,11 @@
 - **修法（采纳）**：词表 `description` 组新增 **`quote`**（`_quote`），`vocab-role-labels.json` 置空标签（引述不配「标签：」前缀）。轴层一处判定（`axis.mjs nodePlan` ⇒ category `quote`），三目标各画醒目形态：HTML `<blockquote class="quote">`（大字加粗+左竖线）/ 文本 `「…」` / MD `> **…**`。
 - **证据边界**：`_quote` 必须有抓取证据（blockquote 或整段 strong，`m1/eval/quote-evidence.mjs`）；第 15 道门禁 `quote-selftest.mjs` **双向可失败**——证据未承载、或 `_quote` 无证据，均失败，白名单须书面理由。首批迁移 16 处（sspai×10、apple-cn×6），22 处证据中其余 6 处已在 `quote-allow.json` 书面声明遗留缺口。
 - **状态**：已采纳（2026-02，轮 56），接入 pipeline 第 15 道门禁。
+
+## F-098 三层链接可供性 + accent token + 两处布局（轮 57）
+- **发现**：轮 56 的"全站 `a` 淡色下划线"被用户裁定替换（「一看可知可点，但不必蓝色/下划线；该突出的突出」）；且 accent 此前是拍脑袋的 `#0b62d0`（apple 蓝），与合站强调性无关。两处布局：mi15 页眉 12 项竖排 bullet；apple hero 大图锁 74ch。
+- **修**：① 三层可供性（目的地列表 `›`/`•` 标记即声明、正文 accent+1px 常显下划线、标题/卡片 accent 无下划线+导航标题尾 `›`；按钮不动）——判定共享在 axis（`renderList` 类 `.go`、`isLabellessLink`、`region==='header'`、`banner` 满幅判定），渲染器只画。② `m1/eval/brand-accent.mjs` 从语料量 accent ⇒ `m1/brand-tokens.json`（evidence 齐备，回退声明），渲染器注入 `--accent`。③ header 区域（模型命名子区域 `header`，所有页同规则）⇒ `.header-bar` 水平顶栏，无目标账号 pill 靠右；④ hero/banner（图+标题+动作、无记录性事实、非网格内）⇒ `_image` 走 hero 槽满幅，标题/按钮居中。
+- **门禁**：第 16 道自测 `m1/eval/affordance-selftest.mjs` 接入 pipeline（18 条断言：li.go/纯事实 •/::marker accent/body-link 1px/self-link.nav ›/header-bar 横排+靠右/banner 满幅+网格内不满幅+价格卡不误伤/--accent 按站注入/tokens evidence 链）。可失败实测：把 `›` 规则改坏（所有列表 `•`）⇒ 自测失败点名；还原 ⇒ 通过。
+- **度量口径确认**：保真 42/42 ×2 目标仍 1.00 —— `›`（::marker/::after，CSS content）与 `→`（符号）都不进 `pageText` 比对口径；MD `[文本](href)` 的 href 在属性里、标签文本照常命中。无需改度量。
+- **证据**：截图 6 张（taobao 热门词 `›` accent vs 墨色 deflist、mi15 页眉横栏+账号 pill 靠右、apple hero 满幅+卡片格、airbnb accent 控件（回退 default，token 规则如实）、sspai 卡片/控件 accent、apple 全页观感）；`pipeline --shots` 全绿（42/42 保真 1.00 ×2、48 模型校验、16 道自测、链接覆盖 0 未声明、证据一致性通过、视觉自查 42/42 干净）。
+- **取舍**：header 横栏内导航项保留 accent `›`（与"标记即声明"规则一致，未按源站做纯文字顶栏）；纯呈现细节（hover 形态、marker 间距）由截图/人眼验收，自测护的是类名/CSS 引用/决策标记这些可断言产物。

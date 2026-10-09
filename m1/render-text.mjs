@@ -147,7 +147,13 @@ function renderForm(form, items, chain, ctx, depth, node) {
   if (form === 'image-strip') return items.map((it) => line(depth, imageText(it._image))).filter((l) => l.trim()).join('\n');
   if (form === 'prose') return items.map((it) => { const t = labelOf(it); return t ? line(depth, fmt(t)) : ''; }).filter(Boolean).join('\n\n');
   if (form === 'seq') return items.map((it, i) => renderListItem(it, chain, ctx, depth, `${i + 1}.`)).filter(Boolean).join('\n');
-  if (form === 'list') return items.map((it) => renderListItem(it, chain, ctx, depth, '-')).filter(Boolean).join('\n');
+  if (form === 'list') return items.map((it) => {
+    // 文本目标的目的地条目（轮 57）：条目名自身带目标（非控件）⇒ 用 `→ ` 替换 `- ` 作为行首
+    // 标记（标记即声明，同 HTML 的 ›/• 二分；纯事实条目仍是 `-`）。选行首前缀而非行尾域名：
+    // 一眼可知可点、不把源站域名掺进正文；`→` 是符号，保真度量的分词口径不受影响。
+    const a = itemActionPlan(it, chain, ctx.values);
+    return renderListItem(it, chain, ctx, depth, a && a.hasTarget && !a.isControl ? '→' : '-');
+  }).filter(Boolean).join('\n');
   if (form === 'chips') return items.map((it) => {
     const v = labelOf(it); if (!v) return '';
     return line(depth, fmt(v) + (itemControl(it, chain, ctx) ? ' ' + itemControl(it, chain, ctx) : ''));

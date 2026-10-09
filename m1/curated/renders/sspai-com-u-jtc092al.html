@@ -2,17 +2,42 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>MaxChow 的动态 - 少数派</title>
 <style>
-:root{color-scheme:light}
+:root{color-scheme:light;--accent:#0097ff}
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
-/* 站点级链接样式（轮 30）：链接继承文字色、默认无下划线，hover 才下划线——标题/条目名绝不整条蓝。
-   可点击性靠 hover 下划线 + 指针（<a href> 自带），不靠默认蓝；行内引用 .ref 保留可辨色。 */
-/* 站点级链接可点语义（轮 56 · U-01/03/04）：**可点就必须看得出来**。整套系统四种统一处理：
-   正文内链接（.body-link/.ref）与其它链接不同处只在颜色；列表项链接与卡片链接用墨色+下划线
-   （不把整页导航刷成蓝色，又不至于和正文同貌）；控件（.ctl/.action）是按钮形态，无下划线。 */
-a{color:inherit;text-decoration:underline;text-decoration-color:#9db0c4;text-underline-offset:2px;cursor:pointer}
+/* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
+   accent 由 m1/brand-tokens.json 按站点注入（上面的 --accent），本文件不写死站名/色值。
+   层1 目的地列表：.linklist 条目名自身带 _action.to ⇒ 标记 • 换 accent ›（::marker），
+       文字 accent 无下划线；纯事实条目保持 •（标记即声明，.go 由 renderList 落）。
+   层2 正文内链接：accent + 常显细下划线（1px，offset 2px）。
+   层3 标题/卡片链接：accent、无下划线，hover 下划线；导航型标题（无 label 的 navigate/open
+       链接，nodePlan.isLabellessLink）尾部 ›。控件/按钮形态不动（.ctl/.action 照旧）。 */
+a{color:inherit;text-decoration:none;cursor:pointer}
 a:hover{text-decoration:underline;text-decoration-color:currentColor}
-a.ref{color:#0b62d0}
+a.ref,.val a.body-link,.prose a,.chips a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+.linklist li.go::marker{content:"›";color:var(--accent);font-weight:700}
+.linklist li.go>a{color:var(--accent);text-decoration:none}
+.linklist li.go>a:hover{text-decoration:underline}
+a.self-link{color:var(--accent);text-decoration:none}
+a.self-link:hover{text-decoration:underline}
+a.self-link.nav::after{content:" ›";font-weight:650}
+th.cmp-col>a{color:var(--accent);text-decoration:none}
+/* 轮 57 站点头区横栏（nodePlan.headerBar，规则见 axis.mjs region==='header'）：header 区域
+   是一条水平顶栏 —— 导航项横排（accent、无标记、顶栏本身即可供性），无目标的账号入口 pill
+   靠右。所有页的 header 同一规则；文本/MD 目标保持逐行。 */
+.header-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 26px;margin:0}
+.header-bar>.block{display:contents}
+.header-bar .node{margin:0}
+.header-bar>.block:last-of-type>.node{margin-left:auto}
+.header-bar .linklist{display:flex;flex-wrap:wrap;gap:2px 20px;margin:0;padding-left:0}
+.header-bar .linklist li{margin:0;list-style:none}
+.header-bar .linklist a{color:var(--accent);font-size:.95em}
+.header-bar .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+/* 轮 57 hero/banner：满幅图带。nodePlan.banner 判定后 _image 走 hero 槽（.strip 已满幅），
+   不再锁 74ch；标题/副题/按钮在满幅带内居中，该突出的突出。 */
+.banner>.title{text-align:center}
+.banner>.fact{max-width:none;text-align:center}
+.banner>.controls{justify-content:center}
 .role-label{color:#68788a;font-size:.9em;margin-right:2px}
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
@@ -92,14 +117,9 @@ a.ctl:hover{background:#f2f7ff}
 .linklist.cols3{columns:3;column-gap:24px}
 .linklist.cols4{columns:4;column-gap:20px}
 .linklist li{margin:5px 0;line-height:1.5}
-.linklist a{color:inherit}
 .seq{margin:8px 0;padding-left:1.5em}
 .seq li{margin:4px 0;line-height:1.55}
-.seq a{color:inherit}
-.seq a:hover{text-decoration:underline}
 .chip-item{break-inside:avoid}
-.chips a{color:inherit;text-decoration:none}
-.chips a:hover{text-decoration:underline}
 .deflist{margin:8px 0}
 .deflist.ranked .rank{min-width:1.5em;color:#8493a3;font-weight:700;font-variant-numeric:tabular-nums}
 .deflist.ranked .deflabel{font-weight:500}
@@ -119,9 +139,8 @@ fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
 /* a few short options must not sit inside a full-width frame with a dead right half:
    the fieldset hugs its content and only wraps when the content itself is wider (round 27) */
 fieldset.expose.chipbar{display:inline-block;max-width:100%}
-/* 一组标签里有可点条目时，可点的那个必须看得出来（F-031-§4）：其余是死文本，
-   继承同色 + 无下划线会让读者以为不能点（轮 34，mi15「售后服务政策」实测同色无下划线）。 */
-.chips a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:#9db0c4}
+/* 一组标签里有可点条目时，可点的那个必须看得出来（F-031-§4；轮 34，mi15「售后服务政策」
+   实测同色无下划线）：轮 57 起并入层2 —— accent + 常显细下划线（上面的 .chips a 规则）。 */
 /* D-3: a text input is an inline field so its submit control sits on the same bar */
 span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
 /* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
@@ -131,8 +150,8 @@ legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04e
 .choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
 input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
-/* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮） */
-.val a.body-link{color:#0b62d0;text-decoration:underline}
+/* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮）；
+   层2 规则在上面的统一块里（accent + 1px 常显下划线）。 */
 /* 不放大（round 45 · F-082）：图片按自身自然尺寸显示，容器更窄时才收缩——width:auto
    + max-width:100% 合起来保证 displayed = min(naturalWidth, container)，绝不把 234×176 的
    源缩略图拉到容器宽（旧规则 width:100% 会把封面放大 2~3 倍、发虚并把页面撑到 1.4 万像素）。
@@ -160,4 +179,4 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .gallery-mosaic .strip img{border-radius:8px}
 .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
 </style></head>
-<body><main><article class="node depth-0"><h1 class="title">MaxChow 的动态 - 少数派</h1><section class="block"><article class="node depth-1"><h2 class="title">MaxChow</h2><div class="fact"><span class="val">少数派作者</span></div><span class="action-plain">关注</span></article></section><hr class="region"><section class="block"><article class="node depth-1"><div class="controls"><a class="ctl" href="https://sspai.com/u/jtc092al/updates">动态</a><a class="ctl" href="https://sspai.com/u/jtc092al/favorites">收藏</a></div></article></section><section class="block"><article class="node depth-1"><h2 class="title">成就与徽章</h2><section class="block"><article class="node depth-2"><h3 class="title">成为少数派</h3><div class="fact"><span class="val">SINCE 2025</span></div><div class="meta">529 天</div></article></section><section class="block"><article class="node depth-2"><h3 class="title">创作文章</h3><div class="meta">25</div></article></section><section class="block"><article class="node depth-2"><h3 class="title">文章阅读量</h3><div class="meta">23535</div></article></section><section class="block"><article class="node depth-2"><h3 class="title">获得充电</h3><div class="meta">4</div></article></section><section class="block"><article class="node depth-2"><h3 class="title">获得徽章</h3><div class="fact"><span class="val">暂无徽章</span></div><div class="meta">0</div></article></section></article></section><section class="block"><article class="node depth-1"><h2 class="title"><a class="self-link" href="https://sspai.com/u/jtc092al/updates">动态</a></h2><div class="fact"><span class="val">创作了一篇文章</span></div><div class="deflist"><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/112770">Markdown也可轻松进行「详情折叠」～优雅好用的Typora主题与排版增强插件VLOOK</a></div><div class="defval">07/27 08:27</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/112753">VLOOK 2026.7～主题天花板级大焕新+幻灯片视图～优雅好用Typora主题包与排版增强</a></div><div class="defval">07/26 20:07</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/108998">Markdown 图片魔法系列 5：明信片～优雅好用的 Typora 主题与增强插件 VLOOK™</a></div><div class="defval">04/23 08:56</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/108711">Markdown图片魔法4：图片剪影/轮廓～优雅好用的Typora主题与排版增强插件</a></div><div class="defval">04/16 13:21</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/108392">Markdown 图片魔法系列 3：图片缩放的新方式～优雅好用的 Typora 主题与增强插件 VLOOK™</a></div><div class="defval">04/08 13:27</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/108210">Markdown 图片魔法系列 2：图文混排新玩法～优雅好用的 Typora 主题与增强插件 VLOOK™</a></div><div class="defval">04/03 08:49</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/105605">Markdown图片魔法系列1：图片旋转/反转/滤镜～优雅好用的Typora主题与增强插件VLOOK</a></div><div class="defval">01/20 10:35</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/105393">可以这样给Markdown的引用块设置小标题效果～优雅好用的Typora主题与增强插件VLOOK</a></div><div class="defval">01/12 16:56</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/105046">Markdown 的引用块可以更出片（样式&amp;颜色）～优雅好用的 Typora 主题与增强插件 VLOOK™</a></div><div class="defval">2025/12/31 09:43</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/104834">Markdown 可以这样轻松实现「分栏」排版～优雅好用的 Typora 主题与增强插件 VLOOK™</a></div><div class="defval">2025/12/23 09:00</div></div></div></article></section></article></main></body></html>
+<body><main><article class="node depth-0"><h1 class="title">MaxChow 的动态 - 少数派</h1><section class="block"><article class="node depth-1"><h2 class="title">MaxChow</h2><div class="fact"><span class="val">少数派作者</span></div><span class="action-plain">关注</span></article></section><hr class="region"><section class="block"><article class="node depth-1"><div class="controls"><a class="ctl" href="https://sspai.com/u/jtc092al/updates">动态</a><a class="ctl" href="https://sspai.com/u/jtc092al/favorites">收藏</a></div></article></section><section class="block"><article class="node depth-1"><h2 class="title">成就与徽章</h2><section class="block"><article class="node depth-2"><h3 class="title">成为少数派</h3><div class="fact"><span class="val">SINCE 2025</span></div><div class="meta">529 天</div></article></section><section class="block"><article class="node depth-2"><h3 class="title">创作文章</h3><div class="meta">25</div></article></section><section class="block"><article class="node depth-2"><h3 class="title">文章阅读量</h3><div class="meta">23535</div></article></section><section class="block"><article class="node depth-2"><h3 class="title">获得充电</h3><div class="meta">4</div></article></section><section class="block"><article class="node depth-2"><h3 class="title">获得徽章</h3><div class="fact"><span class="val">暂无徽章</span></div><div class="meta">0</div></article></section></article></section><section class="block"><article class="node depth-1"><h2 class="title"><a class="self-link nav" href="https://sspai.com/u/jtc092al/updates">动态</a></h2><div class="fact"><span class="val">创作了一篇文章</span></div><div class="deflist"><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/112770">Markdown也可轻松进行「详情折叠」～优雅好用的Typora主题与排版增强插件VLOOK</a></div><div class="defval">07/27 08:27</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/112753">VLOOK 2026.7～主题天花板级大焕新+幻灯片视图～优雅好用Typora主题包与排版增强</a></div><div class="defval">07/26 20:07</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/108998">Markdown 图片魔法系列 5：明信片～优雅好用的 Typora 主题与增强插件 VLOOK™</a></div><div class="defval">04/23 08:56</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/108711">Markdown图片魔法4：图片剪影/轮廓～优雅好用的Typora主题与排版增强插件</a></div><div class="defval">04/16 13:21</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/108392">Markdown 图片魔法系列 3：图片缩放的新方式～优雅好用的 Typora 主题与增强插件 VLOOK™</a></div><div class="defval">04/08 13:27</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/108210">Markdown 图片魔法系列 2：图文混排新玩法～优雅好用的 Typora 主题与增强插件 VLOOK™</a></div><div class="defval">04/03 08:49</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/105605">Markdown图片魔法系列1：图片旋转/反转/滤镜～优雅好用的Typora主题与增强插件VLOOK</a></div><div class="defval">01/20 10:35</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/105393">可以这样给Markdown的引用块设置小标题效果～优雅好用的Typora主题与增强插件VLOOK</a></div><div class="defval">01/12 16:56</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/105046">Markdown 的引用块可以更出片（样式&amp;颜色）～优雅好用的 Typora 主题与增强插件 VLOOK™</a></div><div class="defval">2025/12/31 09:43</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/104834">Markdown 可以这样轻松实现「分栏」排版～优雅好用的 Typora 主题与增强插件 VLOOK™</a></div><div class="defval">2025/12/23 09:00</div></div></div></article></section></article></main></body></html>

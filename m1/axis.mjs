@@ -640,6 +640,9 @@ export function nodePlan(node, ctx = {}) {
   const chain = ctx.chain ?? [];
   const values = ctx.values ?? {};
   const depth = ctx.depth ?? 0;
+  // `region`：该节点在父模型里的命名子区域键（轮 57，呈现层布局语境，非模型语义）；
+  // `grid`：调用方是否处于卡片/表格列内（横幅不满幅）。
+  const region = typeof ctx.region === 'string' ? ctx.region : null;
   const hidden = ctx.hidden instanceof Set ? ctx.hidden : new Set();
   if (!node || typeof node !== 'object' || Array.isArray(node)) return { ok: false, visible: false };
   const scope = { ...values, ...scopeFor([...chain, node], values) };
@@ -701,6 +704,17 @@ export function nodePlan(node, ctx = {}) {
   // 自己的动作是它自己字段的 submit 时，该动作画在字段组内（紧跟字段），元素其余内容跟在组后。
   const fieldSubmit = Boolean(action && action.verb === 'submit' && controlExp);
   const actionRow = actionRowOf(node, chain, values, (inlineInto || fieldSubmit) ? null : action, toolbar);
+  // 轮 57 hero/banner 判定（布局决策，三目标共享；呈现层不新增模型键）：一个集合成员元素
+  // 同时满足 —— ① 带 `_image`；② 有标题（_title/_name）；③ 有动作（自己的 `_action` 或行内
+  // 控件行）；④ 除标题外只带展示性文本事实（_subtitle/_summary/_detail，无 _price/_author 等
+  // 记录性事实）—— 它就是源站的显示横幅（banner/hero）：大图 + 标题 + 按钮。横幅图按 F-031-§7
+  // 满幅（hero 槽），不再锁 74ch。网格/表格单元格内的成员（ctx.grid）与自身即页面的深度 0 节点
+  // 不在此列：卡片格里的图不是页框（F-031-§7 同款约束）。
+  const imgFact = facts.list.find((f) => f.key === '_image');
+  const banner = Boolean(!ctx.grid && depth > 0 && imgFact && headingKey
+    && (action || actionRow.row.length)
+    && facts.list.every((f) => ['_image', '_subtitle', '_summary', '_detail'].includes(f.key)));
+  if (banner) { facts.hero = imgFact.value; facts.list = facts.list.filter((f) => f !== imgFact); }
   const consumedArray = new Set(controlExp && Array.isArray(node._items) ? node._items : []);
   const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it));
   // A description fact declared AFTER this node's collection is the collection's FOOTNOTE, not
@@ -714,11 +728,15 @@ export function nodePlan(node, ctx = {}) {
   const namedChildren = namedChildEntries(node);
   const emptyState = (Array.isArray(node._items) && node._items.length === 0 && node._empty) ? node._empty : null;
   const titleConsumed = Boolean(choice && choice.kind === 'bool' && headingKey);
+  // 轮 57 站点头区横栏（所有页的 header 同一规则）：模型里以命名子区域 `header` 声明的页眉
+  // 区域是站点顶栏（导航项横排，无目标账号入口 pill 靠右）。判定只认区域名，不认站名；
+  // HTML 用 .header-bar 画出横栏，文本/MD 目标保持逐行（同决策、目标各自形态）。
+  const headerBar = region === 'header';
   return {
     ok: true, visible: true, scope, headingKey, headingValue: headingKey ? node[headingKey] : null,
     headingText, demoted: isDemoted(node), primary, facts: { ...facts, trailing }, action, hasAction: Boolean(node._action),
     titleIsControl, choice, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
-    items, namedChildren, emptyState, titleConsumed, fieldSubmit,
+    items, namedChildren, emptyState, titleConsumed, fieldSubmit, banner, headerBar,
   };
 }
 

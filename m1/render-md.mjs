@@ -194,7 +194,11 @@ function renderListItem(it, chain, ctx, bullet) {
   const v = labelOf(it); const label = v ? fmt(v) : '';
   const ctl = itemControl(it, chain, ctx);
   if (!label && !ctl) return '';
-  return `${bullet} ${label}${ctl ? ' ' + ctl : ''}`.trim();
+  // MD 目的地条目（轮 57）：条目名自身带目标且非控件 ⇒ `[文本](href)`（名字即链接，与 HTML
+  // 目的地列表等价）；控件仍走 itemControl，两者不重复。
+  const a = itemActionPlan(it, chain, ctx.values);
+  const name = a && a.hasTarget && !a.isControl ? controlMd({ label, hasTarget: true, href: a.href }) : label;
+  return `${bullet} ${name}${ctl ? ' ' + ctl : ''}`.trim();
 }
 function renderDeflist(items, chain, ctx) {
   return items.map((it) => {

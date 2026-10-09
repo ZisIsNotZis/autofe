@@ -12,6 +12,14 @@ import fs from 'node:fs';
 import {
   factsOf,
 } from './model-lib.mjs';
+// 轮 57 站点 accent（M5 第一个呈现层 token）：由 m1/eval/brand-accent.mjs 从语料量出，
+// 渲染器只读这份配置注入 --accent，不写死任何站名/色值。非法/缺失值回退 default。
+const BRAND_TOKENS = JSON.parse(fs.readFileSync(new URL('./brand-tokens.json', import.meta.url), 'utf8'));
+const HEX_COLOR = /^#[0-9a-f]{6}$/i;
+const accentOf = (site) => {
+  const v = site ? BRAND_TOKENS.sites?.[site]?.accent?.value : null;
+  return HEX_COLOR.test(v ?? '') ? v : BRAND_TOKENS.default.accent;
+};
 // The axis-decision layer is shared, not re-derived per target (round 19; the node render
 // plan round 22). This renderer consumes `nodePlan` and the plan helpers and only DRAWS
 // the decisions as HTML — it holds no model semantics of its own.
@@ -110,7 +118,9 @@ function renderList(items, chain, ctx) {
     if (!label) return '';
     const ex = itemExtra(it, chain, ctx);
     const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
-    return `<li>${inner}${ex.ctl}</li>`;
+    // 标记即声明（轮 57）：条目名自身是目的地链接（带 _action.to）⇒ 标记换成 accent `›`
+    // （CSS ::marker，见样式表层1）；纯事实条目保持 `•`。类名只由 ex.linkTo 决定。
+    return `<li${ex.linkTo ? ' class="go"' : ''}>${inner}${ex.ctl}</li>`;
   }).join('');
   // 长标签列表（导航/类目菜单）分栏成紧凑形态：条目越多，列数越多（轮 35，taobao 首屏
   // 60+ 类目标签竖排成 sitemap）；短标签（≤12 字）才敢多列，长句子仍单列可读。
@@ -239,12 +249,12 @@ function renderRun(items, chain, hide, ctx) {
       const grp = tableRowLabel(rp, it);
       if (grp) return `<tr class="row-group"><th colspan="${span}">${fmt(grp)}</th></tr>`;
       const tds = rp.cols.map((col) => { const v = rp.cellValue(it, col); return `<td>${hasValue(v) ? fmt(v) : ''}</td>`; }).join('');
-      const ops = namedChildEntries(it).map((ch) => renderNode(ch.node, [...chain, it], false, hide, ctx, 4)).join('');
+      const ops = namedChildEntries(it).map((ch) => renderNode(ch.node, [...chain, it], false, hide, { ...ctx, grid: true }, 4)).join('');
       return `<tr>${tds}${anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
     }).join('');
     return `<table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table>`;
   }
-  return `<div class="cards">${items.map((it) => `<div class="item">${renderNode(it, [...chain, it], false, hide, ctx, 4)}</div>`).join('')}</div>`;
+  return `<div class="cards">${items.map((it) => `<div class="item">${renderNode(it, [...chain, it], false, hide, { ...ctx, grid: true }, 4)}</div>`).join('')}</div>`;
 }
 
 // The choice-set decision (`kind`, `rich`, options, columns) is shared in axis.mjs; this is
@@ -256,7 +266,7 @@ function renderSelectTable(ch, node, chain, hide, ctx) {
   const head = t.showHead ? `<tr><th class="sel"></th>${t.cols.map((c) => `<th>${esc(t.labelKey(c))}</th>`).join('')}${t.anyOps ? '<th></th>' : ''}</tr>` : '';
   const rows = ch.options.map((o) => {
     const tds = t.cols.map((col) => { const v = t.cellValue(o.node, col); return `<td>${v ? fmt(v) : ''}</td>`; }).join('');
-    const ops = o.ops.map((n) => renderNode(n, [...chain, o.node], false, hide, ctx, 4)).join('');
+    const ops = o.ops.map((n) => renderNode(n, [...chain, o.node], false, hide, { ...ctx, grid: true }, 4)).join('');
     const val = o.key ? `key:${o.key}` : String(o.index);
     return `<tr><td class="sel"><input type="${ch.multi ? 'checkbox' : 'radio'}" name="${esc(ch.name)}" value="${esc(val)}"></td>${tds}${t.anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
   }).join('');
@@ -334,7 +344,7 @@ function renderForm(form, items, chain, hide, ctx, depth, node, order) {
   if (form === 'table') return renderRun(items, chain, hide, ctx);
   const cls = form === 'product-cards' ? 'cards product-cards' : 'cards';
   const cards = items.map((it) => {
-    const inner = renderNode(it, [...chain, node], false, hide, ctx, depth + 1);
+    const inner = renderNode(it, [...chain, node], false, hide, { ...ctx, grid: true }, depth + 1);
     return inner ? `<div class="item">${inner}</div>` : '';
   }).join('');
   return cards ? `<div class="${cls}">${cards}</div>` : '';
@@ -390,7 +400,7 @@ function renderCompareTable(items, chain, hide, ctx) {
     }
     // 实体自己的嵌套集合（如机身颜色）属于该实体，渲染在它的列内——绝不与另一实体的列表按下标配对
     let nested = '';
-    for (const col of nestedCollections(it)) nested += renderForm(col.form, col.items, [...chain, it], hide, ctx, 5, it);
+    for (const col of nestedCollections(it)) nested += renderForm(col.form, col.items, [...chain, it], hide, { ...ctx, grid: true }, 5, it);
     const nestedHtml = nested ? `<div class="cmp-nested">${nested}</div>` : '';
     const ctl = ex.ctl ? `<div class="cmp-ctl">${ex.ctl}</div>` : '';
     return `<th class="cmp-col">${nm}${rest}${nestedHtml}${ctl}</th>`;
@@ -402,7 +412,7 @@ function renderCompareTable(items, chain, hide, ctx) {
     const cells = items.map((it) => {
       const c = compareCellOf(it, key);
       if (c.kind === 'empty') return '<td class="cmp-cell"></td>';
-      if (c.kind === 'node') return `<td class="cmp-cell">${renderNode(c.node, [...chain, it], false, hide, ctx, 4)}</td>`;
+      if (c.kind === 'node') return `<td class="cmp-cell">${renderNode(c.node, [...chain, it], false, hide, { ...ctx, grid: true }, 4)}</td>`;
       return `<td class="cmp-cell">${fmt(c.value)}</td>`;
     }).join('');
     return `<tr><th class="cmp-row">${esc(label)}</th>${cells}</tr>`;
@@ -433,9 +443,11 @@ function renderActionRow(row) {
   return row.length > 1 ? `<div class="controls">${btns}</div>` : btns;
 }
 
-function renderNode(node, chain, isHero, hide, ctx, depth) {
+function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   // The whole node decision is the shared plan (axis.mjs); this function draws it.
-  const plan = nodePlan(node, { chain, values: ctx.values, hidden: hide.get(node), depth, degradations: ctx.degradations });
+  // `grid` is the caller's layout context (inside a card/table column no banner full-bleed),
+  // `region` is the model's named-child key (轮 57: the `header` region is the site top bar).
+  const plan = nodePlan(node, { chain, values: ctx.values, hidden: hide.get(node), depth, degradations: ctx.degradations, grid: Boolean(ctx.grid), region });
   if (!plan.visible) return '';
 
   // explicit labeled actions; label-less navigate/open lowers to the element's own link (F-020)
@@ -496,6 +508,9 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   const done = (out) => { if (headingAdded) ctx.headings.delete(headingTextValue); return out; };
   const cls = ['node', `depth-${Math.min(depth, 4)}`];
   if (isHero) cls.push('hero-branch');
+  // 轮 57 站点头区横栏：决策在 nodePlan（headerBar），这里只落类名，形状在 CSS（.header-bar）。
+  if (plan.headerBar) cls.push('header-bar');
+  if (plan.banner) cls.push('banner');
   const demoted = plan.demoted;
 
   const itemsConsumed = new Set(plan.rowConsumed);
@@ -547,7 +562,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   let prevGroupHadTitle = false;
   for (const c of plan.namedChildren) {
     if (itemsConsumed.has(c.node)) continue;
-    const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1);
+    const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1, c.key);
     if (!h) continue;
     // 兄弟区块：无标题块紧随有标题块 ⇒ 区域分隔，读者不把两段读成一串（F-031-§5）
     const hasTitle = Boolean(c.node._title || c.node._name || c.node._text);
@@ -577,7 +592,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (titleText) {
     const t = titleIsControl
       ? (linkTo ? `<a class="ctl" href="${esc(linkTo)}">${titleText}</a>` : `<span class="ctl">${titleText}</span>`)
-      : (linkTo ? `<a class="self-link" href="${esc(linkTo)}">${titleText}</a>` : titleText);
+      : (linkTo ? `<a class="self-link${plan.action?.isLabellessLink ? ' nav' : ''}" href="${esc(linkTo)}">${titleText}</a>` : titleText);
     head = `<${headingTag} class="title${titleIsControl ? ' title-control' : ''}">${t}</${headingTag}>`;
   }
 
@@ -599,21 +614,47 @@ export function render(model, context = {}, report = null) {
   const html = renderNode(model, [], false, hide, ctx, 0);
   const title = esc(model._title ? fmt(model._title) : (model._intent ?? 'surface'));
   const brand = model._brand ? fmt(model._brand) : '';
+  const accent = accentOf(context.site);
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <title>${title}</title>
 <style>
-:root{color-scheme:light}
+:root{color-scheme:light;--accent:${accent}}
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
-/* 站点级链接样式（轮 30）：链接继承文字色、默认无下划线，hover 才下划线——标题/条目名绝不整条蓝。
-   可点击性靠 hover 下划线 + 指针（<a href> 自带），不靠默认蓝；行内引用 .ref 保留可辨色。 */
-/* 站点级链接可点语义（轮 56 · U-01/03/04）：**可点就必须看得出来**。整套系统四种统一处理：
-   正文内链接（.body-link/.ref）与其它链接不同处只在颜色；列表项链接与卡片链接用墨色+下划线
-   （不把整页导航刷成蓝色，又不至于和正文同貌）；控件（.ctl/.action）是按钮形态，无下划线。 */
-a{color:inherit;text-decoration:underline;text-decoration-color:#9db0c4;text-underline-offset:2px;cursor:pointer}
+/* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
+   accent 由 m1/brand-tokens.json 按站点注入（上面的 --accent），本文件不写死站名/色值。
+   层1 目的地列表：.linklist 条目名自身带 _action.to ⇒ 标记 • 换 accent ›（::marker），
+       文字 accent 无下划线；纯事实条目保持 •（标记即声明，.go 由 renderList 落）。
+   层2 正文内链接：accent + 常显细下划线（1px，offset 2px）。
+   层3 标题/卡片链接：accent、无下划线，hover 下划线；导航型标题（无 label 的 navigate/open
+       链接，nodePlan.isLabellessLink）尾部 ›。控件/按钮形态不动（.ctl/.action 照旧）。 */
+a{color:inherit;text-decoration:none;cursor:pointer}
 a:hover{text-decoration:underline;text-decoration-color:currentColor}
-a.ref{color:#0b62d0}
+a.ref,.val a.body-link,.prose a,.chips a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+.linklist li.go::marker{content:"›";color:var(--accent);font-weight:700}
+.linklist li.go>a{color:var(--accent);text-decoration:none}
+.linklist li.go>a:hover{text-decoration:underline}
+a.self-link{color:var(--accent);text-decoration:none}
+a.self-link:hover{text-decoration:underline}
+a.self-link.nav::after{content:" ›";font-weight:650}
+th.cmp-col>a{color:var(--accent);text-decoration:none}
+/* 轮 57 站点头区横栏（nodePlan.headerBar，规则见 axis.mjs region==='header'）：header 区域
+   是一条水平顶栏 —— 导航项横排（accent、无标记、顶栏本身即可供性），无目标的账号入口 pill
+   靠右。所有页的 header 同一规则；文本/MD 目标保持逐行。 */
+.header-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 26px;margin:0}
+.header-bar>.block{display:contents}
+.header-bar .node{margin:0}
+.header-bar>.block:last-of-type>.node{margin-left:auto}
+.header-bar .linklist{display:flex;flex-wrap:wrap;gap:2px 20px;margin:0;padding-left:0}
+.header-bar .linklist li{margin:0;list-style:none}
+.header-bar .linklist a{color:var(--accent);font-size:.95em}
+.header-bar .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+/* 轮 57 hero/banner：满幅图带。nodePlan.banner 判定后 _image 走 hero 槽（.strip 已满幅），
+   不再锁 74ch；标题/副题/按钮在满幅带内居中，该突出的突出。 */
+.banner>.title{text-align:center}
+.banner>.fact{max-width:none;text-align:center}
+.banner>.controls{justify-content:center}
 .role-label{color:#68788a;font-size:.9em;margin-right:2px}
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
@@ -693,14 +734,9 @@ a.ctl:hover{background:#f2f7ff}
 .linklist.cols3{columns:3;column-gap:24px}
 .linklist.cols4{columns:4;column-gap:20px}
 .linklist li{margin:5px 0;line-height:1.5}
-.linklist a{color:inherit}
 .seq{margin:8px 0;padding-left:1.5em}
 .seq li{margin:4px 0;line-height:1.55}
-.seq a{color:inherit}
-.seq a:hover{text-decoration:underline}
 .chip-item{break-inside:avoid}
-.chips a{color:inherit;text-decoration:none}
-.chips a:hover{text-decoration:underline}
 .deflist{margin:8px 0}
 .deflist.ranked .rank{min-width:1.5em;color:#8493a3;font-weight:700;font-variant-numeric:tabular-nums}
 .deflist.ranked .deflabel{font-weight:500}
@@ -720,9 +756,8 @@ fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
 /* a few short options must not sit inside a full-width frame with a dead right half:
    the fieldset hugs its content and only wraps when the content itself is wider (round 27) */
 fieldset.expose.chipbar{display:inline-block;max-width:100%}
-/* 一组标签里有可点条目时，可点的那个必须看得出来（F-031-§4）：其余是死文本，
-   继承同色 + 无下划线会让读者以为不能点（轮 34，mi15「售后服务政策」实测同色无下划线）。 */
-.chips a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:#9db0c4}
+/* 一组标签里有可点条目时，可点的那个必须看得出来（F-031-§4；轮 34，mi15「售后服务政策」
+   实测同色无下划线）：轮 57 起并入层2 —— accent + 常显细下划线（上面的 .chips a 规则）。 */
 /* D-3: a text input is an inline field so its submit control sits on the same bar */
 span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
 /* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
@@ -732,8 +767,8 @@ legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04e
 .choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
 input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
-/* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮） */
-.val a.body-link{color:#0b62d0;text-decoration:underline}
+/* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮）；
+   层2 规则在上面的统一块里（accent + 1px 常显下划线）。 */
 /* 不放大（round 45 · F-082）：图片按自身自然尺寸显示，容器更窄时才收缩——width:auto
    + max-width:100% 合起来保证 displayed = min(naturalWidth, container)，绝不把 234×176 的
    源缩略图拉到容器宽（旧规则 width:100% 会把封面放大 2~3 倍、发虚并把页面撑到 1.4 万像素）。
@@ -776,7 +811,9 @@ export function renderWithAudit(model, context = {}) {
 if (import.meta.url === `file://${process.argv[1]}`) {
   const [inp, out] = process.argv.slice(2);
   if (!inp) { console.error('usage: node m1/render.mjs <model.json> [out.html]'); process.exit(2); }
-  const html = render(JSON.parse(fs.readFileSync(inp, 'utf8')));
+  // 站点 accent 按模型路径解析（m1/curated/<site>/<page>.json ⇒ <site>），查 m1/brand-tokens.json。
+  const site = inp.split('/').filter(Boolean).at(-2);
+  const html = render(JSON.parse(fs.readFileSync(inp, 'utf8')), { site });
   // An idempotent write keeps the file's mtime honest: the evidence-consistency gate
   // (`pipeline --check-shots`) reads mtime as "was the HTML rewritten after its PNG?",
   // so a byte-identical rerender must not bump it (otherwise every default pipeline run
