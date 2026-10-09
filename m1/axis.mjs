@@ -669,6 +669,9 @@ export function nodePlan(node, ctx = {}) {
     if (f.key === '_amount' && f.value?.qualifier === LIST_QUALIFIER) { facts.list.push({ ...f, category: 'was' }); continue; }
     if (META_KEYS.has(f.key)) { facts.list.push({ ...f, category: 'meta' }); continue; }
     if (ROLE_UNIT[f.key]) { facts.list.push({ ...f, category: 'unit' }); continue; }
+    // `_quote` 是被引述/被显著强调的独立段落（轮 56 新角色）；它和正文不是一回事，必须由引擎
+    // 标成自己的 category，三个目标各自画出醒目形态（引用块）。判定在这一处，渲染器不认键名。
+    if (f.key === '_quote') { facts.list.push({ ...f, category: 'quote' }); continue; }
     facts.list.push({ ...f, category: 'body' });
   }
   for (const [k, v] of Object.entries(node._fields ?? {})) facts.fields.push({ key: k, value: v, label: FIELDS[k]?.label ?? '' });
@@ -692,7 +695,12 @@ export function nodePlan(node, ctx = {}) {
   const toolbar = namedChildEntries(node)
     .filter((c) => isActionOnlyNode(c.node) && actionPlan(c.node, [...chain, node], values))
     .map((c) => c.node);
-  const actionRow = actionRowOf(node, chain, values, inlineInto ? null : action, toolbar);
+  // 字段与其提交必须相邻成组（U-02）。源站的排列就是「字段 → 提交」，中间不夹别的内容；而我们的
+  // 渲染顺序是（事实 / 字段 / 其它子件 / 自己的动作），于是 taobao 搜索的「宝贝/天猫/店铺」范围子件
+  // 插到了输入框与「搜索」按钮之间。这是「模型形状 ⇒ 呈现分组」的决定，所以放在共享轴层：当一个元素
+  // 自己的动作是它自己字段的 submit 时，该动作画在字段组内（紧跟字段），元素其余内容跟在组后。
+  const fieldSubmit = Boolean(action && action.verb === 'submit' && controlExp);
+  const actionRow = actionRowOf(node, chain, values, (inlineInto || fieldSubmit) ? null : action, toolbar);
   const consumedArray = new Set(controlExp && Array.isArray(node._items) ? node._items : []);
   const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it));
   // A description fact declared AFTER this node's collection is the collection's FOOTNOTE, not
@@ -710,7 +718,7 @@ export function nodePlan(node, ctx = {}) {
     ok: true, visible: true, scope, headingKey, headingValue: headingKey ? node[headingKey] : null,
     headingText, demoted: isDemoted(node), primary, facts: { ...facts, trailing }, action, hasAction: Boolean(node._action),
     titleIsControl, choice, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
-    items, namedChildren, emptyState, titleConsumed,
+    items, namedChildren, emptyState, titleConsumed, fieldSubmit,
   };
 }
 

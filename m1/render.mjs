@@ -137,7 +137,11 @@ function renderSeq(items, chain, ctx) {
   return lis ? `<ol class="seq">${lis}</ol>` : '';
 }
 function renderImageStrip(items) {
-  return items.map((it) => imageFigures(it._image)).join('');
+  const figures = items.map((it) => imageFigures(it._image)).join('');
+  // 小图集（3–5 张）是照片墙：按源站构图排成「1 大 + N 小」网格（轮 56，airbnb U-07）。
+  // 6 张以上的长图带（mi 长图详情 / 首页满幅 band）保持满幅纵排——网格会把源站的满幅构图缩小。
+  if (items.length >= 3 && items.length <= 5) return `<div class="gallery-mosaic">${figures}</div>`;
+  return figures;
 }
 function factHtmlInline(v) {
   const h = factHtml(v);
@@ -510,6 +514,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     if (f.category === 'unit') html = roleLabeled(f, roleFact(f));               // 评分/评分数：带角色与单位，不留裸数字
     // 显式原价事实 ⇒ 弱化（删除线）；`list` 标记不进文案（fmt 已忽略）
     else if (f.category === 'was') html = `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
+    else if (f.category === 'quote') html = `<blockquote class="quote"><span class="val">${fmt(f.value)}</span></blockquote>`;
     else if (plan.action && plan.action.inlineInto === f.key) html = inlineLinkFactHtml(f.value, plan.action);
     else html = factHtml(f.value);
     if (trailingFacts.has(f)) bodyFoot += html; else bodyLead += html;
@@ -519,7 +524,11 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero);   // image-dominant main visual: edge-to-edge (F-031-§7)
 
   let body = '';
-  if (plan.choice) body += renderChoice(plan.choice, node, chain, hide, ctx);
+  let bodyField = '';   // 字段+提交的成组区（plan.fieldSubmit）
+  if (plan.choice) {
+    const choiceHtml = renderChoice(plan.choice, node, chain, hide, ctx);
+    if (plan.fieldSubmit) bodyField += choiceHtml; else body += choiceHtml;
+  }
   if (plan.titleConsumed) titleText = null;   // the heading IS the switch label: show it once, on the control
 
   // every sibling block item renders in ONE form; nothing renders twice (T-103)
@@ -542,7 +551,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
     if (!h) continue;
     // 兄弟区块：无标题块紧随有标题块 ⇒ 区域分隔，读者不把两段读成一串（F-031-§5）
     const hasTitle = Boolean(c.node._title || c.node._name || c.node._text);
-    if (!hasTitle && prevGroupHadTitle) body += '<hr class="region">';
+    // 兄弟区块：不再插机械分割线（U-15）。分割线只在有分组语义处出现；节点命名子件是同一元素的
+    // 子部分，用线分隔是节点边界噪声。字段+提交已经在 fieldbar 里成组（U-02）。
     body += `<section class="group g-${esc(c.key)}">${h}</section>`;
     prevGroupHadTitle = hasTitle;
   }
@@ -572,9 +582,11 @@ function renderNode(node, chain, isHero, hide, ctx, depth) {
   }
 
   const anchorId = node._key ? ` id="${esc(String(node._key).replace(/[^A-Za-z0-9_-]/g, '-'))}"` : '';
+  // 字段及其提交相邻成组（U-02）：提交紧跟字段，包成同一个 fieldbar；元素其余内容在组后。
+  if (plan.fieldSubmit && plan.action) bodyField = `<div class="fieldbar">${bodyField}${renderAction(plan.action)}</div>`;
   // nothing to say: emit nothing at all (never an empty block)
-  if (!head && !bodyLead && !heroHtml && !heroImage && !body && !action) return done('');
-  const article = `<article${anchorId} class="${cls.join(' ')}">${head}${heroImage}${bodyLead}${heroHtml}${body}${bodyFoot}${action}</article>`;
+  if (!head && !bodyLead && !heroHtml && !heroImage && !bodyField && !body && !action) return done('');
+  const article = `<article${anchorId} class="${cls.join(' ')}">${head}${heroImage}${bodyLead}${heroHtml}${bodyField}${body}${bodyFoot}${action}</article>`;
   return done(demoted ? `<aside class="zone">${article}</aside>` : article);
 }
 
@@ -596,8 +608,11 @@ export function render(model, context = {}, report = null) {
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
 /* 站点级链接样式（轮 30）：链接继承文字色、默认无下划线，hover 才下划线——标题/条目名绝不整条蓝。
    可点击性靠 hover 下划线 + 指针（<a href> 自带），不靠默认蓝；行内引用 .ref 保留可辨色。 */
-a{color:inherit;text-decoration:none;cursor:pointer}
-a:hover{text-decoration:underline}
+/* 站点级链接可点语义（轮 56 · U-01/03/04）：**可点就必须看得出来**。整套系统四种统一处理：
+   正文内链接（.body-link/.ref）与其它链接不同处只在颜色；列表项链接与卡片链接用墨色+下划线
+   （不把整页导航刷成蓝色，又不至于和正文同貌）；控件（.ctl/.action）是按钮形态，无下划线。 */
+a{color:inherit;text-decoration:underline;text-decoration-color:#9db0c4;text-underline-offset:2px;cursor:pointer}
+a:hover{text-decoration:underline;text-decoration-color:currentColor}
 a.ref{color:#0b62d0}
 .role-label{color:#68788a;font-size:.9em;margin-right:2px}
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
@@ -691,7 +706,7 @@ a.ctl:hover{background:#f2f7ff}
 .deflist.ranked .deflabel{font-weight:500}
 .defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
 .deflabel{min-width:130px;font-weight:600}
-.deflabel a{color:inherit;text-decoration:none}
+.deflabel a{color:inherit}
 .timeline .defrow{position:relative}
 .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
@@ -734,6 +749,17 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+/* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
+blockquote.quote{margin:12px 0;padding:4px 0 4px 16px;border-left:4px solid #17212b;max-width:74ch}
+blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13202c}
+/* 字段+提交成组（U-02）：输入与它的提交按钮同一条栏，其余内容在栏后。 */
+.fieldbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.fieldbar input[type=text],.fieldbar input[type=password]{min-width:220px}
+/* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小（右侧 2×2），像源站构图。 */
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0;align-items:start}
+.gallery-mosaic .strip{width:auto;margin:0}
+.gallery-mosaic .strip img{border-radius:8px}
+.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
 </style></head>
 <body><main>${brand ? `<header class="site"><span class="brand">${brand}</span></header>` : ''}${html}</main></body></html>
 `;

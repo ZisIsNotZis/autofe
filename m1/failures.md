@@ -775,3 +775,10 @@
 - **覆盖**：全 **42 页**跑一遍，报告"控件数 = 应渲染的 `_expose` 数"：应渲染 **56**、HTML 命中 **56**、单项降级为事实 **2**（`apple-com/iphone-16#storage`、`mi-com/product-detail-mi15#color`）、`state` 不画控件 **3**，不一致清单为空。
 - **可失败（F-040 证伪）**：① 构造"声明了 field 但产物里控件被剥掉"的场景 ⇒ `auditPage` 必报缺失（自测内，实测失败）；② 临时把 `m1/composites.json#search.fields.query.role` 改成 `state` ⇒ 断言 B/D 失败（`待修 2`），撤销后全过（同时 `axis-selftest` V0/V1/V2 也失败，见 F-093）。
 - **范围**：门禁护的是"axis 判定为控件的 `_expose` 在渲染器/三目标里被吞掉"这一接缝；**schema 角色声明写错**（field↔state）由 `axis-selftest` V0–V2 与采集一致性门禁护，不是本门禁的职责。
+
+## F-097 `_quote`：显著强调没有自己的承载键（轮 56 词表变更）
+- **发现于**：用户轮 54 审查 U-13——sspai 影评的加粗加大口台词被抽成 `_summary`/正文后，保真度 1.00、全部门禁绿灯：**没有任何检查看得见强调丢失**（findings S-5）。
+- **缺什么**：`_summary`（概述）与 `_text`（正文）都表达不了「这是源站显著引用/强调的独立段落」。渲染成普通段落，用户读不出「引述」。
+- **修法（采纳）**：词表 `description` 组新增 **`quote`**（`_quote`），`vocab-role-labels.json` 置空标签（引述不配「标签：」前缀）。轴层一处判定（`axis.mjs nodePlan` ⇒ category `quote`），三目标各画醒目形态：HTML `<blockquote class="quote">`（大字加粗+左竖线）/ 文本 `「…」` / MD `> **…**`。
+- **证据边界**：`_quote` 必须有抓取证据（blockquote 或整段 strong，`m1/eval/quote-evidence.mjs`）；第 15 道门禁 `quote-selftest.mjs` **双向可失败**——证据未承载、或 `_quote` 无证据，均失败，白名单须书面理由。首批迁移 16 处（sspai×10、apple-cn×6），22 处证据中其余 6 处已在 `quote-allow.json` 书面声明遗留缺口。
+- **状态**：已采纳（2026-02，轮 56），接入 pipeline 第 15 道门禁。

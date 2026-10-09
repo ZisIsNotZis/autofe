@@ -1,0 +1,53 @@
+{
+ "$comment": "第 15 道门禁（G-5 强调保真，轮 56）的书面豁免清单。双向判定：抓取引用证据（blockquote / 整段 strong）必须以 _quote 承载；模型 _quote 必须有抓取证据。逐条：page + kind(dropped|unsupported) + text(归一化后前缀匹配) + why(书面理由)。压不住任何差额的条目会被门禁判为过期。",
+ "entries": [
+  {
+   "page": "apple-com-cn/iphone-17",
+   "kind": "dropped",
+   "text": "硬件传感器结合先进的运动算法",
+   "why": "轮 56 在同一组（摄影风格/长焦/低光/微距/视频/查找）完成了 6 处 _detail→_quote，此处（safety._items[0]，_name「车祸检测。」之下）漏改仍为 _detail；且模型文本省略了抓取里的脚注标记「9」。证据在 corpus/apple-com-cn/iphone-17/nodes.json 的整段 strong。遗留缺口，待下轮补。"
+  },
+  {
+   "page": "apple-com/macbook-air",
+   "kind": "dropped",
+   "text": "Now supercharged by M5.",
+   "why": "整句不在模型中（区域覆盖缺口，无 _quote 可言）；轮 56 模型侧只核对 3 页（sspai×2、apple-cn），未扩此页。待下轮。"
+  },
+  {
+   "page": "apple-com/macbook-air",
+   "kind": "dropped",
+   "text": "From $1299 or $108.25/mo. for 12 mo.**",
+   "why": "文本已并入定价事实（模型 ._summary 与 _items 合并句「From $1299 …Apple Upgrade」，capture-integrity-allow.json 有对应转换声明），但强调承载未声明 _quote；轮 56 范围外，待下轮。"
+  },
+  {
+   "page": "apple-com/macbook-air",
+   "kind": "dropped",
+   "text": "Lease from $24.99/mo. for 36 mo. with Apple Upgrade◊",
+   "why": "同上：文本已并入定价事实，未声明 _quote；轮 56 范围外，待下轮。"
+  },
+  {
+   "page": "aws-amazon/ec2-on-demand",
+   "kind": "dropped",
+   "text": "注意：Red Hat 已经更新",
+   "why": "抓取中该定价提示是整段 strong（nodes.json），模型未以 _quote 承载；轮 56 模型侧范围外，待下轮。"
+  },
+  {
+   "page": "sspai-com/post-102392",
+   "kind": "dropped",
+   "text": "VLOOK™ 是针对 Typora（跨平台",
+   "why": "模型的 lead._quote 是这条 blockquote 的节写而非逐字：抓取证据为 article[0]/div[1]/div[0]/div[0]/div[0]/blockquote[0]/p[0]（20px/600 显著强调）；节写文本本身是采集一致性白名单声明过的转换（capture-integrity-allow.json: sspai-com/post-102392 「VLOOK™ 是针对 Typora 的主题包和增强插件…」）。逐字匹配无法配对，特此登记配对关系。"
+  },
+  {
+   "page": "sspai-com/post-102392",
+   "kind": "unsupported",
+   "text": "VLOOK™ 是针对 Typora 的主题包和增强插件",
+   "why": "同上条：lead._quote 的节写措辞与 blockquote[0] 逐字不同（「（跨平台 Markdown 编辑器）」「（针对导出的 HTML 文件)」等括注被省略），强调证据存在但文本为声明过的转换。"
+  },
+  {
+   "page": "sspai-com/post-102392",
+   "kind": "dropped",
+   "text": "今日份的小话题",
+   "why": "blockquote[2]/p[0]（20px/600）「今日份的小话题： Markdown 的图片自适配 Dark Mode（夜间模式）」整句不在模型中（覆盖缺口，非强调承载缺口）；轮 56 模型侧范围外，待下轮。"
+  }
+ ]
+}

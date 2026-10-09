@@ -7,8 +7,11 @@
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
 /* 站点级链接样式（轮 30）：链接继承文字色、默认无下划线，hover 才下划线——标题/条目名绝不整条蓝。
    可点击性靠 hover 下划线 + 指针（<a href> 自带），不靠默认蓝；行内引用 .ref 保留可辨色。 */
-a{color:inherit;text-decoration:none;cursor:pointer}
-a:hover{text-decoration:underline}
+/* 站点级链接可点语义（轮 56 · U-01/03/04）：**可点就必须看得出来**。整套系统四种统一处理：
+   正文内链接（.body-link/.ref）与其它链接不同处只在颜色；列表项链接与卡片链接用墨色+下划线
+   （不把整页导航刷成蓝色，又不至于和正文同貌）；控件（.ctl/.action）是按钮形态，无下划线。 */
+a{color:inherit;text-decoration:underline;text-decoration-color:#9db0c4;text-underline-offset:2px;cursor:pointer}
+a:hover{text-decoration:underline;text-decoration-color:currentColor}
 a.ref{color:#0b62d0}
 .role-label{color:#68788a;font-size:.9em;margin-right:2px}
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
@@ -102,7 +105,7 @@ a.ctl:hover{background:#f2f7ff}
 .deflist.ranked .deflabel{font-weight:500}
 .defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
 .deflabel{min-width:130px;font-weight:600}
-.deflabel a{color:inherit;text-decoration:none}
+.deflabel a{color:inherit}
 .timeline .defrow{position:relative}
 .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
@@ -145,5 +148,16 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+/* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
+blockquote.quote{margin:12px 0;padding:4px 0 4px 16px;border-left:4px solid #17212b;max-width:74ch}
+blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13202c}
+/* 字段+提交成组（U-02）：输入与它的提交按钮同一条栏，其余内容在栏后。 */
+.fieldbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.fieldbar input[type=text],.fieldbar input[type=password]{min-width:220px}
+/* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小（右侧 2×2），像源站构图。 */
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0;align-items:start}
+.gallery-mosaic .strip{width:auto;margin:0}
+.gallery-mosaic .strip img{border-radius:8px}
+.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
 </style></head>
 <body><main><article id="huawei-corp-home" class="node depth-0"><h1 class="title">华为 - 构建万物互联的智能世界</h1><section class="group g-hero"><article class="node depth-1"><div class="deflist"><div class="defrow"><div class="deflabel">HUAWEI Mate XT 2 非凡大师</div><div class="defval"><img src="https://www-file.huawei.com/dam/asset/view/mate-xt2-pc-v2.jpg" alt="HUAWEI Mate XT 2"> <a class="ctl" href="https://consumer.huawei.com/cn/phones/mate-xt-2-ultimate-design/?utm_medium=hwdc&amp;utm_source=corp_banner2_mate-xt-2-ultimate-design=phones">了解更多</a></div></div><div class="defrow"><div class="deflabel">华为全联接大会2026</div><div class="defval"><img src="https://www-file.huawei.com/dam/asset/view/hc2026-kv-banner-pc.jpg" alt="华为全联接大会2026"> <a class="ctl" href="https://www.huawei.com/cn/events/huaweiconnect">了解更多</a></div></div></div></article></section><section class="group g-business"><article class="node depth-1"><h2 class="title">我们的业务</h2><div class="controls"><a class="ctl" href="https://e.huawei.com/cn/">企业业务</a><a class="ctl" href="https://www.huawei.com/cn/carrier">运营商业务</a><a class="ctl" href="https://consumer.huawei.com/cn/?utm_medium=hwdc&amp;utm_source=corp_our_business_consumer">消费者业务</a><a class="ctl" href="https://www.huaweicloud.com/">华为云业务</a><a class="ctl" href="https://digitalpower.huawei.com/cn">数字能源业务</a><a class="ctl" href="https://auto.huawei.com/cn/?utm_medium=ownmedia&amp;utm_source=huaweicorp&amp;utm_campaign=alwayson">智能汽车解决方案业务</a></div></article></section><section class="group g-featured"><article class="node depth-1"><h2 class="title">推荐信息</h2><section class="block"><article class="node depth-2"><h3 class="title">华为助力天津滨海农商银行成功上线分布式新核心系统</h3><div class="fact"><span class="val"><img src="https://www-file.huawei.com/dam/asset/view/tianjin-binhai-rural-commercial-bank-909.webp" alt="华为助力天津滨海农商银行上线分布式新核心系统"></span></div><div class="fact"><span class="val">构筑现代数智银行新底座，加速数字化转型新征程</span></div><a class="action verb-open" href="https://e.huawei.com/cn/case-studies/industries/finance/202607-tianjin-binhai-rural-commercial-bank">了解更多</a></article></section><section class="block"><article class="node depth-2"><h3 class="title">华为乾崑，守护200万份信任</h3><div class="fact"><span class="val"><img src="https://www-file.huawei.com/dam/asset/view/qiiankun-200w-805.jpg" alt="华为乾崑，守护200万份信任"></span></div><div class="fact"><span class="val">乾崑智驾、鸿蒙座舱搭载量，华为乾崑APP用户数，同步突破200万</span></div><a class="action verb-open" href="https://auto.huawei.com/cn/campaign/ads-harmonyspace-app-2million/?utm_medium=ownmedia&amp;utm_source=huaweicorp&amp;utm_campaign=20260914">了解更多</a></article></section><section class="block"><article class="node depth-2"><h3 class="title">2026国际数字能源展</h3><div class="fact"><span class="val"><img src="https://www-file.huawei.com/dam/asset/view/idee2026-804.jpg" alt="International Digital Energy Expo (IDEE) 2026"></span></div><div class="fact"><span class="val">2026年09月15日-17日 中国，深圳</span></div><a class="action verb-open" href="https://digitalpower.huawei.com/cn/events/idee2026">了解更多</a></article></section><section class="block"><article class="node depth-2"><h3 class="title">HUAWEI WATCH 6 Pro</h3><div class="fact"><span class="val"><img src="https://www-file.huawei.com/dam/asset/view/watch-6-pro-699.jpg" alt="Watch 6 pro"></span></div><div class="fact"><span class="val">鸿蒙AI手表 智慧健康旗舰</span></div><a class="action verb-open" href="https://consumer.huawei.com/cn/wearables/watch-6-pro/?utm_medium=hwdc&amp;utm_source=corp_boxrow1right_watch-6-pro">了解更多</a></article></section></article></section><section class="group g-news"><article class="node depth-1"><h2 class="title">新闻动态</h2><div class="meta">2026-09-18</div><ul class="linklist"><li><a href="https://www.huawei.com/cn/news/2026/9/hc-power-six-showcase">华为发布六大电力全球样板点，以AI与能源双向赋能驱动电力新未来</a></li><li><a href="https://www.huawei.com/cn/news/2026/9/hc-manufacturing-summit">华为发布制造与大企业七大方案与两项计划，加速行业AI 价值落地</a></li><li><a href="https://www.huawei.com/cn/news/2026/9/hc-partner-summit">华为揭晓2026年度优秀合作伙伴奖：88家伙伴获奖共筑Agentic AI时代数智生态</a></li><li><a href="https://www.huawei.com/cn/news/2026/9/software-migu-music">咪咕音乐携手华为软件打造软件运维智能体，实现运维效率与能力双提升</a></li><li><a href="https://www.huawei.com/cn/news/2026/9/hc-ai-industry-adoption">新方法、新组织、新工具：华为发布AI行业落地新路径</a></li><li><a href="https://www.huawei.com/cn/news/2026/9/hc-scale-industrial-intelligence">构建“以客户为中心”的“华为+伙伴”协同体系，让AI惠及千行百业</a></li></ul><a class="action verb-open" href="https://www.huawei.com/cn/news">更多新闻</a></article></section><section class="group g-brand"><article class="node depth-1"><h2 class="title">构建万物互联的 智能世界</h2><div class="fact"><span class="val">华为创立于1987年，是全球领先的ICT（信息与通信）基础设施和智能终端提供商。我们致力于把数字世界带入每个人、每个家庭、每个组织，构建万物互联的智能世界。</span></div><a class="action verb-open" href="https://www.huawei.com/cn/corporate-information">了解华为</a></article></section></article></main></body></html>

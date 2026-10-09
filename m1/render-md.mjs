@@ -260,7 +260,8 @@ function renderNode(node, chain, isHero, ctx, depth) {
       // A secret field never echoes its value in the Markdown target: only a placeholder (round 46).
       blocks.push(`${lbl ? lbl + ': ' : ''}(密码)${hint ? ` (${hint})` : ''}`);
     } else {
-      blocks.push(`${lbl ? lbl + ': ' : ''}________${hint ? ` (${hint})` : ''} \`[${ch.type}]\``);
+      const sub = plan.fieldSubmit && plan.action?.label ? ` ${controlMd(plan.action)}` : '';
+      blocks.push(`${lbl ? lbl + ': ' : ''}________${hint ? ` (${hint})` : ''} \`[${ch.type}]\`${sub}`);
     }
   }
   if (plan.titleConsumed) titleText = null;   // the heading IS the switch label
@@ -272,6 +273,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
   const factLines = [];
   for (const f of plan.facts.list) {
     if (f.category === 'meta' || f.category === 'unit') { factLines.push(roleFact(f)); continue; }
+    if (f.category === 'quote') { factLines.push(`> **${fmt(f.value)}**`); continue; }
     if (f.category === 'was') { factLines.push(`~~${fmt(f.value)}~~`); continue; }
     const lab = roleLabel(f.key);
     factLines.push(lab ? `${lab}: ${fmt(f.value)}` : roleFact(f));

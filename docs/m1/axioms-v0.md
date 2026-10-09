@@ -62,7 +62,7 @@
 ## 3. 角色词表 v0（`vocab.roles`）
 
 identity: `title` `name` `label` `subtitle`
-description: `summary` `detail` `text`
+description: `summary` `detail` `text` `quote`
 classification: `category` `tag` `status`
 quantity: `count` `measure`
 money: `price` `amount`

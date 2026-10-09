@@ -7,8 +7,11 @@
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
 /* 站点级链接样式（轮 30）：链接继承文字色、默认无下划线，hover 才下划线——标题/条目名绝不整条蓝。
    可点击性靠 hover 下划线 + 指针（<a href> 自带），不靠默认蓝；行内引用 .ref 保留可辨色。 */
-a{color:inherit;text-decoration:none;cursor:pointer}
-a:hover{text-decoration:underline}
+/* 站点级链接可点语义（轮 56 · U-01/03/04）：**可点就必须看得出来**。整套系统四种统一处理：
+   正文内链接（.body-link/.ref）与其它链接不同处只在颜色；列表项链接与卡片链接用墨色+下划线
+   （不把整页导航刷成蓝色，又不至于和正文同貌）；控件（.ctl/.action）是按钮形态，无下划线。 */
+a{color:inherit;text-decoration:underline;text-decoration-color:#9db0c4;text-underline-offset:2px;cursor:pointer}
+a:hover{text-decoration:underline;text-decoration-color:currentColor}
 a.ref{color:#0b62d0}
 .role-label{color:#68788a;font-size:.9em;margin-right:2px}
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
@@ -102,7 +105,7 @@ a.ctl:hover{background:#f2f7ff}
 .deflist.ranked .deflabel{font-weight:500}
 .defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
 .deflabel{min-width:130px;font-weight:600}
-.deflabel a{color:inherit;text-decoration:none}
+.deflabel a{color:inherit}
 .timeline .defrow{position:relative}
 .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
@@ -145,5 +148,16 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+/* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
+blockquote.quote{margin:12px 0;padding:4px 0 4px 16px;border-left:4px solid #17212b;max-width:74ch}
+blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13202c}
+/* 字段+提交成组（U-02）：输入与它的提交按钮同一条栏，其余内容在栏后。 */
+.fieldbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.fieldbar input[type=text],.fieldbar input[type=password]{min-width:220px}
+/* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小（右侧 2×2），像源站构图。 */
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0;align-items:start}
+.gallery-mosaic .strip{width:auto;margin:0}
+.gallery-mosaic .strip img{border-radius:8px}
+.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
 </style></head>
 <body><main><header class="site"><span class="brand">阿里云</span></header><article id="aliyun-ecs" class="node depth-0"><h1 class="title">安全可靠的云服务器 ECS</h1><figure class="strip"><img src="../assets/aliyun-ecs-hero.png" alt="云服务器 ECS"></figure><div class="fact"><span class="val">随时获取更强劲、更灵活、更低成本的澎湃算力。</span></div><section class="group g-values"><article class="node depth-1"><div class="deflist"><div class="defrow"><div class="deflabel">高稳定性</div><div class="defval">单实例 SLA 达 99.975%，多可用区多实例 SLA 达 99.995%，云盘可靠性达 99.9999999%，宕机自动迁移。</div></div><div class="defrow"><div class="deflabel">极致性能</div><div class="defval">支持分钟级别创建万台实例，满足突发需求的弹性扩容。</div></div><div class="defrow"><div class="deflabel">安全可靠</div><div class="defval">DDoS 防护、操作系统漏洞检测、木马查杀，多方国际安全认证。</div></div><div class="defrow"><div class="deflabel">高性价比</div><div class="defval">多种弹性付费方式，有效降低企业 IT 成本。</div></div></div></article></section><section class="group g-scale"><article class="node depth-1"><div class="fact"><span class="val">已为全球 500 万客户提供算力服务。</span></div><div class="fact"><span class="val">29 地域</span></div><div class="fact"><span class="val">90 可用区</span></div></article></section><section class="group g-instances"><article class="node depth-1"><div class="cmp-scroll"><table class="cmp-table"><thead><tr><th class="cmp-row"></th><th class="cmp-col">e实例<div class="cmp-price">¥99</div><div class="cmp-sub">个人开发者必选</div><div class="cmp-ctl"><a class="ctl" href="https://www.aliyun.com/product/ecs/buy?spec=e">立即购买</a></div></th><th class="cmp-col">u2a实例<div class="cmp-price">¥1438.68</div><div class="cmp-sub">初创企业优选</div><div class="cmp-ctl"><a class="ctl" href="https://www.aliyun.com/product/ecs/buy?spec=u2a">立即购买</a></div></th><th class="cmp-col">c9i实例<div class="cmp-price">¥3459.9</div><div class="cmp-sub">中大型企业首选</div><div class="cmp-ctl"><a class="ctl" href="https://www.aliyun.com/product/ecs/buy?spec=c9i">立即购买</a></div></th><th class="cmp-col">g9i实例<div class="cmp-sub">中大型企业首选</div><div class="cmp-ctl"><a class="ctl" href="https://www.aliyun.com/product/ecs/buy?spec=g9i">立即购买</a></div></th></tr></thead><tbody><tr><th class="cmp-row">CPU</th><td class="cmp-cell">2 核</td><td class="cmp-cell">2 核</td><td class="cmp-cell">4 核</td><td class="cmp-cell">2 核</td></tr><tr><th class="cmp-row">内存</th><td class="cmp-cell">2 GB</td><td class="cmp-cell">4 GB</td><td class="cmp-cell">8 GB</td><td class="cmp-cell">8 GB</td></tr></tbody></table></div></article></section><section class="group g-news"><article class="node depth-1 timeline"><h2 class="title"><a class="self-link" href="https://www.aliyun.com/product/news">产品动态</a></h2><ol class="seq"><li>9代Intel实例g9i正式商业化</li><li>9代AMD实例g9a正式商业化</li><li>通用算力型实例u2a正式商业化</li><li>学生专属算力包正式商业化</li></ol></article></section><a class="action verb-buy" href="https://www.aliyun.com/product/ecs/buy">立即购买</a></article></main></body></html>

@@ -7,8 +7,11 @@
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
 /* 站点级链接样式（轮 30）：链接继承文字色、默认无下划线，hover 才下划线——标题/条目名绝不整条蓝。
    可点击性靠 hover 下划线 + 指针（<a href> 自带），不靠默认蓝；行内引用 .ref 保留可辨色。 */
-a{color:inherit;text-decoration:none;cursor:pointer}
-a:hover{text-decoration:underline}
+/* 站点级链接可点语义（轮 56 · U-01/03/04）：**可点就必须看得出来**。整套系统四种统一处理：
+   正文内链接（.body-link/.ref）与其它链接不同处只在颜色；列表项链接与卡片链接用墨色+下划线
+   （不把整页导航刷成蓝色，又不至于和正文同貌）；控件（.ctl/.action）是按钮形态，无下划线。 */
+a{color:inherit;text-decoration:underline;text-decoration-color:#9db0c4;text-underline-offset:2px;cursor:pointer}
+a:hover{text-decoration:underline;text-decoration-color:currentColor}
 a.ref{color:#0b62d0}
 .role-label{color:#68788a;font-size:.9em;margin-right:2px}
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
@@ -102,7 +105,7 @@ a.ctl:hover{background:#f2f7ff}
 .deflist.ranked .deflabel{font-weight:500}
 .defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
 .deflabel{min-width:130px;font-weight:600}
-.deflabel a{color:inherit;text-decoration:none}
+.deflabel a{color:inherit}
 .timeline .defrow{position:relative}
 .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
@@ -145,6 +148,17 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+/* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
+blockquote.quote{margin:12px 0;padding:4px 0 4px 16px;border-left:4px solid #17212b;max-width:74ch}
+blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13202c}
+/* 字段+提交成组（U-02）：输入与它的提交按钮同一条栏，其余内容在栏后。 */
+.fieldbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.fieldbar input[type=text],.fieldbar input[type=password]{min-width:220px}
+/* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小（右侧 2×2），像源站构图。 */
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0;align-items:start}
+.gallery-mosaic .strip{width:auto;margin:0}
+.gallery-mosaic .strip img{border-radius:8px}
+.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
 </style></head>
 <body><main><article id="bilibili-read-home" class="node depth-0"><h1 class="title">推荐文章</h1><section class="group g-search"><article class="node depth-1"><span class="expose expose-input expose-article-search"><span class="deflabel sr-only">搜索专栏文章</span><input type="text" name="article-search" data-type="text" aria-label="搜索专栏文章" placeholder="搜索专栏文章"></span></article></section><section class="group g-articles"><article class="node depth-1"><section class="block"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/read/cv52753045/">我收容了100位粉丝到我的一辈子存档里！</a></h3><div class="fact"><span class="val">摄影师来啦！我模仿开罗画风，画了一张比奇堡居民大合照。祝阿山和朋友们天天开心！</span></div><div class="fact"><span class="val">全部笔记</span></div><div class="fact"><span class="val"><img src="https://i2.hdslb.com/bfs/note/c0032203c8fe22dcfa9c168ea664b21340fab6c3.jpg@234w_176h_1c.webp" alt=""></span></div><div class="meta">薄荷青苹果汽水<span class="sep">·</span>2410 4969 3</div></article></section><section class="block"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/read/cv50900375/">[小画家的专属绘画大礼包合集处]</a></h3><div class="fact"><span class="val">自学画画好不容易，我把工作多年所积累到的绘画素材都整理打包好了，涵盖（线稿、色卡、笔刷、软件、资料等等）自取请 保存↓↓↓  [图片]</span></div><div class="fact"><span class="val">日常</span></div><div class="fact"><span class="val"><img src="https://i2.hdslb.com/bfs/new_dyn/838e97e1acf3bc32271bc597cd594fbc506079949.jpg@234w_176h_1c.webp" alt=""></span></div><div class="meta">他是全场最佳<span class="sep">·</span>6.5万 1406 6.5万</div></article></section><section class="block"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/read/cv46437884/">【保姆级别】国服公主连结入坑指南（9月抽卡建议在末尾）</a></h3><div class="fact"><span class="val">https://priconne.kimura.icu/ https://priconne.kimura.icu/ https://priconne.kimura.icu/ 上面的地址，包含了整个游戏里的所有数据和各种你可能用得上的文档。 9.11日： 修改了新人入坑时候的fes节奏榜 (默认你没有水银莲，水银莲可以代替晶） [图片] 9.2日更新： 新增1-10 2-10 3-10 4-10 5-10火的超低配boss作业 新增7-10风低配作业 公主连结新人深域攻略，各种新作业（新增6-10光低配作业</span></div><div class="fact"><span class="val">日常</span></div><div class="fact"><span class="val"><img src="https://i2.hdslb.com/bfs/new_dyn/16e5e4e295a5c09f130af746a99d4f4d159089214.jpg@234w_176h_1c.webp" alt=""></span></div><div class="meta">广渠退敌<span class="sep">·</span>5.3万 738 188<span class="sep">·</span>来自文集</div></article></section><section class="block"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/read/cv52900604/">越南：1979年中越战争，中国在完全误解越南的情况下，发动了战争</a></h3><div class="fact"><span class="val">近年来，另一种关于1979年中越边境战争解读在海外媒体中流传。美国康奈尔大学越南裔博士生武明黄提出：当年那场战争，源于中国对越南外交路线的严重“误解”。按照他的说法，苏越结盟并非越南主动投靠苏联和中国搞对抗，而是“形势倒逼下的防御选择”；中国错把越南的“自保策略”当成了“针对自己的包围布局”，正是这份“认知偏差”，催生了战争。 这套说法听起来似乎为中越战争提供了一种新的解读角度，但它经得起历史的检验吗？我们不妨回到20世纪70年代，看看究竟发生了什么。 在抗法、抗美战争期间，中国与越南是“同志加兄弟”的亲</span></div><div class="fact"><span class="val">日常</span></div><div class="fact"><span class="val"><img src="https://i2.hdslb.com/bfs/new_dyn/ea67d1784e90be9982eb42f898cad78c34914107.png@234w_176h_1c.webp" alt=""></span></div><div class="meta">正观历史<span class="sep">·</span>15.7万 1768 0<span class="sep">·</span>来自文集</div></article></section><section class="block"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/read/cv52470979/">【小画家的专属绘画大礼包合集】</a></h3><div class="fact"><span class="val">自学画画好不容易，我把工作多年所积累到的绘画素材都整理打包好了，涵盖（线稿、色卡、笔刷、软件、资料等等）自取请 保存↓↓↓ [图片]</span></div><div class="fact"><span class="val">日常</span></div><div class="fact"><span class="val"><img src="https://i2.hdslb.com/bfs/new_dyn/dbdae6781736b14c6512d5f550fe4a563537105588325203.png@234w_176h_1c.webp" alt=""></span></div><div class="meta">哔哩文艺社<span class="sep">·</span>3.1万 821 5.2万</div></article></section><section class="block"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/read/cv52924412/">【郝熠然生日演唱会re】—后日谈</a></h3><div class="fact"><span class="val">又名《关于太受演唱会震撼导致视频里失去正常语言逻辑和能力所以不得不做的事后补充说明》 在我的概念里，所有能够呈现在人前的舞台，毫无疑问都是极尽绚丽的，更是值得去探索和思考的。但有一些舞台引发的情绪只会发生在当下，发生在舞台射灯亮起之时，等到了音乐落下，那情绪也就自然收束在那里了。但郝老板的舞台似乎是很不一样的，他把很多的情绪和问题抛了出来，然后给出了一个“悬而未决”的感受，便潇洒结束，鞠躬离场。看得人心痒难耐，想得人心旌摇摇。而我在观看的时候，就被很多极具反差，甚至是针锋相对的意象，击中了一次又一次。一</span></div><div class="fact"><span class="val">日常</span></div><div class="fact"><span class="val"><img src="https://i2.hdslb.com/bfs/new_dyn/sky_horse/d58e29a26d15404693ab7c556fedecba3707050836102111.png@234w_176h_1c.webp" alt=""></span></div><div class="meta">Morian井月<span class="sep">·</span>1.8万 749 94</div></article></section><section class="block"><article class="node depth-2"><h3 class="title"><a class="self-link" href="https://www.bilibili.com/read/cv23064696/">如何看中英双语字幕的小马宝莉？【附免费英配资源+英文字幕】</a></h3><div class="fact"><span class="val">很多小马看《小马宝莉：友谊就是魔法》（My Little Pony: Friendship Is Magic）时，会有这样的需求：既想听英语原版配音，又想同时看到中文字幕和英文字幕，以此来学习英语。接下来笔者就来教大家怎么操作。简单来说，就是用本身带中文字幕的英配视频，再加载一份英文字幕。 要看中英双语的英配小马宝莉，我们需要以下三样东西：
 英语字幕

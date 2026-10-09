@@ -5,7 +5,7 @@
 //   node m1/eval/pipeline.mjs --shots    追加全页截图 + 画廊重建 + 证据清单（需要 playwright，约 3 分钟）
 //   node m1/eval/pipeline.mjs --check-shots  仅断言截图（PNG）与当前 HTML 同源，不重渲染（快）
 //   node m1/eval/pipeline.mjs --only airbnb-com/room-28871,bilibili-com/home
-// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且十三道自测全过且截图与 HTML 同源）; 1 = 有失败项
+// 退出码: 0 = 全部通过（三目标保真 1.00 且视觉自查无硬缺陷且十五道自测全过且截图与 HTML 同源）; 1 = 有失败项
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -234,7 +234,25 @@ const gLC = gate('node m1/eval/link-coverage-selftest.mjs');
 console.log(`[pipeline] 链接覆盖自测(轮55 · 第13道): ${gLC.ok ? '通过' : '失败'}`);
 if (!gLC.ok) console.log(gLC.out);
 for (const l of gLC.out.split('\n')) if (l.startsWith('链接对照') || l.includes('未声明差额清单')) console.log(`[pipeline] ${l.trim()}`);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok;
+// 14th self-test suite (round 56): LABEL LANGUAGE. Rendered visible text must never leak
+// internal vocabulary (the engine's verbs/enum names, collected from vocab.json). English
+// the source itself shows is exempt only with provenance: an occurrence-window match in the
+// capture, a written entry in label-language-allow.json, or a capture-integrity-declared
+// conversion. U-16/U-17 (English fragments on Chinese pages) shipped because fidelity is
+// blind to who authored a string; this gate makes authorship checkable.
+const gLL = gate('node m1/eval/label-language-selftest.mjs');
+console.log(`[pipeline] 可见英文标签自测(G-2 · 第14道): ${gLL.ok ? '通过' : '失败'}`);
+if (!gLL.ok) console.log(gLL.out);
+for (const l of gLL.out.split('\n')) if (l.startsWith('[可见英文标签]')) console.log(`[pipeline] ${l.trim()}`);
+// 15th self-test suite (round 56): QUOTE EMPHASIS (bidirectional). Capture quote evidence
+// (blockquote / whole-paragraph strong, per quote-evidence.mjs) must be carried as `_quote`,
+// and every `_quote` must be backed by capture evidence — unless declared in writing in
+// quote-allow.json. Fidelity counts text, so it was blind to emphasis being flattened (U-13).
+const gQS = gate('node m1/eval/quote-selftest.mjs');
+console.log(`[pipeline] 强调保真自测(G-5 · 第15道): ${gQS.ok ? '通过' : '失败'}`);
+if (!gQS.ok) console.log(gQS.out);
+for (const l of gQS.out.split('\n')) if (l.startsWith('[强调保真]')) console.log(`[pipeline] ${l.trim()}`);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';

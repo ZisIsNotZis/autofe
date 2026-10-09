@@ -7,8 +7,11 @@
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
 /* 站点级链接样式（轮 30）：链接继承文字色、默认无下划线，hover 才下划线——标题/条目名绝不整条蓝。
    可点击性靠 hover 下划线 + 指针（<a href> 自带），不靠默认蓝；行内引用 .ref 保留可辨色。 */
-a{color:inherit;text-decoration:none;cursor:pointer}
-a:hover{text-decoration:underline}
+/* 站点级链接可点语义（轮 56 · U-01/03/04）：**可点就必须看得出来**。整套系统四种统一处理：
+   正文内链接（.body-link/.ref）与其它链接不同处只在颜色；列表项链接与卡片链接用墨色+下划线
+   （不把整页导航刷成蓝色，又不至于和正文同貌）；控件（.ctl/.action）是按钮形态，无下划线。 */
+a{color:inherit;text-decoration:underline;text-decoration-color:#9db0c4;text-underline-offset:2px;cursor:pointer}
+a:hover{text-decoration:underline;text-decoration-color:currentColor}
 a.ref{color:#0b62d0}
 .role-label{color:#68788a;font-size:.9em;margin-right:2px}
 main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
@@ -102,7 +105,7 @@ a.ctl:hover{background:#f2f7ff}
 .deflist.ranked .deflabel{font-weight:500}
 .defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
 .deflabel{min-width:130px;font-weight:600}
-.deflabel a{color:inherit;text-decoration:none}
+.deflabel a{color:inherit}
 .timeline .defrow{position:relative}
 .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
@@ -145,5 +148,16 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+/* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
+blockquote.quote{margin:12px 0;padding:4px 0 4px 16px;border-left:4px solid #17212b;max-width:74ch}
+blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13202c}
+/* 字段+提交成组（U-02）：输入与它的提交按钮同一条栏，其余内容在栏后。 */
+.fieldbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.fieldbar input[type=text],.fieldbar input[type=password]{min-width:220px}
+/* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小（右侧 2×2），像源站构图。 */
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0;align-items:start}
+.gallery-mosaic .strip{width:auto;margin:0}
+.gallery-mosaic .strip img{border-radius:8px}
+.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
 </style></head>
 <body><main><article id="grafana-play-stats-dashboard" class="node depth-0"><h1 class="title">Stats</h1><section class="group g-toolbar"><article class="node depth-1"><div class="fact"><span class="val">Time range selected: Last 6 hours</span></div><div class="controls"><span class="ctl" data-verb="operate">Last 6 hours</span><span class="ctl" data-verb="operate">Refresh</span><span class="ctl" data-verb="operate">Enter edit mode</span><span class="ctl" data-verb="operate">Edit</span></div></article></section><section class="group g-banners"><article class="node depth-1"><ul class="linklist"><li><a href="https://grafana.com/auth/sign-up/create-user?pg=play">Want to build a dashboard like this? Get started fast with the Grafana Cloud free tier!</a></li><li><a href="https://grafana.com/docs/learning-journeys/?src=play&amp;camp=learning-journey-button">Learn about Grafana through our Learning Journeys</a></li></ul></article></section><section class="group g-panels"><article class="node depth-1"><div class="manifest"><span class="manifest-item">Introduction</span><span class="manifest-item">Color background</span><span class="manifest-item">The Basics</span><span class="manifest-item">Color value</span><span class="manifest-item">Horizontal with graph</span><span class="manifest-item">Horizontal</span><span class="manifest-item">Text mode name</span><span class="manifest-item">Auto grid</span><span class="manifest-item">Value only</span><span class="manifest-item">No text</span><span class="manifest-item">Emoji in stat names</span></div></article></section></article></main></body></html>
