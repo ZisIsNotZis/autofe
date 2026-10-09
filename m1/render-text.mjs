@@ -312,11 +312,18 @@ function renderNode(node, chain, isHero, ctx, depth) {
   }
 
   // named child groups (non-array children)
+  // 轮 58（L-2）区域钉扎：header 组永远最顶（页面标题之上），footer 组永远最后；元素级动作
+  // （如 mi15「用户评价」）留在内容区、footer 之前。区域排序决策在共享轴层
+  // （orderedNamedChildren → entry.region），每个目标只选自己的槽位。body 区域子件仍按原
+  // 文档序并入 blocks（事实/集合之后），只有 header/footer 两个站点区域被钉到两端。
+  const headBlocks = [], footBlocks = [];
   let prevGroupHadTitle = false;
   for (const c of plan.namedChildren) {
     if (consumed.has(c.node)) continue;
     const inner = renderNode(c.node, [...chain, node], false, ctx, depth + 1);
     if (!inner) continue;
+    if (c.region === 'header') { headBlocks.push(inner); continue; }
+    if (c.region === 'footer') { footBlocks.push(inner); continue; }
     const hasTitle = Boolean(c.node._title || c.node._name || c.node._text);
     if (!hasTitle && prevGroupHadTitle) blocks.push(line(depth + 1, '----'));
     blocks.push(inner);
@@ -327,6 +334,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
   const innerD = demoted ? depth + 1 : depth;
   // re-render at the (possibly deeper) indent so a demoted branch is visibly a reference section
   let parts = [];
+  for (const b of headBlocks) parts.push(shiftBlock(b, demoted ? 1 : 0));   // header 在页面标题之上（L-2）
   if (titleText && !titleIsControl) parts.push(head(innerD, titleText));
   const heroImg = plan.facts.hero ? imageText(plan.facts.hero) : '';
   if (heroImg) parts.push(line(innerD, heroImg));
@@ -336,6 +344,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
   // the same element are still the SAME row, never dropped (bilibili video channel block).
   if (titleIsControl) parts.push(line(innerD, `[${titleText}]`));
   if (actionRow) parts.push(line(innerD, actionRow));
+  for (const b of footBlocks) parts.push(shiftBlock(b, demoted ? 1 : 0));   // footer 永远最后（L-2）
   const out = parts.filter(Boolean).join('\n');
   if (!out.trim()) return '';
   return demotedPrefix + out;

@@ -39,7 +39,18 @@ th.cmp-col>a{color:var(--accent);text-decoration:none}
 .banner>.fact{max-width:none;text-align:center}
 .banner>.controls{justify-content:center}
 .role-label{color:#68788a;font-size:.9em;margin-right:2px}
-main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+/* 轮 58 · L-1 页面栅格：唯一页面容器 = main（居中、≈1280px、左右对称 padding）。
+   section 宽度分层且由 nodePlan 按 section 种类声明（plan.widthTier，规则在 axis.mjs）：
+   prose=阅读文本 74ch 居中 / narrow=默认内容 880px 居中 / wide=卡片与 Feed 网格（容器全宽）/
+   bleed=仅限声明的 banner（满幅带，内文仍守 padding）。同页各 section 宽度各归其层，
+   不再无规则跳变（U-23/U-25/U-26/U-27）。 */
+main{max-width:1280px;margin:0 auto;padding:32px 24px 0}
+/* 根节点直属内容（页面标题、事实列、搜索栏）归入栅格：居中、对称，不再整栏偏左（U-18/U-23）。
+   h1 的列宽用 px（ch 随元素自身 2em 字号放大，74ch 会撑满容器、居中失效）。 */
+.depth-0>.title{max-width:640px;margin-inline:auto}
+.depth-0>.fact{margin-inline:auto}
+.depth-0>.hero{margin-inline:auto;text-align:center}
+.depth-0>.fieldbar{justify-content:center}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
 header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
 h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
@@ -72,12 +83,17 @@ article{margin:12px 0}
 .promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
 .meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
+.prose{max-width:74ch;margin-inline:auto}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
-/* F-031-§7 图像主导页：满幅图带——图带是页面的框，展开到视口宽（左右不留白边）。
-   卡片/表格/推广盒里的图不是页框，由下面一条覆盖回容器宽（轮 34）。 */
+/* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
+   轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
+   内容图带（.band 内的 .strip，image-strip 形态）绝不满幅：居中、压到容器宽（U-20/U-21）。 */
 .strip{margin:0;padding:0;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
-.strip img{width:auto;max-width:100%;height:auto;display:block;border-radius:0}
-.cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip{width:auto;margin-left:0;margin-right:0}
+.strip img{width:auto;max-width:100%;height:auto;display:block;margin-inline:auto;border-radius:0}
+.band{margin:14px 0}
+.band .strip{width:auto;max-width:100%;margin:0 auto}
+.band .strip img{border-radius:10px}
+.cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip,.band .strip{width:auto;margin-left:auto;margin-right:auto}
 .cards .strip img{border-radius:8px}
 /* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
 .img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
@@ -173,10 +189,36 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 /* 字段+提交成组（U-02）：输入与它的提交按钮同一条栏，其余内容在栏后。 */
 .fieldbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
 .fieldbar input[type=text],.fieldbar input[type=password]{min-width:220px}
-/* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小（右侧 2×2），像源站构图。 */
-.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0;align-items:start}
-.gallery-mosaic .strip{width:auto;margin:0}
-.gallery-mosaic .strip img{border-radius:8px}
+/* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小，像源站构图。
+   轮 58（U-24）：做马赛克就要对齐——每块瓷砖固定正方形（aspect-ratio），图在瓷砖内等比
+   contain 居中（绝不放大、不裁内容），大图缩到瓷砖、瓷砖间不再有参差缝隙。 */
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0;align-items:stretch}
+.gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
 .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
+/* 轮 58（L-1）宽度分层（必须晚于 .block>.node，层级胜出层叠）：prose=阅读 74ch 居中 /
+narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ bleed=仅声明的 banner（满幅）。 */
+.node.w-prose{max-width:74ch;margin-inline:auto}
+.node.w-narrow{max-width:880px;margin-inline:auto}
+.node.w-wide{max-width:none}
+.node.w-bleed{max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 24px}
+/* 轮 58（L-6）媒体优先卡片：图与标题永不分家（同一 article）；条目图在题上方（视频/卡片站
+   惯例）。轴层 mediaFirstOf 声明，这里用 flex order 画 —— 不拆 DOM，长文条目不受影响。 */
+.media-first .node{display:flex;flex-direction:column}
+.media-first .node>.fact:has(.val img),.media-first .node>.band{order:-1}
+/* 轮 58（L-4）宽层卡片/Feed 集合：轴层声明 cols='auto' ⇒ auto-fill 网格（桌面 2–4 列）。
+   阅读型堆叠（长文成员）保持单列。 */
+.stack.cols-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;align-items:start;margin:14px 0}
+.stack.cols-auto .block{margin:0}
+.stack.cols-auto hr.region{display:none}
+/* 轮 58（L-5）footer 反色（惯例）：模型声明的 footer 区域（.g-footer）深底浅字，
+   负 margin 铺满容器内宽、底边贴住容器。无 footer 区域的页自然没有这条带。 */
+.group.g-footer{background:#16202b;color:#c7d3e0;margin:48px -24px 0;padding:24px 24px 28px}
+.group.g-footer .title,.group.g-footer h1,.group.g-footer h2,.group.g-footer h3,.group.g-footer h4{color:#eef4fa}
+.group.g-footer a{color:#dce6f1}
+.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:#aebccc}
+.group.g-footer .ctl{border-color:#41546a;color:#c7d3e0;background:transparent}
+.group.g-footer a.ctl:hover{background:#223244}
+.group.g-footer .defrow{border-bottom-color:#253444}
 </style></head>
-<body><main><article class="node depth-0"><h1 class="title">Sign in to GitHub</h1><section class="group g-login"><article class="node depth-1"><section class="group g-identifier"><article class="node depth-2"><span class="expose expose-input expose-login"><span class="deflabel">Username or email address</span><input type="text" name="login" data-type="text" aria-label="Username or email address"></span></article></section><section class="group g-secret"><article class="node depth-2"><span class="expose expose-input expose-password"><span class="deflabel">Password</span><input type="password" name="password" data-type="secret" aria-label="Password"></span></article></section><section class="group g-alternatives"><article class="node depth-2"><ul class="linklist"><li>Continue with Google</li><li>Continue with Apple</li></ul></article></section><div class="controls"><span class="action-plain">Sign in</span><a class="ctl" href="https://github.com/password_reset">Forgot password?</a><span class="ctl" data-verb="operate">Sign in with a passkey</span><a class="ctl" href="https://github.com/signup">Create an account</a></div></article></section></article></main></body></html>
+<body><main><article class="node depth-0"><h1 class="title">Sign in to GitHub</h1><section class="group g-login"><article class="node depth-1 w-narrow"><section class="group g-identifier"><article class="node depth-2"><span class="expose expose-input expose-login"><span class="deflabel">Username or email address</span><input type="text" name="login" data-type="text" aria-label="Username or email address"></span></article></section><section class="group g-secret"><article class="node depth-2"><span class="expose expose-input expose-password"><span class="deflabel">Password</span><input type="password" name="password" data-type="secret" aria-label="Password"></span></article></section><section class="group g-alternatives"><article class="node depth-2"><ul class="linklist"><li>Continue with Google</li><li>Continue with Apple</li></ul></article></section><div class="controls"><span class="action-plain">Sign in</span><a class="ctl" href="https://github.com/password_reset">Forgot password?</a><span class="ctl" data-verb="operate">Sign in with a passkey</span><a class="ctl" href="https://github.com/signup">Create an account</a></div></article></section></article></main></body></html>

@@ -139,6 +139,18 @@ export function selectForm(items, order) {
   return 'cards';
 }
 
+// ---- media-first card groups (round 58 · L-6) ----------------------------------------------
+// A card/feed group whose members are ALL image-led cards of card-sized text draws every
+// image ABOVE its title — the video/feed card convention (U-27: bilibili《第五人格》卡片题在图下、
+// 图题分居两处). Reading groups (long-text members, sspai 正文条目) and image bands keep
+// title-first. GROUP-level so one grid never mixes the two layouts. Renderers draw the order
+// per medium (HTML: flex order — the image never leaves its member article, so 图与标题不分家).
+export function mediaFirstOf(items, form) {
+  if (!['stack', 'cards', 'product-cards'].includes(form) || items.length < 2) return false;
+  const imgShare = items.filter((it) => Boolean(it._image)).length;
+  return imgShare / items.length >= 0.75 && items.every((it) => textLenOf(it) <= 96);
+}
+
 // ---- 轴语义：可比性闸门（F-031）--------------------------------------------
 export function jaccardOf(a, b) {
   if (!a.length || !b.length) return 0;
@@ -353,6 +365,21 @@ export function isDemoted(node) { return (node?._rel?.level ?? 0) >= 2; }
 export const isActionOnlyNode = (n) => Boolean(n?._action) && factsOf(n).length === 0 && childrenOf(n).length === 0;
 export const arrayChildEntries = (node) => childrenOf(node).filter((c) => c.key.startsWith('_items[') || c.key.startsWith('_lines['));
 export const namedChildEntries = (node) => childrenOf(node).filter((c) => !c.key.startsWith('_items[') && !c.key.startsWith('_lines['));
+
+// ---- region pinning (round 58 · L-2) ---------------------------------------
+// The named-child KEY is the model's own region declaration: `header` is the site top bar,
+// `footer` the site footer (the same key the headerBar decision reads). Everything else keeps
+// document order, but the two site regions are PINNED: header renders above everything
+// (including the page's own h1 — U-19), footer renders last (U-22) — element-level actions
+// (mi15「用户评价」) stay in the content region, above the footer. One decision, three targets;
+// a renderer only chooses the slot for each declared region, it never re-derives the rank.
+export const regionOf = (key) => (key === 'header' || key === 'footer' ? key : 'body');
+export function orderedNamedChildren(entries) {
+  const rank = { header: 0, body: 1, footer: 2 };
+  return entries
+    .map((e) => ({ ...e, region: regionOf(e.key) }))
+    .sort((a, b) => rank[a.region] - rank[b.region]);   // Array#sort is stable ⇒ document order kept within a rank
+}
 // An entity's own nested collections (`_items`/`_lines` arrays) belong inside its column;
 // each run's form is the shared `selectForm` (F-031-§3.1) — never paired by index across entities.
 export function nestedCollections(it) {
@@ -732,11 +759,42 @@ export function nodePlan(node, ctx = {}) {
   // 区域是站点顶栏（导航项横排，无目标账号入口 pill 靠右）。判定只认区域名，不认站名；
   // HTML 用 .header-bar 画出横栏，文本/MD 目标保持逐行（同决策、目标各自形态）。
   const headerBar = region === 'header';
+  // ---- width tier (round 58 · L-1): page-level sections declare ONE width, no per-page cases.
+  // True page sections: every depth-1 node that is not a card/table cell (ctx.grid) — including
+  // root-level `_lines` members (airbnb listing sections, taobao marketing rows, apple banner
+  // units), which ARE page sections. bleed is ONLY a declared banner; a section whose collection
+  // declares columns is wide (the grid needs the container); prose = an all-prose reading
+  // section (74ch, centered); wide = card/feed/table sections; narrow = default content.
+  // This kills same-page width jumps (U-23/U-25/U-26/U-27).
+  const widthTier = (() => {
+    if (ctx.grid || depth !== 1) return null;
+    if (headerBar || region === 'footer') return 'wide';
+    if (banner) return 'bleed';
+    if (items.groups.some((g) => g.cols)) return 'wide';
+    const forms = items.groups.map((g) => g.form);
+    if (forms.length && forms.every((f) => f === 'prose')) return 'prose';
+    if (forms.some((f) => ['cards', 'product-cards', 'image-strip', 'table', 'compare-table'].includes(f))) return 'wide';
+    return 'narrow';
+  })();
+  // ---- column decision (round 58 · L-4): wide-layer card/feed sets declare an auto-fill grid
+  // (2–4 columns at desktop width) when the members are PREDOMINANTLY image cards of card-sized
+  // text (≥75% carry their own image; taobao 猜你喜欢 / bilibili 视频卡 / apple 媒体卡 — U-26/U-25).
+  // The odd group-row member (intent + nested set, no image) stays a full-width text card inside
+  // the grid. Reading sets (long text, sspai 正文) carry no images ⇒ stay single-column. The
+  // declaration is shared; a linear target simply ignores it.
+  for (const g of items.groups) {
+    const imgShare = g.items.filter((it) => Boolean(it._image)).length;
+    g.cols = ['stack', 'cards', 'product-cards'].includes(g.form) && g.items.length >= 3
+      && imgShare / g.items.length >= 0.75
+      && g.items.every((it) => textLenOf(it) <= 160) ? 'auto' : 0;
+  }
+  // ---- media-first (round 58 · L-6) is a GROUP decision: mediaFirstOf(items, form) below.
   return {
     ok: true, visible: true, scope, headingKey, headingValue: headingKey ? node[headingKey] : null,
     headingText, demoted: isDemoted(node), primary, facts: { ...facts, trailing }, action, hasAction: Boolean(node._action),
     titleIsControl, choice, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
-    items, namedChildren, emptyState, titleConsumed, fieldSubmit, banner, headerBar,
+    items, namedChildren: orderedNamedChildren(namedChildEntries(node)), emptyState, titleConsumed, fieldSubmit, banner, headerBar,
+    widthTier,
   };
 }
 

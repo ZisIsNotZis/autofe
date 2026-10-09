@@ -260,7 +260,17 @@ for (const l of gQS.out.split('\n')) if (l.startsWith('[强调保真]')) console
 const gAF = gate('node m1/eval/affordance-selftest.mjs');
 console.log(`[pipeline] 可供性自测(轮57 · 第16道): ${gAF.ok ? '通过' : '失败'}`);
 if (!gAF.ok) console.log(gAF.out);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok;
+// 17th self-test suite (round 58): LAYOUT SYSTEM. The page grid (one centered ≈1280px container;
+// declared width tiers prose/narrow/wide/bleed), region pinning (header group above the page h1,
+// footer group last, element-level actions above the footer), the image policy (max-width:100%,
+// contained+centered content bands, full-bleed only for a declared hero/banner) and the column
+// decision (auto-fill grids on wide-layer card/feed sets, media-first cards, single-column
+// reading sets) are presentation rules fidelity is blind to (U-18…U-27). The gate pins fixtures
+// AND all rendered exemplar pages and is falsifiable (four negative injections).
+const gLO = gate('node m1/eval/layout-selftest.mjs');
+console.log(`[pipeline] 布局系统自测(轮58 · 第17道): ${gLO.ok ? '通过' : '失败'}`);
+if (!gLO.ok) console.log(gLO.out);
+const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok || !gLO.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';

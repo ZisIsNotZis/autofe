@@ -71,7 +71,7 @@ const headerModel = {
   ] },
 };
 const headerHtml = render(headerModel, { site: 'mi-com' });
-check('header 区域 ⇒ .header-bar', /class="node depth-1 header-bar"/.test(headerHtml), headerHtml.match(/class="node[^"]*"/)?.[0]);
+check('header 区域 ⇒ .header-bar', /class="node depth-1[^\"]*header-bar/.test(headerHtml), headerHtml.match(/class="node[^"]*"/)?.[0]);   // 轮58起 article 另可带宽度层类（w-wide 等）
 check('header 内导航项横排（无列表标记）', /\.header-bar \.linklist li\{margin:0;list-style:none\}/.test(cssOf(headerHtml)));
 check('账号入口 pill 靠右', /\.header-bar>\.block:last-of-type>\.node\{margin-left:auto\}/.test(cssOf(headerHtml)));
 check('非 header 区域不加横栏', !/header-bar/.test(render(listModel, {}).split('</style>')[1]));
@@ -88,7 +88,7 @@ const bandModel = { _title: { text: 'B' }, _lines: [
 ] };
 const bandHtml = render(bandModel, {});
 check('banner 单元图走 hero 槽满幅（figure.strip）', /<figure class="strip"><img src="https:\/\/x\.example\/hero\.jpg"/.test(bandHtml));
-check('banner 单元带 .banner 类', /class="node depth-1 banner"/.test(bandHtml));
+check('banner 单元带 .banner 类', /class="node depth-1[^\"]*banner/.test(bandHtml));   // 轮58起 article 另可带 w-bleed 宽度层类
 const gridModel = { _title: { text: 'G' }, tiles: { _items: [
   structuredClone(bannerUnit),
   { ...structuredClone(bannerUnit), _title: { text: 'Watch' }, _action: { verb: 'open', label: 'Learn more', to: 'https://x.example/watch' } },

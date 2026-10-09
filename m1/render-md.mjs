@@ -297,13 +297,21 @@ function renderNode(node, chain, isHero, ctx, depth) {
   }
 
   // named child groups (non-array children)
+  // 轮 58（L-2）区域钉扎：header 组永远最顶（页面标题之上），footer 组永远最后；元素级动作
+  // 留在内容区、footer 之前。排序决策在共享轴层（orderedNamedChildren → entry.region），
+  // Markdown 目标只选槽位：header 块在标题之前输出，footer 块在动作行之后输出。
+  const headBlocks = [], footBlocks = [];
   for (const c of plan.namedChildren) {
     if (consumed.has(c.node)) continue;
     const inner = renderNode(c.node, [...chain, node], false, ctx, depth + 1);
-    if (inner) blocks.push(inner);
+    if (!inner) continue;
+    if (c.region === 'header') { headBlocks.push(inner); continue; }
+    if (c.region === 'footer') { footBlocks.push(inner); continue; }
+    blocks.push(inner);
   }
 
   const parts = [];
+  for (const b of headBlocks) if (b && b.trim()) parts.push(b);   // header 在页面标题之上（L-2）
   if (titleText && !titleIsControl) parts.push(`${'#'.repeat(Math.min(depth + 1, 6))} ${titleText}`);
   if (plan.facts.hero) { const hero = imageMd(plan.facts.hero); if (hero) parts.push(hero); }
   for (const b of blocks) if (b && b.trim()) parts.push(b);
@@ -311,6 +319,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
   // the same element are still the SAME row, never dropped (bilibili video channel block).
   if (titleIsControl) parts.push(controlOf(plan.action) || `[${titleText}]`);
   if (actionRow) parts.push(actionRow);
+  for (const b of footBlocks) if (b && b.trim()) parts.push(b);   // footer 永远最后（L-2）
   const out = parts.join('\n\n');
   if (!out.trim()) return '';
   // demotion ≥2: a demoted branch is a reference aside -> blockquote (Markdown's aside)

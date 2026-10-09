@@ -283,3 +283,18 @@
 ## 流程改正（再犯即违例）
 1. **父代理验收必须先看整页截图（full-page, 真实比例），再允许自己裁局部看细节** —— 局部图只用于确认已发现的疑点。
 2. 用户没点名的页**不默认无辜**：整页扫一遍是标准动作。
+
+### 轮 58 状态回填（系统规则落地，非逐页特例；证据 `.scratch/58-grid/report.md` + before/after 整页截图）
+
+| U | 状态 | 修法（规则归属） | 证据 |
+|---|---|---|---|
+| U-18 mi15 巨大空白/排版不对 | **已修（系统性）** | L-1 页面栅格：唯一容器 main（居中 1280px，对称 padding）；section 宽度分层由 nodePlan 按 section 种类声明（prose 74ch/窄 880px 居中、宽=卡片·Feed 全宽、满幅=仅声明 banner）；根直属事实列/标题居中 | before 段①窄列贴左+右侧大片空白；after 事实列居中（.depth-0>.fact margin auto） |
+| U-19 header 在商品名下 | **已修** | L-2 区域钉扎（axis.mjs `orderedNamedChildren`）：header 组永远最顶（页面主标题之上）、footer 组永远最后；三目标同判 | after：导航横栏在 h1 之上；门禁17 断言（72 页范例 + 负例注入） |
+| U-20 mi15 图片全部偏左 | **已修** | L-3 图片策略：全局 `img{max-width:100%;margin-inline:auto}`（居中、压容器、不违边距）；满幅仅限声明 hero/banner（`.strip`），内容图带走 `.band`（居中、不超容器） | after：画廊长图带全部居中约束；门禁17 strip 白名单断言 |
+| U-21 划线价图特别宽 | **已修** | 同 L-3：`.band .strip{max-width:100%}` 把超宽内容图压到容器宽（不放大 F-082 保持） | after：该图与其余图带同宽；保真 42/42 1.00 |
+| U-22 footer 形态/用户评价在 footer 下 | **已修** | L-5：`.group.g-footer` 反色（深底浅字，声明式）；用户评价（元素级动作）由根 actionRow 渲染在内容区末尾、footer 之前（L-2 钉扎 + 渲染器 footer 槽） | after：用户评价 pill 在深色 footer 上方；门禁17 断言“商品级动作在 footer 之前” |
+| U-23 sspai 标题/首图/整栏偏左 + 宽度跳变 | **已修** | L-1：h1 居中（640px 列，ch 随 2em 放大故用 px）；正文 prose 74ch 居中；section 分层同宽不跳；首图=声明 hero 满幅（F-031-§7 既有判定） | after：整栏对称居中；更多/预告/精选同列宽；质心探针 x=607-614（中线 640） |
+| U-24 airbnb 地面空/马赛克不对齐/整页空旷 | **已修（对齐）** | 马赛克瓷砖 aspect-ratio 正方形 + 图 contain 居中（不放大不裁切），1大+4小 对齐成格；section 居中（L-1 覆盖根 `_lines` 成员） | after：瓷砖无参差缝隙；质心 x=614 |
+| U-25 apple 2K 空旷/宽度不一/Duo 图上方空白 | **部分已修** | ①容器 1100→1280（居中）；②宽度分层消跳变（banner 满幅、Feed 宽格、内容窄列）；③**Duo 图上方空白=抓取的 hero 图自身上半幅留白**（in-image，像素实测：图带顶部 248px 均匀灰底）——不可裁切不编造（F-031-§7.1），已量明并声明 | 质心 x=534（左偏主因=源式左对齐标题）；像素扫描记录在 report.md §3 |
+| U-26 taobao PC 单列/列表窄空 | **已修** | L-4 列数决策（axis `g.cols`）：宽层卡片/Feed 集合（≥75% 成员带图、卡片尺寸文本）声明 auto-fill 网格（240px 起，2–4 列）；淘宝猜你喜欢/类目/频道/百亿补贴行全部多列居中 | after：整页 12535px→4626px，猜你喜欢 4 列产品格；门禁17 断言 cols-auto |
+| U-27 ipad-air 图顶左缘/《第五人格》图文分离/图在题下 | **已修** | L-3：hero 图带内居中（不再贴视口左缘）；L-6 条目内聚（axis `mediaFirstOf`）：组级声明媒体优先 ⇒ flex order 图在题上方，图文同 article 永不拆开（sspai 长文条目保持题在前） | after：iPad hero 居中；bilibili 视频卡图在题上、图题同卡；门禁17 media-first 断言 |

@@ -28,7 +28,7 @@ import {
   qualifierPlacement, quantityLabel,
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
   nodePlan, itemActionPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
-  rankedSequence, hasValue, tableRowLabel,
+  rankedSequence, hasValue, tableRowLabel, mediaFirstOf,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -53,14 +53,20 @@ function imgHtml(src, alt) {
 
 // An `_image` fact value is either an image value or a `list` of them (the extractor
 // collapses several images of one storyline into a list value). Both shapes are images.
+// 轮 58（L-3）三种图带模式，由轴层声明选择：
+//   'bleed' — 仅限声明的 hero/banner（facts.hero 的两条来路：深度 0 主图、banner 成员），满幅；
+//   'band'  — 内容图带（image-strip 形态），包在 .band 里：绝不满幅、居中、不超容器宽
+//             （U-20/U-21/U-27）。
+//   'bare'  — 照片墙（gallery-mosaic）内部用，瓷砖尺寸由 mosaic 网格约束。
 function imageEntries(v) {
   if (!v || typeof v !== 'object') return [];
   if (Array.isArray(v.list)) return v.list.filter((e) => e && typeof e === 'object' && 'image' in e);
   return 'image' in v ? [v] : [];
 }
-const imageFigures = (v) => imageEntries(v)
+const imageFigures = (v, mode = 'band') => imageEntries(v)
   .map((e) => imgHtml(e.image, e.alt)).filter(Boolean)
-  .map((img) => `<figure class="strip">${img}</figure>`).join('');
+  .map((img) => `<figure class="strip${mode === 'tile' ? ' tile' : ''}">${img}</figure>`)
+  .map((fig) => (mode === 'band' ? `<div class="band">${fig}</div>` : fig)).join('');
 
 function fmt(v) {
   if (v === null || v === undefined) return '';
@@ -147,11 +153,13 @@ function renderSeq(items, chain, ctx) {
   return lis ? `<ol class="seq">${lis}</ol>` : '';
 }
 function renderImageStrip(items) {
-  const figures = items.map((it) => imageFigures(it._image)).join('');
   // 小图集（3–5 张）是照片墙：按源站构图排成「1 大 + N 小」网格（轮 56，airbnb U-07）。
-  // 6 张以上的长图带（mi 长图详情 / 首页满幅 band）保持满幅纵排——网格会把源站的满幅构图缩小。
-  if (items.length >= 3 && items.length <= 5) return `<div class="gallery-mosaic">${figures}</div>`;
-  return figures;
+  // 6 张以上的长图带（mi 长图详情 / 首页满幅 band）是内容图带（.band）：不满幅、居中、压到容器宽。
+  if (items.length >= 3 && items.length <= 5) {
+    const tiles = items.map((it) => imageFigures(it._image, 'tile')).join('');
+    return `<div class="gallery-mosaic">${tiles}</div>`;
+  }
+  return items.map((it) => imageFigures(it._image, 'band')).join('');
 }
 function factHtmlInline(v) {
   const h = factHtml(v);
@@ -329,29 +337,35 @@ function renderStream(items) {
   return cells ? `<div class="stream">${cells}</div>` : '';
 }
 
-function renderForm(form, items, chain, hide, ctx, depth, node, order) {
+function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0) {
+  // 集合成员是卡片语境（轮 58 · L-4/L-6：列数与“图在题上”是轴层声明，这里只落类名/传参）
+  const mctx = { ...ctx, member: true };
   if (order === 'stream' && items.every(isBareLabel)) return renderStream(items);
   if (form === 'compare-table') return renderCompareTable(items, chain, hide, ctx);
   if (form === 'chips') return renderChips(items, chain, ctx);
   if (form === 'list') return renderList(items, chain, ctx);
   if (form === 'seq') return renderSeq(items, chain, ctx);
   if (form === 'controls') return renderControls(items, chain, ctx);
-  if (form === 'stack') return renderStack(items, chain, hide, ctx, depth);
+  if (form === 'stack') return renderStack(items, chain, hide, mctx, depth, cols, mediaFirstOf(items, form));
   if (form === 'image-strip') return renderImageStrip(items);
   if (form === 'prose') return renderProse(items);
   if (form === 'deflist') return renderDeflist(items, chain, ctx, order);
   if (form === 'accordion') return renderAccordion(items, chain, hide, ctx);
   if (form === 'table') return renderRun(items, chain, hide, ctx);
   const cls = form === 'product-cards' ? 'cards product-cards' : 'cards';
+  const mf = mediaFirstOf(items, form);
   const cards = items.map((it) => {
-    const inner = renderNode(it, [...chain, node], false, hide, { ...ctx, grid: true }, depth + 1);
+    const inner = renderNode(it, [...chain, node], false, hide, { ...mctx, grid: true }, depth + 1);
     return inner ? `<div class="item">${inner}</div>` : '';
   }).join('');
-  return cards ? `<div class="${cls}">${cards}</div>` : '';
+  // cols（轴层声明）落在网格容器上：.cards 本身就是 auto-fill 网格，标记使声明可见、可断言。
+  return cards ? `<div class="${cls}${cols ? ' cols-auto' : ''}${mf ? ' media-first' : ''}">${cards}</div>` : '';
 }
 
-// 序列：不可比的区块各自成立，各带标题；无标题块用区域分隔（F-031-§1/§5）
-function renderStack(items, chain, hide, ctx, depth) {
+// 序列：不可比的区块各自成立，各带标题；无标题块用区域分隔（F-031-§1/§5）。
+// 轮 58（L-4）：轴层声明了列数（cols='auto'，成员皆带图的卡片/Feed 集合）时，堆叠包成
+// auto-fill 网格（桌面 2–4 列）；阅读型堆叠保持单列。包裹层不改变任何事实文本。
+function renderStack(items, chain, hide, ctx, depth, cols = 0, mediaFirst = false) {
   let out = '';
   let prevHadTitle = false;
   for (const it of items) {
@@ -362,7 +376,7 @@ function renderStack(items, chain, hide, ctx, depth) {
     out += `<section class="block">${inner}</section>`;
     prevHadTitle = hasTitle;
   }
-  return out;
+  return out ? `<div class="stack${cols ? ' cols-auto' : ''}${mediaFirst ? ' media-first' : ''}">${out}</div>` : '';
 }
 // 控件条：_action-only 成员是控件，不是内容（F-031-§4）；动作 label 是源站自己的控件文字（F-022），
 // 与条目名不是同一事实时另出一枚控件；同一事实的两种写法（一个包含另一个）只渲染信息更全的一处。
@@ -508,6 +522,10 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   const done = (out) => { if (headingAdded) ctx.headings.delete(headingTextValue); return out; };
   const cls = ['node', `depth-${Math.min(depth, 4)}`];
   if (isHero) cls.push('hero-branch');
+  // 轮 58（L-1）：区块宽度分层是轴层声明（plan.widthTier），这里只落类名：prose 74ch 居中 /
+  // narrow 默认内容居中 / wide 卡片与 Feed 区（容器全宽）/ bleed 仅限声明的 banner。同页各
+  // section 宽度从此各归其层，不再无规则跳变（U-23/U-25/U-27）。
+  if (plan.widthTier) cls.push(`w-${plan.widthTier}`);
   // 轮 57 站点头区横栏：决策在 nodePlan（headerBar），这里只落类名，形状在 CSS（.header-bar）。
   if (plan.headerBar) cls.push('header-bar');
   if (plan.banner) cls.push('banner');
@@ -536,7 +554,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   }
   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
   for (const f of plan.facts.fields) bodyLead += factHtml(f.value);
-  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero);   // image-dominant main visual: edge-to-edge (F-031-§7)
+  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero, 'bleed');   // declared hero/banner only: edge-to-edge (F-031-§7); everything else stays in-container (round 58, L-3)
 
   let body = '';
   let bodyField = '';   // 字段+提交的成组区（plan.fieldSubmit）
@@ -549,7 +567,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   // every sibling block item renders in ONE form; nothing renders twice (T-103)
   // 轴分组（compare 实体/连续正文段/普通集合）在 axis.mjs seqGroupsOf；D2/P3 同理。
   const { groups, order } = plan.items;
-  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node, order);
+  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node, order, g.cols);
   for (const g of groups) g.items.forEach((it) => itemsConsumed.add(it));
   // order:time shows a time axis only over a vertical sequence — never a stray rail across a grid (F-031-§1)
   if (order === 'time' && groups.length && groups.every((g) => g.form === 'deflist' || g.form === 'seq')) cls.push('timeline');
@@ -560,16 +578,20 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   // and the primary CTA come from the shared `plan.actionRow` (axis.mjs) for every target.
 
   let prevGroupHadTitle = false;
+  // 轮 58（L-2）区域钉扎：header 组永远最顶（页面标题之上），footer 组永远最后；商品级动作
+  // （如 mi15「用户评价」，根节点 actionRow）留在内容区、footer 之前。区域名是模型自己的
+  // 声明，钉扎排序决策在 axis.mjs（orderedNamedChildren → entry.region），这里只选槽位。
+  let headerHtml = '';
+  let footHtml = '';
   for (const c of plan.namedChildren) {
     if (itemsConsumed.has(c.node)) continue;
     const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1, c.key);
     if (!h) continue;
-    // 兄弟区块：无标题块紧随有标题块 ⇒ 区域分隔，读者不把两段读成一串（F-031-§5）
-    const hasTitle = Boolean(c.node._title || c.node._name || c.node._text);
-    // 兄弟区块：不再插机械分割线（U-15）。分割线只在有分组语义处出现；节点命名子件是同一元素的
-    // 子部分，用线分隔是节点边界噪声。字段+提交已经在 fieldbar 里成组（U-02）。
-    body += `<section class="group g-${esc(c.key)}">${h}</section>`;
-    prevGroupHadTitle = hasTitle;
+    const sect = `<section class="group g-${esc(c.key)}">${h}</section>`;
+    if (c.region === 'header') headerHtml += sect;
+    else if (c.region === 'footer') footHtml += sect;
+    else body += sect;
+    prevGroupHadTitle = Boolean(c.node._title || c.node._name || c.node._text);
   }
 
   // a control whose only content is its own title renders as a control bar, not a promo card (F-031-§4)
@@ -600,8 +622,11 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   // 字段及其提交相邻成组（U-02）：提交紧跟字段，包成同一个 fieldbar；元素其余内容在组后。
   if (plan.fieldSubmit && plan.action) bodyField = `<div class="fieldbar">${bodyField}${renderAction(plan.action)}</div>`;
   // nothing to say: emit nothing at all (never an empty block)
-  if (!head && !bodyLead && !heroHtml && !heroImage && !bodyField && !body && !action) return done('');
-  const article = `<article${anchorId} class="${cls.join(' ')}">${head}${heroImage}${bodyLead}${heroHtml}${bodyField}${body}${bodyFoot}${action}</article>`;
+  if (!head && !bodyLead && !heroHtml && !heroImage && !bodyField && !body && !action && !headerHtml && !footHtml) return done('');
+  // 轮 58（L-6）条目内聚：图与标题永不分家（同一 article 内）；媒体优先成员（视频/卡片条目，
+  // 轴层 mediaFirst ⇒ .media-first）由呈现层把图排到题上方（flex order，不拆 DOM）。footer 组
+  // 总是渲染在一切之后（L-2 钉扎）。
+  const article = `<article${anchorId} class="${cls.join(' ')}">${headerHtml}${head}${heroImage}${bodyLead}${heroHtml}${bodyField}${body}${bodyFoot}${action}${footHtml}</article>`;
   return done(demoted ? `<aside class="zone">${article}</aside>` : article);
 }
 
@@ -656,7 +681,18 @@ th.cmp-col>a{color:var(--accent);text-decoration:none}
 .banner>.fact{max-width:none;text-align:center}
 .banner>.controls{justify-content:center}
 .role-label{color:#68788a;font-size:.9em;margin-right:2px}
-main{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+/* 轮 58 · L-1 页面栅格：唯一页面容器 = main（居中、≈1280px、左右对称 padding）。
+   section 宽度分层且由 nodePlan 按 section 种类声明（plan.widthTier，规则在 axis.mjs）：
+   prose=阅读文本 74ch 居中 / narrow=默认内容 880px 居中 / wide=卡片与 Feed 网格（容器全宽）/
+   bleed=仅限声明的 banner（满幅带，内文仍守 padding）。同页各 section 宽度各归其层，
+   不再无规则跳变（U-23/U-25/U-26/U-27）。 */
+main{max-width:1280px;margin:0 auto;padding:32px 24px 0}
+/* 根节点直属内容（页面标题、事实列、搜索栏）归入栅格：居中、对称，不再整栏偏左（U-18/U-23）。
+   h1 的列宽用 px（ch 随元素自身 2em 字号放大，74ch 会撑满容器、居中失效）。 */
+.depth-0>.title{max-width:640px;margin-inline:auto}
+.depth-0>.fact{margin-inline:auto}
+.depth-0>.hero{margin-inline:auto;text-align:center}
+.depth-0>.fieldbar{justify-content:center}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
 header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
 h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
@@ -689,12 +725,17 @@ article{margin:12px 0}
 .promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
 .meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
+.prose{max-width:74ch;margin-inline:auto}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
-/* F-031-§7 图像主导页：满幅图带——图带是页面的框，展开到视口宽（左右不留白边）。
-   卡片/表格/推广盒里的图不是页框，由下面一条覆盖回容器宽（轮 34）。 */
+/* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
+   轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
+   内容图带（.band 内的 .strip，image-strip 形态）绝不满幅：居中、压到容器宽（U-20/U-21）。 */
 .strip{margin:0;padding:0;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
-.strip img{width:auto;max-width:100%;height:auto;display:block;border-radius:0}
-.cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip{width:auto;margin-left:0;margin-right:0}
+.strip img{width:auto;max-width:100%;height:auto;display:block;margin-inline:auto;border-radius:0}
+.band{margin:14px 0}
+.band .strip{width:auto;max-width:100%;margin:0 auto}
+.band .strip img{border-radius:10px}
+.cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip,.band .strip{width:auto;margin-left:auto;margin-right:auto}
 .cards .strip img{border-radius:8px}
 /* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
 .img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
@@ -790,11 +831,37 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 /* 字段+提交成组（U-02）：输入与它的提交按钮同一条栏，其余内容在栏后。 */
 .fieldbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
 .fieldbar input[type=text],.fieldbar input[type=password]{min-width:220px}
-/* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小（右侧 2×2），像源站构图。 */
-.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0;align-items:start}
-.gallery-mosaic .strip{width:auto;margin:0}
-.gallery-mosaic .strip img{border-radius:8px}
+/* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小，像源站构图。
+   轮 58（U-24）：做马赛克就要对齐——每块瓷砖固定正方形（aspect-ratio），图在瓷砖内等比
+   contain 居中（绝不放大、不裁内容），大图缩到瓷砖、瓷砖间不再有参差缝隙。 */
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0;align-items:stretch}
+.gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
 .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
+/* 轮 58（L-1）宽度分层（必须晚于 .block>.node，层级胜出层叠）：prose=阅读 74ch 居中 /
+narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ bleed=仅声明的 banner（满幅）。 */
+.node.w-prose{max-width:74ch;margin-inline:auto}
+.node.w-narrow{max-width:880px;margin-inline:auto}
+.node.w-wide{max-width:none}
+.node.w-bleed{max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 24px}
+/* 轮 58（L-6）媒体优先卡片：图与标题永不分家（同一 article）；条目图在题上方（视频/卡片站
+   惯例）。轴层 mediaFirstOf 声明，这里用 flex order 画 —— 不拆 DOM，长文条目不受影响。 */
+.media-first .node{display:flex;flex-direction:column}
+.media-first .node>.fact:has(.val img),.media-first .node>.band{order:-1}
+/* 轮 58（L-4）宽层卡片/Feed 集合：轴层声明 cols='auto' ⇒ auto-fill 网格（桌面 2–4 列）。
+   阅读型堆叠（长文成员）保持单列。 */
+.stack.cols-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;align-items:start;margin:14px 0}
+.stack.cols-auto .block{margin:0}
+.stack.cols-auto hr.region{display:none}
+/* 轮 58（L-5）footer 反色（惯例）：模型声明的 footer 区域（.g-footer）深底浅字，
+   负 margin 铺满容器内宽、底边贴住容器。无 footer 区域的页自然没有这条带。 */
+.group.g-footer{background:#16202b;color:#c7d3e0;margin:48px -24px 0;padding:24px 24px 28px}
+.group.g-footer .title,.group.g-footer h1,.group.g-footer h2,.group.g-footer h3,.group.g-footer h4{color:#eef4fa}
+.group.g-footer a{color:#dce6f1}
+.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:#aebccc}
+.group.g-footer .ctl{border-color:#41546a;color:#c7d3e0;background:transparent}
+.group.g-footer a.ctl:hover{background:#223244}
+.group.g-footer .defrow{border-bottom-color:#253444}
 </style></head>
 <body><main>${brand ? `<header class="site"><span class="brand">${brand}</span></header>` : ''}${html}</main></body></html>
 `;
