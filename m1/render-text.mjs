@@ -289,13 +289,19 @@ function renderNode(node, chain, isHero, ctx, depth) {
   for (const n of plan.rowConsumed) consumed.add(n);
 
   // facts (visible / hidden slots decided in the plan)
+  // 分期时长并入承载行（U-28，轴层 installmentCarrierOf 已归属）：依附本事实的时长接在同一
+  // 行尾，独立的 installment 条目跳过 —— 与 HTML 同一决策、各自的行内形态。
+  const attachedTail = (f) => plan.facts.list
+    .filter((d) => d.category === 'installment' && d.attachTo === f)
+    .map((d) => ` ${modelScalar(d.value)}`).join('');
   const factLines = [];
   for (const f of plan.facts.list) {
+    if (f.category === 'installment') continue;   // 并入承载行（U-28），不单独成行
     if (f.category === 'meta' || f.category === 'unit') { factLines.push(roleFact(f)); continue; }
     if (f.category === 'quote') { factLines.push(`> 「${modelScalar(f.value)}」`); continue; }
-    if (f.category === 'was') { factLines.push(`(原价) ${fmt(f.value)}`); continue; }
+    if (f.category === 'was') { factLines.push(`(原价) ${fmt(f.value)}${attachedTail(f)}`); continue; }
     const lab = roleLabel(f.key);
-    factLines.push(lab ? `${lab}: ${modelScalar(f.value)}` : roleFact(f));
+    factLines.push((lab ? `${lab}: ${modelScalar(f.value)}` : roleFact(f)) + attachedTail(f));
   }
   for (const f of plan.facts.fields) factLines.push(`${f.label}${f.label ? ': ' : ''}${fmt(f.value)}`);
   if (factLines.length) blocks.push(factLines.map((t) => line(depth, t)).join('\n'));

@@ -661,6 +661,23 @@ export function refRendersAsFact(node) {
   return slotRoleOf(node, '_ref') !== 'pointer';
 }
 
+// ---- installment duration joins its price line (round 59 · U-28) -----------
+// 分期时长不是独立事实块，而是价格/分期行的一部分（U-28）：`{num,unit:'mo.'/'期'}` 形态的
+// `_duration` 一旦与所属价格行分家，就漂成孤立 meta 块（ipad-air 的 `12 mo.` 曾被画到容器
+// 左界之外）。归属是**同节点内的分组决策**（nodePlan，三目标共享）：节点内存在价格行——可见
+// 的价格事实，或提到月供/分期的文本事实——时长就并入该行（category:'installment'，attachTo
+// 指向承载事实；各目标把它画进同一行，不再单独成块）。视频时长 `{text:'03:33'}`（无 num/unit）
+// 与无价格行的时长不在此列，保持 meta 原状。纯呈现分组：模型语义零改动。
+const DURATION_UNIT = /^(?:mo\.?|months?|期|月)$/i;
+const INSTALLMENT_MENTION = /(?:\/mo\.|\/月|月供|每月|分期|[Ll]ease|[Ii]nstallment)/;
+export function installmentCarrierOf(list, f) {
+  if (f.key !== '_duration') return null;
+  const v = f.value;
+  if (!v || typeof v !== 'object' || Array.isArray(v) || !('num' in v) || !DURATION_UNIT.test(String(v.unit ?? ''))) return null;
+  return list.find((c) => c !== f && (c.key === '_price' || c.key === '_amount'
+    || (['_summary', '_text', '_detail'].includes(c.key) && INSTALLMENT_MENTION.test(String(c.value?.text ?? ''))))) ?? null;
+}
+
 // The whole node plan. `ctx`: { chain, values, hidden (Set of already-hidden fact keys),
 // depth, degradations }. Returns `{ ok:false, visible:false }` for a hidden/invalid node.
 export function nodePlan(node, ctx = {}) {
@@ -705,6 +722,13 @@ export function nodePlan(node, ctx = {}) {
     facts.list.push({ ...f, category: 'body' });
   }
   for (const [k, v] of Object.entries(node._fields ?? {})) facts.fields.push({ key: k, value: v, label: FIELDS[k]?.label ?? '' });
+  // 分期时长并入其价格行（U-28，上方 installmentCarrierOf）：在事实清单成形后做一次归属，
+  // 承载事实与时长保持各自的对象身份（渲染器据此把时长画进承载行）。
+  for (const f of facts.list) {
+    if (f.category !== 'meta') continue;
+    const carrier = installmentCarrierOf(facts.list, f);
+    if (carrier) { f.category = 'installment'; f.attachTo = carrier; }
+  }
 
   const ap = actionPlan(node, chain, values);
   const headingText = headingKey ? (node[headingKey]?.text ?? '') : '';

@@ -102,9 +102,42 @@ check('阅读集合保持单列（无 cols-auto 落到 notes）', (() => {
   return !/class="stack[^"]*cols-auto/.test(page.slice(stackStart, notesAt));
 })());
 
+// ---- e) 容器水平界内（轮 59 · U-28）-------------------------------------------
+// 口径（静态 HTML 近似，无浏览器布局）：容器是 <main>（居中 max-width:1280px + 24px padding）。
+// ① 结构：body 的**顶层可见节点**必须全部位于 <main> 之内 —— 容器外的顶层可见节点必然越出
+//    容器左右界（U-28 的 `12 mo.` 孤块正是这一形态）；script/style/容器标签本身不算可见内容。
+// ② 逃逸声明：margin 的水平分量为负且幅度超过容差（26px = 容器 padding 24px + 2px）⇒ 内容被
+//    推出容器界。满幅 hero 的 100vw 靠 ≤24px 的负边距补偿容器 padding（.strip margin:48px -24px），
+//    是声明过的 bleed 形态（c) 组已单独管辖裸 .strip 的位置），在容差内不算违规；
+//    -999px 级别的逃逸必失败。
+const OOB_TOLERANCE_PX = 26;
+const hmarginEscape = (decl) => {
+  const m = /margin(?:-(?:left|right|inline))?\s*:\s*([^;}"']+)/.exec(decl);
+  if (!m) return false;
+  const vals = m[1].trim().split(/\s+/).map(parseFloat);
+  const hor = /margin-(?:left|right|inline)/.test(m[0]) ? [vals[0]]
+    : vals.length === 1 ? [vals[0]] : [vals[1], vals[3]].filter((x) => !Number.isNaN(x));
+  return hor.some((x) => x < -OOB_TOLERANCE_PX);
+};
+const anyHmarginEscape = (text) => [...text.matchAll(/margin(?:-(?:left|right|inline))?\s*:\s*([^;}"']+)/g)].some((m) => hmarginEscape(m[0]));
+// 一处渲染产物的越界违规清单（口径如上）：容器外顶层可见节点 + 内联负水平边距。
+const oobViolations = (html) => {
+  const b = bodyOf(html);
+  const out = [];
+  const m0 = b.indexOf('<main'), m1 = b.lastIndexOf('</main>');
+  const outside = m0 >= 0 && m1 > m0 ? b.slice(0, m0) + b.slice(m1 + 7) : b;   // '</main>'.length === 7
+  for (const t of outside.matchAll(/<([a-zA-Z][a-zA-Z0-9-]*)\b/g)) {
+    if (['body', 'html', 'script', 'style'].includes(t[1])) continue;
+    out.push(`top-level <${t[1]}> 在容器外`);
+  }
+  for (const s of b.matchAll(/style="([^"]*)"/g)) if (hmarginEscape(s[1])) out.push(`内联 ${s[1]}`);
+  return out;
+};
+check(`样式表无越界负水平边距（容差 ${OOB_TOLERANCE_PX}px，内含满幅补偿）`, !anyHmarginEscape(css));
+
 // ---- 范例页全量断言 ----------------------------------------------------------
 const exemplars = fs.readdirSync(RENDERS).filter((f) => f.endsWith('.html') && f !== 'index.html');
-let pinBad = [], footBad = [], bleedBad = [];
+let pinBad = [], footBad = [], bleedBad = [], oobBad = [];
 for (const f of exemplars) {
   const b = bodyOf(fs.readFileSync(path.join(RENDERS, f), 'utf8'));
   const gh = b.indexOf('<section class="group g-header"');
@@ -113,6 +146,8 @@ for (const f of exemplars) {
   const opens = [...b.matchAll(/<section class="group g-/g)].map((m) => m.index);
   const gf = b.indexOf('<section class="group g-footer"');
   if (gf >= 0 && opens.length && gf !== opens[opens.length - 1]) footBad.push(f);
+  const v = oobViolations(b);
+  if (v.length) oobBad.push(`${f}: ${v[0]}`);
   for (const m of b.matchAll(/<figure class="strip([^"]*)"/g)) {
     if (/\btile\b/.test(m[1])) continue;
     if (b.slice(m.index - 18, m.index) === '<div class="band">') continue;
@@ -124,6 +159,7 @@ for (const f of exemplars) {
 check(`范例页 ${exemplars.length} 页：header 组都在 h1 之前`, pinBad.length === 0, pinBad.slice(0, 3).join(', '));
 check(`范例页 ${exemplars.length} 页：footer 组都是最后一个区域组`, footBad.length === 0, footBad.slice(0, 3).join(', '));
 check(`范例页 ${exemplars.length} 页：裸满幅条带仅在声明 hero/banner`, bleedBad.length === 0, bleedBad.slice(0, 3).join(', '));
+check(`范例页 ${exemplars.length} 页：容器水平界内（顶层可见节点全在 <main> 内，无负水平边距逃逸）`, oobBad.length === 0, oobBad.slice(0, 3).join(' | '));
 const taobao = fs.existsSync(path.join(RENDERS, 'taobao-com-home.html')) ? bodyOf(fs.readFileSync(path.join(RENDERS, 'taobao-com-home.html'), 'utf8')) : '';
 check('taobao 猜你喜欢已多列（cols-auto）', taobao.includes('cols-auto'));
 const bili = fs.existsSync(path.join(RENDERS, 'bilibili-com-home.html')) ? bodyOf(fs.readFileSync(path.join(RENDERS, 'bilibili-com-home.html'), 'utf8')) : '';
@@ -152,6 +188,12 @@ check('N3 解除 .band 包裹 ⇒ 裸 strip 出现在非声明处，必须失败
 })(), '负例未构造出违规');
 const badCss = mutate(css, (s) => s.replace('margin:0 auto', 'margin:0'));
 check('N4 容器去居中 ⇒ 必须失败', !/main\{max-width:1280px;margin:0 auto;padding:32px 24px 0\}/.test(badCss), '负例未构造出违规');
+const badOobMargin = mutate(page, (s) => s.replace('<main>', '<main><div style="margin-left:-999px">孤儿块</div>'));
+check('N5 margin-left:-999px 内联逃逸 ⇒ 必须失败', oobViolations(badOobMargin).some((v) => v.includes('margin-left')), '负例未构造出违规');
+const badOobTop = mutate(page, (s) => s.replace('</main>', '</main><div>容器外顶层节点</div>'));
+check('N6 容器外顶层可见节点 ⇒ 必须失败', oobViolations(badOobTop).some((v) => v.startsWith('top-level')), '负例未构造出违规');
+const badCssOob = mutate(css, (s) => s.replace('.meta{', '.meta{margin-left:-999px;'));
+check('N7 样式表越界负水平边距 ⇒ 必须失败', anyHmarginEscape(badCssOob), '负例未构造出违规');
 
-console.log(failed ? `\n布局系统自测: 失败 ${failed} 项 — ${failMsgs.join(' | ')}` : `\n布局系统自测: 全部通过（栅格/钉扎/图片策略/列数/媒体优先 + ${exemplars.length} 页范例 + 4 负例注入）`);
+console.log(failed ? `\n布局系统自测: 失败 ${failed} 项 — ${failMsgs.join(' | ')}` : `\n布局系统自测: 全部通过（栅格/钉扎/图片策略/列数/媒体优先/容器界内 + ${exemplars.length} 页范例 + 7 负例注入）`);
 process.exit(failed ? 1 : 0);

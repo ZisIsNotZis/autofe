@@ -97,15 +97,15 @@ function fmt(v) {
   }
   return esc(JSON.stringify(v));
 }
-const factHtml = (v) => `<div class="fact"><span class="val">${fmt(v)}</span></div>`;
+const factHtml = (v, extra = '') => `<div class="fact"><span class="val">${fmt(v)}${extra}</span></div>`;
 // §9 正文链接（轮 46）：句子里的链接保持**行内**——句中的动作 label 换成一个行内 `<a>`，
 // 而不是句后的实心按钮。发生在句内的链接由 axis.inlineBodyLinkKey 判定。
-function inlineLinkFactHtml(v, action) {
+function inlineLinkFactHtml(v, action, extra = '') {
   const t = v && typeof v === 'object' && typeof v.text === 'string' ? v.text : null;
-  if (!t || !action || !action.href || !action.label || !t.includes(action.label)) return factHtml(v);
+  if (!t || !action || !action.href || !action.label || !t.includes(action.label)) return factHtml(v, extra);
   const at = t.indexOf(action.label);
   const before = t.slice(0, at), after = t.slice(at + action.label.length);
-  return `<div class="fact"><span class="val">${esc(before)}<a class="body-link" href="${esc(action.href)}">${esc(action.label)}</a>${esc(after)}</span></div>`;
+  return `<div class="fact"><span class="val">${esc(before)}<a class="body-link" href="${esc(action.href)}">${esc(action.label)}</a>${esc(after)}${extra}</span></div>`;
 }
 
 // 集合条目的动作（F-031-§4 / F-020）：条目名是内容；带 label 的动作是源站自己的控件文字，
@@ -540,16 +540,22 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   let bodyFoot = '';
   let heroImage = '';
   const metaParts = [];
+  // 分期时长并入承载行（U-28，轴层 installmentCarrierOf 已归属）：依附本事实的时长作为
+  // 行内尾注画进同一个 .fact，不再单独成块；独立的 installment 条目被跳过。
+  const attachedOf = (f) => plan.facts.list.filter((d) => d.category === 'installment' && d.attachTo === f);
+  const inlineTail = (f) => attachedOf(f)
+    .map((d) => `<span class="installment"><span class="sep">·</span> ${factHtmlInline(d.value)}</span>`).join('');
   for (const f of plan.facts.list) {
     if (plan.choice && plan.choice.kind === 'input' && f.key === '_text') continue;  // the field's default value (drawn on the input below)
+    if (f.category === 'installment') continue;                                     // 并入承载行（U-28）
     if (f.category === 'meta') { metaParts.push(roleLabeled(f, factHtmlInline(f.value))); continue; }
     let html;
     if (f.category === 'unit') html = roleLabeled(f, roleFact(f));               // 评分/评分数：带角色与单位，不留裸数字
     // 显式原价事实 ⇒ 弱化（删除线）；`list` 标记不进文案（fmt 已忽略）
-    else if (f.category === 'was') html = `<div class="fact was"><span class="val">${fmt(f.value)}</span></div>`;
+    else if (f.category === 'was') html = `<div class="fact was"><span class="val">${fmt(f.value)}${inlineTail(f)}</span></div>`;
     else if (f.category === 'quote') html = `<blockquote class="quote"><span class="val">${fmt(f.value)}</span></blockquote>`;
-    else if (plan.action && plan.action.inlineInto === f.key) html = inlineLinkFactHtml(f.value, plan.action);
-    else html = factHtml(f.value);
+    else if (plan.action && plan.action.inlineInto === f.key) html = inlineLinkFactHtml(f.value, plan.action, inlineTail(f));
+    else html = factHtml(f.value, inlineTail(f));
     if (trailingFacts.has(f)) bodyFoot += html; else bodyLead += html;
   }
   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
@@ -725,6 +731,9 @@ article{margin:12px 0}
 .promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
 .meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
+/* 并入价格行的分期时长（U-28）：与承载句同行、弱化如 meta，不再是容器外孤块 */
+.fact .installment{color:#5b6a78;font-size:.9em}
+.fact .installment .sep{color:#c2ccd6}
 .prose{max-width:74ch;margin-inline:auto}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
 /* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
