@@ -2,9 +2,9 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>Buy iPhone 16</title>
 <style>
-:root{color-scheme:light;--accent:#0066cc}
+:root{color-scheme:light;--accent:#0066cc;--surface:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--surface)}
 /* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
    accent 由 m1/brand-tokens.json 按站点注入（上面的 --accent），本文件不写死站名/色值。
    层1 目的地列表：.linklist 条目名自身带 _action.to ⇒ 标记 • 换 accent ›（::marker），
@@ -14,12 +14,14 @@ body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang 
        链接，nodePlan.isLabellessLink）尾部 ›。控件/按钮形态不动（.ctl/.action 照旧）。 */
 a{color:inherit;text-decoration:none;cursor:pointer}
 a:hover{text-decoration:underline;text-decoration-color:currentColor}
-a.ref,.val a.body-link,.prose a,.chips a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+a.ref,.val a.body-link,.prose a,.chips a,.data a.table-link{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 .linklist li.go::marker{content:"›";color:var(--accent);font-weight:700}
 .linklist li.go>a{color:var(--accent);text-decoration:none}
 .linklist li.go>a:hover{text-decoration:underline}
 a.self-link{color:var(--accent);text-decoration:none}
 a.self-link:hover{text-decoration:underline}
+.media-link{display:contents}
+.media-link:focus-visible img{outline:2px solid var(--accent);outline-offset:2px}
 a.self-link.nav::after{content:" ›";font-weight:650}
 th.cmp-col>a{color:var(--accent);text-decoration:none}
 /* 轮 57 站点头区横栏（nodePlan.headerBar，规则见 axis.mjs region==='header'）：header 区域
@@ -38,19 +40,20 @@ th.cmp-col>a{color:var(--accent);text-decoration:none}
 .banner>.title{text-align:center}
 .banner>.fact{max-width:none;text-align:center}
 .banner>.controls{justify-content:center}
-.role-label{color:#68788a;font-size:.9em;margin-right:2px}
+.role-label{color:var(--muted);font-size:.9em;margin-right:2px}
 /* 轮 58 · L-1 页面栅格：唯一页面容器 = main（居中、≈1280px、左右对称 padding）。
    section 宽度分层且由 nodePlan 按 section 种类声明（plan.widthTier，规则在 axis.mjs）：
    prose=阅读文本 74ch 居中 / narrow=默认内容 880px 居中 / wide=卡片与 Feed 网格（容器全宽）/
    bleed=仅限声明的 banner（满幅带，内文仍守 padding）。同页各 section 宽度各归其层，
    不再无规则跳变（U-23/U-25/U-26/U-27）。 */
 main{max-width:1280px;margin:0 auto;padding:32px 24px 0}
-/* 根节点直属内容（页面标题、事实列、搜索栏）归入栅格：居中、对称，不再整栏偏左（U-18/U-23）。
-   h1 的列宽用 px（ch 随元素自身 2em 字号放大，74ch 会撑满容器、居中失效）。 */
-.depth-0>.title{max-width:640px;margin-inline:auto}
-.depth-0>.fact{margin-inline:auto}
-.depth-0>.hero{margin-inline:auto;text-align:center}
-.depth-0>.fieldbar{justify-content:center}
+/* Root identity, lead and controls inherit the owning content edge, not a separate
+   centered title column. The outer page frame may be centered; its text need not be. */
+.depth-0>.title{max-width:none;margin-inline:0}
+.depth-0>.fact,.depth-0>.hero{margin-inline:0}
+.depth-0>.fieldbar{justify-content:flex-start}
+.depth-0>.site-identity{font-size:18px;line-height:1.4;text-align:left;margin:0 0 16px;font-weight:650}
+h4.title,h5.title,h6.title{font-size:1em;line-height:1.5;margin:.7em 0 .35em;font-weight:650}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
 header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
 h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
@@ -59,12 +62,13 @@ h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
 .hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
 /* a lead sentence is not a headline: H1-sized prose collapses the page's heading levels */
-.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:#33475b}
+.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:var(--soft-ink)}
 article{margin:12px 0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+.cards.cols-auto{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0;max-width:74ch}
 .hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
@@ -72,21 +76,23 @@ article{margin:12px 0}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
 /* label chips need a visible chip body, or the row reads as one bare string of text (round 27) */
-.chips .chip-item{display:inline-block;background:#eef2f7;border:1px solid #dbe3ec;border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
+.chips .chip-item{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
 /* a sentence member is prose, not a tag: keep it on its own plain line */
 .chips-rows{display:block}
 .chips-rows .chip-item{display:block;background:none;border:0;border-radius:0;padding:3px 0;font-size:.95em}
 .cards .item img,.run .item img,.cards img{width:auto;max-width:100%;height:auto;display:block;border-radius:8px}
+/* Compact product media: an upper bound only, never crop or upscale source thumbnails. */
+.product-cards img{max-height:160px}
 .action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
-.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:var(--soft-ink);font-weight:600;margin:10px 0}
 .promo-image{padding:0;overflow:hidden}
 .promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
-.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:var(--muted);font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
 /* 并入价格行的分期时长（U-28）：与承载句同行、弱化如 meta，不再是容器外孤块 */
-.fact .installment{color:#5b6a78;font-size:.9em}
+.fact .installment{color:var(--muted);font-size:.9em}
 .fact .installment .sep{color:#c2ccd6}
-.prose{max-width:74ch;margin-inline:auto}
+.prose{max-width:74ch;margin-inline:0}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
 /* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
    轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
@@ -99,7 +105,7 @@ article{margin:12px 0}
 .cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip,.band .strip{width:auto;margin-left:auto;margin-right:auto}
 .cards .strip img{border-radius:8px}
 /* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
-.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.img-alt{display:block;color:var(--muted);font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
 .promo-image .img-alt{padding:10px 14px;border-radius:0}
 main>.node>.strip:first-child,article>.strip{margin-top:0;margin-bottom:0}
 /* F-031: 序列区块（不可比内容各自成立） */
@@ -115,22 +121,22 @@ hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
 .ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
 /* 时间流文本（弹幕）：行内紧凑流，每条单行省略——不铺成竖排文本墙（§10.5） */
 .stream{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0}
-.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#eef2f7;border-radius:999px;padding:2px 10px;font-size:.85em}
+.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--soft);border-radius:999px;padding:2px 10px;font-size:.85em}
 a.ctl{font-weight:600}
 a.ctl:hover{background:#f2f7ff}
 /* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
 .cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
 .cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
 .cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
-.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-row{white-space:nowrap;color:var(--muted);font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
 .cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
 .cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
 .cmp-price{font-weight:700;margin-top:4px}
-.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
+.cmp-sub{color:var(--muted);font-size:.92em;margin-top:2px}
 .cmp-ctl{margin-top:6px}
 /* 纯标签清单：一组等格条目名，读作"一组面板/条目"，不是 1..N 的目录（轮 34 grafana） */
 .manifest{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
-.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:#33475b;overflow-wrap:anywhere}
+.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:var(--soft-ink);overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
 .linklist.cols3{columns:3;column-gap:24px}
@@ -140,18 +146,25 @@ a.ctl:hover{background:#f2f7ff}
 .seq li{margin:4px 0;line-height:1.55}
 .chip-item{break-inside:avoid}
 .deflist{margin:8px 0}
-.deflist.ranked .rank{min-width:1.5em;color:#8493a3;font-weight:700;font-variant-numeric:tabular-nums}
+.deflist.ranked .rank{min-width:1.5em;color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums}
 .deflist.ranked .deflabel{font-weight:500}
-.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:flex-start}
+.defrow.media-row{display:block}
+.defrow.media-row .deflabel{flex:none;min-width:0;margin-bottom:8px}
+.defrow.media-row .defval{min-width:0;max-width:100%}
+.deflist.media-captions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(280px,calc((100% - 32px)/3))),1fr));gap:16px}
+.deflist.media-captions .defrow{display:flex;flex-direction:column;flex-wrap:nowrap;border:0}
+.deflist.media-captions img{max-height:360px;width:auto;height:auto}
 .deflabel{min-width:130px;font-weight:600}
 .deflabel a{color:inherit}
 .timeline .defrow{position:relative}
 .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
+.defval{color:var(--muted);font-size:.95em;overflow-wrap:anywhere;min-width:100px}
+@media(max-width:700px){.defrow.long-label{display:block}.defrow.long-label .deflabel{min-width:0;margin-bottom:4px}.defval{min-width:0}.defval .val{word-break:normal}}
 .accordion{margin:8px 0}
 details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
 details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
-details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
+details.qa .qa-a{padding:6px 0;color:var(--muted);font-size:.95em}
 .expose{display:block;margin:8px 0}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
@@ -162,11 +175,16 @@ fieldset.expose.chipbar{display:inline-block;max-width:100%}
    实测同色无下划线）：轮 57 起并入层2 —— accent + 常显细下划线（上面的 .chips a 规则）。 */
 /* D-3: a text input is an inline field so its submit control sits on the same bar */
 span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
+.authentication-page{max-width:440px;margin-inline:auto}
+.task-form .expose-input{display:flex;flex-direction:column;align-items:stretch;gap:6px;max-width:360px;width:100%;margin:8px 0}
+.task-form .expose-input>.deflabel{min-width:0}
+.task-form .expose-input>input{box-sizing:border-box;width:100%;min-width:0}
+.task-form .fieldbar{flex-wrap:wrap;justify-content:flex-start}
 /* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
-.expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
-.choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
+legend{font-size:.8em;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:var(--muted);font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:var(--muted);font-size:.9em;margin-left:4px}
 input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 /* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮）；
@@ -178,12 +196,17 @@ input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;
 img{max-width:100%;width:auto;border-radius:10px;display:block}
 /* 同一条「不放大」规则覆盖卡片/条目/正文图：自然宽 ≥ 容器则铺满，否则按自然尺寸居中显示 */
 .fact img,.cards img,.cards .item img,.run .item img{width:auto;max-width:100%;height:auto}
+.data-scroll{max-width:100%;overflow-x:auto}
+.data-scroll table.data{min-width:640px}
+.expose table.data{min-width:640px}
+fieldset.expose:has(>table.data){min-inline-size:0;min-width:0;width:100%;max-width:100%;overflow-x:auto}
+a.option-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
-table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
-table.data tr.row-group th{text-align:left;color:#33475b;font-weight:700;background:#eef2f7}
+table.data th{color:var(--muted);font-weight:600;background:#f7f9fb}
+table.data tr.row-group th{text-align:left;color:var(--soft-ink);font-weight:700;background:var(--soft)}
 table.data td.sel,table.data th.sel{width:34px;text-align:center}
-.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.chip{display:inline-block;background:var(--soft);border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 /* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
@@ -199,11 +222,9 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
 .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
-/* 轮 58（L-1）宽度分层（必须晚于 .block>.node，层级胜出层叠）：prose=阅读 74ch 居中 /
-narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ bleed=仅声明的 banner（满幅）。 */
-.node.w-prose{max-width:74ch;margin-inline:auto}
-.node.w-narrow{max-width:880px;margin-inline:auto}
-.node.w-wide{max-width:none}
+/* Local forms inherit their page frame; only declared banner bleed can escape it.
+   Reading/product/detail composition sets the parent measure, not each local form. */
+.node.w-prose,.node.w-narrow,.node.w-wide{max-width:none;margin-inline:0;width:100%}
 .node.w-bleed{max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 24px}
 /* 轮 58（L-6）媒体优先卡片：图与标题永不分家（同一 article）；条目图在题上方（视频/卡片站
    惯例）。轴层 mediaFirstOf 声明，这里用 flex order 画 —— 不拆 DOM，长文条目不受影响。 */
@@ -213,16 +234,154 @@ narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ b
    阅读型堆叠（长文成员）保持单列。 */
 .stack.cols-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;align-items:start;margin:14px 0}
 .stack.cols-auto .block{margin:0}
+.cards.compact-media,.stack.compact-media{grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
 .stack.cols-auto hr.region{display:none}
 /* 轮 58（L-5）footer 反色（惯例）：模型声明的 footer 区域（.g-footer）深底浅字，
    负 margin 铺满容器内宽、底边贴住容器。无 footer 区域的页自然没有这条带。 */
-.group.g-footer{background:#16202b;color:#c7d3e0;margin:48px -24px 0;padding:24px 24px 28px}
-.group.g-footer .title,.group.g-footer h1,.group.g-footer h2,.group.g-footer h3,.group.g-footer h4{color:#eef4fa}
-.group.g-footer a{color:#dce6f1}
-.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:#aebccc}
-.group.g-footer .ctl{border-color:#41546a;color:#c7d3e0;background:transparent}
-.group.g-footer a.ctl:hover{background:#223244}
-.group.g-footer .defrow{border-bottom-color:#253444}
+/* Surfaces own foreground AND background tokens. A footer is secondary site information,
+   not automatically a dark hero. Match the captured light, compact utility region. */
+.group.g-footer{--surface:#f5f5f7;--ink:#30343b;--muted:#536171;--soft:#e8eaee;--soft-ink:#30343b;--line:#d5d8df;background:var(--surface);color:var(--ink);margin:32px -24px 0;padding:24px}
+.group.g-footer .node,.group.g-footer .block{margin:0;padding:0}
+.group.g-footer .stack{display:flex;flex-wrap:wrap;gap:14px 24px}
+.group.g-footer .stack>.block{flex:1 1 250px}
+.group.g-footer .stack>.block:first-child{flex-basis:100%}
+.group.g-footer .linklist{columns:auto;display:flex;flex-wrap:wrap;gap:6px 18px;padding:0;margin:0}
+.group.g-footer .linklist li{list-style:none;margin:0;font-size:13px;line-height:1.65}
+.group.g-footer .seq{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding:0}
+.group.g-footer .seq li{list-style:none;margin:0;font-size:12px;line-height:1.6}
+.group.g-footer .stack>.block:has(.seq),.group.g-footer .stack>.block:has(.chips-rows){flex-basis:100%;padding-top:12px;border-top:1px solid var(--line)}
+.group.g-footer .linklist li.go::marker{content:""}
+.group.g-footer .chips{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0}
+.group.g-footer .chip-item{padding:0;border:0;background:transparent;border-radius:0;font-size:13px;color:var(--ink)}
+.group.g-footer .title,.group.g-footer a,.group.g-footer .linklist li.go>a,.group.g-footer .chips a{color:var(--ink)}
+.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:var(--muted)}
+.group.g-footer .ctl{border-color:var(--line);color:var(--ink);background:var(--surface);padding:4px 10px}
+.group.g-footer a.ctl:hover{background:var(--soft)}
+.group.g-footer .defrow{border-bottom-color:var(--line)}
+/* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
+.reading-page{--reading-width:800px;max-width:var(--reading-width);margin-inline:auto}
+.reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
+.reading-page .node.w-prose,.reading-page .node.w-narrow,.reading-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.reading-page .fact,.reading-page .prose,.reading-page .prose p,.reading-page .quote{max-width:none}
+.reading-page .fact img{margin-inline:auto}
+.reading-page .defrow{display:block;padding:16px 0}
+.reading-page .deflabel{margin-bottom:6px}
+.reading-page .defval{font-size:1em;line-height:1.75}
+.reading-page .cards:not(:has(img)){display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.reading-page .cards:not(:has(img))>.item{border:0;padding:0}
+.reading-page .cards:not(:has(img)) .node{margin:0}
+.reading-page .cards:not(:has(img)) .action{margin:0;border-radius:999px;padding:5px 14px;background:var(--soft);color:var(--soft-ink)}
+/* Label-only destination groups are navigation, not a vertical sitemap. */
+.utility-group>.chips-rows{display:flex;flex-wrap:wrap}
+.utility-group>.chips-rows .chip-item{display:inline-block;padding:3px 8px}
+.stack>.block:has(>.utility-group){margin-block:8px;padding:0}
+.utility-group{margin-block:4px}
+.node.w-narrow:has(>.linklist),.node.w-narrow:has(>.chips){max-width:none}
+.linklist.cols2,.linklist.cols3,.linklist.cols4{columns:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:3px 18px}
+.header-bar .linklist.cols2,.header-bar .linklist.cols3,.header-bar .linklist.cols4{display:flex;grid-template-columns:none}
+.node:has(>.chips)>.chips{gap:6px 12px}
+/* Related sections inherit the page frame; long fact lines keep their reading measure. */
+.depth-0>.meta{margin-inline:0}
+.utility-facts>.stack>.block{margin:4px 0;padding:0}
+.utility-facts>.stack>.block>.node{margin:0}
+.utility-facts .title{font-size:1em;margin:4px 0}
+.utility-group>.stack{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.stack>.block{margin:0;padding:0}
+.utility-group>.stack>.block>.node{margin:0}
+.utility-group>.deflist{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.deflist>.defrow{border:0;padding:0}
+/* Shared structural compact forms: singleton catalog entries, ordered editorial media, boolean utilities. */
+.singleton-card>.stack{max-width:320px}
+.singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:flex-start;padding:0}
+.singleton-card .banner>.title{font-size:1.12em;text-align:left;order:1;margin:8px 0}
+.singleton-card .banner>.band{order:0;margin:0;max-width:320px}
+.singleton-card .banner>.band .strip{margin:0}
+.singleton-card .banner>.controls,.singleton-card .banner>.action{order:2;margin:8px 0}
+.singleton-card .banner img{max-width:100%;max-height:320px;width:auto;height:auto}
+.boolean-utilities>.stack{display:flex;flex-wrap:wrap;gap:8px 16px}
+.boolean-utilities>.stack>.block,.boolean-utilities>.stack>.block>.node{margin:0;padding:0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox]){display:inline-block;margin:4px 16px 4px 0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox])>.node{margin:0;padding:0}
+.ordered-media-rows>.stack>.block{margin:12px 0;padding:12px 0;border-bottom:1px solid var(--line)}
+.ordered-media-rows>.stack>.block>.node{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:4px 20px;margin:0;padding:0}
+.ordered-media-rows>.stack>.block>.node>*{grid-column:1;margin:0}
+.ordered-media-rows>.stack>.block>.node>.band{grid-column:2;grid-row:1 / span 5;margin:0;align-self:start}
+.ordered-media-rows .band .strip{margin:0;width:auto}
+.ordered-media-rows .band img{max-width:120px;max-height:120px;width:auto;height:auto}
+@media(max-width:600px){.ordered-media-rows>.stack>.block>.node{grid-template-columns:minmax(0,1fr) 96px;gap:4px 12px}.ordered-media-rows .band img{max-width:96px;max-height:96px}}
+/* Whole-page alignment: local lists, facts and cards inherit the same page frame. */
+.catalog-page .node.w-prose,.catalog-page .node.w-narrow,.catalog-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.catalog-page>.stack>.block{margin:14px 0}
+.catalog-page .depth-1>.fact{max-width:none}
+.catalog-page>.stack>.block:has(>.node>.deflist) .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.catalog-page>.stack>.block:has(>.node>.deflist) .defrow{display:block;padding:16px;background:#f6f7f9;border:1px solid var(--line);border-radius:12px}
+.catalog-page .deflabel{margin-bottom:8px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:14px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block{margin:0;padding:0}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block>.node{margin:0;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fafbfc}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>hr{display:none}
+.product-page{max-width:960px;margin-inline:auto}
+.product-page .node.w-prose,.product-page .node.w-narrow,.product-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.product-page .fact,.product-page .prose,.product-page .prose p{max-width:none}
+.product-page .fact img{margin-inline:auto}
+.product-page>.meta{margin-inline:0}
+.product-page>.stack>.block{margin-block:32px}
+.product-page .defrow{gap:24px}
+.product-page .deflabel{flex:0 0 190px;min-width:0}
+.product-page .media-captions .deflabel{flex:0 0 auto}
+.detail-page>.title{max-width:none;margin-inline:0}
+.detail-page>.fact{max-width:none}
+.detail-page .node.w-prose,.detail-page .node.w-narrow,.detail-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.detail-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start;margin-top:24px}
+.detail-main,.detail-task{min-width:0}
+.detail-main>.group{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.detail-main .fact,.detail-main .prose{max-width:none}
+.detail-task{padding:20px 24px;border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 24px #17212b10}
+.detail-task .group{margin:12px 0}
+.detail-task input{max-width:100%}
+.detail-tail{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.detail-tail .g-distribution .chips-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.detail-tail .g-distribution .chip-item{padding:8px 12px;border-radius:8px;background:var(--soft)}
+.detail-tail .g-aspects .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:4px 24px}
+.detail-tail .g-reviews>.node{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.detail-tail .g-reviews>.node>*{min-width:0}
+.detail-tail .g-reviews>.node>.title,.detail-tail .g-reviews>.node>.controls,.detail-tail .g-reviews>.node>.g-distribution,.detail-tail .g-reviews>.node>.g-aspects{grid-column:1/-1}
+.detail-tail .g-aspects .cmp-table th.cmp-col{min-width:120px}
+.detail-tail .g-reviews>.node>.g-mentions{grid-column:1/-1}
+.detail-tail .g-mentions .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:4px 24px}
+.detail-tail .g-mentions .defrow{justify-content:space-between}
+.detail-page .gallery-mosaic{grid-auto-rows:180px;grid-template-columns:2fr 1fr 1fr}
+.detail-page .gallery-mosaic .strip{aspect-ratio:auto}
+.detail-page .gallery-mosaic .strip:first-child{grid-column:span 1;grid-row:span 2}
+main:has(.marketing-page){max-width:1728px}
+.marketing-page>.title{max-width:none}
+.marketing-page .node.w-bleed{width:100%;margin-inline:0}
+.marketing-page .node.w-narrow,.marketing-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.marketing-page .cards.cols-auto{grid-template-columns:repeat(2,minmax(0,1fr))}
+.marketing-page .cards.cols-auto .item{padding:20px;border-radius:12px;background:#f5f5f7}
+.marketing-page .cards.cols-auto .title{text-align:center;font-size:26px}
+.marketing-page .cards.cols-auto .fact{max-width:none;text-align:center}
+.marketing-page .cards.cols-auto .fact img{margin:auto}
+.marketing-page .cards.cols-auto .controls{justify-content:center}
+.marketing-page .g-tv .cards.cols-auto{grid-template-columns:repeat(3,minmax(0,1fr))}
+.marketing-page .g-services .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.marketing-page .g-services .defrow{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:12px}
+.marketing-page .g-services .defval img{max-height:180px;margin:auto}
+@media(min-width:1920px){body:has(.marketing-page){background:#f5f5f7}main:has(.marketing-page){max-width:1728px;padding-inline:24px}.marketing-page>.stack>.block{margin-block:16px}}
+@media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr);gap:20px}.detail-tail .g-reviews>.node{grid-template-columns:minmax(0,1fr)}.marketing-page .g-tv .cards.cols-auto{grid-template-columns:1fr}.detail-page .gallery-mosaic{grid-auto-rows:130px;grid-template-columns:repeat(2,minmax(0,1fr))}.detail-page .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.marketing-page .cards.cols-auto{grid-template-columns:1fr}.product-page .defrow{flex-wrap:wrap}.product-page .deflabel{flex-basis:100%}}
+/* Media surface metadata keeps marketing image and text in the same panel. The
+   original image is centered at natural height; only uniform lateral gutters clip. */
+.banner-integrated{position:relative;isolation:isolate;overflow:hidden;min-height:580px;padding:32px 24px!important;background:var(--banner-bg);color:var(--banner-fg);display:flex;flex-direction:column;align-items:center;margin-block:12px}
+.banner-integrated>.strip{position:absolute;inset:0;width:100%;height:580px;margin:0;z-index:-1;display:flex;justify-content:center}
+.banner-integrated>.strip img{flex:none;max-width:none;width:auto;height:auto;align-self:flex-start;margin:0;border-radius:0}
+.banner-integrated>.title{font-size:48px;line-height:1.1;margin:8px 0}
+.banner-integrated>.fact{font-size:22px;max-width:640px;line-height:1.35;margin:4px 0}
+.banner-integrated>.controls{margin:16px 0}
+.banner-integrated .ctl{background:transparent;color:#2997ff;border-color:#2997ff;border-radius:999px}
+.banner-integrated .action{background:#0071e3;color:#fff;border-radius:999px}
+.banner-integrated.media-centered>.fact:first-of-type{margin-top:auto}
+.banner-integrated.media-centered>.controls{margin-bottom:0}
+@media(max-width:700px){main{padding:20px 16px 0}.group.g-footer{margin-inline:-16px;padding:20px 16px}.banner-integrated{min-height:540px}.banner-integrated>.title{font-size:34px}.banner-integrated>.strip{height:540px}.banner-integrated>.strip img{width:auto;max-width:min(calc(var(--media-width)*.7),calc((100vw - 48px) * var(--media-ratio)));height:auto;object-fit:contain;align-self:flex-start;margin-top:160px}.banner-integrated>.fact{font-size:18px}.banner-integrated.media-centered>.strip img{margin-top:45px}.gallery-mosaic{grid-template-columns:repeat(2,1fr)}.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.stack.cols-auto,.cards{grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}}
 </style></head>
-<body><main><article id="apple-buy-iphone-16" class="node depth-0"><h1 class="title">Buy iPhone 16</h1><figure class="strip"><img src="../assets/apple16-hero.jpg" alt="iPhone 16, all five finishes, Black, White, Pink, Teal, Ultramarine."></figure><div class="fact"><span class="val">Buy from $799 or $33.29/mo. per month for 24 mo.</span></div><section class="group g-ai"><article class="node depth-1 w-narrow"><h2 class="title">Apple Intelligence and Siri AI</h2><a class="action verb-open" href="https://www.apple.com/shop/browse/overlay/iphone/domore/apple_intelligence">Learn more about Apple Intelligence for iPhone</a></article></section><section class="group g-deals"><article class="node depth-1 w-narrow"><h2 class="title">Carrier Deals at Apple</h2><div class="hero fact-hero hero-prose"><div class="fact"><span class="val">Save up to $799 after an eligible trade-in in any condition.</span></div></div><a class="action verb-open" href="https://www.apple.com/shop/buy-iphone/carrier-offers">See all deals</a></article></section><section class="group g-steps"><article class="node depth-1 w-narrow"><div class="stack"><section class="block"><article id="step-finish" class="node depth-2"><h3 class="title">Finish. Pick your favorite.</h3><fieldset class="expose chipbar expose-finish"><legend>Color</legend><label class="choice"><input type="radio" name="finish" value="key:finish-ultramarine"> Ultramarine</label><label class="choice"><input type="radio" name="finish" value="key:finish-teal"> Teal</label><label class="choice"><input type="radio" name="finish" value="key:finish-pink"> Pink</label><label class="choice"><input type="radio" name="finish" value="key:finish-white"> White</label><label class="choice"><input type="radio" name="finish" value="key:finish-black"> Black</label></fieldset></article></section><section class="block"><article id="step-storage" class="node depth-2"><h3 class="title">Storage. How much space do you need?</h3><div class="defrow"><div class="deflabel">Storage</div><div class="defval">128GB $799 or $33.29 per month for 24 months</div></div></article></section><section class="block"><article id="step-tradein" class="node depth-2"><h3 class="title">Apple Trade In.</h3><div class="hero fact-hero"><div class="fact"><span class="val">Get $35–$885 credit towards your new iPhone.</span></div></div><fieldset class="expose expose-trade-in"><legend>Trade In</legend><table class="data"><thead></thead><tbody><tr><td class="sel"><input type="radio" name="trade-in" value="key:tradein-estimate"></td><td>Select a smartphone</td><td>Answer a few questions to get your estimate.</td></tr><tr><td class="sel"><input type="radio" name="trade-in" value="key:tradein-none"></td><td>No trade-in</td><td></td></tr></tbody></table></fieldset><div class="fact"><span class="val">Save even more when you trade in and finance with select carrier deals at Apple.</span></div></article></section><section class="block"><article id="step-payment" class="node depth-2"><h3 class="title">Payment options. Select the one that works for you.</h3><fieldset class="expose expose-payment-method"><legend>Payment</legend><table class="data"><thead></thead><tbody><tr><td class="sel"><input type="radio" name="payment-method" value="key:pay-buy"></td><td>Buy</td><td>Pay with Apple Pay or other payment methods.</td></tr><tr><td class="sel"><input type="radio" name="payment-method" value="key:pay-finance"></td><td>Finance</td><td>Pay over time at 0% APR.</td></tr></tbody></table></fieldset><div class="fact"><span class="val">Not sure which payment option to choose? Compare all pricing and deals to find the option that’s right for you.</span></div><a class="action verb-open" href="https://www.apple.com/shop/browse/overlay/iphone/payment_options">See how to pay monthly.</a></article></section><section class="block"><article id="step-connectivity" class="node depth-2"><h3 class="title">Connectivity. Choose a carrier.</h3><fieldset class="expose expose-carrier"><legend>Carrier</legend><table class="data"><thead></thead><tbody><tr><td class="sel"><input type="radio" name="carrier" value="key:carrier-att"></td><td>AT&amp;T</td><td>Includes $30 connectivity discount (requires carrier activation)</td></tr><tr><td class="sel"><input type="radio" name="carrier" value="key:carrier-tmobile"></td><td>T-Mobile</td><td>Includes $30 connectivity discount (requires carrier activation)</td></tr><tr><td class="sel"><input type="radio" name="carrier" value="key:carrier-verizon"></td><td>Verizon</td><td>Includes $30 connectivity discount (requires carrier activation)</td></tr><tr><td class="sel"><input type="radio" name="carrier" value="key:carrier-later"></td><td>Connect to any carrier later</td><td></td></tr></tbody></table></fieldset><div class="fact"><span class="val">Is it easy to get connected? Yes. We’ll help you set up your carrier, number, and rate plan — you even get a discount. And your new iPhone will be unlocked.</span></div></article></section><section class="block"><article id="step-applecare" class="node depth-2"><h3 class="title">AppleCare coverage. Peace of mind in every plan.</h3><fieldset class="expose expose-care-plan"><legend>AppleCare coverage</legend><table class="data"><thead></thead><tbody><tr><td class="sel"><input type="radio" name="care-plan" value="key:care-theft-loss"></td><td>AppleCare+ with Theft and Loss</td><td>Cover this product only</td><td>Unlimited repairs for accidents like drops and spills. Theft and loss coverage for up to 2 claims every 12 months. 24/7 priority support from Apple experts. Express Replacement Service — we’ll ship you a replacement so you don’t have to wait for a repair.</td></tr><tr><td class="sel"><input type="radio" name="care-plan" value="key:care-one"></td><td>AppleCare One</td><td>Cover multiple products, including this iPhone with AppleCare One</td><td>All the benefits of AppleCare+ for up to 3 products, including your current devices, at one low price. Theft and loss coverage for iPhone, iPad, and Apple Watch up to 3 total claims every 12 months. Add more products anytime for $5.99/mo. per month each.</td></tr><tr><td class="sel"><input type="radio" name="care-plan" value="key:care-none"></td><td>No AppleCare coverage</td><td></td><td></td></tr></tbody></table></fieldset><div class="fact"><span class="val">How does AppleCare work? Explore the features and coverage of AppleCare. Fees and deductibles apply.</span></div></article></section></div></article></section><section class="group g-recap"><article id="step-recap" class="node depth-1 w-narrow"><h2 class="title">Your new iPhone 16.</h2><div class="fact"><span class="val">Just the way you want it.</span></div><div class="fact"><span class="val"><a class="ref" href="#apple-buy-iphone-16">Buy iPhone 16</a></span></div><div class="fact"><span class="val"><img src="../assets/apple16-recap.jpg" alt="iPhone 16, Ultramarine finish, back exterior, top rounded corners, advanced dual-camera system, flash, microphone"></span></div><section class="group g-delivery"><article class="node depth-2"><div class="chips"><span class="chip-item">Free shipping</span><span class="chip-item">Pick up from Store</span></div></article></section><section class="group g-save"><article class="node depth-2"><h3 class="title">Need a moment?</h3><div class="fact"><span class="val">Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.</span></div><div class="controls"><span class="ctl" data-verb="operate">Save for later</span><span class="action-plain">Continue</span></div></article></section><section class="group g-specialist"><article class="node depth-2"><div class="fact"><span class="val">Have more questions?</span></div><span class="action-plain">Connect with a Specialist</span></article></section><span class="action-plain">Get 3% Daily Cash with Apple Card</span></article></section><section class="group g-inbox"><article class="node depth-1 w-narrow"><h2 class="title">What’s in the Box</h2><div class="deflist"><div class="defrow"><div class="deflabel">iPhone 16</div><div class="defval"><img src="../assets/apple16-inbox-phone.png" alt="iPhone 16, Ultramarine, back exterior, advanced dual-camera system, centered Apple logo
-"></div></div><div class="defrow"><div class="deflabel">USB-C Charge Cable</div><div class="defval"><img src="../assets/apple16-inbox-cable.png" alt="USB-C to USB-C cable, white connectors, woven cable"></div></div></div></article></section><section class="group g-environment"><article class="node depth-1 w-narrow"><h2 class="title">Our environmental goals.</h2><div class="fact"><span class="val">As part of our efforts to reach <a class="body-link" href="https://www.apple.com/environment">carbon neutrality by 2030</a>, iPhone 16 does not include a power adapter or EarPods.</span></div></article></section><section class="group g-setup"><article class="node depth-1 w-narrow"><h2 class="title">Set up your device with one-on-one sessions with a Specialist.</h2><div class="fact"><span class="val">When you buy directly from Apple, you can get help transferring your data and making the most of your new device with our free online Personal Setup sessions.</span></div><a class="action verb-open" href="https://www.apple.com/shop/browse/overlay/store/step_1/personal_setup">Learn more about Personal Setup</a></article></section><section class="group g-services"><article class="node depth-1 w-narrow"><h2 class="title">Your new iPhone comes with so much more.</h2><div class="fact"><span class="val">Get 3 months of select services free when you purchase an Apple device.</span></div><div class="fact"><span class="val"><img src="../assets/apple16-services.png" alt="Apple TV, Apple Music, Apple Arcade, Apple News+, Apple Fitness+"></span></div></article></section><section class="group g-compare"><article class="node depth-1 w-narrow"><h2 class="title">Which iPhone is right for you?</h2><div class="stack cols-auto media-first"><section class="block"><article id="cmp-duo" class="node depth-2"><h3 class="title">iPhone Duo</h3><div class="fact"><span class="val">New</span></div><div class="fact"><span class="val">The largest display of any iPhone. Foldable. Posable. And durable.</span></div><div class="fact"><span class="val">$1999</span></div><div class="fact"><span class="val"><img src="../assets/apple16-compare-duo.png" alt="iPhone Duo, folded back exterior, star white color, Dual Fusion camera system at top left, Apple logo in center. Unfolded interior display, all-screen design, rounded corners"></span></div><section class="group g-display"><article class="node depth-3"><div class="fact"><span class="val">7.6-inch Super Retina XDR folding display with nano-texture · 5.4-inch Super Retina XDR outer display</span></div></article></section><section class="group g-battery"><article class="node depth-3"><div class="fact"><span class="val">Up to 44 hours video playback when using the outer display · Up to 31 hours video playback when using the inner display</span></div></article></section><section class="group g-chip"><article class="node depth-3"><div class="fact"><span class="val">A20 Pro chip · 6-core CPU · 7-core GPU with Neural Accelerators · Dual 16-core Neural Engine</span></div></article></section><section class="group g-camera"><article class="node depth-3"><div class="fact"><span class="val">48MP Dual Fusion camera system · Super-high-resolution photos (24MP and 48MP)</span></div></article></section><section class="group g-front"><article class="node depth-3"><div class="fact"><span class="val">12MP Center Stage front camera</span></div></article></section></article></section><section class="block"><article id="cmp-18pro" class="node depth-2"><h3 class="title">iPhone 18 Pro</h3><div class="fact"><span class="val">New</span></div><div class="fact"><span class="val">The ultimate battery life, performance, and camera of any iPhone.</span></div><div class="fact"><span class="val">$1199</span></div><div class="fact"><span class="val"><img src="../assets/apple16-compare-18pro.png" alt="iPhone 18 Pro Max and iPhone 18 Pro: iPhone 18 Pro Max, back exterior, burgundy color (dark red), Pro Fusion camera system at top, Apple logo in center, iPhone 18 Pro, front exterior, all-screen design"></span></div><section class="group g-battery"><article class="node depth-3"><div class="fact"><span class="val">Up to 45 hours video playback</span></div></article></section><section class="group g-chip"><article class="node depth-3"><div class="fact"><span class="val">A20 Pro chip · 6-core CPU · 7-core GPU with Neural Accelerators · Dual 16-core Neural Engine</span></div></article></section><section class="group g-camera"><article class="node depth-3"><div class="fact"><span class="val">48MP Pro Fusion camera system · 48MP Fusion Main with variable aperture | 48MP Fusion Ultra Wide | 48MP Fusion Telephoto</span></div></article></section><section class="group g-front"><article class="node depth-3"><div class="fact"><span class="val">18MP Center Stage front camera</span></div></article></section></article></section><section class="block"><article id="cmp-air" class="node depth-2"><h3 class="title">iPhone Air</h3><div class="fact"><span class="val">Incredibly light and thin with pro performance.</span></div><div class="fact"><span class="val">$1099</span></div><div class="fact"><span class="val"><img src="../assets/apple16-compare-air.png" alt="iPhone Air, back exterior, sky blue color, Fusion camera system, front exterior, all screen design, Dynamic Island, thin black display border"></span></div><section class="group g-battery"><article class="node depth-3"><div class="fact"><span class="val">Up to 27 hours video playback</span></div></article></section><section class="group g-chip"><article class="node depth-3"><div class="fact"><span class="val">A19 Pro chip · 6-core CPU · 5-core GPU with Neural Accelerators · 16-core Neural Engine</span></div></article></section><section class="group g-camera"><article class="node depth-3"><div class="fact"><span class="val">48MP Fusion camera system · 48MP Fusion Main</span></div></article></section><section class="group g-front"><article class="node depth-3"><div class="fact"><span class="val">18MP Center Stage front camera</span></div></article></section></article></section><section class="block"><article id="cmp-17" class="node depth-2"><h3 class="title">iPhone 17</h3><div class="fact"><span class="val">Powerful, durable, and delightful.</span></div><div class="fact"><span class="val">$899</span></div><div class="fact"><span class="val"><img src="../assets/apple16-compare-17.png" alt="iPhone 17, back exterior, lavender color, Dual Fusion camera system, front exterior, all screen design, Dynamic Island, thin black display border"></span></div><section class="group g-battery"><article class="node depth-3"><div class="fact"><span class="val">Up to 30 hours video playback</span></div></article></section><section class="group g-chip"><article class="node depth-3"><div class="fact"><span class="val">A19 chip · 6-core CPU · 5-core GPU with Neural Accelerators · 16-core Neural Engine</span></div></article></section><section class="group g-camera"><article class="node depth-3"><div class="fact"><span class="val">48MP Dual Fusion camera system · 48MP Fusion Main | 48MP Fusion Ultra Wide</span></div></article></section><section class="group g-front"><article class="node depth-3"><div class="fact"><span class="val">18MP Center Stage front camera</span></div></article></section></article></section><section class="block"><article id="cmp-17e" class="node depth-2"><h3 class="title">iPhone 17e</h3><div class="fact"><span class="val">Feature stacked. Value packed.</span></div><div class="fact"><span class="val">$699</span></div><div class="fact"><span class="val"><img src="../assets/apple16-compare-17e.png" alt="iPhone 17e, back exterior, soft pink color, Fusion camera system, Apple logo in center, front exterior, all screen design, notch with TrueDepth camera, thin black display border, rounded corners, straight sides"></span></div><section class="group g-battery"><article class="node depth-3"><div class="fact"><span class="val">Up to 26 hours video playback</span></div></article></section><section class="group g-chip"><article class="node depth-3"><div class="fact"><span class="val">A19 chip · 6-core CPU · 4-core GPU with Neural Accelerators · 16-core Neural Engine</span></div></article></section><section class="group g-camera"><article class="node depth-3"><div class="fact"><span class="val">48MP Fusion camera system · 48MP Fusion Main</span></div></article></section><section class="group g-front"><article class="node depth-3"><div class="fact"><span class="val">12MP TrueDepth camera</span></div></article></section></article></section></div><a class="action verb-open" href="https://www.apple.com/iphone/compare">Compare all iPhone models</a></article></section><section class="group g-faq"><article class="node depth-1 w-narrow"><h2 class="title">Frequently Asked Questions</h2><ul class="linklist"><li>Can I activate an iPhone 16 outside of the United States?</li><li>Will my new iPhone be unlocked?</li><li>When I buy from apple.com, does my iPhone come ready to use?</li><li>Will my iPhone work worldwide?</li><li>Can I return my iPhone?</li><li>I’m buying an iPhone as a gift. Can it be activated at a later date?</li><li>What resources are available to me to quickly get set up, transfer existing files, and make the most of my new iPhone?</li><li>Are there differences between an iPhone for AT&amp;T, T-Mobile, or Verizon?</li><li>Can I easily switch my carrier when I purchase an iPhone?</li><li>What are connectivity discounts?</li><li>Which network providers offer 5G service?</li><li>What products can be covered by AppleCare One?</li></ul></article></section></article></main></body></html>
+<body><main><article id="apple-buy-iphone-16" class="node depth-0 product-page" data-model-owner=""><h1 class="title">Buy iPhone 16</h1><figure class="strip"><img src="../assets/apple16-hero.jpg" alt="iPhone 16, all five finishes, Black, White, Pink, Teal, Ultramarine."></figure><div class="fact"><span class="val">Buy from $799 or $33.29/mo. per month for 24 mo.</span></div><section class="group g-ai"><article class="node depth-1 w-narrow" data-model-owner="ai"><h2 class="title">Apple Intelligence and Siri AI</h2><a class="action verb-open" href="https://www.apple.com/shop/browse/overlay/iphone/domore/apple_intelligence">Learn more about Apple Intelligence for iPhone</a></article></section><section class="group g-deals"><article class="node depth-1 w-narrow" data-model-owner="deals"><h2 class="title">Carrier Deals at Apple</h2><div class="hero fact-hero hero-prose"><div class="fact"><span class="val">Save up to $799 after an eligible trade-in in any condition.</span></div></div><a class="action verb-open" href="https://www.apple.com/shop/buy-iphone/carrier-offers">See all deals</a></article></section><section class="group g-steps"><article class="node depth-1 w-narrow" data-model-owner="steps"><div class="stack"><section class="block"><article id="step-finish" class="node depth-2" data-model-owner="steps._lines[0]"><h3 class="title">Finish. Pick your favorite.</h3><fieldset class="expose chipbar expose-finish"><legend>Color</legend><label class="choice"><input type="radio" name="finish" value="key:finish-ultramarine"> Ultramarine</label><label class="choice"><input type="radio" name="finish" value="key:finish-teal"> Teal</label><label class="choice"><input type="radio" name="finish" value="key:finish-pink"> Pink</label><label class="choice"><input type="radio" name="finish" value="key:finish-white"> White</label><label class="choice"><input type="radio" name="finish" value="key:finish-black"> Black</label></fieldset></article></section><section class="block"><article id="step-storage" class="node depth-2" data-model-owner="steps._lines[1]"><h3 class="title">Storage. How much space do you need?</h3><div class="defrow"><div class="deflabel">Storage</div><div class="defval">128GB $799 or $33.29 per month for 24 months</div></div></article></section><section class="block"><article id="step-tradein" class="node depth-2" data-model-owner="steps._lines[2]"><h3 class="title">Apple Trade In.</h3><div class="hero fact-hero hero-prose"><div class="fact"><span class="val">Get $35–$885 credit towards your new iPhone.</span></div></div><fieldset class="expose expose-trade-in"><legend>Trade In</legend><table class="data"><thead></thead><tbody><tr><td class="sel"><input type="radio" name="trade-in" value="key:tradein-estimate"></td><td>Select a smartphone</td><td>Answer a few questions to get your estimate.</td></tr><tr><td class="sel"><input type="radio" name="trade-in" value="key:tradein-none"></td><td>No trade-in</td><td></td></tr></tbody></table></fieldset><div class="fact"><span class="val">Save even more when you trade in and finance with select carrier deals at Apple.</span></div></article></section><section class="block"><article id="step-payment" class="node depth-2" data-model-owner="steps._lines[3]"><h3 class="title">Payment options. Select the one that works for you.</h3><fieldset class="expose expose-payment-method"><legend>Payment</legend><table class="data"><thead></thead><tbody><tr><td class="sel"><input type="radio" name="payment-method" value="key:pay-buy"></td><td>Buy</td><td>Pay with Apple Pay or other payment methods.</td></tr><tr><td class="sel"><input type="radio" name="payment-method" value="key:pay-finance"></td><td>Finance</td><td>Pay over time at 0% APR.</td></tr></tbody></table></fieldset><div class="fact"><span class="val">Not sure which payment option to choose? Compare all pricing and deals to find the option that’s right for you.</span></div><a class="action verb-open" href="https://www.apple.com/shop/browse/overlay/iphone/payment_options">See how to pay monthly.</a></article></section><section class="block"><article id="step-connectivity" class="node depth-2" data-model-owner="steps._lines[4]"><h3 class="title">Connectivity. Choose a carrier.</h3><fieldset class="expose expose-carrier"><legend>Carrier</legend><table class="data"><thead></thead><tbody><tr><td class="sel"><input type="radio" name="carrier" value="key:carrier-att"></td><td>AT&amp;T</td><td>Includes $30 connectivity discount (requires carrier activation)</td></tr><tr><td class="sel"><input type="radio" name="carrier" value="key:carrier-tmobile"></td><td>T-Mobile</td><td>Includes $30 connectivity discount (requires carrier activation)</td></tr><tr><td class="sel"><input type="radio" name="carrier" value="key:carrier-verizon"></td><td>Verizon</td><td>Includes $30 connectivity discount (requires carrier activation)</td></tr><tr><td class="sel"><input type="radio" name="carrier" value="key:carrier-later"></td><td>Connect to any carrier later</td><td></td></tr></tbody></table></fieldset><div class="fact"><span class="val">Is it easy to get connected? Yes. We’ll help you set up your carrier, number, and rate plan — you even get a discount. And your new iPhone will be unlocked.</span></div></article></section><section class="block"><article id="step-applecare" class="node depth-2" data-model-owner="steps._lines[5]"><h3 class="title">AppleCare coverage. Peace of mind in every plan.</h3><fieldset class="expose expose-care-plan"><legend>AppleCare coverage</legend><table class="data"><thead></thead><tbody><tr><td class="sel"><input type="radio" name="care-plan" value="key:care-theft-loss"></td><td>AppleCare+ with Theft and Loss</td><td>Cover this product only</td><td>Unlimited repairs for accidents like drops and spills. Theft and loss coverage for up to 2 claims every 12 months. 24/7 priority support from Apple experts. Express Replacement Service — we’ll ship you a replacement so you don’t have to wait for a repair.</td></tr><tr><td class="sel"><input type="radio" name="care-plan" value="key:care-one"></td><td>AppleCare One</td><td>Cover multiple products, including this iPhone with AppleCare One</td><td>All the benefits of AppleCare+ for up to 3 products, including your current devices, at one low price. Theft and loss coverage for iPhone, iPad, and Apple Watch up to 3 total claims every 12 months. Add more products anytime for $5.99/mo. per month each.</td></tr><tr><td class="sel"><input type="radio" name="care-plan" value="key:care-none"></td><td>No AppleCare coverage</td><td></td><td></td></tr></tbody></table></fieldset><div class="fact"><span class="val">How does AppleCare work? Explore the features and coverage of AppleCare. Fees and deductibles apply.</span></div></article></section></div></article></section><section class="group g-recap"><article id="step-recap" class="node depth-1 w-narrow" data-model-owner="recap"><h2 class="title">Your new iPhone 16.</h2><div class="fact"><span class="val">Just the way you want it.</span></div><div class="fact"><span class="val"><a class="ref" href="#apple-buy-iphone-16">Buy iPhone 16</a></span></div><div class="band"><figure class="strip"><img src="../assets/apple16-recap.jpg" alt="iPhone 16, Ultramarine finish, back exterior, top rounded corners, advanced dual-camera system, flash, microphone"></figure></div><section class="group g-delivery"><article class="node depth-2 utility-group utility-facts" data-model-owner="recap.delivery"><div class="chips"><span class="chip-item" data-model-owner="recap.delivery._items[0]">Free shipping</span><span class="chip-item" data-model-owner="recap.delivery._items[1]">Pick up from Store</span></div></article></section><section class="group g-save"><article class="node depth-2" data-model-owner="recap.save"><h3 class="title">Need a moment?</h3><div class="fact"><span class="val">Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.</span></div><div class="controls"><span class="ctl" data-verb="operate">Save for later</span><span class="action-plain">Continue</span></div></article></section><section class="group g-specialist"><article class="node depth-2" data-model-owner="recap.specialist"><div class="fact"><span class="val">Have more questions?</span></div><span class="action-plain">Connect with a Specialist</span></article></section><span class="action-plain">Get 3% Daily Cash with Apple Card</span></article></section><section class="group g-inbox"><article class="node depth-1 w-narrow" data-model-owner="inbox"><h2 class="title">What’s in the Box</h2><div class="deflist media-captions"><div class="defrow media-row" data-model-owner="inbox._items[0]"><div class="deflabel">iPhone 16</div><div class="defval"><img src="../assets/apple16-inbox-phone.png" alt="iPhone 16, Ultramarine, back exterior, advanced dual-camera system, centered Apple logo
+"></div></div><div class="defrow media-row" data-model-owner="inbox._items[1]"><div class="deflabel">USB-C Charge Cable</div><div class="defval"><img src="../assets/apple16-inbox-cable.png" alt="USB-C to USB-C cable, white connectors, woven cable"></div></div></div></article></section><section class="group g-environment"><article class="node depth-1 w-narrow" data-model-owner="environment"><h2 class="title">Our environmental goals.</h2><div class="fact"><span class="val">As part of our efforts to reach <a class="body-link" href="https://www.apple.com/environment">carbon neutrality by 2030</a>, iPhone 16 does not include a power adapter or EarPods.</span></div></article></section><section class="group g-setup"><article class="node depth-1 w-narrow" data-model-owner="setup"><h2 class="title">Set up your device with one-on-one sessions with a Specialist.</h2><div class="fact"><span class="val">When you buy directly from Apple, you can get help transferring your data and making the most of your new device with our free online Personal Setup sessions.</span></div><a class="action verb-open" href="https://www.apple.com/shop/browse/overlay/store/step_1/personal_setup">Learn more about Personal Setup</a></article></section><section class="group g-services"><article class="node depth-1 w-narrow" data-model-owner="services"><h2 class="title">Your new iPhone comes with so much more.</h2><div class="fact"><span class="val">Get 3 months of select services free when you purchase an Apple device.</span></div><div class="band"><figure class="strip"><img src="../assets/apple16-services.png" alt="Apple TV, Apple Music, Apple Arcade, Apple News+, Apple Fitness+"></figure></div></article></section><section class="group g-compare"><article class="node depth-1 w-wide" data-model-owner="compare"><h2 class="title">Which iPhone is right for you?</h2><div class="cmp-scroll"><table class="cmp-table"><thead><tr><th class="cmp-row"></th><th class="cmp-col" data-model-owner="compare._lines[0]">iPhone Duo<span class="cmp-tag">New</span><div class="cmp-price">$1999</div><div class="cmp-sub">The largest display of any iPhone. Foldable. Posable. And durable.</div></th><th class="cmp-col" data-model-owner="compare._lines[1]">iPhone 18 Pro<span class="cmp-tag">New</span><div class="cmp-price">$1199</div><div class="cmp-sub">The ultimate battery life, performance, and camera of any iPhone.</div></th><th class="cmp-col" data-model-owner="compare._lines[2]">iPhone Air<div class="cmp-price">$1099</div><div class="cmp-sub">Incredibly light and thin with pro performance.</div></th><th class="cmp-col" data-model-owner="compare._lines[3]">iPhone 17<div class="cmp-price">$899</div><div class="cmp-sub">Powerful, durable, and delightful.</div></th><th class="cmp-col" data-model-owner="compare._lines[4]">iPhone 17e<div class="cmp-price">$699</div><div class="cmp-sub">Feature stacked. Value packed.</div></th></tr></thead><tbody><tr><th class="cmp-row">图片</th><td class="cmp-cell"><img src="../assets/apple16-compare-duo.png" alt="iPhone Duo, folded back exterior, star white color, Dual Fusion camera system at top left, Apple logo in center. Unfolded interior display, all-screen design, rounded corners"></td><td class="cmp-cell"><img src="../assets/apple16-compare-18pro.png" alt="iPhone 18 Pro Max and iPhone 18 Pro: iPhone 18 Pro Max, back exterior, burgundy color (dark red), Pro Fusion camera system at top, Apple logo in center, iPhone 18 Pro, front exterior, all-screen design"></td><td class="cmp-cell"><img src="../assets/apple16-compare-air.png" alt="iPhone Air, back exterior, sky blue color, Fusion camera system, front exterior, all screen design, Dynamic Island, thin black display border"></td><td class="cmp-cell"><img src="../assets/apple16-compare-17.png" alt="iPhone 17, back exterior, lavender color, Dual Fusion camera system, front exterior, all screen design, Dynamic Island, thin black display border"></td><td class="cmp-cell"><img src="../assets/apple16-compare-17e.png" alt="iPhone 17e, back exterior, soft pink color, Fusion camera system, Apple logo in center, front exterior, all screen design, notch with TrueDepth camera, thin black display border, rounded corners, straight sides"></td></tr><tr><th class="cmp-row"></th><td class="cmp-cell">7.6-inch Super Retina XDR folding display with nano-texture · 5.4-inch Super Retina XDR outer display</td><td class="cmp-cell"></td><td class="cmp-cell"></td><td class="cmp-cell"></td><td class="cmp-cell"></td></tr><tr><th class="cmp-row"></th><td class="cmp-cell">Up to 44 hours video playback when using the outer display · Up to 31 hours video playback when using the inner display</td><td class="cmp-cell">Up to 45 hours video playback</td><td class="cmp-cell">Up to 27 hours video playback</td><td class="cmp-cell">Up to 30 hours video playback</td><td class="cmp-cell">Up to 26 hours video playback</td></tr><tr><th class="cmp-row"></th><td class="cmp-cell">A20 Pro chip · 6-core CPU · 7-core GPU with Neural Accelerators · Dual 16-core Neural Engine</td><td class="cmp-cell">A20 Pro chip · 6-core CPU · 7-core GPU with Neural Accelerators · Dual 16-core Neural Engine</td><td class="cmp-cell">A19 Pro chip · 6-core CPU · 5-core GPU with Neural Accelerators · 16-core Neural Engine</td><td class="cmp-cell">A19 chip · 6-core CPU · 5-core GPU with Neural Accelerators · 16-core Neural Engine</td><td class="cmp-cell">A19 chip · 6-core CPU · 4-core GPU with Neural Accelerators · 16-core Neural Engine</td></tr><tr><th class="cmp-row"></th><td class="cmp-cell">48MP Dual Fusion camera system · Super-high-resolution photos (24MP and 48MP)</td><td class="cmp-cell">48MP Pro Fusion camera system · 48MP Fusion Main with variable aperture | 48MP Fusion Ultra Wide | 48MP Fusion Telephoto</td><td class="cmp-cell">48MP Fusion camera system · 48MP Fusion Main</td><td class="cmp-cell">48MP Dual Fusion camera system · 48MP Fusion Main | 48MP Fusion Ultra Wide</td><td class="cmp-cell">48MP Fusion camera system · 48MP Fusion Main</td></tr><tr><th class="cmp-row"></th><td class="cmp-cell">12MP Center Stage front camera</td><td class="cmp-cell">18MP Center Stage front camera</td><td class="cmp-cell">18MP Center Stage front camera</td><td class="cmp-cell">18MP Center Stage front camera</td><td class="cmp-cell">12MP TrueDepth camera</td></tr></tbody></table></div><a class="action verb-open" href="https://www.apple.com/iphone/compare">Compare all iPhone models</a></article></section><section class="group g-faq"><article class="node depth-1 w-narrow" data-model-owner="faq"><h2 class="title">Frequently Asked Questions</h2><ul class="linklist"><li data-model-owner="faq._items[0]">Can I activate an iPhone 16 outside of the United States?</li><li data-model-owner="faq._items[1]">Will my new iPhone be unlocked?</li><li data-model-owner="faq._items[2]">When I buy from apple.com, does my iPhone come ready to use?</li><li data-model-owner="faq._items[3]">Will my iPhone work worldwide?</li><li data-model-owner="faq._items[4]">Can I return my iPhone?</li><li data-model-owner="faq._items[5]">I’m buying an iPhone as a gift. Can it be activated at a later date?</li><li data-model-owner="faq._items[6]">What resources are available to me to quickly get set up, transfer existing files, and make the most of my new iPhone?</li><li data-model-owner="faq._items[7]">Are there differences between an iPhone for AT&amp;T, T-Mobile, or Verizon?</li><li data-model-owner="faq._items[8]">Can I easily switch my carrier when I purchase an iPhone?</li><li data-model-owner="faq._items[9]">What are connectivity discounts?</li><li data-model-owner="faq._items[10]">Which network providers offer 5G service?</li><li data-model-owner="faq._items[11]">What products can be covered by AppleCare One?</li></ul></article></section></article></main></body></html>

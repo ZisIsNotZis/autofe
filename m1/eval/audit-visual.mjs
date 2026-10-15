@@ -148,7 +148,7 @@ for (const r of rows) {
     console.log((hard.length ? '⚠ ' : '· ') + r.page.padEnd(46) + r.flags.join(' '));
     if (r.detail.introduced.length) console.log('    renderer-dup: ' + r.detail.introduced.join('\n                  '));
     if (r.detail.unitStack?.length) console.log('    unit-stack: ' + r.detail.unitStack.join(' | '));
-    if (r.detail.titleDup?.length) console.log('    dup-title: ' + r.detail.titleDup.join(' | '));
+    if (r.detail.titleDup?.length) console.log(`    ${r.page} dup-title (${r.flags.some((f) => f.startsWith('dup-title:')) ? 'hard' : 'info/source-true'}): ` + r.detail.titleDup.join(' | '));
   }
 }
 console.log('\n视觉自查: ' + (rows.length - bad) + '/' + rows.length + ' 干净' + (bad ? ' | 待修 ' + bad : ''));

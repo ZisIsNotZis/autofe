@@ -107,5 +107,48 @@
         "label": "创建账户"
       }
     }
+  },
+  "cookies": {
+    "_intent": "捕获登录页显示的 cookie 政策与同意管理工具，只保留原文和可证实目标，不实现用户偏好状态或隐私后端。",
+    "_items": [
+      {
+        "_title": {
+          "text": "Cookie 政策"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Cookie 政策",
+          "to": "https://stripe.com/cookies-policy/legal"
+        }
+      },
+      {
+        "_title": {
+          "text": "管理 Cookie"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "管理 Cookie",
+          "to": "https://stripe.com/cookie-settings"
+        }
+      },
+      {
+        "_title": {
+          "text": "全部接受"
+        },
+        "_action": {
+          "verb": "operate",
+          "label": "全部接受"
+        }
+      },
+      {
+        "_title": {
+          "text": "全部拒绝"
+        },
+        "_action": {
+          "verb": "operate",
+          "label": "全部拒绝"
+        }
+      }
+    ]
   }
 }

@@ -25,6 +25,16 @@
     ],
     "_text": {
       "text": "The amounts deducted and paid depend on: the category letter, and how much of the employee’s earnings falls within each band."
+    },
+    "category-letter": {
+      "_title": {
+        "text": "Category letters"
+      },
+      "_action": {
+        "verb": "navigate",
+        "label": "Category letters",
+        "to": "https://www.gov.uk/national-insurance-rates-letters/category-letters"
+      }
     }
   },
   "employee-rates": {
@@ -298,6 +308,46 @@
       }
     ]
   },
+  "past-employee-rates": {
+    "_intent": "源站雇员表的历史费率链接。",
+    "_title": {
+      "text": "past employee National Insurance rates"
+    },
+    "_action": {
+      "verb": "navigate",
+      "label": "past employee National Insurance rates",
+      "to": "https://www.gov.uk/government/publications/rates-and-allowances-national-insurance-contributions"
+    }
+  },
+  "example": {
+    "_intent": "用一个年度示例说明分段累进如何得出周缴款额",
+    "_title": {
+      "text": "Example"
+    },
+    "_summary": {
+      "text": "If you’re in category A and you earn £1,000 in a week you’ll pay:"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "nothing on the first £242"
+        }
+      },
+      {
+        "_name": {
+          "text": "8% (£58) on your earnings between £242.01 and £967"
+        }
+      },
+      {
+        "_name": {
+          "text": "2% (£0.66) on the remaining earnings above £967"
+        }
+      }
+    ],
+    "_text": {
+      "text": "This means your National Insurance payment will be £58.66 for the week."
+    }
+  },
   "employer-rates": {
     "_composite": "table",
     "_intent": "雇主 Class 1 缴款率表：每行一个类别字母，列为三段周收入区间（雇主方各段费率）",
@@ -569,6 +619,68 @@
       }
     ]
   },
+  "historical-rates": {
+    "_intent": "源站雇主表后的 HMRC 历史税年费率与阈值入口。",
+    "_summary": {
+      "text": "HM Revenue and Customs (HMRC) has full rates and thresholds for tax years:"
+    },
+    "_items": [
+      {
+        "_title": {
+          "text": "2025 to 2026"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "2025 to 2026",
+          "to": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026"
+        }
+      },
+      {
+        "_title": {
+          "text": "2024 to 2025"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "2024 to 2025",
+          "to": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2024-to-2025"
+        }
+      },
+      {
+        "_title": {
+          "text": "2023 to 2024"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "2023 to 2024",
+          "to": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2023-to-2024"
+        }
+      },
+      {
+        "_title": {
+          "text": "2022 to 2023"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "2022 to 2023",
+          "to": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2022-to-2023"
+        }
+      }
+    ]
+  },
+  "payroll-calculators": {
+    "_intent": "源站核查雇员国民保险的工具入口。",
+    "_summary": {
+      "text": "You can also use calculators and tables to check employees’ National Insurance."
+    },
+    "_title": {
+      "text": "calculators and tables"
+    },
+    "_action": {
+      "verb": "navigate",
+      "label": "calculators and tables",
+      "to": "https://www.gov.uk/government/collections/how-to-manually-check-your-payroll-calculations"
+    }
+  },
   "class-1a-1b": {
     "_intent": "费用与福利（expenses and benefits）的 Class 1A/1B 单一费率",
     "_title": {
@@ -579,36 +691,37 @@
       "to": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2022-to-2023"
     },
     "_text": {
-      "text": "Employers pay Class 1A and 1B National Insurance on expenses and benefits they give to their employees. The rate from 6 April 2026 to 5 April 2027 on expenses and benefits is 15%."
-    }
-  },
-  "example": {
-    "_intent": "用一个年度示例说明分段累进如何得出周缴款额",
-    "_title": {
-      "text": "Example"
+      "text": "Employers pay Class 1A and 1B National Insurance on expenses and benefits they give to their employees. The rate from 6 April 2026 to 5 April 2027 on expenses and benefits is 15%. They must also pay Class 1A on some other lump sum payments, for example redundancy payments. HMRC has detailed guidance on all Class 1A and Class 1B rates."
     },
-    "_summary": {
-      "text": "If you’re in category A and you earn £1,000 in a week you’ll pay:"
-    },
-    "_items": [
-      {
-        "_name": {
-          "text": "nothing on the first £242"
-        }
+    "guide-0": {
+      "_title": {
+        "text": "expenses and benefits"
       },
-      {
-        "_name": {
-          "text": "8% (£58) on your earnings between £242.01 and £967"
-        }
-      },
-      {
-        "_name": {
-          "text": "2% (£0.66) on the remaining earnings above £967"
-        }
+      "_action": {
+        "verb": "navigate",
+        "label": "expenses and benefits",
+        "to": "https://www.gov.uk/employer-reporting-expenses-benefits"
       }
-    ],
-    "_text": {
-      "text": "This means your National Insurance payment will be £58.66 for the week."
+    },
+    "guide-1": {
+      "_title": {
+        "text": "redundancy payments"
+      },
+      "_action": {
+        "verb": "navigate",
+        "label": "redundancy payments",
+        "to": "https://www.gov.uk/pay-class-1a-national-insurance"
+      }
+    },
+    "guide-2": {
+      "_title": {
+        "text": "Class 1A and Class 1B rates"
+      },
+      "_action": {
+        "verb": "navigate",
+        "label": "Class 1A and Class 1B rates",
+        "to": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2022-to-2023"
+      }
     }
   },
   "pagination": {
@@ -625,5 +738,16 @@
         }
       }
     ]
+  },
+  "print-guide": {
+    "_intent": "捕获的整篇指南打印入口。",
+    "_title": {
+      "text": "View a printable version of the whole guide"
+    },
+    "_action": {
+      "verb": "navigate",
+      "label": "View a printable version of the whole guide",
+      "to": "https://www.gov.uk/national-insurance-rates-letters/print"
+    }
   }
 }

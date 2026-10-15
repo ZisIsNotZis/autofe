@@ -36,8 +36,8 @@ const mixedModel = { _title: { text: 'M' }, related: { _items: [
   { _name: { text: '关于分期付款服务的说明与常见问题解答' } },
 ] } };
 const mixedHtml = render(mixedModel, {});
-check('目的地条目（带目标）li.go', listHtml.includes('<li class="go"><a href="https://x.example/mooncake">'), listHtml.match(/<li[^>]*><a href="https:\/\/x\.example[^>]*>/)?.[0] ?? 'missing');
-check('纯事实条目保持 •（无 go 类）', mixedHtml.includes('<li>关于分期付款服务的说明与常见问题解答</li>'));
+check('目的地条目（带目标）li.go', /<li class="go"(?: data-model-owner="[^"]*")?><a href="https:\/\/x\.example\/mooncake">/.test(listHtml), listHtml.match(/<li[^>]*><a href="https:\/\/x\.example[^>]*>/)?.[0] ?? 'missing');
+check('纯事实条目保持 •（无 go 类）', /<li(?: data-model-owner="[^"]*")?>关于分期付款服务的说明与常见问题解答<\/li>/.test(mixedHtml));
 check('::marker 规则引用 accent ›', /\.linklist li\.go::marker\{content:"›";color:var\(--accent\)/.test(cssOf(listHtml)));
 
 // ---- 2. 正文内链接 ----------------------------------------------------------
@@ -51,7 +51,7 @@ const proseModel = {
 };
 const proseHtml = render(proseModel, {});
 check('行内正文链接 .body-link', proseHtml.includes('<a class="body-link" href="https://x.example/apply">'));
-check('层2 规则 = accent + 1px 常显下划线', /\.val a\.body-link,\.prose a,\.chips a\{color:var\(--accent\);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px\}/.test(cssOf(proseHtml)));
+check('层2 正文与表格链接规则 = accent + 1px 常显下划线', /\.val a\.body-link,\.prose a,\.chips a,\.data a\.table-link\{color:var\(--accent\);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px\}/.test(cssOf(proseHtml)));
 
 // ---- 3. 导航型标题（无 label 的 navigate 链接）尾部 › ------------------------
 const navModel = {
@@ -98,11 +98,19 @@ check('卡片格内同形状不满幅（图留在 .fact）', !/figure class="str
 check('价格类记录性事实不成 banner（不误伤商品卡）', (() => {
   const m = { _title: { text: 'S' }, results: { _items: [{ _name: { text: 'X' }, _price: { money: 9.9, currency: 'CNY' }, _image: { image: 'https://x.example/p.jpg', alt: 'p' }, _action: { verb: 'open', to: 'https://x.example/x' } }] } };
   const h = render(m, {});
-  return !/figure class="strip"/.test(h);
+  return !/<article[^>]+class="[^"]*\bbanner\b/.test(h)
+    && (!/figure class="strip"/.test(h) || /<div class="band"><figure class="strip">/.test(h));
 })());
 
 // ---- 6. accent 注入：只来自 tokens，回退必须声明 ------------------------------
-check('accent 按站点注入（taobao）', cssOf(listHtml).includes(':root{color-scheme:light;--accent:#cc6600}'));
+check('accent 按来源色相配对浅色 surface（taobao）', (() => {
+  const hex = /:root\{[^}]*--accent:(#[0-9a-f]{6})(?:;|\})/.exec(cssOf(listHtml))?.[1];
+  if (!hex) return false;
+  const rgb = hex.slice(1).match(/../g).map((c) => parseInt(c, 16));
+  const lin = rgb.map((x) => x / 255).map((x) => x <= .04045 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4);
+  const luminance = lin.reduce((s, x, i) => s + x * [.2126, .7152, .0722][i], 0);
+  return rgb[0] > rgb[1] && rgb[1] > rgb[2] && 1.05 / (luminance + .05) >= 4.5;
+})());
 check('无 site ⇒ default', cssOf(proseHtml).includes(`--accent:${tokens.default.accent}`));
 let tokOk = true, tokWhy = [];
 for (const [site, s] of Object.entries(tokens.sites)) {

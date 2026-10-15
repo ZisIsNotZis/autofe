@@ -28,8 +28,8 @@ import {
 import {
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections,
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
-  itemActionPlan, nodePlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, roleLabel,
-  hasValue, tableRowLabel,
+  itemActionPlan, controlItemPlan, nodePlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, roleLabel,
+  hasValue, tableRowLabel, tableCellLinks,
 } from './axis.mjs';
 
 // ---- width-aware plain-text table ------------------------------------------
@@ -106,11 +106,16 @@ function renderTable(items, chain, ctx, depth, node) {
   const rp = runPlan(items);
   if (!rp.isTable) return items.map((it) => renderNode(it, [...chain], false, ctx, depth + 1)).filter(Boolean).join('\n');
   const header = rp.cols.map((c) => columnLabel(c));
+  const bindings = tableCellLinks(node, chain);
+  const cellText = (v, links) => {
+    if (v?.list) return v.list.map((x) => cellText(x, links)).join('; ');
+    return links?.has(v?.text) ? `[${fmt(v)}]` : fmt(v);
+  };
   // The group-row / empty-cell decision is shared (axis.hasValue / tableRowLabel, round 47).
   const rows = items.map((it) => {
     const g = tableRowLabel(rp, it);
     if (g) return [fmt(g)];
-    return rp.cols.map((col) => { const v = rp.cellValue(it, col); return hasValue(v) ? fmt(v) : ''; });
+    return rp.cols.map((col) => { const v = rp.cellValue(it, col); return hasValue(v) ? cellText(v, bindings.get(it)) : ''; });
   });
   return textTable(header, rows, IND(depth));
 }
@@ -120,7 +125,8 @@ function renderCompareTable(items, chain, ctx, depth) {
   // 表头属性集合是共享决策（compareHeaderEntries）；这里只把它画成文本记号（标签套 []）。
   const header = ['', ...items.map((it) => {
     const parts = compareHeaderEntries(it).map((e) => (e.key === '_tag' ? `[${fmt(e.value)}]` : fmt(e.value)));
-    const ctl = itemControl(it, chain, ctx);
+    const ep = nodePlan(it, { chain, values: ctx.values, depth: 5, grid: true });
+    const ctl = actionRowText(ep.actionRow);
     if (ctl) parts.push(ctl);
     // an entity's own nested collection belongs inside its own column (F-031-§3.1)
     for (const col of nestedCollections(it)) {
@@ -162,14 +168,9 @@ function renderForm(form, items, chain, ctx, depth, node) {
     // F-031-§4: controls. The member's own name is content (still a fact); the action
     // label is the source's control copy. Both render when they differ (mirrors render.mjs).
     const parts = items.map((it) => {
-      const a = itemActionPlan(it, chain, ctx.values);
-      const name = labelTextOf(it);
-      const ctl = a?.label ?? '';
-      const other = Boolean(name && ctl && !name.includes(ctl) && !ctl.includes(name));
-      if (!name && !ctl) return '';
-      if (!ctl) return name;
-      if (!name) return `[${ctl}]`;
-      return other ? `${name} [${ctl}]` : name;
+      const c = controlItemPlan(it, chain, ctx.values);
+      const ctl = c.label ? `[${c.label}]` : '';
+      return c.accessibleLabel ? `${ctl} (${c.accessibleLabel})` : ctl;
     }).filter(Boolean);
     return parts.length ? line(depth, parts.join('  ')) : '';
   }
@@ -267,7 +268,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
       for (const o of ch.options) {
         const v = o.name;
         const extra = o.extra.map((x) => fmt(x.value)).join(' ');
-        blocks.push(line(depth + 1, `${ch.multi ? '[ ]' : '( )'} ${v ? fmt(v) : '选项'}${extra ? ' ' + extra : ''}`));
+        blocks.push(line(depth + 1, `${ch.multi ? (o.selected ? '[x]' : '[ ]') : (o.selected ? '(●)' : '( )')} ${v ? fmt(v) : '选项'}${extra ? ' ' + extra : ''}`));
       }
     } else if (ch.kind === 'bool') {
       const name = lbl || (ch.nodeName ? fmt(ch.nodeName) : '');
@@ -298,13 +299,19 @@ function renderNode(node, chain, isHero, ctx, depth) {
   for (const f of plan.facts.list) {
     if (f.category === 'installment') continue;   // 并入承载行（U-28），不单独成行
     if (f.category === 'meta' || f.category === 'unit') { factLines.push(roleFact(f)); continue; }
-    if (f.category === 'quote') { factLines.push(`> 「${modelScalar(f.value)}」`); continue; }
+    const inlineValue = () => {
+      let value = modelScalar(f.value);
+      for (const a of plan.inlineChildren.filter((c) => c.key === f.key)) value = value.replace(a.label, `[${a.label}]`);
+      return value;
+    };
+    if (f.category === 'quote') { factLines.push(`> 「${inlineValue()}」`); continue; }
     if (f.category === 'was') { factLines.push(`(原价) ${fmt(f.value)}${attachedTail(f)}`); continue; }
     const lab = roleLabel(f.key);
-    factLines.push((lab ? `${lab}: ${modelScalar(f.value)}` : roleFact(f)) + attachedTail(f));
+    factLines.push((plan.inlineChildren.some((c) => c.key === f.key) ? inlineValue() : lab ? `${lab}: ${modelScalar(f.value)}` : roleFact(f)) + attachedTail(f));
   }
   for (const f of plan.facts.fields) factLines.push(`${f.label}${f.label ? ': ' : ''}${fmt(f.value)}`);
   if (factLines.length) blocks.push(factLines.map((t) => line(depth, t)).join('\n'));
+  if (plan.leadAction && actionRow) blocks.push(line(depth, actionRow));
 
   // ordered item sets + compare grouping (shared in axis.mjs: seqGroupsOf)
   const { groups } = plan.items;
@@ -323,6 +330,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
   // （orderedNamedChildren → entry.region），每个目标只选自己的槽位。body 区域子件仍按原
   // 文档序并入 blocks（事实/集合之后），只有 header/footer 两个站点区域被钉到两端。
   const headBlocks = [], footBlocks = [];
+  let orderedActionEmitted = false;
   let prevGroupHadTitle = false;
   for (const c of plan.namedChildren) {
     if (consumed.has(c.node)) continue;
@@ -330,6 +338,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
     if (!inner) continue;
     if (c.region === 'header') { headBlocks.push(inner); continue; }
     if (c.region === 'footer') { footBlocks.push(inner); continue; }
+    if (plan.actionBeforeChild === c.key && actionRow) { blocks.push(line(depth, actionRow)); orderedActionEmitted = true; }
     const hasTitle = Boolean(c.node._title || c.node._name || c.node._text);
     if (!hasTitle && prevGroupHadTitle) blocks.push(line(depth + 1, '----'));
     blocks.push(inner);
@@ -349,7 +358,7 @@ function renderNode(node, chain, isHero, ctx, depth) {
   // a control whose heading IS its own label is the heading's link; any further controls of
   // the same element are still the SAME row, never dropped (bilibili video channel block).
   if (titleIsControl) parts.push(line(innerD, `[${titleText}]`));
-  if (actionRow) parts.push(line(innerD, actionRow));
+  if (actionRow && !plan.leadAction && !orderedActionEmitted) parts.push(line(innerD, actionRow));
   for (const b of footBlocks) parts.push(shiftBlock(b, demoted ? 1 : 0));   // footer 永远最后（L-2）
   const out = parts.filter(Boolean).join('\n');
   if (!out.trim()) return '';

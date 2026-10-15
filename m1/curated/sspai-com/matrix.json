@@ -1,549 +1,942 @@
 {
- "_intent": "少数派 Matrix 社区广场：创作者社区的文章/动态列表（当前视图为「精选」），附一派投票、值得关注作者与专栏推荐",
- "_key": "sspai-matrix",
- "_title": {
-  "text": "Matrix 社区"
- },
- "create": {
-  "_intent": "进入创作页发布内容",
-  "_action": {
-   "verb": "navigate",
-   "label": "开始创作",
-   "to": "https://sspai.com/write"
-  }
- },
- "feed-view": {
-  "_intent": "社区广场的三种视图：当前为「精选」",
-  "_items": [
-   {
-    "_key": "view-featured",
-    "_name": {
-     "text": "精选"
-    },
-    "_action": {
-     "verb": "navigate",
-     "to": "https://sspai.com/matrix"
-    }
-   },
-   {
-    "_key": "view-hot",
-    "_name": {
-     "text": "热门"
-    },
-    "_action": {
-     "verb": "navigate",
-     "to": "https://sspai.com/matrix/hot"
-    }
-   },
-   {
-    "_key": "view-random",
-    "_name": {
-     "text": "随便看看"
-    },
-    "_action": {
-     "verb": "navigate",
-     "to": "https://sspai.com/matrix/random"
-    }
-   }
-  ],
-  "_expose": {
-   "name": "matrix-feed-view",
-   "type": "text"
-  }
- },
- "feed": {
-  "_intent": "社区广场帖子列表（精选视图 20 条）：标题与作者，点按进入正文",
-  "_rel": {
-   "order": "time"
-  },
-  "_items": [
-   {
-    "_key": "mp-114451",
-    "_title": {
-     "text": "雪漫天 BeatBox 外壳定制指南"
-    },
-    "_author": {
-     "text": "蓬岸"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114451"
-    },
-    "_subtitle": {
-     "text": "昨天 11:11"
-    }
-   },
-   {
-    "_key": "mp-114647",
-    "_title": {
-     "text": "LinkTap - 点击复制链接地址｜Chrome 扩展"
-    },
-    "_author": {
-     "text": "郝海龙"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114647"
-    },
-    "_subtitle": {
-     "text": "昨天 09:52"
-    }
-   },
-   {
-    "_key": "mp-114570",
-    "_title": {
-     "text": "保持收听 | 这是一份给网球爱好者的播客清单"
-    },
-    "_author": {
-     "text": "滨江麋鹿"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114570"
-    },
-    "_subtitle": {
-     "text": "昨天 09:19"
-    }
-   },
-   {
-    "_key": "mp-114497",
-    "_title": {
-     "text": "设计啊！@ M+ 展览记录"
-    },
-    "_author": {
-     "text": "自言者一么imgradeone"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114497"
-    },
-    "_subtitle": {
-     "text": "前天 09:51"
-    }
-   },
-   {
-    "_key": "mp-114547",
-    "_title": {
-     "text": "异常断电 硬盘猝死？Victoria坏道修复手记"
-    },
-    "_author": {
-     "text": "玩出个名堂"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114547"
-    },
-    "_subtitle": {
-     "text": "前天 09:29"
-    }
-   },
-   {
-    "_key": "mp-114582",
-    "_title": {
-     "text": "如何用飞书多维表格搭建一套小巧智能的 CRM"
-    },
-    "_author": {
-     "text": "Ironben"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114582"
-    },
-    "_subtitle": {
-     "text": "09/15 09:50"
-    }
-   },
-   {
-    "_key": "mp-114520",
-    "_title": {
-     "text": "让安卓系统日历支持 CalDAV 双向同步：DAVx5 + 钉钉、飞书日历实践"
-    },
-    "_author": {
-     "text": "夜间清风"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114520"
-    },
-    "_subtitle": {
-     "text": "09/14 10:06"
-    }
-   },
-   {
-    "_key": "mp-114443",
-    "_title": {
-     "text": "一根网线连接 Windows 和 Linux：不用路由器，打造双机键鼠与剪贴板共享环境"
-    },
-    "_author": {
-     "text": "HappyOY"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114443"
-    },
-    "_subtitle": {
-     "text": "09/14 10:03"
-    }
-   },
-   {
-    "_key": "mp-114395",
-    "_title": {
-     "text": "古董电脑室10周年记：为什么我不再是收藏家（上）"
-    },
-    "_author": {
-     "text": "蓬岸"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114395"
-    },
-    "_subtitle": {
-     "text": "09/11 09:51"
-    }
-   },
-   {
-    "_key": "mp-114280",
-    "_title": {
-     "text": "在义乌吃见中东。"
-    },
-    "_author": {
-     "text": "陈自来VincentC"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114280"
-    },
-    "_subtitle": {
-     "text": "09/09 10:14"
-    }
-   },
-   {
-    "_key": "mp-114208",
-    "_title": {
-     "text": "不把导师选择交给运气：我做了一个择导工具"
-    },
-    "_author": {
-     "text": "Fe6ruAr9"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114208"
-    },
-    "_subtitle": {
-     "text": "09/09 10:12"
-    }
-   },
-   {
-    "_key": "mp-114212",
-    "_title": {
-     "text": "花一亿美元开发的“垃圾”，能出什么问题"
-    },
-    "_author": {
-     "text": "黑狗布雷特"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114212"
-    },
-    "_subtitle": {
-     "text": "09/08 09:51"
-    }
-   },
-   {
-    "_key": "mp-114150",
-    "_title": {
-     "text": "为迎接GTA6做准备，异地远程PS Portal串流PS5主机游玩步骤详解"
-    },
-    "_author": {
-     "text": "尼古拉斯lalala"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114150"
-    },
-    "_subtitle": {
-     "text": "09/08 09:24"
-    }
-   },
-   {
-    "_key": "mp-114211",
-    "_title": {
-     "text": "我做了一个地图壁纸 - Here Wallpaper，可以把喜欢的街道城市放上手机和电脑桌面"
-    },
-    "_author": {
-     "text": "sha2kyou"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114211"
-    },
-    "_subtitle": {
-     "text": "09/07 09:51"
-    }
-   },
-   {
-    "_key": "mp-114101",
-    "_title": {
-     "text": "喜欢杰夫·戴尔批《奥德赛》，也喜欢诺兰的《奥德赛》"
-    },
-    "_author": {
-     "text": "Binich"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114101"
-    },
-    "_subtitle": {
-     "text": "09/07 07:17"
-    }
-   },
-   {
-    "_key": "mp-113990",
-    "_title": {
-     "text": "ThinkPad 最后的 4:3，正屏移动工作站 T61p 怀旧手记"
-    },
-    "_author": {
-     "text": "随便好啦"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/113990"
-    },
-    "_subtitle": {
-     "text": "09/04 10:26"
-    }
-   },
-   {
-    "_key": "mp-114128",
-    "_title": {
-     "text": "为了让Mac上的“便签”回归本质，我制作了Brim"
-    },
-    "_author": {
-     "text": "jadezhou"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114128"
-    },
-    "_subtitle": {
-     "text": "09/04 09:50"
-    }
-   },
-   {
-    "_key": "mp-114059",
-    "_title": {
-     "text": "库克正式卸任苹果CEO｜掌舵15年：始于重重质疑，终留功过一身"
-    },
-    "_author": {
-     "text": "邻章"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114059"
-    },
-    "_subtitle": {
-     "text": "09/04 09:27"
-    }
-   },
-   {
-    "_key": "mp-114114",
-    "_title": {
-     "text": "为 Mac 而生：Markdown 编辑器 Lettera 现已开启公测"
-    },
-    "_author": {
-     "text": "Bear熊掌记"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/114114"
-    },
-    "_subtitle": {
-     "text": "09/03 09:51"
-    }
-   },
-   {
-    "_key": "mp-113863",
-    "_title": {
-     "text": "告别断层与隐私担忧：一款 100% 离线的 Apple 全平台智能长截图工具"
-    },
-    "_author": {
-     "text": "Isearch"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/post/113863"
-    },
-    "_subtitle": {
-     "text": "09/02 09:31"
-    }
-   }
-  ],
-  "more": {
-   "_intent": "继续加载更早的帖子",
-   "_action": {
-    "verb": "operate",
-    "label": "加载更多"
-   }
-  }
- },
- "yipai": {
-  "_intent": "「一派」讨论侧卡：当前进行的快速投票，可发表一句参与",
-  "vote": {
-   "_intent": "正在进行的投票话题",
-   "_name": {
-    "text": "快速投票：换机只选 512GB 起步？"
-   },
-   "_action": {
-    "verb": "open",
-    "to": "https://sspai.com/bullet/1789222518"
-   }
-  },
-  "join": {
-   "_intent": "对该投票发表一句话观点",
-   "_action": {
-    "verb": "operate",
-    "label": "我来说一说",
-    "to": "https://sspai.com/bullet/1789222518"
-   }
-  },
-  "more": {
-   "_intent": "查看更多一派讨论",
-   "_action": {
-    "verb": "open",
-    "label": "更多一派讨论",
-    "to": "https://sspai.com/matrix/pods"
-   }
-  }
- },
- "worth-following": {
-  "_intent": "值得关注：社区推荐的作者及其简介",
+  "_intent": "少数派 Matrix 社区广场：创作者社区的文章/动态列表（当前视图为「精选」），附一派投票、值得关注作者与专栏推荐",
+  "_key": "sspai-matrix",
   "_title": {
-   "text": "值得关注"
+    "text": "Matrix 社区"
   },
-  "_items": [
-   {
-    "_key": "wf-6z85jsa4",
-    "_name": {
-     "text": "车不能快"
-    },
-    "_detail": {
-     "text": "⌨️「键盘」 🎮游戏力+10 ✍写稿力+5 🗨聊天速度+20 💰-50 玩键盘，入坑需谨慎！"
-    },
+  "create": {
+    "_intent": "进入创作页发布内容",
     "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/u/6z85jsa4"
+      "verb": "navigate",
+      "label": "开始创作",
+      "to": "https://sspai.com/write"
     }
-   },
-   {
-    "_key": "wf-wf1e9oo4",
-    "_name": {
-     "text": "Tolecen"
-    },
-    "_detail": {
-     "text": "开发者，主要作品：白描，西江月，两个西柚"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/u/wf1e9oo4"
-    }
-   },
-   {
-    "_key": "wf-914r3btn",
-    "_name": {
-     "text": "ElijahLee"
-    },
-    "_detail": {
-     "text": "多次获得「最佳作者」称号🥇，收到多个台灯奖品🎁。"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/u/914r3btn"
-    }
-   },
-   {
-    "_key": "wf-1lwwt93s",
-    "_name": {
-     "text": "手动贩卖机"
-    },
-    "_detail": {
-     "text": "自己动手，丰衣足食｜公众号：手动贩卖机｜视频制作：手动贩卖机_v1"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/u/1lwwt93s"
-    }
-   },
-   {
-    "_key": "wf-dnbwg",
-    "_name": {
-     "text": "蓬岸"
-    },
-    "_detail": {
-     "text": "网页里的电脑博物馆：蓬岸"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/u/dnbwg"
-    }
-   }
-  ]
- },
- "columns": {
-  "_intent": "专栏推荐：站内专栏及其关注人数",
-  "_title": {
-   "text": "专栏推荐"
   },
-  "_items": [
-   {
-    "_key": "col-360",
-    "_name": {
-     "text": "生命黑客"
-    },
-    "_count": {
-     "num": 59,
-     "unit": "人关注"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/column/360"
+  "feed-view": {
+    "_intent": "社区广场的三种视图：当前为「精选」",
+    "_items": [
+      {
+        "_key": "view-featured",
+        "_name": {
+          "text": "精选"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://sspai.com/matrix"
+        }
+      },
+      {
+        "_key": "view-hot",
+        "_name": {
+          "text": "热门"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://sspai.com/matrix/hot"
+        }
+      },
+      {
+        "_key": "view-random",
+        "_name": {
+          "text": "随便看看"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://sspai.com/matrix/random"
+        }
+      }
+    ],
+    "_expose": {
+      "name": "matrix-feed-view",
+      "type": "text"
     }
-   },
-   {
-    "_key": "col-358",
-    "_name": {
-     "text": "果铺知道 Tabletops"
+  },
+  "feed": {
+    "_intent": "社区广场帖子列表（精选视图 20 条）：标题与作者，点按进入正文",
+    "_rel": {
+      "order": "time"
     },
-    "_count": {
-     "num": 224,
-     "unit": "人关注"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/column/358"
+    "_items": [
+      {
+        "_key": "mp-114451",
+        "_title": {
+          "text": "雪漫天 BeatBox 外壳定制指南"
+        },
+        "_author": {
+          "text": "蓬岸"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114451"
+        },
+        "_subtitle": {
+          "text": "昨天 11:11"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-7c5e50de495e.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "蓬岸"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "蓬岸",
+            "to": "https://sspai.com/u/dnbwg"
+          }
+        }
+      },
+      {
+        "_key": "mp-114647",
+        "_title": {
+          "text": "LinkTap - 点击复制链接地址｜Chrome 扩展"
+        },
+        "_author": {
+          "text": "郝海龙"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114647"
+        },
+        "_subtitle": {
+          "text": "昨天 09:52"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "郝海龙"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "郝海龙",
+            "to": "https://sspai.com/u/ettwsva2"
+          }
+        }
+      },
+      {
+        "_key": "mp-114570",
+        "_title": {
+          "text": "保持收听 | 这是一份给网球爱好者的播客清单"
+        },
+        "_author": {
+          "text": "滨江麋鹿"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114570"
+        },
+        "_subtitle": {
+          "text": "昨天 09:19"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-cbab2ce54a8e.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "滨江麋鹿"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "滨江麋鹿",
+            "to": "https://sspai.com/u/xrr9q8pb"
+          }
+        }
+      },
+      {
+        "_key": "mp-114497",
+        "_title": {
+          "text": "设计啊！@ M+ 展览记录"
+        },
+        "_author": {
+          "text": "自言者一么imgradeone"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114497"
+        },
+        "_subtitle": {
+          "text": "前天 09:51"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-18eacc5da6a4.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "自言者一么imgradeone"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "自言者一么imgradeone",
+            "to": "https://sspai.com/u/imgradeone"
+          }
+        }
+      },
+      {
+        "_key": "mp-114547",
+        "_title": {
+          "text": "异常断电 硬盘猝死？Victoria坏道修复手记"
+        },
+        "_author": {
+          "text": "玩出个名堂"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114547"
+        },
+        "_subtitle": {
+          "text": "前天 09:29"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-6d8ae186e0a9.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "玩出个名堂"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "玩出个名堂",
+            "to": "https://sspai.com/u/play4fame"
+          }
+        }
+      },
+      {
+        "_key": "mp-114582",
+        "_title": {
+          "text": "如何用飞书多维表格搭建一套小巧智能的 CRM"
+        },
+        "_author": {
+          "text": "Ironben"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114582"
+        },
+        "_subtitle": {
+          "text": "09/15 09:50"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-c9af0146d446.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "Ironben"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "Ironben",
+            "to": "https://sspai.com/u/om330qh1"
+          }
+        }
+      },
+      {
+        "_key": "mp-114520",
+        "_title": {
+          "text": "让安卓系统日历支持 CalDAV 双向同步：DAVx5 + 钉钉、飞书日历实践"
+        },
+        "_author": {
+          "text": "夜间清风"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114520"
+        },
+        "_subtitle": {
+          "text": "09/14 10:06"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "夜间清风"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "夜间清风",
+            "to": "https://sspai.com/u/wind_night"
+          }
+        }
+      },
+      {
+        "_key": "mp-114443",
+        "_title": {
+          "text": "一根网线连接 Windows 和 Linux：不用路由器，打造双机键鼠与剪贴板共享环境"
+        },
+        "_author": {
+          "text": "HappyOY"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114443"
+        },
+        "_subtitle": {
+          "text": "09/14 10:03"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "HappyOY"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "HappyOY",
+            "to": "https://sspai.com/u/m3ojco5y"
+          }
+        }
+      },
+      {
+        "_key": "mp-114395",
+        "_title": {
+          "text": "古董电脑室10周年记：为什么我不再是收藏家（上）"
+        },
+        "_author": {
+          "text": "蓬岸"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114395"
+        },
+        "_subtitle": {
+          "text": "09/11 09:51"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-ab545926c506.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "蓬岸"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "蓬岸",
+            "to": "https://sspai.com/u/dnbwg"
+          }
+        }
+      },
+      {
+        "_key": "mp-114280",
+        "_title": {
+          "text": "在义乌吃见中东。"
+        },
+        "_author": {
+          "text": "陈自来VincentC"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114280"
+        },
+        "_subtitle": {
+          "text": "09/09 10:14"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-2250c820d00a.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "陈自来VincentC"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "陈自来VincentC",
+            "to": "https://sspai.com/u/70tkkcds"
+          }
+        }
+      },
+      {
+        "_key": "mp-114208",
+        "_title": {
+          "text": "不把导师选择交给运气：我做了一个择导工具"
+        },
+        "_author": {
+          "text": "Fe6ruAr9"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114208"
+        },
+        "_subtitle": {
+          "text": "09/09 10:12"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-bac240725810.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "Fe6ruAr9"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "Fe6ruAr9",
+            "to": "https://sspai.com/u/0jyvcp5v"
+          }
+        }
+      },
+      {
+        "_key": "mp-114212",
+        "_title": {
+          "text": "花一亿美元开发的“垃圾”，能出什么问题"
+        },
+        "_author": {
+          "text": "黑狗布雷特"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114212"
+        },
+        "_subtitle": {
+          "text": "09/08 09:51"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-70fcdbb71fa5.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "黑狗布雷特"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "黑狗布雷特",
+            "to": "https://sspai.com/u/bradliu"
+          }
+        }
+      },
+      {
+        "_key": "mp-114150",
+        "_title": {
+          "text": "为迎接GTA6做准备，异地远程PS Portal串流PS5主机游玩步骤详解"
+        },
+        "_author": {
+          "text": "尼古拉斯lalala"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114150"
+        },
+        "_subtitle": {
+          "text": "09/08 09:24"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-d094ff0453fc.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "尼古拉斯lalala"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "尼古拉斯lalala",
+            "to": "https://sspai.com/u/staylalala"
+          }
+        }
+      },
+      {
+        "_key": "mp-114211",
+        "_title": {
+          "text": "我做了一个地图壁纸 - Here Wallpaper，可以把喜欢的街道城市放上手机和电脑桌面"
+        },
+        "_author": {
+          "text": "sha2kyou"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114211"
+        },
+        "_subtitle": {
+          "text": "09/07 09:51"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-1aa06641b371.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "sha2kyou"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "sha2kyou",
+            "to": "https://sspai.com/u/tr1ck"
+          }
+        }
+      },
+      {
+        "_key": "mp-114101",
+        "_title": {
+          "text": "喜欢杰夫·戴尔批《奥德赛》，也喜欢诺兰的《奥德赛》"
+        },
+        "_author": {
+          "text": "Binich"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114101"
+        },
+        "_subtitle": {
+          "text": "09/07 07:17"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-f27fbf732a3f.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "Binich"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "Binich",
+            "to": "https://sspai.com/u/binich"
+          }
+        }
+      },
+      {
+        "_key": "mp-113990",
+        "_title": {
+          "text": "ThinkPad 最后的 4:3，正屏移动工作站 T61p 怀旧手记"
+        },
+        "_author": {
+          "text": "随便好啦"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/113990"
+        },
+        "_subtitle": {
+          "text": "09/04 10:26"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-9f76160d2b66.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "随便好啦"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "随便好啦",
+            "to": "https://sspai.com/u/uuuksvuu"
+          }
+        }
+      },
+      {
+        "_key": "mp-114128",
+        "_title": {
+          "text": "为了让Mac上的“便签”回归本质，我制作了Brim"
+        },
+        "_author": {
+          "text": "jadezhou"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114128"
+        },
+        "_subtitle": {
+          "text": "09/04 09:50"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-157caadd3206.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "jadezhou"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "jadezhou",
+            "to": "https://sspai.com/u/atpfx8ho"
+          }
+        }
+      },
+      {
+        "_key": "mp-114059",
+        "_title": {
+          "text": "库克正式卸任苹果CEO｜掌舵15年：始于重重质疑，终留功过一身"
+        },
+        "_author": {
+          "text": "邻章"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114059"
+        },
+        "_subtitle": {
+          "text": "09/04 09:27"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-af05f2a5e33a.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "邻章"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "邻章",
+            "to": "https://sspai.com/u/8icia5zc"
+          }
+        }
+      },
+      {
+        "_key": "mp-114114",
+        "_title": {
+          "text": "为 Mac 而生：Markdown 编辑器 Lettera 现已开启公测"
+        },
+        "_author": {
+          "text": "Bear熊掌记"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114114"
+        },
+        "_subtitle": {
+          "text": "09/03 09:51"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-ebc5474c33dc.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "Bear熊掌记"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "Bear熊掌记",
+            "to": "https://sspai.com/u/bear_app"
+          }
+        }
+      },
+      {
+        "_key": "mp-113863",
+        "_title": {
+          "text": "告别断层与隐私担忧：一款 100% 离线的 Apple 全平台智能长截图工具"
+        },
+        "_author": {
+          "text": "Isearch"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/113863"
+        },
+        "_subtitle": {
+          "text": "09/02 09:31"
+        },
+        "_image": {
+          "image": "../assets/62-recovered-sspai-com-matrix-af7e592291bf.png",
+          "alt": ""
+        },
+        "authorLink": {
+          "_name": {
+            "text": "Isearch"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "Isearch",
+            "to": "https://sspai.com/u/qa3gn4bd"
+          }
+        }
+      }
+    ],
+    "more": {
+      "_intent": "继续加载更早的帖子",
+      "_action": {
+        "verb": "operate",
+        "label": "加载更多"
+      }
     }
-   },
-   {
-    "_key": "col-254",
-    "_name": {
-     "text": "Bear熊掌记"
+  },
+  "yipai": {
+    "_intent": "「一派」讨论侧卡：当前进行的快速投票，可发表一句参与",
+    "vote": {
+      "_intent": "正在进行的投票话题",
+      "_name": {
+        "text": "快速投票：换机只选 512GB 起步？"
+      },
+      "_action": {
+        "verb": "open",
+        "to": "https://sspai.com/bullet/1789222518"
+      }
     },
-    "_count": {
-     "num": 1014,
-     "unit": "人关注"
+    "join": {
+      "_intent": "对该投票发表一句话观点",
+      "_action": {
+        "verb": "operate",
+        "label": "我来说一说",
+        "to": "https://sspai.com/bullet/1789222518"
+      }
     },
-    "_action": {
-     "verb": "open",
-     "to": "https://sspai.com/column/254"
+    "more": {
+      "_intent": "查看更多一派讨论",
+      "_action": {
+        "verb": "open",
+        "label": "更多一派讨论",
+        "to": "https://sspai.com/matrix/pods"
+      }
     }
-   }
-  ],
-  "all": {
-   "_intent": "查看全部专栏",
-   "_action": {
-    "verb": "open",
-    "label": "查看全部",
-    "to": "https://sspai.com/columns"
-   }
+  },
+  "worth-following": {
+    "_intent": "值得关注：社区推荐的作者及其简介",
+    "_title": {
+      "text": "值得关注"
+    },
+    "_items": [
+      {
+        "_key": "wf-6z85jsa4",
+        "_name": {
+          "text": "车不能快"
+        },
+        "_detail": {
+          "text": "⌨️「键盘」 🎮游戏力+10 ✍写稿力+5 🗨聊天速度+20 💰-50 玩键盘，入坑需谨慎！"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/u/6z85jsa4"
+        }
+      },
+      {
+        "_key": "wf-wf1e9oo4",
+        "_name": {
+          "text": "Tolecen"
+        },
+        "_detail": {
+          "text": "开发者，主要作品：白描，西江月，两个西柚"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/u/wf1e9oo4"
+        }
+      },
+      {
+        "_key": "wf-914r3btn",
+        "_name": {
+          "text": "ElijahLee"
+        },
+        "_detail": {
+          "text": "多次获得「最佳作者」称号🥇，收到多个台灯奖品🎁。"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/u/914r3btn"
+        }
+      },
+      {
+        "_key": "wf-1lwwt93s",
+        "_name": {
+          "text": "手动贩卖机"
+        },
+        "_detail": {
+          "text": "自己动手，丰衣足食｜公众号：手动贩卖机｜视频制作：手动贩卖机_v1"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/u/1lwwt93s"
+        }
+      },
+      {
+        "_key": "wf-dnbwg",
+        "_name": {
+          "text": "蓬岸"
+        },
+        "_detail": {
+          "text": "网页里的电脑博物馆：蓬岸"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/u/dnbwg"
+        }
+      }
+    ]
+  },
+  "columns": {
+    "_intent": "专栏推荐：站内专栏及其关注人数",
+    "_title": {
+      "text": "专栏推荐"
+    },
+    "_items": [
+      {
+        "_key": "col-360",
+        "_name": {
+          "text": "生命黑客"
+        },
+        "_count": {
+          "num": 59,
+          "unit": "人关注"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/column/360"
+        }
+      },
+      {
+        "_key": "col-358",
+        "_name": {
+          "text": "果铺知道 Tabletops"
+        },
+        "_count": {
+          "num": 224,
+          "unit": "人关注"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/column/358"
+        }
+      },
+      {
+        "_key": "col-254",
+        "_name": {
+          "text": "Bear熊掌记"
+        },
+        "_count": {
+          "num": 1014,
+          "unit": "人关注"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/column/254"
+        }
+      }
+    ],
+    "all": {
+      "_intent": "查看全部专栏",
+      "_action": {
+        "verb": "open",
+        "label": "查看全部",
+        "to": "https://sspai.com/columns"
+      }
+    }
+  },
+  "navigation": {
+    "_intent": "捕获的少数派主导航入口，保持站点原文与目标。",
+    "_items": [
+      {
+        "_title": {
+          "text": "共创"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "共创",
+          "to": "https://sspai.com/create"
+        }
+      },
+      {
+        "_title": {
+          "text": "PRIME"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "PRIME",
+          "to": "https://sspai.com/prime"
+        }
+      },
+      {
+        "_title": {
+          "text": "Matrix"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Matrix",
+          "to": "https://sspai.com/matrix"
+        }
+      },
+      {
+        "_title": {
+          "text": "栏目"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "栏目",
+          "to": "https://sspai.com/series"
+        }
+      }
+    ]
+  },
+  "footer": {
+    "_intent": "捕获的站点说明、协议与联系下载工具入口，不编造额外站点信息。",
+    "_items": [
+      {
+        "_title": {
+          "text": "下载 App"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "下载 App",
+          "to": "https://sspai.com/page/client"
+        }
+      },
+      {
+        "_title": {
+          "text": "联系我们"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "联系我们",
+          "to": "mailto:contact@sspai.com"
+        }
+      },
+      {
+        "_title": {
+          "text": "商务合作"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "商务合作",
+          "to": "https://sspai.com/page/bussiness"
+        }
+      },
+      {
+        "_title": {
+          "text": "关于我们"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "关于我们",
+          "to": "https://sspai.com/page/about-us"
+        }
+      },
+      {
+        "_title": {
+          "text": "用户协议"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "用户协议",
+          "to": "https://sspai.com/page/agreement"
+        }
+      },
+      {
+        "_title": {
+          "text": "粤ICP备09128966号-4"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "粤ICP备09128966号-4",
+          "to": "https://beian.miit.gov.cn/"
+        }
+      },
+      {
+        "_title": {
+          "text": "粤B2-20211534"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "粤B2-20211534",
+          "to": "https://dxzhgl.miit.gov.cn/"
+        }
+      }
+    ],
+    "record": {
+      "_text": {
+        "text": "© 2013-2026 深圳市烧麦网络科技有限公司 - 少数派 粤ICP备09128966号-4 | 粤B2-20211534"
+      }
+    }
   }
- }
 }

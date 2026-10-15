@@ -2,9 +2,9 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>本周看什么 | 最近值得一看的 9 部作品</title>
 <style>
-:root{color-scheme:light;--accent:#0097ff}
+:root{color-scheme:light;--accent:#0078ce;--surface:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--surface)}
 /* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
    accent 由 m1/brand-tokens.json 按站点注入（上面的 --accent），本文件不写死站名/色值。
    层1 目的地列表：.linklist 条目名自身带 _action.to ⇒ 标记 • 换 accent ›（::marker），
@@ -14,12 +14,14 @@ body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang 
        链接，nodePlan.isLabellessLink）尾部 ›。控件/按钮形态不动（.ctl/.action 照旧）。 */
 a{color:inherit;text-decoration:none;cursor:pointer}
 a:hover{text-decoration:underline;text-decoration-color:currentColor}
-a.ref,.val a.body-link,.prose a,.chips a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+a.ref,.val a.body-link,.prose a,.chips a,.data a.table-link{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 .linklist li.go::marker{content:"›";color:var(--accent);font-weight:700}
 .linklist li.go>a{color:var(--accent);text-decoration:none}
 .linklist li.go>a:hover{text-decoration:underline}
 a.self-link{color:var(--accent);text-decoration:none}
 a.self-link:hover{text-decoration:underline}
+.media-link{display:contents}
+.media-link:focus-visible img{outline:2px solid var(--accent);outline-offset:2px}
 a.self-link.nav::after{content:" ›";font-weight:650}
 th.cmp-col>a{color:var(--accent);text-decoration:none}
 /* 轮 57 站点头区横栏（nodePlan.headerBar，规则见 axis.mjs region==='header'）：header 区域
@@ -38,19 +40,20 @@ th.cmp-col>a{color:var(--accent);text-decoration:none}
 .banner>.title{text-align:center}
 .banner>.fact{max-width:none;text-align:center}
 .banner>.controls{justify-content:center}
-.role-label{color:#68788a;font-size:.9em;margin-right:2px}
+.role-label{color:var(--muted);font-size:.9em;margin-right:2px}
 /* 轮 58 · L-1 页面栅格：唯一页面容器 = main（居中、≈1280px、左右对称 padding）。
    section 宽度分层且由 nodePlan 按 section 种类声明（plan.widthTier，规则在 axis.mjs）：
    prose=阅读文本 74ch 居中 / narrow=默认内容 880px 居中 / wide=卡片与 Feed 网格（容器全宽）/
    bleed=仅限声明的 banner（满幅带，内文仍守 padding）。同页各 section 宽度各归其层，
    不再无规则跳变（U-23/U-25/U-26/U-27）。 */
 main{max-width:1280px;margin:0 auto;padding:32px 24px 0}
-/* 根节点直属内容（页面标题、事实列、搜索栏）归入栅格：居中、对称，不再整栏偏左（U-18/U-23）。
-   h1 的列宽用 px（ch 随元素自身 2em 字号放大，74ch 会撑满容器、居中失效）。 */
-.depth-0>.title{max-width:640px;margin-inline:auto}
-.depth-0>.fact{margin-inline:auto}
-.depth-0>.hero{margin-inline:auto;text-align:center}
-.depth-0>.fieldbar{justify-content:center}
+/* Root identity, lead and controls inherit the owning content edge, not a separate
+   centered title column. The outer page frame may be centered; its text need not be. */
+.depth-0>.title{max-width:none;margin-inline:0}
+.depth-0>.fact,.depth-0>.hero{margin-inline:0}
+.depth-0>.fieldbar{justify-content:flex-start}
+.depth-0>.site-identity{font-size:18px;line-height:1.4;text-align:left;margin:0 0 16px;font-weight:650}
+h4.title,h5.title,h6.title{font-size:1em;line-height:1.5;margin:.7em 0 .35em;font-weight:650}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
 header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
 h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
@@ -59,12 +62,13 @@ h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
 .hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
 /* a lead sentence is not a headline: H1-sized prose collapses the page's heading levels */
-.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:#33475b}
+.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:var(--soft-ink)}
 article{margin:12px 0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+.cards.cols-auto{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0;max-width:74ch}
 .hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
@@ -72,21 +76,23 @@ article{margin:12px 0}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
 /* label chips need a visible chip body, or the row reads as one bare string of text (round 27) */
-.chips .chip-item{display:inline-block;background:#eef2f7;border:1px solid #dbe3ec;border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
+.chips .chip-item{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
 /* a sentence member is prose, not a tag: keep it on its own plain line */
 .chips-rows{display:block}
 .chips-rows .chip-item{display:block;background:none;border:0;border-radius:0;padding:3px 0;font-size:.95em}
 .cards .item img,.run .item img,.cards img{width:auto;max-width:100%;height:auto;display:block;border-radius:8px}
+/* Compact product media: an upper bound only, never crop or upscale source thumbnails. */
+.product-cards img{max-height:160px}
 .action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
-.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:var(--soft-ink);font-weight:600;margin:10px 0}
 .promo-image{padding:0;overflow:hidden}
 .promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
-.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:var(--muted);font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
 /* 并入价格行的分期时长（U-28）：与承载句同行、弱化如 meta，不再是容器外孤块 */
-.fact .installment{color:#5b6a78;font-size:.9em}
+.fact .installment{color:var(--muted);font-size:.9em}
 .fact .installment .sep{color:#c2ccd6}
-.prose{max-width:74ch;margin-inline:auto}
+.prose{max-width:74ch;margin-inline:0}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
 /* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
    轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
@@ -99,7 +105,7 @@ article{margin:12px 0}
 .cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip,.band .strip{width:auto;margin-left:auto;margin-right:auto}
 .cards .strip img{border-radius:8px}
 /* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
-.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.img-alt{display:block;color:var(--muted);font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
 .promo-image .img-alt{padding:10px 14px;border-radius:0}
 main>.node>.strip:first-child,article>.strip{margin-top:0;margin-bottom:0}
 /* F-031: 序列区块（不可比内容各自成立） */
@@ -115,22 +121,22 @@ hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
 .ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
 /* 时间流文本（弹幕）：行内紧凑流，每条单行省略——不铺成竖排文本墙（§10.5） */
 .stream{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0}
-.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#eef2f7;border-radius:999px;padding:2px 10px;font-size:.85em}
+.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--soft);border-radius:999px;padding:2px 10px;font-size:.85em}
 a.ctl{font-weight:600}
 a.ctl:hover{background:#f2f7ff}
 /* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
 .cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
 .cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
 .cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
-.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-row{white-space:nowrap;color:var(--muted);font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
 .cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
 .cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
 .cmp-price{font-weight:700;margin-top:4px}
-.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
+.cmp-sub{color:var(--muted);font-size:.92em;margin-top:2px}
 .cmp-ctl{margin-top:6px}
 /* 纯标签清单：一组等格条目名，读作"一组面板/条目"，不是 1..N 的目录（轮 34 grafana） */
 .manifest{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
-.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:#33475b;overflow-wrap:anywhere}
+.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:var(--soft-ink);overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
 .linklist.cols3{columns:3;column-gap:24px}
@@ -140,18 +146,25 @@ a.ctl:hover{background:#f2f7ff}
 .seq li{margin:4px 0;line-height:1.55}
 .chip-item{break-inside:avoid}
 .deflist{margin:8px 0}
-.deflist.ranked .rank{min-width:1.5em;color:#8493a3;font-weight:700;font-variant-numeric:tabular-nums}
+.deflist.ranked .rank{min-width:1.5em;color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums}
 .deflist.ranked .deflabel{font-weight:500}
-.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:flex-start}
+.defrow.media-row{display:block}
+.defrow.media-row .deflabel{flex:none;min-width:0;margin-bottom:8px}
+.defrow.media-row .defval{min-width:0;max-width:100%}
+.deflist.media-captions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(280px,calc((100% - 32px)/3))),1fr));gap:16px}
+.deflist.media-captions .defrow{display:flex;flex-direction:column;flex-wrap:nowrap;border:0}
+.deflist.media-captions img{max-height:360px;width:auto;height:auto}
 .deflabel{min-width:130px;font-weight:600}
 .deflabel a{color:inherit}
 .timeline .defrow{position:relative}
 .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
+.defval{color:var(--muted);font-size:.95em;overflow-wrap:anywhere;min-width:100px}
+@media(max-width:700px){.defrow.long-label{display:block}.defrow.long-label .deflabel{min-width:0;margin-bottom:4px}.defval{min-width:0}.defval .val{word-break:normal}}
 .accordion{margin:8px 0}
 details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
 details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
-details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
+details.qa .qa-a{padding:6px 0;color:var(--muted);font-size:.95em}
 .expose{display:block;margin:8px 0}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
@@ -162,11 +175,16 @@ fieldset.expose.chipbar{display:inline-block;max-width:100%}
    实测同色无下划线）：轮 57 起并入层2 —— accent + 常显细下划线（上面的 .chips a 规则）。 */
 /* D-3: a text input is an inline field so its submit control sits on the same bar */
 span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
+.authentication-page{max-width:440px;margin-inline:auto}
+.task-form .expose-input{display:flex;flex-direction:column;align-items:stretch;gap:6px;max-width:360px;width:100%;margin:8px 0}
+.task-form .expose-input>.deflabel{min-width:0}
+.task-form .expose-input>input{box-sizing:border-box;width:100%;min-width:0}
+.task-form .fieldbar{flex-wrap:wrap;justify-content:flex-start}
 /* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
-.expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
-.choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
+legend{font-size:.8em;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:var(--muted);font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:var(--muted);font-size:.9em;margin-left:4px}
 input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 /* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮）；
@@ -178,12 +196,17 @@ input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;
 img{max-width:100%;width:auto;border-radius:10px;display:block}
 /* 同一条「不放大」规则覆盖卡片/条目/正文图：自然宽 ≥ 容器则铺满，否则按自然尺寸居中显示 */
 .fact img,.cards img,.cards .item img,.run .item img{width:auto;max-width:100%;height:auto}
+.data-scroll{max-width:100%;overflow-x:auto}
+.data-scroll table.data{min-width:640px}
+.expose table.data{min-width:640px}
+fieldset.expose:has(>table.data){min-inline-size:0;min-width:0;width:100%;max-width:100%;overflow-x:auto}
+a.option-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
-table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
-table.data tr.row-group th{text-align:left;color:#33475b;font-weight:700;background:#eef2f7}
+table.data th{color:var(--muted);font-weight:600;background:#f7f9fb}
+table.data tr.row-group th{text-align:left;color:var(--soft-ink);font-weight:700;background:var(--soft)}
 table.data td.sel,table.data th.sel{width:34px;text-align:center}
-.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.chip{display:inline-block;background:var(--soft);border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 /* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
@@ -199,11 +222,9 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
 .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
-/* 轮 58（L-1）宽度分层（必须晚于 .block>.node，层级胜出层叠）：prose=阅读 74ch 居中 /
-narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ bleed=仅声明的 banner（满幅）。 */
-.node.w-prose{max-width:74ch;margin-inline:auto}
-.node.w-narrow{max-width:880px;margin-inline:auto}
-.node.w-wide{max-width:none}
+/* Local forms inherit their page frame; only declared banner bleed can escape it.
+   Reading/product/detail composition sets the parent measure, not each local form. */
+.node.w-prose,.node.w-narrow,.node.w-wide{max-width:none;margin-inline:0;width:100%}
 .node.w-bleed{max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 24px}
 /* 轮 58（L-6）媒体优先卡片：图与标题永不分家（同一 article）；条目图在题上方（视频/卡片站
    惯例）。轴层 mediaFirstOf 声明，这里用 flex order 画 —— 不拆 DOM，长文条目不受影响。 */
@@ -213,15 +234,153 @@ narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ b
    阅读型堆叠（长文成员）保持单列。 */
 .stack.cols-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;align-items:start;margin:14px 0}
 .stack.cols-auto .block{margin:0}
+.cards.compact-media,.stack.compact-media{grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
 .stack.cols-auto hr.region{display:none}
 /* 轮 58（L-5）footer 反色（惯例）：模型声明的 footer 区域（.g-footer）深底浅字，
    负 margin 铺满容器内宽、底边贴住容器。无 footer 区域的页自然没有这条带。 */
-.group.g-footer{background:#16202b;color:#c7d3e0;margin:48px -24px 0;padding:24px 24px 28px}
-.group.g-footer .title,.group.g-footer h1,.group.g-footer h2,.group.g-footer h3,.group.g-footer h4{color:#eef4fa}
-.group.g-footer a{color:#dce6f1}
-.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:#aebccc}
-.group.g-footer .ctl{border-color:#41546a;color:#c7d3e0;background:transparent}
-.group.g-footer a.ctl:hover{background:#223244}
-.group.g-footer .defrow{border-bottom-color:#253444}
+/* Surfaces own foreground AND background tokens. A footer is secondary site information,
+   not automatically a dark hero. Match the captured light, compact utility region. */
+.group.g-footer{--surface:#f5f5f7;--ink:#30343b;--muted:#536171;--soft:#e8eaee;--soft-ink:#30343b;--line:#d5d8df;background:var(--surface);color:var(--ink);margin:32px -24px 0;padding:24px}
+.group.g-footer .node,.group.g-footer .block{margin:0;padding:0}
+.group.g-footer .stack{display:flex;flex-wrap:wrap;gap:14px 24px}
+.group.g-footer .stack>.block{flex:1 1 250px}
+.group.g-footer .stack>.block:first-child{flex-basis:100%}
+.group.g-footer .linklist{columns:auto;display:flex;flex-wrap:wrap;gap:6px 18px;padding:0;margin:0}
+.group.g-footer .linklist li{list-style:none;margin:0;font-size:13px;line-height:1.65}
+.group.g-footer .seq{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding:0}
+.group.g-footer .seq li{list-style:none;margin:0;font-size:12px;line-height:1.6}
+.group.g-footer .stack>.block:has(.seq),.group.g-footer .stack>.block:has(.chips-rows){flex-basis:100%;padding-top:12px;border-top:1px solid var(--line)}
+.group.g-footer .linklist li.go::marker{content:""}
+.group.g-footer .chips{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0}
+.group.g-footer .chip-item{padding:0;border:0;background:transparent;border-radius:0;font-size:13px;color:var(--ink)}
+.group.g-footer .title,.group.g-footer a,.group.g-footer .linklist li.go>a,.group.g-footer .chips a{color:var(--ink)}
+.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:var(--muted)}
+.group.g-footer .ctl{border-color:var(--line);color:var(--ink);background:var(--surface);padding:4px 10px}
+.group.g-footer a.ctl:hover{background:var(--soft)}
+.group.g-footer .defrow{border-bottom-color:var(--line)}
+/* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
+.reading-page{--reading-width:800px;max-width:var(--reading-width);margin-inline:auto}
+.reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
+.reading-page .node.w-prose,.reading-page .node.w-narrow,.reading-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.reading-page .fact,.reading-page .prose,.reading-page .prose p,.reading-page .quote{max-width:none}
+.reading-page .fact img{margin-inline:auto}
+.reading-page .defrow{display:block;padding:16px 0}
+.reading-page .deflabel{margin-bottom:6px}
+.reading-page .defval{font-size:1em;line-height:1.75}
+.reading-page .cards:not(:has(img)){display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.reading-page .cards:not(:has(img))>.item{border:0;padding:0}
+.reading-page .cards:not(:has(img)) .node{margin:0}
+.reading-page .cards:not(:has(img)) .action{margin:0;border-radius:999px;padding:5px 14px;background:var(--soft);color:var(--soft-ink)}
+/* Label-only destination groups are navigation, not a vertical sitemap. */
+.utility-group>.chips-rows{display:flex;flex-wrap:wrap}
+.utility-group>.chips-rows .chip-item{display:inline-block;padding:3px 8px}
+.stack>.block:has(>.utility-group){margin-block:8px;padding:0}
+.utility-group{margin-block:4px}
+.node.w-narrow:has(>.linklist),.node.w-narrow:has(>.chips){max-width:none}
+.linklist.cols2,.linklist.cols3,.linklist.cols4{columns:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:3px 18px}
+.header-bar .linklist.cols2,.header-bar .linklist.cols3,.header-bar .linklist.cols4{display:flex;grid-template-columns:none}
+.node:has(>.chips)>.chips{gap:6px 12px}
+/* Related sections inherit the page frame; long fact lines keep their reading measure. */
+.depth-0>.meta{margin-inline:0}
+.utility-facts>.stack>.block{margin:4px 0;padding:0}
+.utility-facts>.stack>.block>.node{margin:0}
+.utility-facts .title{font-size:1em;margin:4px 0}
+.utility-group>.stack{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.stack>.block{margin:0;padding:0}
+.utility-group>.stack>.block>.node{margin:0}
+.utility-group>.deflist{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.deflist>.defrow{border:0;padding:0}
+/* Shared structural compact forms: singleton catalog entries, ordered editorial media, boolean utilities. */
+.singleton-card>.stack{max-width:320px}
+.singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:flex-start;padding:0}
+.singleton-card .banner>.title{font-size:1.12em;text-align:left;order:1;margin:8px 0}
+.singleton-card .banner>.band{order:0;margin:0;max-width:320px}
+.singleton-card .banner>.band .strip{margin:0}
+.singleton-card .banner>.controls,.singleton-card .banner>.action{order:2;margin:8px 0}
+.singleton-card .banner img{max-width:100%;max-height:320px;width:auto;height:auto}
+.boolean-utilities>.stack{display:flex;flex-wrap:wrap;gap:8px 16px}
+.boolean-utilities>.stack>.block,.boolean-utilities>.stack>.block>.node{margin:0;padding:0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox]){display:inline-block;margin:4px 16px 4px 0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox])>.node{margin:0;padding:0}
+.ordered-media-rows>.stack>.block{margin:12px 0;padding:12px 0;border-bottom:1px solid var(--line)}
+.ordered-media-rows>.stack>.block>.node{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:4px 20px;margin:0;padding:0}
+.ordered-media-rows>.stack>.block>.node>*{grid-column:1;margin:0}
+.ordered-media-rows>.stack>.block>.node>.band{grid-column:2;grid-row:1 / span 5;margin:0;align-self:start}
+.ordered-media-rows .band .strip{margin:0;width:auto}
+.ordered-media-rows .band img{max-width:120px;max-height:120px;width:auto;height:auto}
+@media(max-width:600px){.ordered-media-rows>.stack>.block>.node{grid-template-columns:minmax(0,1fr) 96px;gap:4px 12px}.ordered-media-rows .band img{max-width:96px;max-height:96px}}
+/* Whole-page alignment: local lists, facts and cards inherit the same page frame. */
+.catalog-page .node.w-prose,.catalog-page .node.w-narrow,.catalog-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.catalog-page>.stack>.block{margin:14px 0}
+.catalog-page .depth-1>.fact{max-width:none}
+.catalog-page>.stack>.block:has(>.node>.deflist) .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.catalog-page>.stack>.block:has(>.node>.deflist) .defrow{display:block;padding:16px;background:#f6f7f9;border:1px solid var(--line);border-radius:12px}
+.catalog-page .deflabel{margin-bottom:8px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:14px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block{margin:0;padding:0}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block>.node{margin:0;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fafbfc}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>hr{display:none}
+.product-page{max-width:960px;margin-inline:auto}
+.product-page .node.w-prose,.product-page .node.w-narrow,.product-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.product-page .fact,.product-page .prose,.product-page .prose p{max-width:none}
+.product-page .fact img{margin-inline:auto}
+.product-page>.meta{margin-inline:0}
+.product-page>.stack>.block{margin-block:32px}
+.product-page .defrow{gap:24px}
+.product-page .deflabel{flex:0 0 190px;min-width:0}
+.product-page .media-captions .deflabel{flex:0 0 auto}
+.detail-page>.title{max-width:none;margin-inline:0}
+.detail-page>.fact{max-width:none}
+.detail-page .node.w-prose,.detail-page .node.w-narrow,.detail-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.detail-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start;margin-top:24px}
+.detail-main,.detail-task{min-width:0}
+.detail-main>.group{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.detail-main .fact,.detail-main .prose{max-width:none}
+.detail-task{padding:20px 24px;border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 24px #17212b10}
+.detail-task .group{margin:12px 0}
+.detail-task input{max-width:100%}
+.detail-tail{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.detail-tail .g-distribution .chips-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.detail-tail .g-distribution .chip-item{padding:8px 12px;border-radius:8px;background:var(--soft)}
+.detail-tail .g-aspects .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:4px 24px}
+.detail-tail .g-reviews>.node{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.detail-tail .g-reviews>.node>*{min-width:0}
+.detail-tail .g-reviews>.node>.title,.detail-tail .g-reviews>.node>.controls,.detail-tail .g-reviews>.node>.g-distribution,.detail-tail .g-reviews>.node>.g-aspects{grid-column:1/-1}
+.detail-tail .g-aspects .cmp-table th.cmp-col{min-width:120px}
+.detail-tail .g-reviews>.node>.g-mentions{grid-column:1/-1}
+.detail-tail .g-mentions .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:4px 24px}
+.detail-tail .g-mentions .defrow{justify-content:space-between}
+.detail-page .gallery-mosaic{grid-auto-rows:180px;grid-template-columns:2fr 1fr 1fr}
+.detail-page .gallery-mosaic .strip{aspect-ratio:auto}
+.detail-page .gallery-mosaic .strip:first-child{grid-column:span 1;grid-row:span 2}
+main:has(.marketing-page){max-width:1728px}
+.marketing-page>.title{max-width:none}
+.marketing-page .node.w-bleed{width:100%;margin-inline:0}
+.marketing-page .node.w-narrow,.marketing-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.marketing-page .cards.cols-auto{grid-template-columns:repeat(2,minmax(0,1fr))}
+.marketing-page .cards.cols-auto .item{padding:20px;border-radius:12px;background:#f5f5f7}
+.marketing-page .cards.cols-auto .title{text-align:center;font-size:26px}
+.marketing-page .cards.cols-auto .fact{max-width:none;text-align:center}
+.marketing-page .cards.cols-auto .fact img{margin:auto}
+.marketing-page .cards.cols-auto .controls{justify-content:center}
+.marketing-page .g-tv .cards.cols-auto{grid-template-columns:repeat(3,minmax(0,1fr))}
+.marketing-page .g-services .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.marketing-page .g-services .defrow{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:12px}
+.marketing-page .g-services .defval img{max-height:180px;margin:auto}
+@media(min-width:1920px){body:has(.marketing-page){background:#f5f5f7}main:has(.marketing-page){max-width:1728px;padding-inline:24px}.marketing-page>.stack>.block{margin-block:16px}}
+@media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr);gap:20px}.detail-tail .g-reviews>.node{grid-template-columns:minmax(0,1fr)}.marketing-page .g-tv .cards.cols-auto{grid-template-columns:1fr}.detail-page .gallery-mosaic{grid-auto-rows:130px;grid-template-columns:repeat(2,minmax(0,1fr))}.detail-page .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.marketing-page .cards.cols-auto{grid-template-columns:1fr}.product-page .defrow{flex-wrap:wrap}.product-page .deflabel{flex-basis:100%}}
+/* Media surface metadata keeps marketing image and text in the same panel. The
+   original image is centered at natural height; only uniform lateral gutters clip. */
+.banner-integrated{position:relative;isolation:isolate;overflow:hidden;min-height:580px;padding:32px 24px!important;background:var(--banner-bg);color:var(--banner-fg);display:flex;flex-direction:column;align-items:center;margin-block:12px}
+.banner-integrated>.strip{position:absolute;inset:0;width:100%;height:580px;margin:0;z-index:-1;display:flex;justify-content:center}
+.banner-integrated>.strip img{flex:none;max-width:none;width:auto;height:auto;align-self:flex-start;margin:0;border-radius:0}
+.banner-integrated>.title{font-size:48px;line-height:1.1;margin:8px 0}
+.banner-integrated>.fact{font-size:22px;max-width:640px;line-height:1.35;margin:4px 0}
+.banner-integrated>.controls{margin:16px 0}
+.banner-integrated .ctl{background:transparent;color:#2997ff;border-color:#2997ff;border-radius:999px}
+.banner-integrated .action{background:#0071e3;color:#fff;border-radius:999px}
+.banner-integrated.media-centered>.fact:first-of-type{margin-top:auto}
+.banner-integrated.media-centered>.controls{margin-bottom:0}
+@media(max-width:700px){main{padding:20px 16px 0}.group.g-footer{margin-inline:-16px;padding:20px 16px}.banner-integrated{min-height:540px}.banner-integrated>.title{font-size:34px}.banner-integrated>.strip{height:540px}.banner-integrated>.strip img{width:auto;max-width:min(calc(var(--media-width)*.7),calc((100vw - 48px) * var(--media-ratio)));height:auto;object-fit:contain;align-self:flex-start;margin-top:160px}.banner-integrated>.fact{font-size:18px}.banner-integrated.media-centered>.strip img{margin-top:45px}.gallery-mosaic{grid-template-columns:repeat(2,1fr)}.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.stack.cols-auto,.cards{grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}}
 </style></head>
-<body><main><article class="node depth-0"><h1 class="title">本周看什么 | 最近值得一看的 9 部作品</h1><figure class="strip"><img src="../assets/sspai-post-lead.png" alt="本周看什么 | 最近值得一看的 9 部作品"></figure><div class="meta">2026-09-18</div><div class="stack"><section class="block"><article class="node depth-1 w-prose"><div class="fact"><span class="val">少数派编辑部 等 4 位作者</span></div><div class="prose"><p>16 分钟阅读</p></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">👀 N 部作品推荐</h2><div class="fact"><span class="val">往期推荐可 点此 或点击文末 tag #本周看什么，更多主题片单可 点此 查看；想要查看更多深度影视内容，可以关注我们的衍生栏目「<a class="body-link" href="https://sspai.com/topic/416">看什么 Café</a>」。如有其他建议也欢迎在评论区提出，感谢大家对「看什么」栏目的喜爱和支持。</span></div><ul class="linklist"><li>近期佳作推荐：[英剧] 流人 第六季、[英剧] 翠鸟谋杀案、[美剧] 怪物：丽兹·波顿的故事、[澳大利亚] 最后目击、[德剧] 巴比伦柏林 第五季、[日剧] 幸福伽菜子的快乐杀手生活 第二季、[韩剧] 中头奖还是要上班、[纪录片] 命运与人、[纪录片] 美丽的执念</li><li>几则精彩预告：《哆啦 A 梦 大雄的蒸汽时间车》首支特报、《荒野丛林》终极预告、《黄金时段》新预告、《如何干一票大的》新预告</li><li>几则影视资讯：《生化危机：爆发夜》确认引进、《生日快乐》内地定档 10 月 23 日、《泥面人》新海报</li></ul></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">[英剧] 流人 第六季</h2><div class="fact"><span class="val"><img src="../assets/sspai-post-still-1.jpg" alt=""></span></div><blockquote class="quote"><span class="val">开启废物清除计划。</span></blockquote><div class="prose"><p>关键词：剧情 / 惊悚</p><p>又名：Slow Horses Season 6</p></div><div class="stack"><section class="block"><article class="node depth-2"><div class="fact"><span class="val">片长：40 分钟左右（单集）× 6 集</span></div><a class="action verb-open" href="https://movie.douban.com/subject/36689816/">豆瓣链接</a></article></section></div><div class="prose"><p>@潘誉晗：斯劳屋部门流年不利，本就不被总部的人待见的他们没工资了，系统里也没有他们的任何记录，房屋中介甚至上门勘查了部门好做估价。曾在斯劳部门就职过的同事们遭到了两名专业杀手的袭击，还被断定是「自然死亡」，而杀手们的下个目标是瑞弗。另一边的瑞弗则沉浸在失去祖父的悲痛里，他和黛安娜交涉了一番关于葬礼的事，可也就是在葬礼上，他遇见了他那该死的雇佣兵父亲弗兰克。</p><p>被主创解读为「更黑暗、更暴力、也更情感化」的《流人》第六季，于本周三在 Apple TV+ 释出了首集。本季剧情根据系列小说第六本《间谍国度》（大陆已引进）和第七本《斯劳屋》改编，删改了一些内容后，首集开篇就初现了这季矛盾冲突的端倪：斯劳屋似乎正被清算，成为部长的黛安娜却对此事毫不知情。第六季的《流人》水准在线，拉满了悬疑氛围的同时，又有大量笑点点缀，没有狗尾续貂真是太优秀了～</p></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">[英剧] 翠鸟谋杀案</h2><div class="fact"><span class="val"><img src="../assets/sspai-post-still-2.jpg" alt=""></span></div><blockquote class="quote"><span class="val">和苏珊一起推理吧。</span></blockquote><div class="prose"><p>关键词：悬疑 / 犯罪</p><p>又名：Marble Hall Murders / 大理石厅谋杀案</p></div><div class="stack"><section class="block"><article class="node depth-2"><div class="fact"><span class="val">片长：50 分钟左右（单集）× 6 集</span></div><a class="action verb-open" href="https://movie.douban.com/subject/37218278/">豆瓣链接</a></article></section></div><div class="prose"><p>@利兹与青鸟：苏珊从希腊克里特岛回到伦敦后，重操旧业，出任一家独立出版社的编辑，负责一本新的阿提库斯·庞德侦探小说，时间线接在《喜鹊谋杀案》之后，名为《庞德最后的案件》。庞德前往故乡希腊的科孚岛度假疗养，偶遇查尔方特夫人携第二任丈夫埃尔默和一众子女，来此度过自己的最后一个夏天，却遭人下毒，死于非命。</p><p>原著作者安东尼·霍洛维茨继续担任本系列的编剧，依旧采用书稿与现实的双案双线叙事，由同一组演员饰演两个案件中完全不同却又息息相关的人物，但两个故事在画面质感上有着明显区分，彼此间的转场设计也舒适且巧妙。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">[美剧] 怪物：丽兹·波顿的故事</h2><div class="fact"><span class="val"><img src="../assets/sspai-post-still-3.jpg" alt=""></span></div><blockquote class="quote"><span class="val">挑选一把趁手的斧头吧。</span></blockquote><div class="prose"><p>关键词：犯罪 / 惊悚 / 传记</p><p>又名：Monster: The Lizzie Borden Story / 怪物 4</p></div><div class="deflist"><div class="defrow"><div class="defval">片长：50 分钟左右（单集）× 8 集 <a class="ctl" href="https://movie.douban.com/subject/37413245/">豆瓣链接</a></div></div><div class="defrow"><div class="defval">观看渠道：Netflix <a class="ctl" href="https://sspai.com/link?target=https%3A%2F%2Fwww.netflix.com%2Fhk%2Ftitle%2F82068293">Netflix</a></div></div></div><div class="prose"><p>@利兹与青鸟：本季的故事在一首《鹅妈妈童谣》中开始，丽兹·波顿用斧头砍了母亲 40 下、父亲 41 下，而这则童谣则来源于 1892 年的真实凶杀案。丽兹的母亲在她两岁时离世，经营着棺材铺的奸商父亲对家庭不闻不问，继母也对她极尽打压和言语羞辱，丽兹本人在镇上也被视为异类，尽管如此丽兹还是成长为了一个天真可爱的姑娘。</p><p>本剧摄影带着浓厚的历史感，也不乏美如仙境的场景，喜欢与大自然和鸟类为伴的丽兹宛若仙子，和后续的血腥杀戮形成鲜明对比，配合摇滚乐和一些邪典味的画面，视听体验极佳。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">[澳大利亚] 最后目击</h2><div class="fact"><span class="val"><img src="../assets/sspai-post-still-4.jpg" alt=""></span></div><blockquote class="quote"><span class="val">但是失踪并不意味着死亡，对吧？</span></blockquote><div class="prose"><p>关键词：剧情 / 惊悚</p><p>又名：Last Seen</p></div><div class="stack"><section class="block"><article class="node depth-2"><div class="fact"><span class="val">片长：52 分钟左右（单集）× 8 集</span></div><a class="action verb-open" href="https://movie.douban.com/subject/36948901/">豆瓣链接</a></article></section></div><div class="prose"><p>@潘誉晗：一场暴雨洗涤着世间的一切，也使一具幼童的骸骨从地里重见天日，而这具尸骨的出现，也打破了伊恩宁静的生活。伊恩本是一名警探，十一年前他的女儿玛姬失踪后，伊恩的人生就彻底失序。他和妻子离了婚，开始酗酒，他放弃了一线工作，成为了一名出色的调度员，而这具尸骨的出现、DNA 与他和前妻不相符的事实、加上他接到了一个少女「我好像是玛姬」的求助电话，让伊恩灰色的人生，再次出现了希望。</p><p>由《王冠》导演克里斯蒂安·施沃霍夫所指导的这部澳大利亚新剧，根据瑞安·戴维扬曾获得 CWA 匕首奖的小说《调度员》改编，讲述了一名绝望的父亲，自三岁女儿失踪后浑浑噩噩，在确信女儿还活着的情况下，决心找出女儿的故事。澳洲维多利亚州的这个海滨小镇，阴冷、灰暗、辽阔，静谧又荒凉的海滨风光，让这个案件也变得更为扑朔迷离——原来这个看似平静的小镇里，每个人都藏着秘密。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">[德剧] 巴比伦柏林 第五季</h2><div class="fact"><span class="val"><img src="../assets/sspai-post-still-5.jpg" alt=""></span></div><blockquote class="quote"><span class="val">可是人啊，真的能离开巴比伦吗？</span></blockquote><div class="prose"><p>关键词：剧情 / 惊悚 / 犯罪</p><p>又名：Babylon Berlin Season 5</p></div><div class="stack"><section class="block"><article class="node depth-2"><div class="fact"><span class="val">片长：43 分钟左右（单集）× 8 集</span></div><a class="action verb-open" href="https://movie.douban.com/subject/36464236/">豆瓣链接</a></article></section></div><div class="prose"><p>@潘誉晗：这天，格雷夫如约去见福斯特医生，可就在办公室门口，见到了医生慌乱离去的模样。他走进办公室，却撞见了医生助手的尸体。他给警局打了匿名电话。接到报警的夏洛蒂本以为这只是一桩寻常命案，没想随着调查的深入，发现这起案件另有玄机。福斯特医生专攻精神科，一战时期，他曾用心理暗示的方式治疗了一位患有癔症性失明的士兵，这个治疗过程也被他拍摄了下来。</p><p>这个士兵名叫希特勒，刚被陆军元帅兴登堡任命为德意志帝国的总理。</p><p>《巴比伦柏林》的第五季非常聪明地从一个和希特勒有关的案件切入，然后一点一点地推进，让观众看到了独属于那个年代的混乱与纷争。我们看到了充满欲望的政客骄傲自满的模样；看到了一群为了革命甘愿牺牲自己的共产主义者；更看到了一群以为能在希特勒带领下，生活变得更好的德国老百姓——原来个人的命运与无解的局，早已与时代绑在了一起。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">[日剧] 幸福伽菜子的快乐杀手生活 第二季</h2><div class="fact"><span class="val"><img src="../assets/sspai-post-still-6.png" alt=""></span></div><blockquote class="quote"><span class="val">代表月亮消灭你！</span></blockquote><div class="prose"><p>关键词：漫画改 / 喜剧 / 动作</p><p>又名：幸せカナコの殺し屋生活2 / Happy Kanako's Killer Life Season 2</p></div><div class="stack"><section class="block"><article class="node depth-2"><div class="fact"><span class="val">片长：约 30 分钟（单集）× 5 集，每周四更新</span></div><a class="action verb-open" href="https://movie.douban.com/subject/37296349/">豆瓣链接</a></article></section></div><div class="prose"><p>@SHY：从黑心企业跳槽杀手公司的西野伽菜子，凭借上一份工作的经验混得风生水起，让杀手 K 的名号响彻江湖。这天，再次瞄准霸凌上司的伽菜子，与盯上同一位目标的个体户 Ado 不打不相识，加入杀手女子会美美联谊。然而，在此结识的杀手小七，却正在寻找杀兄仇人 K。</p><p>空窗一年半后，大名鼎鼎的 K 飒爽回归。由准原班主创打造，第二季延续了前作的成功密码，脱线展开接二连三，玩起梗来毫不手软，伽菜子的谐音梗小动物们悉数到场，和能年玲奈搭一起，整个人都被萌化。本季的动作戏同样可圈可点，第 1 集大闹赌场的女子组气场全开，颜值战力两相宜，不禁发出土拨鼠爆鸣。</p><p>剧集在漫画原著的基础上，补充适当原创情节，让剧情衔接更加圆润。新角色的身世各有玄机，老朋友的戏份也不落下，后续展开值得期待。多方助推之下，渐露苗头的感情线，没准会有大进步。把看不顺眼的人通通干掉，炸一出盛大烟花，这部收放自如的对社畜特攻喜剧，正是昏天黑地的工作之余，纾解压力的不二之选。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">[韩剧] 中头奖还是要上班</h2><div class="fact"><span class="val"><img src="../assets/sspai-post-still-7.png" alt=""></span></div><blockquote class="quote"><span class="val">这破班辞不了一点！</span></blockquote><div class="prose"><p>关键词：漫画改 / 喜剧 / 职场</p><p>又名：로또 1등도 출근합니다 / The Ordinary Jackpot</p></div><div class="deflist"><div class="defrow"><div class="defval">片长：约 48 分钟（单集）× 10 集，每周四更新 <a class="ctl" href="https://movie.douban.com/subject/37214286/">豆瓣链接</a></div></div><div class="defrow"><div class="defval">观看渠道：HBO Max <a class="ctl" href="https://sspai.com/link?target=https%3A%2F%2Fwww.hbomax.com%2Ftw%2Fzh%2Fshow%2F20c2a67f-17ae-4818-939e-0e4b2b52ce2b">HBO Max</a></div></div></div><div class="prose"><p>@SHY：名校毕业、就职名企的孔恩泰，对工作从不懈怠，晋升为公司最年轻的组长，也落下了一身病根，还被同事暗中排挤。忍气吞声的寻常一天后，因店员没钱找零而买了张彩票的他，却中了 19 亿韩元的一等奖。面对能改变人生的巨款，孔恩泰的决定是——继续照常上班。</p><p>人们总会幻想一夜暴富后的生活，先把看不惯的老板一脚踢开，装作不经意的一波炫耀之后，开启随心所欲第二人生。然而，生活远没有那么容易，中奖者破产的新闻更是屡见不鲜。本第 1 集用大量篇幅描写孔恩泰的日常，习惯忍让的他，不敢轻易动怒，将压力全揽在肩上。而彩票头奖的意义，正是不再忍气吞声的底气。</p><p>人是为了什么才拼命生活，又是从何时起不再拼命生活的？有了退路的恩泰，心态自然而然改变，对不公平的安排强硬表态，大胆承担可能失败的风险。不再有顾虑之后，工作和生活中的难题，没准也会迎刃而解。不满足于常见的打工人爽文，描绘从内颠覆公司制度的职场大剧，这部设定吸睛的剧集，或许也能令你共情。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">[纪录片] 命运与人</h2><div class="fact"><span class="val"><img src="../assets/sspai-post-still-8.jpg" alt=""></span></div><blockquote class="quote"><span class="val">人在这世界上，是有自己的使命和任务的。</span></blockquote><div class="deflist"><div class="defrow"><div class="defval">关键词：纪录片 / 历史</div></div><div class="defrow"><div class="defval">片长：165 分钟 <a class="ctl" href="https://movie.douban.com/subject/38619230/">豆瓣链接</a></div></div><div class="defrow"><div class="defval">观看渠道：哔哩哔哩（食贫道充电视频，需充电观看） <a class="ctl" href="https://www.bilibili.com/video/BV1xS8q68EQk/?spm_id_from=333.337.search-card.all.click&amp;vd_source=c97f177a82b62e7a3ea9db420a68f0e4">哔哩哔哩</a></div></div></div><div class="prose"><p>@潘誉晗：这天饼叔来到了一栋住宅楼房，采访了一位非常慈祥的老奶奶。你当然可以感受到她身上的悲痛和遗憾，满头银发的她经历过核泄漏，被迫离开家乡的她怀念着故乡，可很神奇，在她身上你似乎收获了一种能量。</p><p>《命运与人》是食贫道「切尔诺贝利」系列的第三集，这一集的故事主要发生在白俄罗斯。他们先是找到了一位当时在辐射区负责孩童撤离的幼儿园院长，在老院长的诉说中，我们再次感受到了命运的残酷，因为当时撤离的队伍中，有老院长自己的孩子，但是她无暇顾及。他们还去了波列西耶国家辐射生态保护区，很神奇，这里充满了绿意，那是另一种生命安静的样子。</p><p>人这种生物是很坚韧的，经历过风霜、遭到过打击，但只要有目标和希望就能站起来，就像是生态保护区里的那些植被一样。这里的人啊，无所谓是俄罗斯人、乌克兰人还是白俄罗斯人，只要他们还能讲述，就能勇敢地活下去。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">[纪录片] 美丽的执念</h2><div class="fact"><span class="val"><img src="../assets/sspai-post-still-9.jpg" alt=""></span></div><blockquote class="quote"><span class="val">我其实一直都在沙漠里。</span></blockquote><div class="prose"><p>关键词：运动</p><p>又名：A Beautiful Obsession</p></div><div class="stack"><section class="block"><article class="node depth-2"><div class="fact"><span class="val">片长：35-44 分钟不等（单集）× 4 集</span></div><a class="action verb-open" href="https://movie.douban.com/subject/38586438/">豆瓣链接</a></article></section></div><div class="prose"><p>@潘誉晗：纪录片从 23-24 年的英超说起，这个赛季曼城实现了四连冠，哈兰德蝉联金靴奖。一切似乎都诉说着这个球队的所向披靡。接着 24-25 赛季开始了，然后，那一年的 11 月和 12 月被称为瓜迪奥拉执教曼城历史上最黑暗时期的低谷。</p><p>曾获得 BAFTA 大奖的导演凯文·麦克唐纳，这次为我们带来了一部关于足球教练瓜迪奥拉的纪录片。只四集的纪录片并没有单纯地夸赞瓜迪奥拉的成绩，而是通过他执教曼城最后两个赛季的幕后故事，让大家进一步了解到他所坚持的足球理念。</p><p>就像纪录片的名字「美丽的执念」一样，瓜迪奥拉在足球上的追求近乎苛刻。他相信竞技体育也能拥有艺术的美感。所以对控球、跑位，甚至是球场上的每一个位置，都做了极其细致的研究，还会向球员们自嘲自己的婚姻来类比对于足球的热爱。这样不愿服输的偏执也许真的太过执念，但若是坚持了一辈子，又怎能不是一种美呢？</p></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">更多</h2><div class="deflist"><div class="defrow"><div class="deflabel">[电影] 伪钞之王</div><div class="defval">@利兹与青鸟：波兰犹太人博亚尔斯基曾是二战时的战俘，他逃到法国后靠做假证维生。他不仅雕刻手艺卓绝，也很有发明天分，但在法国仍步履维艰，不得不投入制作假钞的行当，以「假钞届的塞尚」之名让世界发现他的才华。影片改编自真实历史，叙事平稳，虽无惊心动魄的大场面，但小人物九死一生、警匪智斗的传奇故事仍能为人津津乐道。 <a class="ctl" href="https://movie.douban.com/subject/38456407/">豆瓣链接</a></div></div><div class="defrow"><div class="deflabel">[美剧] 劣探德克尔 第二季</div><div class="defval">@潘誉晗：因高超的车技，德克尔在监狱时的好友史蒂维被一个强盗团伙看中，担任司机。史蒂维干了一次，却被拍下了视频记录。他希望德克尔找到这个团伙删除视频。只是当德克尔找到这个抢劫银行的团伙时，他们皆已惨遭杀害。私家侦探、南佛罗里达的明媚风光，延续了一集一案模式的第二季，依然很适合作为闲暇时光的消遣。 <a class="ctl" href="https://movie.douban.com/subject/35930978/">豆瓣链接</a></div></div><div class="defrow"><div class="deflabel">[电影] 安昂传奇：最后的气宗</div><div class="defval">@潘誉晗：《安昂传奇：最后的气宗》时间线放在了安昂成年之后。这时，离百年战争的结束已经过去了十三年，安昂成长了，也明白有些责任他必须承担。因此，为了寻找能获得御气能力的古老法杖，用来拯救自己的气宗族人免于灭绝，安昂必须面对自己身为最后气宗的身份。虽然动画的剧情还是有些老套，但是动画的制作很出色。 <a class="ctl" href="https://movie.douban.com/subject/37116027/">豆瓣链接</a></div></div></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">📅 本周新预告</h2><div class="stack"><section class="block"><article class="node depth-2"><h3 class="title">《哆啦 A 梦 大雄的蒸汽时间车》首支特报</h3><div class="fact"><span class="val">9 月 15 日，动画电影《哆啦 A 梦 大雄的蒸汽时间车》发布了特报影像，定档 2027 年 3 月 5 日在日本上映。本作为《哆啦 A 梦》电影系列第 46 部作品，森山瑠潮执导，上田诚（《四叠半时光机》）编剧，哆啦 A 梦和大雄一行将在 19 世纪的英国伦敦展开冒险。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fx.com%2Fdoraeiga%2Fstatus%2F2099611650160509272">来源</a></article></section><section class="block"><article class="node depth-2"><h3 class="title">《荒野丛林》终极预告</h3><div class="fact"><span class="val">9 月 16 日，定格动画电影《荒野丛林》发布了终极预告，将于 10 月 23 日在北美上映。特拉维斯·奈特（《魔弦传说》）执导，莱卡工作室制作，改编自同名儿童奇幻小说，女孩 Prue 的弟弟被一群乌鸦绑架，带进森林深处，因此踏进从未有人涉足的神秘之地。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fx.com%2FLAIKAStudios%2Fstatus%2F2100200531872403481">来源</a></article></section><section class="block"><article class="node depth-2"><h3 class="title">《黄金时段》新预告</h3><div class="fact"><span class="val">9 月 15 日，A24 电影《黄金时段》发布了新预告，将于 9 月 25 日在北美上映。兰斯·奥本海姆执导，罗伯特·帕丁森领衔主演，聚焦电视主持人克里斯与他推出的一档真人秀节目，该节目利用人员在网络上伪装成未成年人，引诱恋童癖进入摄影棚并将其逮捕。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DC0NZa01qTRU">来源</a></article></section><section class="block"><article class="node depth-2"><h3 class="title">《如何干一票大的》新预告</h3><div class="fact"><span class="val">9 月 17 日，电影《如何干一票大的》发布了新预告，将于 11 月 13 日在北美上映。大卫·雷奇（《死侍 2》《子弹列车》）执导，尼古拉斯·霍尔特、佐伊·克罗维兹、泽井杏奈等主演，别人抢劫东躲西藏，他们直播全网教学，当规则不再公平，谁才是真的掠夺者？</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DB9XOzCUvFB8">来源</a></article></section><section class="block"><article class="node depth-2"><div class="deflist"><div class="defrow"><div class="deflabel"><a href="https://www.bilibili.com/video/BV1fzeK6zE9c/">《牺牲》首曝预告</a></div><div class="defval">克里斯·埃文斯、安雅·泰勒-乔伊、文森特·卡索、Yung Lean、Charli xcx、约翰·马尔科维奇、萨尔玛·海耶克主演，罗曼·加夫拉斯（《雅典娜》《世界属于你》）执导，讲述一个公众形象已崩塌的电影明星在一座火山岛上，面临「牺牲三条命来拯救全人类」的预言。10 月 16 日上线 Netflix。</div></div><div class="defrow"><div class="deflabel">电影《绅士行动：暗战》首支预告</div><div class="defval">盖·里奇执导、编剧，本尼迪克特·康伯巴奇、裴淳华等主演，年迈的贵族家主突然离世，遗嘱中留下巨额财富与一只象征家族秘密的猎犬，引发各方势力的觊觎，2027 年 2 月 19 日在北美上映。 来源 <a class="ctl" href="https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DIFF4fNg0CEM">来源</a></div></div><div class="defrow"><div class="deflabel">恐怖电影《另一个妈妈》正式预告</div><div class="defval">罗布·萨维奇执导，杰西卡·查斯坦、杰伊·杜普拉斯主演，温子仁参与制片，改编自同名小说，八岁女孩贝拉发现衣柜深处总在深夜探出一个东西，那东西长得和她妈妈乌苏拉一模一样，10 月 9 日在北美上映。 来源 <a class="ctl" href="https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DavXdGfYmRhM">来源</a></div></div><div class="defrow"><div class="deflabel"><a href="https://www.bilibili.com/video/BV1geeA6jEjx/">《活色生香》首曝预告</a></div><div class="defval">《纽约纽约》导演罗冬执导，闫妮、叶童、倪虹洁领衔主演，许亚军、保剑锋、赵文瑄、李玲玉、柯淳、陈龙、刘钧、邵峰等主演，讲述一群走过半生的人，依然敢爱、敢活、有滋有味的故事，将于 10 月 1 日上映。</div></div></div></article></section></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">📽 影视新闻周报</h2><div class="deflist"><div class="defrow"><div class="deflabel">《生化危机：爆发夜》确认引进</div><div class="defval">9 月 15 日，电影《生化危机：爆发夜》确认引进中国内地，档期待定。扎克・克雷格（《凶器》《野蛮人》）执导，奥斯汀·艾布拉姆斯主演，奉命奔赴浣熊市的医疗速递员布莱恩，意外深陷全城失控的病毒浩劫，城市变为血色废墟，危险即将全面爆发。 <a class="ctl" href="https://weibo.com/8215728726/RidIMgAZW">来源</a></div></div><div class="defrow"><div class="deflabel">《生日快乐》内地定档 10 月 23 日</div><div class="defval">9 月 15 日，高分埃及电影《生日快乐》发布了 中国内地定档预告 和海报，将于 10 月 23 日上映。影片由萨拉·戈赫尔编剧、执导，以天真烂漫的孩童视角展开，在孩童与世界的交手互动中，揭开了人性与世界的另一面，斩获 2025 年翠贝卡电影节三项大奖。 <a class="ctl" href="https://weibo.com/1623886424/RibMW8UdZ">来源</a></div></div><div class="defrow"><div class="deflabel">《泥面人》新海报</div><div class="defval">9 月 15 日，DC 新片《泥面人》发布了新海报，将于 10 月 23 日在北美上映。詹姆斯·瓦特金斯执导，汤姆·里斯·哈里斯主演，隆重介绍哥谭市的新面孔，一位意外毁容的演员在注射了某种神秘物质后，获得了一种诡异的超能力，精神也逐渐扭曲走向极端。 <a class="ctl" href="https://sspai.com/link?target=https%3A%2F%2Fx.com%2FJamesGunn%2Fstatus%2F2099528933704171832">来源</a></div></div></div></article></section><hr class="region"><section class="block"><article class="node depth-1 w-wide"><div class="cards"><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://sspai.com/tag/本周看什么">本周看什么</a></article></div><div class="item"><article class="node depth-2"><a class="action verb-navigate" href="https://sspai.com/tag/生活方式">生活方式</a></article></div><div class="item"><article class="node depth-2"><div class="fact"><span class="val">本文责编：<a class="body-link" href="https://sspai.com/u/ppfv4au3">@Lotta</a></span></div></article></div></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">讨论</h2><div class="meta">1 条</div><div class="stack"><section class="block"><article class="node depth-2"><h3 class="title"><a class="self-link nav" href="https://sspai.com/u/p0aevobw/updates">潘誉晗</a></h3><div class="fact"><span class="val">這兩週的主題就是謝謝lamb和susan這對前夫妻！</span></div></article></section></div></article></section><section class="block"><article class="node depth-1 w-narrow"><h2 class="title">关联阅读</h2><div class="fact"><span class="val">少数派编辑部</span></div><div class="deflist"><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/114458">本周看什么 | 最近值得一看的 7 部作品</a></div><div class="defval">09/11</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/114175">本周看什么 | 最近值得一看的 8 部作品</a></div><div class="defval">09/04</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/113944">本周看什么 | 最近值得一看的 10 部作品</a></div><div class="defval">08/28</div></div><div class="defrow"><div class="deflabel"><a href="https://sspai.com/post/113693">本周看什么 | 最近值得一看的 10 部作品</a></div><div class="defval">08/21</div></div></div></article></section></div></article></main></body></html>
+<body><main><article class="node depth-0 reading-page" data-model-owner=""><h1 class="title">本周看什么 | 最近值得一看的 9 部作品</h1><div class="band"><figure class="strip"><img src="../assets/sspai-post-lead.png" alt="本周看什么 | 最近值得一看的 9 部作品"></figure></div><div class="meta">2026-09-18</div><div class="stack"><section class="block"><article class="node depth-1 w-prose" data-model-owner="_lines[0]"><div class="fact"><span class="val">少数派编辑部 等 4 位作者</span></div><div class="prose"><p>16 分钟阅读</p></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[1]"><h2 class="title">👀 N 部作品推荐</h2><div class="fact"><span class="val">往期推荐可 点此 或点击文末 tag #本周看什么，更多主题片单可 点此 查看；想要查看更多深度影视内容，可以关注我们的衍生栏目「<a class="body-link" href="https://sspai.com/topic/416">看什么 Café</a>」。如有其他建议也欢迎在评论区提出，感谢大家对「看什么」栏目的喜爱和支持。</span></div><ul class="linklist"><li data-model-owner="_lines[1]._items[0]">近期佳作推荐：[英剧] 流人 第六季、[英剧] 翠鸟谋杀案、[美剧] 怪物：丽兹·波顿的故事、[澳大利亚] 最后目击、[德剧] 巴比伦柏林 第五季、[日剧] 幸福伽菜子的快乐杀手生活 第二季、[韩剧] 中头奖还是要上班、[纪录片] 命运与人、[纪录片] 美丽的执念</li><li data-model-owner="_lines[1]._items[1]">几则精彩预告：《哆啦 A 梦 大雄的蒸汽时间车》首支特报、《荒野丛林》终极预告、《黄金时段》新预告、《如何干一票大的》新预告</li><li data-model-owner="_lines[1]._items[2]">几则影视资讯：《生化危机：爆发夜》确认引进、《生日快乐》内地定档 10 月 23 日、《泥面人》新海报</li></ul></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[2]"><h2 class="title">[英剧] 流人 第六季</h2><div class="band"><figure class="strip"><img src="../assets/sspai-post-still-1.jpg" alt=""></figure></div><blockquote class="quote"><span class="val">开启废物清除计划。</span></blockquote><div class="prose"><p>关键词：剧情 / 惊悚</p><p>又名：Slow Horses Season 6</p></div><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="_lines[2]._lines[2]"><div class="fact"><span class="val">片长：40 分钟左右（单集）× 6 集</span></div><a class="action verb-open" href="https://movie.douban.com/subject/36689816/">豆瓣链接</a></article></section></div><div class="prose"><p>@潘誉晗：斯劳屋部门流年不利，本就不被总部的人待见的他们没工资了，系统里也没有他们的任何记录，房屋中介甚至上门勘查了部门好做估价。曾在斯劳部门就职过的同事们遭到了两名专业杀手的袭击，还被断定是「自然死亡」，而杀手们的下个目标是瑞弗。另一边的瑞弗则沉浸在失去祖父的悲痛里，他和黛安娜交涉了一番关于葬礼的事，可也就是在葬礼上，他遇见了他那该死的雇佣兵父亲弗兰克。</p><p>被主创解读为「更黑暗、更暴力、也更情感化」的《流人》第六季，于本周三在 Apple TV+ 释出了首集。本季剧情根据系列小说第六本《间谍国度》（大陆已引进）和第七本《斯劳屋》改编，删改了一些内容后，首集开篇就初现了这季矛盾冲突的端倪：斯劳屋似乎正被清算，成为部长的黛安娜却对此事毫不知情。第六季的《流人》水准在线，拉满了悬疑氛围的同时，又有大量笑点点缀，没有狗尾续貂真是太优秀了～</p></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[3]"><h2 class="title">[英剧] 翠鸟谋杀案</h2><div class="band"><figure class="strip"><img src="../assets/sspai-post-still-2.jpg" alt=""></figure></div><blockquote class="quote"><span class="val">和苏珊一起推理吧。</span></blockquote><div class="prose"><p>关键词：悬疑 / 犯罪</p><p>又名：Marble Hall Murders / 大理石厅谋杀案</p></div><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="_lines[3]._lines[2]"><div class="fact"><span class="val">片长：50 分钟左右（单集）× 6 集</span></div><a class="action verb-open" href="https://movie.douban.com/subject/37218278/">豆瓣链接</a></article></section></div><div class="prose"><p>@利兹与青鸟：苏珊从希腊克里特岛回到伦敦后，重操旧业，出任一家独立出版社的编辑，负责一本新的阿提库斯·庞德侦探小说，时间线接在《喜鹊谋杀案》之后，名为《庞德最后的案件》。庞德前往故乡希腊的科孚岛度假疗养，偶遇查尔方特夫人携第二任丈夫埃尔默和一众子女，来此度过自己的最后一个夏天，却遭人下毒，死于非命。</p><p>原著作者安东尼·霍洛维茨继续担任本系列的编剧，依旧采用书稿与现实的双案双线叙事，由同一组演员饰演两个案件中完全不同却又息息相关的人物，但两个故事在画面质感上有着明显区分，彼此间的转场设计也舒适且巧妙。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[4]"><h2 class="title">[美剧] 怪物：丽兹·波顿的故事</h2><div class="band"><figure class="strip"><img src="../assets/sspai-post-still-3.jpg" alt=""></figure></div><blockquote class="quote"><span class="val">挑选一把趁手的斧头吧。</span></blockquote><div class="prose"><p>关键词：犯罪 / 惊悚 / 传记</p><p>又名：Monster: The Lizzie Borden Story / 怪物 4</p></div><div class="deflist"><div class="defrow" data-model-owner="_lines[4]._lines[2]"><div class="defval">片长：50 分钟左右（单集）× 8 集 <a class="ctl" href="https://movie.douban.com/subject/37413245/">豆瓣链接</a></div></div><div class="defrow" data-model-owner="_lines[4]._lines[3]"><div class="defval">观看渠道：Netflix <a class="ctl" href="https://sspai.com/link?target=https%3A%2F%2Fwww.netflix.com%2Fhk%2Ftitle%2F82068293">Netflix</a></div></div></div><div class="prose"><p>@利兹与青鸟：本季的故事在一首《鹅妈妈童谣》中开始，丽兹·波顿用斧头砍了母亲 40 下、父亲 41 下，而这则童谣则来源于 1892 年的真实凶杀案。丽兹的母亲在她两岁时离世，经营着棺材铺的奸商父亲对家庭不闻不问，继母也对她极尽打压和言语羞辱，丽兹本人在镇上也被视为异类，尽管如此丽兹还是成长为了一个天真可爱的姑娘。</p><p>本剧摄影带着浓厚的历史感，也不乏美如仙境的场景，喜欢与大自然和鸟类为伴的丽兹宛若仙子，和后续的血腥杀戮形成鲜明对比，配合摇滚乐和一些邪典味的画面，视听体验极佳。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[5]"><h2 class="title">[澳大利亚] 最后目击</h2><div class="band"><figure class="strip"><img src="../assets/sspai-post-still-4.jpg" alt=""></figure></div><blockquote class="quote"><span class="val">但是失踪并不意味着死亡，对吧？</span></blockquote><div class="prose"><p>关键词：剧情 / 惊悚</p><p>又名：Last Seen</p></div><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="_lines[5]._lines[2]"><div class="fact"><span class="val">片长：52 分钟左右（单集）× 8 集</span></div><a class="action verb-open" href="https://movie.douban.com/subject/36948901/">豆瓣链接</a></article></section></div><div class="prose"><p>@潘誉晗：一场暴雨洗涤着世间的一切，也使一具幼童的骸骨从地里重见天日，而这具尸骨的出现，也打破了伊恩宁静的生活。伊恩本是一名警探，十一年前他的女儿玛姬失踪后，伊恩的人生就彻底失序。他和妻子离了婚，开始酗酒，他放弃了一线工作，成为了一名出色的调度员，而这具尸骨的出现、DNA 与他和前妻不相符的事实、加上他接到了一个少女「我好像是玛姬」的求助电话，让伊恩灰色的人生，再次出现了希望。</p><p>由《王冠》导演克里斯蒂安·施沃霍夫所指导的这部澳大利亚新剧，根据瑞安·戴维扬曾获得 CWA 匕首奖的小说《调度员》改编，讲述了一名绝望的父亲，自三岁女儿失踪后浑浑噩噩，在确信女儿还活着的情况下，决心找出女儿的故事。澳洲维多利亚州的这个海滨小镇，阴冷、灰暗、辽阔，静谧又荒凉的海滨风光，让这个案件也变得更为扑朔迷离——原来这个看似平静的小镇里，每个人都藏着秘密。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[6]"><h2 class="title">[德剧] 巴比伦柏林 第五季</h2><div class="band"><figure class="strip"><img src="../assets/sspai-post-still-5.jpg" alt=""></figure></div><blockquote class="quote"><span class="val">可是人啊，真的能离开巴比伦吗？</span></blockquote><div class="prose"><p>关键词：剧情 / 惊悚 / 犯罪</p><p>又名：Babylon Berlin Season 5</p></div><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="_lines[6]._lines[2]"><div class="fact"><span class="val">片长：43 分钟左右（单集）× 8 集</span></div><a class="action verb-open" href="https://movie.douban.com/subject/36464236/">豆瓣链接</a></article></section></div><div class="prose"><p>@潘誉晗：这天，格雷夫如约去见福斯特医生，可就在办公室门口，见到了医生慌乱离去的模样。他走进办公室，却撞见了医生助手的尸体。他给警局打了匿名电话。接到报警的夏洛蒂本以为这只是一桩寻常命案，没想随着调查的深入，发现这起案件另有玄机。福斯特医生专攻精神科，一战时期，他曾用心理暗示的方式治疗了一位患有癔症性失明的士兵，这个治疗过程也被他拍摄了下来。</p><p>这个士兵名叫希特勒，刚被陆军元帅兴登堡任命为德意志帝国的总理。</p><p>《巴比伦柏林》的第五季非常聪明地从一个和希特勒有关的案件切入，然后一点一点地推进，让观众看到了独属于那个年代的混乱与纷争。我们看到了充满欲望的政客骄傲自满的模样；看到了一群为了革命甘愿牺牲自己的共产主义者；更看到了一群以为能在希特勒带领下，生活变得更好的德国老百姓——原来个人的命运与无解的局，早已与时代绑在了一起。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[7]"><h2 class="title">[日剧] 幸福伽菜子的快乐杀手生活 第二季</h2><div class="band"><figure class="strip"><img src="../assets/sspai-post-still-6.png" alt=""></figure></div><blockquote class="quote"><span class="val">代表月亮消灭你！</span></blockquote><div class="prose"><p>关键词：漫画改 / 喜剧 / 动作</p><p>又名：幸せカナコの殺し屋生活2 / Happy Kanako's Killer Life Season 2</p></div><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="_lines[7]._lines[2]"><div class="fact"><span class="val">片长：约 30 分钟（单集）× 5 集，每周四更新</span></div><a class="action verb-open" href="https://movie.douban.com/subject/37296349/">豆瓣链接</a></article></section></div><div class="prose"><p>@SHY：从黑心企业跳槽杀手公司的西野伽菜子，凭借上一份工作的经验混得风生水起，让杀手 K 的名号响彻江湖。这天，再次瞄准霸凌上司的伽菜子，与盯上同一位目标的个体户 Ado 不打不相识，加入杀手女子会美美联谊。然而，在此结识的杀手小七，却正在寻找杀兄仇人 K。</p><p>空窗一年半后，大名鼎鼎的 K 飒爽回归。由准原班主创打造，第二季延续了前作的成功密码，脱线展开接二连三，玩起梗来毫不手软，伽菜子的谐音梗小动物们悉数到场，和能年玲奈搭一起，整个人都被萌化。本季的动作戏同样可圈可点，第 1 集大闹赌场的女子组气场全开，颜值战力两相宜，不禁发出土拨鼠爆鸣。</p><p>剧集在漫画原著的基础上，补充适当原创情节，让剧情衔接更加圆润。新角色的身世各有玄机，老朋友的戏份也不落下，后续展开值得期待。多方助推之下，渐露苗头的感情线，没准会有大进步。把看不顺眼的人通通干掉，炸一出盛大烟花，这部收放自如的对社畜特攻喜剧，正是昏天黑地的工作之余，纾解压力的不二之选。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[8]"><h2 class="title">[韩剧] 中头奖还是要上班</h2><div class="band"><figure class="strip"><img src="../assets/sspai-post-still-7.png" alt=""></figure></div><blockquote class="quote"><span class="val">这破班辞不了一点！</span></blockquote><div class="prose"><p>关键词：漫画改 / 喜剧 / 职场</p><p>又名：로또 1등도 출근합니다 / The Ordinary Jackpot</p></div><div class="deflist"><div class="defrow long-label" data-model-owner="_lines[8]._lines[2]"><div class="defval">片长：约 48 分钟（单集）× 10 集，每周四更新 <a class="ctl" href="https://movie.douban.com/subject/37214286/">豆瓣链接</a></div></div><div class="defrow" data-model-owner="_lines[8]._lines[3]"><div class="defval">观看渠道：HBO Max <a class="ctl" href="https://sspai.com/link?target=https%3A%2F%2Fwww.hbomax.com%2Ftw%2Fzh%2Fshow%2F20c2a67f-17ae-4818-939e-0e4b2b52ce2b">HBO Max</a></div></div></div><div class="prose"><p>@SHY：名校毕业、就职名企的孔恩泰，对工作从不懈怠，晋升为公司最年轻的组长，也落下了一身病根，还被同事暗中排挤。忍气吞声的寻常一天后，因店员没钱找零而买了张彩票的他，却中了 19 亿韩元的一等奖。面对能改变人生的巨款，孔恩泰的决定是——继续照常上班。</p><p>人们总会幻想一夜暴富后的生活，先把看不惯的老板一脚踢开，装作不经意的一波炫耀之后，开启随心所欲第二人生。然而，生活远没有那么容易，中奖者破产的新闻更是屡见不鲜。本第 1 集用大量篇幅描写孔恩泰的日常，习惯忍让的他，不敢轻易动怒，将压力全揽在肩上。而彩票头奖的意义，正是不再忍气吞声的底气。</p><p>人是为了什么才拼命生活，又是从何时起不再拼命生活的？有了退路的恩泰，心态自然而然改变，对不公平的安排强硬表态，大胆承担可能失败的风险。不再有顾虑之后，工作和生活中的难题，没准也会迎刃而解。不满足于常见的打工人爽文，描绘从内颠覆公司制度的职场大剧，这部设定吸睛的剧集，或许也能令你共情。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[9]"><h2 class="title">[纪录片] 命运与人</h2><div class="band"><figure class="strip"><img src="../assets/sspai-post-still-8.jpg" alt=""></figure></div><blockquote class="quote"><span class="val">人在这世界上，是有自己的使命和任务的。</span></blockquote><div class="deflist"><div class="defrow" data-model-owner="_lines[9]._lines[0]"><div class="defval">关键词：纪录片 / 历史</div></div><div class="defrow" data-model-owner="_lines[9]._lines[1]"><div class="defval">片长：165 分钟 <a class="ctl" href="https://movie.douban.com/subject/38619230/">豆瓣链接</a></div></div><div class="defrow" data-model-owner="_lines[9]._lines[2]"><div class="defval">观看渠道：哔哩哔哩（食贫道充电视频，需充电观看） <a class="ctl" href="https://www.bilibili.com/video/BV1xS8q68EQk/?spm_id_from=333.337.search-card.all.click&amp;vd_source=c97f177a82b62e7a3ea9db420a68f0e4">哔哩哔哩</a></div></div></div><div class="prose"><p>@潘誉晗：这天饼叔来到了一栋住宅楼房，采访了一位非常慈祥的老奶奶。你当然可以感受到她身上的悲痛和遗憾，满头银发的她经历过核泄漏，被迫离开家乡的她怀念着故乡，可很神奇，在她身上你似乎收获了一种能量。</p><p>《命运与人》是食贫道「切尔诺贝利」系列的第三集，这一集的故事主要发生在白俄罗斯。他们先是找到了一位当时在辐射区负责孩童撤离的幼儿园院长，在老院长的诉说中，我们再次感受到了命运的残酷，因为当时撤离的队伍中，有老院长自己的孩子，但是她无暇顾及。他们还去了波列西耶国家辐射生态保护区，很神奇，这里充满了绿意，那是另一种生命安静的样子。</p><p>人这种生物是很坚韧的，经历过风霜、遭到过打击，但只要有目标和希望就能站起来，就像是生态保护区里的那些植被一样。这里的人啊，无所谓是俄罗斯人、乌克兰人还是白俄罗斯人，只要他们还能讲述，就能勇敢地活下去。</p></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[10]"><h2 class="title">[纪录片] 美丽的执念</h2><div class="band"><figure class="strip"><img src="../assets/sspai-post-still-9.jpg" alt=""></figure></div><blockquote class="quote"><span class="val">我其实一直都在沙漠里。</span></blockquote><div class="prose"><p>关键词：运动</p><p>又名：A Beautiful Obsession</p></div><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="_lines[10]._lines[2]"><div class="fact"><span class="val">片长：35-44 分钟不等（单集）× 4 集</span></div><a class="action verb-open" href="https://movie.douban.com/subject/38586438/">豆瓣链接</a></article></section></div><div class="prose"><p>@潘誉晗：纪录片从 23-24 年的英超说起，这个赛季曼城实现了四连冠，哈兰德蝉联金靴奖。一切似乎都诉说着这个球队的所向披靡。接着 24-25 赛季开始了，然后，那一年的 11 月和 12 月被称为瓜迪奥拉执教曼城历史上最黑暗时期的低谷。</p><p>曾获得 BAFTA 大奖的导演凯文·麦克唐纳，这次为我们带来了一部关于足球教练瓜迪奥拉的纪录片。只四集的纪录片并没有单纯地夸赞瓜迪奥拉的成绩，而是通过他执教曼城最后两个赛季的幕后故事，让大家进一步了解到他所坚持的足球理念。</p><p>就像纪录片的名字「美丽的执念」一样，瓜迪奥拉在足球上的追求近乎苛刻。他相信竞技体育也能拥有艺术的美感。所以对控球、跑位，甚至是球场上的每一个位置，都做了极其细致的研究，还会向球员们自嘲自己的婚姻来类比对于足球的热爱。这样不愿服输的偏执也许真的太过执念，但若是坚持了一辈子，又怎能不是一种美呢？</p></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[11]"><h2 class="title">更多</h2><div class="deflist"><div class="defrow" data-model-owner="_lines[11]._items[0]"><div class="deflabel">[电影] 伪钞之王</div><div class="defval">@利兹与青鸟：波兰犹太人博亚尔斯基曾是二战时的战俘，他逃到法国后靠做假证维生。他不仅雕刻手艺卓绝，也很有发明天分，但在法国仍步履维艰，不得不投入制作假钞的行当，以「假钞届的塞尚」之名让世界发现他的才华。影片改编自真实历史，叙事平稳，虽无惊心动魄的大场面，但小人物九死一生、警匪智斗的传奇故事仍能为人津津乐道。 <a class="ctl" href="https://movie.douban.com/subject/37116027/">豆瓣链接</a></div></div><div class="defrow" data-model-owner="_lines[11]._items[1]"><div class="deflabel">[美剧] 劣探德克尔 第二季</div><div class="defval">@潘誉晗：因高超的车技，德克尔在监狱时的好友史蒂维被一个强盗团伙看中，担任司机。史蒂维干了一次，却被拍下了视频记录。他希望德克尔找到这个团伙删除视频。只是当德克尔找到这个抢劫银行的团伙时，他们皆已惨遭杀害。私家侦探、南佛罗里达的明媚风光，延续了一集一案模式的第二季，依然很适合作为闲暇时光的消遣。 <a class="ctl" href="https://movie.douban.com/subject/38456407/">豆瓣链接</a></div></div><div class="defrow" data-model-owner="_lines[11]._items[2]"><div class="deflabel">[电影] 安昂传奇：最后的气宗</div><div class="defval">@潘誉晗：《安昂传奇：最后的气宗》时间线放在了安昂成年之后。这时，离百年战争的结束已经过去了十三年，安昂成长了，也明白有些责任他必须承担。因此，为了寻找能获得御气能力的古老法杖，用来拯救自己的气宗族人免于灭绝，安昂必须面对自己身为最后气宗的身份。虽然动画的剧情还是有些老套，但是动画的制作很出色。 <a class="ctl" href="https://movie.douban.com/subject/35930978/">豆瓣链接</a></div></div></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[12]"><h2 class="title">📅 本周新预告</h2><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="_lines[12]._lines[0]"><h3 class="title">《哆啦 A 梦 大雄的蒸汽时间车》首支特报</h3><div class="fact"><span class="val">9 月 15 日，动画电影《哆啦 A 梦 大雄的蒸汽时间车》发布了特报影像，定档 2027 年 3 月 5 日在日本上映。本作为《哆啦 A 梦》电影系列第 46 部作品，森山瑠潮执导，上田诚（《四叠半时光机》）编剧，哆啦 A 梦和大雄一行将在 19 世纪的英国伦敦展开冒险。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fx.com%2Fdoraeiga%2Fstatus%2F2099611650160509272">来源</a></article></section><section class="block"><article class="node depth-2" data-model-owner="_lines[12]._lines[1]"><h3 class="title">《荒野丛林》终极预告</h3><div class="fact"><span class="val">9 月 16 日，定格动画电影《荒野丛林》发布了终极预告，将于 10 月 23 日在北美上映。特拉维斯·奈特（《魔弦传说》）执导，莱卡工作室制作，改编自同名儿童奇幻小说，女孩 Prue 的弟弟被一群乌鸦绑架，带进森林深处，因此踏进从未有人涉足的神秘之地。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fx.com%2FLAIKAStudios%2Fstatus%2F2100200531872403481">来源</a></article></section><section class="block"><article class="node depth-2" data-model-owner="_lines[12]._lines[2]"><h3 class="title">《黄金时段》新预告</h3><div class="fact"><span class="val">9 月 15 日，A24 电影《黄金时段》发布了新预告，将于 9 月 25 日在北美上映。兰斯·奥本海姆执导，罗伯特·帕丁森领衔主演，聚焦电视主持人克里斯与他推出的一档真人秀节目，该节目利用人员在网络上伪装成未成年人，引诱恋童癖进入摄影棚并将其逮捕。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DC0NZa01qTRU">来源</a></article></section><section class="block"><article class="node depth-2" data-model-owner="_lines[12]._lines[3]"><h3 class="title">《如何干一票大的》新预告</h3><div class="fact"><span class="val">9 月 17 日，电影《如何干一票大的》发布了新预告，将于 11 月 13 日在北美上映。大卫·雷奇（《死侍 2》《子弹列车》）执导，尼古拉斯·霍尔特、佐伊·克罗维兹、泽井杏奈等主演，别人抢劫东躲西藏，他们直播全网教学，当规则不再公平，谁才是真的掠夺者？</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DB9XOzCUvFB8">来源</a></article></section><section class="block"><article class="node depth-2" data-model-owner="_lines[12]._lines[4]"><h3 class="title">更多</h3><div class="cards cols-auto"><div class="item"><article class="node depth-3" data-model-owner="_lines[12]._lines[4]._items[0]"><h4 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1fzeK6zE9c/">《牺牲》首曝预告</a></h4><div class="fact"><span class="val">克里斯·埃文斯、安雅·泰勒-乔伊、文森特·卡索、Yung Lean、Charli xcx、约翰·马尔科维奇、萨尔玛·海耶克主演，罗曼·加夫拉斯（《雅典娜》《世界属于你》）执导，讲述一个公众形象已崩塌的电影明星在一座火山岛上，面临「牺牲三条命来拯救全人类」的预言。10 月 16 日上线 Netflix。</span></div></article></div><div class="item"><article class="node depth-3" data-model-owner="_lines[12]._lines[4]._items[1]"><h4 class="title">电影《绅士行动：暗战》首支预告</h4><div class="fact"><span class="val">盖·里奇执导、编剧，本尼迪克特·康伯巴奇、裴淳华等主演，年迈的贵族家主突然离世，遗嘱中留下巨额财富与一只象征家族秘密的猎犬，引发各方势力的觊觎，2027 年 2 月 19 日在北美上映。 <a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DIFF4fNg0CEM">来源</a></span></div><a class="ctl" href="https://www.bilibili.com/video/BV1EWer6qEts/">电影《绅士行动：暗战》首支预告：</a></article></div><div class="item"><article class="node depth-3" data-model-owner="_lines[12]._lines[4]._items[2]"><h4 class="title">恐怖电影《另一个妈妈》正式预告</h4><div class="fact"><span class="val">罗布·萨维奇执导，杰西卡·查斯坦、杰伊·杜普拉斯主演，温子仁参与制片，改编自同名小说，八岁女孩贝拉发现衣柜深处总在深夜探出一个东西，那东西长得和她妈妈乌苏拉一模一样，10 月 9 日在北美上映。 <a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DavXdGfYmRhM">来源</a></span></div><a class="ctl" href="https://www.bilibili.com/video/BV1hseH6NEaQ/">恐怖电影《另一个妈妈》正式预告：</a></article></div><div class="item"><article class="node depth-3" data-model-owner="_lines[12]._lines[4]._items[3]"><h4 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1geeA6jEjx/">《活色生香》首曝预告</a></h4><div class="fact"><span class="val">《纽约纽约》导演罗冬执导，闫妮、叶童、倪虹洁领衔主演，许亚军、保剑锋、赵文瑄、李玲玉、柯淳、陈龙、刘钧、邵峰等主演，讲述一群走过半生的人，依然敢爱、敢活、有滋有味的故事，将于 10 月 1 日上映。</span></div></article></div></div></article></section></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[13]"><h2 class="title">📽 影视新闻周报</h2><div class="deflist"><div class="defrow" data-model-owner="_lines[13]._lines[0]"><div class="deflabel">《生化危机：爆发夜》确认引进</div><div class="defval">9 月 15 日，电影《生化危机：爆发夜》确认引进中国内地，档期待定。扎克・克雷格（《凶器》《野蛮人》）执导，奥斯汀·艾布拉姆斯主演，奉命奔赴浣熊市的医疗速递员布莱恩，意外深陷全城失控的病毒浩劫，城市变为血色废墟，危险即将全面爆发。 <a class="ctl" href="https://weibo.com/8215728726/RidIMgAZW">来源</a></div></div><div class="defrow" data-model-owner="_lines[13]._lines[1]"><div class="deflabel">《生日快乐》内地定档 10 月 23 日</div><div class="defval">9 月 15 日，高分埃及电影《生日快乐》发布了 中国内地定档预告 和海报，将于 10 月 23 日上映。影片由萨拉·戈赫尔编剧、执导，以天真烂漫的孩童视角展开，在孩童与世界的交手互动中，揭开了人性与世界的另一面，斩获 2025 年翠贝卡电影节三项大奖。 <a class="ctl" href="https://weibo.com/1623886424/RibMW8UdZ">来源</a></div></div><div class="defrow" data-model-owner="_lines[13]._lines[2]"><div class="deflabel">《泥面人》新海报</div><div class="defval">9 月 15 日，DC 新片《泥面人》发布了新海报，将于 10 月 23 日在北美上映。詹姆斯·瓦特金斯执导，汤姆·里斯·哈里斯主演，隆重介绍哥谭市的新面孔，一位意外毁容的演员在注射了某种神秘物质后，获得了一种诡异的超能力，精神也逐渐扭曲走向极端。 <a class="ctl" href="https://sspai.com/link?target=https%3A%2F%2Fx.com%2FJamesGunn%2Fstatus%2F2099528933704171832">来源</a></div></div></div></article></section><hr class="region"><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[14]"><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="_lines[14]._lines[2]"><div class="fact"><span class="val">本文责编：<a class="body-link" href="https://sspai.com/u/ppfv4au3">@Lotta</a></span></div></article></section></div><div class="controls"><a class="ctl" href="https://sspai.com/tag/本周看什么">本周看什么</a><a class="ctl" href="https://sspai.com/tag/生活方式">生活方式</a></div></article></section><section class="block"><article class="node depth-1 w-narrow" data-model-owner="_lines[15]"><h2 class="title">讨论</h2><div class="meta">1 条</div><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="_lines[15]._items[0]"><h3 class="title"><a class="self-link nav" href="https://sspai.com/u/p0aevobw/updates">潘誉晗</a></h3><div class="fact"><span class="val">這兩週的主題就是謝謝lamb和susan這對前夫妻！</span></div></article></section></div></article></section><section class="block"><article class="node depth-1 w-narrow utility-facts" data-model-owner="_lines[16]"><h2 class="title">关联阅读</h2><div class="fact"><span class="val">少数派编辑部</span></div><div class="deflist"><div class="defrow" data-model-owner="_lines[16]._items[0]"><div class="deflabel"><a href="https://sspai.com/post/114458">本周看什么 | 最近值得一看的 7 部作品</a></div><div class="defval">09/11</div></div><div class="defrow" data-model-owner="_lines[16]._items[1]"><div class="deflabel"><a href="https://sspai.com/post/114175">本周看什么 | 最近值得一看的 8 部作品</a></div><div class="defval">09/04</div></div><div class="defrow" data-model-owner="_lines[16]._items[2]"><div class="deflabel"><a href="https://sspai.com/post/113944">本周看什么 | 最近值得一看的 10 部作品</a></div><div class="defval">08/28</div></div><div class="defrow" data-model-owner="_lines[16]._items[3]"><div class="deflabel"><a href="https://sspai.com/post/113693">本周看什么 | 最近值得一看的 10 部作品</a></div><div class="defval">08/21</div></div></div></article></section></div></article></main></body></html>

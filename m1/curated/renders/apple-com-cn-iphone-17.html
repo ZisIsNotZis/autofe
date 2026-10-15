@@ -2,9 +2,9 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>iPhone 17</title>
 <style>
-:root{color-scheme:light;--accent:#0066cc}
+:root{color-scheme:light;--accent:#0066cc;--surface:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--surface)}
 /* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
    accent 由 m1/brand-tokens.json 按站点注入（上面的 --accent），本文件不写死站名/色值。
    层1 目的地列表：.linklist 条目名自身带 _action.to ⇒ 标记 • 换 accent ›（::marker），
@@ -14,12 +14,14 @@ body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang 
        链接，nodePlan.isLabellessLink）尾部 ›。控件/按钮形态不动（.ctl/.action 照旧）。 */
 a{color:inherit;text-decoration:none;cursor:pointer}
 a:hover{text-decoration:underline;text-decoration-color:currentColor}
-a.ref,.val a.body-link,.prose a,.chips a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+a.ref,.val a.body-link,.prose a,.chips a,.data a.table-link{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 .linklist li.go::marker{content:"›";color:var(--accent);font-weight:700}
 .linklist li.go>a{color:var(--accent);text-decoration:none}
 .linklist li.go>a:hover{text-decoration:underline}
 a.self-link{color:var(--accent);text-decoration:none}
 a.self-link:hover{text-decoration:underline}
+.media-link{display:contents}
+.media-link:focus-visible img{outline:2px solid var(--accent);outline-offset:2px}
 a.self-link.nav::after{content:" ›";font-weight:650}
 th.cmp-col>a{color:var(--accent);text-decoration:none}
 /* 轮 57 站点头区横栏（nodePlan.headerBar，规则见 axis.mjs region==='header'）：header 区域
@@ -38,19 +40,20 @@ th.cmp-col>a{color:var(--accent);text-decoration:none}
 .banner>.title{text-align:center}
 .banner>.fact{max-width:none;text-align:center}
 .banner>.controls{justify-content:center}
-.role-label{color:#68788a;font-size:.9em;margin-right:2px}
+.role-label{color:var(--muted);font-size:.9em;margin-right:2px}
 /* 轮 58 · L-1 页面栅格：唯一页面容器 = main（居中、≈1280px、左右对称 padding）。
    section 宽度分层且由 nodePlan 按 section 种类声明（plan.widthTier，规则在 axis.mjs）：
    prose=阅读文本 74ch 居中 / narrow=默认内容 880px 居中 / wide=卡片与 Feed 网格（容器全宽）/
    bleed=仅限声明的 banner（满幅带，内文仍守 padding）。同页各 section 宽度各归其层，
    不再无规则跳变（U-23/U-25/U-26/U-27）。 */
 main{max-width:1280px;margin:0 auto;padding:32px 24px 0}
-/* 根节点直属内容（页面标题、事实列、搜索栏）归入栅格：居中、对称，不再整栏偏左（U-18/U-23）。
-   h1 的列宽用 px（ch 随元素自身 2em 字号放大，74ch 会撑满容器、居中失效）。 */
-.depth-0>.title{max-width:640px;margin-inline:auto}
-.depth-0>.fact{margin-inline:auto}
-.depth-0>.hero{margin-inline:auto;text-align:center}
-.depth-0>.fieldbar{justify-content:center}
+/* Root identity, lead and controls inherit the owning content edge, not a separate
+   centered title column. The outer page frame may be centered; its text need not be. */
+.depth-0>.title{max-width:none;margin-inline:0}
+.depth-0>.fact,.depth-0>.hero{margin-inline:0}
+.depth-0>.fieldbar{justify-content:flex-start}
+.depth-0>.site-identity{font-size:18px;line-height:1.4;text-align:left;margin:0 0 16px;font-weight:650}
+h4.title,h5.title,h6.title{font-size:1em;line-height:1.5;margin:.7em 0 .35em;font-weight:650}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
 header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
 h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
@@ -59,12 +62,13 @@ h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
 .hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
 /* a lead sentence is not a headline: H1-sized prose collapses the page's heading levels */
-.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:#33475b}
+.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:var(--soft-ink)}
 article{margin:12px 0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+.cards.cols-auto{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0;max-width:74ch}
 .hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
@@ -72,21 +76,23 @@ article{margin:12px 0}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
 /* label chips need a visible chip body, or the row reads as one bare string of text (round 27) */
-.chips .chip-item{display:inline-block;background:#eef2f7;border:1px solid #dbe3ec;border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
+.chips .chip-item{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
 /* a sentence member is prose, not a tag: keep it on its own plain line */
 .chips-rows{display:block}
 .chips-rows .chip-item{display:block;background:none;border:0;border-radius:0;padding:3px 0;font-size:.95em}
 .cards .item img,.run .item img,.cards img{width:auto;max-width:100%;height:auto;display:block;border-radius:8px}
+/* Compact product media: an upper bound only, never crop or upscale source thumbnails. */
+.product-cards img{max-height:160px}
 .action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
-.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:var(--soft-ink);font-weight:600;margin:10px 0}
 .promo-image{padding:0;overflow:hidden}
 .promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
-.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:var(--muted);font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
 /* 并入价格行的分期时长（U-28）：与承载句同行、弱化如 meta，不再是容器外孤块 */
-.fact .installment{color:#5b6a78;font-size:.9em}
+.fact .installment{color:var(--muted);font-size:.9em}
 .fact .installment .sep{color:#c2ccd6}
-.prose{max-width:74ch;margin-inline:auto}
+.prose{max-width:74ch;margin-inline:0}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
 /* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
    轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
@@ -99,7 +105,7 @@ article{margin:12px 0}
 .cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip,.band .strip{width:auto;margin-left:auto;margin-right:auto}
 .cards .strip img{border-radius:8px}
 /* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
-.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.img-alt{display:block;color:var(--muted);font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
 .promo-image .img-alt{padding:10px 14px;border-radius:0}
 main>.node>.strip:first-child,article>.strip{margin-top:0;margin-bottom:0}
 /* F-031: 序列区块（不可比内容各自成立） */
@@ -115,22 +121,22 @@ hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
 .ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
 /* 时间流文本（弹幕）：行内紧凑流，每条单行省略——不铺成竖排文本墙（§10.5） */
 .stream{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0}
-.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#eef2f7;border-radius:999px;padding:2px 10px;font-size:.85em}
+.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--soft);border-radius:999px;padding:2px 10px;font-size:.85em}
 a.ctl{font-weight:600}
 a.ctl:hover{background:#f2f7ff}
 /* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
 .cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
 .cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
 .cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
-.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-row{white-space:nowrap;color:var(--muted);font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
 .cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
 .cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
 .cmp-price{font-weight:700;margin-top:4px}
-.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
+.cmp-sub{color:var(--muted);font-size:.92em;margin-top:2px}
 .cmp-ctl{margin-top:6px}
 /* 纯标签清单：一组等格条目名，读作"一组面板/条目"，不是 1..N 的目录（轮 34 grafana） */
 .manifest{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
-.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:#33475b;overflow-wrap:anywhere}
+.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:var(--soft-ink);overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
 .linklist.cols3{columns:3;column-gap:24px}
@@ -140,18 +146,25 @@ a.ctl:hover{background:#f2f7ff}
 .seq li{margin:4px 0;line-height:1.55}
 .chip-item{break-inside:avoid}
 .deflist{margin:8px 0}
-.deflist.ranked .rank{min-width:1.5em;color:#8493a3;font-weight:700;font-variant-numeric:tabular-nums}
+.deflist.ranked .rank{min-width:1.5em;color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums}
 .deflist.ranked .deflabel{font-weight:500}
-.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:flex-start}
+.defrow.media-row{display:block}
+.defrow.media-row .deflabel{flex:none;min-width:0;margin-bottom:8px}
+.defrow.media-row .defval{min-width:0;max-width:100%}
+.deflist.media-captions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(280px,calc((100% - 32px)/3))),1fr));gap:16px}
+.deflist.media-captions .defrow{display:flex;flex-direction:column;flex-wrap:nowrap;border:0}
+.deflist.media-captions img{max-height:360px;width:auto;height:auto}
 .deflabel{min-width:130px;font-weight:600}
 .deflabel a{color:inherit}
 .timeline .defrow{position:relative}
 .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
+.defval{color:var(--muted);font-size:.95em;overflow-wrap:anywhere;min-width:100px}
+@media(max-width:700px){.defrow.long-label{display:block}.defrow.long-label .deflabel{min-width:0;margin-bottom:4px}.defval{min-width:0}.defval .val{word-break:normal}}
 .accordion{margin:8px 0}
 details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
 details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
-details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
+details.qa .qa-a{padding:6px 0;color:var(--muted);font-size:.95em}
 .expose{display:block;margin:8px 0}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
@@ -162,11 +175,16 @@ fieldset.expose.chipbar{display:inline-block;max-width:100%}
    实测同色无下划线）：轮 57 起并入层2 —— accent + 常显细下划线（上面的 .chips a 规则）。 */
 /* D-3: a text input is an inline field so its submit control sits on the same bar */
 span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
+.authentication-page{max-width:440px;margin-inline:auto}
+.task-form .expose-input{display:flex;flex-direction:column;align-items:stretch;gap:6px;max-width:360px;width:100%;margin:8px 0}
+.task-form .expose-input>.deflabel{min-width:0}
+.task-form .expose-input>input{box-sizing:border-box;width:100%;min-width:0}
+.task-form .fieldbar{flex-wrap:wrap;justify-content:flex-start}
 /* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
-.expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
-.choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
+legend{font-size:.8em;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:var(--muted);font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:var(--muted);font-size:.9em;margin-left:4px}
 input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 /* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮）；
@@ -178,12 +196,17 @@ input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;
 img{max-width:100%;width:auto;border-radius:10px;display:block}
 /* 同一条「不放大」规则覆盖卡片/条目/正文图：自然宽 ≥ 容器则铺满，否则按自然尺寸居中显示 */
 .fact img,.cards img,.cards .item img,.run .item img{width:auto;max-width:100%;height:auto}
+.data-scroll{max-width:100%;overflow-x:auto}
+.data-scroll table.data{min-width:640px}
+.expose table.data{min-width:640px}
+fieldset.expose:has(>table.data){min-inline-size:0;min-width:0;width:100%;max-width:100%;overflow-x:auto}
+a.option-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
-table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
-table.data tr.row-group th{text-align:left;color:#33475b;font-weight:700;background:#eef2f7}
+table.data th{color:var(--muted);font-weight:600;background:#f7f9fb}
+table.data tr.row-group th{text-align:left;color:var(--soft-ink);font-weight:700;background:var(--soft)}
 table.data td.sel,table.data th.sel{width:34px;text-align:center}
-.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.chip{display:inline-block;background:var(--soft);border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 /* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
@@ -199,11 +222,9 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
 .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
-/* 轮 58（L-1）宽度分层（必须晚于 .block>.node，层级胜出层叠）：prose=阅读 74ch 居中 /
-narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ bleed=仅声明的 banner（满幅）。 */
-.node.w-prose{max-width:74ch;margin-inline:auto}
-.node.w-narrow{max-width:880px;margin-inline:auto}
-.node.w-wide{max-width:none}
+/* Local forms inherit their page frame; only declared banner bleed can escape it.
+   Reading/product/detail composition sets the parent measure, not each local form. */
+.node.w-prose,.node.w-narrow,.node.w-wide{max-width:none;margin-inline:0;width:100%}
 .node.w-bleed{max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 24px}
 /* 轮 58（L-6）媒体优先卡片：图与标题永不分家（同一 article）；条目图在题上方（视频/卡片站
    惯例）。轴层 mediaFirstOf 声明，这里用 flex order 画 —— 不拆 DOM，长文条目不受影响。 */
@@ -213,15 +234,153 @@ narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ b
    阅读型堆叠（长文成员）保持单列。 */
 .stack.cols-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;align-items:start;margin:14px 0}
 .stack.cols-auto .block{margin:0}
+.cards.compact-media,.stack.compact-media{grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
 .stack.cols-auto hr.region{display:none}
 /* 轮 58（L-5）footer 反色（惯例）：模型声明的 footer 区域（.g-footer）深底浅字，
    负 margin 铺满容器内宽、底边贴住容器。无 footer 区域的页自然没有这条带。 */
-.group.g-footer{background:#16202b;color:#c7d3e0;margin:48px -24px 0;padding:24px 24px 28px}
-.group.g-footer .title,.group.g-footer h1,.group.g-footer h2,.group.g-footer h3,.group.g-footer h4{color:#eef4fa}
-.group.g-footer a{color:#dce6f1}
-.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:#aebccc}
-.group.g-footer .ctl{border-color:#41546a;color:#c7d3e0;background:transparent}
-.group.g-footer a.ctl:hover{background:#223244}
-.group.g-footer .defrow{border-bottom-color:#253444}
+/* Surfaces own foreground AND background tokens. A footer is secondary site information,
+   not automatically a dark hero. Match the captured light, compact utility region. */
+.group.g-footer{--surface:#f5f5f7;--ink:#30343b;--muted:#536171;--soft:#e8eaee;--soft-ink:#30343b;--line:#d5d8df;background:var(--surface);color:var(--ink);margin:32px -24px 0;padding:24px}
+.group.g-footer .node,.group.g-footer .block{margin:0;padding:0}
+.group.g-footer .stack{display:flex;flex-wrap:wrap;gap:14px 24px}
+.group.g-footer .stack>.block{flex:1 1 250px}
+.group.g-footer .stack>.block:first-child{flex-basis:100%}
+.group.g-footer .linklist{columns:auto;display:flex;flex-wrap:wrap;gap:6px 18px;padding:0;margin:0}
+.group.g-footer .linklist li{list-style:none;margin:0;font-size:13px;line-height:1.65}
+.group.g-footer .seq{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding:0}
+.group.g-footer .seq li{list-style:none;margin:0;font-size:12px;line-height:1.6}
+.group.g-footer .stack>.block:has(.seq),.group.g-footer .stack>.block:has(.chips-rows){flex-basis:100%;padding-top:12px;border-top:1px solid var(--line)}
+.group.g-footer .linklist li.go::marker{content:""}
+.group.g-footer .chips{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0}
+.group.g-footer .chip-item{padding:0;border:0;background:transparent;border-radius:0;font-size:13px;color:var(--ink)}
+.group.g-footer .title,.group.g-footer a,.group.g-footer .linklist li.go>a,.group.g-footer .chips a{color:var(--ink)}
+.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:var(--muted)}
+.group.g-footer .ctl{border-color:var(--line);color:var(--ink);background:var(--surface);padding:4px 10px}
+.group.g-footer a.ctl:hover{background:var(--soft)}
+.group.g-footer .defrow{border-bottom-color:var(--line)}
+/* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
+.reading-page{--reading-width:800px;max-width:var(--reading-width);margin-inline:auto}
+.reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
+.reading-page .node.w-prose,.reading-page .node.w-narrow,.reading-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.reading-page .fact,.reading-page .prose,.reading-page .prose p,.reading-page .quote{max-width:none}
+.reading-page .fact img{margin-inline:auto}
+.reading-page .defrow{display:block;padding:16px 0}
+.reading-page .deflabel{margin-bottom:6px}
+.reading-page .defval{font-size:1em;line-height:1.75}
+.reading-page .cards:not(:has(img)){display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.reading-page .cards:not(:has(img))>.item{border:0;padding:0}
+.reading-page .cards:not(:has(img)) .node{margin:0}
+.reading-page .cards:not(:has(img)) .action{margin:0;border-radius:999px;padding:5px 14px;background:var(--soft);color:var(--soft-ink)}
+/* Label-only destination groups are navigation, not a vertical sitemap. */
+.utility-group>.chips-rows{display:flex;flex-wrap:wrap}
+.utility-group>.chips-rows .chip-item{display:inline-block;padding:3px 8px}
+.stack>.block:has(>.utility-group){margin-block:8px;padding:0}
+.utility-group{margin-block:4px}
+.node.w-narrow:has(>.linklist),.node.w-narrow:has(>.chips){max-width:none}
+.linklist.cols2,.linklist.cols3,.linklist.cols4{columns:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:3px 18px}
+.header-bar .linklist.cols2,.header-bar .linklist.cols3,.header-bar .linklist.cols4{display:flex;grid-template-columns:none}
+.node:has(>.chips)>.chips{gap:6px 12px}
+/* Related sections inherit the page frame; long fact lines keep their reading measure. */
+.depth-0>.meta{margin-inline:0}
+.utility-facts>.stack>.block{margin:4px 0;padding:0}
+.utility-facts>.stack>.block>.node{margin:0}
+.utility-facts .title{font-size:1em;margin:4px 0}
+.utility-group>.stack{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.stack>.block{margin:0;padding:0}
+.utility-group>.stack>.block>.node{margin:0}
+.utility-group>.deflist{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.deflist>.defrow{border:0;padding:0}
+/* Shared structural compact forms: singleton catalog entries, ordered editorial media, boolean utilities. */
+.singleton-card>.stack{max-width:320px}
+.singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:flex-start;padding:0}
+.singleton-card .banner>.title{font-size:1.12em;text-align:left;order:1;margin:8px 0}
+.singleton-card .banner>.band{order:0;margin:0;max-width:320px}
+.singleton-card .banner>.band .strip{margin:0}
+.singleton-card .banner>.controls,.singleton-card .banner>.action{order:2;margin:8px 0}
+.singleton-card .banner img{max-width:100%;max-height:320px;width:auto;height:auto}
+.boolean-utilities>.stack{display:flex;flex-wrap:wrap;gap:8px 16px}
+.boolean-utilities>.stack>.block,.boolean-utilities>.stack>.block>.node{margin:0;padding:0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox]){display:inline-block;margin:4px 16px 4px 0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox])>.node{margin:0;padding:0}
+.ordered-media-rows>.stack>.block{margin:12px 0;padding:12px 0;border-bottom:1px solid var(--line)}
+.ordered-media-rows>.stack>.block>.node{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:4px 20px;margin:0;padding:0}
+.ordered-media-rows>.stack>.block>.node>*{grid-column:1;margin:0}
+.ordered-media-rows>.stack>.block>.node>.band{grid-column:2;grid-row:1 / span 5;margin:0;align-self:start}
+.ordered-media-rows .band .strip{margin:0;width:auto}
+.ordered-media-rows .band img{max-width:120px;max-height:120px;width:auto;height:auto}
+@media(max-width:600px){.ordered-media-rows>.stack>.block>.node{grid-template-columns:minmax(0,1fr) 96px;gap:4px 12px}.ordered-media-rows .band img{max-width:96px;max-height:96px}}
+/* Whole-page alignment: local lists, facts and cards inherit the same page frame. */
+.catalog-page .node.w-prose,.catalog-page .node.w-narrow,.catalog-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.catalog-page>.stack>.block{margin:14px 0}
+.catalog-page .depth-1>.fact{max-width:none}
+.catalog-page>.stack>.block:has(>.node>.deflist) .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.catalog-page>.stack>.block:has(>.node>.deflist) .defrow{display:block;padding:16px;background:#f6f7f9;border:1px solid var(--line);border-radius:12px}
+.catalog-page .deflabel{margin-bottom:8px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:14px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block{margin:0;padding:0}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block>.node{margin:0;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fafbfc}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>hr{display:none}
+.product-page{max-width:960px;margin-inline:auto}
+.product-page .node.w-prose,.product-page .node.w-narrow,.product-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.product-page .fact,.product-page .prose,.product-page .prose p{max-width:none}
+.product-page .fact img{margin-inline:auto}
+.product-page>.meta{margin-inline:0}
+.product-page>.stack>.block{margin-block:32px}
+.product-page .defrow{gap:24px}
+.product-page .deflabel{flex:0 0 190px;min-width:0}
+.product-page .media-captions .deflabel{flex:0 0 auto}
+.detail-page>.title{max-width:none;margin-inline:0}
+.detail-page>.fact{max-width:none}
+.detail-page .node.w-prose,.detail-page .node.w-narrow,.detail-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.detail-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start;margin-top:24px}
+.detail-main,.detail-task{min-width:0}
+.detail-main>.group{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.detail-main .fact,.detail-main .prose{max-width:none}
+.detail-task{padding:20px 24px;border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 24px #17212b10}
+.detail-task .group{margin:12px 0}
+.detail-task input{max-width:100%}
+.detail-tail{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.detail-tail .g-distribution .chips-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.detail-tail .g-distribution .chip-item{padding:8px 12px;border-radius:8px;background:var(--soft)}
+.detail-tail .g-aspects .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:4px 24px}
+.detail-tail .g-reviews>.node{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.detail-tail .g-reviews>.node>*{min-width:0}
+.detail-tail .g-reviews>.node>.title,.detail-tail .g-reviews>.node>.controls,.detail-tail .g-reviews>.node>.g-distribution,.detail-tail .g-reviews>.node>.g-aspects{grid-column:1/-1}
+.detail-tail .g-aspects .cmp-table th.cmp-col{min-width:120px}
+.detail-tail .g-reviews>.node>.g-mentions{grid-column:1/-1}
+.detail-tail .g-mentions .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:4px 24px}
+.detail-tail .g-mentions .defrow{justify-content:space-between}
+.detail-page .gallery-mosaic{grid-auto-rows:180px;grid-template-columns:2fr 1fr 1fr}
+.detail-page .gallery-mosaic .strip{aspect-ratio:auto}
+.detail-page .gallery-mosaic .strip:first-child{grid-column:span 1;grid-row:span 2}
+main:has(.marketing-page){max-width:1728px}
+.marketing-page>.title{max-width:none}
+.marketing-page .node.w-bleed{width:100%;margin-inline:0}
+.marketing-page .node.w-narrow,.marketing-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.marketing-page .cards.cols-auto{grid-template-columns:repeat(2,minmax(0,1fr))}
+.marketing-page .cards.cols-auto .item{padding:20px;border-radius:12px;background:#f5f5f7}
+.marketing-page .cards.cols-auto .title{text-align:center;font-size:26px}
+.marketing-page .cards.cols-auto .fact{max-width:none;text-align:center}
+.marketing-page .cards.cols-auto .fact img{margin:auto}
+.marketing-page .cards.cols-auto .controls{justify-content:center}
+.marketing-page .g-tv .cards.cols-auto{grid-template-columns:repeat(3,minmax(0,1fr))}
+.marketing-page .g-services .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.marketing-page .g-services .defrow{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:12px}
+.marketing-page .g-services .defval img{max-height:180px;margin:auto}
+@media(min-width:1920px){body:has(.marketing-page){background:#f5f5f7}main:has(.marketing-page){max-width:1728px;padding-inline:24px}.marketing-page>.stack>.block{margin-block:16px}}
+@media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr);gap:20px}.detail-tail .g-reviews>.node{grid-template-columns:minmax(0,1fr)}.marketing-page .g-tv .cards.cols-auto{grid-template-columns:1fr}.detail-page .gallery-mosaic{grid-auto-rows:130px;grid-template-columns:repeat(2,minmax(0,1fr))}.detail-page .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.marketing-page .cards.cols-auto{grid-template-columns:1fr}.product-page .defrow{flex-wrap:wrap}.product-page .deflabel{flex-basis:100%}}
+/* Media surface metadata keeps marketing image and text in the same panel. The
+   original image is centered at natural height; only uniform lateral gutters clip. */
+.banner-integrated{position:relative;isolation:isolate;overflow:hidden;min-height:580px;padding:32px 24px!important;background:var(--banner-bg);color:var(--banner-fg);display:flex;flex-direction:column;align-items:center;margin-block:12px}
+.banner-integrated>.strip{position:absolute;inset:0;width:100%;height:580px;margin:0;z-index:-1;display:flex;justify-content:center}
+.banner-integrated>.strip img{flex:none;max-width:none;width:auto;height:auto;align-self:flex-start;margin:0;border-radius:0}
+.banner-integrated>.title{font-size:48px;line-height:1.1;margin:8px 0}
+.banner-integrated>.fact{font-size:22px;max-width:640px;line-height:1.35;margin:4px 0}
+.banner-integrated>.controls{margin:16px 0}
+.banner-integrated .ctl{background:transparent;color:#2997ff;border-color:#2997ff;border-radius:999px}
+.banner-integrated .action{background:#0071e3;color:#fff;border-radius:999px}
+.banner-integrated.media-centered>.fact:first-of-type{margin-top:auto}
+.banner-integrated.media-centered>.controls{margin-bottom:0}
+@media(max-width:700px){main{padding:20px 16px 0}.group.g-footer{margin-inline:-16px;padding:20px 16px}.banner-integrated{min-height:540px}.banner-integrated>.title{font-size:34px}.banner-integrated>.strip{height:540px}.banner-integrated>.strip img{width:auto;max-width:min(calc(var(--media-width)*.7),calc((100vw - 48px) * var(--media-ratio)));height:auto;object-fit:contain;align-self:flex-start;margin-top:160px}.banner-integrated>.fact{font-size:18px}.banner-integrated.media-centered>.strip img{margin-top:45px}.gallery-mosaic{grid-template-columns:repeat(2,1fr)}.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.stack.cols-auto,.cards{grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}}
 </style></head>
-<body><main><article id="apple-cn-iphone-17" class="node depth-0"><h1 class="title">iPhone 17</h1><figure class="strip"><img src="https://www.apple.com.cn/iphone-17/images/overview/welcome/hero_startframe__e9e7pcnguyqi_xlarge.webp" alt="多部 iPhone 17 设备排列成展开的扇形，外观颜色分别为：黑色、薰衣草紫色、青雾蓝色、鼠尾草绿色、白色。"></figure><div class="fact"><span class="val">神通妙彩</span></div><div class="fact"><span class="val">RMB 6799 起或 RMB 284/月 起<span class="installment"><span class="sep">·</span> 24 期</span></span></div><div class="stack"><section class="block"><article id="tradein-banner" class="node depth-1 w-narrow"><div class="fact"><span class="val">用 iPhone 13 或后续机型来换购 iPhone 17，预计可享 RMB 900 至 RMB 5100 的折抵优惠。</span></div><div class="fact"><span class="val"><a class="ref" href="#benefits-tradein">Apple Trade In 换购计划</a></span></div></article></section><section class="block"><article id="highlights" class="node depth-1 w-narrow"><h2 class="title">先刷重点</h2><div class="stack"><section class="block"><article id="hl-display" class="node depth-2"><h3 class="title">显示屏</h3><div class="fact"><span class="val"><img src="https://www.apple.com.cn/iphone-17/images/overview/highlights/ceramic-shield/highlights_ceramic_shield_endframe__cbyipzki5iwi_large.webp" alt="薰衣草紫色 iPhone 17，展示超瓷晶面板正面外观和屏幕上靠近顶部中央的灵动岛，以及侧面的操作按钮和音量调节按钮。"></span></div><div class="fact"><span class="val">屏幕更亮，现还有 ProMotion 技术加持，自适应刷新率最高达 120Hz。坚固耐用的超瓷晶面板 2，抗刮划能力提升至 3 倍。</span></div></article></section><section class="block"><article id="hl-front-camera" class="node depth-2"><h3 class="title">Center Stage 前置摄像头</h3><div class="fact"><span class="val"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/highlights/front-camera/highlights_front_camera_endframe__b8bxaqbz3n8i_large.jpg" alt=""></span></div><div class="fact"><span class="val">全新 Center Stage 前置摄像头。 取景好灵活，自拍合照更智能，玩法花样百出。</span></div></article></section><section class="block"><article id="hl-camera-system" class="node depth-2"><h3 class="title">摄像头系统</h3><div class="fact"><span class="val">4800 万像素融合式双摄系统，拍近拍远都惊艳出片。</span></div></article></section><section class="block"><article id="hl-chip" class="node depth-2"><h3 class="title">A19 芯片</h3></article></section><section class="block"><article id="hl-ios" class="node depth-2"><h3 class="title">iOS 27</h3><div class="fact"><span class="val">iOS 27，精心优化，体验感愉悦升华。</span></div></article></section><section class="block"><article id="hl-ai" class="node depth-2"><h3 class="title">Apple 智能</h3></article></section></div></article></section><section class="block"><article id="design" class="node depth-1 w-narrow"><h2 class="title">设计</h2><div class="fact"><span class="val"><img src="https://www.apple.com.cn/iphone-17/images/overview/product-viewer/viewer_display_endframe__c7nctsasv9m6_large.webp" alt=""></span></div><div class="fact"><span class="val">拉高好感度， 再添耐用性。</span></div><div class="fact"><span class="val">来见见全新 iPhone 17。方方面面都精心设计，机身边缘顺滑称手，屏幕边框更窄更纤细，材质也都超耐用，正面配上了超瓷晶面板 2，好看，还能一直这么好看。6.3 英寸超视网膜 XDR 显示屏，你想看什么都大饱眼福，想做什么可尽情施展。ProMotion 技术也加入，自适应刷新率最高达 120Hz，刷手机超丝滑，玩游戏更畅快。这种感受，一上手就懂。</span></div><section class="group g-colors"><article class="node depth-2"><div class="fact"><span class="val">颜色</span></div><div class="fact"><span class="val">五款靓色可选。</span></div><div class="chips"><span class="chip-item">薰衣草紫色</span><span class="chip-item">鼠尾草绿色</span><span class="chip-item">青雾蓝色</span><span class="chip-item">白色</span><span class="chip-item">黑色</span></div></article></section></article></section><section class="block"><article id="chip" class="node depth-1 w-narrow"><h2 class="title">A19 芯片、全天电池续航</h2><div class="fact"><span class="val">高能玩家， 高能量专家。</span></div><div class="fact"><span class="val">A19 芯片，采用第三代 3 纳米制程，让你用 iPhone 做什么都动力满满，还驱动 ProMotion 自适应刷新率技术，助你畅玩 3A 游戏大作。续航挺你一整天，无论是工作、刷视频，还是随便看看，都不用顾虑电量。要飞快地回个血，用高功率电源适配器充上短短 10 分钟，电量就够播放最长 8 小时视频。</span></div><div class="deflist"><div class="defrow"><div class="deflabel">最多 充至 50% 电量 仅需 20 分钟</div><div class="defval">需使用 40 瓦或更大功率的电源适配器</div></div><div class="defrow"><div class="deflabel">最高 提速 50%</div><div class="defval">中央处理器</div></div><div class="defrow"><div class="deflabel">最高 提速至 2.1 倍</div><div class="defval">5 核图形处理器</div></div><div class="defrow"><div class="deflabel">增加 11 小时</div><div class="defval">视频播放时间</div></div></div><section class="group g-compare"><article class="node depth-2"><fieldset class="expose chipbar expose-compare-model"><legend>相比</legend><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-13"> iPhone 13</label><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-13-mini"> iPhone 13 mini</label><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-14"> iPhone 14</label><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-14-plus"> iPhone 14 Plus</label><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-15"> iPhone 15</label><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-15-plus"> iPhone 15 Plus</label></fieldset></article></section></article></section><section class="block"><article id="front-camera" class="node depth-1 w-narrow"><h2 class="title">摄像头</h2><div class="fact"><span class="val"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/cameras/new-camera-features/selfie_intro__bczh72q34vrm_large.jpg" alt="两部薰衣草紫色 iPhone 17 面对面交错贴在一起，分别展示机身正面外观和背面的融合式双摄系统。"></span></div><div class="fact"><span class="val">1800 万像素 Center Stage 前摄，新派摄手破框而出。</span></div><div class="fact"><span class="val">全新前置摄像头，让你取景构图更灵活，拍照拍视频都有更多花样。无需转动 iPhone，轻轻一点就能扩大取景范围，还能从纵向转到横向。有朋友入镜时，视野会自动扩大，让更多朋友加入你的大合照。</span></div><section class="group g-modes"><article class="node depth-2"><div class="fact"><span class="val">全新正方形传感器，支持变焦和旋转选项，玩自拍录视频，取景构图更灵活。大家一起合照时，还会自动调整构图，让每个人都入镜。</span></div><div class="deflist"><div class="defrow"><div class="deflabel">拍摄 人物居中</div><div class="defval"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/cameras/new-camera-features/smart_group_selfie_endframe__gmz1z3mummqa_large.jpg" alt="iPhone 17 正面屏幕，显示自拍合照时的拍照人物居中功能。"></div></div><div class="defrow"><div class="deflabel">视频 同步双拍</div><div class="defval"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/cameras/new-camera-features/dual_capture_endframe__cwtwkww4tqy6_large.jpg" alt="iPhone 17 屏幕展示运用前置和后置摄像头的视频同步双拍功能，视频画面中一位小女孩在奔跑，一位男子在观看。"></div></div><div class="defrow"><div class="deflabel">视频 超稳防抖</div><div class="defval"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/cameras/new-camera-features/stabilized_video_endframe__evymux3c5quu_large.jpg" alt="iPhone 17 屏幕上一位男子正驮着骑在他肩上的小女孩快速行走，演示视频拍摄防抖功能。"></div></div><div class="defrow"><div class="deflabel">视频通话 人物居中</div><div class="defval"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/cameras/new-camera-features/center_stage_facetime__cihgc5ty7ro2_large.jpg" alt="iPhone 17 正面屏幕展示视频通话人物居中功能，画面显示两位朋友在交谈。"></div></div></div></article></section></article></section><section class="block"><article id="rear-camera" class="node depth-1 w-narrow"><h2 class="title">后摄全上 4800 万像素， 分辨率大进化。</h2><div class="fact"><span class="val">iPhone 17 拥有一颗 4800 万像素融合式主摄，具备 2 倍光学品质变焦功能；它还配备一颗 4800 万像素融合式超广角摄像头，相比 iPhone 16 上的超广角摄像头，分辨率高达 4 倍。而且现在超广角拍摄的默认分辨率就是 2400 万像素，这样照片文件大小刚刚好，既能保存高画质，又便于分享。无论是拍特写还是拉远景，在室内还是在室外，环境是明亮还是低光，都能以超高分辨率惊艳出片。而且相比前代机型，起步容量翻了一倍，最低就有 256GB。</span></div></article></section><section class="block"><article id="lineup" class="node depth-1 w-narrow"><h2 class="title">全套必备功能， iPhone 全备齐。</h2><div class="fact"><span class="val"><img src="https://www.apple.com.cn/iphone-17/images/overview/shared-features/hero_features_center__bgssuxptzwhe_xlarge.webp" alt=""></span></div><div class="fact"><span class="val">全系全配</span></div><div class="fact"><span class="val">全新 iPhone 系列机型满载创新功能，让日常生活更简单轻松。还都具备高速无线局域网、蓝牙 6 以及 5G 功能，给你又快又安全的连接体验。</span></div><section class="group g-photo"><article class="node depth-2"><h3 class="title">笑一笑，拍一拍，发一发，再来张。</h3><div class="deflist"><div class="defrow"><div class="deflabel">全新“珠光”摄影风格亮相。</div><div class="defval">为人物的肤色增添一抹自然柔和的亮色，显得更明媚通透、神采奕奕，让你看起来由内而外光彩夺目。</div></div><div class="defrow"><div class="deflabel">2 倍长焦功能。</div><div class="defval">拉近或推远，都能将主体拍得细致入微。</div></div><div class="defrow"><div class="deflabel">低光和夜间模式拍摄。</div><div class="defval">即使光线昏暗，也能拍到清晰锐利、细节丰富、明亮通透的画面，而且色彩自然鲜活，噪点也少。</div></div><div class="defrow"><div class="deflabel">微距。</div><div class="defval">细节锐利，清晰非常，将特写拍得动人心弦。</div></div><div class="defrow"><div class="deflabel">专业感十足的视频。</div><div class="defval">选择 4K 60 fps 格式或打开电影效果模式，可以把视频拍出大片质感。你还可以使用混音功能，随心调整视频中的人声效果。</div></div></div></article></section><section class="group g-safety"><article class="node depth-2"><h3 class="title">实用安全功能， 有备无患。</h3><div class="stack"><section class="block"><article id="safety-crash" class="node depth-3"><h4 class="title">车祸检测。</h4><div class="fact"><span class="val">硬件传感器结合先进的运动算法，可检测到严重车祸，并主动为你拨打求救电话。</span></div></article></section><section class="block"><article id="safety-find" class="node depth-3"><h4 class="title">查找 App。</h4><blockquote class="quote"><span class="val">看看挂着 AirTag 的东西在哪里；以安全可靠的方式与亲友共享你的位置；还能帮你找设备，即使设备离线也没问题。</span></blockquote></article></section></div></article></section></article></section><section class="block"><article id="apple-intelligence" class="node depth-1 w-narrow"><h2 class="title">为 Apple 智能 预备好</h2><div class="fact"><span class="val">Apple 智能是深植于 iPhone 中的个人化智能系统，能根据你的个人情境为你在写作、表达自我、 处理各种事务上提供协助，让一切更简单轻松。</span></div><ul class="linklist"><li>Apple 智能推出时间依监管部门审批情况而定。</li></ul></article></section><section class="block"><article id="upgrade-compare" class="node depth-1 w-narrow"><h2 class="title">升级值不值？ 自己比比看。</h2><div class="fact"><span class="val">将 iPhone 17 与下列 iPhone 比比看：iPhone 17 优点众多，给你精彩更多。</span></div><ul class="linklist"><li>4800 万像素 融合式双摄系统</li><li>1800 万像素 Center Stage 前置摄像头</li><li>6.3 英寸显示屏支持 ProMotion 技术 自适应刷新率最高达 120Hz</li><li>超瓷晶面板 2 抗刮划能力提升至 3 倍</li><li>视频播放最长 增加 11 小时 电池续航</li><li>图形处理器性能最高 提速至 2.1 倍</li></ul><section class="group g-selector"><article class="node depth-2"><fieldset class="expose chipbar expose-upgrade-compare-model"><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-13"> iPhone 13</label><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-13-mini"> iPhone 13 mini</label><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-14"> iPhone 14</label><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-14-plus"> iPhone 14 Plus</label><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-15"> iPhone 15</label><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-15-plus"> iPhone 15 Plus</label></fieldset></article></section><section class="group g-tradein"><article id="upgrade-tradein" class="node depth-2"><div class="fact"><span class="val">用符合条件的设备换购新 iPhone，可享折抵优惠。</span></div><a class="action verb-open" href="https://www.apple.com.cn/cn/shop/goto/trade_in">了解你设备的折抵金额</a></article></section></article></section><section class="block"><article id="accessories" class="node depth-1 w-narrow"><h2 class="title">搭起来，炫出来。</h2><div class="fact"><span class="val">配件</span></div><div class="deflist"><div class="defrow"><div class="deflabel">好戴，好带感。</div><div class="defval">全新斜挎挂绳可搭配 Apple 硅胶保护壳，你去哪都能将 iPhone 轻松戴上身，双手好自在。</div></div><div class="defrow"><div class="deflabel">全面装备起来。</div><div class="defval">MagSafe 硅胶保护壳靓色缤纷，能与 iPhone 轻松合体，贴身保护。</div></div><div class="defrow"><div class="deflabel">亮出真本色。</div><div class="defval">随手安上 MagSafe 透明保护壳，让 iPhone 的绚丽色彩一览无余。</div></div></div><a class="action verb-open" href="https://www.apple.com.cn/cn/shop/goto/iphone/accessories">选购 iPhone 配件</a></article></section><section class="block"><article id="benefits" class="node depth-1 w-wide"><h2 class="title">在 Apple 购买 iPhone 好处多多</h2><div class="cards"><div class="item"><article id="benefits-tradein" class="node depth-2"><h3 class="title">Apple Trade In 换购计划</h3><div class="fact"><span class="val">换购新 iPhone， 还能省一笔。</span></div><div class="fact"><span class="val">用 iPhone 13 或后续机型来换购 iPhone 17，可享预计为 RMB 900 至 RMB 5100 的折抵优惠。</span></div></article></div><div class="item"><article id="benefits-financing" class="node depth-2"><h3 class="title">灵活的付款方案</h3><div class="fact"><span class="val">多种免息分期可选。</span></div><div class="fact"><span class="val">购买 Apple 产品最长可享 24 个月免息分期。支付宝、微信支付及多家合作银行任你选择。</span></div></article></div><div class="item"><article id="benefits-upgrade" class="node depth-2"><h3 class="title">iPhone 年年焕新计划</h3><div class="fact"><span class="val"><img src="https://www.apple.com.cn/iphone-17/images/overview/incentive/carrier__ctbxaccivwk2_large.webp" alt="多款不同颜色 iPhone 17 Pro 和 iPhone 17 的包装盒错落排列。"></span></div><div class="fact"><span class="val">新机年年换， 超值更随心。</span></div><div class="fact"><span class="val">从 Apple 入手指定新款 iPhone 时加购 AppleCare+ 服务计划，且符合相应条件，购机后 3 至 15 个月内即可升级下一部 iPhone，还可享原设备购买价格至少 50% 的折抵优惠。</span></div></article></div><div class="item"><article id="benefits-setup" class="node depth-2"><h3 class="title">个人设置辅导</h3><div class="fact"><span class="val">参加在线辅导， 解锁 iPhone 种种精彩。</span></div><div class="fact"><span class="val">Specialist 专家与你一对一交流，带你设置手里的 iPhone，探索各种新功能。</span></div><a class="action verb-open" href="https://www.apple.com.cn/cn/shop/goto/personal_setup">进一步了解个人设置辅导</a></article></div><div class="item"><article id="benefits-delivery" class="node depth-2"><h3 class="title">送货和取货</h3><div class="fact"><span class="val">可免费送货， 也可到店取货。</span></div><div class="fact"><span class="val">所有订单均可享免费送货。部分订单可选择免费的三小时快送，或亲自到店取货。</span></div></article></div><div class="item"><article id="benefits-specialist" class="node depth-2"><h3 class="title">导购</h3><div class="fact"><span class="val">Specialist 专家 协助选购。</span></div><div class="fact"><span class="val">无论线上还是在 Apple Store 零售店，我们都能帮你找到心仪的产品，并解答你的各种疑问。</span></div><span class="action-plain">进一步了解 Specialist 专家协助选购</span></article></div><div class="item"><article id="benefits-app" class="node depth-2"><h3 class="title">Apple Store App</h3><div class="fact"><span class="val">专属于你的 购物体验。</span></div><div class="fact"><span class="val">更个性化的购物方式， 尽在这款 app。</span></div><a class="action verb-open" href="https://apps.apple.com/cn/app/apple-store/id375380948">进一步了解 Apple Store App</a></article></div></div></article></section><section class="block"><article id="which-iphone" class="node depth-1 w-wide"><h2 class="title">看看哪款 iPhone 适合你。</h2><div class="cmp-scroll"><table class="cmp-table"><thead><tr><th class="cmp-row"></th><th class="cmp-col">iPhone 17<span class="cmp-tag">当前浏览</span><div class="cmp-price">RMB 6799 起</div><div class="cmp-sub">拉高好感度， 再添耐用性。</div><div class="cmp-sub">RMB 6799 起或 RMB 284/月 (24 期) 起</div><div class="cmp-nested"><div class="chips"><span class="chip-item">薰衣草紫色</span><span class="chip-item">鼠尾草绿色</span><span class="chip-item">青雾蓝色</span><span class="chip-item">白色</span><span class="chip-item">黑色</span></div></div><div class="cmp-ctl"><a class="ctl" href="https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17">购买</a></div></th><th class="cmp-col">iPhone Air<div class="cmp-price">RMB 8799 起</div><div class="cmp-sub">超轻超薄， Pro 级性能表现。</div><div class="cmp-sub">RMB 8799 起或 RMB 367/月 (24 期) 起</div><div class="cmp-nested"><div class="chips"><span class="chip-item">蓝色</span><span class="chip-item">金色</span><span class="chip-item">白色</span><span class="chip-item">黑色</span></div></div><div class="cmp-ctl"><a class="ctl" href="https://www.apple.com.cn/iphone-air/">进一步了解</a></div></th></tr></thead><tbody><tr><th class="cmp-row">显示屏</th><td class="cmp-cell"><article class="node depth-4"><h5 class="title">显示屏</h5><div class="fact"><span class="val">6.3 英寸 超视网膜 XDR 显示屏</span></div></article></td><td class="cmp-cell"><article class="node depth-4"><h5 class="title">显示屏</h5><div class="fact"><span class="val">6.5 英寸 超视网膜 XDR 显示屏</span></div></article></td></tr><tr><th class="cmp-row">芯片</th><td class="cmp-cell"><article class="node depth-4"><h5 class="title">芯片</h5><div class="fact"><span class="val">A19 芯片 第三代 3 纳米制程 · 5 核图形处理器 配备神经网络加速器</span></div></article></td><td class="cmp-cell"><article class="node depth-4"><h5 class="title">芯片</h5><div class="fact"><span class="val">A19 Pro 芯片 第三代 3 纳米制程 · 5 核图形处理器 配备神经网络加速器</span></div></article></td></tr><tr><th class="cmp-row">摄像头</th><td class="cmp-cell"><article class="node depth-4"><h5 class="title">摄像头</h5><div class="fact"><span class="val">4800 万像素融合式双摄系统 · 4800 万像素融合式主摄 · 4800 万像素融合式超广角</span></div></article></td><td class="cmp-cell"><article class="node depth-4"><h5 class="title">摄像头</h5><div class="fact"><span class="val">4800 万像素融合式摄像头系统 · 4800 万像素融合式主摄</span></div></article></td></tr><tr><th class="cmp-row">电池</th><td class="cmp-cell"><article class="node depth-4"><h5 class="title">电池</h5><div class="fact"><span class="val">视频播放最长可达 30 小时</span></div></article></td><td class="cmp-cell"><article class="node depth-4"><h5 class="title">电池</h5><div class="fact"><span class="val">视频播放最长可达 27 小时</span></div></article></td></tr><tr><th class="cmp-row">Apple 智能</th><td class="cmp-cell"><article class="node depth-4"><h5 class="title">Apple 智能</h5><div class="fact"><span class="val">为 Apple 智能预备好</span></div></article></td><td class="cmp-cell"><article class="node depth-4"><h5 class="title">Apple 智能</h5><div class="fact"><span class="val">为 Apple 智能预备好</span></div></article></td></tr><tr><th class="cmp-row">购买</th><td class="cmp-cell"></td><td class="cmp-cell">购买</td></tr></tbody></table></div><div class="controls"><a class="ctl" href="https://www.apple.com.cn/iphone/">探索全部 iPhone 机型</a><a class="ctl" href="https://www.apple.com.cn/iphone/compare/">比较各款 iPhone 机型</a></div></article></section><section class="block"><article id="environment" class="node depth-1 w-narrow"><h2 class="title">iPhone 17 与环境</h2><ul class="linklist"><li>制造采用的 回收材料重量 占比达 30%。</li><li>生产制造 采用 35% 可再生电力。</li><li>紧凑包装让 每次运输的 货物量增加 35%。</li></ul><a class="action verb-open" href="https://www.apple.com/environment/pdf/products/iphone/iPhone_17_PER_Sept2025.pdf">阅读我们的《产品环境报告》(PDF) 了解详情</a></article></section><section class="block"><article id="values" class="node depth-1 w-narrow"><h2 class="title">我们的价值观，为我们 导航。</h2><div class="deflist"><div class="defrow"><div class="deflabel">我们的计划，和我们的产品一样突破创新。</div><div class="defval">我们致力于到 2030 年实现整体碳足迹净零排放的目标。 <a class="ctl" href="https://www.apple.com.cn/environment/">进一步了解环境责任</a></div></div><div class="defrow"><div class="deflabel">力保个人信息安全，这很 Apple。</div><div class="defval">隐私是一项基本人权。我们设计的每一款产品和服务都力求保护你的数据安全。 <a class="ctl" href="https://www.apple.com.cn/privacy/">进一步了解隐私安全</a></div></div><div class="defrow"><div class="deflabel">种种创新， 为无障碍使用而设计。</div><div class="defval">我们的产品和服务为每一个人而设计，众多内置功能可协助你以适合自己的方式，尽情投入喜欢的事。 <a class="ctl" href="https://www.apple.com.cn/accessibility/">进一步了解无障碍功能</a></div></div></div></article></section></div><a class="action verb-buy" href="https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17">购买</a></article></main></body></html>
+<body><main><article id="apple-cn-iphone-17" class="node depth-0 product-page" data-model-owner=""><h1 class="title">iPhone 17</h1><figure class="strip"><img src="https://www.apple.com.cn/iphone-17/images/overview/welcome/hero_startframe__e9e7pcnguyqi_xlarge.webp" alt="多部 iPhone 17 设备排列成展开的扇形，外观颜色分别为：黑色、薰衣草紫色、青雾蓝色、鼠尾草绿色、白色。"></figure><div class="fact"><span class="val">神通妙彩</span></div><div class="fact"><span class="val">RMB 6799 起或 RMB 284/月 起<span class="installment"><span class="sep">·</span> 24 期</span></span></div><a class="action verb-buy" href="https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17">购买</a><div class="stack"><section class="block"><article id="tradein-banner" class="node depth-1 w-narrow" data-model-owner="_lines[0]"><div class="fact"><span class="val">用 iPhone 13 或后续机型来换购 iPhone 17，预计可享 RMB 900 至 RMB 5100 的折抵优惠。</span></div><div class="fact"><span class="val"><a class="ref" href="#benefits-tradein">Apple Trade In 换购计划</a></span></div></article></section><section class="block"><article id="highlights" class="node depth-1 w-narrow" data-model-owner="_lines[1]"><h2 class="title">先刷重点</h2><div class="stack"><section class="block"><article id="hl-display" class="node depth-2" data-model-owner="_lines[1]._lines[0]"><h3 class="title">显示屏</h3><div class="band"><figure class="strip"><img src="https://www.apple.com.cn/iphone-17/images/overview/highlights/ceramic-shield/highlights_ceramic_shield_endframe__cbyipzki5iwi_large.webp" alt="薰衣草紫色 iPhone 17，展示超瓷晶面板正面外观和屏幕上靠近顶部中央的灵动岛，以及侧面的操作按钮和音量调节按钮。"></figure></div><div class="fact"><span class="val">屏幕更亮，现还有 ProMotion 技术加持，自适应刷新率最高达 120Hz。坚固耐用的超瓷晶面板 2，抗刮划能力提升至 3 倍。</span></div></article></section><section class="block"><article id="hl-front-camera" class="node depth-2" data-model-owner="_lines[1]._lines[1]"><h3 class="title">Center Stage 前置摄像头</h3><div class="band"><figure class="strip"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/highlights/front-camera/highlights_front_camera_endframe__b8bxaqbz3n8i_large.jpg" alt=""></figure></div><div class="fact"><span class="val">全新 Center Stage 前置摄像头。 取景好灵活，自拍合照更智能，玩法花样百出。</span></div></article></section><section class="block"><article id="hl-camera-system" class="node depth-2" data-model-owner="_lines[1]._lines[2]"><h3 class="title">摄像头系统</h3><div class="fact"><span class="val">4800 万像素融合式双摄系统，拍近拍远都惊艳出片。</span></div></article></section><section class="block"><article id="hl-chip" class="node depth-2" data-model-owner="_lines[1]._lines[3]"><h3 class="title">A19 芯片</h3></article></section><section class="block"><article id="hl-ios" class="node depth-2" data-model-owner="_lines[1]._lines[4]"><h3 class="title">iOS 27</h3><div class="fact"><span class="val">iOS 27，精心优化，体验感愉悦升华。</span></div></article></section><section class="block"><article id="hl-ai" class="node depth-2" data-model-owner="_lines[1]._lines[5]"><h3 class="title">Apple 智能</h3></article></section></div></article></section><section class="block"><article id="design" class="node depth-1 w-narrow" data-model-owner="_lines[2]"><h2 class="title">设计</h2><div class="band"><figure class="strip"><img src="https://www.apple.com.cn/iphone-17/images/overview/product-viewer/viewer_display_endframe__c7nctsasv9m6_large.webp" alt=""></figure></div><div class="fact"><span class="val">拉高好感度， 再添耐用性。</span></div><div class="fact"><span class="val">来见见全新 iPhone 17。方方面面都精心设计，机身边缘顺滑称手，屏幕边框更窄更纤细，材质也都超耐用，正面配上了超瓷晶面板 2，好看，还能一直这么好看。6.3 英寸超视网膜 XDR 显示屏，你想看什么都大饱眼福，想做什么可尽情施展。ProMotion 技术也加入，自适应刷新率最高达 120Hz，刷手机超丝滑，玩游戏更畅快。这种感受，一上手就懂。</span></div><section class="group g-colors"><article class="node depth-2 utility-group utility-facts" data-model-owner="_lines[2].colors"><div class="fact"><span class="val">颜色</span></div><div class="fact"><span class="val">五款靓色可选。</span></div><div class="chips"><span class="chip-item" data-model-owner="_lines[2].colors._items[0]">薰衣草紫色</span><span class="chip-item" data-model-owner="_lines[2].colors._items[1]">鼠尾草绿色</span><span class="chip-item" data-model-owner="_lines[2].colors._items[2]">青雾蓝色</span><span class="chip-item" data-model-owner="_lines[2].colors._items[3]">白色</span><span class="chip-item" data-model-owner="_lines[2].colors._items[4]">黑色</span></div></article></section></article></section><section class="block"><article id="chip" class="node depth-1 w-narrow utility-facts" data-model-owner="_lines[3]"><h2 class="title">A19 芯片、全天电池续航</h2><div class="fact"><span class="val">高能玩家， 高能量专家。</span></div><div class="fact"><span class="val">A19 芯片，采用第三代 3 纳米制程，让你用 iPhone 做什么都动力满满，还驱动 ProMotion 自适应刷新率技术，助你畅玩 3A 游戏大作。续航挺你一整天，无论是工作、刷视频，还是随便看看，都不用顾虑电量。要飞快地回个血，用高功率电源适配器充上短短 10 分钟，电量就够播放最长 8 小时视频。</span></div><div class="deflist"><div class="defrow" data-model-owner="_lines[3]._items[0]"><div class="deflabel">最多 充至 50% 电量 仅需 20 分钟</div><div class="defval">需使用 40 瓦或更大功率的电源适配器</div></div><div class="defrow" data-model-owner="_lines[3]._items[1]"><div class="deflabel">最高 提速 50%</div><div class="defval">中央处理器</div></div><div class="defrow" data-model-owner="_lines[3]._items[2]"><div class="deflabel">最高 提速至 2.1 倍</div><div class="defval">5 核图形处理器</div></div><div class="defrow" data-model-owner="_lines[3]._items[3]"><div class="deflabel">增加 11 小时</div><div class="defval">视频播放时间</div></div></div><section class="group g-compare"><article class="node depth-2" data-model-owner="_lines[3].compare"><fieldset class="expose chipbar expose-compare-model"><legend>相比</legend><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-13"> iPhone 13</label><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-13-mini"> iPhone 13 mini</label><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-14"> iPhone 14</label><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-14-plus"> iPhone 14 Plus</label><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-15"> iPhone 15</label><label class="choice"><input type="radio" name="compare-model" value="key:vs-model-15-plus"> iPhone 15 Plus</label></fieldset></article></section></article></section><section class="block"><article id="front-camera" class="node depth-1 w-narrow" data-model-owner="_lines[4]"><h2 class="title">摄像头</h2><div class="band"><figure class="strip"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/cameras/new-camera-features/selfie_intro__bczh72q34vrm_large.jpg" alt="两部薰衣草紫色 iPhone 17 面对面交错贴在一起，分别展示机身正面外观和背面的融合式双摄系统。"></figure></div><div class="fact"><span class="val">1800 万像素 Center Stage 前摄，新派摄手破框而出。</span></div><div class="fact"><span class="val">全新前置摄像头，让你取景构图更灵活，拍照拍视频都有更多花样。无需转动 iPhone，轻轻一点就能扩大取景范围，还能从纵向转到横向。有朋友入镜时，视野会自动扩大，让更多朋友加入你的大合照。</span></div><section class="group g-modes"><article class="node depth-2" data-model-owner="_lines[4].modes"><div class="fact"><span class="val">全新正方形传感器，支持变焦和旋转选项，玩自拍录视频，取景构图更灵活。大家一起合照时，还会自动调整构图，让每个人都入镜。</span></div><div class="deflist media-captions"><div class="defrow media-row" data-model-owner="_lines[4].modes._items[0]"><div class="deflabel">拍摄 人物居中</div><div class="defval"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/cameras/new-camera-features/smart_group_selfie_endframe__gmz1z3mummqa_large.jpg" alt="iPhone 17 正面屏幕，显示自拍合照时的拍照人物居中功能。"></div></div><div class="defrow media-row" data-model-owner="_lines[4].modes._items[1]"><div class="deflabel">视频 同步双拍</div><div class="defval"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/cameras/new-camera-features/dual_capture_endframe__cwtwkww4tqy6_large.jpg" alt="iPhone 17 屏幕展示运用前置和后置摄像头的视频同步双拍功能，视频画面中一位小女孩在奔跑，一位男子在观看。"></div></div><div class="defrow media-row" data-model-owner="_lines[4].modes._items[2]"><div class="deflabel">视频 超稳防抖</div><div class="defval"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/cameras/new-camera-features/stabilized_video_endframe__evymux3c5quu_large.jpg" alt="iPhone 17 屏幕上一位男子正驮着骑在他肩上的小女孩快速行走，演示视频拍摄防抖功能。"></div></div><div class="defrow media-row" data-model-owner="_lines[4].modes._items[3]"><div class="deflabel">视频通话 人物居中</div><div class="defval"><img src="https://www.apple.com.cn/v/iphone-17/i/images/overview/cameras/new-camera-features/center_stage_facetime__cihgc5ty7ro2_large.jpg" alt="iPhone 17 正面屏幕展示视频通话人物居中功能，画面显示两位朋友在交谈。"></div></div></div></article></section></article></section><section class="block"><article id="rear-camera" class="node depth-1 w-narrow" data-model-owner="_lines[5]"><h2 class="title">后摄全上 4800 万像素， 分辨率大进化。</h2><div class="fact"><span class="val">iPhone 17 拥有一颗 4800 万像素融合式主摄，具备 2 倍光学品质变焦功能；它还配备一颗 4800 万像素融合式超广角摄像头，相比 iPhone 16 上的超广角摄像头，分辨率高达 4 倍。而且现在超广角拍摄的默认分辨率就是 2400 万像素，这样照片文件大小刚刚好，既能保存高画质，又便于分享。无论是拍特写还是拉远景，在室内还是在室外，环境是明亮还是低光，都能以超高分辨率惊艳出片。而且相比前代机型，起步容量翻了一倍，最低就有 256GB。</span></div></article></section><section class="block"><article id="lineup" class="node depth-1 w-narrow" data-model-owner="_lines[6]"><h2 class="title">全套必备功能， iPhone 全备齐。</h2><div class="band"><figure class="strip"><img src="https://www.apple.com.cn/iphone-17/images/overview/shared-features/hero_features_center__bgssuxptzwhe_xlarge.webp" alt=""></figure></div><div class="fact"><span class="val">全系全配</span></div><div class="fact"><span class="val">全新 iPhone 系列机型满载创新功能，让日常生活更简单轻松。还都具备高速无线局域网、蓝牙 6 以及 5G 功能，给你又快又安全的连接体验。</span></div><section class="group g-photo"><article class="node depth-2" data-model-owner="_lines[6].photo"><h3 class="title">笑一笑，拍一拍，发一发，再来张。</h3><div class="deflist"><div class="defrow" data-model-owner="_lines[6].photo._items[0]"><div class="deflabel">全新“珠光”摄影风格亮相。</div><div class="defval">为人物的肤色增添一抹自然柔和的亮色，显得更明媚通透、神采奕奕，让你看起来由内而外光彩夺目。</div></div><div class="defrow" data-model-owner="_lines[6].photo._items[1]"><div class="deflabel">2 倍长焦功能。</div><div class="defval">拉近或推远，都能将主体拍得细致入微。</div></div><div class="defrow" data-model-owner="_lines[6].photo._items[2]"><div class="deflabel">低光和夜间模式拍摄。</div><div class="defval">即使光线昏暗，也能拍到清晰锐利、细节丰富、明亮通透的画面，而且色彩自然鲜活，噪点也少。</div></div><div class="defrow" data-model-owner="_lines[6].photo._items[3]"><div class="deflabel">微距。</div><div class="defval">细节锐利，清晰非常，将特写拍得动人心弦。</div></div><div class="defrow" data-model-owner="_lines[6].photo._items[4]"><div class="deflabel">专业感十足的视频。</div><div class="defval">选择 4K 60 fps 格式或打开电影效果模式，可以把视频拍出大片质感。你还可以使用混音功能，随心调整视频中的人声效果。</div></div></div></article></section><section class="group g-safety"><article class="node depth-2" data-model-owner="_lines[6].safety"><h3 class="title">实用安全功能， 有备无患。</h3><div class="stack"><section class="block"><article id="safety-crash" class="node depth-3" data-model-owner="_lines[6].safety._items[0]"><h4 class="title">车祸检测。</h4><div class="fact"><span class="val">硬件传感器结合先进的运动算法，可检测到严重车祸，并主动为你拨打求救电话。</span></div></article></section><section class="block"><article id="safety-find" class="node depth-3" data-model-owner="_lines[6].safety._items[1]"><h4 class="title">查找 App。</h4><blockquote class="quote"><span class="val">看看挂着 AirTag 的东西在哪里；以安全可靠的方式与亲友共享你的位置；还能帮你找设备，即使设备离线也没问题。</span></blockquote></article></section></div></article></section></article></section><section class="block"><article id="apple-intelligence" class="node depth-1 w-narrow" data-model-owner="_lines[7]"><h2 class="title">为 Apple 智能 预备好</h2><div class="fact"><span class="val">Apple 智能是深植于 iPhone 中的个人化智能系统，能根据你的个人情境为你在写作、表达自我、 处理各种事务上提供协助，让一切更简单轻松。</span></div><ul class="linklist"><li data-model-owner="_lines[7]._items[0]">Apple 智能推出时间依监管部门审批情况而定。</li></ul></article></section><section class="block"><article id="upgrade-compare" class="node depth-1 w-narrow utility-facts" data-model-owner="_lines[8]"><h2 class="title">升级值不值？ 自己比比看。</h2><div class="fact"><span class="val">将 iPhone 17 与下列 iPhone 比比看：iPhone 17 优点众多，给你精彩更多。</span></div><ul class="linklist"><li data-model-owner="_lines[8]._items[0]">4800 万像素 融合式双摄系统</li><li data-model-owner="_lines[8]._items[1]">1800 万像素 Center Stage 前置摄像头</li><li data-model-owner="_lines[8]._items[2]">6.3 英寸显示屏支持 ProMotion 技术 自适应刷新率最高达 120Hz</li><li data-model-owner="_lines[8]._items[3]">超瓷晶面板 2 抗刮划能力提升至 3 倍</li><li data-model-owner="_lines[8]._items[4]">视频播放最长 增加 11 小时 电池续航</li><li data-model-owner="_lines[8]._items[5]">图形处理器性能最高 提速至 2.1 倍</li></ul><section class="group g-selector"><article class="node depth-2" data-model-owner="_lines[8].selector"><fieldset class="expose chipbar expose-upgrade-compare-model"><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-13"> iPhone 13</label><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-13-mini"> iPhone 13 mini</label><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-14"> iPhone 14</label><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-14-plus"> iPhone 14 Plus</label><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-15"> iPhone 15</label><label class="choice"><input type="radio" name="upgrade-compare-model" value="key:up-model-15-plus"> iPhone 15 Plus</label></fieldset></article></section><section class="group g-tradein"><article id="upgrade-tradein" class="node depth-2" data-model-owner="_lines[8].tradein"><div class="fact"><span class="val">用符合条件的设备换购新 iPhone，可享折抵优惠。</span></div><a class="action verb-open" href="https://www.apple.com.cn/cn/shop/goto/trade_in">了解你设备的折抵金额</a></article></section></article></section><section class="block"><article id="accessories" class="node depth-1 w-narrow" data-model-owner="_lines[9]"><h2 class="title">搭起来，炫出来。</h2><div class="fact"><span class="val">配件</span></div><div class="deflist"><div class="defrow" data-model-owner="_lines[9]._items[0]"><div class="deflabel">好戴，好带感。</div><div class="defval">全新斜挎挂绳可搭配 Apple 硅胶保护壳，你去哪都能将 iPhone 轻松戴上身，双手好自在。</div></div><div class="defrow" data-model-owner="_lines[9]._items[1]"><div class="deflabel">全面装备起来。</div><div class="defval">MagSafe 硅胶保护壳靓色缤纷，能与 iPhone 轻松合体，贴身保护。</div></div><div class="defrow" data-model-owner="_lines[9]._items[2]"><div class="deflabel">亮出真本色。</div><div class="defval">随手安上 MagSafe 透明保护壳，让 iPhone 的绚丽色彩一览无余。</div></div></div><a class="action verb-open" href="https://www.apple.com.cn/cn/shop/goto/iphone/accessories">选购 iPhone 配件</a></article></section><section class="block"><article id="benefits" class="node depth-1 w-wide" data-model-owner="_lines[10]"><h2 class="title">在 Apple 购买 iPhone 好处多多</h2><div class="cards cols-auto"><div class="item"><article id="benefits-tradein" class="node depth-2" data-model-owner="_lines[10]._items[0]"><h3 class="title">Apple Trade In 换购计划</h3><div class="fact"><span class="val">换购新 iPhone， 还能省一笔。</span></div><div class="fact"><span class="val">用 iPhone 13 或后续机型来换购 iPhone 17，可享预计为 RMB 900 至 RMB 5100 的折抵优惠。</span></div></article></div><div class="item"><article id="benefits-financing" class="node depth-2" data-model-owner="_lines[10]._items[1]"><h3 class="title">灵活的付款方案</h3><div class="fact"><span class="val">多种免息分期可选。</span></div><div class="fact"><span class="val">购买 Apple 产品最长可享 24 个月免息分期。支付宝、微信支付及多家合作银行任你选择。</span></div></article></div><div class="item"><article id="benefits-upgrade" class="node depth-2" data-model-owner="_lines[10]._items[2]"><h3 class="title">iPhone 年年焕新计划</h3><div class="fact"><span class="val"><img src="https://www.apple.com.cn/iphone-17/images/overview/incentive/carrier__ctbxaccivwk2_large.webp" alt="多款不同颜色 iPhone 17 Pro 和 iPhone 17 的包装盒错落排列。"></span></div><div class="fact"><span class="val">新机年年换， 超值更随心。</span></div><div class="fact"><span class="val">从 Apple 入手指定新款 iPhone 时加购 AppleCare+ 服务计划，且符合相应条件，购机后 3 至 15 个月内即可升级下一部 iPhone，还可享原设备购买价格至少 50% 的折抵优惠。</span></div></article></div><div class="item"><article id="benefits-setup" class="node depth-2" data-model-owner="_lines[10]._items[3]"><h3 class="title">个人设置辅导</h3><div class="fact"><span class="val">参加在线辅导， 解锁 iPhone 种种精彩。</span></div><div class="fact"><span class="val">Specialist 专家与你一对一交流，带你设置手里的 iPhone，探索各种新功能。</span></div><a class="action verb-open" href="https://www.apple.com.cn/cn/shop/goto/personal_setup">进一步了解个人设置辅导</a></article></div><div class="item"><article id="benefits-delivery" class="node depth-2" data-model-owner="_lines[10]._items[4]"><h3 class="title">送货和取货</h3><div class="fact"><span class="val">可免费送货， 也可到店取货。</span></div><div class="fact"><span class="val">所有订单均可享免费送货。部分订单可选择免费的三小时快送，或亲自到店取货。</span></div></article></div><div class="item"><article id="benefits-specialist" class="node depth-2" data-model-owner="_lines[10]._items[5]"><h3 class="title">导购</h3><div class="fact"><span class="val">Specialist 专家 协助选购。</span></div><div class="fact"><span class="val">无论线上还是在 Apple Store 零售店，我们都能帮你找到心仪的产品，并解答你的各种疑问。</span></div><span class="action-plain">进一步了解 Specialist 专家协助选购</span></article></div><div class="item"><article id="benefits-app" class="node depth-2" data-model-owner="_lines[10]._items[6]"><h3 class="title">Apple Store App</h3><div class="fact"><span class="val">专属于你的 购物体验。</span></div><div class="fact"><span class="val">更个性化的购物方式， 尽在这款 app。</span></div><a class="action verb-open" href="https://apps.apple.com/cn/app/apple-store/id375380948">进一步了解 Apple Store App</a></article></div></div></article></section><section class="block"><article id="which-iphone" class="node depth-1 w-wide" data-model-owner="_lines[11]"><h2 class="title">看看哪款 iPhone 适合你。</h2><div class="cmp-scroll"><table class="cmp-table"><thead><tr><th class="cmp-row"></th><th class="cmp-col" data-model-owner="_lines[11]._items[0]">iPhone 17<span class="cmp-tag">当前浏览</span><div class="cmp-price">RMB 6799 起</div><div class="cmp-sub">拉高好感度， 再添耐用性。</div><div class="cmp-sub">RMB 6799 起或 RMB 284/月 (24 期) 起</div><div class="cmp-nested"><div class="chips"><span class="chip-item" data-model-owner="_lines[11]._items[0]._items[0]">薰衣草紫色</span><span class="chip-item" data-model-owner="_lines[11]._items[0]._items[1]">鼠尾草绿色</span><span class="chip-item" data-model-owner="_lines[11]._items[0]._items[2]">青雾蓝色</span><span class="chip-item" data-model-owner="_lines[11]._items[0]._items[3]">白色</span><span class="chip-item" data-model-owner="_lines[11]._items[0]._items[4]">黑色</span></div></div><div class="cmp-ctl"><a class="action verb-buy" href="https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17">购买</a></div></th><th class="cmp-col" data-model-owner="_lines[11]._items[1]">iPhone Air<div class="cmp-price">RMB 8799 起</div><div class="cmp-sub">超轻超薄， Pro 级性能表现。</div><div class="cmp-sub">RMB 8799 起或 RMB 367/月 (24 期) 起</div><div class="cmp-nested"><div class="chips"><span class="chip-item" data-model-owner="_lines[11]._items[1]._items[0]">蓝色</span><span class="chip-item" data-model-owner="_lines[11]._items[1]._items[1]">金色</span><span class="chip-item" data-model-owner="_lines[11]._items[1]._items[2]">白色</span><span class="chip-item" data-model-owner="_lines[11]._items[1]._items[3]">黑色</span></div></div><div class="cmp-ctl"><div class="controls"><a class="ctl" href="https://www.apple.com.cn/iphone-air/">进一步了解</a><a class="action verb-buy" href="https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_air">购买</a></div></div></th></tr></thead><tbody><tr><th class="cmp-row">显示屏</th><td class="cmp-cell"><article class="node depth-4" data-model-owner="_lines[11]._items[0].display"><h5 class="title">显示屏</h5><div class="fact"><span class="val">6.3 英寸 超视网膜 XDR 显示屏</span></div></article></td><td class="cmp-cell"><article class="node depth-4" data-model-owner="_lines[11]._items[1].display"><h5 class="title">显示屏</h5><div class="fact"><span class="val">6.5 英寸 超视网膜 XDR 显示屏</span></div></article></td></tr><tr><th class="cmp-row">芯片</th><td class="cmp-cell"><article class="node depth-4" data-model-owner="_lines[11]._items[0].chip"><h5 class="title">芯片</h5><div class="fact"><span class="val">A19 芯片 第三代 3 纳米制程 · 5 核图形处理器 配备神经网络加速器</span></div></article></td><td class="cmp-cell"><article class="node depth-4" data-model-owner="_lines[11]._items[1].chip"><h5 class="title">芯片</h5><div class="fact"><span class="val">A19 Pro 芯片 第三代 3 纳米制程 · 5 核图形处理器 配备神经网络加速器</span></div></article></td></tr><tr><th class="cmp-row">摄像头</th><td class="cmp-cell"><article class="node depth-4" data-model-owner="_lines[11]._items[0].camera"><h5 class="title">摄像头</h5><div class="fact"><span class="val">4800 万像素融合式双摄系统 · 4800 万像素融合式主摄 · 4800 万像素融合式超广角</span></div></article></td><td class="cmp-cell"><article class="node depth-4" data-model-owner="_lines[11]._items[1].camera"><h5 class="title">摄像头</h5><div class="fact"><span class="val">4800 万像素融合式摄像头系统 · 4800 万像素融合式主摄</span></div></article></td></tr><tr><th class="cmp-row">电池</th><td class="cmp-cell"><article class="node depth-4" data-model-owner="_lines[11]._items[0].battery"><h5 class="title">电池</h5><div class="fact"><span class="val">视频播放最长可达 30 小时</span></div></article></td><td class="cmp-cell"><article class="node depth-4" data-model-owner="_lines[11]._items[1].battery"><h5 class="title">电池</h5><div class="fact"><span class="val">视频播放最长可达 27 小时</span></div></article></td></tr><tr><th class="cmp-row">Apple 智能</th><td class="cmp-cell"><article class="node depth-4" data-model-owner="_lines[11]._items[0].ai"><h5 class="title">Apple 智能</h5><div class="fact"><span class="val">为 Apple 智能预备好</span></div></article></td><td class="cmp-cell"><article class="node depth-4" data-model-owner="_lines[11]._items[1].ai"><h5 class="title">Apple 智能</h5><div class="fact"><span class="val">为 Apple 智能预备好</span></div></article></td></tr></tbody></table></div><div class="controls"><a class="ctl" href="https://www.apple.com.cn/iphone/">探索全部 iPhone 机型</a><a class="ctl" href="https://www.apple.com.cn/iphone/compare/">比较各款 iPhone 机型</a></div></article></section><section class="block"><article id="environment" class="node depth-1 w-narrow utility-group utility-facts" data-model-owner="_lines[12]"><h2 class="title">iPhone 17 与环境</h2><ul class="linklist"><li data-model-owner="_lines[12]._items[0]">制造采用的 回收材料重量 占比达 30%。</li><li data-model-owner="_lines[12]._items[1]">生产制造 采用 35% 可再生电力。</li><li data-model-owner="_lines[12]._items[2]">紧凑包装让 每次运输的 货物量增加 35%。</li></ul><a class="action verb-open" href="https://www.apple.com/environment/pdf/products/iphone/iPhone_17_PER_Sept2025.pdf">阅读我们的《产品环境报告》(PDF) 了解详情</a></article></section><section class="block"><article id="values" class="node depth-1 w-narrow" data-model-owner="_lines[13]"><h2 class="title">我们的价值观，为我们 导航。</h2><div class="deflist"><div class="defrow" data-model-owner="_lines[13]._items[0]"><div class="deflabel">我们的计划，和我们的产品一样突破创新。</div><div class="defval">我们致力于到 2030 年实现整体碳足迹净零排放的目标。 <a class="ctl" href="https://www.apple.com.cn/environment/">进一步了解环境责任</a></div></div><div class="defrow" data-model-owner="_lines[13]._items[1]"><div class="deflabel">力保个人信息安全，这很 Apple。</div><div class="defval">隐私是一项基本人权。我们设计的每一款产品和服务都力求保护你的数据安全。 <a class="ctl" href="https://www.apple.com.cn/privacy/">进一步了解隐私安全</a></div></div><div class="defrow" data-model-owner="_lines[13]._items[2]"><div class="deflabel">种种创新， 为无障碍使用而设计。</div><div class="defval">我们的产品和服务为每一个人而设计，众多内置功能可协助你以适合自己的方式，尽情投入喜欢的事。 <a class="ctl" href="https://www.apple.com.cn/accessibility/">进一步了解无障碍功能</a></div></div></div></article></section></div></article></main></body></html>

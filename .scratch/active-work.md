@@ -105,3 +105,9 @@
 - **夜间轮次**（1–24）：视觉缺陷闭环 → 校验器空转重大发现 → M4-a 地基 → 模型说真话 → 采集补样本 → 门禁诚实性（分母 +233、匹配边界化、门禁可证伪）→ 留出集泛化（裂图 25→3）→ 同构架构（决策层抽出、三目标、词汇声明化）
 - **已停在此处等待用户决策**：`D-1 _macro`（阻塞 M4-b 命名原语 + `form`/`table`/`paginator`/`login` 的良构校验）、`D-2` 字段可引用性、`D-6` 金额字形/精度（M5）。其余（结算/设置页样本、M5 其余 token）在无决策下边际收益低。
 - **入口**：`.scratch/state-report.md`（5 分钟版，`unverified_claims=0`）· `.scratch/decisions-for-user.md`（6 条）· `docs/three-targets.md`（三目标演示，可重生成）
+
+## Active: 62 — all curated gallery pages / source-frozen focused repair
+- Owner: sole-root repair worker checkpointed; Main routes the next sole owner, no writer/job in flight.
+- Contract/history: `.scratch/62-all-sites/ticket.md`; current repair handoff: `.scratch/62-all-sites/focused-diagnosis/repair-handoff.json`; exact continuation: `.scratch/62-all-sites/focused-diagnosis/repair/continuation.md`.
+- Source checkpoint `ccea4ace4bbba9ac989ca2ade80d5b0f050826e9`, root HEAD/index unchanged, unrelated dirt preserved. Combined pipeline FAIL at strengthened link/source-association gate; full42 four-width experience/independent acceptance INCOMPLETE. Do not route stale old captures/review snapshots.
+- Single user delivery gate remains all remaining pages + Apple/Taobao identity fixes; no publication, new milestone or PASS.

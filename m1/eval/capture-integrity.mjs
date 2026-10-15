@@ -63,6 +63,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pageText } from '../axis.mjs';
 import { factValues, suppressedNodes } from './metrics.mjs';
+import { iconProofs } from './icon-provenance.mjs';
 
 // T1/T2 thresholds — see the rule table above.
 export const NUM_MIN_ABS = 10;   // |num|/|money| must be >= 10 to participate
@@ -218,6 +219,7 @@ export function loadAllow(p = 'm1/eval/capture-integrity-allow.json') {
 // gaps (collection TODOs) and OPEN (gate-failing) items.
 export function checkPage(page, model, corpusDir = `corpus/${page}`, allow = loadAllow()) {
   const hay = loadHaystack(corpusDir);
+  const icons = iconProofs(page, model, corpusDir);
   const dead = suppressedNodes(model);
   const facts = factValues(model, dead);
   const scanned = [], unmatched = [], allowlisted = [], captureGaps = [];
@@ -226,14 +228,14 @@ export function checkPage(page, model, corpusDir = `corpus/${page}`, allow = loa
     total++;
     if (!participates(f)) continue;
     scanned.push(f.path);
-    if (matches(f, hay)) continue;
+    if (matches(f, hay) || icons.matched.some((p) => p.path === f.path && p.label === f.text)) continue;
     const key = `${page}\x00${f.text}`;
     const hit = allow.index?.get(key);
     if (hit && hit.kind === 'capture-gap') captureGaps.push({ path: f.path, value: f.text, type: f.type, reason: hit.reason, evidence: hit.evidence, round: hit.round });
     else if (hit) allowlisted.push({ path: f.path, value: f.text, type: f.type, reason: hit.reason, round: hit.round });
     else unmatched.push({ path: f.path, value: f.text, type: f.type, nearest: nearestSnippet(hay, f.text) });
   }
-  return { page, factsTotal: total, scanned: scanned.length, unmatched, allowlisted, captureGaps };
+  return { page, factsTotal: total, scanned: scanned.length, unmatched, allowlisted, captureGaps, iconEvidence: icons.matched, provenanceErrors: icons.errors };
 }
 
 // Run the whole set of exemplar rows (default) or an explicit list.
@@ -248,9 +250,10 @@ export function run(rows, { root = '.', allow = loadAllow(path.join(root, 'm1/ev
     if (p.error) return a;
     a.factsTotal += p.factsTotal; a.scanned += p.scanned;
     a.unmatched += p.unmatched.length; a.allowlisted += p.allowlisted.length; a.captureGaps += p.captureGaps.length;
+    a.iconMatched += p.iconEvidence?.length ?? 0; a.provenanceErrors += p.provenanceErrors?.length ?? 0;
     return a;
-  }, { pages: pages.length, factsTotal: 0, scanned: 0, unmatched: 0, allowlisted: 0, captureGaps: 0 });
-  return { agg, pages, allowEntries: allow.entries.length, ok: pages.every((p) => !p.error) && agg.unmatched === 0 };
+  }, { pages: pages.length, factsTotal: 0, scanned: 0, unmatched: 0, allowlisted: 0, captureGaps: 0, iconMatched: 0, provenanceErrors: 0 });
+  return { agg, pages, allowEntries: allow.entries.length, ok: pages.every((p) => !p.error && !(p.provenanceErrors ?? []).length) && agg.unmatched === 0 };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
@@ -266,7 +269,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const res = { agg: {}, pages: [checkPage(modelArg, m, corpusDir)], allowEntries: 0, ok: false };
     res.agg.scanned = res.pages[0].scanned; res.agg.unmatched = res.pages[0].unmatched.length;
     res.agg.allowlisted = res.pages[0].allowlisted.length; res.agg.factsTotal = res.pages[0].factsTotal;
-    res.ok = res.agg.unmatched === 0;
+    res.ok = res.agg.unmatched === 0 && !res.pages[0].provenanceErrors.length;
     console.log(json ? JSON.stringify(res, null, 2) : JSON.stringify(res.pages[0], null, 2));
     process.exit(res.ok ? 0 : 1);
   }
@@ -276,7 +279,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   if (json) { console.log(JSON.stringify(res, null, 2)); process.exit(res.ok ? 0 : 1); }
   for (const p of res.pages) {
     if (p.error) { console.log(`ERROR ${p.page}: ${p.error}`); continue; }
-    if (!p.unmatched.length && !p.allowlisted.length && !(p.captureGaps ?? []).length) continue;
+    if (!p.unmatched.length && !p.allowlisted.length && !(p.captureGaps ?? []).length && !p.provenanceErrors?.length && !p.iconEvidence?.length) continue;
+    for (const e of p.provenanceErrors ?? []) console.log(`   ✗ icon provenance: ${e.reason}`);
+    for (const e of p.iconEvidence ?? []) console.log(`   ✓ source-bound icon: ${e.label} ${e.selector} local=${e.value} hash=${e.domSha256}`);
     console.log(`${p.unmatched.length ? '✗' : '·'} ${p.page}  扫描 ${p.scanned}/${p.factsTotal}`);
     for (const u of p.unmatched) console.log(`   ✗ [${u.type}] "${u.value}"  ${u.path}\n       最近: ${u.nearest.slice(0, 160) || '(无近似片段)'}`);
     for (const a of p.allowlisted) console.log(`   ✓ 白名单(转换) "${a.value}"  ${a.path}\n       理由(${a.round}): ${a.reason}`);
@@ -284,6 +289,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
   const { agg } = res;
   console.log(`\n[采集↔模型一致性] 页面 ${agg.pages} | 事实 ${agg.factsTotal} | 参与判定 ${agg.scanned} | 未命中 ${agg.unmatched} | 白名单(转换) ${agg.allowlisted} | 采集缺口 ${agg.captureGaps}（声明白名单共 ${res.allowEntries} 条）`);
-  console.log(res.ok ? '[采集↔模型一致性] 通过' : `[采集↔模型一致性] 失败 ${agg.unmatched} 个未命中值未在白名单`);
+  console.log(res.ok ? `[采集↔模型一致性] 通过（来源图标关联 ${agg.iconMatched}，关联错误 ${agg.provenanceErrors}）` : `[采集↔模型一致性] 失败 ${agg.unmatched} 个未命中值未在白名单；来源关联错误 ${agg.provenanceErrors}`);
   process.exit(res.ok ? 0 : 1);
 }

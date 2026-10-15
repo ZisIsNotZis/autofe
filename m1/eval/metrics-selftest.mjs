@@ -40,6 +40,27 @@ const html = render(priced);
 check('fixture: `_fields` money cells actually render', html.includes('$9.99') && html.includes('$19.99'));
 
 // The denominator counts title + 2 names + 2 prices + 2 seat numbers.
+const mdScore = (model, markdown) => {
+  const file = path.join(dir, `m${++seq}.md`);
+  fs.writeFileSync(file, markdown);
+  return evaluate(model, file);
+};
+const linkedProse = { _text: { text: 'Write to support@example.test for help.' } };
+check('Markdown inline destination does not interrupt the visible prose fact',
+  mdScore(linkedProse, 'Write to [support@example.test](mailto:support@example.test) for help.').factFidelity === 1);
+check('Markdown destination alone cannot certify a missing prose fact',
+  mdScore({ _text: { text: 'hiddenfact' } }, '[Visible label](https://example.test/hiddenfact)').factFidelity < 1);
+check('Markdown image destination alone cannot certify a missing numeric value',
+  mdScore({ _count: { num: 870 } }, '![Captured alt](https://example.test/870.png)').factFidelity < 1);
+check('Markdown literal escaped angle parameter retains the complete command',
+  mdScore({ _text: { text: 'az vm list-skus --location <region> --output table' } },
+    'az vm list-skus --location &lt;region&gt; --output table').factFidelity === 1);
+const mdCells = { _fields: { cost: { money: 9.99 }, date: { date: '2026-10-13' }, words: { list: [{ text: 'alpha' }, { text: 'beta' }] } } };
+const mdHiddenCells = mdScore(mdCells, '[visible](https://example.test/9.99/2026-10-13/alpha/beta)');
+check('Markdown destination filtering never lowers the typed-cell denominator', mdHiddenCells.factsTotal === 4);
+check('money/date/list facts hidden in one destination all fail', mdHiddenCells.factsRendered === 0);
+check('Markdown longer numeric token still cannot certify shorter numeric fact',
+  mdScore({ _count: { num: 870 } }, '[87041](https://example.test/870)').factFidelity < 1);
 const ok = score(priced, html);
 check('money/num `_fields` cells are in the fact denominator', ok.factsTotal === 7, `factsTotal=${ok.factsTotal}`);
 check('a fully rendered model keeps fidelity 1.00', ok.factFidelity === 1, `fidelity=${ok.factFidelity}`);

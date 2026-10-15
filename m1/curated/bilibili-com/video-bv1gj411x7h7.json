@@ -18,7 +18,7 @@
     "text": "03:33"
   },
   "_image": {
-    "image": "https://i1.hdslb.com/bfs/archive/5242750857121e05146d5d5b13a47a2a6dd36e98.jpg@1200w_630h",
+    "image": "../assets/62-resource-dc655a863b0a2251.jpg",
     "alt": "【官方 MV】Never Gonna Give You Up - Rick Astley（源站 og:image 视频封面）"
   },
   "danmaku": {
@@ -310,9 +310,6 @@
   },
   "stats": {
     "_intent": "互动工具栏计数值（页面图标顺序：点赞、投币、收藏、分享），以及稿件举报与 UP 笔记入口",
-    "_measure": {
-      "text": "293.3万 127.5万 154.3万 49.5万"
-    },
     "report": {
       "_intent": "举报该稿件",
       "_action": {
@@ -326,6 +323,59 @@
         "verb": "operate",
         "label": "47篇笔记"
       }
+    },
+    "interactions": {
+      "_intent": "源站图标关联的四种互动及其捕获计数，无可证实网络目标，不实现登录/点赞/投币后台。",
+      "_items": [
+        {
+          "_name": {
+            "text": "点赞（Q）"
+          },
+          "_count": {
+            "text": "293.3万"
+          },
+          "_action": {
+            "verb": "operate",
+            "label": "点赞（Q）"
+          }
+        },
+        {
+          "_name": {
+            "text": "投币（W）"
+          },
+          "_count": {
+            "text": "127.5万"
+          },
+          "_action": {
+            "verb": "operate",
+            "label": "投币（W）"
+          }
+        },
+        {
+          "_name": {
+            "text": "收藏（E）"
+          },
+          "_count": {
+            "text": "154.3万"
+          },
+          "_action": {
+            "verb": "operate",
+            "label": "收藏（E）"
+          }
+        },
+        {
+          "_name": {
+            "text": "转发"
+          },
+          "_count": {
+            "text": "49.5万"
+          },
+          "_action": {
+            "verb": "operate",
+            "label": "转发"
+          }
+        }
+      ]
     }
   },
   "live": {
@@ -516,6 +566,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1p2j26LE66/?spm_id_from=333.788.recommend_more_video.-1"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-9d7293901db4.webp",
+          "alt": "喜报，B站网友被这个视频诈骗一亿次了！"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "索尼音乐国际"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "索尼音乐国际",
+            "to": "https://space.bilibili.com/304580067"
+          }
         }
       },
       {
@@ -534,6 +598,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1UbE16dEeJ/?spm_id_from=333.788.recommend_more_video.0"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-a37187b1775e.webp",
+          "alt": "大家好，我是Rick Astley中文频道，我来bilibili了"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "RickAstley中文频道"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "RickAstley中文频道",
+            "to": "https://space.bilibili.com/3707005441148967"
+          }
         }
       },
       {
@@ -552,6 +630,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1eS4y157Ey/?spm_id_from=333.788.recommend_more_video.1"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-b4ea71f15cda.webp",
+          "alt": "大家好，我是Rick Astley,今天我入驻b站了！                                                 doge"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "Rickrocknroll"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "Rickrocknroll",
+            "to": "https://space.bilibili.com/373025504"
+          }
         }
       },
       {
@@ -570,6 +662,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1NZ4y1j7nw/?spm_id_from=333.788.recommend_more_video.2"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-b74d90e0090b.webp",
+          "alt": "黑人抬棺原版视频"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "比划大魔王"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "比划大魔王",
+            "to": "https://space.bilibili.com/479724334"
+          }
         }
       },
       {
@@ -588,6 +694,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1EV411s7vu/?spm_id_from=333.788.recommend_more_video.3"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-585a4db88609.webp",
+          "alt": "【官方】sakanaction（サカナクション）-　新宝島"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "sakanaction鱼韵乐队"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "sakanaction鱼韵乐队",
+            "to": "https://space.bilibili.com/1693810421"
+          }
         }
       },
       {
@@ -606,6 +726,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1V4UYY5EhD/?spm_id_from=333.788.recommend_more_video.4"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-0105f2548b1c.webp",
+          "alt": "视频已失效"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "CR400BF-AS-5421"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "CR400BF-AS-5421",
+            "to": "https://space.bilibili.com/3493084276984624"
+          }
         }
       },
       {
@@ -624,6 +758,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV16o4y1k7gh/?spm_id_from=333.788.recommend_more_video.5"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-3d9333709bbe.webp",
+          "alt": "【官方】sakanaction（サカナクション) -　多分、風。"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "sakanaction鱼韵乐队"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "sakanaction鱼韵乐队",
+            "to": "https://space.bilibili.com/1693810421"
+          }
         }
       },
       {
@@ -642,6 +790,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV14gLU6REFD/?spm_id_from=333.788.recommend_more_video.6"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-0050b694bb0e.webp",
+          "alt": "吸氦唱 《See You Again》"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "新的安德"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "新的安德",
+            "to": "https://space.bilibili.com/3546871823861919"
+          }
         }
       },
       {
@@ -660,6 +822,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV15b41157i4/?spm_id_from=333.788.recommend_more_video.7"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-3c86d90b21a6.webp",
+          "alt": "蔡徐坤原版无特效打篮球视频"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "我不是阿城啦"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "我不是阿城啦",
+            "to": "https://space.bilibili.com/26148497"
+          }
         }
       },
       {
@@ -678,6 +854,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1dg4y1Z7B1/?spm_id_from=333.788.recommend_more_video.8"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-a334bb5de8cb.webp",
+          "alt": "Josh Hutcherson Whistle.mp4"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "WtfWasThat"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "WtfWasThat",
+            "to": "https://space.bilibili.com/441145305"
+          }
         }
       },
       {
@@ -696,6 +886,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1Qs411d7pd/?spm_id_from=333.788.recommend_more_video.9"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-2123e3e3bcce.webp",
+          "alt": "金凯瑞摇头三人组（高清画质原版音频）"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "伊秋Yikyuu"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "伊秋Yikyuu",
+            "to": "https://space.bilibili.com/13972642"
+          }
         }
       },
       {
@@ -714,6 +918,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1Ly4y1L7mA/?spm_id_from=333.788.recommend_more_video.10"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-f505c77cd446.webp",
+          "alt": "原版来了，感谢大家的喜欢，这是我唯一的账号！"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "田一名sir"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "田一名sir",
+            "to": "https://space.bilibili.com/477676711"
+          }
         }
       },
       {
@@ -732,6 +950,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1Es41127M5/?spm_id_from=333.788.recommend_more_video.11"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-26a61b6694f6.webp",
+          "alt": "Yee"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "炉石病娇KC"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "炉石病娇KC",
+            "to": "https://space.bilibili.com/769743"
+          }
         }
       },
       {
@@ -750,6 +982,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1gU4y167kU/?spm_id_from=333.788.recommend_more_video.12"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-7cd90a09b522.webp",
+          "alt": "美国保险公司邀请RickAstley重新录制了经典歌曲Never Gonna Give You Up"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "baadda"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "baadda",
+            "to": "https://space.bilibili.com/1789638843"
+          }
         }
       },
       {
@@ -768,6 +1014,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1qU4y1F73A/?spm_id_from=333.788.recommend_more_video.13"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-b0874ade6968.webp",
+          "alt": "【4K60FPS】查理·普斯《See You Again》爆火神曲！珍惜身边的人！"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "音乐私藏馆"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "音乐私藏馆",
+            "to": "https://space.bilibili.com/229733301"
+          }
         }
       },
       {
@@ -786,6 +1046,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1y54y1s74a/?spm_id_from=333.788.recommend_more_video.14"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-fb6ffa8ae6ed.webp",
+          "alt": "【8K超高清重制版】印尼魔性电信广告原版完整版IndiHome Paket Phoenix"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "不咕的鱼鸽子"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "不咕的鱼鸽子",
+            "to": "https://space.bilibili.com/294594289"
+          }
         }
       },
       {
@@ -804,6 +1078,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1gp4y1B7yd/?spm_id_from=333.788.recommend_more_video.15"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-378c7e389add.webp",
+          "alt": "现场玩梗Rick Astley"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "通訊录好友"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "通訊录好友",
+            "to": "https://space.bilibili.com/25072174"
+          }
         }
       },
       {
@@ -822,6 +1110,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1Ls411w7r7/?spm_id_from=333.788.recommend_more_video.16"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-a9ce73117084.webp",
+          "alt": "甩葱歌原版"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "星白真冬"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "星白真冬",
+            "to": "https://space.bilibili.com/38691535"
+          }
         }
       },
       {
@@ -840,6 +1142,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1xy6qBJESW/?spm_id_from=333.788.recommend_more_video.17"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-2755bb22f7e6.webp",
+          "alt": "《晴天》"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "鸡鸡·夫斯基"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "鸡鸡·夫斯基",
+            "to": "https://space.bilibili.com/548824"
+          }
         }
       },
       {
@@ -858,6 +1174,20 @@
         "_action": {
           "verb": "navigate",
           "to": "https://www.bilibili.com/video/BV1jz421R7V2/?spm_id_from=333.788.recommend_more_video.18"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-fcaac1b59fc8.webp",
+          "alt": "该视频已失效"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "鈡葉"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "鈡葉",
+            "to": "https://space.bilibili.com/548893050"
+          }
         }
       }
     ]

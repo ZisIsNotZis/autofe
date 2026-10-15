@@ -87,6 +87,9 @@
     "_expose": {
       "name": "search-type",
       "type": "text"
+    },
+    "_default": {
+      "text": "文章"
     }
   },
   "sort": {
@@ -106,6 +109,9 @@
     "_expose": {
       "name": "sort",
       "type": "text"
+    },
+    "_default": {
+      "text": "相关性"
     }
   },
   "results": {
@@ -445,6 +451,201 @@
         },
         "_datetime": {
           "date": "2026-08-18"
+        }
+      }
+    ]
+  },
+  "continuation": {
+    "_intent": "已捕获列表的继续加载控件，无 href，不编造网络目标。",
+    "_title": {
+      "text": "查看更多"
+    },
+    "_action": {
+      "verb": "open",
+      "label": "查看更多"
+    }
+  },
+  "footer": {
+    "_intent": "源站捕获且可见的说明、合作、联系和法规工具入口，保持原文及目标。",
+    "_items": [
+      {
+        "_title": {
+          "text": "城市合作"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "城市合作",
+          "to": "https://36kr.com/station-business"
+        }
+      },
+      {
+        "_title": {
+          "text": "项目推荐"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "项目推荐",
+          "to": "https://36kr.com/seek-report-new"
+        }
+      },
+      {
+        "_title": {
+          "text": "投资者关系"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "投资者关系",
+          "to": "http://ir.36kr.com"
+        }
+      },
+      {
+        "_title": {
+          "text": "关于我们"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "关于我们",
+          "to": "https://36kr.com/pages/about"
+        }
+      },
+      {
+        "_title": {
+          "text": "加入我们"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "加入我们",
+          "to": "https://zhaopin.36kr.com"
+        }
+      },
+      {
+        "_title": {
+          "text": "网络谣言信息举报入口"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "网络谣言信息举报入口",
+          "to": "https://36kr.com/refute-rumor-notice"
+        }
+      },
+      {
+        "_title": {
+          "text": "热门资讯"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "热门资讯",
+          "to": "https://36kr.com/hot-list/catalog"
+        }
+      },
+      {
+        "_title": {
+          "text": "热门产品"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "热门产品",
+          "to": "https://36kr.com/project"
+        }
+      },
+      {
+        "_title": {
+          "text": "文章标签"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "文章标签",
+          "to": "https://36kr.com/tags"
+        }
+      },
+      {
+        "_title": {
+          "text": "快讯标签"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "快讯标签",
+          "to": "https://36kr.com/nftags"
+        }
+      },
+      {
+        "_title": {
+          "text": "阿里云"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "阿里云",
+          "to": "https://www.aliyun.com/"
+        }
+      },
+      {
+        "_title": {
+          "text": "网上有害信息举报"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "网上有害信息举报",
+          "to": "https://www.12377.cn"
+        }
+      },
+      {
+        "_title": {
+          "text": "京ICP备12031756号-6"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "京ICP备12031756号-6",
+          "to": "https://beian.miit.gov.cn/#/Integrated/index"
+        }
+      },
+      {
+        "_title": {
+          "text": "京ICP证150143号"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "京ICP证150143号",
+          "to": "https://dxzhgl.miit.gov.cn/dxxzsp/xkz/xkzgl/resource/qiyesearch.jsp?num=%25E5%258C%2597%25E4%25BA%25AC%25E5%25A4%259A%25E6%25B0%25AA%25E4%25BF%25A1%25E6%2581%25AF%25E7%25A7%2591%25E6%258A%2580%25E6%259C%2589%25E9%2599%2590%25E5%2585%25AC%25E5%258F%25B8&type=xuke"
+        }
+      },
+      {
+        "_title": {
+          "text": "京公网安备11010502057322号"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "京公网安备11010502057322号",
+          "to": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502057322"
+        }
+      }
+    ],
+    "notices": {
+      "_intent": "捕获页脚服务、举报联系方式与备案声明原文。",
+      "_lines": [
+        {
+          "_text": {
+            "text": "本站由 阿里云提供计算与安全服务 违法和不良信息、未成年人保护举报电话：010-89650707 举报邮箱：jubao@36kr.com 网上有害信息举报"
+          }
+        },
+        {
+          "_text": {
+            "text": "© 2011~2026 北京多氪信息科技有限公司 |京ICP备12031756号-6 | 京ICP证150143号 | 京公网安备11010502057322号"
+          }
+        }
+      ]
+    }
+  },
+  "navigation": {
+    "_intent": "捕获的可见全站导航，不展开隐藏下拉菜单或重建登录行为。",
+    "_items": [
+      {
+        "_title": {
+          "text": "AI测评网"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "AI测评网",
+          "to": "https://ai.36kr.com"
         }
       }
     ]

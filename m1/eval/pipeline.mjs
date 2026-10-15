@@ -230,6 +230,11 @@ for (const l of gCR.out.split('\n')) if (l.startsWith('控件对照') || l.inclu
 // counts values, so both were blind to the user's U-01/U-03/U-04 (anchors arriving as dead
 // text). The gate audits all 42 exemplar pages and is falsifiable (a dropped target in the
 // model MUST be reported; a fabricated link domain MUST be reported).
+const gOWN = gate('node m1/eval/link-owner-selftest.mjs');
+const gWIT = gate('node m1/eval/link-witness-selftest.mjs');
+console.log(`[pipeline] 精确来源/语义所有者自测: ${gOWN.ok && gWIT.ok ? '通过' : '失败'}`);
+if (!gOWN.ok) console.log(gOWN.out);
+if (!gWIT.ok) console.log(gWIT.out);
 const gLC = gate('node m1/eval/link-coverage-selftest.mjs');
 console.log(`[pipeline] 链接覆盖自测(轮55 · 第13道): ${gLC.ok ? '通过' : '失败'}`);
 if (!gLC.ok) console.log(gLC.out);
@@ -270,11 +275,18 @@ if (!gAF.ok) console.log(gAF.out);
 const gLO = gate('node m1/eval/layout-selftest.mjs');
 console.log(`[pipeline] 布局系统自测(轮58 · 第17道): ${gLO.ok ? '通过' : '失败'}`);
 if (!gLO.ok) console.log(gLO.out);
-const gatesFailed = !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok || !gLO.ok;
+// Actual wide/mobile geometry + option-local actions; no static fallback or experience verdict.
+const gPF = gate('node m1/eval/page-frame-selftest.mjs');
+console.log(`[pipeline] 页面框架/动作可执行自测: ${gPF.ok ? '通过' : '失败'}`);
+if (!gPF.ok) console.log(gPF.out);
+const gDR = gate('node m1/eval/diagnosed-repair-selftest.mjs');
+console.log(`[pipeline] 来源/关联修复可证伪自测: ${gDR.ok ? '通过' : '失败'}`);
+if (!gDR.ok) console.log(gDR.out);
+const gatesFailed = !gOWN.ok || !gWIT.ok || !gDR.ok || !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok || !gLO.ok || !gPF.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';
-const auditTail = execSync('node m1/eval/audit-visual.mjs ' + auditTargets + ' 2>&1 | tail -4', { timeout: 900000 }).toString();
+const auditTail = execSync('node m1/eval/audit-visual.mjs ' + auditTargets + ' 2>&1', { timeout: 300000 }).toString();
 console.log(auditTail.trim());
 const hardFails = (auditTail.match(/待修 (\d+)/) || [])[1];
 
@@ -284,7 +296,10 @@ if (wantShots) {
   const b = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
   const p = await b.newPage({ viewport: { width: 1280, height: 900 } });
   let n = 0;
+  // Reuse only byte-bound HTML/PNG pairs; invalidated pages are captured normally.
+  const staleShots = new Set(checkShots().stale.map(r=>r.k));
   for (const r of rows) {
+    if (!staleShots.has(r.k)) continue;
     const dash = r.k.replace(/\//g, '-');
     const html = 'm1/curated/renders/' + dash + '.html';
     if (!fs.existsSync(html)) continue;

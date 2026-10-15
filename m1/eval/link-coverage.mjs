@@ -28,6 +28,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { childrenOf } from '../model-lib.mjs';
+import { namedChildEntries, tableLinkPair, labelTextOf } from '../axis.mjs';
+import { ownerOracle } from './link-owners.mjs';
+import { checkSourceWitnesses } from './link-source-witnesses.mjs';
 
 // A reserved key (`_action`, `_items`, …) is structure, never a visible fact.
 const isReservedKey = (k) => ['_intent','_primary','_key','_when','_action','_rel','_expose','_composite','_default'].includes(k);
@@ -69,14 +72,16 @@ export function normalizeHref(href, baseUrl) {
   let h = decodeEntities(href.trim());
   if (!h) return '';
   if (h.startsWith('//')) h = 'https:' + h;
-  else if (h.startsWith('/') && baseUrl) {
-    const m = /^https?:\/\/[^/]+/.exec(baseUrl);
-    if (m) h = m[0] + h;
+  else if (baseUrl && !/^[a-z][a-z\d+.-]*:/i.test(h)) {
+    try { h = new URL(h, baseUrl).href; } catch { /* malformed target stays unmatched */ }
   }
+  // URL serialization equates literal Unicode with its percent-encoded URI form;
+  // it does not discard queries/fragments or reorder their association.
+  if (/^https?:\/\//i.test(h)) { try { h = new URL(h).href; } catch { /* reject by exact comparison */ } }
   return h.replace(/\/+$/, '');
 }
 function baseUrlOf(corpusDir) {
-  try { return JSON.parse(fs.readFileSync(path.join(corpusDir, 'meta.json'), 'utf8')).url ?? ''; } catch { return ''; }
+  try { const meta = JSON.parse(fs.readFileSync(path.join(corpusDir, 'meta.json'), 'utf8')); return meta.redirectedUrl ?? meta.url ?? ''; } catch { return ''; }
 }
 
 // ---- capture side: every anchor with its visible text and href -------------
@@ -162,7 +167,7 @@ export function loadAllow(p = 'm1/eval/link-coverage-allow.json') {
 //
 // The rendered artifact is still read, for the opposite direction: a link drawn to a domain
 // the capture never links to is a FABRICATED target (F-025 forbids constructing a URL).
-export function checkPage(page, model, html, domHtml, baseUrl = '', allow = loadAllow()) {
+export function checkPage(page, model, html, domHtml, baseUrl = '', allow = loadAllow(), witnesses = []) {
   const anchors = sourceAnchors(domHtml, baseUrl);
   const realKey = new Map();       // compact anchor text -> Set(normalized hrefs)
   const noTarget = new Map();      // compact anchor text -> raw href (javascript:/#/empty)
@@ -180,12 +185,27 @@ export function checkPage(page, model, html, domHtml, baseUrl = '', allow = load
   };
   const srcDomains = new Set(anchors.filter((a) => a.real).map((a) => domainOf(a.norm)).filter(Boolean));
 
-  const findings = [], declared = [];
+  const boundActions = new Map();
+  const bind = (node) => {
+    for (const table of namedChildEntries(node)) {
+      const pair = tableLinkPair(node, table.node);
+      if (!pair) continue;
+      for (const inventory of pair.inventory._lines) {
+        const self = inventory._items.find((a) => labelTextOf(a) === labelTextOf(inventory));
+        if (self) boundActions.set(inventory, self._action);
+      }
+    }
+    for (const c of childrenOf(node)) bind(c.node);
+  };
+  bind(model);
+  const findings = [], declared = [], ownership = [];
+  const oracle = ownerOracle(model, html, domHtml, baseUrl);
+  const runs = renderRuns(html);
   let factsToLink = 0, linked = 0, modelFactsTotal = 0;
   const visit = (node, p) => {
     if (Array.isArray(node)) { node.forEach((x, i) => visit(x, `${p}[${i}]`)); return; }
     if (!node || typeof node !== 'object') return;
-    const action = node._action;
+    const action = node._action ?? boundActions.get(node);
     const has = Boolean(action && typeof action.to === 'string' && action.to);
     const seen = new Set();
     for (const [k, v] of Object.entries(node)) {
@@ -198,44 +218,71 @@ export function checkPage(page, model, html, domHtml, baseUrl = '', allow = load
       seen.add(ck);
       modelFactsTotal++;
       factsToLink++;
-      if (has) { linked++; continue; }
-      const f = { kind: 'anchor-dropped', text: t, path: `${p}.${k}`, expect: [...realKey.get(ck)] };
-      const hit = allow.index.get(`${page}\x00anchor-dropped\x00${ck}`);
+      const structural = !boundActions.has(node) ? oracle.fact(node, t, [action, ...namedChildEntries(node).map(c => c.node._action)]) : null;
+      if (structural) ownership.push({path: `${p}.${k}`, text:t, ...structural});
+      if (structural?.status === 'owned-exact-action' || structural?.status === 'plain-context-fact') { linked++; continue; }
+      const expected = structural?.expected.length ? new Set(structural.expected) : realKey.get(ck);
+      const target = has ? normalizeHref(action.to, baseUrl) : null;
+      const rendered = runs.some((r) => compact(r.text) === ck && r.href !== null
+        && normalizeHref(r.href, baseUrl) === target);
+      if (!structural && has && expected.has(target) && rendered) { linked++; continue; }
+      const kind = has && !expected.has(target) ? 'wrong-target' : 'anchor-dropped';
+      const f = { kind, text: t, path: `${p}.${k}`, ...(has ? { href: action.to } : {}), expect: [...expected] };
+      const hit = allow.index.get(`${page}\x00${kind}\x00${ck}`);
       if (hit) declared.push({ ...f, reason: hit.reason, round: hit.round }); else findings.push(f);
+    }
+    const association = !boundActions.has(node) ? oracle.action(node) : null;
+    if (association) {
+      ownership.push({path: `${p}._action`, text: action?.label ?? labelTextOf(node), ...association});
+      if (association.status !== 'owned-exact-action' && !findings.some(f => f.path?.startsWith(p + '._'))) {
+        const f={kind: association.expected.includes(normalizeHref(action?.to,baseUrl))?'anchor-dropped':'wrong-target',path:`${p}._action`,text:action?.label??labelTextOf(node),href:action?.to,expect:association.expected};
+        const hit=allow.index.get(`${page}\x00${f.kind}\x00${compact(f.text)}`);
+        if(hit)declared.push({...f,reason:hit.reason,round:hit.round});else findings.push(f);
+      }
     }
     for (const c of childrenOf(node)) visit(c.node, p ? `${p}.${c.key}` : c.key);
   };
   visit(model, '');
 
-  const runs = renderRuns(html);
   let links = 0;
   for (const r of runs) {
     if (r.href === null) continue;
     links++;
     const norm = normalizeHref(r.href, baseUrl);
-    if (!norm || norm.startsWith('#')) continue;      // in-page ref anchor: not a capture target
+    if (!norm || r.href.startsWith('#') && oracle.allRender.some(a => a.attrs.href === r.href) && /\bid\s*=/.test(html) && oracle.render && (() => {
+      const find = n => n.attrs.id === decodeEntities(r.href.slice(1)) || n.children.some(find); return find(oracle.render);
+    })()) continue; // A generated in-page reference must resolve to an actual owning element.
     const d = domainOf(norm);
-    if (!d || srcDomains.has(d) || srcDomains.size === 0) continue;
-    const f = { kind: 'wrong-target', text: r.text, href: r.href, expect: [] };
+    const sourceTargets = realKey.get(compact(r.text));
+    const contextual = ownership.some(o => o.status === 'owned-exact-action' && o.expected.includes(norm)
+      && oracle.allRender.some(a => normalizeHref(a.attrs.href, baseUrl) === norm && compact(a.text).includes(compact(r.text))
+        && o.renderWitnesses?.some(w => w.address === a.address)));
+    // Exact URL occurrence elsewhere (even with an equal caption) is not owner proof.
+    if (contextual) continue;
+    const f = { kind: 'wrong-target', text: r.text, href: r.href, expect: [], reason:'render-owner-unverified' };
     const hit = allow.index.get(`${page}\x00wrong-target\x00${compact(r.text)}`);
     if (hit) declared.push({ ...f, reason: hit.reason, round: hit.round }); else findings.push(f);
   }
+  findings.push(...checkSourceWitnesses(witnesses,model,oracle,domHtml,baseUrl));
   return {
     page, anchors: anchors.length, anchorsWithTarget: anchors.filter((a) => a.real).length,
     anchorsWithoutTarget: anchors.filter((a) => !a.real).length,
-    anchorsCarried: realKey.size, factsToLink, linked, links, findings, declared,
+    anchorsCarried: realKey.size, factsToLink, linked, links, findings, declared, ownership,
   };
 }
 
 export function run(rows, { root = '.', allow = loadAllow(path.join(root, 'm1/eval/link-coverage-allow.json')) } = {}) {
   const pages = [];
+  const witnessPath=path.join(root,'m1/eval/link-owner-witnesses.json');
+  const witnesses=JSON.parse(fs.readFileSync(witnessPath,'utf8')).entries;
+  if (!Array.isArray(witnesses) || !witnesses.length) throw new Error('mandatory captured link-owner witnesses missing');
   for (const r of rows) {
     const htmlPath = path.join(root, 'm1/curated/renders', `${r.k.replace(/\//g, '-')}.html`);
     const corpusDir = path.join(root, 'corpus', r.k);
     if (!fs.existsSync(htmlPath) || !fs.existsSync(path.join(corpusDir, 'dom.html'))) { pages.push({ page: r.k, error: 'no render or no capture' }); continue; }
     const modelPath = path.join(root, 'm1/curated', `${r.k}.json`);
     if (!fs.existsSync(modelPath)) { pages.push({ page: r.k, error: 'no curated model' }); continue; }
-    pages.push(checkPage(r.k, JSON.parse(fs.readFileSync(modelPath, 'utf8')), fs.readFileSync(htmlPath, 'utf8'), fs.readFileSync(path.join(corpusDir, 'dom.html'), 'utf8'), baseUrlOf(corpusDir), allow));
+    pages.push(checkPage(r.k, JSON.parse(fs.readFileSync(modelPath, 'utf8')), fs.readFileSync(htmlPath, 'utf8'), fs.readFileSync(path.join(corpusDir, 'dom.html'), 'utf8'), baseUrlOf(corpusDir), allow, witnesses.filter(e=>e.page===r.k)));
   }
   const agg = pages.reduce((a, p) => {
     if (p.error) return a;

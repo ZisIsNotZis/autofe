@@ -91,9 +91,72 @@
       },
       "_action": {
         "verb": "navigate",
-        "to": "https://github.com/signup",
+        "to": "https://github.com/signup?source=login",
         "label": "Create an account"
       }
     }
+  },
+  "footer": {
+    "_intent": "捕获的法律、支持与隐私 cookie 工具入口；无 href 的按钮只保留动作含义，不模拟同意状态后端。",
+    "_items": [
+      {
+        "_title": {
+          "text": "Terms"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Terms",
+          "to": "https://docs.github.com/site-policy/github-terms/github-terms-of-service"
+        }
+      },
+      {
+        "_title": {
+          "text": "Privacy"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Privacy",
+          "to": "https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+        }
+      },
+      {
+        "_title": {
+          "text": "Docs"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Docs",
+          "to": "https://docs.github.com"
+        }
+      },
+      {
+        "_title": {
+          "text": "Contact GitHub Support"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Contact GitHub Support",
+          "to": "https://support.github.com"
+        }
+      },
+      {
+        "_title": {
+          "text": "Manage cookies"
+        },
+        "_action": {
+          "verb": "operate",
+          "label": "Manage cookies"
+        }
+      },
+      {
+        "_title": {
+          "text": "Do not share my personal information"
+        },
+        "_action": {
+          "verb": "operate",
+          "label": "Do not share my personal information"
+        }
+      }
+    ]
   }
 }

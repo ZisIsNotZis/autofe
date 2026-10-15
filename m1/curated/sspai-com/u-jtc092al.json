@@ -15,6 +15,10 @@
    "_action": {
     "verb": "follow",
     "label": "关注"
+   },
+   "_image": {
+    "image": "../assets/62-recovered-sspai-com-u-jtc092al-342d9f595639.png",
+    "alt": "MaxChow"
    }
   },
   {
@@ -64,18 +68,19 @@
     },
     {
      "_name": {
+      "text": "创作字数"
+     },
+     "_measure": {
+      "num": 16557
+     },
+     "_intent": "源站 writeCount=16557，对应 character--fill 字数图标；不是未捕获的充电量。"
+    },
+    {
+     "_name": {
       "text": "文章阅读量"
      },
      "_measure": {
       "num": 23535
-     }
-    },
-    {
-     "_name": {
-      "text": "获得充电"
-     },
-     "_measure": {
-      "num": 4
      }
     },
     {
@@ -114,6 +119,10 @@
      },
      "_detail": {
       "text": "07/27 08:27"
+     },
+     "_image": {
+      "image": "../assets/62-recovered-sspai-com-u-jtc092al-0a82e438340e.png",
+      "alt": ""
      }
     },
     {
@@ -126,6 +135,10 @@
      },
      "_detail": {
       "text": "07/26 20:07"
+     },
+     "_image": {
+      "image": "../assets/62-recovered-sspai-com-u-jtc092al-99d1ee415770.png",
+      "alt": ""
      }
     },
     {
@@ -138,6 +151,10 @@
      },
      "_detail": {
       "text": "04/23 08:56"
+     },
+     "_image": {
+      "image": "../assets/62-recovered-sspai-com-u-jtc092al-0c54e4954054.png",
+      "alt": ""
      }
     },
     {
@@ -226,5 +243,50 @@
     }
    ]
   }
- ]
+ ],
+ "navigation": {
+  "_intent": "捕获的少数派主导航入口，保持站点原文与目标。",
+  "_items": [
+   {
+    "_title": {
+     "text": "共创"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "共创",
+     "to": "https://sspai.com/create"
+    }
+   },
+   {
+    "_title": {
+     "text": "PRIME"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "PRIME",
+     "to": "https://sspai.com/prime"
+    }
+   },
+   {
+    "_title": {
+     "text": "Matrix"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "Matrix",
+     "to": "https://sspai.com/matrix"
+    }
+   },
+   {
+    "_title": {
+     "text": "栏目"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "栏目",
+     "to": "https://sspai.com/series"
+    }
+   }
+  ]
+ }
 }

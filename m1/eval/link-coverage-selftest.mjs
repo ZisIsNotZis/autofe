@@ -93,7 +93,17 @@ const MODEL = (action) => ({
   const r = checkPage(PAGE, shortModel, '<p>电视</p>', DOM, BASE, EMPTY);
   check('F a 2-char anchor text is skipped (a heading is not that nav link)', r.findings.length === 0, JSON.stringify(r.findings));
   const r2 = checkPage(PAGE, MODEL({ verb: 'navigate', to: '#buy' }), '<p><a href="#buy">立即购买</a></p>', DOM, BASE, EMPTY);
-  check('F an in-page `#` reference is not judged as a capture target', r2.findings.length === 0, JSON.stringify(r2.findings));
+  check('F an invented in-page target cannot replace a captured external target', r2.findings.some((f) => f.kind === 'wrong-target'), JSON.stringify(r2.findings));
+}
+
+// Exact association falsification: same domain is not enough; render loss is not enough.
+for (const target of ['https://demo.com/other', 'https://demo.com/buy?q=wrong', 'https://demo.com/buy#wrong']) {
+  const r = checkPage(PAGE, MODEL({ verb: 'navigate', to: target }), `<a href="${target}">立即购买</a>`, DOM, BASE, EMPTY);
+  check(`exact captured target rejects ${target}`, r.findings.some((f) => f.kind === 'wrong-target'));
+}
+{
+  const r = checkPage(PAGE, MODEL({ verb: 'navigate', to: 'https://demo.com/buy' }), '<p>立即购买</p>', DOM, BASE, EMPTY);
+  check('correct model target with dropped rendered link fails', r.findings.some((f) => f.kind === 'anchor-dropped'));
 }
 
 // G. the scanners really read structure, not words.
@@ -138,7 +148,7 @@ for (const r of scale) {
     continue;
   }
   let base = '';
-  try { base = JSON.parse(fs.readFileSync(path.join(corpusDir, 'meta.json'), 'utf8')).url ?? ''; } catch { /* relative targets stay as-is */ }
+  try { const meta = JSON.parse(fs.readFileSync(path.join(corpusDir, 'meta.json'), 'utf8')); base = meta.redirectedUrl ?? meta.url ?? ''; } catch { /* relative targets stay as-is */ }
   const res = checkPage(r.k, JSON.parse(fs.readFileSync(modelPath, 'utf8')), fs.readFileSync(htmlPath, 'utf8'), fs.readFileSync(path.join(corpusDir, 'dom.html'), 'utf8'), base, allow);
   anchors += res.anchors; withTarget += res.anchorsWithTarget; noTarget += res.anchorsWithoutTarget;
   facts += res.factsToLink; linked += res.linked; declared += res.declared.length;

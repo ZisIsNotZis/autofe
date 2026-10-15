@@ -221,7 +221,7 @@ const withTarget = pager([
 ]);
 const wt = render(withTarget);
 check('paginator a captured target renders as a real link',
-  wt.includes('<a class="ctl" href="https://example.com/results/2">'));
+  /<a class="ctl" href="https:\/\/example\.com\/results\/2"(?: [^>]*)?>/.test(wt));
 // the curated pages that model pagination facts render as control rows, not lists
 const HUAWEI = JSON.parse(fs.readFileSync(path.join(root, 'm1/curated/huawei-cn/search-laptop.json'), 'utf8'));
 const MI = JSON.parse(fs.readFileSync(path.join(root, 'm1/curated/mi-com/search-earbuds.json'), 'utf8'));
@@ -233,8 +233,13 @@ check('paginator huawei page controls render as a control row',
   hwRow.includes('>1</span>') && hwRow.includes('>8</span>') && !hwRow.includes('<a class="ctl"'));
 check('paginator mi page controls render as a control row',
   row(render(MI)).includes('>1</span>') && row(render(MI)).includes('>2</span>') && !row(render(MI)).includes('<a class="ctl"'));
-check('paginator gov-uk next-page control carries its captured target',
-  row(render(GOV)).includes('<a class="ctl" href="https://www.gov.uk/national-insurance-rates-letters/category-letters">'));
+const govPagination = (html) => html.slice(html.indexOf('<section class="group g-pagination"'));
+const govTarget = 'https://www.gov.uk/national-insurance-rates-letters/category-letters';
+const govHasNext = (html) => row(govPagination(html)).includes(`href="${govTarget}"`);
+check('paginator gov-uk next-page control carries its captured target', govHasNext(render(GOV)));
+const govMissingNext = structuredClone(GOV);
+delete govMissingNext.pagination._items[0]._action.to;
+check('paginator removing its target fails despite same URL elsewhere', !govHasNext(render(govMissingNext)));
 
 // ---- P3 (proposal §6 decision 3, plan A): consecutive `_text` merge ----------
 const proseMix = { _intent: 'prose', _title: { text: 'Article' }, _lines: [

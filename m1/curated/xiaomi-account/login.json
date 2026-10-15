@@ -60,7 +60,7 @@
       },
       "_action": {
         "verb": "navigate",
-        "to": "https://account.xiaomi.com/pass/forgetPassword",
+        "to": "https://account.xiaomi.com/pass/forgetPassword?sid=passport&_bannerBiz=",
         "label": "忘记密码？"
       }
     },
@@ -71,7 +71,7 @@
       },
       "_action": {
         "verb": "navigate",
-        "to": "https://account.xiaomi.com/fe/service/login/phone",
+        "to": "https://account.xiaomi.com/fe/service/login/phone?sid=passport&qs=%253Fsid%253Dpassport&callback=https%3A%2F%2Faccount.xiaomi.com&_sign=2%26V1_passport%26wqS4omyjALxMm%2F%2F3wLXcVcITjEc%3D&serviceParam=%7B%22checkSafePhone%22%3Afalse%2C%22checkSafeAddress%22%3Afalse%2C%22lsrp_score%22%3A0.0%7D&showActiveX=false&theme=&needTheme=false&bizDeviceType=&_locale=zh_CN",
         "label": "手机号登录"
       }
     },
@@ -135,10 +135,69 @@
         "text": "注册"
       },
       "_action": {
-        "verb": "navigate",
-        "to": "https://account.xiaomi.com/pass/register",
+        "verb": "operate",
         "label": "注册"
       }
+    },
+    "agreement-links": {
+      "_intent": "同意布尔值保持独立；保留勾选文案所提及的协议与隐私文档目标，不把整个 checkbox 文案变成导航。",
+      "_items": [
+        {
+          "_title": {
+            "text": "小米账号使用协议"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "小米账号使用协议",
+            "to": "https://account.xiaomi.com/about/protocol/agreement?_locale=zh_CN"
+          }
+        },
+        {
+          "_title": {
+            "text": "小米账号隐私政策"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "小米账号隐私政策",
+            "to": "https://account.xiaomi.com/about/protocol/privacy?_locale=zh_CN"
+          }
+        }
+      ]
     }
+  },
+  "navigation": {
+    "_intent": "捕获的用户协议、隐私政策与帮助中心工具入口。",
+    "_items": [
+      {
+        "_title": {
+          "text": "用户协议"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "用户协议",
+          "to": "https://account.xiaomi.com/about/protocol/agreement?_locale=zh_CN"
+        }
+      },
+      {
+        "_title": {
+          "text": "隐私政策"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "隐私政策",
+          "to": "https://account.xiaomi.com/about/protocol/privacy?_locale=zh_CN"
+        }
+      },
+      {
+        "_title": {
+          "text": "帮助中心"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "帮助中心",
+          "to": "https://account.xiaomi.com/helpcenter?_locale=zh_CN"
+        }
+      }
+    ]
   }
 }

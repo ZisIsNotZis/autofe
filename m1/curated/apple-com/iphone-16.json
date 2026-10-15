@@ -452,7 +452,7 @@
     }
   },
   "compare": {
-    "_intent": "还在选型？一眼对比五款在售 iPhone 的定位与起售价（原 `_items` 误标为可互换实例：五款机型形状不同——部分带 `_tag`、iPhone Duo 多一个 `display` 子块，且各带 4–5 个规格子块，不可一行紧凑排比；回改为 `_lines` 有序序列）",
+    "_intent": "源站五款 iPhone 选型对照：每款为独立实体，保留共同属性及各自的嵌套事实；源站按实体列对照，不把不同实体的位置列表配成属性行。",
     "_title": {
       "text": "Which iPhone is right for you?"
     },
@@ -666,6 +666,9 @@
         "label": "Compare all iPhone models",
         "to": "https://www.apple.com/iphone/compare"
       }
+    },
+    "_rel": {
+      "compare": true
     }
   },
   "faq": {

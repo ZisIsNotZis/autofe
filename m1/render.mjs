@@ -10,15 +10,23 @@
 // Usage: node m1/render.mjs <model.json> [out.html]
 import fs from 'node:fs';
 import {
-  factsOf,
+  factsOf, childrenOf,
 } from './model-lib.mjs';
 // 轮 57 站点 accent（M5 第一个呈现层 token）：由 m1/eval/brand-accent.mjs 从语料量出，
 // 渲染器只读这份配置注入 --accent，不写死任何站名/色值。非法/缺失值回退 default。
 const BRAND_TOKENS = JSON.parse(fs.readFileSync(new URL('./brand-tokens.json', import.meta.url), 'utf8'));
+const MEDIA_SURFACES = JSON.parse(fs.readFileSync(new URL('./media-surfaces.json', import.meta.url), 'utf8'));
 const HEX_COLOR = /^#[0-9a-f]{6}$/i;
 const accentOf = (site) => {
   const v = site ? BRAND_TOKENS.sites?.[site]?.accent?.value : null;
-  return HEX_COLOR.test(v ?? '') ? v : BRAND_TOKENS.default.accent;
+  const color = HEX_COLOR.test(v ?? '') ? v : BRAND_TOKENS.default.accent;
+  // Captured link colors belong to their source surface. Retain the hue, but pair
+  // informative text with this renderer's light surface rather than copying pale ink.
+  let rgb = color.slice(1).match(/../g).map((c) => parseInt(c, 16));
+  const luminance = (xs) => xs.map((x) => { const s = x / 255; return s <= .04045 ? s / 12.92 : ((s + .055) / 1.055) ** 2.4; })
+    .reduce((sum, x, i) => sum + x * [.2126, .7152, .0722][i], 0);
+  while (1.05 / (luminance(rgb) + .05) < 4.5) rgb = rgb.map((x) => Math.floor(x * .96));
+  return '#' + rgb.map((x) => x.toString(16).padStart(2, '0')).join('');
 };
 // The axis-decision layer is shared, not re-derived per target (round 19; the node render
 // plan round 22). This renderer consumes `nodePlan` and the plan helpers and only DRAWS
@@ -27,8 +35,8 @@ import {
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
   qualifierPlacement, quantityLabel,
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
-  nodePlan, itemActionPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
-  rankedSequence, hasValue, tableRowLabel, mediaFirstOf,
+  nodePlan, itemActionPlan, controlItemPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
+  rankedSequence, hasValue, tableRowLabel, tableCellLinks, mediaFirstOf, readingPageOf, pageLayoutOf,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -44,6 +52,10 @@ const esc = (s) => decodeEntities(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'
 // finding: 25/69 uncrafted pages). The capture's alt text is a captured fact, so an
 // image without a URL degrades to its alt text — never to `<img src="">`, and never
 // to a made-up URL (F-055).
+function nativeMediaAccess(src, alt) {
+  if (!src) return '';
+  return `<details class="resource-view"><summary aria-label="${esc(alt || '')} — 原始图像">查看原始图像</summary><div class="native-media" tabindex="0" role="region" aria-label="原始尺寸图像，可滚动查看">${imgHtml(src, '')}</div></details>`;
+}
 function imgHtml(src, alt) {
   const s = typeof src === 'string' ? src.trim() : '';
   const a = alt == null ? '' : String(alt);
@@ -64,9 +76,9 @@ function imageEntries(v) {
   return 'image' in v ? [v] : [];
 }
 const imageFigures = (v, mode = 'band') => imageEntries(v)
-  .map((e) => imgHtml(e.image, e.alt)).filter(Boolean)
+  .map((e) => imgHtml(e.image, e.alt) + (mode === 'readable' ? nativeMediaAccess(e.image, e.alt) : '')).filter(Boolean)
   .map((img) => `<figure class="strip${mode === 'tile' ? ' tile' : ''}">${img}</figure>`)
-  .map((fig) => (mode === 'band' ? `<div class="band">${fig}</div>` : fig)).join('');
+  .map((fig) => (['band', 'readable'].includes(mode) ? `<div class="band">${fig}</div>` : fig)).join('');
 
 function fmt(v) {
   if (v === null || v === undefined) return '';
@@ -97,6 +109,13 @@ function fmt(v) {
   }
   return esc(JSON.stringify(v));
 }
+const inlineChildrenHtml = (v, links, ctx) => {
+  const text = v.text;
+  const positions = links.map((a) => ({...a, at:text.indexOf(a.label)})).sort((a,b)=>a.at-b.at);
+  let at = 0, out = '';
+  for (const a of positions) { out += esc(text.slice(at,a.at)) + `<a class="body-link"${ctx ? ownerAttr(a.node,ctx) : ''} href="${esc(a.href)}">${esc(a.label)}</a>`; at=a.at+a.label.length; }
+  return out + esc(text.slice(at));
+};
 const factHtml = (v, extra = '') => `<div class="fact"><span class="val">${fmt(v)}${extra}</span></div>`;
 // §9 正文链接（轮 46）：句子里的链接保持**行内**——句中的动作 label 换成一个行内 `<a>`，
 // 而不是句后的实心按钮。发生在句内的链接由 axis.inlineBodyLinkKey 判定。
@@ -114,25 +133,26 @@ function inlineLinkFactHtml(v, action, extra = '') {
 function itemExtra(it, chain, ctx) {
   const a = itemActionPlan(it, chain, ctx.values);
   if (!a) return { linkTo: null, ctl: '' };
+  if (a.inlineLabel) {
+    const name = labelTextOf(it), at = name.indexOf(a.label);
+    return { linkTo: null, ctl: '', labelHtml: `${esc(name.slice(0, at))}<a class="body-link" href="${esc(a.href)}">${esc(a.label)}</a>${esc(name.slice(at + a.label.length))}` };
+  }
   const ctl = a.hasTarget ? `<a class="ctl" href="${esc(a.href)}">${esc(a.label)}</a>` : `<span class="ctl">${esc(a.label)}</span>`;
   return a.isControl ? { linkTo: null, ctl } : { linkTo: a.hasTarget ? a.href : null, ctl: '' };
 }
-function renderList(items, chain, ctx) {
+function renderList(items, chain, ctx, cols = 0) {
   const lis = items.map((it) => {
     const v = labelOf(it);
     const label = v ? fmt(v) : '';
     if (!label) return '';
     const ex = itemExtra(it, chain, ctx);
-    const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
+    const inner = ex.labelHtml || (ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label);
     // 标记即声明（轮 57）：条目名自身是目的地链接（带 _action.to）⇒ 标记换成 accent `›`
     // （CSS ::marker，见样式表层1）；纯事实条目保持 `•`。类名只由 ex.linkTo 决定。
-    return `<li${ex.linkTo ? ' class="go"' : ''}>${inner}${ex.ctl}</li>`;
+    return `<li${ex.linkTo ? ' class="go"' : ''}${ownerAttr(it,ctx)}>${inner}${ex.ctl}</li>`;
   }).join('');
-  // 长标签列表（导航/类目菜单）分栏成紧凑形态：条目越多，列数越多（轮 35，taobao 首屏
-  // 60+ 类目标签竖排成 sitemap）；短标签（≤12 字）才敢多列，长句子仍单列可读。
-  const short = items.every((it) => ((labelOf(it)?.text) ?? '').length <= 12);
-  const n = items.length;
-  const cols = short && n > 4 ? (n >= 24 ? 4 : n >= 12 ? 3 : 2) : 0;
+  // Column count is declared by the shared axis plan; long ordinary destination
+  // labels wrap within a directory instead of privately collapsing the whole group.
   return lis ? `<ul class="linklist${cols ? ` cols${cols}` : ''}">${lis}</ul>` : '';
 }
 // 有序集合（_rel.order = sequence|time）：每一项自成一行，顺序即语义（F-031-§1）
@@ -147,8 +167,8 @@ function renderSeq(items, chain, ctx) {
     const label = v ? fmt(v) : '';
     if (!label) return '';
     const ex = itemExtra(it, chain, ctx);
-    const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
-    return `<li>${inner}${ex.ctl}</li>`;
+    const inner = ex.labelHtml || (ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label);
+    return `<li${ownerAttr(it,ctx)}>${inner}${ex.ctl}</li>`;
   }).join('');
   return lis ? `<ol class="seq">${lis}</ol>` : '';
 }
@@ -180,8 +200,8 @@ function renderChips(items, chain, ctx) {
     const label = v ? fmt(v) : '';
     if (!label) return '';            // no label, no chip (never an empty control)
     const ex = itemExtra(it, chain, ctx);
-    const inner = ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label;
-    return `<span class="chip-item">${inner}${ex.ctl}</span>`;
+    const inner = ex.labelHtml || (ex.linkTo ? `<a href="${esc(ex.linkTo)}">${label}</a>` : label);
+    return `<span class="chip-item"${ownerAttr(it,ctx)}>${inner}${ex.ctl}</span>`;
   }).join('');
   // 成员是句子或带旁注（含句读/括号）时不排成一行 chip 流：每条自成一行（F-031-§1）
   const rows = items.some((it) => /[，。；、（）：]/.test(labelTextOf(it)));
@@ -221,13 +241,17 @@ function renderDeflist(items, chain, ctx, order) {
     const l0 = label ? fmt(label) : '';
     const ex = itemExtra(it, chain, ctx);
     const l = l0 && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${l0}</a>` : l0;
-    const v = (rest.map((x) => roleFact(x)).join(' ') + (ex.ctl ? ` ${ex.ctl}` : '')).trim();
+    const v = (rest.map((x) => {
+      const value = roleFact(x) + (items.every((it) => it._image && it._detail && !it._name && !it._title) && x.key === '_image' ? imageEntries(x.value).map((e) => nativeMediaAccess(e.image, e.alt)).join('') : '');
+      return x.key === '_image' && ex.linkTo ? value.replace(/<img\b[^>]*>/g,
+        (img) => `<a class="media-link" href="${esc(ex.linkTo)}">${img}</a>`) : value;
+    }).join(' ') + (ex.ctl ? ` ${ex.ctl}` : '')).trim();
     if (!l && !v) return '';
     const rank = ranked ? `<span class="rank">${i + 1}</span>` : '';
     // no empty label cell: an unlabeled row keeps its full width (F-031-§5)
-    return `<div class="defrow">${rank}${l ? `<div class="deflabel">${l}</div>` : ''}<div class="defval">${v}</div></div>`;
+    return `<div class="defrow${it._image ? ' media-row' : ''}${labelTextOf(it).length > 24 ? ' long-label' : ''}"${ownerAttr(it,ctx)}>${rank}${l ? `<div class="deflabel">${l}</div>` : ''}<div class="defval">${v}</div></div>`;
   }).join('');
-  return rows ? `<div class="deflist${ranked ? ' ranked' : ''}">${rows}</div>` : '';
+  return rows ? `<div class="deflist${ranked ? ' ranked' : ''}${!ranked && items.every((it) => it._image) ? (items.every((it) => it._detail && !it._name && !it._title) ? ' instruction-media' : ' media-captions') : ''}">${rows}</div>` : '';
 }
 function renderAccordion(items, chain, hide, ctx) {
   const det = items.map((it) => {
@@ -240,10 +264,16 @@ function renderAccordion(items, chain, hide, ctx) {
   }).join('');
   return `<div class="accordion">${det}</div>`;
 }
-function renderRun(items, chain, hide, ctx) {
+function renderRun(items, chain, hide, ctx, node) {
   // F-051 table/card threshold is a shared decision (`runPlan` in axis.mjs); this is only
   // the HTML shape of it: a `<table class="data">` with an optional row-ops column.
   const rp = runPlan(items);
+  const bindings = tableCellLinks(node, chain);
+  const cellHtml = (v, links) => {
+    if (v?.list) return v.list.map((x) => cellHtml(x, links)).join('<br>');
+    const link = links?.get(v?.text);
+    return link ? `<a class="table-link"${ownerAttr(link.node,ctx)} href="${esc(link.href)}">${fmt(v)}</a>` : fmt(v);
+  };
   if (rp.isTable) {
     const anyOps = items.some((it) => namedChildEntries(it).length > 0);
     const showHead = rp.cols.some((c) => columnLabel(c)) || anyOps;
@@ -256,11 +286,11 @@ function renderRun(items, chain, hide, ctx) {
     const trs = items.map((it) => {
       const grp = tableRowLabel(rp, it);
       if (grp) return `<tr class="row-group"><th colspan="${span}">${fmt(grp)}</th></tr>`;
-      const tds = rp.cols.map((col) => { const v = rp.cellValue(it, col); return `<td>${hasValue(v) ? fmt(v) : ''}</td>`; }).join('');
+      const tds = rp.cols.map((col) => { const v = rp.cellValue(it, col); return `<td>${hasValue(v) ? cellHtml(v, bindings.get(it)) : ''}</td>`; }).join('');
       const ops = namedChildEntries(it).map((ch) => renderNode(ch.node, [...chain, it], false, hide, { ...ctx, grid: true }, 4)).join('');
       return `<tr>${tds}${anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
     }).join('');
-    return `<table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table>`;
+    return `<div class="data-scroll"><table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table></div>`;
   }
   return `<div class="cards">${items.map((it) => `<div class="item">${renderNode(it, [...chain, it], false, hide, { ...ctx, grid: true }, 4)}</div>`).join('')}</div>`;
 }
@@ -273,10 +303,10 @@ function renderSelectTable(ch, node, chain, hide, ctx) {
   // an all-blank header row is visual noise: emit the header only when a column is labeled (T-107)
   const head = t.showHead ? `<tr><th class="sel"></th>${t.cols.map((c) => `<th>${esc(t.labelKey(c))}</th>`).join('')}${t.anyOps ? '<th></th>' : ''}</tr>` : '';
   const rows = ch.options.map((o) => {
-    const tds = t.cols.map((col) => { const v = t.cellValue(o.node, col); return `<td>${v ? fmt(v) : ''}</td>`; }).join('');
+    const tds = t.cols.map((col, i) => { const v = t.cellValue(o.node, col); const text = v ? fmt(v) : ''; return `<td>${i === 0 && o.action?.hasTarget ? `<a class="option-link" href="${esc(o.action.href)}">${text}</a>` : text}</td>`; }).join('');
     const ops = o.ops.map((n) => renderNode(n, [...chain, o.node], false, hide, { ...ctx, grid: true }, 4)).join('');
     const val = o.key ? `key:${o.key}` : String(o.index);
-    return `<tr><td class="sel"><input type="${ch.multi ? 'checkbox' : 'radio'}" name="${esc(ch.name)}" value="${esc(val)}"></td>${tds}${t.anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
+    return `<tr><td class="sel"><input type="${ch.multi ? 'checkbox' : 'radio'}" name="${esc(ch.name)}" value="${esc(val)}"${o.selected ? ' checked' : ''}></td>${tds}${t.anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
   }).join('');
   return `<fieldset class="expose expose-${esc(ch.name)}"><legend>${legend}</legend><table class="data"><thead>${head}</thead><tbody>${rows}</tbody></table></fieldset>`;
 }
@@ -284,7 +314,9 @@ function renderChoice(ch, node, chain, hide, ctx) {
   if (ch.kind === 'plain-fact') {
     const lbl = ch.legend ? fmt(ch.legend) : '';
     const v = ch.itemName;
-    return `<div class="defrow">${lbl ? `<div class="deflabel">${lbl}</div>` : ''}<div class="defval">${v ? fmt(v) : ''} ${ch.itemExtra.map((x) => fmt(x.value)).join(' ')}</div></div>`;
+    const text = v ? fmt(v) : '';
+    const name = ch.itemAction?.hasTarget ? `<a class="option-link" href="${esc(ch.itemAction.href)}">${text}</a>` : text;
+    return `<div class="defrow">${lbl ? `<div class="deflabel">${lbl}</div>` : ''}<div class="defval">${name} ${ch.itemExtra.map((x) => fmt(x.value)).join(' ')}</div></div>`;
   }
   if (ch.kind === 'choice') {
     if (ch.rich) return renderSelectTable(ch, node, chain, hide, ctx);
@@ -293,7 +325,8 @@ function renderChoice(ch, node, chain, hide, ctx) {
       const extra = o.extra.map((x) => fmt(x.value)).join(' ');
       const label = (v && (v.text !== undefined || v.num !== undefined) ? fmt(v) : `option ${o.index + 1}`) + (extra ? ` <span class="choice-extra">${extra}</span>` : '');
       const val = o.key ? `key:${o.key}` : (v ? v.text : String(o.index));
-      return `<label class="choice"><input type="${ch.multi ? 'checkbox' : 'radio'}" name="${esc(ch.name)}" value="${esc(val)}"> ${label}</label>`;
+      const destination = o.action?.hasTarget ? `<a class="option-link" href="${esc(o.action.href)}">${label}</a>` : label;
+      return `<label class="choice"><input type="${ch.multi ? 'checkbox' : 'radio'}" name="${esc(ch.name)}" value="${esc(val)}"${o.selected ? ' checked' : ''}> ${destination}</label>`;
     }).join('');
     const legend = ch.legend ? fmt(ch.legend) : '';
     const hint = ch.hint ? `<span class="hint">${fmt(ch.hint)}</span>` : '';
@@ -301,7 +334,8 @@ function renderChoice(ch, node, chain, hide, ctx) {
   }
   if (ch.kind === 'bool') {
     // a boolean switch is a checkbox with its name on the control (F-031-§6), not an empty text box
-    const name = (ch.legend ? fmt(ch.legend) : '') || (ch.nodeName ? fmt(ch.nodeName) : '');
+    const value = ch.legend || ch.nodeName;
+    const name = ch.inlineLinks?.length ? inlineChildrenHtml(value, ch.inlineLinks, ctx) : value ? fmt(value) : '';
     return `<label class="choice expose-${esc(ch.name)}"><input type="checkbox" name="${esc(ch.name)}" value="true"> ${name}</label>`;
   }
   const lbl = ch.legend ? fmt(ch.legend) : '';   // never print a raw identifier as a label
@@ -337,21 +371,21 @@ function renderStream(items) {
   return cells ? `<div class="stream">${cells}</div>` : '';
 }
 
-function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0) {
+function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0, compactMedia = false) {
   // 集合成员是卡片语境（轮 58 · L-4/L-6：列数与“图在题上”是轴层声明，这里只落类名/传参）
   const mctx = { ...ctx, member: true };
   if (order === 'stream' && items.every(isBareLabel)) return renderStream(items);
   if (form === 'compare-table') return renderCompareTable(items, chain, hide, ctx);
   if (form === 'chips') return renderChips(items, chain, ctx);
-  if (form === 'list') return renderList(items, chain, ctx);
+  if (form === 'list') return renderList(items, chain, ctx, cols);
   if (form === 'seq') return renderSeq(items, chain, ctx);
   if (form === 'controls') return renderControls(items, chain, ctx);
-  if (form === 'stack') return renderStack(items, chain, hide, mctx, depth, cols, mediaFirstOf(items, form));
+  if (form === 'stack') return renderStack(items, [...chain, node], hide, mctx, depth, cols, mediaFirstOf(items, form), compactMedia);
   if (form === 'image-strip') return renderImageStrip(items);
   if (form === 'prose') return renderProse(items);
   if (form === 'deflist') return renderDeflist(items, chain, ctx, order);
   if (form === 'accordion') return renderAccordion(items, chain, hide, ctx);
-  if (form === 'table') return renderRun(items, chain, hide, ctx);
+  if (form === 'table') return renderRun(items, chain, hide, ctx, node);
   const cls = form === 'product-cards' ? 'cards product-cards' : 'cards';
   const mf = mediaFirstOf(items, form);
   const cards = items.map((it) => {
@@ -359,39 +393,35 @@ function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0)
     return inner ? `<div class="item">${inner}</div>` : '';
   }).join('');
   // cols（轴层声明）落在网格容器上：.cards 本身就是 auto-fill 网格，标记使声明可见、可断言。
-  return cards ? `<div class="${cls}${cols ? ' cols-auto' : ''}${mf ? ' media-first' : ''}">${cards}</div>` : '';
+  return cards ? `<div class="${cls}${cols ? ' cols-auto' : ''}${compactMedia ? ' compact-media' : ''}${mf ? ' media-first' : ''}">${cards}</div>` : '';
 }
 
 // 序列：不可比的区块各自成立，各带标题；无标题块用区域分隔（F-031-§1/§5）。
 // 轮 58（L-4）：轴层声明了列数（cols='auto'，成员皆带图的卡片/Feed 集合）时，堆叠包成
 // auto-fill 网格（桌面 2–4 列）；阅读型堆叠保持单列。包裹层不改变任何事实文本。
-function renderStack(items, chain, hide, ctx, depth, cols = 0, mediaFirst = false) {
+function renderStack(items, chain, hide, ctx, depth, cols = 0, mediaFirst = false, compactMedia = false) {
   let out = '';
   let prevHadTitle = false;
   for (const it of items) {
-    const inner = renderNode(it, [...chain], false, hide, ctx, depth + 1);
+    const inner = renderNode(it, [...chain], false, hide, { ...ctx, grid: Boolean(cols) || Boolean(ctx.grid) }, depth + 1);
     if (!inner) continue;
     const hasTitle = Boolean(it._title || it._name || it._text);
     if (!hasTitle && prevHadTitle) out += '<hr class="region">';
     out += `<section class="block">${inner}</section>`;
     prevHadTitle = hasTitle;
   }
-  return out ? `<div class="stack${cols ? ' cols-auto' : ''}${mediaFirst ? ' media-first' : ''}">${out}</div>` : '';
+  return out ? `<div class="stack${cols ? ' cols-auto' : ''}${compactMedia ? ' compact-media' : ''}${mediaFirst ? ' media-first' : ''}">${out}</div>` : '';
 }
 // 控件条：_action-only 成员是控件，不是内容（F-031-§4）；动作 label 是源站自己的控件文字（F-022），
 // 与条目名不是同一事实时另出一枚控件；同一事实的两种写法（一个包含另一个）只渲染信息更全的一处。
 function renderControls(items, chain, ctx) {
   const btns = items.map((it) => {
-    // a conditional action that the scope suppresses hides only the control; the
-    // member's own name is content and still renders (F-042, F-031-§4)
-    const a = itemActionPlan(it, chain, ctx.values);
-    const name = labelTextOf(it);
-    const ctl = a?.label ?? '';
-    const otherFact = Boolean(name && ctl && !name.includes(ctl) && !ctl.includes(name));
-    const text = name || ctl;
-    if (!text) return '';
-    const to = (s) => (a?.hasTarget ? `<a class="ctl" href="${esc(a.href)}">${s}</a>` : `<span class="ctl"${a?.verb ? ` data-verb="${esc(a.verb)}"` : ''}>${s}</span>`);
-    return otherFact ? to(esc(text)) + to(esc(ctl)) : to(esc(text));
+    const c = controlItemPlan(it, chain, ctx.values);
+    if (!c.label) return '';
+    const alias = c.accessibleLabel ? ` aria-label="${esc(c.accessibleLabel)}"` : '';
+    const copy = esc(c.label) + (c.accessibleLabel ? `<span class="sr-only">${esc(c.accessibleLabel)}</span>` : '');
+    return c.href ? `<a class="ctl" href="${esc(c.href)}"${alias}>${copy}</a>`
+      : `<span class="ctl"${alias}${c.verb ? ` data-verb="${esc(c.verb)}"` : ''}>${copy}</span>`;
   }).join('');
   return btns ? `<div class="controls">${btns}</div>` : '';
 }
@@ -401,7 +431,8 @@ function renderControls(items, chain, ctx) {
 function renderCompareTable(items, chain, hide, ctx) {
   const rowKeys = compareRowKeys(items);
   const head = `<tr><th class="cmp-row"></th>${items.map((it) => {
-    const ex = itemExtra(it, chain, ctx);   // 实体自己的动作控件不得因进表而丢失（F-033）
+    const ex = itemExtra(it, chain, ctx);
+    const entityPlan = nodePlan(it, { chain, values: ctx.values, depth: 5, grid: true });
     let nm = '';
     let rest = '';
     for (const e of compareHeaderEntries(it)) {
@@ -416,8 +447,9 @@ function renderCompareTable(items, chain, hide, ctx) {
     let nested = '';
     for (const col of nestedCollections(it)) nested += renderForm(col.form, col.items, [...chain, it], hide, { ...ctx, grid: true }, 5, it);
     const nestedHtml = nested ? `<div class="cmp-nested">${nested}</div>` : '';
-    const ctl = ex.ctl ? `<div class="cmp-ctl">${ex.ctl}</div>` : '';
-    return `<th class="cmp-col">${nm}${rest}${nestedHtml}${ctl}</th>`;
+    const row = renderActionRow(entityPlan.actionRow);
+    const ctl = row ? `<div class="cmp-ctl">${row}</div>` : '';
+    return `<th class="cmp-col"${ownerAttr(it,ctx)}>${nm}${rest}${nestedHtml}${ctl}</th>`;
   }).join('')}</tr>`;
   const body = rowKeys.map((key) => {
     // never print an internal key as a row label (F-022/F-029): the SAME shared chain every
@@ -493,7 +525,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
     // readable lead (H1-sized prose collapses the level hierarchy). Short/numeric primaries
     // keep the enlarged hero slot.
     const pv = plan.primary.value;
-    const leadProse = Boolean(pv && typeof pv === 'object' && typeof pv.text === 'string' && pv.text.length > 48);
+    const leadProse = Boolean(pv && typeof pv === 'object' && typeof pv.text === 'string' && (plan.primary.key === '_summary' || pv.text.length > 48));
     heroHtml = `<div class="hero fact-hero${leadProse ? ' hero-prose' : ''}">${factHtml(pv)}</div>`;
   }
   if (plan.primary && !heroDup) {
@@ -502,22 +534,15 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   }
 
   let titleText = plan.headingValue ? fmt(plan.headingValue) : null;
-  // round 30: a heading that says nothing new is not drawn twice (F-038).
-  //   (a) identical to an ANCESTOR's heading → keep the outer one (`支付方式` h2 … h3);
-  //   (b) identical to a heading already drawn on THIS PAGE and the node carries no facts of
-  //       its own (a bare group label over controls, e.g. the `更多指南` group “支付方式”) →
-  //       keep the first. A fact-bearing re-used heading is a different section, so it stays.
-  // The fact text remains on the page either way, so fidelity is untouched. The ancestor set
-  // lives on `ctx` and is popped before every return.
+  // Only an empty repeated ancestor label can be redundant. Populated sibling
+  // groups retain their local heading, even when the same text appeared elsewhere.
   const headingTextValue = plan.headingValue ? plan.headingValue.text : null;
   const nodeHasFacts = plan.facts.list.length > 0 || plan.facts.fields.length > 0 || Boolean(plan.facts.hero);
   let headingAdded = false;
   if (titleText && headingTextValue && ctx.headings) {
     const ancestorDup = ctx.headings.has(headingTextValue);
-    const pageLabelDup = !nodeHasFacts && ctx.seenHeadings && ctx.seenHeadings.has(headingTextValue);
-    if (ancestorDup || pageLabelDup) titleText = null;
+    if (ancestorDup && !nodeHasFacts) titleText = null;
     else { ctx.headings.add(headingTextValue); headingAdded = true; }
-    ctx.seenHeadings?.add(headingTextValue);
   }
   const done = (out) => { if (headingAdded) ctx.headings.delete(headingTextValue); return out; };
   const cls = ['node', `depth-${Math.min(depth, 4)}`];
@@ -529,6 +554,14 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   // 轮 57 站点头区横栏：决策在 nodePlan（headerBar），这里只落类名，形状在 CSS（.header-bar）。
   if (plan.headerBar) cls.push('header-bar');
   if (plan.banner) cls.push('banner');
+  if (plan.singletonCard) cls.push('singleton-card');
+  if (plan.orderedMediaRows) cls.push('ordered-media-rows');
+  if (plan.booleanUtilities) cls.push('boolean-utilities');
+  if (plan.utilityGroup) cls.push('utility-group');
+  if (plan.utilityFacts) cls.push('utility-facts');
+  if (plan.taskForm) cls.push('task-form');
+  if (plan.recordMember) cls.push('record-member');
+  if (plan.identity) cls.push('identity-frame');
   const demoted = plan.demoted;
 
   const itemsConsumed = new Set(plan.rowConsumed);
@@ -548,19 +581,34 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   for (const f of plan.facts.list) {
     if (plan.choice && plan.choice.kind === 'input' && f.key === '_text') continue;  // the field's default value (drawn on the input below)
     if (f.category === 'installment') continue;                                     // 并入承载行（U-28）
-    if (f.category === 'meta') { metaParts.push(roleLabeled(f, factHtmlInline(f.value))); continue; }
+    if (f.category === 'meta') {
+      const links = plan.inlineChildren.filter(c => c.key === f.key);
+      metaParts.push(roleLabeled(f, links.length ? inlineChildrenHtml(f.value, links, ctx) : factHtmlInline(f.value))); continue;
+    }
     let html;
     if (f.category === 'unit') html = roleLabeled(f, roleFact(f));               // 评分/评分数：带角色与单位，不留裸数字
     // 显式原价事实 ⇒ 弱化（删除线）；`list` 标记不进文案（fmt 已忽略）
     else if (f.category === 'was') html = `<div class="fact was"><span class="val">${fmt(f.value)}${inlineTail(f)}</span></div>`;
+    else if (plan.inlineChildren.some((c) => c.key === f.key)) {
+      const value = inlineChildrenHtml(f.value, plan.inlineChildren.filter((c) => c.key === f.key), ctx);
+      html = f.category === 'quote' ? `<blockquote class="quote"><span class="val">${value}</span></blockquote>`
+        : `<div class="fact"><span class="val">${value}${inlineTail(f)}</span></div>`;
+    }
     else if (f.category === 'quote') html = `<blockquote class="quote"><span class="val">${fmt(f.value)}</span></blockquote>`;
     else if (plan.action && plan.action.inlineInto === f.key) html = inlineLinkFactHtml(f.value, plan.action, inlineTail(f));
+    else if (f.key === '_image' && !ctx.grid) html = imageFigures(f.value, 'band');
     else html = factHtml(f.value, inlineTail(f));
     if (trailingFacts.has(f)) bodyFoot += html; else bodyLead += html;
   }
+  if (ctx.member && plan.action?.linkTo) {
+    // The member's visual and title share its declared navigation destination.
+    // No target is inferred from the image URL, and unlabeled backend actions stay inert.
+    const linked = (s) => s.replace(/<img\b[^>]*>/g, (img) => `<a class="media-link" href="${esc(plan.action.linkTo)}">${img}</a>`);
+    bodyLead = linked(bodyLead); bodyFoot = linked(bodyFoot);
+  }
   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
   for (const f of plan.facts.fields) bodyLead += factHtml(f.value);
-  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero, 'bleed');   // declared hero/banner only: edge-to-edge (F-031-§7); everything else stays in-container (round 58, L-3)
+  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero, (depth === 0 && plan.leadAction && node._summary && !node._price) ? 'readable' : ctx.reading ? 'band' : 'bleed');   // declared hero/banner only: edge-to-edge (F-031-§7); everything else stays in-container (round 58, L-3)
 
   let body = '';
   let bodyField = '';   // 字段+提交的成组区（plan.fieldSubmit）
@@ -568,12 +616,15 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
     const choiceHtml = renderChoice(plan.choice, node, chain, hide, ctx);
     if (plan.fieldSubmit) bodyField += choiceHtml; else body += choiceHtml;
   }
+  if (plan.searchSubmit) {
+    body = `<div class="fieldbar">${body}<button type="button" class="action search-submit"${ownerAttr(plan.searchSubmit.node,ctx)} aria-label="${esc(plan.searchSubmit.label)}" data-verb="submit"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="2"/></svg></button></div>`;
+  }
   if (plan.titleConsumed) titleText = null;   // the heading IS the switch label: show it once, on the control
 
   // every sibling block item renders in ONE form; nothing renders twice (T-103)
   // 轴分组（compare 实体/连续正文段/普通集合）在 axis.mjs seqGroupsOf；D2/P3 同理。
   const { groups, order } = plan.items;
-  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node, order, g.cols);
+  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node, order, g.cols, g.compactMedia);
   for (const g of groups) g.items.forEach((it) => itemsConsumed.add(it));
   // order:time shows a time axis only over a vertical sequence — never a stray rail across a grid (F-031-§1)
   if (order === 'time' && groups.length && groups.every((g) => g.form === 'deflist' || g.form === 'seq')) cls.push('timeline');
@@ -589,21 +640,30 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   // 声明，钉扎排序决策在 axis.mjs（orderedNamedChildren → entry.region），这里只选槽位。
   let headerHtml = '';
   let footHtml = '';
+  let detailMain = '', detailSide = '', detailTail = '';
+  let orderedActionEmitted = false;
+  const detailLayout = depth === 0 && ctx.pageLayout.kind === 'detail' ? ctx.pageLayout : null;
   for (const c of plan.namedChildren) {
     if (itemsConsumed.has(c.node)) continue;
     const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1, c.key);
     if (!h) continue;
+    if (plan.actionBeforeChild === c.key && action) { body += action; orderedActionEmitted = true; }
     const sect = `<section class="group g-${esc(c.key)}">${h}</section>`;
     if (c.region === 'header') headerHtml += sect;
     else if (c.region === 'footer') footHtml += sect;
+    else if (detailLayout && c.key === detailLayout.taskKey) detailSide += sect;
+    else if (detailLayout && detailLayout.mainKeys.includes(c.key)) detailMain += sect;
+    else if (detailLayout && detailLayout.tailKeys.includes(c.key)) detailTail += sect;
     else body += sect;
     prevGroupHadTitle = Boolean(c.node._title || c.node._name || c.node._text);
   }
 
+  if (detailLayout) body += `<div class="detail-layout"><div class="detail-main">${detailMain}</div><aside class="detail-task">${detailSide}</aside></div><div class="detail-tail">${detailTail}</div>`;
+
   // a control whose only content is its own title renders as a control bar, not a promo card (F-031-§4)
   if (depth > 0 && titleText && (titleIsControl || linkTo) && !bodyLead && !heroHtml && !heroImage && !body && !action) {
     const inner = linkTo ? `<a class="ctl" href="${esc(linkTo)}">${titleText}</a>` : `<span class="ctl">${titleText}</span>`;
-    return done(`<div class="controls">${inner}</div>`);
+    return done(`<div class="controls"${ownerAttr(node,ctx)}>${inner}</div>`);
   }
   // a bare-title block is a promo card ONLY when the source has an image (T-106): the
   // measured set was 8/8 image-less collection members, which are ordinary text and must
@@ -621,7 +681,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
     const t = titleIsControl
       ? (linkTo ? `<a class="ctl" href="${esc(linkTo)}">${titleText}</a>` : `<span class="ctl">${titleText}</span>`)
       : (linkTo ? `<a class="self-link${plan.action?.isLabellessLink ? ' nav' : ''}" href="${esc(linkTo)}">${titleText}</a>` : titleText);
-    head = `<${headingTag} class="title${titleIsControl ? ' title-control' : ''}">${t}</${headingTag}>`;
+    const identity = depth === 0 && ctx.pageLayout.headingRole === 'identity';
+    head = `<${headingTag} class="title${titleIsControl ? ' title-control' : ''}${identity ? ' site-identity' : ''}">${t}</${headingTag}>`;
   }
 
   const anchorId = node._key ? ` id="${esc(String(node._key).replace(/[^A-Za-z0-9_-]/g, '-'))}"` : '';
@@ -632,16 +693,34 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   // 轮 58（L-6）条目内聚：图与标题永不分家（同一 article 内）；媒体优先成员（视频/卡片条目，
   // 轴层 mediaFirst ⇒ .media-first）由呈现层把图排到题上方（flex order，不拆 DOM）。footer 组
   // 总是渲染在一切之后（L-2 钉扎）。
-  const article = `<article${anchorId} class="${cls.join(' ')}">${headerHtml}${head}${heroImage}${bodyLead}${heroHtml}${bodyField}${body}${bodyFoot}${action}${footHtml}</article>`;
+  if (depth === 0 && ctx.reading) cls.push('reading-page');
+  if (depth === 0 && !['default', 'reading'].includes(ctx.pageLayout.kind)) cls.push(`${ctx.pageLayout.kind}-page`);
+  const surface = plan.banner ? MEDIA_SURFACES[plan.facts.hero?.image] : null;
+  let surfaceStyle = '';
+  if (surface) {
+    cls.push('banner-integrated');
+    if (surface.contentBounds[1] < 180) cls.push('media-centered');
+    surfaceStyle = ` style="--banner-bg:${esc(surface.background)};--banner-fg:${esc(surface.foreground)};--media-width:${surface.width}px;--media-height:${surface.height}px;--media-ratio:${surface.width / (surface.contentBounds[2] - surface.contentBounds[0] + 48)}"`;
+  }
+  if (ctx.member && plan.action?.linkTo && heroImage) heroImage = heroImage.replace(/<img\b[^>]*>/g,
+    (img) => `<a class="media-link" href="${esc(plan.action.linkTo)}">${img}</a>`);
+  const intro = `${bodyLead}${heroHtml}${bodyField}${plan.leadAction ? action : ''}`;
+  const opening = plan.introBeforeMedia ? intro + heroImage : heroImage + intro;
+  const article = `<article${anchorId} class="${cls.join(' ')}"${ownerAttr(node,ctx)}${surfaceStyle}>${headerHtml}${head}${opening}${body}${bodyFoot}${plan.leadAction || orderedActionEmitted ? '' : action}${footHtml}</article>`;
   return done(demoted ? `<aside class="zone">${article}</aside>` : article);
 }
 
 // expose groups skip their label/summary facts in bodyLead (they become legend/hint)
 // `report` (optional): an array the renderer appends compare degradations to (D2 audit)
+const ownerAttr = (node,ctx) => ctx.paths?.has(node) ? ` data-model-owner="${esc(ctx.paths.get(node))}"` : '';
 export function render(model, context = {}, report = null) {
   refLabels = buildRefLabels(model);
   const hide = new Map();
-  const ctx = { values: context.values ?? {}, degradations: report ?? [], headings: new Set(), seenHeadings: new Set() };
+  const paths=new WeakMap();
+  const index=(n,p='')=>{if(!n||typeof n!=='object')return;paths.set(n,p);for(const c of childrenOf(n))index(c.node,p?`${p}.${c.key}`:c.key);};index(model);
+  const ctx = { values: context.values ?? {}, degradations: report ?? [], headings: new Set(), paths };
+  ctx.reading = readingPageOf(model);
+  ctx.pageLayout = pageLayoutOf(model);
   const html = renderNode(model, [], false, hide, ctx, 0);
   const title = esc(model._title ? fmt(model._title) : (model._intent ?? 'surface'));
   const brand = model._brand ? fmt(model._brand) : '';
@@ -650,9 +729,9 @@ export function render(model, context = {}, report = null) {
 <html lang="en"><head><meta charset="utf-8">
 <title>${title}</title>
 <style>
-:root{color-scheme:light;--accent:${accent}}
+:root{color-scheme:light;--accent:${accent};--surface:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--surface)}
 /* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
    accent 由 m1/brand-tokens.json 按站点注入（上面的 --accent），本文件不写死站名/色值。
    层1 目的地列表：.linklist 条目名自身带 _action.to ⇒ 标记 • 换 accent ›（::marker），
@@ -662,12 +741,14 @@ body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang 
        链接，nodePlan.isLabellessLink）尾部 ›。控件/按钮形态不动（.ctl/.action 照旧）。 */
 a{color:inherit;text-decoration:none;cursor:pointer}
 a:hover{text-decoration:underline;text-decoration-color:currentColor}
-a.ref,.val a.body-link,.prose a,.chips a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+a.ref,.val a.body-link,.prose a,.chips a,.data a.table-link{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 .linklist li.go::marker{content:"›";color:var(--accent);font-weight:700}
 .linklist li.go>a{color:var(--accent);text-decoration:none}
 .linklist li.go>a:hover{text-decoration:underline}
 a.self-link{color:var(--accent);text-decoration:none}
 a.self-link:hover{text-decoration:underline}
+.media-link{display:contents}
+.media-link:focus-visible img{outline:2px solid var(--accent);outline-offset:2px}
 a.self-link.nav::after{content:" ›";font-weight:650}
 th.cmp-col>a{color:var(--accent);text-decoration:none}
 /* 轮 57 站点头区横栏（nodePlan.headerBar，规则见 axis.mjs region==='header'）：header 区域
@@ -686,19 +767,20 @@ th.cmp-col>a{color:var(--accent);text-decoration:none}
 .banner>.title{text-align:center}
 .banner>.fact{max-width:none;text-align:center}
 .banner>.controls{justify-content:center}
-.role-label{color:#68788a;font-size:.9em;margin-right:2px}
+.role-label{color:var(--muted);font-size:.9em;margin-right:2px}
 /* 轮 58 · L-1 页面栅格：唯一页面容器 = main（居中、≈1280px、左右对称 padding）。
    section 宽度分层且由 nodePlan 按 section 种类声明（plan.widthTier，规则在 axis.mjs）：
    prose=阅读文本 74ch 居中 / narrow=默认内容 880px 居中 / wide=卡片与 Feed 网格（容器全宽）/
    bleed=仅限声明的 banner（满幅带，内文仍守 padding）。同页各 section 宽度各归其层，
    不再无规则跳变（U-23/U-25/U-26/U-27）。 */
 main{max-width:1280px;margin:0 auto;padding:32px 24px 0}
-/* 根节点直属内容（页面标题、事实列、搜索栏）归入栅格：居中、对称，不再整栏偏左（U-18/U-23）。
-   h1 的列宽用 px（ch 随元素自身 2em 字号放大，74ch 会撑满容器、居中失效）。 */
-.depth-0>.title{max-width:640px;margin-inline:auto}
-.depth-0>.fact{margin-inline:auto}
-.depth-0>.hero{margin-inline:auto;text-align:center}
-.depth-0>.fieldbar{justify-content:center}
+/* Root identity, lead and controls inherit the owning content edge, not a separate
+   centered title column. The outer page frame may be centered; its text need not be. */
+.depth-0>.title{max-width:none;margin-inline:0}
+.depth-0>.fact,.depth-0>.hero{margin-inline:0}
+.depth-0>.fieldbar{justify-content:flex-start}
+.depth-0>.site-identity{font-size:18px;line-height:1.4;text-align:left;margin:0 0 16px;font-weight:650}
+h4.title,h5.title,h6.title{font-size:1em;line-height:1.5;margin:.7em 0 .35em;font-weight:650}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
 header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
 h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
@@ -707,12 +789,13 @@ h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
 .hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
 /* a lead sentence is not a headline: H1-sized prose collapses the page's heading levels */
-.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:#33475b}
+.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:var(--soft-ink)}
 article{margin:12px 0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+.cards.cols-auto{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0;max-width:74ch}
 .hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
@@ -720,21 +803,23 @@ article{margin:12px 0}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
 /* label chips need a visible chip body, or the row reads as one bare string of text (round 27) */
-.chips .chip-item{display:inline-block;background:#eef2f7;border:1px solid #dbe3ec;border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
+.chips .chip-item{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
 /* a sentence member is prose, not a tag: keep it on its own plain line */
 .chips-rows{display:block}
 .chips-rows .chip-item{display:block;background:none;border:0;border-radius:0;padding:3px 0;font-size:.95em}
 .cards .item img,.run .item img,.cards img{width:auto;max-width:100%;height:auto;display:block;border-radius:8px}
+/* Compact product media: an upper bound only, never crop or upscale source thumbnails. */
+.product-cards img{max-height:160px}
 .action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
-.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:var(--soft-ink);font-weight:600;margin:10px 0}
 .promo-image{padding:0;overflow:hidden}
 .promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
-.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:var(--muted);font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
 /* 并入价格行的分期时长（U-28）：与承载句同行、弱化如 meta，不再是容器外孤块 */
-.fact .installment{color:#5b6a78;font-size:.9em}
+.fact .installment{color:var(--muted);font-size:.9em}
 .fact .installment .sep{color:#c2ccd6}
-.prose{max-width:74ch;margin-inline:auto}
+.prose{max-width:74ch;margin-inline:0}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
 /* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
    轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
@@ -747,7 +832,7 @@ article{margin:12px 0}
 .cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip,.band .strip{width:auto;margin-left:auto;margin-right:auto}
 .cards .strip img{border-radius:8px}
 /* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
-.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.img-alt{display:block;color:var(--muted);font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
 .promo-image .img-alt{padding:10px 14px;border-radius:0}
 main>.node>.strip:first-child,article>.strip{margin-top:0;margin-bottom:0}
 /* F-031: 序列区块（不可比内容各自成立） */
@@ -763,22 +848,22 @@ hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
 .ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
 /* 时间流文本（弹幕）：行内紧凑流，每条单行省略——不铺成竖排文本墙（§10.5） */
 .stream{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0}
-.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#eef2f7;border-radius:999px;padding:2px 10px;font-size:.85em}
+.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--soft);border-radius:999px;padding:2px 10px;font-size:.85em}
 a.ctl{font-weight:600}
 a.ctl:hover{background:#f2f7ff}
 /* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
 .cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
 .cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
 .cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
-.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-row{white-space:nowrap;color:var(--muted);font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
 .cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
 .cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
 .cmp-price{font-weight:700;margin-top:4px}
-.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
+.cmp-sub{color:var(--muted);font-size:.92em;margin-top:2px}
 .cmp-ctl{margin-top:6px}
 /* 纯标签清单：一组等格条目名，读作"一组面板/条目"，不是 1..N 的目录（轮 34 grafana） */
 .manifest{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
-.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:#33475b;overflow-wrap:anywhere}
+.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:var(--soft-ink);overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
 .linklist.cols3{columns:3;column-gap:24px}
@@ -788,18 +873,25 @@ a.ctl:hover{background:#f2f7ff}
 .seq li{margin:4px 0;line-height:1.55}
 .chip-item{break-inside:avoid}
 .deflist{margin:8px 0}
-.deflist.ranked .rank{min-width:1.5em;color:#8493a3;font-weight:700;font-variant-numeric:tabular-nums}
+.deflist.ranked .rank{min-width:1.5em;color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums}
 .deflist.ranked .deflabel{font-weight:500}
-.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:flex-start}
+.defrow.media-row{display:block}
+.defrow.media-row .deflabel{flex:none;min-width:0;margin-bottom:8px}
+.defrow.media-row .defval{min-width:0;max-width:100%}
+.deflist.media-captions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(280px,calc((100% - 32px)/3))),1fr));gap:16px}
+.deflist.media-captions .defrow{display:flex;flex-direction:column;flex-wrap:nowrap;border:0}
+.deflist.media-captions img{max-height:360px;width:auto;height:auto}
 .deflabel{min-width:130px;font-weight:600}
 .deflabel a{color:inherit}
 .timeline .defrow{position:relative}
 .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
+.defval{color:var(--muted);font-size:.95em;overflow-wrap:anywhere;min-width:100px}
+@media(max-width:700px){.defrow.long-label{display:block}.defrow.long-label .deflabel{min-width:0;margin-bottom:4px}.defval{min-width:0}.defval .val{word-break:normal}}
 .accordion{margin:8px 0}
 details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
 details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
-details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
+details.qa .qa-a{padding:6px 0;color:var(--muted);font-size:.95em}
 .expose{display:block;margin:8px 0}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
@@ -810,11 +902,16 @@ fieldset.expose.chipbar{display:inline-block;max-width:100%}
    实测同色无下划线）：轮 57 起并入层2 —— accent + 常显细下划线（上面的 .chips a 规则）。 */
 /* D-3: a text input is an inline field so its submit control sits on the same bar */
 span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
+.authentication-page{max-width:440px;margin-inline:auto}
+.task-form .expose-input{display:flex;flex-direction:column;align-items:stretch;gap:6px;max-width:360px;width:100%;margin:8px 0}
+.task-form .expose-input>.deflabel{min-width:0}
+.task-form .expose-input>input{box-sizing:border-box;width:100%;min-width:0}
+.task-form .fieldbar{flex-wrap:wrap;justify-content:flex-start}
 /* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
-.expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
-.choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
+legend{font-size:.8em;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:var(--muted);font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:var(--muted);font-size:.9em;margin-left:4px}
 input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 /* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮）；
@@ -826,12 +923,17 @@ input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;
 img{max-width:100%;width:auto;border-radius:10px;display:block}
 /* 同一条「不放大」规则覆盖卡片/条目/正文图：自然宽 ≥ 容器则铺满，否则按自然尺寸居中显示 */
 .fact img,.cards img,.cards .item img,.run .item img{width:auto;max-width:100%;height:auto}
+.data-scroll{max-width:100%;overflow-x:auto}
+.data-scroll table.data{min-width:640px}
+.expose table.data{min-width:640px}
+fieldset.expose:has(>table.data){min-inline-size:0;min-width:0;width:100%;max-width:100%;overflow-x:auto}
+a.option-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
-table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
-table.data tr.row-group th{text-align:left;color:#33475b;font-weight:700;background:#eef2f7}
+table.data th{color:var(--muted);font-weight:600;background:#f7f9fb}
+table.data tr.row-group th{text-align:left;color:var(--soft-ink);font-weight:700;background:var(--soft)}
 table.data td.sel,table.data th.sel{width:34px;text-align:center}
-.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.chip{display:inline-block;background:var(--soft);border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 /* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
@@ -847,11 +949,9 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
 .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
-/* 轮 58（L-1）宽度分层（必须晚于 .block>.node，层级胜出层叠）：prose=阅读 74ch 居中 /
-narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ bleed=仅声明的 banner（满幅）。 */
-.node.w-prose{max-width:74ch;margin-inline:auto}
-.node.w-narrow{max-width:880px;margin-inline:auto}
-.node.w-wide{max-width:none}
+/* Local forms inherit their page frame; only declared banner bleed can escape it.
+   Reading/product/detail composition sets the parent measure, not each local form. */
+.node.w-prose,.node.w-narrow,.node.w-wide{max-width:none;margin-inline:0;width:100%}
 .node.w-bleed{max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 24px}
 /* 轮 58（L-6）媒体优先卡片：图与标题永不分家（同一 article）；条目图在题上方（视频/卡片站
    惯例）。轴层 mediaFirstOf 声明，这里用 flex order 画 —— 不拆 DOM，长文条目不受影响。 */
@@ -861,16 +961,191 @@ narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ b
    阅读型堆叠（长文成员）保持单列。 */
 .stack.cols-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;align-items:start;margin:14px 0}
 .stack.cols-auto .block{margin:0}
+.cards.compact-media,.stack.compact-media{grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
 .stack.cols-auto hr.region{display:none}
 /* 轮 58（L-5）footer 反色（惯例）：模型声明的 footer 区域（.g-footer）深底浅字，
    负 margin 铺满容器内宽、底边贴住容器。无 footer 区域的页自然没有这条带。 */
-.group.g-footer{background:#16202b;color:#c7d3e0;margin:48px -24px 0;padding:24px 24px 28px}
-.group.g-footer .title,.group.g-footer h1,.group.g-footer h2,.group.g-footer h3,.group.g-footer h4{color:#eef4fa}
-.group.g-footer a{color:#dce6f1}
-.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:#aebccc}
-.group.g-footer .ctl{border-color:#41546a;color:#c7d3e0;background:transparent}
-.group.g-footer a.ctl:hover{background:#223244}
-.group.g-footer .defrow{border-bottom-color:#253444}
+/* Surfaces own foreground AND background tokens. A footer is secondary site information,
+   not automatically a dark hero. Match the captured light, compact utility region. */
+.group.g-footer{--surface:#f5f5f7;--ink:#30343b;--muted:#536171;--soft:#e8eaee;--soft-ink:#30343b;--line:#d5d8df;background:var(--surface);color:var(--ink);margin:32px -24px 0;padding:24px}
+.group.g-footer .node,.group.g-footer .block{margin:0;padding:0}
+.group.g-footer .stack{display:flex;flex-wrap:wrap;gap:14px 24px}
+.group.g-footer .stack>.block{flex:1 1 250px}
+.group.g-footer .stack>.block:first-child{flex-basis:100%}
+.group.g-footer .linklist{columns:auto;display:flex;flex-wrap:wrap;gap:6px 18px;padding:0;margin:0}
+.group.g-footer .linklist li{list-style:none;margin:0;font-size:13px;line-height:1.65}
+.group.g-footer .seq{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding:0}
+.group.g-footer .seq li{list-style:none;margin:0;font-size:12px;line-height:1.6}
+.group.g-footer .stack>.block:has(.seq),.group.g-footer .stack>.block:has(.chips-rows){flex-basis:100%;padding-top:12px;border-top:1px solid var(--line)}
+.group.g-footer .linklist li.go::marker{content:""}
+.group.g-footer .chips{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0}
+.group.g-footer .chip-item{padding:0;border:0;background:transparent;border-radius:0;font-size:13px;color:var(--ink)}
+.group.g-footer .title,.group.g-footer a,.group.g-footer .linklist li.go>a,.group.g-footer .chips a{color:var(--ink)}
+.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:var(--muted)}
+.group.g-footer .ctl{border-color:var(--line);color:var(--ink);background:var(--surface);padding:4px 10px}
+.group.g-footer a.ctl:hover{background:var(--soft)}
+.group.g-footer .defrow{border-bottom-color:var(--line)}
+.group.g-footer .controls{gap:6px 18px;margin:4px 0}
+.group.g-footer .ctl{border:0;background:transparent;padding:0;border-radius:0;font-size:13px;font-weight:400}
+.group.g-footer .g-notices>.node>.stack{display:block}
+.group.g-footer .g-notices>.node>.stack>.block{margin:0;padding:0;border:0}
+.group.g-footer .cards{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0}
+.group.g-footer .cards>.item{padding:0;border:0;background:transparent}
+.group.g-footer .cards .ctl{border:0;background:transparent;padding:2px 0;border-radius:0;font-size:13px}
+.group.g-footer .fact{font-size:13px;line-height:1.7;margin:4px 0}
+/* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
+.reading-page{--reading-width:800px;max-width:var(--reading-width);margin-inline:auto}
+.reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
+.reading-page .node.w-prose,.reading-page .node.w-narrow,.reading-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.reading-page .fact,.reading-page .prose,.reading-page .prose p,.reading-page .quote{max-width:none}
+.reading-page .fact img{margin-inline:auto}
+.reading-page .defrow{display:block;padding:16px 0}
+.reading-page .deflabel{margin-bottom:6px}
+.reading-page .defval{font-size:1em;line-height:1.75}
+.reading-page .cards:not(:has(img)){display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.reading-page .cards:not(:has(img))>.item{border:0;padding:0}
+.reading-page .cards:not(:has(img)) .node{margin:0}
+.reading-page .cards:not(:has(img)) .action{margin:0;border-radius:999px;padding:5px 14px;background:var(--soft);color:var(--soft-ink)}
+/* Label-only destination groups are navigation, not a vertical sitemap. */
+.utility-group>.chips-rows{display:flex;flex-wrap:wrap}
+.utility-group>.chips-rows .chip-item{display:inline-block;padding:3px 8px}
+.stack>.block:has(>.utility-group){margin-block:8px;padding:0}
+.utility-group{margin-block:4px}
+.node.w-narrow:has(>.linklist),.node.w-narrow:has(>.chips){max-width:none}
+.linklist.cols2,.linklist.cols3,.linklist.cols4{columns:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:3px 18px}
+.header-bar .linklist.cols2,.header-bar .linklist.cols3,.header-bar .linklist.cols4{display:flex;grid-template-columns:none}
+.node:has(>.chips)>.chips{gap:6px 12px}
+/* Related sections inherit the page frame; long fact lines keep their reading measure. */
+.depth-0>.meta{margin-inline:0}
+.utility-facts>.stack>.block{margin:4px 0;padding:0}
+.utility-facts>.stack>.block>.node{margin:0}
+.utility-facts .title{font-size:1em;margin:4px 0}
+.utility-group>.stack{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.stack>.block{margin:0;padding:0}
+.utility-group>.stack>.block>.node{margin:0}
+.utility-group>.deflist{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.deflist>.defrow{border:0;padding:0}
+/* Shared structural compact forms: singleton catalog entries, ordered editorial media, boolean utilities. */
+.singleton-card>.stack{max-width:320px}
+.singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:flex-start;padding:0}
+.singleton-card .banner>.title{font-size:1.12em;text-align:left;order:1;margin:8px 0}
+.singleton-card .banner>.band{order:0;margin:0;max-width:320px}
+.singleton-card .banner>.band .strip{margin:0}
+.singleton-card .banner>.controls,.singleton-card .banner>.action{order:2;margin:8px 0}
+.singleton-card .banner img{max-width:100%;max-height:320px;width:auto;height:auto}
+.boolean-utilities>.stack{display:flex;flex-wrap:wrap;gap:8px 16px}
+.boolean-utilities>.stack>.block,.boolean-utilities>.stack>.block>.node{margin:0;padding:0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox]){display:inline-block;margin:4px 16px 4px 0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox])>.node{margin:0;padding:0}
+.ordered-media-rows>.stack>.block{margin:12px 0;padding:12px 0;border-bottom:1px solid var(--line)}
+.ordered-media-rows>.stack>.block>.node{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:4px 20px;margin:0;padding:0}
+.ordered-media-rows>.stack>.block>.node>*{grid-column:1;margin:0}
+.ordered-media-rows>.stack>.block>.node>.band{grid-column:2;grid-row:1 / span 5;margin:0;align-self:start}
+.ordered-media-rows .band .strip{margin:0;width:auto}
+.ordered-media-rows .band img{max-width:120px;max-height:120px;width:auto;height:auto}
+@media(max-width:600px){.ordered-media-rows>.stack>.block>.node{grid-template-columns:minmax(0,1fr) 96px;gap:4px 12px}.ordered-media-rows .band img{max-width:96px;max-height:96px}}
+.instruction-media>.defrow{display:block;margin:16px 0}
+.instruction-media img{max-width:100%;max-height:none;width:auto;height:auto}
+.resource-view{margin:8px 0;font-size:14px;max-width:100%;text-align:left}
+.resource-view>summary{cursor:pointer;color:var(--accent);text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+.native-media{max-width:100%;max-height:70vh;overflow:auto;border:1px solid var(--line);background:var(--surface)}
+.native-media img{max-width:none!important;max-height:none!important;width:auto!important;height:auto!important;margin:0!important;border-radius:0}
+.resource-view:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+/* Metadata-bearing editorial/search records are local records, never heroes. */
+.record-member{display:grid!important;grid-template-columns:minmax(0,1fr) 216px;gap:6px 24px;max-width:100%;margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
+.record-member>*{grid-column:1;margin:0!important;min-width:0}
+.record-member>.band,.record-member>.fact:has(img){grid-column:2;grid-row:1 / span 6;align-self:start}
+.record-member img{max-width:216px;max-height:172px;width:auto;height:auto;margin:0}
+.record-member .strip{width:auto;margin:0}
+.record-member>.title{text-align:left;font-size:1.15em}
+.record-member>.fact{max-width:74ch}
+.cards:has(>.item>.record-member){display:block}
+.cards:has(>.item>.record-member)>.item{border:0;padding:0;background:transparent;margin:0}
+.stack:has(>.block>.record-member){display:block}
+.stack:has(>.block>.record-member)>.block{padding:0;margin:0}
+.node.identity-frame{max-width:74ch;margin-inline:0;display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px 24px;align-items:start}
+.identity-frame>*{grid-column:2;margin:0}
+.identity-frame>.ctl,.identity-frame>.action,.identity-frame>.action-plain{justify-self:start}
+.identity-frame>.band{grid-column:1;grid-row:1 / span 4;margin:0}
+.identity-frame .strip{width:auto;margin:0}
+.identity-frame img{max-width:100px;max-height:100px;width:auto;height:auto}
+.node.w-bleed.banner:not(.banner-integrated)>.action,.node.w-bleed.banner:not(.banner-integrated)>.ctl,.node.w-bleed.banner:not(.banner-integrated)>.action-plain{margin-left:max(0px,calc((100% - 1232px)/2))}
+.search-submit{margin:0;display:inline-flex;align-items:center;padding:10px 14px}
+.search-submit:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:600px){.record-member{grid-template-columns:minmax(0,1fr);gap:8px}.record-member>.band,.record-member>.fact:has(img){grid-column:1;grid-row:auto}.record-member img{max-width:216px}.identity-frame{gap:8px 16px}}
+/* Whole-page alignment: local lists, facts and cards inherit the same page frame. */
+.catalog-page .node.w-prose,.catalog-page .node.w-narrow,.catalog-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.catalog-page>.stack>.block{margin:14px 0}
+.catalog-page .depth-1>.fact{max-width:none}
+.catalog-page>.stack>.block:has(>.node>.deflist) .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.catalog-page>.stack>.block:has(>.node>.deflist) .defrow{display:block;padding:16px;background:#f6f7f9;border:1px solid var(--line);border-radius:12px}
+.catalog-page .deflabel{margin-bottom:8px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:14px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block{margin:0;padding:0}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block>.node{margin:0;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fafbfc}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>hr{display:none}
+.product-page{max-width:960px;margin-inline:auto}
+.product-page .node.w-prose,.product-page .node.w-narrow,.product-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.product-page .fact,.product-page .prose,.product-page .prose p{max-width:none}
+.product-page .fact img{margin-inline:auto}
+.product-page>.meta{margin-inline:0}
+.product-page>.stack>.block{margin-block:32px}
+.product-page .defrow{gap:24px}
+.product-page .deflabel{flex:0 0 190px;min-width:0}
+.product-page .media-captions .deflabel{flex:0 0 auto}
+.detail-page>.title{max-width:none;margin-inline:0}
+.detail-page>.fact{max-width:none}
+.detail-page .node.w-prose,.detail-page .node.w-narrow,.detail-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.detail-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start;margin-top:24px}
+.detail-main,.detail-task{min-width:0}
+.detail-main>.group{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.detail-main .fact,.detail-main .prose{max-width:none}
+.detail-task{padding:20px 24px;border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 24px #17212b10}
+.detail-task .group{margin:12px 0}
+.detail-task input{max-width:100%}
+.detail-tail{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.detail-tail .g-distribution .chips-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.detail-tail .g-distribution .chip-item{padding:8px 12px;border-radius:8px;background:var(--soft)}
+.detail-tail .g-aspects .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:4px 24px}
+.detail-tail .g-reviews>.node{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.detail-tail .g-reviews>.node>*{min-width:0}
+.detail-tail .g-reviews>.node>.title,.detail-tail .g-reviews>.node>.controls,.detail-tail .g-reviews>.node>.g-distribution,.detail-tail .g-reviews>.node>.g-aspects{grid-column:1/-1}
+.detail-tail .g-aspects .cmp-table th.cmp-col{min-width:120px}
+.detail-tail .g-reviews>.node>.g-mentions{grid-column:1/-1}
+.detail-tail .g-mentions .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:4px 24px}
+.detail-tail .g-mentions .defrow{justify-content:space-between}
+.detail-page .gallery-mosaic{grid-auto-rows:180px;grid-template-columns:2fr 1fr 1fr}
+.detail-page .gallery-mosaic .strip{aspect-ratio:auto}
+.detail-page .gallery-mosaic .strip:first-child{grid-column:span 1;grid-row:span 2}
+main:has(.marketing-page){max-width:1728px}
+.marketing-page>.title{max-width:none}
+.marketing-page .node.w-bleed{width:100%;margin-inline:0}
+.marketing-page .node.w-narrow,.marketing-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.marketing-page .cards.cols-auto{grid-template-columns:repeat(2,minmax(0,1fr))}
+.marketing-page .cards.cols-auto .item{padding:20px;border-radius:12px;background:#f5f5f7}
+.marketing-page .cards.cols-auto .title{text-align:center;font-size:26px}
+.marketing-page .cards.cols-auto .fact{max-width:none;text-align:center}
+.marketing-page .cards.cols-auto .fact img{margin:auto}
+.marketing-page .cards.cols-auto .controls{justify-content:center}
+.marketing-page .g-tv .cards.cols-auto{grid-template-columns:repeat(3,minmax(0,1fr))}
+.marketing-page .g-services .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.marketing-page .g-services .defrow{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:12px}
+.marketing-page .g-services .defval img{max-height:180px;margin:auto}
+@media(min-width:1920px){body:has(.marketing-page){background:#f5f5f7}main:has(.marketing-page){max-width:1728px;padding-inline:24px}.marketing-page>.stack>.block{margin-block:16px}}
+@media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr);gap:20px}.detail-tail .g-reviews>.node{grid-template-columns:minmax(0,1fr)}.marketing-page .g-tv .cards.cols-auto{grid-template-columns:1fr}.detail-page .gallery-mosaic{grid-auto-rows:130px;grid-template-columns:repeat(2,minmax(0,1fr))}.detail-page .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.marketing-page .cards.cols-auto{grid-template-columns:1fr}.product-page .defrow{flex-wrap:wrap}.product-page .deflabel{flex-basis:100%}}
+/* Media surface metadata keeps marketing image and text in the same panel. The
+   original image is centered at natural height; only uniform lateral gutters clip. */
+.banner-integrated{position:relative;isolation:isolate;overflow:hidden;min-height:580px;padding:32px 24px!important;background:var(--banner-bg);color:var(--banner-fg);display:flex;flex-direction:column;align-items:center;margin-block:12px}
+.banner-integrated>.strip{position:absolute;inset:0;width:100%;height:580px;margin:0;z-index:-1;display:flex;justify-content:center}
+.banner-integrated>.strip img{flex:none;max-width:none;width:auto;height:auto;align-self:flex-start;margin:0;border-radius:0}
+.banner-integrated>.title{font-size:48px;line-height:1.1;margin:8px 0}
+.banner-integrated>.fact{font-size:22px;max-width:640px;line-height:1.35;margin:4px 0}
+.banner-integrated>.controls{margin:16px 0}
+.banner-integrated .ctl{background:transparent;color:#2997ff;border-color:#2997ff;border-radius:999px}
+.banner-integrated .action{background:#0071e3;color:#fff;border-radius:999px}
+.banner-integrated.media-centered>.fact:first-of-type{margin-top:auto}
+.banner-integrated.media-centered>.controls{margin-bottom:0}
+@media(max-width:700px){main{padding:20px 16px 0}.group.g-footer{margin-inline:-16px;padding:20px 16px}.banner-integrated{min-height:540px}.banner-integrated>.title{font-size:34px}.banner-integrated>.strip{height:540px}.banner-integrated>.strip img{width:auto;max-width:min(calc(var(--media-width)*.7),calc((100vw - 48px) * var(--media-ratio)));height:auto;object-fit:contain;align-self:flex-start;margin-top:160px}.banner-integrated>.fact{font-size:18px}.banner-integrated.media-centered>.strip img{margin-top:45px}.gallery-mosaic{grid-template-columns:repeat(2,1fr)}.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.stack.cols-auto,.cards{grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}}
 </style></head>
 <body><main>${brand ? `<header class="site"><span class="brand">${brand}</span></header>` : ''}${html}</main></body></html>
 `;

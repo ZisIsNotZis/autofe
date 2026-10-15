@@ -27,8 +27,8 @@ import {
 import {
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections,
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
-  itemActionPlan, nodePlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, roleLabel, buildRefLabels,
-  hasValue, tableRowLabel,
+  itemActionPlan, controlItemPlan, nodePlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, roleLabel, buildRefLabels,
+  hasValue, tableRowLabel, tableCellLinks,
 } from './axis.mjs';
 
 // `key:` label index (axis.mjs buildRefLabels) — held for the duration of one render.
@@ -68,7 +68,7 @@ function fmt(v) {
   if (v === null || v === undefined) return '';
   if (Array.isArray(v)) return v.map(fmt).join('、');
   if ('list' in v) return v.list.map(fmt).join('、');
-  if ('text' in v) return escTilde(String(v.text));
+  if ('text' in v) return escTilde(String(v.text)).replaceAll('<', '&lt;').replaceAll('>', '&gt;');
   if ('num' in v) return String(v.num) + (v.unit ? ` ${v.unit}` : '');
   if ('money' in v) {
     const sym = CURRENCY_GLYPH[v.currency] ?? (v.currency ? String(v.currency) + ' ' : '');
@@ -121,11 +121,17 @@ function renderTable(items, chain, ctx, depth, node) {
   const rp = runPlan(items);
   if (!rp.isTable) return items.map((it) => renderNode(it, [...chain], false, ctx, depth + 1)).filter(Boolean).join('\n\n');
   const header = rp.cols.map((c) => columnLabel(c));
+  const bindings = tableCellLinks(node, chain);
+  const cellMd = (v, links) => {
+    if (v?.list) return v.list.map((x) => cellMd(x, links)).join('<br>');
+    const link = links?.get(v?.text);
+    return link ? `[${fmt(v)}](${link.href})` : fmt(v);
+  };
   // The group-row / empty-cell decision is shared (axis.hasValue / tableRowLabel, round 47).
   const rows = items.map((it) => {
     const g = tableRowLabel(rp, it);
     if (g) return [fmt(g)];
-    return rp.cols.map((col) => { const v = rp.cellValue(it, col); return hasValue(v) ? fmt(v) : ''; });
+    return rp.cols.map((col) => { const v = rp.cellValue(it, col); return hasValue(v) ? cellMd(v, bindings.get(it)) : ''; });
   });
   return mdTable(header, rows);
 }
@@ -134,8 +140,13 @@ function renderCompareTable(items, chain, ctx) {
   const rowKeys = compareRowKeys(items);
   // 表头属性集合是共享决策（compareHeaderEntries）；这里只把它画成 GFM 表头文本。
   const header = ['', ...items.map((it) => {
-    const parts = compareHeaderEntries(it).map((e) => fmt(e.value));
-    const ctl = itemControl(it, chain, ctx);
+    const ep = nodePlan(it, { chain, values: ctx.values, depth: 5, grid: true });
+    const parts = compareHeaderEntries(it).map((e) => {
+      const text = fmt(e.value);
+      const target = ['_name', '_title'].includes(e.key) ? ep.action?.linkTo : null;
+      return target ? `[${text}](${target})` : text;
+    });
+    const ctl = actionRowMd(ep.actionRow);
     if (ctl) parts.push(ctl);
     // an entity's own nested collection belongs inside its own column (F-031-§3.1)
     for (const col of nestedCollections(it)) {
@@ -167,19 +178,17 @@ function renderForm(form, items, chain, ctx, depth, node) {
   if (form === 'chips') return items.map((it) => {
     const v = labelOf(it); if (!v) return '';
     const ctl = itemControl(it, chain, ctx);
-    return fmt(v) + (ctl ? ' ' + ctl : '');
+    const a = itemActionPlan(it, chain, ctx.values);
+    const text = fmt(v);
+    const name = a?.hasTarget && !a.isControl ? `[${text}](${a.href})` : text;
+    return name + (ctl ? ' ' + ctl : '');
   }).filter(Boolean).join(' · ');
   if (form === 'controls') {
     // the member's own name is content; the action label is the source's control copy
     return items.map((it) => {
-      const a = itemActionPlan(it, chain, ctx.values);
-      const name = labelTextOf(it);
-      const ctl = a?.label ?? '';
-      const other = Boolean(name && ctl && !name.includes(ctl) && !ctl.includes(name));
-      if (!name && !ctl) return '';
-      if (!ctl) return name;
-      if (!name) return controlMd(a, ctl);
-      return other ? `${name} ${controlMd(a, ctl)}` : name;
+      const c = controlItemPlan(it, chain, ctx.values);
+      const ctl = c.label ? controlMd({ label: c.label, hasTarget: Boolean(c.href), href: c.href }) : '';
+      return c.accessibleLabel ? `${ctl} (${c.accessibleLabel})` : ctl;
     }).filter(Boolean).join(' ');
   }
   if (form === 'table') return renderTable(items, chain, ctx, depth, node);
@@ -204,7 +213,9 @@ function renderDeflist(items, chain, ctx) {
   return items.map((it) => {
     const label = it._name ?? it._title;
     const rest = factsOf(it).filter((x) => !['_name', '_title'].includes(x.key));
-    const l = label ? fmt(label) : '';
+    const text = label ? fmt(label) : '';
+    const a = itemActionPlan(it, chain, ctx.values);
+    const l = text && a?.hasTarget && !a.isControl ? `[${text}](${a.href})` : text;
     const v = rest.map((x) => roleFact(x)).join(' ');
     const ctl = itemControl(it, chain, ctx);
     const val = (v + (ctl ? ' ' + ctl : '')).trim();
@@ -249,16 +260,21 @@ function renderNode(node, chain, isHero, ctx, depth) {
     const hint = ch.hint ? fmt(ch.hint) : '';
     if (ch.kind === 'plain-fact') {
       const v = ch.itemName;
-      blocks.push(`${lbl ? lbl + ': ' : ''}${v ? fmt(v) : ''} ${ch.itemExtra.map((x) => fmt(x.value)).join(' ')}`.trim());
+      const text = v ? fmt(v) : '';
+      const name = ch.itemAction?.href ? `[${text}](${ch.itemAction.href})` : text;
+      blocks.push(`${lbl ? lbl + ': ' : ''}${name} ${ch.itemExtra.map((x) => fmt(x.value)).join(' ')}`.trim());
     } else if (ch.kind === 'choice') {
       blocks.push(`${lbl || (ch.multi ? '可多选' : '单选')}${hint ? ` (${hint})` : ''}`);
       blocks.push(ch.options.map((o) => {
         const v = o.name;
         const extra = o.extra.map((x) => fmt(x.value)).join(' ');
-        return `- ${ch.multi ? '[ ]' : '( )'} ${v ? fmt(v) : '选项'}${extra ? ' ' + extra : ''}`;
+        const text = v ? fmt(v) : '选项';
+        const name = o.action?.href ? `[${text}](${o.action.href})` : text;
+        return `- ${ch.multi ? (o.selected ? '[x]' : '[ ]') : (o.selected ? '(●)' : '( )')} ${name}${extra ? ' ' + extra : ''}`;
       }).join('\n'));
     } else if (ch.kind === 'bool') {
-      const name = lbl || (ch.nodeName ? fmt(ch.nodeName) : '');
+      let name = lbl || (ch.nodeName ? fmt(ch.nodeName) : '');
+      for (const a of ch.inlineLinks ?? []) name = name.replace(fmt({text:a.label}), `[${fmt({text:a.label})}](${a.href})`);
       blocks.push(`- [ ] ${name}`.trim());
     } else if (ch.type === 'secret') {
       // A secret field never echoes its value in the Markdown target: only a placeholder (round 46).
@@ -282,14 +298,22 @@ function renderNode(node, chain, isHero, ctx, depth) {
   const factLines = [];
   for (const f of plan.facts.list) {
     if (f.category === 'installment') continue;   // 并入承载行（U-28），不单独成行
-    if (f.category === 'meta' || f.category === 'unit') { factLines.push(roleFact(f)); continue; }
-    if (f.category === 'quote') { factLines.push(`> **${fmt(f.value)}**`); continue; }
+    if (f.category === 'unit' || f.category === 'meta' && !plan.inlineChildren.some(c => c.key === f.key)) { factLines.push(roleFact(f)); continue; }
+    const inlineValue = () => {
+      let value = fmt(f.value);
+      for (const a of plan.inlineChildren.filter((c) => c.key === f.key)) value = value.replace(fmt({text:a.label}), `[${fmt({text:a.label})}](${a.href})`);
+      return value;
+    };
+    if (f.category === 'quote') { factLines.push(`> **${inlineValue()}**`); continue; }
     if (f.category === 'was') { factLines.push(`~~${fmt(f.value)}~~${attachedTail(f)}`); continue; }
     const lab = roleLabel(f.key);
-    factLines.push((lab ? `${lab}: ${fmt(f.value)}` : roleFact(f)) + attachedTail(f));
+    let value = plan.inlineChildren.some((c) => c.key === f.key) ? inlineValue() : lab ? `${lab}: ${fmt(f.value)}` : roleFact(f);
+    if (plan.action?.inlineInto === f.key && plan.action.href) value = value.replace(escTilde(plan.action.label), controlMd(plan.action));
+    factLines.push(value + attachedTail(f));
   }
   for (const f of plan.facts.fields) factLines.push(`${f.label ? f.label + ': ' : ''}${fmt(f.value)}`);
   if (factLines.length) blocks.push(factLines.join('\n\n'));
+  if (plan.leadAction && actionRow) blocks.push(actionRow);
 
   // ordered item sets + compare grouping (axis.mjs seqGroupsOf)
   const { groups } = plan.items;
@@ -307,24 +331,29 @@ function renderNode(node, chain, isHero, ctx, depth) {
   // 留在内容区、footer 之前。排序决策在共享轴层（orderedNamedChildren → entry.region），
   // Markdown 目标只选槽位：header 块在标题之前输出，footer 块在动作行之后输出。
   const headBlocks = [], footBlocks = [];
+  let orderedActionEmitted = false;
   for (const c of plan.namedChildren) {
     if (consumed.has(c.node)) continue;
     const inner = renderNode(c.node, [...chain, node], false, ctx, depth + 1);
     if (!inner) continue;
     if (c.region === 'header') { headBlocks.push(inner); continue; }
     if (c.region === 'footer') { footBlocks.push(inner); continue; }
+    if (plan.actionBeforeChild === c.key && actionRow) { blocks.push(actionRow); orderedActionEmitted = true; }
     blocks.push(inner);
   }
 
   const parts = [];
   for (const b of headBlocks) if (b && b.trim()) parts.push(b);   // header 在页面标题之上（L-2）
-  if (titleText && !titleIsControl) parts.push(`${'#'.repeat(Math.min(depth + 1, 6))} ${titleText}`);
+  if (titleText && !titleIsControl) {
+    const title = plan.action?.isLabellessLink ? `[${titleText}](${plan.action.href})` : titleText;
+    parts.push(`${'#'.repeat(Math.min(depth + 1, 6))} ${title}`);
+  }
   if (plan.facts.hero) { const hero = imageMd(plan.facts.hero); if (hero) parts.push(hero); }
   for (const b of blocks) if (b && b.trim()) parts.push(b);
   // a control whose heading IS its own label is the heading's link; any further controls of
   // the same element are still the SAME row, never dropped (bilibili video channel block).
   if (titleIsControl) parts.push(controlOf(plan.action) || `[${titleText}]`);
-  if (actionRow) parts.push(actionRow);
+  if (actionRow && !plan.leadAction && !orderedActionEmitted) parts.push(actionRow);
   for (const b of footBlocks) if (b && b.trim()) parts.push(b);   // footer 永远最后（L-2）
   const out = parts.join('\n\n');
   if (!out.trim()) return '';

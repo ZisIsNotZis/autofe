@@ -2,9 +2,9 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>派早报：欧盟拟禁止 13 岁以下儿童使用社交媒体等</title>
 <style>
-:root{color-scheme:light;--accent:#0097ff}
+:root{color-scheme:light;--accent:#0078ce;--surface:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#17212b;background:#fff}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--surface)}
 /* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
    accent 由 m1/brand-tokens.json 按站点注入（上面的 --accent），本文件不写死站名/色值。
    层1 目的地列表：.linklist 条目名自身带 _action.to ⇒ 标记 • 换 accent ›（::marker），
@@ -14,12 +14,14 @@ body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang 
        链接，nodePlan.isLabellessLink）尾部 ›。控件/按钮形态不动（.ctl/.action 照旧）。 */
 a{color:inherit;text-decoration:none;cursor:pointer}
 a:hover{text-decoration:underline;text-decoration-color:currentColor}
-a.ref,.val a.body-link,.prose a,.chips a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+a.ref,.val a.body-link,.prose a,.chips a,.data a.table-link{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 .linklist li.go::marker{content:"›";color:var(--accent);font-weight:700}
 .linklist li.go>a{color:var(--accent);text-decoration:none}
 .linklist li.go>a:hover{text-decoration:underline}
 a.self-link{color:var(--accent);text-decoration:none}
 a.self-link:hover{text-decoration:underline}
+.media-link{display:contents}
+.media-link:focus-visible img{outline:2px solid var(--accent);outline-offset:2px}
 a.self-link.nav::after{content:" ›";font-weight:650}
 th.cmp-col>a{color:var(--accent);text-decoration:none}
 /* 轮 57 站点头区横栏（nodePlan.headerBar，规则见 axis.mjs region==='header'）：header 区域
@@ -38,19 +40,20 @@ th.cmp-col>a{color:var(--accent);text-decoration:none}
 .banner>.title{text-align:center}
 .banner>.fact{max-width:none;text-align:center}
 .banner>.controls{justify-content:center}
-.role-label{color:#68788a;font-size:.9em;margin-right:2px}
+.role-label{color:var(--muted);font-size:.9em;margin-right:2px}
 /* 轮 58 · L-1 页面栅格：唯一页面容器 = main（居中、≈1280px、左右对称 padding）。
    section 宽度分层且由 nodePlan 按 section 种类声明（plan.widthTier，规则在 axis.mjs）：
    prose=阅读文本 74ch 居中 / narrow=默认内容 880px 居中 / wide=卡片与 Feed 网格（容器全宽）/
    bleed=仅限声明的 banner（满幅带，内文仍守 padding）。同页各 section 宽度各归其层，
    不再无规则跳变（U-23/U-25/U-26/U-27）。 */
 main{max-width:1280px;margin:0 auto;padding:32px 24px 0}
-/* 根节点直属内容（页面标题、事实列、搜索栏）归入栅格：居中、对称，不再整栏偏左（U-18/U-23）。
-   h1 的列宽用 px（ch 随元素自身 2em 字号放大，74ch 会撑满容器、居中失效）。 */
-.depth-0>.title{max-width:640px;margin-inline:auto}
-.depth-0>.fact{margin-inline:auto}
-.depth-0>.hero{margin-inline:auto;text-align:center}
-.depth-0>.fieldbar{justify-content:center}
+/* Root identity, lead and controls inherit the owning content edge, not a separate
+   centered title column. The outer page frame may be centered; its text need not be. */
+.depth-0>.title{max-width:none;margin-inline:0}
+.depth-0>.fact,.depth-0>.hero{margin-inline:0}
+.depth-0>.fieldbar{justify-content:flex-start}
+.depth-0>.site-identity{font-size:18px;line-height:1.4;text-align:left;margin:0 0 16px;font-weight:650}
+h4.title,h5.title,h6.title{font-size:1em;line-height:1.5;margin:.7em 0 .35em;font-weight:650}
 header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
 header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
 h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
@@ -59,12 +62,13 @@ h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
 .hero{margin:4px 0 24px}
 .hero.fact-hero .fact .val{font-size:2em;font-weight:700}
 /* a lead sentence is not a headline: H1-sized prose collapses the page's heading levels */
-.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:#33475b}
+.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:var(--soft-ink)}
 article{margin:12px 0}
 .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
 .timeline .item{position:relative;padding:6px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+.cards.cols-auto{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
 .fact{margin:3px 0;max-width:74ch}
 .hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
@@ -72,21 +76,23 @@ article{margin:12px 0}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
 /* label chips need a visible chip body, or the row reads as one bare string of text (round 27) */
-.chips .chip-item{display:inline-block;background:#eef2f7;border:1px solid #dbe3ec;border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
+.chips .chip-item{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
 /* a sentence member is prose, not a tag: keep it on its own plain line */
 .chips-rows{display:block}
 .chips-rows .chip-item{display:block;background:none;border:0;border-radius:0;padding:3px 0;font-size:.95em}
 .cards .item img,.run .item img,.cards img{width:auto;max-width:100%;height:auto;display:block;border-radius:8px}
+/* Compact product media: an upper bound only, never crop or upscale source thumbnails. */
+.product-cards img{max-height:160px}
 .action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
-.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:#33475b;font-weight:600;margin:10px 0}
+.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:var(--soft-ink);font-weight:600;margin:10px 0}
 .promo-image{padding:0;overflow:hidden}
 .promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
-.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:#5b6a78;font-size:.9em;margin-top:2px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:var(--muted);font-size:.9em;margin-top:2px}
 .meta .sep{color:#c2ccd6}
 /* 并入价格行的分期时长（U-28）：与承载句同行、弱化如 meta，不再是容器外孤块 */
-.fact .installment{color:#5b6a78;font-size:.9em}
+.fact .installment{color:var(--muted);font-size:.9em}
 .fact .installment .sep{color:#c2ccd6}
-.prose{max-width:74ch;margin-inline:auto}
+.prose{max-width:74ch;margin-inline:0}
 .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
 /* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
    轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
@@ -99,7 +105,7 @@ article{margin:12px 0}
 .cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip,.band .strip{width:auto;margin-left:auto;margin-right:auto}
 .cards .strip img{border-radius:8px}
 /* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
-.img-alt{display:block;color:#5b6a78;font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.img-alt{display:block;color:var(--muted);font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
 .promo-image .img-alt{padding:10px 14px;border-radius:0}
 main>.node>.strip:first-child,article>.strip{margin-top:0;margin-bottom:0}
 /* F-031: 序列区块（不可比内容各自成立） */
@@ -115,22 +121,22 @@ hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
 .ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
 /* 时间流文本（弹幕）：行内紧凑流，每条单行省略——不铺成竖排文本墙（§10.5） */
 .stream{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0}
-.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#eef2f7;border-radius:999px;padding:2px 10px;font-size:.85em}
+.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--soft);border-radius:999px;padding:2px 10px;font-size:.85em}
 a.ctl{font-weight:600}
 a.ctl:hover{background:#f2f7ff}
 /* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
 .cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
 .cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
 .cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
-.cmp-table th.cmp-row{white-space:nowrap;color:#5b6a78;font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-row{white-space:nowrap;color:var(--muted);font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
 .cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
 .cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
 .cmp-price{font-weight:700;margin-top:4px}
-.cmp-sub{color:#5b6a78;font-size:.92em;margin-top:2px}
+.cmp-sub{color:var(--muted);font-size:.92em;margin-top:2px}
 .cmp-ctl{margin-top:6px}
 /* 纯标签清单：一组等格条目名，读作"一组面板/条目"，不是 1..N 的目录（轮 34 grafana） */
 .manifest{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
-.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:#33475b;overflow-wrap:anywhere}
+.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:var(--soft-ink);overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{columns:2;column-gap:28px}
 .linklist.cols3{columns:3;column-gap:24px}
@@ -140,18 +146,25 @@ a.ctl:hover{background:#f2f7ff}
 .seq li{margin:4px 0;line-height:1.55}
 .chip-item{break-inside:avoid}
 .deflist{margin:8px 0}
-.deflist.ranked .rank{min-width:1.5em;color:#8493a3;font-weight:700;font-variant-numeric:tabular-nums}
+.deflist.ranked .rank{min-width:1.5em;color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums}
 .deflist.ranked .deflabel{font-weight:500}
-.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:flex-start}
+.defrow.media-row{display:block}
+.defrow.media-row .deflabel{flex:none;min-width:0;margin-bottom:8px}
+.defrow.media-row .defval{min-width:0;max-width:100%}
+.deflist.media-captions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(280px,calc((100% - 32px)/3))),1fr));gap:16px}
+.deflist.media-captions .defrow{display:flex;flex-direction:column;flex-wrap:nowrap;border:0}
+.deflist.media-captions img{max-height:360px;width:auto;height:auto}
 .deflabel{min-width:130px;font-weight:600}
 .deflabel a{color:inherit}
 .timeline .defrow{position:relative}
 .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
-.defval{color:#3c4a58;font-size:.95em;overflow-wrap:anywhere}
+.defval{color:var(--muted);font-size:.95em;overflow-wrap:anywhere;min-width:100px}
+@media(max-width:700px){.defrow.long-label{display:block}.defrow.long-label .deflabel{min-width:0;margin-bottom:4px}.defval{min-width:0}.defval .val{word-break:normal}}
 .accordion{margin:8px 0}
 details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
 details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
-details.qa .qa-a{padding:6px 0;color:#3c4a58;font-size:.95em}
+details.qa .qa-a{padding:6px 0;color:var(--muted);font-size:.95em}
 .expose{display:block;margin:8px 0}
 .choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
@@ -162,11 +175,16 @@ fieldset.expose.chipbar{display:inline-block;max-width:100%}
    实测同色无下划线）：轮 57 起并入层2 —— accent + 常显细下划线（上面的 .chips a 规则）。 */
 /* D-3: a text input is an inline field so its submit control sits on the same bar */
 span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
+.authentication-page{max-width:440px;margin-inline:auto}
+.task-form .expose-input{display:flex;flex-direction:column;align-items:stretch;gap:6px;max-width:360px;width:100%;margin:8px 0}
+.task-form .expose-input>.deflabel{min-width:0}
+.task-form .expose-input>input{box-sizing:border-box;width:100%;min-width:0}
+.task-form .fieldbar{flex-wrap:wrap;justify-content:flex-start}
 /* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-legend{font-size:.8em;color:#68788a;text-transform:uppercase;letter-spacing:.04em}
-.expose .hint{display:block;color:#5b6a78;font-size:.85em;margin:2px 0 8px}
-.choice-extra{color:#5b6a78;font-size:.9em;margin-left:4px}
+legend{font-size:.8em;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:var(--muted);font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:var(--muted);font-size:.9em;margin-left:4px}
 input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
 .action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
 /* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮）；
@@ -178,12 +196,17 @@ input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;
 img{max-width:100%;width:auto;border-radius:10px;display:block}
 /* 同一条「不放大」规则覆盖卡片/条目/正文图：自然宽 ≥ 容器则铺满，否则按自然尺寸居中显示 */
 .fact img,.cards img,.cards .item img,.run .item img{width:auto;max-width:100%;height:auto}
+.data-scroll{max-width:100%;overflow-x:auto}
+.data-scroll table.data{min-width:640px}
+.expose table.data{min-width:640px}
+fieldset.expose:has(>table.data){min-inline-size:0;min-width:0;width:100%;max-width:100%;overflow-x:auto}
+a.option-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
 table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
-table.data th{color:#5b6a78;font-weight:600;background:#f7f9fb}
-table.data tr.row-group th{text-align:left;color:#33475b;font-weight:700;background:#eef2f7}
+table.data th{color:var(--muted);font-weight:600;background:#f7f9fb}
+table.data tr.row-group th{text-align:left;color:var(--soft-ink);font-weight:700;background:var(--soft)}
 table.data td.sel,table.data th.sel{width:34px;text-align:center}
-.chip{display:inline-block;background:#eef2f7;border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.chip{display:inline-block;background:var(--soft);border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 /* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
@@ -199,11 +222,9 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
 .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
-/* 轮 58（L-1）宽度分层（必须晚于 .block>.node，层级胜出层叠）：prose=阅读 74ch 居中 /
-narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ bleed=仅声明的 banner（满幅）。 */
-.node.w-prose{max-width:74ch;margin-inline:auto}
-.node.w-narrow{max-width:880px;margin-inline:auto}
-.node.w-wide{max-width:none}
+/* Local forms inherit their page frame; only declared banner bleed can escape it.
+   Reading/product/detail composition sets the parent measure, not each local form. */
+.node.w-prose,.node.w-narrow,.node.w-wide{max-width:none;margin-inline:0;width:100%}
 .node.w-bleed{max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 24px}
 /* 轮 58（L-6）媒体优先卡片：图与标题永不分家（同一 article）；条目图在题上方（视频/卡片站
    惯例）。轴层 mediaFirstOf 声明，这里用 flex order 画 —— 不拆 DOM，长文条目不受影响。 */
@@ -213,15 +234,153 @@ narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ b
    阅读型堆叠（长文成员）保持单列。 */
 .stack.cols-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;align-items:start;margin:14px 0}
 .stack.cols-auto .block{margin:0}
+.cards.compact-media,.stack.compact-media{grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
 .stack.cols-auto hr.region{display:none}
 /* 轮 58（L-5）footer 反色（惯例）：模型声明的 footer 区域（.g-footer）深底浅字，
    负 margin 铺满容器内宽、底边贴住容器。无 footer 区域的页自然没有这条带。 */
-.group.g-footer{background:#16202b;color:#c7d3e0;margin:48px -24px 0;padding:24px 24px 28px}
-.group.g-footer .title,.group.g-footer h1,.group.g-footer h2,.group.g-footer h3,.group.g-footer h4{color:#eef4fa}
-.group.g-footer a{color:#dce6f1}
-.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:#aebccc}
-.group.g-footer .ctl{border-color:#41546a;color:#c7d3e0;background:transparent}
-.group.g-footer a.ctl:hover{background:#223244}
-.group.g-footer .defrow{border-bottom-color:#253444}
+/* Surfaces own foreground AND background tokens. A footer is secondary site information,
+   not automatically a dark hero. Match the captured light, compact utility region. */
+.group.g-footer{--surface:#f5f5f7;--ink:#30343b;--muted:#536171;--soft:#e8eaee;--soft-ink:#30343b;--line:#d5d8df;background:var(--surface);color:var(--ink);margin:32px -24px 0;padding:24px}
+.group.g-footer .node,.group.g-footer .block{margin:0;padding:0}
+.group.g-footer .stack{display:flex;flex-wrap:wrap;gap:14px 24px}
+.group.g-footer .stack>.block{flex:1 1 250px}
+.group.g-footer .stack>.block:first-child{flex-basis:100%}
+.group.g-footer .linklist{columns:auto;display:flex;flex-wrap:wrap;gap:6px 18px;padding:0;margin:0}
+.group.g-footer .linklist li{list-style:none;margin:0;font-size:13px;line-height:1.65}
+.group.g-footer .seq{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding:0}
+.group.g-footer .seq li{list-style:none;margin:0;font-size:12px;line-height:1.6}
+.group.g-footer .stack>.block:has(.seq),.group.g-footer .stack>.block:has(.chips-rows){flex-basis:100%;padding-top:12px;border-top:1px solid var(--line)}
+.group.g-footer .linklist li.go::marker{content:""}
+.group.g-footer .chips{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0}
+.group.g-footer .chip-item{padding:0;border:0;background:transparent;border-radius:0;font-size:13px;color:var(--ink)}
+.group.g-footer .title,.group.g-footer a,.group.g-footer .linklist li.go>a,.group.g-footer .chips a{color:var(--ink)}
+.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:var(--muted)}
+.group.g-footer .ctl{border-color:var(--line);color:var(--ink);background:var(--surface);padding:4px 10px}
+.group.g-footer a.ctl:hover{background:var(--soft)}
+.group.g-footer .defrow{border-bottom-color:var(--line)}
+/* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
+.reading-page{--reading-width:800px;max-width:var(--reading-width);margin-inline:auto}
+.reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
+.reading-page .node.w-prose,.reading-page .node.w-narrow,.reading-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.reading-page .fact,.reading-page .prose,.reading-page .prose p,.reading-page .quote{max-width:none}
+.reading-page .fact img{margin-inline:auto}
+.reading-page .defrow{display:block;padding:16px 0}
+.reading-page .deflabel{margin-bottom:6px}
+.reading-page .defval{font-size:1em;line-height:1.75}
+.reading-page .cards:not(:has(img)){display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.reading-page .cards:not(:has(img))>.item{border:0;padding:0}
+.reading-page .cards:not(:has(img)) .node{margin:0}
+.reading-page .cards:not(:has(img)) .action{margin:0;border-radius:999px;padding:5px 14px;background:var(--soft);color:var(--soft-ink)}
+/* Label-only destination groups are navigation, not a vertical sitemap. */
+.utility-group>.chips-rows{display:flex;flex-wrap:wrap}
+.utility-group>.chips-rows .chip-item{display:inline-block;padding:3px 8px}
+.stack>.block:has(>.utility-group){margin-block:8px;padding:0}
+.utility-group{margin-block:4px}
+.node.w-narrow:has(>.linklist),.node.w-narrow:has(>.chips){max-width:none}
+.linklist.cols2,.linklist.cols3,.linklist.cols4{columns:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:3px 18px}
+.header-bar .linklist.cols2,.header-bar .linklist.cols3,.header-bar .linklist.cols4{display:flex;grid-template-columns:none}
+.node:has(>.chips)>.chips{gap:6px 12px}
+/* Related sections inherit the page frame; long fact lines keep their reading measure. */
+.depth-0>.meta{margin-inline:0}
+.utility-facts>.stack>.block{margin:4px 0;padding:0}
+.utility-facts>.stack>.block>.node{margin:0}
+.utility-facts .title{font-size:1em;margin:4px 0}
+.utility-group>.stack{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.stack>.block{margin:0;padding:0}
+.utility-group>.stack>.block>.node{margin:0}
+.utility-group>.deflist{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.deflist>.defrow{border:0;padding:0}
+/* Shared structural compact forms: singleton catalog entries, ordered editorial media, boolean utilities. */
+.singleton-card>.stack{max-width:320px}
+.singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:flex-start;padding:0}
+.singleton-card .banner>.title{font-size:1.12em;text-align:left;order:1;margin:8px 0}
+.singleton-card .banner>.band{order:0;margin:0;max-width:320px}
+.singleton-card .banner>.band .strip{margin:0}
+.singleton-card .banner>.controls,.singleton-card .banner>.action{order:2;margin:8px 0}
+.singleton-card .banner img{max-width:100%;max-height:320px;width:auto;height:auto}
+.boolean-utilities>.stack{display:flex;flex-wrap:wrap;gap:8px 16px}
+.boolean-utilities>.stack>.block,.boolean-utilities>.stack>.block>.node{margin:0;padding:0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox]){display:inline-block;margin:4px 16px 4px 0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox])>.node{margin:0;padding:0}
+.ordered-media-rows>.stack>.block{margin:12px 0;padding:12px 0;border-bottom:1px solid var(--line)}
+.ordered-media-rows>.stack>.block>.node{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:4px 20px;margin:0;padding:0}
+.ordered-media-rows>.stack>.block>.node>*{grid-column:1;margin:0}
+.ordered-media-rows>.stack>.block>.node>.band{grid-column:2;grid-row:1 / span 5;margin:0;align-self:start}
+.ordered-media-rows .band .strip{margin:0;width:auto}
+.ordered-media-rows .band img{max-width:120px;max-height:120px;width:auto;height:auto}
+@media(max-width:600px){.ordered-media-rows>.stack>.block>.node{grid-template-columns:minmax(0,1fr) 96px;gap:4px 12px}.ordered-media-rows .band img{max-width:96px;max-height:96px}}
+/* Whole-page alignment: local lists, facts and cards inherit the same page frame. */
+.catalog-page .node.w-prose,.catalog-page .node.w-narrow,.catalog-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.catalog-page>.stack>.block{margin:14px 0}
+.catalog-page .depth-1>.fact{max-width:none}
+.catalog-page>.stack>.block:has(>.node>.deflist) .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.catalog-page>.stack>.block:has(>.node>.deflist) .defrow{display:block;padding:16px;background:#f6f7f9;border:1px solid var(--line);border-radius:12px}
+.catalog-page .deflabel{margin-bottom:8px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:14px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block{margin:0;padding:0}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block>.node{margin:0;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fafbfc}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>hr{display:none}
+.product-page{max-width:960px;margin-inline:auto}
+.product-page .node.w-prose,.product-page .node.w-narrow,.product-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.product-page .fact,.product-page .prose,.product-page .prose p{max-width:none}
+.product-page .fact img{margin-inline:auto}
+.product-page>.meta{margin-inline:0}
+.product-page>.stack>.block{margin-block:32px}
+.product-page .defrow{gap:24px}
+.product-page .deflabel{flex:0 0 190px;min-width:0}
+.product-page .media-captions .deflabel{flex:0 0 auto}
+.detail-page>.title{max-width:none;margin-inline:0}
+.detail-page>.fact{max-width:none}
+.detail-page .node.w-prose,.detail-page .node.w-narrow,.detail-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.detail-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start;margin-top:24px}
+.detail-main,.detail-task{min-width:0}
+.detail-main>.group{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.detail-main .fact,.detail-main .prose{max-width:none}
+.detail-task{padding:20px 24px;border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 24px #17212b10}
+.detail-task .group{margin:12px 0}
+.detail-task input{max-width:100%}
+.detail-tail{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.detail-tail .g-distribution .chips-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.detail-tail .g-distribution .chip-item{padding:8px 12px;border-radius:8px;background:var(--soft)}
+.detail-tail .g-aspects .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:4px 24px}
+.detail-tail .g-reviews>.node{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.detail-tail .g-reviews>.node>*{min-width:0}
+.detail-tail .g-reviews>.node>.title,.detail-tail .g-reviews>.node>.controls,.detail-tail .g-reviews>.node>.g-distribution,.detail-tail .g-reviews>.node>.g-aspects{grid-column:1/-1}
+.detail-tail .g-aspects .cmp-table th.cmp-col{min-width:120px}
+.detail-tail .g-reviews>.node>.g-mentions{grid-column:1/-1}
+.detail-tail .g-mentions .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:4px 24px}
+.detail-tail .g-mentions .defrow{justify-content:space-between}
+.detail-page .gallery-mosaic{grid-auto-rows:180px;grid-template-columns:2fr 1fr 1fr}
+.detail-page .gallery-mosaic .strip{aspect-ratio:auto}
+.detail-page .gallery-mosaic .strip:first-child{grid-column:span 1;grid-row:span 2}
+main:has(.marketing-page){max-width:1728px}
+.marketing-page>.title{max-width:none}
+.marketing-page .node.w-bleed{width:100%;margin-inline:0}
+.marketing-page .node.w-narrow,.marketing-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.marketing-page .cards.cols-auto{grid-template-columns:repeat(2,minmax(0,1fr))}
+.marketing-page .cards.cols-auto .item{padding:20px;border-radius:12px;background:#f5f5f7}
+.marketing-page .cards.cols-auto .title{text-align:center;font-size:26px}
+.marketing-page .cards.cols-auto .fact{max-width:none;text-align:center}
+.marketing-page .cards.cols-auto .fact img{margin:auto}
+.marketing-page .cards.cols-auto .controls{justify-content:center}
+.marketing-page .g-tv .cards.cols-auto{grid-template-columns:repeat(3,minmax(0,1fr))}
+.marketing-page .g-services .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.marketing-page .g-services .defrow{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:12px}
+.marketing-page .g-services .defval img{max-height:180px;margin:auto}
+@media(min-width:1920px){body:has(.marketing-page){background:#f5f5f7}main:has(.marketing-page){max-width:1728px;padding-inline:24px}.marketing-page>.stack>.block{margin-block:16px}}
+@media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr);gap:20px}.detail-tail .g-reviews>.node{grid-template-columns:minmax(0,1fr)}.marketing-page .g-tv .cards.cols-auto{grid-template-columns:1fr}.detail-page .gallery-mosaic{grid-auto-rows:130px;grid-template-columns:repeat(2,minmax(0,1fr))}.detail-page .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.marketing-page .cards.cols-auto{grid-template-columns:1fr}.product-page .defrow{flex-wrap:wrap}.product-page .deflabel{flex-basis:100%}}
+/* Media surface metadata keeps marketing image and text in the same panel. The
+   original image is centered at natural height; only uniform lateral gutters clip. */
+.banner-integrated{position:relative;isolation:isolate;overflow:hidden;min-height:580px;padding:32px 24px!important;background:var(--banner-bg);color:var(--banner-fg);display:flex;flex-direction:column;align-items:center;margin-block:12px}
+.banner-integrated>.strip{position:absolute;inset:0;width:100%;height:580px;margin:0;z-index:-1;display:flex;justify-content:center}
+.banner-integrated>.strip img{flex:none;max-width:none;width:auto;height:auto;align-self:flex-start;margin:0;border-radius:0}
+.banner-integrated>.title{font-size:48px;line-height:1.1;margin:8px 0}
+.banner-integrated>.fact{font-size:22px;max-width:640px;line-height:1.35;margin:4px 0}
+.banner-integrated>.controls{margin:16px 0}
+.banner-integrated .ctl{background:transparent;color:#2997ff;border-color:#2997ff;border-radius:999px}
+.banner-integrated .action{background:#0071e3;color:#fff;border-radius:999px}
+.banner-integrated.media-centered>.fact:first-of-type{margin-top:auto}
+.banner-integrated.media-centered>.controls{margin-bottom:0}
+@media(max-width:700px){main{padding:20px 16px 0}.group.g-footer{margin-inline:-16px;padding:20px 16px}.banner-integrated{min-height:540px}.banner-integrated>.title{font-size:34px}.banner-integrated>.strip{height:540px}.banner-integrated>.strip img{width:auto;max-width:min(calc(var(--media-width)*.7),calc((100vw - 48px) * var(--media-ratio)));height:auto;object-fit:contain;align-self:flex-start;margin-top:160px}.banner-integrated>.fact{font-size:18px}.banner-integrated.media-centered>.strip img{margin-top:45px}.gallery-mosaic{grid-template-columns:repeat(2,1fr)}.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.stack.cols-auto,.cards{grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}}
 </style></head>
-<body><main><article id="sspai-post-114699" class="node depth-0"><h1 class="title">派早报：欧盟拟禁止 13 岁以下儿童使用社交媒体等</h1><div class="fact"><span class="val">派早报</span></div><div class="fact"><span class="val">周五 18</span></div><div class="meta">少数派编辑部<span class="sep">·</span>2026-09-18</div><section class="group g-meta"><article class="node depth-1 w-narrow"><div class="fact"><span class="val">08:17 8 分钟阅读</span></div><section class="group g-credits"><article class="node depth-2"><div class="fact"><span class="val">本文责编： @北鸮</span></div></article></section></article></section><section class="group g-news"><article class="node depth-1 w-wide"><div class="cards"><div class="item"><article id="news-eu-kids" class="node depth-2"><h3 class="title">欧盟拟禁止 13 岁以下儿童使用社交媒体</h3><div class="fact"><span class="val">9 月 17 日，欧盟委员会通过《欧盟儿童法案》（EU KIDS Act）提案，拟禁止社交媒体平台向 13 岁以下儿童开放，并将独立开户的最低年龄统一设为 15 岁。提案还要求平台证明其服务适合相应年龄用户，并在设计阶段保障安全。按照提案，13 至未满 15 岁儿童可通过监护人开设和管理的子账户使用适龄社交媒体及视频分享服务，但须限制社交联系人，每日使用不超过一小时。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fdigital-strategy.ec.europa.eu%2Fen%2Fnews%2Feu-kids-act-restrict-social-media-platforms-access-children-eu">来源</a></article></div><div class="item"><article id="news-kimi-finance" class="node depth-2"><h3 class="title">月之暗面发布 Kimi 金融行业 AI 解决方案</h3><div class="fact"><span class="val">月之暗面于 9 月 17 日宣布推出 Kimi 金融行业解决方案，整合 Kimi 金融行业的产品与能力，涵盖 10+ 权威数据源、9 项金融技能和 5 项合规安全措施，以及机构级的数据建模和报告交付能力。该解决方案将提供持仓早报、财报点评、项目筛选、深度研究和组合复盘等，将数据获取、专业分析与成果交付连接起来。该方案可将此前以天计的资料处理和初稿制作压缩到小时级，帮交易员减少工作压力。</span></div><a class="action verb-open" href="https://mp.weixin.qq.com/s/ooqI84c0PRMl7f-DvDjMog">来源</a></article></div><div class="item"><article id="news-mistral-mozilla" class="node depth-2"><h3 class="title">Mistral 与 Mozilla 展开 AI 合作</h3><div class="fact"><span class="val">9 月 16 日，Mistral 与 Mozilla 宣布合作，为 Firefox 的 AI 浏览助手 Smart Window 测试版提供模型支持。合作首批覆盖法国和北美用户，预计今年晚些时候扩展至英国和德国。Smart Window 可协助用户处理复杂搜索、找回此前浏览过的内容，以及根据需求从标签页中搜集信息。</span></div><div class="controls"><span class="ctl" data-verb="operate">发表首评</span><a class="ctl" href="https://sspai.com/link?target=https%3A%2F%2Fmistral.ai%2Fnews%2Fmistral-x-mozilla%2F">来源</a></div></article></div><div class="item"><article id="news-lumix-20mm" class="node depth-2"><h3 class="title">松下发布 LUMIX S 20mm F2.5 超广角镜头</h3><div class="fact"><span class="val">9 月 16 日，松下推出 LUMIX S 20mm F2.5 镜头，这款镜头专为街拍创作者打造，F2.5 光圈适合在光线较弱的环境使用。规格方面，该镜头最近对焦距离为 0.18m，整机重量仅 142g，长度仅 40.9mm，体积与此前配合 LUMIX S9 推出的 18-40mm F4.5-6.3 变焦头、40mm F2 基本一致，方便随身携带。</span></div><a class="action verb-open" href="https://mp.weixin.qq.com/s/Lhm_l2FCUzt9HsObRRQ2_w">来源</a></article></div><div class="item"><article id="news-bose-open-earbuds" class="node depth-2"><h3 class="title">Bose 发布两款开放式无线耳机</h3><div class="fact"><span class="val">9 月 17 日，Bose 发布 Bose Sport Open Earbuds 与 Bose Ultra Open Earbuds (2nd Gen) 两款开放式无线耳机。Sport Open Earbuds 针对运动场景设计，注重佩戴稳定性、舒适度与耐用性，采用弹性耳夹与实体按键设计。单次续航 7 小时，有黑白绿三色可选，定价 199 美元。</span></div><div class="fact"><span class="val">左：Sports Open Earbuds；右：Ultra Open Earbuds (2nd Gen)</span></div><span class="action-plain">发表首评</span></article></div><div class="item"><article id="news-astra-for-law" class="node depth-2"><h3 class="title">OpenAI 推出 Astra for Law</h3><div class="fact"><span class="val">9 月 17 日，OpenAI 发布面向律师事务所和法律科技公司的 Astra for Law，将 GPT‑6 Astra 与法律检索索引、专业分析及写作指令结合，用于法律研究和工作流程。其法律检索索引覆盖超过 2.3 亿个网址，可查询美国判例、成文法、法规等资料，并每日补充来源。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fopenai.com%2Findex%2Fastra-for-law%2F">来源</a></article></div><div class="item"><article id="news-tc260-recycle" class="node depth-2"><h3 class="title">全国网安标委秘书处发布三项与电子设备回收相关的网络安全标准实践</h3><div class="fact"><span class="val">为配套 GB 46864-2025《数据安全技术 电子产品信息清除技术要求》强制性国家标准落地实施，全国网安标委秘书处组织 30 余家存储芯片厂商、电子产品制造商、回收经营者和第三方机构等，编制了 3 项网络安全标准实践指南供参考使用。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.tc260.org.cn%2Ftc260%2Ftzgg%2F202609%2F63bba278d8164fa08388b530b894a563.shtml">来源</a></article></div></div></article></section><section class="group g-briefs"><article class="node depth-1 w-wide"><h2 class="title">不妨一看的简讯</h2><div class="cards"><div class="item"><article id="bf-apple-servers" class="node depth-2"><div class="fact"><span class="val">据 The Information 报道，知情人士透露 Apple 正筹划推出企业级服务器，计划面向 AI 开发者、企业和政府机构销售。</span></div><a class="action verb-open" href="https://m.ithome.com/html/1003297.htm">来源</a></article></div><div class="item"><article id="bf-win11-kb5124008" class="node depth-2"><div class="fact"><span class="val">据 Bleeping Computer，微软承认适用于 Windows 11 系统的 9 月累计更新 KB5124008 存在问题，可能会导致域信任关系故障。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.bleepingcomputer.com%2Fnews%2Fmicrosoft%2Fwindows-11-kb5124008-update-breaks-domain-trust-for-some-use">来源</a></article></div><div class="item"><article id="bf-douyin-voice" class="node depth-2"><div class="fact"><span class="val">抖音上线声音侵权举报入口，可在网页端批量侵权举报工具选择「冒用声音」发起投诉。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.douyin.com%2Fuser%2FMS4wLjABAAAANDEWKpWPI1HZOYhDHzk-u-n4QapA7hhx4MMmLUBGa4EgmNJfRLo2XrGnIU54PfrB%3Ffro">来源</a></article></div><div class="item"><article id="bf-denuvo-lawsuit" class="node depth-2"><div class="fact"><span class="val">反盗版方案公司 Denuvo 于 9 月 14 日在美国加州北区地方法院起诉匿名游戏破解者 voices38，指控其在至少 26 款游戏中绕过反篡改保护。Denuvo 希望获得经济赔偿，并对其施加游戏破解禁令。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.techpowerup.com%2F352762%2Fdenuvo-files-lawsuit-against-anonymous-game-cracker-voices38">来源</a></article></div><div class="item"><article id="bf-tv-standard" class="node depth-2"><div class="fact"><span class="val">广电总局在 17 日举行的「开局起步『十五五』」系列主题新闻发布会上介绍，广电总局将在今年同工业和信息化部制定一体化电视技术标准，将机顶盒功能以软件形态内置于电视机中，打造极简终端形态，用户将使用通用遥控器，一台电视享受全类型电视业务。</span></div><a class="action verb-open" href="https://mp.weixin.qq.com/s/El1LvYU_Ti-haUhIAp3YnA">来源</a></article></div><div class="item"><article id="bf-kimi-membership" class="node depth-2"><div class="fact"><span class="val">Kimi 上线了新的会员计划，价格从 49 每月至 699 每月不等。</span></div><a class="action verb-open" href="https://www.kimi.com/help/membership/membership-pricing">来源</a></article></div><div class="item"><article id="bf-gopro-m43" class="node depth-2"><div class="fact"><span class="val">GoPro 于 9 月 17 日正式加入 M43 联盟。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.four-thirds.org%2Fen%2Fnews%2F.assets%2Fgopro-micro-four-thirds-mission-1-pro-ils-EN-20260917.pdf">来源</a></article></div><div class="item"><article id="bf-huawei-dealers" class="node depth-2"><div class="fact"><span class="val">9 月 17 日，据每日经济新闻，有接近赛力斯的知情人士在接受采访时透露，明年 1 月 1 日起，华为专营店将分为专卖问界车型与混卖其他「四界」车型两种。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.nbd.com.cn%2Farticles%2F2026-09-17%2F4584388.html">来源</a></article></div></div></article></section><section class="group g-dynamics"><article class="node depth-1 w-wide"><h2 class="title">少数派的近期动态</h2><div class="cards"><div class="item"><article id="dy-pocket-prophet" class="node depth-2"><div class="fact"><span class="val">口袋先知新版本 1.3.3 上线，你可以自定义任何你想展示的屏幕效果。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fdot.mindreset.tech%2Fdocs%2Frand_0%2Fstart%2Ffeatures%2Fdisplay_mode">了解更多</a></article></div><div class="item"><article id="dy-dot-skill" class="node depth-2"><div class="fact"><span class="val">能让 AI 助手通过自然语言指令直接与您的 Quote/0 摘录墨水屏交互的 Dot Skill 已上线。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fdot.mindreset.tech%2Fdocs%2Fservice%2Fopen%2Fskill">点击了解</a></article></div><div class="item"><article id="dy-august-haul" class="node depth-2"><div class="fact"><span class="val">八月买了什么好东西？</span></div><a class="action verb-open" href="https://sspai.com/bullet/1787798597">来晒你的成绩单</a></article></div><div class="item"><article id="dy-iphone-gear" class="node depth-2"><div class="fact"><span class="val">iPhone 少数派共创配件上新，自由选择保护、充电、线缆和支架组合。</span></div><a class="action verb-open" href="https://sspai.com/post/114414">欢迎选购</a></article></div></div></article></section><section class="group g-missed"><article class="node depth-1 w-narrow"><h2 class="title">你可能错过的文章</h2><ul class="linklist"><li class="go"><a href="https://sspai.com/post/114451">一个小创意的诞生：雪漫天 BeatBox 外壳定制指南</a></li><li class="go"><a href="https://sspai.com/post/114643">具透 | macOS 27 正式版来了，这些是你值得了解新细节</a></li><li class="go"><a href="https://sspai.com/post/114557">城市漫步指南 | 威海初秋，看海玩沙</a></li></ul></article></section><section class="group g-past-issues"><article class="node depth-1 w-wide"><h2 class="title">往期派早报</h2><div class="cards cols-auto media-first"><div class="item"><article id="pi-114658" class="node depth-2"><h3 class="title"><a class="self-link nav" href="https://sspai.com/post/114658">派早报：佳能发布 EOS R8 Mark II、GPT-5.5 即将下线等</a></h3><div class="fact"><span class="val"><img src="../assets/sspai-114699-6728b3b0-6d66-1478-f271-2cb385f85016.webp" alt=""></span></div><div class="fact"><span class="val">周四 17</span></div></article></div><div class="item"><article id="pi-114638" class="node depth-2"><h3 class="title"><a class="self-link nav" href="https://sspai.com/post/114638">派早报：Steam Frame 开启预购、WPS 多端支持 Markdown 等</a></h3><div class="fact"><span class="val"><img src="../assets/sspai-114699-f8a61984-f969-7e86-448c-53e6237e61cc.webp" alt=""></span></div><div class="fact"><span class="val">周三 16</span></div></article></div><div class="item"><article id="pi-114593" class="node depth-2"><h3 class="title"><a class="self-link nav" href="https://sspai.com/post/114593">派早报：中国联通宣布支持所有国行设备 eSIM 业务办理、Homebrew 7.0.0 发布等</a></h3><div class="fact"><span class="val"><img src="../assets/sspai-114699-6bc3642d-6853-ba07-404c-a82e66fc6fcf.webp" alt=""></span></div><div class="fact"><span class="val">周二 15</span></div></article></div><div class="item"><article id="pi-114539" class="node depth-2"><h3 class="title"><a class="self-link nav" href="https://sspai.com/post/114539">派早报：美国 AI 高管呼吁放缓研发，特朗普反对</a></h3><div class="fact"><span class="val"><img src="../assets/sspai-114699-0314ee30-33ad-bddc-5bf3-c572506edf8e.webp" alt=""></span></div><div class="fact"><span class="val">周一 14</span></div></article></div><div class="item"><article id="pi-114439" class="node depth-2"><h3 class="title"><a class="self-link nav" href="https://sspai.com/post/114439">派早报：商务部回应美国 AI 蒸馏指控</a></h3><div class="fact"><span class="val"><img src="../assets/sspai-114699-0d5801af-a8e8-7b16-67e6-3724c2e13268.webp" alt=""></span></div><div class="fact"><span class="val">周五 11</span></div></article></div></div><a class="action verb-open" href="https://sspai.com/tag/派早报">查看全部</a></article></section><section class="group g-support"><article class="node depth-1 w-narrow"><div class="meta">11 位派友已充电</div></article></section><section class="group g-discussion"><article class="node depth-1 w-narrow"><article class="node depth-2"><div class="fact"><span class="val">暂时还没有评论，先来评论一条吧</span></div></article><section class="group g-input"><article class="node depth-2"><span class="expose expose-input expose-comment"><span class="deflabel sr-only">说点什么...</span><input type="text" name="comment" data-type="text" aria-label="说点什么..." placeholder="说点什么..."></span></article></section><section class="group g-sort"><article class="node depth-2"><fieldset class="expose chipbar expose-comment-sort"><label class="choice"><input type="radio" name="comment-sort" value="key:sort-default"> 默认</label><label class="choice"><input type="radio" name="comment-sort" value="key:sort-hot"> 热门</label></fieldset></article></section></article></section></article></main></body></html>
+<body><main><article id="sspai-post-114699" class="node depth-0 reading-page" data-model-owner=""><h1 class="title">派早报：欧盟拟禁止 13 岁以下儿童使用社交媒体等</h1><div class="band"><figure class="strip"><img src="../assets/62-recovered-sspai-com-post-114699-f1d98ed9df56.png" alt=""></figure></div><div class="fact"><span class="val">派早报</span></div><div class="fact"><span class="val">周五 18</span></div><div class="meta">少数派编辑部<span class="sep">·</span>2026-09-18</div><section class="group g-meta"><article class="node depth-1 w-narrow" data-model-owner="meta"><div class="fact"><span class="val">08:17 8 分钟阅读</span></div><section class="group g-credits"><article class="node depth-2" data-model-owner="meta.credits"><div class="fact"><span class="val">本文责编： @北鸮</span></div></article></section></article></section><section class="group g-news"><article class="node depth-1 w-narrow" data-model-owner="news"><div class="stack"><section class="block"><article id="news-eu-kids" class="node depth-2" data-model-owner="news._items[0]"><h3 class="title">欧盟拟禁止 13 岁以下儿童使用社交媒体</h3><section class="group g-body"><article class="node depth-3" data-model-owner="news._items[0].body"><div class="stack"><section class="block"><article class="node depth-4" data-model-owner="news._items[0].body._lines[0]"><div class="fact"><span class="val">9 月 17 日，欧盟委员会通过《欧盟儿童法案》（EU KIDS Act）提案，拟禁止社交媒体平台向 13 岁以下儿童开放，并将独立开户的最低年龄统一设为 15 岁。提案还要求平台证明其服务适合相应年龄用户，并在设计阶段保障安全。按照提案，13 至未满 15 岁儿童可通过监护人开设和管理的子账户使用适龄社交媒体及视频分享服务，但须限制社交联系人，每日使用不超过一小时。3 至未满 13 岁儿童可通过监护人管理的账户使用专门设计的儿童友好视频服务，每日同样限时一小时。</span></div></article></section><section class="block"><article class="node depth-4" data-model-owner="news._items[0].body._lines[1]"><div class="fact"><span class="val">针对向未成年人提供服务的社交平台、网络游戏及 AI 聊天机器人等，提案拟禁止成瘾性功能、无停顿的无限滚动和睡眠时段推送。AI 伴侣与聊天机器人须默认关闭，且不得以制造情感依赖的方式模拟人际关系；未成年人账户须默认设为私密。提案还要求在线服务和应用商店采用年龄核验措施，并由超大型在线平台提交合规计划、接受独立审计。目前提案已提交欧洲议会和欧盟理事会审议，尚未完成立法。<a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fdigital-strategy.ec.europa.eu%2Fen%2Fnews%2Feu-kids-act-restrict-social-media-platforms-access-children-eu">来源</a></span></div></article></section></div></article></section><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fdigital-strategy.ec.europa.eu%2Fen%2Fnews%2Feu-kids-act-restrict-social-media-platforms-access-children-eu">来源</a></article></section><section class="block"><article id="news-kimi-finance" class="node depth-2" data-model-owner="news._items[1]"><h3 class="title">月之暗面发布 Kimi 金融行业 AI 解决方案</h3><section class="group g-body"><article class="node depth-3" data-model-owner="news._items[1].body"><div class="stack"><section class="block"><article class="node depth-4" data-model-owner="news._items[1].body._lines[0]"><div class="fact"><span class="val">月之暗面于 9 月 17 日宣布推出 Kimi 金融行业解决方案，整合 Kimi 金融行业的产品与能力，涵盖 10+ 权威数据源、9 项金融技能和 5 项合规安全措施，以及机构级的数据建模和报告交付能力。该解决方案将提供持仓早报、财报点评、项目筛选、深度研究和组合复盘等，将数据获取、专业分析与成果交付连接起来。该方案可将此前以天计的资料处理和初稿制作压缩到小时级，帮交易员减少工作压力。同时该解决方案内置 Wind 万得、东方财富、标普全球、财联社、财新数据等海内外数据源。数据通过 MCP 直接接入研究服务，关键数字可以回到原始出处核对，<a class="body-link" href="https://mp.weixin.qq.com/s/ooqI84c0PRMl7f-DvDjMog">来源</a>、口径清晰可查。此外该解决方案还将内置 Scholar 学术论文检索能力、Word / Excel / PDF 等 Office 格式内容生成工具，图片和语音生成工具等。目前中国工商银行、中信建投证券、易方达、红杉中国、真格基金等数十家机构已采用该方案。来源</span></div></article></section></div></article></section><a class="action verb-open" href="https://mp.weixin.qq.com/s/ooqI84c0PRMl7f-DvDjMog">来源</a></article></section><section class="block"><article id="news-mistral-mozilla" class="node depth-2" data-model-owner="news._items[2]"><h3 class="title">Mistral 与 Mozilla 展开 AI 合作</h3><section class="group g-body"><article class="node depth-3" data-model-owner="news._items[2].body"><div class="stack"><section class="block"><article class="node depth-4" data-model-owner="news._items[2].body._lines[0]"><div class="fact"><span class="val">9 月 16 日，Mistral 与 Mozilla 宣布合作，为 Firefox 的 AI 浏览助手 Smart Window 测试版提供模型支持。合作首批覆盖法国和北美用户，预计今年晚些时候扩展至英国和德国。Smart Window 可协助用户处理复杂搜索、找回此前浏览过的内容，以及根据需求从标签页中搜集信息。双方表示，正在围绕地区语言、方言和文化背景训练及微调模型，以提升回答对当地语境的理解能力。隐私方面，Mozilla 默认不会在其服务器上保存 Smart Window 的对话，Mistral 等合作方则同意遵守零数据留存要求。<a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fmistral.ai%2Fnews%2Fmistral-x-mozilla%2F">来源</a></span></div></article></section></div></article></section><div class="controls"><span class="ctl" data-verb="operate">发表首评</span><a class="ctl" href="https://sspai.com/link?target=https%3A%2F%2Fmistral.ai%2Fnews%2Fmistral-x-mozilla%2F">来源</a></div></article></section><section class="block"><article id="news-lumix-20mm" class="node depth-2" data-model-owner="news._items[3]"><h3 class="title">松下发布 LUMIX S 20mm F2.5 超广角镜头</h3><section class="group g-body"><article class="node depth-3" data-model-owner="news._items[3].body"><div class="stack"><section class="block"><article class="node depth-4" data-model-owner="news._items[3].body._lines[0]"><div class="fact"><span class="val">9 月 16 日，松下推出 LUMIX S 20mm F2.5 镜头，这款镜头专为街拍创作者打造，F2.5 光圈适合在光线较弱的环境使用。规格方面，该镜头最近对焦距离为 0.18m，整机重量仅 142g，长度仅 40.9mm，体积与此前配合 LUMIX S9 推出的 18-40mm F4.5-6.3 变焦头、40mm F2 基本一致，方便随身携带。镜头采用 62mm 滤镜口径，支持自定义对焦环与 FN 按钮。该镜头采用 9 组 11 片光学结构，带有 3 片非球面镜片、3 片 ED 低色散镜片，拥有 7 片光圈叶片。目前售价尚未公布。<a class="body-link" href="https://mp.weixin.qq.com/s/Lhm_l2FCUzt9HsObRRQ2_w">来源</a></span></div></article></section><hr class="region"><section class="block"><article class="node depth-4" data-model-owner="news._items[3].body._lines[1]"><div class="band"><figure class="strip"><img src="../assets/62-recovered-sspai-com-post-114699-60a0194657d1.png" alt=""></figure></div></article></section></div></article></section><a class="action verb-open" href="https://mp.weixin.qq.com/s/Lhm_l2FCUzt9HsObRRQ2_w">来源</a></article></section><section class="block"><article id="news-bose-open-earbuds" class="node depth-2" data-model-owner="news._items[4]"><h3 class="title">Bose 发布两款开放式无线耳机</h3><section class="group g-body"><article class="node depth-3" data-model-owner="news._items[4].body"><div class="stack"><section class="block"><article class="node depth-4" data-model-owner="news._items[4].body._lines[0]"><div class="fact"><span class="val">9 月 17 日，Bose 发布 Bose Sport Open Earbuds 与 Bose Ultra Open Earbuds (2nd Gen) 两款开放式无线耳机。Sport Open Earbuds 针对运动场景设计，注重佩戴稳定性、舒适度与耐用性，采用弹性耳夹与实体按键设计。单次续航 7 小时，有黑白绿三色可选，定价 199 美元。Ultra Open Earbuds 二代采用更新的发声单元，有更好的低音表现与更高的音量上限，支持 Snapdragon Sound 与 aptX Adaptive，并支持空间定位的影院模式、通话语音优化等功能。单次续航 9 小时，有黑白红绿四色可选，定价 299 美元。</span></div></article></section><hr class="region"><section class="block"><article class="node depth-4" data-model-owner="news._items[4].body._lines[1]"><div class="band"><figure class="strip"><img src="../assets/62-recovered-sspai-com-post-114699-7a7278dfc412.png" alt=""></figure></div></article></section><section class="block"><article class="node depth-4" data-model-owner="news._items[4].body._lines[2]"><div class="fact"><span class="val">左：Sports Open Earbuds；右：Ultra Open Earbuds (2nd Gen)</span></div></article></section></div></article></section><span class="action-plain">发表首评</span></article></section><section class="block"><article id="news-astra-for-law" class="node depth-2" data-model-owner="news._items[5]"><h3 class="title">OpenAI 推出 Astra for Law</h3><section class="group g-body"><article class="node depth-3" data-model-owner="news._items[5].body"><div class="stack"><section class="block"><article class="node depth-4" data-model-owner="news._items[5].body._lines[0]"><div class="fact"><span class="val">9 月 17 日，OpenAI 发布面向律师事务所和法律科技公司的 Astra for Law，将 GPT‑6 Astra 与法律检索索引、专业分析及写作指令结合，用于法律研究和工作流程。其法律检索索引覆盖超过 2.3 亿个网址，可查询美国判例、成文法、法规等资料，并每日补充<a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fopenai.com%2Findex%2Fastra-for-law%2F">来源</a>。OpenAI 表示，在 Vals AI 法律研究基准私有验证集的 200 道美国法律问题上，双方均采用最高推理强度时，Astra for Law 的整体正确性通过率为 54%，仅使用网页搜索的 GPT‑6 Astra 为 38.7%。面向符合条件的律所，该方案提供 API 零数据保留，ChatGPT Enterprise 使用内容默认不接受人工审查。同时，OpenAI 推出若干合作伙伴开发的插件以配合实践，并正式开放 ChatGPT for Word，方便校对、修改建议和格式问题检查。来源</span></div></article></section></div></article></section><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fopenai.com%2Findex%2Fastra-for-law%2F">来源</a></article></section><section class="block"><article id="news-tc260-recycle" class="node depth-2" data-model-owner="news._items[6]"><h3 class="title">全国网安标委秘书处发布三项与电子设备回收相关的网络安全标准实践</h3><section class="group g-body"><article class="node depth-3" data-model-owner="news._items[6].body"><div class="stack"><section class="block"><article class="node depth-4" data-model-owner="news._items[6].body._lines[0]"><div class="fact"><span class="val">为配套 GB 46864-2025《数据安全技术 电子产品信息清除技术要求》强制性国家标准落地实施，全国网安标委秘书处组织 30 余家存储芯片厂商、电子产品制造商、回收经营者和第三方机构等，编制了 3 项网络安全标准实践指南供参考使用。《半导体存储介质块擦除技术指引》明确了半导体存储介质块擦除技术的实现方法和具体操作指令，适用于指导半导体存储介质厂商、电子产品厂商等适配、调用和验证块擦除指令；《电子产品回收过程中的信息清除管理指引》明确了信息清除日志格式、内容和回收管理要求，以及信息清除标识的样式和使用方法；《移动智能终端信息清除技术指引》明确了手机、平板电脑等移动智能终端信息清除的具体方法、操作过程和验证要求。<a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fwww.tc260.org.cn%2Ftc260%2Ftzgg%2F202609%2F63bba278d8164fa08388b530b894a563.shtml">来源</a></span></div></article></section></div></article></section><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fwww.tc260.org.cn%2Ftc260%2Ftzgg%2F202609%2F63bba278d8164fa08388b530b894a563.shtml">来源</a></article></section></div></article></section><section class="group g-briefs"><article class="node depth-1 w-narrow" data-model-owner="briefs"><h2 class="title">不妨一看的简讯</h2><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="briefs._lines[0]"><div class="fact"><span class="val">据 The Information 报道，知情人士透露 Apple 正筹划推出企业级服务器，计划面向 AI 开发者、企业和政府机构销售。基础版配备两颗计划中的 M8 Ultra 芯片，高配版则配备四颗，并使用英伟达 NVLink Fusion 完成芯片连接。NVLink Fusion 包括交换机、芯粒和软件，能够让数据中心内的多颗芯片高速协同工作。预计最早 2029 年上市，项目仍可能取消或不采用英伟达技术。Apple 曾在 2002 年至 2011 年间销售 Xserve 服务器，芯片先后采用 IBM 和英特尔的产品。<a class="body-link" href="https://m.ithome.com/html/1003297.htm">来源</a></span></div></article></section><section class="block"><article class="node depth-2" data-model-owner="briefs._lines[1]"><div class="fact"><span class="val">据 Bleeping Computer，微软承认适用于 Windows 11 系统的 9 月累计更新 KB5124008 存在问题，可能会导致域信任关系故障。Reddit 有管理员表示，Windows 11 25H2 工作站安装 9 月累积更新后，设备在重启时出现域登录失败。卸载 KB5124008 并修复域关系后，设备恢复访问。该管理员推测该问题与微软的机器身份隔离有关。微软表示已注意到相关报道并正在调查，有相关信息将及时发布。<a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fwww.bleepingcomputer.com%2Fnews%2Fmicrosoft%2Fwindows-11-kb5124008-update-breaks-domain-trust-for-some-users%2F">来源</a></span></div></article></section><section class="block"><article class="node depth-2" data-model-owner="briefs._lines[2]"><div class="fact"><span class="val">抖音上线声音侵权举报入口，可在网页端批量侵权举报工具选择「冒用声音」发起投诉。<a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fwww.douyin.com%2Fuser%2FMS4wLjABAAAANDEWKpWPI1HZOYhDHzk-u-n4QapA7hhx4MMmLUBGa4EgmNJfRLo2XrGnIU54PfrB%3Ffrom_tab_name%3Dmain%26modal_id%3D7686082272528715044%26vid%3D7686082272528715044">来源</a></span></div></article></section><section class="block"><article class="node depth-2" data-model-owner="briefs._lines[3]"><div class="fact"><span class="val">反盗版方案公司 Denuvo 于 9 月 14 日在美国加州北区地方法院起诉匿名游戏破解者 voices38，指控其在至少 26 款游戏中绕过反篡改保护。Denuvo 希望获得经济赔偿，并对其施加游戏破解禁令。该诉讼有趣的点在于，Denuvo 没有涉案任何一款游戏的版权，案件只围绕反破解条例进行；Denuvo 并不知道 voices38 的真实身份，因此被告栏显示的是「未知个人或实体」。<a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fwww.techpowerup.com%2F352762%2Fdenuvo-files-lawsuit-against-anonymous-game-cracker-voices38">来源</a></span></div></article></section><section class="block"><article class="node depth-2" data-model-owner="briefs._lines[4]"><div class="fact"><span class="val">广电总局在 17 日举行的「开局起步『十五五』」系列主题新闻发布会上介绍，广电总局将在今年同工业和信息化部制定一体化电视技术标准，将机顶盒功能以软件形态内置于电视机中，打造极简终端形态，用户将使用通用遥控器，一台电视享受全类型电视业务。<a class="body-link" href="https://mp.weixin.qq.com/s/El1LvYU_Ti-haUhIAp3YnA">来源</a></span></div></article></section><section class="block"><article class="node depth-2" data-model-owner="briefs._lines[5]"><div class="fact"><span class="val">Kimi 上线了新的会员计划，价格从 49 每月至 699 每月不等。<a class="body-link" href="https://www.kimi.com/help/membership/membership-pricing">来源</a></span></div></article></section><section class="block"><article class="node depth-2" data-model-owner="briefs._lines[6]"><div class="fact"><span class="val">GoPro 于 9 月 17 日正式加入 M43 联盟。GoPro 于上月底推出了使用 M43 卡口的可换镜头紧凑相机 Mission 1 Pro ILS，尽管采用 M43 卡口，该相机无电子触点，且仅使用 1 英寸传感器。<a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fwww.four-thirds.org%2Fen%2Fnews%2F.assets%2Fgopro-micro-four-thirds-mission-1-pro-ils-EN-20260917.pdf">来源</a></span></div></article></section><section class="block"><article class="node depth-2" data-model-owner="briefs._lines[7]"><div class="fact"><span class="val">9 月 17 日，据每日经济新闻，有接近赛力斯的知情人士在接受采访时透露，明年 1 月 1 日起，华为专营店将分为专卖问界车型与混卖其他「四界」车型两种。<a class="body-link" href="https://sspai.com/link?target=https%3A%2F%2Fwww.nbd.com.cn%2Farticles%2F2026-09-17%2F4584388.html">来源</a></span></div></article></section></div></article></section><section class="group g-dynamics"><article class="node depth-1 w-wide" data-model-owner="dynamics"><h2 class="title">少数派的近期动态</h2><div class="cards"><div class="item"><article id="dy-pocket-prophet" class="node depth-2" data-model-owner="dynamics._items[0]"><div class="fact"><span class="val">口袋先知新版本 1.3.3 上线，你可以自定义任何你想展示的屏幕效果。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fdot.mindreset.tech%2Fdocs%2Frand_0%2Fstart%2Ffeatures%2Fdisplay_mode">了解更多</a></article></div><div class="item"><article id="dy-dot-skill" class="node depth-2" data-model-owner="dynamics._items[1]"><div class="fact"><span class="val">能让 AI 助手通过自然语言指令直接与您的 Quote/0 摘录墨水屏交互的 Dot Skill 已上线。</span></div><a class="action verb-open" href="https://sspai.com/link?target=https%3A%2F%2Fdot.mindreset.tech%2Fdocs%2Fservice%2Fopen%2Fskill">点击了解</a></article></div><div class="item"><article id="dy-august-haul" class="node depth-2" data-model-owner="dynamics._items[2]"><div class="fact"><span class="val">八月买了什么好东西？</span></div><a class="action verb-open" href="https://sspai.com/bullet/1787798597">来晒你的成绩单</a></article></div><div class="item"><article id="dy-iphone-gear" class="node depth-2" data-model-owner="dynamics._items[3]"><div class="fact"><span class="val">iPhone 少数派共创配件上新，自由选择保护、充电、线缆和支架组合。</span></div><a class="action verb-open" href="https://sspai.com/post/114414">欢迎选购</a></article></div></div></article></section><section class="group g-missed"><article class="node depth-1 w-narrow utility-group utility-facts" data-model-owner="missed"><h2 class="title">你可能错过的文章</h2><ul class="linklist"><li class="go" data-model-owner="missed._items[0]"><a href="https://sspai.com/post/114451">一个小创意的诞生：雪漫天 BeatBox 外壳定制指南</a></li><li class="go" data-model-owner="missed._items[1]"><a href="https://sspai.com/post/114643">具透 | macOS 27 正式版来了，这些是你值得了解新细节</a></li><li class="go" data-model-owner="missed._items[2]"><a href="https://sspai.com/post/114557">城市漫步指南 | 威海初秋，看海玩沙</a></li></ul></article></section><section class="group g-past-issues"><article class="node depth-1 w-wide" data-model-owner="past-issues"><h2 class="title">往期派早报</h2><div class="cards cols-auto compact-media media-first"><div class="item"><article id="pi-114658" class="node depth-2" data-model-owner="past-issues._items[0]"><h3 class="title"><a class="self-link nav" href="https://sspai.com/post/114658">派早报：佳能发布 EOS R8 Mark II、GPT-5.5 即将下线等</a></h3><div class="fact"><span class="val"><a class="media-link" href="https://sspai.com/post/114658"><img src="../assets/sspai-114699-6728b3b0-6d66-1478-f271-2cb385f85016.webp" alt=""></a></span></div><div class="fact"><span class="val">周四 17</span></div></article></div><div class="item"><article id="pi-114638" class="node depth-2" data-model-owner="past-issues._items[1]"><h3 class="title"><a class="self-link nav" href="https://sspai.com/post/114638">派早报：Steam Frame 开启预购、WPS 多端支持 Markdown 等</a></h3><div class="fact"><span class="val"><a class="media-link" href="https://sspai.com/post/114638"><img src="../assets/sspai-114699-f8a61984-f969-7e86-448c-53e6237e61cc.webp" alt=""></a></span></div><div class="fact"><span class="val">周三 16</span></div></article></div><div class="item"><article id="pi-114593" class="node depth-2" data-model-owner="past-issues._items[2]"><h3 class="title"><a class="self-link nav" href="https://sspai.com/post/114593">派早报：中国联通宣布支持所有国行设备 eSIM 业务办理、Homebrew 7.0.0 发布等</a></h3><div class="fact"><span class="val"><a class="media-link" href="https://sspai.com/post/114593"><img src="../assets/sspai-114699-6bc3642d-6853-ba07-404c-a82e66fc6fcf.webp" alt=""></a></span></div><div class="fact"><span class="val">周二 15</span></div></article></div><div class="item"><article id="pi-114539" class="node depth-2" data-model-owner="past-issues._items[3]"><h3 class="title"><a class="self-link nav" href="https://sspai.com/post/114539">派早报：美国 AI 高管呼吁放缓研发，特朗普反对</a></h3><div class="fact"><span class="val"><a class="media-link" href="https://sspai.com/post/114539"><img src="../assets/sspai-114699-0314ee30-33ad-bddc-5bf3-c572506edf8e.webp" alt=""></a></span></div><div class="fact"><span class="val">周一 14</span></div></article></div><div class="item"><article id="pi-114439" class="node depth-2" data-model-owner="past-issues._items[4]"><h3 class="title"><a class="self-link nav" href="https://sspai.com/post/114439">派早报：商务部回应美国 AI 蒸馏指控</a></h3><div class="fact"><span class="val"><a class="media-link" href="https://sspai.com/post/114439"><img src="../assets/sspai-114699-0d5801af-a8e8-7b16-67e6-3724c2e13268.webp" alt=""></a></span></div><div class="fact"><span class="val">周五 11</span></div></article></div></div><a class="action verb-open" href="https://sspai.com/tag/派早报">查看全部</a></article></section><section class="group g-article-reading-utilities"><article class="node depth-1 w-narrow" data-model-owner="article-reading-utilities"><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="article-reading-utilities._lines[0]"><div class="fact"><span class="val">&gt; 下载 <a class="body-link" href="https://sspai.com/page/client">少数派 2.0 客户端</a>、关注 <a class="body-link" href="https://sspai.com/s/J71e">少数派公众号</a>，解锁全新阅读体验 📰</span></div></article></section><section class="block"><article class="node depth-2" data-model-owner="article-reading-utilities._lines[1]"><div class="fact"><span class="val">&gt; 实用、好用的 <a class="body-link" href="https://sspai.com/mall">正版软件</a>，少数派为你呈现 🚀</span></div></article></section></div></article></section><section class="group g-support"><article class="node depth-1 w-narrow" data-model-owner="support"><div class="meta">11 位派友已充电</div></article></section><section class="group g-discussion"><article class="node depth-1 w-narrow" data-model-owner="discussion"><article class="node depth-2"><div class="fact"><span class="val">暂时还没有评论，先来评论一条吧</span></div></article><section class="group g-input"><article class="node depth-2" data-model-owner="discussion.input"><span class="expose expose-input expose-comment"><span class="deflabel sr-only">说点什么...</span><input type="text" name="comment" data-type="text" aria-label="说点什么..." placeholder="说点什么..."></span></article></section><section class="group g-sort"><article class="node depth-2" data-model-owner="discussion.sort"><fieldset class="expose chipbar expose-comment-sort"><label class="choice"><input type="radio" name="comment-sort" value="key:sort-default"> 默认</label><label class="choice"><input type="radio" name="comment-sort" value="key:sort-hot"> 热门</label></fieldset></article></section></article></section><section class="group g-navigation"><article class="node depth-1 w-narrow" data-model-owner="navigation"><div class="controls"><a class="ctl" href="https://sspai.com/create">共创</a><a class="ctl" href="https://sspai.com/prime">PRIME</a><a class="ctl" href="https://sspai.com/matrix">Matrix</a><a class="ctl" href="https://sspai.com/series">栏目</a></div></article></section><section class="group g-footer"><article class="node depth-1 w-wide" data-model-owner="footer"><section class="group g-record"><article class="node depth-2" data-model-owner="footer.record"><div class="fact"><span class="val">© 2013-2026 深圳市烧麦网络科技有限公司 - 少数派 粤ICP备09128966号-4 | 粤B2-20211534</span></div></article></section><div class="controls"><a class="ctl" href="https://sspai.com/page/client">下载 App</a><a class="ctl" href="mailto:contact@sspai.com">联系我们</a><a class="ctl" href="https://sspai.com/page/bussiness">商务合作</a><a class="ctl" href="https://sspai.com/page/about-us">关于我们</a><a class="ctl" href="https://sspai.com/page/agreement">用户协议</a><a class="ctl" href="https://beian.miit.gov.cn/">粤ICP备09128966号-4</a><a class="ctl" href="https://dxzhgl.miit.gov.cn/">粤B2-20211534</a></div></article></section></article></main></body></html>

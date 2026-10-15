@@ -74,7 +74,7 @@ export const NAME_COLUMN_LABEL = '名称';
 export const columnLabel = (key) => (key === '_name' ? NAME_COLUMN_LABEL : (roleLabel(key) || FIELDS[key]?.label || ''));
 
 // ---- link targets (target validation + `key:` → in-page anchor) ------------
-export const hasTarget = (a) => Boolean(a?.to) && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'));
+export const hasTarget = (a) => typeof a?.to === 'string' && (/^https?:\/\//i.test(a.to) || /^mailto:[^\s<>]+@[^\s<>]+$/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'));
 // `key:` 目标是页内引用（id 由 `_key` 生成）：降为 `#锚点`，与 fmt() 的 ref 处理一致（父代理裁定 5）
 export const hrefOf = (to) => (typeof to === 'string' && to.startsWith('key:') ? '#' + to.slice(4).replace(/[^A-Za-z0-9_-]/g, '-') : to);
 
@@ -98,6 +98,13 @@ export function selectForm(items, order) {
   if (!items.length) return 'none';
   if (items.every(isImageOnlyItem)) return 'image-strip';   // 图像主导 ⇒ 满幅（F-031-§7）
   if (items.every(isProseItem)) return 'prose';
+  // Ordered paragraphs with locally owned source links remain a reading sequence.
+  // Use stack, not bare-prose drawing, so all targets retain the child actions.
+  if (['sequence', 'time'].includes(order) && items.every((it) => it._text
+    && factsOf(it).every((f) => f.key === '_text') && !it._action
+    && childrenOf(it).every((c) => hasTarget(c.node._action)
+      && typeof c.node._action.label === 'string'
+      && it._text.text.includes(c.node._action.label)))) return 'stack';
   if (items.some((it) => it._fields && Object.keys(it._fields).length)) return 'table';
   if (items.length > 1 && items.some((it) => it._expose)) return 'stack';   // 表单步骤是序列，不是一行
   // A member carrying an image or an action is not a Q&A line: collapsing it into a
@@ -118,6 +125,10 @@ export function selectForm(items, order) {
     if (items.every((it) => it._action)) return 'controls';        // 只有短标签的控件集合才走控件条
     return 'chips';
   }
+  // Long, unillustrated editorial chapters are a reading sequence, not a grid.
+  // Illustrated feature cards and compact utility definitions retain their established forms.
+  if (items.every((it) => it._title && it._detail && !it._image && !it._price && !it._fields)
+    && items.some((it) => textLenOf(it) > 160)) return 'stack';
   if (!comparable(items)) return 'stack';
   // a "product card" needs a name: a price with no named product is not a card (F-030)
   if (items.some((it) => it._price) && items.every((it) => it._name || it._title)) return 'product-cards';
@@ -222,7 +233,7 @@ export function compareRowKeys(items) {
       if (!seen.has(f.key)) { seen.add(f.key); rowKeys.push(f.key); }
     }
     for (const c of childrenOf(it)) {
-      if (isPositionalKey(c.key)) continue;
+      if (isPositionalKey(c.key) || isInnerControlChild(c.node, [it])) continue;
       if (!seen.has(c.key)) { seen.add(c.key); rowKeys.push(c.key); }
     }
   }
@@ -405,13 +416,49 @@ export function actionPlan(node, chain, values = {}) {
 export function itemActionPlan(it, chain, values = {}) {
   const a = actionPlan(it, chain, values);
   if (!a) return null;
-  return { ...a, isControl: Boolean(a.label) && a.label !== labelTextOf(it) };
+  const name = labelTextOf(it);
+  const inlineLabel = Boolean(a.hasTarget && a.verb === 'navigate' && a.label && name.length > a.label.length && name.includes(a.label));
+  return { ...a, inlineLabel, isControl: !inlineLabel && Boolean(a.label) && a.label !== name };
+}
+// A control-only member has one visible control; its name may be an accessible alias.
+// The source action label is its visible copy, not a second action.
+export function controlItemPlan(it, chain = [], values = {}) {
+  const a = itemActionPlan(it, chain, values);
+  const name = labelTextOf(it);
+  const label = a?.label || name;
+  return { label, accessibleLabel: name && name !== label ? name : null,
+    href: a?.href ?? null, verb: a?.verb ?? null };
 }
 // §9 正文链接 vs 动作控件（轮 46）：一个 `_action` 的 label 若是本节点某条**正文文本事实**
 // 的真子串（`_detail`/`_summary`/`_text` 里句子的一部分，如 gov-uk “approved translator”、
 // “apply for a UK passport”），它就是句子里的**行内链接**，不是动作控件：
 // 不得抽成独立按钮行；HTML 在句子里行内渲染 `<a>`，文本/Markdown 保持原句文本。
 // label 整句等于文本（标题即控件）或等于 item 名的不算——那是标题控件，不是正文链接。
+function consentInventory(parent) {
+  if (!parent) return [];
+  const fields = namedChildEntries(parent).filter((c) => c.node._expose?.type === 'bool' && typeof c.node._label?.text === 'string');
+  return namedChildEntries(parent).flatMap((c) => {
+    const list = c.node._items;
+    if (!list?.length || factsOf(c.node).length || !list.every((n) => hasTarget(n._action) && n._action.label && labelTextOf(n) === n._action.label && childrenOf(n).length === 0)) return [];
+    const owners = fields.filter((f) => list.every((n) => f.node._label.text.includes(n._action.label)));
+    if (owners.length !== 1 || list.some((a) => list.some((b) => a !== b && (a._action.label.includes(b._action.label) || b._action.label.includes(a._action.label))))) return [];
+    return [{group:c.node, field:owners[0].node, links:list.map((n) => ({label:n._action.label, href:hrefOf(n._action.to), node:n}))}];
+  });
+}
+export function inlineChildLinks(node) {
+  const links = [];
+  for (const c of namedChildEntries(node)) {
+    const a = c.node._action;
+    if (!hasTarget(a) || !['navigate','open'].includes(a.verb) || !a.label
+      || (labelTextOf(c.node) && labelTextOf(c.node) !== a.label) || factsOf(c.node).length > 1 || childrenOf(c.node).length) continue;
+    const keys = ['_text','_quote','_summary','_detail','_author'].filter(k => typeof node[k]?.text === 'string'
+      && (node[k].text.length > a.label.length || ['_author','_detail'].includes(k) && node[k].text === a.label) && node[k].text.includes(a.label));
+    if (keys.length === 1) links.push({ key: keys[0], label: a.label, href: hrefOf(a.to), node: c.node });
+  }
+  // Overlapping labels or identical labels with distinct targets are ambiguous: retain controls.
+  return links.filter((a) => !links.some((b) => a !== b && a.key === b.key
+    && (a.label.includes(b.label) || b.label.includes(a.label))));
+}
 export function inlineBodyLinkKey(node) {
   const a = node?._action;
   if (!a || typeof a.label !== 'string' || !a.label) return null;
@@ -446,6 +493,37 @@ export function runPlan(items) {
 // "Has a value" is therefore ONE shared decision, not a per-target rendering preference:
 // null/undefined/empty text/empty list are not values; num/money/bool (incl. 0/false) are.
 // Every target consumes it (HTML group-row detection; text/Markdown cell + row).
+// Exact row-local binding of a typed table to a sibling action inventory.
+// No URL construction or index-only pairing: identity AND full label order must agree.
+const cellTexts = (v) => v?.list ? v.list.flatMap(cellTexts) : typeof v?.text === 'string' ? [v.text] : [];
+export function tableLinkPair(parent, table) {
+  const rows = table?._items;
+  if (!rows?.length || !rows.every((r) => r._fields)) return null;
+  const candidates = namedChildEntries(parent).filter((c) => c.node !== table && c.node._lines?.length === rows.length);
+  const valid = [];
+  for (const candidate of candidates) {
+    const inventories = candidate.node._lines;
+    const bindings = new Map();
+    let ok = true;
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i], inventory = inventories[i], fields = Object.values(row._fields);
+      const actions = inventory._items;
+      if (!actions?.length || labelTextOf(inventory) !== cellTexts(fields[0])[0]
+        || !actions.every((a) => hasTarget(a._action) && labelTextOf(a) === a._action.label
+          && factsOf(a).length === 1 && childrenOf(a).length === 0)) { ok = false; break; }
+      const labels = actions.map(labelTextOf);
+      const matching = fields.flatMap(cellTexts).filter((t) => labels.includes(t));
+      if (JSON.stringify(matching) !== JSON.stringify(labels) || new Set(labels).size !== labels.length) { ok = false; break; }
+      bindings.set(row, new Map(actions.map((a) => [labelTextOf(a), { node: a, href: hrefOf(a._action.to) }])));
+    }
+    if (ok) valid.push({ inventory: candidate.node, bindings });
+  }
+  return valid.length === 1 ? valid[0] : null;
+}
+export function tableCellLinks(table, chain = []) {
+  const parent = chain.at(-1) === table ? chain.at(-2) : chain.at(-1);
+  return parent ? tableLinkPair(parent, table)?.bindings ?? new Map() : new Map();
+}
 export function hasValue(v) {
   if (v === null || v === undefined) return false;
   const t = valueTypeOf(v);
@@ -523,10 +601,10 @@ function actionRowOf(node, chain, values, action, toolbar) {
 // A choice set's form (F-030): one option is not a choice (plain fact); two or more are a
 // choice set; a bare `_expose` is a boolean switch or an input. `rich` says the options
 // carry their own attributes — a target may draw those as a table or as annotated options.
-function optionOf(it, i) {
+function optionOf(it, i, chain, values) {
   const fieldsFirst = it._fields ? Object.values(it._fields)[0] : undefined;
   return {
-    node: it, index: i,
+    node: it, index: i, action: itemActionPlan(it, chain, values),
     key: typeof it._key === 'string' ? it._key : null,
     name: it._name ?? it._title ?? null,
     fieldsName: it._fields ? { text: String(fieldsFirst?.text ?? fieldsFirst?.num ?? '') } : null,
@@ -557,7 +635,7 @@ const VISIBLE_FIELD_NAME = /(密码|邮件|邮箱|手机|账号|账户|用户|�
 export function isVisibleFieldName(label) {
   return Boolean(label && label.text && VISIBLE_FIELD_NAME.test(label.text));
 }
-export function choicePlan(node, exp) {
+export function choicePlan(node, exp, chain = [], values = {}) {
   if (!exp) return null;
   const items = Array.isArray(node._items) ? node._items : [];
   const legend = node._label ?? null;
@@ -566,10 +644,18 @@ export function choicePlan(node, exp) {
   if (items.length) {
     if (items.length < 2) {
       return { kind: 'plain-fact', items, item: items[0], legend, hint, multi, name: exp.name,
-        itemName: items[0]._name ?? items[0]._title ?? null,
+        itemName: items[0]._name ?? items[0]._title ?? null, itemAction: itemActionPlan(items[0], [...chain, node], values),
         itemExtra: factsOf(items[0]).filter((x) => !['_name', '_title'].includes(x.key)) };
     }
-    const options = items.map(optionOf);
+    const current = Object.hasOwn(values, exp.name) ? values[exp.name] : node._default;
+    const scalar = (v) => v && typeof v === 'object' ? (v.text ?? v.num ?? v.bool ?? v.ref) : v;
+    const selected = (v) => Array.isArray(current?.list) ? current.list.some((x) => scalar(x) === v) : scalar(current) === v;
+    const options = items.map((it, i) => {
+      const o = optionOf(it, i, [...chain, node], values);
+      o.selected = current !== undefined && (Boolean(o.key && selected(`key:${o.key}`))
+        || (scalar(o.name ?? o.fieldsName) !== undefined && selected(scalar(o.name ?? o.fieldsName))));
+      return o;
+    });
     const rich = items.some((it) => (it._fields && Object.keys(it._fields).length))
       || items.some((it) => factsOf(it).some((f) => !['_name', '_title'].includes(f.key)));
     return { kind: 'choice', items, options, legend, hint, multi, name: exp.name, type: exp.type, rich,
@@ -584,7 +670,7 @@ export function choicePlan(node, exp) {
   // drawn as the input's value attribute — a captured default must never be dropped (round 37).
   // A SECRET field is the one exception: its value must never enter the document (no value attr,
   // no sr-only copy, no condition/log echoing), so no target ever draws it (round 46).
-  const value = exp.type === 'secret' ? null : (node._text ?? null);
+  const value = exp.type === 'secret' ? null : (node._text ?? node._default ?? null);
   return { kind: 'input', items, legend, hint, name: exp.name, type: exp.type, labelAsPlaceholder, value };
 }
 
@@ -742,19 +828,45 @@ export function nodePlan(node, ctx = {}) {
   const inlineInto = action ? inlineBodyLinkKey(node) : null;
   if (action && inlineInto) action.inlineInto = inlineInto;
 
-  const choice = choicePlan(node, controlExp);
+  const choice = choicePlan(node, controlExp, chain, values);
+  if (choice?.kind === 'bool') choice.inlineLinks = consentInventory(chain.at(-1)).filter((b) => b.field === node).flatMap((b) => b.links);
   // A secret field's captured default is never drawn by ANY target (round 46): drop it from the
   // body facts so text/Markdown cannot echo it either (HTML already skips a bare input's `_text`).
   if (choice && choice.type === 'secret') facts.list = facts.list.filter((f) => f.key !== '_text');
-  const toolbar = namedChildEntries(node)
-    .filter((c) => isActionOnlyNode(c.node) && actionPlan(c.node, [...chain, node], values))
+  const toolbar = [...namedChildEntries(node), ...arrayChildEntries(node)]
+    .filter((c) => (isActionOnlyNode(c.node) || (c.key.startsWith('_') && isInnerControlChild(c.node, [...chain, node], values)))
+      && actionPlan(c.node, [...chain, node], values))
     .map((c) => c.node);
   // 字段与其提交必须相邻成组（U-02）。源站的排列就是「字段 → 提交」，中间不夹别的内容；而我们的
   // 渲染顺序是（事实 / 字段 / 其它子件 / 自己的动作），于是 taobao 搜索的「宝贝/天猫/店铺」范围子件
   // 插到了输入框与「搜索」按钮之间。这是「模型形状 ⇒ 呈现分组」的决定，所以放在共享轴层：当一个元素
   // 自己的动作是它自己字段的 submit 时，该动作画在字段组内（紧跟字段），元素其余内容跟在组后。
   const fieldSubmit = Boolean(action && action.verb === 'submit' && controlExp);
+  // Footer inventories may declare navigation and its paragraph text separately.
+  // Consume a unique, nonoverlapping label in its owning local footer sentence once.
+  const footer = [...chain, node].find((n) => [...chain, node].some((p) => p.footer === n));
+  const footerBindings = new Map();
+  if (footer) {
+    const inventory = (footer._items ?? []).filter((n) => hasTarget(n._action) && n._action.label);
+    const paragraphs = [];
+    const collect = (n) => { for (const f of factsOf(n)) if (typeof f.value?.text === 'string') paragraphs.push({node:n,key:f.key,text:f.value.text}); for (const c of childrenOf(n)) if (!inventory.includes(c.node)) collect(c.node); };
+    for (const c of namedChildEntries(footer)) collect(c.node);
+    for (const n of inventory) {
+      const a = n._action;
+      const matches = paragraphs.filter((p) => {
+        const at = p.text.indexOf(a.label);
+        return at >= 0 && (at === 0 || /[\s|]/.test(p.text[at - 1])) && (at + a.label.length === p.text.length || /[\s|]/.test(p.text[at + a.label.length]));
+      });
+      if (matches.length !== 1) continue;
+      const p = matches[0];
+      if (!footerBindings.has(p.node)) footerBindings.set(p.node, []);
+      footerBindings.get(p.node).push({key:p.key,label:a.label,href:hrefOf(a.to),node:n});
+    }
+  }
+  const inlineChildren = [...inlineChildLinks(node), ...(footerBindings.get(node) ?? [])];
   const actionRow = actionRowOf(node, chain, values, (inlineInto || fieldSubmit) ? null : action, toolbar);
+  actionRow.row = actionRow.row.filter((a) => !inlineChildren.some((c) => c.label === a.label && c.href === a.href));
+  actionRow.consumed.push(...inlineChildren.map((c) => c.node));
   // 轮 57 hero/banner 判定（布局决策，三目标共享；呈现层不新增模型键）：一个集合成员元素
   // 同时满足 —— ① 带 `_image`；② 有标题（_title/_name）；③ 有动作（自己的 `_action` 或行内
   // 控件行）；④ 除标题外只带展示性文本事实（_subtitle/_summary/_detail，无 _price/_author 等
@@ -762,12 +874,22 @@ export function nodePlan(node, ctx = {}) {
   // 满幅（hero 槽），不再锁 74ch。网格/表格单元格内的成员（ctx.grid）与自身即页面的深度 0 节点
   // 不在此列：卡片格里的图不是页框（F-031-§7 同款约束）。
   const imgFact = facts.list.find((f) => f.key === '_image');
-  const banner = Boolean(!ctx.grid && depth > 0 && imgFact && headingKey
+  const recordMember = chain.some((parent) => {
+    const members = [...(parent._items ?? []), ...(parent._lines ?? [])];
+    return members.includes(node) && members.length >= 2 && members.every((it) =>
+      (it._title || it._name) && it._action && !it._price && !it._measure &&
+      (it._author || it._datetime || it._source || it.sourceLink));
+  });
+  const identity = action?.verb === 'follow' && Boolean(imgFact && headingKey);
+  const banner = Boolean(!recordMember && !identity && !ctx.grid && depth > 0 && imgFact && headingKey && arrayChildEntries(node).length === 0
     && (action || actionRow.row.length)
     && facts.list.every((f) => ['_image', '_subtitle', '_summary', '_detail'].includes(f.key)));
   if (banner) { facts.hero = imgFact.value; facts.list = facts.list.filter((f) => f !== imgFact); }
   const consumedArray = new Set(controlExp && Array.isArray(node._items) ? node._items : []);
-  const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it));
+  const boundFooterLinks = [...footerBindings.values()].flat();
+  actionRow.row = actionRow.row.filter((a) => !boundFooterLinks.some((b) => b.label === a.label && b.href === a.href));
+  const footerConsumed = new Set(boundFooterLinks.map((a) => a.node));
+  const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it) && !actionRow.consumed.includes(it) && !footerConsumed.has(it));
   // A description fact declared AFTER this node's collection is the collection's FOOTNOTE, not
   // its lead-in: it must render directly BELOW the collection, never float above it and split
   // the lead-in from its own list (round 37: gov-uk `…for example when you:` + its bullets).
@@ -776,6 +898,7 @@ export function nodePlan(node, ctx = {}) {
   const collAt = ownKeys.findIndex((k) => k === '_items' || k === '_lines');
   const trailing = collAt >= 0 ? facts.list.filter((f) => ownKeys.indexOf(f.key) > collAt) : [];
   const items = seqGroupsOf(rawItems, node, ctx.degradations ?? null);
+  for (const g of items.groups) if (g.form === 'prose' && g.items.some((it) => footerBindings.has(it))) g.form = 'stack';
   const namedChildren = namedChildEntries(node);
   const emptyState = (Array.isArray(node._items) && node._items.length === 0 && node._empty) ? node._empty : null;
   const titleConsumed = Boolean(choice && choice.kind === 'bool' && headingKey);
@@ -790,6 +913,28 @@ export function nodePlan(node, ctx = {}) {
   // declares columns is wide (the grid needs the container); prose = an all-prose reading
   // section (74ch, centered); wide = card/feed/table sections; narrow = default content.
   // This kills same-page width jumps (U-23/U-25/U-26/U-27).
+  // ---- column decision (round 58 · L-4): wide-layer card/feed sets declare an auto-fill grid
+  // (2–4 columns at desktop width) when the members are PREDOMINANTLY image cards of card-sized
+  // text (≥75% carry their own image; taobao 猜你喜欢 / bilibili 视频卡 / apple 媒体卡 — U-26/U-25).
+  // The odd group-row member (intent + nested set, no image) stays a full-width text card inside
+  // the grid. Reading sets (long text, sspai 正文) carry no images ⇒ stay single-column. The
+  // declaration is shared; a linear target simply ignores it.
+  for (const g of items.groups) {
+    const imgShare = g.items.filter((it) => Boolean(it._image)).length;
+    const imageCards = imgShare / g.items.length >= 0.75 && g.items.every((it) => textLenOf(it) <= 160);
+    const namedCards = g.form === 'cards' && g.items.every((it) => it._name && textLenOf(it) <= 400
+      && !factsOf(it).some((f) => META_KEYS.has(f.key))
+      && !(it._summary && textLenOf(it) > 160));
+    g.cols = ['stack', 'cards', 'product-cards'].includes(g.form) && g.items.length >= 3
+      && (imageCards || namedCards) ? 'auto' : 0;
+    if (g.form === 'list') {
+      const directory = g.items.every((it) => hasTarget(it._action) && labelTextOf(it).length <= 64 && !itemActionPlan(it, [], values)?.inlineLabel);
+      const short = g.items.every((it) => labelTextOf(it).length <= 12);
+      g.cols = (directory || short) && g.items.length > 4 ? (g.items.length >= 24 ? 4 : g.items.length >= 12 ? 3 : 2) : 0;
+    }
+    g.compactMedia = Boolean(g.cols) && g.items.every((it) => textLenOf(it) <= 64
+      && !factsOf(it).some((f) => META_KEYS.has(f.key)) && childrenOf(it).length === 0);
+  }
   const widthTier = (() => {
     if (ctx.grid || depth !== 1) return null;
     if (headerBar || region === 'footer') return 'wide';
@@ -800,26 +945,80 @@ export function nodePlan(node, ctx = {}) {
     if (forms.some((f) => ['cards', 'product-cards', 'image-strip', 'table', 'compare-table'].includes(f))) return 'wide';
     return 'narrow';
   })();
-  // ---- column decision (round 58 · L-4): wide-layer card/feed sets declare an auto-fill grid
-  // (2–4 columns at desktop width) when the members are PREDOMINANTLY image cards of card-sized
-  // text (≥75% carry their own image; taobao 猜你喜欢 / bilibili 视频卡 / apple 媒体卡 — U-26/U-25).
-  // The odd group-row member (intent + nested set, no image) stays a full-width text card inside
-  // the grid. Reading sets (long text, sspai 正文) carry no images ⇒ stay single-column. The
-  // declaration is shared; a linear target simply ignores it.
-  for (const g of items.groups) {
-    const imgShare = g.items.filter((it) => Boolean(it._image)).length;
-    g.cols = ['stack', 'cards', 'product-cards'].includes(g.form) && g.items.length >= 3
-      && imgShare / g.items.length >= 0.75
-      && g.items.every((it) => textLenOf(it) <= 160) ? 'auto' : 0;
-  }
+
   // ---- media-first (round 58 · L-6) is a GROUP decision: mediaFirstOf(items, form) below.
   return {
     ok: true, visible: true, scope, headingKey, headingValue: headingKey ? node[headingKey] : null,
     headingText, demoted: isDemoted(node), primary, facts: { ...facts, trailing }, action, hasAction: Boolean(node._action),
-    titleIsControl, choice, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
-    items, namedChildren: orderedNamedChildren(namedChildEntries(node)), emptyState, titleConsumed, fieldSubmit, banner, headerBar,
+    titleIsControl, choice, inlineChildren, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
+    items, namedChildren: orderedNamedChildren(namedChildEntries(node).filter((c) =>
+      !namedChildEntries(node).some((t) => tableLinkPair(node, t.node)?.inventory === c.node)
+      && !consentInventory(node).some((b) => b.group === c.node))), emptyState, titleConsumed, fieldSubmit, banner, headerBar,
+    recordMember, identity,
+    searchSubmit: node._composite === 'search' ? (() => {
+      const child = namedChildren.find((c) => c.node._action?.verb === 'submit' && !c.node._action.label && !hasTarget(c.node._action));
+      return child ? {node:child.node, label:node._label?.text ?? ''} : null;
+    })() : null,
+    taskForm: node._composite === 'login',
+    leadAction: depth === 0 && ['buy', 'preorder'].includes(action?.verb),
+    actionBeforeChild: node._composite === 'login' ? namedChildren.find((c) => !actionRow.consumed.includes(c.node) && ownKeys.indexOf(c.key) > ownKeys.findIndex((k) => node[k]?._action?.verb === 'submit'))?.key : null,
+    introBeforeMedia: depth === 0 && ['buy', 'preorder'].includes(action?.verb) && Boolean(node._summary) && !node._price,
     widthTier,
+    singletonCard: Array.isArray(node._items) && rawItems.length === 1 && Boolean(rawItems[0]._name && rawItems[0]._image && rawItems[0]._action),
+    orderedMediaRows: Array.isArray(node._lines) && rawItems.length >= 2 && rawItems.every((it) => it._image && it._author && it._detail && it._action && !it._price),
+    booleanUtilities: rawItems.filter((it) => it._expose?.type === 'bool').length >= 2 || namedChildEntries(node).filter((c) => c.node._expose?.type === 'bool').length >= 2,
+    utilityFacts: rawItems.length >= 2 && rawItems.every((it) =>
+      factsOf(it).length <= 2 && !it._image && !it._price && textLenOf(it) <= 48 && childrenOf(it).length === 0),
+    utilityGroup: rawItems.length >= 2 && rawItems.every((it) =>
+      textLenOf(it) <= 32 && factsOf(it).every((f) => ['_name', '_title', '_text', '_brand'].includes(f.key))
+      && childrenOf(it).length === 0),
   };
+}
+
+// Long-form stories own one reading measure, even when their local forms differ.
+// This is a page decision, not a per-section guess or site-name exception.
+export function readingPageOf(model) {
+  let paragraphs = 0;
+  const visit = (n) => {
+    if (!n || typeof n !== 'object') return;
+    if (typeof n._text?.text === 'string' && n._text.text.length > 120) paragraphs++;
+    for (const [k,v] of Object.entries(n)) {
+      if (!k.startsWith('_') || k === '_lines' || k === '_items') {
+        if (Array.isArray(v)) v.forEach(visit); else visit(v);
+      }
+    }
+  };
+  visit(model);
+  return paragraphs >= 8;
+}
+
+// Page-scale composition owns the alignment baseline; local forms must not choose
+// incompatible page widths. These profiles use model structure, never site names.
+export function pageLayoutOf(model) {
+  if (readingPageOf(model)) return { kind: 'reading' };
+  const children = namedChildEntries(model);
+  if (children.some((c) => c.node._composite === 'login')) return { kind: 'authentication' };
+  const gallery = children.find((c) => c.node._items?.length >= 3 && c.node._items.every((n) => n._image));
+  const task = children.find((c) => c.node._composite === 'form');
+  if (gallery && task && children.indexOf(gallery) < children.indexOf(task)) {
+    const taskAt = children.indexOf(task);
+    return { kind: 'detail', galleryKey: gallery.key, taskKey: task.key,
+      mainKeys: children.slice(children.indexOf(gallery) + 1, taskAt).map((c) => c.key),
+      tailKeys: children.slice(taskAt + 1).map((c) => c.key) };
+  }
+  const lines = model._lines ?? [];
+  const banners = lines.filter((n) => n._image && (n._title || n._name) && n._action && !n._price);
+  if (banners.length >= 2) return { kind: 'marketing', headingRole: model._action?.verb === 'navigate' && !model._action?.label ? 'identity' : 'page' };
+  if (model._image && model._price) return { kind: 'product' };
+  let prices = 0;
+  const visit = (n) => { if (!n || typeof n !== 'object') return; if (n._price) prices++;
+    for (const c of namedChildEntries(n)) visit(c.node);
+    for (const k of ['_items', '_lines']) (n[k] ?? []).forEach(visit); };
+  visit(model);
+  const menus = lines.filter((n) => n._items?.length >= 2 && n._items.every((it) =>
+    factsOf(it).every((f) => ['_name','_title','_text'].includes(f.key)) && namedChildEntries(it).length === 0));
+  const kind = prices >= 6 && menus.length >= 3 ? 'catalog' : 'default';
+  return { kind, headingRole: kind === 'catalog' && model._action?.verb === 'navigate' && !model._action?.label ? 'identity' : 'page' };
 }
 
 // ---- model-wide `key:` → label index (target-neutral) ----------------------

@@ -142,7 +142,11 @@ export function evaluate(model, renderHtml, sourceDir) {
   const html = fs.readFileSync(renderHtml, 'utf8');
   // Style/script bodies and attributes are not page content: `<td>0</td>` must
   // not be certified by `margin:0` in the stylesheet or by `class="depth-0"`.
-  const H = indexNorm(pageText(html));
+  // Inline Markdown destinations are metadata, just like HTML href attributes.
+  // Evaluate the visible label without interrupting its surrounding prose, and
+  // never certify a fact solely because it occurs in the hidden destination.
+  const visible = renderHtml.endsWith('.md') ? html.replace(/!?\[([^\]\n]*)\]\((?:\\.|[^)\n])*\)/g, '$1') : html;
+  const H = indexNorm(pageText(visible));
   const dead = suppressedNodes(model);
   const facts = factValues(model, dead);
   const missing = facts.filter((f) => !isRendered(H, f.text)).map((f) => `${f.path} := "${f.text}"`);

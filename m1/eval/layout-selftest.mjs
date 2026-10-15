@@ -8,6 +8,7 @@
 //      阅读型集合（长文成员）保持单列；媒体优先（图在题上）由 .media-first 承载。
 // 断言对象是渲染产物（HTML 结构 + CSS 规则），并覆盖全部范例页；负例注入证明可失败。
 import { render } from '../render.mjs';
+import { nodePlan, readingPageOf, pageLayoutOf } from '../axis.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -43,9 +44,9 @@ const css = cssOf(render(structuredClone(pageFixture), {}));
 
 // ---- a) 页面容器 -------------------------------------------------------------
 check('容器居中：main=1280px + margin auto + 对称 padding', /main\{max-width:1280px;margin:0 auto;padding:32px 24px 0\}/.test(css));
-check('宽度分层规则存在（prose/narrow/wide/bleed）',
-  css.includes('.node.w-prose{max-width:74ch;margin-inline:auto}') && css.includes('.node.w-narrow{max-width:880px;margin-inline:auto}')
-  && css.includes('.node.w-wide{max-width:none}') && css.includes('.node.w-bleed{max-width:none;width:100vw'));
+check('局部形态继承页面框架（prose/narrow/wide），声明 banner 可 bleed',
+  css.includes('.node.w-prose,.node.w-narrow,.node.w-wide{max-width:none;margin-inline:0;width:100%}')
+  && css.includes('.node.w-bleed{max-width:none;width:100vw'));
 
 // ---- b) 区域钉扎 -------------------------------------------------------------
 const h1 = page.indexOf('<h1');
@@ -102,6 +103,39 @@ check('阅读集合保持单列（无 cols-auto 落到 notes）', (() => {
   return !/class="stack[^"]*cols-auto/.test(page.slice(stackStart, notesAt));
 })());
 
+// Width must consume the FINAL column decision, not an uninitialized g.cols.
+check('图卡列数决定后才求宽度（防止 cols-auto 仍被 880px 锁住）',
+  nodePlan(pageFixture.feed, { depth: 1 }).widthTier === 'wide');
+const readingFixture = { _title: { text: '长文' }, _image: img('https://x.example/cover.jpg'),
+  _lines: Array.from({ length: 8 }, () => ({ _text: { text: '连续正文。'.repeat(30) } })) };
+const readingHtml = bodyOf(render(readingFixture));
+check('长篇共享阅读列（封面 band + root reading-page）', readingPageOf(readingFixture)
+  && /depth-0 reading-page/.test(readingHtml) && readingHtml.includes('<div class="band"><figure class="strip">'));
+check('短文不误判为长篇阅读页', !readingPageOf({ _lines: readingFixture._lines.slice(0, 7) }));
+check('页脚前景/背景成对 + chip 继承同区域 ink', css.includes('background:var(--surface);color:var(--ink)')
+  && /\.group\.g-footer \.chip-item\{[^}]*background:transparent[^}]*color:var\(--ink\)/.test(css));
+check('营销图片与文本同 surface（元数据驱动）', css.includes('.banner-integrated')
+  && css.includes('background:var(--banner-bg);color:var(--banner-fg)'));
+
+// Whole-page frame classification is structural, not a per-site override.
+const modelAt = (site, slug) => JSON.parse(fs.readFileSync(path.join(root, 'm1/curated', site, slug + '.json'), 'utf8'));
+check('目录/商品/营销/详情页有页面级布局契约',
+  pageLayoutOf(modelAt('taobao-com','home')).kind === 'catalog'
+  && pageLayoutOf(modelAt('apple-com','ipad-air')).kind === 'product'
+  && pageLayoutOf(modelAt('apple-com','home')).kind === 'marketing'
+  && pageLayoutOf(modelAt('airbnb-com','room-28871')).kind === 'detail');
+check('已认可的阅读/净化器/B站布局不被新契约误伤',
+  pageLayoutOf(modelAt('sspai-com','post-114716')).kind === 'reading'
+  && pageLayoutOf(modelAt('mi-com','product-detail-mi15')).kind === 'default'
+  && pageLayoutOf(modelAt('bilibili-com','home')).kind === 'default');
+const detailFixture = { _title:{text:'详情'}, gallery:{_items:[1,2,3].map(n=>({_image:img('https://x.example/'+n)}))},
+  summary:{_detail:{text:'主体信息'}}, request:{_composite:'form',_summary:{text:'任务面板'}}, reviews:{_text:{text:'评价'}} };
+const detailPage = bodyOf(render(detailFixture));
+check('详情正文/任务/后续区域可达且各出现一次', ['主体信息','任务面板','评价'].every(t=>detailPage.split(t).length===2)
+  && detailPage.includes('class="detail-main"') && detailPage.includes('class="detail-task"') && detailPage.includes('class="detail-tail"'));
+check('超宽营销页不再用全视口交错色带', css.includes('main:has(.marketing-page){max-width:1728px')
+  && css.includes('.marketing-page .node.w-bleed{width:100%;margin-inline:0}'));
+
 // ---- e) 容器水平界内（轮 59 · U-28）-------------------------------------------
 // 口径（静态 HTML 近似，无浏览器布局）：容器是 <main>（居中 max-width:1280px + 24px padding）。
 // ① 结构：body 的**顶层可见节点**必须全部位于 <main> 之内 —— 容器外的顶层可见节点必然越出
@@ -137,15 +171,30 @@ check(`样式表无越界负水平边距（容差 ${OOB_TOLERANCE_PX}px，内含
 
 // ---- 范例页全量断言 ----------------------------------------------------------
 const exemplars = fs.readdirSync(RENDERS).filter((f) => f.endsWith('.html') && f !== 'index.html');
+// A footer is terminal at its owning level; descendants are part of it.
+const terminalFooters = (html) => {
+  const stack = [], footers = [];
+  for (const m of html.matchAll(/<\/?([a-z][\w-]*)\b[^>]*>/gi)) {
+    const tag = m[1].toLowerCase(), closing = m[0].startsWith('</');
+    if (closing) { if (stack.at(-1)?.tag === tag) stack.pop(); continue; }
+    if (['img','input','br','hr','meta','link','source','wbr','area','base','embed','param','track','col'].includes(tag)) continue;
+    const parent = stack.at(-1), node = { tag, parent, children: [], footer: /class="[^"]*\bg-footer\b/.test(m[0]) };
+    if (parent) parent.children.push(node);
+    if (node.footer) footers.push(node);
+    stack.push(node);
+  }
+  return footers.every((f) => f.parent?.children.at(-1) === f);
+};
+check('footer nested region remains valid', terminalFooters('<article><section class="group g-footer"><section class="group g-notices"></section></section></article>'));
+check('footer late sibling region is rejected', !terminalFooters('<article><section class="group g-footer"></section><section class="group g-late"></section></article>'));
+check('footer late action is rejected', !terminalFooters('<article><section class="group g-footer"></section><a href="/late">Late</a></article>'));
 let pinBad = [], footBad = [], bleedBad = [], oobBad = [];
 for (const f of exemplars) {
   const b = bodyOf(fs.readFileSync(path.join(RENDERS, f), 'utf8'));
   const gh = b.indexOf('<section class="group g-header"');
   const h1p = b.indexOf('<h1');
   if (gh >= 0 && h1p >= 0 && gh > h1p) pinBad.push(f);
-  const opens = [...b.matchAll(/<section class="group g-/g)].map((m) => m.index);
-  const gf = b.indexOf('<section class="group g-footer"');
-  if (gf >= 0 && opens.length && gf !== opens[opens.length - 1]) footBad.push(f);
+  if (!terminalFooters(b)) footBad.push(f);
   const v = oobViolations(b);
   if (v.length) oobBad.push(`${f}: ${v[0]}`);
   for (const m of b.matchAll(/<figure class="strip([^"]*)"/g)) {

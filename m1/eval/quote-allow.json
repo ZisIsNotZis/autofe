@@ -30,24 +30,6 @@
    "kind": "dropped",
    "text": "注意：Red Hat 已经更新",
    "why": "抓取中该定价提示是整段 strong（nodes.json），模型未以 _quote 承载；轮 56 模型侧范围外，待下轮。"
-  },
-  {
-   "page": "sspai-com/post-102392",
-   "kind": "dropped",
-   "text": "VLOOK™ 是针对 Typora（跨平台",
-   "why": "模型的 lead._quote 是这条 blockquote 的节写而非逐字：抓取证据为 article[0]/div[1]/div[0]/div[0]/div[0]/blockquote[0]/p[0]（20px/600 显著强调）；节写文本本身是采集一致性白名单声明过的转换（capture-integrity-allow.json: sspai-com/post-102392 「VLOOK™ 是针对 Typora 的主题包和增强插件…」）。逐字匹配无法配对，特此登记配对关系。"
-  },
-  {
-   "page": "sspai-com/post-102392",
-   "kind": "unsupported",
-   "text": "VLOOK™ 是针对 Typora 的主题包和增强插件",
-   "why": "同上条：lead._quote 的节写措辞与 blockquote[0] 逐字不同（「（跨平台 Markdown 编辑器）」「（针对导出的 HTML 文件)」等括注被省略），强调证据存在但文本为声明过的转换。"
-  },
-  {
-   "page": "sspai-com/post-102392",
-   "kind": "dropped",
-   "text": "今日份的小话题",
-   "why": "blockquote[2]/p[0]（20px/600）「今日份的小话题： Markdown 的图片自适配 Dark Mode（夜间模式）」整句不在模型中（覆盖缺口，非强调承载缺口）；轮 56 模型侧范围外，待下轮。"
   }
  ]
 }
