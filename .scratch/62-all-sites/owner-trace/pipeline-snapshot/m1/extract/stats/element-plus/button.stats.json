@@ -1,0 +1,78 @@
+{
+  "site": "element-plus",
+  "page": "button",
+  "url": "https://element-plus.org/en-US/component/button.html",
+  "title": "Button | Element Plus",
+  "sourceNodes": 1532,
+  "counts": {
+    "storylines": 22,
+    "items": 33,
+    "actions": 116,
+    "exposes": 1,
+    "images": 0,
+    "facts": 12,
+    "tables": 5,
+    "lists": 0,
+    "choiceSets": 1,
+    "inputs": 0,
+    "dupeText": 68,
+    "capHits": []
+  },
+  "storylines": 22,
+  "chrome": [
+    {
+      "role": "complementary",
+      "count": 2
+    },
+    {
+      "role": "banner",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 54,
+      "examples": [
+        "Description: button size",
+        "Default: —",
+        "Description: button type, when setting color, the latter prevails",
+        "Description: determine whether it's a plain button",
+        "Default: false"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name",
+      "example": "default"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "customize button group content"
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "label": "Type",
+      "example": "enum Type details"
+    },
+    {
+      "name": "default",
+      "type": "text",
+      "label": "Default",
+      "example": "—"
+    },
+    {
+      "name": "subtags",
+      "type": "text",
+      "label": "Subtags",
+      "example": "Button"
+    }
+  ]
+}

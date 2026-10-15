@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "baselineCommit": "403cd5be096db89b428e130ad57cca730b425fdc",
+  "sourceFilesVerified": 796,
+  "snapshotBytes": 213151024,
+  "worktrees": [
+    {
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/engine",
+      "filesVerified": 796,
+      "detached": true,
+      "trackedChanges": 0,
+      "stagedFiles": 0
+    },
+    {
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/content",
+      "filesVerified": 796,
+      "detached": true,
+      "trackedChanges": 0,
+      "stagedFiles": 0
+    },
+    {
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search",
+      "filesVerified": 796,
+      "detached": true,
+      "trackedChanges": 0,
+      "stagedFiles": 0
+    },
+    {
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial",
+      "filesVerified": 796,
+      "detached": true,
+      "trackedChanges": 0,
+      "stagedFiles": 0
+    },
+    {
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-mi-commerce",
+      "filesVerified": 796,
+      "detached": true,
+      "trackedChanges": 0,
+      "stagedFiles": 0
+    },
+    {
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce",
+      "filesVerified": 796,
+      "detached": true,
+      "trackedChanges": 0,
+      "stagedFiles": 0
+    },
+    {
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products",
+      "filesVerified": 796,
+      "detached": true,
+      "trackedChanges": 0,
+      "stagedFiles": 0
+    },
+    {
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business",
+      "filesVerified": 796,
+      "detached": true,
+      "trackedChanges": 0,
+      "stagedFiles": 0
+    },
+    {
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs",
+      "filesVerified": 796,
+      "detached": true,
+      "trackedChanges": 0,
+      "stagedFiles": 0
+    },
+    {
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility",
+      "filesVerified": 796,
+      "detached": true,
+      "trackedChanges": 0,
+      "stagedFiles": 0
+    }
+  ],
+  "curatedPages": 42,
+  "remainingPages": 35,
+  "acceptedReferences": 7,
+  "cohorts": 8,
+  "coverageCounterexamplesRejected": [
+    "overlap",
+    "omission",
+    "duplicate-cwd"
+  ],
+  "integrationHeadUnchanged": true,
+  "preexistingLedgerPreserved": true,
+  "noStagedFiles": true,
+  "scope": "Setup self-proof only; no substantive image audit or independent acceptance review."
+}

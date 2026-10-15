@@ -1,0 +1,766 @@
+{
+  "_intent": "米家宠物空气净化器立即购买-小米商城 — 米家宠物空气净化器 [draft]",
+  "_title": {
+    "text": "米家宠物空气净化器立即购买-小米商城"
+  },
+  "_summary": {
+    "text": "购物车中还没有商品，赶紧选购吧！"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.mi.com/",
+        "label": "小米官网"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.mi.com/shop",
+        "label": "小米商城"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://hyperos.mi.com/",
+        "label": "小米澎湃OS"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.xiaomiev.com/",
+        "label": "小米汽车"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://i.mi.com/",
+        "label": "云服务"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://iot.mi.com/",
+        "label": "IoT"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://youpin.mi.com/",
+        "label": "有品"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://xiaoai.mi.com/",
+        "label": "小爱开放平台"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.mi.com/aptitude/list/?id=88",
+        "label": "资质证照"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.mi.com/aptitude/list/",
+        "label": "协议规则"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.mi.com/appdownload/",
+        "label": "下载app 小米商城 小米商城APP"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:;",
+        "label": "Select Location"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.mi.com/shop/buy/cart",
+        "label": "购物车（0）"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void(0);",
+        "label": "登录"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void(0);",
+        "label": "注册"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void(0);",
+        "label": "消息通知"
+      }
+    },
+    {
+      "_intent": "list (10 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "全部商品分类"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.mi.com/shop/category/list",
+            "label": "全部商品分类"
+          }
+        },
+        {
+          "_name": {
+            "text": "Xiaomi手机"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript: void(0);",
+            "label": "Xiaomi手机"
+          }
+        },
+        {
+          "_name": {
+            "text": "REDMI手机"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript: void(0);",
+            "label": "REDMI手机"
+          }
+        },
+        {
+          "_name": {
+            "text": "电视"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript: void(0);",
+            "label": "电视"
+          }
+        },
+        {
+          "_name": {
+            "text": "笔记本"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript: void(0);",
+            "label": "笔记本"
+          }
+        },
+        {
+          "_name": {
+            "text": "平板"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript: void(0);",
+            "label": "平板"
+          }
+        },
+        {
+          "_name": {
+            "text": "家电"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript: void(0);",
+            "label": "家电"
+          }
+        },
+        {
+          "_name": {
+            "text": "路由器"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript: void(0);",
+            "label": "路由器"
+          }
+        },
+        {
+          "_name": {
+            "text": "服务中心"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.mi.com/service/",
+            "label": "服务中心"
+          }
+        },
+        {
+          "_name": {
+            "text": "社区"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "http://www.xiaomi.cn/",
+            "label": "社区"
+          }
+        }
+      ]
+    },
+    {
+      "_text": {
+        "text": "站内搜索"
+      }
+    },
+    {
+      "_intent": "米家宠物空气净化器 [draft]",
+      "_title": {
+        "text": "米家宠物空气净化器"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.mi.com/shop/comment/21096.html",
+            "label": "用户评价"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "米家宠物空气净化器 [draft]",
+      "_title": {
+        "text": "米家宠物空气净化器"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.mi.com/shop/comment/21096.html",
+            "label": "用户评价"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "立即登录"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": ""
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "米家宠物空气净化器 [draft]",
+      "_title": {
+        "text": "米家宠物空气净化器"
+      },
+      "_price": {
+        "money": 2999,
+        "currency": "CNY"
+      },
+      "_summary": {
+        "text": "产品站领国补资格下单省10%净除多种宠物异味丨快速吸附毛发皮屑丨双重消杀技术丨四大权威机构认可"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "小米自营"
+          }
+        },
+        {
+          "_text": {
+            "text": "2999 元"
+          }
+        },
+        {
+          "_text": {
+            "text": "优惠券"
+          }
+        },
+        {
+          "_text": {
+            "text": "等6 种优惠券"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript:void(0);",
+            "label": "立即领取"
+          }
+        },
+        {
+          "_text": {
+            "text": "北京"
+          }
+        },
+        {
+          "_text": {
+            "text": "北京市"
+          }
+        },
+        {
+          "_text": {
+            "text": "海淀区"
+          }
+        },
+        {
+          "_text": {
+            "text": "清河街道"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript:void(0);",
+            "label": "修改"
+          }
+        },
+        {
+          "_text": {
+            "text": "有现货"
+          }
+        },
+        {
+          "_text": {
+            "text": "选择颜色"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "白色"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript:void(0);",
+            "label": "加入购物车"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "喜欢"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript:void(0);",
+            "label": " 小米自营"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript:void(0);",
+            "label": " 发货说明"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript:void(0);",
+            "label": " 7天无理由退货（到店自取拆封后不支持）"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript:void(0);",
+            "label": " 运费说明"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "javascript:void(0);",
+            "label": " 企业信息"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://m.mi.com/aftersale/policy/7",
+            "label": " 售后服务政策"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://s1.mi.com/m/faq/giving/index.html?project_id=44",
+            "label": " 7天价格保护"
+          }
+        },
+        {
+          "_intent": "官方微信 [draft]",
+          "_title": {
+            "text": "官方微信"
+          }
+        },
+        {
+          "_intent": "价格说明 [draft]",
+          "_title": {
+            "text": "价格说明"
+          },
+          "_measure": {
+            "list": [
+              {
+                "num": 950816
+              },
+              {
+                "num": 950818
+              }
+            ]
+          },
+          "_summary": {
+            "text": "选购指南"
+          },
+          "_lines": [
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "预约维修服务"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.mi.com/service/aftersale/front",
+                    "label": "预约维修服务"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "7天无理由退货"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.mi.com/service/exchange#back",
+                    "label": "7天无理由退货"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "15天免费换货"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.mi.com/service/exchange#back",
+                    "label": "15天免费换货"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "满69包邮"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.mi.com/service/buy/Postal%20policy",
+                    "label": "满69包邮"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "1100余家售后网点"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://www.mi.com/service/sitelist",
+                    "label": "1100余家售后网点"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "手机"
+              }
+            },
+            {
+              "_text": {
+                "text": "电视"
+              }
+            },
+            {
+              "_text": {
+                "text": "笔记本"
+              }
+            },
+            {
+              "_text": {
+                "text": "平板"
+              }
+            },
+            {
+              "_text": {
+                "text": "穿戴"
+              }
+            },
+            {
+              "_text": {
+                "text": "耳机"
+              }
+            },
+            {
+              "_text": {
+                "text": "家电"
+              }
+            },
+            {
+              "_text": {
+                "text": "路由器"
+              }
+            },
+            {
+              "_text": {
+                "text": "音箱"
+              }
+            },
+            {
+              "_text": {
+                "text": "配件"
+              }
+            },
+            {
+              "_text": {
+                "text": "服务中心"
+              }
+            },
+            {
+              "_text": {
+                "text": "申请售后"
+              }
+            },
+            {
+              "_text": {
+                "text": "服务政策"
+              }
+            },
+            {
+              "_text": {
+                "text": "服务价格"
+              }
+            },
+            {
+              "_text": {
+                "text": "订单查询"
+              }
+            },
+            {
+              "_text": {
+                "text": "以旧换新"
+              }
+            },
+            {
+              "_text": {
+                "text": "保障服务"
+              }
+            },
+            {
+              "_text": {
+                "text": "防伪查询"
+              }
+            },
+            {
+              "_text": {
+                "text": "F码通道"
+              }
+            },
+            {
+              "_text": {
+                "text": "线下门店"
+              }
+            },
+            {
+              "_text": {
+                "text": "小米之家"
+              }
+            },
+            {
+              "_text": {
+                "text": "服务网点"
+              }
+            },
+            {
+              "_text": {
+                "text": "授权体验店/专区"
+              }
+            },
+            {
+              "_text": {
+                "text": "关于小米"
+              }
+            },
+            {
+              "_text": {
+                "text": "了解小米"
+              }
+            },
+            {
+              "_text": {
+                "text": "加入小米"
+              }
+            },
+            {
+              "_text": {
+                "text": "投资者关系"
+              }
+            },
+            {
+              "_text": {
+                "text": "ESG与可持续发展"
+              }
+            },
+            {
+              "_text": {
+                "text": "廉洁举报"
+              }
+            },
+            {
+              "_text": {
+                "text": "关注我们"
+              }
+            },
+            {
+              "_text": {
+                "text": "新浪微博"
+              }
+            },
+            {
+              "_text": {
+                "text": "联系我们"
+              }
+            },
+            {
+              "_text": {
+                "text": "公益基金会"
+              }
+            },
+            {
+              "_text": {
+                "text": "小米高校合作"
+              }
+            },
+            {
+              "_text": {
+                "text": "8:00-18:00（仅收市话费）"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": " 人工客服"
+              }
+            },
+            {
+              "_text": {
+                "text": "手机适用于：Xiaomi MIX Fold系列、MIX Flip系列、Xiaomi Ultra系列、Xiaomi Pro Max"
+              }
+            },
+            {
+              "_text": {
+                "text": "电视适用于：98寸、100寸以上大电视系列"
+              }
+            },
+            {
+              "_text": {
+                "text": "小米商城 | 小米澎湃OS | 米家 | 多看 | 游戏 | 音乐 | 小米智能存储 | 政企服务 | 小米天猫店 | 小米集团"
+              }
+            },
+            {
+              "_text": {
+                "text": "北京互联网法院法律服务工作站 | 中国消费者协会 | 北京市消费者协会"
+              }
+            },
+            {
+              "_text": {
+                "text": "© mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[20"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://search.szfw.org/cert/l/CX20120926001783002010",
+                "label": "诚信网站"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://xyt.xinchacha.com/pcinfo?sn=523009637759455232&certType=6",
+                "label": "可信网站"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.mi.com/service/buy/commitment/",
+                "label": "诚信经营 放心消费"
+              }
+            },
+            {
+              "_text": {
+                "text": "探索黑科技，小米为发烧而生"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "手机APP 扫码领取新人百元礼包"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "个人中心"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "售后服务"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "人工客服"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "购物车（0）"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

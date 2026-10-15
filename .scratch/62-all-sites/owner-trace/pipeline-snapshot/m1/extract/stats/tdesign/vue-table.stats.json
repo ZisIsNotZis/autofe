@@ -1,0 +1,99 @@
+{
+  "site": "tdesign",
+  "page": "vue-table",
+  "url": "https://tdesign.tencent.com/vue-next/components/table",
+  "title": "Table 表格 | TDesign",
+  "sourceNodes": 2028,
+  "counts": {
+    "storylines": 46,
+    "items": 92,
+    "actions": 15,
+    "exposes": 8,
+    "images": 0,
+    "facts": 40,
+    "tables": 8,
+    "lists": 14,
+    "choiceSets": 7,
+    "inputs": 1,
+    "dupeText": 7,
+    "capHits": []
+  },
+  "storylines": 46,
+  "chrome": [
+    {
+      "role": "navigation",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 122,
+      "examples": [
+        "BaseTable",
+        "PrimaryTable",
+        "Table",
+        "EnhancedTable",
+        "fixed"
+      ]
+    },
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 57,
+      "examples": [
+        "审批状态: 审批通过",
+        "签署方式: 电子签署",
+        "电子邮件: w.cezkdudy@lhll.au",
+        "审批状态: 审批失败",
+        "签署方式: 纸质签署"
+      ]
+    },
+    {
+      "kind": "checkbox-multi-select-as-choice-set",
+      "role": "checkbox",
+      "count": 7,
+      "examples": [
+        "显示斑马纹 显示表格边框 显示悬浮效果 宽度自适应 显示表头",
+        "表头吸顶 表尾吸底 滚动条吸底 分页器吸底 固定左侧列 固定右侧列",
+        "允许点击行之后展开/收起 固定列 空数据",
+        "分组列配置 是否显示边框 自定义列配置按钮",
+        "点击行选中 行高亮"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "类型",
+      "example": "😊 我是自定义的空内容 😊: empty function"
+    },
+    {
+      "name": "col-2",
+      "type": "text",
+      "label": "平台"
+    },
+    {
+      "name": "col-3",
+      "type": "text",
+      "label": "属性"
+    },
+    {
+      "name": "col-4",
+      "type": "text",
+      "label": "默认值"
+    },
+    {
+      "name": "col-5",
+      "type": "text",
+      "label": "是否必传"
+    },
+    {
+      "name": "col-6",
+      "type": "text",
+      "label": "说明"
+    }
+  ]
+}

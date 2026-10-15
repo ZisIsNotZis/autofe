@@ -1,0 +1,431 @@
+{
+ "_image": {
+  "image": "../assets/sspai-102392-9fce536efc3cc8f8453035344b690871.webp",
+  "alt": "Markdown图片魔法：自适配深色模式～优雅好用的Typora主题与增强插件VLOOK™"
+ },
+ "_intent": "教 Markdown 用户让图片自适配深色模式，并介绍 VLOOK 主题与增强插件",
+ "_key": "sspai-post-vlook-darkmode",
+ "_title": {
+  "text": "Markdown图片魔法：自适配深色模式～优雅好用的Typora主题与增强插件VLOOK™"
+ },
+ "_author": {
+  "text": "MaxChow"
+ },
+ "_source": {
+  "text": "少数派"
+ },
+ "_datetime": {
+  "date": "2025-09-09"
+ },
+ "_tag": {
+  "list": [
+   {
+    "text": "VLOOK™"
+   },
+   {
+    "text": "Typora"
+   },
+   {
+    "text": "Markdown"
+   }
+  ]
+ },
+ "body": {
+  "_intent": "捕获文章正文按原始顺序保留段落、两种深色模式图解、说明与学习入口；不从图像转写文字。",
+  "_rel": {
+   "order": "sequence"
+  },
+  "_lines": [
+   {
+    "_intent": "捕获的文章导入段落。",
+    "_lines": [
+     {
+      "_quote": {
+       "text": "VLOOK™是针对 Typora（跨平台 Markdown 编辑器）的主题包和增强插件（针对导出的 HTML 文件)，旨在与众 Markdown 粉共创 Markdown 的自动化排版 2.0，在保持 Markdown 简洁性的基础上，让编辑、阅读 Markdown 文档更实用，也更愉悦。VLOOK™属于开源软件（遵从MIT License），也是 OSCHINA 开源中国 推荐的国产开源产品、Typora 的首个增强插件。"
+      },
+      "link-0": {
+       "_title": {
+        "text": "VLOOK™"
+       },
+       "_action": {
+        "verb": "navigate",
+        "label": "VLOOK™",
+        "to": "https://sspai.com/link?target=https%3A%2F%2Fzhida.zhihu.com%2Fsearch%3Fcontent_id%3D245426771%26content_type%3DArticle%26match_order%3D1%26q%3DVLOOK%25E2%2584%25A2%26zhida_source%3Dentity"
+       }
+      },
+      "link-1": {
+       "_title": {
+        "text": "Typora"
+       },
+       "_action": {
+        "verb": "navigate",
+        "label": "Typora",
+        "to": "https://sspai.com/link?target=https%3A%2F%2Flink.zhihu.com%2F%3Ftarget%3Dhttps%253A%2F%2Fwww.oschina.net%2Faction%2FGoToLink%253Furl%253Dhttps%25253A%25252F%25252Ftypora.io%25252F"
+       }
+      },
+      "link-2": {
+       "_title": {
+        "text": "Markdown"
+       },
+       "_action": {
+        "verb": "navigate",
+        "label": "Markdown",
+        "to": "https://sspai.com/link?target=https%3A%2F%2Fzhida.zhihu.com%2Fsearch%3Fcontent_id%3D245426771%26content_type%3DArticle%26match_order%3D1%26q%3DMarkdown%26zhida_source%3Dentity"
+       }
+      },
+      "link-3": {
+       "_title": {
+        "text": "MIT License"
+       },
+       "_action": {
+        "verb": "navigate",
+        "label": "MIT License",
+        "to": "https://sspai.com/link?target=https%3A%2F%2Fzhida.zhihu.com%2Fsearch%3Fcontent_id%3D245426771%26content_type%3DArticle%26match_order%3D1%26q%3DMIT%2BLicense%26zhida_source%3Dentity"
+       }
+      },
+      "link-4": {
+       "_title": {
+        "text": "OSCHINA 开源中国"
+       },
+       "_action": {
+        "verb": "navigate",
+        "label": "OSCHINA 开源中国",
+        "to": "https://sspai.com/link?target=https%3A%2F%2Flink.zhihu.com%2F%3Ftarget%3Dhttps%253A%2F%2Fwww.oschina.net%2Fp%2Fvlook"
+       }
+      },
+      "_intent": "保留本段捕获的文字、媒体和对应原文链接。"
+     },
+     {
+      "_text": {
+       "text": "这个「Markdown 新看 á 法系列」将会通过一系列的小话题小篇幅来给各种 Markdown 粉分享使用 Typora + VLOOK 在文档排版、内容导航、演示辅助、交互体验等方面全新看玩和玩法～"
+      }
+     },
+     {
+      "_quote": {
+       "text": "今日份的小话题：Markdown 的图片自适配 Dark Mode（夜间模式）"
+      }
+     },
+     {
+      "_text": {
+       "text": "当我们将系统或浏览器开启 Dark Mode（夜间模式）后，图片显示得有点不太和谐，怎么办？"
+      }
+     },
+     {
+      "_text": {
+       "text": "如果你也在使用 Typora 编辑 Markdown 文档，通过 VLOOK™ 插件可以指定在 Dark Mode 时的图片适配方式～"
+      }
+     },
+     {
+      "_text": {
+       "text": "目前支持「反色」和「替换」两种适配方式，以满足不同的需求！"
+      }
+     }
+    ]
+   },
+   {
+    "_intent": "该源站二级标题所管辖的图解与说明，保持原始章节归属。",
+    "_title": {
+     "text": "以「反色」方式进行适配"
+    },
+    "_lines": [
+     {
+      "_image": {
+       "image": "../assets/62-recovered-sspai-com-post-102392-ca24cb3e108d.png",
+       "alt": ""
+      },
+      "_detail": {
+       "text": "给图片添加在 Dark Mode 时进行「反色」显示的语法"
+      }
+     },
+     {
+      "_image": {
+       "image": "../assets/62-recovered-sspai-com-post-102392-3b701a022274.png",
+       "alt": ""
+      },
+      "_detail": {
+       "text": "在 Dark Mode 时「反色」显示的效果（一般适合黑/灰白图片）"
+      }
+     }
+    ]
+   },
+   {
+    "_intent": "该源站二级标题所管辖的图解与说明，保持原始章节归属。",
+    "_title": {
+     "text": "以「替换」方式进行适配"
+    },
+    "_lines": [
+     {
+      "_image": {
+       "image": "../assets/62-recovered-sspai-com-post-102392-e18bd7f117f1.png",
+       "alt": ""
+      },
+      "_detail": {
+       "text": "给图片添加在 Dark Mode 时显示指定图片的语法"
+      }
+     },
+     {
+      "_image": {
+       "image": "../assets/62-recovered-sspai-com-post-102392-b706ea74e3d8.png",
+       "alt": ""
+      },
+      "_detail": {
+       "text": "在 Dark Mode 时显示指定的图片（一般适合彩色图片）"
+      }
+     }
+    ]
+   },
+   {
+    "_intent": "源站分隔线之后的收尾与学习入口。",
+    "_lines": [
+     {
+      "_text": {
+       "text": "好了～今天的新看(wán)法小专题暂收笔于此，如果想自己上手玩玩，或了解更多关于 VLOOK™ 的内容，以下入口自行选择："
+      }
+     },
+     {
+      "_text": {
+       "text": "更多有关的小专题：轻轻一点去看看"
+      },
+      "link-0": {
+       "_title": {
+        "text": "轻轻一点去看看"
+       },
+       "_action": {
+        "verb": "navigate",
+        "label": "轻轻一点去看看",
+        "to": "https://sspai.com/link?target=https%3A%2F%2Fwww.zhihu.com%2Fpeople%2Fmaxchow%2Fposts"
+       }
+      },
+      "_intent": "保留本段捕获的文字、媒体和对应原文链接。"
+     },
+     {
+      "_title": {
+       "text": "VLOOK 简介"
+      },
+      "_action": {
+       "verb": "navigate",
+       "label": "VLOOK 简介",
+       "to": "https://sspai.com/link?target=https%3A%2F%2Flink.zhihu.com%2F%3Ftarget%3Dhttps%253A%2F%2Fmadmaxchow.github.io%2FVLOOK%2Findex.html"
+      },
+      "_intent": "保留本段捕获的文字、媒体和对应原文链接。"
+     },
+     {
+      "_text": {
+       "text": "快速参考手册 Part.I｜快速参考手册 Part.II"
+      },
+      "link-0": {
+       "_title": {
+        "text": "快速参考手册 Part.I"
+       },
+       "_action": {
+        "verb": "navigate",
+        "label": "快速参考手册 Part.I",
+        "to": "https://sspai.com/link?target=https%3A%2F%2Flink.zhihu.com%2F%3Ftarget%3Dhttps%253A%2F%2Fmadmaxchow.github.io%2FVLOOK%2Fguide.html"
+       }
+      },
+      "link-1": {
+       "_title": {
+        "text": "快速参考手册 Part.II"
+       },
+       "_action": {
+        "verb": "navigate",
+        "label": "快速参考手册 Part.II",
+        "to": "https://sspai.com/link?target=https%3A%2F%2Flink.zhihu.com%2F%3Ftarget%3Dhttps%253A%2F%2Fmadmaxchow.github.io%2FVLOOK%2Fguide2.html"
+       }
+      },
+      "_intent": "保留本段捕获的文字、媒体和对应原文链接。"
+     }
+    ]
+   }
+  ]
+ },
+ "meta": {
+  "_intent": "阅读成本与许可",
+  "_detail": {
+   "text": "2 分钟阅读 · MIT License"
+  }
+ },
+ "support": {
+  "_intent": "读者可以用充电鼓励作者",
+  "_title": {
+   "text": "充电鼓励"
+  },
+  "_action": {
+   "verb": "operate",
+   "label": "充电"
+  }
+ },
+ "related": {
+  "_intent": "相关推荐",
+  "_rel": {
+   "level": 2
+  },
+  "_items": [
+   {
+    "_title": {
+     "text": "新 iPhone 相机如何记录照片真实性？开发者视角的猜想和尝试"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://sspai.com/post/114453"
+    },
+    "_image": {
+     "image": "../assets/sspai-102392-623052a8f6d6a5d3354c9151079fc560.webp",
+     "alt": "新iPhone相机如何记录照片真实性？开发者视角的猜想和尝试"
+    }
+   },
+   {
+    "_title": {
+     "text": "派评｜近期值得关注的 App"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://sspai.com/post/114577"
+    }
+   },
+   {
+    "_title": {
+     "text": "众测招募｜泡泡骚 Low Pro：给新 iPhone 添一件极简「背心」"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://sspai.com/post/114410"
+    }
+   },
+   {
+    "_title": {
+     "text": "搭建自己的 HomeLab（一）：聊聊我的硬件清单"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://sspai.com/post/113880"
+    }
+   }
+  ]
+ },
+ "navigation": {
+  "_intent": "捕获的少数派主导航入口，保持站点原文与目标。",
+  "_items": [
+   {
+    "_title": {
+     "text": "共创"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "共创",
+     "to": "https://sspai.com/create"
+    }
+   },
+   {
+    "_title": {
+     "text": "PRIME"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "PRIME",
+     "to": "https://sspai.com/prime"
+    }
+   },
+   {
+    "_title": {
+     "text": "Matrix"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "Matrix",
+     "to": "https://sspai.com/matrix"
+    }
+   },
+   {
+    "_title": {
+     "text": "栏目"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "栏目",
+     "to": "https://sspai.com/series"
+    }
+   }
+  ]
+ },
+ "footer": {
+  "_intent": "捕获的站点说明、协议与联系下载工具入口，不编造额外站点信息。",
+  "_items": [
+   {
+    "_title": {
+     "text": "下载 App"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "下载 App",
+     "to": "https://sspai.com/page/client"
+    }
+   },
+   {
+    "_title": {
+     "text": "联系我们"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "联系我们",
+     "to": "mailto:contact@sspai.com"
+    }
+   },
+   {
+    "_title": {
+     "text": "商务合作"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "商务合作",
+     "to": "https://sspai.com/page/bussiness"
+    }
+   },
+   {
+    "_title": {
+     "text": "关于我们"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "关于我们",
+     "to": "https://sspai.com/page/about-us"
+    }
+   },
+   {
+    "_title": {
+     "text": "用户协议"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "用户协议",
+     "to": "https://sspai.com/page/agreement"
+    }
+   },
+   {
+    "_title": {
+     "text": "粤ICP备09128966号-4"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "粤ICP备09128966号-4",
+     "to": "https://beian.miit.gov.cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "粤B2-20211534"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "粤B2-20211534",
+     "to": "https://dxzhgl.miit.gov.cn/"
+    }
+   }
+  ],
+  "record": {
+   "_text": {
+    "text": "© 2013-2026 深圳市烧麦网络科技有限公司 - 少数派 粤ICP备09128966号-4 | 粤B2-20211534"
+   }
+  }
+ }
+}

@@ -1,0 +1,171 @@
+# 数据可视化相关文章
+
+请输入关键词: ________ `[text]`
+
+数据可视化
+
+[站内搜索]
+
+单选
+
+- (●) [文章](https://36kr.com/search/articles/数据可视化)
+- ( ) 快讯
+- ( ) 直播
+- ( ) 视频
+- ( ) 专题
+- ( ) [作者](https://36kr.com/search/user/数据可视化)
+- ( ) [项目](https://36kr.com/search/projects/数据可视化)
+- ( ) 企业号
+
+单选
+
+- (●) 相关性
+- ( ) 发布时间
+
+### [讲好数据故事：数据可视化设计终极指南](https://36kr.com/p/3358287655929602)
+
+副标题: 数据可视化综合指南：技术结合设计，工具与策略解析。
+
+图片: ![讲好数据故事：数据可视化设计终极指南](https://img.36krcdn.com/hsossms/20250630/v2_2e2d933b6667463e894dfb133999c94e@000000@ai_oswg235191oswg1536oswg722_img_000~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp)
+
+2025-06-30
+
+### [跳出单点工具，多元时代科技提出“企业级虚实共生AI底座”构想](https://36kr.com/p/3981482257660676)
+
+副标题: 多元时代科技推出VeriWeb AI打造企业级虚实共生AI底座
+
+图片: ![跳出单点工具，多元时代科技提出“企业级虚实共生AI底座”构想](https://img.36krcdn.com/hsossms/20260913/v2_09d977b26b494232afddd2df5f26618a@000000@ai_oswg264172oswg1536oswg722_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp)
+
+2026-09-15
+
+### [排队乱、管控难、扩张慢！悦剪用自研SaaS+联营模式，要破美发连锁化率不足20%的困局](https://36kr.com/p/3973176326123778)
+
+副标题: 悦剪AI社区连锁获Pre-A轮融资，赋能数字化新美业
+
+图片: ![排队乱、管控难、扩张慢！悦剪用自研SaaS+联营模式，要破美发连锁化率不足20%的困局](https://img.36krcdn.com/hsossms/20260909/v2_ef553094c01d41bd8564d1f982a1599a@5284654@ai_oswg935635oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp)
+
+2026-09-09
+
+### [便宜的电脑，正在消失](https://36kr.com/p/3963109402328453)
+
+副标题: 买不起的不只是电脑
+
+图片: ![便宜的电脑，正在消失](https://img.36krcdn.com/hsossms/20260831/v2_b17910de58e1409793b539372164a028@5888275@ai_oswg1042814oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp)
+
+2026-08-31
+
+### [麻省理工学院：AI正在倒逼大学教育重新定位](https://36kr.com/p/3955833576619394)
+
+副标题: 这不仅是课堂规则的调整，更是一场关于“人类能力”的深层追问。
+
+图片: ![麻省理工学院：AI正在倒逼大学教育重新定位](https://img.36krcdn.com/hsossms/20260826/v2_6a42237928104d99a624cfa6270f0bd7@46958@ai_oswg913248oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp)
+
+2026-08-26
+
+### [36氪首发 | 清华系物理AI基建初创再融数千万美元，数据设备进入全球化规模交付](https://36kr.com/p/3927411140425861)
+
+副标题: 模型开始从互联网数据转向真实世界经验
+
+图片: ![36氪首发 | 清华系物理AI基建初创再融数千万美元，数据设备进入全球化规模交付](https://img.36krcdn.com/hsossms/20260806/v2_c4d1cdd91b1c4807a02e06c1f9d31d8e@6221844_oswg406001oswg1053oswg495_img_png?x-oss-process=image/resize,m_mfit,w_600,h_400,limit_0/crop,w_600,h_400,g_center/format,webp)
+
+2026-08-06
+
+### [下半年，垂直Agent先下牌桌？](https://36kr.com/p/3916624450662018)
+
+副标题: 重新洗牌期。
+
+图片: ![下半年，垂直Agent先下牌桌？](https://img.36krcdn.com/hsossms/20260729/v2_6f0e7349886145b58c4cb30d394cdc6b@5888275@ai_oswg958074oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp)
+
+2026-07-29
+
+### [泳池清洁机器人赛道纵深分析：地表科技的技术自研与全品类代工竞争力](https://36kr.com/p/3916114992147844)
+
+副标题: 自研技术全自产的地表科技做泳池清洁机器人代工
+
+图片: ![泳池清洁机器人赛道纵深分析：地表科技的技术自研与全品类代工竞争力](https://img.36krcdn.com/hsossms/20260729/v2_a0d1f119fda54ecd88eef7a13d2413fa@000000@ai_oswg297134oswg1536oswg722_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp)
+
+2026-07-29
+
+### [UCLA博士团队创业做人形机器人基础模型，拿下近5亿元天使++轮融资｜硬氪首发](https://36kr.com/p/3913213962540164)
+
+副标题: “大脑+小脑+力位混合”三层原生协同架构，三层模型分工明确、闭环联动。
+
+图片: ![UCLA博士团队创业做人形机器人基础模型，拿下近5亿元天使++轮融资｜硬氪首发](https://img.36krcdn.com/hsossms/20260728/v2_eec6306881b3486cad5c34860a5d24ee@6022551_oswg823093oswg1053oswg495_img_png?x-oss-process=image/resize,m_mfit,w_600,h_400,limit_0/crop,w_600,h_400,g_center/format,webp)
+
+2026-07-28
+
+### [林俊旸离职140天，Qwen3.8重回开源，阿里大模型还能打吗？](https://36kr.com/p/3908187603621252)
+
+副标题: 阿里着急端上Qwen3.8？
+
+2026-07-24
+
+### [Kimi K3，让谁紧张？](https://36kr.com/p/3905392402748801)
+
+副标题: 估值逻辑又变了？
+
+2026-07-22
+
+### [WAICA正式启航：打破全球AI学术版图，上海迎来关键拼图](https://36kr.com/p/3903886909064832)
+
+副标题: 2026年首届WAICA将于上海举办，打造全球AI学术新平台
+
+2026-07-20
+
+### [这个机器人的手，有点灵活过头了](https://36kr.com/p/3889659031845636)
+
+副标题: 任天堂超级怪手迎来劲敌！
+
+2026-07-10
+
+### [第十一届数据分析行业大会在重庆盛大开幕 多项行业首创成果集中发布，开启AI与数据融合新篇章](https://36kr.com/p/3869643912434951)
+
+副标题: 第十一届数据分析行业大会在渝开幕，多项成果发布
+
+2026-06-26
+
+### [实测豆包专业版：327张图3分钟归档，PPT配图“偶开天窗”，数据图表识别仍需“人工兜底”](https://36kr.com/p/3868483485160710)
+
+副标题: 豆包专业版上线实测：付费体验待提升，商业化仍需探索
+
+2026-06-25
+
+### [豆包专业版实测：2亿人都可以体验能干活的Agent了](https://36kr.com/p/3867047187420420)
+
+副标题: 豆包上线专业版及2.1系列模型，推出Agent办公任务模式
+
+2026-06-24
+
+### [AI大模型平台选型优选指南：聚焦豆包+DeepSeek，2026 智能体应用落地全解](https://36kr.com/p/3858102947206148)
+
+副标题: 2026豆包与DeepSeek能力、选型全解析
+
+2026-06-18
+
+### [麻省理工/IBM提出迄今为止最大的合成图表数据集ChartNet，生成150万个多样化图表样本](https://36kr.com/p/3848566186759176)
+
+副标题: 内含数据集在线使用地址
+
+2026-06-11
+
+### [知乎、豆阅、小红书：短剧能带网文这门生意走多远？](https://36kr.com/p/3847194467482247)
+
+副标题: 知乎盐言故事、豆瓣阅读、小红书抢滩短剧IP池
+
+2026-06-10
+
+### [跳出工具思维，重构产业流通底座：2026年大宗商品数字化迎来新范式](https://36kr.com/p/3847081288157704)
+
+副标题: 那时刻“技术+运营”模式，开辟重资产产业数字化新路径
+
+2026-06-10
+
+[AI测评网](https://ai.36kr.com)
+
+[查看更多]
+
+本站由 阿里云提供计算与安全服务 违法和不良信息、未成年人保护举报电话：010-89650707 举报邮箱：jubao@36kr.com 网上有害信息举报
+
+© 2011\~2026 北京多氪信息科技有限公司 |京ICP备12031756号-6 | 京ICP证150143号 | 京公网安备11010502057322号
+
+[城市合作](https://36kr.com/station-business) [项目推荐](https://36kr.com/seek-report-new) [投资者关系](http://ir.36kr.com) [关于我们](https://36kr.com/pages/about) [加入我们](https://zhaopin.36kr.com) [网络谣言信息举报入口](https://36kr.com/refute-rumor-notice) [热门资讯](https://36kr.com/hot-list/catalog) [热门产品](https://36kr.com/project) [文章标签](https://36kr.com/tags) [快讯标签](https://36kr.com/nftags) [阿里云](https://www.aliyun.com/) [网上有害信息举报](https://www.12377.cn) [京ICP备12031756号-6](https://beian.miit.gov.cn/#/Integrated/index) [京ICP证150143号](https://dxzhgl.miit.gov.cn/dxxzsp/xkz/xkzgl/resource/qiyesearch.jsp?num=%25E5%258C%2597%25E4%25BA%25AC%25E5%25A4%259A%25E6%25B0%25AA%25E4%25BF%25A1%25E6%2581%25AF%25E7%25A7%2591%25E6%258A%2580%25E6%259C%2589%25E9%2599%2590%25E5%2585%25AC%25E5%258F%25B8&type=xuke) [京公网安备11010502057322号](http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502057322)

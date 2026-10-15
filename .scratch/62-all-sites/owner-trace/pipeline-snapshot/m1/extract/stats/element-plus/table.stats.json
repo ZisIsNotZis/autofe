@@ -1,0 +1,271 @@
+{
+  "site": "element-plus",
+  "page": "table",
+  "url": "https://element-plus.org/en-US/component/table.html",
+  "title": "Table | Element Plus",
+  "sourceNodes": 6030,
+  "counts": {
+    "storylines": 43,
+    "items": 115,
+    "actions": 209,
+    "exposes": 2,
+    "images": 0,
+    "facts": 28,
+    "tables": 34,
+    "lists": 0,
+    "choiceSets": 2,
+    "inputs": 0,
+    "dupeText": 174,
+    "capHits": [
+      "itemsPerCollection"
+    ]
+  },
+  "storylines": 43,
+  "chrome": [
+    {
+      "role": "complementary",
+      "count": 2
+    },
+    {
+      "role": "banner",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 103,
+      "examples": [
+        "Description: triggers when user clicks the checkbox in a row",
+        "Description: triggers when user clicks the checkbox in table header",
+        "Description: triggers when selection changes",
+        "Description: triggers when hovering into a cell",
+        "Description: triggers when hovering out of a cell"
+      ]
+    },
+    {
+      "kind": "table-without-headers",
+      "role": "table",
+      "count": 30,
+      "examples": [
+        "2016-05-03 | Tom | No. 189, Grove St, Los Angeles",
+        "Select this row | 2016-05-04 | Aleyna Kutzner | Lohrbergstr. 86c, Süd Lilli, Saa",
+        "2016-05-03 | Tom | California | Los Angeles | No. 189, Grove St, Los Angeles | C",
+        "2016-05-01 | Tom | California | Los Angeles | No. 189, Grove St, Los Angeles | C",
+        "2016-05-03 | Tom | CA 90036 | California | Los Angeles | No. 189, Grove St, Los "
+      ]
+    },
+    {
+      "kind": "table-extra-header-rows",
+      "role": "columnheader",
+      "count": 3,
+      "examples": [
+        "Name|Address Info",
+        "State|City|Address|Zip",
+        "State|City|Address"
+      ]
+    },
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 2,
+      "examples": [
+        "<template> <el-table :data=\"tableData\"> <!-- @vue-generic {User}",
+        "<template> <el-table-column width=\"180\"> <template #default=\"sco"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "date",
+      "type": "text",
+      "label": "Date"
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name",
+      "example": "default"
+    },
+    {
+      "name": "address",
+      "type": "text",
+      "label": "Address"
+    },
+    {
+      "name": "select-all-rows",
+      "type": "text",
+      "label": "Select all rows"
+    },
+    {
+      "name": "use-show-overflow-tooltip",
+      "type": "text",
+      "label": "use show-overflow-tooltip"
+    },
+    {
+      "name": "state",
+      "type": "text",
+      "label": "State"
+    },
+    {
+      "name": "city",
+      "type": "text",
+      "label": "City"
+    },
+    {
+      "name": "zip",
+      "type": "text",
+      "label": "Zip"
+    },
+    {
+      "name": "operations",
+      "type": "text",
+      "label": "Operations"
+    },
+    {
+      "name": "delivery-info",
+      "type": "text",
+      "label": "Delivery Info"
+    },
+    {
+      "type": "text",
+      "label": "col-4"
+    },
+    {
+      "name": "address-info",
+      "type": "text",
+      "label": "Address Info"
+    },
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "col-1"
+    },
+    {
+      "name": "date-sort-by-date",
+      "type": "text",
+      "label": "Date Sort by Date"
+    },
+    {
+      "name": "date-sort-by-date-filter-by-date",
+      "type": "text",
+      "label": "Date Sort by Date Filter by Date"
+    },
+    {
+      "name": "tag-filter-by-tag",
+      "type": "text",
+      "label": "Tag Filter by Tag"
+    },
+    {
+      "name": "type-to-search",
+      "type": "text",
+      "label": "Type to search"
+    },
+    {
+      "name": "name-sort-by-name",
+      "type": "text",
+      "label": "Name Sort by Name"
+    },
+    {
+      "name": "address-sort-by-address",
+      "type": "text",
+      "label": "Address Sort by Address"
+    },
+    {
+      "name": "id",
+      "type": "text",
+      "label": "ID"
+    },
+    {
+      "name": "amount-1-sort-by-amount-1",
+      "type": "text",
+      "label": "Amount 1 Sort by Amount 1"
+    },
+    {
+      "name": "amount-2-sort-by-amount-2",
+      "type": "text",
+      "label": "Amount 2 Sort by Amount 2"
+    },
+    {
+      "name": "amount-3-sort-by-amount-3",
+      "type": "text",
+      "label": "Amount 3 Sort by Amount 3"
+    },
+    {
+      "name": "cost-1",
+      "type": "text",
+      "label": "Cost 1 ($)"
+    },
+    {
+      "name": "cost-2",
+      "type": "text",
+      "label": "Cost 2 ($)"
+    },
+    {
+      "name": "cost-3",
+      "type": "text",
+      "label": "Cost 3 ($)"
+    },
+    {
+      "name": "amount-1",
+      "type": "text",
+      "label": "Amount 1"
+    },
+    {
+      "name": "amount-2",
+      "type": "text",
+      "label": "Amount 2"
+    },
+    {
+      "name": "amount-3",
+      "type": "text",
+      "label": "Amount 3"
+    },
+    {
+      "name": "extends-table-formatter",
+      "type": "text",
+      "label": "extends table formatter"
+    },
+    {
+      "name": "formatter-object",
+      "type": "text",
+      "label": "formatter object"
+    },
+    {
+      "name": "with-vnode",
+      "type": "text",
+      "label": "with vnode"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "Custom content for table columns"
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "label": "Type",
+      "example": "object Type details"
+    },
+    {
+      "name": "default",
+      "type": "text",
+      "label": "Default",
+      "example": "default"
+    },
+    {
+      "name": "subtags",
+      "type": "text",
+      "label": "Subtags",
+      "example": "Table-column"
+    },
+    {
+      "name": "method",
+      "type": "text",
+      "label": "Method",
+      "example": "clearSelection"
+    }
+  ]
+}

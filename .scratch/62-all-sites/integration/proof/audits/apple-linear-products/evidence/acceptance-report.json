@@ -1,0 +1,91 @@
+{
+  "criteriaSatisfied": [
+    {
+      "id": "criterion-1",
+      "status": "satisfied",
+      "evidence": "Read-only diagnosis of exactly four assigned pages, with18 image reads and3 browser jobs; source/models/assets/docs unchanged. Baseline visual acceptance remains explicitly INCOMPLETE."
+    },
+    {
+      "id": "criterion-2",
+      "status": "satisfied",
+      "evidence": "Inspectable screenshots, exact HTML/model/source hashes, source/geometry probes, replayable fidelity check, validator logs and exact unverified modalities saved."
+    }
+  ],
+  "changedFiles": [
+    "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-apple-linear-products.md",
+    ".scratch/62-all-sites/audit-handoff.json",
+    ".scratch/62-all-sites/audit-apple-linear-products/ticket.md",
+    ".scratch/62-all-sites/audit-apple-linear-products/changed-files.json"
+  ],
+  "testsAddedOrUpdated": [
+    ".scratch/62-all-sites/audit-apple-linear-products/fidelity-probe.py (diagnostic only; project tests unchanged)"
+  ],
+  "commandsRun": [
+    {
+      "command": "node .scratch/62-all-sites/audit-apple-linear-products/capture.mjs",
+      "result": "passed",
+      "summary": "16 offline width captures; remote-image Apple views excluded from normal-load visual findings."
+    },
+    {
+      "command": "node .scratch/62-all-sites/audit-apple-linear-products/capture-online.mjs",
+      "result": "passed",
+      "summary": "Eight loaded Apple captures at four widths; associated remote images loaded."
+    },
+    {
+      "command": "node .scratch/62-all-sites/audit-apple-linear-products/detail-probes.mjs",
+      "result": "passed",
+      "summary": "Four pages at2560/390; detail geometry and30 remote asset payload hashes saved."
+    },
+    {
+      "command": "node m1/validate.mjs <each of four assigned models>",
+      "result": "passed",
+      "summary": "All four models validate."
+    },
+    {
+      "command": "python3 .scratch/62-all-sites/audit-apple-linear-products/fidelity-probe.py",
+      "result": "failed",
+      "summary": "Exactly one missing action target: iPhone Air Buy; no model images missing."
+    },
+    {
+      "command": "Python SHA256 check against renders/manifest.json",
+      "result": "passed",
+      "summary": "All eight scoped baseline HTML/PNG artifacts match manifest hashes."
+    },
+    {
+      "command": "git diff --check; git diff --exit-code HEAD -- m1 docs; git diff --cached --name-only",
+      "result": "passed",
+      "summary": "Whitespace clean; tracked source/docs unchanged; empty staged index."
+    },
+    {
+      "command": "First inline Python report generator",
+      "result": "failed",
+      "summary": "Unescaped corpus filename braces in f-string raised NameError before report creation; retained ticket event, repaired local report generator."
+    },
+    {
+      "command": "node .scratch/62-all-sites/audit-apple-linear-products/report.mjs",
+      "result": "passed",
+      "summary": "Authoritative report and inspectable evidence inventory written."
+    }
+  ],
+  "validationOutput": [
+    "11 open baseline findings:7 engine,4 content.",
+    "Whole-height images inspected at2560/1440/390; geometry probed at2560/1920/1440/390.",
+    "No measured document overflow or intrinsic image upscaling; contained iPhone17 comparison scrolling is allowed."
+  ],
+  "residualRisks": [
+    "1920 full-height screenshots and geometry captured, but images not visually read (all four pages); no1920 experience PASS.",
+    "18 image reads consumed; three browser jobs consumed. Initial offline remote-image render retained but not used for Apple visual conclusions.",
+    "Downscaled source sheets do not prove small-print/footnote/footer/legal-term completeness or contrast on Apple sources. Source captures themselves have unloaded/lazy blank areas.",
+    "390 iPhone17 comparison right-hand horizontal-scroll state not visually exercised; containment measured, document remains390px.",
+    "No external action navigation/submission exercised; model target preservation checked against local HTML only.",
+    "Computed contrast probe does not cover image backgrounds, blend/transparency compositing, focus/hover or input-state styling.",
+    "Initial diagnostic baseline only; no source changes or fresh independent final-fix review. Unknown coverage remains INCOMPLETE.",
+    "Remote asset bytes saved/hashes obtained during third detail job; original first online screenshot payload bytes were not intercepted. Screenshots, URLs and intrinsic dimensions are bound; temporal remote-content equality is not assumed."
+  ],
+  "noStagedFiles": true,
+  "diffSummary": "Only scoped diagnostic report, ticket, evidence/scripts and routing handoff. No implementation changes.",
+  "reviewFindings": [
+    "E1–E7 and C1–C4 remain open in baseline; no acceptance of future repairs."
+  ],
+  "manualNotes": "Route repairs to exclusive engine/content owners, then fresh independent final-revision technical/experience review. This lane has no source repair authority."
+}

@@ -1,0 +1,1195 @@
+{
+  "$comment": "GENERATED DRAFT field dictionary (m3 extraction). Separate from the shared m1/vocab-fields.json: proposals only. Models emit _fields keys that exist in the shared dictionary; everything else here is a proposed vocabulary addition recorded in the extraction report.",
+  "version": "0-draft",
+  "fields": {
+    "property": {
+      "type": "text",
+      "label": "Property",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "label": "Description",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table",
+        "element-plus/button",
+        "element-plus/date-picker",
+        "element-plus/form",
+        "element-plus/input",
+        "element-plus/select",
+        "element-plus/table",
+        "getbootstrap/docs-introduction"
+      ]
+    },
+    "type": {
+      "type": "text",
+      "label": "Type",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table",
+        "element-plus/button",
+        "element-plus/date-picker",
+        "element-plus/form",
+        "element-plus/input",
+        "element-plus/select",
+        "element-plus/table"
+      ]
+    },
+    "default": {
+      "type": "text",
+      "label": "Default",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table",
+        "element-plus/button",
+        "element-plus/date-picker",
+        "element-plus/form",
+        "element-plus/input",
+        "element-plus/select",
+        "element-plus/table"
+      ]
+    },
+    "version": {
+      "type": "text",
+      "label": "Version",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table"
+      ]
+    },
+    "global-config": {
+      "type": "text",
+      "label": "Global Config",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table"
+      ]
+    },
+    "token-name": {
+      "type": "text",
+      "label": "Token Name",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table"
+      ]
+    },
+    "default-value": {
+      "type": "text",
+      "label": "Default Value",
+      "pages": [
+        "ant-design/components-button",
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table"
+      ]
+    },
+    "name": {
+      "type": "text",
+      "label": "Name",
+      "pages": [
+        "ant-design/components-date-picker",
+        "ant-design/components-form",
+        "ant-design/components-input",
+        "ant-design/components-table",
+        "arco-design/components-form",
+        "arco-design/components-table",
+        "element-plus/button",
+        "element-plus/date-picker",
+        "element-plus/form",
+        "element-plus/input",
+        "element-plus/select",
+        "element-plus/table"
+      ]
+    },
+    "parameters": {
+      "type": "text",
+      "label": "Parameters",
+      "pages": [
+        "ant-design/components-input"
+      ]
+    },
+    "age": {
+      "type": "num",
+      "label": "Age",
+      "pages": [
+        "ant-design/components-table",
+        "arco-design/components-form",
+        "arco-design/components-table"
+      ]
+    },
+    "address": {
+      "type": "text",
+      "label": "Address",
+      "pages": [
+        "ant-design/components-table",
+        "arco-design/components-table",
+        "element-plus/table"
+      ]
+    },
+    "tags": {
+      "type": "text",
+      "label": "Tags",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "action": {
+      "type": "text",
+      "label": "Action",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "undefined": {
+      "type": "text",
+      "label": "col-3",
+      "pages": [
+        "ant-design/components-table",
+        "arco-design/components-table",
+        "element-plus/table"
+      ]
+    },
+    "select-all": {
+      "type": "text",
+      "label": "Select all",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "custom-selection-down": {
+      "type": "text",
+      "label": "Custom selection down",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address-filter": {
+      "type": "text",
+      "label": "Address filter",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "name-filter": {
+      "type": "text",
+      "label": "Name filter",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "chinese-score": {
+      "type": "num",
+      "label": "Chinese Score",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "math-score": {
+      "type": "num",
+      "label": "Math Score",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "english-score": {
+      "type": "num",
+      "label": "English Score",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "name-search": {
+      "type": "text",
+      "label": "Name search",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "age-search": {
+      "type": "num",
+      "label": "Age search",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "gender-filter": {
+      "type": "text",
+      "label": "Gender filter",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "email": {
+      "type": "text",
+      "label": "Email",
+      "pages": [
+        "ant-design/components-table",
+        "arco-design/components-form",
+        "arco-design/components-table"
+      ]
+    },
+    "cash-assets": {
+      "type": "money",
+      "label": "Cash Assets",
+      "pages": [
+        "ant-design/components-table"
+      ],
+      "currency": "CNY"
+    },
+    "col-1": {
+      "type": "text",
+      "label": "col-1",
+      "pages": [
+        "ant-design/components-table",
+        "arco-design/components-button",
+        "arco-design/components-form",
+        "arco-design/components-input",
+        "arco-design/components-table",
+        "aws-amazon/ec2-on-demand",
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "element-plus/table",
+        "getbootstrap/example-dashboard",
+        "getbootstrap/example-pricing",
+        "juejin-cn/post-7686401413472862214",
+        "semi-design/getting-started",
+        "semi-design/table",
+        "tdesign/vue-table"
+      ]
+    },
+    "col-2": {
+      "type": "text",
+      "label": "col-2",
+      "pages": [
+        "ant-design/components-table",
+        "arco-design/components-button",
+        "arco-design/components-form",
+        "arco-design/components-input",
+        "arco-design/components-table",
+        "aws-amazon/ec2-on-demand",
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "juejin-cn/post-7686401413472862214",
+        "semi-design/table",
+        "tdesign/vue-table"
+      ]
+    },
+    "rowhead": {
+      "type": "text",
+      "label": "RowHead",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "home-phone": {
+      "type": "text",
+      "label": "Home phone",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "full-name": {
+      "type": "text",
+      "label": "Full Name",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-1": {
+      "type": "text",
+      "label": "Column 1",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-2": {
+      "type": "text",
+      "label": "Column 2",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-3": {
+      "type": "text",
+      "label": "Column 3",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-4": {
+      "type": "text",
+      "label": "Column 4",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-5": {
+      "type": "text",
+      "label": "Column 5",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-6": {
+      "type": "text",
+      "label": "Column 6",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-7": {
+      "type": "text",
+      "label": "Column 7",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-8": {
+      "type": "text",
+      "label": "Column 8",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-9": {
+      "type": "text",
+      "label": "Column 9",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-10": {
+      "type": "text",
+      "label": "Column 10",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-11": {
+      "type": "text",
+      "label": "Column 11",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-12": {
+      "type": "text",
+      "label": "Column 12",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-13": {
+      "type": "text",
+      "label": "Column 13",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-14": {
+      "type": "text",
+      "label": "Column 14",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-15": {
+      "type": "text",
+      "label": "Column 15",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-16": {
+      "type": "text",
+      "label": "Column 16",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-17": {
+      "type": "text",
+      "label": "Column 17",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-18": {
+      "type": "text",
+      "label": "Column 18",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-19": {
+      "type": "text",
+      "label": "Column 19",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "column-20": {
+      "type": "text",
+      "label": "Column 20",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "action-1": {
+      "type": "text",
+      "label": "Action 1",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "action-2": {
+      "type": "text",
+      "label": "Action 2",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "action-3": {
+      "type": "text",
+      "label": "Action 3",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "other": {
+      "type": "text",
+      "label": "Other",
+      "pages": [
+        "ant-design/components-table",
+        "arco-design/components-table"
+      ]
+    },
+    "company": {
+      "type": "text",
+      "label": "Company",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "gender": {
+      "type": "text",
+      "label": "Gender",
+      "pages": [
+        "ant-design/components-table",
+        "arco-design/components-form",
+        "arco-design/components-table"
+      ]
+    },
+    "operation": {
+      "type": "text",
+      "label": "operation",
+      "pages": [
+        "ant-design/components-table",
+        "arco-design/components-table"
+      ]
+    },
+    "platform": {
+      "type": "text",
+      "label": "Platform",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "upgraded": {
+      "type": "text",
+      "label": "Upgraded",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "creator": {
+      "type": "text",
+      "label": "Creator",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "date": {
+      "type": "text",
+      "label": "Date",
+      "pages": [
+        "ant-design/components-table",
+        "element-plus/table"
+      ]
+    },
+    "long-column-long-column-long-column": {
+      "type": "text",
+      "label": "Long Column Long Column Long Column",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "long-column-long-column": {
+      "type": "text",
+      "label": "Long Column Long Column",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "long-column": {
+      "type": "text",
+      "label": "Long Column",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "age-filter": {
+      "type": "num",
+      "label": "Age filter",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "borrow": {
+      "type": "num",
+      "label": "Borrow",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "repayment": {
+      "type": "text",
+      "label": "Repayment",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "id": {
+      "type": "text",
+      "label": "ID",
+      "pages": [
+        "ant-design/components-table",
+        "element-plus/table"
+      ]
+    },
+    "fistname": {
+      "type": "text",
+      "label": "FistName",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "lastname": {
+      "type": "text",
+      "label": "LastName",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "group": {
+      "type": "text",
+      "label": "Group",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address-1": {
+      "type": "text",
+      "label": "Address 1",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address-2": {
+      "type": "text",
+      "label": "Address 2",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address-3": {
+      "type": "text",
+      "label": "Address 3",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "name-all-screens": {
+      "type": "text",
+      "label": "Name (all screens)",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "age-medium-screen-or-bigger": {
+      "type": "num",
+      "label": "Age (medium screen or bigger)",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "address-large-screen-or-bigger": {
+      "type": "text",
+      "label": "Address (large screen or bigger)",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "personal-info": {
+      "type": "text",
+      "label": "Personal Info",
+      "pages": [
+        "ant-design/components-table"
+      ]
+    },
+    "edge-edge": {
+      "type": "text",
+      "label": "Edge Edge",
+      "pages": [
+        "ant-design/docs-introduce"
+      ]
+    },
+    "firefox-firefox": {
+      "type": "text",
+      "label": "Firefox Firefox",
+      "pages": [
+        "ant-design/docs-introduce",
+        "arco-design/docs-start"
+      ]
+    },
+    "chrome-chrome": {
+      "type": "text",
+      "label": "Chrome Chrome",
+      "pages": [
+        "ant-design/docs-introduce",
+        "arco-design/docs-start"
+      ]
+    },
+    "safari-safari": {
+      "type": "text",
+      "label": "Safari Safari",
+      "pages": [
+        "ant-design/docs-introduce",
+        "arco-design/docs-start"
+      ]
+    },
+    "opera-opera": {
+      "type": "text",
+      "label": "Opera Opera",
+      "pages": [
+        "ant-design/docs-introduce",
+        "arco-design/docs-start"
+      ]
+    },
+    "electron-electron": {
+      "type": "text",
+      "label": "Electron Electron",
+      "pages": [
+        "ant-design/docs-introduce",
+        "arco-design/docs-start"
+      ]
+    },
+    "col-3": {
+      "type": "text",
+      "label": "类型",
+      "pages": [
+        "arco-design/components-button",
+        "arco-design/components-form",
+        "arco-design/components-input",
+        "arco-design/components-table",
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "juejin-cn/post-7686401413472862214",
+        "semi-design/table",
+        "tdesign/vue-table"
+      ]
+    },
+    "col-4": {
+      "type": "text",
+      "label": "默认值",
+      "pages": [
+        "arco-design/components-button",
+        "arco-design/components-form",
+        "arco-design/components-input",
+        "arco-design/components-table",
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "juejin-cn/post-7686401413472862214",
+        "semi-design/table",
+        "tdesign/vue-table"
+      ]
+    },
+    "salary": {
+      "type": "text",
+      "label": "Salary",
+      "pages": [
+        "arco-design/components-form",
+        "arco-design/components-table"
+      ]
+    },
+    "col-5": {
+      "type": "text",
+      "label": "版本",
+      "pages": [
+        "arco-design/components-form",
+        "arco-design/components-input",
+        "arco-design/components-table",
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "juejin-cn/post-7686401413472862214",
+        "semi-design/table",
+        "tdesign/vue-table"
+      ]
+    },
+    "expand": {
+      "type": "text",
+      "label": "Expand",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "score-a": {
+      "type": "num",
+      "label": "Score A",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "score-b": {
+      "type": "num",
+      "label": "Score B",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "score-c": {
+      "type": "num",
+      "label": "Score C",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "other-1": {
+      "type": "text",
+      "label": "Other 1",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "other-2": {
+      "type": "text",
+      "label": "Other 2",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "user-info": {
+      "type": "text",
+      "label": "User Info",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "information": {
+      "type": "text",
+      "label": "Information",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "detail": {
+      "type": "text",
+      "label": "Detail",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "index": {
+      "type": "text",
+      "label": "Index",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "count": {
+      "type": "text",
+      "label": "Count",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "stars": {
+      "type": "text",
+      "label": "Stars",
+      "pages": [
+        "arco-design/components-table"
+      ]
+    },
+    "ie-edge-ie-edge": {
+      "type": "text",
+      "label": "IE / Edge IE / Edge",
+      "pages": [
+        "arco-design/docs-start"
+      ]
+    },
+    "amazon-ec2": {
+      "type": "text",
+      "label": "数据自 Amazon EC2 传出至",
+      "pages": [
+        "aws-amazon/ec2-on-demand"
+      ]
+    },
+    "aws-amazon-ec2": {
+      "type": "text",
+      "label": "在同一 AWS 区域内的本地区域和可用区之间传输的数据，从本地区域中的 Amazon EC2“传入”和“传出”",
+      "pages": [
+        "aws-amazon/ec2-on-demand"
+      ]
+    },
+    "col-6": {
+      "type": "text",
+      "label": "五",
+      "pages": [
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong",
+        "semi-design/table",
+        "tdesign/vue-table"
+      ]
+    },
+    "col-7": {
+      "type": "text",
+      "label": "六",
+      "pages": [
+        "cnblogs/blog-cmt",
+        "cnblogs/blog-duwenlong"
+      ]
+    },
+    "subtags": {
+      "type": "text",
+      "label": "Subtags",
+      "pages": [
+        "element-plus/button",
+        "element-plus/form",
+        "element-plus/select",
+        "element-plus/table"
+      ]
+    },
+    "attribute": {
+      "type": "text",
+      "label": "Attribute",
+      "pages": [
+        "element-plus/select"
+      ]
+    },
+    "select-all-rows": {
+      "type": "text",
+      "label": "Select all rows",
+      "pages": [
+        "element-plus/table",
+        "semi-design/table"
+      ]
+    },
+    "use-show-overflow-tooltip": {
+      "type": "text",
+      "label": "use show-overflow-tooltip",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "state": {
+      "type": "text",
+      "label": "State",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "city": {
+      "type": "text",
+      "label": "City",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "zip": {
+      "type": "text",
+      "label": "Zip",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "operations": {
+      "type": "text",
+      "label": "Operations",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "delivery-info": {
+      "type": "text",
+      "label": "Delivery Info",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "address-info": {
+      "type": "text",
+      "label": "Address Info",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "date-sort-by-date": {
+      "type": "text",
+      "label": "Date Sort by Date",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "date-sort-by-date-filter-by-date": {
+      "type": "text",
+      "label": "Date Sort by Date Filter by Date",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "tag-filter-by-tag": {
+      "type": "text",
+      "label": "Tag Filter by Tag",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "type-to-search": {
+      "type": "text",
+      "label": "Type to search",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "name-sort-by-name": {
+      "type": "text",
+      "label": "Name Sort by Name",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "address-sort-by-address": {
+      "type": "text",
+      "label": "Address Sort by Address",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-1-sort-by-amount-1": {
+      "type": "text",
+      "label": "Amount 1 Sort by Amount 1",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-2-sort-by-amount-2": {
+      "type": "text",
+      "label": "Amount 2 Sort by Amount 2",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-3-sort-by-amount-3": {
+      "type": "text",
+      "label": "Amount 3 Sort by Amount 3",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "cost-1": {
+      "type": "text",
+      "label": "Cost 1 ($)",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "cost-2": {
+      "type": "text",
+      "label": "Cost 2 ($)",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "cost-3": {
+      "type": "text",
+      "label": "Cost 3 ($)",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-1": {
+      "type": "text",
+      "label": "Amount 1",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-2": {
+      "type": "text",
+      "label": "Amount 2",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "amount-3": {
+      "type": "text",
+      "label": "Amount 3",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "extends-table-formatter": {
+      "type": "text",
+      "label": "extends table formatter",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "formatter-object": {
+      "type": "text",
+      "label": "formatter object",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "with-vnode": {
+      "type": "text",
+      "label": "with vnode",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "method": {
+      "type": "text",
+      "label": "Method",
+      "pages": [
+        "element-plus/table"
+      ]
+    },
+    "url": {
+      "type": "text",
+      "label": "URL",
+      "pages": [
+        "getbootstrap/docs-introduction",
+        "semi-design/getting-started"
+      ]
+    },
+    "header": {
+      "type": "text",
+      "label": "Header",
+      "pages": [
+        "getbootstrap/example-dashboard"
+      ]
+    },
+    "free": {
+      "type": "text",
+      "label": "Free",
+      "pages": [
+        "getbootstrap/example-pricing"
+      ]
+    },
+    "pro": {
+      "type": "text",
+      "label": "Pro",
+      "pages": [
+        "getbootstrap/example-pricing"
+      ]
+    },
+    "enterprise": {
+      "type": "text",
+      "label": "Enterprise",
+      "pages": [
+        "getbootstrap/example-pricing"
+      ]
+    },
+    "category-letter": {
+      "type": "text",
+      "label": "Category letter",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "129-to-242-559-to-1-048-a-month": {
+      "type": "text",
+      "label": "£129 to £242 (£559 to £1,048 a month)",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "242-01-to-967-1-048-01-to-4-189-a-month": {
+      "type": "text",
+      "label": "£242.01 to £967 (£1,048.01 to £4,189 a month)",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "over-967-a-week-4-189-a-month": {
+      "type": "num",
+      "label": "Over £967 a week (£4,189 a month)",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "96-to-481-417-to-2-083-a-month": {
+      "type": "num",
+      "label": "£96 to £481 (£417 to £2,083 a month)",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "481-01-to-967-2-083-01-to-4-189-a-month": {
+      "type": "num",
+      "label": "£481.01 to £967 (£2,083.01 to £4,189 a month)",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ]
+    },
+    "filter-data-with-this-column": {
+      "type": "text",
+      "label": "标题 ​ Filter data with this column",
+      "pages": [
+        "semi-design/table"
+      ]
+    },
+    "current-sort-order-is-none": {
+      "type": "text",
+      "label": "Current sort order is none",
+      "pages": [
+        "semi-design/table"
+      ]
+    },
+    "current-sort-order-is-none-filter-data-w": {
+      "type": "text",
+      "label": "Current sort order is none ​ Filter data with this column",
+      "pages": [
+        "semi-design/table"
+      ]
+    }
+  }
+}

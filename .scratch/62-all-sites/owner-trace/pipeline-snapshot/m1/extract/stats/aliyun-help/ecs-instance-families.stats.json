@@ -1,0 +1,69 @@
+{
+  "site": "aliyun-help",
+  "page": "ecs-instance-families",
+  "url": "https://help.aliyun.com/zh/ecs/user-guide/overview-of-instance-families",
+  "title": "ECS实例规格族的特点和指标数据-云服务器 ECS(ECS)-阿里云帮助中心",
+  "sourceNodes": 53812,
+  "counts": {
+    "storylines": 220,
+    "items": 1263,
+    "actions": 625,
+    "exposes": 0,
+    "images": 0,
+    "facts": 200,
+    "tables": 0,
+    "lists": 290,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 262,
+    "capHits": []
+  },
+  "storylines": 220,
+  "chrome": [
+    {
+      "role": "LayoutTable",
+      "count": 205
+    },
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "list-item-multi-action",
+      "role": "listitem",
+      "count": 238,
+      "examples": [
+        "存储： 支持调整存储基础带宽。 I/O优化实例。 支持NVMe协议。详情参见NVMe协议概述。 支持的云盘类型：弹性临时盘、ESSD云盘、ESSD AutoPL",
+        "网络： 支持调整网络基础带宽。 支持IPv4、IPv6。关于IPv6通信，参见IPv6通信。 支持ERI（Elastic RDMA Interface）。关于E",
+        "安全： 支持可信计算（vTPM）特性。 支持VPC流量加密。",
+        "支持的云盘类型：弹性临时盘、ESSD云盘、ESSD AutoPL云盘和ESSD同城冗余云盘。更多云盘信息，请参见块存储概述。",
+        "支持的云盘类型：ESSD云盘、ESSD AutoPL云盘和ESSD同城冗余云盘。更多云盘信息，请参见块存储概述。"
+      ]
+    },
+    {
+      "kind": "table-without-headers",
+      "role": "table",
+      "count": 217,
+      "examples": [
+        "Intel处理器 | AMD处理器 | 海光处理器 | 不推荐（如果以下规格售罄，建议使用前面的规格）",
+        "Intel处理器 | AMD处理器 | 不推荐（如果以下规格售罄，建议使用前面的规格）",
+        "推荐 | 不推荐（如果售罄，建议使用推荐规格族）",
+        "Intel® Xeon® Granite Rapids处理器 | Intel® Xeon®可扩展处理器（Ice Lake ） | Intel®Xeon®Plat",
+        "存储增强型 | 网络增强型 | 安全增强型 | 内存增强型"
+      ]
+    },
+    {
+      "kind": "embedded-media",
+      "role": "Iframe",
+      "count": 3,
+      "examples": []
+    }
+  ],
+  "fieldsDrafted": []
+}

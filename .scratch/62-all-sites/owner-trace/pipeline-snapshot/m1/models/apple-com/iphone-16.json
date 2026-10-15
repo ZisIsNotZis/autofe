@@ -1,0 +1,289 @@
+{
+  "_intent": "引导用户完成 iPhone 16 的配置与购买：选外观、容量、折抵、支付、运营商、保障，最后确认下单",
+  "_key": "apple-buy-iphone-16",
+  "_title": {
+    "text": "Buy iPhone 16"
+  },
+  "_brand": {
+    "text": "Apple"
+  },
+  "_price": {
+    "money": 799,
+    "currency": "USD"
+  },
+  "_summary": {
+    "text": "From $799 or $33.29 per month for 24 months"
+  },
+  "_action": {
+    "verb": "buy",
+    "to": "https://www.apple.com/shop/checkout",
+    "label": "Buy"
+  },
+  "steps": {
+    "_intent": "配置流程：每一步回答一个用户的问题，顺序即故事线",
+    "_rel": {
+      "order": "sequence"
+    },
+    "_lines": [
+      {
+        "_intent": "用户想知道：有哪些颜色、哪款适合我",
+        "_key": "step-finish",
+        "_title": {
+          "text": "Finish. Pick your favorite."
+        },
+        "_rel": {
+          "compare": true
+        },
+        "_items": [
+          {
+            "_key": "finish-ultramarine",
+            "_name": {
+              "text": "Ultramarine"
+            }
+          },
+          {
+            "_key": "finish-teal",
+            "_name": {
+              "text": "Teal"
+            }
+          },
+          {
+            "_key": "finish-pink",
+            "_name": {
+              "text": "Pink"
+            }
+          },
+          {
+            "_key": "finish-white",
+            "_name": {
+              "text": "White"
+            }
+          },
+          {
+            "_key": "finish-black",
+            "_name": {
+              "text": "Black"
+            }
+          }
+        ],
+        "_expose": {
+          "name": "finish",
+          "type": "text"
+        }
+      },
+      {
+        "_intent": "用户想知道：需要多少容量、各档差价多少",
+        "_key": "step-storage",
+        "_title": {
+          "text": "Storage. How much space do you need?"
+        },
+        "_rel": {
+          "compare": true
+        },
+        "_items": [
+          {
+            "_key": "storage-128",
+            "_name": {
+              "text": "128GB"
+            },
+            "_price": {
+              "money": 799,
+              "currency": "USD"
+            },
+            "_summary": {
+              "text": "or $33.29 per month for 24 months"
+            }
+          },
+          {
+            "_key": "storage-256",
+            "_name": {
+              "text": "256GB"
+            },
+            "_price": {
+              "money": 899,
+              "currency": "USD"
+            }
+          }
+        ],
+        "_expose": {
+          "name": "storage",
+          "type": "text"
+        }
+      },
+      {
+        "_intent": "用户想知道：旧机能抵多少",
+        "_key": "step-tradein",
+        "_title": {
+          "text": "Apple Trade In"
+        },
+        "_summary": {
+          "text": "Get $35–$885 credit towards your new iPhone."
+        },
+        "_items": [
+          {
+            "_key": "tradein-estimate",
+            "_name": {
+              "text": "Select a smartphone"
+            },
+            "_detail": {
+              "text": "Answer a few questions to get your estimate."
+            },
+            "_action": {
+              "verb": "open",
+              "to": "https://www.apple.com/shop/trade-in"
+            }
+          },
+          {
+            "_key": "tradein-none",
+            "_name": {
+              "text": "No trade-in"
+            }
+          }
+        ],
+        "_expose": {
+          "name": "trade-in",
+          "type": "text"
+        }
+      },
+      {
+        "_intent": "用户想知道：怎么付、有没有免息",
+        "_key": "step-payment",
+        "_title": {
+          "text": "Payment options. Select the one that works for you."
+        },
+        "_rel": {
+          "compare": true
+        },
+        "_items": [
+          {
+            "_key": "pay-buy",
+            "_name": {
+              "text": "Buy"
+            },
+            "_detail": {
+              "text": "Pay with Apple Pay or other payment methods."
+            }
+          },
+          {
+            "_key": "pay-finance",
+            "_name": {
+              "text": "Finance"
+            },
+            "_detail": {
+              "text": "Pay over time at 0% APR."
+            }
+          }
+        ],
+        "_expose": {
+          "name": "payment-method",
+          "type": "text"
+        }
+      },
+      {
+        "_intent": "用户想知道：怎么连网、各家运营商优惠",
+        "_key": "step-connectivity",
+        "_title": {
+          "text": "Connectivity. Choose a carrier."
+        },
+        "_rel": {
+          "compare": true
+        },
+        "_items": [
+          {
+            "_key": "carrier-att",
+            "_name": {
+              "text": "AT&T"
+            },
+            "_detail": {
+              "text": "Includes $30 connectivity discount (requires carrier activation)"
+            }
+          },
+          {
+            "_key": "carrier-tmobile",
+            "_name": {
+              "text": "T-Mobile"
+            },
+            "_detail": {
+              "text": "Includes $30 connectivity discount (requires carrier activation)"
+            }
+          },
+          {
+            "_key": "carrier-verizon",
+            "_name": {
+              "text": "Verizon"
+            },
+            "_detail": {
+              "text": "Includes $30 connectivity discount (requires carrier activation)"
+            }
+          },
+          {
+            "_key": "carrier-later",
+            "_name": {
+              "text": "Connect to any carrier later"
+            }
+          }
+        ],
+        "_expose": {
+          "name": "carrier",
+          "type": "text"
+        }
+      },
+      {
+        "_intent": "用户想知道：坏了怎么办、保障值不值",
+        "_key": "step-applecare",
+        "_title": {
+          "text": "AppleCare coverage. Peace of mind in every plan."
+        },
+        "_rel": {
+          "compare": true
+        },
+        "_items": [
+          {
+            "_key": "care-theft-loss",
+            "_name": {
+              "text": "AppleCare+ with Theft and Loss"
+            },
+            "_detail": {
+              "text": "Unlimited repairs for accidents like drops and spills. Theft and loss coverage for up to 2 claims every 12 months. 24/7 priority support. Express Replacement Service."
+            }
+          },
+          {
+            "_key": "care-one",
+            "_name": {
+              "text": "AppleCare One"
+            },
+            "_detail": {
+              "text": "All the benefits of AppleCare+ for up to 3 products at one low price. Add more products anytime for $5.99 per month each."
+            }
+          },
+          {
+            "_key": "care-none",
+            "_name": {
+              "text": "No AppleCare coverage"
+            }
+          }
+        ],
+        "_expose": {
+          "name": "care-plan",
+          "type": "text"
+        }
+      }
+    ]
+  },
+  "summary": {
+    "_intent": "下单前确认：这就是你的新 iPhone",
+    "_key": "step-recap",
+    "_title": {
+      "text": "Your new iPhone 16."
+    },
+    "_ref": {
+      "ref": "key:apple-buy-iphone-16"
+    }
+  },
+  "inbox": {
+    "_intent": "盒内有什么",
+    "_title": {
+      "text": "What's in the Box"
+    }
+  }
+}

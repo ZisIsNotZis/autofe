@@ -1,0 +1,171 @@
+[
+  {
+    "id": "E1",
+    "severity": "medium",
+    "owner": "engine",
+    "pages": [
+      "apple-com-cn/iphone-17",
+      "apple-com/iphone-16",
+      "apple-com/macbook-air",
+      "linear-app/home"
+    ],
+    "criterion": "coherent whole-page shared alignment / no blanket centering",
+    "location": ".depth-0>.title; .depth-0>.fact/.hero/.controls; .depth-1; m1/render.mjs root width rules",
+    "renderEvidence": "All four 2560/1440 whole-height sheets: root title starts inside the section edge; Linear additionally has wide centered lead and left-edge tail actions.",
+    "sourceEvidence": "Original Apple and Linear source sheets have intentional distinct compositions, not this generic 640/960 or 640/880/1232 axis split. This finding does not condemn legitimate centered whitespace or native full-bleed.",
+    "geometryEvidence": "At 2560 Apple h1 x=960,w=640 vs section/fact x=800,w=960 (160px offset). Linear h1 x=960,w=640, inner depth-1 x=840,w=880, root hero/actions x=664,w=1232. 1920/1440 retain corresponding offsets. At 390 root/sections converge to x=16.",
+    "improvementCriterion": "Use one explained page content axis for related root title, lead, controls and body forms; retain source-supported intentional centered/bleed exceptions. Re-review whole height at all widths; do not simply center every section.",
+    "status": "OPEN"
+  },
+  {
+    "id": "E2",
+    "severity": "high",
+    "owner": "engine",
+    "pages": [
+      "apple-com-cn/iphone-17",
+      "apple-com/macbook-air"
+    ],
+    "criterion": "cohesive product image/title/price/actions",
+    "location": ".depth-0 > a.action.verb-buy after .stack",
+    "renderEvidence": "Whole-height Apple sheets show purchase CTA only after environment/values, detached from opening product/price. detail-probes.json rootChildren fixes exact DOM order.",
+    "sourceEvidence": "iPhone17 source hero title/price/Buy crop at y=600..880 and source DOM purchase href; Mac source title/price/Buy hero y≈765..1090 and local-nav Buy nodes[811]. Native full-bleed itself is allowed.",
+    "geometryEvidence": "iPhone17 root price y=1820.78, root Buy y=14141.16 at 2560 (12320px separation); y=14397.19 at 390. Mac root price y=595.78, root Buy y=14795.70 (14200px separation); y=19950.5 at 390. Both HTML/model root actions exist; they are misplaced, not missing.",
+    "improvementCriterion": "Keep the source-backed root purchase decision with the corresponding opening product/price/image group using the shared decision seam. A repeated tail CTA may remain only if justified. Do not include Linear: its source legitimately has a closing CTA.",
+    "status": "OPEN"
+  },
+  {
+    "id": "E3",
+    "severity": "high",
+    "owner": "engine",
+    "pages": [
+      "apple-com/iphone-16"
+    ],
+    "criterion": "readable forms / density / responsive utilities",
+    "location": ".expose-care-plan table.data td",
+    "renderEvidence": "390 whole-height sheet and readable-defect-crops.png show one-to-three-word text lines forming tall coverage columns; validators and zero document overflow miss it.",
+    "sourceEvidence": "Source nodes[1145] and 1440 full source show coverage choices with their own readable explanatory blocks; model steps._lines[5] preserves the source coverage facts.",
+    "geometryEvidence": "390 table 342.34px; name cell 99.69, purpose 91.25, detail 110.41px incl padding (~94.4px usable). First two rows ~581.6/582.1px each; fieldset h=1313.36px. Desktop detail cell 560.14px and rows ~111px.",
+    "improvementCriterion": "Long coverage explanation must be readable at 390 without reducing type or deleting terms; preserve each option/label/detail association through shared responsive choice layout. Recheck actual image and control geometry.",
+    "status": "OPEN"
+  },
+  {
+    "id": "E4",
+    "severity": "medium",
+    "owner": "engine",
+    "pages": [
+      "apple-com/macbook-air"
+    ],
+    "criterion": "image/title cohesion and readable density",
+    "location": "#highlights .defrow/.deflabel/.defval (baseline alignment)",
+    "renderEvidence": "Mac 2560/1440 whole-height sheets plus readable crop show long captions at lower-left of each image, with most row area empty; 390 stack is materially more coherent.",
+    "sourceEvidence": "Source highlights y≈1290..1900 have integrated top captions on photographic cards. Model _lines[0]._items[*]._name contains full source captions, not short definition labels.",
+    "geometryEvidence": "First desktop image x=1014,y=707.94,w=696,h=452; caption x=800,y=1141.94,w=190,h=153.56, i.e. 434px below image top. First row h=602.56. Six serial rows cause highlights h≈3616px. All images <= intrinsic size.",
+    "improvementCriterion": "Image-associated long captions must read as captions/story items rather than narrow bottom-baseline definition labels. Preserve six captions/assets and sequence; no image enlargement or site-specific CSS.",
+    "status": "OPEN"
+  },
+  {
+    "id": "E5",
+    "severity": "medium",
+    "owner": "engine",
+    "pages": [
+      "apple-com/iphone-16"
+    ],
+    "criterion": "compact coherent image grouping / density",
+    "location": ".g-inbox .deflist; inbox._items",
+    "renderEvidence": "2560/1440/390 sheets show separate full-native-height phone then cable rows; labels attach at lower-left on desktop. The source presents a single paired in-box group.",
+    "sourceEvidence": "Source full.png y≈3164..3700 and nodes[1276] show compact shared What’s in the Box region; both factual item names/assets are already in model.",
+    "geometryEvidence": "Each local image h=784px (phone 346x784,cable 200x784), stacked into inbox h=1660.75 desktop and 1744.75 at390. Images are NOT enlarged; issue is presentation scale/grouping.",
+    "improvementCriterion": "Render the two in-box objects as one understandable compact group with associated names, using existing truthful assets; scale down if appropriate, never enlarge or silently drop an item.",
+    "status": "OPEN"
+  },
+  {
+    "id": "E6",
+    "severity": "medium",
+    "owner": "engine",
+    "pages": [
+      "linear-app/home"
+    ],
+    "criterion": "compact utilities / readable sparse density",
+    "location": ".g-customers .depth-1; customers._items[*]._brand",
+    "renderEvidence": "Linear 2560/1440 and390 sheets show five small names each occupying its own broad divider-separated row.",
+    "sourceEvidence": "Source full.png y≈1400..1620 shows brand/customer proof as a compact horizontal group; model contains five customer identities.",
+    "geometryEvidence": "Inner customer region w=880,h=244.125 at2560; each short brand occupies a full-width fact row. 390 h=281.25. Current five names remain readable but unnecessarily scattered.",
+    "improvementCriterion": "Use a compact, source-appropriate wrapping identity/proof group while preserving every model customer name and contrast. No global centering rule or invented logos.",
+    "status": "OPEN"
+  },
+  {
+    "id": "E7",
+    "severity": "high",
+    "owner": "engine",
+    "pages": [
+      "apple-com-cn/iphone-17"
+    ],
+    "criterion": "faithful preservation of all actions / shared actionRow",
+    "location": ".which-iphone comparison; _lines[11]._items[1].buy._action; m1/render.mjs:402-421",
+    "renderEvidence": "iPhone Air comparison column retains Learn more but has no Buy anchor. fidelity-probe.py fails with exactly one missing action target; every other captured model target passes.",
+    "sourceEvidence": "Source nodes[1800] name=购买 iPhone Air, y=17040.19; dom.html contains /cn/shop/goto/buy_iphone/iphone_air beside /iphone-air/. Model buy child contains same absolute target.",
+    "geometryEvidence": "The target is absent from baseline HTML and every width anchor list; 390 horizontal scrolling cannot recover an anchor that does not exist. renderCompareTable uses itemExtra().ctl rather than consuming the complete nodePlan actionRow.",
+    "improvementCriterion": "Preserve both source-backed Learn more and Buy in the entity column through shared actionRow for HTML/Markdown/text. Add a comparison-entity own-action + title-only child Buy regression and rerun full target preservation.",
+    "status": "OPEN"
+  },
+  {
+    "id": "C1",
+    "severity": "high",
+    "owner": "content",
+    "pages": [
+      "linear-app/home"
+    ],
+    "criterion": "faithful facts / source semantics / no invented updates",
+    "location": "changelog._items[0..1], changelog._rel.order=time",
+    "renderEvidence": "Linear output labels Faster app launch and Reset dimmed ride rows as Changelog items, with vehicle_state/ride-row issue instructions beneath.",
+    "sourceEvidence": "Those source texts occur inside the hero product demo: source nodes[158]/[350] y≈550/980. Real source Changelog at y≈7844 has New controls for Linear coding agent, Loops for product management, Priority inbox, Coding sessions, with dated specific source URLs. readable-defect-crops.png independently shows all four.",
+    "geometryEvidence": "Output timeline y=543.75..672.5 at2560 uses false category; source actual update nodes[2828],[2837],[2846] and DOM anchors are retained in source-probes.json/source DOM. No dates in current model.",
+    "improvementCriterion": "Represent captured actual changelog entries with their visible dates/descriptions and specific source targets. Keep demo issue text only in its truthful demo context if retained; do not invent dates or infer them from URL strings.",
+    "status": "OPEN"
+  },
+  {
+    "id": "C2",
+    "severity": "high",
+    "owner": "content",
+    "pages": [
+      "linear-app/home"
+    ],
+    "criterion": "coherent feature stories / faithful facts and targets",
+    "location": "beats._lines[0..3]",
+    "renderEvidence": "Four feature stories become an unexplained numbered title-only list; no feature description/action survives because model never includes them.",
+    "sourceEvidence": "Source nodes[699..705] Intake and integrations includes full visible paragraph and Learn more to /intake; other source chapters link /plan,/ai,/build. Whole source sheet shows each feature explanation and action.",
+    "geometryEvidence": "Model beats occupies111.19px (all widths) and has only four title objects. Source DOM has four chapter anchors; baseline model/action preservation check cannot detect omitted source actions.",
+    "improvementCriterion": "Restore each source-supported feature description and respective absolute source target using current closed grammar, with clear section ownership; do not synthesize explanations from screenshot pixels.",
+    "status": "OPEN"
+  },
+  {
+    "id": "C3",
+    "severity": "medium",
+    "owner": "content",
+    "pages": [
+      "apple-com/iphone-16"
+    ],
+    "criterion": "preserve semantic comparison / closed shared-axis decision",
+    "location": "compare._lines; missing _rel.compare",
+    "renderEvidence": "Which iPhone is right for you becomes three cards plus two on another row at2560/1440, then a4925px serial product run at390.",
+    "sourceEvidence": "Original source full.png y≈5087..8750 presents five entities as columns and common property rows. Current model _intent explicitly calls it 选型对照 but classifies it as sequence because members differ slightly; they share battery/chip/camera/front properties.",
+    "geometryEvidence": "Current compare h=2089.56 at2560, 4925.09 at390; no comparison table in geometry. F-031 shared compare rules are not invoked because factual relationship is undeclared. This is not a renderer bypass of a declared compare relation.",
+    "improvementCriterion": "Correct the source-backed comparison relationship in the factual model, retaining entity names, properties, images and source truth. Engine then consumes declared comparison with fixed entity columns/horizontal scrolling; no positional row pairing, presentation keys, or font compression.",
+    "status": "OPEN"
+  },
+  {
+    "id": "C4",
+    "severity": "high",
+    "owner": "content",
+    "pages": [
+      "linear-app/home"
+    ],
+    "criterion": "preserve brand differences / meaningful visual product story",
+    "location": "root / beats missing source image/demo representations (engine surface support secondary)",
+    "renderEvidence": "Source black, image-led product workflow narrative collapses to1006px white text outline with0 model/render images; genuine product demonstrations are absent, not merely rearranged. Foreground/background contrast itself passes sampled pairs.",
+    "sourceEvidence": "Whole source sheet contains the hero issue/workspace demo and illustrated feature workflow panels throughout; source full.png y≈400..7200. Source SVG/DOM-heavy demos may need provenance-backed screenshot assets rather than fabricated remote images.",
+    "geometryEvidence": "Source full height9960, output1006 at desktop; all four current models/HTML hashes are bound. Linear has0 declared images; therefore renderer cannot restore missing visuals alone.",
+    "improvementCriterion": "Restore meaningful capture-backed visual product context without screenshot-to-text invention or image enlargement. Coordinate source-backed brand surface/foreground handling with engine through existing shared seams; this finding does not mandate a site-name template or blanket full-page black redesign.",
+    "status": "OPEN"
+  }
+]

@@ -1,0 +1,100 @@
+{
+  "site": "gov-uk",
+  "page": "ni-rates-letters",
+  "url": "https://www.gov.uk/national-insurance-rates-letters",
+  "title": "National Insurance rates and categories: Contribution rates - GOV.UK",
+  "sourceNodes": 565,
+  "counts": {
+    "storylines": 8,
+    "items": 50,
+    "actions": 20,
+    "exposes": 0,
+    "images": 0,
+    "facts": 6,
+    "tables": 2,
+    "lists": 5,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 0,
+    "capHits": []
+  },
+  "storylines": 8,
+  "chrome": [
+    {
+      "role": "navigation",
+      "count": 2
+    },
+    {
+      "role": "region",
+      "count": 1
+    },
+    {
+      "role": "banner",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 80,
+      "examples": [
+        "£129 to £242 (£559 to £1,048 a month): 0%",
+        "£242.01 to £967 (£1,048.01 to £4,189 a month): 8%",
+        "Over £967 a week (£4,189 a month): 2%",
+        "£242.01 to £967 (£1,048.01 to £4,189 a month): 1.85%",
+        "£129 to £242 (£559 to £1,048 a month): N/A"
+      ]
+    },
+    {
+      "kind": "list-item-multi-action",
+      "role": "listitem",
+      "count": 1,
+      "examples": [
+        "and Check you can afford to take on employees , Hide This Section Check how much"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "category-letter",
+      "type": "text",
+      "label": "Category letter",
+      "example": "A"
+    },
+    {
+      "name": "129-to-242-559-to-1-048-a-month",
+      "type": "text",
+      "label": "£129 to £242 (£559 to £1,048 a month)",
+      "example": "0%"
+    },
+    {
+      "name": "242-01-to-967-1-048-01-to-4-189-a-month",
+      "type": "text",
+      "label": "£242.01 to £967 (£1,048.01 to £4,189 a month)",
+      "example": "8%"
+    },
+    {
+      "name": "over-967-a-week-4-189-a-month",
+      "type": "num",
+      "label": "Over £967 a week (£4,189 a month)",
+      "example": "15%"
+    },
+    {
+      "name": "96-to-481-417-to-2-083-a-month",
+      "type": "num",
+      "label": "£96 to £481 (£417 to £2,083 a month)",
+      "example": "15%"
+    },
+    {
+      "name": "481-01-to-967-2-083-01-to-4-189-a-month",
+      "type": "num",
+      "label": "£481.01 to £967 (£2,083.01 to £4,189 a month)",
+      "example": "15%"
+    }
+  ]
+}

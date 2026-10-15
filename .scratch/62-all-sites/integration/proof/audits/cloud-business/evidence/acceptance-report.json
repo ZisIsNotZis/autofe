@@ -1,0 +1,89 @@
+{
+  "criteriaSatisfied": [
+    {
+      "id": "criterion-1",
+      "status": "satisfied",
+      "evidence": "Assigned five-page diagnosis only:7 engine/2 content findings; no source/model/gallery changes or scope expansion."
+    },
+    {
+      "id": "criterion-2",
+      "status": "satisfied",
+      "evidence": "Revision-bound screenshot/measurement/source evidence, reproducible diagnostic checks and exact missing modalities retained in audit-handoff.json and evidence manifest."
+    }
+  ],
+  "changedFiles": [
+    ".scratch/62-all-sites/audit-cloud-business/ticket.md",
+    ".scratch/62-all-sites/audit-handoff.json",
+    ".scratch/62-all-sites/audit-cloud-business/changed-files.json",
+    "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-cloud-business.md"
+  ],
+  "testsAddedOrUpdated": [],
+  "commandsRun": [
+    {
+      "command": "node .scratch/62-all-sites/audit-cloud-business/capture.mjs",
+      "result": "passed",
+      "summary": "20 full-height captures/measurements; one sequential browser/page; zero overflow/broken/intrinsically enlarged images"
+    },
+    {
+      "command": "python .scratch/62-all-sites/audit-cloud-business/sheets.py",
+      "result": "passed",
+      "summary": "17 whole-height/readable sheets; supplemental detail image separately generated;18 total image reads"
+    },
+    {
+      "command": "node .scratch/62-all-sites/audit-cloud-business/probe.mjs",
+      "result": "passed",
+      "summary": "Second sequential browser job; reproduces Grafana contrast/duplication and exercises ECS mobile scroll"
+    },
+    {
+      "command": "node m1/eval/pipeline.mjs --check-shots --only aliyun-com/home,aliyun-com/product-ecs,aws-amazon/ec2-on-demand,stripe-com/pricing,grafana-play/play-home",
+      "result": "passed",
+      "summary": "5/5 existing HTML/PNG hashes match manifest"
+    },
+    {
+      "command": "node m1/validate.mjs m1/curated/aliyun-com/home.json m1/curated/aliyun-com/product-ecs.json m1/curated/aws-amazon/ec2-on-demand.json m1/curated/stripe-com/pricing.json m1/curated/grafana-play/play-home.json",
+      "result": "passed",
+      "summary": "5/5 models valid"
+    },
+    {
+      "command": "node m1/eval/capture-integrity.mjs --only aliyun-com/home,aliyun-com/product-ecs,aws-amazon/ec2-on-demand,stripe-com/pricing,grafana-play/play-home",
+      "result": "passed",
+      "summary": "814 facts;697 adjudicated;0 misses;5 declared conversions"
+    },
+    {
+      "command": "for key in aliyun-com/home aliyun-com/product-ecs aws-amazon/ec2-on-demand stripe-com/pricing grafana-play/play-home; do node m1/eval/metrics.mjs \"m1/curated/$key.json\" \"m1/curated/renders/${key//\\//-}.html\" \"corpus/$key\"; done",
+      "result": "passed",
+      "summary": "Fidelity1.00 all five; distinct output JSONs retained"
+    },
+    {
+      "command": "python .scratch/62-all-sites/audit-cloud-business/verify-evidence.py",
+      "result": "passed",
+      "summary": "Input/screenshot hashes unchanged;7 target losses and5 unsupported URLs reproduced;66 Stripe targets verified;no staged files"
+    },
+    {
+      "command": "python .scratch/62-all-sites/audit-cloud-business/build-report.py",
+      "result": "passed",
+      "summary": "9 actionable findings with criterion/location/source/render/geometry/fix proof;explicit incomplete coverage"
+    },
+    {
+      "command": "git diff --check; git diff --cached --name-only; git status --short",
+      "result": "passed",
+      "summary": "No tracked source changes, whitespace defects or staged files;preexisting untracked packet/active link/corpus preserved"
+    }
+  ],
+  "validationOutput": [
+    "20 width/page captures;18 image reads;2 browser jobs",
+    "All tracked source inputs unchanged;no staged files",
+    "Hash/validator/facts gates PASS, but9 diagnostic findings remain;experience acceptance INCOMPLETE"
+  ],
+  "residualRisks": [
+    "Full1920 visual and most390 visual not inspected;some native-readable source details unavailable within18-image budget",
+    "AWS source-scope/capture-loading gaps and remote-image byte binding disclosed",
+    "Fresh independent final technical/experience review pending"
+  ],
+  "noStagedFiles": true,
+  "diffSummary": "Local ticket/report/machine findings and owned diagnostic evidence only. Full file inventory in changed-files.json; no product changes.",
+  "reviewFindings": [
+    "7 engine and2 content baseline defects reported;no visual acceptance PASS"
+  ],
+  "manualNotes": "This satisfies the assigned diagnostic/evidence role, not the all42 final delivery milestone. Missing coverage is explicitly INCOMPLETE."
+}

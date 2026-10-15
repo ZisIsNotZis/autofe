@@ -1,0 +1,185 @@
+--- baseline/m1/eval/link-owners.mjs
++++ current/m1/eval/link-owners.mjs
+@@ -1,6 +1,7 @@
+ // Structural evidence, not presentation grammar. Addresses identify captured nodes only.
+ import { decodeEntities, compact, normalizeHref, hrefIsReal } from './link-coverage.mjs';
+ import { walk } from '../model-lib.mjs';
++import { nodePlan, controlItemPlan } from '../axis.mjs';
+ export function parseLinkTree(html) {
+  const root={tag:'root',attrs:{},parent:null,children:[],parts:[],address:''};let cur=root;
+  const voids=new Set('area base br col embed hr img input link meta param source track wbr'.split(' '));
+@@ -20,7 +21,7 @@
+ function ownRenderText(n){return n.parts.map(p=>typeof p==='string'?p:p.tag==='article'?'':ownRenderText(p)).join(' ');}
+ function ownedAnchors(n,render=false){return descendants(n).filter(a=>a.tag==='a'&&(!render||n.tag!=='article'||nearestArticle(a)===n));}
+ function nearestArticle(n){for(let p=n.parent;p;p=p.parent)if(p.tag==='article')return p;return null;}
+-function sourceScopes(node,root,contextFacts=[],rootOwner=false) {
++function sourceScopes(node,root,contextFacts=[],rootOwner=false,peerKeys=[]) {
+  const id=identityOf(node);if(!id)return [];
+  const ck=compact(id);if(!ck)return [];
+  const facts=[...contextFacts,...textFacts(node),...(rootOwner?[]:Object.entries(node).flatMap(([k,v])=>!k.startsWith('_')&&v&&typeof v==='object'&&identityOf(v)?[{ck:compact(identityOf(v))}]:Array.isArray(v)?v.filter(c=>identityOf(c)).map(c=>({ck:compact(identityOf(c))})):[]))].filter(f=>f.ck.length>=3);
+@@ -50,7 +51,26 @@
+  const tied=supported.filter(c=>c.score===max);
+  const enclosing=tied.filter(c=>c.anchors.some(a=>textFacts(node).filter(f=>f.ck.length>=3&&a.key.includes(f.ck)).length>=2));
+  const winners=enclosing.length?enclosing:tied;
+- return winners.filter(c=>!winners.some(d=>d!==c&&d.node!==c.node&&d.node.key.length<c.node.key.length&&isInside(d.node,c.node))).filter((c,i,a)=>a.findIndex(d=>d.node===c.node)===i);
++ const minimal=winners.filter(c=>!winners.some(d=>d!==c&&d.node!==c.node&&d.node.key.length<c.node.key.length&&isInside(d.node,c.node))).filter((c,i,a)=>a.findIndex(d=>d.node===c.node)===i);
++ // Transparent wrappers must not discard the anchor that actually encloses the
++ // exact identity. Only retain a tied enclosing anchor, never widen to a neighbor.
++ const wrapping=tied.filter(c=>c.node.tag==='a'&&minimal.some(d=>isInside(d.node,c.node)));
++ const label=compact(node._action?.label??id);
++ const distinctCaption=!rootOwner&&hrefIsReal(node._action?.to)&&node._action?.label&&compact(node._action.label)!==ck
++  &&Object.keys(node).every(k=>['_name','_title','_text','_action','_intent','_key'].includes(k));
++ const ownCaps=distinctCaption?supported.filter(c=>!peerKeys.some(k=>k!==ck&&c.node.key.includes(k))
++  &&c.anchors.some(a=>a.key===compact(node._action.label))):[];
++ if(ownCaps.length)return ownCaps.filter(c=>!ownCaps.some(d=>d!==c&&isInside(d.node,c.node)));
++ const localOverlay=c=>c.anchors.length===1&&c.anchors[0].parent===c.node&&!c.anchors[0].key
++  &&compact(c.anchors[0].attrs['aria-label']??'')===ck
++  &&c.node.children.some(s=>s!==c.anchors[0]&&descendants(s).some(d=>d.key===ck));
++ const capabilities=supported.filter(c=>(c.score===max||localOverlay(c))&&!peerKeys.some(k=>k!==ck&&c.node.key.includes(k))
++  && c.anchors.some(a=>a.key===label||a.key===ck
++   || node._action?.label&&compact(a.attrs['aria-label']??'')===label&&descendants(c.node).some(d=>d.key===ck&&d!==a)
++   || !a.key&&a.parent===c.node&&compact(a.attrs['aria-label']??'')===ck&&c.anchors.length===1
++    && c.node.children.some(s=>s!==a&&descendants(s).some(d=>d.key===ck))));
++ const smallest=capabilities.filter(c=>!capabilities.some(d=>d!==c&&isInside(d.node,c.node)));
++ return [...minimal,...[...wrapping,...smallest].filter(c=>!minimal.some(d=>d.node===c.node))];
+ }
+ function isInside(n,p){for(let c=n.parent;c;c=c.parent)if(c===p)return true;return false;}
+ export function ownerOracle(model,html,dom,base) {
+@@ -64,12 +84,30 @@
+   if (!rs.length && ck) rs=descendants(render).filter(n=>n.tag==='th'&&n.key.includes(ck));
+   const bound=descendants(render).filter(n=>n.attrs['data-model-owner']===paths.get(node));
+   if(bound.length)rs=bound.filter(n=>!ck||compact(ownRenderText(n)).includes(ck));
++  // A consumed table action is bound to its exact anchor, not its inventory heading.
++  if(bound.some(n=>n.tag==='a'))rs=bound.filter(n=>n.tag==='a'&&n.key===compact(node._action?.label??id??''));
+   const parent=parents.get(node);
++  if(!bound.length&&parent){
++   const chain=[];for(let p=parents.get(parent);p;p=parents.get(p))chain.unshift(p);
++   const plan=nodePlan(parent,{chain,depth:chain.length});
++   const control=plan.items?.groups?.some(g=>g.form==='controls'&&g.items.includes(node));
++   if(control){
++    const c=controlItemPlan(node,chain);
++    const copy=compact(c.label+(c.accessibleLabel??''));
++    rs=descendants(render).filter(n=>n.attrs['data-model-owner']===paths.get(parent)).flatMap(n=>ownedAnchors(n,true))
++     .filter(a=>a.attrs.class?.split(' ').includes('ctl')&&a.key===copy&&(!c.accessibleLabel||a.attrs['aria-label']===c.accessibleLabel));
++   }
++   if(plan.rowConsumed?.includes(node)){
++    const label=compact(node._action?.label??id??'');
++    const holders=descendants(render).filter(n=>n.attrs['data-model-owner']===paths.get(parent));
++    rs=holders.flatMap(n=>ownedAnchors(n,true)).filter(a=>a.key===label);
++   }
++  }
+   const extra=parent?[...textFacts(parent),...['_items','_lines'].flatMap(k=>(parent[k]??[]).filter(c=>c!==node&&identityOf(c)).map(c=>({ck:compact(identityOf(c))})))]:[];
+   const siblings=parent?['_items','_lines'].flatMap(k=>parent[k]??[]):[];
+   const bareDirectory=siblings.length>1 && siblings.every(c=>Object.keys(c).every(k=>['_name','_title','_text','_action','_intent','_key'].includes(k)));
+   const inlineOwner=parent?._action&&node._action&&['navigate','open'].includes(node._action.verb)&&!node._items&&!node._lines&&textFacts(node).length===1;
+-  const value={source:sourceScopes(node,source,bareDirectory?extra:inlineOwner?textFacts(parent):[],paths.get(node)===''),render:rs};cache.set(node,value);return value;
++  const value={source:sourceScopes(node,source,bareDirectory?extra:inlineOwner?textFacts(parent):[],paths.get(node)==='',(bareDirectory&&!(paths.get(node)!==''&&hrefIsReal(node._action?.to)&&node._action?.label&&compact(node._action.label)!==ck&&Object.keys(node).every(k=>['_name','_title','_text','_action','_intent','_key'].includes(k)))?[]:siblings).filter(c=>c!==node&&identityOf(c)).map(c=>compact(identityOf(c))).filter(k=>k.length>=3)),render:rs};cache.set(node,value);return value;
+  }
+  const norm=a=>normalizeHref(a.attrs.href,base);
+  const witness=a=>({address:a.address,text:a.text,href:a.attrs.href,target:norm(a)});
+@@ -79,7 +117,12 @@
+    const ctx=contexts(node),a=node._action;
+    if(!a||!ctx.source.length)return null;
+    const label=a.label||identityOf(node)||'';
+-   const labeled=ctx.source.flatMap(c=>c.anchors.filter(s=>compact(s.text)===compact(label)
++   const labeled=ctx.source.flatMap(c=>c.anchors.filter(s=>!s.key&&s.parent===c.node&&c.anchors.length===1
++    && compact(s.attrs['aria-label']??'')===compact(identityOf(node)??'')
++    && c.node.children.some(d=>d!==s&&descendants(d).some(v=>v.key===compact(identityOf(node)??'')))
++    || a.label&&compact(s.attrs['aria-label']??'')===compact(a.label)
++      && descendants(c.node).some(d=>d!==s&&d.key===compact(identityOf(node)??''))
++    || compact(s.text)===compact(label)
+     || s.key.includes(compact(label)) && (descendants(s).some(d=>d.key===compact(label))
+      || textFacts(node).filter(f=>f.ck.length>=3&&s.key.includes(f.ck)).length>=2)));
+    const matches=labeled.filter(s=>hrefIsReal(s.attrs.href)||s.attrs.href?.startsWith('#')&&s.attrs.href.length>1);
+@@ -89,8 +132,14 @@
+     return null;
+    }
+    const expected=[...new Set(matches.map(norm))],target=normalizeHref(a.to,base);
+-   const rendered=ctx.render.flatMap(n=>ownedAnchors(n,true));
+-   return {status:expected.includes(target)&&rendered.some(r=>norm(r)===target)?'owned-exact-action':'missing-owned-action',expected,sourceWitnesses:matches.map(witness),sourceOwners:sourceOwners(ctx),renderOwners:ctx.render.map(n=>n.address)};
++   const chain=[];for(let p=parents.get(node);p;p=parents.get(p))chain.unshift(p);
++   const drawnLabel=nodePlan(node,{chain,depth:chain.length}).action?.label||label;
++   const control=controlItemPlan(node,chain);
++   const rendered=ctx.render.flatMap(n=>ownedAnchors(n,true)).filter(r=>r.key===compact(drawnLabel)||r.key===compact(identityOf(node)??'')
++    || r.attrs.class?.split(' ').includes('ctl')&&r.key===compact(control.label+(control.accessibleLabel??''))
++    || descendants(r).some(d=>d.key===compact(drawnLabel)));
++   const consumed=rendered.filter(r=>norm(r)===target&&expected.includes(target));
++   return {status:consumed.length?'owned-exact-action':'missing-owned-action',expected,sourceWitnesses:matches.map(witness),sourceOwners:sourceOwners(ctx),renderOwners:ctx.render.map(n=>n.address),renderWitnesses:consumed.map(witness)};
+   },
+   fact(node,text,actionCandidates=[]){
+    const ctx=contexts(node),ck=compact(text);
+@@ -99,9 +148,15 @@
+    const expected=new Set(locals.map(norm));
+    if(!locals.length)return {status:'plain-context-fact',expected:[],sourceOwners:sourceOwners(ctx),renderOwners:ctx.render.map(n=>n.address),sourceWitnesses:ctx.source.flatMap(c=>c.anchors.map(witness))};
+    const actions=actionCandidates.filter(a=>a&&expected.has(normalizeHref(a.to,base)));
+-   const rendered=ctx.render.flatMap(n=>ownedAnchors(n,true));
+-   const present=actions.some(a=>rendered.some(r=>norm(r)===normalizeHref(a.to,base)));
+-   return {status:present?'owned-exact-action':'missing-owned-action',expected:[...expected],sourceWitnesses:locals.map(witness),sourceOwners:sourceOwners(ctx),renderOwners:ctx.render.map(n=>n.address)};
++   const chain=[];for(let p=parents.get(node);p;p=parents.get(p))chain.unshift(p);
++   const drawnLabel=nodePlan(node,{chain,depth:chain.length}).action?.label;
++   const labels=[identityOf(node),drawnLabel,...actions.map(a=>a.label)].filter(Boolean).map(compact);
++   // A media URL alone does not prove that the actual caption/inline/table action
++   // was consumed. Composite facts may use their entity's real CTA label.
++   const rendered=ctx.render.flatMap(n=>ownedAnchors(n,true)).filter(r=>r.key&&labels.some(label=>r.key===label||descendants(r).some(d=>d.key===label)));
++   const consumed=rendered.filter(r=>actions.some(a=>norm(r)===normalizeHref(a.to,base)));
++   const present=consumed.length>0;
++   return {status:present?'owned-exact-action':'missing-owned-action',expected:[...expected],sourceWitnesses:locals.map(witness),sourceOwners:sourceOwners(ctx),renderOwners:ctx.render.map(n=>n.address),renderWitnesses:consumed.map(witness)};
+   }
+  };
+ }
+--- baseline/m1/eval/link-coverage.mjs
++++ current/m1/eval/link-coverage.mjs
+@@ -256,7 +256,7 @@
+     const sourceTargets = realKey.get(compact(r.text));
+     const contextual = ownership.some(o => o.status === 'owned-exact-action' && o.expected.includes(norm)
+       && oracle.allRender.some(a => normalizeHref(a.attrs.href, baseUrl) === norm && compact(a.text).includes(compact(r.text))
+-        && o.renderOwners.some(owner => a.address.startsWith(owner + '/') || a.address === owner)));
++        && o.renderWitnesses?.some(w => w.address === a.address)));
+     // Exact URL occurrence elsewhere (even with an equal caption) is not owner proof.
+     if (contextual) continue;
+     const f = { kind: 'wrong-target', text: r.text, href: r.href, expect: [], reason:'render-owner-unverified' };
+--- baseline/m1/eval/link-owner-selftest.mjs
++++ current/m1/eval/link-owner-selftest.mjs
+@@ -17,4 +17,31 @@
+ const newsRun=m=>checkPage('fixture/article',m,render(m),news,BASE,EMPTY);
+ test('source-bound author action renders inline once and passes',()=>{const h=render(article);assert.equal((h.match(/Alice author/g)||[]).length,1);assert.equal(newsRun(article).findings.length,0);});
+ test('missing distinct author capability fails despite article action',()=>{const m=structuredClone(article);delete m._items[0].authorLink;assert(newsRun(m).findings.some(f=>f.text==='Alice author'));});
++const wrapModel={_title:{text:'Wrapped entities'},_items:[{_name:{text:'Alpha wrapped entity'},_action:{verb:'open',to:BASE+'/alpha'}},{_name:{text:'Beta wrapped entity'},_action:{verb:'open',to:BASE+'/beta'}}]};
++const wrapDom='<section><a href="'+BASE+'/alpha"><div><h3>Alpha wrapped entity</h3></div></a><a href="'+BASE+'/beta"><div><h3>Beta wrapped entity</h3></div></a></section>';
++const wrapRun=(m,h=render(m),d=wrapDom)=>checkPage('fixture/wrappers',m,h,d,BASE,EMPTY);
++test('transparent source wrappers retain exact enclosing entity anchor',()=>assert.equal(wrapRun(wrapModel).findings.length,0));
++test('wrapped entity existing-neighbor target does not prove ownership',()=>{const m=structuredClone(wrapModel);m._items[0]._action.to=BASE+'/beta';assert(wrapRun(m).findings.length>0);});
++const overlayDom='<main><div><a aria-label="Alpha wrapped entity" href="'+BASE+'/alpha"></a><div><h3>Alpha wrapped entity</h3></div></div><div><a aria-label="Beta wrapped entity" href="'+BASE+'/beta"></a><div><h3>Beta wrapped entity</h3></div></div></main>';
++test('local overlay requires matching visible source identity and direct unique anchor',()=>assert.equal(wrapRun(wrapModel,render(wrapModel),overlayDom).findings.length,0));
++for(const [kind,dom]of [['aria-only',overlayDom.replace('<h3>Alpha wrapped entity</h3>','<h3>Unrelated entity</h3>')],['wrong-caption',overlayDom.replace('aria-label="Alpha wrapped entity"','aria-label="Beta wrapped entity"')],['wrong-neighbor',overlayDom.replace('href="'+BASE+'/alpha"','href="'+BASE+'/beta"')],['competing-capability',overlayDom.replace('<div><h3>Alpha wrapped entity','<a href="'+BASE+'/beta">Other capability</a><div><h3>Alpha wrapped entity')]])test('overlay rejects '+kind,()=>assert(wrapRun(wrapModel,render(wrapModel),dom).findings.length>0));
++const controls={_title:{text:'Pagination'},_items:[{_name:{text:'Next'},_action:{verb:'navigate',label:'Category letters',to:BASE+'/category'}}]};
++const controlDom='<nav><a href="'+BASE+'/category"><span>Next</span><span>Category letters</span></a></nav>';
++const controlsRun=h=>checkPage('fixture/consumed-controls',controls,h,controlDom,BASE,EMPTY);
++test('axis-consumed alias control proves actual combined caption address',()=>assert.equal(controlsRun(render(controls)).findings.length,0));
++test('correct alias caption moved to unrelated rendered owner fails',()=>{const h=render(controls).replace('href="'+BASE+'/category"','data-dropped="true"')+'<aside><a href="'+BASE+'/category">Category letters Next</a></aside>';assert(controlsRun(h).findings.length>0);});
++test('consumed inline child drop fails despite neighboring same URL',()=>{const h=render(article).replace('href="https://example.test/alice"','data-dropped="true"')+'<aside><a href="https://example.test/alice">Alice author</a></aside>';assert(checkPage('fixture/inline-drop',article,h,news,BASE,EMPTY).findings.length>0);});
++const accessibleModel=structuredClone(model);accessibleModel._items[0]._action.label='Learn more about Alpha device';accessibleModel._items[1]._action.label='Learn more about Beta device';
++const accessibleDom=dom.replace('href="/alpha"','href="/alpha" aria-label="Learn more about Alpha device"').replace('href="/beta"','href="/beta" aria-label="Learn more about Beta device"');
++const accessibleRun=(d,h=render(accessibleModel))=>checkPage('fixture/local-accessible-caption',accessibleModel,h,d,BASE,EMPTY);
++test('full captured accessible action caption requires independently visible source entity scope',()=>assert.equal(accessibleRun(accessibleDom).findings.length,0));
++test('accessible caption cannot borrow another visible entity',()=>assert(accessibleRun(accessibleDom.replace('Alpha device</h2>','Unrelated device</h2>').replace('Alpha distinctive detail','Unrelated detail')).findings.length>0));
++test('full accessible caption neighbor target swap fails',()=>assert(accessibleRun(accessibleDom.replace('href="/alpha"','href="/beta"')).findings.length>0));
++const bareCtas={_title:{text:'Simple devices'},_items:[{_name:{text:'Alpha device'},_action:{verb:'open',label:'Learn more',to:'https://example.test/alpha'}},{_name:{text:'Beta device'},_action:{verb:'open',label:'Learn more',to:'https://example.test/beta'}}]};
++const bareRun=m=>checkPage('fixture/bare-cta',m,render(m),dom,BASE,EMPTY);
++test('bare entity CTA is not a shared directory-label context',()=>assert.equal(bareRun(bareCtas).findings.length,0));
++test('bare same-caption CTA cannot borrow neighbor source target',()=>{const m=structuredClone(bareCtas);m._items[0]._action.to='https://example.test/beta';assert(bareRun(m).findings.length>0);});
++const mediaWrapped=structuredClone(wrapModel);mediaWrapped._items[0]._image={image:'https://example.test/alpha.png',alt:'Alpha wrapped entity'};
++test('caption and media share exact owned target without counting media as caption consumption',()=>assert.equal(wrapRun(mediaWrapped).findings.length,0));
++test('dropping caption fails even when owned media retains exact URL',()=>{const h=render(mediaWrapped).replace(/href="https:\/\/example.test\/page\/alpha"(?=>Alpha wrapped entity)/,'data-caption-dropped="true"');assert.notEqual(h,render(mediaWrapped));assert(wrapRun(mediaWrapped,h).findings.length>0);});
+ console.log(count+' production owner assertions passed');
+--- baseline/docs/m1/layout-axes.md
++++ current/docs/m1/layout-axes.md
+@@ -9,7 +9,7 @@
+ 
+ 当前修复候选的地基、页脚所属层级顺序、采集事实、强调与程序化视觉自查已有局部自证；七页参考设计仍受保护；其已有28个旧/当前四宽几何对照不能证明当前链接修复的最新媒体位置/尺寸及整页高度。来源可证的 Bilibili 首页卡片目标互换和 SSPAI114716 电影/预告目标关联已修正，作者目标按原条目具名子件恢复；这些目标修复不授权重设计参考页。三页结构修复有12个新版四宽整高截图，但不是完整42页体验证明。组合 pipeline 因渲染动作的来源所有者剩余未证映射而未通过；其余程序化门禁的通过不能代替完整独立技术与体验验收。链接覆盖采用精确来源目标及实际所有者链接校验；源上下文的普通事实可在正确所有者承载其动作，不要求每个字都可点击，也不能以同域名或全局 URL 巧合替代精确目标。Microsoft 127 个表格来源目标保持已有元素 `_action`，共享轴层仅在兄弟表格与动作清单的行名、完整有序标签逐字一致且无歧义时绑定到所属单元格，三个目标同消费；不增加链接值语法、不推导 URL，未能完整匹配的清单保留原状。23 行/127 个来源链接的逐行有序精确目标有可证伪自测，最终易用性尚需独立核验。SSPAI114699 八条简讯以完整源段落各保留一次并关联各自来源，带行内来源的有序正文成员选择单列阅读序列；SSPAI102392 两处源引用以 `_quote` 恢复，相关失效豁免移除。Bilibili 第四互动名称采用采集文案「转发」。SSPAI 字数统计与阅读量恢复源顺序，字数标签通过通用、来源 DOM 哈希/所属元素/图标/局部数值/模型关联与顺序绑定证明语义转换，不把 class/id 当任意文本，也不减少分母；证据失效即失败。商品卡图片增加 160px 最大高度下缩上限，保持自然比例，不设固定高度、不裁切、不放大小图；实际回归仍需独立审查。Bilibili 31 个原失败外链资源经普通公开 HTTP 请求取得 200 原始字节，按捕获 URL（仅协议相对 URL 的 HTTPS 规范化）保存为本地资源，哈希及模型位置关联记录在 `.scratch/62-all-sites/integration/remainder/image-resource-provenance.json`；这不证明后端播放。SSPAI/Linear 截图派生素材只证明已捕获像素及其裁切来源（含遮挡/边缘裁切），不证明完整远程原图。认证、播放、Cookie、分页与后端行为未验；源 iconfont 私有字形的可读性尚未证明。未知或缺失验收必须标记 INCOMPLETE。
+ 
+-当前链接归属候选采用实际来源实体/文本上下文与渲染所有者结构见证；HTML 的 `data-model-owner` 仅为模型树地址，不是业务身份或新模型语法。作者与来源说明通过既有具名动作子件行内呈现。组合卡片、标题至下一同级标题间的源段落、表格所属单元格、表单 action 与根产品事实/CTA 都有所有者校验。`m1/eval/link-owner-witnesses.json` 的36条源 DOM 哈希/节点/原 href/标签/所属上下文绑定是附加的必需能力断言，不是豁免或模型目标自证。36kr机构主页与最近文章、SSPAI预告视频与独立来源均分别保留；小米注册只保留捕获的无目标操作，不发明注册地址；Airbnb评价入口保留实际捕获路径与查询。原364案例当前保留343条已有自证及21条精确闭合分类（20条源所有者动作、1条源实体对应的生成引用）；42页6250锚点、1687复现事实的当前 checker 拒绝全局同 URL/同标签巧合；它保留131条渲染所有者未证映射（18页），未知不是已证实错误目标，也不是PASS。36条附加源能力绑定、285条新增来源/表型断言与11条所有者断言通过。普通1280px截图只刷新5个失效页面，42页HTML/PNG哈希一致性通过；这些结果不是四宽整高视觉PASS。当前证据与独立复核入口 `.scratch/62-all-sites/link-closure/handoff.json`；完整42页独立技术/来源/整高体验、七页最新参考回归及用户验收仍为INCOMPLETE。不能将原始诊断的364差额视为364已证实产品缺陷，也不能把局部程序化关联通过等同于完整体验通过。
++当前链接归属候选采用实际来源实体/文本上下文与渲染所有者结构见证；HTML 的 `data-model-owner` 仅为模型树地址，不是业务身份或新模型语法。作者与来源说明通过既有具名动作子件行内呈现。来源透明包装不能丢失实际包住实体标题的锚点；共享轴声明消费的行内子动作、控件集合和表格动作在当前渲染的实际锚点地址验证，不能用同一所有者下任意 URL 代替该消费地址。空覆盖锚点仅在其直接父容器另有逐字相同的可见实体标题、唯一锚点及相同 aria 标签时形成局部所有者证据；动作的完整 aria 文案也仅能在已由可见实体事实独立支持的局部来源范围中证明该动作标签，单独 aria/图片 alt 或远处标题不构成证明。源动作候选由实体/原标签与结构取得，不能按待证 URL 搜索；查询与片段仍逐字比较。组合卡片、标题至下一同级标题间的源段落、表格所属单元格、表单 action 与根产品事实/CTA 都有所有者校验。`m1/eval/link-owner-witnesses.json` 的36条源 DOM 哈希/节点/原 href/标签/所属上下文绑定是附加的必需能力断言，不是豁免或模型目标自证。36kr机构主页与最近文章、SSPAI预告视频与独立来源均分别保留；小米注册只保留捕获的无目标操作，不发明注册地址；Airbnb评价入口保留实际捕获路径与查询。原364案例当前保留343条已有自证及21条精确闭合分类（20条源所有者动作、1条源实体对应的生成引用）；42页6250锚点、1687复现事实的当前 checker 拒绝全局同 URL/同标签巧合；原131条待证映射均保留完整案例与当前处置，其中88条具有精确源所有者与实际渲染消费地址证明，43条仍未证；严格当前门禁还显示1条额外的淘宝根动作文案消费未证，共44条未证映射（15页）。未知不是已证实错误目标，也不是PASS。36条附加源能力绑定、285条来源/表型断言、28条所有者断言与550条实际消费地址的目标/删除反例断言通过（含90次已有邻居所有者目标互换），其中92次删除检查也执行完整生产门禁并证实拒绝；反例的逐案例生产 oracle 证明不能代替完整独立技术审查。普通1280px截图只刷新5个失效页面，42页HTML/PNG哈希一致性通过；这些结果不是四宽整高视觉PASS。当前归属消费证据与独立复核入口 `.scratch/62-all-sites/owner-trace/handoff.json`；完整42页独立技术/来源/整高体验、七页最新参考回归及用户验收仍为INCOMPLETE。不能将原始诊断的364差额视为364已证实产品缺陷，也不能把局部程序化关联通过等同于完整体验通过。
+ 
+ ## 1. 轴即语义（不可由宽度决定）
+ 

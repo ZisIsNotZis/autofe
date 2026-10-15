@@ -1,0 +1,157 @@
+{
+  "_intent": "让企业按规模找到适配的 Stripe 定价方案，理解费率与包含的能力，并开始集成",
+  "_key": "stripe-pricing",
+  "_title": {
+    "text": "适配各规模企业的定价方案"
+  },
+  "_brand": {
+    "text": "Stripe"
+  },
+  "_action": {
+    "verb": "open",
+    "to": "https://stripe.com/signup"
+  },
+  "plans": {
+    "_intent": "两种定价并排对比：标准 vs 定制",
+    "_rel": {
+      "compare": true
+    },
+    "_items": [
+      {
+        "_key": "plan-standard",
+        "_name": {
+          "text": "标准定价"
+        },
+        "_measure": {
+          "num": 3.4,
+          "unit": "%"
+        },
+        "_price": {
+          "money": 2.35,
+          "currency": "HKD"
+        },
+        "_summary": {
+          "text": "每笔成功交易收取 3.4% + HK$2.35"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://stripe.com/pricing#standard"
+        }
+      },
+      {
+        "_key": "plan-custom",
+        "_name": {
+          "text": "定制化定价"
+        },
+        "_summary": {
+          "text": "为平台与交易市场等大规模业务定制费率"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://stripe.com/contact/sales"
+        }
+      },
+      {
+        "_key": "plan-non-card",
+        "_name": {
+          "text": "非卡支付"
+        },
+        "_measure": {
+          "num": 2.2,
+          "unit": "%"
+        },
+        "_price": {
+          "money": 2.0,
+          "currency": "HKD"
+        },
+        "_summary": {
+          "text": "非卡支付交易费率 2.2% + HK$2.00"
+        }
+      }
+    ]
+  },
+  "included": {
+    "_intent": "开箱即用的能力：解释费率里包含了什么",
+    "_rel": {
+      "compare": true
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "全球覆盖"
+        },
+        "_detail": {
+          "text": "接受全球付款，支持超过 195 个国家/地区、135+ 种货币、100+ 种支付方式。"
+        }
+      },
+      {
+        "_name": {
+          "text": "内置欺诈防范"
+        },
+        "_detail": {
+          "text": "Radar 机器学习在数百万家公司数据上训练，自动适应新的欺诈模式，零额外集成。"
+        }
+      },
+      {
+        "_name": {
+          "text": "优化结账流程"
+        },
+        "_detail": {
+          "text": "助力营收增长的支付优化工具。"
+        }
+      }
+    ]
+  },
+  "disputes": {
+    "_intent": "争议处理规则：什么情况退费",
+    "_title": {
+      "text": "争议费用"
+    },
+    "_lines": [
+      {
+        "_intent": "争议受理费",
+        "_title": {
+          "text": "争议受理费"
+        },
+        "_price": {
+          "money": 85,
+          "currency": "HKD"
+        },
+        "_detail": {
+          "text": "每笔争议受理费 HK$85.00；胜诉退还，败诉不退。"
+        }
+      },
+      {
+        "_intent": "争议抗辩费",
+        "_title": {
+          "text": "争议抗辩费"
+        },
+        "_price": {
+          "money": 85,
+          "currency": "HKD"
+        },
+        "_detail": {
+          "text": "Smart Dispute 抗辩费 HK$85.00，败诉不收取，但争议受理费照常适用。"
+        }
+      },
+      {
+        "_intent": "胜诉退费",
+        "_detail": {
+          "text": "对于您胜诉的争议，会退还此费用；败诉争议不退还。"
+        }
+      },
+      {
+        "_intent": "Smart Dispute",
+        "_detail": {
+          "text": "使用 Stripe 的 AI 准备证据回应争议；败诉不收取 Smart Dispute 费用，但争议受理费照常。"
+        }
+      },
+      {
+        "_intent": "事前防范",
+        "_detail": {
+          "text": "借助 Visa Verifi 与 Mastercard Ethoca 的防范工具降低争议率。"
+        }
+      }
+    ]
+  }
+}

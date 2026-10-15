@@ -1,0 +1,351 @@
+{
+  "baseline": "ccea4ace4bbba9ac989ca2ade80d5b0f050826e9",
+  "method": "binary no-index diff of baseline blobs against byte-verified current recovery copies; includes untracked production additions; not Git index diff",
+  "paths": [
+    {
+      "path": "m1/axis.mjs",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/render-md.mjs",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/render.mjs",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/eval/affordance-selftest.mjs",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/eval/link-coverage.mjs",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/eval/m3-final.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/eval/link-owners.mjs",
+      "baselineExists": false,
+      "currentExists": true
+    },
+    {
+      "path": "m1/eval/link-owner-selftest.mjs",
+      "baselineExists": false,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/36kr-com/home.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/36kr-com/information-technology.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/bilibili-com/home.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/bilibili-com/video-bv1gj411x7h7.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/github-com/login.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/huawei-cn/search-laptop.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/huawei-cn/search-phone.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/linear-app/home.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/36kr-com-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/36kr-com-information-technology.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/36kr-com-search-ai.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/36kr-com-search-viz.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/airbnb-com-room-28871.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/aliyun-com-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/aliyun-com-product-ecs.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/apple-com-cn-iphone-17.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/apple-com-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/apple-com-ipad-air.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/apple-com-iphone-16.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/apple-com-macbook-air.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/aws-amazon-ec2-on-demand.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/bilibili-com-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/bilibili-com-read-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/bilibili-com-video-bv1gj411x7h7.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/github-com-login.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/gov-uk-ni-rates-letters.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/gov-uk-register-birth-abroad.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/grafana-play-play-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/huawei-cn-consumer-phones.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/huawei-cn-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/huawei-cn-search-laptop.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/huawei-cn-search-laptop.png",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/huawei-cn-search-phone.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/huawei-cn-search-phone.png",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/index.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/learn-microsoft-vm-sizes.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/linear-app-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/manifest.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/mi-com-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/mi-com-product-detail-mi15.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/mi-com-search-earbuds.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/mi-com-search-phone.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/mi-com-shop-category-list.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/sspai-com-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/sspai-com-home.png",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/sspai-com-matrix.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/sspai-com-post-102392.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/sspai-com-post-114699.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/sspai-com-post-114716.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/sspai-com-u-jtc092al.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/stripe-com-pricing.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/stripe-dashboard-login.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/stripe-docs-payments.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/taobao-com-home.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/renders/xiaomi-account-login.html",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/sspai-com/home.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/sspai-com/matrix.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/sspai-com/post-102392.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/sspai-com/post-114716.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "m1/curated/xiaomi-account/login.json",
+      "baselineExists": true,
+      "currentExists": true
+    },
+    {
+      "path": "docs/m1/layout-axes.md",
+      "baselineExists": true,
+      "currentExists": true
+    }
+  ]
+}

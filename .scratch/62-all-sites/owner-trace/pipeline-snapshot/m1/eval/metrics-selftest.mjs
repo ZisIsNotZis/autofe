@@ -1,0 +1,152 @@
+// Metrics self-test (F-052): the fidelity gate must *see* every typed value,
+// including `{money}`/`{list}`/`{num}` held under `_fields` (a table cell).
+// Before this pin, `factValues` walked only text/date/num `_fields` entries, so
+// aws-amazon/ec2-on-demand's 74 prices and learn-microsoft/vm-sizes' 159 link
+// cells were absent from the denominator and "42/42 fidelity 1.00" overstated
+// coverage. A gate that cannot fail on a missing cell is not a gate (F-040).
+// F-054 pins (bottom half): the gate must be *precise* too — a value is only
+// rendered when it is delimited, not when the same characters occur inside a
+// longer number/word or in markup the reader never sees.
+// Usage: node m1/eval/metrics-selftest.mjs
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { render } from '../render.mjs';
+import { renderText } from '../render-text.mjs';
+import { evaluate } from './metrics.mjs';
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'autofe-metrics-'));
+let seq = 0;
+const score = (model, html) => {
+  const f = path.join(dir, `m${++seq}.html`);
+  fs.writeFileSync(f, html);
+  return evaluate(model, f);
+};
+let bad = 0;
+const check = (name, cond, detail = '') => {
+  if (cond) console.log(`ok   ${name}`);
+  else { bad++; console.log(`FAIL ${name}${detail ? ` — ${detail}` : ''}`); }
+};
+
+// A node whose cells are `{money}`/`{num}`/`{list}` renders as a table.
+const priced = {
+  _intent: 'price list', _key: 'pricing', _title: { text: 'Price list' },
+  plans: { _intent: 'plans', _items: [
+    { _key: 'p1', _name: { text: 'Basic' }, _fields: { price: { money: 9.99, currency: 'USD' }, seats: { num: 1 } } },
+    { _key: 'p2', _name: { text: 'Pro' }, _fields: { price: { money: 19.99, currency: 'USD' }, seats: { num: 5 } } },
+  ] },
+};
+const html = render(priced);
+check('fixture: `_fields` money cells actually render', html.includes('$9.99') && html.includes('$19.99'));
+
+// The denominator counts title + 2 names + 2 prices + 2 seat numbers.
+const mdScore = (model, markdown) => {
+  const file = path.join(dir, `m${++seq}.md`);
+  fs.writeFileSync(file, markdown);
+  return evaluate(model, file);
+};
+const linkedProse = { _text: { text: 'Write to support@example.test for help.' } };
+check('Markdown inline destination does not interrupt the visible prose fact',
+  mdScore(linkedProse, 'Write to [support@example.test](mailto:support@example.test) for help.').factFidelity === 1);
+check('Markdown destination alone cannot certify a missing prose fact',
+  mdScore({ _text: { text: 'hiddenfact' } }, '[Visible label](https://example.test/hiddenfact)').factFidelity < 1);
+check('Markdown image destination alone cannot certify a missing numeric value',
+  mdScore({ _count: { num: 870 } }, '![Captured alt](https://example.test/870.png)').factFidelity < 1);
+check('Markdown literal escaped angle parameter retains the complete command',
+  mdScore({ _text: { text: 'az vm list-skus --location <region> --output table' } },
+    'az vm list-skus --location &lt;region&gt; --output table').factFidelity === 1);
+const mdCells = { _fields: { cost: { money: 9.99 }, date: { date: '2026-10-13' }, words: { list: [{ text: 'alpha' }, { text: 'beta' }] } } };
+const mdHiddenCells = mdScore(mdCells, '[visible](https://example.test/9.99/2026-10-13/alpha/beta)');
+check('Markdown destination filtering never lowers the typed-cell denominator', mdHiddenCells.factsTotal === 4);
+check('money/date/list facts hidden in one destination all fail', mdHiddenCells.factsRendered === 0);
+check('Markdown longer numeric token still cannot certify shorter numeric fact',
+  mdScore({ _count: { num: 870 } }, '[87041](https://example.test/870)').factFidelity < 1);
+const ok = score(priced, html);
+check('money/num `_fields` cells are in the fact denominator', ok.factsTotal === 7, `factsTotal=${ok.factsTotal}`);
+check('a fully rendered model keeps fidelity 1.00', ok.factFidelity === 1, `fidelity=${ok.factFidelity}`);
+
+// The regression pin: delete a money cell from the render ⇒ fidelity must drop.
+const tampered = score(priced, html.replace('$9.99', '').replace('$19.99', ''));
+check('a `_fields` money value absent from the render ⇒ fidelity < 1.00',
+  tampered.factFidelity < 1, `fidelity=${tampered.factFidelity}`);
+check('the missing money fact is reported by path',
+  tampered.missing.some((m) => m.includes('_fields.price') && m.includes('9.99')), JSON.stringify(tampered.missing));
+
+// Lists under `_fields` are cells too (vm-sizes' `Links` column).
+const tagged = {
+  _intent: 'tags', _title: { text: 't' },
+  things: { _intent: 'g', _items: [
+    { _key: 'a', _name: { text: 'Alpha' }, _fields: { tags: { list: [{ text: 'one' }, { text: 'two' }] } } },
+    { _key: 'b', _name: { text: 'Beta' }, _fields: { tags: { list: [{ text: 'three' }] } } },
+  ] },
+};
+const th = render(tagged);
+const okList = score(tagged, th);
+check('list `_fields` elements are in the fact denominator', okList.factsTotal === 6, `factsTotal=${okList.factsTotal}`);
+check('a rendered list keeps fidelity 1.00', okList.factFidelity === 1, `fidelity=${okList.factFidelity}`);
+const tamperedList = score(tagged, th.replace('>one<', '>X<').replace('>three<', '>X<'));
+check('a `_fields` list element absent from the render ⇒ fidelity < 1.00',
+  tamperedList.factFidelity < 1, `fidelity=${tamperedList.factFidelity}`);
+
+// ---- F-054: matching is boundary-aware -------------------------------------
+// A single-character numeric fact used to be "rendered" as soon as the digit
+// appeared anywhere on the page (inside `2026`, `10.5`, `1,000`, a stylesheet or
+// a class name). Each pin below fails on the pre-F-054 rule.
+const zero = {
+  _intent: 'price list', _key: 'pricing', _title: { text: 'Zero' },
+  plans: { _intent: 'plans', _items: [
+    { _key: 'p1', _name: { text: 'Free' }, _fields: { price: { money: 0, currency: 'USD' } } },
+  ] },
+};
+const zeroHtml = render(zero);
+const withoutZero = (s) => s.replace(/\$0(?![\d.,])/g, 'X');   // delete the `$0` cell
+// ② a `0` that occurs as `$0` is rendered.
+check('fixture: a `{money: 0}` cell renders as $0', zeroHtml.includes('$0'));
+check('a `0` occurring in `$0` counts as rendered', score(zero, zeroHtml).factFidelity === 1,
+  `fidelity=${score(zero, zeroHtml).factFidelity}`);
+// ① a `0` that only occurs inside a longer number is NOT rendered.
+for (const token of ['2026', '10.5', '1,000']) {
+  const r = score(zero, zeroHtml.replace(/\$0(?![\d.,])/g, token));
+  check(`a \`0\` occurring only inside \`${token}\` does NOT count as rendered`,
+    r.factFidelity < 1 && r.missing.some((m) => m.includes('_fields.price')),
+    `fidelity=${r.factFidelity} missing=${JSON.stringify(r.missing)}`);
+}
+// Neither do digits the reader never sees: stylesheet bodies and attributes.
+const styled = score(zero, withoutZero(zeroHtml) + '<p class="depth-0">n/a</p><style>.pad{padding:0 0 0 0}</style>');
+check('a `0` occurring only in a class name / stylesheet does NOT count as rendered',
+  styled.factFidelity < 1, `fidelity=${styled.factFidelity}`);
+// A digit next to its unit is still rendered (CJK units glue onto the number).
+const counted = { _intent: 'rated', _key: 'rated', _title: { text: '评价' }, _count: { num: 870 } };
+const countedHtml = '<article><h2 class="title">评价</h2><div class="meta">870人好评</div></article>';
+check('a number whose unit glues onto it still counts as rendered',
+  score(counted, countedHtml).factFidelity === 1, `fidelity=${score(counted, countedHtml).factFidelity}`);
+check('the same number inside a longer number does NOT count',
+  score(counted, countedHtml.replace('870人', '87041人')).factFidelity < 1);
+// Word edges: delimiter-separated text still matches, glued text does not.
+const sub = { _intent: 'detail', _key: 'detail', _title: { text: 'Subtitle probe' }, _summary: { text: 'Pro further.' } };
+const subHtml = '<article><h2 class="title">Subtitle probe</h2><div class="cmp-sub">Pro further.</div></article>';
+check('a multi-word value matches across its own punctuation',
+  score(sub, subHtml).factFidelity === 1, `fidelity=${score(sub, subHtml).factFidelity}`);
+check('the same value glued into a longer word does NOT count (word edge)',
+  score(sub, subHtml.replace('Pro further.', 'Profurtherx')).factFidelity < 1);
+
+// ---- round 19: `pageText` strips only well-formed tags ----------------------
+// A fact whose own text contains `<…>` used to be erased by the greedy
+// `/<[^>]*>/g`, so the gate could report a present fact as missing (round-18
+// report §3 residual coupling). The plain-text target emits raw fact text, so it
+// is the honest place to pin the fix. Under the old rule the first assertion
+// fails (`age < 18 or age > 65` loses everything between `<` and `>`).
+const angleModel = { _intent: 'angle', _key: 'angle', _title: { text: 'Angle' }, _summary: { text: 'age < 18 or age > 65' } };
+const angleTxt = path.join(dir, 'angle.txt');
+fs.writeFileSync(angleTxt, renderText(angleModel));
+check('a fact whose own text contains `<`/`>` still counts as rendered (text target)',
+  evaluate(angleModel, angleTxt).factFidelity === 1, JSON.stringify(evaluate(angleModel, angleTxt).missing));
+// …but a real, well-formed tag is still removed: an attribute cannot vouch for a value.
+const attrModel = { _intent: 'attr', _key: 'attr', _title: { text: 'Attr' }, _count: { num: 999 } };
+const attrTxt = path.join(dir, 'attr.txt');
+fs.writeFileSync(attrTxt, '<div data-x="999">nothing</div>');
+check('a value occurring only inside a tag/attribute does NOT count as rendered',
+  evaluate(attrModel, attrTxt).factFidelity < 1, `fidelity=${evaluate(attrModel, attrTxt).factFidelity}`);
+
+console.log(`\n度量自测: ${bad === 0 ? '全部通过' : `待修 ${bad}`}`);
+process.exit(bad ? 1 : 0);

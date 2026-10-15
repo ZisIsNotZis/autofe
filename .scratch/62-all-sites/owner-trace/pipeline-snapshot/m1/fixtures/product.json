@@ -1,0 +1,113 @@
+{
+  "_intent": "让访客理解 iPhone 16 的差异点并预购",
+  "_primary": "specs._lines[0]._measure",
+  "_key": "product-iphone-16",
+  "_when": "region == \"CN\"",
+  "_title": {
+    "text": "iPhone 16"
+  },
+  "_price": {
+    "money": 5999,
+    "currency": "CNY"
+  },
+  "_brand": {
+    "text": "Apple"
+  },
+  "_action": {
+    "verb": "preorder",
+    "to": "https://example.com/buy",
+    "when": "stock > 0"
+  },
+  "specs": {
+    "_intent": "硬件差异点",
+    "_lines": [
+      {
+        "_intent": "芯片",
+        "_title": {
+          "text": "A18 芯片"
+        },
+        "_measure": {
+          "num": 3,
+          "unit": "nm"
+        }
+      },
+      {
+        "_intent": "屏幕",
+        "_title": {
+          "text": "6.1 英寸"
+        },
+        "_measure": {
+          "num": 6.1,
+          "unit": "inch"
+        }
+      }
+    ]
+  },
+  "colors": {
+    "_intent": "可选颜色一起比较",
+    "_rel": {
+      "compare": true
+    },
+    "_lines": [
+      {
+        "_name": {
+          "text": "黑色"
+        }
+      },
+      {
+        "_name": {
+          "text": "白色"
+        }
+      }
+    ]
+  },
+  "timeline": {
+    "_intent": "发售时间线",
+    "_rel": {
+      "order": "time"
+    },
+    "_items": [
+      {
+        "_title": {
+          "text": "发布"
+        },
+        "_datetime": {
+          "date": "2026-09-10"
+        }
+      },
+      {
+        "_title": {
+          "text": "开售"
+        },
+        "_datetime": {
+          "date": "2026-09-20"
+        }
+      }
+    ]
+  },
+  "related": {
+    "_intent": "配件",
+    "_lines": [
+      {
+        "_intent": "保护壳",
+        "_key": "case-16",
+        "_price": {
+          "money": 199,
+          "currency": "CNY"
+        }
+      }
+    ]
+  },
+  "cross": {
+    "_intent": "跨故事线引用",
+    "_ref": {
+      "ref": "key:case-16"
+    }
+  },
+  "_region": {
+    "text": "CN"
+  },
+  "_stock": {
+    "num": 5
+  }
+}

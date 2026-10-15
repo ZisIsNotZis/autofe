@@ -1,0 +1,420 @@
+{
+  "caseCount": 364,
+  "remainingCount": 21,
+  "cases": [
+    {
+      "id": "36kr-com/home:70",
+      "page": "36kr-com/home",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "氪睿研究院",
+        "path": "enterprise._items[0]._name",
+        "href": "https://36kr.com/p/3557922239118726",
+        "expect": [
+          "https://img.36krcdn.com/hsossms/20251118/v2_d5e97c1ebb974011b0117c1338a9c747@000000_oswg146520oswg1280oswg1280_img_jpg"
+        ]
+      },
+      "hashes": {
+        "source": "059b3f985189b252da122e578dc8fec21fab7fb7ee9a2978373c114ff057e224",
+        "model": "d371639c432d8d2a795341d4aca226da2477b8fca25c34a1a601bfcf26279103",
+        "render": "8976f86f5f1333b874f7b5dc53eef068fbf0b59a7968210e00b86a709e0d8d38"
+      },
+      "bindings": [
+        "36kr-com/home:enterprise._items[0].instituteLink:/html[0]/body[1]/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[3]/div[1]/div[0]/div[0]/div[0]/div[2]/div[0]/a[0]"
+      ]
+    },
+    {
+      "id": "36kr-com/home:71",
+      "page": "36kr-com/home",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "查看更多",
+        "href": "https://36kr.com/information/web_news/latest?anchor=3988767829277705",
+        "expect": []
+      },
+      "hashes": {
+        "source": "059b3f985189b252da122e578dc8fec21fab7fb7ee9a2978373c114ff057e224",
+        "model": "d371639c432d8d2a795341d4aca226da2477b8fca25c34a1a601bfcf26279103",
+        "render": "8976f86f5f1333b874f7b5dc53eef068fbf0b59a7968210e00b86a709e0d8d38"
+      },
+      "bindings": [
+        "36kr-com/home:flash:/html[0]/body[1]/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[0]/div[1]/a[5]"
+      ]
+    },
+    {
+      "id": "36kr-com/home:72",
+      "page": "36kr-com/home",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "氪睿研究院",
+        "href": "https://36kr.com/p/3557922239118726",
+        "expect": []
+      },
+      "hashes": {
+        "source": "059b3f985189b252da122e578dc8fec21fab7fb7ee9a2978373c114ff057e224",
+        "model": "d371639c432d8d2a795341d4aca226da2477b8fca25c34a1a601bfcf26279103",
+        "render": "8976f86f5f1333b874f7b5dc53eef068fbf0b59a7968210e00b86a709e0d8d38"
+      },
+      "bindings": [
+        "36kr-com/home:enterprise._items[0].instituteLink:/html[0]/body[1]/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[2]/div[0]/div[1]/div[3]/div[1]/div[0]/div[0]/div[0]/div[2]/div[0]/a[0]"
+      ]
+    },
+    {
+      "id": "36kr-com/information-technology:59",
+      "page": "36kr-com/information-technology",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "氪睿研究院",
+        "href": "https://36kr.com/user/6308858",
+        "expect": []
+      },
+      "hashes": {
+        "source": "d9d3ff5778bddb68b0370b1d96c34788b124be9778f1734dd16dbb1d9dcd39ec",
+        "model": "94d999b550c365537a629abdd7b3b5ae640787d5db59c747cbc8136a39623d8e",
+        "render": "b21eeb092af76c29c37b1612f7df54003298ab0c6c6b1fe742af7e54e73615e1"
+      },
+      "bindings": [
+        "36kr-com/information-technology:companies._items[1]:/html[0]/body[1]/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[1]/div[1]/div[0]/div[0]/div[2]/div[0]/a[0]"
+      ]
+    },
+    {
+      "id": "airbnb-com/room-28871:1",
+      "page": "airbnb-com/room-28871",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "815 条评价",
+        "href": "#reviews",
+        "expect": []
+      },
+      "hashes": {
+        "source": "ebc81bac1e06221005b79d6561861dfe64f2fa7a6f416291a0ce5d630d55dc70",
+        "model": "8a65b769036afbba7a7775ead108a24a610081bcc59476fb454dac2bf9c60f2f",
+        "render": "78fecae61c337798f3c1148cf7340a60c66767b6c15de28b120207ef1d0f8048"
+      },
+      "bindings": [
+        "airbnb-com/room-28871:overview.rating.to-reviews:/html[0]/body[1]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/main[1]/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/section[0]/div[2]/a[4]"
+      ]
+    },
+    {
+      "id": "aliyun-com/home:4",
+      "page": "aliyun-com/home",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "查看详情",
+        "href": "https://platform.qianwenai.com/pricing/token-plan",
+        "expect": []
+      },
+      "hashes": {
+        "source": "7952a7f63efbe550f85d684ae3bb1db2a6d4a0227b66c14a8d0e0b9c83953cd7",
+        "model": "fa2f579d29e4b714f72925db009bd5c0b5ae6b637ff88db5b735929b88b124c0",
+        "render": "9fc320f894b8b2adecbd0fa1d664dea86b2f4b827fce98f7453abbb99b52db93"
+      },
+      "bindings": [
+        "aliyun-com/home:maas.platform._items[0]:/html[0]/body[1]/div[0]/div[1]/div[0]/div[3]/div[1]/div[1]/div[1]/div[1]/div[0]/a[0]"
+      ]
+    },
+    {
+      "id": "aliyun-com/home:5",
+      "page": "aliyun-com/home",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "查看详情",
+        "href": "https://platform.qianwenai.com/home/benefits",
+        "expect": []
+      },
+      "hashes": {
+        "source": "7952a7f63efbe550f85d684ae3bb1db2a6d4a0227b66c14a8d0e0b9c83953cd7",
+        "model": "fa2f579d29e4b714f72925db009bd5c0b5ae6b637ff88db5b735929b88b124c0",
+        "render": "9fc320f894b8b2adecbd0fa1d664dea86b2f4b827fce98f7453abbb99b52db93"
+      },
+      "bindings": [
+        "aliyun-com/home:maas.platform._items[1]:/html[0]/body[1]/div[0]/div[1]/div[0]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/a[0]"
+      ]
+    },
+    {
+      "id": "apple-com-cn/iphone-17:1",
+      "page": "apple-com-cn/iphone-17",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "iPhone 17",
+        "path": "._title",
+        "href": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17",
+        "expect": [
+          "https://www.apple.com.cn/iphone-17"
+        ]
+      },
+      "hashes": {
+        "source": "d07c0b8dd9959cfd2494cfe1e70d44f9b288f7f3cbb861cbd53a749ed0f677c8",
+        "model": "9bd062e38ff3727cc080e3196316ca2fe0aea8591c5393a2c0cf34de93ae771d",
+        "render": "6c1c06fef8cb83cb28a213a54294723273cc6ce90d7a5cad76126839e854579b"
+      },
+      "bindings": [
+        "apple-com-cn/iphone-17::/html[0]/body[1]/main[3]/section[1]/div[2]/div[0]/div[0]/div[0]/a[1]"
+      ]
+    },
+    {
+      "id": "apple-com-cn/iphone-17:6",
+      "page": "apple-com-cn/iphone-17",
+      "classification": "STRUCTURAL_GENERATED_REFERENCE_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "Apple Trade In 换购计划",
+        "href": "#benefits-tradein",
+        "expect": []
+      },
+      "hashes": {
+        "source": "d07c0b8dd9959cfd2494cfe1e70d44f9b288f7f3cbb861cbd53a749ed0f677c8",
+        "model": "9bd062e38ff3727cc080e3196316ca2fe0aea8591c5393a2c0cf34de93ae771d",
+        "render": "6c1c06fef8cb83cb28a213a54294723273cc6ce90d7a5cad76126839e854579b"
+      },
+      "modelOwner": "_lines[0]",
+      "sourceWitness": {
+        "address": "/html[0]/body[1]/main[3]/div[0]/div[0]/div[0]/div[0]/div[0]/p[0]",
+        "text": "用 iPhone 13 或后续机型来换购 iPhone 17，预计可享 RMB 900 至 RMB 5100 的 折抵优惠 * 。"
+      },
+      "renderWitness": {
+        "address": "/html[0]/body[1]/main[0]/article[0]/div[5]/section[0]/article[0]/div[1]/span[0]/a[0]",
+        "href": "#benefits-tradein",
+        "targetAddress": "/html[0]/body[1]/main[0]/article[0]/div[5]/section[10]/article[0]/div[1]/div[0]/article[0]",
+        "targetOwner": "_lines[10]._items[0]"
+      },
+      "reason": "Reference points to the reproduced source-backed Trade In section; ribbon source copy is a plain fact, not the identically labelled global navigation link."
+    },
+    {
+      "id": "bilibili-com/home:15",
+      "page": "bilibili-com/home",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "中国模特勇闯欧洲时装周|面试实录第一集",
+        "href": "https://www.bilibili.com/video/BV1Q6eE64EeE",
+        "expect": []
+      },
+      "hashes": {
+        "source": "eb6fba7ab164bf1c3dd152240f384dd69b44ae004e7aad8d7b0f81f89cf316d5",
+        "model": "862afb8e04bb5f5c14e34a18acf1377a45f901cf4bfdce95a6a6e4c5add4070c",
+        "render": "b2fd0f709dc000492968d858f756f0c743ec4bfe44cd585ecff52d0b081e41a0"
+      },
+      "bindings": [
+        "bilibili-com/home:feed._items[9]:/html[0]/body[1]/div[0]/main[2]/div[0]/div[0]/div[0]/div[10]/div[0]/div[0]/div[0]/div[1]/div[0]/h3[0]/a[0]"
+      ]
+    },
+    {
+      "id": "bilibili-com/home:16",
+      "page": "bilibili-com/home",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "这什么物价？！二周年彩蛋终于破解！",
+        "href": "https://www.bilibili.com/video/BV1SAYd6sEtv",
+        "expect": []
+      },
+      "hashes": {
+        "source": "eb6fba7ab164bf1c3dd152240f384dd69b44ae004e7aad8d7b0f81f89cf316d5",
+        "model": "862afb8e04bb5f5c14e34a18acf1377a45f901cf4bfdce95a6a6e4c5add4070c",
+        "render": "b2fd0f709dc000492968d858f756f0c743ec4bfe44cd585ecff52d0b081e41a0"
+      },
+      "bindings": [
+        "bilibili-com/home:feed._items[8]:/html[0]/body[1]/div[0]/main[2]/div[0]/div[0]/div[0]/div[9]/div[0]/div[0]/div[0]/div[1]/div[0]/h3[0]/a[0]"
+      ]
+    },
+    {
+      "id": "github-com/login:2",
+      "page": "github-com/login",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "Create an account",
+        "href": "https://github.com/signup",
+        "expect": []
+      },
+      "hashes": {
+        "source": "8996c3395ecb5f6d500b103599d377ca2f24519338d74d5e570db4d50c928795",
+        "model": "7c6a5249ecf1e392b67f4e4e3813a08e3760f45ff7f7d301e94857c80d10d40d",
+        "render": "5847a1895cd77176eddf728f57212092b3ccc9c6c475cad711bec3fe2f86f547"
+      },
+      "bindings": [
+        "github-com/login:login.signup:/html[0]/body[1]/div[0]/div[2]/main[0]/div[0]/div[2]/div[0]/p[0]/a[0]"
+      ]
+    },
+    {
+      "id": "linear-app/home:3",
+      "page": "linear-app/home",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "Coding sessions",
+        "href": "https://linear.app/changelog/2026-08-20-coding-environments",
+        "expect": []
+      },
+      "hashes": {
+        "source": "5b1019c360d3ec0183f9744830c53a39793d66157b75b4a0b73399e566e9c9aa",
+        "model": "783018ca8a7c31693ae08b1ed76ff4f4e60cf01f876f5e2d9c70885e07517578",
+        "render": "32d9f13ab6c67c4abfd39f30206cd02947aa70e57abb441971c782ed0f1cb578"
+      },
+      "bindings": [
+        "linear-app/home:changelog._items[3]:/html[0]/body[1]/div[0]/div[1]/main[1]/div[0]/div[24]/div[2]/div[4]/a[1]"
+      ]
+    },
+    {
+      "id": "linear-app/home:4",
+      "page": "linear-app/home",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "Contact sales",
+        "href": "https://linear.app/contact-sales",
+        "expect": []
+      },
+      "hashes": {
+        "source": "5b1019c360d3ec0183f9744830c53a39793d66157b75b4a0b73399e566e9c9aa",
+        "model": "783018ca8a7c31693ae08b1ed76ff4f4e60cf01f876f5e2d9c70885e07517578",
+        "render": "32d9f13ab6c67c4abfd39f30206cd02947aa70e57abb441971c782ed0f1cb578"
+      },
+      "bindings": [
+        "linear-app/home:sales:/html[0]/body[1]/div[0]/div[1]/main[1]/div[0]/section[27]/div[1]/a[1]"
+      ]
+    },
+    {
+      "id": "sspai-com/matrix:19",
+      "page": "sspai-com/matrix",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "Bear熊掌记",
+        "href": "https://sspai.com/column/254",
+        "expect": []
+      },
+      "hashes": {
+        "source": "f6576d9fc627826b0cd3006026272a56390d59940fe175078af610a8ead2f41e",
+        "model": "cbb99acd68b450564915a8b70256076112fb7641bba735256f14b9ebe3e99729",
+        "render": "a8067d4c0c39dbe945d8c01eb1cbb08b3e70765c314fdb038f08b8e83134b7f0"
+      },
+      "bindings": [
+        "sspai-com/matrix:columns._items[2]:/html[0]/body[1]/div[0]/div[0]/div[1]/div[1]/div[0]/aside[1]/div[2]/ul[1]/li[2]/a[0]"
+      ]
+    },
+    {
+      "id": "sspai-com/post-114716:6",
+      "page": "sspai-com/post-114716",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "豆瓣链接",
+        "href": "https://movie.douban.com/subject/38456407/",
+        "expect": []
+      },
+      "hashes": {
+        "source": "0f50c4c2ac3c822ab58d73cc549ca0bd40bc3ac7ef3f2071d9bc800db35b92d3",
+        "model": "7433f780f7f59226e4a1666c23b21b4a1ee675e482e53ac7f07c001a48f642ce",
+        "render": "234af54bbeb5a9d724c0dc6277394637c001f315c197f5aef495c9b961883dc8"
+      },
+      "bindings": [
+        "sspai-com/post-114716:_lines[11]._items[1]:/html[0]/body[1]/div[0]/div[0]/div[1]/div[0]/article[0]/div[1]/div[0]/div[0]/div[20]/div[1]/p[1]/a[0]"
+      ]
+    },
+    {
+      "id": "sspai-com/post-114716:7",
+      "page": "sspai-com/post-114716",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "豆瓣链接",
+        "href": "https://movie.douban.com/subject/35930978/",
+        "expect": []
+      },
+      "hashes": {
+        "source": "0f50c4c2ac3c822ab58d73cc549ca0bd40bc3ac7ef3f2071d9bc800db35b92d3",
+        "model": "7433f780f7f59226e4a1666c23b21b4a1ee675e482e53ac7f07c001a48f642ce",
+        "render": "234af54bbeb5a9d724c0dc6277394637c001f315c197f5aef495c9b961883dc8"
+      },
+      "bindings": [
+        "sspai-com/post-114716:_lines[11]._items[2]:/html[0]/body[1]/div[0]/div[0]/div[1]/div[0]/article[0]/div[1]/div[0]/div[0]/div[20]/div[1]/p[2]/a[0]"
+      ]
+    },
+    {
+      "id": "sspai-com/post-114716:8",
+      "page": "sspai-com/post-114716",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "豆瓣链接",
+        "href": "https://movie.douban.com/subject/37116027/",
+        "expect": []
+      },
+      "hashes": {
+        "source": "0f50c4c2ac3c822ab58d73cc549ca0bd40bc3ac7ef3f2071d9bc800db35b92d3",
+        "model": "7433f780f7f59226e4a1666c23b21b4a1ee675e482e53ac7f07c001a48f642ce",
+        "render": "234af54bbeb5a9d724c0dc6277394637c001f315c197f5aef495c9b961883dc8"
+      },
+      "bindings": [
+        "sspai-com/post-114716:_lines[11]._items[0]:/html[0]/body[1]/div[0]/div[0]/div[1]/div[0]/article[0]/div[1]/div[0]/div[0]/div[20]/div[1]/p[0]/a[0]"
+      ]
+    },
+    {
+      "id": "taobao-com/home:2",
+      "page": "taobao-com/home",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "淘宝秒杀",
+        "href": "https://web.m.taobao.com/app/ltao-fe/tbmx-pc-page/home?custom_content_source=mspd.tbmspc",
+        "expect": []
+      },
+      "hashes": {
+        "source": "74617ebec106238390952d75a484826646d5d01763c0a6211b041bb3aae65b35",
+        "model": "7036a65946605cfe1db5b83c344fd95cfd3ecdeddb1c5455ad4b024c65832ab9",
+        "render": "18a7903419d83734750a875ae519452f005220fa8e8eeab1377134cdb1077800"
+      },
+      "bindings": [
+        "taobao-com/home:_lines[6]._items[0]:/html[0]/body[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/a[0]"
+      ]
+    },
+    {
+      "id": "xiaomi-account/login:3",
+      "page": "xiaomi-account/login",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "忘记密码？",
+        "href": "https://account.xiaomi.com/pass/forgetPassword",
+        "expect": []
+      },
+      "hashes": {
+        "source": "0f4ba0754bb72cebec397ce0e82762ae74d8bc53b8e51000f090370e1b2e68ee",
+        "model": "2533ac1cb7e88a973036ccce2735cb29da2bd3c9308dd1bba73cf14024de87b1",
+        "render": "6ae3b46b2ea6cad6678c39f70627ce750a2ce1efec0609e80fb9d93b234e4dc2"
+      },
+      "bindings": [
+        "xiaomi-account/login:login.forgot:/html[0]/body[1]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[0]/div[1]/div[0]/div[1]/div[0]/div[0]/form[0]/div[0]/div[4]/div[0]/a[0]"
+      ]
+    },
+    {
+      "id": "xiaomi-account/login:4",
+      "page": "xiaomi-account/login",
+      "classification": "STRUCTURAL_EXACT_OWNER_SELF_PROVEN",
+      "originalFinding": {
+        "kind": "wrong-target",
+        "text": "手机号登录",
+        "href": "https://account.xiaomi.com/fe/service/login/phone",
+        "expect": []
+      },
+      "hashes": {
+        "source": "0f4ba0754bb72cebec397ce0e82762ae74d8bc53b8e51000f090370e1b2e68ee",
+        "model": "2533ac1cb7e88a973036ccce2735cb29da2bd3c9308dd1bba73cf14024de87b1",
+        "render": "6ae3b46b2ea6cad6678c39f70627ce750a2ce1efec0609e80fb9d93b234e4dc2"
+      },
+      "bindings": [
+        "xiaomi-account/login:login.phone-login:/html[0]/body[1]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[0]/div[1]/div[0]/div[1]/div[0]/div[0]/form[0]/div[0]/div[4]/div[1]/a[0]"
+      ]
+    }
+  ]
+}

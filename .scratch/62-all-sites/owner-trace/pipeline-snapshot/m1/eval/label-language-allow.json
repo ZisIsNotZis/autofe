@@ -1,0 +1,15 @@
+{
+ "$comment": "第 14 道门禁（G-2 可见英文标签，轮 56）的书面豁免清单。规则：渲染可见文本不得出现引擎内部动词/枚举名（词表自动收集）；命中若能在抓取里定位到逐字出现处（±30 字符窗口，容忍空格/分隔符/标点排版漂移）则判源站原文并自动豁免；无法定位且确属源站原文的，逐条在此声明（page + match + why，书面理由）。压不住任何命中的条目会被视为应清理。",
+ "entries": [
+  {
+   "page": "apple-com/iphone-16",
+   "match": "All the benefits of AppleCare+ for up to 3 products",
+   "why": "源站原文英语：corpus/apple-com/iphone-16/dom.html 含同一句「…AppleCare+ for up to 3 products, including your current devices, at one low price」（&nbsp; 形态），窗口定位因模型补的句点/接续（「. Theft and loss…」）差一个标点而未自动命中。price 是源文用词，非引擎枚举名泄漏。"
+  },
+  {
+   "page": "grafana-play/play-home",
+   "match": "Time range selected: Last 6 hours",
+   "why": "源站原文英语，但只承载在按钮的 aria-label 属性里（corpus/grafana-play/play-home/dom.html: aria-label=\"Time range selected: Last 6 hours\"），模型把它作为可见文本渲染。time 是源文用词；「属性文案是否应上屏」属控件/区域语义问题，不归本门禁，待产品侧裁定。"
+  }
+ ]
+}

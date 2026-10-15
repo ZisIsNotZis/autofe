@@ -1,0 +1,146 @@
+{
+  "site": "arco-design",
+  "page": "components-form",
+  "url": "https://arco.design/react/components/form",
+  "title": "表单 Form | ArcoDesign",
+  "sourceNodes": 18411,
+  "counts": {
+    "storylines": 56,
+    "items": 83,
+    "actions": 98,
+    "exposes": 52,
+    "images": 2,
+    "facts": 44,
+    "tables": 6,
+    "lists": 2,
+    "choiceSets": 0,
+    "inputs": 52,
+    "dupeText": 78,
+    "capHits": []
+  },
+  "storylines": 56,
+  "chrome": [
+    {
+      "role": "LayoutTable",
+      "count": 20
+    },
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 133,
+      "examples": [
+        "默认值: -",
+        "版本: -",
+        "默认值: right",
+        "默认值: horizontal",
+        "默认值: true"
+      ]
+    },
+    {
+      "kind": "chart-or-svg",
+      "role": "graphics-document",
+      "count": 35,
+      "examples": []
+    },
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 23,
+      "examples": [
+        "Name: ; Age:",
+        "false",
+        "[]",
+        "export type FormInstance< FormData = any, FieldValue = FormData[",
+        "export type InnerMethodsReturnType< FormData = any, FieldValue ="
+      ]
+    },
+    {
+      "kind": "combobox-select",
+      "role": "combobox",
+      "count": 20,
+      "examples": [
+        "Hover to Open",
+        "Toggle light/dark theme",
+        "Toggle lrt/rtl layout",
+        "please select",
+        "b"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name",
+      "example": "Jane Doe 0"
+    },
+    {
+      "name": "salary",
+      "type": "num",
+      "label": "Salary",
+      "example": "23000"
+    },
+    {
+      "name": "gender",
+      "type": "text",
+      "label": "Gender",
+      "example": "female"
+    },
+    {
+      "name": "age",
+      "type": "num",
+      "label": "Age",
+      "example": "20"
+    },
+    {
+      "name": "email",
+      "type": "text",
+      "label": "Email",
+      "example": "jane.doe@example.com"
+    },
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "方法",
+      "example": "validate"
+    },
+    {
+      "name": "col-2",
+      "type": "text",
+      "label": "描述",
+      "example": "校验并获取表单输入域的值与 Errors，如果不设置 fields 的话，会验证所有的 fields。支持 callba"
+    },
+    {
+      "name": "col-3",
+      "type": "text",
+      "label": "类型",
+      "example": "Function(fields?: string[], callback(errors, values) => void"
+    },
+    {
+      "name": "col-4",
+      "type": "text",
+      "label": "版本",
+      "example": "2.29.0"
+    },
+    {
+      "name": "col-5",
+      "type": "text",
+      "label": "版本",
+      "example": "2.46.0"
+    }
+  ]
+}

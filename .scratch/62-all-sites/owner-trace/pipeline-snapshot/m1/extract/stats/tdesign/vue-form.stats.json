@@ -1,0 +1,55 @@
+{
+  "site": "tdesign",
+  "page": "vue-form",
+  "url": "https://tdesign.tencent.com/vue-next/components/form",
+  "title": "Form 表单 | TDesign",
+  "sourceNodes": 1567,
+  "counts": {
+    "storylines": 13,
+    "items": 58,
+    "actions": 29,
+    "exposes": 73,
+    "images": 0,
+    "facts": 14,
+    "tables": 0,
+    "lists": 5,
+    "choiceSets": 15,
+    "inputs": 58,
+    "dupeText": 53,
+    "capHits": []
+  },
+  "storylines": 13,
+  "chrome": [
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "presentation",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 19,
+      "examples": [
+        "resetType",
+        "empty",
+        "initial",
+        "<Form resetType=\"initial\" />",
+        "reset"
+      ]
+    },
+    {
+      "kind": "checkbox-multi-select-as-choice-set",
+      "role": "checkbox",
+      "count": 8,
+      "examples": [
+        "checkbox-group"
+      ]
+    }
+  ],
+  "fieldsDrafted": []
+}

@@ -1,0 +1,161 @@
+{
+  "site": "semi-design",
+  "page": "table",
+  "url": "https://semi.design/zh-CN/show/table",
+  "title": "Table 表格 - Semi Design",
+  "sourceNodes": 21575,
+  "counts": {
+    "storylines": 58,
+    "items": 296,
+    "actions": 62,
+    "exposes": 8,
+    "images": 6,
+    "facts": 35,
+    "tables": 17,
+    "lists": 33,
+    "choiceSets": 8,
+    "inputs": 0,
+    "dupeText": 76,
+    "capHits": [
+      "itemsPerCollection"
+    ]
+  },
+  "storylines": 58,
+  "chrome": [
+    {
+      "role": "LayoutTable",
+      "count": 2
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "navigation",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 175,
+      "examples": [
+        "columns",
+        "dataSource",
+        "key",
+        "rowKey",
+        "import React from 'react'; import { Table, Tag } from '@douyinfe"
+      ]
+    },
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 163,
+      "examples": [
+        "默认值: false",
+        "默认值: 'children'",
+        "版本: -",
+        "默认值: []",
+        "版本: 2.31.0"
+      ]
+    },
+    {
+      "kind": "grid-widget",
+      "role": "grid",
+      "count": 26,
+      "examples": [
+        "标题 大小 交付状态 所有者 更新日期 Semi Design 设计稿.fig 2M 已交付 姜 姜鹏志 2020-02-02 05:13 Semi Desig",
+        "标题 大小 所有者 更新时间 Semi Design 设计稿.fig 2M 姜 姜鹏志 2020-02-02 05:13 Semi Design 分享演示文稿 ",
+        "标题 大小 交付状态 所有者 更新日期 Semi Design 设计稿标题可能有点长这时候应该显示 Tooltip.fig 2M 已交付 姜 姜鹏志 2020-",
+        "Semi Design 设计稿0.fig 0 KB 已交付 姜 姜鹏志 2026-09-18 Semi D2C 设计稿1.fig 5 KB 待评审 郝 郝宣 2",
+        "标题 ​ 大小 交付状态 所有者 更新日期 Semi Design 设计稿0.fig 0 KB 已交付 姜 姜鹏志 2026-09-18 Semi D2C 设计"
+      ]
+    },
+    {
+      "kind": "checkbox-multi-select-as-choice-set",
+      "role": "checkbox",
+      "count": 8,
+      "examples": [
+        "标题 大小 所有者 更新日期 Semi Design 设计稿.fig 2M 姜 姜鹏志 2020-02-02 05:13 Semi Design 分享演示文稿 ",
+        "Key 名称 数据类型 描述 默认值 videos_info 视频信息 Object 对象 视频的元信息 无 text_info 文本信息 Object 对象 ",
+        "Key 名称 数据类型 描述 videos_info 视频信息 Object 视频的元信息 text_info 文本信息 Object 文本的元信息",
+        "Name ​ 大小 所有者 更新日期 Semi Design 设计稿0.fig 0 KB 姜 姜鹏志 2026-09-18 Semi D2C 设计稿1.fig ",
+        "Semi Design 设计稿0.fig 0 KB 姜 姜鹏志 2026-09-18 Semi D2C 设计稿1.fig 5 KB 郝 郝宣 2026-09-2"
+      ]
+    },
+    {
+      "kind": "tabs",
+      "role": "tablist",
+      "count": 2,
+      "examples": [
+        "API 文档 设计文档",
+        "animation color font height other spacing width"
+      ]
+    },
+    {
+      "kind": "table-extra-header-rows",
+      "role": "columnheader",
+      "count": 2,
+      "examples": [
+        "标题 ​ Filter data with this column|Current sort order is none|所有者|Current sort or"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "select-all-rows",
+      "type": "text",
+      "label": "Select all rows"
+    },
+    {
+      "name": "filter-data-with-this-column",
+      "type": "text",
+      "label": "标题 ​ Filter data with this column"
+    },
+    {
+      "name": "current-sort-order-is-none",
+      "type": "text",
+      "label": "Current sort order is none"
+    },
+    {
+      "name": "col-4",
+      "type": "text",
+      "label": "默认值"
+    },
+    {
+      "name": "col-5",
+      "type": "text",
+      "label": "版本",
+      "example": "-"
+    },
+    {
+      "name": "col-6",
+      "type": "text",
+      "label": "col-6"
+    },
+    {
+      "name": "current-sort-order-is-none-filter-data-w",
+      "type": "text",
+      "label": "Current sort order is none ​ Filter data with this column"
+    },
+    {
+      "name": "col-3",
+      "type": "text",
+      "label": "版本",
+      "example": "-"
+    },
+    {
+      "name": "col-2",
+      "type": "text",
+      "label": "描述",
+      "example": "返回当前页的数据对象：{ dataSource: RecordType[], groups: Map<{groupKey"
+    },
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "名称",
+      "example": "getCurrentPageData()"
+    }
+  ]
+}

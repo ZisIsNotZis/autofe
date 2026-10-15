@@ -1,0 +1,1261 @@
+{
+  "_intent": "讨论精选（豆瓣） — 讨论精选 [draft]",
+  "_title": {
+    "text": "讨论精选（豆瓣）"
+  },
+  "_summary": {
+    "text": "搜索："
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://accounts.douban.com/passport/login?source=group",
+        "label": "登录/注册"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.douban.com/doubanapp/app?channel=top-nav",
+        "label": "下载豆瓣客户端"
+      }
+    },
+    {
+      "_intent": "list (11 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "豆瓣"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/",
+            "label": "豆瓣"
+          }
+        },
+        {
+          "_name": {
+            "text": "读书"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://book.douban.com/",
+            "label": "读书"
+          }
+        },
+        {
+          "_name": {
+            "text": "电影"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://movie.douban.com/",
+            "label": "电影"
+          }
+        },
+        {
+          "_name": {
+            "text": "音乐"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://music.douban.com/",
+            "label": "音乐"
+          }
+        },
+        {
+          "_name": {
+            "text": "播客"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/podcast/",
+            "label": "播客"
+          }
+        },
+        {
+          "_name": {
+            "text": "同城"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/location",
+            "label": "同城"
+          }
+        },
+        {
+          "_name": {
+            "text": "小组"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group",
+            "label": "小组"
+          }
+        },
+        {
+          "_name": {
+            "text": "阅读"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://read.douban.com/?dcs=top-nav&dcm=douban",
+            "label": "阅读"
+          }
+        },
+        {
+          "_name": {
+            "text": "FM"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://fm.douban.com/?from_=shire_top_nav",
+            "label": "FM"
+          }
+        },
+        {
+          "_name": {
+            "text": "时间"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://time.douban.com/?dt_time_source=douban-web_top_nav",
+            "label": "时间"
+          }
+        },
+        {
+          "_name": {
+            "text": "豆品"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://market.douban.com/?utm_campaign=douban_top_nav&utm_source=douban&utm_medium=pc_web",
+            "label": "豆品"
+          }
+        }
+      ]
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.douban.com/group/",
+        "label": "豆瓣小组"
+      }
+    },
+    {
+      "_intent": "list (2 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "讨论精选"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore",
+            "label": "讨论精选"
+          }
+        },
+        {
+          "_name": {
+            "text": "热门小组"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore/hot_groups",
+            "label": "热门小组"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "讨论精选 [draft]",
+      "_title": {
+        "text": "讨论精选"
+      },
+      "_summary": {
+        "text": "577 喜欢"
+      },
+      "_lines": [
+        {
+          "_intent": "养猫人都知道，这张照片含金量有多高 [draft]",
+          "_title": {
+            "text": "养猫人都知道，这张照片含金量有多高"
+          },
+          "_summary": {
+            "text": "今天14:41"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/634017/",
+                "label": "猫小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "76 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "均价二三十的便宜貌美衣服/鞋子/配饰/包包！大量来袭！！！ [draft]",
+          "_title": {
+            "text": "均价二三十的便宜貌美衣服/鞋子/配饰/包包！大量来袭！！！"
+          },
+          "_summary": {
+            "text": "身高168体重120-135浮动，，梨型身材（浮动大是因为本人有太多一个月吃胖15斤的经验） 先发几个手机上有照片的！！本爱买便宜货的人是不会放弃更新的！！！ 这个衣服质量很好啊！！布料很..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/758324/",
+                "label": "我们爱穿便宜货小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "今天14:39"
+              }
+            },
+            {
+              "_text": {
+                "text": "61 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "夏末初秋，花草树木们的日常 [draft]",
+          "_title": {
+            "text": "夏末初秋，花草树木们的日常"
+          },
+          "_summary": {
+            "text": "夏末的余温还没完全褪去，初秋的风已经悄悄染上了凉意。 草木们像是约好了似的，在季节交替的日子，用各自的方式告别夏天，迎接带着清爽与诗意的秋天。 街边的栾树花事将尽，风一吹就簌簌..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/49635/",
+                "label": "迷恋植物的人小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "今天14:25"
+              }
+            },
+            {
+              "_text": {
+                "text": "127 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "请看我的小狗 [draft]",
+          "_title": {
+            "text": "请看我的小狗"
+          },
+          "_summary": {
+            "text": "好漂亮呀！"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/708039/",
+                "label": "我们都爱小土狗小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "今天14:21"
+              }
+            },
+            {
+              "_text": {
+                "text": "111 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "钩了一个紫贝壳包🐚 [draft]",
+          "_title": {
+            "text": "钩了一个紫贝壳包🐚"
+          },
+          "_summary": {
+            "text": "blingbling的紫色贝壳小包 💜💜 自带闪亮的幻彩浮光锦✨线材本身就很貌美！"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/39338/",
+                "label": "手工爱好者小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "今天14:14"
+              }
+            },
+            {
+              "_text": {
+                "text": "202 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "一定要大量读书！分享我心目中的亚女四大名著，每一本都超绝！ [draft]",
+          "_title": {
+            "text": "一定要大量读书！分享我心目中的亚女四大名著，每一本都超绝！"
+          },
+          "_summary": {
+            "text": "近一两年，我非常偏爱读一些女作家的作品，尤其是东亚女作家，这些女性作者以她们独有的丰富细腻触角充分展现出人性的真善美。且东亚女性的困境大都如出一辙，反映在作品里有关女性挣扎部分..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/728965/",
+                "label": "榜单图书鉴评中心小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "今天11:27"
+              }
+            },
+            {
+              "_text": {
+                "text": "131 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "上班OOTD穿搭分享（四季穿搭 不定时更新中） [draft]",
+          "_title": {
+            "text": "上班OOTD穿搭分享（四季穿搭 不定时更新中）"
+          },
+          "_summary": {
+            "text": "上班以来恶心穿搭的时候比较多，心情好的时候会随手拍一下OOTD，都是基础版本，感觉应该适合普通人的通勤穿搭，在这里记录一下！ 有一些下架了，大多数都能找到链接，可以问我！ 已经更新..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/760061/",
+                "label": "漂亮衣服我们喜欢你小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "今天11:26"
+              }
+            },
+            {
+              "_text": {
+                "text": "182 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "大连-烟台7天休闲旅行（轮渡版） [draft]",
+          "_title": {
+            "text": "大连-烟台7天休闲旅行（轮渡版）"
+          },
+          "_summary": {
+            "text": "淡季来这两个城市真的太舒服了！之前去过南方的海，这次来看看北方的大海，个人感觉南方的海鲜比北方的鲜美，北方的大海比南边的漂亮！ 大连是一座非常成熟的旅游城市，玩起来很方便，消费..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/723697/",
+                "label": "旅游成功小组小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "09-16"
+              }
+            },
+            {
+              "_text": {
+                "text": "830 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "旺盛的生命力和解决一切难题的决心——冷门小妞电影大盘点 [draft]",
+          "_title": {
+            "text": "旺盛的生命力和解决一切难题的决心——冷门小妞电影大盘点"
+          },
+          "_summary": {
+            "text": "千禧年身处经济繁荣时期的少女们，烦恼似乎如此简单，友情、爱情和去哪度过这个夏天。她们嬉笑怒骂鸡飞狗跳的生活透过荧幕，陪伴了我很多个下班后寂寞孤单的夜晚。 受制于拍摄时代和剧本导..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/661193/",
+                "label": "火花四射观察室小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "150 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "独自绽放的美丽 [draft]",
+          "_title": {
+            "text": "独自绽放的美丽"
+          },
+          "_summary": {
+            "text": "和朋友打完电话，它正好开了。我妈问我怎么还没睡，告诉她花开了。于是，她回卧室里拿手机来拍照。 21年搬回家的量天尺，每年夜里都能蹲到它绽放的样子，真好。"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/49635/",
+                "label": "迷恋植物的人小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "365 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "一只黑色小土狗名叫大吉 [draft]",
+          "_title": {
+            "text": "一只黑色小土狗名叫大吉"
+          },
+          "_summary": {
+            "text": "其实我已经有一只小土狗明明了，我发过帖的。明明是2022年4月收养的，今年应该5岁了，它生活在老家，和我父母还有另一只小狗一起生活。 本来我要工作（工作在外地），基本上没有时间再养小..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/708039/",
+                "label": "我们都爱小土狗小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "320 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "一场钢琴比赛结下的善缘 [draft]",
+          "_title": {
+            "text": "一场钢琴比赛结下的善缘"
+          },
+          "_summary": {
+            "text": "十年留德嬅-10 十五六岁留学德国以来，我对寄宿家庭这个形式已经很熟悉了。在欧洲的中产或上流社会，这是热爱古典音乐的高知家庭为世界各地的年轻音乐家提供支持，促进交流的方式。我已经在..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/707650/",
+                "label": "豆瓣艰苦留学组小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "398 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "绿野沐光 [draft]",
+          "_title": {
+            "text": "绿野沐光"
+          },
+          "_summary": {
+            "text": "275 喜欢"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/711300/",
+                "label": "我们喜欢逛公园小组"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "24岁研二女生已攒90万 [draft]",
+          "_title": {
+            "text": "24岁研二女生已攒90万"
+          },
+          "_summary": {
+            "text": "家人们我又来update近况啦，在澳洲读护理第二年了 还剩一个大实习，预习顺利的话年底毕业，距离去年十一月份发帖到现在又攒了二十万人民币，先说收入部分。（澳币汇率今年在4.6-4.8浮动） 1..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/330706/",
+                "label": "丧心病狂攒钱小组小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "232 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "分享北京转岗到湾区的经历 [draft]",
+          "_title": {
+            "text": "分享北京转岗到湾区的经历"
+          },
+          "_summary": {
+            "text": "我之前在一家美国科技大厂的北京office工作，前两年还是很开心的，工作压力不大，同事也很nice，但是后面开始做一个新项目很累，而且和美国同事合作我们这边总是做一些打杂的活，没有成就感，所以我那两年工作很痛苦，产生..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/704536/",
+                "label": "Women In Tech 女性科技从业者集合地小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "568 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "同事连续三周背洗洁精上下班，没想到是玻璃反光 [draft]",
+          "_title": {
+            "text": "同事连续三周背洗洁精上下班，没想到是玻璃反光"
+          },
+          "_summary": {
+            "text": "对象连续三周看到一个不熟的同事背一大桶洗洁精上下班，今天终于忍不住了 突然顿悟！ 还有个视频好像发不出来"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/638298/",
+                "label": "哈哈哈哈哈哈哈哈哈哈哈小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "09-15"
+              }
+            },
+            {
+              "_text": {
+                "text": "155 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "云掠枝头花颔首，风催碎金换红绸 [draft]",
+          "_title": {
+            "text": "云掠枝头花颔首，风催碎金换红绸"
+          },
+          "_summary": {
+            "text": "天凉的真快，就连牵牛花也要败了。"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/711300/",
+                "label": "我们喜欢逛公园小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "102 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "柳江横渡比赛经验分享：你奶永远是你奶 [draft]",
+          "_title": {
+            "text": "柳江横渡比赛经验分享：你奶永远是你奶"
+          },
+          "_summary": {
+            "text": "昨天参加百里柳江畅游，报的500米争渡，金沙角横渡窑埠古镇。 51-70岁老年组的曾健女士在我们组别排第三，是所有年龄段里游得最快的女人——除了16-35岁男子组有2人比她快，剩下一千来号人..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/733756/",
+                "label": "Women Fitness小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "366 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "觉得小腿僵冷，去看中医 [draft]",
+          "_title": {
+            "text": "觉得小腿僵冷，去看中医"
+          },
+          "_summary": {
+            "text": "最近头疼，睡眠不好，早起疲倦，去看中医。 把完脉，医生正在给我开药，我想起最近还有小腿僵冷的感觉，之前都没出现过。 于是赶紧跟医生补充。 医生看了看我的腿，跟我说：你看我的腿。 ..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/638298/",
+                "label": "哈哈哈哈哈哈哈哈哈哈哈小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "190 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "早上烧完晚上烧 [draft]",
+          "_title": {
+            "text": "早上烧完晚上烧"
+          },
+          "_summary": {
+            "text": "86 喜欢"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/660058/",
+                "label": "日落爱好者小组"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "极简风手帐教程（文字为主） [draft]",
+          "_title": {
+            "text": "极简风手帐教程（文字为主）"
+          },
+          "_summary": {
+            "text": "标题无能，感谢大家喜欢我写的月习惯追踪页，所以借此机会分享一些极简风手帐的方法 手搓一个习惯追踪页 防杠：和字好不好看关系不是特别大，和字的大小、疏密关系比较重要！ 风格参考搜..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/205905/",
+                "label": "手帳小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "1288 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "大家都低估了写日记的好处 [draft]",
+          "_title": {
+            "text": "大家都低估了写日记的好处"
+          },
+          "_summary": {
+            "text": "9.15日更新，对于评论区的问题写了另一篇文章，做统一思考啦！由于写日记，所以这几个帖子写起来也是非常流畅的呢。 想写日记坚持不下去？这是我的六年经验 ———————————— 原帖： 我自己写日记其实已经快六..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/714388/",
+                "label": "『内在力量』研究中心小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "413 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "居家/自主力训+网络教程 [draft]",
+          "_title": {
+            "text": "居家/自主力训+网络教程"
+          },
+          "_summary": {
+            "text": "楼主觉得出门锻炼麻烦，请私教贵还可能不专业，于是居家用哑铃坚持力量锻炼三个月，有以下心得和姐妹们分享，纯个人感受，欢迎大家评论区讨论！ 楼主主要有三位互联网教练：谭成义、费教练和追溯普拉提。 1️⃣谭成义..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/733756/",
+                "label": "Women Fitness小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "479 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "立秋后的家 [draft]",
+          "_title": {
+            "text": "立秋后的家"
+          },
+          "_summary": {
+            "text": "从早到晚，家一次又一次地治愈我。"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/702726/",
+                "label": "请来参观我的房间小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "368 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "一期一会 彼岸花 [draft]",
+          "_title": {
+            "text": "一期一会 彼岸花"
+          },
+          "_summary": {
+            "text": "每当彼岸花开成海的时候，秋天就正式拉开了序幕。"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/49635/",
+                "label": "迷恋植物的人小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "1864 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "8个看似简单的认知，让我彻底成为了极简主义者 [draft]",
+          "_title": {
+            "text": "8个看似简单的认知，让我彻底成为了极简主义者"
+          },
+          "_summary": {
+            "text": "1.空间的价格很贵 一平方价格都不菲，即使我们只是想小小休息一会儿，无论是开个酒店钟点房，还是仅仅到商场的按摩椅付费休息，都需要钱。家里的空间固然也是需要用钱去置换的，这些空间应当服务于人，而不是服务于物品。..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/385172/",
+                "label": "极简生活小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "318 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "出国重启人生仍然是一件值得尝试的冒险 [draft]",
+          "_title": {
+            "text": "出国重启人生仍然是一件值得尝试的冒险"
+          },
+          "_summary": {
+            "text": "今天是我背包出国旅行的第45天，太多神奇的事情发生了，而我也像从内到外排了遍蠧一样，褪去旧我、重塑新的人格。 旅行的地方第一站是泰国，这是一个能见识到人性善与恶、贪婪与慈悲之间剧..."
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/740472/",
+                "label": "平凡女性生存手册小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "09-14"
+              }
+            },
+            {
+              "_text": {
+                "text": "707 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "蕨类植物爱好者🌿 [draft]",
+          "_title": {
+            "text": "蕨类植物爱好者🌿"
+          },
+          "_summary": {
+            "text": "自己绣的蕨叶，直接用绣绷做画框 自己做的蕨叶蜡烛 养了两年多的苔藓缸，已经长的很茂盛了~ 里面种了从五个地方收集来的苔藓，以及陆续移栽的各品种蕨叶。"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/49635/",
+                "label": "迷恋植物的人小组"
+              }
+            },
+            {
+              "_text": {
+                "text": "208 喜欢"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "秋日已近 [draft]",
+          "_title": {
+            "text": "秋日已近"
+          },
+          "_summary": {
+            "text": "用几年前在圆明园拍摄的这组片子 来预热一下今年的秋天 应该用不了多久 秋风一吹 圆明园又会是黄灿灿的园子了"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/711300/",
+                "label": "我们喜欢逛公园小组"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "今天又遇到一个如有神迹般的朝霞 [draft]",
+          "_title": {
+            "text": "今天又遇到一个如有神迹般的朝霞"
+          },
+          "_summary": {
+            "text": "<前页"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/732540/",
+                "label": "生活在海边｜海岛青年小组"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=30",
+                "label": "2"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=60",
+                "label": "3"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=90",
+                "label": "4"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=120",
+                "label": "5"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=150",
+                "label": "6"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=180",
+                "label": "7"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=210",
+                "label": "8"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=240",
+                "label": "9"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=20070",
+                "label": "670"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=20100",
+                "label": "671"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/explore?start=30",
+                "label": "后页>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "小组分类 · · · · · · [draft]",
+      "_title": {
+        "text": "小组分类 · · · · · ·"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E6%96%B0%E7%BB%84",
+            "label": "新组"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E8%BF%BD%E5%89%A7",
+            "label": "追剧"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E4%B9%A6%E5%BD%B1%E9%9F%B3",
+            "label": "书影音"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E4%BA%BA%E6%96%87",
+            "label": "人文"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E9%97%B2%E8%B6%A3",
+            "label": "闲趣"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E5%85%B4%E8%B6%A3",
+            "label": "兴趣"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E7%94%9F%E6%B4%BB",
+            "label": "生活"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E7%BE%8E%E9%A3%9F",
+            "label": "美食"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E5%AE%B6%E5%B1%85",
+            "label": "家居"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E4%BD%93%E8%82%B2%E8%BF%90%E5%8A%A8",
+            "label": "体育运动"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E5%AE%A0%E7%89%A9",
+            "label": "宠物"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E8%89%BA%E6%9C%AF",
+            "label": "艺术"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E7%A7%91%E6%8A%80",
+            "label": "科技"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E6%83%85%E6%84%9F",
+            "label": "情感"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E7%A7%91%E5%AD%A6%E8%87%AA%E7%84%B6",
+            "label": "科学自然"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E5%AD%A6%E4%B9%A0",
+            "label": "学习"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E6%A0%A1%E5%9B%AD",
+            "label": "校园"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=ACG",
+            "label": "ACG"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E8%81%8C%E5%9C%BA",
+            "label": "职场"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/group/explore?tag=%E7%90%86%E8%B4%A2",
+            "label": "理财"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "小组日榜 · · · · · · ( 更多 ) [draft]",
+      "_title": {
+        "text": "小组日榜 · · · · · · ( 更多 )"
+      },
+      "_summary": {
+        "text": "© 2005-2026 douban.com, all rights reserved 北京豆网科技有限公司"
+      },
+      "_lines": [
+        {
+          "_intent": "list (8 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "1 收视率研究中心 143693 个沙发客 +加入小组"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/664827/",
+                "label": "收视率研究中心"
+              }
+            },
+            {
+              "_name": {
+                "text": "2 女生健身组 51868 个小可爱们 +加入小组"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/680901/",
+                "label": "女生健身组"
+              }
+            },
+            {
+              "_name": {
+                "text": "3 今天也是好好吃饭的一天！ 57755 个小居居 +加入小组"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/643218/",
+                "label": "今天也是好好吃饭的一天！"
+              }
+            },
+            {
+              "_name": {
+                "text": "4 DC 29112 个成员 +加入小组"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/629673/",
+                "label": "DC"
+              }
+            },
+            {
+              "_name": {
+                "text": "5 零食安利小组 240491 个🍥零零子 +加入小组"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/616279/",
+                "label": "零食安利小组"
+              }
+            },
+            {
+              "_name": {
+                "text": "6 上班这件事 100万+ 个工友 +加入小组"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/22692/",
+                "label": "上班这件事"
+              }
+            },
+            {
+              "_name": {
+                "text": "7 日剧 417318 个成员 +加入小组"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/629679/",
+                "label": "日剧"
+              }
+            },
+            {
+              "_name": {
+                "text": "8 我今天遇到一个crush 181708 个果汁饮料 +加入小组"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.douban.com/group/706732/",
+                "label": "我今天遇到一个crush"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/about",
+            "label": "关于豆瓣"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/jobs",
+            "label": "在豆瓣工作"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/about?topic=contactus",
+            "label": "联系我们"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/about/legal",
+            "label": "法律声明"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://help.douban.com/group",
+            "label": "帮助中心"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.douban.com/doubanapp/",
+            "label": "移动应用"
+          }
+        }
+      ]
+    }
+  ]
+}

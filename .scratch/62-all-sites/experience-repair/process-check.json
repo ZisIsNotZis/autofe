@@ -1,0 +1,31 @@
+{
+  "observedAt": "2026-10-14T05:32:24+08:00",
+  "processes": [
+    {
+      "pid": 15808,
+      "cwd": "/home/z/vibe/autofe",
+      "command": "/usr/bin/zsh "
+    },
+    {
+      "pid": 1380963,
+      "cwd": "/home/z/vibe/autofe",
+      "command": "/home/z/.local/share/fnm/node-versions/v24.18.1/installation/bin/node --import file:///home/z/.pi/agent/npm/node_modules/pi-subagents/runner-peer-preload.mjs /home/z/.pi/agent/npm/node_modules/pi-subagents/src/runs/background/subagent-runner-bootstrap.js /tmp/pi-subagents-uid-1000/async-cfg-70a8b7e4-4721-4d9e-9892-9ad618355c49.json "
+    },
+    {
+      "pid": 1387625,
+      "cwd": "/home/z/vibe/autofe",
+      "command": "/bin/bash -c python3 - <<'PY'\nimport pathlib,json,datetime\nr=[]\nfor p in pathlib.Path('/proc').iterdir():\n if not p.name.isdigit():continue\n try:\n  c=str((p/'cwd').resolve());a=(p/'cmdline').read_bytes().replace(b'\\0',b' ').decode(errors='replace')\n  if c.startswith('/home/z/vibe/autofe'):r.append({'pid':int(p.name),'cwd':c,'command':a})\n except (OSError,PermissionError):pass\npathlib.Path('.scratch/62-all-sites/experience-repair/process-check.json').write_text(json.dumps({'observedAt':datetime.datetime.now().astimezone().isoformat(timespec='seconds'),'processes':r,'interpretation':'Parent pi/shell, this preparation worker and foreground probes only; no prior task writer observed. Point-in-time evidence, not runtime locking.'},indent=2)+'\\n')\nprint('saved',len(r),'root/worktree CWD processes')\nPY "
+    },
+    {
+      "pid": 1387626,
+      "cwd": "/home/z/vibe/autofe",
+      "command": "python3 - "
+    },
+    {
+      "pid": 3968714,
+      "cwd": "/home/z/vibe/autofe",
+      "command": "pi                                                             "
+    }
+  ],
+  "interpretation": "Parent pi/shell, this preparation worker and foreground probes only; no prior task writer observed. Point-in-time evidence, not runtime locking."
+}

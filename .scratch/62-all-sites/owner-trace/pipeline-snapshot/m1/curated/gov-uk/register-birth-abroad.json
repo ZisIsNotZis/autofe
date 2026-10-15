@@ -1,0 +1,142 @@
+{
+  "_intent": "告诉在海外生孩子的人如何登记出生：先按出生国规定取得当地出生证明（英国认可用于办护照/上学就医，非英文需认可翻译件），也可自愿向英国当局登记（£150）并通过 Start now 在线申请",
+  "_key": "gov-uk-register-birth-abroad",
+  "_title": { "text": "Register a birth abroad" },
+  "_primary": "_summary",
+  "_summary": {
+    "text": "You must register your child’s birth according to the regulations in the country where the child was born. You’ll be given a local birth certificate."
+  },
+  "local-certificate": {
+    "_intent": "当地出生证明在英国的用途，以及非英文时的翻译要求",
+    "_summary": { "text": "This birth certificate should be accepted in the UK, for example when you:" },
+    "_items": [
+      { "_name": { "text": "apply for a passport" } },
+      { "_name": { "text": "register with a school or doctor" } }
+    ],
+    "_detail": { "text": "If it’s not in English, you’ll need to have it translated by an approved translator." },
+    "_action": {
+      "verb": "open",
+      "to": "https://find-a-professional-service-abroad.service.csd.fcdo.gov.uk/find/translators-interpreters",
+      "label": "approved translator"
+    }
+  },
+  "uk-registration": {
+    "_intent": "自愿向英国当局登记出生的后果（1983年1月1日及以后出生）；不做也不影响申请英国护照",
+    "_title": { "text": "Register a birth abroad with the UK authorities" },
+    "_summary": {
+      "text": "You may also be able to register the birth with the UK authorities, if the child was born on or after 1 January 1983. You do not need to do this, but if you do:"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "the birth will be recorded in the UK with the General Register Office or at the National Records Office of Scotland"
+        }
+      },
+      {
+        "_name": {
+          "text": "you can order a consular birth registration certificate - this proves that you have registered the birth with the UK authorities"
+        }
+      }
+    ],
+    "_detail": { "text": "You can still apply for a UK passport even if you do not register the birth in the UK." },
+    "_action": {
+      "verb": "open",
+      "to": "https://www.gov.uk/get-a-child-passport/first-child-passport",
+      "label": "apply for a UK passport"
+    }
+  },
+  "fees": {
+    "_intent": "向英国当局登记与订购领事出生登记证明的费用；回寄文件另收邮费（£6–£42，随国家而定）",
+    "_title": { "text": "Fees" },
+    "_price": { "money": 150, "currency": "GBP" },
+    "_amount": { "money": 50, "currency": "GBP", "qualifier": "per certificate" },
+    "_summary": {
+      "text": "It costs £150 to register a birth with the UK authorities. You can also order a consular birth registration certificate - it costs £50 per certificate."
+    },
+    "_detail": {
+      "text": "You’ll also need to pay to have your documents sent back to you. This costs between £6 and £42 depending on which country the documents are returned to."
+    },
+    "_primary": "_price"
+  },
+  "how-long": {
+    "_intent": "办理时长预期：至少 5 个工作日，外加邮寄时间；需补材料会更久",
+    "_title": { "text": "How long it takes" },
+    "_summary": {
+      "text": "It normally takes at least 5 working days to register a birth with the UK authorities, plus courier or postage time. The Overseas Registration team will let you know if your application will take longer, for example if you need to provide more evidence."
+    }
+  },
+  "apply-online": {
+    "_intent": "在线登记服务入口：本服务可选，Start now 跳转到登记服务",
+    "_title": { "text": "Apply online" },
+    "_summary": { "text": "Use this service to register a birth abroad with the UK authorities." },
+    "_detail": { "text": "This service is optional." },
+    "_action": {
+      "verb": "open",
+      "to": "https://register-a-birth-abroad.service.gov.uk/",
+      "label": "Start now"
+    }
+  },
+  "help": {
+    "_intent": "有问题/无法在线申请/多胞胎登记时邮件联系海外登记团队",
+    "_title": { "text": "Get help with your application" },
+    "_summary": { "text": "Email Overseas.RegistrationUnit@fcdo.gov.uk if you:" },
+    "_items": [
+      { "_name": { "text": "have any questions about registering a birth abroad with the UK authorities" } },
+      { "_name": { "text": "cannot apply online" } },
+      { "_name": { "text": "want to register multiple births (such as twins)" } }
+    ],
+    "_action": {
+      "verb": "open",
+      "to": "mailto:Overseas.RegistrationUnit@fcdo.gov.uk",
+      "label": "Overseas.RegistrationUnit@fcdo.gov.uk"
+    }
+  },
+  "related": {
+    "_intent": "相关指南：在英国本土登记出生",
+    "_title": { "text": "Related content" },
+    "_items": [
+      {
+        "_name": { "text": "Register a birth" },
+        "_action": { "verb": "navigate", "to": "https://www.gov.uk/register-birth", "label": "Register a birth" }
+      }
+    ]
+  },
+  "explore": {
+    "_intent": "页面所属主题分类（GOV.UK 主题导航）",
+    "_title": { "text": "Explore the topic" },
+    "_items": [
+      {
+        "_name": { "text": "Certificates, register offices, changes of name or gender" },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.gov.uk/browse/births-deaths-marriages/register-offices",
+          "label": "Certificates, register offices, changes of name or gender"
+        }
+      },
+      {
+        "_name": { "text": "Having a child, parenting and adoption" },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.gov.uk/browse/births-deaths-marriages/child-adoption",
+          "label": "Having a child, parenting and adoption"
+        }
+      },
+      {
+        "_name": { "text": "Pregnancy and birth" },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.gov.uk/browse/childcare-parenting/pregnancy-birth",
+          "label": "Pregnancy and birth"
+        }
+      },
+      {
+        "_name": { "text": "Living abroad" },
+        "_action": { "verb": "navigate", "to": "https://www.gov.uk/browse/abroad/living-abroad", "label": "Living abroad" }
+      },
+      {
+        "_name": { "text": "Travel abroad" },
+        "_action": { "verb": "navigate", "to": "https://www.gov.uk/browse/abroad/travel-abroad", "label": "Travel abroad" }
+      }
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+[
+  {
+    "page": "huawei-cn/consumer-phones",
+    "findings": [
+      "H-C1",
+      "H-C2",
+      "H-C3"
+    ],
+    "buyTargets": 36,
+    "details": "Captured36 global-buy-button hrefs +36 original 起 qualifiers; source-lazy missing Mate70Pro image URL preserved with lazy-pixel coverage unresolved"
+  },
+  {
+    "page": "huawei-cn/search-laptop",
+    "findings": [
+      "H-C3",
+      "H-C4",
+      "H-C5"
+    ],
+    "queryProvenance": "meta.redirectedUrl keywords query (no screenshot transcription)",
+    "images": 7,
+    "sourceImageCount": 7,
+    "details": "Exact captured targets/current category; closed search default+targetless submit; captured sort fact and selection action"
+  },
+  {
+    "page": "huawei-cn/search-phone",
+    "findings": [
+      "H-C3",
+      "H-C4",
+      "H-C5"
+    ],
+    "queryProvenance": "meta.redirectedUrl keywords query (no screenshot transcription)",
+    "images": 3,
+    "sourceImageCount": 3,
+    "details": "Exact captured targets/current category; closed search default+targetless submit; captured sort fact and selection action"
+  },
+  {
+    "page": "huawei-cn/home",
+    "findings": [
+      "H-C6",
+      "H-C8"
+    ],
+    "details": "Fallback title/provenance and exact captured campaign suffix"
+  },
+  {
+    "page": "huawei-cn/home",
+    "finding": "H-C7",
+    "footerLinks": 37,
+    "footerNotices": 0,
+    "navigation": 5,
+    "limits": "Image-only utility actions without captured text labels are not invented; global chrome completeness still requires final source review"
+  },
+  {
+    "page": "huawei-cn/consumer-phones",
+    "finding": "H-C7",
+    "footerLinks": 55,
+    "footerNotices": 6,
+    "navigation": 0,
+    "limits": "Image-only utility actions without captured text labels are not invented; global chrome completeness still requires final source review"
+  },
+  {
+    "page": "huawei-cn/search-laptop",
+    "finding": "H-C7",
+    "footerLinks": 37,
+    "footerNotices": 0,
+    "navigation": 5,
+    "limits": "Image-only utility actions without captured text labels are not invented; global chrome completeness still requires final source review"
+  },
+  {
+    "page": "huawei-cn/search-phone",
+    "finding": "H-C7",
+    "footerLinks": 37,
+    "footerNotices": 0,
+    "navigation": 5,
+    "limits": "Image-only utility actions without captured text labels are not invented; global chrome completeness still requires final source review"
+  }
+]

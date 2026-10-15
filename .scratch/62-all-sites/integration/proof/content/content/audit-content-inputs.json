@@ -1,0 +1,321 @@
+[
+  {
+    "lane": "audit-36kr-news-search",
+    "status": "INCOMPLETE",
+    "findings": [
+      {
+        "id": "C1",
+        "pages": [
+          "36kr-com/information-technology",
+          "36kr-com/search-ai",
+          "36kr-com/search-viz"
+        ],
+        "location": "information-technology feed; search-ai/results; search-viz/results (missing continuation node)",
+        "description": [
+          "information-technology-1440-sheet.png end",
+          "search-ai-1440-sheet.png end",
+          "search-viz-1440-sheet.png end",
+          "source-evidence.json: sourceDomSamples/sourceNodeSamples"
+        ],
+        "source": "Visible source div.kr-loading-more-button.show at technology nodes cleanedIndex=774,bbox x=546,y=5488,w=148,h=36; search-ai index=665 and search-viz=590, both x=546,y=3826,w=148,h=36. Source provides no href for this control.",
+        "criterion": "Retain the source continuation action/label in the approved grammar without inventing an href or an actual backend. Engine draws the captured targetless control using existing approved action affordance rules."
+      },
+      {
+        "id": "C2",
+        "pages": [
+          "36kr-com/information-technology",
+          "36kr-com/search-ai",
+          "36kr-com/search-viz"
+        ],
+        "location": "channels; search-type; sort (captured current state not represented)",
+        "description": [
+          "information-technology-390-samples.png",
+          "search-ai-390-samples.png",
+          "search-viz-390-samples.png",
+          "detail-probe.json: choices[].options[].checked=false"
+        ],
+        "source": "Technology DOM anchor class=active at /information/technology/; search DOM article li and relative span classes are active. Search source nodes index=261 article uses white text on blue, index=279 sort is blue/500.",
+        "criterion": "Captured active state remains inspectable/readable through permitted factual grammar and shared engine decisions. Content owner and engine arbitrate representation; do not introduce selected/presentation escape keys or infer state only from site name."
+      },
+      {
+        "id": "C3",
+        "pages": [
+          "36kr-com/home",
+          "36kr-com/information-technology",
+          "36kr-com/search-ai",
+          "36kr-com/search-viz"
+        ],
+        "location": "root model: no header/footer/global navigation content",
+        "description": [
+          "all four *-source-sheet.png header/footer vs *-1440-sheet.png",
+          "source-evidence.json: sourceDomSamples; modelHasAboutTarget=false"
+        ],
+        "source": "About footer source visible at home cleanedIndex=1321,y=7897; technology 826,y=5670; search-ai 702,y=4012; search-viz 627,y=4012. Exact captured href=/pages/about.",
+        "criterion": "Content owner explicitly reconciles source utility/footer fact/action coverage with the curated-page contract; preserve required captured targets with compact shared utility forms, without recreating every unrelated menu or making up facts. This audit does not authorize expanded site crawling or network execution."
+      }
+    ]
+  },
+  {
+    "lane": "audit-apple-linear-products",
+    "status": "INCOMPLETE",
+    "findings": [
+      {
+        "id": "C1",
+        "pages": [
+          "linear-app/home"
+        ],
+        "location": "changelog._items[0..1], changelog._rel.order=time",
+        "description": "Linear output labels Faster app launch and Reset dimmed ride rows as Changelog items, with vehicle_state/ride-row issue instructions beneath.",
+        "source": "Those source texts occur inside the hero product demo: source nodes[158]/[350] y≈550/980. Real source Changelog at y≈7844 has New controls for Linear coding agent, Loops for product management, Priority inbox, Coding sessions, with dated specific source URLs. readable-defect-crops.png independently shows all four.",
+        "criterion": "Represent captured actual changelog entries with their visible dates/descriptions and specific source targets. Keep demo issue text only in its truthful demo context if retained; do not invent dates or infer them from URL strings."
+      },
+      {
+        "id": "C2",
+        "pages": [
+          "linear-app/home"
+        ],
+        "location": "beats._lines[0..3]",
+        "description": "Four feature stories become an unexplained numbered title-only list; no feature description/action survives because model never includes them.",
+        "source": "Source nodes[699..705] Intake and integrations includes full visible paragraph and Learn more to /intake; other source chapters link /plan,/ai,/build. Whole source sheet shows each feature explanation and action.",
+        "criterion": "Restore each source-supported feature description and respective absolute source target using current closed grammar, with clear section ownership; do not synthesize explanations from screenshot pixels."
+      },
+      {
+        "id": "C3",
+        "pages": [
+          "apple-com/iphone-16"
+        ],
+        "location": "compare._lines; missing _rel.compare",
+        "description": "Which iPhone is right for you becomes three cards plus two on another row at2560/1440, then a4925px serial product run at390.",
+        "source": "Original source full.png y≈5087..8750 presents five entities as columns and common property rows. Current model _intent explicitly calls it 选型对照 but classifies it as sequence because members differ slightly; they share battery/chip/camera/front properties.",
+        "criterion": "Correct the source-backed comparison relationship in the factual model, retaining entity names, properties, images and source truth. Engine then consumes declared comparison with fixed entity columns/horizontal scrolling; no positional row pairing, presentation keys, or font compression."
+      },
+      {
+        "id": "C4",
+        "pages": [
+          "linear-app/home"
+        ],
+        "location": "root / beats missing source image/demo representations (engine surface support secondary)",
+        "description": "Source black, image-led product workflow narrative collapses to1006px white text outline with0 model/render images; genuine product demonstrations are absent, not merely rearranged. Foreground/background contrast itself passes sampled pairs.",
+        "source": "Whole source sheet contains the hero issue/workspace demo and illustrated feature workflow panels throughout; source full.png y≈400..7200. Source SVG/DOM-heavy demos may need provenance-backed screenshot assets rather than fabricated remote images.",
+        "criterion": "Restore meaningful capture-backed visual product context without screenshot-to-text invention or image enlargement. Coordinate source-backed brand surface/foreground handling with engine through existing shared seams; this finding does not mandate a site-name template or blanket full-page black redesign."
+      }
+    ]
+  },
+  {
+    "lane": "audit-cloud-business",
+    "status": "INCOMPLETE",
+    "findings": [
+      {
+        "id": "CB-C1",
+        "pages": [
+          "aliyun-com/product-ecs"
+        ],
+        "location": "_action.to and instances._items[0..3]._action.to",
+        "description": "Root buy and four instance buy links render to www.aliyun.com/product/ecs/buy and invented-looking spec=e/u2a/c9i/g9i routes absent from both source DOM and nodes.",
+        "source": "Captured root href is https://ecs-buy.aliyun.com/buyRedirect.htm?period=1&periodType=Yearly. Captured offer buttons are <button>立即购买</button> with no href; absence of captured destination is not authority to synthesize spec routes. News target is not included in this allegation (target string is captured although not a literal anchor).",
+        "criterion": "Restore exact captured root destination; remove unsupported per-instance destinations or replace only with capture-proven targets. Preserve targetless controls without fabricated URLs; add target-integrity regression proof."
+      },
+      {
+        "id": "CB-C2",
+        "pages": [
+          "aliyun-com/product-ecs"
+        ],
+        "location": "instances._items[0..2]._price / instances._intent",
+        "description": "Offers display bare ¥99,¥1438.68,¥3459.9 with no annual duration; source purchase period and ￥99.00/1年起 qualifier are intentionally not modeled, according to current _intent. Amount fidelity1.00 does not prove offer fidelity.",
+        "source": "Source nodes contain visible 购买时长 : 1年 at x248,y613,w184,h28 (and corresponding offer lines); current _intent itself records e ￥99.00/1年起, u2a￥1438.68/1年, c9i￥3459.90/1年. No price should be invented for g9i.",
+        "criterion": "Retain annual billing period and “起” where captured through an existing allowed fact/qualifier representation (no new presentation key); retain original amounts and genuine g9i price gap. Validate source/model/render offer semantics, not only amount strings."
+      }
+    ]
+  },
+  {
+    "lane": "audit-huawei-commerce",
+    "missing": true
+  },
+  {
+    "lane": "audit-media-auth-utility",
+    "missing": true
+  },
+  {
+    "lane": "audit-mi-commerce",
+    "missing": true
+  },
+  {
+    "lane": "audit-public-technical-docs",
+    "status": "INCOMPLETE",
+    "findings": [
+      {
+        "id": "C1",
+        "pages": [
+          "gov-uk/ni-rates-letters"
+        ],
+        "location": "$.example insertion order after $.class-1a-1b",
+        "description": "Employee contribution Example appears after employer table and Class1A/1B rates, where its8%/2% calculation is detached from the employee table and can be mistaken for an example of15% employer/Class1A rates.",
+        "source": "corpus/gov-uk/ni-rates-letters/dom.html:372 Example precedes Employer heading:386. Source whole image shows employee table -> Example -> employer table -> Class1A.",
+        "criterion": "Restore the source story sequence or containment associating this exact Example with employee contribution rates before employer content; keep exact£58.66/8%/2% facts, not invented explanatory copy."
+      },
+      {
+        "id": "C2",
+        "pages": [
+          "gov-uk/ni-rates-letters"
+        ],
+        "location": "$.contribution-rates, $.employee-rates, $.employer-rates, $.class-1a-1b and bottom guide utilities",
+        "description": "Several main-guide actions and one meaningful Class1A obligation are missing from the factual model: category-letter inline reference, past employee rates, HMRC historical tax-year rates, calculators/tables, expenses-and-benefits target, additional lump-sum/redundancy-payment obligation, and printable whole-guide utility. Existing Class1A detailed-guidance target is correctly retained, including its source2022-2023 slug; do not “correct” it by guessing a newer URL.",
+        "source": "corpus/gov-uk/ni-rates-letters/dom.html:250,260,498-516,528; source-evidence.json matched main-guide anchors. Source states “They must also pay Class1A on some other lump sum payments, for example redundancy payments.”",
+        "criterion": "Restore captured main-guide facts/actions in closed grammar with source URLs and associations; maintain compact guide utilities. Preserve exact captured2026-2027 rates and existing detailed-guidance target. Do not expand into cookie/global-site chrome reconstruction."
+      },
+      {
+        "id": "C3",
+        "pages": [
+          "learn-microsoft/vm-sizes"
+        ],
+        "location": "$.vm-size-and-series-naming.name-structure-breakdown._items[*]._fields.links; $.families-by-type.*._items[*]._fields.family and series-list",
+        "description": "All127 source table anchors have become inert field/list text. The displayed Links column promises navigation, and Enter the Series/Size tab here still instructs a non-existent action. The model contains zero _action entries and the rendering zero anchors: this is factual-target loss, not merely link styling.",
+        "source": "corpus/learn-microsoft/vm-sizes/dom.html:345/350 ->#name-structure-breakdown;417 A-family ->general-purpose/a-family;419 Av2-series ->general-purpose/a-family#av2-series and End-of-Life target;429 Dsv7/Ddsv7 ->general-purpose/d-family#dsv7-series-and-ddsv7-series. Resolve relative URLs against captured redirected overview URL, not a guessed site base.",
+        "criterion": "Preserve each captured table destination and meaningful same-page target using existing closed values/actions and shared axes. If this cannot be represented without an escape hatch, route the precise grammar gap to engine rather than inventing presentation keys or dropping targets."
+      },
+      {
+        "id": "C4",
+        "pages": [
+          "learn-microsoft/vm-sizes"
+        ],
+        "location": "$.vm-size-and-series-naming.name-structure-breakdown and omitted article regions",
+        "description": "Name structure breakdown incorrectly labels the Type/Series/Size classification table; source places that table before a separate named Series/Size explanation with a DCads_v5 diagram and five footnotes. Those source naming facts, caveat/naming-conventions link and diagram are absent. Intro/workload descriptions and later region-size lookup, REST API, benchmark, other-size-information and next-step body regions are also absent from the model. Do not treat the short table-only output as complete article preservation.",
+        "source": "corpus/learn-microsoft/vm-sizes/dom.html:325-382 naming structure,368 image media/size-series-breakdown.png and footnotes;738-770 lower article headings/body links. source-evidence.json contains exact headings/image attributes.",
+        "criterion": "Correct the classification-table/actual naming-section association and restore captured meaningful article facts/actions/media within closed grammar. Use existing source-attributable asset bytes and do not enlarge; local original media availability is unverified, so checkpoint missing assets instead of inventing/recapturing silently. Source video poster is also absent; its interaction/asset coverage needs explicit resolution."
+      },
+      {
+        "id": "C5",
+        "pages": [
+          "stripe-docs/payments"
+        ],
+        "location": "$._title.text",
+        "description": "The model/visibleH1 uses the SEO document title “付款 | Stripe 文档” although the capture has a visible page title “付款”. This adds site-name SEO text to a content heading contrary to the visible-title rule. It is not the Apple/Taobao identity fix and does not justify a new site-name template.",
+        "source": "Source900px whole image shows visible付款 and separate使用Stripe开始接受支付。; source-evidence.json h1 text付款; corpus/dom.html:14.",
+        "criterion": "Use captured visible付款 as the page-title fact, retaining original document-title provenance in intent if needed; engine supplies any compact identity through approved shared semantics, not enlarged brand heading."
+      },
+      {
+        "id": "C6",
+        "pages": [
+          "stripe-docs/payments"
+        ],
+        "location": "$._lines[0] missing captured payments-hero image",
+        "description": "The captured introductory payment hero illustration is completely absent from the model/render. Source puts the image beside the introduction and its source action; current intro is text-only. This is an image-preservation/cohesion gap, not evidence to make the image larger.",
+        "source": "corpus/stripe-docs/payments/dom.html:14 image https://b.stripecdn.com/docs-statics-srv/assets/payments-hero.84c749136bfe3d7c2b8495ef295c6d89.png; nodes bbox x877/y331.53/w500/h240.5. Source alt empty; do not invent factual alt description.",
+        "criterion": "Use existing attributable asset bytes if available, associated with the captured intro/action and bounded by natural size (no enlargement). If original bytes unavailable, retain explicit incomplete-image coverage; do not guess a replacement or claim whole-image fidelity."
+      }
+    ]
+  },
+  {
+    "lane": "audit-sspai-editorial",
+    "status": "INCOMPLETE",
+    "findings": [
+      {
+        "id": "C1",
+        "pages": [
+          "sspai-com/home",
+          "sspai-com/post-114699"
+        ],
+        "location": "home feed._items[3]._action.to; news briefs._items[1..2].source._action.to",
+        "description": "Three targets are truncated/wrong. Agent ends agent-a instead of agent-analysis; BleepingComputer ends some-use instead of some-users%2F; Douyin ends %3Ffro instead of the complete from_tab_name/modal_id/vid query.",
+        "source": "Exact local dom.html anchors are recorded as wrongTargets in handoff. Existing output faithfully repeats these wrong model strings; no remote click/status test performed.",
+        "criterion": "Replace these three target bytes with stored source targets, preserve text/action semantics, validate and rerender. No invented destination or live external execution needed.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory-summary.txt",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json"
+        ]
+      },
+      {
+        "id": "C2",
+        "pages": [
+          "sspai-com/post-102392",
+          "sspai-com/post-114699"
+        ],
+        "location": "102392 lead/body/closing/related; 114699 news._items",
+        "description": "102392 is reduced to a few summary sentences: missing four syntax/example images, captions, body facts and Part.I/II manual actions; only one of four source related stories remains.114699 loses cover and Panasonic/Bose images, EU proposal second paragraph/status, Kimi later capabilities and Bose second-model facts while leaving the left/right caption without its image.",
+        "source": "Source102392 body image URLs contain dd3dfc65...,0f1dfabe...,84aa0dee...,ebb1fcda...; source114699 product images a5eb9d7b... and18e25fb5...; source cover045d7312.... Readable crops show darksrc=invert / darksrc=xxx.jpg syntax, full prose and manual links. All exact anchors/images inventoried in local source-inventory.json.",
+        "criterion": "Recover substantive captured paragraphs, instructional images/captions/attribution and linked learning entrances with exact source targets under existing closed grammar. Recover news cover/product images and associated full facts. Preserve attribution and natural-size bounds; no fabricated paraphrase treated as source quote.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-source-examples.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-source-flow.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-source-product-images.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json"
+        ]
+      },
+      {
+        "id": "C3",
+        "pages": [
+          "sspai-com/u-jtc092al"
+        ],
+        "location": "_lines[2]._lines[3] and missing source writeCount16557",
+        "description": "Profile adds 获得充电4 with no support in stored source capture; source profile instead shows article25, writeCount16557, viewCount23535, badge0, since2025 and529days. Character-count datum16557 is omitted. This is an unsupported fact, not proof that actual charging count is zero.",
+        "source": "Source dom.html id=writeCount carries16557 with ssCommunityIcon__character--fill; id=viewCount carries23535. No source text label 获得充电 appears. Source screenshot panel corroborates captured values.",
+        "criterion": "Remove unsupported charging datum or provide genuine captured provenance; preserve the observed16557 datum with source-supported semantic label (do not guess charging). Preserve25/23535/0/529/SINCE2025 correctly.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-source-profile.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory-summary.txt",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json"
+        ]
+      },
+      {
+        "id": "C4",
+        "pages": [
+          "sspai-com/matrix",
+          "sspai-com/u-jtc092al"
+        ],
+        "location": "matrix feed._items._image; profile identity/activity images",
+        "description": "Matrix and user models contain no image values at all. Original Matrix visible articles have identity-bearing160x100 covers; user has a MaxChow avatar and first-three activity covers. Output becomes text-only and loses those source associations.",
+        "source": "Matrix source first cover at x718/y321/w160/h100; subsequent tennis/design/storage/CRM covers shown in readable crop. User source full-height sheet visibly shows avatar and first three VLOOK cover thumbnails (later lazy placeholder images are not claimed loaded).",
+        "criterion": "Restore genuine captured image/alt/attribution associations for loaded source covers/avatar using factual model/assets only. Do not synthesize missing/lazy pixels or enlarge pictures; preserve title/action grouping.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-source-images.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-1440-source-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json"
+        ]
+      },
+      {
+        "id": "C5",
+        "pages": [
+          "sspai-com/home",
+          "sspai-com/matrix",
+          "sspai-com/post-102392",
+          "sspai-com/post-114699",
+          "sspai-com/u-jtc092al"
+        ],
+        "location": "missing shared source navigation/footer facts in five curated models",
+        "description": "Models omit the source navigation destinations 共创 /create, PRIME /prime, Matrix /matrix, 栏目 /series (some destinations incidentally appear elsewhere). Home/Matrix/both posts omit captured about/agreement/business utility links; Matrix/posts also omit download/contact. Rendering has only a generic page title, not a compact source utility identity/navigation/footer group.",
+        "source": "Exact source anchors are in source-inventory.json. Source footer appears in full source sheets for Matrix/posts; home has side-rail utility links. User capture has no visible footer, so no user-footer loss claim.",
+        "criterion": "Preserve captured identity/navigation/footer facts and targets in compact semantically grouped utilities using existing grammar; engine may style shared utility groups. Do not invent a mandatory generic giant site heading or force source side-rails into universal centering.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-1440-source-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-1440-source-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-1440-source-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-1440-source-full.png"
+        ]
+      }
+    ],
+    "wrongTargets": [
+      {
+        "page": "sspai-com/home",
+        "path": "$.feed._items[3]._action.to",
+        "actual": "https://sspai.com/prime/story/how-to-obtain-data-for-agent-a",
+        "source": "https://sspai.com/prime/story/how-to-obtain-data-for-agent-analysis"
+      },
+      {
+        "page": "sspai-com/post-114699",
+        "path": "$.briefs._items[1].source._action.to",
+        "actual": "https://sspai.com/link?target=https%3A%2F%2Fwww.bleepingcomputer.com%2Fnews%2Fmicrosoft%2Fwindows-11-kb5124008-update-breaks-domain-trust-for-some-use",
+        "source": "https://sspai.com/link?target=https%3A%2F%2Fwww.bleepingcomputer.com%2Fnews%2Fmicrosoft%2Fwindows-11-kb5124008-update-breaks-domain-trust-for-some-users%2F"
+      },
+      {
+        "page": "sspai-com/post-114699",
+        "path": "$.briefs._items[2].source._action.to",
+        "actual": "https://sspai.com/link?target=https%3A%2F%2Fwww.douyin.com%2Fuser%2FMS4wLjABAAAANDEWKpWPI1HZOYhDHzk-u-n4QapA7hhx4MMmLUBGa4EgmNJfRLo2XrGnIU54PfrB%3Ffro",
+        "source": "https://sspai.com/link?target=https%3A%2F%2Fwww.douyin.com%2Fuser%2FMS4wLjABAAAANDEWKpWPI1HZOYhDHzk-u-n4QapA7hhx4MMmLUBGa4EgmNJfRLo2XrGnIU54PfrB%3Ffrom_tab_name%3Dmain%26modal_id%3D7686082272528715044%26vid%3D7686082272528715044"
+      }
+    ]
+  }
+]

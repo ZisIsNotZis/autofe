@@ -1,0 +1,60 @@
+{
+  "site": "semi-design",
+  "page": "getting-started",
+  "url": "https://semi.design/zh-CN/start/getting-started",
+  "title": "Getting Started 快速开始 - Semi Design",
+  "sourceNodes": 1988,
+  "counts": {
+    "storylines": 5,
+    "items": 14,
+    "actions": 35,
+    "exposes": 0,
+    "images": 2,
+    "facts": 7,
+    "tables": 2,
+    "lists": 2,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 0,
+    "capHits": []
+  },
+  "storylines": 5,
+  "chrome": [
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "navigation",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 26,
+      "examples": [
+        "@douyinfe/semi-ui",
+        "# 使用 npm npm i @douyinfe/semi-ui # 使用 yarn yarn add @douyinfe/se",
+        "import React, { Component } from 'react'; // 如果为 React v19，需要从 @",
+        "transpilePackages",
+        "// next.config.js const nextConfig = { + transpilePackages: ['@d"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "资源",
+      "example": "semi.css"
+    },
+    {
+      "name": "url",
+      "type": "text",
+      "label": "URL",
+      "example": "https://unpkg.com/@douyinfe/semi-ui@2.27.0/dist/css/semi.css"
+    }
+  ]
+}

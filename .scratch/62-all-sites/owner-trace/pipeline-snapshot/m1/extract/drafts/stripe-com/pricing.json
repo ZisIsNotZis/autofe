@@ -1,0 +1,1746 @@
+{
+  "_intent": "价格与费用 — 标准定价 [draft]",
+  "_title": {
+    "text": "价格与费用"
+  },
+  "_summary": {
+    "text": "适配各规模企业的定价方案"
+  },
+  "_lines": [
+    {
+      "_intent": "标准定价 [draft]",
+      "_title": {
+        "text": "标准定价"
+      },
+      "_summary": {
+        "text": "简单明了的随用随付定价方案，让您畅享功能全面的支付平台。无设置费、月费或隐藏费用。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://dashboard.stripe.com/register",
+            "label": "立即开始"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "3.4% + HK$2.35 [draft]",
+      "_title": {
+        "text": "3.4% + HK$2.35"
+      },
+      "_summary": {
+        "text": "每笔成功的国内银行卡交易"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "此处显示的所有信息和价格仅适用于中国香港特别行政区。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "定制化定价 [draft]",
+      "_title": {
+        "text": "定制化定价"
+      },
+      "_price": {
+        "list": [
+          {
+            "money": 85,
+            "currency": "HKD"
+          },
+          {
+            "money": 170,
+            "currency": "HKD"
+          },
+          {
+            "money": 10,
+            "currency": "USD"
+          },
+          {
+            "money": 2,
+            "currency": "USD"
+          },
+          {
+            "money": 0.04,
+            "currency": "USD"
+          }
+        ]
+      },
+      "_measure": {
+        "list": [
+          {
+            "num": 0.5,
+            "unit": "%"
+          },
+          {
+            "num": 2,
+            "unit": "%"
+          },
+          {
+            "num": 30,
+            "unit": "%"
+          },
+          {
+            "num": 0.4,
+            "unit": "%"
+          },
+          {
+            "num": 3.5,
+            "unit": "%"
+          },
+          {
+            "num": 0.25,
+            "unit": "%"
+          },
+          {
+            "num": 0.7,
+            "unit": "%"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "打造您的专属定价方案，适用于支付量较大或拥有独特业务模式的企业。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stripe.com/cn/contact/sales",
+            "label": "联系销售"
+          }
+        },
+        {
+          "_text": {
+            "text": "IC+ 定价"
+          }
+        },
+        {
+          "_text": {
+            "text": "交易量折扣"
+          }
+        },
+        {
+          "_text": {
+            "text": "多产品组合折扣"
+          }
+        },
+        {
+          "_text": {
+            "text": "特定国家/地区费率"
+          }
+        },
+        {
+          "_text": {
+            "text": "开箱即用的功能："
+          }
+        },
+        {
+          "_text": {
+            "text": "全球覆盖"
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "195 个国家/地区 接受全球付款，支持超过 195 个国家/地区的持卡人。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "195 个国家/地区 接受全球付款，支持超过 195 个国家/地区的持卡人。"
+              }
+            },
+            {
+              "_name": {
+                "text": "135+ 种货币 以客户的首选货币处理费用并显示价格，以提高转化率。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "135+ 种货币 以客户的首选货币处理费用并显示价格，以提高转化率。"
+              }
+            },
+            {
+              "_name": {
+                "text": "100+ 种支付方式 从支付宝到 iDEAL，无缝支持流行的支付方式。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "100+ 种支付方式 从支付宝到 iDEAL，无缝支持流行的支付方式。"
+              }
+            },
+            {
+              "_name": {
+                "text": "1 次集成 通过单一集成接受全球付款。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "1 次集成 通过单一集成接受全球付款。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "内置欺诈防范功能"
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "强大的机器学习技术 利用在数百万家公司的数据基础上训练的机器学习来检测和阻止欺诈。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "强大的机器学习技术 利用在数百万家公司的数据基础上训练的机器学习来检测和阻止欺诈。"
+              }
+            },
+            {
+              "_name": {
+                "text": "自动适应新的欺诈模式 通过 Radar 机器学习更快适应最新趋势。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "自动适应新的欺诈模式 通过 Radar 机器学习更快适应最新趋势。"
+              }
+            },
+            {
+              "_name": {
+                "text": "无需额外集成 借助 Stripe 内置防欺诈功能，零代码即可启用。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "无需额外集成 借助 Stripe 内置防欺诈功能，零代码即可启用。"
+              }
+            },
+            {
+              "_name": {
+                "text": "欺诈分析 通过高级分析和警报监控欺诈行为。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "欺诈分析 通过高级分析和警报监控欺诈行为。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "优化结账流程的工具"
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "灵活的 UI 组件 使用用户界面构建模块，设计与您的网站完美匹配的安全支付体验。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "灵活的 UI 组件 使用用户界面构建模块，设计与您的网站完美匹配的安全支付体验。"
+              }
+            },
+            {
+              "_name": {
+                "text": "预构建的支付表单 将预构建的支付表单嵌入您的网站或将客户定向到一个 Stripe 托管的页面。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "预构建的支付表单 将预构建的支付表单嵌入您的网站或将客户定向到一个 Stripe 托管的页面。"
+              }
+            },
+            {
+              "_name": {
+                "text": "快速结账 自动填充客户保存的银行卡信息，提供顺畅的结账体验。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "快速结账 自动填充客户保存的银行卡信息，提供顺畅的结账体验。"
+              }
+            },
+            {
+              "_name": {
+                "text": "无代码付款 只需生成无代码链接，几分钟内即可开始收款。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "无代码付款 只需生成无代码链接，几分钟内即可开始收款。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "助力营收增长的支付优化"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "实时重试 利用基于机器学习的选择性重试策略提升收入。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "实时重试 利用基于机器学习的选择性重试策略提升收入。"
+              }
+            },
+            {
+              "_name": {
+                "text": "银行卡信息自动更新 实时更新银行卡信息，提升客户体验并增加收入。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "银行卡信息自动更新 实时更新银行卡信息，提升客户体验并增加收入。"
+              }
+            },
+            {
+              "_name": {
+                "text": "客户验证 使用 3DS 身份验证方式验证客户身份"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "客户验证 使用 3DS 身份验证方式验证客户身份"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "平台和交易市场嵌入式支付"
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "无缝入驻 通过转化率得到优化的 UI 快速入驻和验证用户。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "无缝入驻 通过转化率得到优化的 UI 快速入驻和验证用户。"
+              }
+            },
+            {
+              "_name": {
+                "text": "平台管理 利用为平台和用户打造的工具管理支付运营。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "平台管理 利用为平台和用户打造的工具管理支付运营。"
+              }
+            },
+            {
+              "_name": {
+                "text": "嵌入式组件 为用户嵌入并白标化支付流程。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "嵌入式组件 为用户嵌入并白标化支付流程。"
+              }
+            },
+            {
+              "_name": {
+                "text": "风控工具 获取工具帮助您降低 Connect 子账户风险。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "风控工具 获取工具帮助您降低 Connect 子账户风险。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "快速、稳定地提现至您的银行账户"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "灵活的提现选项 选择以滚动方式每周或每月接收转账。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "灵活的提现选项 选择以滚动方式每周或每月接收转账。"
+              }
+            },
+            {
+              "_name": {
+                "text": "同币种结算 在所选区域，以您首选的货币提现。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "同币种结算 在所选区域，以您首选的货币提现。"
+              }
+            },
+            {
+              "_name": {
+                "text": "提现透明 在管理平台中查看即将发生的提现、预期存款日期、提现记录等。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "提现透明 在管理平台中查看即将发生的提现、预期存款日期、提现记录等。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "电话、聊天和邮件支持"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "24x7 全天候支持 我们的团队可以通过电子邮件、电话和聊天功能为您提供帮助，您甚至可以通过电子邮件获得 6 种不同语言的支持服务。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "24x7 全天候支持 我们的团队可以通过电子邮件、电话和聊天功能为您提供帮助，您甚至可以通过电子邮件获得 6 种不同语言的支持服务。"
+              }
+            },
+            {
+              "_name": {
+                "text": "行业领先的文档 使用我们强大的技术文档进行构建。8+ 种语言的示例代码。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "行业领先的文档 使用我们强大的技术文档进行构建。8+ 种语言的示例代码。"
+              }
+            },
+            {
+              "_name": {
+                "text": "Discord 上的技术支持 在官方 Stripe Developer Discord 服务中心与我们的技术团队交流。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Discord 上的技术支持 在官方 Stripe Developer Discord 服务中心与我们的技术团队交流。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "安全性、可靠性和合规性"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "历史平均正常运行时间达 99.999% 每天处理 2.5 亿+ 次 API 请求，正常运行时间 99.999%，助您最大化收入。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "历史平均正常运行时间达 99.999% 每天处理 2.5 亿+ 次 API 请求，正常运行时间 99.999%，助您最大化收入。"
+              }
+            },
+            {
+              "_name": {
+                "text": "符合 PCI 标准 用我们的资料库收集付款信息，敏感数据不会到达您的服务器。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "符合 PCI 标准 用我们的资料库收集付款信息，敏感数据不会到达您的服务器。"
+              }
+            },
+            {
+              "_name": {
+                "text": "持有全球范围内的监管牌照 Stripe 通过了最高行业标准认证，并在全球范围内获得了监管许可。"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "持有全球范围内的监管牌照 Stripe 通过了最高行业标准认证，并在全球范围内获得了监管许可。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "所有产品的标准定价 探索完整 Stripe 平台的定价方案"
+          }
+        },
+        {
+          "_text": {
+            "text": "线上和线下支付、经常性计费、嵌入式支付，以及更多其他功能。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stripe.com/cn/pricing#custom-pricing",
+            "label": "定制价格"
+          }
+        },
+        {
+          "_text": {
+            "text": "全球支付"
+          }
+        },
+        {
+          "_text": {
+            "text": "优化结账转化率，支持本地支付方式，并提升支付成功率。"
+          }
+        },
+        {
+          "_text": {
+            "text": "支付"
+          }
+        },
+        {
+          "_text": {
+            "text": "一个专为业务增长而打造的在线支付平台。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://dashboard.stripe.com/register",
+            "label": "立即开始"
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "提供 100 多种支付方式，有效提升获客率。"
+              }
+            },
+            {
+              "_name": {
+                "text": "借助 Stripe 的快速结账工具 Link 来提高转化率。"
+              }
+            },
+            {
+              "_name": {
+                "text": "使用 Radar Lite，为银行卡付款提供 AI 驱动的欺诈防护。"
+              }
+            },
+            {
+              "_name": {
+                "text": "通过使用预置 UI，节省工程开发时间。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "信用卡和借记卡"
+          }
+        },
+        {
+          "_text": {
+            "text": "接受广泛使用的信用卡和借记卡、预付卡进行在线支付。"
+          }
+        },
+        {
+          "_text": {
+            "text": "3.4% + US$0.30"
+          }
+        },
+        {
+          "_text": {
+            "text": "每笔成功的银行卡收款（用美元结算时）"
+          }
+        },
+        {
+          "_text": {
+            "text": "+ 0.5%"
+          }
+        },
+        {
+          "_text": {
+            "text": "适用于国际银行卡*"
+          }
+        },
+        {
+          "_text": {
+            "text": "+ 2%"
+          }
+        },
+        {
+          "_text": {
+            "text": "如果需要货币兑换"
+          }
+        },
+        {
+          "_text": {
+            "text": "银行和其他支付方式"
+          }
+        },
+        {
+          "_text": {
+            "text": "提供银行借记、银行转账以及其他契合当地市场的支付方式。"
+          }
+        },
+        {
+          "_text": {
+            "text": "起始价： HK$4.00"
+          }
+        },
+        {
+          "_text": {
+            "text": "iDEAL 交易的单笔计费"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stripe.com/cn/pricing/local-payment-methods",
+            "label": "查看更多支付方式"
+          }
+        },
+        {
+          "_text": {
+            "text": "数字钱包"
+          }
+        },
+        {
+          "_text": {
+            "text": "接受支付宝和微信支付，扩大您的中国客群触及面。"
+          }
+        },
+        {
+          "_text": {
+            "text": "2.2% + HK$2.00"
+          }
+        },
+        {
+          "_text": {
+            "text": "争议"
+          }
+        },
+        {
+          "_text": {
+            "text": "回应银行卡支付争议（也称为拒付）。"
+          }
+        },
+        {
+          "_text": {
+            "text": "了解更多"
+          }
+        },
+        {
+          "_text": {
+            "text": "争议受理费"
+          }
+        },
+        {
+          "_text": {
+            "text": "HK$85.00"
+          }
+        },
+        {
+          "_text": {
+            "text": "针对您收到的每笔争议。"
+          }
+        },
+        {
+          "_text": {
+            "text": "在极少数情况下，还会收取卡组织费用。"
+          }
+        },
+        {
+          "_text": {
+            "text": "争议抗辩费"
+          }
+        },
+        {
+          "_text": {
+            "text": "针对您手动回应的每笔争议。"
+          }
+        },
+        {
+          "_text": {
+            "text": "对于您胜诉的争议，会退还此费用。对于败诉争议，则不退还此费用。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://docs.stripe.com/disputes",
+            "label": "了解更多"
+          }
+        },
+        {
+          "_text": {
+            "text": "Smart Disputes"
+          }
+        },
+        {
+          "_text": {
+            "text": "使用 Stripe 的 AI 为您准备的证据回应争议。您也可以添加自己的证据。"
+          }
+        },
+        {
+          "_text": {
+            "text": "Smart Disputes 费用"
+          }
+        },
+        {
+          "_text": {
+            "text": "胜诉时按争议金额计费。"
+          }
+        },
+        {
+          "_text": {
+            "text": "对于败诉争议，不收取 Smart Dispute 费用。但争议受理费仍然适用。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://docs.stripe.com/disputes/smart-disputes",
+            "label": "了解更多"
+          }
+        },
+        {
+          "_text": {
+            "text": "争议防范"
+          }
+        },
+        {
+          "_text": {
+            "text": "借助由 Visa 的 Verifi 和 Mastercard 的 Ethoca 提供支持的争议防范工具，帮助降低争议率。"
+          }
+        },
+        {
+          "_text": {
+            "text": "已包含"
+          }
+        },
+        {
+          "_text": {
+            "text": "争议拦截查询"
+          }
+        },
+        {
+          "_text": {
+            "text": "每次 Visa 争议解决"
+          }
+        },
+        {
+          "_text": {
+            "text": "每次 Visa Compelling Evidence 3.0 拦截"
+          }
+        },
+        {
+          "_text": {
+            "text": "HK$170.00"
+          }
+        },
+        {
+          "_text": {
+            "text": "每次 Mastercard 争议解决"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "支付优化"
+          }
+        },
+        {
+          "_text": {
+            "text": "包含在 Payments 中"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "已包含在适用标准支付定价的商家的收费结构中，不收取额外费用"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "更多功能"
+          }
+        },
+        {
+          "_text": {
+            "text": "Payment Links"
+          }
+        },
+        {
+          "_text": {
+            "text": "无需建站，使用无代码链接即可在线销售。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://dashboard.stripe.com/register/payment_links",
+            "label": "立即开始"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "只需生成无代码链接，几分钟内即可开始收款。"
+              }
+            },
+            {
+              "_name": {
+                "text": "销售商品、提供订阅服务等。"
+              }
+            },
+            {
+              "_name": {
+                "text": "通过 API 批量创建，实现营销活动和销售运营自动化。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "接受付款"
+          }
+        },
+        {
+          "_text": {
+            "text": "通过支付链接收款。"
+          }
+        },
+        {
+          "_text": {
+            "text": "在 Payments 中"
+          }
+        },
+        {
+          "_text": {
+            "text": "自定义域名"
+          }
+        },
+        {
+          "_text": {
+            "text": "在 Stripe 上托管支付页面或客户门户时，可使用您的自有域名。"
+          }
+        },
+        {
+          "_text": {
+            "text": "US$10.00"
+          }
+        },
+        {
+          "_text": {
+            "text": "每月"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://support.stripe.com/questions/custom-domain-on-stripe-checkout-faq",
+            "label": "了解更多"
+          }
+        },
+        {
+          "_text": {
+            "text": "付款后账单"
+          }
+        },
+        {
+          "_text": {
+            "text": "在一次性购买后自动生成账单。"
+          }
+        },
+        {
+          "_text": {
+            "text": "按交易总额计费"
+          }
+        },
+        {
+          "_text": {
+            "text": "US$2.00"
+          }
+        },
+        {
+          "_text": {
+            "text": "每份账单封顶"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://support.stripe.com/questions/pricing-for-post-payment-invoices-for-one-time-purchases-via-checkout-and-payment-links",
+            "label": "了解更多"
+          }
+        },
+        {
+          "_text": {
+            "text": "Checkout"
+          }
+        },
+        {
+          "_text": {
+            "text": "专为转化率优化而打造的预构建支付表单。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://dashboard.stripe.com/register/checkout",
+            "label": "立即开始"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "节省工程开发时间，快速上手。"
+              }
+            },
+            {
+              "_name": {
+                "text": "使用专为提升转化率而设计的功能，减少支付阻力。"
+              }
+            },
+            {
+              "_name": {
+                "text": "可按您的品牌要求进行自定义。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "通过 Stripe Checkout 收款。"
+          }
+        },
+        {
+          "_text": {
+            "text": "Managed Payments"
+          }
+        },
+        {
+          "_text": {
+            "text": "Stripe 的备案商家 (MoR) 解决方案，简化全球销售流程。"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "无需额外设置，即可快速在全球范围内推出或拓展业务。"
+              }
+            },
+            {
+              "_name": {
+                "text": "将税务合规、欺诈、争议和客户支持等责任交由 Stripe 处理。"
+              }
+            },
+            {
+              "_name": {
+                "text": "您可以将 Managed Payments 用于所有交易，也可以仅用于特定市场和产品。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "备案商家服务"
+          }
+        },
+        {
+          "_text": {
+            "text": "面向全球数字商务的完整备案商家解决方案，支持超过 75 个国家/地区的间接税务合规（销售税、增值税、商品及服务税）和汇款服务，同"
+          }
+        },
+        {
+          "_text": {
+            "text": "每笔成功完成的 Managed Payments 交易，另加 Payments 手续费"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://support.stripe.com/questions/managed-payments-pricing",
+            "label": "了解更多"
+          }
+        },
+        {
+          "_text": {
+            "text": "Terminal"
+          }
+        },
+        {
+          "_text": {
+            "text": "用于接收线下付款并实现全渠道商务的一体化工具。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://dashboard.stripe.com/get-started/terminal",
+            "label": "立即开始"
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "构建自定义结账流程，或与数百款第三方 POS 系统集成。"
+              }
+            },
+            {
+              "_name": {
+                "text": "使用预认证的 Stripe 读卡器或指定第三方读卡器，简化硬件物流。"
+              }
+            },
+            {
+              "_name": {
+                "text": "统一线上和线下支付，打造无缝衔接的客户体验。"
+              }
+            },
+            {
+              "_name": {
+                "text": "只需一次集成，即可实现全球扩展。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "银行卡和数字钱包"
+          }
+        },
+        {
+          "_text": {
+            "text": "支持使用主流信用卡、借记卡和电子钱包进行线下支付。"
+          }
+        },
+        {
+          "_text": {
+            "text": "2.5% + HK$0.50"
+          }
+        },
+        {
+          "_text": {
+            "text": "+ HK$0.80"
+          }
+        },
+        {
+          "_text": {
+            "text": "每次 Tap to Pay 授权"
+          }
+        },
+        {
+          "_text": {
+            "text": "资金管理"
+          }
+        },
+        {
+          "_text": {
+            "text": "通过嵌入金融服务增强您的平台能力：开设金融账户、发卡并提供融资服务。"
+          }
+        },
+        {
+          "_text": {
+            "text": "Connect"
+          }
+        },
+        {
+          "_text": {
+            "text": "专为平台和交易市场打造的嵌入式支付。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://dashboard.stripe.com/register/connect",
+            "label": "立即开始"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "使用 Stripe 托管或预置的嵌入式组件，加快上线速度。"
+              }
+            },
+            {
+              "_name": {
+                "text": "使用 Stripe 提供的入驻、风控、税务报表等工具，节省运营时间。"
+              }
+            },
+            {
+              "_name": {
+                "text": "通过支付变现，实现营收增长。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "Stripe 为您的用户处理定价"
+          }
+        },
+        {
+          "_text": {
+            "text": "Stripe 会设定并向您的用户收取手续费，为您免除这部分繁杂工作。了解如何获取 Stripe 的收入分成资格。"
+          }
+        },
+        {
+          "_text": {
+            "text": "起始费率（适用于采用自有支付定价模式，以从每笔交易中赚取收益的平台）。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stripe.com/cn/connect/pricing",
+            "label": "查看定价详情"
+          }
+        },
+        {
+          "_text": {
+            "text": "营收和财务自动化"
+          }
+        },
+        {
+          "_text": {
+            "text": "借助可无缝协作的模块化计费、税务、营收报表和数据分析工具，简化关键业务流程。"
+          }
+        },
+        {
+          "_text": {
+            "text": "Billing"
+          }
+        },
+        {
+          "_text": {
+            "text": "用于经常性收入模型²和一次性计费的订阅管理软件。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://dashboard.stripe.com/register/billing",
+            "label": "立即开始"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "采用灵活的定价模式，更快响应用户需求。"
+              }
+            },
+            {
+              "_name": {
+                "text": "借助 Smart Retries 和自动挽回工作流，增加营收并减少客户流失。"
+              }
+            },
+            {
+              "_name": {
+                "text": "使用无代码工具或可组合 API，节省工程开发时间。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "选择方案"
+          }
+        },
+        {
+          "_text": {
+            "text": "按月支付"
+          }
+        },
+        {
+          "_text": {
+            "text": "年度订阅，按月支付。根据适合您业务的交易量分级标准计费。"
+          }
+        },
+        {
+          "_text": {
+            "text": "起始价： HK$5,000.00"
+          }
+        },
+        {
+          "_text": {
+            "text": "每月，1 年期合同"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "订阅和取消条款适用。"
+          }
+        },
+        {
+          "_text": {
+            "text": "随用随付"
+          }
+        },
+        {
+          "_text": {
+            "text": "按使用量付费，无周期性费用。最适合交易量较低或存在波动的企业。"
+          }
+        },
+        {
+          "_text": {
+            "text": "按 Billing 使用额计费"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "包括在 Stripe 上和之外处理的 Billing 交易。不包括一次性账单。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stripe.com/cn/billing/pricing",
+            "label": "方案对比"
+          }
+        },
+        {
+          "_text": {
+            "text": "Metronome"
+          }
+        },
+        {
+          "_text": {
+            "text": "用于按用量计费的实时计量、定价和分析。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://signup.metronome.com/",
+            "label": "使用 Metronome 注册"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "快速上线产品，支持任何按用量计费或混合定价模式。"
+              }
+            },
+            {
+              "_name": {
+                "text": "无需工程投入即可迭代定价。"
+              }
+            },
+            {
+              "_name": {
+                "text": "实时掌握用量和营收情况。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "初创企业"
+          }
+        },
+        {
+          "_text": {
+            "text": "面向推出按用量计费产品的团队。随业务增长按用量付费。"
+          }
+        },
+        {
+          "_text": {
+            "text": "US$0.04"
+          }
+        },
+        {
+          "_text": {
+            "text": "每千次摄取事件"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "构建您的自定义工具包 [draft]",
+      "_title": {
+        "text": "构建您的自定义工具包"
+      },
+      "_summary": {
+        "text": "与我们的销售团队合作设计一个满足您需求的解决方案："
+      },
+      "_lines": [
+        {
+          "_intent": "list (6 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Payments"
+              }
+            },
+            {
+              "_name": {
+                "text": "Radar"
+              }
+            },
+            {
+              "_name": {
+                "text": "Connect"
+              }
+            },
+            {
+              "_name": {
+                "text": "Invoicing"
+              }
+            },
+            {
+              "_name": {
+                "text": "Billing"
+              }
+            },
+            {
+              "_name": {
+                "text": "以及更多"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "获得所需支持 [draft]",
+      "_title": {
+        "text": "获得所需支持"
+      },
+      "_image": {
+        "image": "",
+        "alt": "GuidesCard_32"
+      },
+      "_summary": {
+        "text": "灵活结构"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "技术账户管理"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://stripe.com/cn/support-plans",
+                "label": "技术账户管理"
+              }
+            },
+            {
+              "_name": {
+                "text": "专业服务"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://stripe.com/cn/professional-services",
+                "label": "专业服务"
+              }
+            },
+            {
+              "_name": {
+                "text": "认证实施合作伙伴"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://stripe.com/cn/partners",
+                "label": "认证实施合作伙伴"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "IC+ 定价、折扣固定费率、订阅和平台的买入费率。"
+          }
+        },
+        {
+          "_text": {
+            "text": "基于数量的折扣"
+          }
+        },
+        {
+          "_text": {
+            "text": "基于用量层级、承诺用量和产品用量的折扣。"
+          }
+        },
+        {
+          "_text": {
+            "text": "全球单一费率"
+          }
+        },
+        {
+          "_text": {
+            "text": "提供针对所有市场的可选聚合定价，让您轻松实现全球化。"
+          }
+        },
+        {
+          "_text": {
+            "text": "成本透明度"
+          }
+        },
+        {
+          "_text": {
+            "text": "管理平台、工具和 API 为您提供成本透明度。"
+          }
+        },
+        {
+          "_text": {
+            "text": "集成 Stripe 可带来 326% 的投资回报率"
+          }
+        },
+        {
+          "_text": {
+            "text": "Forrester 的《整体经济影响》研究表明，部署 Stripe 的企业的投资回报率超过 3 倍。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://go.stripe.global/rs/072-MDK-283/images/TEI-of-Stripe.pdf",
+            "label": "阅读报告"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "报告 [draft]",
+      "_title": {
+        "text": "报告"
+      }
+    },
+    {
+      "_intent": "Stripe 的整体经济影响™ [draft]",
+      "_title": {
+        "text": "Stripe 的整体经济影响™"
+      },
+      "_measure": {
+        "list": [
+          {
+            "num": 130
+          },
+          {
+            "num": 5.5,
+            "unit": "%"
+          },
+          {
+            "num": 1,
+            "unit": "%"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "每年在 Stripe 上处理超过 10 亿美元的 100+ 家类别领导者。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "数百万"
+          }
+        },
+        {
+          "_text": {
+            "text": "宝马车主在使用 ConnectedDrive Store"
+          }
+        },
+        {
+          "_text": {
+            "text": "350+"
+          }
+        },
+        {
+          "_text": {
+            "text": "家美国经销商"
+          }
+        },
+        {
+          "_text": {
+            "text": "使用的产品"
+          }
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Payments"
+              }
+            },
+            {
+              "_name": {
+                "text": "Connect"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "5+"
+          }
+        },
+        {
+          "_text": {
+            "text": "使用 Stripe 的亚马逊品牌数量，包括 Prime、Audible 和 Amazon Pay。"
+          }
+        },
+        {
+          "_text": {
+            "text": "50+"
+          }
+        },
+        {
+          "_text": {
+            "text": "Stripe 上可用的支付方式"
+          }
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Payments"
+              }
+            },
+            {
+              "_name": {
+                "text": "Connect"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "物流网络内的国家数量"
+          }
+        },
+        {
+          "_text": {
+            "text": "超过 100 亿美元"
+          }
+        },
+        {
+          "_text": {
+            "text": "每年在全球范围内流通的商品价值"
+          }
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Payments"
+              }
+            },
+            {
+              "_name": {
+                "text": "Connect"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "+5.5%"
+          }
+        },
+        {
+          "_text": {
+            "text": "Stripe 全球支付基础设施所贡献的增长率"
+          }
+        },
+        {
+          "_text": {
+            "text": "+1%"
+          }
+        },
+        {
+          "_text": {
+            "text": "Adaptive Acceptance 所贡献的增长率"
+          }
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Payments"
+              }
+            },
+            {
+              "_name": {
+                "text": "Stripe Sigma"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stripe.com/cn/customers/amazon",
+            "label": "Amazon logo 阅读案例 了解 Amazon 如何用 Stripe 简化跨境支付"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stripe.com/cn/newsroom/stories/maersk-and-stripe",
+            "label": "Maersk logo 阅读案例 了解 Maersk 如何利用新技术简化全球运输"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stripe.com/cn/customers/twilio",
+            "label": "Twilio logo 阅读案例 了解 Twilio 如何利用 Stripe 将授权率提高 10%"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "BMW logo"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Amazon logo"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Maersk logo"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Twilio logo"
+          }
+        },
+        {
+          "_text": {
+            "text": "常见问题"
+          }
+        },
+        {
+          "_intent": "支付费用是如何计算的？ [draft]",
+          "_title": {
+            "text": "支付费用是如何计算的？"
+          }
+        },
+        {
+          "_intent": "我会被征税吗？ [draft]",
+          "_title": {
+            "text": "我会被征税吗？"
+          }
+        },
+        {
+          "_intent": "退款会产生额外费用吗？ [draft]",
+          "_title": {
+            "text": "退款会产生额外费用吗？"
+          }
+        },
+        {
+          "_intent": "您有设置费或月费吗？ [draft]",
+          "_title": {
+            "text": "您有设置费或月费吗？"
+          }
+        },
+        {
+          "_intent": "你们提供任何折扣吗？ [draft]",
+          "_title": {
+            "text": "你们提供任何折扣吗？"
+          },
+          "_summary": {
+            "text": "准备好开始了？联系我们或创建账户。"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "选择灵活便捷的按需付费方案，即刻体验 Stripe 功能强大的支付平台。需要定制解决方案？欢迎随时与我们联系。"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://dashboard.stripe.com/register",
+                "label": "立即开始"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://stripe.com/cn/contact/sales",
+                "label": "联系销售"
+              }
+            },
+            {
+              "_text": {
+                "text": "看看我们的客户有哪些"
+              }
+            },
+            {
+              "_text": {
+                "text": "从初创公司到财富 500 强企业，您可以看看数百万家商家是如何用 Stripe 来启动并迅速发展的。"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://stripe.com/cn/customers",
+                "label": "了解更多"
+              }
+            },
+            {
+              "_text": {
+                "text": "探索文档"
+              }
+            },
+            {
+              "_text": {
+                "text": "现在就开始构建您的集成，短短几分钟就可以收取您的第一笔收款。Stripe 库可提供从 Ruby 到 Go 的各种语言。"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://docs.stripe.com/",
+                "label": "阅读文档"
+              }
+            },
+            {
+              "_text": {
+                "text": "¹ Stripe Radar 风控团队版和 Stripe Connect 平台控制定价版均单独报价。 ² 基础按用量计费功能将继"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "30 initial HTML/model/source-capture hashes unchanged",
+    "20 complete PNG dimensions/hashes;20 zero-overflow cases;no broken/intrinsically enlarged images",
+    "7 missing Aliyun tab target URLs reproduced",
+    "5 unsupported ECS purchase target URLs reproduced",
+    "all66 Stripe actions capture-normalized and rendered",
+    "Grafana two contrast failures reproduced at4 widths;duplicate Edit retained",
+    "ECS390 horizontal scroll reaches538px",
+    "no tracked source changes;no staged files"
+  ],
+  "experienceAcceptance": "INCOMPLETE; these checks detect defects and do not assert visual PASS"
+}

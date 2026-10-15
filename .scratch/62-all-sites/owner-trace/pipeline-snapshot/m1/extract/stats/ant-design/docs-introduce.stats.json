@@ -1,0 +1,103 @@
+{
+  "site": "ant-design",
+  "page": "docs-introduce",
+  "url": "https://ant.design/docs/react/introduce",
+  "title": "Ant Design of React - Ant Design",
+  "sourceNodes": 991,
+  "counts": {
+    "storylines": 19,
+    "items": 70,
+    "actions": 114,
+    "exposes": 0,
+    "images": 0,
+    "facts": 11,
+    "tables": 1,
+    "lists": 4,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 5,
+    "capHits": []
+  },
+  "storylines": 19,
+  "chrome": [
+    {
+      "role": "banner",
+      "count": 1
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "LayoutTable",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "list-item-unlabeled",
+      "role": "listitem",
+      "count": 36,
+      "examples": []
+    },
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 5,
+      "examples": [
+        "Firefox Firefox: last 2 versions",
+        "Chrome Chrome: last 2 versions",
+        "Safari Safari: last 2 versions",
+        "Opera Opera: last 2 versions",
+        "Electron Electron: last 2 versions"
+      ]
+    },
+    {
+      "kind": "tabs",
+      "role": "tablist",
+      "count": 2,
+      "examples": [
+        "npm yarn pnpm Bun",
+        "npm icon npm"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "edge-edge",
+      "type": "text",
+      "label": "Edge Edge",
+      "example": "Edge"
+    },
+    {
+      "name": "firefox-firefox",
+      "type": "text",
+      "label": "Firefox Firefox",
+      "example": "last 2 versions"
+    },
+    {
+      "name": "chrome-chrome",
+      "type": "text",
+      "label": "Chrome Chrome",
+      "example": "last 2 versions"
+    },
+    {
+      "name": "safari-safari",
+      "type": "text",
+      "label": "Safari Safari",
+      "example": "last 2 versions"
+    },
+    {
+      "name": "opera-opera",
+      "type": "text",
+      "label": "Opera Opera",
+      "example": "last 2 versions"
+    },
+    {
+      "name": "electron-electron",
+      "type": "text",
+      "label": "Electron Electron",
+      "example": "last 2 versions"
+    }
+  ]
+}

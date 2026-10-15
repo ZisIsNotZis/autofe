@@ -1,0 +1,1633 @@
+{
+ "_intent": "在小米商城搜索「手机」的结果页：20 款在售手机的名称与价格一览，可按分类、排序和促销条件筛选，页底另推荐相关好物。关键词「手机」来自 meta.json 的查询 URL，页面未在正文中印出",
+ "_key": "mi-search-phone",
+ "_title": {
+  "text": "所有产品-小米商城"
+ },
+ "query": {
+  "_intent": "捕获 form#J_searchForm 的 GET 搜索入口；输入名 keyword，原 DOM 占位文字耳机；没有可证实的当前值，不把请求页关键词或截图文字当作输入默认值。",
+  "_composite": "search",
+  "_label": {
+   "text": "耳机"
+  },
+  "_expose": {
+   "name": "keyword",
+   "type": "text"
+  },
+  "submit": {
+   "_intent": "原站捕获的搜索提交目标，未实现网络执行或站点后端。",
+   "_title": {
+    "text": "站内搜索"
+   },
+   "_action": {
+    "verb": "submit",
+    "to": "https://search.mi.com/search",
+    "params": {
+     "keyword": "text"
+    },
+    "label": "站内搜索"
+   }
+  }
+ },
+ "filters": {
+  "_intent": "结果工具栏：按手机分类、排序方式筛选，可勾选促销/分期/仅看有货，并显示收货地",
+  "category": {
+   "_intent": "按手机系列分类筛选，当前为「全部」",
+   "_items": [
+    {
+     "_key": "cat-all",
+     "_name": {
+      "text": "全部"
+     }
+    },
+    {
+     "_key": "cat-redmi",
+     "_name": {
+      "text": "红米手机"
+     }
+    },
+    {
+     "_key": "cat-xiaomi",
+     "_name": {
+      "text": "小米手机"
+     }
+    }
+   ],
+   "_expose": {
+    "name": "phone-category",
+    "type": "text"
+   }
+  },
+  "sort": {
+   "_intent": "结果排序方式（「价格」后为排序方向图标字符，仅保留文字）",
+   "_items": [
+    {
+     "_key": "sort-best",
+     "_name": {
+      "text": "综合"
+     }
+    },
+    {
+     "_key": "sort-new",
+     "_name": {
+      "text": "新品"
+     }
+    },
+    {
+     "_key": "sort-sales",
+     "_name": {
+      "text": "销量"
+     }
+    },
+    {
+     "_key": "sort-price",
+     "_name": {
+      "text": "价格"
+     }
+    }
+   ],
+   "_expose": {
+    "name": "sort-by",
+    "type": "text"
+   }
+  },
+  "promo": {
+   "_intent": "只看促销商品",
+   "_label": {
+    "text": "促销"
+   },
+   "_expose": {
+    "name": "promo-only",
+    "type": "bool"
+   }
+  },
+  "installment": {
+   "_intent": "只看支持分期的商品",
+   "_label": {
+    "text": "分期"
+   },
+   "_expose": {
+    "name": "installment-only",
+    "type": "bool"
+   }
+  },
+  "in-stock": {
+   "_intent": "只看有货商品",
+   "_label": {
+    "text": "仅看有货"
+   },
+   "_expose": {
+    "name": "in-stock-only",
+    "type": "bool"
+   }
+  },
+  "delivery-region": {
+   "_intent": "当前收货地，点击可修改",
+   "_label": {
+    "text": "收货地"
+   },
+   "_region": {
+    "text": "北京 北京市"
+   }
+  }
+ },
+ "results": {
+  "_intent": "关键词「手机」的结果：第一页 20 款在售手机，价格以元计；卡片整体可点进购买页",
+  "_rel": {
+   "order": "none"
+  },
+  "_items": [
+   {
+    "_key": "mi-1230809235",
+    "_name": {
+     "text": "Xiaomi 18 Pro系列 9.9元预约福袋 订金"
+    },
+    "_price": {
+     "money": 9.9,
+     "currency": "CNY",
+     "qualifier": "订金"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230809235&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/CCDB256914A03FD68EA84B5D457ACE7E_1789392568244.png"
+    }
+   },
+   {
+    "_key": "mi-1230803526",
+    "_name": {
+     "text": "Xiaomi 15 Ultra 12GB+256GB"
+    },
+    "_price": {
+     "money": 4999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230803526&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202502251810_1d343647c6a9639566f7b4d0ff498f3b.png"
+    }
+   },
+   {
+    "_key": "mi-1230808328",
+    "_name": {
+     "text": "REDMI Note 17 Pro 8GB+128GB"
+    },
+    "_price": {
+     "money": 1549,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 1599,
+     "currency": "CNY",
+     "qualifier": "list"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230808328&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/0F3DE786CE62114D9F889918DA2CA592_1783927170401.png"
+    }
+   },
+   {
+    "_key": "mi-1230808907",
+    "_name": {
+     "text": "Xiaomi 18 Fold 16GB+512GB"
+    },
+    "_price": {
+     "money": 12999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230808907&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/987DF78C5AC035E87D8AE20A7A3804BE_1788433272743.png"
+    }
+   },
+   {
+    "_key": "mi-1230805810",
+    "_name": {
+     "text": "Xiaomi 17 Ultra 12GB+512GB"
+    },
+    "_price": {
+     "money": 6999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230805810&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202512230958_dd554f88444d6f8d03735bcec02a5de2.png"
+    }
+   },
+   {
+    "_key": "mi-1230802686",
+    "_name": {
+     "text": "Redmi Note 14 5G 8GB+256GB"
+    },
+    "_price": {
+     "money": 1499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802686&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202409240943_7ba20a442ea9a8786ae33f96e10ff7f3.png"
+    }
+   },
+   {
+    "_key": "mi-1230800929",
+    "_name": {
+     "text": "Redmi Note 13 Pro 12GB+256GB"
+    },
+    "_price": {
+     "money": 1699,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 1799,
+     "currency": "CNY",
+     "qualifier": "list"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230800929&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202309200030_e23db78cea56f2fbe339bc8eb9fdf86e.png"
+    }
+   },
+   {
+    "_key": "mi-1230801727",
+    "_name": {
+     "text": "Xiaomi Civi 4 Pro 12GB+512GB"
+    },
+    "_price": {
+     "money": 2299,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 2799,
+     "currency": "CNY",
+     "qualifier": "list"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230801727&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202403201525_bd4b28b0db003489dca13de182b1e45f.png"
+    }
+   },
+   {
+    "_key": "mi-1230802937",
+    "_name": {
+     "text": "Xiaomi 15 Pro 12GB+256GB"
+    },
+    "_price": {
+     "money": 4999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802937&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202410282152_ddf9e92d1097e241e9090e81baa36d2c.png"
+    }
+   },
+   {
+    "_key": "mi-1230802679",
+    "_name": {
+     "text": "Redmi Note 14 Pro 12GB+256GB"
+    },
+    "_price": {
+     "money": 1399,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 1799,
+     "currency": "CNY",
+     "qualifier": "list"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802679&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202409251505_c4aec8745a9e568289a2f36dce9e32c4.png"
+    }
+   },
+   {
+    "_key": "mi-1230802290",
+    "_name": {
+     "text": "Redmi K70 至尊版 12GB+512GB"
+    },
+    "_price": {
+     "money": 2249,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 2899,
+     "currency": "CNY",
+     "qualifier": "list"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802290&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202407180953_491d6700854ed9fc50bccd3563cc700f.png"
+    }
+   },
+   {
+    "_key": "mi-1230802683",
+    "_name": {
+     "text": "Redmi Note 14 Pro+ 16GB+512GB"
+    },
+    "_price": {
+     "money": 1999,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 2399,
+     "currency": "CNY",
+     "qualifier": "list"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802683&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202409240915_9e9984552479fa0ed2e3d48811b03113.png"
+    }
+   },
+   {
+    "_key": "mi-1230801079",
+    "_name": {
+     "text": "Xiaomi 14 12GB+256GB"
+    },
+    "_price": {
+     "money": 3999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230801079&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202310251934_a644b98586dc18c0b207d8055049b608.png"
+    }
+   },
+   {
+    "_key": "mi-1230802946",
+    "_name": {
+     "text": "Xiaomi 15 12GB+256GB"
+    },
+    "_price": {
+     "money": 3599,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230802946&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202410282146_5b401bb9f2f18d1a3217a222a8b7d0fd.png"
+    }
+   },
+   {
+    "_key": "mi-1230805813",
+    "_name": {
+     "text": "Xiaomi 17 Ultra 徕卡版 16GB+512GB"
+    },
+    "_price": {
+     "money": 7999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230805813&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202512231005_b99ba55b7c5c1e3375bd3724b9d90ea7.png"
+    }
+   },
+   {
+    "_key": "mi-1230803209",
+    "_name": {
+     "text": "REDMI K80 Pro 16GB+512GB"
+    },
+    "_price": {
+     "money": 3399,
+     "currency": "CNY"
+    },
+    "_amount": {
+     "money": 3899,
+     "currency": "CNY",
+     "qualifier": "list"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230803209&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202411261128_162764b6e4bcb70612286a9ba643d9f1.png"
+    }
+   },
+   {
+    "_key": "mi-1230803367",
+    "_name": {
+     "text": "Redmi 14C 4GB+128GB"
+    },
+    "_price": {
+     "money": 799,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230803367&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202412271147_6159d9cf12539712e93f7c537cead9b1.png"
+    }
+   },
+   {
+    "_key": "mi-1230808645",
+    "_name": {
+     "text": "REDMI K100 Pro Max 12GB+256GB"
+    },
+    "_price": {
+     "money": 4499,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230808645&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/F638E4CE95661585EBA42C16279A4C57_1786448638165.png"
+    }
+   },
+   {
+    "_key": "mi-1230804969",
+    "_name": {
+     "text": "Xiaomi 17 12GB+256GB"
+    },
+    "_price": {
+     "money": 5099,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230804969&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202509222148_ffb7adfa456ae103f16f2517b2e07908.png"
+    }
+   },
+   {
+    "_key": "mi-1230804977",
+    "_name": {
+     "text": "Xiaomi 17 Pro Max 12GB+512GB"
+    },
+    "_price": {
+     "money": 6999,
+     "currency": "CNY"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/shop/buy?product_id=1230804977&cfrom=search"
+    },
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202509222137_0f5648ca22c47fcd041c4026f11a927f.png"
+    }
+   }
+  ]
+ },
+ "pagination": {
+  "_intent": "源站页码导航按原始顺序保留当前1、2/3与两端图标；javascript:void(0) 没有导航目标，原字体字形渲染待引擎与独立审查，不伪造页 URL。",
+  "_lines": [
+   {
+    "_intent": "源站页码工具的 iconfont 原始图标事实；源字体/方向标签未归一化，不虚构可见文案。",
+    "_icon": {
+     "icon": ""
+    }
+   },
+   {
+    "_intent": "源站捕获的当前页。",
+    "_name": {
+     "text": "1"
+    }
+   },
+   {
+    "_title": {
+     "text": "2"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "2"
+    }
+   },
+   {
+    "_title": {
+     "text": "3"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "3"
+    }
+   },
+   {
+    "_intent": "源站页码工具的 iconfont 原始图标事实；源字体/方向标签未归一化，不虚构可见文案。",
+    "_icon": {
+     "icon": ""
+    },
+    "_action": {
+     "verb": "navigate"
+    }
+   }
+  ],
+  "_default": {
+   "text": "1"
+  }
+ },
+ "recommend": {
+  "_intent": "「猜你喜欢」推荐位（轮播共 2 屏 10 件）：带价格与好评数的周边好物，可直接加入购物车",
+  "_title": {
+   "text": "猜你喜欢"
+  },
+  "_items": [
+   {
+    "_key": "rec-1230808886",
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/AD6DCA3B5594785808BFB6DC50DAF343_1787124364531.jpg?thumb=1&w=180&h=180&f=webp&q=90",
+     "alt": "米家电动剃须刀S100 云纹刀网版"
+    },
+    "_name": {
+     "text": "米家电动剃须刀S100 云纹刀网版"
+    },
+    "_price": {
+     "money": 99,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 870,
+     "unit": "人好评"
+    },
+    "cart": {
+     "_intent": "加入购物车",
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230808886"
+    }
+   },
+   {
+    "_key": "rec-1230803485",
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202302101419_12b27fce2289f01b2ba8b5f77b1f5bf8.png?thumb=1&w=180&h=180&f=webp&q=90",
+     "alt": "米家智能血压计"
+    },
+    "_name": {
+     "text": "米家智能血压计"
+    },
+    "_price": {
+     "money": 269,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 23.3,
+     "unit": "万人好评"
+    },
+    "cart": {
+     "_intent": "加入购物车",
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230803485"
+    }
+   },
+   {
+    "_key": "rec-1230808328",
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/6D988AF01A1A0C244DB3E3F969A7FB00_1783927130235.jpg?thumb=1&w=180&h=180&f=webp&q=90",
+     "alt": "REDMI Note 17 Pro"
+    },
+    "_name": {
+     "text": "REDMI Note 17 Pro"
+    },
+    "_price": {
+     "money": 1599,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 32.4,
+     "unit": "万人好评"
+    },
+    "cart": {
+     "_intent": "加入购物车",
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230808328"
+    }
+   },
+   {
+    "_key": "rec-1230808916",
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/BB82B036449059168AB1F6CDAAA68F5D_1788487645406.png?thumb=1&w=180&h=180&f=webp&q=90",
+     "alt": "小米手环11 标准版"
+    },
+    "_name": {
+     "text": "小米手环11 标准版"
+    },
+    "_price": {
+     "money": 299,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 2552,
+     "unit": "人好评"
+    },
+    "cart": {
+     "_intent": "加入购物车",
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230808916"
+    }
+   },
+   {
+    "_key": "rec-1230808535",
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/1D75970B1786E81D2BA2694A93D8D645_1783922571050.jpg?thumb=1&w=180&h=180&f=webp&q=90",
+     "alt": "米家电动剃须刀"
+    },
+    "_name": {
+     "text": "米家电动剃须刀"
+    },
+    "_price": {
+     "money": 249,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 3.2,
+     "unit": "万人好评"
+    },
+    "cart": {
+     "_intent": "加入购物车",
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230808535"
+    }
+   },
+   {
+    "_key": "rec-1230802335",
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202407111858_2422df421a26c2d0509b4feb36e1209e.jpg?thumb=1&w=180&h=180&f=webp&q=90",
+     "alt": "米家防蓝光眼镜 Pro "
+    },
+    "_name": {
+     "text": "米家防蓝光眼镜 Pro"
+    },
+    "_price": {
+     "money": 169,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 4.8,
+     "unit": "万人好评"
+    },
+    "cart": {
+     "_intent": "加入购物车",
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230802335"
+    }
+   },
+   {
+    "_key": "rec-1230805246",
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/A5A2D7F1CAAE430199662A8FB22EBD1D_1769570182491.png?thumb=1&w=180&h=180&f=webp&q=90",
+     "alt": "REDMI Buds 8 Pro"
+    },
+    "_name": {
+     "text": "REDMI Buds 8 Pro"
+    },
+    "_price": {
+     "money": 399,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 24.3,
+     "unit": "万人好评"
+    },
+    "cart": {
+     "_intent": "加入购物车",
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230805246"
+    }
+   },
+   {
+    "_key": "rec-1230805941",
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/B63BA6D6C31982C1D444549CB04677CE_1769589378105.jpg?thumb=1&w=180&h=180&f=webp&q=90",
+     "alt": "REDMI Turbo 5 Max"
+    },
+    "_name": {
+     "text": "REDMI Turbo 5 Max"
+    },
+    "_price": {
+     "money": 3199,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 61,
+     "unit": "万人好评"
+    },
+    "cart": {
+     "_intent": "加入购物车",
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230805941"
+    }
+   },
+   {
+    "_key": "rec-1230804574",
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202508051124_7d9f99afe83d97688359b0bafeb8c15b.png?thumb=1&w=180&h=180&f=webp&q=90",
+     "alt": "小米磁吸支架充电宝10000 7.5W"
+    },
+    "_name": {
+     "text": "小米磁吸支架充电宝10000 7.5W"
+    },
+    "_price": {
+     "money": 169,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 11.5,
+     "unit": "万人好评"
+    },
+    "cart": {
+     "_intent": "加入购物车",
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230804574"
+    }
+   },
+   {
+    "_key": "rec-1230808165",
+    "_image": {
+     "image": "https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/7C36A02329EEC57546C463A1BA63D444_1779781375975.jpg?thumb=1&w=180&h=180&f=webp&q=90",
+     "alt": "米家电动直柄螺丝刀"
+    },
+    "_name": {
+     "text": "米家电动直柄螺丝刀"
+    },
+    "_price": {
+     "money": 159,
+     "currency": "CNY"
+    },
+    "_rating-count": {
+     "num": 8389,
+     "unit": "人好评"
+    },
+    "cart": {
+     "_intent": "加入购物车",
+     "_action": {
+      "verb": "add-to-cart",
+      "label": "加入购物车"
+     }
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.mi.com/buy?product_id=1230808165"
+    }
+   }
+  ]
+ },
+ "footer": {
+  "_intent": "捕获且可见的服务、联系、法律与站点说明入口，保留原文目标；不重建未知 banner 点击或 lazy 营销内容。",
+  "_items": [
+   {
+    "_title": {
+     "text": "预约维修服务"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "预约维修服务",
+     "to": "https://www.mi.com/service/aftersale/front"
+    }
+   },
+   {
+    "_title": {
+     "text": "7天无理由退货"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "7天无理由退货",
+     "to": "https://www.mi.com/service/exchange#back"
+    }
+   },
+   {
+    "_title": {
+     "text": "15天免费换货"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "15天免费换货",
+     "to": "https://www.mi.com/service/exchange#back"
+    }
+   },
+   {
+    "_title": {
+     "text": "满69包邮"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "满69包邮",
+     "to": "https://www.mi.com/service/buy/Postal%20policy"
+    }
+   },
+   {
+    "_title": {
+     "text": "1100余家售后网点"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "1100余家售后网点",
+     "to": "https://www.mi.com/service/sitelist"
+    }
+   },
+   {
+    "_title": {
+     "text": "手机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "手机",
+     "to": "https://www.mi.com/search?keyword=%E6%89%8B%E6%9C%BA"
+    }
+   },
+   {
+    "_title": {
+     "text": "电视"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "电视",
+     "to": "https://www.mi.com/search?keyword=%E7%94%B5%E8%A7%86"
+    }
+   },
+   {
+    "_title": {
+     "text": "笔记本"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "笔记本",
+     "to": "https://www.mi.com/search?keyword=%E7%AC%94%E8%AE%B0%E6%9C%AC"
+    }
+   },
+   {
+    "_title": {
+     "text": "平板"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "平板",
+     "to": "https://www.mi.com/search?keyword=%E5%B9%B3%E6%9D%BF"
+    }
+   },
+   {
+    "_title": {
+     "text": "穿戴"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "穿戴",
+     "to": "https://www.mi.com/search?keyword=%E6%99%BA%E8%83%BD%E7%A9%BF%E6%88%B4"
+    }
+   },
+   {
+    "_title": {
+     "text": "耳机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "耳机",
+     "to": "https://www.mi.com/search?keyword=%E8%80%B3%E6%9C%BA"
+    }
+   },
+   {
+    "_title": {
+     "text": "家电"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "家电",
+     "to": "https://www.mi.com/search?keyword=%E5%AE%B6%E7%94%B5"
+    }
+   },
+   {
+    "_title": {
+     "text": "路由器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "路由器",
+     "to": "https://www.mi.com/search?keyword=%E8%B7%AF%E7%94%B1%E5%99%A8"
+    }
+   },
+   {
+    "_title": {
+     "text": "音箱"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "音箱",
+     "to": "https://www.mi.com/search?keyword=%E9%9F%B3%E7%AE%B1"
+    }
+   },
+   {
+    "_title": {
+     "text": "配件"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "配件",
+     "to": "https://www.mi.com/search?keyword=%E9%85%8D%E4%BB%B6"
+    }
+   },
+   {
+    "_title": {
+     "text": "申请售后"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "申请售后",
+     "to": "https://www.mi.com/service/aftersale/front"
+    }
+   },
+   {
+    "_title": {
+     "text": "服务政策"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "服务政策",
+     "to": "https://www.mi.com/service/exchange"
+    }
+   },
+   {
+    "_title": {
+     "text": "服务价格"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "服务价格",
+     "to": "https://m.mi.com/aftersale/new-service#/pages/service-charge/product-search/index"
+    }
+   },
+   {
+    "_title": {
+     "text": "订单查询"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "订单查询",
+     "to": "https://www.mi.com/user/orderList"
+    }
+   },
+   {
+    "_title": {
+     "text": "以旧换新"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "以旧换新",
+     "to": "https://www.mi.com/a/h/16769.html"
+    }
+   },
+   {
+    "_title": {
+     "text": "保障服务"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "保障服务",
+     "to": "https://micare.mi.com.cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "防伪查询"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "防伪查询",
+     "to": "https://www.mi.com/service/imei"
+    }
+   },
+   {
+    "_title": {
+     "text": "F码通道"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "F码通道",
+     "to": "https://www.mi.com/order/fcode"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米之家"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米之家",
+     "to": "https://www.mi.com/service/mihome/list"
+    }
+   },
+   {
+    "_title": {
+     "text": "服务网点"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "服务网点",
+     "to": "https://www.mi.com/service/sitelist"
+    }
+   },
+   {
+    "_title": {
+     "text": "授权体验店/专区"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "授权体验店/专区",
+     "to": "https://www.mi.com/service/family-location"
+    }
+   },
+   {
+    "_title": {
+     "text": "了解小米"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "了解小米",
+     "to": "https://www.mi.com/about/"
+    }
+   },
+   {
+    "_title": {
+     "text": "加入小米"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "加入小米",
+     "to": "https://hr.xiaomi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "投资者关系"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "投资者关系",
+     "to": "https://ir.mi.com/zh-hans"
+    }
+   },
+   {
+    "_title": {
+     "text": "ESG与可持续发展"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "ESG与可持续发展",
+     "to": "https://www.mi.com/csr"
+    }
+   },
+   {
+    "_title": {
+     "text": "廉洁举报"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "廉洁举报",
+     "to": "https://www.mi.com/integrity"
+    }
+   },
+   {
+    "_title": {
+     "text": "新浪微博"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "新浪微博",
+     "to": "https://weibo.com/xiaomishangcheng"
+    }
+   },
+   {
+    "_title": {
+     "text": "联系我们"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "联系我们",
+     "to": "https://www.mi.com/about/contact/"
+    }
+   },
+   {
+    "_title": {
+     "text": "公益基金会"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "公益基金会",
+     "to": "https://www.mi.com/foundation/index"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米高校合作"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米高校合作",
+     "to": "https://utc.xiaomi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米商城"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米商城",
+     "to": "https://www.mi.com/shop"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米澎湃OS"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米澎湃OS",
+     "to": "https://hyperos.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "米家"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "米家",
+     "to": "https://home.mi.com/index.html"
+    }
+   },
+   {
+    "_title": {
+     "text": "多看"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "多看",
+     "to": "https://www.duokan.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "游戏"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "游戏",
+     "to": "https://game.xiaomi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "音乐"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "音乐",
+     "to": "https://www.mi.com/music"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米智能存储"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米智能存储",
+     "to": "https://smartstorage.xiaomi.com"
+    }
+   },
+   {
+    "_title": {
+     "text": "政企服务"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "政企服务",
+     "to": "https://b.mi.com/?client_id=180100031058&masid=17409.0358"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米天猫店"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米天猫店",
+     "to": "https://xiaomi.tmall.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米集团隐私政策"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米集团隐私政策",
+     "to": "https://privacy.mi.com/all/zh_CN/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米公司儿童信息保护规则"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米公司儿童信息保护规则",
+     "to": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米商城隐私政策"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米商城隐私政策",
+     "to": "https://m.mi.com/support/module?id=63&headless=1"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米商城用户协议"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米商城用户协议",
+     "to": "https://www.mi.com/aptitude/list?id=62"
+    }
+   },
+   {
+    "_title": {
+     "text": "问题反馈"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "问题反馈",
+     "to": "https://static.mi.com/feedback/"
+    }
+   },
+   {
+    "_title": {
+     "text": "北京互联网法院法律服务工作站"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "北京互联网法院法律服务工作站",
+     "to": "http://www.mi.com/beihu"
+    }
+   },
+   {
+    "_title": {
+     "text": "中国消费者协会"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "中国消费者协会",
+     "to": "http://www.cca.org.cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "北京市消费者协会"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "北京市消费者协会",
+     "to": "http://www.bj315.org/"
+    }
+   },
+   {
+    "_title": {
+     "text": "京ICP备10046444号"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "京ICP备10046444号",
+     "to": "http://beian.miit.gov.cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "京公网安备11010802020134号"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "京公网安备11010802020134号",
+     "to": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134"
+    }
+   },
+   {
+    "_title": {
+     "text": "营业执照"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "营业执照",
+     "to": "https://www.mi.com/business-license/"
+    }
+   },
+   {
+    "_title": {
+     "text": "医疗器械质量公告"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "医疗器械质量公告",
+     "to": "https://www.mi.com/medical/list/"
+    }
+   },
+   {
+    "_title": {
+     "text": "增值电信业务经营许可证编号：京B2-20180851"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "增值电信业务经营许可证编号：京B2-20180851",
+     "to": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/pc/5f93056c-bc30-401e-9526-66839114ffb9.png"
+    }
+   },
+   {
+    "_title": {
+     "text": "食品经营许可证"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "食品经营许可证",
+     "to": "https://www.mi.com/article/detail/972d1e084d35.html"
+    }
+   },
+   {
+    "_title": {
+     "text": "知识产权侵权投诉"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "知识产权侵权投诉",
+     "to": "https://www.mi.com/intellectual"
+    }
+   }
+  ],
+  "notices": {
+   "_intent": "源站页脚电话、时间、适用条件与备案等原文说明。",
+   "_lines": [
+    {
+     "_text": {
+      "text": "950816"
+     }
+    },
+    {
+     "_text": {
+      "text": "8:00-18:00（仅收市话费）"
+     }
+    },
+    {
+     "_text": {
+      "text": "950818"
+     }
+    },
+    {
+     "_text": {
+      "text": "8:00-18:00（仅收市话费）"
+     }
+    },
+    {
+     "_text": {
+      "text": "手机适用于：Xiaomi MIX Fold系列、MIX Flip系列、Xiaomi Ultra系列、Xiaomi Pro Max系列"
+     }
+    },
+    {
+     "_text": {
+      "text": "电视适用于：98寸、100寸以上大电视系列"
+     }
+    },
+    {
+     "_text": {
+      "text": "小米商城 | 小米澎湃OS | 米家 | 多看 | 游戏 | 音乐 | 小米智能存储 | 政企服务 | 小米天猫店 | 小米集团隐私政策 | 小米公司儿童信息保护规则 | 小米商城隐私政策 | 小米商城用户协议 | 问题反馈 | Select Location"
+     }
+    },
+    {
+     "_text": {
+      "text": "北京互联网法院法律服务工作站 | 中国消费者协会 | 北京市消费者协会"
+     }
+    },
+    {
+     "_text": {
+      "text": "© mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2026]0015-006号 （京）网械平台备字（2018）第00005号 药品医疗器械网络信息服务备案 (京)网药械信息备字（2024）第00478号 营业执照 医疗器械质量公告 增值电信业务经营许可证编号：京B2-20180851 网络食品经营备案 京食药网食备202010048 食品经营许可证 新出发京批字第直220280号 违法和不良信息举报电话：171-5104-4404 知识产权侵权投诉 本网站所列数据，除特殊说明，所有数据均出自我司实验室测试"
+     }
+    }
+   ]
+  }
+ },
+ "navigation": {
+  "_intent": "捕获的可见小米站点工具导航。",
+  "_items": [
+   {
+    "_title": {
+     "text": "小米官网"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米官网",
+     "to": "https://www.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米商城"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米商城",
+     "to": "https://www.mi.com/shop"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米澎湃OS"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米澎湃OS",
+     "to": "https://hyperos.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米汽车"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米汽车",
+     "to": "https://www.xiaomiev.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "云服务"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "云服务",
+     "to": "https://i.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "IoT"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "IoT",
+     "to": "https://iot.mi.com"
+    }
+   },
+   {
+    "_title": {
+     "text": "有品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "有品",
+     "to": "https://youpin.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小爱开放平台"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小爱开放平台",
+     "to": "https://xiaoai.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "资质证照"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "资质证照",
+     "to": "https://www.mi.com/aptitude/list/?id=88"
+    }
+   },
+   {
+    "_title": {
+     "text": "协议规则"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "协议规则",
+     "to": "https://www.mi.com/aptitude/list/"
+    }
+   },
+   {
+    "_title": {
+     "text": "下载app 小米商城APP"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "下载app 小米商城APP",
+     "to": "https://www.mi.com/appdownload/"
+    }
+   },
+   {
+    "_title": {
+     "text": "购物车（0）"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "购物车（0）",
+     "to": "https://www.mi.com/shop/buy/cart"
+    }
+   }
+  ]
+ }
+}

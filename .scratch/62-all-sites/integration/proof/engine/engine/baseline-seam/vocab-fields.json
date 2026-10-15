@@ -1,0 +1,136 @@
+{
+  "$comment": "Domain field dictionary (people/HR domain for the antd table exemplar). Fields are open but DECLARED here once per domain, with the column label the engine uses. This is the third fact namespace: semantic roles (closed vocab, engine understands) vs domain fields (declared, engine relays) vs exposed identifiers (page-scoped inputs). Adding a field is a vocabulary change: log it in failures.md first.",
+  "version": "0",
+  "fields": {
+    "first-name": {
+      "type": "text",
+      "label": "First Name"
+    },
+    "last-name": {
+      "type": "text",
+      "label": "Last Name"
+    },
+    "age": {
+      "type": "num",
+      "label": "Age",
+      "unit": "years"
+    },
+    "address": {
+      "type": "text",
+      "label": "Address"
+    },
+    "email": {
+      "type": "text",
+      "label": "Email"
+    },
+    "gender": {
+      "type": "text",
+      "label": "Gender"
+    },
+    "score-chinese": {
+      "type": "num",
+      "label": "Chinese Score"
+    },
+    "score-math": {
+      "type": "num",
+      "label": "Math Score"
+    },
+    "score-english": {
+      "type": "num",
+      "label": "English Score"
+    },
+    "cash-assets": {
+      "type": "money",
+      "label": "Cash Assets",
+      "currency": "USD"
+    },
+    "regions": {
+      "type": "num",
+      "label": "Regions"
+    },
+    "zones": {
+      "type": "num",
+      "label": "Zones"
+    },
+    "cpu": {
+      "type": "num",
+      "label": "CPU",
+      "unit": "核"
+    },
+    "memory": {
+      "type": "num",
+      "label": "内存",
+      "unit": "GB"
+    },
+    "category-letter": {
+      "type": "text",
+      "label": "Category letter"
+    },
+    "employee-rate-low": {
+      "type": "text",
+      "label": "£129 to £242 (£559 to £1,048 a month)"
+    },
+    "employee-rate-mid": {
+      "type": "text",
+      "label": "£242.01 to £967 (£1,048.01 to £4,189 a month)"
+    },
+    "employer-rate-low": {
+      "type": "text",
+      "label": "£96 to £481 (£417 to £2,083 a month)"
+    },
+    "employer-rate-mid": {
+      "type": "text",
+      "label": "£481.01 to £967 (£2,083.01 to £4,189 a month)"
+    },
+    "rate-over-967": {
+      "type": "text",
+      "label": "Over £967 a week (£4,189 a month)"
+    },
+    "transfer-tier": {
+      "type": "text",
+      "label": ""
+    },
+    "data-transfer-price": {
+      "type": "money",
+      "currency": "USD",
+      "label": "定价"
+    },
+    "egress-destination": {
+      "type": "text",
+      "label": "数据自 Amazon EC2 传出至"
+    },
+    "egress-price": {
+      "type": "money",
+      "currency": "USD",
+      "label": ""
+    },
+    "local-zone-direction": {
+      "type": "text",
+      "label": "在同一 AWS 区域内的本地区域和可用区之间传输的数据，从本地区域中的 Amazon EC2“传入”和“传出”"
+    },
+    "category": {
+      "type": "text",
+      "label": "Category"
+    },
+    "description": {
+      "type": "text",
+      "label": "Description"
+    },
+    "links": {
+      "type": "list",
+      "label": "Links"
+    },
+    "family": {
+      "type": "text",
+      "label": "Family"
+    },
+    "workloads": {
+      "type": "list",
+      "label": "Workloads"
+    },
+    "series-list": {
+      "type": "list",
+      "label": "Series List"
+    }
+  }
+}

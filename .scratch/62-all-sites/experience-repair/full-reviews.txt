@@ -1,0 +1,320 @@
+# Frozen candidate experience review — FAIL
+
+Scope: `36kr-com/{home,information-technology,search-ai,search-viz}` and protected `taobao-com/home`. Independent review only; no source/model/Docs repairs. This is not final integration or milestone acceptance.
+
+## Material findings
+
+1. **FAIL — news/result density and media grouping (all four 36kr pages).** Desktop feeds turn short news records into approximately 556px-pitch vertical panels, with a 600×400 image below the headline and a large empty right half inside a 1232px bordered frame. At 2560px, first three measured article interiors are 1206×489.58px; only about two records fit in a 1000px viewport. Source search capture shows compact image-and-text adjacent records (roughly 216×144px thumbnails), not individual hero panels. The failure is the framed dead area and scanning cost, **not** centered outer whitespace, original full-bleed, or image upscaling. Actual images do not upscale. Same desktop layout occurs at 1920/1440. First affected owners: `home: feed._items[0]`, `information-technology: feed._items[0]`, `search-*: results._items[0]`; applies repeatedly through image-bearing feed records. Repro: open frozen HTML at 2560×1000, inspect first feed/result cards. Evidence: each `*-top.jpg`, four-width `*-overview.jpg`, `geometry.json`, `details.json`, `36kr-com-search-ai-source-top.jpg`. Required outcome: compact source-aware record grouping retaining all text/actions/order and natural image ratio; no site-specific escape or indiscriminate grid conversion.
+2. **FAIL — ordinary summary reading measure (`36kr-com/search-ai`).** Near page y=6798, “人工智能70年：繁荣与萧条周期的14个启示” summary spans 1206px with computed `max-width: none`; native bottom crop shows a very long two-line paragraph. Owning layout rules require ordinary facts/prose capped at 74ch and explicitly reject 1000+px body lines. Selector: `.fact` in this result card; locate by the exact paragraph beginning “德银梳理AI 70年发展脉络”. Evidence: `details.json`, `36kr-com-search-ai-bottom.jpg`. Keep paragraph intact and aligned to its owner while restoring readable measure.
+
+No proven wrong-target defect is asserted. The separate 131 unknown owner mappings are not product bugs established by this review.
+
+## Per-page verdict and modalities
+
+| Page | Verdict | Actual visual coverage | Notes |
+|---|---|---|---|
+| 36kr home | FAIL | Four-width complete-height overview; native desktop/mobile first and last 1600px; source overview | Feed density blocker; hot list numbering and footer readable in inspected crops |
+| 36kr technology | FAIL | Same | Feed density blocker; channel selection wraps without overflow |
+| 36kr search AI | FAIL | Same plus native source top | Density and reading-measure blockers; visible keyword/default selection and submit affordance retained |
+| 36kr search viz | FAIL | Same | Density blocker; visible keyword/default selection and submit affordance retained |
+| Taobao home | INCOMPLETE | Same plus native source top | Compact 18px content-edge identity is correct at all four widths; inspected commerce cards/media remain coherent. No material defect found in inspected regions, but not enough coverage for full reference PASS |
+
+All 20 actual whole-height browser captures are local, generated sequentially with one browser per job (two jobs total). Widths 2560/1920/1440/390. Desktop heights respectively 12533/9591/7494/7468/3716; mobile heights 14796/9276/7320/7131/12657. All 20 have zero page horizontal overflow, zero unloaded/broken images, zero measured image upscaling. These are geometry/loading checks, not visual PASS. Footer surfaces inspected on 36kr have readable dark text/compact utilities on light neutral backgrounds. No arbitrary giant Taobao identity or new reference redesign is recommended.
+
+## Revision and proof
+
+Frozen revision `aaf3a4509321b4720935852068b1f99b801dd9f9+sha256:d08ef5b15b1127e662fc2a591e7dd7f32180ffb31bd627fc123569dfecf75b9b`. All 40 supplied page/model/HTML/official PNG/source DOM/nodes/meta/full-image hashes verified before capture; exact values in local `verified-hashes.json`. New capture hashes in verdict JSON. Sources and generated deliverables remained untouched; local evidence only. Index check returned no staged files.
+
+Evidence directory: `/home/z/vibe/autofe-worktrees/62-all-sites/candidate-experience-36kr-news-search-d08ef5b1/.scratch/62-all-sites/candidate-experience/`.
+
+## Limits / next coverage
+
+18 image reads used: five four-width overviews, five desktop/mobile top crops, five desktop/mobile bottom crops, one source overview montage, two native source tops. Middle regions were seen at whole-height overview resolution, not exhaustive readable overlapping native strips. 1920/1440 were visually inspected at overview resolution, not full native text resolution. Consequently full four-width readable whole-height AC remains unmet, including Taobao accepted-reference regression; use saved captures for a bounded continuation. Full source DOM owner/action parity and every media attribution were not independently proved; anchors/default fields were inspected locally but no backend/navigation submission was exercised. Numeric contrast ratios were not exhaustively independently measured. Source lazy placeholders visible in 36kr original captures are capture limits, not invented missing images. No Microsoft table page assigned. Final source-owner trace, integrated gates, other seven-reference coverage and human acceptance remain outside this frozen candidate review.
+
+# Apple / Linear candidate experience review
+
+**Verdict: INCOMPLETE — candidate scope only.** No concrete material visual defect was established in the inspected regions. This is not final source, integration, protected-seven, or milestone acceptance.
+
+## Evidence and actual inspection
+
+Frozen worktree: `/home/z/vibe/autofe-worktrees/62-all-sites/candidate-experience-apple-linear-products-d08ef5b1`.
+Candidate: `aaf3a4509321b4720935852068b1f99b801dd9f9+sha256:d08ef5b15b1127e662fc2a591e7dd7f32180ffb31bd627fc123569dfecf75b9b`.
+All 42 supplied page/model/render/source-file hashes for this six-page scope matched their packet. Inspectable proof lives under `.scratch/62-all-sites/candidate-experience/`: `verified-hashes.json`, `geometry.json`, `target-membership.json`, the 24 full-height PNGs, six four-width overview sheets, six detail sheets and six source overview sheets. The reviewer actually read all 18 sheets, not just their dimensions. Detail sheets contain desktop and mobile top/middle/end native crops; they are **samples**, not continuous readable coverage. Render hashes are recorded in geometry JSON.
+
+| Page | Full-height captures: 2560 / 1920 / 1440 / 390 | Actual visual modalities | Verdict |
+|---|---|---|---|
+| apple-com-cn/iphone-17 | 12270 / 12270 / 11874 / 13278px | four-width overview; desktop/mobile top, middle, end; source overview | INCOMPLETE |
+| apple-com/iphone-16 | 7475 / 7115 / 6845 / 7270px | same | INCOMPLETE |
+| apple-com/macbook-air | 12093 / 12093 / 12093 / 19993px | same | INCOMPLETE |
+| linear-app/home | 5182 / 5182 / 5182 / 3819px | same | INCOMPLETE |
+| apple-com/home | 6049 / 6049 / 6022 / 10559px | same; protected reference / identity | INCOMPLETE |
+| apple-com/ipad-air | 11662 / 11662 / 11662 / 12119px | same; protected reference | INCOMPLETE |
+
+## Findings
+
+- All 24 views have document scroll width equal to viewport width. All 75 image elements per width loaded and their measured displayed width/height did not exceed natural dimensions. These measurements support loading/upscale checks, not experience PASS.
+- Apple product pages retain recognisable product imagery, readable sampled heading/body hierarchy, grouped purchase actions and orderly end sections. The iPhone 16 configuration steps are sequential rather than forced into unrelated parallel columns. Narrow comparison tables remain locally horizontally scrollable rather than making the entire document overflow.
+- Apple home identity is 18px at the marketing content edge (desktop x=440 at 2560). Inspected marketing panels retain paired light/dark surfaces and Learn more / Buy emphasis in the same row. No redesign is recommended merely because panels are centred, black, full-bleed-capable, or contain original whitespace. Accepted iPad imagery and structure should likewise be preserved.
+- Linear’s sampled lead is subordinate to its H1, screenshot panels retain their dark captured imagery, and mobile text/action regions remain readable. Screenshot UI details are tiny on mobile, but these are illustrations rather than demonstrated interactive controls; source-derived illustration text cannot be treated as new page facts.
+- Source full images visibly contain lazy/unpainted regions on Apple pages. Those missing pixels cannot establish that the loaded candidate images or content are invented. Linear source screenshot uses a dark original theme, while the candidate uses light shared surfaces around dark illustrations; variation alone is not a demonstrated criterion violation.
+- Resolved source-href membership supports all Linear and iPad links and most other targets. Membership is deliberately **not owner proof**. Remaining literal differences include valid generated intra-page targets on iPhone 17 and iPhone 16 (both destination IDs exist), Apple root identity, and the MacBook Apple Card slash variant. None is labelled a proven wrong-target defect. No global fallback was introduced.
+
+## Unmet acceptance and continuation
+
+1. The 18-image limit permits complete whole-height overviews plus sampled readable crops, but does **not** establish continuous native-readable whole-height review. In particular, 1920/1440 have overview-only visual coverage, and long MacBook/iPhone/iPad mobile middle regions remain unexamined at readable scale. Continue at the exact same hashes with overlapping native crops; no repeat capture is necessary if render/environment validity is retained.
+2. Source overview images are too downsampled to substantiate every source glyph, action order/owner, crop boundary, utility/footer omission or fact. Actual source DOM/action-owner matching and source-width readable crops remain necessary. Source-footer presence versus curated footer scope was not independently resolved; do not invent a missing-footer bug from this uncertainty.
+3. Contrast was visually assessed only in sampled regions; no complete numerical contrast or target-size audit was run. Actual focus/keyboard/scroll gestures, backend purchase/auth/video, external target availability, and lazy-source completion were not exercised.
+4. Protected-reference sampled appearance is reassuring, not a full baseline-to-final regression verdict. Full closed-grammar/shared-axis implementation inspection and separate owner-trace implementation are outside this experiential result. The root’s 131 unverified metadata associations are not counted as product bugs.
+
+**Next useful action:** bounded continuation reading continuous native strips at these saved hashes, prioritising MacBook mobile, product middle sections, four-width readable action/utility/footer coverage, then source-aware owner/crop checks. No source repair is warranted from this report alone.
+
+# Cloud/business candidate experience review
+
+**Verdict: FAIL for this frozen candidate experience scope; remaining coverage INCOMPLETE.** This is not final source/integration or milestone acceptance. No implementation was changed.
+
+## Material finding
+
+**CB-1 — Aliyun ECS explanatory diagram is unreadable at 390px without a designed readable alternative.**
+- Criterion: readable media/crop content and meaningful end-to-end product experience.
+- Location: `m1/curated/renders/aliyun-com-product-ecs.html`, `img[src="../assets/aliyun-ecs-hero.png"]` (actual asset `m1/curated/assets/aliyun-ecs-hero.png`), root explanatory media between purchase CTA and benefits.
+- Reproduction: open frozen page at 390px. The 4640×2448 text-rich specification/operations/billing/core-technology diagram renders at **357.984×188.875px**, approximately 7.7% of its natural width. Most scenario/specification text is visually illegible. The image has no enclosing link; the UI supplies neither an enlargement action nor the diagram's full text as an adjacent readable equivalent.
+- Evidence: `candidate-experience/ecs-readable-probe.png`, `last-probes.png`, `probes.json`; actual source comparison `aliyun-com-product-ecs-source.png` shows the same diagram in the product-introduction section. Natural/full-size content is preserved, but readable access at this width is not. This is not an upscale or lazy-load failure.
+- Repair seam: shared media treatment/accessible readable access; preserve image provenance/content and closed grammar. Do not invent diagram text or alter source facts. Recheck narrow media after any authorized repair.
+
+## Page-level results
+
+| Page | Verdict | Actually inspected |
+|---|---|---|
+| Aliyun home | INCOMPLETE | All four whole-height overviews; all-height 2560 center-strip contact sheet; native 390 samples at y0/3800/8500; source whole-height overview |
+| Aliyun ECS | FAIL | All four whole heights; readable desktop strips, native narrow screenshot; source overview; diagram geometry and bounded comparison scroller |
+| AWS EC2 on-demand | INCOMPLETE | All four whole-height overviews; desktop all-height strips; source overview; narrow table scrolled to price side |
+| Stripe pricing | INCOMPLETE | All four whole-height overviews; desktop all-height strip contact sheet; native mobile y0/7000/14500 samples; source overview and product CTA DOM ownership samples |
+| Grafana Stats | INCOMPLETE | All four whole heights, readable desktop/mobile content and source screenshot; source plugin/backend limitations prohibit complete dashboard-function acceptance |
+
+All supplied model/HTML/ordinary PNG/source DOM/nodes/meta/full-image hashes matched before capture. Exact hashes are in `verified-hashes.json`; fresh render screenshot hashes are in `render-hashes.json`. Candidate origin is `aaf3a4509321b4720935852068b1f99b801dd9f9`, with supplied frozen candidate signature `d08ef5b15b1127e662fc2a591e7dd7f32180ffb31bd627fc123569dfecf75b9b` (HEAD alone is not the reviewed bytes).
+
+## Measured and visual observations
+
+- Twenty actual local Chromium whole-height renders at 2560/1920/1440/390; source viewport is 1440 for all five. Heights respectively: Aliyun home 6786/6613/6483/11955; ECS 1586/1586/1586/1278; AWS 3517/3517/3517/3580; Stripe 16904/16904/16904/22254; Grafana 1000/1000/1000/1037. For short pages 1000 is the capture viewport floor, not an assertion of content height.
+- No page-level horizontal overflow; all nine images loaded at every width and none exceeded natural dimensions. AWS narrow tables use 358px windows over 640px content, and price columns are reachable at scrollLeft282. ECS comparison uses a 356px window over894px content. Their clipped offscreen columns are intentional bounded table scrolling, not lost columns.
+- Observed foreground/background combinations remain readable; headings, cards and facts have visible hierarchy in sampled native views. Large desktop margins are not classified as defects. Aliyun home groups related product controls together and maintains natural image proportions.
+- Stripe preserves a very long linear catalog. Product-ending “立即开始” controls visually sit close to following product headings in mobile samples; DOM inspection confirms they belong to the preceding product. Consider stronger shared inter-product boundaries as **nonblocking polish**, not a proved wrong-target defect. Diagram readability above is the only material product defect asserted here.
+- Grafana's source image itself shows “Loading plugin panel…” and empty statistic panels. Candidate retains panel names rather than fabricating values/charts. Missing live metrics are a capture/backend limitation, not evidence of a candidate data-loss repair requirement.
+
+## Limits and continuation
+
+Exactly **18 image reads** were used, two sequential browser jobs, no child agents. All page-width whole heights were captured and overviewed, but long Aliyun/Stripe contact sheets necessarily downsample readable text. Native crops do **not** cover every intermediate mobile region or every pixel at1920/1440. Accordingly these scenarios are not full readable whole-height experience PASS. Full owner-aware target validation, source glyph equivalence, exhaustive source-fact/action preservation and precise contrast ratios remain unverified here. A raw exact-href-occurrence exploratory probe is retained, explicitly **not** used for target/owner acceptance or fallback; URL presence cannot prove source ownership.
+
+No remote backend/authentication/payment/dashboard interaction was exercised. Source lazy-loading/partial capture restrict comparison; source overviews are not full readable source DOM audits. The seven protected references and Microsoft table links are outside this assigned cohort. The131 mappings remain unknown metadata associations, not131 proven bad targets. No final milestone claim is made.
+
+Next review should address CB-1 and use readable overlapping native strips for the remaining long-page widths, preserving these hash-bound captures for unaffected revision reuse. Source/renderer/model/Docs repairs require the designated integrator, not this reviewer.
+
+Evidence directory: `/home/z/vibe/autofe-worktrees/62-all-sites/candidate-experience-cloud-business-d08ef5b1/.scratch/62-all-sites/candidate-experience/`. Control: local `.scratch/62-all-sites/owner-trace/experience-verdict.json`. No source edits, staging, commits, dependency changes or shared-root writes.
+
+# Huawei commerce — frozen candidate experience review
+
+**Verdict: FAIL (candidate experience only).** Two concrete defects affect the search family. No repairs made. This is not final source-owner, integration, 42-page milestone or human acceptance.
+
+Candidate: `aaf3a4509321b4720935852068b1f99b801dd9f9+sha256:d08ef5b15b1127e662fc2a591e7dd7f32180ffb31bd627fc123569dfecf75b9b`.
+Evidence directory: `.scratch/62-all-sites/candidate-experience/` in the assigned frozen worktree. All 28 packet model/HTML/official-PNG/source hashes verified before capture. Exact values: `verified-hashes.json`; fresh screenshot hashes: `render-hashes.json`.
+
+## Material findings
+
+### HUA-1 — search submission disappears (both search pages, all four widths)
+- **Criterion:** preserve captured actions; owning layout-axes §6.1 explicitly requires a submit control when the searchable composite declares submission. No backend endpoint invention is required or authorized.
+- **Location:** `m1/curated/huawei-cn/{search-laptop,search-phone}.json`, `query.submit._action`; generated HTML `.g-query [data-model-owner="query"]` (body at line 386).
+- **Reproduction:** open either frozen HTML at 2560/1920/1440/390. The keyword input is present, but there is no search-submit glyph, label, link-like control or child next to it. `.g-query` contains only an input span. This is visible in both complete overviews and the native phone 1440 capture.
+- **Source:** captured DOM `#b-search` has adjacent `a.btn-b-search > span.iconfont.icon-search`; both original source screenshots visibly show a magnifying-glass affordance. Both models retain a `submit` verb with intentionally no fabricated endpoint. `action-source-evidence.json` preserves source input-parent markup and actual output query markup.
+- **Expected:** preserve a visible, discoverable submission affordance alongside the field using existing shared semantics, without claiming backend operation or inventing a URL.
+- **Seam:** shared axis/render consumption; writer must investigate exact cause. Reviewer has no repair authority.
+
+### HUA-2 — phone search breaks a single ordered result list into two visual grammars
+- **Criterion:** coherent page-level alignment, image/title/action grouping and readable ordered search hierarchy.
+- **Location:** `huawei-cn/search-phone`, `results._lines[2]`, `[5]`, `[6]` versus their adjacent siblings; actual desktop and mobile output.
+- **Reproduction:** scan the ten results at any assigned width. Ordinary results begin at the left reading edge; the license result and both stand results become isolated centered image/title/summary/source blocks across the same available width. Readers must repeatedly jump from the left edge to the center and back; these three results read as separate promos rather than equivalent search hits.
+- **Evidence:** `huawei-cn-search-phone-1440.png`, `huawei-cn-search-phone-overview.png` and `huawei-cn-search-phone-detail.png`. At 1440 the normal title starts near x104 while centered image result titles sit near x630; this is not merely centered outer whitespace. The captured source screenshot uses one consistent left-aligned result column, with thumbnails beside their corresponding summary. The model explicitly describes all ten as an ordered heterogeneous `_lines` sequence, not interchangeable promotional products.
+- **Expected:** one stable search-result reading edge/grouping, retaining the images, all summaries, exact targets, duplicate stand names and source actions in order. Narrow stacking is acceptable; alternating unrelated frames is not.
+- **Seam:** shared ordered-record/media layout. Do not remove media or manufacture presentation metadata.
+
+## Page coverage and verdicts
+
+| Page | Actual rendered experience | Source modality | Page verdict |
+|---|---|---|---|
+| `home` | Four whole-height views, desktop readable capture and mobile overview; coherent product/news/business/footer regions. No discovered visual blocker. | Complete source screenshot + DOM and model inspection. | **INCOMPLETE** full exact action/source-owner acceptance; visual inspection has no blocker. |
+| `consumer-phones` | Four whole-height views; desktop product sections and three overlapping near-native mobile strip sheets cover all 22,147px including footer. Product images/price/title/paired actions remain readable; buy emphasis is clear. | Source screenshot inspected but mostly blank from lazy capture; DOM and local assets load in candidate. | **INCOMPLETE** full visual-source equivalence and all-owner action proof. |
+| `search-laptop` | Four whole-height views, readable desktop strips and mobile overview through pagination/footer. Input/filter/results are legible; thumbnail placement beneath source text is less compact than source but not separately escalated. | Complete source screenshot + DOM/model query inspection. | **FAIL**, HUA-1. |
+| `search-phone` | Four whole-height views, native desktop capture and readable detail/overview including mobile footer. | Complete source screenshot + DOM/model query/result inspection. | **FAIL**, HUA-1 and HUA-2. |
+
+All desktop views preserve the same 2084 / 7556 / 3233 / 2486px heights respectively at 2560, 1920 and 1440; 390 heights are 4669 / 22147 / 5151 / 3538px. Centered whitespace at large widths is not itself a defect. Complete captures, not official 1280 PNGs, support the four-width inspection.
+
+## Checks actually performed
+- Two bounded Chromium jobs; 16 fresh complete-height screenshots; **18 image reads** total: four all-width overviews, four source views, three desktop detail sheets, two consumer desktop sheets, three overlapping consumer mobile sheets, native home/phone-search 1440 captures.
+- `geometry.json`: document scroll width equals viewport in all 16 cases. All candidate media loaded: 6 home, 52 consumer, 7 laptop-search, 3 phone-search images per width. No image exceeds intrinsic dimensions on either axis.
+- Visual foreground/background inspection: black body copy and white dark-CTA text remain legible; red/blue action distinction remains visible. No formal exhaustive contrast-ratio certification claimed.
+- `action-source-evidence.json`: recorded all actual rendered anchor labels/targets and captured source anchors/input parents. Query disappearance is directly substantiated. Counts alone are not lost-action proof; hidden/duplicate source navigation differs, so no false target-count finding is made.
+- Source/model/render artifacts unchanged. Git index empty. Scripts are local review probes, not regression tests or implementation.
+
+## Limits / final-delta reuse
+- These hashes bind this immutable candidate only. New source/render bytes invalidate affected evidence; final integrator must rerun affected width/page checks and obtain independent acceptance.
+- Exact owner-associated target acceptance for every action was not independently completed in this visual slice. The separate 131 unverified mappings are **not** 131 proven bad product URLs. No global URL coincidence fallback used.
+- Consumer source full image cannot prove below-fold visual equivalence: most source regions are blank. Source DOM/available assets support candidate loading, not unseen original pixels. Desktop detail sheets centrally crop 1120px; their cut edges are evidence-crop boundaries, not UI clipping. Full overviews and untouched captures cover whole extents.
+- No real search submission, filtering backend, pagination service, commerce checkout or authentication tested. Captured glyph identity establishes the missing search affordance; no claim of private iconfont runtime correctness elsewhere.
+- Seven protected references, Apple/Taobao identity work and Microsoft tables are outside this four-page assignment. No changes to them or final milestone verdict implied.
+
+# Candidate experience: FAIL (not final milestone acceptance)
+
+Frozen candidate `aaf3a4509321b4720935852068b1f99b801dd9f9+sha256:d08ef5b15b1127e662fc2a591e7dd7f32180ffb31bd627fc123569dfecf75b9b`.
+
+## Material finding
+
+**AUTH-ORDER — shared renderer changes captured credential-action sequence on all three login pages.**
+
+- Criterion: preserve captured actions/order; coherent form/action hierarchy.
+- Pages: `github-com/login`, `stripe-dashboard/login`, `xiaomi-account/login`, reproduced at 2560/1920/1440/390.
+- Actual: credential fields → alternative-provider login group → credential submit. Xiaomi additionally inserts its agreement-document action group before credential submit. On mobile, Xiaomi’s submit is beneath third-party login and agreement links, rather than directly following credentials/consent.
+- Expected: retain source credential submit before alternative providers, while preserving all existing actions, targets and their appropriate groups. Do not invent backend behavior.
+- Source evidence: GitHub captured DOM’s `input[type=submit][name=commit][value="Sign in"]` precedes Google/Apple; Stripe captured login button precedes its provider divider/Google/SSO; Xiaomi captured login button precedes `.mi-sns-login` and its “其他方式登录” heading. Source screenshots in seven `*-sheet.png` files independently show this sequence. Models likewise declare `login.submit` before `login.alternatives`.
+- Location/seam: `m1/render.mjs:635–647, 700–701`: named-child body is emitted before the aggregated action row. Generated HTML owners `login.alternatives` versus `login.submit`; Xiaomi also `login.agreement-links`. This is a shared axis/rendering seam, not permission to rewrite captured models or add site templates.
+- Repro: open the frozen generated HTML at each width; inspect fields, alternatives and submit order. Native evidence `auth-native.png` plus all four width sheets. Native montage intentionally crops some right edges: that crop is not product overflow.
+
+## Actual review coverage
+
+One browser job produced **28 full-height captures**, with four widths per page. All supplied source/model/HTML/official-PNG hashes verified. **18 image reads** were used: seven complete four-width/source overviews, native desktop top/bottom/middle strips for read-home; desktop top/bottom and mobile top for video; desktop reference top for Bilibili; desktop top/bottom for Airbnb; native three-auth montage. All pages’ full-height extent was visually inspected, but not every long mobile/source region was read at native text scale.
+
+| Page | Verdict | Actual experience observed |
+|---|---|---|
+| bilibili-com/read-home | INCOMPLETE | Whole-height four-width overview; complete overlapping desktop native strips; mobile native first 1800px. Clear article separators, readable desktop prose measure, correctly downscaled thumbnails; no image loading/upscale failure. Remaining mobile native detail and exhaustive owner-target evidence unverified. |
+| bilibili-com/video-bv1gj411x7h7 | INCOMPLETE | Whole-height four-width overview, native desktop top/bottom and mobile top. Poster, compact stream, labeled interaction metrics, uploader and recommendations coherent; source expired-video placeholders are captured content, not broken candidate images. Middle/source-native ownership detail not exhaustive; playback unavailable. |
+| github-com/login | FAIL | All four full-height views plus readable native auth view/source screenshot; labels/password, compact footer, contrast and field edges coherent. AUTH-ORDER. |
+| stripe-dashboard/login | FAIL | All four full-height views plus readable native auth/source view; form widths and consent surface readable. AUTH-ORDER. Source decorative rainbow is not treated as mandatory model content. |
+| xiaomi-account/login | FAIL | All four full-height views plus readable native auth/source view; agreement wraps on mobile, no page overflow, clear labels. AUTH-ORDER. Registration remains captured targetless operation; no invented URL requested. |
+| bilibili-com/home (protected reference) | INCOMPLETE | Four-width whole-height/source overview and native desktop near-complete page. Banner/grid coherent; loaded media, no upscaling; mobile stacks cleanly. Source lower lazy skeletons disclose capture limitation. No redesign recommended; full per-owner target verification still pending. |
+| airbnb-com/room-28871 (protected reference) | INCOMPLETE | Four-width whole-height/source overview and overlapping native desktop strips. Stable photo/details/task frame; mobile single-column flow and bounded score-table scrolling. Source full image has large capture gaps; this does not prove candidate omissions. No redesign recommended; exact owner/source action acceptance still pending. |
+
+## Quantitative evidence (not visual PASS)
+
+`geometry.json`: 28/28 no document horizontal overflow; 0 images with zero natural width; 0 displayed images exceeding natural width. Desktop heights: read-home 4663, video 3404, Bilibili home 1630, Airbnb 2530px; mobile heights respectively 8492/7018/4677/3739px. Auth screenshots have a 1000px viewport-height floor, not 1000px of authored content or an asserted excessive footer gap.
+
+`target-presence.json`: all 113 declared target-bearing model actions are represented in generated HTML. Literal source-string presence is **not ownership proof**: relative/absolute/protocol-relative encoding differences yield false misses. Those misses are not reported as wrong targets and do not replace the separate strict owner continuation. No external target navigation or authenticated operation was performed.
+
+## Evidence / residual limits
+
+Local evidence directory: `.scratch/62-all-sites/candidate-experience/` (`capture.cjs`, `geometry.json`, `verified-hashes.json`, `target-presence.json`, 28 screenshots and review sheets/crops). Verdict control: `.scratch/62-all-sites/owner-trace/experience-verdict.json`.
+
+No source/model/renderer/owning-Docs modifications; only isolated review records/captures. No staged files. Protected references have no proven new visual regression from this check, but are not promoted to full PASS. Remaining limits: exhaustive native-scale mobile/source inspection; independent per-owner exact-target acceptance; captured iconfont/source-glyph interpretation; backend auth/playback/cookie/pagination; final combined source/integration and human acceptance. The 131 unresolved mappings are metadata uncertainty, not 131 demonstrated product bugs.
+
+# Independent candidate experience: mi-commerce
+
+**Verdict: FAIL (candidate scope only); full acceptance also has incomplete coverage.** No source, model, owning-doc, or generated deliverable changes. Frozen inputs verified against all 40 supplied hashes. Evidence directory: `/home/z/vibe/autofe-worktrees/62-all-sites/candidate-experience-mi-commerce-d08ef5b1/.scratch/62-all-sites/candidate-experience/`.
+
+## Material finding
+
+**MI-UX-1 — footer density / duplicated legal navigation (four non-reference pages).** On `mi-com/home`, `search-earbuds`, `search-phone`, and `shop-category-list`, the footer first prints the legal/navigation text in paragraphs and then repeats its labels in a large undifferentiated chip cloud, mixing product categories, service links, corporate links and legal identifiers. Reproduction: open the frozen HTML at 390px, scroll to the grey footer. `footer-native.png` shows search-phone at native scale: the same 小米商城/小米澎湃OS/privacy/navigation and registration identifiers appear both as paragraph text and again as pills. Whole-height overviews show this same shape on the other three pages. This is not a whitespace-only complaint: repeated legal identifiers consume multiple additional mobile screens, and service/corporate/legal ownership becomes an unstructured cloud rather than compact utility/footer navigation. Violated criterion: compact utilities/footer and coherent readable density/region hierarchy. Source full images show grouped service/corporate columns and a separate compact legal region. Likely seam: shared consumption of footer facts/actions; preserve every captured fact, exact target and order, preferably associate already declared actions inline or group by existing source ownership without inventing content. Recheck four widths after repair. No source-target URL defect is claimed by this finding.
+
+## Per-page checks
+
+| Page | Verdict | Actual checked modalities | Heights at 2560/1920/1440/390 |
+|---|---|---|---|
+| mi-com/home | FAIL | four-width full-height overview; native 2560 content-frame and 390 top; source full overview; model provenance | 4813/4813/4813/3189 |
+| mi-com/search-earbuds | FAIL | four-width full-height overview; native 2560/390 top; source full overview | 4312/4312/4312/13566 |
+| mi-com/search-phone | FAIL | four-width full-height overview; native 2560/390 top and footer; source full overview; query provenance | 4461/4461/4461/13395 |
+| mi-com/shop-category-list | FAIL | four-width full-height overview; native 2560/390 top; source full overview | 2548/2548/2548/5848 |
+| mi-com/product-detail-mi15 | INCOMPLETE | protected reference: four-width full-height overview; native 2560/390 top; native 390 middle; source full overview and native source top | 26757/26757/26757/9583 |
+
+Good observed qualities: coherent centered desktop content frame, readable product-card names/prices at native crop scale, intact natural image ratios, visually paired add-to-cart/like controls on the reference, distinguishable white/grey surfaces and dark body text. No horizontal overflow, unloaded image or image upscale detected in any of the 20 local browser scenes. Centered whitespace is not treated as a defect. Native product top comparison shows preserved title/price/coupon/delivery/buy facts; no reference redesign is requested.
+
+The search-phone input displaying `耳机` is **not** raised as an invented defect: its model explicitly binds that placeholder to captured DOM, while request keyword is not asserted as an input value. Home banner embedded carousel arrows/text are captured pixels with no DOM-backed actions; do not invent their targets.
+
+## Proof and limits
+
+- `verified-hashes.json`: actual SHA-256 values for supplied models, HTML, official PNG, source DOM/meta/nodes/full images; all matched packet.
+- `geometry.json`: fresh four-width scene geometry, loaded/natural/rendered image dimensions, actual anchor text/href inventory and screenshot SHA-256. Fresh `*-2560.png`, `*-1920.png`, `*-1440.png`, `*-390.png` are complete screenshots, not old 1280 evidence.
+- One sequential browser job; one page active at a time; no external requests intentionally executed, installations, repairs, staging or root/shared mutations. Eighteen image reads total: five four-width overview sheets, five native top sheets, five source overviews, native footer, native source reference top and native reference middle.
+- **Incomplete:** long-page overviews are not readable at every pixel. All regions were viewed in overview, but readable overlapping native strips through every page/width were not completed within the image-read cap. In particular the 26,757px reference and ~13,500px mobile search pages need further strip coverage. Native 1920/1440 full-height readability is not independently established by matching geometry. This prevents a full candidate PASS irrespective of footer repair.
+- Captured home source has lazy-load blank regions; reference full source has extensive unloaded image placeholders. The rendered reference contains associated marketing assets not readable in its source full overview; those assets' full provenance was not re-audited. Bitmap marketing paragraphs shrink substantially on mobile; distinguish captured-image readability limits from missing DOM facts, and do not transcribe invented source text.
+- Anchors inventoried, not exhaustive source-owner associations or actual destination/backend behavior verified. No authentication, cart operation, filtering, pagination, source glyph interaction or backend execution claim. The separate 131 unverified owner mappings are not counted as product bugs. Final source/integration and 42-page milestone acceptance remain pending.
+
+## Acceptance report
+
+```acceptance-report
+{
+  "criteriaSatisfied": [{"id":"criterion-1","status":"satisfied","evidence":"Independent scoped FAIL/INCOMPLETE findings with page modalities, concrete footer reproduction, verified hashes and explicit remaining coverage."}],
+  "changedFiles": [".scratch/62-all-sites/candidate-experience/review.mjs", ".scratch/62-all-sites/candidate-experience/verified-hashes.json", ".scratch/62-all-sites/candidate-experience/geometry.json", ".scratch/62-all-sites/owner-trace/experience-verdict.json", ".scratch/62-all-sites/candidate-experience/ticket.md", "local candidate-experience screenshot and derived-image evidence", "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/d50e4f89-8726-45e4-b4ff-c78d2a1274c7/experience-mi-commerce.md"],
+  "testsAddedOrUpdated": [],
+  "commandsRun": [{"command":"node .scratch/62-all-sites/candidate-experience/review.mjs","result":"passed","summary":"40 input hashes matched; 20 fresh full-height scenes captured with one sequential browser."},{"command":"python PIL local evidence generation","result":"passed","summary":"Overview/source/native crops generated only in isolated evidence directory."},{"command":"git diff --cached --name-only","result":"passed","summary":"Empty index; no staged files."}],
+  "validationOutput": ["20/20 scenes: no horizontal overflow, no unloaded images, no image upscale detected.","18 actual image reads; four-width whole-height overviews plus specified native/source crops.","Experience verdict FAIL; complete native-strip acceptance remains INCOMPLETE."],
+  "residualRisks": ["Full native readable strip coverage at every width incomplete.","Source lazy capture and marketing-asset provenance limits.","Backend and exhaustive source-owner targets unverified; final integration pending."],
+  "noStagedFiles": true,
+  "diffSummary": "Evidence only; source and generated candidate untouched.",
+  "reviewFindings": ["MI-UX-1: repeated legal/navigation text plus undifferentiated footer pills harms compact utility hierarchy on four non-reference pages.","Protected product-detail reference: INCOMPLETE, no repair authorization exercised."],
+  "manualNotes": "Not final milestone acceptance. Reuse only against unchanged recorded hashes."
+}
+```
+
+# Candidate experience review — FAIL
+
+Exact frozen candidate: `aaf3a4509321b4720935852068b1f99b801dd9f9+sha256:d08ef5b15b1127e662fc2a591e7dd7f32180ffb31bd627fc123569dfecf75b9b`. This is candidate experience only, not final source/oracle/integration or milestone acceptance. Source/models/renderers/owning docs untouched.
+
+## Material findings
+
+1. **Stripe payments: hero CTA escapes the content frame at desktop widths.** Criterion: coherent page-level alignment and image/title/action grouping. `m1/curated/renders/stripe-docs-payments.html`, anchor “查找您的用例”. At 2560 the main frame starts x640 (content x664), but the CTA sits x24, y438.67, width132. At1920 main x320 and1440 main x80, while CTA remains x24. The image/intro are centered in the main frame; the CTA is detached at the far viewport edge. At390 it returns to the content edge. Reproduction: open frozen HTML at these widths; inspect anchor rectangle or overview PNG. Source screenshot places CTA next to its introductory copy, within the article. Expected: keep declared exact target `https://docs.stripe.com/payments/use-cases/get-started`, but place action in its hero/content frame across all widths. Likely seam: shared renderer/layout, not model target repair. Proof: `targets.json`, `stripe-docs-payments-overview.png`, `stripe-docs-payments-source.png`. FAIL.
+
+2. **Microsoft naming explanation loses source reading order and readable enumeration.** Criterion: preserve captured order and readable technical content/image grouping. `m1/curated/renders/learn-microsoft-vm-sizes.html`, “Name structure breakdown”. Source displays introduction → DCads_v5 diagram → five separately numbered explanations → Note. Candidate displays introduction → one combined paragraph containing “1 Most families … 2 Most subfamilies … 3 If … 4 There … 5 Version …” → diagram → Note. The explanatory numbered references are harder to scan and precede the diagram they explain, at all four widths. Reproduction: compare `learn-source-native.png` with `learn-microsoft-vm-sizes-strips0.png` and mobile strips. Expected: retain source diagram-before-explanation order and readable numbered explanation units without inventing facts. Likely seam: source-backed model/renderer content sequencing; integrator must determine authorized fix. FAIL.
+
+## Per-page coverage
+
+| Page | Candidate verdict | Actual visual modalities |
+|---|---|---|
+| gov-uk/ni-rates-letters | PASS (candidate displayed scope) | Four-width complete-height overview; readable desktop native frame and mobile overview; original source whole-height screenshot comparison |
+| gov-uk/register-birth-abroad | PASS (candidate displayed scope) | Four-width complete-height overview; readable desktop frame/mobile; original source whole-height screenshot comparison |
+| learn-microsoft/vm-sizes | FAIL | Four-width complete-height overview; overlapping readable2560 content strips; overlapping390 strips at left and right table scroll positions; source overview plus native naming crop |
+| stripe-docs/payments | FAIL | Four-width complete-height overview; readable2560 content crop/mobile overview; captured1440 source screenshot |
+
+All16 live local captures at2560/1920/1440/390 completed. Desktop heights:2687/1554/8626/1869px respectively;390 heights3313/2309/11005/3058px. All viewport scrollWidths equal viewport width. Bounded640px mobile tables scroll internally; Microsoft right-column links remain readable after scrolling. Eight Microsoft tables retain **127 ordered labels/targets**, exact after resolving source relative hrefs against the captured page URL including its query. Raw relative-vs-absolute comparison is false, not a defect; normalized comparison is true. No image-loading failures or enlargement in either image-bearing page at any width. Three desktop widths share identical bounded frame/content geometry; native2560 detail and complete overviews cover their stable content, rather than geometry alone supplying a verdict. Foreground/link contrast was visually checked; no comprehensive numerical WCAG audit claimed.
+
+GOV content has clear headings, compact action/topic tails and readable tables. Centered whitespace alone is not a defect. Source global navigation/cookie/footer chrome is not recreated in these curated content views; no new model omission audit or global redesign is asserted by this review. Microsoft tables themselves are legible and actionable, despite the naming-explanation defect. No private source glyph defect identified in these four pages.
+
+## Evidence and limits
+
+Evidence directory: `.scratch/62-all-sites/candidate-experience/` in the assigned isolated worktree. `verified-hashes.json` verifies every supplied model/HTML/PNG/source DOM/nodes/meta/full-image hash; `geometry.json` binds captures to pages/widths; `targets.json` records loading/upscale/frame/scroll geometry and ordered source/render table targets; `render-hashes.json` hashes new images. Two foreground browser jobs, one active page each,17 image reads. One native birth crop was initially misframed; corrected `gov-uk-register-birth-abroad-frame.png` is authoritative, not the discarded `-native.png` crop.
+
+Limits: Stripe source full.png captures only900px height; below-fold source visual fidelity cannot be established from that screenshot. Source DOM/nodes remain available for separate exact owner/source acceptance. Live external destinations, authentication, playback, filtering backend and remote availability not exercised. No claim that131 unverified owner mappings are wrong URLs. Seven protected reference pages are outside this exclusive assignment; no modifications to them. Final source/oracle and combined integration acceptance remain pending. Review supports version-bound delta reuse only for unchanged bytes.
+
+# SSPAI frozen candidate experience — FAIL
+
+Scope only: six assigned pages in candidate `aaf3a4509321b4720935852068b1f99b801dd9f9+sha256:d08ef5b15b1127e662fc2a591e7dd7f32180ffb31bd627fc123569dfecf75b9b`. This is not final technical/source/integration or milestone acceptance. No source, models, owning Docs, shared corpus, staged files or original dirt changed.
+
+## Material findings
+
+1. **Author identity/action escape their page frame** — `sspai-com/u-jtc092al`, owner `_lines[0]`, generated `article.node.w-bleed.banner`. At 2560 the root title and subsequent sections start at x=664, but the identity article occupies x=0..2560, heading geometry starts x=24, avatar is x=1230, and the follow action is at the far left of the viewport in the overview, disconnected from the centered author. Same desktop pattern at 1920/1440. This is not an objection to centered whitespace/full-bleed alone: the action and identity facts have conflicting axes and no coherent local grouping. Source capture presents author and follow in one compact identity region. Reproduce by opening frozen author HTML at desktop width. Shared frame/media-classification seam; preserve the captured targetless follow action rather than invent a URL.
+
+2. **Homepage feed has oversized mostly-empty bordered rows** — `sspai-com/home`, `feed._items`, especially first three image rows. At 2560 the first content article is 1206px wide and 261.58px high, with a 228×172 thumbnail below the title at x=677; almost 1000px of the row to its right is empty. The following two image rows repeat this. Later text-only cards retain similarly broad shells around short metadata. The visible result is a stretched vertical feed of empty boxes, not a compact editorial list; source capture pairs title/metadata and thumbnail across compact rows. This violates explicit bounded-frame/density guidance, not a generic dislike of whitespace. Reproduce at 2560/1920/1440, y≈1270–3800. Shared collection/layout seam; keep article order, authors, title targets and natural image limits intact.
+
+3. **Instructional code images become illegibly small in desktop side-by-side pairs** — `sspai-com/post-102392`, sections “以「反色」方式进行适配” and “以「替换」方式进行适配”. The 679×97 source-derived code image is rendered 331.4×47.3 at desktop y=1473; the second 678×139 code image becomes 331×67.9 at y=1703. The actual viewed native-content capture shows microtext in the code snippets while captions remain readable. Source screenshot places code and output sequentially across the article column. These are instruction/output steps rather than useful horizontal comparison, and shrinking screenshot text destroys their instructional readability. Preserve source pixels and captions/order, but use a readable sequence or an accessible native-resolution viewing path; no new transcript invented from pixels. Shared axis/media seam. Mobile remains small too (no upscale permitted); native asset access/readability remains necessary.
+
+## Page verdict / actual modalities
+
+| Page | Verdict | Four-width whole-height images | Source image comparison | Detail limitation |
+|---|---|---|---|---|
+| home | FAIL | Viewed combined overview at 2560/1920/1440/390; desktop content crop viewed | Full source viewed | Long mobile overview downsampled; not all text/actions independently verified |
+| matrix | INCOMPLETE | Same four widths viewed, desktop crop readable | Full source viewed | No material visual blocker observed; exhaustive source targets/glyph equivalence unproven |
+| post-102392 | FAIL | Same four widths viewed; desktop crop viewed | Full source viewed | Instructional crop readability blocker; exhaustive action association unproven |
+| post-114699 | INCOMPLETE | Same four widths viewed; full desktop content crop viewed | Full source viewed | Long images downsampled; readable native overlapping-strip coverage not completed |
+| u-jtc092al | FAIL | Same four widths viewed; readable desktop crop viewed | Full source viewed; model identity/action inspected | Identity/action frame blocker; exhaustive targets unproven |
+| post-114716 (protected reference) | INCOMPLETE | Same four widths viewed; full desktop content crop viewed | Full source viewed | Very long source/candidate images downsampled; no readable whole-height strip coverage, no newly proven material regression; do not redesign on this report |
+
+18 image reads total: six four-width overviews, six desktop-content crops, six original full source captures. All whole-page pixel captures exist, but tool display rescaling made long-page detail unreadable. **Therefore these reads do not establish complete readable four-width whole-height acceptance.** Partial source captures/lazy blank placeholders are not diagnosed as missing product media. Cropped screenshots prove only captured pixels, not uncaptured remote originals.
+
+## Supporting reproducible evidence
+
+Local directory: `.scratch/62-all-sites/candidate-experience/`.
+- `hash-check.json`: all 42 supplied HTML/PNG/model/source DOM/meta/nodes/full-image hashes independently matched; zero mismatches.
+- `review.cjs`: inspected read-only browser script; one browser, one active page; captures all 24 current file-URL scenarios and logs `geometry.json`. No pipeline/output regeneration.
+- `geometry.json`: at all four widths, all six pages have zero document overflow, zero broken rendered images, zero measured image upscales. Heights in width order 2560/1920/1440/390: home 4691/4691/4691/8667; matrix 2705/2705/2705/7104; 102392 2947/2947/2947/3443; 114699 6589/6589/6589/9828; author 1912/1912/1912/3267; protected 114716 13354/13354/13354/15139.
+- `detail.cjs` / `detail.json`: second and last browser job independently measures implicated homepage row and author identity geometry across all widths.
+- Generated `*-overview.png`, `*-native.png`, and 24 `*-{width}.png` are evidence, not deliverable source changes. `render-hashes.json` binds captures to bytes.
+- `ticket-review.md`: actual-clock baseline/contract and completion record. `git diff --cached --name-only` returned empty; scoped `git diff --check` returned no errors.
+
+## Limits / residual risks
+
+Visual hierarchy, frame, image placement, utility/footer appearance and paired visible surfaces were actually viewed; no exhaustive numeric contrast audit performed. Rendered anchor text/href/model owners were recorded, not independently matched against every source owner. No remote click/navigation, authentication, follow, discussion submission, backend, pagination or playback claims. Source iconfont/private glyph equivalence remains unproven. The 131 pending owner mappings are unknown associations, **not 131 demonstrated bad URLs**. Source binding implementation continues separately; final delta and technical/source acceptance required. Other six protected references are out of this lane. No source repairs authorized or attempted.

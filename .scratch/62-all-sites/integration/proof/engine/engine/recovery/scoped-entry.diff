@@ -1,0 +1,581 @@
+diff --git a/m1/axis.mjs b/m1/axis.mjs
+index b4031d3..3255e21 100644
+--- a/m1/axis.mjs
++++ b/m1/axis.mjs
+@@ -74,7 +74,7 @@ export const NAME_COLUMN_LABEL = '名称';
+ export const columnLabel = (key) => (key === '_name' ? NAME_COLUMN_LABEL : (roleLabel(key) || FIELDS[key]?.label || ''));
+ 
+ // ---- link targets (target validation + `key:` → in-page anchor) ------------
+-export const hasTarget = (a) => Boolean(a?.to) && (/^https?:/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'));
++export const hasTarget = (a) => typeof a?.to === 'string' && (/^https?:\/\//i.test(a.to) || /^mailto:[^\s<>]+@[^\s<>]+$/i.test(a.to) || a.to.startsWith('/') || a.to.startsWith('key:'));
+ // `key:` 目标是页内引用（id 由 `_key` 生成）：降为 `#锚点`，与 fmt() 的 ref 处理一致（父代理裁定 5）
+ export const hrefOf = (to) => (typeof to === 'string' && to.startsWith('key:') ? '#' + to.slice(4).replace(/[^A-Za-z0-9_-]/g, '-') : to);
+ 
+@@ -118,6 +118,10 @@ export function selectForm(items, order) {
+     if (items.every((it) => it._action)) return 'controls';        // 只有短标签的控件集合才走控件条
+     return 'chips';
+   }
++  // Long, unillustrated editorial chapters are a reading sequence, not a grid.
++  // Illustrated feature cards and compact utility definitions retain their established forms.
++  if (items.every((it) => it._title && it._detail && !it._image && !it._price && !it._fields)
++    && items.some((it) => textLenOf(it) > 160)) return 'stack';
+   if (!comparable(items)) return 'stack';
+   // a "product card" needs a name: a price with no named product is not a card (F-030)
+   if (items.some((it) => it._price) && items.every((it) => it._name || it._title)) return 'product-cards';
+@@ -222,7 +226,7 @@ export function compareRowKeys(items) {
+       if (!seen.has(f.key)) { seen.add(f.key); rowKeys.push(f.key); }
+     }
+     for (const c of childrenOf(it)) {
+-      if (isPositionalKey(c.key)) continue;
++      if (isPositionalKey(c.key) || isInnerControlChild(c.node, [it])) continue;
+       if (!seen.has(c.key)) { seen.add(c.key); rowKeys.push(c.key); }
+     }
+   }
+@@ -407,6 +411,15 @@ export function itemActionPlan(it, chain, values = {}) {
+   if (!a) return null;
+   return { ...a, isControl: Boolean(a.label) && a.label !== labelTextOf(it) };
+ }
++// A control-only member has one visible control; its name may be an accessible alias.
++// The source action label is its visible copy, not a second action.
++export function controlItemPlan(it, chain = [], values = {}) {
++  const a = itemActionPlan(it, chain, values);
++  const name = labelTextOf(it);
++  const label = a?.label || name;
++  return { label, accessibleLabel: name && name !== label ? name : null,
++    href: a?.href ?? null, verb: a?.verb ?? null };
++}
+ // §9 正文链接 vs 动作控件（轮 46）：一个 `_action` 的 label 若是本节点某条**正文文本事实**
+ // 的真子串（`_detail`/`_summary`/`_text` 里句子的一部分，如 gov-uk “approved translator”、
+ // “apply for a UK passport”），它就是句子里的**行内链接**，不是动作控件：
+@@ -523,10 +536,10 @@ function actionRowOf(node, chain, values, action, toolbar) {
+ // A choice set's form (F-030): one option is not a choice (plain fact); two or more are a
+ // choice set; a bare `_expose` is a boolean switch or an input. `rich` says the options
+ // carry their own attributes — a target may draw those as a table or as annotated options.
+-function optionOf(it, i) {
++function optionOf(it, i, chain, values) {
+   const fieldsFirst = it._fields ? Object.values(it._fields)[0] : undefined;
+   return {
+-    node: it, index: i,
++    node: it, index: i, action: itemActionPlan(it, chain, values),
+     key: typeof it._key === 'string' ? it._key : null,
+     name: it._name ?? it._title ?? null,
+     fieldsName: it._fields ? { text: String(fieldsFirst?.text ?? fieldsFirst?.num ?? '') } : null,
+@@ -557,7 +570,7 @@ const VISIBLE_FIELD_NAME = /(密码|邮件|邮箱|手机|账号|账户|用户|
+ export function isVisibleFieldName(label) {
+   return Boolean(label && label.text && VISIBLE_FIELD_NAME.test(label.text));
+ }
+-export function choicePlan(node, exp) {
++export function choicePlan(node, exp, chain = [], values = {}) {
+   if (!exp) return null;
+   const items = Array.isArray(node._items) ? node._items : [];
+   const legend = node._label ?? null;
+@@ -566,10 +579,10 @@ export function choicePlan(node, exp) {
+   if (items.length) {
+     if (items.length < 2) {
+       return { kind: 'plain-fact', items, item: items[0], legend, hint, multi, name: exp.name,
+-        itemName: items[0]._name ?? items[0]._title ?? null,
++        itemName: items[0]._name ?? items[0]._title ?? null, itemAction: itemActionPlan(items[0], [...chain, node], values),
+         itemExtra: factsOf(items[0]).filter((x) => !['_name', '_title'].includes(x.key)) };
+     }
+-    const options = items.map(optionOf);
++    const options = items.map((it, i) => optionOf(it, i, [...chain, node], values));
+     const rich = items.some((it) => (it._fields && Object.keys(it._fields).length))
+       || items.some((it) => factsOf(it).some((f) => !['_name', '_title'].includes(f.key)));
+     return { kind: 'choice', items, options, legend, hint, multi, name: exp.name, type: exp.type, rich,
+@@ -742,12 +755,13 @@ export function nodePlan(node, ctx = {}) {
+   const inlineInto = action ? inlineBodyLinkKey(node) : null;
+   if (action && inlineInto) action.inlineInto = inlineInto;
+ 
+-  const choice = choicePlan(node, controlExp);
++  const choice = choicePlan(node, controlExp, chain, values);
+   // A secret field's captured default is never drawn by ANY target (round 46): drop it from the
+   // body facts so text/Markdown cannot echo it either (HTML already skips a bare input's `_text`).
+   if (choice && choice.type === 'secret') facts.list = facts.list.filter((f) => f.key !== '_text');
+-  const toolbar = namedChildEntries(node)
+-    .filter((c) => isActionOnlyNode(c.node) && actionPlan(c.node, [...chain, node], values))
++  const toolbar = [...namedChildEntries(node), ...arrayChildEntries(node)]
++    .filter((c) => (isActionOnlyNode(c.node) || (c.key.startsWith('_') && isInnerControlChild(c.node, [...chain, node], values)))
++      && actionPlan(c.node, [...chain, node], values))
+     .map((c) => c.node);
+   // 字段与其提交必须相邻成组（U-02）。源站的排列就是「字段 → 提交」，中间不夹别的内容；而我们的
+   // 渲染顺序是（事实 / 字段 / 其它子件 / 自己的动作），于是 taobao 搜索的「宝贝/天猫/店铺」范围子件
+@@ -762,12 +776,12 @@ export function nodePlan(node, ctx = {}) {
+   // 满幅（hero 槽），不再锁 74ch。网格/表格单元格内的成员（ctx.grid）与自身即页面的深度 0 节点
+   // 不在此列：卡片格里的图不是页框（F-031-§7 同款约束）。
+   const imgFact = facts.list.find((f) => f.key === '_image');
+-  const banner = Boolean(!ctx.grid && depth > 0 && imgFact && headingKey
++  const banner = Boolean(!ctx.grid && depth > 0 && imgFact && headingKey && arrayChildEntries(node).length === 0
+     && (action || actionRow.row.length)
+     && facts.list.every((f) => ['_image', '_subtitle', '_summary', '_detail'].includes(f.key)));
+   if (banner) { facts.hero = imgFact.value; facts.list = facts.list.filter((f) => f !== imgFact); }
+   const consumedArray = new Set(controlExp && Array.isArray(node._items) ? node._items : []);
+-  const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it));
++  const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it) && !actionRow.consumed.includes(it));
+   // A description fact declared AFTER this node's collection is the collection's FOOTNOTE, not
+   // its lead-in: it must render directly BELOW the collection, never float above it and split
+   // the lead-in from its own list (round 37: gov-uk `…for example when you:` + its bullets).
+@@ -798,9 +812,13 @@ export function nodePlan(node, ctx = {}) {
+   // declaration is shared; a linear target simply ignores it.
+   for (const g of items.groups) {
+     const imgShare = g.items.filter((it) => Boolean(it._image)).length;
++    const imageCards = imgShare / g.items.length >= 0.75 && g.items.every((it) => textLenOf(it) <= 160);
++    const namedCards = g.form === 'cards' && g.items.every((it) => it._name && textLenOf(it) <= 400
++      && !factsOf(it).some((f) => META_KEYS.has(f.key)));
+     g.cols = ['stack', 'cards', 'product-cards'].includes(g.form) && g.items.length >= 3
+-      && imgShare / g.items.length >= 0.75
+-      && g.items.every((it) => textLenOf(it) <= 160) ? 'auto' : 0;
++      && (imageCards || namedCards) ? 'auto' : 0;
++    g.compactMedia = Boolean(g.cols) && g.items.every((it) => textLenOf(it) <= 64
++      && !factsOf(it).some((f) => META_KEYS.has(f.key)) && childrenOf(it).length === 0);
+   }
+   const widthTier = (() => {
+     if (ctx.grid || depth !== 1) return null;
+@@ -819,9 +837,13 @@ export function nodePlan(node, ctx = {}) {
+     headingText, demoted: isDemoted(node), primary, facts: { ...facts, trailing }, action, hasAction: Boolean(node._action),
+     titleIsControl, choice, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
+     items, namedChildren: orderedNamedChildren(namedChildEntries(node)), emptyState, titleConsumed, fieldSubmit, banner, headerBar,
++    leadAction: depth === 0 && ['buy', 'preorder'].includes(action?.verb),
++    introBeforeMedia: depth === 0 && ['buy', 'preorder'].includes(action?.verb) && Boolean(node._summary) && !node._price,
+     widthTier,
++    utilityFacts: rawItems.length >= 2 && rawItems.every((it) =>
++      factsOf(it).length <= 2 && !it._image && !it._price && textLenOf(it) <= 48 && childrenOf(it).length === 0),
+     utilityGroup: rawItems.length >= 2 && rawItems.every((it) =>
+-      labelTextOf(it).length <= 32 && factsOf(it).every((f) => ['_name', '_title', '_text'].includes(f.key))
++      textLenOf(it) <= 32 && factsOf(it).every((f) => ['_name', '_title', '_text', '_brand'].includes(f.key))
+       && namedChildEntries(it).length === 0),
+   };
+ }
+@@ -858,7 +880,7 @@ export function pageLayoutOf(model) {
+   }
+   const lines = model._lines ?? [];
+   const banners = lines.filter((n) => n._image && (n._title || n._name) && n._action && !n._price);
+-  if (banners.length >= 2) return { kind: 'marketing' };
++  if (banners.length >= 2) return { kind: 'marketing', headingRole: model._action?.verb === 'navigate' && !model._action?.label ? 'identity' : 'page' };
+   if (model._image && model._price) return { kind: 'product' };
+   let prices = 0;
+   const visit = (n) => { if (!n || typeof n !== 'object') return; if (n._price) prices++;
+@@ -867,7 +889,8 @@ export function pageLayoutOf(model) {
+   visit(model);
+   const menus = lines.filter((n) => n._items?.length >= 2 && n._items.every((it) =>
+     factsOf(it).every((f) => ['_name','_title','_text'].includes(f.key)) && namedChildEntries(it).length === 0));
+-  return { kind: prices >= 6 && menus.length >= 3 ? 'catalog' : 'default' };
++  const kind = prices >= 6 && menus.length >= 3 ? 'catalog' : 'default';
++  return { kind, headingRole: kind === 'catalog' && model._action?.verb === 'navigate' && !model._action?.label ? 'identity' : 'page' };
+ }
+ 
+ // ---- model-wide `key:` → label index (target-neutral) ----------------------
+diff --git a/m1/eval/metrics.mjs b/m1/eval/metrics.mjs
+index 5cdbd00..57745af 100644
+--- a/m1/eval/metrics.mjs
++++ b/m1/eval/metrics.mjs
+@@ -142,7 +142,11 @@ export function evaluate(model, renderHtml, sourceDir) {
+   const html = fs.readFileSync(renderHtml, 'utf8');
+   // Style/script bodies and attributes are not page content: `<td>0</td>` must
+   // not be certified by `margin:0` in the stylesheet or by `class="depth-0"`.
+-  const H = indexNorm(pageText(html));
++  // Inline Markdown destinations are metadata, just like HTML href attributes.
++  // Evaluate the visible label without interrupting its surrounding prose, and
++  // never certify a fact solely because it occurs in the hidden destination.
++  const visible = renderHtml.endsWith('.md') ? html.replace(/!?\[([^\]\n]*)\]\((?:\\.|[^)\n])*\)/g, '$1') : html;
++  const H = indexNorm(pageText(visible));
+   const dead = suppressedNodes(model);
+   const facts = factValues(model, dead);
+   const missing = facts.filter((f) => !isRendered(H, f.text)).map((f) => `${f.path} := "${f.text}"`);
+diff --git a/m1/render.mjs b/m1/render.mjs
+index 2393def..7fd7220 100644
+--- a/m1/render.mjs
++++ b/m1/render.mjs
+@@ -19,7 +19,14 @@ const MEDIA_SURFACES = JSON.parse(fs.readFileSync(new URL('./media-surfaces.json
+ const HEX_COLOR = /^#[0-9a-f]{6}$/i;
+ const accentOf = (site) => {
+   const v = site ? BRAND_TOKENS.sites?.[site]?.accent?.value : null;
+-  return HEX_COLOR.test(v ?? '') ? v : BRAND_TOKENS.default.accent;
++  const color = HEX_COLOR.test(v ?? '') ? v : BRAND_TOKENS.default.accent;
++  // Captured link colors belong to their source surface. Retain the hue, but pair
++  // informative text with this renderer's light surface rather than copying pale ink.
++  let rgb = color.slice(1).match(/../g).map((c) => parseInt(c, 16));
++  const luminance = (xs) => xs.map((x) => { const s = x / 255; return s <= .04045 ? s / 12.92 : ((s + .055) / 1.055) ** 2.4; })
++    .reduce((sum, x, i) => sum + x * [.2126, .7152, .0722][i], 0);
++  while (1.05 / (luminance(rgb) + .05) < 4.5) rgb = rgb.map((x) => Math.floor(x * .96));
++  return '#' + rgb.map((x) => x.toString(16).padStart(2, '0')).join('');
+ };
+ // The axis-decision layer is shared, not re-derived per target (round 19; the node render
+ // plan round 22). This renderer consumes `nodePlan` and the plan helpers and only DRAWS
+@@ -28,7 +35,7 @@ import {
+   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
+   qualifierPlacement, quantityLabel,
+   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
+-  nodePlan, itemActionPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
++  nodePlan, itemActionPlan, controlItemPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
+   rankedSequence, hasValue, tableRowLabel, mediaFirstOf, readingPageOf, pageLayoutOf,
+ } from './axis.mjs';
+ 
+@@ -226,9 +233,9 @@ function renderDeflist(items, chain, ctx, order) {
+     if (!l && !v) return '';
+     const rank = ranked ? `<span class="rank">${i + 1}</span>` : '';
+     // no empty label cell: an unlabeled row keeps its full width (F-031-§5)
+-    return `<div class="defrow">${rank}${l ? `<div class="deflabel">${l}</div>` : ''}<div class="defval">${v}</div></div>`;
++    return `<div class="defrow${it._image ? ' media-row' : ''}${labelTextOf(it).length > 24 ? ' long-label' : ''}">${rank}${l ? `<div class="deflabel">${l}</div>` : ''}<div class="defval">${v}</div></div>`;
+   }).join('');
+-  return rows ? `<div class="deflist${ranked ? ' ranked' : ''}">${rows}</div>` : '';
++  return rows ? `<div class="deflist${ranked ? ' ranked' : ''}${!ranked && items.every((it) => it._image) ? ' media-captions' : ''}">${rows}</div>` : '';
+ }
+ function renderAccordion(items, chain, hide, ctx) {
+   const det = items.map((it) => {
+@@ -261,7 +268,7 @@ function renderRun(items, chain, hide, ctx) {
+       const ops = namedChildEntries(it).map((ch) => renderNode(ch.node, [...chain, it], false, hide, { ...ctx, grid: true }, 4)).join('');
+       return `<tr>${tds}${anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
+     }).join('');
+-    return `<table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table>`;
++    return `<div class="data-scroll"><table class="data"><thead>${head}</thead><tbody>${trs}</tbody></table></div>`;
+   }
+   return `<div class="cards">${items.map((it) => `<div class="item">${renderNode(it, [...chain, it], false, hide, { ...ctx, grid: true }, 4)}</div>`).join('')}</div>`;
+ }
+@@ -274,7 +281,7 @@ function renderSelectTable(ch, node, chain, hide, ctx) {
+   // an all-blank header row is visual noise: emit the header only when a column is labeled (T-107)
+   const head = t.showHead ? `<tr><th class="sel"></th>${t.cols.map((c) => `<th>${esc(t.labelKey(c))}</th>`).join('')}${t.anyOps ? '<th></th>' : ''}</tr>` : '';
+   const rows = ch.options.map((o) => {
+-    const tds = t.cols.map((col) => { const v = t.cellValue(o.node, col); return `<td>${v ? fmt(v) : ''}</td>`; }).join('');
++    const tds = t.cols.map((col, i) => { const v = t.cellValue(o.node, col); const text = v ? fmt(v) : ''; return `<td>${i === 0 && o.action?.hasTarget ? `<a class="option-link" href="${esc(o.action.href)}">${text}</a>` : text}</td>`; }).join('');
+     const ops = o.ops.map((n) => renderNode(n, [...chain, o.node], false, hide, { ...ctx, grid: true }, 4)).join('');
+     const val = o.key ? `key:${o.key}` : String(o.index);
+     return `<tr><td class="sel"><input type="${ch.multi ? 'checkbox' : 'radio'}" name="${esc(ch.name)}" value="${esc(val)}"></td>${tds}${t.anyOps ? `<td class="row-ops">${ops}</td>` : ''}</tr>`;
+@@ -285,7 +292,9 @@ function renderChoice(ch, node, chain, hide, ctx) {
+   if (ch.kind === 'plain-fact') {
+     const lbl = ch.legend ? fmt(ch.legend) : '';
+     const v = ch.itemName;
+-    return `<div class="defrow">${lbl ? `<div class="deflabel">${lbl}</div>` : ''}<div class="defval">${v ? fmt(v) : ''} ${ch.itemExtra.map((x) => fmt(x.value)).join(' ')}</div></div>`;
++    const text = v ? fmt(v) : '';
++    const name = ch.itemAction?.hasTarget ? `<a class="option-link" href="${esc(ch.itemAction.href)}">${text}</a>` : text;
++    return `<div class="defrow">${lbl ? `<div class="deflabel">${lbl}</div>` : ''}<div class="defval">${name} ${ch.itemExtra.map((x) => fmt(x.value)).join(' ')}</div></div>`;
+   }
+   if (ch.kind === 'choice') {
+     if (ch.rich) return renderSelectTable(ch, node, chain, hide, ctx);
+@@ -294,7 +303,8 @@ function renderChoice(ch, node, chain, hide, ctx) {
+       const extra = o.extra.map((x) => fmt(x.value)).join(' ');
+       const label = (v && (v.text !== undefined || v.num !== undefined) ? fmt(v) : `option ${o.index + 1}`) + (extra ? ` <span class="choice-extra">${extra}</span>` : '');
+       const val = o.key ? `key:${o.key}` : (v ? v.text : String(o.index));
+-      return `<label class="choice"><input type="${ch.multi ? 'checkbox' : 'radio'}" name="${esc(ch.name)}" value="${esc(val)}"> ${label}</label>`;
++      const destination = o.action?.hasTarget ? `<a class="option-link" href="${esc(o.action.href)}">${label}</a>` : label;
++      return `<label class="choice"><input type="${ch.multi ? 'checkbox' : 'radio'}" name="${esc(ch.name)}" value="${esc(val)}"> ${destination}</label>`;
+     }).join('');
+     const legend = ch.legend ? fmt(ch.legend) : '';
+     const hint = ch.hint ? `<span class="hint">${fmt(ch.hint)}</span>` : '';
+@@ -338,7 +348,7 @@ function renderStream(items) {
+   return cells ? `<div class="stream">${cells}</div>` : '';
+ }
+ 
+-function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0) {
++function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0, compactMedia = false) {
+   // 集合成员是卡片语境（轮 58 · L-4/L-6：列数与“图在题上”是轴层声明，这里只落类名/传参）
+   const mctx = { ...ctx, member: true };
+   if (order === 'stream' && items.every(isBareLabel)) return renderStream(items);
+@@ -347,7 +357,7 @@ function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0)
+   if (form === 'list') return renderList(items, chain, ctx);
+   if (form === 'seq') return renderSeq(items, chain, ctx);
+   if (form === 'controls') return renderControls(items, chain, ctx);
+-  if (form === 'stack') return renderStack(items, chain, hide, mctx, depth, cols, mediaFirstOf(items, form));
++  if (form === 'stack') return renderStack(items, chain, hide, mctx, depth, cols, mediaFirstOf(items, form), compactMedia);
+   if (form === 'image-strip') return renderImageStrip(items);
+   if (form === 'prose') return renderProse(items);
+   if (form === 'deflist') return renderDeflist(items, chain, ctx, order);
+@@ -360,39 +370,35 @@ function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0)
+     return inner ? `<div class="item">${inner}</div>` : '';
+   }).join('');
+   // cols（轴层声明）落在网格容器上：.cards 本身就是 auto-fill 网格，标记使声明可见、可断言。
+-  return cards ? `<div class="${cls}${cols ? ' cols-auto' : ''}${mf ? ' media-first' : ''}">${cards}</div>` : '';
++  return cards ? `<div class="${cls}${cols ? ' cols-auto' : ''}${compactMedia ? ' compact-media' : ''}${mf ? ' media-first' : ''}">${cards}</div>` : '';
+ }
+ 
+ // 序列：不可比的区块各自成立，各带标题；无标题块用区域分隔（F-031-§1/§5）。
+ // 轮 58（L-4）：轴层声明了列数（cols='auto'，成员皆带图的卡片/Feed 集合）时，堆叠包成
+ // auto-fill 网格（桌面 2–4 列）；阅读型堆叠保持单列。包裹层不改变任何事实文本。
+-function renderStack(items, chain, hide, ctx, depth, cols = 0, mediaFirst = false) {
++function renderStack(items, chain, hide, ctx, depth, cols = 0, mediaFirst = false, compactMedia = false) {
+   let out = '';
+   let prevHadTitle = false;
+   for (const it of items) {
+-    const inner = renderNode(it, [...chain], false, hide, ctx, depth + 1);
++    const inner = renderNode(it, [...chain], false, hide, { ...ctx, grid: Boolean(cols) || Boolean(ctx.grid) }, depth + 1);
+     if (!inner) continue;
+     const hasTitle = Boolean(it._title || it._name || it._text);
+     if (!hasTitle && prevHadTitle) out += '<hr class="region">';
+     out += `<section class="block">${inner}</section>`;
+     prevHadTitle = hasTitle;
+   }
+-  return out ? `<div class="stack${cols ? ' cols-auto' : ''}${mediaFirst ? ' media-first' : ''}">${out}</div>` : '';
++  return out ? `<div class="stack${cols ? ' cols-auto' : ''}${compactMedia ? ' compact-media' : ''}${mediaFirst ? ' media-first' : ''}">${out}</div>` : '';
+ }
+ // 控件条：_action-only 成员是控件，不是内容（F-031-§4）；动作 label 是源站自己的控件文字（F-022），
+ // 与条目名不是同一事实时另出一枚控件；同一事实的两种写法（一个包含另一个）只渲染信息更全的一处。
+ function renderControls(items, chain, ctx) {
+   const btns = items.map((it) => {
+-    // a conditional action that the scope suppresses hides only the control; the
+-    // member's own name is content and still renders (F-042, F-031-§4)
+-    const a = itemActionPlan(it, chain, ctx.values);
+-    const name = labelTextOf(it);
+-    const ctl = a?.label ?? '';
+-    const otherFact = Boolean(name && ctl && !name.includes(ctl) && !ctl.includes(name));
+-    const text = name || ctl;
+-    if (!text) return '';
+-    const to = (s) => (a?.hasTarget ? `<a class="ctl" href="${esc(a.href)}">${s}</a>` : `<span class="ctl"${a?.verb ? ` data-verb="${esc(a.verb)}"` : ''}>${s}</span>`);
+-    return otherFact ? to(esc(text)) + to(esc(ctl)) : to(esc(text));
++    const c = controlItemPlan(it, chain, ctx.values);
++    if (!c.label) return '';
++    const alias = c.accessibleLabel ? ` aria-label="${esc(c.accessibleLabel)}"` : '';
++    const copy = esc(c.label) + (c.accessibleLabel ? `<span class="sr-only">${esc(c.accessibleLabel)}</span>` : '');
++    return c.href ? `<a class="ctl" href="${esc(c.href)}"${alias}>${copy}</a>`
++      : `<span class="ctl"${alias}${c.verb ? ` data-verb="${esc(c.verb)}"` : ''}>${copy}</span>`;
+   }).join('');
+   return btns ? `<div class="controls">${btns}</div>` : '';
+ }
+@@ -402,7 +408,8 @@ function renderControls(items, chain, ctx) {
+ function renderCompareTable(items, chain, hide, ctx) {
+   const rowKeys = compareRowKeys(items);
+   const head = `<tr><th class="cmp-row"></th>${items.map((it) => {
+-    const ex = itemExtra(it, chain, ctx);   // 实体自己的动作控件不得因进表而丢失（F-033）
++    const ex = itemExtra(it, chain, ctx);
++    const entityPlan = nodePlan(it, { chain, values: ctx.values, depth: 5, grid: true });
+     let nm = '';
+     let rest = '';
+     for (const e of compareHeaderEntries(it)) {
+@@ -417,7 +424,8 @@ function renderCompareTable(items, chain, hide, ctx) {
+     let nested = '';
+     for (const col of nestedCollections(it)) nested += renderForm(col.form, col.items, [...chain, it], hide, { ...ctx, grid: true }, 5, it);
+     const nestedHtml = nested ? `<div class="cmp-nested">${nested}</div>` : '';
+-    const ctl = ex.ctl ? `<div class="cmp-ctl">${ex.ctl}</div>` : '';
++    const row = renderActionRow(entityPlan.actionRow);
++    const ctl = row ? `<div class="cmp-ctl">${row}</div>` : '';
+     return `<th class="cmp-col">${nm}${rest}${nestedHtml}${ctl}</th>`;
+   }).join('')}</tr>`;
+   const body = rowKeys.map((key) => {
+@@ -503,22 +511,15 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
+   }
+ 
+   let titleText = plan.headingValue ? fmt(plan.headingValue) : null;
+-  // round 30: a heading that says nothing new is not drawn twice (F-038).
+-  //   (a) identical to an ANCESTOR's heading → keep the outer one (`支付方式` h2 … h3);
+-  //   (b) identical to a heading already drawn on THIS PAGE and the node carries no facts of
+-  //       its own (a bare group label over controls, e.g. the `更多指南` group “支付方式”) →
+-  //       keep the first. A fact-bearing re-used heading is a different section, so it stays.
+-  // The fact text remains on the page either way, so fidelity is untouched. The ancestor set
+-  // lives on `ctx` and is popped before every return.
++  // Only an empty repeated ancestor label can be redundant. Populated sibling
++  // groups retain their local heading, even when the same text appeared elsewhere.
+   const headingTextValue = plan.headingValue ? plan.headingValue.text : null;
+   const nodeHasFacts = plan.facts.list.length > 0 || plan.facts.fields.length > 0 || Boolean(plan.facts.hero);
+   let headingAdded = false;
+   if (titleText && headingTextValue && ctx.headings) {
+     const ancestorDup = ctx.headings.has(headingTextValue);
+-    const pageLabelDup = !nodeHasFacts && ctx.seenHeadings && ctx.seenHeadings.has(headingTextValue);
+-    if (ancestorDup || pageLabelDup) titleText = null;
++    if (ancestorDup && !nodeHasFacts) titleText = null;
+     else { ctx.headings.add(headingTextValue); headingAdded = true; }
+-    ctx.seenHeadings?.add(headingTextValue);
+   }
+   const done = (out) => { if (headingAdded) ctx.headings.delete(headingTextValue); return out; };
+   const cls = ['node', `depth-${Math.min(depth, 4)}`];
+@@ -531,6 +532,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
+   if (plan.headerBar) cls.push('header-bar');
+   if (plan.banner) cls.push('banner');
+   if (plan.utilityGroup) cls.push('utility-group');
++  if (plan.utilityFacts) cls.push('utility-facts');
+   const demoted = plan.demoted;
+ 
+   const itemsConsumed = new Set(plan.rowConsumed);
+@@ -557,12 +559,13 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
+     else if (f.category === 'was') html = `<div class="fact was"><span class="val">${fmt(f.value)}${inlineTail(f)}</span></div>`;
+     else if (f.category === 'quote') html = `<blockquote class="quote"><span class="val">${fmt(f.value)}</span></blockquote>`;
+     else if (plan.action && plan.action.inlineInto === f.key) html = inlineLinkFactHtml(f.value, plan.action, inlineTail(f));
++    else if (f.key === '_image' && !ctx.grid) html = imageFigures(f.value, 'band');
+     else html = factHtml(f.value, inlineTail(f));
+     if (trailingFacts.has(f)) bodyFoot += html; else bodyLead += html;
+   }
+   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
+   for (const f of plan.facts.fields) bodyLead += factHtml(f.value);
+-  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero, ctx.reading ? 'band' : 'bleed');   // declared hero/banner only: edge-to-edge (F-031-§7); everything else stays in-container (round 58, L-3)
++  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero, ctx.reading || (depth === 0 && plan.leadAction && node._summary && !node._price) ? 'band' : 'bleed');   // declared hero/banner only: edge-to-edge (F-031-§7); everything else stays in-container (round 58, L-3)
+ 
+   let body = '';
+   let bodyField = '';   // 字段+提交的成组区（plan.fieldSubmit）
+@@ -575,7 +578,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
+   // every sibling block item renders in ONE form; nothing renders twice (T-103)
+   // 轴分组（compare 实体/连续正文段/普通集合）在 axis.mjs seqGroupsOf；D2/P3 同理。
+   const { groups, order } = plan.items;
+-  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node, order, g.cols);
++  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node, order, g.cols, g.compactMedia);
+   for (const g of groups) g.items.forEach((it) => itemsConsumed.add(it));
+   // order:time shows a time axis only over a vertical sequence — never a stray rail across a grid (F-031-§1)
+   if (order === 'time' && groups.length && groups.every((g) => g.form === 'deflist' || g.form === 'seq')) cls.push('timeline');
+@@ -630,7 +633,8 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
+     const t = titleIsControl
+       ? (linkTo ? `<a class="ctl" href="${esc(linkTo)}">${titleText}</a>` : `<span class="ctl">${titleText}</span>`)
+       : (linkTo ? `<a class="self-link${plan.action?.isLabellessLink ? ' nav' : ''}" href="${esc(linkTo)}">${titleText}</a>` : titleText);
+-    head = `<${headingTag} class="title${titleIsControl ? ' title-control' : ''}">${t}</${headingTag}>`;
++    const identity = depth === 0 && ctx.pageLayout.headingRole === 'identity';
++    head = `<${headingTag} class="title${titleIsControl ? ' title-control' : ''}${identity ? ' site-identity' : ''}">${t}</${headingTag}>`;
+   }
+ 
+   const anchorId = node._key ? ` id="${esc(String(node._key).replace(/[^A-Za-z0-9_-]/g, '-'))}"` : '';
+@@ -650,7 +654,9 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
+     if (surface.contentBounds[1] < 180) cls.push('media-centered');
+     surfaceStyle = ` style="--banner-bg:${esc(surface.background)};--banner-fg:${esc(surface.foreground)};--media-width:${surface.width}px;--media-height:${surface.height}px;--media-ratio:${surface.width / (surface.contentBounds[2] - surface.contentBounds[0] + 48)}"`;
+   }
+-  const article = `<article${anchorId} class="${cls.join(' ')}"${surfaceStyle}>${headerHtml}${head}${heroImage}${bodyLead}${heroHtml}${bodyField}${body}${bodyFoot}${action}${footHtml}</article>`;
++  const intro = `${bodyLead}${heroHtml}${bodyField}${plan.leadAction ? action : ''}`;
++  const opening = plan.introBeforeMedia ? intro + heroImage : heroImage + intro;
++  const article = `<article${anchorId} class="${cls.join(' ')}"${surfaceStyle}>${headerHtml}${head}${opening}${body}${bodyFoot}${plan.leadAction ? '' : action}${footHtml}</article>`;
+   return done(demoted ? `<aside class="zone">${article}</aside>` : article);
+ }
+ 
+@@ -659,7 +665,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
+ export function render(model, context = {}, report = null) {
+   refLabels = buildRefLabels(model);
+   const hide = new Map();
+-  const ctx = { values: context.values ?? {}, degradations: report ?? [], headings: new Set(), seenHeadings: new Set() };
++  const ctx = { values: context.values ?? {}, degradations: report ?? [], headings: new Set() };
+   ctx.reading = readingPageOf(model);
+   ctx.pageLayout = pageLayoutOf(model);
+   const html = renderNode(model, [], false, hide, ctx, 0);
+@@ -713,12 +719,13 @@ th.cmp-col>a{color:var(--accent);text-decoration:none}
+    bleed=仅限声明的 banner（满幅带，内文仍守 padding）。同页各 section 宽度各归其层，
+    不再无规则跳变（U-23/U-25/U-26/U-27）。 */
+ main{max-width:1280px;margin:0 auto;padding:32px 24px 0}
+-/* 根节点直属内容（页面标题、事实列、搜索栏）归入栅格：居中、对称，不再整栏偏左（U-18/U-23）。
+-   h1 的列宽用 px（ch 随元素自身 2em 字号放大，74ch 会撑满容器、居中失效）。 */
+-.depth-0>.title{max-width:640px;margin-inline:auto}
+-.depth-0>.fact{margin-inline:auto}
+-.depth-0>.hero{margin-inline:auto;text-align:center}
+-.depth-0>.fieldbar{justify-content:center}
++/* Root identity, lead and controls inherit the owning content edge, not a separate
++   centered title column. The outer page frame may be centered; its text need not be. */
++.depth-0>.title{max-width:none;margin-inline:0}
++.depth-0>.fact,.depth-0>.hero{margin-inline:0}
++.depth-0>.fieldbar{justify-content:flex-start}
++.depth-0>.site-identity{font-size:18px;line-height:1.4;text-align:left;margin:0 0 16px;font-weight:650}
++h4.title,h5.title,h6.title{font-size:1em;line-height:1.5;margin:.7em 0 .35em;font-weight:650}
+ header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
+ header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
+ h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
+@@ -732,7 +739,8 @@ article{margin:12px 0}
+ .timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
+ .timeline .item{position:relative;padding:6px 0}
+ .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
++.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
++.cards.cols-auto{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+ .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
+ .fact{margin:3px 0;max-width:74ch}
+ .hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
+@@ -754,7 +762,7 @@ article{margin:12px 0}
+ /* 并入价格行的分期时长（U-28）：与承载句同行、弱化如 meta，不再是容器外孤块 */
+ .fact .installment{color:var(--muted);font-size:.9em}
+ .fact .installment .sep{color:#c2ccd6}
+-.prose{max-width:74ch;margin-inline:auto}
++.prose{max-width:74ch;margin-inline:0}
+ .prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
+ /* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
+    轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
+@@ -808,14 +816,21 @@ a.ctl:hover{background:#f2f7ff}
+ .seq li{margin:4px 0;line-height:1.55}
+ .chip-item{break-inside:avoid}
+ .deflist{margin:8px 0}
+-.deflist.ranked .rank{min-width:1.5em;color:#8493a3;font-weight:700;font-variant-numeric:tabular-nums}
++.deflist.ranked .rank{min-width:1.5em;color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums}
+ .deflist.ranked .deflabel{font-weight:500}
+-.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:baseline}
++.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:flex-start}
++.defrow.media-row{display:block}
++.defrow.media-row .deflabel{flex:none;min-width:0;margin-bottom:8px}
++.defrow.media-row .defval{min-width:0;max-width:100%}
++.deflist.media-captions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(280px,calc((100% - 32px)/3))),1fr));gap:16px}
++.deflist.media-captions .defrow{display:flex;flex-direction:column;flex-wrap:nowrap;border:0}
++.deflist.media-captions img{max-height:360px;width:auto;height:auto}
+ .deflabel{min-width:130px;font-weight:600}
+ .deflabel a{color:inherit}
+ .timeline .defrow{position:relative}
+ .timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+-.defval{color:var(--muted);font-size:.95em;overflow-wrap:anywhere}
++.defval{color:var(--muted);font-size:.95em;overflow-wrap:anywhere;min-width:100px}
++@media(max-width:700px){.defrow.long-label{display:block}.defrow.long-label .deflabel{min-width:0;margin-bottom:4px}.defval{min-width:0}.defval .val{word-break:normal}}
+ .accordion{margin:8px 0}
+ details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
+ details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
+@@ -846,6 +861,11 @@ input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;
+ img{max-width:100%;width:auto;border-radius:10px;display:block}
+ /* 同一条「不放大」规则覆盖卡片/条目/正文图：自然宽 ≥ 容器则铺满，否则按自然尺寸居中显示 */
+ .fact img,.cards img,.cards .item img,.run .item img{width:auto;max-width:100%;height:auto}
++.data-scroll{max-width:100%;overflow-x:auto}
++.data-scroll table.data{min-width:640px}
++.expose table.data{min-width:640px}
++fieldset.expose:has(>table.data){min-inline-size:0;min-width:0;width:100%;max-width:100%;overflow-x:auto}
++a.option-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+ table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
+ table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
+ table.data th{color:var(--muted);font-weight:600;background:#f7f9fb}
+@@ -867,11 +887,9 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
+ .gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
+ .gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
+ .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
+-/* 轮 58（L-1）宽度分层（必须晚于 .block>.node，层级胜出层叠）：prose=阅读 74ch 居中 /
+-narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ bleed=仅声明的 banner（满幅）。 */
+-.node.w-prose{max-width:74ch;margin-inline:auto}
+-.node.w-narrow{max-width:880px;margin-inline:auto}
+-.node.w-wide{max-width:none}
++/* Local forms inherit their page frame; only declared banner bleed can escape it.
++   Reading/product/detail composition sets the parent measure, not each local form. */
++.node.w-prose,.node.w-narrow,.node.w-wide{max-width:none;margin-inline:0;width:100%}
+ .node.w-bleed{max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 24px}
+ /* 轮 58（L-6）媒体优先卡片：图与标题永不分家（同一 article）；条目图在题上方（视频/卡片站
+    惯例）。轴层 mediaFirstOf 声明，这里用 flex order 画 —— 不拆 DOM，长文条目不受影响。 */
+@@ -881,6 +899,7 @@ narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ b
+    阅读型堆叠（长文成员）保持单列。 */
+ .stack.cols-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;align-items:start;margin:14px 0}
+ .stack.cols-auto .block{margin:0}
++.cards.compact-media,.stack.compact-media{grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
+ .stack.cols-auto hr.region{display:none}
+ /* 轮 58（L-5）footer 反色（惯例）：模型声明的 footer 区域（.g-footer）深底浅字，
+    负 margin 铺满容器内宽、底边贴住容器。无 footer 区域的页自然没有这条带。 */
+@@ -905,7 +924,7 @@ narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ b
+ .group.g-footer a.ctl:hover{background:var(--soft)}
+ .group.g-footer .defrow{border-bottom-color:var(--line)}
+ /* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
+-.reading-page{--reading-width:800px}
++.reading-page{--reading-width:800px;max-width:var(--reading-width);margin-inline:auto}
+ .reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
+ .reading-page .node.w-prose,.reading-page .node.w-narrow,.reading-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+ .reading-page .fact,.reading-page .prose,.reading-page .prose p,.reading-page .quote{max-width:none}
+@@ -925,6 +944,16 @@ narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ b
+ .node.w-narrow:has(>.linklist),.node.w-narrow:has(>.chips){max-width:none}
+ .linklist.cols2,.linklist.cols3,.linklist.cols4{columns:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:3px 18px}
+ .node:has(>.chips)>.chips{gap:6px 12px}
++/* Related sections inherit the page frame; long fact lines keep their reading measure. */
++.depth-0>.meta{margin-inline:0}
++.utility-facts>.stack>.block{margin:4px 0;padding:0}
++.utility-facts>.stack>.block>.node{margin:0}
++.utility-facts .title{font-size:1em;margin:4px 0}
++.utility-group>.stack{display:flex;flex-wrap:wrap;gap:8px 24px}
++.utility-group>.stack>.block{margin:0;padding:0}
++.utility-group>.stack>.block>.node{margin:0}
++.utility-group>.deflist{display:flex;flex-wrap:wrap;gap:8px 24px}
++.utility-group>.deflist>.defrow{border:0;padding:0}
+ /* Whole-page alignment: local lists, facts and cards inherit the same page frame. */
+ .catalog-page .node.w-prose,.catalog-page .node.w-narrow,.catalog-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+ .catalog-page>.stack>.block{margin:14px 0}
+@@ -944,6 +973,7 @@ narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ b
+ .product-page>.stack>.block{margin-block:32px}
+ .product-page .defrow{gap:24px}
+ .product-page .deflabel{flex:0 0 190px;min-width:0}
++.product-page .media-captions .deflabel{flex:0 0 auto}
+ .detail-page>.title{max-width:none;margin-inline:0}
+ .detail-page>.fact{max-width:none}
+ .detail-page .node.w-prose,.detail-page .node.w-narrow,.detail-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+@@ -969,7 +999,7 @@ narrow=默认内容 880px 居中 / wide=卡片·Feed 网格（容器全宽）/ b
+ .detail-page .gallery-mosaic .strip{aspect-ratio:auto}
+ .detail-page .gallery-mosaic .strip:first-child{grid-column:span 1;grid-row:span 2}
+ main:has(.marketing-page){max-width:1728px}
+-.marketing-page>.title{text-align:center;max-width:none}
++.marketing-page>.title{max-width:none}
+ .marketing-page .node.w-bleed{width:100%;margin-inline:0}
+ .marketing-page .node.w-narrow,.marketing-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+ .marketing-page .cards.cols-auto{grid-template-columns:repeat(2,minmax(0,1fr))}

@@ -1,0 +1,279 @@
+{
+  "_intent": "Dashboard Template · Bootstrap v5.3 — Dashboard [draft]",
+  "_title": {
+    "text": "Dashboard Template · Bootstrap v5.3"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Toggle theme (light)"
+      }
+    },
+    {
+      "_intent": "list (6 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "Dashboard"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+            "label": "Dashboard"
+          }
+        },
+        {
+          "_name": {
+            "text": "Orders"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+            "label": "Orders"
+          }
+        },
+        {
+          "_name": {
+            "text": "Products"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+            "label": "Products"
+          }
+        },
+        {
+          "_name": {
+            "text": "Customers"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+            "label": "Customers"
+          }
+        },
+        {
+          "_name": {
+            "text": "Reports"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+            "label": "Reports"
+          }
+        },
+        {
+          "_name": {
+            "text": "Integrations"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+            "label": "Integrations"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "SAVED REPORTS Add a new report [draft]",
+      "_title": {
+        "text": "SAVED REPORTS Add a new report"
+      },
+      "_lines": [
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Current month"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+                "label": "Current month"
+              }
+            },
+            {
+              "_name": {
+                "text": "Last quarter"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+                "label": "Last quarter"
+              }
+            },
+            {
+              "_name": {
+                "text": "Social engagement"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+                "label": "Social engagement"
+              }
+            },
+            {
+              "_name": {
+                "text": "Year-end sale"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+                "label": "Year-end sale"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Settings"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+                "label": "Settings"
+              }
+            },
+            {
+              "_name": {
+                "text": "Sign out"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://getbootstrap.com/docs/5.3/examples/dashboard/#",
+                "label": "Sign out"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Dashboard [draft]",
+      "_title": {
+        "text": "Dashboard"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Share"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Export"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "This week"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Section title [draft]",
+      "_title": {
+        "text": "Section title"
+      },
+      "_lines": [
+        {
+          "_intent": "table (16 rows): # / Header / Header [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_measure": {
+                "num": 1001
+              }
+            },
+            {
+              "_measure": {
+                "num": 1002
+              }
+            },
+            {
+              "_measure": {
+                "num": 1003
+              }
+            },
+            {
+              "_measure": {
+                "num": 1003
+              }
+            },
+            {
+              "_measure": {
+                "num": 1004
+              }
+            },
+            {
+              "_measure": {
+                "num": 1005
+              }
+            },
+            {
+              "_measure": {
+                "num": 1006
+              }
+            },
+            {
+              "_measure": {
+                "num": 1007
+              }
+            },
+            {
+              "_measure": {
+                "num": 1008
+              }
+            },
+            {
+              "_measure": {
+                "num": 1009
+              }
+            },
+            {
+              "_measure": {
+                "num": 1010
+              }
+            },
+            {
+              "_measure": {
+                "num": 1011
+              }
+            },
+            {
+              "_measure": {
+                "num": 1012
+              }
+            },
+            {
+              "_measure": {
+                "num": 1013
+              }
+            },
+            {
+              "_measure": {
+                "num": 1014
+              }
+            },
+            {
+              "_measure": {
+                "num": 1015
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

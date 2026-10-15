@@ -1,0 +1,864 @@
+{
+  "_intent": "少数派首页：编辑推荐的内容门户——头条banner、编辑部栏目、众测/新品合作位、推荐内容流与会员社区精选；当前停留在「推荐」页签",
+  "_key": "sspai-home",
+  "_title": {
+    "text": "少数派 - 高效工作，品质生活"
+  },
+  "banner": {
+    "_intent": "头条卡片横排（可横向滚动）：主banner为 iPhone 18 配件主题，其余为专题与会员内容",
+    "_items": [
+      {
+        "_key": "bn-zl75GK",
+        "_name": {
+          "text": "iPhone 18 配件一站式配齐"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-banner-1.webp",
+          "alt": "iPhone 18 配件一站式配齐"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/zl75GK"
+        }
+      },
+      {
+        "_key": "bn-zmDjyK",
+        "_name": {
+          "text": "软硬件优惠全收集"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-banner-2.webp",
+          "alt": "软硬件优惠全收集"
+        },
+        "_tag": {
+          "text": "开学季"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/zmDjyK"
+        }
+      },
+      {
+        "_key": "bn-z5Ql8z",
+        "_name": {
+          "text": "聊聊不那么标新立异的理想 i6"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-banner-3.webp",
+          "alt": "聊聊不那么标新立异的理想 i6"
+        },
+        "_subtitle": {
+          "text": "「正常」已是不易"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/z5Ql8z"
+        }
+      },
+      {
+        "_key": "bn-KeOpPn",
+        "_name": {
+          "text": "Apple「随航」的流畅妙招"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-banner-4.webp",
+          "alt": "Apple「随航」的流畅妙招"
+        },
+        "_tag": {
+          "text": "会员文章"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/KeOpPn"
+        }
+      },
+      {
+        "_key": "bn-K1492J",
+        "_name": {
+          "text": "全场最快的车，为什么听一辆慢车指挥"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-banner-5.webp",
+          "alt": "全场最快的车，为什么听一辆慢车指挥"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/K1492J"
+        }
+      }
+    ]
+  },
+  "editors": {
+    "_intent": "编辑部栏目入口（首页左列）：早报、新玩意、App 合集等固定栏目最新一期",
+    "_items": [
+      {
+        "_key": "ed-114699",
+        "_name": {
+          "text": "派早报：欧盟拟禁止 13 岁以下儿童使用社交媒体等"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-editors-1.webp"
+        },
+        "_subtitle": {
+          "text": "周五 18"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114699"
+        }
+      },
+      {
+        "_key": "ed-z263Zz",
+        "_name": {
+          "text": "编辑部的新玩意 #250"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-editors-2.webp",
+          "alt": "编辑部的新玩意 #250"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/z263Zz"
+        }
+      },
+      {
+        "_key": "ed-nX5bDJ",
+        "_name": {
+          "text": "近期值得关注的 App"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-editors-3.webp",
+          "alt": "近期值得关注的 App"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/nX5bDJ"
+        }
+      },
+      {
+        "_key": "ed-KE64Vz",
+        "_name": {
+          "text": "196 张盗版碟，和我的游戏启蒙史"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-editors-4.webp",
+          "alt": "196 张盗版碟，和我的游戏启蒙史"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/KE64Vz"
+        }
+      },
+      {
+        "_key": "ed-J7yrpz",
+        "_name": {
+          "text": "YoooClaw C·ONE"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-editors-5.webp",
+          "alt": "YoooClaw C·ONE 众测"
+        },
+        "_tag": {
+          "text": "众测"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/J7yrpz"
+        }
+      }
+    ]
+  },
+  "promo-rail": {
+    "_intent": "首页右列推广位：配件商城与站内投票",
+    "_items": [
+      {
+        "_key": "pr-J485mJ",
+        "_name": {
+          "text": "iPhone 精选配件"
+        },
+        "_action": {
+          "verb": "open",
+          "label": "点击购买",
+          "to": "https://sspai.com/a/J485mJ"
+        }
+      },
+      {
+        "_key": "pr-vote-512",
+        "_name": {
+          "text": "快速投票：换机只选 512GB 起步？"
+        },
+        "_count": {
+          "num": 708,
+          "unit": "位派友参与"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/bullet/1789222518"
+        }
+      }
+    ]
+  },
+  "campaigns": {
+    "_intent": "众测与新品合作位：五个在期活动/新品专题入口",
+    "_items": [
+      {
+        "_key": "ca-yoooclaw",
+        "_name": {
+          "text": "YoooClaw C·ONE"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/create/yoooclaw"
+        }
+      },
+      {
+        "_key": "ca-rand0",
+        "_name": {
+          "text": "口袋先知墨水屏"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/create/rand0"
+        }
+      },
+      {
+        "_key": "ca-baimiao",
+        "_name": {
+          "text": "白描 PDF 鸿蒙版"
+        },
+        "_detail": {
+          "text": "OCR 文件识别利器【白描】现已正式登陆鸿蒙平台，并推出鸿蒙首发应用——白描 PDF"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/create/baimiao"
+        }
+      },
+      {
+        "_key": "ca-retro",
+        "_name": {
+          "text": "中古掌机收藏选购指南"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/create/retro-handheld-guide"
+        }
+      },
+      {
+        "_key": "ca-linx",
+        "_name": {
+          "text": "灵犀Linx 68 带屏键盘"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/create/linx"
+        }
+      }
+    ]
+  },
+  "feed-tabs": {
+    "_intent": "内容流页签：当前为「推荐」",
+    "_items": [
+      {
+        "_key": "tab-recommend",
+        "_name": {
+          "text": "推荐"
+        }
+      },
+      {
+        "_key": "tab-all",
+        "_name": {
+          "text": "全部内容"
+        }
+      },
+      {
+        "_key": "tab-topics",
+        "_name": {
+          "text": "话题讨论"
+        }
+      },
+      {
+        "_key": "tab-hot",
+        "_name": {
+          "text": "热门内容"
+        }
+      },
+      {
+        "_key": "tab-follow",
+        "_name": {
+          "text": "关注"
+        }
+      }
+    ],
+    "_expose": {
+      "name": "feed-tab",
+      "type": "text"
+    }
+  },
+  "feed": {
+    "_intent": "推荐内容流：文章（标题/作者/时间/栏目）与一派投票卡",
+    "_items": [
+      {
+        "_key": "fd-114716",
+        "_title": {
+          "text": "本周看什么 | 最近值得一看的 9 部作品"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-feed-1.webp",
+          "alt": "本周看什么 | 最近值得一看的 9 部作品"
+        },
+        "_author": {
+          "text": "少数派编辑部"
+        },
+        "_subtitle": {
+          "text": "17:58"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114716"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "少数派编辑部"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "少数派编辑部",
+            "to": "https://sspai.com/u/ee0vj778"
+          }
+        }
+      },
+      {
+        "_key": "fd-114555",
+        "_title": {
+          "text": "8月音乐精选：有限的生命里，要听得再任性一点！"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-feed-2.webp",
+          "alt": "8月音乐精选：有限的生命里，要听得再任性一点！"
+        },
+        "_author": {
+          "text": "麻乐"
+        },
+        "_subtitle": {
+          "text": "14:55"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114555"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "麻乐"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "麻乐",
+            "to": "https://sspai.com/u/careformusic"
+          }
+        }
+      },
+      {
+        "_key": "fd-114670",
+        "_title": {
+          "text": "具透 | 细数 watchOS 27 中你值得了解的新变化：动态应用网格、智能叠放……"
+        },
+        "_image": {
+          "image": "../assets/sspai-home-feed-3.webp",
+          "alt": "具透 | 细数 watchOS 27 中你值得了解的新变化：动态应用网格、智能叠放……"
+        },
+        "_author": {
+          "text": "少数派编辑部"
+        },
+        "_subtitle": {
+          "text": "11:30"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114670"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "少数派编辑部"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "少数派编辑部",
+            "to": "https://sspai.com/u/ee0vj778"
+          }
+        }
+      },
+      {
+        "_key": "fd-agent-data",
+        "_title": {
+          "text": "让 Agent 读懂你的身体：数据获取篇"
+        },
+        "_author": {
+          "text": "叁思Santh"
+        },
+        "_subtitle": {
+          "text": "11:19"
+        },
+        "_tag": {
+          "text": "会员内容"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/prime/story/how-to-obtain-data-for-agent-analysis"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "叁思Santh"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "叁思Santh",
+            "to": "https://sspai.com/u/7w2qer6m"
+          }
+        }
+      },
+      {
+        "_key": "fd-114699",
+        "_title": {
+          "text": "派早报：欧盟拟禁止 13 岁以下儿童使用社交媒体等"
+        },
+        "_author": {
+          "text": "少数派编辑部"
+        },
+        "_subtitle": {
+          "text": "08:17"
+        },
+        "_tag": {
+          "text": "派早报"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114699"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "少数派编辑部"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "少数派编辑部",
+            "to": "https://sspai.com/u/ee0vj778"
+          }
+        }
+      },
+      {
+        "_key": "fd-114557",
+        "_title": {
+          "text": "城市漫步指南｜威海初秋，看海玩沙"
+        },
+        "_author": {
+          "text": "Victor42"
+        },
+        "_subtitle": {
+          "text": "昨天 17:47"
+        },
+        "_tag": {
+          "text": "Matrix精选"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114557"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "Victor42"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "Victor42",
+            "to": "https://sspai.com/u/Victor_42"
+          }
+        }
+      },
+      {
+        "_key": "fd-vote-512",
+        "_title": {
+          "text": "快速投票：换机只选 512GB 起步？"
+        },
+        "_author": {
+          "text": "一派投票"
+        },
+        "_action": {
+          "verb": "open",
+          "label": "点击了解详情",
+          "to": "https://sspai.com/bullet/1789222518"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "一派投票"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "一派投票",
+            "to": "https://sspai.com/u"
+          }
+        }
+      },
+      {
+        "_key": "fd-114643",
+        "_title": {
+          "text": "具透 | macOS 27 正式版来了，这些是你值得了解新细节"
+        },
+        "_author": {
+          "text": "少数派编辑部"
+        },
+        "_subtitle": {
+          "text": "昨天 15:00"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114643"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "少数派编辑部"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "少数派编辑部",
+            "to": "https://sspai.com/u/ee0vj778"
+          }
+        }
+      },
+      {
+        "_key": "fd-114451",
+        "_title": {
+          "text": "一个小创意的诞生：BeatBox 雪漫天外壳定制指南"
+        },
+        "_author": {
+          "text": "蓬岸"
+        },
+        "_subtitle": {
+          "text": "昨天 11:11"
+        },
+        "_tag": {
+          "text": "Matrix精选"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114451"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "蓬岸"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "蓬岸",
+            "to": "https://sspai.com/u/dnbwg"
+          }
+        }
+      },
+      {
+        "_key": "fd-114658",
+        "_title": {
+          "text": "派早报：佳能发布 EOS R8 Mark II、GPT-5.5 即将下线等"
+        },
+        "_author": {
+          "text": "少数派编辑部"
+        },
+        "_subtitle": {
+          "text": "昨天 08:25"
+        },
+        "_tag": {
+          "text": "派早报"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114658"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "少数派编辑部"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "少数派编辑部",
+            "to": "https://sspai.com/u/ee0vj778"
+          }
+        }
+      },
+      {
+        "_key": "fd-114454",
+        "_title": {
+          "text": "探秘柬埔寨，千年吴哥窟"
+        },
+        "_author": {
+          "text": "PJHubs"
+        },
+        "_subtitle": {
+          "text": "前天 17:33"
+        },
+        "_tag": {
+          "text": "Matrix精选"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/post/114454"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "PJHubs"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "PJHubs",
+            "to": "https://sspai.com/u/pjhubs"
+          }
+        }
+      },
+      {
+        "_key": "fd-vote-cook",
+        "_title": {
+          "text": "Tim Cook 掌舵十五年：哪些苹果产品真正改变了你的数字生活？"
+        },
+        "_author": {
+          "text": "一派投票"
+        },
+        "_action": {
+          "verb": "open",
+          "label": "点击了解详情",
+          "to": "https://sspai.com/bullet/1788244609"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "一派投票"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "一派投票",
+            "to": "https://sspai.com/u"
+          }
+        }
+      }
+    ]
+  },
+  "prime": {
+    "_intent": "会员社区精选（PRIME）：社区帖子摘要，可跟帖讨论并关注作者",
+    "_title": {
+      "text": "会员社区精选"
+    },
+    "_tag": {
+      "text": "PRIME"
+    },
+    "_items": [
+      {
+        "_key": "pm-suzuk1",
+        "_title": {
+          "text": "一个好看的小组件真的能驱动人直接换掉主力流媒体音乐软件🫣"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://sspai.com/t/sncf7rs58uj2"
+        },
+        "_author": {
+          "text": "Suzuk1"
+        },
+        "_subtitle": {
+          "text": "昨天 11:14"
+        },
+        "_detail": {
+          "text": "自从入手pixel 11 pro之后，发现原本最常用的Spotify的小组件放在桌面上实在太丑了😅。"
+        },
+        "discuss": {
+          "_intent": "参与该帖讨论",
+          "_action": {
+            "verb": "open",
+            "label": "参与讨论",
+            "to": "https://sspai.com/t/sncf7rs58uj2"
+          }
+        },
+        "follow": {
+          "_intent": "关注帖子作者",
+          "_action": {
+            "verb": "follow",
+            "label": "关注"
+          }
+        },
+        "authorLink": {
+          "_name": {
+            "text": "Suzuk1"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "Suzuk1",
+            "to": "https://sspai.com/u/0fw8rivr/updates"
+          }
+        }
+      },
+      {
+        "_key": "pm-yangqingle",
+        "_title": {
+          "text": "分享我做的 Obsidian 思维导图插件！（AI 友好！）"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://sspai.com/t/lvl9rwm2mbm7"
+        },
+        "_author": {
+          "text": "羊清乐"
+        },
+        "_subtitle": {
+          "text": "09/07 16:03"
+        },
+        "_detail": {
+          "text": "大家好，我做了一个 Obsidian 思维导图插件， 本地 Markdown 格式，AI 友好，可一键聚焦重点。欢迎大家试试！"
+        },
+        "discuss": {
+          "_intent": "参与该帖讨论",
+          "_action": {
+            "verb": "open",
+            "label": "参与讨论",
+            "to": "https://sspai.com/t/lvl9rwm2mbm7"
+          }
+        },
+        "follow": {
+          "_intent": "关注帖子作者",
+          "_action": {
+            "verb": "follow",
+            "label": "关注"
+          }
+        },
+        "authorLink": {
+          "_name": {
+            "text": "羊清乐"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "羊清乐",
+            "to": "https://sspai.com/u/ollsad/updates"
+          }
+        }
+      }
+    ]
+  },
+  "friends": {
+    "_intent": "「派友在看」侧栏：其他派友正在阅读的文章",
+    "_title": {
+      "text": "派友在看"
+    },
+    "_items": [
+      {
+        "_key": "fr-KE6lQz",
+        "_name": {
+          "text": "华人世界被忽视的游戏主机：扩写中国家用游戏主机的时间线"
+        },
+        "_tag": {
+          "text": "深度好文"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/KE6lQz"
+        }
+      },
+      {
+        "_key": "fr-zo8BXn",
+        "_name": {
+          "text": "小确幸触手可及：聊聊 iPhone SE第 3 代"
+        },
+        "_tag": {
+          "text": "盲盒文章"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/zo8BXn"
+        }
+      },
+      {
+        "_key": "fr-nqPVkz",
+        "_name": {
+          "text": "App+1｜重要信息放「桌边」，信息流聚合只需一瞥：SideCalendar 时间胶囊"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://sspai.com/a/nqPVkz"
+        }
+      }
+    ]
+  },
+  "navigation": {
+    "_intent": "捕获的少数派主导航入口，保持站点原文与目标。",
+    "_items": [
+      {
+        "_title": {
+          "text": "共创"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "共创",
+          "to": "https://sspai.com/create"
+        }
+      },
+      {
+        "_title": {
+          "text": "PRIME"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "PRIME",
+          "to": "https://sspai.com/prime"
+        }
+      },
+      {
+        "_title": {
+          "text": "Matrix"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Matrix",
+          "to": "https://sspai.com/matrix"
+        }
+      },
+      {
+        "_title": {
+          "text": "栏目"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "栏目",
+          "to": "https://sspai.com/series"
+        }
+      }
+    ]
+  },
+  "footer": {
+    "_intent": "捕获的站点说明、协议与联系下载工具入口，不编造额外站点信息。",
+    "_items": [
+      {
+        "_title": {
+          "text": "关于我们"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "关于我们",
+          "to": "https://sspai.com/page/about-us"
+        }
+      },
+      {
+        "_title": {
+          "text": "用户协议"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "用户协议",
+          "to": "https://sspai.com/page/agreement"
+        }
+      },
+      {
+        "_title": {
+          "text": "商务合作"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "商务合作",
+          "to": "https://sspai.com/page/bussiness"
+        }
+      }
+    ]
+  }
+}

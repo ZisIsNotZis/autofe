@@ -1,0 +1,3147 @@
+{
+  "_intent": "Table 表格 - Semi Design — 如何使用 link [draft]",
+  "_title": {
+    "text": "Table 表格 - Semi Design"
+  },
+  "_summary": {
+    "text": "跳转到:"
+  },
+  "_lines": [
+    {
+      "_intent": "list (3 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "跳转到侧边导航"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/show/table#side-nav",
+            "label": "跳转到侧边导航"
+          }
+        },
+        {
+          "_name": {
+            "text": "跳转到主内容"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/show/table#main-content",
+            "label": "跳转到主内容"
+          }
+        },
+        {
+          "_name": {
+            "text": "跳转到页脚"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/show/table#footer",
+            "label": "跳转到页脚"
+          }
+        }
+      ]
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "🎯 使用 MCP & Skills 让 AI 对 Semi 了如指掌，如虎添翼 🚀"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "关闭横幅"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "semi design logo， 链接到semi主页"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/zh-CN/start/introduction",
+        "label": "组件"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/dsm",
+        "label": "主题"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/code",
+        "label": "设计转代码"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/template",
+        "label": "模板"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/dsm_vchart",
+        "label": "数据可视化 NEW"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://semi.design/blogs",
+        "label": "博客"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "切换到暗色模式"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Twitter"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "查看Github"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Switch to English"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "登录"
+      }
+    },
+    {
+      "_text": {
+        "text": "展示类 · Table"
+      }
+    },
+    {
+      "_text": {
+        "text": "表格"
+      }
+    },
+    {
+      "_text": {
+        "text": "表格用于呈现结构化的数据内容，通常会伴随提供对数据进行操作（排序、搜索、分页……）的能力。"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "activity 版本对比"
+      }
+    },
+    {
+      "_intent": "如何使用 link [draft]",
+      "_title": {
+        "text": "如何使用 link"
+      },
+      "_image": {
+        "image": "",
+        "alt": "info_circle"
+      },
+      "_summary": {
+        "text": "注意事项"
+      }
+    },
+    {
+      "_intent": "代码演示 link [draft]",
+      "_title": {
+        "text": "代码演示 link"
+      },
+      "_lines": [
+        {
+          "_intent": "基本表格 link [draft]",
+          "_title": {
+            "text": "基本表格 link"
+          }
+        },
+        {
+          "_intent": "JSX 写法 link [draft]",
+          "_title": {
+            "text": "JSX 写法 link"
+          },
+          "_image": {
+            "image": "",
+            "alt": "info_circle"
+          },
+          "_summary": {
+            "text": "1. JSX 写法的表格暂时不支持 resizable 功能；"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "2. 使用 JSX 写法时，请不要与配置写法同时使用；如果同时使用，仅配置写法生效，不会进行聚合操作。"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "行选择操作 link [draft]",
+          "_title": {
+            "text": "行选择操作 link"
+          },
+          "_image": {
+            "image": "",
+            "alt": "info_circle"
+          },
+          "_summary": {
+            "text": "显示第 1 条-第 3 条，共 6 条"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/table#rowselection",
+                "label": "rowSelection"
+              }
+            },
+            {
+              "_intent": "list (2 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "请务必为 dataSource 中每行数据提供一个与其他行值不同的 key，或者使用 rowKey 参数指定一个作为主键的属性名。"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "如你遇见在第二页点击行选择后，回到第一页问题，请检查组件渲染是否触发了 dataSource 更新（浅对比）。dataSource 更新后，非受控的翻页器会回到第一页。请将 dataSource 放在 state 内。"
+                  }
+                }
+              ]
+            },
+            {
+              "_intent": "list (2 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "自定义渲染 link [draft]",
+          "_title": {
+            "text": "自定义渲染 link"
+          },
+          "_lines": [
+            {
+              "_intent": "list (4 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "expandIcon: 展开图标（当使用树形数据或可展开行时）"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "selection: 选择框（当开启行选择时）"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "indentText: 缩进内容（当使用树形数据时）"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "isHovering: 当前行是否处于悬停状态（v2.98.0 支持）"
+                  }
+                }
+              ]
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "重置"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "带分页组件的表格 link [draft]",
+          "_title": {
+            "text": "带分页组件的表格 link"
+          },
+          "_summary": {
+            "text": "表格分页目前支持两种模式：受控和非受控模式。"
+          },
+          "_lines": [
+            {
+              "_intent": "table (0 rows): Select all rows / 标题 ​ Filter data with this column / Current sort order is none [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": []
+            },
+            {
+              "_text": {
+                "text": "显示第 1 条-第 10 条，共 46 条"
+              }
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "拉取远程数据 link [draft]",
+          "_title": {
+            "text": "拉取远程数据 link"
+          },
+          "_image": {
+            "image": "",
+            "alt": "info_circle"
+          },
+          "_summary": {
+            "text": "受控模式"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "1. 非受控时，pagination 如果是对象类型则不推荐使用字面量写法，原因是字面量写法会导致表格渲染至初始状态（看起来像是"
+              }
+            },
+            {
+              "_text": {
+                "text": "2. 受控模式下，Table 不会对 dataSource 分页，请给 dataSource 传入当前页数据"
+              }
+            },
+            {
+              "_text": {
+                "text": "显示第 1 条-第 5 条，共 46 条"
+              }
+            },
+            {
+              "_intent": "list (7 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "More"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 9"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 10"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "固定列或表头 link [draft]",
+          "_title": {
+            "text": "固定列或表头 link"
+          },
+          "_summary": {
+            "text": "如果是固定值，设置为 >=所有固定列宽之和 + 所有表格列宽之和 的数值。"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "建议指定 scroll.x 为大于表格宽度的固定值或百分比。如果是固定值，设置为 >=所有固定列宽之和+所有表格列宽之和 的数值"
+              }
+            },
+            {
+              "_intent": "table (0 rows): Select all rows / 标题 ​ Filter data with this column / Current sort order is none [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": []
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            },
+            {
+              "_intent": "table (0 rows): Select all rows / 标题 ​ Filter data with this column / Current sort order is none [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": []
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "带排序和过滤功能的表头 link [draft]",
+          "_title": {
+            "text": "带排序和过滤功能的表头 link"
+          },
+          "_image": {
+            "image": "",
+            "alt": "info_circle"
+          },
+          "_summary": {
+            "text": "显示第 1 条-第 6 条，共 6 条"
+          },
+          "_lines": [
+            {
+              "_intent": "table (0 rows): Select all rows / Current sort order is none ​ Filter data with this column / Current sort order is none [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": []
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Previous"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Next"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "自定义表头筛选 link [draft]",
+          "_title": {
+            "text": "自定义表头筛选 link"
+          },
+          "_lines": [
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "自定义筛选器 link [draft]",
+          "_title": {
+            "text": "自定义筛选器 link"
+          },
+          "_summary": {
+            "text": "显示第 1 条-第 10 条，共 23 条"
+          },
+          "_lines": [
+            {
+              "_intent": "list (3 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "筛选确认模式 link [draft]",
+          "_title": {
+            "text": "筛选确认模式 link"
+          },
+          "_summary": {
+            "text": "这个功能适用于需要多选筛选条件后再一次性应用的场景，避免每次点击都触发筛选。"
+          },
+          "_lines": [
+            {
+              "_intent": "list (4 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "点击筛选项不会立即生效，而是先暂存到临时状态"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "下拉面板底部会显示\"确定\"和\"重置\"按钮"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "点击\"确定\"按钮后才会应用筛选条件并关闭下拉面板"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "点击\"重置\"按钮会恢复到打开下拉面板时的初始状态（不会关闭面板）"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "显示第 1 条-第 10 条，共 20 条"
+              }
+            },
+            {
+              "_intent": "list (2 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "自定义筛选项渲染 link [draft]",
+          "_title": {
+            "text": "自定义筛选项渲染 link"
+          },
+          "_lines": [
+            {
+              "_intent": "list (6 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "text: ReactNode 当前筛选项的文案；"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value: any 当前筛选项的值；"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "checked: boolean 当前筛选项是否已经选中；"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filteredValue: any[] 当前所有的筛选值；"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "level: number 当前筛选项所处层级，如果是嵌套的筛选项，该值会 >= 1；"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterMultiple: boolean 当前筛选项是否为多选。"
+                  }
+                }
+              ]
+            },
+            {
+              "_intent": "table (0 rows): Select all rows / Current sort order is none ​ Filter data with this column / Current sort order is none [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": []
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "可以展开的表格 link [draft]",
+          "_title": {
+            "text": "可以展开的表格 link"
+          },
+          "_image": {
+            "image": "",
+            "alt": "info_circle"
+          },
+          "_summary": {
+            "text": "1. 展开按钮会默认与第一列文案渲染在同一个单元格内，你可以通过往 Table 传入 hideExpandedColumn=fa"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "2. 请务必为每行数据提供一个与其他行值不同的 key，或者使用 rowKey 参数指定一个作为主键的属性名。"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "一般可展开行 [draft]",
+          "_title": {
+            "text": "一般可展开行"
+          },
+          "_summary": {
+            "text": "标题"
+          },
+          "_lines": [
+            {
+              "_intent": "list (2 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "如果 rowKey 为 Function，则会把 rowKey(record) 的结果作为行唯一 ID"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "如果 rowKey 为 string 类型，则会把 record[rowKey] 作为行唯一 ID"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "大小"
+              }
+            },
+            {
+              "_text": {
+                "text": "所有者"
+              }
+            },
+            {
+              "_text": {
+                "text": "更新日期"
+              }
+            },
+            {
+              "_intent": "标题 大小 所有者 更新日期 Semi Design 设计稿.fig 2M 姜 姜鹏志 2020-02-02 05:13 Semi Design 分享演示文稿 2M 郝 郝宣 2020-01-17 05:31 设计文档 34KB Z Zoey Edwards 2020-01-26 11:01 [draft]",
+              "_rel": {
+                "compare": true
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                }
+              ],
+              "_expose": {
+                "name": "semi-design",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "展开按钮渲染为单独列 [draft]",
+          "_title": {
+            "text": "展开按钮渲染为单独列"
+          },
+          "_lines": [
+            {
+              "_intent": "标题 大小 所有者 更新日期 Semi Design 设计稿.fig 2M 姜 姜鹏志 2020-02-02 05:13 Semi Design 分享演示文稿 2M 郝 郝宣 2020-01-17 05:31 设计文档 34KB Z Zoey Edwards 2020-01-26 11:01 [draft]",
+              "_rel": {
+                "compare": true
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                }
+              ],
+              "_expose": {
+                "name": "semi-design-2",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "关闭某一行的可展开按钮渲染 [draft]",
+          "_title": {
+            "text": "关闭某一行的可展开按钮渲染"
+          },
+          "_lines": [
+            {
+              "_intent": "标题 大小 所有者 更新日期 Semi Design 设计稿.fig 2M 姜 姜鹏志 2020-02-02 05:13 Semi Design 分享演示文稿 2M 郝 郝宣 2020-01-17 05:31 设计文档 34KB Z Zoey Edwards 2020-01-26 11:01 [draft]",
+              "_rel": {
+                "compare": true
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                }
+              ],
+              "_expose": {
+                "name": "semi-design-3",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "树形数据展示 link [draft]",
+          "_title": {
+            "text": "树形数据展示 link"
+          },
+          "_summary": {
+            "text": "注意：请务必为每行数据提供一个与其他行值不同的 key，或者使用 rowKey 参数指定一个作为主键的属性名。"
+          }
+        },
+        {
+          "_intent": "树形数据简单示例 [draft]",
+          "_title": {
+            "text": "树形数据简单示例"
+          },
+          "_summary": {
+            "text": "Key"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "名称"
+              }
+            },
+            {
+              "_text": {
+                "text": "数据类型"
+              }
+            },
+            {
+              "_text": {
+                "text": "描述"
+              }
+            },
+            {
+              "_text": {
+                "text": "默认值"
+              }
+            },
+            {
+              "_text": {
+                "text": "videos_info"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频信息"
+              }
+            },
+            {
+              "_text": {
+                "text": "Object 对象"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频的元信息"
+              }
+            },
+            {
+              "_text": {
+                "text": "status"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频状态"
+              }
+            },
+            {
+              "_text": {
+                "text": "Enum <Integer> 枚举"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频的可见、推荐状态"
+              }
+            },
+            {
+              "_text": {
+                "text": "vid"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频 ID"
+              }
+            },
+            {
+              "_text": {
+                "text": "String 字符串"
+              }
+            },
+            {
+              "_text": {
+                "text": "标识视频的唯一 ID"
+              }
+            },
+            {
+              "_text": {
+                "text": "video_url"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频地址"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频的唯一链接"
+              }
+            },
+            {
+              "_text": {
+                "text": "text_info"
+              }
+            },
+            {
+              "_text": {
+                "text": "文本信息"
+              }
+            },
+            {
+              "_text": {
+                "text": "title"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频标题"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频的标题"
+              }
+            },
+            {
+              "_text": {
+                "text": "video_description"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频描述"
+              }
+            },
+            {
+              "_text": {
+                "text": "视频的描述"
+              }
+            },
+            {
+              "_text": {
+                "text": "显示第 1 条-第 2 条，共 2 条"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Previous"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Next"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "行可交换的树形数据 [draft]",
+          "_title": {
+            "text": "行可交换的树形数据"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Previous"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Next"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "树形选择 [draft]",
+          "_title": {
+            "text": "树形选择"
+          },
+          "_lines": [
+            {
+              "_intent": "Key 名称 数据类型 描述 默认值 videos_info 视频信息 Object 对象 视频的元信息 无 text_info 文本信息 Object 对象 视频的元信息 无 [draft]",
+              "_rel": {
+                "compare": true
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                }
+              ],
+              "_expose": {
+                "name": "key-videos",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "树形选择关联（checkRelation） [draft]",
+          "_title": {
+            "text": "树形选择关联（checkRelation）"
+          },
+          "_lines": [
+            {
+              "_intent": "Key 名称 数据类型 描述 videos_info 视频信息 Object 视频的元信息 text_info 文本信息 Object 文本的元信息 [draft]",
+              "_rel": {
+                "compare": true
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                }
+              ],
+              "_expose": {
+                "name": "key-videos-2",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "自定义行或单元格事件以及属性 link [draft]",
+          "_title": {
+            "text": "自定义行或单元格事件以及属性 link"
+          },
+          "_summary": {
+            "text": "原则上 tr/td/th 上支持的属性或事件都能够被定义。例如下面这个例子："
+          },
+          "_lines": [
+            {
+              "_intent": "list (2 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "传入 onRow/onHeaderRow 可以定义表格或表头行的原生事件或属性。"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "传入 column.onCell/column.onHeaderCell 可以定义表格或表头单元格原生事件或属性。"
+                  }
+                }
+              ]
+            },
+            {
+              "_intent": "list (3 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "表头的 tr 定义了 onMouseEnter/onMouseLeave"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "表格的 tr 定义了 className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "表格的第三行定义了 onClick"
+                  }
+                }
+              ]
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "实现斑马纹样式 link [draft]",
+          "_title": {
+            "text": "实现斑马纹样式 link"
+          }
+        },
+        {
+          "_intent": "实现表头样式定制 link [draft]",
+          "_title": {
+            "text": "实现表头样式定制 link"
+          },
+          "_summary": {
+            "text": "可以通过 Column.onHeaderCell 返回特定 style 或 className，定制表头的样式 如下例子，通过传"
+          }
+        },
+        {
+          "_intent": "实现单元格 Hover 样式定制 link [draft]",
+          "_title": {
+            "text": "实现单元格 Hover 样式定制 link"
+          },
+          "_summary": {
+            "text": "Table 默认为整行配置 Hover 样式，如果你需要修改相关样式可以通过 CSS 覆盖的方式自行实现。 如下例子，通过 CS"
+          }
+        },
+        {
+          "_intent": "单元格缩略 link [draft]",
+          "_title": {
+            "text": "单元格缩略 link"
+          }
+        },
+        {
+          "_intent": "可伸缩列 link [draft]",
+          "_title": {
+            "text": "可伸缩列 link"
+          }
+        },
+        {
+          "_intent": "基本伸缩列 [draft]",
+          "_title": {
+            "text": "基本伸缩列"
+          },
+          "_summary": {
+            "text": "对于一些内容比较多的列，可以选择打开伸缩列功能，在表头进行拉拽实现列宽的实时变化。"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "不过你需要注意一些参数："
+              }
+            },
+            {
+              "_text": {
+                "text": "与固定列同时使用时，需指定某一列不设置宽度"
+              }
+            },
+            {
+              "_text": {
+                "text": "不推荐与 scroll.x 同时使用，scroll.x 指定表格是有宽度范围的，而伸缩列会拓展列宽，这可能会导致表格对不齐"
+              }
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "进阶的伸缩列 [draft]",
+          "_title": {
+            "text": "进阶的伸缩列"
+          },
+          "_summary": {
+            "text": "本例中使用的 CSS 样式定义："
+          },
+          "_lines": [
+            {
+              "_intent": "list (3 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "onResize"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onResizeStart"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onResizeStop"
+                  }
+                }
+              ]
+            },
+            {
+              "_intent": "list (7 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "More"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 9"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 10"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "拖拽排序 link [draft]",
+          "_title": {
+            "text": "拖拽排序 link"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/clauderic/dnd-kit/tree/master",
+                "label": "dnd-kit"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/DouyinFE/semi-design/blob/340c93e4e1612a879be869c43ad7a9a85ab5a302/packages/semi-ui/table/interface.ts#L200",
+                "label": "components"
+              }
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "表格分组 link [draft]",
+          "_title": {
+            "text": "表格分组 link"
+          },
+          "_summary": {
+            "text": "根据文件大小分组 100 KB"
+          },
+          "_lines": [
+            {
+              "_intent": "table (0 rows): 标题 ​ Filter data with this column / Current sort order is none / 所有者 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": []
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Expand this row"
+              }
+            },
+            {
+              "_text": {
+                "text": "根据文件大小分组 112 KB"
+              }
+            },
+            {
+              "_text": {
+                "text": "根据文件大小分组 105 KB"
+              }
+            },
+            {
+              "_text": {
+                "text": "根据文件大小分组 117 KB"
+              }
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "虚拟化表格 link [draft]",
+          "_title": {
+            "text": "虚拟化表格 link"
+          },
+          "_summary": {
+            "text": "表格分组虚拟化已支持"
+          },
+          "_lines": [
+            {
+              "_intent": "list (2 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "(index, { sectionRow?: boolean, expandedRow?: boolean }) => number"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "以下为渲染 1000 条数据的示例。"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Scroll to 100"
+              }
+            },
+            {
+              "_intent": "table (0 rows): 标题 ​ Filter data with this column / Current sort order is none / 所有者 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": []
+            }
+          ]
+        },
+        {
+          "_intent": "无限滚动 link [draft]",
+          "_title": {
+            "text": "无限滚动 link"
+          },
+          "_lines": [
+            {
+              "_intent": "table (0 rows): 标题 ​ Filter data with this column / Current sort order is none / 所有者 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": []
+            }
+          ]
+        },
+        {
+          "_intent": "受控的动态表格 link [draft]",
+          "_title": {
+            "text": "受控的动态表格 link"
+          },
+          "_summary": {
+            "text": "固定表头："
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "隐藏表头："
+              }
+            },
+            {
+              "_text": {
+                "text": "显示标题："
+              }
+            },
+            {
+              "_text": {
+                "text": "显示底部："
+              }
+            },
+            {
+              "_text": {
+                "text": "固定列："
+              }
+            },
+            {
+              "_text": {
+                "text": "显示选择列："
+              }
+            },
+            {
+              "_text": {
+                "text": "显示加载状态："
+              }
+            },
+            {
+              "_text": {
+                "text": "无数据："
+              }
+            },
+            {
+              "_text": {
+                "text": "开启排序功能："
+              }
+            },
+            {
+              "_text": {
+                "text": "开启过滤功能："
+              }
+            },
+            {
+              "_text": {
+                "text": "开启行展开功能："
+              }
+            },
+            {
+              "_text": {
+                "text": "展开当前所有行："
+              }
+            },
+            {
+              "_text": {
+                "text": "显示边框："
+              }
+            },
+            {
+              "_text": {
+                "text": "开启列伸缩功能："
+              }
+            },
+            {
+              "_text": {
+                "text": "分页控件："
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Bottom"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Top"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Both"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "None"
+              }
+            },
+            {
+              "_text": {
+                "text": "显示第 1 条-第 8 条，共 46 条"
+              }
+            },
+            {
+              "_intent": "list (6 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 6"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "完全自定义渲染 link [draft]",
+          "_title": {
+            "text": "完全自定义渲染 link"
+          },
+          "_summary": {
+            "text": "下方的例子则是将复选框与内容渲染至同一单元格和表头中。"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Name"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Current sort order is none"
+              }
+            },
+            {
+              "_intent": "Name ​ 大小 所有者 更新日期 Semi Design 设计稿0.fig 0 KB 姜 姜鹏志 2026-09-18 Semi D2C 设计稿1.fig 5 KB 郝 郝宣 2026-09-23 Semi Design 设计稿2.fig 10 KB 姜 姜鹏志 2026-09-28 Semi D2C 设计稿3.fig 15 KB 郝 郝宣 2026-10-03 Semi Design 设计稿 [draft]",
+              "_rel": {
+                "compare": true
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                }
+              ],
+              "_expose": {
+                "name": "name-semi",
+                "type": "text"
+              }
+            },
+            {
+              "_text": {
+                "text": "显示第 1 条-第 12 条，共 46 条"
+              }
+            },
+            {
+              "_intent": "list (4 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "表头合并 link [draft]",
+          "_title": {
+            "text": "表头合并 link"
+          },
+          "_summary": {
+            "text": "用户可以通过表头合并功能进行表头的分组，表头合并支持与固定列、虚拟化、数据分组、列伸缩等功能复合使用，也同时支持 JSX 或者配"
+          }
+        },
+        {
+          "_intent": "合并表头配置式写法 [draft]",
+          "_title": {
+            "text": "合并表头配置式写法"
+          },
+          "_lines": [
+            {
+              "_intent": "table (1 rows): Select all rows / 基本信息 / 其他信息 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": []
+            },
+            {
+              "_intent": "Semi Design 设计稿0.fig 0 KB 姜 姜鹏志 2026-09-18 Semi D2C 设计稿1.fig 5 KB 郝 郝宣 2026-09-23 Semi Design 设计稿2.fig 10 KB 姜 姜鹏志 2026-09-28 Semi D2C 设计稿3.fig 15 KB 郝 郝宣 2026-10-03 Semi Design 设计稿4.fig 20 KB 姜 姜鹏志 2 [draft]",
+              "_rel": {
+                "compare": true
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                }
+              ],
+              "_expose": {
+                "name": "semi-design-4",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "合并表头 JSX 写法 [draft]",
+          "_title": {
+            "text": "合并表头 JSX 写法"
+          },
+          "_lines": [
+            {
+              "_intent": "table (1 rows): Select all rows / 基本信息 / 其他信息 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": []
+            },
+            {
+              "_intent": "Semi Design 设计稿0.fig 0 KB 姜 姜鹏志 2026-09-18 Semi D2C 设计稿1.fig 5 KB 郝 郝宣 2026-09-23 Semi Design 设计稿2.fig 10 KB 姜 姜鹏志 2026-09-28 Semi D2C 设计稿3.fig 15 KB 郝 郝宣 2026-10-03 Semi Design 设计稿4.fig 20 KB 姜 姜鹏志 2 [draft]",
+              "_rel": {
+                "compare": true
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Select this row"
+                  }
+                }
+              ],
+              "_expose": {
+                "name": "semi-design-5",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "list (5 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "Page 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "Page 5"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "行列合并 link [draft]",
+          "_title": {
+            "text": "行列合并 link"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "API 参考 link [draft]",
+      "_title": {
+        "text": "API 参考 link"
+      }
+    },
+    {
+      "_intent": "Table link [draft]",
+      "_title": {
+        "text": "Table link"
+      },
+      "_lines": [
+        {
+          "_intent": "table (49 rows): 属性 / 说明 / 类型 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "bordered"
+              }
+            },
+            {
+              "_name": {
+                "text": "childrenRecordName"
+              }
+            },
+            {
+              "_name": {
+                "text": "className"
+              }
+            },
+            {
+              "_name": {
+                "text": "clickGroupedRowToExpand"
+              }
+            },
+            {
+              "_name": {
+                "text": "columns"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/table#column",
+                "label": "Column"
+              }
+            },
+            {
+              "_name": {
+                "text": "components"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/DouyinFE/semi-design/blob/340c93e4e1612a879be869c43ad7a9a85ab5a302/packages/semi-ui/table/interface.ts#L200",
+                "label": "TableComponents"
+              }
+            },
+            {
+              "_name": {
+                "text": "dataSource"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultExpandAllRows"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultExpandAllGroupRows"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultExpandedRowKeys"
+              }
+            },
+            {
+              "_name": {
+                "text": "direction"
+              }
+            },
+            {
+              "_name": {
+                "text": "empty"
+              }
+            },
+            {
+              "_name": {
+                "text": "expandCellFixed"
+              }
+            },
+            {
+              "_name": {
+                "text": "expandIcon"
+              }
+            },
+            {
+              "_name": {
+                "text": "expandedRowKeys"
+              }
+            },
+            {
+              "_name": {
+                "text": "expandedRowRender"
+              }
+            },
+            {
+              "_name": {
+                "text": "expandAllRows"
+              }
+            },
+            {
+              "_name": {
+                "text": "expandAllGroupRows"
+              }
+            },
+            {
+              "_name": {
+                "text": "expandRowByClick"
+              }
+            },
+            {
+              "_name": {
+                "text": "footer"
+              }
+            },
+            {
+              "_name": {
+                "text": "getVirtualizedListRef"
+              }
+            },
+            {
+              "_name": {
+                "text": "groupBy"
+              }
+            },
+            {
+              "_name": {
+                "text": "headerStyle"
+              }
+            },
+            {
+              "_name": {
+                "text": "hideExpandedColumn"
+              }
+            },
+            {
+              "_name": {
+                "text": "indentSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "keepDOM"
+              }
+            },
+            {
+              "_name": {
+                "text": "loading"
+              }
+            },
+            {
+              "_name": {
+                "text": "pagination"
+              }
+            },
+            {
+              "_name": {
+                "text": "prefixCls"
+              }
+            },
+            {
+              "_name": {
+                "text": "renderGroupSection"
+              }
+            },
+            {
+              "_name": {
+                "text": "renderPagination"
+              }
+            },
+            {
+              "_name": {
+                "text": "resizable"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/table#resizable",
+                "label": "Resizable"
+              }
+            },
+            {
+              "_name": {
+                "text": "rowExpandable"
+              }
+            },
+            {
+              "_name": {
+                "text": "rowKey"
+              }
+            },
+            {
+              "_name": {
+                "text": "rowSelection"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/table#rowselection",
+                "label": "rowSelection"
+              }
+            },
+            {
+              "_name": {
+                "text": "scroll"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/table#scroll",
+                "label": "scroll"
+              }
+            },
+            {
+              "_name": {
+                "text": "showHeader"
+              }
+            },
+            {
+              "_name": {
+                "text": "size"
+              }
+            },
+            {
+              "_name": {
+                "text": "sticky"
+              }
+            },
+            {
+              "_name": {
+                "text": "title"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "headerStyle 示例 link [draft]",
+          "_title": {
+            "text": "headerStyle 示例 link"
+          },
+          "_summary": {
+            "text": "一些上面用到的类型定义："
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "RecordType 为 Table 和 Column 的泛型参数，默认为 object 类型。你可以这样使用 RecordTy"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "onHeaderRow / onRow 用法 link [draft]",
+      "_title": {
+        "text": "onHeaderRow / onRow 用法 link"
+      }
+    },
+    {
+      "_intent": "Column link [draft]",
+      "_title": {
+        "text": "Column link"
+      },
+      "_lines": [
+        {
+          "_intent": "table (36 rows): 属性 / 说明 / 类型 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "align"
+              }
+            },
+            {
+              "_name": {
+                "text": "className"
+              }
+            },
+            {
+              "_name": {
+                "text": "children"
+              }
+            },
+            {
+              "_name": {
+                "text": "colSpan"
+              }
+            },
+            {
+              "_name": {
+                "text": "dataIndex"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultFilteredValue"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultSortOrder"
+              }
+            },
+            {
+              "_name": {
+                "text": "ellipsis"
+              }
+            },
+            {
+              "_name": {
+                "text": "filterChildrenRecord"
+              }
+            },
+            {
+              "_name": {
+                "text": "filterDropdown"
+              }
+            },
+            {
+              "_name": {
+                "text": "filterDropdownProps"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/dropdown#Dropdown",
+                "label": "Dropdown API"
+              }
+            },
+            {
+              "_name": {
+                "text": "filterDropdownVisible"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/dropdown#Dropdown",
+                "label": "Dropdown API"
+              }
+            },
+            {
+              "_name": {
+                "text": "filterIcon"
+              }
+            },
+            {
+              "_name": {
+                "text": "filterMultiple"
+              }
+            },
+            {
+              "_name": {
+                "text": "filterConfirmMode"
+              }
+            },
+            {
+              "_name": {
+                "text": "filteredValue"
+              }
+            },
+            {
+              "_name": {
+                "text": "filters"
+              }
+            },
+            {
+              "_name": {
+                "text": "fixed"
+              }
+            },
+            {
+              "_name": {
+                "text": "key"
+              }
+            },
+            {
+              "_name": {
+                "text": "render"
+              }
+            },
+            {
+              "_name": {
+                "text": "renderFilterDropdown"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/table#%e8%87%aa%e5%ae%9a%e4%b9%89%e7%ad%9b%e9%80%89%e5%99%a8",
+                "label": "自定义筛选器"
+              }
+            },
+            {
+              "_name": {
+                "text": "renderFilterDropdownItem"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/table#%e8%87%aa%e5%ae%9a%e4%b9%89%e7%ad%9b%e9%80%89%e9%a1%b9%e6%b8%b2%e6%9f%93",
+                "label": "自定义筛选项渲染"
+              }
+            },
+            {
+              "_name": {
+                "text": "resize"
+              }
+            },
+            {
+              "_name": {
+                "text": "showSortTip"
+              }
+            },
+            {
+              "_name": {
+                "text": "sortChildrenRecord"
+              }
+            },
+            {
+              "_name": {
+                "text": "sortOrder"
+              }
+            },
+            {
+              "_name": {
+                "text": "sorter"
+              }
+            },
+            {
+              "_name": {
+                "text": "sortIcon"
+              }
+            },
+            {
+              "_name": {
+                "text": "shouldCellUpdate"
+              }
+            },
+            {
+              "_name": {
+                "text": "title"
+              }
+            },
+            {
+              "_name": {
+                "text": "useFullRender"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/table#%e5%ae%8c%e5%85%a8%e8%87%aa%e5%ae%9a%e4%b9%89%e6%b8%b2%e6%9f%93",
+                "label": "完全自定义渲染"
+              }
+            },
+            {
+              "_name": {
+                "text": "width"
+              }
+            },
+            {
+              "_name": {
+                "text": "onCell"
+              }
+            },
+            {
+              "_name": {
+                "text": "onFilter"
+              }
+            },
+            {
+              "_name": {
+                "text": "onFilterDropdownVisibleChange"
+              }
+            },
+            {
+              "_name": {
+                "text": "onHeaderCell"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Column.onCell / onHeaderCell 用法 link [draft]",
+      "_title": {
+        "text": "Column.onCell / onHeaderCell 用法 link"
+      }
+    },
+    {
+      "_intent": "rowSelection link [draft]",
+      "_title": {
+        "text": "rowSelection link"
+      },
+      "_lines": [
+        {
+          "_intent": "table (15 rows): 属性 / 说明 / 类型 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "className"
+              }
+            },
+            {
+              "_name": {
+                "text": "checkRelation"
+              }
+            },
+            {
+              "_name": {
+                "text": "clickRow"
+              }
+            },
+            {
+              "_name": {
+                "text": "disabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "fixed"
+              }
+            },
+            {
+              "_name": {
+                "text": "getCheckboxProps"
+              }
+            },
+            {
+              "_name": {
+                "text": "hidden"
+              }
+            },
+            {
+              "_name": {
+                "text": "renderCell"
+              }
+            },
+            {
+              "_name": {
+                "text": "selectedRowKeys"
+              }
+            },
+            {
+              "_name": {
+                "text": "shouldCellUpdate"
+              }
+            },
+            {
+              "_name": {
+                "text": "width"
+              }
+            },
+            {
+              "_name": {
+                "text": "onChange"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/show/table#faq",
+                "label": "FAQ"
+              }
+            },
+            {
+              "_name": {
+                "text": "onHeaderCell"
+              }
+            },
+            {
+              "_name": {
+                "text": "onSelect"
+              }
+            },
+            {
+              "_name": {
+                "text": "onSelectAll"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "scroll link [draft]",
+      "_title": {
+        "text": "scroll link"
+      },
+      "_lines": [
+        {
+          "_intent": "table (3 rows): 属性 / 说明 / 类型 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "scrollToFirstRowOnChange"
+              }
+            },
+            {
+              "_name": {
+                "text": "x"
+              }
+            },
+            {
+              "_name": {
+                "text": "y"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "pagination link [draft]",
+      "_title": {
+        "text": "pagination link"
+      },
+      "_summary": {
+        "text": "注意：pagination.onChange 设置后，Table onChange 不再响应分页器变化。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (7 rows): 属性 / 说明 / 类型 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "currentPage"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultCurrentPage"
+              }
+            },
+            {
+              "_name": {
+                "text": "formatPageText"
+              }
+            },
+            {
+              "_name": {
+                "text": "pageSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "position"
+              }
+            },
+            {
+              "_name": {
+                "text": "total"
+              }
+            },
+            {
+              "_name": {
+                "text": "preventPageChangeOnPageSizeChange"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/navigation/pagination#API%E5%8F%82%E8%80%83",
+            "label": "Pagination"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Resizable link [draft]",
+      "_title": {
+        "text": "Resizable link"
+      },
+      "_lines": [
+        {
+          "_intent": "table (3 rows): 属性 / 说明 / 类型 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "onResize"
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "to": "https://semi.design/zh-CN/show/table#column",
+                      "label": "Column"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "to": "https://semi.design/zh-CN/show/table#column",
+                      "label": "Column"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "_name": {
+                "text": "onResizeStart"
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "to": "https://semi.design/zh-CN/show/table#column",
+                      "label": "Column"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "to": "https://semi.design/zh-CN/show/table#column",
+                      "label": "Column"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "_name": {
+                "text": "onResizeStop"
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "to": "https://semi.design/zh-CN/show/table#column",
+                      "label": "Column"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "to": "https://semi.design/zh-CN/show/table#column",
+                      "label": "Column"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "方法 link [draft]",
+      "_title": {
+        "text": "方法 link"
+      },
+      "_summary": {
+        "text": "通过 ref 可以访问到 Table 提供的一些内部方法："
+      },
+      "_lines": [
+        {
+          "_intent": "table (1 rows): 名称 / 描述 / 版本 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "getCurrentPageData()"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Accessibility link [draft]",
+      "_title": {
+        "text": "Accessibility link"
+      },
+      "_lines": [
+        {
+          "_intent": "ARIA link [draft]",
+          "_title": {
+            "text": "ARIA link"
+          },
+          "_lines": [
+            {
+              "_intent": "list (8 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "表格的 role 为 grid，树形表格的 role 为 treegrid"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "行的 role 为 row，单元格的 role 为 gridcell"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "表格新增了 aria-rowcount 和 aria-colcount 属性表示行和列的数量"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "行新增了 aria-rowindex 表示当前属于第几行，第一行为 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "树形表格的行具有 aria-level 表示当前行的树形层级，第一层为 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "可展开表格行具有 aria-expanded 属性，表示当前行是否展开"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "单元格的新增了 aria-colindex 表示当前格子属于第几列，第一列为 1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "列的筛选和排序按钮添加了 aria-label，行的选择按钮添加了 aria-label 属性"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "RTL/LTR link [draft]",
+      "_title": {
+        "text": "RTL/LTR link"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Table 的 RTL 默认值为 ConfigProvider direction，可以通过 Table direction 覆盖"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/other/configprovider",
+                "label": "ConfigProvider"
+              }
+            },
+            {
+              "_name": {
+                "text": "Table 列的 align 与 fixed 属性会在 RTL 时会自动切换，left <-> right，固定列的 RTL 功能于 v2.31 版本支持"
+              }
+            },
+            {
+              "_name": {
+                "text": "Table 的树形数据暂不支持 RTL（Chrome、Safari 浏览器表现与 Firefox 表现不同）"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://codesandbox.io/s/table-rtl-treedata-uy7gzl?file=/src/App.jsx",
+                "label": "Chrome、Safari 浏览器表现与 Firefox 表现不同"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "文案规范 link [draft]",
+      "_title": {
+        "text": "文案规范 link"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "表格标题 表格标题应清晰的让用户感知到表格的目的； 为复杂表格添加描述，为用户提供更多关于表格的上下文信息； 使用句子大小写；"
+              }
+            },
+            {
+              "_name": {
+                "text": "列标题 保持列标题简洁，建议使用 1-2 个词作为列标题； 当列标题较长时，建议 2 行显示，剩余文字缩略并在 Tooltip 中显示完全； 采用 Sentence case 的大小写规则； 列标题使用句子大小写；"
+              }
+            },
+            {
+              "_name": {
+                "text": "表格操作 可以遵循 Button 的文案规范"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://semi.design/zh-CN/input/button#%E6%96%87%E6%A1%88%E8%A7%84%E8%8C%83",
+                "label": "Button 的文案规范"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "设计变量 help_circle link [draft]",
+      "_title": {
+        "text": "设计变量 help_circle link"
+      },
+      "_summary": {
+        "text": "显示第 1 条-第 5 条，共 5 条"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Previous"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Next"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "FAQ link [draft]",
+      "_title": {
+        "text": "FAQ link"
+      },
+      "_summary": {
+        "text": "Navigated to Table 表格 - Semi Design"
+      },
+      "_lines": [
+        {
+          "_intent": "list (10 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "点击第二页的行选择按钮，会跳转到第一页？ Table 的 dataSource 更新后，会将页码重置到初始态。请检查数据源是否在组件渲染时发生了变化。 function App() { const [dataSource, setDataSource] = useState([]); useEffect(() => {"
+              }
+            },
+            {
+              "_name": {
+                "text": "筛选后的数据条数不对？ 请检查你的筛选列和数据源是否配置正确。 筛选列需设置独立的 dataIndex，同时 dataSource 需要设置独立的 key，请参考 dataSource API。否则筛选功能无法正常工作。"
+              }
+            },
+            {
+              "_name": {
+                "text": "表格数据为何没有更新？ Table 组件目前所有参数都为浅层对比，也就是说如果该参数值类型为一个 Array 或者 Object，你需要手动改变其引用才能触发更新。同理，如果你不想触发额外更新，尽量不要直接在传参的时候使用字面量或是在 render 过程中定义引用型参数值： // ...render() { <Tabl"
+              }
+            },
+            {
+              "_name": {
+                "text": "为何我的表格行不能选中以及展开？ 请指定 rowKey 或者给 dataSource 的每项设置一个各不相同的 \"key\" 属性。表格内所有行相关的操作都需要使用到。"
+              }
+            },
+            {
+              "_name": {
+                "text": "如何实现点击排序按钮时自定义排序或传参给服务端排序？ onChange 方法的入参包括 pagination、filters、sorter，用户可以根据 sorter 对 dataSource 进行自定义排序。"
+              }
+            },
+            {
+              "_name": {
+                "text": "如何给某一行添加 className？ 使用 onRow 或 onHeaderRow。"
+              }
+            },
+            {
+              "_name": {
+                "text": "如何给 table cell 设置样式？ 涉及到单个 cell 需要控制样式的，可以通过 column.onHeaderCell、column.onCell 控制。"
+              }
+            },
+            {
+              "_name": {
+                "text": "为何 rowSelection onChange 的第一个参数缓存了之前选中的 keys？ 这么做为了在分页受控时，在第一页选中数据后，去第二页选择数据，回到第一页后选择的 row keys 丢失的场景。如果不想用缓存的 keys，可以从当前 dataSource 过滤一遍，或者使用 rowSelection onCh"
+              }
+            },
+            {
+              "_name": {
+                "text": "支持单行选择吗 Table 暂不支持单行选则功能，用户可以通过自定义方式实现单选。实现方式移步 Table FAQ 文档。"
+              }
+            },
+            {
+              "_name": {
+                "text": "Table 是如何实现的，我想了解更多细节？ 查看 Semi Table 组件设计方案了解更多。"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://bytedance.feishu.cn/docs/doccnqLgNefWGMZHFz7j70GKqpY",
+                "label": "Semi Table 组件设计方案"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://bytedance.feishu.cn/docs/doccnsYk1qUmsIDP1ihJ9zjG0Ch",
+            "label": "Table FAQ"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/show/sidesheet",
+            "label": "show / SideSheet 滑动侧边栏 SideSheet 滑动侧边栏"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://semi.design/zh-CN/show/tag",
+            "label": "show / Tag 标签 Tag 标签"
+          }
+        }
+      ]
+    }
+  ]
+}

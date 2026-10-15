@@ -1,0 +1,251 @@
+{
+  "_intent": "让访客理解 Linear 是为现代团队与 AI Agent 打造的产品开发系统，并注册开始使用",
+  "_key": "linear-home",
+  "_title": {
+    "text": "The product development system for teams and agents"
+  },
+  "_summary": {
+    "text": "A new species of product tool. Purpose-built for modern teams with AI workflows at its core, Linear sets a new standard for planning and building products."
+  },
+  "_primary": "_summary",
+  "_action": {
+    "verb": "open",
+    "to": "https://linear.app/signup",
+    "label": "Get started"
+  },
+  "beats": {
+    "_intent": "产品能力的四个故事节拍：从输入到交付",
+    "_rel": {
+      "order": "sequence"
+    },
+    "_lines": [
+      {
+        "_intent": "需求从哪里来",
+        "_title": {
+          "text": "Intake and integrations"
+        },
+        "_detail": {
+          "text": "Automatically turn conversations and customer feedback into actionable issues that are instantly routed, labeled, and prioritized for the right team."
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://linear.app/intake",
+          "label": "Learn more→"
+        },
+        "_image": {
+          "image": "../assets/62-linear-demo-1.png",
+          "alt": ""
+        }
+      },
+      {
+        "_intent": "如何规划与掌控进度",
+        "_title": {
+          "text": "Planning and monitoring"
+        },
+        "_detail": {
+          "text": "Plan and navigate from idea to launch. Align your team with product initiatives, strategic roadmaps, and clear, up-to-date PRDs."
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://linear.app/plan",
+          "label": "Learn more→"
+        },
+        "_image": {
+          "image": "../assets/62-linear-demo-2.png",
+          "alt": ""
+        }
+      },
+      {
+        "_intent": "AI 与自动化在哪里生效",
+        "_title": {
+          "text": "AI and automations"
+        },
+        "_detail": {
+          "text": "Build and deploy AI agents that work alongside you as teammates. Work on complex tasks together or delegate entire issues end-to-end."
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://linear.app/ai",
+          "label": "Learn more→"
+        },
+        "_image": {
+          "image": "../assets/62-linear-demo-3.png",
+          "alt": ""
+        }
+      },
+      {
+        "_intent": "如何构建、评审并发布",
+        "_title": {
+          "text": "Build, review, and ship"
+        },
+        "_detail": {
+          "text": "Streamline code reviews with clear diffs, better context, and fewer back-and-forth comments. Keep PRs moving without sacrificing quality."
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://linear.app/build",
+          "label": "Learn more→"
+        },
+        "_image": {
+          "image": "../assets/62-linear-demo-4.png",
+          "alt": ""
+        }
+      }
+    ]
+  },
+  "proof": {
+    "_intent": "用原则背书：这不是新玩具，而是被一流团队验证的实践",
+    "_title": {
+      "text": "Purpose-built"
+    },
+    "_summary": {
+      "text": "Linear is shaped by the practices and principles of world-class product teams."
+    },
+    "_lines": [
+      {
+        "_intent": "为人类与 Agent 共享的工作流而设计",
+        "_detail": {
+          "text": "Designed for workflows shared by humans and agents. From drafting PRDs to pushing PRs."
+        }
+      },
+      {
+        "_intent": "降噪并恢复势头",
+        "_detail": {
+          "text": "Reduces noise and restores momentum to help teams ship with high velocity and focus."
+        }
+      }
+    ]
+  },
+  "changelog": {
+    "_intent": "持续演进的证据：按时间倒序的更新记录",
+    "_rel": {
+      "order": "time"
+    },
+    "_title": {
+      "text": "Changelog"
+    },
+    "_action": {
+      "verb": "navigate",
+      "to": "https://linear.app/changelog"
+    },
+    "_items": [
+      {
+        "_title": {
+          "text": "New controls for Linear coding agent"
+        },
+        "_summary": {
+          "text": "Coding sessions are the shortest path from issue to diff. Assign a task to Linear Agent, and it works in a secure cloud environment to write and test the code before opening a pull request for review."
+        },
+        "_datetime": {
+          "date": "2026-09-24"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://linear.app/changelog/2026-09-24-new-controls-for-linear-coding-agent"
+        }
+      },
+      {
+        "_title": {
+          "text": "Loops for product management"
+        },
+        "_summary": {
+          "text": "Loops are recurring agent workflows for teams. They now respond to more workspace activity, including changes to initiatives, projects, and cycles. They can also edit Linear documents and post updates to Slack."
+        },
+        "_datetime": {
+          "date": "2026-09-10"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://linear.app/changelog/2026-09-14-loops-for-product-management"
+        }
+      },
+      {
+        "_title": {
+          "text": "Priority inbox"
+        },
+        "_summary": {
+          "text": "An active workspace can create a significant amount of notifications each day, and until now your inbox treated them all the same. The new Priority tab separates what needs your attention from what can wait, so something like a review blocking a release never gets buried."
+        },
+        "_datetime": {
+          "date": "2026-09-03"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://linear.app/changelog/2026-09-03-priority-inbox"
+        }
+      },
+      {
+        "_title": {
+          "text": "Coding sessions"
+        },
+        "_summary": {
+          "text": "Linear Agent can now set up, run, and test your code before returning its work. That means fewer handoffs and changes that are further along when they come back to you."
+        },
+        "_datetime": {
+          "date": "2026-08-19"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://linear.app/changelog/2026-08-20-coding-environments"
+        }
+      }
+    ]
+  },
+  "sales": {
+    "_intent": "规模企业走的另一条入口",
+    "_title": {
+      "text": "Contact sales"
+    },
+    "_action": {
+      "verb": "open",
+      "to": "https://linear.app/contact/sales",
+      "label": "Contact sales"
+    }
+  },
+  "customers": {
+    "_intent": "被一流团队验证",
+    "_title": {
+      "text": "Powering the companies building the future"
+    },
+    "_items": [
+      {
+        "_brand": {
+          "text": "OpenAI"
+        }
+      },
+      {
+        "_brand": {
+          "text": "Vercel"
+        }
+      },
+      {
+        "_brand": {
+          "text": "Figma"
+        }
+      },
+      {
+        "_brand": {
+          "text": "Coinbase"
+        }
+      },
+      {
+        "_brand": {
+          "text": "Ramp"
+        }
+      }
+    ]
+  },
+  "demo": {
+    "_intent": "源站 hero 的工作区示例，不是 Changelog。静态演示像素来自捕获图；事实文字来自 DOM，原始完整 DOM/nodes 保留为 provenance。",
+    "_image": {
+      "image": "../assets/62-linear-demo-0.png",
+      "alt": ""
+    },
+    "_title": {
+      "text": "Faster app launch"
+    },
+    "_detail": {
+      "text": "Render UI before vehicle_state sync when minimum required state is present, instead of blocking on full refresh during iOS startup."
+    }
+  }
+}

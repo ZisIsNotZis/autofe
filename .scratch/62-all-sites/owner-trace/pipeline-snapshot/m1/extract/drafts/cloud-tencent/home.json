@@ -1,0 +1,925 @@
+{
+  "_intent": "腾讯云 产业智变·云启未来 - 腾讯 [draft]",
+  "_title": {
+    "text": "腾讯云 产业智变·云启未来 - 腾讯"
+  },
+  "_measure": {
+    "num": 15
+  },
+  "_image": {
+    "list": [
+      {
+        "image": "",
+        "alt": "WorkBuddy"
+      },
+      {
+        "image": "",
+        "alt": "腾讯云大模型训推平台 TI-ONE"
+      }
+    ]
+  },
+  "_summary": {
+    "text": "AI 全栈能力"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/",
+        "label": "腾讯云"
+      }
+    },
+    {
+      "_intent": "list (11 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "大模型"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "大模型"
+          }
+        },
+        {
+          "_name": {
+            "text": "最新活动"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "最新活动"
+          }
+        },
+        {
+          "_name": {
+            "text": "产品"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "产品"
+          }
+        },
+        {
+          "_name": {
+            "text": "解决方案"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "解决方案"
+          }
+        },
+        {
+          "_name": {
+            "text": "定价"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "定价"
+          }
+        },
+        {
+          "_name": {
+            "text": "企业中心"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "企业中心"
+          }
+        },
+        {
+          "_name": {
+            "text": "云市场"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "云市场"
+          }
+        },
+        {
+          "_name": {
+            "text": "开发者"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "开发者"
+          }
+        },
+        {
+          "_name": {
+            "text": "客户支持"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "客户支持"
+          }
+        },
+        {
+          "_name": {
+            "text": "合作与生态"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "合作与生态"
+          }
+        },
+        {
+          "_name": {
+            "text": "了解腾讯云"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "了解腾讯云"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "list (9 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "对象存储"
+          }
+        },
+        {
+          "_name": {
+            "text": "短信"
+          }
+        },
+        {
+          "_name": {
+            "text": "TokenHub"
+          }
+        },
+        {
+          "_name": {
+            "text": "CodeBuddy"
+          }
+        },
+        {
+          "_name": {
+            "text": "云服务器"
+          }
+        },
+        {
+          "_name": {
+            "text": "域名"
+          }
+        },
+        {
+          "_name": {
+            "text": "WorkBuddy"
+          }
+        },
+        {
+          "_name": {
+            "text": "SSL 证书"
+          }
+        },
+        {
+          "_name": {
+            "text": "对象存储"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "list (8 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "WorkBuddy"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "WorkBuddy"
+          }
+        },
+        {
+          "_name": {
+            "text": "CodeBuddy"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "CodeBuddy"
+          }
+        },
+        {
+          "_name": {
+            "text": "TokenHub"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "TokenHub"
+          }
+        },
+        {
+          "_name": {
+            "text": "域名"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "域名"
+          }
+        },
+        {
+          "_name": {
+            "text": "SSL 证书"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "SSL 证书"
+          }
+        },
+        {
+          "_name": {
+            "text": "短信"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "短信"
+          }
+        },
+        {
+          "_name": {
+            "text": "云服务器"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "云服务器"
+          }
+        },
+        {
+          "_name": {
+            "text": "对象存储"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "对象存储"
+          }
+        }
+      ]
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "中国站"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/document/product",
+        "label": "文档"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/product/ba",
+        "label": "备案"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "控制台"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "登录"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "javascript:void 0;",
+        "label": "免费注册"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/act/pro/tokenplan?from=29759",
+        "label": "AI 编程 腾讯云 Token Plan Hy4 preview 全新上线"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://lightagent.cloud.tencent.com/?from=30351",
+        "label": "产品动态 Lighthouse Agent 云端对话、管理你的 Agent"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/act/pro/agent-bucket?from=30294",
+        "label": "产品动态 智能体桶 Agent Bucket 首发特惠 三重好礼开启存储新体验"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.workbuddy.cn/?fromSource=gwzcw.12411280.12411280.12411280",
+        "label": "全场景智能体工作搭子·AI Agent 办公新范式 立即下载"
+      }
+    },
+    {
+      "_text": {
+        "text": "AI 能力"
+      }
+    },
+    {
+      "_text": {
+        "text": "WorkBuddy"
+      }
+    },
+    {
+      "_text": {
+        "text": "全场景 AI 办公工作台，覆盖日常办公、代码开发与设计创意。说出要求、开始执行任务、交付完整成果。"
+      }
+    },
+    {
+      "_text": {
+        "text": "CodeBuddy"
+      }
+    },
+    {
+      "_text": {
+        "text": "提供覆盖编码、扩展与协作的全栈开发生态，无论何种开发环境，均可助您专注创造、实现效率极致飞跃。"
+      }
+    },
+    {
+      "_text": {
+        "text": "SnakeGame.py"
+      }
+    },
+    {
+      "_text": {
+        "text": "正在生成..."
+      }
+    },
+    {
+      "_text": {
+        "text": "Agent Runtime"
+      }
+    },
+    {
+      "_text": {
+        "text": "面向Agentic Agent、Agentic RL训练及企业级 Agent 平台构建场景，以完整能力助力企业部署运营复杂 Ag"
+      }
+    },
+    {
+      "_text": {
+        "text": "丰富的沙箱类型"
+      }
+    },
+    {
+      "_text": {
+        "text": "毫秒级启动，数十万并发"
+      }
+    },
+    {
+      "_text": {
+        "text": "全链路安全"
+      }
+    },
+    {
+      "_text": {
+        "text": "企业级治理"
+      }
+    },
+    {
+      "_text": {
+        "text": "智能体开发平台 ADP"
+      }
+    },
+    {
+      "_text": {
+        "text": "提供 LLM+RAG、Workflow、Multi-agent等多智能体开发框架，助力企业依托自有数据快速搭建稳定安全的定制智能"
+      }
+    },
+    {
+      "_text": {
+        "text": "智能体开发平台"
+      }
+    },
+    {
+      "_text": {
+        "text": "LLM+RAG"
+      }
+    },
+    {
+      "_text": {
+        "text": "Workflow"
+      }
+    },
+    {
+      "_text": {
+        "text": "Multi-Agent"
+      }
+    },
+    {
+      "_text": {
+        "text": "腾讯云大模型训推平台 TI-ONE"
+      }
+    },
+    {
+      "_text": {
+        "text": "集成精调工具链、推理服务、加速引擎及算力管理能力，助力企业高效低成本精调部署实战大模型。"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Previous slide"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Next slide"
+      }
+    },
+    {
+      "_text": {
+        "text": "语言模型"
+      }
+    },
+    {
+      "_text": {
+        "text": "视觉模型"
+      }
+    },
+    {
+      "_text": {
+        "text": "语音模型"
+      }
+    },
+    {
+      "_text": {
+        "text": "实时音视频"
+      }
+    },
+    {
+      "_text": {
+        "text": "深度融合大模型能力，依托全球毫秒级传输网络，提供拟人化实时对话与精准跨语言沟通的智能互动体验，助力快速构建极具竞争力的 AI 应"
+      }
+    },
+    {
+      "_text": {
+        "text": "超低延迟 AI 实时对话"
+      }
+    },
+    {
+      "_text": {
+        "text": "对话延迟保持在 1000ms 以下，具有跨文本、音频和视频进行实时推理的能力，可实现更自然的人机交互"
+      }
+    },
+    {
+      "_text": {
+        "text": "AI 实时转录与翻译"
+      }
+    },
+    {
+      "_text": {
+        "text": "支持对直播、会议及通话中的音频流进行毫秒级实时转写与多语种互译，快速构建实时字幕与会议纪要，打大幅提升沟通效率"
+      }
+    },
+    {
+      "_text": {
+        "text": "智能降噪优化"
+      }
+    },
+    {
+      "_text": {
+        "text": "内置全新 AI 降噪引擎，精准识别远场人声并消除背景杂音，支持多端场景的服务端降噪，在嘈杂环境中也能清晰通话"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://rtcube.cloud.tencent.com/component/experience-center/index.html#/detail?scene=ai",
+        "label": "立即体验"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/document/product/647/110584",
+        "label": "查看详情"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer",
+        "label": "共创价值"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/58tongcheng?Is=home",
+        "label": "58同城 58同城"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/wzyh?Is=home",
+        "label": "webank webank"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/chaocanshu?Is=home",
+        "label": "超参数 超参数"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/dazongdianping",
+        "label": "大众点评 大众点评"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/didichuxing?Is=home",
+        "label": "滴滴 滴滴"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/dytv?Is=home",
+        "label": "斗鱼 斗鱼"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/gfzq?Is=home",
+        "label": "广发证券 广发证券"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/PUBGMobile?Is=home",
+        "label": "绝地求生 绝地求生"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/ks?Is=home",
+        "label": "快手 快手"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/lzfm?Is=home",
+        "label": "荔枝 荔枝"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/zhld",
+        "label": "天府绿道 天府绿道"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/mnsj?Is=home",
+        "label": "迷你世界 迷你世界"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/mgj?Is=home",
+        "label": "蘑菇街 蘑菇街"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/rmrb?Is=home",
+        "label": "人民日报 人民日报"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/rmw?Is=home",
+        "label": "人民网 人民网"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/cecf?Is=home",
+        "label": "中国进出口商品交易会 中国进出口商品交易会"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/txkt?Is=home",
+        "label": "腾讯课堂 腾讯课堂"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/txyx?Is=home",
+        "label": "腾讯游戏 腾讯游戏"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/tongchengwang?Is=home",
+        "label": "同程旅游 同程旅游"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/weiyi",
+        "label": "微医集团 微医集团"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/xdf?Is=home",
+        "label": "新东方 新东方"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/yonghui?Is=home",
+        "label": "永辉超市 永辉超市"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/ytk",
+        "label": "猿题库 猿题库"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/customer/bilibili",
+        "label": "Bilibili Bilibili"
+      }
+    },
+    {
+      "_text": {
+        "text": "华北"
+      }
+    },
+    {
+      "_text": {
+        "text": "北京"
+      }
+    },
+    {
+      "_text": {
+        "text": "华东"
+      }
+    },
+    {
+      "_text": {
+        "text": "上海"
+      }
+    },
+    {
+      "_text": {
+        "text": "南京"
+      }
+    },
+    {
+      "_text": {
+        "text": "华南"
+      }
+    },
+    {
+      "_text": {
+        "text": "广州"
+      }
+    },
+    {
+      "_text": {
+        "text": "深圳"
+      }
+    },
+    {
+      "_text": {
+        "text": "西南"
+      }
+    },
+    {
+      "_text": {
+        "text": "成都"
+      }
+    },
+    {
+      "_text": {
+        "text": "重庆"
+      }
+    },
+    {
+      "_text": {
+        "text": "西北"
+      }
+    },
+    {
+      "_text": {
+        "text": "中卫"
+      }
+    },
+    {
+      "_text": {
+        "text": "中国香港"
+      }
+    },
+    {
+      "_text": {
+        "text": "香港"
+      }
+    },
+    {
+      "_text": {
+        "text": "日本"
+      }
+    },
+    {
+      "_text": {
+        "text": "东京"
+      }
+    },
+    {
+      "_text": {
+        "text": "大阪"
+      }
+    },
+    {
+      "_text": {
+        "text": "韩国"
+      }
+    },
+    {
+      "_text": {
+        "text": "首尔"
+      }
+    },
+    {
+      "_text": {
+        "text": "泰国"
+      }
+    },
+    {
+      "_text": {
+        "text": "曼谷"
+      }
+    },
+    {
+      "_text": {
+        "text": "马来西亚"
+      }
+    },
+    {
+      "_text": {
+        "text": "新山"
+      }
+    },
+    {
+      "_text": {
+        "text": "新加坡"
+      }
+    },
+    {
+      "_text": {
+        "text": "印度尼西亚"
+      }
+    },
+    {
+      "_text": {
+        "text": "雅加达"
+      }
+    },
+    {
+      "_text": {
+        "text": "中东"
+      }
+    },
+    {
+      "_text": {
+        "text": "利雅得"
+      }
+    },
+    {
+      "_text": {
+        "text": "欧洲"
+      }
+    },
+    {
+      "_text": {
+        "text": "法兰克福"
+      }
+    },
+    {
+      "_text": {
+        "text": "美国西部"
+      }
+    },
+    {
+      "_text": {
+        "text": "硅谷"
+      }
+    },
+    {
+      "_text": {
+        "text": "美国东部"
+      }
+    },
+    {
+      "_text": {
+        "text": "弗吉尼亚"
+      }
+    },
+    {
+      "_text": {
+        "text": "圣保罗"
+      }
+    },
+    {
+      "_text": {
+        "text": "AI 转型"
+      }
+    },
+    {
+      "_text": {
+        "text": "60+ 产品免费试用"
+      }
+    },
+    {
+      "_text": {
+        "text": "首购享5折起优惠"
+      }
+    },
+    {
+      "_text": {
+        "text": "新产品抢先体验"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/act/pro/free",
+        "label": "免费体验"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "联系销售"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "售后支持"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "满意度反馈"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://cloud.tencent.com/act/pro/featured-202607?from=30159",
+        "label": "AI 焕新 · 智启新局"
+      }
+    }
+  ]
+}

@@ -1,0 +1,535 @@
+{
+  "site": "ant-design",
+  "page": "components-table",
+  "url": "https://ant.design/components/table",
+  "title": "Table - Ant Design",
+  "sourceNodes": 10855,
+  "counts": {
+    "storylines": 33,
+    "items": 603,
+    "actions": 521,
+    "exposes": 21,
+    "images": 128,
+    "facts": 153,
+    "tables": 58,
+    "lists": 46,
+    "choiceSets": 5,
+    "inputs": 16,
+    "dupeText": 207,
+    "capHits": [
+      "blocksPerStoryline",
+      "itemsPerCollection"
+    ]
+  },
+  "storylines": 33,
+  "chrome": [
+    {
+      "role": "banner",
+      "count": 1
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "LayoutTable",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 692,
+      "examples": [
+        "Action: NICE DEVELOPER",
+        "Action: KAWAII",
+        "Action: COOL TEACHER",
+        "Name: Edward King 0",
+        "Name: Edward King 1"
+      ]
+    },
+    {
+      "kind": "list-item-unlabeled",
+      "role": "listitem",
+      "count": 40,
+      "examples": []
+    },
+    {
+      "kind": "table-without-headers",
+      "role": "table",
+      "count": 9,
+      "examples": [
+        "Edward King 0 | 32 | London, Park Lane no. 0",
+        "Edward King 0 | 32 | London, Park Lane no. 0 | London, Park Lane no. 0 | London,",
+        "John Brown | 1 | Lake Park | C | 2035 | Lake Street 42 | SoftLake Co | M",
+        "Name | Gender | Age | Email | Address",
+        "Light | Everything that has a beginning, has an end."
+      ]
+    },
+    {
+      "kind": "table-extra-header-rows",
+      "role": "columnheader",
+      "count": 8,
+      "examples": [
+        "First Name|Last Name",
+        "Age|Address|Company Address|Company Name",
+        "Street|Block",
+        "Building|Door No.",
+        "Date|Name|Status|Upgrade Status|Action"
+      ]
+    },
+    {
+      "kind": "checkbox-multi-select-as-choice-set",
+      "role": "checkbox",
+      "count": 1,
+      "examples": [
+        "Column 1 Column 2 Column 3 Column 4 Column 5 Column 6 Column 7 Column 8"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name",
+      "example": "John Brown"
+    },
+    {
+      "name": "age",
+      "type": "num",
+      "label": "Age",
+      "example": "32"
+    },
+    {
+      "name": "address",
+      "type": "num",
+      "label": "Address",
+      "example": "24"
+    },
+    {
+      "name": "tags",
+      "type": "text",
+      "label": "Tags",
+      "example": "NICE DEVELOPER"
+    },
+    {
+      "name": "action",
+      "type": "text",
+      "label": "Action",
+      "example": "Delete More actions down"
+    },
+    {
+      "type": "text",
+      "label": "col-3",
+      "example": "New York No. 1 Lake Park"
+    },
+    {
+      "name": "select-all",
+      "type": "text",
+      "label": "Select all",
+      "example": "Select row 1"
+    },
+    {
+      "name": "custom-selection-down",
+      "type": "text",
+      "label": "Custom selection down",
+      "example": "Select row 1"
+    },
+    {
+      "name": "address-filter",
+      "type": "text",
+      "label": "Address filter",
+      "example": "New York No. 0 Lake Park"
+    },
+    {
+      "name": "name-filter",
+      "type": "text",
+      "label": "Name filter"
+    },
+    {
+      "name": "chinese-score",
+      "type": "num",
+      "label": "Chinese Score",
+      "example": "98"
+    },
+    {
+      "name": "math-score",
+      "type": "num",
+      "label": "Math Score",
+      "example": "60"
+    },
+    {
+      "name": "english-score",
+      "type": "num",
+      "label": "English Score",
+      "example": "70"
+    },
+    {
+      "name": "name-search",
+      "type": "text",
+      "label": "Name search",
+      "example": "John Brown"
+    },
+    {
+      "name": "age-search",
+      "type": "num",
+      "label": "Age search",
+      "example": "32"
+    },
+    {
+      "name": "gender-filter",
+      "type": "text",
+      "label": "Gender filter",
+      "example": "female"
+    },
+    {
+      "name": "email",
+      "type": "text",
+      "label": "Email",
+      "example": "Twila57@gmail.com"
+    },
+    {
+      "name": "cash-assets",
+      "type": "money",
+      "label": "Cash Assets",
+      "currency": "CNY",
+      "example": "￥300,000.00"
+    },
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "col-1",
+      "example": "Expand row"
+    },
+    {
+      "name": "col-2",
+      "type": "text",
+      "label": "col-2",
+      "example": "Expand row"
+    },
+    {
+      "name": "rowhead",
+      "type": "text",
+      "label": "RowHead",
+      "example": "1"
+    },
+    {
+      "name": "home-phone",
+      "type": "text",
+      "label": "Home phone",
+      "example": "0571-22098909"
+    },
+    {
+      "name": "full-name",
+      "type": "text",
+      "label": "Full Name"
+    },
+    {
+      "name": "column-1",
+      "type": "text",
+      "label": "Column 1"
+    },
+    {
+      "name": "column-2",
+      "type": "text",
+      "label": "Column 2"
+    },
+    {
+      "name": "column-3",
+      "type": "text",
+      "label": "Column 3"
+    },
+    {
+      "name": "column-4",
+      "type": "text",
+      "label": "Column 4"
+    },
+    {
+      "name": "column-5",
+      "type": "text",
+      "label": "Column 5"
+    },
+    {
+      "name": "column-6",
+      "type": "text",
+      "label": "Column 6"
+    },
+    {
+      "name": "column-7",
+      "type": "text",
+      "label": "Column 7"
+    },
+    {
+      "name": "column-8",
+      "type": "text",
+      "label": "Column 8"
+    },
+    {
+      "name": "column-9",
+      "type": "text",
+      "label": "Column 9"
+    },
+    {
+      "name": "column-10",
+      "type": "text",
+      "label": "Column 10"
+    },
+    {
+      "name": "column-11",
+      "type": "text",
+      "label": "Column 11"
+    },
+    {
+      "name": "column-12",
+      "type": "text",
+      "label": "Column 12"
+    },
+    {
+      "name": "column-13",
+      "type": "text",
+      "label": "Column 13"
+    },
+    {
+      "name": "column-14",
+      "type": "text",
+      "label": "Column 14"
+    },
+    {
+      "name": "column-15",
+      "type": "text",
+      "label": "Column 15"
+    },
+    {
+      "name": "column-16",
+      "type": "text",
+      "label": "Column 16"
+    },
+    {
+      "name": "column-17",
+      "type": "text",
+      "label": "Column 17"
+    },
+    {
+      "name": "column-18",
+      "type": "text",
+      "label": "Column 18"
+    },
+    {
+      "name": "column-19",
+      "type": "text",
+      "label": "Column 19"
+    },
+    {
+      "name": "column-20",
+      "type": "text",
+      "label": "Column 20"
+    },
+    {
+      "name": "action-1",
+      "type": "text",
+      "label": "Action 1",
+      "example": "action"
+    },
+    {
+      "name": "action-2",
+      "type": "text",
+      "label": "Action 2",
+      "example": "action"
+    },
+    {
+      "name": "action-3",
+      "type": "text",
+      "label": "Action 3",
+      "example": "action"
+    },
+    {
+      "name": "other",
+      "type": "text",
+      "label": "Other"
+    },
+    {
+      "name": "company",
+      "type": "text",
+      "label": "Company"
+    },
+    {
+      "name": "gender",
+      "type": "text",
+      "label": "Gender"
+    },
+    {
+      "name": "operation",
+      "type": "text",
+      "label": "operation",
+      "example": "Edit"
+    },
+    {
+      "name": "platform",
+      "type": "text",
+      "label": "Platform",
+      "example": "iOS"
+    },
+    {
+      "name": "version",
+      "type": "text",
+      "label": "Version",
+      "example": "5.25.0"
+    },
+    {
+      "name": "upgraded",
+      "type": "text",
+      "label": "Upgraded",
+      "example": "500"
+    },
+    {
+      "name": "creator",
+      "type": "text",
+      "label": "Creator",
+      "example": "Jack"
+    },
+    {
+      "name": "date",
+      "type": "text",
+      "label": "Date",
+      "example": "2014-12-24 23:12:00"
+    },
+    {
+      "name": "long-column-long-column-long-column",
+      "type": "text",
+      "label": "Long Column Long Column Long Column",
+      "example": "New York No. 1 Lake Park, New York No. 1 Lake Park"
+    },
+    {
+      "name": "long-column-long-column",
+      "type": "text",
+      "label": "Long Column Long Column",
+      "example": "New York No. 1 Lake Park, New York No. 1 Lake Park"
+    },
+    {
+      "name": "long-column",
+      "type": "text",
+      "label": "Long Column",
+      "example": "New York No. 1 Lake Park, New York No. 1 Lake Park"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "Container background color, e.g: default button, input box, "
+    },
+    {
+      "name": "age-filter",
+      "type": "num",
+      "label": "Age filter",
+      "example": "32"
+    },
+    {
+      "name": "borrow",
+      "type": "num",
+      "label": "Borrow",
+      "example": "10"
+    },
+    {
+      "name": "repayment",
+      "type": "text",
+      "label": "Repayment",
+      "example": "33"
+    },
+    {
+      "name": "id",
+      "type": "text",
+      "label": "ID"
+    },
+    {
+      "name": "fistname",
+      "type": "text",
+      "label": "FistName"
+    },
+    {
+      "name": "lastname",
+      "type": "text",
+      "label": "LastName"
+    },
+    {
+      "name": "group",
+      "type": "text",
+      "label": "Group"
+    },
+    {
+      "name": "address-1",
+      "type": "text",
+      "label": "Address 1"
+    },
+    {
+      "name": "address-2",
+      "type": "text",
+      "label": "Address 2"
+    },
+    {
+      "name": "address-3",
+      "type": "text",
+      "label": "Address 3"
+    },
+    {
+      "name": "name-all-screens",
+      "type": "text",
+      "label": "Name (all screens)",
+      "example": "John Brown"
+    },
+    {
+      "name": "age-medium-screen-or-bigger",
+      "type": "num",
+      "label": "Age (medium screen or bigger)",
+      "example": "32"
+    },
+    {
+      "name": "address-large-screen-or-bigger",
+      "type": "text",
+      "label": "Address (large screen or bigger)",
+      "example": "New York No. 1 Lake Park"
+    },
+    {
+      "name": "property",
+      "type": "text",
+      "label": "Property",
+      "example": "key"
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "label": "Type",
+      "example": "string"
+    },
+    {
+      "name": "default",
+      "type": "text",
+      "label": "Default",
+      "example": "-"
+    },
+    {
+      "name": "global-config",
+      "type": "text",
+      "label": "Global Config",
+      "example": "×"
+    },
+    {
+      "name": "personal-info",
+      "type": "text",
+      "label": "Personal Info",
+      "example": "thinkasany"
+    },
+    {
+      "name": "token-name",
+      "type": "text",
+      "label": "Token Name",
+      "example": "colorBgContainer"
+    },
+    {
+      "name": "default-value",
+      "type": "text",
+      "label": "Default Value",
+      "example": "#ffffff"
+    }
+  ]
+}

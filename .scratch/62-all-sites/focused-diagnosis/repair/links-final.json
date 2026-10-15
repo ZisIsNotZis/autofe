@@ -1,0 +1,4045 @@
+{
+  "agg": {
+    "pages": 42,
+    "anchors": 6250,
+    "anchorsWithTarget": 5795,
+    "anchorsWithoutTarget": 455,
+    "scanned": 1568,
+    "mapped": 1199,
+    "findings": 364,
+    "declared": 24
+  },
+  "pages": [
+    {
+      "page": "36kr-com/home",
+      "anchors": 286,
+      "anchorsWithTarget": 283,
+      "anchorsWithoutTarget": 3,
+      "anchorsCarried": 212,
+      "factsToLink": 137,
+      "linked": 67,
+      "links": 76,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "贺哲馨",
+          "path": "feed._items[0]._author",
+          "href": "https://36kr.com/p/3984230181010434",
+          "expect": [
+            "https://36kr.com/user/5922386"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "从第一天就写好的商业化故事。",
+          "path": "feed._items[0]._subtitle",
+          "href": "https://36kr.com/p/3984230181010434",
+          "expect": [
+            "https://36kr.com/p/3984230181010434"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "三易生活",
+          "path": "feed._items[1]._author",
+          "href": "https://36kr.com/p/3988814727773192",
+          "expect": [
+            "https://36kr.com/user/17709134"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "要想回归“表皇”地位，Moto还有很多事要做。",
+          "path": "feed._items[1]._subtitle",
+          "href": "https://36kr.com/p/3988814727773192",
+          "expect": [
+            "https://36kr.com/p/3988814727773192"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "氨基观察",
+          "path": "feed._items[2]._author",
+          "href": "https://36kr.com/p/3988854773545991",
+          "expect": [
+            "https://36kr.com/user/5407040"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "一级市场的火热，凸显了二级市场的相对保守",
+          "path": "feed._items[2]._subtitle",
+          "href": "https://36kr.com/p/3988854773545991",
+          "expect": [
+            "https://36kr.com/p/3988854773545991"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "红餐网",
+          "path": "feed._items[3]._author",
+          "href": "https://36kr.com/p/3988846593161984",
+          "expect": [
+            "https://36kr.com/user/5265833"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "海鲜酒楼寻找新生意。",
+          "path": "feed._items[3]._subtitle",
+          "href": "https://36kr.com/p/3988846593161984",
+          "expect": [
+            "https://36kr.com/p/3988846593161984"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "铅笔道",
+          "path": "feed._items[4]._author",
+          "href": "https://36kr.com/p/3988842701208581",
+          "expect": [
+            "https://36kr.com/user/5278852"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "一家明星公司，最后连工资都发不出来了。",
+          "path": "feed._items[4]._subtitle",
+          "href": "https://36kr.com/p/3988842701208581",
+          "expect": [
+            "https://36kr.com/p/3988842701208581"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "深渡Cross",
+          "path": "feed._items[6]._author",
+          "href": "https://36kr.com/p/3988833009515271",
+          "expect": [
+            "https://36kr.com/user/5966151"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "鹿游接棒后的第一个渠道大考",
+          "path": "feed._items[6]._subtitle",
+          "href": "https://36kr.com/p/3988833009515271",
+          "expect": [
+            "https://36kr.com/p/3988833009515271"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "尺度商业",
+          "path": "feed._items[7]._author",
+          "href": "https://36kr.com/p/3988696777931778",
+          "expect": [
+            "https://36kr.com/user/5368207"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "丽珠集团站在创新药转型十字路口",
+          "path": "feed._items[7]._subtitle",
+          "href": "https://36kr.com/p/3988696777931778",
+          "expect": [
+            "https://36kr.com/p/3988696777931778"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "36氪推荐五个不同赛道优质AI创业项目",
+          "path": "feed._items[8]._subtitle",
+          "href": "https://36kr.com/p/3982971072707332",
+          "expect": [
+            "https://36kr.com/p/3982971072707332"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "物联网智库",
+          "path": "feed._items[9]._author",
+          "href": "https://36kr.com/p/3988694215982083",
+          "expect": [
+            "https://36kr.com/user/5269576"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "硬件与软件的价值关系正在重新定义",
+          "path": "feed._items[9]._subtitle",
+          "href": "https://36kr.com/p/3988694215982083",
+          "expect": [
+            "https://36kr.com/p/3988694215982083"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "出行一客",
+          "path": "feed._items[10]._author",
+          "href": "https://36kr.com/p/3988684985334792",
+          "expect": [
+            "https://36kr.com/user/13081868"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "问界专属专营后，下一步怎么走？",
+          "path": "feed._items[10]._subtitle",
+          "href": "https://36kr.com/p/3988684985334792",
+          "expect": [
+            "https://36kr.com/p/3988684985334792"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "投行圈子",
+          "path": "feed._items[11]._author",
+          "href": "https://36kr.com/p/3988684494617345",
+          "expect": [
+            "https://36kr.com/user/6307721"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "这轮基本面改善，能不能变成真正的牛市",
+          "path": "feed._items[11]._subtitle",
+          "href": "https://36kr.com/p/3988684494617345",
+          "expect": [
+            "https://36kr.com/p/3988684494617345"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "格隆汇新股",
+          "path": "feed._items[12]._author",
+          "href": "https://36kr.com/p/3988684304005895",
+          "expect": [
+            "https://36kr.com/user/5683392"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "经营现金流持续为负",
+          "path": "feed._items[12]._subtitle",
+          "href": "https://36kr.com/p/3988684304005895",
+          "expect": [
+            "https://36kr.com/p/3988684304005895"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "源媒汇",
+          "path": "feed._items[13]._author",
+          "href": "https://36kr.com/p/3988655375308422",
+          "expect": [
+            "https://36kr.com/user/6079156"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "“抱着金饭碗要饭”。",
+          "path": "feed._items[13]._subtitle",
+          "href": "https://36kr.com/p/3988655375308422",
+          "expect": [
+            "https://36kr.com/p/3988655375308422"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "远川投资评论",
+          "path": "feed._items[14]._author",
+          "href": "https://36kr.com/p/3988650419715077",
+          "expect": [
+            "https://36kr.com/user/5294208"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "一场不同以往的厄尔尼诺",
+          "path": "feed._items[14]._subtitle",
+          "href": "https://36kr.com/p/3988650419715077",
+          "expect": [
+            "https://36kr.com/p/3988650419715077"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "几十万老车主的售后，30亿够还吗？",
+          "path": "feed._items[15]._subtitle",
+          "href": "https://36kr.com/p/3988645180111617",
+          "expect": [
+            "https://36kr.com/p/3988645180111617"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "物理AI的下一场硬仗，在仓库里。",
+          "path": "feed._items[16]._subtitle",
+          "href": "https://36kr.com/p/3988793109379845",
+          "expect": [
+            "https://36kr.com/p/3988793109379845"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "英伟达的野心，让数字世界逼近真实。",
+          "path": "feed._items[17]._subtitle",
+          "href": "https://36kr.com/p/3988633438436100",
+          "expect": [
+            "https://36kr.com/p/3988633438436100"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "AI前线",
+          "path": "feed._items[18]._author",
+          "href": "https://36kr.com/p/3988438306388737",
+          "expect": [
+            "https://36kr.com/user/591773517"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "13项跑分全面碾压GPT-6和Fable，成本近五分之一",
+          "path": "feed._items[18]._subtitle",
+          "href": "https://36kr.com/p/3988438306388737",
+          "expect": [
+            "https://36kr.com/p/3988438306388737"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "深渡Cross",
+          "path": "feed._items[19]._author",
+          "href": "https://36kr.com/p/3988833008564998",
+          "expect": [
+            "https://36kr.com/user/5966151"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "“新鲜”是卖点，也是最大风险源",
+          "path": "feed._items[19]._subtitle",
+          "href": "https://36kr.com/p/3988833008564998",
+          "expect": [
+            "https://36kr.com/p/3988833008564998"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "格隆汇",
+          "path": "feed._items[20]._author",
+          "href": "https://36kr.com/p/3988832515029764",
+          "expect": [
+            "https://36kr.com/user/727315692"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "排队入局？",
+          "path": "feed._items[20]._subtitle",
+          "href": "https://36kr.com/p/3988832515029764",
+          "expect": [
+            "https://36kr.com/p/3988832515029764"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "36氪的朋友们",
+          "path": "feed._items[21]._author",
+          "href": "https://36kr.com/p/3988827398191873",
+          "expect": [
+            "https://36kr.com/user/375349"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "当关店带来的利润空间逐渐释放完毕，太二是否能恢复扩张，或者这个集团还有没有其他品牌提供增长动能，市场还没看到明确答案。",
+          "path": "feed._items[21]._subtitle",
+          "href": "https://36kr.com/p/3988827398191873",
+          "expect": [
+            "https://36kr.com/p/3988827398191873"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "36氪的朋友们",
+          "path": "feed._items[22]._author",
+          "href": "https://36kr.com/p/3988815751805954",
+          "expect": [
+            "https://36kr.com/user/375349"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "AI正在把4000年的人类认知劳动压缩进88小时，OpenAI研究员Noam Brown坦言连他自己也被进展速度持续震惊。",
+          "path": "feed._items[22]._subtitle",
+          "href": "https://36kr.com/p/3988815751805954",
+          "expect": [
+            "https://36kr.com/p/3988815751805954"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "三易生活",
+          "path": "feed._items[23]._author",
+          "href": "https://36kr.com/p/3988814724496388",
+          "expect": [
+            "https://36kr.com/user/17709134"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "两头都想顾的下场，只能是一根筋变两头堵。",
+          "path": "feed._items[23]._subtitle",
+          "href": "https://36kr.com/p/3988814724496388",
+          "expect": [
+            "https://36kr.com/p/3988814724496388"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "红餐供应链指南",
+          "path": "feed._items[24]._author",
+          "href": "https://36kr.com/p/3988814206417673",
+          "expect": [
+            "https://36kr.com/user/5781278"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "“雪糕刺客”归来，也得低头卖货。",
+          "path": "feed._items[24]._subtitle",
+          "href": "https://36kr.com/p/3988814206417673",
+          "expect": [
+            "https://36kr.com/p/3988814206417673"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "市值水晶",
+          "path": "feed._items[25]._author",
+          "href": "https://36kr.com/p/3988805898868609",
+          "expect": [
+            "https://36kr.com/user/6131109"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "电池行业的游戏规则变了",
+          "path": "feed._items[25]._subtitle",
+          "href": "https://36kr.com/p/3988805898868609",
+          "expect": [
+            "https://36kr.com/p/3988805898868609"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "CSDN",
+          "path": "feed._items[26]._author",
+          "href": "https://36kr.com/p/3988805621087239",
+          "expect": [
+            "https://36kr.com/user/616230990"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "一个本可以等到《GTA6》的项目，为什么会在一夜之间“崩盘”？",
+          "path": "feed._items[26]._subtitle",
+          "href": "https://36kr.com/p/3988805621087239",
+          "expect": [
+            "https://36kr.com/p/3988805621087239"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "餐饮老板内参",
+          "path": "feed._items[27]._author",
+          "href": "https://36kr.com/p/3988805490195465",
+          "expect": [
+            "https://36kr.com/user/5288244"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "“小而美”商业美学，韩国餐饮的生意经",
+          "path": "feed._items[27]._subtitle",
+          "href": "https://36kr.com/p/3988805490195465",
+          "expect": [
+            "https://36kr.com/p/3988805490195465"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "极客电影",
+          "path": "feed._items[28]._author",
+          "href": "https://36kr.com/p/3988798148319110",
+          "expect": [
+            "https://36kr.com/user/12285630"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Netflix的院线阳谋浮出水面",
+          "path": "feed._items[28]._subtitle",
+          "href": "https://36kr.com/p/3988798148319110",
+          "expect": [
+            "https://36kr.com/p/3988798148319110"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "CSDN",
+          "path": "feed._items[29]._author",
+          "href": "https://36kr.com/p/3988796233415684",
+          "expect": [
+            "https://36kr.com/user/616230990"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "React Native 在 2020 年是正确的选择，而原生开发在今天是正确的选择。",
+          "path": "feed._items[29]._subtitle",
+          "href": "https://36kr.com/p/3988796233415684",
+          "expect": [
+            "https://36kr.com/p/3988796233415684"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "36氪的朋友们",
+          "path": "feed._items[30]._author",
+          "href": "https://36kr.com/p/3988791872043784",
+          "expect": [
+            "https://36kr.com/user/375349"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "这次，机器人进门直接干活。",
+          "path": "feed._items[30]._subtitle",
+          "href": "https://36kr.com/p/3988791872043784",
+          "expect": [
+            "https://36kr.com/p/3988791872043784"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "新智元",
+          "path": "feed._items[31]._author",
+          "href": "https://36kr.com/p/3988791341398792",
+          "expect": [
+            "https://36kr.com/user/574825230"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "OpenAI自曝家丑，急踩刹车",
+          "path": "feed._items[31]._subtitle",
+          "href": "https://36kr.com/p/3988791341398792",
+          "expect": [
+            "https://36kr.com/p/3988791341398792"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "凯撒交了2695万跨界学费",
+          "path": "feed._items[32]._subtitle",
+          "href": "https://36kr.com/p/3988784943053832",
+          "expect": [
+            "https://36kr.com/p/3988784943053832"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "锌刻度",
+          "path": "feed._items[33]._author",
+          "href": "https://36kr.com/p/3988778157636357",
+          "expect": [
+            "https://36kr.com/user/18342896"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "罗永浩说难吃，野人先生不想吵",
+          "path": "feed._items[33]._subtitle",
+          "href": "https://36kr.com/p/3988778157636357",
+          "expect": [
+            "https://36kr.com/p/3988778157636357"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "最话FunTalk",
+          "path": "feed._items[34]._author",
+          "href": "https://36kr.com/p/3988777960356613",
+          "expect": [
+            "https://36kr.com/user/5588475"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "泡沫破了之后，你还能穿越周期吗？",
+          "path": "feed._items[34]._subtitle",
+          "href": "https://36kr.com/p/3988777960356613",
+          "expect": [
+            "https://36kr.com/p/3988777960356613"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "雷帝触网",
+          "path": "feed._items[35]._author",
+          "href": "https://36kr.com/p/3988770718382857",
+          "expect": [
+            "https://36kr.com/user/2135678410"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "联想之星与君联投资是股东",
+          "path": "feed._items[35]._subtitle",
+          "href": "https://36kr.com/p/3988770718382857",
+          "expect": [
+            "https://36kr.com/p/3988770718382857"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "电商在线",
+          "path": "feed._items[36]._author",
+          "href": "https://36kr.com/p/3988767829277705",
+          "expect": [
+            "https://36kr.com/user/1790414937"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "层层加码",
+          "path": "feed._items[36]._subtitle",
+          "href": "https://36kr.com/p/3988767829277705",
+          "expect": [
+            "https://36kr.com/p/3988767829277705"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "正在直播",
+          "path": "live._items[0]._subtitle",
+          "href": "https://36kr.com/live/detail/3933303354408320",
+          "expect": [
+            "https://36kr.com/live/detail/3933303354408320"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "企业号",
+          "path": "enterprise._title",
+          "href": "https://36kr.com/information/qiyehao",
+          "expect": [
+            "https://q.36kr.com"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "氪睿研究院",
+          "path": "enterprise._items[0]._name",
+          "href": "https://36kr.com/p/3557922239118726",
+          "expect": [
+            "https://img.36krcdn.com/hsossms/20251118/v2_d5e97c1ebb974011b0117c1338a9c747@000000_oswg146520oswg1280oswg1280_img_jpg"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "查看更多",
+          "href": "https://36kr.com/information/web_news/latest?anchor=3988767829277705",
+          "expect": []
+        },
+        {
+          "kind": "wrong-target",
+          "text": "氪睿研究院",
+          "href": "https://36kr.com/p/3557922239118726",
+          "expect": []
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "36kr-com/information-technology",
+      "anchors": 181,
+      "anchorsWithTarget": 178,
+      "anchorsWithoutTarget": 3,
+      "anchorsCarried": 158,
+      "factsToLink": 107,
+      "linked": 47,
+      "links": 65,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "三易生活",
+          "path": "feed._items[0]._author",
+          "href": "https://36kr.com/p/3988814727773192",
+          "expect": [
+            "https://36kr.com/user/17709134"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "要想回归“表皇”地位，Moto还有很多事要做。",
+          "path": "feed._items[0]._subtitle",
+          "href": "https://36kr.com/p/3988814727773192",
+          "expect": [
+            "https://36kr.com/p/3988814727773192"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "铅笔道",
+          "path": "feed._items[1]._author",
+          "href": "https://36kr.com/p/3988842701208581",
+          "expect": [
+            "https://36kr.com/user/5278852"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "一家明星公司，最后连工资都发不出来了。",
+          "path": "feed._items[1]._subtitle",
+          "href": "https://36kr.com/p/3988842701208581",
+          "expect": [
+            "https://36kr.com/p/3988842701208581"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "物联网智库",
+          "path": "feed._items[2]._author",
+          "href": "https://36kr.com/p/3988694215982083",
+          "expect": [
+            "https://36kr.com/user/5269576"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "硬件与软件的价值关系正在重新定义",
+          "path": "feed._items[2]._subtitle",
+          "href": "https://36kr.com/p/3988694215982083",
+          "expect": [
+            "https://36kr.com/p/3988694215982083"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "出行一客",
+          "path": "feed._items[3]._author",
+          "href": "https://36kr.com/p/3988684985334792",
+          "expect": [
+            "https://36kr.com/user/13081868"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "问界专属专营后，下一步怎么走？",
+          "path": "feed._items[3]._subtitle",
+          "href": "https://36kr.com/p/3988684985334792",
+          "expect": [
+            "https://36kr.com/p/3988684985334792"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "格隆汇新股",
+          "path": "feed._items[4]._author",
+          "href": "https://36kr.com/p/3988684304005895",
+          "expect": [
+            "https://36kr.com/user/5683392"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "经营现金流持续为负",
+          "path": "feed._items[4]._subtitle",
+          "href": "https://36kr.com/p/3988684304005895",
+          "expect": [
+            "https://36kr.com/p/3988684304005895"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "几十万老车主的售后，30亿够还吗？",
+          "path": "feed._items[5]._subtitle",
+          "href": "https://36kr.com/p/3988645180111617",
+          "expect": [
+            "https://36kr.com/p/3988645180111617"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "物理AI的下一场硬仗，在仓库里。",
+          "path": "feed._items[6]._subtitle",
+          "href": "https://36kr.com/p/3988793109379845",
+          "expect": [
+            "https://36kr.com/p/3988793109379845"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "英伟达的野心，让数字世界逼近真实。",
+          "path": "feed._items[7]._subtitle",
+          "href": "https://36kr.com/p/3988633438436100",
+          "expect": [
+            "https://36kr.com/p/3988633438436100"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "AI前线",
+          "path": "feed._items[8]._author",
+          "href": "https://36kr.com/p/3988438306388737",
+          "expect": [
+            "https://36kr.com/user/591773517"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "13项跑分全面碾压GPT-6和Fable，成本近五分之一",
+          "path": "feed._items[8]._subtitle",
+          "href": "https://36kr.com/p/3988438306388737",
+          "expect": [
+            "https://36kr.com/p/3988438306388737"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "36氪的朋友们",
+          "path": "feed._items[9]._author",
+          "href": "https://36kr.com/p/3988815751805954",
+          "expect": [
+            "https://36kr.com/user/375349"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "AI正在把4000年的人类认知劳动压缩进88小时，OpenAI研究员Noam Brown坦言连他自己也被进展速度持续震惊。",
+          "path": "feed._items[9]._subtitle",
+          "href": "https://36kr.com/p/3988815751805954",
+          "expect": [
+            "https://36kr.com/p/3988815751805954"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "三易生活",
+          "path": "feed._items[10]._author",
+          "href": "https://36kr.com/p/3988814724496388",
+          "expect": [
+            "https://36kr.com/user/17709134"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "两头都想顾的下场，只能是一根筋变两头堵。",
+          "path": "feed._items[10]._subtitle",
+          "href": "https://36kr.com/p/3988814724496388",
+          "expect": [
+            "https://36kr.com/p/3988814724496388"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "市值水晶",
+          "path": "feed._items[11]._author",
+          "href": "https://36kr.com/p/3988805898868609",
+          "expect": [
+            "https://36kr.com/user/6131109"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "电池行业的游戏规则变了",
+          "path": "feed._items[11]._subtitle",
+          "href": "https://36kr.com/p/3988805898868609",
+          "expect": [
+            "https://36kr.com/p/3988805898868609"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "CSDN",
+          "path": "feed._items[12]._author",
+          "href": "https://36kr.com/p/3988805621087239",
+          "expect": [
+            "https://36kr.com/user/616230990"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "一个本可以等到《GTA6》的项目，为什么会在一夜之间“崩盘”？",
+          "path": "feed._items[12]._subtitle",
+          "href": "https://36kr.com/p/3988805621087239",
+          "expect": [
+            "https://36kr.com/p/3988805621087239"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "CSDN",
+          "path": "feed._items[13]._author",
+          "href": "https://36kr.com/p/3988796233415684",
+          "expect": [
+            "https://36kr.com/user/616230990"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "React Native 在 2020 年是正确的选择，而原生开发在今天是正确的选择。",
+          "path": "feed._items[13]._subtitle",
+          "href": "https://36kr.com/p/3988796233415684",
+          "expect": [
+            "https://36kr.com/p/3988796233415684"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "36氪的朋友们",
+          "path": "feed._items[14]._author",
+          "href": "https://36kr.com/p/3988791872043784",
+          "expect": [
+            "https://36kr.com/user/375349"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "这次，机器人进门直接干活。",
+          "path": "feed._items[14]._subtitle",
+          "href": "https://36kr.com/p/3988791872043784",
+          "expect": [
+            "https://36kr.com/p/3988791872043784"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "新智元",
+          "path": "feed._items[15]._author",
+          "href": "https://36kr.com/p/3988791341398792",
+          "expect": [
+            "https://36kr.com/user/574825230"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "OpenAI自曝家丑，急踩刹车",
+          "path": "feed._items[15]._subtitle",
+          "href": "https://36kr.com/p/3988791341398792",
+          "expect": [
+            "https://36kr.com/p/3988791341398792"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "最话FunTalk",
+          "path": "feed._items[16]._author",
+          "href": "https://36kr.com/p/3988777960356613",
+          "expect": [
+            "https://36kr.com/user/5588475"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "泡沫破了之后，你还能穿越周期吗？",
+          "path": "feed._items[16]._subtitle",
+          "href": "https://36kr.com/p/3988777960356613",
+          "expect": [
+            "https://36kr.com/p/3988777960356613"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "雷帝触网",
+          "path": "feed._items[17]._author",
+          "href": "https://36kr.com/p/3988770718382857",
+          "expect": [
+            "https://36kr.com/user/2135678410"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "联想之星与君联投资是股东",
+          "path": "feed._items[17]._subtitle",
+          "href": "https://36kr.com/p/3988770718382857",
+          "expect": [
+            "https://36kr.com/p/3988770718382857"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "36氪的朋友们",
+          "path": "feed._items[18]._author",
+          "href": "https://36kr.com/p/3988763626077191",
+          "expect": [
+            "https://36kr.com/user/375349"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "保费是否整体下行要看风险和成本",
+          "path": "feed._items[18]._subtitle",
+          "href": "https://36kr.com/p/3988763626077191",
+          "expect": [
+            "https://36kr.com/p/3988763626077191"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "市值榜",
+          "path": "feed._items[19]._author",
+          "href": "https://36kr.com/p/3988751295281928",
+          "expect": [
+            "https://36kr.com/user/5545969"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "赛力斯的“独立”大考",
+          "path": "feed._items[19]._subtitle",
+          "href": "https://36kr.com/p/3988751295281928",
+          "expect": [
+            "https://36kr.com/p/3988751295281928"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "亿欧网",
+          "path": "feed._items[20]._author",
+          "href": "https://36kr.com/p/3988743172815620",
+          "expect": [
+            "https://36kr.com/user/5070920"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "当AI成为默认答案，“不用”成了稀缺选择",
+          "path": "feed._items[20]._subtitle",
+          "href": "https://36kr.com/p/3988743172815620",
+          "expect": [
+            "https://36kr.com/p/3988743172815620"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "财天COVER",
+          "path": "feed._items[21]._author",
+          "href": "https://36kr.com/p/3988743034616840",
+          "expect": [
+            "https://36kr.com/user/6153375"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "机器人的故事越来越难讲",
+          "path": "feed._items[21]._subtitle",
+          "href": "https://36kr.com/p/3988743034616840",
+          "expect": [
+            "https://36kr.com/p/3988743034616840"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "36氪的朋友们",
+          "path": "feed._items[22]._author",
+          "href": "https://36kr.com/p/3988742919355141",
+          "expect": [
+            "https://36kr.com/user/375349"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "在AI大模型3D生成能力持续提升的背景下，一台3D打印机加上一台激光雕刻机、一台3D扫描仪和一套AI建模工具，就构成了一个普通人的桌面制造中心。",
+          "path": "feed._items[22]._subtitle",
+          "href": "https://36kr.com/p/3988742919355141",
+          "expect": [
+            "https://36kr.com/p/3988742919355141"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "雷科技",
+          "path": "feed._items[23]._author",
+          "href": "https://36kr.com/p/3988705190057605",
+          "expect": [
+            "https://36kr.com/user/1547419282"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "有人梭哈，有人试探。",
+          "path": "feed._items[23]._subtitle",
+          "href": "https://36kr.com/p/3988705190057605",
+          "expect": [
+            "https://36kr.com/p/3988705190057605"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "机器之心",
+          "path": "feed._items[24]._author",
+          "href": "https://36kr.com/p/3988719505964039",
+          "expect": [
+            "https://36kr.com/user/214166"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "3个人，72小时，模型是 Claude Opus，赏金6500美元",
+          "path": "feed._items[24]._subtitle",
+          "href": "https://36kr.com/p/3988719505964039",
+          "expect": [
+            "https://36kr.com/p/3988719505964039"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "版面之外",
+          "path": "feed._items[25]._author",
+          "href": "https://36kr.com/p/3988720824473477",
+          "expect": [
+            "https://36kr.com/user/24917684"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "中国汽车行业，正在告别一个人定义一家车企的时代。",
+          "path": "feed._items[25]._subtitle",
+          "href": "https://36kr.com/p/3988720824473477",
+          "expect": [
+            "https://36kr.com/p/3988720824473477"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "未来之地",
+          "path": "feed._items[26]._author",
+          "href": "https://36kr.com/p/3988723585455746",
+          "expect": [
+            "https://36kr.com/user/6392019"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "张一鸣不走回头路。",
+          "path": "feed._items[26]._subtitle",
+          "href": "https://36kr.com/p/3988723585455746",
+          "expect": [
+            "https://36kr.com/p/3988723585455746"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "霞光AI实验室",
+          "path": "feed._items[27]._author",
+          "href": "https://36kr.com/p/3988725504792456",
+          "expect": [
+            "https://36kr.com/user/6362190"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "具身智能数采存乱象，业内聚焦真实数据价值",
+          "path": "feed._items[27]._subtitle",
+          "href": "https://36kr.com/p/3988725504792456",
+          "expect": [
+            "https://36kr.com/p/3988725504792456"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "雷科技",
+          "path": "feed._items[28]._author",
+          "href": "https://36kr.com/p/3988730896160642",
+          "expect": [
+            "https://36kr.com/user/1547419282"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "联合国联手谷歌改造公开数据。",
+          "path": "feed._items[28]._subtitle",
+          "href": "https://36kr.com/p/3988730896160642",
+          "expect": [
+            "https://36kr.com/p/3988730896160642"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "极客邦科技InfoQ",
+          "path": "feed._items[29]._author",
+          "href": "https://36kr.com/p/3988732005972999",
+          "expect": [
+            "https://36kr.com/user/323686438"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "开喷的人，真的有资格看不起“AI 菜鸟”",
+          "path": "feed._items[29]._subtitle",
+          "href": "https://36kr.com/p/3988732005972999",
+          "expect": [
+            "https://36kr.com/p/3988732005972999"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "氪睿研究院",
+          "path": "companies._items[1]._name",
+          "href": "https://36kr.com/user/6308858",
+          "expect": [
+            "https://img.36krcdn.com/hsossms/20251118/v2_d5e97c1ebb974011b0117c1338a9c747@000000_oswg146520oswg1280oswg1280_img_jpg"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "氪睿研究院",
+          "href": "https://36kr.com/user/6308858",
+          "expect": []
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "项目推荐",
+          "path": "channels._items[7]._name",
+          "expect": [
+            "https://36kr.com/seek-report-new",
+            "https://36kr.com/information/aireport",
+            "https://36kr.com/seek-report-new?t=1789742035236"
+          ],
+          "reason": "源站同一可见文本对应 3 个不同目标（36kr.com/seek-report-new / 36kr.com/information/aireport / 36kr.com/seek-report-new?t=1789742035236），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "企业号",
+          "path": "channels._items[14]._name",
+          "expect": [
+            "https://q.36kr.com",
+            "https://36kr.com/information/qiyehao"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（q.36kr.com / 36kr.com/information/qiyehao），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "36kr-com/search-ai",
+      "anchors": 119,
+      "anchorsWithTarget": 116,
+      "anchorsWithoutTarget": 3,
+      "anchorsCarried": 107,
+      "factsToLink": 57,
+      "linked": 36,
+      "links": 39,
+      "findings": [
+        {
+          "kind": "anchor-dropped",
+          "text": "10年期美债收益率破5%，冲击市场引发担忧。",
+          "path": "results._items[0]._subtitle",
+          "href": "https://36kr.com/p/3984437255289864",
+          "expect": [
+            "https://36kr.com/p/3984437255289864"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HYROX北京站选手赛场失禁引发争议，赛事方发布公告承认规则漏洞并推出整改措施。",
+          "path": "results._items[1]._subtitle",
+          "href": "https://36kr.com/p/3983906594257667",
+          "expect": [
+            "https://36kr.com/p/3983906594257667"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "资本重仓AI实体，具身智能成月度核心风口。",
+          "path": "results._items[2]._subtitle",
+          "href": "https://36kr.com/p/3977429406832520",
+          "expect": [
+            "https://36kr.com/p/3977429406832520"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "通用技术如何定价未来。",
+          "path": "results._items[3]._subtitle",
+          "href": "https://36kr.com/p/3975586356123525",
+          "expect": [
+            "https://36kr.com/p/3975586356123525"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "如果把“AI”两个字从权利要求里拿掉，你还能不能清楚说明，自己究竟发明了什么？",
+          "path": "results._items[4]._subtitle",
+          "href": "https://36kr.com/p/3973093545292038",
+          "expect": [
+            "https://36kr.com/p/3973093545292038"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "人工智能体代客操作需否第三方许可的法律分析",
+          "path": "results._items[5]._subtitle",
+          "href": "https://36kr.com/p/3967489473533569",
+          "expect": [
+            "https://36kr.com/p/3967489473533569"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "部分关键工艺识读提升准确率可达到95%以上",
+          "path": "results._items[6]._subtitle",
+          "href": "https://36kr.com/p/3963006194728324",
+          "expect": [
+            "https://36kr.com/p/3963006194728324"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "AI投资类比铁路，需警惕资本错配风险，回归资本回报",
+          "path": "results._items[7]._subtitle",
+          "href": "https://36kr.com/p/3964522476707329",
+          "expect": [
+            "https://36kr.com/p/3964522476707329"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "人与人之间为什么这样分工？团队为什么这样组成？管理者为什么存在？",
+          "path": "results._items[8]._subtitle",
+          "href": "https://36kr.com/p/3963202325567113",
+          "expect": [
+            "https://36kr.com/p/3963202325567113"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "跌宕起伏七十年，如今正在加速进化……",
+          "path": "results._items[9]._subtitle",
+          "href": "https://36kr.com/p/3963212413926791",
+          "expect": [
+            "https://36kr.com/p/3963212413926791"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "已布局8条CRISPR基因编辑工具管线。",
+          "path": "results._items[10]._subtitle",
+          "href": "https://36kr.com/p/3962848011081600",
+          "expect": [
+            "https://36kr.com/p/3962848011081600"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "泰康正式发布养医大模型1.0",
+          "path": "results._items[11]._subtitle",
+          "href": "https://36kr.com/p/3950400732216457",
+          "expect": [
+            "https://36kr.com/p/3950400732216457"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "从证明稀缺，走向证明过剩",
+          "path": "results._items[12]._subtitle",
+          "href": "https://36kr.com/p/3947761738873990",
+          "expect": [
+            "https://36kr.com/p/3947761738873990"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "徐汇区将继续发挥国有资本的引导撬动作用，吸引更多优质AI项目与创新人才集聚徐汇，为区域新质生产力发展注入源源不断的青春动能。",
+          "path": "results._items[13]._subtitle",
+          "href": "https://36kr.com/p/3947744722123909",
+          "expect": [
+            "https://36kr.com/p/3947744722123909"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "让智能科技更好赋能美好生活。",
+          "path": "results._items[14]._subtitle",
+          "href": "https://36kr.com/p/3947658974068097",
+          "expect": [
+            "https://36kr.com/p/3947658974068097"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "让我们期待这一次不同。",
+          "path": "results._items[15]._subtitle",
+          "href": "https://36kr.com/p/3947607753161860",
+          "expect": [
+            "https://36kr.com/p/3947607753161860"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "我们已然全速冲向行业饱和临界点。",
+          "path": "results._items[16]._subtitle",
+          "href": "https://36kr.com/p/3904980881360518",
+          "expect": [
+            "https://36kr.com/p/3904980881360518"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "制造业多智能体协同需建统一企业级AI运行体系",
+          "path": "results._items[17]._subtitle",
+          "href": "https://36kr.com/p/3944916410334337",
+          "expect": [
+            "https://36kr.com/p/3944916410334337"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "德银梳理AI 70年发展脉络，提炼出14条历史启示。AI呈指数级非线性增长，成本下降将激发更大需求；但技术路线迭代频繁，硬件与供应链瓶颈显现。尽管消费端普及迅速，企业端商业化落地仍处于早期，当前市场估值已逼近历史高位，投资者需警惕技术更迭与供应链风险。",
+          "path": "results._items[18]._subtitle",
+          "href": "https://36kr.com/p/3944695998496137",
+          "expect": [
+            "https://36kr.com/p/3944695998496137"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "不是先有公司再去找需求，而是系统先被验证，需求自己站到了门口。",
+          "path": "results._items[19]._subtitle",
+          "href": "https://36kr.com/p/3943664392420736",
+          "expect": [
+            "https://36kr.com/p/3943664392420736"
+          ]
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "企业号",
+          "path": "search-type._items[7]._name",
+          "expect": [
+            "https://q.36kr.com",
+            "https://36kr.com/search/company/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（q.36kr.com / 36kr.com/search/company/人工智能），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "36kr-com/search-viz",
+      "anchors": 119,
+      "anchorsWithTarget": 116,
+      "anchorsWithoutTarget": 3,
+      "anchorsCarried": 107,
+      "factsToLink": 57,
+      "linked": 36,
+      "links": 39,
+      "findings": [
+        {
+          "kind": "anchor-dropped",
+          "text": "数据可视化综合指南：技术结合设计，工具与策略解析。",
+          "path": "results._items[0]._subtitle",
+          "href": "https://36kr.com/p/3358287655929602",
+          "expect": [
+            "https://36kr.com/p/3358287655929602"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "多元时代科技推出VeriWeb AI打造企业级虚实共生AI底座",
+          "path": "results._items[1]._subtitle",
+          "href": "https://36kr.com/p/3981482257660676",
+          "expect": [
+            "https://36kr.com/p/3981482257660676"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "悦剪AI社区连锁获Pre-A轮融资，赋能数字化新美业",
+          "path": "results._items[2]._subtitle",
+          "href": "https://36kr.com/p/3973176326123778",
+          "expect": [
+            "https://36kr.com/p/3973176326123778"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "买不起的不只是电脑",
+          "path": "results._items[3]._subtitle",
+          "href": "https://36kr.com/p/3963109402328453",
+          "expect": [
+            "https://36kr.com/p/3963109402328453"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "这不仅是课堂规则的调整，更是一场关于“人类能力”的深层追问。",
+          "path": "results._items[4]._subtitle",
+          "href": "https://36kr.com/p/3955833576619394",
+          "expect": [
+            "https://36kr.com/p/3955833576619394"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "模型开始从互联网数据转向真实世界经验",
+          "path": "results._items[5]._subtitle",
+          "href": "https://36kr.com/p/3927411140425861",
+          "expect": [
+            "https://36kr.com/p/3927411140425861"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "重新洗牌期。",
+          "path": "results._items[6]._subtitle",
+          "href": "https://36kr.com/p/3916624450662018",
+          "expect": [
+            "https://36kr.com/p/3916624450662018"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "自研技术全自产的地表科技做泳池清洁机器人代工",
+          "path": "results._items[7]._subtitle",
+          "href": "https://36kr.com/p/3916114992147844",
+          "expect": [
+            "https://36kr.com/p/3916114992147844"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "“大脑+小脑+力位混合”三层原生协同架构，三层模型分工明确、闭环联动。",
+          "path": "results._items[8]._subtitle",
+          "href": "https://36kr.com/p/3913213962540164",
+          "expect": [
+            "https://36kr.com/p/3913213962540164"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "阿里着急端上Qwen3.8？",
+          "path": "results._items[9]._subtitle",
+          "href": "https://36kr.com/p/3908187603621252",
+          "expect": [
+            "https://36kr.com/p/3908187603621252"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "估值逻辑又变了？",
+          "path": "results._items[10]._subtitle",
+          "href": "https://36kr.com/p/3905392402748801",
+          "expect": [
+            "https://36kr.com/p/3905392402748801"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "2026年首届WAICA将于上海举办，打造全球AI学术新平台",
+          "path": "results._items[11]._subtitle",
+          "href": "https://36kr.com/p/3903886909064832",
+          "expect": [
+            "https://36kr.com/p/3903886909064832"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "任天堂超级怪手迎来劲敌！",
+          "path": "results._items[12]._subtitle",
+          "href": "https://36kr.com/p/3889659031845636",
+          "expect": [
+            "https://36kr.com/p/3889659031845636"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "第十一届数据分析行业大会在渝开幕，多项成果发布",
+          "path": "results._items[13]._subtitle",
+          "href": "https://36kr.com/p/3869643912434951",
+          "expect": [
+            "https://36kr.com/p/3869643912434951"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "豆包专业版上线实测：付费体验待提升，商业化仍需探索",
+          "path": "results._items[14]._subtitle",
+          "href": "https://36kr.com/p/3868483485160710",
+          "expect": [
+            "https://36kr.com/p/3868483485160710"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "豆包上线专业版及2.1系列模型，推出Agent办公任务模式",
+          "path": "results._items[15]._subtitle",
+          "href": "https://36kr.com/p/3867047187420420",
+          "expect": [
+            "https://36kr.com/p/3867047187420420"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "2026豆包与DeepSeek能力、选型全解析",
+          "path": "results._items[16]._subtitle",
+          "href": "https://36kr.com/p/3858102947206148",
+          "expect": [
+            "https://36kr.com/p/3858102947206148"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "内含数据集在线使用地址",
+          "path": "results._items[17]._subtitle",
+          "href": "https://36kr.com/p/3848566186759176",
+          "expect": [
+            "https://36kr.com/p/3848566186759176"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "知乎盐言故事、豆瓣阅读、小红书抢滩短剧IP池",
+          "path": "results._items[18]._subtitle",
+          "href": "https://36kr.com/p/3847194467482247",
+          "expect": [
+            "https://36kr.com/p/3847194467482247"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "那时刻“技术+运营”模式，开辟重资产产业数字化新路径",
+          "path": "results._items[19]._subtitle",
+          "href": "https://36kr.com/p/3847081288157704",
+          "expect": [
+            "https://36kr.com/p/3847081288157704"
+          ]
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "企业号",
+          "path": "search-type._items[7]._name",
+          "expect": [
+            "https://q.36kr.com",
+            "https://36kr.com/search/company/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（q.36kr.com / 36kr.com/search/company/数据可视化），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "airbnb-com/room-28871",
+      "anchors": 32,
+      "anchorsWithTarget": 31,
+      "anchorsWithoutTarget": 1,
+      "anchorsCarried": 31,
+      "factsToLink": 0,
+      "linked": 0,
+      "links": 2,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "815 条评价",
+          "href": "#reviews",
+          "expect": []
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "aliyun-com/home",
+      "anchors": 420,
+      "anchorsWithTarget": 420,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 372,
+      "factsToLink": 19,
+      "linked": 15,
+      "links": 75,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "大模型",
+          "path": "products._items[1]._tag",
+          "href": "https://www.aliyun.com/product/tongyi",
+          "expect": [
+            "https://www.qianwenai.com"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "大模型",
+          "path": "products._items[2]._tag",
+          "href": "https://www.aliyun.com/product/bailian",
+          "expect": [
+            "https://www.qianwenai.com"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "大模型",
+          "path": "products._items[10]._tag",
+          "href": "https://www.aliyun.com/product/bigdata/learn",
+          "expect": [
+            "https://www.qianwenai.com"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "查看详情",
+          "href": "https://platform.qianwenai.com/pricing/token-plan",
+          "expect": []
+        },
+        {
+          "kind": "wrong-target",
+          "text": "查看详情",
+          "href": "https://platform.qianwenai.com/home/benefits",
+          "expect": []
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "数据库",
+          "path": "products.tabs._items[7]._name",
+          "expect": [
+            "https://www.aliyun.com/product/outline/index?spm=5176.19720258.J_2686872250.45.3f0e4ff6AwBQKs",
+            "https://market.aliyun.com/products/56024006?scene=market"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（www.aliyun.com/product/outline/index?spm=5176.19720258.J_2686872250.45.3f0e4ff6AwBQKs / market.aliyun.com/products/56024006?scene=market），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "aliyun-com/product-ecs",
+      "anchors": 319,
+      "anchorsWithTarget": 319,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 305,
+      "factsToLink": 1,
+      "linked": 1,
+      "links": 2,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "apple-com-cn/iphone-17",
+      "anchors": 336,
+      "anchorsWithTarget": 302,
+      "anchorsWithoutTarget": 34,
+      "anchorsCarried": 177,
+      "factsToLink": 6,
+      "linked": 0,
+      "links": 15,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "iPhone 17",
+          "path": "._title",
+          "href": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17",
+          "expect": [
+            "https://www.apple.com.cn/iphone-17"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "个人设置辅导",
+          "path": "_lines[10]._items[3]._name",
+          "href": "https://www.apple.com.cn/cn/shop/goto/personal_setup",
+          "expect": [
+            "https://www.apple.com.cn/cn/shop/goto/personal_setup"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Store App",
+          "path": "_lines[10]._items[6]._name",
+          "href": "https://apps.apple.com/cn/app/apple-store/id375380948",
+          "expect": [
+            "https://apps.apple.com/cn/app/apple-store/id375380948"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "iPhone 17",
+          "path": "_lines[11]._items[0]._name",
+          "href": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17",
+          "expect": [
+            "https://www.apple.com.cn/iphone-17"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "iPhone Air",
+          "path": "_lines[11]._items[1]._name",
+          "href": "https://www.apple.com.cn/iphone-air/",
+          "expect": [
+            "https://www.apple.com.cn/iphone-air"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Apple Trade In 换购计划",
+          "href": "#benefits-tradein",
+          "expect": []
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Trade In 换购计划",
+          "path": "_lines[10]._items[0]._name",
+          "expect": [
+            "https://www.apple.com.cn/cn/shop/goto/trade_in",
+            "https://www.apple.com.cn/shop/goto/trade_in"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com.cn/cn/shop/goto/trade_in / www.apple.com.cn/shop/goto/trade_in），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "apple-com/home",
+      "anchors": 356,
+      "anchorsWithTarget": 347,
+      "anchorsWithoutTarget": 9,
+      "anchorsCarried": 239,
+      "factsToLink": 16,
+      "linked": 8,
+      "links": 35,
+      "findings": [
+        {
+          "kind": "anchor-dropped",
+          "text": "iPhone 18 Pro",
+          "path": "_lines[0]._title",
+          "href": "https://www.apple.com/iphone-18-pro/",
+          "expect": [
+            "https://www.apple.com/iphone-18-pro"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "iPhone Duo",
+          "path": "_lines[1]._title",
+          "href": "https://www.apple.com/iphone-duo/",
+          "expect": [
+            "https://www.apple.com/iphone-duo"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Watch Series 12",
+          "path": "_lines[2]._title",
+          "href": "https://www.apple.com/apple-watch-series-12/",
+          "expect": [
+            "https://www.apple.com/apple-watch-series-12"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Watch Ultra 4",
+          "path": "_lines[3]._items[0]._name",
+          "href": "https://www.apple.com/apple-watch-ultra-4/",
+          "expect": [
+            "https://www.apple.com/apple-watch-ultra-4"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "AirPods 5",
+          "path": "_lines[3]._items[1]._name",
+          "href": "https://www.apple.com/airpods-5/",
+          "expect": [
+            "https://www.apple.com/airpods-5"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Upgrade",
+          "path": "_lines[3]._items[2]._name",
+          "href": "https://www.apple.com/us/shop/goto/apple_upgrade",
+          "expect": [
+            "https://www.apple.com/us/shop/goto/apple_upgrade"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "MacBook Air",
+          "path": "_lines[3]._items[4]._name",
+          "href": "https://www.apple.com/macbook-air/",
+          "expect": [
+            "https://www.apple.com/macbook-air"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Card",
+          "path": "_lines[3]._items[5]._name",
+          "href": "https://www.apple.com/apple-card/",
+          "expect": [
+            "https://www.apple.com/apple-card"
+          ]
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "apple-com/ipad-air",
+      "anchors": 382,
+      "anchorsWithTarget": 359,
+      "anchorsWithoutTarget": 23,
+      "anchorsCarried": 235,
+      "factsToLink": 6,
+      "linked": 1,
+      "links": 15,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "iPad Air",
+          "path": "._title",
+          "href": "https://www.apple.com/us/shop/goto/buy_ipad/ipad_air",
+          "expect": [
+            "https://www.apple.com/ipad-air"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "iPad Air",
+          "path": "_lines[11]._lines[0]._name",
+          "href": "https://www.apple.com/us/shop/goto/buy_ipad/ipad_air",
+          "expect": [
+            "https://www.apple.com/ipad-air"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "iPad Pro",
+          "path": "_lines[11]._lines[1]._name",
+          "href": "https://www.apple.com/ipad-pro/",
+          "expect": [
+            "https://www.apple.com/ipad-pro"
+          ]
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Intelligence",
+          "path": "_lines[11]._lines[0].ai._detail",
+          "expect": [
+            "https://www.apple.com/apple-intelligence"
+          ],
+          "reason": "该文本是 _detail 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Intelligence",
+          "path": "_lines[11]._lines[1].ai._detail",
+          "expect": [
+            "https://www.apple.com/apple-intelligence"
+          ],
+          "reason": "该文本是 _detail 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "apple-com/iphone-16",
+      "anchors": 351,
+      "anchorsWithTarget": 349,
+      "anchorsWithoutTarget": 2,
+      "anchorsCarried": 233,
+      "factsToLink": 8,
+      "linked": 0,
+      "links": 7,
+      "findings": [
+        {
+          "kind": "anchor-dropped",
+          "text": "Carrier Deals at Apple",
+          "path": "deals._title",
+          "href": "https://www.apple.com/shop/buy-iphone/carrier-offers",
+          "expect": [
+            "https://www.apple.com/shop/buy-iphone/carrier-offers"
+          ]
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Trade In.",
+          "path": "steps._lines[2]._title",
+          "expect": [
+            "https://www.apple.com/shop/trade-in",
+            "https://www.apple.com/us/shop/goto/trade_in#mac",
+            "https://www.apple.com/us/shop/goto/trade_in#ipad",
+            "https://www.apple.com/us/shop/goto/trade_in#iphone",
+            "https://www.apple.com/us/shop/goto/trade_in#watch",
+            "https://www.apple.com/us/shop/goto/trade_in"
+          ],
+          "reason": "源站同一可见文本对应 6 个不同目标（www.apple.com/shop/trade-in / www.apple.com/us/shop/goto/trade_in#mac / www.apple.com/us/shop/goto/trade_in#ipad / …），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "iPhone 16",
+          "path": "inbox._items[0]._name",
+          "expect": [
+            "https://www.apple.com/us/shop/goto/buy_iphone/iphone_16",
+            "https://www.apple.com/iphone-16"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/us/shop/goto/buy_iphone/iphone_16 / www.apple.com/iphone-16），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "iPhone Duo",
+          "path": "compare._lines[0]._name",
+          "expect": [
+            "https://www.apple.com/iphone-duo",
+            "https://www.apple.com/shop/buy-iphone/iphone-duo"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/iphone-duo / www.apple.com/shop/buy-iphone/iphone-duo），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "iPhone 18 Pro",
+          "path": "compare._lines[1]._name",
+          "expect": [
+            "https://www.apple.com/iphone-18-pro",
+            "https://www.apple.com/shop/buy-iphone/iphone-18-pro"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/iphone-18-pro / www.apple.com/shop/buy-iphone/iphone-18-pro），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "iPhone Air",
+          "path": "compare._lines[2]._name",
+          "expect": [
+            "https://www.apple.com/iphone-air",
+            "https://www.apple.com/shop/buy-iphone/iphone-air"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/iphone-air / www.apple.com/shop/buy-iphone/iphone-air），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "iPhone 17",
+          "path": "compare._lines[3]._name",
+          "expect": [
+            "https://www.apple.com/iphone-17",
+            "https://www.apple.com/shop/buy-iphone/iphone-17"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/iphone-17 / www.apple.com/shop/buy-iphone/iphone-17），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "iPhone 17e",
+          "path": "compare._lines[4]._name",
+          "expect": [
+            "https://www.apple.com/iphone-17e",
+            "https://www.apple.com/shop/buy-iphone/iphone-17e"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（www.apple.com/iphone-17e / www.apple.com/shop/buy-iphone/iphone-17e），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "apple-com/macbook-air",
+      "anchors": 395,
+      "anchorsWithTarget": 359,
+      "anchorsWithoutTarget": 36,
+      "anchorsCarried": 242,
+      "factsToLink": 6,
+      "linked": 1,
+      "links": 18,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "MacBook Air",
+          "path": "._title",
+          "href": "https://www.apple.com/us/shop/goto/buy_mac/macbook_air",
+          "expect": [
+            "https://www.apple.com/macbook-air"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Upgrade",
+          "path": "_lines[13]._items[0]._name",
+          "href": "https://www.apple.com/us/shop/goto/apple_upgrade",
+          "expect": [
+            "https://www.apple.com/us/shop/goto/apple_upgrade"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Trade In",
+          "path": "_lines[13]._items[1]._name",
+          "href": "https://www.apple.com/us/shop/goto/trade_in#mac",
+          "expect": [
+            "https://www.apple.com/us/shop/goto/trade_in",
+            "https://www.apple.com/us/shop/goto/trade_in#mac",
+            "https://www.apple.com/us/shop/goto/trade_in#ipad",
+            "https://www.apple.com/us/shop/goto/trade_in#iphone",
+            "https://www.apple.com/us/shop/goto/trade_in#watch"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Apple Card",
+          "path": "_lines[13]._items[2]._name",
+          "href": "https://www.apple.com/apple-card",
+          "expect": [
+            "https://www.apple.com/apple-card"
+          ]
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "Education",
+          "path": "_lines[13]._items[3]._name",
+          "expect": [
+            "https://www.apple.com/us/shop/goto/educationrouting",
+            "https://www.apple.com/education",
+            "https://www.apple.com/education-initiative"
+          ],
+          "reason": "源站同一可见文本对应 3 个不同目标（www.apple.com/us/shop/goto/educationrouting / www.apple.com/education / www.apple.com/education-initiative），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "aws-amazon/ec2-on-demand",
+      "anchors": 165,
+      "anchorsWithTarget": 164,
+      "anchorsWithoutTarget": 1,
+      "anchorsCarried": 155,
+      "factsToLink": 0,
+      "linked": 0,
+      "links": 0,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "bilibili-com/home",
+      "anchors": 120,
+      "anchorsWithTarget": 120,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 89,
+      "factsToLink": 24,
+      "linked": 10,
+      "links": 12,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "啊力解说 · 09-15",
+          "path": "feed._items[0]._author",
+          "href": "https://www.bilibili.com/video/BV1Dzej6JEG5",
+          "expect": [
+            "https://space.bilibili.com/3493074456021651"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "粥粥的奇妙冒险 · 11小时前",
+          "path": "feed._items[1]._author",
+          "href": "https://www.bilibili.com/video/BV1LZYf65Epq",
+          "expect": [
+            "https://space.bilibili.com/6768352"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "差评君 · 09-16",
+          "path": "feed._items[2]._author",
+          "href": "https://www.bilibili.com/video/BV1chew68EEw",
+          "expect": [
+            "https://space.bilibili.com/19319172"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "自醒画画 · 09-15",
+          "path": "feed._items[3]._author",
+          "href": "https://www.bilibili.com/video/BV1Qyen6aELC",
+          "expect": [
+            "https://space.bilibili.com/65836364"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "粤知一二 · 昨天",
+          "path": "feed._items[4]._author",
+          "href": "https://www.bilibili.com/video/BV1yreG6aE99",
+          "expect": [
+            "https://space.bilibili.com/95515699"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "不爱唠嗑的芒果 · 14小时前",
+          "path": "feed._items[5]._author",
+          "href": "https://www.bilibili.com/video/BV1xRer6jENr",
+          "expect": [
+            "https://space.bilibili.com/52034298"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "原神 · 09-12",
+          "path": "feed._items[6]._author",
+          "href": "https://www.bilibili.com/video/BV1znY96NEvn",
+          "expect": [
+            "https://space.bilibili.com/401742377"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "阿银紫 · 昨天",
+          "path": "feed._items[7]._author",
+          "href": "https://www.bilibili.com/video/BV19Fe36rEEK",
+          "expect": [
+            "https://space.bilibili.com/172447618"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "中国模特勇闯欧洲时装周|面试实录第一集",
+          "path": "feed._items[8]._name",
+          "href": "https://www.bilibili.com/video/BV1Q6eE64EeE",
+          "expect": [
+            "https://www.bilibili.com/video/BV1SAYd6sEtv"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "李东恒z · 09-12",
+          "path": "feed._items[8]._author",
+          "href": "https://www.bilibili.com/video/BV1Q6eE64EeE",
+          "expect": [
+            "https://space.bilibili.com/43788290"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "这什么物价？！二周年彩蛋终于破解！",
+          "path": "feed._items[9]._name",
+          "href": "https://www.bilibili.com/video/BV1SAYd6sEtv",
+          "expect": [
+            "https://www.bilibili.com/video/BV1Q6eE64EeE"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "小普-三角洲重生版 · 09-15",
+          "path": "feed._items[9]._author",
+          "href": "https://www.bilibili.com/video/BV1SAYd6sEtv",
+          "expect": [
+            "https://space.bilibili.com/492905896"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "直播中",
+          "path": "feed._items[10]._tag",
+          "href": "https://live.bilibili.com/1939977064?hotRank=0&live_from=81003",
+          "expect": [
+            "https://live.bilibili.com/1939977064?hotRank=0&live_from=81003"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "SG-次元姬",
+          "path": "feed._items[10]._author",
+          "href": "https://live.bilibili.com/1939977064?hotRank=0&live_from=81003",
+          "expect": [
+            "https://space.bilibili.com/3706966576728649"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "中国模特勇闯欧洲时装周|面试实录第一集",
+          "href": "https://www.bilibili.com/video/BV1Q6eE64EeE",
+          "expect": []
+        },
+        {
+          "kind": "wrong-target",
+          "text": "这什么物价？！二周年彩蛋终于破解！",
+          "href": "https://www.bilibili.com/video/BV1SAYd6sEtv",
+          "expect": []
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "bilibili-com/read-home",
+      "anchors": 28,
+      "anchorsWithTarget": 28,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 28,
+      "factsToLink": 0,
+      "linked": 0,
+      "links": 19,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "anchors": 70,
+      "anchorsWithTarget": 69,
+      "anchorsWithoutTarget": 1,
+      "anchorsCarried": 68,
+      "factsToLink": 39,
+      "linked": 20,
+      "links": 32,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "索尼音乐国际",
+          "path": "up-next._items[0]._author",
+          "href": "https://www.bilibili.com/video/BV1p2j26LE66/?spm_id_from=333.788.recommend_more_video.-1",
+          "expect": [
+            "https://space.bilibili.com/304580067"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "RickAstley中文频道",
+          "path": "up-next._items[1]._author",
+          "href": "https://www.bilibili.com/video/BV1UbE16dEeJ/?spm_id_from=333.788.recommend_more_video.0",
+          "expect": [
+            "https://space.bilibili.com/3707005441148967"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Rickrocknroll",
+          "path": "up-next._items[2]._author",
+          "href": "https://www.bilibili.com/video/BV1eS4y157Ey/?spm_id_from=333.788.recommend_more_video.1",
+          "expect": [
+            "https://space.bilibili.com/373025504"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "比划大魔王",
+          "path": "up-next._items[3]._author",
+          "href": "https://www.bilibili.com/video/BV1NZ4y1j7nw/?spm_id_from=333.788.recommend_more_video.2",
+          "expect": [
+            "https://space.bilibili.com/479724334"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "sakanaction鱼韵乐队",
+          "path": "up-next._items[4]._author",
+          "href": "https://www.bilibili.com/video/BV1EV411s7vu/?spm_id_from=333.788.recommend_more_video.3",
+          "expect": [
+            "https://space.bilibili.com/1693810421"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "CR400BF-AS-5421",
+          "path": "up-next._items[5]._author",
+          "href": "https://www.bilibili.com/video/BV1V4UYY5EhD/?spm_id_from=333.788.recommend_more_video.4",
+          "expect": [
+            "https://space.bilibili.com/3493084276984624"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "sakanaction鱼韵乐队",
+          "path": "up-next._items[6]._author",
+          "href": "https://www.bilibili.com/video/BV16o4y1k7gh/?spm_id_from=333.788.recommend_more_video.5",
+          "expect": [
+            "https://space.bilibili.com/1693810421"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "新的安德",
+          "path": "up-next._items[7]._author",
+          "href": "https://www.bilibili.com/video/BV14gLU6REFD/?spm_id_from=333.788.recommend_more_video.6",
+          "expect": [
+            "https://space.bilibili.com/3546871823861919"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "我不是阿城啦",
+          "path": "up-next._items[8]._author",
+          "href": "https://www.bilibili.com/video/BV15b41157i4/?spm_id_from=333.788.recommend_more_video.7",
+          "expect": [
+            "https://space.bilibili.com/26148497"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "WtfWasThat",
+          "path": "up-next._items[9]._author",
+          "href": "https://www.bilibili.com/video/BV1dg4y1Z7B1/?spm_id_from=333.788.recommend_more_video.8",
+          "expect": [
+            "https://space.bilibili.com/441145305"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "伊秋Yikyuu",
+          "path": "up-next._items[10]._author",
+          "href": "https://www.bilibili.com/video/BV1Qs411d7pd/?spm_id_from=333.788.recommend_more_video.9",
+          "expect": [
+            "https://space.bilibili.com/13972642"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "田一名sir",
+          "path": "up-next._items[11]._author",
+          "href": "https://www.bilibili.com/video/BV1Ly4y1L7mA/?spm_id_from=333.788.recommend_more_video.10",
+          "expect": [
+            "https://space.bilibili.com/477676711"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "炉石病娇KC",
+          "path": "up-next._items[12]._author",
+          "href": "https://www.bilibili.com/video/BV1Es41127M5/?spm_id_from=333.788.recommend_more_video.11",
+          "expect": [
+            "https://space.bilibili.com/769743"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "baadda",
+          "path": "up-next._items[13]._author",
+          "href": "https://www.bilibili.com/video/BV1gU4y167kU/?spm_id_from=333.788.recommend_more_video.12",
+          "expect": [
+            "https://space.bilibili.com/1789638843"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "音乐私藏馆",
+          "path": "up-next._items[14]._author",
+          "href": "https://www.bilibili.com/video/BV1qU4y1F73A/?spm_id_from=333.788.recommend_more_video.13",
+          "expect": [
+            "https://space.bilibili.com/229733301"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "不咕的鱼鸽子",
+          "path": "up-next._items[15]._author",
+          "href": "https://www.bilibili.com/video/BV1y54y1s74a/?spm_id_from=333.788.recommend_more_video.14",
+          "expect": [
+            "https://space.bilibili.com/294594289"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "通訊录好友",
+          "path": "up-next._items[16]._author",
+          "href": "https://www.bilibili.com/video/BV1gp4y1B7yd/?spm_id_from=333.788.recommend_more_video.15",
+          "expect": [
+            "https://space.bilibili.com/25072174"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "星白真冬",
+          "path": "up-next._items[17]._author",
+          "href": "https://www.bilibili.com/video/BV1Ls411w7r7/?spm_id_from=333.788.recommend_more_video.16",
+          "expect": [
+            "https://space.bilibili.com/38691535"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "鸡鸡·夫斯基",
+          "path": "up-next._items[18]._author",
+          "href": "https://www.bilibili.com/video/BV1xy6qBJESW/?spm_id_from=333.788.recommend_more_video.17",
+          "expect": [
+            "https://space.bilibili.com/548824"
+          ]
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "github-com/login",
+      "anchors": 7,
+      "anchorsWithTarget": 6,
+      "anchorsWithoutTarget": 1,
+      "anchorsCarried": 6,
+      "factsToLink": 6,
+      "linked": 5,
+      "links": 6,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "Create an account",
+          "path": "login.signup._title",
+          "href": "https://github.com/signup",
+          "expect": [
+            "https://github.com/signup?source=login"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Create an account",
+          "href": "https://github.com/signup",
+          "expect": []
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "gov-uk/ni-rates-letters",
+      "anchors": 60,
+      "anchorsWithTarget": 57,
+      "anchorsWithoutTarget": 3,
+      "anchorsCarried": 56,
+      "factsToLink": 12,
+      "linked": 12,
+      "links": 15,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "gov-uk/register-birth-abroad",
+      "anchors": 50,
+      "anchorsWithTarget": 49,
+      "anchorsWithoutTarget": 1,
+      "anchorsCarried": 47,
+      "factsToLink": 6,
+      "linked": 6,
+      "links": 10,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "grafana-play/play-home",
+      "anchors": 19,
+      "anchorsWithTarget": 18,
+      "anchorsWithoutTarget": 1,
+      "anchorsCarried": 17,
+      "factsToLink": 2,
+      "linked": 2,
+      "links": 2,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "huawei-cn/consumer-phones",
+      "anchors": 280,
+      "anchorsWithTarget": 273,
+      "anchorsWithoutTarget": 7,
+      "anchorsCarried": 116,
+      "factsToLink": 102,
+      "linked": 57,
+      "links": 153,
+      "findings": [
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate XT 2 非凡大师",
+          "path": "flagship._title",
+          "href": "https://consumer.huawei.com/cn/phones/mate-xt-2-ultimate-design/",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate-xt-2-ultimate-design"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate XTs 非凡大师",
+          "path": "catalog-mate._items[0]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate-xts-ultimate-design",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate-xts-ultimate-design"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate XT 2 非凡大师",
+          "path": "catalog-mate._items[1]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate-xt-2-ultimate-design",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate-xt-2-ultimate-design"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate X7",
+          "path": "catalog-mate._items[2]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate-x7",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate-x7"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate X6",
+          "path": "catalog-mate._items[3]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate-x6",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate-x6"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate 80 RS 非凡大师",
+          "path": "catalog-mate._items[4]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate80-rs-ultimate-design",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate80-rs-ultimate-design"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate 80 Pro Max 风驰版",
+          "path": "catalog-mate._items[5]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate80-pro-max-fengchiban",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate80-pro-max-fengchiban"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate 80 Pro Max",
+          "path": "catalog-mate._items[6]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate80-pro-max",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate80-pro-max"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate 80 Pro",
+          "path": "catalog-mate._items[8]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate80-pro",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate80-pro"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate 70 Pro 优享版",
+          "path": "catalog-mate._items[10]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate70-pro-youxiangban",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate70-pro-youxiangban"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate 80",
+          "path": "catalog-mate._items[11]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate80",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate80"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate 70 Air",
+          "path": "catalog-mate._items[12]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate70-air",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate70-air"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate 70 RS 非凡大师",
+          "path": "catalog-mate._items[13]._name",
+          "href": "https://consumer.huawei.com/cn/phones/mate70-rs-ultimate-design",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate70-rs-ultimate-design"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pura X Max",
+          "path": "catalog-pura._items[0]._name",
+          "href": "https://consumer.huawei.com/cn/phones/pura-x-max",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pura-x-max"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pura 80 Ultra",
+          "path": "catalog-pura._items[1]._name",
+          "href": "https://consumer.huawei.com/cn/phones/pura80-ultra",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pura80-ultra"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pura X",
+          "path": "catalog-pura._items[2]._name",
+          "href": "https://consumer.huawei.com/cn/phones/pura-x",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pura-x"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pura 90 Pro Max",
+          "path": "catalog-pura._items[4]._name",
+          "href": "https://consumer.huawei.com/cn/phones/pura90-pro-max",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pura90-pro-max"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pura X View",
+          "path": "catalog-pura._items[6]._name",
+          "href": "https://consumer.huawei.com/cn/phones/pura-x-view",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pura-x-view"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pura 90 Pro",
+          "path": "catalog-pura._items[7]._name",
+          "href": "https://consumer.huawei.com/cn/phones/pura90-pro",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pura90-pro"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pura 90",
+          "path": "catalog-pura._items[8]._name",
+          "href": "https://consumer.huawei.com/cn/phones/pura90",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pura90"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pura 80",
+          "path": "catalog-pura._items[9]._name",
+          "href": "https://consumer.huawei.com/cn/phones/pura80",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pura80"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pocket 2 优享版",
+          "path": "catalog-pocket._items[0]._name",
+          "href": "https://consumer.huawei.com/cn/phones/pocket-2-youxiangban",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pocket-2-youxiangban"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 16 Ultra",
+          "path": "catalog-nova._items[0]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova16-ultra",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova16-ultra"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 16 Pro",
+          "path": "catalog-nova._items[1]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova16-pro",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova16-pro"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 16",
+          "path": "catalog-nova._items[2]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova16",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova16"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 16 SE",
+          "path": "catalog-nova._items[3]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova16-se",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova16-se"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 16z",
+          "path": "catalog-nova._items[4]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova16-z",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova16-z"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 15 Ultra",
+          "path": "catalog-nova._items[5]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova15-ultra",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova15-ultra"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 15 Pro",
+          "path": "catalog-nova._items[6]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova15-pro",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova15-pro"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 15",
+          "path": "catalog-nova._items[7]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova15",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova15"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 14 Ultra",
+          "path": "catalog-nova._items[8]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova14-ultra",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova14-ultra"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 14 Pro",
+          "path": "catalog-nova._items[9]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova14-pro",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova14-pro"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI nova 14 活力版",
+          "path": "catalog-nova._items[10]._name",
+          "href": "https://consumer.huawei.com/cn/phones/nova14-huoliban",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/nova14-huoliban"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "华为畅享 90 Pro Max",
+          "path": "catalog-enjoy._items[0]._name",
+          "href": "https://consumer.huawei.com/cn/phones/changxiang-90-pro-max",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/changxiang-90-pro-max"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "华为畅享 90 Plus",
+          "path": "catalog-enjoy._items[1]._name",
+          "href": "https://consumer.huawei.com/cn/phones/changxiang-90-plus",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/changxiang-90-plus"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "华为畅享 90",
+          "path": "catalog-enjoy._items[2]._name",
+          "href": "https://consumer.huawei.com/cn/phones/changxiang-90",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/changxiang-90"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "华为畅享 80",
+          "path": "catalog-enjoy._items[3]._name",
+          "href": "https://consumer.huawei.com/cn/phones/changxiang-80",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/changxiang-80"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "华为畅享 70X 尊享版",
+          "path": "catalog-enjoy._items[4]._name",
+          "href": "https://consumer.huawei.com/cn/phones/changxiang-70x-zunxiangban",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/changxiang-70x-zunxiangban"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "华为畅享 90m Plus",
+          "path": "catalog-enjoy._items[5]._name",
+          "href": "https://consumer.huawei.com/cn/phones/changxiang-90m-plus",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/changxiang-90m-plus"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "华为畅享 70X",
+          "path": "catalog-enjoy._items[6]._name",
+          "href": "https://consumer.huawei.com/cn/phones/changxiang-70x",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/changxiang-70x"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "华为畅享 70S",
+          "path": "catalog-enjoy._items[7]._name",
+          "href": "https://consumer.huawei.com/cn/phones/changxiang-70s",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/changxiang-70s"
+          ]
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate 70 Pro+",
+          "path": "catalog-mate._items[7]._name",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate70-pro-plus",
+            "https://consumer.huawei.com/cn/phones/mate70-pro"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（consumer.huawei.com/cn/phones/mate70-pro-plus / consumer.huawei.com/cn/phones/mate70-pro），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Mate 70 Pro",
+          "path": "catalog-mate._items[9]._name",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/mate70-pro-plus",
+            "https://consumer.huawei.com/cn/phones/mate70-pro"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（consumer.huawei.com/cn/phones/mate70-pro-plus / consumer.huawei.com/cn/phones/mate70-pro），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pura 80 Pro+",
+          "path": "catalog-pura._items[3]._name",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pura80-pro-plus",
+            "https://consumer.huawei.com/cn/phones/pura80-pro"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（consumer.huawei.com/cn/phones/pura80-pro-plus / consumer.huawei.com/cn/phones/pura80-pro），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "HUAWEI Pura 80 Pro",
+          "path": "catalog-pura._items[5]._name",
+          "expect": [
+            "https://consumer.huawei.com/cn/phones/pura80-pro-plus",
+            "https://consumer.huawei.com/cn/phones/pura80-pro"
+          ],
+          "reason": "源站同一可见文本对应 2 个不同目标（consumer.huawei.com/cn/phones/pura80-pro-plus / consumer.huawei.com/cn/phones/pura80-pro），无法确证该节点应回填哪一个；F-025 禁止构造 URL。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "huawei-cn/home",
+      "anchors": 60,
+      "anchorsWithTarget": 53,
+      "anchorsWithoutTarget": 7,
+      "anchorsCarried": 46,
+      "factsToLink": 42,
+      "linked": 41,
+      "links": 57,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "个人及家庭产品",
+          "path": "navigation._items[0]._title",
+          "href": "javascript:;",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "huawei-cn/search-laptop",
+      "anchors": 82,
+      "anchorsWithTarget": 67,
+      "anchorsWithoutTarget": 15,
+      "anchorsCarried": 58,
+      "factsToLink": 56,
+      "linked": 45,
+      "links": 47,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._items[0]._detail",
+          "href": "https://consumer.huawei.com/cn/laptops/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._items[1]._detail",
+          "href": "https://consumer.huawei.com/cn/harmonyos-computer/matebook-pro/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._items[2]._detail",
+          "href": "https://consumer.huawei.com/cn/harmonyos-computer/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._items[3]._detail",
+          "href": "https://consumer.huawei.com/cn/harmonyos-computer/matebook-fold-ultimate-design/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._items[4]._detail",
+          "href": "https://consumer.huawei.com/cn/laptops/matebook-gt-14/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._items[5]._detail",
+          "href": "https://consumer.huawei.com/cn/laptops/matebook-d-14-2024-13th-gen-core/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._items[6]._detail",
+          "href": "https://consumer.huawei.com/cn/laptops/matebook-d-16-2024/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._items[7]._detail",
+          "href": "https://consumer.huawei.com/cn/laptops/matebook-x-pro-ultra-premium-edition/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._items[8]._detail",
+          "href": "https://consumer.huawei.com/cn/laptops/matebook-14-2024/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._items[9]._detail",
+          "href": "https://consumer.huawei.com/cn/support/laptops/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "个人及家庭产品",
+          "path": "navigation._items[0]._title",
+          "href": "javascript:;",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "huawei-cn/search-phone",
+      "anchors": 82,
+      "anchorsWithTarget": 67,
+      "anchorsWithoutTarget": 15,
+      "anchorsCarried": 59,
+      "factsToLink": 56,
+      "linked": 45,
+      "links": 47,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._lines[0]._detail",
+          "href": "https://consumer.huawei.com/cn/phones/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._lines[1]._detail",
+          "href": "https://consumer.huawei.com/cn/emui/clone/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：集团网站",
+          "path": "results._lines[2]._detail",
+          "href": "https://www.huawei.com/cn/ipr/license/mobile-handset",
+          "expect": [
+            "https://www.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._lines[3]._detail",
+          "href": "https://consumer.huawei.com/cn/support/phones/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._lines[4]._detail",
+          "href": "https://consumer.huawei.com/cn/support/recommend/2/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._lines[5]._detail",
+          "href": "https://consumer.huawei.com/cn/accessories/huawei-pura-magnetic-phone-stand/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._lines[6]._detail",
+          "href": "https://consumer.huawei.com/cn/accessories/huawei-magnetic-phone-stand/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._lines[7]._detail",
+          "href": "https://consumer.huawei.com/cn/support/receive-huawei-care/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：消费者业务网站",
+          "path": "results._lines[8]._detail",
+          "href": "https://consumer.huawei.com/cn/support/recommend/6/",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "来源：华为云业务网站",
+          "path": "results._lines[9]._detail",
+          "href": "https://www.huaweicloud.com/product/cloudphone.html",
+          "expect": [
+            "https://www.huaweicloud.com/intl/zh-cn"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "个人及家庭产品",
+          "path": "navigation._items[0]._title",
+          "href": "javascript:;",
+          "expect": [
+            "https://consumer.huawei.com/cn"
+          ]
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "learn-microsoft/vm-sizes",
+      "anchors": 226,
+      "anchorsWithTarget": 180,
+      "anchorsWithoutTarget": 46,
+      "anchorsCarried": 172,
+      "factsToLink": 158,
+      "linked": 158,
+      "links": 147,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "linear-app/home",
+      "anchors": 59,
+      "anchorsWithTarget": 58,
+      "anchorsWithoutTarget": 1,
+      "anchorsCarried": 52,
+      "factsToLink": 3,
+      "linked": 1,
+      "links": 11,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "Coding sessions",
+          "path": "changelog._items[3]._title",
+          "href": "https://linear.app/changelog/2026-08-20-coding-environments",
+          "expect": [
+            "https://linear.app/coding-sessions"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Contact sales",
+          "path": "sales._title",
+          "href": "https://linear.app/contact-sales",
+          "expect": [
+            "https://linear.app/contact/sales"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Coding sessions",
+          "href": "https://linear.app/changelog/2026-08-20-coding-environments",
+          "expect": []
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Contact sales",
+          "href": "https://linear.app/contact-sales",
+          "expect": []
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "mi-com/home",
+      "anchors": 73,
+      "anchorsWithTarget": 64,
+      "anchorsWithoutTarget": 9,
+      "anchorsCarried": 62,
+      "factsToLink": 51,
+      "linked": 51,
+      "links": 64,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "mi-com/product-detail-mi15",
+      "anchors": 109,
+      "anchorsWithTarget": 79,
+      "anchorsWithoutTarget": 30,
+      "anchorsCarried": 75,
+      "factsToLink": 56,
+      "linked": 56,
+      "links": 71,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "mi-com/search-earbuds",
+      "anchors": 160,
+      "anchorsWithTarget": 107,
+      "anchorsWithoutTarget": 53,
+      "anchorsCarried": 104,
+      "factsToLink": 58,
+      "linked": 58,
+      "links": 102,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "mi-com/search-phone",
+      "anchors": 159,
+      "anchorsWithTarget": 107,
+      "anchorsWithoutTarget": 52,
+      "anchorsCarried": 104,
+      "factsToLink": 58,
+      "linked": 58,
+      "links": 102,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "mi-com/shop-category-list",
+      "anchors": 245,
+      "anchorsWithTarget": 226,
+      "anchorsWithoutTarget": 19,
+      "anchorsCarried": 223,
+      "factsToLink": 196,
+      "linked": 196,
+      "links": 226,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "sspai-com/home",
+      "anchors": 51,
+      "anchorsWithTarget": 51,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 45,
+      "factsToLink": 35,
+      "linked": 21,
+      "links": 43,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "少数派编辑部",
+          "path": "feed._items[0]._author",
+          "href": "https://sspai.com/post/114716",
+          "expect": [
+            "https://sspai.com/u/ee0vj778"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "少数派编辑部",
+          "path": "feed._items[2]._author",
+          "href": "https://sspai.com/post/114670",
+          "expect": [
+            "https://sspai.com/u/ee0vj778"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "叁思Santh",
+          "path": "feed._items[3]._author",
+          "href": "https://sspai.com/prime/story/how-to-obtain-data-for-agent-analysis",
+          "expect": [
+            "https://sspai.com/u/7w2qer6m"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "少数派编辑部",
+          "path": "feed._items[4]._author",
+          "href": "https://sspai.com/post/114699",
+          "expect": [
+            "https://sspai.com/u/ee0vj778"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Victor42",
+          "path": "feed._items[5]._author",
+          "href": "https://sspai.com/post/114557",
+          "expect": [
+            "https://sspai.com/u/Victor_42"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "一派投票",
+          "path": "feed._items[6]._author",
+          "href": "https://sspai.com/bullet/1789222518",
+          "expect": [
+            "https://sspai.com/u"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "少数派编辑部",
+          "path": "feed._items[7]._author",
+          "href": "https://sspai.com/post/114643",
+          "expect": [
+            "https://sspai.com/u/ee0vj778"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "少数派编辑部",
+          "path": "feed._items[9]._author",
+          "href": "https://sspai.com/post/114658",
+          "expect": [
+            "https://sspai.com/u/ee0vj778"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "PJHubs",
+          "path": "feed._items[10]._author",
+          "href": "https://sspai.com/post/114454",
+          "expect": [
+            "https://sspai.com/u/pjhubs"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "text": "Tim Cook 掌舵十五年：哪些苹果产品真正改变了你的数字生活？",
+          "path": "feed._items[11]._title",
+          "href": "https://sspai.com/bullet/1788244609",
+          "expect": [
+            "https://sspai.com/bullet/1788244609"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "一派投票",
+          "path": "feed._items[11]._author",
+          "href": "https://sspai.com/bullet/1788244609",
+          "expect": [
+            "https://sspai.com/u"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Suzuk1",
+          "path": "prime._items[0]._author",
+          "href": "https://sspai.com/t/sncf7rs58uj2",
+          "expect": [
+            "https://sspai.com/u/0fw8rivr/updates"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "羊清乐",
+          "path": "prime._items[1]._author",
+          "href": "https://sspai.com/t/lvl9rwm2mbm7",
+          "expect": [
+            "https://sspai.com/u/ollsad/updates"
+          ]
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "PRIME",
+          "path": "prime._tag",
+          "expect": [
+            "https://sspai.com/prime"
+          ],
+          "reason": "该文本是 _tag 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "sspai-com/matrix",
+      "anchors": 66,
+      "anchorsWithTarget": 66,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 65,
+      "factsToLink": 48,
+      "linked": 30,
+      "links": 47,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "郝海龙",
+          "path": "feed._items[1]._author",
+          "href": "https://sspai.com/post/114647",
+          "expect": [
+            "https://sspai.com/u/ettwsva2"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "滨江麋鹿",
+          "path": "feed._items[2]._author",
+          "href": "https://sspai.com/post/114570",
+          "expect": [
+            "https://sspai.com/u/xrr9q8pb"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "自言者一么imgradeone",
+          "path": "feed._items[3]._author",
+          "href": "https://sspai.com/post/114497",
+          "expect": [
+            "https://sspai.com/u/imgradeone"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "玩出个名堂",
+          "path": "feed._items[4]._author",
+          "href": "https://sspai.com/post/114547",
+          "expect": [
+            "https://sspai.com/u/play4fame"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Ironben",
+          "path": "feed._items[5]._author",
+          "href": "https://sspai.com/post/114582",
+          "expect": [
+            "https://sspai.com/u/om330qh1"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "夜间清风",
+          "path": "feed._items[6]._author",
+          "href": "https://sspai.com/post/114520",
+          "expect": [
+            "https://sspai.com/u/wind_night"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "HappyOY",
+          "path": "feed._items[7]._author",
+          "href": "https://sspai.com/post/114443",
+          "expect": [
+            "https://sspai.com/u/m3ojco5y"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "陈自来VincentC",
+          "path": "feed._items[9]._author",
+          "href": "https://sspai.com/post/114280",
+          "expect": [
+            "https://sspai.com/u/70tkkcds"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Fe6ruAr9",
+          "path": "feed._items[10]._author",
+          "href": "https://sspai.com/post/114208",
+          "expect": [
+            "https://sspai.com/u/0jyvcp5v"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "黑狗布雷特",
+          "path": "feed._items[11]._author",
+          "href": "https://sspai.com/post/114212",
+          "expect": [
+            "https://sspai.com/u/bradliu"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "尼古拉斯lalala",
+          "path": "feed._items[12]._author",
+          "href": "https://sspai.com/post/114150",
+          "expect": [
+            "https://sspai.com/u/staylalala"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "sha2kyou",
+          "path": "feed._items[13]._author",
+          "href": "https://sspai.com/post/114211",
+          "expect": [
+            "https://sspai.com/u/tr1ck"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Binich",
+          "path": "feed._items[14]._author",
+          "href": "https://sspai.com/post/114101",
+          "expect": [
+            "https://sspai.com/u/binich"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "随便好啦",
+          "path": "feed._items[15]._author",
+          "href": "https://sspai.com/post/113990",
+          "expect": [
+            "https://sspai.com/u/uuuksvuu"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "jadezhou",
+          "path": "feed._items[16]._author",
+          "href": "https://sspai.com/post/114128",
+          "expect": [
+            "https://sspai.com/u/atpfx8ho"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Bear熊掌记",
+          "path": "feed._items[18]._author",
+          "href": "https://sspai.com/post/114114",
+          "expect": [
+            "https://sspai.com/u/bear_app"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Isearch",
+          "path": "feed._items[19]._author",
+          "href": "https://sspai.com/post/113863",
+          "expect": [
+            "https://sspai.com/u/qa3gn4bd"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Bear熊掌记",
+          "path": "columns._items[2]._name",
+          "href": "https://sspai.com/column/254",
+          "expect": [
+            "https://sspai.com/u/bear_app"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Bear熊掌记",
+          "href": "https://sspai.com/column/254",
+          "expect": []
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "sspai-com/post-102392",
+      "anchors": 31,
+      "anchorsWithTarget": 31,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 31,
+      "factsToLink": 23,
+      "linked": 22,
+      "links": 24,
+      "findings": [],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "MaxChow",
+          "path": "._author",
+          "expect": [
+            "https://sspai.com/u/jtc092al/updates"
+          ],
+          "reason": "该文本是 _author 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "sspai-com/post-114699",
+      "anchors": 44,
+      "anchorsWithTarget": 44,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 31,
+      "factsToLink": 13,
+      "linked": 12,
+      "links": 47,
+      "findings": [],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "派早报",
+          "path": "._tag",
+          "expect": [
+            "https://sspai.com/tag/%E6%B4%BE%E6%97%A9%E6%8A%A5"
+          ],
+          "reason": "该文本是 _tag 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "sspai-com/post-114716",
+      "anchors": 62,
+      "anchorsWithTarget": 62,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 38,
+      "factsToLink": 13,
+      "linked": 7,
+      "links": 35,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "[电影] 伪钞之王",
+          "path": "_lines[11]._items[0]._name",
+          "href": "https://movie.douban.com/subject/38456407/",
+          "expect": [
+            "https://movie.douban.com/subject/37116027"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "[美剧] 劣探德克尔 第二季",
+          "path": "_lines[11]._items[1]._name",
+          "href": "https://movie.douban.com/subject/35930978/",
+          "expect": [
+            "https://movie.douban.com/subject/38456407"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "[电影] 安昂传奇：最后的气宗",
+          "path": "_lines[11]._items[2]._name",
+          "href": "https://movie.douban.com/subject/37116027/",
+          "expect": [
+            "https://movie.douban.com/subject/35930978"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "电影《绅士行动：暗战》首支预告",
+          "path": "_lines[12]._lines[4]._items[1]._name",
+          "href": "https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DIFF4fNg0CEM",
+          "expect": [
+            "https://www.bilibili.com/video/BV1EWer6qEts"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "恐怖电影《另一个妈妈》正式预告",
+          "path": "_lines[12]._lines[4]._items[2]._name",
+          "href": "https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DavXdGfYmRhM",
+          "expect": [
+            "https://www.bilibili.com/video/BV1hseH6NEaQ"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "豆瓣链接",
+          "href": "https://movie.douban.com/subject/38456407/",
+          "expect": []
+        },
+        {
+          "kind": "wrong-target",
+          "text": "豆瓣链接",
+          "href": "https://movie.douban.com/subject/35930978/",
+          "expect": []
+        },
+        {
+          "kind": "wrong-target",
+          "text": "豆瓣链接",
+          "href": "https://movie.douban.com/subject/37116027/",
+          "expect": []
+        }
+      ],
+      "declared": [
+        {
+          "kind": "anchor-dropped",
+          "text": "少数派编辑部",
+          "path": "_lines[16]._summary",
+          "expect": [
+            "https://sspai.com/u/ee0vj778"
+          ],
+          "reason": "该文本是 _summary 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
+          "round": 55
+        }
+      ]
+    },
+    {
+      "page": "sspai-com/u-jtc092al",
+      "anchors": 16,
+      "anchorsWithTarget": 16,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 16,
+      "factsToLink": 2,
+      "linked": 2,
+      "links": 17,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "stripe-com/pricing",
+      "anchors": 337,
+      "anchorsWithTarget": 308,
+      "anchorsWithoutTarget": 29,
+      "anchorsCarried": 158,
+      "factsToLink": 28,
+      "linked": 14,
+      "links": 70,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "Payment Links",
+          "path": "catalog._lines[0]._items[1]._name",
+          "href": "https://dashboard.stripe.com/register/payment_links",
+          "expect": [
+            "https://stripe.com/cn/payments/payment-links"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Checkout",
+          "path": "catalog._lines[0]._items[2]._name",
+          "href": "https://dashboard.stripe.com/register/checkout",
+          "expect": [
+            "https://stripe.com/cn/payments/checkout"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Managed Payments",
+          "path": "catalog._lines[0]._items[3]._name",
+          "href": "https://dashboard.stripe.com/register",
+          "expect": [
+            "https://stripe.com/cn/managed-payments"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Terminal",
+          "path": "catalog._lines[0]._items[4]._name",
+          "href": "https://dashboard.stripe.com/get-started/terminal",
+          "expect": [
+            "https://stripe.com/cn/terminal"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Connect",
+          "path": "catalog._lines[1]._items[0]._name",
+          "href": "https://dashboard.stripe.com/register/connect",
+          "expect": [
+            "https://stripe.com/cn/connect"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Billing",
+          "path": "catalog._lines[2]._items[0]._name",
+          "href": "https://dashboard.stripe.com/register/billing",
+          "expect": [
+            "https://stripe.com/cn/billing"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "初创企业",
+          "path": "catalog._lines[2]._items[1].pricing._items[0]._name",
+          "href": "https://metronome.com/pricing",
+          "expect": [
+            "https://stripe.com/cn/startups"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Invoicing",
+          "path": "catalog._lines[2]._items[2]._name",
+          "href": "https://dashboard.stripe.com/register/invoicing",
+          "expect": [
+            "https://stripe.com/cn/invoicing"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Tax",
+          "path": "catalog._lines[2]._items[3]._name",
+          "href": "https://dashboard.stripe.com/register/tax",
+          "expect": [
+            "https://stripe.com/cn/tax"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Stripe Sigma",
+          "path": "catalog._lines[2]._items[4]._name",
+          "href": "https://dashboard.stripe.com/register?redirect=%2Fsigma%2Fqueries",
+          "expect": [
+            "https://stripe.com/cn/sigma"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Data Pipeline",
+          "path": "catalog._lines[2]._items[5]._name",
+          "href": "https://dashboard.stripe.com/data-management",
+          "expect": [
+            "https://stripe.com/cn/data-pipeline"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Revenue Recognition",
+          "path": "catalog._lines[2]._items[6]._name",
+          "href": "https://dashboard.stripe.com/revenue-recognition",
+          "expect": [
+            "https://stripe.com/cn/revenue-recognition"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Radar",
+          "path": "catalog._lines[3]._items[0]._name",
+          "href": "https://dashboard.stripe.com/register",
+          "expect": [
+            "https://stripe.com/cn/radar"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "Atlas",
+          "path": "catalog._lines[3]._items[1]._name",
+          "href": "https://dashboard.stripe.com/register/atlas",
+          "expect": [
+            "https://stripe.com/cn/atlas"
+          ]
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "stripe-dashboard/login",
+      "anchors": 11,
+      "anchorsWithTarget": 6,
+      "anchorsWithoutTarget": 5,
+      "anchorsCarried": 6,
+      "factsToLink": 4,
+      "linked": 4,
+      "links": 4,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "stripe-docs/payments",
+      "anchors": 97,
+      "anchorsWithTarget": 58,
+      "anchorsWithoutTarget": 39,
+      "anchorsCarried": 57,
+      "factsToLink": 20,
+      "linked": 20,
+      "links": 33,
+      "findings": [],
+      "declared": []
+    },
+    {
+      "page": "taobao-com/home",
+      "anchors": 177,
+      "anchorsWithTarget": 174,
+      "anchorsWithoutTarget": 3,
+      "anchorsCarried": 156,
+      "factsToLink": 30,
+      "linked": 29,
+      "links": 92,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "淘宝秒杀",
+          "path": "_lines[6]._items[0]._name",
+          "href": "https://web.m.taobao.com/app/ltao-fe/tbmx-pc-page/home?custom_content_source=mspd.tbmspc",
+          "expect": [
+            "https://web.m.taobao.com/app/ltao-fe/tbmx-pc-page/home?spmb=tbmspcnew&mi_ids=0200AvrfFPrLDTsY_4HRbujL1cEybmaB7Qy3SyhQIdQzF5Emz98L7lY7gGinbK3XyyowjwopvUa5NWhhIHAEU9C-VQ&itemId=560885129778%2C616438768606&itemIds=560885129778%2C616438768606&custom_content_source=mspd.tbmspcnew"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "淘宝秒杀",
+          "href": "https://web.m.taobao.com/app/ltao-fe/tbmx-pc-page/home?custom_content_source=mspd.tbmspc",
+          "expect": []
+        }
+      ],
+      "declared": []
+    },
+    {
+      "page": "xiaomi-account/login",
+      "anchors": 8,
+      "anchorsWithTarget": 8,
+      "anchorsWithoutTarget": 0,
+      "anchorsCarried": 8,
+      "factsToLink": 7,
+      "linked": 5,
+      "links": 8,
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "忘记密码？",
+          "path": "login.forgot._title",
+          "href": "https://account.xiaomi.com/pass/forgetPassword",
+          "expect": [
+            "https://account.xiaomi.com/pass/forgetPassword?sid=passport&_bannerBiz="
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "手机号登录",
+          "path": "login.phone-login._title",
+          "href": "https://account.xiaomi.com/fe/service/login/phone",
+          "expect": [
+            "https://account.xiaomi.com/fe/service/login/phone?sid=passport&qs=%253Fsid%253Dpassport&callback=https%3A%2F%2Faccount.xiaomi.com&_sign=2%26V1_passport%26wqS4omyjALxMm%2F%2F3wLXcVcITjEc%3D&serviceParam=%7B%22checkSafePhone%22%3Afalse%2C%22checkSafeAddress%22%3Afalse%2C%22lsrp_score%22%3A0.0%7D&showActiveX=false&theme=&needTheme=false&bizDeviceType=&_locale=zh_CN"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "忘记密码？",
+          "href": "https://account.xiaomi.com/pass/forgetPassword",
+          "expect": []
+        },
+        {
+          "kind": "wrong-target",
+          "text": "手机号登录",
+          "href": "https://account.xiaomi.com/fe/service/login/phone",
+          "expect": []
+        }
+      ],
+      "declared": []
+    }
+  ],
+  "allowEntries": 21,
+  "ok": false
+}

@@ -1,0 +1,3285 @@
+{
+  "caseCount": 364,
+  "provenRealDeficits": 1,
+  "provenOracleFalsePositives": 1,
+  "unclassified": 362,
+  "resolved": 0,
+  "cases": [
+    {
+      "id": "36kr-com/home:1",
+      "page": "36kr-com/home",
+      "path": "feed._items[0]._author",
+      "classification": "PROVEN_MISSING_SOURCE_OWNED_AUTHOR_ACTION",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:1",
+      "nextAction": "Restore captured author action at the article owner using existing closed primitives; preserve author fact/order and verify all targets."
+    },
+    {
+      "id": "36kr-com/home:2",
+      "page": "36kr-com/home",
+      "path": "feed._items[0]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:3",
+      "page": "36kr-com/home",
+      "path": "feed._items[1]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:4",
+      "page": "36kr-com/home",
+      "path": "feed._items[1]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:5",
+      "page": "36kr-com/home",
+      "path": "feed._items[2]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:6",
+      "page": "36kr-com/home",
+      "path": "feed._items[2]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:7",
+      "page": "36kr-com/home",
+      "path": "feed._items[3]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:8",
+      "page": "36kr-com/home",
+      "path": "feed._items[3]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:9",
+      "page": "36kr-com/home",
+      "path": "feed._items[4]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:10",
+      "page": "36kr-com/home",
+      "path": "feed._items[4]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:11",
+      "page": "36kr-com/home",
+      "path": "feed._items[6]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:12",
+      "page": "36kr-com/home",
+      "path": "feed._items[6]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:12",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:13",
+      "page": "36kr-com/home",
+      "path": "feed._items[7]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:13",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:14",
+      "page": "36kr-com/home",
+      "path": "feed._items[7]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:14",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:15",
+      "page": "36kr-com/home",
+      "path": "feed._items[8]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:15",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:16",
+      "page": "36kr-com/home",
+      "path": "feed._items[9]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:16",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:17",
+      "page": "36kr-com/home",
+      "path": "feed._items[9]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:17",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:18",
+      "page": "36kr-com/home",
+      "path": "feed._items[10]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:18",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:19",
+      "page": "36kr-com/home",
+      "path": "feed._items[10]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:19",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:20",
+      "page": "36kr-com/home",
+      "path": "feed._items[11]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:20",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:21",
+      "page": "36kr-com/home",
+      "path": "feed._items[11]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:21",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:22",
+      "page": "36kr-com/home",
+      "path": "feed._items[12]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:22",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:23",
+      "page": "36kr-com/home",
+      "path": "feed._items[12]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:23",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:24",
+      "page": "36kr-com/home",
+      "path": "feed._items[13]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:24",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:25",
+      "page": "36kr-com/home",
+      "path": "feed._items[13]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:25",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:26",
+      "page": "36kr-com/home",
+      "path": "feed._items[14]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:26",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:27",
+      "page": "36kr-com/home",
+      "path": "feed._items[14]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:27",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:28",
+      "page": "36kr-com/home",
+      "path": "feed._items[15]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:28",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:29",
+      "page": "36kr-com/home",
+      "path": "feed._items[16]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:29",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:30",
+      "page": "36kr-com/home",
+      "path": "feed._items[17]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:30",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:31",
+      "page": "36kr-com/home",
+      "path": "feed._items[18]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:31",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:32",
+      "page": "36kr-com/home",
+      "path": "feed._items[18]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:32",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:33",
+      "page": "36kr-com/home",
+      "path": "feed._items[19]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:33",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:34",
+      "page": "36kr-com/home",
+      "path": "feed._items[19]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:34",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:35",
+      "page": "36kr-com/home",
+      "path": "feed._items[20]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:35",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:36",
+      "page": "36kr-com/home",
+      "path": "feed._items[20]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:36",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:37",
+      "page": "36kr-com/home",
+      "path": "feed._items[21]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:37",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:38",
+      "page": "36kr-com/home",
+      "path": "feed._items[21]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:38",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:39",
+      "page": "36kr-com/home",
+      "path": "feed._items[22]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:39",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:40",
+      "page": "36kr-com/home",
+      "path": "feed._items[22]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:40",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:41",
+      "page": "36kr-com/home",
+      "path": "feed._items[23]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:41",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:42",
+      "page": "36kr-com/home",
+      "path": "feed._items[23]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:42",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:43",
+      "page": "36kr-com/home",
+      "path": "feed._items[24]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:43",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:44",
+      "page": "36kr-com/home",
+      "path": "feed._items[24]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:44",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:45",
+      "page": "36kr-com/home",
+      "path": "feed._items[25]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:45",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:46",
+      "page": "36kr-com/home",
+      "path": "feed._items[25]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:46",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:47",
+      "page": "36kr-com/home",
+      "path": "feed._items[26]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:47",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:48",
+      "page": "36kr-com/home",
+      "path": "feed._items[26]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:48",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:49",
+      "page": "36kr-com/home",
+      "path": "feed._items[27]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:49",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:50",
+      "page": "36kr-com/home",
+      "path": "feed._items[27]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:50",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:51",
+      "page": "36kr-com/home",
+      "path": "feed._items[28]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:51",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:52",
+      "page": "36kr-com/home",
+      "path": "feed._items[28]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:52",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:53",
+      "page": "36kr-com/home",
+      "path": "feed._items[29]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:53",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:54",
+      "page": "36kr-com/home",
+      "path": "feed._items[29]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:54",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:55",
+      "page": "36kr-com/home",
+      "path": "feed._items[30]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:55",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:56",
+      "page": "36kr-com/home",
+      "path": "feed._items[30]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:56",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:57",
+      "page": "36kr-com/home",
+      "path": "feed._items[31]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:57",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:58",
+      "page": "36kr-com/home",
+      "path": "feed._items[31]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:58",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:59",
+      "page": "36kr-com/home",
+      "path": "feed._items[32]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:59",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:60",
+      "page": "36kr-com/home",
+      "path": "feed._items[33]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:60",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:61",
+      "page": "36kr-com/home",
+      "path": "feed._items[33]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:61",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:62",
+      "page": "36kr-com/home",
+      "path": "feed._items[34]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:62",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:63",
+      "page": "36kr-com/home",
+      "path": "feed._items[34]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:63",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:64",
+      "page": "36kr-com/home",
+      "path": "feed._items[35]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:64",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:65",
+      "page": "36kr-com/home",
+      "path": "feed._items[35]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:65",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:66",
+      "page": "36kr-com/home",
+      "path": "feed._items[36]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:66",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:67",
+      "page": "36kr-com/home",
+      "path": "feed._items[36]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:67",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:68",
+      "page": "36kr-com/home",
+      "path": "live._items[0]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:68",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:69",
+      "page": "36kr-com/home",
+      "path": "enterprise._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:69",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:70",
+      "page": "36kr-com/home",
+      "path": "enterprise._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:70",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:71",
+      "page": "36kr-com/home",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:71",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/home:72",
+      "page": "36kr-com/home",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/home:72",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:1",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[0]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:2",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[0]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:3",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[1]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:4",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[1]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:5",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[2]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:6",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[2]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:7",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[3]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:8",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[3]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:9",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[4]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:10",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[4]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:11",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[5]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:12",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[6]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:12",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:13",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[7]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:13",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:14",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[8]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:14",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:15",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[8]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:15",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:16",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[9]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:16",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:17",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[9]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:17",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:18",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[10]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:18",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:19",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[10]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:19",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:20",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[11]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:20",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:21",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[11]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:21",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:22",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[12]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:22",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:23",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[12]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:23",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:24",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[13]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:24",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:25",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[13]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:25",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:26",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[14]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:26",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:27",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[14]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:27",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:28",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[15]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:28",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:29",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[15]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:29",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:30",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[16]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:30",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:31",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[16]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:31",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:32",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[17]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:32",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:33",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[17]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:33",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:34",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[18]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:34",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:35",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[18]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:35",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:36",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[19]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:36",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:37",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[19]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:37",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:38",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[20]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:38",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:39",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[20]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:39",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:40",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[21]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:40",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:41",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[21]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:41",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:42",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[22]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:42",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:43",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[22]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:43",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:44",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[23]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:44",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:45",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[23]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:45",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:46",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[24]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:46",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:47",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[24]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:47",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:48",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[25]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:48",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:49",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[25]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:49",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:50",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[26]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:50",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:51",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[26]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:51",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:52",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[27]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:52",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:53",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[27]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:53",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:54",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[28]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:54",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:55",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[28]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:55",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:56",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[29]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:56",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:57",
+      "page": "36kr-com/information-technology",
+      "path": "feed._items[29]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:57",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:58",
+      "page": "36kr-com/information-technology",
+      "path": "companies._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:58",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/information-technology:59",
+      "page": "36kr-com/information-technology",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/information-technology:59",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:1",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[0]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:2",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[1]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:3",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[2]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:4",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[3]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:5",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[4]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:6",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[5]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:7",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[6]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:8",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[7]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:9",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[8]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:10",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[9]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:11",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[10]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:12",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[11]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:12",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:13",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[12]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:13",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:14",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[13]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:14",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:15",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[14]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:15",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:16",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[15]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:16",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:17",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[16]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:17",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:18",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[17]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:18",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:19",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[18]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:19",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-ai:20",
+      "page": "36kr-com/search-ai",
+      "path": "results._items[19]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-ai:20",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:1",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[0]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:2",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[1]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:3",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[2]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:4",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[3]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:5",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[4]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:6",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[5]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:7",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[6]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:8",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[7]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:9",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[8]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:10",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[9]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:11",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[10]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:12",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[11]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:12",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:13",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[12]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:13",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:14",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[13]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:14",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:15",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[14]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:15",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:16",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[15]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:16",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:17",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[16]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:17",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:18",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[17]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:18",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:19",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[18]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:19",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "36kr-com/search-viz:20",
+      "page": "36kr-com/search-viz",
+      "path": "results._items[19]._subtitle",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#36kr-com/search-viz:20",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "airbnb-com/room-28871:1",
+      "page": "airbnb-com/room-28871",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#airbnb-com/room-28871:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "aliyun-com/home:1",
+      "page": "aliyun-com/home",
+      "path": "products._items[1]._tag",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#aliyun-com/home:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "aliyun-com/home:2",
+      "page": "aliyun-com/home",
+      "path": "products._items[2]._tag",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#aliyun-com/home:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "aliyun-com/home:3",
+      "page": "aliyun-com/home",
+      "path": "products._items[10]._tag",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#aliyun-com/home:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "aliyun-com/home:4",
+      "page": "aliyun-com/home",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#aliyun-com/home:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "aliyun-com/home:5",
+      "page": "aliyun-com/home",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#aliyun-com/home:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com-cn/iphone-17:1",
+      "page": "apple-com-cn/iphone-17",
+      "path": "._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com-cn/iphone-17:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com-cn/iphone-17:2",
+      "page": "apple-com-cn/iphone-17",
+      "path": "_lines[10]._items[3]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com-cn/iphone-17:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com-cn/iphone-17:3",
+      "page": "apple-com-cn/iphone-17",
+      "path": "_lines[10]._items[6]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com-cn/iphone-17:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com-cn/iphone-17:4",
+      "page": "apple-com-cn/iphone-17",
+      "path": "_lines[11]._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com-cn/iphone-17:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com-cn/iphone-17:5",
+      "page": "apple-com-cn/iphone-17",
+      "path": "_lines[11]._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com-cn/iphone-17:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com-cn/iphone-17:6",
+      "page": "apple-com-cn/iphone-17",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com-cn/iphone-17:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/home:1",
+      "page": "apple-com/home",
+      "path": "_lines[0]._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/home:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/home:2",
+      "page": "apple-com/home",
+      "path": "_lines[1]._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/home:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/home:3",
+      "page": "apple-com/home",
+      "path": "_lines[2]._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/home:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/home:4",
+      "page": "apple-com/home",
+      "path": "_lines[3]._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/home:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/home:5",
+      "page": "apple-com/home",
+      "path": "_lines[3]._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/home:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/home:6",
+      "page": "apple-com/home",
+      "path": "_lines[3]._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/home:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/home:7",
+      "page": "apple-com/home",
+      "path": "_lines[3]._items[4]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/home:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/home:8",
+      "page": "apple-com/home",
+      "path": "_lines[3]._items[5]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/home:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/ipad-air:1",
+      "page": "apple-com/ipad-air",
+      "path": "._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/ipad-air:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/ipad-air:2",
+      "page": "apple-com/ipad-air",
+      "path": "_lines[11]._lines[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/ipad-air:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/ipad-air:3",
+      "page": "apple-com/ipad-air",
+      "path": "_lines[11]._lines[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/ipad-air:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/iphone-16:1",
+      "page": "apple-com/iphone-16",
+      "path": "deals._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/iphone-16:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/macbook-air:1",
+      "page": "apple-com/macbook-air",
+      "path": "._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/macbook-air:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/macbook-air:2",
+      "page": "apple-com/macbook-air",
+      "path": "_lines[13]._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/macbook-air:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/macbook-air:3",
+      "page": "apple-com/macbook-air",
+      "path": "_lines[13]._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/macbook-air:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "apple-com/macbook-air:4",
+      "page": "apple-com/macbook-air",
+      "path": "_lines[13]._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#apple-com/macbook-air:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:1",
+      "page": "bilibili-com/home",
+      "path": "feed._items[0]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:2",
+      "page": "bilibili-com/home",
+      "path": "feed._items[1]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:3",
+      "page": "bilibili-com/home",
+      "path": "feed._items[2]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:4",
+      "page": "bilibili-com/home",
+      "path": "feed._items[3]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:5",
+      "page": "bilibili-com/home",
+      "path": "feed._items[4]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:6",
+      "page": "bilibili-com/home",
+      "path": "feed._items[5]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:7",
+      "page": "bilibili-com/home",
+      "path": "feed._items[6]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:8",
+      "page": "bilibili-com/home",
+      "path": "feed._items[7]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:9",
+      "page": "bilibili-com/home",
+      "path": "feed._items[8]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:10",
+      "page": "bilibili-com/home",
+      "path": "feed._items[8]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:11",
+      "page": "bilibili-com/home",
+      "path": "feed._items[9]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:12",
+      "page": "bilibili-com/home",
+      "path": "feed._items[9]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:12",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:13",
+      "page": "bilibili-com/home",
+      "path": "feed._items[10]._tag",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:13",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:14",
+      "page": "bilibili-com/home",
+      "path": "feed._items[10]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:14",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:15",
+      "page": "bilibili-com/home",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:15",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/home:16",
+      "page": "bilibili-com/home",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/home:16",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:1",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[0]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:2",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[1]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:3",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[2]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:4",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[3]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:5",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[4]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:6",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[5]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:7",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[6]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:8",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[7]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:9",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[8]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:10",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[9]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:11",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[10]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:12",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[11]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:12",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:13",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[12]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:13",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:14",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[13]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:14",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:15",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[14]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:15",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:16",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[15]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:16",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:17",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[16]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:17",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:18",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[17]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:18",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "bilibili-com/video-bv1gj411x7h7:19",
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "path": "up-next._items[18]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#bilibili-com/video-bv1gj411x7h7:19",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "github-com/login:1",
+      "page": "github-com/login",
+      "path": "login.signup._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#github-com/login:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "github-com/login:2",
+      "page": "github-com/login",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#github-com/login:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:1",
+      "page": "huawei-cn/consumer-phones",
+      "path": "flagship._title",
+      "classification": "PROVEN_OWNED_CAPABILITY_ORACLE_FALSE_POSITIVE",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:1",
+      "nextAction": "Production oracle must recognize exact owned capability while rejecting relocation/swaps; do not add allowance."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:2",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:3",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:4",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:5",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[3]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:6",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[4]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:7",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[5]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:8",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[6]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:9",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[8]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:10",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[10]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:11",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[11]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:12",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[12]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:12",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:13",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-mate._items[13]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:13",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:14",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-pura._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:14",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:15",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-pura._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:15",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:16",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-pura._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:16",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:17",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-pura._items[4]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:17",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:18",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-pura._items[6]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:18",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:19",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-pura._items[7]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:19",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:20",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-pura._items[8]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:20",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:21",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-pura._items[9]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:21",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:22",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-pocket._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:22",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:23",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:23",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:24",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:24",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:25",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:25",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:26",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[3]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:26",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:27",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[4]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:27",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:28",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[5]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:28",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:29",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[6]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:29",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:30",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[7]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:30",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:31",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[8]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:31",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:32",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[9]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:32",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:33",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-nova._items[10]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:33",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:34",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-enjoy._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:34",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:35",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-enjoy._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:35",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:36",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-enjoy._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:36",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:37",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-enjoy._items[3]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:37",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:38",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-enjoy._items[4]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:38",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:39",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-enjoy._items[5]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:39",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:40",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-enjoy._items[6]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:40",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/consumer-phones:41",
+      "page": "huawei-cn/consumer-phones",
+      "path": "catalog-enjoy._items[7]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/consumer-phones:41",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/home:1",
+      "page": "huawei-cn/home",
+      "path": "navigation._items[0]._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/home:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:1",
+      "page": "huawei-cn/search-laptop",
+      "path": "results._items[0]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:2",
+      "page": "huawei-cn/search-laptop",
+      "path": "results._items[1]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:3",
+      "page": "huawei-cn/search-laptop",
+      "path": "results._items[2]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:4",
+      "page": "huawei-cn/search-laptop",
+      "path": "results._items[3]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:5",
+      "page": "huawei-cn/search-laptop",
+      "path": "results._items[4]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:6",
+      "page": "huawei-cn/search-laptop",
+      "path": "results._items[5]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:7",
+      "page": "huawei-cn/search-laptop",
+      "path": "results._items[6]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:8",
+      "page": "huawei-cn/search-laptop",
+      "path": "results._items[7]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:9",
+      "page": "huawei-cn/search-laptop",
+      "path": "results._items[8]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:10",
+      "page": "huawei-cn/search-laptop",
+      "path": "results._items[9]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-laptop:11",
+      "page": "huawei-cn/search-laptop",
+      "path": "navigation._items[0]._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-laptop:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:1",
+      "page": "huawei-cn/search-phone",
+      "path": "results._lines[0]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:2",
+      "page": "huawei-cn/search-phone",
+      "path": "results._lines[1]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:3",
+      "page": "huawei-cn/search-phone",
+      "path": "results._lines[2]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:4",
+      "page": "huawei-cn/search-phone",
+      "path": "results._lines[3]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:5",
+      "page": "huawei-cn/search-phone",
+      "path": "results._lines[4]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:6",
+      "page": "huawei-cn/search-phone",
+      "path": "results._lines[5]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:7",
+      "page": "huawei-cn/search-phone",
+      "path": "results._lines[6]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:8",
+      "page": "huawei-cn/search-phone",
+      "path": "results._lines[7]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:9",
+      "page": "huawei-cn/search-phone",
+      "path": "results._lines[8]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:10",
+      "page": "huawei-cn/search-phone",
+      "path": "results._lines[9]._detail",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "huawei-cn/search-phone:11",
+      "page": "huawei-cn/search-phone",
+      "path": "navigation._items[0]._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#huawei-cn/search-phone:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "linear-app/home:1",
+      "page": "linear-app/home",
+      "path": "changelog._items[3]._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#linear-app/home:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "linear-app/home:2",
+      "page": "linear-app/home",
+      "path": "sales._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#linear-app/home:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "linear-app/home:3",
+      "page": "linear-app/home",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#linear-app/home:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "linear-app/home:4",
+      "page": "linear-app/home",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#linear-app/home:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:1",
+      "page": "sspai-com/home",
+      "path": "feed._items[0]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:2",
+      "page": "sspai-com/home",
+      "path": "feed._items[2]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:3",
+      "page": "sspai-com/home",
+      "path": "feed._items[3]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:4",
+      "page": "sspai-com/home",
+      "path": "feed._items[4]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:5",
+      "page": "sspai-com/home",
+      "path": "feed._items[5]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:6",
+      "page": "sspai-com/home",
+      "path": "feed._items[6]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:7",
+      "page": "sspai-com/home",
+      "path": "feed._items[7]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:8",
+      "page": "sspai-com/home",
+      "path": "feed._items[9]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:9",
+      "page": "sspai-com/home",
+      "path": "feed._items[10]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:10",
+      "page": "sspai-com/home",
+      "path": "feed._items[11]._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:11",
+      "page": "sspai-com/home",
+      "path": "feed._items[11]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:12",
+      "page": "sspai-com/home",
+      "path": "prime._items[0]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:12",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/home:13",
+      "page": "sspai-com/home",
+      "path": "prime._items[1]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/home:13",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:1",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[1]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:2",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[2]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:3",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[3]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:4",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[4]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:5",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[5]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:6",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[6]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:7",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[7]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:8",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[9]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:9",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[10]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:10",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[11]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:11",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[12]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:12",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[13]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:12",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:13",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[14]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:13",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:14",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[15]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:14",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:15",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[16]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:15",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:16",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[18]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:16",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:17",
+      "page": "sspai-com/matrix",
+      "path": "feed._items[19]._author",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:17",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:18",
+      "page": "sspai-com/matrix",
+      "path": "columns._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:18",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/matrix:19",
+      "page": "sspai-com/matrix",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/matrix:19",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/post-114716:1",
+      "page": "sspai-com/post-114716",
+      "path": "_lines[11]._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/post-114716:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/post-114716:2",
+      "page": "sspai-com/post-114716",
+      "path": "_lines[11]._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/post-114716:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/post-114716:3",
+      "page": "sspai-com/post-114716",
+      "path": "_lines[11]._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/post-114716:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/post-114716:4",
+      "page": "sspai-com/post-114716",
+      "path": "_lines[12]._lines[4]._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/post-114716:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/post-114716:5",
+      "page": "sspai-com/post-114716",
+      "path": "_lines[12]._lines[4]._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/post-114716:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/post-114716:6",
+      "page": "sspai-com/post-114716",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/post-114716:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/post-114716:7",
+      "page": "sspai-com/post-114716",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/post-114716:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "sspai-com/post-114716:8",
+      "page": "sspai-com/post-114716",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#sspai-com/post-114716:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:1",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[0]._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:2",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[0]._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:3",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[0]._items[3]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:4",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[0]._items[4]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:5",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[1]._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:5",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:6",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[2]._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:6",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:7",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[2]._items[1].pricing._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:7",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:8",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[2]._items[2]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:8",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:9",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[2]._items[3]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:9",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:10",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[2]._items[4]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:10",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:11",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[2]._items[5]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:11",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:12",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[2]._items[6]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:12",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:13",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[3]._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:13",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "stripe-com/pricing:14",
+      "page": "stripe-com/pricing",
+      "path": "catalog._lines[3]._items[1]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#stripe-com/pricing:14",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "taobao-com/home:1",
+      "page": "taobao-com/home",
+      "path": "_lines[6]._items[0]._name",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#taobao-com/home:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "taobao-com/home:2",
+      "page": "taobao-com/home",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#taobao-com/home:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "xiaomi-account/login:1",
+      "page": "xiaomi-account/login",
+      "path": "login.forgot._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#xiaomi-account/login:1",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "xiaomi-account/login:2",
+      "page": "xiaomi-account/login",
+      "path": "login.phone-login._title",
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#xiaomi-account/login:2",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "xiaomi-account/login:3",
+      "page": "xiaomi-account/login",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#xiaomi-account/login:3",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    },
+    {
+      "id": "xiaomi-account/login:4",
+      "page": "xiaomi-account/login",
+      "path": null,
+      "classification": "UNRESOLVED",
+      "resolved": false,
+      "witness": "structural-cases.json#xiaomi-account/login:4",
+      "nextAction": "Disambiguate source owner using actual node/label/context; prove model and render correspondence, then classify."
+    }
+  ]
+}

@@ -1,0 +1,380 @@
+{
+  "apple-com-cn/iphone-17": {
+    "modelActions": 15,
+    "modelTargetActions": 14,
+    "renderedAnchors": 14,
+    "missingActionTargets": [
+      {
+        "path": "._lines[11]._items[1].buy._action",
+        "verb": "buy",
+        "label": "购买",
+        "to": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_air"
+      }
+    ],
+    "modelImages": 11,
+    "missingImages": [],
+    "actions": [
+      {
+        "path": "._action",
+        "verb": "buy",
+        "label": "购买",
+        "to": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17"
+      },
+      {
+        "path": "._lines[8].tradein._action",
+        "verb": "open",
+        "label": "了解你设备的折抵金额",
+        "to": "https://www.apple.com.cn/cn/shop/goto/trade_in"
+      },
+      {
+        "path": "._lines[9]._action",
+        "verb": "open",
+        "label": "选购 iPhone 配件",
+        "to": "https://www.apple.com.cn/cn/shop/goto/iphone/accessories"
+      },
+      {
+        "path": "._lines[10]._items[3]._action",
+        "verb": "open",
+        "label": "进一步了解个人设置辅导",
+        "to": "https://www.apple.com.cn/cn/shop/goto/personal_setup"
+      },
+      {
+        "path": "._lines[10]._items[5]._action",
+        "verb": "open",
+        "label": "进一步了解 Specialist 专家协助选购"
+      },
+      {
+        "path": "._lines[10]._items[6]._action",
+        "verb": "open",
+        "label": "进一步了解 Apple Store App",
+        "to": "https://apps.apple.com/cn/app/apple-store/id375380948"
+      },
+      {
+        "path": "._lines[11]._action",
+        "verb": "open",
+        "label": "探索全部 iPhone 机型",
+        "to": "https://www.apple.com.cn/iphone/"
+      },
+      {
+        "path": "._lines[11]._items[0]._action",
+        "verb": "buy",
+        "label": "购买",
+        "to": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17"
+      },
+      {
+        "path": "._lines[11]._items[1]._action",
+        "verb": "open",
+        "label": "进一步了解",
+        "to": "https://www.apple.com.cn/iphone-air/"
+      },
+      {
+        "path": "._lines[11]._items[1].buy._action",
+        "verb": "buy",
+        "label": "购买",
+        "to": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_air"
+      },
+      {
+        "path": "._lines[11].all._action",
+        "verb": "open",
+        "label": "比较各款 iPhone 机型",
+        "to": "https://www.apple.com.cn/iphone/compare/"
+      },
+      {
+        "path": "._lines[12]._action",
+        "verb": "open",
+        "label": "阅读我们的《产品环境报告》(PDF) 了解详情",
+        "to": "https://www.apple.com/environment/pdf/products/iphone/iPhone_17_PER_Sept2025.pdf"
+      },
+      {
+        "path": "._lines[13]._items[0]._action",
+        "verb": "open",
+        "label": "进一步了解环境责任",
+        "to": "https://www.apple.com.cn/environment/"
+      },
+      {
+        "path": "._lines[13]._items[1]._action",
+        "verb": "open",
+        "label": "进一步了解隐私安全",
+        "to": "https://www.apple.com.cn/privacy/"
+      },
+      {
+        "path": "._lines[13]._items[2]._action",
+        "verb": "open",
+        "label": "进一步了解无障碍功能",
+        "to": "https://www.apple.com.cn/accessibility/"
+      }
+    ]
+  },
+  "apple-com/iphone-16": {
+    "modelActions": 23,
+    "modelTargetActions": 6,
+    "renderedAnchors": 7,
+    "missingActionTargets": [],
+    "modelImages": 10,
+    "missingImages": [],
+    "actions": [
+      {
+        "path": ".ai._action",
+        "verb": "open",
+        "label": "Learn more about Apple Intelligence for iPhone",
+        "to": "https://www.apple.com/shop/browse/overlay/iphone/domore/apple_intelligence"
+      },
+      {
+        "path": ".deals._action",
+        "verb": "open",
+        "label": "See all deals",
+        "to": "https://www.apple.com/shop/buy-iphone/carrier-offers"
+      },
+      {
+        "path": ".steps._lines[2]._items[0]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".steps._lines[3]._action",
+        "verb": "open",
+        "label": "See how to pay monthly.",
+        "to": "https://www.apple.com/shop/browse/overlay/iphone/payment_options"
+      },
+      {
+        "path": ".recap._action",
+        "verb": "open",
+        "label": "Get 3% Daily Cash with Apple Card"
+      },
+      {
+        "path": ".recap.save.save-later._action",
+        "verb": "operate",
+        "label": "Save for later"
+      },
+      {
+        "path": ".recap.save.continue._action",
+        "verb": "submit",
+        "label": "Continue"
+      },
+      {
+        "path": ".recap.specialist._action",
+        "verb": "open",
+        "label": "Connect with a Specialist"
+      },
+      {
+        "path": ".environment._action",
+        "verb": "open",
+        "label": "carbon neutrality by 2030",
+        "to": "https://www.apple.com/environment"
+      },
+      {
+        "path": ".setup._action",
+        "verb": "open",
+        "label": "Learn more about Personal Setup",
+        "to": "https://www.apple.com/shop/browse/overlay/store/step_1/personal_setup"
+      },
+      {
+        "path": ".compare.all._action",
+        "verb": "open",
+        "label": "Compare all iPhone models",
+        "to": "https://www.apple.com/iphone/compare"
+      },
+      {
+        "path": ".faq._items[0]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[1]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[2]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[3]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[4]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[5]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[6]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[7]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[8]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[9]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[10]._action",
+        "verb": "open"
+      },
+      {
+        "path": ".faq._items[11]._action",
+        "verb": "open"
+      }
+    ]
+  },
+  "apple-com/macbook-air": {
+    "modelActions": 19,
+    "modelTargetActions": 18,
+    "renderedAnchors": 18,
+    "missingActionTargets": [],
+    "modelImages": 19,
+    "missingImages": [],
+    "actions": [
+      {
+        "path": "._action",
+        "verb": "buy",
+        "label": "Buy",
+        "to": "https://www.apple.com/us/shop/goto/buy_mac/macbook_air"
+      },
+      {
+        "path": "._lines[0]._action",
+        "verb": "open",
+        "label": "Watch the film",
+        "to": "https://www.apple.com/105/media/us/macbook-air/2026/ff11cb38-708e-4c28-9653-1b01a2f8fd2b/films/product/macbook-air-product-tpl-us-2026_16x9.m3u8"
+      },
+      {
+        "path": "._lines[2].multitask._action",
+        "verb": "open",
+        "label": "Go inside M5"
+      },
+      {
+        "path": "._lines[3]._action",
+        "verb": "open",
+        "label": "Learn more about Apple Intelligence",
+        "to": "https://www.apple.com/apple-intelligence/"
+      },
+      {
+        "path": "._lines[5]._action",
+        "verb": "open",
+        "label": "Learn more about Continuity",
+        "to": "https://www.apple.com/macos/continuity/"
+      },
+      {
+        "path": "._lines[6]._action",
+        "verb": "open",
+        "label": "Learn more about switching from Windows PC to Mac",
+        "to": "https://www.apple.com/macbook-air/mac-does-that/"
+      },
+      {
+        "path": "._lines[7].tradein._action",
+        "verb": "open",
+        "label": "See what your device is worth",
+        "to": "https://www.apple.com/us/shop/goto/trade_in#mac"
+      },
+      {
+        "path": "._lines[12]._items[0]._action",
+        "verb": "buy",
+        "label": "Buy",
+        "to": "https://www.apple.com/us/shop/goto/buy_mac/macbook_air"
+      },
+      {
+        "path": "._lines[12]._items[1]._action",
+        "verb": "buy",
+        "label": "Buy",
+        "to": "https://www.apple.com/us/shop/goto/buy_mac/macbook_pro"
+      },
+      {
+        "path": "._lines[12]._items[1].learn._action",
+        "verb": "open",
+        "label": "Learn more",
+        "to": "https://www.apple.com/macbook-pro/"
+      },
+      {
+        "path": "._lines[12].all.compare._action",
+        "verb": "open",
+        "label": "Compare all Mac models",
+        "to": "https://www.apple.com/mac/compare/"
+      },
+      {
+        "path": "._lines[12].all.help._action",
+        "verb": "open",
+        "label": "Help me choose the best Mac for me",
+        "to": "https://www.apple.com/mac/best-mac/#usage/"
+      },
+      {
+        "path": "._lines[13]._items[0]._action",
+        "verb": "open",
+        "label": "Learn more",
+        "to": "https://www.apple.com/us/shop/goto/apple_upgrade"
+      },
+      {
+        "path": "._lines[13]._items[1]._action",
+        "verb": "open",
+        "label": "See what your device is worth",
+        "to": "https://www.apple.com/us/shop/goto/trade_in#mac"
+      },
+      {
+        "path": "._lines[13]._items[2]._action",
+        "verb": "navigate",
+        "to": "https://www.apple.com/apple-card"
+      },
+      {
+        "path": "._lines[14]._action",
+        "verb": "open",
+        "label": "Learn more in our Product Environmental Report (PDF)",
+        "to": "https://www.apple.com/environment/pdf/products/notebooks/MacBook_Air_M5_PER_Mar2026.pdf"
+      },
+      {
+        "path": "._lines[15]._items[0]._action",
+        "verb": "open",
+        "label": "Learn more about environment",
+        "to": "https://www.apple.com/environment/"
+      },
+      {
+        "path": "._lines[15]._items[1]._action",
+        "verb": "open",
+        "label": "Learn more about privacy",
+        "to": "https://www.apple.com/privacy/"
+      },
+      {
+        "path": "._lines[15]._items[2]._action",
+        "verb": "open",
+        "label": "Learn more about accessibility",
+        "to": "https://www.apple.com/accessibility/"
+      }
+    ]
+  },
+  "linear-app/home": {
+    "modelActions": 4,
+    "modelTargetActions": 4,
+    "renderedAnchors": 4,
+    "missingActionTargets": [],
+    "modelImages": 0,
+    "missingImages": [],
+    "actions": [
+      {
+        "path": "._action",
+        "verb": "open",
+        "to": "https://linear.app/signup",
+        "label": "Get started"
+      },
+      {
+        "path": ".changelog._action",
+        "verb": "navigate",
+        "to": "https://linear.app/changelog"
+      },
+      {
+        "path": ".changelog._items[1]._action",
+        "verb": "open",
+        "to": "https://linear.app/changelog"
+      },
+      {
+        "path": ".sales._action",
+        "verb": "open",
+        "to": "https://linear.app/contact-sales",
+        "label": "Contact sales"
+      }
+    ]
+  }
+}

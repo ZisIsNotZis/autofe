@@ -1,0 +1,583 @@
+{
+  "_intent": "National Insurance rates and categories: Contribution rates - GOV.UK — National Insurance rates and categories [draft]",
+  "_title": {
+    "text": "National Insurance rates and categories: Contribution rates - GOV.UK"
+  },
+  "_summary": {
+    "text": "Part of"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.gov.uk/national-insurance-rates-letters#content",
+        "label": "Skip to main content"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://www.gov.uk/get-ready-to-employ-someone",
+        "label": "Get ready to employ someone for the first time: step by step"
+      }
+    },
+    {
+      "_intent": "National Insurance rates and categories [draft]",
+      "_title": {
+        "text": "National Insurance rates and categories"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.gov.uk/national-insurance-rates-letters#guide-contents",
+            "label": "Skip contents"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Contribution rates [draft]",
+      "_title": {
+        "text": "Contribution rates"
+      },
+      "_summary": {
+        "text": "An employee’s Class 1 National Insurance is made up of contributions:"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "deducted from their pay (employee’s National Insurance)"
+              }
+            },
+            {
+              "_name": {
+                "text": "paid by their employer (employer’s National Insurance)"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "The amounts deducted and paid depend on:"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.gov.uk/national-insurance-rates-letters/category-letters",
+            "label": "category letter"
+          }
+        },
+        {
+          "_text": {
+            "text": "how much of the employee’s earnings falls within each band"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Employee National Insurance rates [draft]",
+      "_title": {
+        "text": "Employee National Insurance rates"
+      },
+      "_summary": {
+        "text": "This table shows how much employers deduct from employees’ pay from 6 April 2026 to 5 April 2027."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "You can see past employee National Insurance rates."
+          }
+        },
+        {
+          "_intent": "table (16 rows): Category letter / £129 to £242 (£559 to £1,048 a month) / £242.01 to £967 (£1,048.01 to £4,189 a month) [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "A"
+              }
+            },
+            {
+              "_name": {
+                "text": "B"
+              }
+            },
+            {
+              "_name": {
+                "text": "C"
+              }
+            },
+            {
+              "_name": {
+                "text": "D"
+              }
+            },
+            {
+              "_name": {
+                "text": "E"
+              }
+            },
+            {
+              "_name": {
+                "text": "F"
+              }
+            },
+            {
+              "_name": {
+                "text": "H"
+              }
+            },
+            {
+              "_name": {
+                "text": "I"
+              }
+            },
+            {
+              "_name": {
+                "text": "J"
+              }
+            },
+            {
+              "_name": {
+                "text": "K"
+              }
+            },
+            {
+              "_name": {
+                "text": "L"
+              }
+            },
+            {
+              "_name": {
+                "text": "M"
+              }
+            },
+            {
+              "_name": {
+                "text": "N"
+              }
+            },
+            {
+              "_name": {
+                "text": "S"
+              }
+            },
+            {
+              "_name": {
+                "text": "V"
+              }
+            },
+            {
+              "_name": {
+                "text": "Z"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Example [draft]",
+          "_title": {
+            "text": "Example"
+          },
+          "_summary": {
+            "text": "If you’re in category A and you earn £1,000 in a week you’ll pay:"
+          },
+          "_lines": [
+            {
+              "_intent": "list (3 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "nothing on the first £242"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "8% (£58) on your earnings between £242.01 and £967"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "2% (£0.66) on the remaining earnings above £967"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "This means your National Insurance payment will be £58.66 for the week."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Employer National Insurance rates [draft]",
+      "_title": {
+        "text": "Employer National Insurance rates"
+      },
+      "_summary": {
+        "text": "This table shows how much employers pay towards employees’ National Insurance from 6 April 2026 to 5 April 2027."
+      },
+      "_lines": [
+        {
+          "_intent": "table (16 rows): Category letter / £96 to £481 (£417 to £2,083 a month) / £481.01 to £967 (£2,083.01 to £4,189 a month) [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "A"
+              },
+              "_measure": {
+                "num": 15,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "B"
+              },
+              "_measure": {
+                "num": 15,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "C"
+              },
+              "_measure": {
+                "num": 15,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "D"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "E"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "F"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "H"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "I"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "J"
+              },
+              "_measure": {
+                "num": 15,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "K"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "L"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "M"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "N"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "S"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "V"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            },
+            {
+              "_name": {
+                "text": "Z"
+              },
+              "_measure": {
+                "num": 0,
+                "unit": "%"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "HM Revenue and Customs (HMRC) has full rates and thresholds for tax years:"
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "2025 to 2026"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+                "label": "2025 to 2026"
+              }
+            },
+            {
+              "_name": {
+                "text": "2024 to 2025"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2024-to-2025",
+                "label": "2024 to 2025"
+              }
+            },
+            {
+              "_name": {
+                "text": "2023 to 2024"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2023-to-2024",
+                "label": "2023 to 2024"
+              }
+            },
+            {
+              "_name": {
+                "text": "2022 to 2023"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2022-to-2023",
+                "label": "2022 to 2023"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "You can also use calculators and tables to check employees’ National Insurance."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Class 1A and Class 1B rates [draft]",
+      "_title": {
+        "text": "Class 1A and Class 1B rates"
+      },
+      "_summary": {
+        "text": "They must also pay Class 1A on some other lump sum payments, for example redundancy payments. HMRC has detailed guidance on all Class 1A and Class 1B rates."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Employers pay Class 1A and 1B National Insurance on expenses and benefits they give to their employees. The rate from 6 April 2026 to 5 April 2027 on expenses and benefits is 15%."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.gov.uk/national-insurance-rates-letters/print",
+            "label": "View a printable version of the whole guide"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "This page is Part of Get ready to employ someone for the first time: step by step [draft]",
+      "_title": {
+        "text": "This page is Part of Get ready to employ someone for the first time: step by step"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Show all steps"
+          }
+        },
+        {
+          "_intent": "list (7 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Step 1 : Check that you’re taking on someone as an employee , Show This Section"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Check that you’re taking on someone as an employee , Show This Section"
+              }
+            },
+            {
+              "_name": {
+                "text": "and Check you can afford to take on employees , Hide This Section Check how much the National Minimum Wage is You are currently viewing: Find out how much Natio"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Check you can afford to take on employees , Hide This Section"
+              }
+            },
+            {
+              "_name": {
+                "text": "Step 2 : Make your workplace safe and accessible for employees , Show This Section"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Make your workplace safe and accessible for employees , Show This Section"
+              }
+            },
+            {
+              "_name": {
+                "text": "Step 3 : Register as an employer and set up PAYE , Show This Section"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Register as an employer and set up PAYE , Show This Section"
+              }
+            },
+            {
+              "_name": {
+                "text": "Step 4 : Check your responsibilities around workplace pensions , Show This Section"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Check your responsibilities around workplace pensions , Show This Section"
+              }
+            },
+            {
+              "_name": {
+                "text": "Step 5 : Get Employers' Liability insurance , Show This Section"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Get Employers' Liability insurance , Show This Section"
+              }
+            },
+            {
+              "_name": {
+                "text": "Step 6 : Recruit and employ someone , Show This Section"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Recruit and employ someone , Show This Section"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Is this page useful? [draft]",
+      "_title": {
+        "text": "Is this page useful?"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Yes this page is useful"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Yes this page is useful"
+              }
+            },
+            {
+              "_name": {
+                "text": "No this page is not useful"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "No this page is not useful"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Report a problem with this page"
+          }
+        }
+      ]
+    }
+  ]
+}

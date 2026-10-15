@@ -1,0 +1,995 @@
+{
+  "_intent": "观看页：Rick Astley《Never Gonna Give You Up》官方 MV（索尼音乐中国投稿），播放 1 亿 / 弹幕 15 万 / 65 人正在看；含视频画面、弹幕（输入行 + 捕获时刻飘屏样本）、点赞投币收藏分享、字幕致谢、标签与“接下来播放”推荐列表",
+  "_key": "bilibili-video-bv1gj411x7h7",
+  "_title": {
+    "text": "【官方 MV】Never Gonna Give You Up - Rick Astley"
+  },
+  "_primary": "_title",
+  "_count": {
+    "text": "1亿"
+  },
+  "_measure": {
+    "text": "15万"
+  },
+  "_datetime": {
+    "date": "2020-01-01 07:43:23"
+  },
+  "_duration": {
+    "text": "03:33"
+  },
+  "_image": {
+    "image": "../assets/62-resource-dc655a863b0a2251.jpg",
+    "alt": "【官方 MV】Never Gonna Give You Up - Rick Astley（源站 og:image 视频封面）"
+  },
+  "danmaku": {
+    "_intent": "弹幕输入行：未登录状态提示“请先登录或注册”，输入弹幕后发送；发送的弹幕需遵守弹幕礼仪",
+    "_label": {
+      "text": "请先登录或注册"
+    },
+    "_expose": {
+      "name": "danmaku-input",
+      "type": "text"
+    },
+    "send": {
+      "_intent": "发送当前输入的弹幕",
+      "_action": {
+        "verb": "submit",
+        "label": "发送"
+      }
+    },
+    "etiquette": {
+      "_intent": "弹幕礼仪说明",
+      "_action": {
+        "verb": "open",
+        "to": "https://www.bilibili.com/blackboard/help.html#/?qid=359&pid=357",
+        "label": "弹幕礼仪"
+      }
+    },
+    "login": {
+      "_intent": "登录后才能发弹幕（页面内弹层入口，无独立 URL）",
+      "_action": {
+        "verb": "operate",
+        "label": "登录"
+      }
+    },
+    "register": {
+      "_intent": "注册 B 站账号",
+      "_action": {
+        "verb": "navigate",
+        "to": "https://passport.bilibili.com/login?register_page=1",
+        "label": "注册"
+      }
+    }
+  },
+  "danmaku-sample": {
+    "_intent": "捕获时刻（00:09）视频画面上飘屏的 45 条弹幕原文（去重后按出现顺序）；弹幕是流动内容，此为采集瞬间的样本",
+    "_title": {
+      "text": "弹幕"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "传送00:01"
+        }
+      },
+      {
+        "_name": {
+          "text": "跳下北泽:00:00"
+        }
+      },
+      {
+        "_name": {
+          "text": "愤怒的小鸟大电影原声"
+        }
+      },
+      {
+        "_name": {
+          "text": "《143人正在被骗》"
+        }
+      },
+      {
+        "_name": {
+          "text": "有多少人是被骗进来的？"
+        }
+      },
+      {
+        "_name": {
+          "text": "言和出V6了"
+        }
+      },
+      {
+        "_name": {
+          "text": "《你被骗了》"
+        }
+      },
+      {
+        "_name": {
+          "text": "从PCL2来的点个赞"
+        }
+      },
+      {
+        "_name": {
+          "text": "欢 迎 回 来 我 的 老 伙 计"
+        }
+      },
+      {
+        "_name": {
+          "text": "《又被骗了》"
+        }
+      },
+      {
+        "_name": {
+          "text": "从pcl2千万别点过来的"
+        }
+      },
+      {
+        "_name": {
+          "text": "永远有人看系列"
+        }
+      },
+      {
+        "_name": {
+          "text": "+1"
+        }
+      },
+      {
+        "_name": {
+          "text": "pcl2来的"
+        }
+      },
+      {
+        "_name": {
+          "text": "P C L 2 百 宝 箱"
+        }
+      },
+      {
+        "_name": {
+          "text": "从PCL2进来的给我点个赞（让我看看多少人用了那个百宝箱）"
+        }
+      },
+      {
+        "_name": {
+          "text": "愿者上钩"
+        }
+      },
+      {
+        "_name": {
+          "text": "谁是因为PCL2-CE骗来的"
+        }
+      },
+      {
+        "_name": {
+          "text": "《PCL2之千万别点》"
+        }
+      },
+      {
+        "_name": {
+          "text": "《你 被 骗 了》"
+        }
+      },
+      {
+        "_name": {
+          "text": "现 身 说 法"
+        }
+      },
+      {
+        "_name": {
+          "text": "《过年了，b站发红包了》"
+        }
+      },
+      {
+        "_name": {
+          "text": "左 顾 右 盼"
+        }
+      },
+      {
+        "_name": {
+          "text": "自愿被骗"
+        }
+      },
+      {
+        "_name": {
+          "text": "跳到二战00:00"
+        }
+      },
+      {
+        "_name": {
+          "text": "《自愿被骗》"
+        }
+      },
+      {
+        "_name": {
+          "text": "《没错，你又双叒叕被骗了》"
+        }
+      },
+      {
+        "_name": {
+          "text": "听着写寒假作业"
+        }
+      },
+      {
+        "_name": {
+          "text": "《三角符文第三章预告》"
+        }
+      },
+      {
+        "_name": {
+          "text": "PCL2诈骗现场"
+        }
+      },
+      {
+        "_name": {
+          "text": "飙 马 野 郎 动 画 化"
+        }
+      },
+      {
+        "_name": {
+          "text": "pcl2过来的 《千万别点》"
+        }
+      },
+      {
+        "_name": {
+          "text": "豪 俊 金 曲"
+        }
+      },
+      {
+        "_name": {
+          "text": "从PCL的千万别点来的"
+        }
+      },
+      {
+        "_name": {
+          "text": "PCL2来的"
+        }
+      },
+      {
+        "_name": {
+          "text": "战地五东线预告片"
+        }
+      },
+      {
+        "_name": {
+          "text": "PCL2太会了"
+        }
+      },
+      {
+        "_name": {
+          "text": "《飙马野郎动画化》"
+        }
+      },
+      {
+        "_name": {
+          "text": "跳楼00：00"
+        }
+      },
+      {
+        "_name": {
+          "text": "跳伞00:00"
+        }
+      },
+      {
+        "_name": {
+          "text": "愿 者 上 钩，"
+        }
+      },
+      {
+        "_name": {
+          "text": "Windows 12发布"
+        }
+      },
+      {
+        "_name": {
+          "text": "我是一万个点赞，正在反复横跳"
+        }
+      },
+      {
+        "_name": {
+          "text": "官 方 正 版"
+        }
+      }
+    ],
+    "_rel": {
+      "order": "stream"
+    }
+  },
+  "danmaku-list": {
+    "_intent": "右侧弹幕列表面板：捕获时尚在加载，仅加载态文案与历史弹幕入口",
+    "_title": {
+      "text": "弹幕列表"
+    },
+    "_summary": {
+      "text": "弹幕列表填充中..."
+    },
+    "history": {
+      "_intent": "查看该稿件的历史弹幕（页内入口，无独立 URL）",
+      "_action": {
+        "verb": "operate",
+        "label": "查看历史弹幕"
+      }
+    }
+  },
+  "stats": {
+    "_intent": "互动工具栏计数值（页面图标顺序：点赞、投币、收藏、分享），以及稿件举报与 UP 笔记入口",
+    "report": {
+      "_intent": "举报该稿件",
+      "_action": {
+        "verb": "operate",
+        "label": "稿件举报"
+      }
+    },
+    "notes": {
+      "_intent": "查看 UP 主围绕本视频发布的图文笔记（47 篇）",
+      "_action": {
+        "verb": "operate",
+        "label": "47篇笔记"
+      }
+    },
+    "interactions": {
+      "_intent": "源站图标关联的四种互动及其捕获计数，无可证实网络目标，不实现登录/点赞/投币后台。",
+      "_items": [
+        {
+          "_name": {
+            "text": "点赞（Q）"
+          },
+          "_count": {
+            "text": "293.3万"
+          },
+          "_action": {
+            "verb": "operate",
+            "label": "点赞（Q）"
+          }
+        },
+        {
+          "_name": {
+            "text": "投币（W）"
+          },
+          "_count": {
+            "text": "127.5万"
+          },
+          "_action": {
+            "verb": "operate",
+            "label": "投币（W）"
+          }
+        },
+        {
+          "_name": {
+            "text": "收藏（E）"
+          },
+          "_count": {
+            "text": "154.3万"
+          },
+          "_action": {
+            "verb": "operate",
+            "label": "收藏（E）"
+          }
+        },
+        {
+          "_name": {
+            "text": "转发"
+          },
+          "_count": {
+            "text": "49.5万"
+          },
+          "_action": {
+            "verb": "operate",
+            "label": "转发"
+          }
+        }
+      ]
+    }
+  },
+  "live": {
+    "_intent": "捕获时刻的实时观看人数（视频播放器下方实时计数）",
+    "_count": {
+      "text": "65人正在看"
+    }
+  },
+  "credits": {
+    "_intent": "视频字幕致谢：8 位字幕制作者及各自 B 站主页链接",
+    "_items": [
+      {
+        "_name": {
+          "text": "字幕制作者（中文（中国））：账号已注销"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/371800306",
+          "label": "账号已注销"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（中文（中國香港））：FF小黄人"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/592667008",
+          "label": "FF小黄人"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（日本語）：゚゚初音ミク"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/437457729",
+          "label": "゚゚初音ミク"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（한국어）：至放大來演吧"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/16089720",
+          "label": "至放大來演吧"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（Deutsch(DE)）：Microsoft_Win11"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/388428805",
+          "label": "Microsoft_Win11"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（Русский）：无何旧梦"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/369596063",
+          "label": "无何旧梦"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（Català）：D-SHABBY"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/3546965484767441",
+          "label": "D-SHABBY"
+        }
+      },
+      {
+        "_name": {
+          "text": "字幕制作者（美国手语）：宫十五"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://space.bilibili.com/1486777491",
+          "label": "宫十五"
+        }
+      }
+    ]
+  },
+  "tags": {
+    "_intent": "视频标签：点击标签进入关键词搜索（搜索跳转为导航，不逐条建模）；“发现《Never gonna give you up》”为页内标签栏引导语",
+    "_summary": {
+      "text": "发现《Never gonna give you up》"
+    },
+    "_tag": {
+      "list": [
+        {
+          "text": "Never Gonna Give You Up"
+        },
+        {
+          "text": "Rick Astley"
+        },
+        {
+          "text": "欧美MV"
+        },
+        {
+          "text": "流行音乐"
+        },
+        {
+          "text": "欧美音乐"
+        },
+        {
+          "text": "MV"
+        }
+      ]
+    }
+  },
+  "uploader": {
+    "_intent": "UP主卡片：索尼音乐中国官方账号，粉丝 94.9 万；卡片主链接为 UP 主主页",
+    "_name": {
+      "text": "索尼音乐中国"
+    },
+    "_detail": {
+      "text": "官方营业，欢迎一键三连~~~"
+    },
+    "_count": {
+      "num": 94.9,
+      "unit": "万"
+    },
+    "_action": {
+      "verb": "navigate",
+      "to": "https://space.bilibili.com/486906719/?spm_id_from=333.788.upinfo.detail.click",
+      "label": "索尼音乐中国"
+    },
+    "follow": {
+      "_intent": "关注 UP 主（按钮可见文案含粉丝数 94.9万）",
+      "_action": {
+        "verb": "operate",
+        "label": "关注 94.9万"
+      }
+    },
+    "message": {
+      "_intent": "给 UP 主发私信",
+      "_action": {
+        "verb": "open",
+        "to": "https://message.bilibili.com/?spm_id_from=333.788.upinfo.detail.click#whisper/mid486906719",
+        "label": "发消息"
+      }
+    },
+    "charge": {
+      "_intent": "给 UP 主充电（付费支持）",
+      "_action": {
+        "verb": "operate",
+        "label": "充电"
+      }
+    }
+  },
+  "up-next": {
+    "_intent": "接下来播放：右侧同片推荐列表（20 条），每条含标题、时长、UP 主、播放/弹幕数（合并展示）；“自动连播”开关当前开启",
+    "_title": {
+      "text": "接下来播放"
+    },
+    "_rel": {
+      "order": "sequence"
+    },
+    "_action": {
+      "verb": "toggle",
+      "label": "自动连播"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "喜报，B站网友被这个视频诈骗一亿次了！"
+        },
+        "_duration": {
+          "text": "00:32"
+        },
+        "_author": {
+          "text": "索尼音乐国际"
+        },
+        "_measure": {
+          "text": "134.9万 981"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1p2j26LE66/?spm_id_from=333.788.recommend_more_video.-1"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-9d7293901db4.webp",
+          "alt": "喜报，B站网友被这个视频诈骗一亿次了！"
+        }
+      },
+      {
+        "_name": {
+          "text": "大家好，我是Rick Astley中文频道，我来bilibili了"
+        },
+        "_duration": {
+          "text": "01:06"
+        },
+        "_author": {
+          "text": "RickAstley中文频道"
+        },
+        "_measure": {
+          "text": "24.7万 91"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1UbE16dEeJ/?spm_id_from=333.788.recommend_more_video.0"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-a37187b1775e.webp",
+          "alt": "大家好，我是Rick Astley中文频道，我来bilibili了"
+        }
+      },
+      {
+        "_name": {
+          "text": "大家好，我是Rick Astley,今天我入驻b站了！ doge"
+        },
+        "_duration": {
+          "text": "03:52"
+        },
+        "_author": {
+          "text": "Rickrocknroll"
+        },
+        "_measure": {
+          "text": "1802.4万 8.4万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1eS4y157Ey/?spm_id_from=333.788.recommend_more_video.1"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-b4ea71f15cda.webp",
+          "alt": "大家好，我是Rick Astley,今天我入驻b站了！                                                 doge"
+        }
+      },
+      {
+        "_name": {
+          "text": "黑人抬棺原版视频"
+        },
+        "_duration": {
+          "text": "03:20"
+        },
+        "_author": {
+          "text": "比划大魔王"
+        },
+        "_measure": {
+          "text": "6910.4万 45.8万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1NZ4y1j7nw/?spm_id_from=333.788.recommend_more_video.2"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-b74d90e0090b.webp",
+          "alt": "黑人抬棺原版视频"
+        }
+      },
+      {
+        "_name": {
+          "text": "【官方】sakanaction（サカナクション）- 新宝島"
+        },
+        "_duration": {
+          "text": "05:15"
+        },
+        "_author": {
+          "text": "sakanaction鱼韵乐队"
+        },
+        "_measure": {
+          "text": "857.6万 5.6万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1EV411s7vu/?spm_id_from=333.788.recommend_more_video.3"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-585a4db88609.webp",
+          "alt": "【官方】sakanaction（サカナクション）-　新宝島"
+        }
+      },
+      {
+        "_name": {
+          "text": "视频已失效"
+        },
+        "_duration": {
+          "text": "00:18"
+        },
+        "_author": {
+          "text": "CR400BF-AS-5421"
+        },
+        "_measure": {
+          "text": "52.3万 1126"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1V4UYY5EhD/?spm_id_from=333.788.recommend_more_video.4"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-0105f2548b1c.webp",
+          "alt": "视频已失效"
+        }
+      },
+      {
+        "_name": {
+          "text": "【官方】sakanaction（サカナクション) - 多分、風。"
+        },
+        "_duration": {
+          "text": "05:01"
+        },
+        "_author": {
+          "text": "sakanaction鱼韵乐队"
+        },
+        "_measure": {
+          "text": "677.4万 1.9万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV16o4y1k7gh/?spm_id_from=333.788.recommend_more_video.5"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-3d9333709bbe.webp",
+          "alt": "【官方】sakanaction（サカナクション) -　多分、風。"
+        }
+      },
+      {
+        "_name": {
+          "text": "吸氦唱 《See You Again》"
+        },
+        "_duration": {
+          "text": "00:31"
+        },
+        "_author": {
+          "text": "新的安德"
+        },
+        "_measure": {
+          "text": "601.8万 1万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV14gLU6REFD/?spm_id_from=333.788.recommend_more_video.6"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-0050b694bb0e.webp",
+          "alt": "吸氦唱 《See You Again》"
+        }
+      },
+      {
+        "_name": {
+          "text": "蔡徐坤原版无特效打篮球视频"
+        },
+        "_duration": {
+          "text": "01:11"
+        },
+        "_author": {
+          "text": "我不是阿城啦"
+        },
+        "_measure": {
+          "text": "1184.4万 1.4万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV15b41157i4/?spm_id_from=333.788.recommend_more_video.7"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-3c86d90b21a6.webp",
+          "alt": "蔡徐坤原版无特效打篮球视频"
+        }
+      },
+      {
+        "_name": {
+          "text": "Josh Hutcherson Whistle.mp4"
+        },
+        "_duration": {
+          "text": "01:33"
+        },
+        "_author": {
+          "text": "WtfWasThat"
+        },
+        "_measure": {
+          "text": "347.8万 1003"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1dg4y1Z7B1/?spm_id_from=333.788.recommend_more_video.8"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-a334bb5de8cb.webp",
+          "alt": "Josh Hutcherson Whistle.mp4"
+        }
+      },
+      {
+        "_name": {
+          "text": "金凯瑞摇头三人组（高清画质原版音频）"
+        },
+        "_duration": {
+          "text": "03:56"
+        },
+        "_author": {
+          "text": "伊秋Yikyuu"
+        },
+        "_measure": {
+          "text": "2444.2万 10.8万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1Qs411d7pd/?spm_id_from=333.788.recommend_more_video.9"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-2123e3e3bcce.webp",
+          "alt": "金凯瑞摇头三人组（高清画质原版音频）"
+        }
+      },
+      {
+        "_name": {
+          "text": "原版来了，感谢大家的喜欢，这是我唯一的账号！"
+        },
+        "_duration": {
+          "text": "00:16"
+        },
+        "_author": {
+          "text": "田一名sir"
+        },
+        "_measure": {
+          "text": "2669.9万 2.3万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1Ly4y1L7mA/?spm_id_from=333.788.recommend_more_video.10"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-f505c77cd446.webp",
+          "alt": "原版来了，感谢大家的喜欢，这是我唯一的账号！"
+        }
+      },
+      {
+        "_name": {
+          "text": "Yee"
+        },
+        "_duration": {
+          "text": "00:09"
+        },
+        "_author": {
+          "text": "炉石病娇KC"
+        },
+        "_measure": {
+          "text": "1439.9万 2.3万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1Es41127M5/?spm_id_from=333.788.recommend_more_video.11"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-26a61b6694f6.webp",
+          "alt": "Yee"
+        }
+      },
+      {
+        "_name": {
+          "text": "美国保险公司邀请RickAstley重新录制了经典歌曲Never Gonna Give You Up"
+        },
+        "_duration": {
+          "text": "01:05"
+        },
+        "_author": {
+          "text": "baadda"
+        },
+        "_measure": {
+          "text": "17.4万 34"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1gU4y167kU/?spm_id_from=333.788.recommend_more_video.12"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-7cd90a09b522.webp",
+          "alt": "美国保险公司邀请RickAstley重新录制了经典歌曲Never Gonna Give You Up"
+        }
+      },
+      {
+        "_name": {
+          "text": "【4K60FPS】查理·普斯《See You Again》爆火神曲！珍惜身边的人！"
+        },
+        "_duration": {
+          "text": "03:49"
+        },
+        "_author": {
+          "text": "音乐私藏馆"
+        },
+        "_measure": {
+          "text": "2452.1万 11.1万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1qU4y1F73A/?spm_id_from=333.788.recommend_more_video.13"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-b0874ade6968.webp",
+          "alt": "【4K60FPS】查理·普斯《See You Again》爆火神曲！珍惜身边的人！"
+        }
+      },
+      {
+        "_name": {
+          "text": "【8K超高清重制版】印尼魔性电信广告原版完整版IndiHome Paket Phoenix"
+        },
+        "_duration": {
+          "text": "04:22"
+        },
+        "_author": {
+          "text": "不咕的鱼鸽子"
+        },
+        "_measure": {
+          "text": "710.2万 3.8万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1y54y1s74a/?spm_id_from=333.788.recommend_more_video.14"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-fb6ffa8ae6ed.webp",
+          "alt": "【8K超高清重制版】印尼魔性电信广告原版完整版IndiHome Paket Phoenix"
+        }
+      },
+      {
+        "_name": {
+          "text": "现场玩梗Rick Astley"
+        },
+        "_duration": {
+          "text": "00:39"
+        },
+        "_author": {
+          "text": "通訊录好友"
+        },
+        "_measure": {
+          "text": "202.9万 210"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1gp4y1B7yd/?spm_id_from=333.788.recommend_more_video.15"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-378c7e389add.webp",
+          "alt": "现场玩梗Rick Astley"
+        }
+      },
+      {
+        "_name": {
+          "text": "甩葱歌原版"
+        },
+        "_duration": {
+          "text": "02:27"
+        },
+        "_author": {
+          "text": "星白真冬"
+        },
+        "_measure": {
+          "text": "714.3万 1.1万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1Ls411w7r7/?spm_id_from=333.788.recommend_more_video.16"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-a9ce73117084.webp",
+          "alt": "甩葱歌原版"
+        }
+      },
+      {
+        "_name": {
+          "text": "《晴天》"
+        },
+        "_duration": {
+          "text": "02:06"
+        },
+        "_author": {
+          "text": "鸡鸡·夫斯基"
+        },
+        "_measure": {
+          "text": "1009.6万 5.7万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1xy6qBJESW/?spm_id_from=333.788.recommend_more_video.17"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-2755bb22f7e6.webp",
+          "alt": "《晴天》"
+        }
+      },
+      {
+        "_name": {
+          "text": "该视频已失效"
+        },
+        "_duration": {
+          "text": "01:28"
+        },
+        "_author": {
+          "text": "鈡葉"
+        },
+        "_measure": {
+          "text": "1765.2万 9.5万"
+        },
+        "_action": {
+          "verb": "navigate",
+          "to": "https://www.bilibili.com/video/BV1jz421R7V2/?spm_id_from=333.788.recommend_more_video.18"
+        },
+        "_image": {
+          "image": "../assets/62-bilibili-com-video-bv1gj411x7h7-fcaac1b59fc8.webp",
+          "alt": "该视频已失效"
+        }
+      }
+    ]
+  }
+}

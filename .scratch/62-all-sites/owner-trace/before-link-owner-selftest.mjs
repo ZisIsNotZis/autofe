@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {checkPage} from './link-coverage.mjs';
+import {render} from '../render.mjs';
+const BASE='https://example.test/page',EMPTY={entries:[],index:new Map()};
+const dom='<main><section><h2>Alpha device</h2><p>Alpha distinctive detail</p><a href="/alpha">Learn more</a></section><section><h2>Beta device</h2><p>Beta distinctive detail</p><a href="/beta">Learn more</a></section></main>';
+const model={_title:{text:'Devices'},_items:[{_name:{text:'Alpha device'},_subtitle:{text:'Alpha distinctive detail'},_action:{verb:'open',label:'Learn more',to:'https://example.test/alpha'}},{_name:{text:'Beta device'},_subtitle:{text:'Beta distinctive detail'},_action:{verb:'open',label:'Learn more',to:'https://example.test/beta'}}]};
+const run=(m,h=render(m))=>checkPage('fixture/owners',m,h,dom,BASE,EMPTY);
+let count=0;function test(name,fn){fn();count++;console.log('PASS',name);}
+test('plain product caption with source-bound exact owned CTA passes',()=>assert.equal(run(model).findings.length,0));
+for(const to of ['https://example.test/other','https://example.test/alpha?q=wrong','https://example.test/alpha#wrong','https://example.test/beta'])test('reject exact target mutation '+to,()=>{const m=structuredClone(model);m._items[0]._action.to=to;assert(run(m).findings.length>0);});
+test('reject dropped model target',()=>{const m=structuredClone(model);delete m._items[0]._action.to;assert(run(m).findings.length>0);});
+test('reject correct model with dropped owner render target',()=>assert(run(model,render(model).replace('href="https://example.test/alpha"','data-dropped="https://example.test/alpha"')).findings.length>0));
+test('reject global other-owner reuse',()=>{const h=render(model).replace('href="https://example.test/alpha"','data-dropped="https://example.test/alpha"')+'<aside><a href="https://example.test/alpha">Learn more</a></aside>';assert(run(model,h).findings.length>0);});
+test('reject relocated valid source target to neighbor rendered owner',()=>{const h=render(model).replace('href="https://example.test/alpha"','href="https://example.test/beta"').replace('href="https://example.test/beta">Learn more</a></div></article>','href="https://example.test/alpha">Learn more</a></div></article>');assert(run(model,h).findings.length>0);});
+const article={_title:{text:'News'},_items:[{_name:{text:'Alpha article'},_author:{text:'Alice author'},_subtitle:{text:'Distinct article context'},_action:{verb:'open',to:'https://example.test/article'},authorLink:{_name:{text:'Alice author'},_action:{verb:'navigate',label:'Alice author',to:'https://example.test/alice'}}}]};
+const news='<section><a href="/article">Alpha article</a><p>Distinct article context</p><a href="/alice">Alice author</a></section>';
+const newsRun=m=>checkPage('fixture/article',m,render(m),news,BASE,EMPTY);
+test('source-bound author action renders inline once and passes',()=>{const h=render(article);assert.equal((h.match(/Alice author/g)||[]).length,1);assert.equal(newsRun(article).findings.length,0);});
+test('missing distinct author capability fails despite article action',()=>{const m=structuredClone(article);delete m._items[0].authorLink;assert(newsRun(m).findings.some(f=>f.text==='Alice author'));});
+console.log(count+' production owner assertions passed');

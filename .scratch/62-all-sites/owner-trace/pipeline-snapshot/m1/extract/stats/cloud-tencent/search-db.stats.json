@@ -1,0 +1,41 @@
+{
+  "site": "cloud-tencent",
+  "page": "search-db",
+  "url": "https://cloud.tencent.com/search?q=%E6%95%B0%E6%8D%AE%E5%BA%93",
+  "title": "腾讯云搜索",
+  "sourceNodes": 429,
+  "counts": {
+    "storylines": 0,
+    "items": 0,
+    "actions": 4,
+    "exposes": 1,
+    "images": 0,
+    "facts": 1,
+    "tables": 0,
+    "lists": 0,
+    "choiceSets": 0,
+    "inputs": 1,
+    "dupeText": 0,
+    "capHits": []
+  },
+  "storylines": 0,
+  "chrome": [
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "chart-or-svg",
+      "role": "graphics-document",
+      "count": 4,
+      "examples": []
+    }
+  ],
+  "fieldsDrafted": []
+}

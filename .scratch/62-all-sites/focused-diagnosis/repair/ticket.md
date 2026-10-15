@@ -1,0 +1,12 @@
+# Sole-root combined-failure repair Ticket
+
+## Contract
+Actor: close-current-gates sole-root repair worker. Started 2026-10-13T18:13:58+08:00. Outcome: repair only independently diagnosed combined failures, retaining full42 AC and seven accepted designs; no final gallery/reviewer stage. One shared-seam owner is necessary because model association, axis planning, three render targets and provenance gates overlap. No children/concurrent source writer. Commands <=600s; 55-minute budget; recoverable checkpoints per family. Root HEAD aaf3a4509321b4720935852068b1f99b801dd9f9; exact input checkpoint61b11ad2e9ece277835dd5edad1d389d200a4966,803 hashes verified with zero mismatches, index empty, process inspection no old writer/pipeline/capture. All preexisting dirty/untracked artifacts preserved.
+
+## Ownership and falsifiable acceptance
+Own scoped Huawei/Microsoft/SSPAI/Bilibili diagnosed model repairs; shared axis/renderers; foundation/layout/link/capture/quote tests and necessary source-evidence mechanism; docs/m1/layout-axes.md; generated pipeline outputs and repair-local evidence. Exclude whole35 re-audit, final snapshots/gallery preparation, publication, source retrieval, redesign, thresholds/allow escapes.
+
+Source truth: original corpus DOM/nodes; three frozen fresh diagnosis JSON/reports. F1/SP1 stale selectors may change only to stronger region-local/terminal-owner assertions with removal/late sibling/action mutations. F2/F3/SP2 real duplicate associations require source-local single occurrence and exact targets/order, not denominator suppression. F4/F5 require all127 Microsoft exact row-local ordered links and same-domain/query/fragment/wrong-row mutations. SF1 captured 转发 can replace unsupported 分享; SF2 count role/order needs generic evidence-bound icon provenance (otherwise explicitly unmet). SF3 restore two existing _quote and remove obsolete allowances together; raw differences zero and quote-to-text mutation fails. SF4 strengthen paragraph association proof. SF5 protected non-image structure plus exact resource substitutions instead of historical byte immutability. SP3 no title repair justified; SP4 preserve no-upscale/crop and strengthen cohesive media association rather than waive variance.
+
+## Initial check
+2026-10-13T18:13:58+08:00 actor close-current-gates: bounded current pipeline (without --shots) reproduced FAIL; full output repair/pipeline-before.log. No acceptance is inferred from static checks. Full native/source experience and independent acceptance remain INCOMPLETE throughout this package.

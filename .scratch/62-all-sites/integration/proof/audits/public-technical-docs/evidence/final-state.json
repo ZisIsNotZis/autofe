@@ -1,0 +1,25 @@
+{
+  "baseline": "403cd5be096db89b428e130ad57cca730b425fdc",
+  "actor": "audit-public-technical-docs worker",
+  "checkedAt": "2026-10-13T14:46:32+08:00",
+  "trackedDiff": [],
+  "stagedFiles": [],
+  "preexistingUntrackedPreserved": [
+    ".scratch/62-all-sites/",
+    ".scratch/active-work.md",
+    "corpus"
+  ],
+  "checks": [
+    "all pre-recorded SHA256 hashes match",
+    "all local JSON parses",
+    "git diff --check passed",
+    "owned Markdown/scripts have no trailing whitespace",
+    "HEAD remains private baseline",
+    "no tracked source change",
+    "no staged files"
+  ],
+  "imageReads": 18,
+  "browserJobs": 3,
+  "pageAcceptance": "INCOMPLETE",
+  "reviewGate": "pending parent-routed independent review"
+}

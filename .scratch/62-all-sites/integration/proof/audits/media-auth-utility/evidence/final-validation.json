@@ -1,0 +1,17 @@
+{
+  "actor": "audit-media-auth-utility worker",
+  "checkedAt": "2026-10-13T14:52:16+08:00",
+  "head": "403cd5be096db89b428e130ad57cca730b425fdc",
+  "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+  "reportSha256": "edf51f0c32ebf93c0539590cb1f16fdff09b229737d0145194e07332ebeb16da",
+  "sourceHashesAndShotHashes": "All covered-hashes.json entries rechecked against final bytes: match.",
+  "handoffSchema": "All required keys present;5 pages,10 findings, referenced evidence exists.",
+  "validators": "All5 models ok;existing read search default/watermark warning retained.",
+  "viewportGate": "20 probes:zero horizontal overflow/broken images/natural-resolution upscales.",
+  "fidelityGate": "58 explicit modeled destination URLs +20 image URLs present in HTML;20/20 captured recommendation thumbnails attributable. Not complete source/cross-target fidelity.",
+  "imagesRead": 18,
+  "browserJobs": 1,
+  "trackedChanges": "",
+  "stagedFiles": "",
+  "experienceVerdict": "INCOMPLETE:1920 readable Bilibili media;Stripe source footer;integrated/final independent review."
+}

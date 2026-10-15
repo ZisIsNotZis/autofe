@@ -1,0 +1,1248 @@
+{
+  "_intent": "Button | Element Plus — Button Permalink to \"Button\" [draft]",
+  "_title": {
+    "text": "Button | Element Plus"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://element-plus.org/en-US/component/button.html#page-content",
+        "label": "Skip to content"
+      }
+    },
+    {
+      "_intent": "Button Permalink to \"Button\" [draft]",
+      "_title": {
+        "text": "Button Permalink to \"Button\""
+      },
+      "_summary": {
+        "text": "Commonly used button."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Changelog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Open issues 18"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Basic usage Permalink to \"Basic usage\" [draft]",
+      "_title": {
+        "text": "Basic usage Permalink to \"Basic usage\""
+      },
+      "_summary": {
+        "text": "Use type, plain, round, dashed and circle to define Button's style."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Default"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Primary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Success"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Info"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Warning"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Danger"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Plain"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Round"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Dashed"
+          }
+        },
+        {
+          "_text": {
+            "text": "TS"
+          }
+        },
+        {
+          "_text": {
+            "text": "JS"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiYnV0dG9uLWV4YW1wbGVcIj5cbiAgICA8ZGl2IGNsYXNzPVwiYnV0dG9uLXJvd1wiPlxuICAgICAgPGVsLWJ1dHRvbj5EZWZhdWx0PC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJwcmltYXJ5XCI+UHJpbWFyeTwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwic3VjY2Vzc1wiPlN1Y2Nlc3M8L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cImluZm9cIj5JbmZvPC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJ3YXJuaW5nXCI+V2FybmluZzwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwiZGFuZ2VyXCI+RGFuZ2VyPC9lbC1idXR0b24+XG4gICAgPC9kaXY+XG5cbiAgICA8ZGl2IGNsYXNzPVwiYnV0dG9uLXJvd1wiPlxuICAgICAgPGVsLWJ1dHRvbiBwbGFpbj5QbGFpbjwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwicHJpbWFyeVwiIHBsYWluPlByaW1hcnk8L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cInN1Y2Nlc3NcIiBwbGFpbj5TdWNjZXNzPC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJpbmZvXCIgcGxhaW4+SW5mbzwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwid2FybmluZ1wiIHBsYWluPldhcm5pbmc8L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cImRhbmdlclwiIHBsYWluPkRhbmdlcjwvZWwtYnV0dG9uPlxuICAgIDwvZGl2PlxuXG4gICAgPGRpdiBjbGFzcz1cImJ1dHRvbi1yb3dcIj5cbiAgICAgIDxlbC1idXR0b24gcm91bmQ+Um91bmQ8L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiByb3VuZD5QcmltYXJ5PC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJzdWNjZXNzXCIgcm91bmQ+U3VjY2VzczwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwiaW5mb1wiIHJvdW5kPkluZm88L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cIndhcm5pbmdcIiByb3VuZD5XYXJuaW5nPC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJkYW5nZXJcIiByb3VuZD5EYW5nZXI8L2VsLWJ1dHRvbj5cbiAgICA8L2Rpdj5cblxuICAgIDxkaXYgY2xhc3M9XCJidXR0b24tcm93XCI+XG4gICAgICA8ZWwtYnV0dG9uIGRhc2hlZD5EYXNoZWQ8L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiBkYXNoZWQ+UHJpbWFyeTwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwic3VjY2Vzc1wiIGRhc2hlZD5TdWNjZXNzPC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJpbmZvXCIgZGFzaGVkPkluZm88L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cIndhcm5pbmdcIiBkYXNoZWQ+V2FybmluZzwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwiZGFuZ2VyXCIgZGFzaGVkPkRhbmdlcjwvZWwtYnV0dG9uPlxuICAgIDwvZGl2PlxuXG4gICAgPGRpdiBjbGFzcz1cImJ1dHRvbi1yb3dcIj5cbiAgICAgIDxlbC1idXR0b24gOmljb249XCJTZWFyY2hcIiBjaXJjbGUgLz5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiA6aWNvbj1cIkVkaXRcIiBjaXJjbGUgLz5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cInN1Y2Nlc3NcIiA6aWNvbj1cIkNoZWNrXCIgY2lyY2xlIC8+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJpbmZvXCIgOmljb249XCJNZXNzYWdlXCIgY2lyY2xlIC8+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJ3YXJuaW5nXCIgOmljb249XCJTdGFyXCIgY2lyY2xlIC8+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJkYW5nZXJcIiA6aWNvbj1cIkRlbGV0ZVwiIGNpcmNsZSAvPlxuICAgIDwvZGl2PlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQge1xuICBDaGVjayxcbiAgRGVsZXRlLFxuICBFZGl0LFxuICBNZXNzYWdlLFxuICBTZWFyY2gsXG4gIFN0YXIsXG59IGZyb20gJ0BlbGVtZW50LXBsdXMvaWNvbnMtdnVlJ1xuPC9zY3JpcHQ+XG5cbjxzdHlsZSBzY29wZWQ+XG4uYnV0dG9uLWV4YW1wbGUge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBnYXA6IDFyZW07XG59XG5cbi5idXR0b24tcm93IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBnYXA6IDFyZW07XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5idXR0b24tcm93ID4gKiB7XG4gIG1hcmdpbjogMDtcbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/button/basic.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Disabled Button Permalink to \"Disabled Button\" [draft]",
+      "_title": {
+        "text": "Disabled Button Permalink to \"Disabled Button\""
+      },
+      "_summary": {
+        "text": "The disabled attribute determines if the button is disabled."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Use disabled attribute to determine whether a button is disabled. It accepts a Boolean value."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Default"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Primary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Success"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Info"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Warning"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Danger"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Plain"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiYnV0dG9uLWV4YW1wbGVcIj5cbiAgICA8ZGl2IGNsYXNzPVwiYnV0dG9uLXJvd1wiPlxuICAgICAgPGVsLWJ1dHRvbiBkaXNhYmxlZD5EZWZhdWx0PC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJwcmltYXJ5XCIgZGlzYWJsZWQ+UHJpbWFyeTwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwic3VjY2Vzc1wiIGRpc2FibGVkPlN1Y2Nlc3M8L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cImluZm9cIiBkaXNhYmxlZD5JbmZvPC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJ3YXJuaW5nXCIgZGlzYWJsZWQ+V2FybmluZzwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwiZGFuZ2VyXCIgZGlzYWJsZWQ+RGFuZ2VyPC9lbC1idXR0b24+XG4gICAgPC9kaXY+XG5cbiAgICA8ZGl2IGNsYXNzPVwiYnV0dG9uLXJvd1wiPlxuICAgICAgPGVsLWJ1dHRvbiBwbGFpbiBkaXNhYmxlZD5QbGFpbjwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwicHJpbWFyeVwiIHBsYWluIGRpc2FibGVkPlByaW1hcnk8L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cInN1Y2Nlc3NcIiBwbGFpbiBkaXNhYmxlZD5TdWNjZXNzPC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJpbmZvXCIgcGxhaW4gZGlzYWJsZWQ+SW5mbzwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwid2FybmluZ1wiIHBsYWluIGRpc2FibGVkPldhcm5pbmc8L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cImRhbmdlclwiIHBsYWluIGRpc2FibGVkPkRhbmdlcjwvZWwtYnV0dG9uPlxuICAgIDwvZGl2PlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzdHlsZSBzY29wZWQ+XG4uYnV0dG9uLWV4YW1wbGUge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBnYXA6IDFyZW07XG59XG5cbi5idXR0b24tcm93IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBnYXA6IDFyZW07XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5idXR0b24tcm93ID4gKiB7XG4gIG1hcmdpbjogMDtcbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/button/disabled.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Link Button Permalink to \"Link Button\" [draft]",
+      "_title": {
+        "text": "Link Button Permalink to \"Link Button\""
+      },
+      "_summary": {
+        "text": "type=\"text\" has been deprecated, and will be removed in 3.0.0, consider switching to new API."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "New API link has been added in 2.2.1, you can use type API to set the theme of your link button"
+          }
+        },
+        {
+          "_text": {
+            "text": "Basic link button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "plain"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "primary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "success"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "info"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "warning"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "danger"
+          }
+        },
+        {
+          "_text": {
+            "text": "Disabled link button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8cD5CYXNpYyBsaW5rIGJ1dHRvbjwvcD5cbiAgPGRpdiBjbGFzcz1cIm1iLTRcIj5cbiAgICA8ZWwtYnV0dG9uXG4gICAgICB2LWZvcj1cImJ1dHRvbiBpbiBidXR0b25zXCJcbiAgICAgIDprZXk9XCJidXR0b24udGV4dFwiXG4gICAgICA6dHlwZT1cImJ1dHRvbi50eXBlXCJcbiAgICAgIGxpbmtcbiAgICA+XG4gICAgICB7eyBidXR0b24udGV4dCB9fVxuICAgIDwvZWwtYnV0dG9uPlxuICA8L2Rpdj5cblxuICA8cD5EaXNhYmxlZCBsaW5rIGJ1dHRvbjwvcD5cbiAgPGRpdj5cbiAgICA8ZWwtYnV0dG9uXG4gICAgICB2LWZvcj1cImJ1dHRvbiBpbiBidXR0b25zXCJcbiAgICAgIDprZXk9XCJidXR0b24udGV4dFwiXG4gICAgICA6dHlwZT1cImJ1dHRvbi50eXBlXCJcbiAgICAgIGxpbmtcbiAgICAgIGRpc2FibGVkXG4gICAgPlxuICAgICAge3sgYnV0dG9uLnRleHQgfX1cbiAgICA8L2VsLWJ1dHRvbj5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IHNldHVwIGxhbmc9XCJ0c1wiPlxuY29uc3QgYnV0dG9ucyA9IFtcbiAgeyB0eXBlOiAnJywgdGV4dDogJ3BsYWluJyB9LFxuICB7IHR5cGU6ICdwcmltYXJ5JywgdGV4dDogJ3ByaW1hcnknIH0sXG4gIHsgdHlwZTogJ3N1Y2Nlc3MnLCB0ZXh0OiAnc3VjY2VzcycgfSxcbiAgeyB0eXBlOiAnaW5mbycsIHRleHQ6ICdpbmZvJyB9LFxuICB7IHR5cGU6ICd3YXJuaW5nJywgdGV4dDogJ3dhcm5pbmcnIH0sXG4gIHsgdHlwZTogJ2RhbmdlcicsIHRleHQ6ICdkYW5nZXInIH0sXG5dIGFzIGNvbnN0XG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/button/link.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Text Button Permalink to \"Text Button\" [draft]",
+      "_title": {
+        "text": "Text Button Permalink to \"Text Button\""
+      },
+      "_summary": {
+        "text": "TIP"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Text button has been upgraded with a new design since 2.2.0 , if you want to use the previous version like button, you might want to check Link out."
+          }
+        },
+        {
+          "_text": {
+            "text": "The API is also updated, because the type attribute also represents the button's style. So we have to make a new API text: boolean for text button."
+          }
+        },
+        {
+          "_text": {
+            "text": "Buttons without border and background."
+          }
+        },
+        {
+          "_text": {
+            "text": "Basic text button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "plain"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "primary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "success"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "info"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "warning"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "danger"
+          }
+        },
+        {
+          "_text": {
+            "text": "Background color always on"
+          }
+        },
+        {
+          "_text": {
+            "text": "Disabled text button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8cD5CYXNpYyB0ZXh0IGJ1dHRvbjwvcD5cbiAgPGRpdiBjbGFzcz1cIm1iLTRcIj5cbiAgICA8ZWwtYnV0dG9uXG4gICAgICB2LWZvcj1cImJ1dHRvbiBpbiBidXR0b25zXCJcbiAgICAgIDprZXk9XCJidXR0b24udGV4dFwiXG4gICAgICA6dHlwZT1cImJ1dHRvbi50eXBlXCJcbiAgICAgIHRleHRcbiAgICA+XG4gICAgICB7eyBidXR0b24udGV4dCB9fVxuICAgIDwvZWwtYnV0dG9uPlxuICA8L2Rpdj5cblxuICA8cD5CYWNrZ3JvdW5kIGNvbG9yIGFsd2F5cyBvbjwvcD5cbiAgPGRpdiBjbGFzcz1cIm1iLTRcIj5cbiAgICA8ZWwtYnV0dG9uXG4gICAgICB2LWZvcj1cImJ1dHRvbiBpbiBidXR0b25zXCJcbiAgICAgIDprZXk9XCJidXR0b24udGV4dFwiXG4gICAgICA6dHlwZT1cImJ1dHRvbi50eXBlXCJcbiAgICAgIHRleHRcbiAgICAgIGJnXG4gICAgPlxuICAgICAge3sgYnV0dG9uLnRleHQgfX1cbiAgICA8L2VsLWJ1dHRvbj5cbiAgPC9kaXY+XG5cbiAgPHA+RGlzYWJsZWQgdGV4dCBidXR0b248L3A+XG4gIDxkaXY+XG4gICAgPGVsLWJ1dHRvblxuICAgICAgdi1mb3I9XCJidXR0b24gaW4gYnV0dG9uc1wiXG4gICAgICA6a2V5PVwiYnV0dG9uLnRleHRcIlxuICAgICAgOnR5cGU9XCJidXR0b24udHlwZVwiXG4gICAgICB0ZXh0XG4gICAgICBkaXNhYmxlZFxuICAgID5cbiAgICAgIHt7IGJ1dHRvbi50ZXh0IH19XG4gICAgPC9lbC1idXR0b24+XG4gIDwvZGl2PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBzZXR1cCBsYW5nPVwidHNcIj5cbmNvbnN0IGJ1dHRvbnMgPSBbXG4gIHsgdHlwZTogJycsIHRleHQ6ICdwbGFpbicgfSxcbiAgeyB0eXBlOiAncHJpbWFyeScsIHRleHQ6ICdwcmltYXJ5JyB9LFxuICB7IHR5cGU6ICdzdWNjZXNzJywgdGV4dDogJ3N1Y2Nlc3MnIH0sXG4gIHsgdHlwZTogJ2luZm8nLCB0ZXh0OiAnaW5mbycgfSxcbiAgeyB0eXBlOiAnd2FybmluZycsIHRleHQ6ICd3YXJuaW5nJyB9LFxuICB7IHR5cGU6ICdkYW5nZXInLCB0ZXh0OiAnZGFuZ2VyJyB9LFxuXSBhcyBjb25zdFxuPC9zY3JpcHQ+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/button/text.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Icon Button Permalink to \"Icon Button\" [draft]",
+      "_title": {
+        "text": "Icon Button Permalink to \"Icon Button\""
+      },
+      "_summary": {
+        "text": "Use icons to add more meaning to Button. You can use icon alone to save some space, or use it with text."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Use the icon attribute to add icon. You can find the icon list in Element Plus icon component. Adding icons to the right side of the text is achievable with an <i> tag. Custom icons can be used as wel"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Search"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Upload"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2PlxuICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiA6aWNvbj1cIkVkaXRcIiAvPlxuICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiA6aWNvbj1cIlNoYXJlXCIgLz5cbiAgICA8ZWwtYnV0dG9uIHR5cGU9XCJwcmltYXJ5XCIgOmljb249XCJEZWxldGVcIiAvPlxuICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiA6aWNvbj1cIlNlYXJjaFwiPlNlYXJjaDwvZWwtYnV0dG9uPlxuICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIj5cbiAgICAgIFVwbG9hZDxlbC1pY29uIGNsYXNzPVwiZWwtaWNvbi0tcmlnaHRcIj48VXBsb2FkIC8+PC9lbC1pY29uPlxuICAgIDwvZWwtYnV0dG9uPlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgc2V0dXAgbGFuZz1cInRzXCI+XG5pbXBvcnQgeyBEZWxldGUsIEVkaXQsIFNlYXJjaCwgU2hhcmUsIFVwbG9hZCB9IGZyb20gJ0BlbGVtZW50LXBsdXMvaWNvbnMtdnVlJ1xuPC9zY3JpcHQ+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/button/icon.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Button Group Permalink to \"Button Group\" [draft]",
+      "_title": {
+        "text": "Button Group Permalink to \"Button Group\""
+      },
+      "_summary": {
+        "text": "Displayed as a button group, can be used to group a series of similar operations."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "In 2.11.9 you can use the direction attribute."
+          }
+        },
+        {
+          "_text": {
+            "text": "Use tag <el-button-group> to group your buttons."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Previous Page"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Next Page"
+          }
+        },
+        {
+          "_intent": "radio-group [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Horizontal"
+              }
+            },
+            {
+              "_name": {
+                "text": "Vertical"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "radio-group",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtYnV0dG9uLWdyb3VwIGNsYXNzPVwibWItNFwiPlxuICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiA6aWNvbj1cIkFycm93TGVmdFwiPlByZXZpb3VzIFBhZ2U8L2VsLWJ1dHRvbj5cbiAgICA8ZWwtYnV0dG9uIHR5cGU9XCJwcmltYXJ5XCI+XG4gICAgICBOZXh0IFBhZ2U8ZWwtaWNvbiBjbGFzcz1cImVsLWljb24tLXJpZ2h0XCI+PEFycm93UmlnaHQgLz48L2VsLWljb24+XG4gICAgPC9lbC1idXR0b24+XG4gIDwvZWwtYnV0dG9uLWdyb3VwPlxuICA8YnIgLz5cbiAgPGVsLXJhZGlvLWdyb3VwIHYtbW9kZWw9XCJkaXJlY3Rpb25cIiBjbGFzcz1cIm1iLTJcIj5cbiAgICA8ZWwtcmFkaW8gdmFsdWU9XCJob3Jpem9udGFsXCI+SG9yaXpvbnRhbDwvZWwtcmFkaW8+XG4gICAgPGVsLXJhZGlvIHZhbHVlPVwidmVydGljYWxcIj5WZXJ0aWNhbDwvZWwtcmFkaW8+XG4gIDwvZWwtcmFkaW8tZ3JvdXA+XG4gIDxiciAvPlxuXG4gIDxlbC1idXR0b24tZ3JvdXAgOmRpcmVjdGlvbj1cImRpcmVjdGlvblwiPlxuICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiA6aWNvbj1cIkhvdXNlXCIgLz5cbiAgICA8ZWwtYnV0dG9uIHR5cGU9XCJwcmltYXJ5XCIgOmljb249XCJPcGVyYXRpb25cIiAvPlxuICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiA6aWNvbj1cIk5vdGlmaWNhdGlvblwiIC8+XG4gIDwvZWwtYnV0dG9uLWdyb3VwPlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBzZXR1cCBsYW5nPVwidHNcIj5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcbmltcG9ydCB7XG4gIEFycm93TGVmdCxcbiAgQXJyb3dSaWdodCxcbiAgSG91c2UsXG4gIE5vdGlmaWNhdGlvbixcbiAgT3BlcmF0aW9uLFxufSBmcm9tICdAZWxlbWVudC1wbHVzL2ljb25zLXZ1ZSdcblxuY29uc3QgZGlyZWN0aW9uID0gcmVmPCdob3Jpem9udGFsJyB8ICd2ZXJ0aWNhbCc+KCdob3Jpem9udGFsJylcbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/button/group.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Loading Button Permalink to \"Loading Button\" [draft]",
+      "_title": {
+        "text": "Loading Button Permalink to \"Loading Button\""
+      },
+      "_summary": {
+        "text": "Click the button to load data, then the button displays a loading state."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Set loading attribute to true to display loading state."
+          }
+        },
+        {
+          "_text": {
+            "text": "You can use the loading slot or loadingIcon to customize your loading component"
+          }
+        },
+        {
+          "_text": {
+            "text": "ps: loading slot has higher priority than loadingIcon"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Loading"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtYnV0dG9uIHR5cGU9XCJwcmltYXJ5XCIgbG9hZGluZz5Mb2FkaW5nPC9lbC1idXR0b24+XG4gIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiA6bG9hZGluZy1pY29uPVwiRWxlbWVcIiBsb2FkaW5nPkxvYWRpbmc8L2VsLWJ1dHRvbj5cbiAgPGVsLWJ1dHRvbiB0eXBlPVwicHJpbWFyeVwiIGxvYWRpbmc+XG4gICAgPHRlbXBsYXRlICNsb2FkaW5nPlxuICAgICAgPGRpdiBjbGFzcz1cImN1c3RvbS1sb2FkaW5nXCI+XG4gICAgICAgIDxzdmcgY2xhc3M9XCJjaXJjdWxhclwiIHZpZXdCb3g9XCItMTAsIC0xMCwgNTAsIDUwXCI+XG4gICAgICAgICAgPHBhdGhcbiAgICAgICAgICAgIGNsYXNzPVwicGF0aFwiXG4gICAgICAgICAgICBkPVwiXG4gICAgICAgICAgICBNIDMwIDE1XG4gICAgICAgICAgICBMIDI4IDE3XG4gICAgICAgICAgICBNIDI1LjYxIDI1LjYxXG4gICAgICAgICAgICBBIDE1IDE1LCAwLCAwLCAxLCAxNSAzMFxuICAgICAgICAgICAgQSAxNSAxNSwgMCwgMSwgMSwgMjcuOTkgNy41XG4gICAgICAgICAgICBMIDE1IDE1XG4gICAgICAgICAgXCJcbiAgICAgICAgICAgIHN0eWxlPVwic3Ryb2tlLXdpZHRoOiA0cHg7IGZpbGw6IHJnYmEoMCwgMCwgMCwgMClcIlxuICAgICAgICAgIC8+XG4gICAgICAgIDwvc3ZnPlxuICAgICAgPC9kaXY+XG4gICAgPC90ZW1wbGF0ZT5cbiAgICBMb2FkaW5nXG4gIDwvZWwtYnV0dG9uPlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IEVsZW1lIH0gZnJvbSAnQGVsZW1lbnQtcGx1cy9pY29ucy12dWUnXG48L3NjcmlwdD5cblxuPHN0eWxlIHNjb3BlZD5cbi5lbC1idXR0b24gLmN1c3RvbS1sb2FkaW5nIC5jaXJjdWxhciB7XG4gIG1hcmdpbi1yaWdodDogNnB4O1xuICB3aWR0aDogMThweDtcbiAgaGVpZ2h0OiAxOHB4O1xuICBhbmltYXRpb246IGxvYWRpbmctcm90YXRlIDJzIGxpbmVhciBpbmZpbml0ZTtcbn1cbi5lbC1idXR0b24gLmN1c3RvbS1sb2FkaW5nIC5jaXJjdWxhciAucGF0aCB7XG4gIGFuaW1hdGlvbjogbG9hZGluZy1kYXNoIDEuNXMgZWFzZS1pbi1vdXQgaW5maW5pdGU7XG4gIHN0cm9rZS1kYXNoYXJyYXk6IDkwLCAxNTA7XG4gIHN0cm9rZS1kYXNob2Zmc2V0OiAwO1xuICBzdHJva2Utd2lkdGg6IDI7XG4gIHN0cm9rZTogdmFyKC0tZWwtYnV0dG9uLXRleHQtY29sb3IpO1xuICBzdHJva2UtbGluZWNhcDogcm91bmQ7XG59XG48L3N0eWxlPlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/button/loading.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Sizes Permalink to \"Sizes\" [draft]",
+      "_title": {
+        "text": "Sizes Permalink to \"Sizes\""
+      },
+      "_summary": {
+        "text": "Besides default size, Button component provides three additional sizes for you to choose among different scenarios."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Use attribute size to set additional sizes with large, small."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Large"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Default"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Small"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Search"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZmxleCBmbGV4LXdyYXAgaXRlbXMtY2VudGVyIG1iLTRcIj5cbiAgICA8ZWwtYnV0dG9uIHNpemU9XCJsYXJnZVwiPkxhcmdlPC9lbC1idXR0b24+XG4gICAgPGVsLWJ1dHRvbj5EZWZhdWx0PC9lbC1idXR0b24+XG4gICAgPGVsLWJ1dHRvbiBzaXplPVwic21hbGxcIj5TbWFsbDwvZWwtYnV0dG9uPlxuICAgIDxlbC1idXR0b24gc2l6ZT1cImxhcmdlXCIgOmljb249XCJTZWFyY2hcIj5TZWFyY2g8L2VsLWJ1dHRvbj5cbiAgICA8ZWwtYnV0dG9uIDppY29uPVwiU2VhcmNoXCI+U2VhcmNoPC9lbC1idXR0b24+XG4gICAgPGVsLWJ1dHRvbiBzaXplPVwic21hbGxcIiA6aWNvbj1cIlNlYXJjaFwiPlNlYXJjaDwvZWwtYnV0dG9uPlxuICA8L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZsZXggZmxleC13cmFwIGl0ZW1zLWNlbnRlciBtYi00XCI+XG4gICAgPGVsLWJ1dHRvbiBzaXplPVwibGFyZ2VcIiByb3VuZD5MYXJnZTwvZWwtYnV0dG9uPlxuICAgIDxlbC1idXR0b24gcm91bmQ+RGVmYXVsdDwvZWwtYnV0dG9uPlxuICAgIDxlbC1idXR0b24gc2l6ZT1cInNtYWxsXCIgcm91bmQ+U21hbGw8L2VsLWJ1dHRvbj5cbiAgICA8ZWwtYnV0dG9uIHNpemU9XCJsYXJnZVwiIDppY29uPVwiU2VhcmNoXCIgcm91bmQ+U2VhcmNoPC9lbC1idXR0b24+XG4gICAgPGVsLWJ1dHRvbiA6aWNvbj1cIlNlYXJjaFwiIHJvdW5kPlNlYXJjaDwvZWwtYnV0dG9uPlxuICAgIDxlbC1idXR0b24gc2l6ZT1cInNtYWxsXCIgOmljb249XCJTZWFyY2hcIiByb3VuZD5TZWFyY2g8L2VsLWJ1dHRvbj5cbiAgPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmbGV4IGZsZXgtd3JhcCBpdGVtcy1jZW50ZXJcIj5cbiAgICA8ZWwtYnV0dG9uIDppY29uPVwiU2VhcmNoXCIgc2l6ZT1cImxhcmdlXCIgY2lyY2xlIC8+XG4gICAgPGVsLWJ1dHRvbiA6aWNvbj1cIlNlYXJjaFwiIGNpcmNsZSAvPlxuICAgIDxlbC1idXR0b24gOmljb249XCJTZWFyY2hcIiBzaXplPVwic21hbGxcIiBjaXJjbGUgLz5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IHNldHVwIGxhbmc9XCJ0c1wiPlxuaW1wb3J0IHsgU2VhcmNoIH0gZnJvbSAnQGVsZW1lbnQtcGx1cy9pY29ucy12dWUnXG48L3NjcmlwdD5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/button/size.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Tag 2.3.4 Permalink to \"Tag ^(2.3.4)\" [draft]",
+      "_title": {
+        "text": "Tag 2.3.4 Permalink to \"Tag ^(2.3.4)\""
+      },
+      "_summary": {
+        "text": "You can custom element tag, For example button, div, a, router-link, nuxt-link."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "div"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus",
+            "label": "a"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtYnV0dG9uPmJ1dHRvbjwvZWwtYnV0dG9uPlxuICA8ZWwtYnV0dG9uIHRhZz1cImRpdlwiIHJvbGU9XCJidXR0b25cIiB0YWJpbmRleD1cIjBcIj5kaXY8L2VsLWJ1dHRvbj5cbiAgPGVsLWJ1dHRvblxuICAgIHR5cGU9XCJwcmltYXJ5XCJcbiAgICB0YWc9XCJhXCJcbiAgICBocmVmPVwiaHR0cHM6Ly9naXRodWIuY29tL2VsZW1lbnQtcGx1cy9lbGVtZW50LXBsdXNcIlxuICAgIHRhcmdldD1cIl9ibGFua1wiXG4gICAgcmVsPVwibm9vcGVuZXIgbm9yZWZlcnJlclwiXG4gID5cbiAgICBhXG4gIDwvZWwtYnV0dG9uPlxuPC90ZW1wbGF0ZT5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/button/tag.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Custom Color beta Permalink to \"Custom Color ^(beta)\" [draft]",
+      "_title": {
+        "text": "Custom Color beta Permalink to \"Custom Color ^(beta)\""
+      },
+      "_summary": {
+        "text": "You can custom button color."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "We will calculate hover color & active color automatically."
+          }
+        },
+        {
+          "_text": {
+            "text": "The color prop also works with link and text buttons since 2.13.7."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Default"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Plain"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Link"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Text BG"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Disabled"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Disabled Plain"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Disabled Link"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Disabled Text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Disabled Text BG"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IGlzRGFyayB9IGZyb20gJ34vY29tcG9zYWJsZXMvZGFyaydcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxkaXY+XG4gICAgPGVsLWJ1dHRvbiBjb2xvcj1cIiM2MjZhZWZcIiA6ZGFyaz1cImlzRGFya1wiPkRlZmF1bHQ8L2VsLWJ1dHRvbj5cbiAgICA8ZWwtYnV0dG9uIGNvbG9yPVwiIzYyNmFlZlwiIDpkYXJrPVwiaXNEYXJrXCIgcGxhaW4+UGxhaW48L2VsLWJ1dHRvbj5cbiAgICA8ZWwtYnV0dG9uIGNvbG9yPVwiIzYyNmFlZlwiIDpkYXJrPVwiaXNEYXJrXCIgbGluaz5MaW5rPC9lbC1idXR0b24+XG4gICAgPGVsLWJ1dHRvbiBjb2xvcj1cIiM2MjZhZWZcIiA6ZGFyaz1cImlzRGFya1wiIHRleHQ+VGV4dDwvZWwtYnV0dG9uPlxuICAgIDxlbC1idXR0b24gY29sb3I9XCIjNjI2YWVmXCIgOmRhcms9XCJpc0RhcmtcIiB0ZXh0IGJnPlRleHQgQkc8L2VsLWJ1dHRvbj5cblxuICAgIDxlbC1idXR0b24gY29sb3I9XCIjNjI2YWVmXCIgOmRhcms9XCJpc0RhcmtcIiBkaXNhYmxlZD5EaXNhYmxlZDwvZWwtYnV0dG9uPlxuICAgIDxlbC1idXR0b24gY29sb3I9XCIjNjI2YWVmXCIgOmRhcms9XCJpc0RhcmtcIiBkaXNhYmxlZCBwbGFpbj5cbiAgICAgIERpc2FibGVkIFBsYWluXG4gICAgPC9lbC1idXR0b24+XG4gICAgPGVsLWJ1dHRvbiBjb2xvcj1cIiM2MjZhZWZcIiA6ZGFyaz1cImlzRGFya1wiIGRpc2FibGVkIGxpbms+XG4gICAgICBEaXNhYmxlZCBMaW5rXG4gICAgPC9lbC1idXR0b24+XG4gICAgPGVsLWJ1dHRvbiBjb2xvcj1cIiM2MjZhZWZcIiA6ZGFyaz1cImlzRGFya1wiIGRpc2FibGVkIHRleHQ+XG4gICAgICBEaXNhYmxlZCBUZXh0XG4gICAgPC9lbC1idXR0b24+XG4gICAgPGVsLWJ1dHRvbiBjb2xvcj1cIiM2MjZhZWZcIiA6ZGFyaz1cImlzRGFya1wiIGRpc2FibGVkIHRleHQgYmc+XG4gICAgICBEaXNhYmxlZCBUZXh0IEJHXG4gICAgPC9lbC1idXR0b24+XG4gIDwvZGl2PlxuPC90ZW1wbGF0ZT5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/button/custom.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Button API Permalink to \"Button API\" [draft]",
+      "_title": {
+        "text": "Button API Permalink to \"Button API\""
+      },
+      "_lines": [
+        {
+          "_intent": "Button Attributes Permalink to \"Button Attributes\" [draft]",
+          "_title": {
+            "text": "Button Attributes Permalink to \"Button Attributes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (19 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "size"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "type"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "plain"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "text 2.2.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "bg 2.2.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "link 2.2.1"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "round"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "circle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "dashed 2.13.3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loading"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loading-icon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "icon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "autofocus"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "native-type"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "auto-insert-space"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "color"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "dark"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tag 2.3.4"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Button Slots Permalink to \"Button Slots\" [draft]",
+          "_title": {
+            "text": "Button Slots Permalink to \"Button Slots\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): Name / Description [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "default"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loading"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "icon"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Button Exposes Permalink to \"Button Exposes\" [draft]",
+          "_title": {
+            "text": "Button Exposes Permalink to \"Button Exposes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (5 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "ref"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "type"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "shouldAddSpace"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "ButtonGroup API Permalink to \"ButtonGroup API\" [draft]",
+      "_title": {
+        "text": "ButtonGroup API Permalink to \"ButtonGroup API\""
+      },
+      "_lines": [
+        {
+          "_intent": "ButtonGroup Attributes Permalink to \"ButtonGroup Attributes\" [draft]",
+          "_title": {
+            "text": "ButtonGroup Attributes Permalink to \"ButtonGroup Attributes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "size"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "type"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "direction 2.11.9"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "ButtonGroup Slots Permalink to \"ButtonGroup Slots\" [draft]",
+          "_title": {
+            "text": "ButtonGroup Slots Permalink to \"ButtonGroup Slots\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (1 rows): Name / Description / Subtags [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "default"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Source Permalink to \"Source\" [draft]",
+      "_title": {
+        "text": "Source Permalink to \"Source\""
+      },
+      "_summary": {
+        "text": "Component • Style • Docs"
+      }
+    },
+    {
+      "_intent": "Contributors Permalink to \"Contributors\" [draft]",
+      "_title": {
+        "text": "Contributors Permalink to \"Contributors\""
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/en-US/component/button.md",
+            "label": "Edit this page on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.org/en-US/component/overview",
+            "label": "Overview"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.org/en-US/component/border",
+            "label": "Border"
+          }
+        },
+        {
+          "_intent": "Links [draft]",
+          "_title": {
+            "text": "Links"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://cn.element-plus.org/zh-CN/",
+                "label": "China Mirror 🇨🇳"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/releases",
+                "label": "Changelog"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://element.eleme.io/",
+                "label": "Element UI for Vue 2"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://element-plus.org/sitemap.xml",
+                "label": "Site Map"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Community [draft]",
+          "_title": {
+            "text": "Community"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus",
+                "label": "GitHub"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://discord.com/invite/gXK9XNzW3X",
+                "label": "Discord"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/issues",
+                "label": "Feedback"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/blob/dev/.github/CONTRIBUTING.en-US.md",
+                "label": "Contribution"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://segmentfault.com/t/element-plus",
+                "label": "SegmentFault"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

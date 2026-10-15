@@ -1,0 +1,779 @@
+{
+  "_intent": "告诉搜索 laptop 的用户站内搜索状态：80 条结果，本页展示前 10 条（MateBook 产品页与服务页，无价格——华为集团站内搜索不承载价格，价格在消费者商城）；可更换关键词、按类别过滤或翻页",
+  "_key": "huawei-site-search",
+  "_title": {
+    "text": "搜索结果"
+  },
+  "query": {
+    "_intent": "输入关键词重新搜索",
+    "_composite": "search",
+    "_label": {
+      "text": "请输入关键字"
+    },
+    "_expose": {
+      "name": "keyword",
+      "type": "text"
+    },
+    "_default": {
+      "text": "笔记本"
+    },
+    "submit": {
+      "_intent": "捕获的搜索提交功能，无实际提交目标，不编造 endpoint。",
+      "_action": {
+        "verb": "submit"
+      }
+    }
+  },
+  "filters": {
+    "_intent": "按内容类别过滤搜索结果，类别名后的数字是各类别结果数",
+    "_title": {
+      "text": "类别"
+    },
+    "_items": [
+      {
+        "_key": "cat-all",
+        "_name": {
+          "text": "全部 (80)"
+        }
+      },
+      {
+        "_key": "cat-product",
+        "_name": {
+          "text": "产品与解决方案 (12)"
+        }
+      },
+      {
+        "_key": "cat-support",
+        "_name": {
+          "text": "服务支持 (33)"
+        }
+      },
+      {
+        "_key": "cat-discuss",
+        "_name": {
+          "text": "技术探讨 (3)"
+        }
+      },
+      {
+        "_key": "cat-news",
+        "_name": {
+          "text": "新闻与活动 (12)"
+        }
+      }
+    ],
+    "_expose": {
+      "name": "category",
+      "type": "text"
+    },
+    "reset": {
+      "_intent": "清空类别筛选，回到全部",
+      "_title": {
+        "text": "重置"
+      },
+      "_action": {
+        "verb": "operate",
+        "label": "重置"
+      }
+    },
+    "_default": {
+      "text": "全部 (80)"
+    }
+  },
+  "sort": {
+    "_intent": "捕获的当前排序值与改变排序动作，不建任意文本输入、不编造选项或网络地址。",
+    "_text": {
+      "text": "相关性"
+    },
+    "_action": {
+      "verb": "select"
+    }
+  },
+  "results": {
+    "_intent": "当前关键词下的命中结果：80 条，本页 10 条，每条为来源站点的一个页面（标题 + 摘要 + 来源站点）",
+    "_count": {
+      "num": 80,
+      "unit": "条结果"
+    },
+    "_items": [
+      {
+        "_name": {
+          "text": "华为笔记本 - 华为官网"
+        },
+        "_summary": {
+          "text": "探索并选购华为最新笔记本，了解 MateBook X 系列、MateBook GT 系列、MateBook 系列、MateBook E 系列、MateBook D 系列笔记本。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/laptops/"
+        }
+      },
+      {
+        "_name": {
+          "text": "HUAWEI MateBook Pro - 华为官网"
+        },
+        "_summary": {
+          "text": "HUAWEI MateBook Pro,首款鸿蒙笔记本电脑,搭载鸿蒙 AI 小艺，生产力效率起飞。轻至 970 克，采用 OLED 云晰柔光屏。鸿蒙互联，支持手眼同行功能。隐私安全由你掌控，畅享纯净安全体验。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/harmonyos-computer/matebook-pro/"
+        },
+        "_image": {
+          "image": "../assets/62-huawei-cn-search-laptop-bf445fa113c9.png",
+          "alt": ""
+        }
+      },
+      {
+        "_name": {
+          "text": "华为鸿蒙电脑 - 华为官网"
+        },
+        "_summary": {
+          "text": "探索并选购华为最新鸿蒙电脑，了解 HUAWEI MateBook Fold 非凡大师、HUAWEI MateBook Pro 及鸿蒙操作系统 5，购买华为鸿蒙电脑享受便捷服务。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/harmonyos-computer/"
+        }
+      },
+      {
+        "_name": {
+          "text": "HUAWEI MateBook Fold 非凡大师 - 华为官网"
+        },
+        "_summary": {
+          "text": "HUAWEI MateBook Fold 非凡大师，一折一展，落笔非凡。全新 UTG 玻璃，配合 HUAWEI M-Pen 3 支持智慧手写。搭载 HarmonyOS 6.1 和麒麟X90 Plus 处理器。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/harmonyos-computer/matebook-fold-ultimate-design/"
+        },
+        "_image": {
+          "image": "../assets/62-huawei-cn-search-laptop-f117a9f99bfc.png",
+          "alt": ""
+        }
+      },
+      {
+        "_name": {
+          "text": "HUAWEI MateBook GT 14 - 华为官网"
+        },
+        "_summary": {
+          "text": "锐薄先锋设计，楔形金属机身，霸气外露；115W Turbo 超能释放，爆发全新威力；游戏、剪辑、创作，强悍每一面；14.2英寸超广色域 OLED 悬浮屏，覆盖三色域，溢出屏幕的绚丽；华为天王星散热系统，喷气式直出风设计，散热大提升；专业接口大满贯，创意全方位施展；140W超级快充，420米超远联网，精彩玩不停。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/laptops/matebook-gt-14/"
+        },
+        "_image": {
+          "image": "../assets/62-huawei-cn-search-laptop-d07372fe2736.png",
+          "alt": ""
+        }
+      },
+      {
+        "_name": {
+          "text": "HUAWEI MateBook D 14 2024 13 代酷睿版 - 华为官网"
+        },
+        "_summary": {
+          "text": "HUAWEI MateBook D 14 2024 全新来袭。屏幕比例大升级，16:10 黄金比例，兼顾娱乐与办公。新一代轻薄金属机身，一如既往的好品质。华为超材料天线，270 米超远连接，让无线网络精彩不限。超级终端，二级手机平板一拉即连，全新支持无线耳机静谧空间，让会议更聚焦。超级中转站，跨设备复制粘贴，办公效率更高。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/laptops/matebook-d-14-2024-13th-gen-core/"
+        },
+        "_image": {
+          "image": "../assets/62-huawei-cn-search-laptop-25a7edb74e77.png",
+          "alt": ""
+        }
+      },
+      {
+        "_name": {
+          "text": "HUAWEI MateBook D 16 2024 - 华为官网"
+        },
+        "_summary": {
+          "text": "HUAWEI MateBook D 16 2024 搭载 16:10 黄金办公比例全面屏，让办公视野大增。专为办公设计的数字小键盘，更适合重度办公。HUAWEI MateBook D 16 2024 搭载第十二代英特尔®酷睿TM i5 处理器，性能大爆发，接口更丰富，还有，更支持超级终端多设备合作，带来全新办公体验。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/laptops/matebook-d-16-2024/"
+        },
+        "_image": {
+          "image": "../assets/62-huawei-cn-search-laptop-483d7c298376.png",
+          "alt": ""
+        }
+      },
+      {
+        "_name": {
+          "text": "HUAWEI MateBook X Pro 酷睿 Ultra 微绒典藏版 - 华为官网"
+        },
+        "_summary": {
+          "text": "HUAWEI MateBook X Pro 酷睿 Ultra 微绒典藏版，轻至 980 克微绒金属机身，飞跃线设计，至轻至薄；配备柔性 OLED 原色屏，画面令人惊艳；英特尔®酷睿™ Ultra 9 高性能处理器，繁重任务举重若轻。还有多种 AI 能力，释放你的超能力。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/laptops/matebook-x-pro-ultra-premium-edition/"
+        },
+        "_image": {
+          "image": "../assets/62-huawei-cn-search-laptop-2cdf522d2b97.png",
+          "alt": ""
+        }
+      },
+      {
+        "_name": {
+          "text": "HUAWEI MateBook 14 酷睿 Ultra - 华为官网"
+        },
+        "_summary": {
+          "text": "HUAWEI MateBook 14 酷睿 Ultra，原野绿一见清新。14.2 英寸 OLED 触控屏， 120 Hz 高刷屏搭配 2.8K 分辨率，清晰细腻。获得莱茵 TÜV Eye Comfort 2.0 认证，支持 1920 Hz 高频调光，舒适护眼。搭载第一代英特尔®酷睿™ Ultra 处理器，提供强大生产力。全新酷睿™ Ultra 处理器集成 AI 专属加速芯片 NPU，释放本地超强 AIGC 能力。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/laptops/matebook-14-2024/"
+        },
+        "_image": {
+          "image": "../assets/62-huawei-cn-search-laptop-d3f37165db2d.png",
+          "alt": ""
+        }
+      },
+      {
+        "_name": {
+          "text": "华为笔记本电脑服务 | 华为官网"
+        },
+        "_summary": {
+          "text": "了解华为笔记本更多设置，获取MateBook的常见问题解决方案以及维修服务相关资讯，让你的MateBook之旅更加轻松便捷。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/support/laptops/"
+        }
+      }
+    ],
+    "pagination": {
+      "_intent": "结果分页控件行：第 1 页（当前页），共 8 页；源站为 javascript:void 链接，捕获 DOM 未给出真实地址 ⇒ 保持控件观感（不造 <a href>）",
+      "_composite": "paginator",
+      "_ref": {
+        "ref": "/results"
+      },
+      "_items": [
+        {
+          "_key": "page-1",
+          "_name": {
+            "text": "1"
+          },
+          "_action": {
+            "verb": "navigate"
+          }
+        },
+        {
+          "_name": {
+            "text": "2"
+          },
+          "_action": {
+            "verb": "navigate"
+          }
+        },
+        {
+          "_name": {
+            "text": "3"
+          },
+          "_action": {
+            "verb": "navigate"
+          }
+        },
+        {
+          "_name": {
+            "text": "4"
+          },
+          "_action": {
+            "verb": "navigate"
+          }
+        },
+        {
+          "_name": {
+            "text": "5"
+          },
+          "_action": {
+            "verb": "navigate"
+          }
+        },
+        {
+          "_name": {
+            "text": "..."
+          },
+          "_action": {
+            "verb": "navigate"
+          }
+        },
+        {
+          "_name": {
+            "text": "8"
+          },
+          "_action": {
+            "verb": "navigate"
+          }
+        }
+      ]
+    }
+  },
+  "footer": {
+    "_intent": "捕获并可见的支持/公司/法律页脚入口及原文说明，不重建 cookie 行为。",
+    "_items": [
+      {
+        "_title": {
+          "text": "首页"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "首页",
+          "to": "https://www.huawei.com/cn"
+        }
+      },
+      {
+        "_title": {
+          "text": "公司简介"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "公司简介",
+          "to": "https://www.huawei.com/cn/corporate-information"
+        }
+      },
+      {
+        "_title": {
+          "text": "可持续发展"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "可持续发展",
+          "to": "https://www.huawei.com/cn/sustainability"
+        }
+      },
+      {
+        "_title": {
+          "text": "信任中心"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "信任中心",
+          "to": "https://www.huawei.com/cn/trust-center"
+        }
+      },
+      {
+        "_title": {
+          "text": "管理层信息"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "管理层信息",
+          "to": "https://www.huawei.com/cn/executives"
+        }
+      },
+      {
+        "_title": {
+          "text": "招贤纳士"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "招贤纳士",
+          "to": "https://career.huawei.com/cn"
+        }
+      },
+      {
+        "_title": {
+          "text": "供应商"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "供应商",
+          "to": "https://supplier.huawei.com/supplier/"
+        }
+      },
+      {
+        "_title": {
+          "text": "查看更多"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "查看更多",
+          "to": "https://www.huawei.com/cn/about-huawei"
+        }
+      },
+      {
+        "_title": {
+          "text": "新闻"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "新闻",
+          "to": "https://www.huawei.com/cn/news"
+        }
+      },
+      {
+        "_title": {
+          "text": "展会活动"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "展会活动",
+          "to": "https://www.huawei.com/cn/events"
+        }
+      },
+      {
+        "_title": {
+          "text": "多媒体"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "多媒体",
+          "to": "https://www.huawei.com/cn/gallery"
+        }
+      },
+      {
+        "_title": {
+          "text": "华为技术专栏"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "华为技术专栏",
+          "to": "https://www.huawei.com/cn/huaweitech"
+        }
+      },
+      {
+        "_title": {
+          "text": "智能世界2035"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "智能世界2035",
+          "to": "https://www.huawei.com/cn/giv"
+        }
+      },
+      {
+        "_title": {
+          "text": "迈向智能世界"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "迈向智能世界",
+          "to": "https://www.huawei.com/cn/intelligent-world#striding"
+        }
+      },
+      {
+        "_title": {
+          "text": "全球数智化指数"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "全球数智化指数",
+          "to": "https://www.huawei.com/minisite/gdii/cn/"
+        }
+      },
+      {
+        "_title": {
+          "text": "出版物"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "出版物",
+          "to": "https://www.huawei.com/cn/publications"
+        }
+      },
+      {
+        "_title": {
+          "text": "个人及家庭产品"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "个人及家庭产品",
+          "to": "https://consumer.huawei.com/cn/"
+        }
+      },
+      {
+        "_title": {
+          "text": "企业业务产品"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "企业业务产品",
+          "to": "https://e.huawei.com/cn/"
+        }
+      },
+      {
+        "_title": {
+          "text": "运营商网络产品"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "运营商网络产品",
+          "to": "https://carrier.huawei.com/cn/"
+        }
+      },
+      {
+        "_title": {
+          "text": "华为云服务"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "华为云服务",
+          "to": "https://www.huaweicloud.com/product/"
+        }
+      },
+      {
+        "_title": {
+          "text": "数字能源产品"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "数字能源产品",
+          "to": "https://digitalpower.huawei.com/cn"
+        }
+      },
+      {
+        "_title": {
+          "text": "消费者技术支持"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "消费者技术支持",
+          "to": "https://consumer.huawei.com/cn/support/"
+        }
+      },
+      {
+        "_title": {
+          "text": "华为云技术支持"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "华为云技术支持",
+          "to": "https://support.huaweicloud.com/"
+        }
+      },
+      {
+        "_title": {
+          "text": "企业技术支持"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "企业技术支持",
+          "to": "https://support.huawei.com/enterprise/zh/index.html"
+        }
+      },
+      {
+        "_title": {
+          "text": "运营商技术支持"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "运营商技术支持",
+          "to": "https://support.huawei.com/carrier"
+        }
+      },
+      {
+        "_title": {
+          "text": "数字能源技术支持"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "数字能源技术支持",
+          "to": "https://digitalpower.huawei.com/cn/service/support"
+        }
+      },
+      {
+        "_title": {
+          "text": "安全应急响应"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "安全应急响应",
+          "to": "https://www.huawei.com/cn/psirt"
+        }
+      },
+      {
+        "_title": {
+          "text": "华为商城"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "华为商城",
+          "to": "https://www.vmall.com/?cid=122288"
+        }
+      },
+      {
+        "_title": {
+          "text": "华为云"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "华为云",
+          "to": "https://www.huaweicloud.com/"
+        }
+      },
+      {
+        "_title": {
+          "text": "华为JDC社区"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "华为JDC社区",
+          "to": "https://jdc.huawei.com/"
+        }
+      },
+      {
+        "_title": {
+          "text": "华为心声社区"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "华为心声社区",
+          "to": "https://xinsheng.huawei.com/"
+        }
+      },
+      {
+        "_title": {
+          "text": "粤A2-20044005号"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "粤A2-20044005号",
+          "to": "https://beian.miit.gov.cn/"
+        }
+      },
+      {
+        "_title": {
+          "text": "粤公网安备44030702002388号"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "粤公网安备44030702002388号",
+          "to": "https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030702002388"
+        }
+      },
+      {
+        "_title": {
+          "text": "联系我们"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "联系我们",
+          "to": "https://www.huawei.com/cn/contact-us"
+        }
+      },
+      {
+        "_title": {
+          "text": "法律声明"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "法律声明",
+          "to": "https://www.huawei.com/cn/legal"
+        }
+      },
+      {
+        "_title": {
+          "text": "隐私政策"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "隐私政策",
+          "to": "https://www.huawei.com/cn/privacy-policy"
+        }
+      },
+      {
+        "_title": {
+          "text": "除名查询"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "除名查询",
+          "to": "https://www.huawei.com/cn/terminations"
+        }
+      }
+    ],
+    "copyright": {
+      "_text": {
+        "text": "版权所有 © 1998-2026 华为技术有限公司"
+      }
+    }
+  },
+  "navigation": {
+    "_intent": "捕获的可见顶栏导航入口，不展开隐藏菜单或重造品牌标题。",
+    "_items": [
+      {
+        "_title": {
+          "text": "个人及家庭产品"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "个人及家庭产品",
+          "to": "javascript:;"
+        }
+      },
+      {
+        "_title": {
+          "text": "商用产品及方案"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "商用产品及方案",
+          "to": "javascript:;"
+        }
+      },
+      {
+        "_title": {
+          "text": "服务支持"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "服务支持",
+          "to": "javascript:;"
+        }
+      },
+      {
+        "_title": {
+          "text": "合作伙伴与开发者"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "合作伙伴与开发者",
+          "to": "javascript:;"
+        }
+      },
+      {
+        "_title": {
+          "text": "关于华为"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "关于华为",
+          "to": "javascript:;"
+        }
+      }
+    ]
+  }
+}

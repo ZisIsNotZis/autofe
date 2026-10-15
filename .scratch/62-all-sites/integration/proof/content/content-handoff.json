@@ -1,0 +1,833 @@
+{
+  "refs": {
+    "baseline": "refs/autofe-private/62-all-sites-baseline",
+    "baselineCommit": "403cd5be096db89b428e130ad57cca730b425fdc",
+    "privateRef": "refs/autofe-private/62-all-sites-content-4c82bb77ae16",
+    "commit": "4c82bb77ae162ca4df9b843da74da11972934a2b",
+    "earlierRecoveryCommit": "c26a054a37aa26fb4ef530f01374697cb65b4d84"
+  },
+  "patch": {
+    "path": "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/content-baseline-relative.patch",
+    "sha256": "469641dbc46b9610d86b47d36a605cf3eb13d3d2a70ef3b8ba4dcc2f6d902504",
+    "relativeTo": "refs/autofe-private/62-all-sites-baseline"
+  },
+  "files": [
+    "m1/curated/36kr-com/home.json",
+    "m1/curated/36kr-com/information-technology.json",
+    "m1/curated/36kr-com/search-ai.json",
+    "m1/curated/36kr-com/search-viz.json",
+    "m1/curated/aliyun-com/product-ecs.json",
+    "m1/curated/apple-com/iphone-16.json",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-0050b694bb0e.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-0105f2548b1c.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-2123e3e3bcce.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-26a61b6694f6.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-2755bb22f7e6.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-378c7e389add.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-3c86d90b21a6.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-3d9333709bbe.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-585a4db88609.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-7cd90a09b522.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-9d7293901db4.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-a334bb5de8cb.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-a37187b1775e.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-a9ce73117084.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-b0874ade6968.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-b4ea71f15cda.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-b74d90e0090b.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-f505c77cd446.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-fb6ffa8ae6ed.webp",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-fcaac1b59fc8.webp",
+    "m1/curated/assets/62-huawei-cn-consumer-phones-5b5d6ddeacea.png",
+    "m1/curated/assets/62-huawei-cn-search-laptop-25a7edb74e77.png",
+    "m1/curated/assets/62-huawei-cn-search-laptop-2cdf522d2b97.png",
+    "m1/curated/assets/62-huawei-cn-search-laptop-483d7c298376.png",
+    "m1/curated/assets/62-huawei-cn-search-laptop-bf445fa113c9.png",
+    "m1/curated/assets/62-huawei-cn-search-laptop-d07372fe2736.png",
+    "m1/curated/assets/62-huawei-cn-search-laptop-d3f37165db2d.png",
+    "m1/curated/assets/62-huawei-cn-search-laptop-f117a9f99bfc.png",
+    "m1/curated/assets/62-huawei-cn-search-phone-385798fdf4ed.png",
+    "m1/curated/assets/62-huawei-cn-search-phone-8f234dda5c50.png",
+    "m1/curated/assets/62-huawei-cn-search-phone-d54b0cb435e1.png",
+    "m1/curated/assets/62-learn-microsoft-vm-sizes-46d4bcfd2844.png",
+    "m1/curated/assets/62-learn-microsoft-vm-sizes-a4669a60fcd7.png",
+    "m1/curated/assets/62-linear-demo-0.png",
+    "m1/curated/assets/62-linear-demo-1.png",
+    "m1/curated/assets/62-linear-demo-2.png",
+    "m1/curated/assets/62-linear-demo-3.png",
+    "m1/curated/assets/62-linear-demo-4.png",
+    "m1/curated/assets/62-mi-com-search-earbuds-1dfc37e98511.webp",
+    "m1/curated/assets/62-mi-com-search-earbuds-356b6df0db98.webp",
+    "m1/curated/assets/62-mi-com-search-earbuds-46ec0f329cbf.webp",
+    "m1/curated/assets/62-mi-com-search-earbuds-877a40ecb953.webp",
+    "m1/curated/assets/62-mi-com-search-earbuds-9547c61e4352.webp",
+    "m1/curated/assets/62-mi-com-search-earbuds-b2a4a48da7f3.webp",
+    "m1/curated/assets/62-mi-com-search-earbuds-bf98db6e1e7c.webp",
+    "m1/curated/assets/62-mi-com-search-earbuds-ca5428740759.webp",
+    "m1/curated/assets/62-mi-com-search-earbuds-d3fb80bc6cc0.webp",
+    "m1/curated/assets/62-mi-com-search-earbuds-ffc344f9ab7c.webp",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-157caadd3206.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-18eacc5da6a4.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-1aa06641b371.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-2250c820d00a.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-6d8ae186e0a9.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-70fcdbb71fa5.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-7c5e50de495e.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-9f76160d2b66.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-ab545926c506.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-af05f2a5e33a.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-af7e592291bf.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-bac240725810.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-c9af0146d446.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-cbab2ce54a8e.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-d094ff0453fc.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-ebc5474c33dc.png",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-f27fbf732a3f.png",
+    "m1/curated/assets/62-recovered-sspai-com-post-102392-3b701a022274.png",
+    "m1/curated/assets/62-recovered-sspai-com-post-102392-b706ea74e3d8.png",
+    "m1/curated/assets/62-recovered-sspai-com-post-102392-ca24cb3e108d.png",
+    "m1/curated/assets/62-recovered-sspai-com-post-102392-e18bd7f117f1.png",
+    "m1/curated/assets/62-recovered-sspai-com-post-114699-60a0194657d1.png",
+    "m1/curated/assets/62-recovered-sspai-com-post-114699-7a7278dfc412.png",
+    "m1/curated/assets/62-recovered-sspai-com-post-114699-f1d98ed9df56.png",
+    "m1/curated/assets/62-recovered-sspai-com-u-jtc092al-0a82e438340e.png",
+    "m1/curated/assets/62-recovered-sspai-com-u-jtc092al-0c54e4954054.png",
+    "m1/curated/assets/62-recovered-sspai-com-u-jtc092al-342d9f595639.png",
+    "m1/curated/assets/62-recovered-sspai-com-u-jtc092al-99d1ee415770.png",
+    "m1/curated/assets/62-stripe-docs-payments-90c09fe726e7.png",
+    "m1/curated/bilibili-com/video-bv1gj411x7h7.json",
+    "m1/curated/github-com/login.json",
+    "m1/curated/gov-uk/ni-rates-letters.json",
+    "m1/curated/huawei-cn/consumer-phones.json",
+    "m1/curated/huawei-cn/home.json",
+    "m1/curated/huawei-cn/search-laptop.json",
+    "m1/curated/huawei-cn/search-phone.json",
+    "m1/curated/learn-microsoft/vm-sizes.json",
+    "m1/curated/linear-app/home.json",
+    "m1/curated/mi-com/home.json",
+    "m1/curated/mi-com/search-earbuds.json",
+    "m1/curated/mi-com/search-phone.json",
+    "m1/curated/mi-com/shop-category-list.json",
+    "m1/curated/sspai-com/home.json",
+    "m1/curated/sspai-com/matrix.json",
+    "m1/curated/sspai-com/post-102392.json",
+    "m1/curated/sspai-com/post-114699.json",
+    "m1/curated/sspai-com/u-jtc092al.json",
+    "m1/curated/stripe-dashboard/login.json",
+    "m1/curated/stripe-docs/payments.json",
+    "m1/curated/xiaomi-account/login.json"
+  ],
+  "hashes": {
+    "m1/curated/36kr-com/home.json": "3e82cbb5d73d3301abe82a544fa11fbfca58c5a13ed6a799965212f77114d872",
+    "m1/curated/36kr-com/information-technology.json": "7b9efb1706e555b6667c84ddc61bcfea418ef1e0e701bb66141d3ab615a68c1b",
+    "m1/curated/36kr-com/search-ai.json": "393bf45bee93b54cbdd89df825826698d70902ffe5c56105b519937a39f8ddbb",
+    "m1/curated/36kr-com/search-viz.json": "34d58923727352f17da3616771afe3d50c7f024112be9e56308be87bae9bcd7d",
+    "m1/curated/aliyun-com/product-ecs.json": "5e9ccff734981f230799b385e104e3f3a5f6edd3f8b4bd700a7214b294280785",
+    "m1/curated/apple-com/iphone-16.json": "4252a8214634f8cb856e1cdb0f3ec831234818fd7f13947503413aec5d188446",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-0050b694bb0e.webp": "de71f914325fcd1b987c6590fadea36e2bd28acb1eff04b164eae1f263734894",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-0105f2548b1c.webp": "a2daf92d7c855046f03c6490cb5d61658be3da23b74a8c1007c07675917b4133",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-2123e3e3bcce.webp": "71bfd0ac788494abfe6cfd248ead33a66c51d695289d3716b32548703b5aab03",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-26a61b6694f6.webp": "9da7e6b1ac040bf8c2e292157f78f5ed525f4d852c16f9464bcf665b79b4c940",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-2755bb22f7e6.webp": "dd424ed33e85bac80d7211d0ca72da3f8a49c1bbeaee37071c02d19358123ae4",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-378c7e389add.webp": "828aced6e41ae01dd273cb6fe9b41e773a02055b03eb682561a60bb60261fc3e",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-3c86d90b21a6.webp": "8232920af9c69512b6d8f4bfa2eb571e62d4fe8fe0a99f7131137e3075e74941",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-3d9333709bbe.webp": "245a35932bcfca5603215a0102dbd60f30d29b776b644f517ceabeb989c17c8e",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-585a4db88609.webp": "46898fa3b2908e1a61316a6076c8c4b7d48d93bfc933f44bccfd68c63bdd060d",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-7cd90a09b522.webp": "2ab67108f4c7c48f39d989ef06571d3089bce5303862ab6e56da5d787a70b104",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-9d7293901db4.webp": "0c11163fa6097d33db255dbfa17fb7c10772c03509c1bdae22c84a0253570231",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-a334bb5de8cb.webp": "3219355f644ab2b395fd88d2710cac4fa394df43a584591f924d9cdcf4b82e6e",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-a37187b1775e.webp": "83e5bd40e1cdd5cef18bf31c28974b5cbd59f4edddbd5692197f631997823b13",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-a9ce73117084.webp": "5e51e8fd26d59b8fd590874ad5921f629e8ffff5510437b6e85b6fcfc4d62e0d",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-b0874ade6968.webp": "7f8a387c398c44fcacdafb41839ca650c733204703176cdb75dbe5fa4477a7f8",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-b4ea71f15cda.webp": "9f39d0ebe9a306d565328696b3296ccad2c9e81b2306cc46b4ebb9103ab18ad6",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-b74d90e0090b.webp": "353bedddb67aed0b38f3bf0062a8a50ba8f4989e5b4e725172b15c72e31bf2fe",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-f505c77cd446.webp": "a4094be858a5ce3839344c61364ca97f4238df09c4ee7f0d90db3e918747bd6c",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-fb6ffa8ae6ed.webp": "f699782cc5801e144426bb86109e1e57ef919d2ac388332bb3289cb16987b78d",
+    "m1/curated/assets/62-bilibili-com-video-bv1gj411x7h7-fcaac1b59fc8.webp": "eac11a0b1d3aaa1cf10cb0af1093add50a4a0454fae058e76f8a0f709922df20",
+    "m1/curated/assets/62-huawei-cn-consumer-phones-5b5d6ddeacea.png": "86847b207ed40ea6f67b500679f2cd53d7649f593a40d11c1c2d312a4a7f5fd3",
+    "m1/curated/assets/62-huawei-cn-search-laptop-25a7edb74e77.png": "fb312ae8cab6cd77fa5a9d9799abebd97d71b2637e0714eeb054fc4351d535fb",
+    "m1/curated/assets/62-huawei-cn-search-laptop-2cdf522d2b97.png": "2fdf43c4c9e059b0d94629663cf3e6b1697c2e23ed975d8f14bd279f2cbf5e00",
+    "m1/curated/assets/62-huawei-cn-search-laptop-483d7c298376.png": "1a4d952d03fa5fdc22993e27a7b91bcfbabc22812a54f5377470d1e46a0324f8",
+    "m1/curated/assets/62-huawei-cn-search-laptop-bf445fa113c9.png": "7516465749cca318d6d31d3690cf8840f7bdac3ad538987394746d168930b722",
+    "m1/curated/assets/62-huawei-cn-search-laptop-d07372fe2736.png": "ee376926e9f2f9d3e83070efc25e9de58041c3540d58d60122b1dd1335b6ae2e",
+    "m1/curated/assets/62-huawei-cn-search-laptop-d3f37165db2d.png": "b95c387c849c32732cc72f69c8fe5cf3a66f85029733559f0743e26d067da742",
+    "m1/curated/assets/62-huawei-cn-search-laptop-f117a9f99bfc.png": "7f4d2497dc6cde82cab7d98d23474443d4c6a036d7f4dc327b06e9d59c3b2f02",
+    "m1/curated/assets/62-huawei-cn-search-phone-385798fdf4ed.png": "5fa0acb2147dbdb3140e79fb1bbb42dc40172ee86633f67b7369a2823e40638f",
+    "m1/curated/assets/62-huawei-cn-search-phone-8f234dda5c50.png": "5f72f157e2a032a4e3eb1fdb2d44cfece6efc5eb98742666487728f53d062b1e",
+    "m1/curated/assets/62-huawei-cn-search-phone-d54b0cb435e1.png": "965fa2ab167371bd7b552acec7e0d7d48a83cad773f683a0acd2591be3f6f387",
+    "m1/curated/assets/62-learn-microsoft-vm-sizes-46d4bcfd2844.png": "833340219e3f8f83b869e3221c9d8c5eb36c3157c6c768fff70b17c29f2782bc",
+    "m1/curated/assets/62-learn-microsoft-vm-sizes-a4669a60fcd7.png": "eb4e8bf32c81118d45a3b8cd1d62be853d7c6fe67614cefd2873f1f812e050fd",
+    "m1/curated/assets/62-linear-demo-0.png": "24e34e71237d499980d2864521b9d3623af499dcfcf19724316b314ce74a14f7",
+    "m1/curated/assets/62-linear-demo-1.png": "67c2f46c87371416e2dda6f719c95af7db6ea66e399580ceac8608e8c432d9d5",
+    "m1/curated/assets/62-linear-demo-2.png": "84b3778f81a0e909cd666c2e81f47df0076b292d011a0248d80f6efe8ddfa169",
+    "m1/curated/assets/62-linear-demo-3.png": "88eb0d1c5c342ae57657cbcd4bbf8ce1e10d0bdd10b60eee3bda0eba67af766d",
+    "m1/curated/assets/62-linear-demo-4.png": "91cb6995554a60c47263c84c488bd5437fde1e2c53f0ec50961e88d6f3f0ffee",
+    "m1/curated/assets/62-mi-com-search-earbuds-1dfc37e98511.webp": "be9996eec39b8b289af8969ebc8c2afdec7494f90ff1779a547f1a1a4673c5be",
+    "m1/curated/assets/62-mi-com-search-earbuds-356b6df0db98.webp": "ba877f8b57bc2ae0764e04c4c6264ccb4e990e7fd7b3d409df19e53bf67d7ca8",
+    "m1/curated/assets/62-mi-com-search-earbuds-46ec0f329cbf.webp": "b452825b52840166d0646aca3260f8f079619695ab583ac9afbd2c02287559d5",
+    "m1/curated/assets/62-mi-com-search-earbuds-877a40ecb953.webp": "56fc9c2f959b5d62bceb6a76f858f6406924d4a39a6e0d5c53d5c8c8d022c16f",
+    "m1/curated/assets/62-mi-com-search-earbuds-9547c61e4352.webp": "4254562210395f734d9ddb6d2db1c3cf48cab5d7d3077d60ad53cdb2b12c4351",
+    "m1/curated/assets/62-mi-com-search-earbuds-b2a4a48da7f3.webp": "e729e73e41bb8d084476abde2d3b514b1467a80aca0c4c21b06b7cfc9ff8746a",
+    "m1/curated/assets/62-mi-com-search-earbuds-bf98db6e1e7c.webp": "62d75f2e24b4451e317eb8449d9831aa96f3a8cf0bd944afbf20ec6980e61b54",
+    "m1/curated/assets/62-mi-com-search-earbuds-ca5428740759.webp": "12455f722b48d5f62544404b295723b5319692a315ed09492a3e3f0f61d04b79",
+    "m1/curated/assets/62-mi-com-search-earbuds-d3fb80bc6cc0.webp": "fedf83693815963b70dcc56b330c15ae78b45a99e4c47c260faf832ca84aade7",
+    "m1/curated/assets/62-mi-com-search-earbuds-ffc344f9ab7c.webp": "b14bc8e20d04a4c030d3e5951608915ca3cc6bcbce522d67c6fce02919527777",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-157caadd3206.png": "b8740f81b0fa3d4774bb0ea7d33ad31e126d743dc5b3a7541443315acb4bd432",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-18eacc5da6a4.png": "573d10e1fa3cd350f3b60e5e4626310068a1da61072c27d8daec8e247220f441",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-1aa06641b371.png": "e778dc27578c508187ee34c88e5dc7f29f2f2a102e1d4b6f1cf5ab92260678ef",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-2250c820d00a.png": "86335fd13445f22056244ad1083de2e8841cc0fe93e5b3399c552e1cdd11ecfc",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-6d8ae186e0a9.png": "4c3da51f5ed44c3ea8af9d6cba1bc50eeef93ce3b678d25712b5f66c668bb75e",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-70fcdbb71fa5.png": "9493a5398adad24bbf444a03aae4c5174eef6dc47a2a0a621dc0f170683fa864",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-7c5e50de495e.png": "0087bfcdc1e9eb8a42665ecf323e9077a87f96d3687aab7d9b44dd042b7ab14a",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-9f76160d2b66.png": "3e5ca4da8e19e92a654509c5ecb41d44c38aa1c5aeeeced7117b57f83a1c0c90",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-ab545926c506.png": "6213c6e4209bdc1723e829e4632e6fdd0484b359a40226e871014e519bc1f8c6",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-af05f2a5e33a.png": "e12d5fb6d67130c4c652af79b6fa140809eae61052c505d3ac9778d7207dcd78",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-af7e592291bf.png": "ee6afc9f9972c06358670d69957d66fe16b6ddde7959e3f86ce76d85672771dd",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-bac240725810.png": "73a0fd732bf1e75e7157adeb4ddfb88d9f6dc9325649464fa5ee44411c08ada0",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-c9af0146d446.png": "75e44a61ddddac096e3937c38c5243083832060b5f9e923cc0a9aacf805acd93",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-cbab2ce54a8e.png": "e8b628ed2a454aba59a965a29bc635ba539507d6134a4db2b76f69dfa7aefdc7",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-d094ff0453fc.png": "f6695f97f5f542f572354fdddaf9dd823bd960e7dac33fbd924030161f8be086",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-ebc5474c33dc.png": "9f8555c1c2991c5089b9262a97bd2a1f5efa0a085201f3c291462d12cdd20cdb",
+    "m1/curated/assets/62-recovered-sspai-com-matrix-f27fbf732a3f.png": "4377df37ed4dae786bf0ad6ebbe42d89466f09d99bb4f4e0c8a1a827d44197d4",
+    "m1/curated/assets/62-recovered-sspai-com-post-102392-3b701a022274.png": "1169374f720ab77c3640ebf371d9d29b169a133552f85acc3bff862e958616eb",
+    "m1/curated/assets/62-recovered-sspai-com-post-102392-b706ea74e3d8.png": "373e0e7313c3f6876d76f713962946e4ac776ae9347065effa2d94688b2e291f",
+    "m1/curated/assets/62-recovered-sspai-com-post-102392-ca24cb3e108d.png": "5441091e2c8e384339d2bb21b4441c7a0f9e2c628ced00138f8e6c03aecf012b",
+    "m1/curated/assets/62-recovered-sspai-com-post-102392-e18bd7f117f1.png": "ba1218092692f9da4e284bf07133b34d46b4ed8b50af84526e6b523ac1f5e9e5",
+    "m1/curated/assets/62-recovered-sspai-com-post-114699-60a0194657d1.png": "102073083886f73b3dc87624599e30e897ea03a1ec8daacd6cc81b6596e13107",
+    "m1/curated/assets/62-recovered-sspai-com-post-114699-7a7278dfc412.png": "fb591980e5f886aab373f17a563fdd9e95c62a79183d4adbfd1b319d0659b8ef",
+    "m1/curated/assets/62-recovered-sspai-com-post-114699-f1d98ed9df56.png": "548b950ad6e1eb73fb5741570e64944ea2dbf34d86d59dcf6162778eb1466a8b",
+    "m1/curated/assets/62-recovered-sspai-com-u-jtc092al-0a82e438340e.png": "ecf6dfedc6b57d2cf8b5cbf3b5550d8af87425e8a1adce4c77b1a7cee9db4ba0",
+    "m1/curated/assets/62-recovered-sspai-com-u-jtc092al-0c54e4954054.png": "445f67a988e0775d5251e60beb7e0a40949f27bd6b213264aa544c19c70f0360",
+    "m1/curated/assets/62-recovered-sspai-com-u-jtc092al-342d9f595639.png": "7e319ddd766a83a63b20ba1b584ca29003b2b4fd9150425f22eb9c9eae0fc954",
+    "m1/curated/assets/62-recovered-sspai-com-u-jtc092al-99d1ee415770.png": "ecf6dfedc6b57d2cf8b5cbf3b5550d8af87425e8a1adce4c77b1a7cee9db4ba0",
+    "m1/curated/assets/62-stripe-docs-payments-90c09fe726e7.png": "4fcf216bac40bf6988997dc1acdfab9236fc4e91f7a4c49b8d56c80e4d23e50a",
+    "m1/curated/bilibili-com/video-bv1gj411x7h7.json": "dab3c25f51b9de25e1f242d02f5065e7f194d6c0aa7ef97c26a1b5e8b38e7164",
+    "m1/curated/github-com/login.json": "75603893e81412687000040139801c1fdced670439bc107877b343e1547bee97",
+    "m1/curated/gov-uk/ni-rates-letters.json": "db68c0ba04e064e63a5ad74400856c19e97d10774254a9a608b2e465125cf9b3",
+    "m1/curated/huawei-cn/consumer-phones.json": "b4bd54ecba9d2ecb3a2f471a970d0b4338d4ea1f2521f8da02196cd7fef6738c",
+    "m1/curated/huawei-cn/home.json": "40de9aa75da0674809b106fe0941104ef1d202274e95770e71ce5c406db96e27",
+    "m1/curated/huawei-cn/search-laptop.json": "64c5f58daa5bf2a518dff5d776aa50e81008c627e9748dc98d6a29814ee9e87e",
+    "m1/curated/huawei-cn/search-phone.json": "de1b79d8724ac00de8e36112c74e68ba74ec0fcd15dc20afc574b563f20afebd",
+    "m1/curated/learn-microsoft/vm-sizes.json": "dbd24c4c5de9c74b94b5b75c7db6bb7d6060d08bd54bead70cf0b6a27ff58b48",
+    "m1/curated/linear-app/home.json": "092d10898ec224f65808e00a0c6609f8d32d191455e28522675eaa422233de51",
+    "m1/curated/mi-com/home.json": "b92cd2aa266d1481d73f5f395259f43fcc351121fe4c8c8e5973af5f8624ab78",
+    "m1/curated/mi-com/search-earbuds.json": "0641c7801f140b1d0cd6c18adb2a35f2da748d5146f0d4f22af101a600f8456d",
+    "m1/curated/mi-com/search-phone.json": "88deaf146a4ae5c0ee917e43f97214caf7568e50850be3b5368ba30fc465c726",
+    "m1/curated/mi-com/shop-category-list.json": "377a9b077660cf6168f74430efe21ce9764f73dc58d09458b791c197fc3953af",
+    "m1/curated/sspai-com/home.json": "467497dc504cbf8cf5ea66066f1052f150dd221b1852c9783504a8ce30b8f421",
+    "m1/curated/sspai-com/matrix.json": "ba965b2db2814be5761f49fb43ff2fd0eba62b63edffedf0922155e5b1aba662",
+    "m1/curated/sspai-com/post-102392.json": "538f4c2b0873880ee60f621d68d37df0369ae8dfb20ce9c526fe38defa7140ef",
+    "m1/curated/sspai-com/post-114699.json": "8d08d0daf8a89af6420e544205527dd3f2aca2446935c42d4bcbf47e10ddf7cd",
+    "m1/curated/sspai-com/u-jtc092al.json": "96a11fb2658f2447311fd500343c15bc069103ac7996c61c80c358d259d19954",
+    "m1/curated/stripe-dashboard/login.json": "3d1ad5fcae3610bc060bd744a742f9b3fac261f68455eaac6041a823a2b36be6",
+    "m1/curated/stripe-docs/payments.json": "1b36f9c0d5c171038d5382a490bfc0905ee4970ec19f232aa2de76076ecc6488",
+    "m1/curated/xiaomi-account/login.json": "f52b4cd59d8e0cda1707286709678fe4bb3f4cdf426d3e6e1c7cfdf63345585b"
+  },
+  "dispositions": [
+    {
+      "page": "36kr-com/home",
+      "modelChanged": true,
+      "findings": [
+        "C3"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "36kr-com/information-technology",
+      "modelChanged": true,
+      "findings": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "36kr-com/search-ai",
+      "modelChanged": true,
+      "findings": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "36kr-com/search-viz",
+      "modelChanged": true,
+      "findings": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "aliyun-com/home",
+      "modelChanged": false,
+      "findings": [],
+      "disposition": "no factual correction identified in assigned baseline audit; not final source/experience acceptance"
+    },
+    {
+      "page": "aliyun-com/product-ecs",
+      "modelChanged": true,
+      "findings": [
+        "CB-C1",
+        "CB-C2"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "apple-com-cn/iphone-17",
+      "modelChanged": false,
+      "findings": [],
+      "disposition": "no factual correction identified in assigned baseline audit; not final source/experience acceptance"
+    },
+    {
+      "page": "apple-com/iphone-16",
+      "modelChanged": true,
+      "findings": [
+        "C3"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "apple-com/macbook-air",
+      "modelChanged": false,
+      "findings": [],
+      "disposition": "no factual correction identified in assigned baseline audit; not final source/experience acceptance"
+    },
+    {
+      "page": "aws-amazon/ec2-on-demand",
+      "modelChanged": false,
+      "findings": [],
+      "disposition": "no factual correction identified in assigned baseline audit; not final source/experience acceptance"
+    },
+    {
+      "page": "bilibili-com/read-home",
+      "modelChanged": false,
+      "findings": [],
+      "disposition": "no factual correction identified in assigned baseline audit; not final source/experience acceptance"
+    },
+    {
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "modelChanged": true,
+      "findings": [
+        "MAU-C3",
+        "MAU-C4"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "github-com/login",
+      "modelChanged": true,
+      "findings": [
+        "MAU-C1"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "gov-uk/ni-rates-letters",
+      "modelChanged": true,
+      "findings": [
+        "C1",
+        "C2"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "gov-uk/register-birth-abroad",
+      "modelChanged": false,
+      "findings": [],
+      "disposition": "no factual correction identified in assigned baseline audit; not final source/experience acceptance"
+    },
+    {
+      "page": "grafana-play/play-home",
+      "modelChanged": false,
+      "findings": [],
+      "disposition": "no factual correction identified in assigned baseline audit; not final source/experience acceptance"
+    },
+    {
+      "page": "huawei-cn/consumer-phones",
+      "modelChanged": true,
+      "findings": [
+        "H-C1",
+        "H-C2",
+        "H-C3",
+        "H-C7"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "huawei-cn/home",
+      "modelChanged": true,
+      "findings": [
+        "H-C6",
+        "H-C7",
+        "H-C8"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "huawei-cn/search-laptop",
+      "modelChanged": true,
+      "findings": [
+        "H-C3",
+        "H-C4",
+        "H-C5",
+        "H-C7"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "huawei-cn/search-phone",
+      "modelChanged": true,
+      "findings": [
+        "H-C3",
+        "H-C5",
+        "H-C7"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "learn-microsoft/vm-sizes",
+      "modelChanged": true,
+      "findings": [
+        "C3",
+        "C4"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "linear-app/home",
+      "modelChanged": true,
+      "findings": [
+        "C1",
+        "C2",
+        "C4"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "mi-com/home",
+      "modelChanged": true,
+      "findings": [
+        "MI-C1"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "mi-com/search-earbuds",
+      "modelChanged": true,
+      "findings": [
+        "MI-C1",
+        "MI-C2",
+        "MI-C5"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "mi-com/search-phone",
+      "modelChanged": true,
+      "findings": [
+        "MI-C1",
+        "MI-C2",
+        "MI-C3"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "mi-com/shop-category-list",
+      "modelChanged": true,
+      "findings": [
+        "MI-C1",
+        "MI-C2",
+        "MI-C4"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "sspai-com/home",
+      "modelChanged": true,
+      "findings": [
+        "C1",
+        "C5"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "sspai-com/matrix",
+      "modelChanged": true,
+      "findings": [
+        "C4",
+        "C5"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "sspai-com/post-102392",
+      "modelChanged": true,
+      "findings": [
+        "C2",
+        "C5"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "sspai-com/post-114699",
+      "modelChanged": true,
+      "findings": [
+        "C1",
+        "C2",
+        "C5"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "sspai-com/u-jtc092al",
+      "modelChanged": true,
+      "findings": [
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "stripe-com/pricing",
+      "modelChanged": false,
+      "findings": [],
+      "disposition": "no factual correction identified in assigned baseline audit; not final source/experience acceptance"
+    },
+    {
+      "page": "stripe-dashboard/login",
+      "modelChanged": true,
+      "findings": [
+        "MAU-C1"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "stripe-docs/payments",
+      "modelChanged": true,
+      "findings": [
+        "C5",
+        "C6"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    },
+    {
+      "page": "xiaomi-account/login",
+      "modelChanged": true,
+      "findings": [
+        "MAU-C2"
+      ],
+      "disposition": "source-backed factual candidate implemented; final combined UX/source review pending"
+    }
+  ],
+  "proof": {
+    "closedSchema": ".scratch/62-all-sites/content/final35-validation.log",
+    "modelAndTargetTests": ".scratch/62-all-sites/content/content-selftest.json",
+    "sourceAndIntegrityTests": ".scratch/62-all-sites/content/source-fidelity-test.json",
+    "assetProvenance": ".scratch/62-all-sites/content/asset-provenance.json",
+    "secretScan": ".scratch/62-all-sites/content/final-secret-scan.json",
+    "hashes": ".scratch/62-all-sites/content/final-hashes.json",
+    "commands": ".scratch/62-all-sites/content/commands-run.json",
+    "ticket": ".scratch/62-all-sites/content/ticket.md",
+    "staticChecksPassed": 92,
+    "sourceChecksPassed": 1225,
+    "newExactSourceTargets": 769,
+    "assets": 77,
+    "wholePageVisualAcceptance": "INCOMPLETE_NOT_PERFORMED_BY_CONTENT_WRITER",
+    "patchReconstruction": ".scratch/62-all-sites/content/final-hashes.json",
+    "candidateTargetGaps": 493,
+    "auditRouting": "auditRouting in this handoff:8 completed producers/35 pages; origins and lossless extractions hash-bound"
+  },
+  "unmetAC": [
+    {
+      "criterion": "All-width whole-height final experience/source comparison",
+      "scope": "All35 remaining pages and seven accepted-reference regressions",
+      "reason": "Outside content writer rendering/review seam; final engine combined artifacts and fresh independent review required."
+    },
+    {
+      "criterion": "All declared actions serialized into HTML + Markdown",
+      "scope": ".scratch/62-all-sites/content/content-selftest.json",
+      "reason": "Frozen baseline renderer loses 493 per-node target serialization instances; exact evidence retained; engine-owned dependency."
+    },
+    {
+      "criterion": "Linked Microsoft cell/row usability",
+      "scope": "learn-microsoft/vm-sizes",
+      "reason": "127 exact captured targets restored adjacent by source row; frozen typed cell grammar has no links; independent usability review required, not automatically accepted."
+    },
+    {
+      "criterion": "Captured current choice/default states and compact controls",
+      "scope": "36kr searches/technology; Huawei searches; Mi phone pagination",
+      "reason": "Facts encoded in existing _default; baseline renderer does not fully consume selection defaults. Glyph-only Mi previous/next remain exact source iconfont bytes without invented directional labels; final readable shared rendering incomplete."
+    },
+    {
+      "criterion": "Complete original/lazy image fidelity",
+      "scope": "source screenshot-recovered SSPAI media; Mi10 lazy recommendation images; Huawei Mate70 source-lazy image; Linear5 static demos",
+      "reason": "Source hashes/DOM boxes/crop pixels or attributed retrieved bytes proven;403 originals unavailable, source lazy pixels unpainted, and static demos are not interactive backend recreations. Full original/experience coverage not claimed."
+    },
+    {
+      "criterion": "Source chrome/consent behavior",
+      "scope": "restored factual nav/footer/cookie utilities",
+      "reason": "Original targets/labels/facts retained, but no authentication/cookie/pagination/backend or icon-only unlabeled utility behavior invented; Stripe source footer is outside900px image."
+    }
+  ],
+  "status": "INCOMPLETE_AWAITING_ENGINE_AND_INDEPENDENT_REVIEW",
+  "noOp": false,
+  "noStagedFiles": true,
+  "changedModelCount": 27,
+  "assetCount": 77,
+  "auditRouting": [
+    {
+      "cohort": "36kr-news-search",
+      "pages": [
+        "36kr-com/home",
+        "36kr-com/information-technology",
+        "36kr-com/search-ai",
+        "36kr-com/search-viz"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "a8c6e1cb653af3fe253b02e3faf487b5451a30d4aec983ea8bcbbd7c8d8b1de9",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-36kr-news-search.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-36kr-news-search",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-36kr-news-search/ticket.md",
+      "contentFindingIds": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "sspai-editorial",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/matrix",
+        "sspai-com/post-102392",
+        "sspai-com/post-114699",
+        "sspai-com/u-jtc092al"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "b8cc3947368f52a2c684f4b53a51c77c10629beda87aaafba555f775ecdef2f1",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-sspai-editorial.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/ticket.md",
+      "contentFindingIds": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "mi-commerce",
+      "pages": [
+        "mi-com/home",
+        "mi-com/search-earbuds",
+        "mi-com/search-phone",
+        "mi-com/shop-category-list"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-mi-commerce/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-mi-commerce.md",
+      "originFormat": "lossless embedded JSON in authoritative runtime Markdown",
+      "originSha256": "2c6ffb61da765caedc04e305e69b877fa096805aa7b793f98e9357d172b31daa",
+      "normalizedReadOnlyData": "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/audit-mi-commerce-extracted-handoff.json",
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-mi-commerce.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-mi-commerce/.scratch/62-all-sites/audit-mi-commerce",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-mi-commerce/.scratch/62-all-sites/audit-mi-commerce/ticket.md",
+      "contentFindingIds": [
+        "MI-C1",
+        "MI-C2",
+        "MI-C3",
+        "MI-C4",
+        "MI-C5"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "huawei-commerce",
+      "pages": [
+        "huawei-cn/home",
+        "huawei-cn/consumer-phones",
+        "huawei-cn/search-laptop",
+        "huawei-cn/search-phone"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "2bd84c9e3b75c22ff9354300a01cde0706446b9d90d7def148f95e702f3ec295",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-huawei-commerce.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce/ticket.md",
+      "contentFindingIds": [
+        "H-C1",
+        "H-C2",
+        "H-C3",
+        "H-C4",
+        "H-C5",
+        "H-C6",
+        "H-C7",
+        "H-C8"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "apple-linear-products",
+      "pages": [
+        "apple-com-cn/iphone-17",
+        "apple-com/iphone-16",
+        "apple-com/macbook-air",
+        "linear-app/home"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "c046b78ee4d42e20b4114218989b95c244c6e2cb929a668ac751db6bf8b5505b",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-apple-linear-products.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-apple-linear-products",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-apple-linear-products/ticket.md",
+      "contentFindingIds": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "cloud-business",
+      "pages": [
+        "aliyun-com/home",
+        "aliyun-com/product-ecs",
+        "aws-amazon/ec2-on-demand",
+        "stripe-com/pricing",
+        "grafana-play/play-home"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "b3b5b15c3018a2cf0b8c9c8469e1c2b0060f01b5a26f64fcaa8678aa6ba6288b",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-cloud-business.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-cloud-business",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-cloud-business/ticket.md",
+      "contentFindingIds": [
+        "CB-C1",
+        "CB-C2"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "public-technical-docs",
+      "pages": [
+        "gov-uk/ni-rates-letters",
+        "gov-uk/register-birth-abroad",
+        "learn-microsoft/vm-sizes",
+        "stripe-docs/payments"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "eb5383c31a17c60c0e1428b1540e6e6bd8b2b4369067804eaf4a61e356f89570",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-public-technical-docs.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-public-technical-docs",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-public-technical-docs/ticket.md",
+      "contentFindingIds": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "media-auth-utility",
+      "pages": [
+        "bilibili-com/read-home",
+        "bilibili-com/video-bv1gj411x7h7",
+        "github-com/login",
+        "stripe-dashboard/login",
+        "xiaomi-account/login"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+      "originFormat": "lossless embedded JSON in authoritative runtime Markdown",
+      "originSha256": "edf51f0c32ebf93c0539590cb1f16fdff09b229737d0145194e07332ebeb16da",
+      "normalizedReadOnlyData": "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/audit-media-auth-utility-extracted-handoff.json",
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/ticket.md",
+      "contentFindingIds": [
+        "MAU-C1",
+        "MAU-C2",
+        "MAU-C3",
+        "MAU-C4"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    }
+  ]
+}

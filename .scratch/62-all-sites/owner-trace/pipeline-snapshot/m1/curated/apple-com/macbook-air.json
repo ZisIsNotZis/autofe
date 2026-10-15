@@ -1,0 +1,1024 @@
+{
+ "_image": {
+  "image": "https://www.apple.com/v/macbook-air/z/images/overview/hero/hero_static__c9sislzzicq6_large.png",
+  "alt": "Two open MacBook Air laptops in sky blue color forming arrow shape, emphasizing narrow profile"
+ },
+ "_intent": "MacBook Air 产品页：M5 芯片与 18 小时续航是主叙事，交易信息 From $1299（可租赁可折抵），页面按亮点→设计→性能→AI→macOS→Continuity→换机→显示→影音→接口→安全→升级→机型对比→购买方案→环保推进",
+ "_primary": "_price",
+ "_key": "apple-macbook-air",
+ "_title": {
+  "text": "MacBook Air"
+ },
+ "_subtitle": {
+  "text": "Might takes flight."
+ },
+ "_price": {
+  "money": 1299,
+  "currency": "USD",
+  "qualifier": "From"
+ },
+ "_duration": {
+  "num": 12,
+  "unit": "mo."
+ },
+ "_summary": {
+  "text": "From $1299 or $108.25/mo. Lease from $24.99/mo. for 36 mo. with Apple Upgrade"
+ },
+ "_action": {
+  "verb": "buy",
+  "label": "Buy",
+  "to": "https://www.apple.com/us/shop/goto/buy_mac/macbook_air"
+ },
+ "_lines": [
+  {
+   "_intent": "亮点轮播：六张要点卡覆盖 M5、续航、AI、存储、系统、连续互通",
+   "_key": "highlights",
+   "_title": {
+    "text": "Get the highlights."
+   },
+   "_rel": {
+    "order": "sequence"
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Watch the film",
+    "to": "https://www.apple.com/105/media/us/macbook-air/2026/ff11cb38-708e-4c28-9653-1b01a2f8fd2b/films/product/macbook-air-product-tpl-us-2026_16x9.m3u8"
+   },
+   "_items": [
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/highlights/mx_chip__c9p5me36dgae_large.jpg",
+      "alt": "Apple M5 chip"
+     },
+     "_key": "hl-m5",
+     "_name": {
+      "text": "The M5 chip isn’t just an upgrade, it’s a game changer, delivering phenomenal performance. Prepare for liftoff."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/highlights/battery__geuvrre3336u_large.jpg",
+      "alt": "A person sitting in a chair using their MacBook Air"
+     },
+     "_key": "hl-battery",
+     "_name": {
+      "text": "Up to 18 hours of battery life. Won’t call it a day until you do."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/highlights/ai__envg2xtai52e_large.jpg",
+      "alt": "Image Playground screen with image of a hanging light and generative render text"
+     },
+     "_key": "hl-ai",
+     "_name": {
+      "text": "A powerful platform for AI. And Apple Intelligence is built right in. Now that’s smart."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/highlights/storage__ycmn2gj0yj66_large.jpg",
+      "alt": "Pixelmator screen demonstrating MacBook Air storage and memory"
+     },
+     "_key": "hl-storage",
+     "_name": {
+      "text": "512GB of storage and 16GB of unified memory. Superfast straight out of the box."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/highlights/spotlight_static__bonibu9vyhle_large.jpg",
+      "alt": "Examples using Spotlight to send messages"
+     },
+     "_key": "hl-macos",
+     "_name": {
+      "text": "macOS Tahoe features a stunning new design with Liquid Glass, intuitive productivity tools, and a reimagined Spotlight. Fast just flows."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/highlights/continuity__12mxpklct2qy_large.jpg",
+      "alt": "iPhone 16 Plus with text highlighted in the Notes app, Macbook Air with a PowerPoint slide open, text from Notes app is"
+     },
+     "_key": "hl-continuity",
+     "_name": {
+      "text": "With powerful Continuity features, all your Apple devices work together seamlessly, so you can get things done faster and more efficiently."
+     }
+    }
+   ]
+  },
+  {
+   "_image": {
+    "image": "https://www.apple.com/v/macbook-air/z/images/overview/design/design_hero_static__e56c1v71mr6u_large.png",
+    "alt": "13- and 15-inch MacBook Air laptops — one screen shows Numbers work, the other shows design work"
+   },
+   "_intent": "设计章节：轻薄的数字事实、两个尺寸、四种配色（配色查看器的选择器）",
+   "_key": "design",
+   "_title": {
+    "text": "Design"
+   },
+   "_summary": {
+    "text": "Built to go places."
+   },
+   "_detail": {
+    "text": "MacBook Air is remarkably light at just 2.7 pounds, and less than half an inch thin. It’s designed to fit easily into your bag, so you can always take it with you. It’s also made with over 50 percent recycled materials and has a durable recycled aluminum enclosure built to withstand daily use."
+   },
+   "sizes": {
+    "_intent": "13 英寸与 15 英寸两个尺寸的定位",
+    "_title": {
+     "text": "Two perfectly portable sizes."
+    },
+    "_summary": {
+     "text": "The 13-inch MacBook Air is the ultimate on-the-go laptop, and the 15-inch model gives you even more space onscreen for multitasking."
+    },
+    "_items": [
+     {
+      "_key": "size-13",
+      "_name": {
+       "text": "13” display"
+      }
+     },
+     {
+      "_key": "size-15",
+      "_name": {
+       "text": "15” display"
+      }
+     }
+    ]
+   },
+   "colors": {
+    "_intent": "四种外观配色与同色 MagSafe 充电线",
+    "_title": {
+     "text": "Four beautiful colors will have you on cloud nine."
+    },
+    "_summary": {
+     "text": "And every MacBook Air comes with a color-matched MagSafe charging cable."
+    },
+    "_items": [
+     {
+      "_key": "color-sky-blue",
+      "_name": {
+       "text": "Sky Blue"
+      }
+     },
+     {
+      "_key": "color-silver",
+      "_name": {
+       "text": "Silver"
+      }
+     },
+     {
+      "_key": "color-starlight",
+      "_name": {
+       "text": "Starlight"
+      }
+     },
+     {
+      "_key": "color-midnight",
+      "_name": {
+       "text": "Midnight"
+      }
+     }
+    ],
+    "_expose": {
+     "name": "color",
+     "type": "text"
+    }
+   },
+   "gallery": {
+    "_intent": "设计图库的三张要点卡",
+    "_items": [
+     {
+      "_image": {
+       "image": "https://www.apple.com/v/macbook-air/z/images/overview/design/gallery/design_portable__fclorhedjziq_large.jpg",
+       "alt": "A person putting their MacBook Air into a backpack"
+      },
+      "_key": "dg-15",
+      "_name": {
+       "text": "MacBook Air 15”"
+      },
+      "_detail": {
+       "text": "Incredibly thin and light, MacBook Air fits easily in your backpack."
+      }
+     },
+     {
+      "_image": {
+       "image": "https://www.apple.com/v/macbook-air/z/images/overview/design/gallery/design_battery__equc1smmk2gm_large.jpg",
+       "alt": "A person working on their MacBook Air while in an airplane seat"
+      },
+      "_key": "dg-13-battery",
+      "_name": {
+       "text": "MacBook Air 13”"
+      },
+      "_detail": {
+       "text": "With up to 18 hours of battery life, MacBook Air is built for the long haul."
+      }
+     },
+     {
+      "_image": {
+       "image": "https://www.apple.com/v/macbook-air/z/images/overview/design/gallery/design_display__6gsewglvvtee_large.jpg",
+       "alt": "Two people watching a video on a MacBook Air"
+      },
+      "_key": "dg-13-display",
+      "_name": {
+       "text": "MacBook Air 13”"
+      },
+      "_detail": {
+       "text": "The impressive display makes TV, movies, and games look truly striking wherever you go."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "_intent": "性能章节：M5 对 M1/M4/PC 的三个量化倍数、AI 与多任务、快充与全天续航",
+   "_key": "performance",
+   "_title": {
+    "text": "Performance"
+   },
+   "_summary": {
+    "text": "M5. The chip that zips."
+   },
+   "_items": [
+    {
+     "_key": "perf-vs-m1",
+     "_name": {
+      "text": "Up to 9.5x faster"
+     },
+     "_detail": {
+      "text": "than MacBook Air with M1"
+     }
+    },
+    {
+     "_key": "perf-vs-m4",
+     "_name": {
+      "text": "Up to 4x faster"
+     },
+     "_detail": {
+      "text": "than MacBook Air with M4"
+     }
+    },
+    {
+     "_key": "perf-vs-pc",
+     "_name": {
+      "text": "Up to 3.8x faster"
+     },
+     "_detail": {
+      "text": "than PC laptop with Intel Core Ultra X7"
+     }
+    },
+    {
+     "_key": "perf-battery",
+     "_name": {
+      "text": "Up to 18 hrs"
+     },
+     "_detail": {
+      "text": "battery life"
+     }
+    }
+   ],
+   "ai": {
+    "_intent": "M5 的 AI 性能",
+    "_name": {
+     "text": "AI in the fast lane."
+    },
+    "_detail": {
+     "text": "MacBook Air delivers blazing-fast AI performance thanks to the powerful combination of the GPU, Neural Engine, and unified memory in M5. With a Neural Accelerator built into each GPU core, AI tasks run with amazing efficiency. From AI image upscaling to running the latest large language models, you’ll be more productive and creative than ever."
+    }
+   },
+   "multitask": {
+    "_intent": "M5 的多任务流畅度与无风扇设计",
+    "_name": {
+     "text": "Multitasker. Multifaster."
+    },
+    "_detail": {
+     "text": "The M5 chip brings even more speed and fluidity to everything you do, like seamless switching between loads of apps and tabs, editing 4K video, or playing immersive games like Neverness to Everness. All with a silent, fanless design."
+    },
+    "_action": {
+     "verb": "open",
+     "label": "Go inside M5"
+    }
+   },
+   "battery": {
+    "_intent": "续航与快充事实",
+    "_name": {
+     "text": "Live a full battery life."
+    },
+    "_detail": {
+     "text": "MacBook Air has up to 18 hours of battery life. And it supports fast charging, getting up to 50 percent in about 30 minutes. So you can power through everything from work to class to your favorite movies without worrying about your battery."
+    }
+   }
+  },
+  {
+   "_intent": "AI 章节：从芯片开始的 AI 平台叙事与隐私承诺（原 `_items` 误标为可互换实例：四张要点卡不同粒度——前三张名+述、末张只有名，引擎已自愈成序列；回改为 `_lines` 有序序列）",
+   "_key": "ai",
+   "_title": {
+    "text": "AI"
+   },
+   "_summary": {
+    "text": "Built for AI. From the silicon up."
+   },
+   "_detail": {
+    "text": "For everyone from students to small business owners to creative professionals, MacBook Air with M5 is designed to leverage AI in everyday workflows while preserving your privacy. Whether using powerful Apple Intelligence features across apps and macOS, running LLMs on your Mac, or vibe coding, you’ll stay productive — and protected."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Learn more about Apple Intelligence",
+    "to": "https://www.apple.com/apple-intelligence/"
+   },
+   "_lines": [
+    {
+     "_key": "ai-apps",
+     "_name": {
+      "text": "AI apps on Mac. Born to run."
+     },
+     "_detail": {
+      "text": "Mac is optimized to handle AI apps — like ChatGPT, LM Studio, Msty Studio, Topaz Video, and Topaz Photo — so you can learn faster, think in new ways, and get more done."
+     }
+    },
+    {
+     "_key": "ai-tools",
+     "_name": {
+      "text": "AI tools in apps. Mac makes magic."
+     },
+     "_detail": {
+      "text": "Use intelligent tools to unlock new levels of productivity and creativity — from editing images in Adobe Photoshop to rendering 3D models in Shapr3D to creating films in Final Cut Pro."
+     }
+    },
+    {
+     "_key": "ai-apple-intelligence",
+     "_name": {
+      "text": "Apple Intelligence. Do more. Effort less."
+     },
+     "_detail": {
+      "text": "Apple Intelligence is the personal intelligence system that helps you write, express yourself, and get things done effortlessly. With groundbreaking privacy protections, it gives you peace of mind that no one else can access your data — not even Apple."
+     }
+    },
+    {
+     "_key": "ai-privacy",
+     "_name": {
+      "text": "Great powers come with great privacy."
+     },
+     "_detail": {
+      "text": "Apple Intelligence is designed to protect your privacy at every step. It’s integrated into the core of your Mac through on-device processing. So it’s aware of your personal information without collecting your personal information. And with groundbreaking Private Cloud Compute, Apple Intelligence can draw on larger server-based models, running on Apple silicon, to handle more complex requests for you while protecting your privacy."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "macOS 章节：Spotlight、Liquid Glass、控制中心与实时翻译四项能力",
+   "_key": "macos",
+   "_title": {
+    "text": "macOS"
+   },
+   "_summary": {
+    "text": "Powering possibility."
+   },
+   "_detail": {
+    "text": "macOS is designed to support the way you work, create, and connect, with powerful apps and seamless multitasking."
+   },
+   "_items": [
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/macos/gallery/spotlight__eoy9yunfmpaq_large.jpg",
+      "alt": "Examples using Spotlight to send messages"
+     },
+     "_key": "os-spotlight",
+     "_name": {
+      "text": "Spotlight helps you act fast."
+     },
+     "_detail": {
+      "text": "Perform hundreds of actions on your MacBook Air — from finding files and apps to quickly sending a message — all within Spotlight."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/macos/gallery/liquid_glass__c7gr0z2th0uq_large.jpg",
+      "alt": "Lock screen with Liquid Glass widgets"
+     },
+     "_key": "os-liquid-glass",
+     "_name": {
+      "text": "Liquid Glass. Clearly inspired."
+     },
+     "_detail": {
+      "text": "The stunning new design with Liquid Glass brings even more clarity to navigation and controls, and unlocks more ways to personalize your experience. Take your icons from light to dark, or choose an alluring clear look."
+     }
+    },
+    {
+     "_key": "os-control-center",
+     "_name": {
+      "text": "What you want, right where you want it."
+     },
+     "_detail": {
+      "text": "The controls you use most, like window tiling, screenshots, and accessing your favorite apps, can be personalized in Control Center. A transparent design keeps your display open and uncluttered."
+     }
+    },
+    {
+     "_key": "os-translation",
+     "_name": {
+      "text": "Live Translation."
+     },
+     "_detail": {
+      "text": "Communicate effortlessly across languages. Instantly translate texts in Messages, display live translated captions in FaceTime, and get real-time spoken translations in the Phone app."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "Continuity 章节：Mac 与 iPhone 协同的五项能力（原 `_items` 误标为可互换实例：五项能力不同形——首项只有名、其余名+述，引擎已自愈成序列；回改为 `_lines` 有序序列）",
+   "_key": "continuity",
+   "_title": {
+    "text": "Continuity"
+   },
+   "_summary": {
+    "text": "Better together."
+   },
+   "_detail": {
+    "text": "Mac and iPhone are incredible on their own. But when you use them together, they work wonders. Thanks to Continuity features, you can move seamlessly across devices to share files and photos, hand off tasks, and even control your iPhone from your Mac."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Learn more about Continuity",
+    "to": "https://www.apple.com/macos/continuity/"
+   },
+   "_lines": [
+    {
+     "_key": "cont-calls",
+     "_name": {
+      "text": "Answer calls and texts"
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/continuity/universal_clipboard__bsjcpx7i5d5y_large.jpg",
+      "alt": "iPhone 16 Plus with text highlighted in the Notes app, Macbook Air with a PowerPoint slide open, text from Notes app is"
+     },
+     "_key": "cont-clipboard",
+     "_name": {
+      "text": "Universal Clipboard"
+     },
+     "_detail": {
+      "text": "Copy images, video, or text from an app on your iPhone or iPad. Then paste into another app on your nearby Mac — or vice versa."
+     }
+    },
+    {
+     "_key": "cont-mirroring",
+     "_name": {
+      "text": "iPhone Mirroring"
+     },
+     "_detail": {
+      "text": "See and use what’s on your iPhone from your Mac — even if you’re charging your phone in another room. And your iPhone stays locked, so no one else can access it or see what you’re doing."
+     }
+    },
+    {
+     "_key": "cont-live-activities",
+     "_name": {
+      "text": "Live Activities"
+     },
+     "_detail": {
+      "text": "You don’t have to reach for your phone to stay in the know. Live Activities from your iPhone now appear on your Mac — like when your Uber Eats order is about to arrive."
+     }
+    },
+    {
+     "_key": "cont-markup",
+     "_name": {
+      "text": "Markup and Sketch"
+     },
+     "_detail": {
+      "text": "Sign, annotate, and sketch on iPad or iPhone — live updates appear instantly on your Mac, and you can easily insert them into any document."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "换到 Mac：从 PC/Mac 迁移与长期使用的五项安心事实",
+   "_key": "new-to-mac",
+   "_title": {
+    "text": "New to Mac?"
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Learn more about switching from Windows PC to Mac",
+    "to": "https://www.apple.com/macbook-air/mac-does-that/"
+   },
+   "_items": [
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/switchers/new_migration__f0whf1bqn2ie_large.jpg",
+      "alt": "Illustration of two laptops connected by line, second shows green checkmark onscreen indicating migration process is com"
+     },
+     "_key": "ntm-setup",
+     "_name": {
+      "text": "Setup is a breeze."
+     },
+     "_detail": {
+      "text": "Easily move files, apps, and more from your old PC or Mac with Migration Assistant. Or quickly set up your Mac using your iPhone or iPad with Mac Setup Assistant. If you need any help, Apple Support is always just an online chat, phone call, or in-store appointment away."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/switchers/new_icloud__fj0y9epvmju6_large.jpg",
+      "alt": "Emoji of smiling face surrounded by various app icons: Music, iCloud Drive, Notes, Mail, Contacts, Calendar, Messages, a"
+     },
+     "_key": "ntm-icloud",
+     "_name": {
+      "text": "Access files anywhere with iCloud."
+     },
+     "_detail": {
+      "text": "iCloud lets you store all your photos, contacts, and documents so they’re available on all your devices. Start a to-do list on your iPhone and check off items on your MacBook Air — and so much more."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/switchers/new_powerful_apps__ejcm2qquuemq_large.jpg",
+      "alt": "Front view of multiple apps including FaceTime, Freeform, and Keynote."
+     },
+     "_key": "ntm-apps",
+     "_name": {
+      "text": "Packed with powerful apps."
+     },
+     "_detail": {
+      "text": "Mac comes with apps like FaceTime, Freeform, and Keynote that let you get to work creating and collaborating on your next big idea."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/switchers/new_mac_can_take_it__fivaqh94qmuu_large.jpg",
+      "alt": "MacBook Air, top exterior, closed, silver color, multicolored stickers surrounding Apple logo"
+     },
+     "_key": "ntm-durable",
+     "_name": {
+      "text": "Mac is built to last."
+     },
+     "_detail": {
+      "text": "Made with durable recycled aluminum enclosures, Mac laptops are ready for just about anything. And free macOS software updates help your Mac work reliably and securely for years to come."
+     }
+    },
+    {
+     "_key": "ntm-switch",
+     "_name": {
+      "text": "Yep, Mac does that."
+     },
+     "_detail": {
+      "text": "Never used a Mac? No problem. Switching to Mac from PC is quick and easy."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "换新章节：从旧 MacBook Air 换到 M5 机型得到的四项升级与折抵入口（原 `_items` 误标为可互换实例：四项升级不同形——仅一项带 `_detail`，另有折抵入口控件，引擎已自愈成序列；回改为 `_lines` 有序序列）",
+   "_key": "upgrade",
+   "_title": {
+    "text": "There’s never been a better time to upgrade."
+   },
+   "_summary": {
+    "text": "Here’s what you get with the new MacBook Air with M5."
+   },
+   "selector": {
+    "_intent": "选择你当前的 MacBook Air 机型，查看对应升级",
+    "_label": {
+     "text": "Select your current MacBook Air:"
+    },
+    "_items": [
+     {
+      "_key": "up-m1",
+      "_name": {
+       "text": "MacBook Air (M1)"
+      }
+     },
+     {
+      "_key": "up-m2",
+      "_name": {
+       "text": "MacBook Air (M2 or newer)"
+      }
+     },
+     {
+      "_key": "up-intel",
+      "_name": {
+       "text": "MacBook Air (Intel-based)"
+      }
+     }
+    ],
+    "_expose": {
+     "name": "current-model",
+     "type": "text"
+    }
+   },
+   "_lines": [
+    {
+     "_key": "up-display",
+     "_name": {
+      "text": "Bigger, brighter Liquid Retina display."
+     }
+    },
+    {
+     "_key": "up-colors",
+     "_name": {
+      "text": "Sky Blue, Silver, Starlight, Midnight."
+     },
+     "_detail": {
+      "text": "Find the right color for you."
+     }
+    },
+    {
+     "_key": "up-ai",
+     "_name": {
+      "text": "Fly through demanding AI tasks up to 9.5x faster."
+     }
+    },
+    {
+     "_key": "up-camera",
+     "_name": {
+      "text": "12MP Center Stage camera with Desk View."
+     }
+    }
+   ],
+   "tradein": {
+    "_intent": "折抵入口",
+    "_detail": {
+     "text": "Get credit toward a new MacBook Air when you trade in an eligible device."
+    },
+    "_action": {
+     "verb": "open",
+     "label": "See what your device is worth",
+     "to": "https://www.apple.com/us/shop/goto/trade_in#mac"
+    }
+   }
+  },
+  {
+   "_intent": "显示章节：Liquid Retina 的亮度、色域与 True Tone 三项规格",
+   "_key": "display",
+   "_title": {
+    "text": "Display"
+   },
+   "_summary": {
+    "text": "Love at every sight."
+   },
+   "_detail": {
+    "text": "The Liquid Retina display on MacBook Air supports 1 billion colors and delivers absolutely stunning resolution. Photos and videos pop with rich contrast and sharp detail, and text appears supercrisp."
+   },
+   "_items": [
+    {
+     "_key": "disp-nits",
+     "_name": {
+      "text": "500 nits of brightness."
+     },
+     "_detail": {
+      "text": "Work comfortably in a range of lighting environments."
+     }
+    },
+    {
+     "_key": "disp-p3",
+     "_name": {
+      "text": "P3 wide color."
+     },
+     "_detail": {
+      "text": "Enjoy an accurate and vivid range of colors for viewing and editing photos and videos."
+     }
+    },
+    {
+     "_key": "disp-truetone",
+     "_name": {
+      "text": "True Tone technology."
+     },
+     "_detail": {
+      "text": "True Tone adjusts the warmth of your display to match the ambient light, for a more natural viewing experience."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "摄像头与音响章节：Center Stage、Desk View、三麦克风阵列与空间音频",
+   "_key": "camera-audio",
+   "_title": {
+    "text": "Camera and Audio"
+   },
+   "_summary": {
+    "text": "When you move, it moves."
+   },
+   "_items": [
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/macbook-air/z/images/overview/camera-audio/camera_audio_center_stage_statics_fallback__fhxrxz6sdbe6_large.jpg",
+      "alt": "Video call on MacBook Air of a person talking to another person on the call, Center Stage keeps them centered in the fra"
+     },
+     "_key": "cam-center-stage",
+     "_name": {
+      "text": "Center Stage"
+     },
+     "_detail": {
+      "text": "Stay in frame during video calls, even as you move around or when more people join your frame."
+     }
+    },
+    {
+     "_key": "cam-desk-view",
+     "_name": {
+      "text": "Desk View"
+     },
+     "_detail": {
+      "text": "Share a top-down view of your workspace while staying onscreen — great if you’re tutoring online or showing off your latest project."
+     }
+    },
+    {
+     "_key": "cam-mics",
+     "_name": {
+      "text": "Three-mic array."
+     },
+     "_detail": {
+      "text": "MacBook Air provides enhanced voice clarity in audio and video calls while minimizing background noise."
+     }
+    },
+    {
+     "_key": "cam-sound",
+     "_name": {
+      "text": "Immersive sound system."
+     },
+     "_detail": {
+      "text": "The speakers on MacBook Air support Spatial Audio along with Dolby Atmos, so you can enjoy a three-dimensional soundstage for music and movies."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "接口与连接章节：MagSafe、双 Thunderbolt 4、N1 无线芯片与外接显示",
+   "_key": "ports",
+   "_title": {
+    "text": "Ports and Connectivity"
+   },
+   "_summary": {
+    "text": "Well connected."
+   },
+   "_detail": {
+    "text": "The MagSafe charging cable attaches and detaches magnetically, preventing any unintended flights. Two Thunderbolt 4 ports let you connect high-speed accessories and charge your Mac. The headphone jack supports high-impedance headphones. And the Apple N1 wireless chip provides Wi-Fi 7 and Bluetooth 6, improving performance and reliability."
+   },
+   "workspace": {
+    "_intent": "外接显示能力",
+    "_detail": {
+     "text": "Turn MacBook Air into the perfect workspace by connecting up to two external displays, including Studio Display. The extra screen space makes working with multiple documents or apps a breeze."
+    }
+   }
+  },
+  {
+   "_intent": "安全章节：Touch ID 与内建加密",
+   "_key": "security",
+   "_title": {
+    "text": "Security"
+   },
+   "_summary": {
+    "text": "Peace of mind at your fingertip."
+   },
+   "touch-id": {
+    "_intent": "Touch ID 与数据安全",
+    "_name": {
+     "text": "Touch ID"
+    },
+    "_detail": {
+     "text": "Touch ID on the Magic Keyboard gives you a fast, easy, and secure way to unlock your Mac, sign in to accounts, and authorize payments for purchases. And built-in, industry-leading encryption, robust virus protections, and free, automatic security updates help keep your data safe."
+    }
+   }
+  },
+  {
+   "_intent": "机型对比：MacBook Air 13”/15” 与 MacBook Pro 14”/16” 的定位、起售价与规格速览",
+   "_key": "compare",
+   "_title": {
+    "text": "Which laptop is right for you?"
+   },
+   "_items": [
+    {
+     "_key": "cmp-mba",
+     "_name": {
+      "text": "MacBook Air 13” and 15” M5 chip"
+     },
+     "_price": {
+      "money": 1299,
+      "currency": "USD",
+      "qualifier": "From"
+     },
+     "_summary": {
+      "text": "From $1299 or $108.25/mo. for 12 mo. Lease from $24.99/mo. for 36 mo. with Apple Upgrade"
+     },
+     "_detail": {
+      "text": "13.6-inch or 15.3-inch Liquid Retina display · Apple M5 chip · Apple Intelligence · 16GB to 32GB unified memory · 512GB to 4TB storage · Up to 18 hours battery life · Touch ID"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "Buy",
+      "to": "https://www.apple.com/us/shop/goto/buy_mac/macbook_air"
+     }
+    },
+    {
+     "_key": "cmp-mbp",
+     "_name": {
+      "text": "MacBook Pro 14” and 16” M5, M5 Pro, or M5 Max chip"
+     },
+     "_price": {
+      "money": 1999,
+      "currency": "USD",
+      "qualifier": "From"
+     },
+     "_summary": {
+      "text": "From $1999 or $166.58/mo. for 12 mo. Lease from $38.99/mo. for 36 mo. with Apple Upgrade"
+     },
+     "_detail": {
+      "text": "14.2-inch or 16.2-inch Liquid Retina XDR display · Apple M5, M5 Pro, or M5 Max chip · Apple Intelligence · 16GB to 128GB unified memory · 1TB to 8TB storage · Up to 24 hours battery life · Touch ID"
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "Buy",
+      "to": "https://www.apple.com/us/shop/goto/buy_mac/macbook_pro"
+     },
+     "learn": {
+      "_intent": "了解 MacBook Pro",
+      "_title": {
+       "text": "Learn more"
+      },
+      "_action": {
+       "verb": "open",
+       "label": "Learn more",
+       "to": "https://www.apple.com/macbook-pro/"
+      }
+     }
+    }
+   ],
+   "all": {
+    "_intent": "对比与选型入口",
+    "compare": {
+     "_intent": "对比全部 Mac 机型",
+     "_action": {
+      "verb": "open",
+      "label": "Compare all Mac models",
+      "to": "https://www.apple.com/mac/compare/"
+     }
+    },
+    "help": {
+     "_intent": "帮我选 Mac",
+     "_action": {
+      "verb": "open",
+      "label": "Help me choose the best Mac for me",
+      "to": "https://www.apple.com/mac/best-mac/#usage/"
+     }
+    }
+   }
+  },
+  {
+   "_intent": "购买方案路由：租赁、折抵、分期、教育优惠四张卡",
+   "_key": "programs",
+   "_items": [
+    {
+     "_key": "prog-upgrade",
+     "_name": {
+      "text": "Apple Upgrade"
+     },
+     "_title": {
+      "text": "Lease a new Mac."
+     },
+     "_summary": {
+      "text": "Get a new Mac with low monthly payments for 24 or 36 months and upgrade at the end of your term."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more",
+      "to": "https://www.apple.com/us/shop/goto/apple_upgrade"
+     }
+    },
+    {
+     "_key": "prog-tradein",
+     "_name": {
+      "text": "Apple Trade In"
+     },
+     "_title": {
+      "text": "Get credit toward a new MacBook Air."
+     },
+     "_summary": {
+      "text": "Just trade in your eligible computer for credit or recycle it for free. It’s good for you and the planet."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "See what your device is worth",
+      "to": "https://www.apple.com/us/shop/goto/trade_in#mac"
+     }
+    },
+    {
+     "_key": "prog-card",
+     "_name": {
+      "text": "Apple Card"
+     },
+     "_action": {
+      "verb": "navigate",
+      "to": "https://www.apple.com/apple-card"
+     },
+     "_title": {
+      "text": "Get 3% Daily Cash back with Apple Card."
+     },
+     "_summary": {
+      "text": "And pay over time, interest-free when you choose to check out at Apple with Apple Card Monthly Installments."
+     }
+    },
+    {
+     "_key": "prog-education",
+     "_name": {
+      "text": "Education"
+     },
+     "_title": {
+      "text": "Save on MacBook Air."
+     },
+     "_summary": {
+      "text": "College students and educators can save through the Apple Store."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "环保章节：三项量化环保事实与产品环境报告",
+   "_key": "environment",
+   "_title": {
+    "text": "MacBook Air and the environment."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Learn more in our Product Environmental Report (PDF)",
+    "to": "https://www.apple.com/environment/pdf/products/notebooks/MacBook_Air_M5_PER_Mar2026.pdf"
+   },
+   "_items": [
+    {
+     "_key": "env-recycled",
+     "_name": {
+      "text": "Made with 55% recycled material by weight."
+     },
+     "_detail": {
+      "text": "Our approach. Using recycled materials, like 100% recycled cobalt in the battery, reduces the need to mine new material, which avoids the carbon emissions and environmental impacts of mining."
+     }
+    },
+    {
+     "_key": "env-renewable",
+     "_name": {
+      "text": "Manufactured with 50% renewable electricity."
+     },
+     "_detail": {
+      "text": "Our approach. Using electricity from renewable sources like wind and solar across our global supply chain — instead of fossil fuels — significantly reduces carbon emissions from manufacturing Apple products."
+     }
+    },
+    {
+     "_key": "env-fiber",
+     "_name": {
+      "text": "Ships in 100% fiber-based packaging."
+     },
+     "_detail": {
+      "text": "Our approach. MacBook Air comes in a 100% fiber-based box as part of our commitment to remove plastic from the packaging of all Apple products."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "价值观章节：环境、隐私、无障碍三项品牌承诺",
+   "_key": "values",
+   "_title": {
+    "text": "Our values lead the way."
+   },
+   "_items": [
+    {
+     "_key": "value-environment",
+     "_name": {
+      "text": "A plan as innovative as our products."
+     },
+     "_detail": {
+      "text": "We’re committed to bringing net emissions to zero across our entire carbon footprint by 2030."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more about environment",
+      "to": "https://www.apple.com/environment/"
+     }
+    },
+    {
+     "_key": "value-privacy",
+     "_name": {
+      "text": "Privacy. That’s Apple."
+     },
+     "_detail": {
+      "text": "Privacy is a fundamental human right. Every product and service is designed to help keep your data safe and secure."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more about privacy",
+      "to": "https://www.apple.com/privacy/"
+     }
+    },
+    {
+     "_key": "value-accessibility",
+     "_name": {
+      "text": "Innovation that’s accessible by design."
+     },
+     "_detail": {
+      "text": "Our products and services are designed for everyone, with built-in features to help you do what you love, your way."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more about accessibility",
+      "to": "https://www.apple.com/accessibility/"
+     }
+    }
+   ]
+  }
+ ]
+}

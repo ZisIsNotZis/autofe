@@ -1,0 +1,5 @@
+import {createRequire} from 'node:module';import fs from 'node:fs';
+const require=createRequire('/home/z/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core/package.json');const {chromium}=require('playwright-core');
+const b=await chromium.launch({executablePath:process.env.HOME+'/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell',args:['--no-sandbox']});const p=await b.newPage({viewport:{width:2560,height:1440}});
+for(const key of ['taobao-com-home','apple-com-home','apple-com-ipad-air','airbnb-com-room-28871']){await p.goto('file://'+process.cwd()+'/m1/curated/renders/'+key+'.html',{waitUntil:'networkidle',timeout:30000});await p.screenshot({path:'.scratch/61-wide-screen/'+key+'-before.png',fullPage:true});console.log(key,await p.evaluate(()=>[...document.querySelectorAll('.depth-1')].map(e=>{const r=e.getBoundingClientRect();return {id:e.id,title:e.querySelector('.title')?.textContent,x:r.x,w:r.width,h:r.height,forms:[...e.children].map(n=>n.className)}})));}
+await b.close();

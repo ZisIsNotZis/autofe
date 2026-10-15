@@ -1,0 +1,195 @@
+{
+  "_intent": "Pricing example · Bootstrap v5.3 — $0/mo [draft]",
+  "_title": {
+    "text": "Pricing example · Bootstrap v5.3"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Toggle theme (light)"
+      }
+    },
+    {
+      "_intent": "Free [draft]",
+      "_title": {
+        "text": "Free"
+      }
+    },
+    {
+      "_intent": "$0/mo [draft]",
+      "_title": {
+        "text": "$0/mo"
+      },
+      "_lines": [
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "10 users included"
+              }
+            },
+            {
+              "_name": {
+                "text": "2 GB of storage"
+              }
+            },
+            {
+              "_name": {
+                "text": "Email support"
+              }
+            },
+            {
+              "_name": {
+                "text": "Help center access"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Sign up for free"
+          }
+        },
+        {
+          "_intent": "Pro [draft]",
+          "_title": {
+            "text": "Pro"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "$15/mo [draft]",
+      "_title": {
+        "text": "$15/mo"
+      },
+      "_lines": [
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "20 users included"
+              }
+            },
+            {
+              "_name": {
+                "text": "10 GB of storage"
+              }
+            },
+            {
+              "_name": {
+                "text": "Priority email support"
+              }
+            },
+            {
+              "_name": {
+                "text": "Help center access"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Get started"
+          }
+        },
+        {
+          "_intent": "Enterprise [draft]",
+          "_title": {
+            "text": "Enterprise"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "$29/mo [draft]",
+      "_title": {
+        "text": "$29/mo"
+      },
+      "_lines": [
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "30 users included"
+              }
+            },
+            {
+              "_name": {
+                "text": "15 GB of storage"
+              }
+            },
+            {
+              "_name": {
+                "text": "Phone and email support"
+              }
+            },
+            {
+              "_name": {
+                "text": "Help center access"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Contact us"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Compare plans [draft]",
+      "_title": {
+        "text": "Compare plans"
+      },
+      "_lines": [
+        {
+          "_intent": "table (6 rows): Free / Pro / Enterprise [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Public"
+              }
+            },
+            {
+              "_name": {
+                "text": "Private"
+              }
+            },
+            {
+              "_name": {
+                "text": "Permissions"
+              }
+            },
+            {
+              "_name": {
+                "text": "Sharing"
+              }
+            },
+            {
+              "_name": {
+                "text": "Unlimited members"
+              }
+            },
+            {
+              "_name": {
+                "text": "Extra security"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

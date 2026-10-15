@@ -1,0 +1,186 @@
+--- .scratch/62-all-sites/experience-repair/ui/baseline/render.mjs	2026-10-14 05:38:07.121121311 +0800
++++ m1/render.mjs	2026-10-14 05:57:46.048373196 +0800
+@@ -52,6 +52,10 @@
+ // finding: 25/69 uncrafted pages). The capture's alt text is a captured fact, so an
+ // image without a URL degrades to its alt text — never to `<img src="">`, and never
+ // to a made-up URL (F-055).
++function nativeMediaAccess(src, alt) {
++  if (!src) return '';
++  return `<details class="resource-view"><summary aria-label="${esc(alt || '')} — 原始图像">查看原始图像</summary><div class="native-media" tabindex="0" role="region" aria-label="原始尺寸图像，可滚动查看">${imgHtml(src, '')}</div></details>`;
++}
+ function imgHtml(src, alt) {
+   const s = typeof src === 'string' ? src.trim() : '';
+   const a = alt == null ? '' : String(alt);
+@@ -72,9 +76,9 @@
+   return 'image' in v ? [v] : [];
+ }
+ const imageFigures = (v, mode = 'band') => imageEntries(v)
+-  .map((e) => imgHtml(e.image, e.alt)).filter(Boolean)
++  .map((e) => imgHtml(e.image, e.alt) + (mode === 'readable' ? nativeMediaAccess(e.image, e.alt) : '')).filter(Boolean)
+   .map((img) => `<figure class="strip${mode === 'tile' ? ' tile' : ''}">${img}</figure>`)
+-  .map((fig) => (mode === 'band' ? `<div class="band">${fig}</div>` : fig)).join('');
++  .map((fig) => (['band', 'readable'].includes(mode) ? `<div class="band">${fig}</div>` : fig)).join('');
+ 
+ function fmt(v) {
+   if (v === null || v === undefined) return '';
+@@ -105,11 +109,11 @@
+   }
+   return esc(JSON.stringify(v));
+ }
+-const inlineChildrenHtml = (v, links) => {
++const inlineChildrenHtml = (v, links, ctx) => {
+   const text = v.text;
+   const positions = links.map((a) => ({...a, at:text.indexOf(a.label)})).sort((a,b)=>a.at-b.at);
+   let at = 0, out = '';
+-  for (const a of positions) { out += esc(text.slice(at,a.at)) + `<a class="body-link" href="${esc(a.href)}">${esc(a.label)}</a>`; at=a.at+a.label.length; }
++  for (const a of positions) { out += esc(text.slice(at,a.at)) + `<a class="body-link"${ctx ? ownerAttr(a.node,ctx) : ''} href="${esc(a.href)}">${esc(a.label)}</a>`; at=a.at+a.label.length; }
+   return out + esc(text.slice(at));
+ };
+ const factHtml = (v, extra = '') => `<div class="fact"><span class="val">${fmt(v)}${extra}</span></div>`;
+@@ -238,7 +242,7 @@
+     const ex = itemExtra(it, chain, ctx);
+     const l = l0 && ex.linkTo ? `<a href="${esc(ex.linkTo)}">${l0}</a>` : l0;
+     const v = (rest.map((x) => {
+-      const value = roleFact(x);
++      const value = roleFact(x) + (items.every((it) => it._image && it._detail && !it._name && !it._title) && x.key === '_image' ? imageEntries(x.value).map((e) => nativeMediaAccess(e.image, e.alt)).join('') : '');
+       return x.key === '_image' && ex.linkTo ? value.replace(/<img\b[^>]*>/g,
+         (img) => `<a class="media-link" href="${esc(ex.linkTo)}">${img}</a>`) : value;
+     }).join(' ') + (ex.ctl ? ` ${ex.ctl}` : '')).trim();
+@@ -247,7 +251,7 @@
+     // no empty label cell: an unlabeled row keeps its full width (F-031-§5)
+     return `<div class="defrow${it._image ? ' media-row' : ''}${labelTextOf(it).length > 24 ? ' long-label' : ''}"${ownerAttr(it,ctx)}>${rank}${l ? `<div class="deflabel">${l}</div>` : ''}<div class="defval">${v}</div></div>`;
+   }).join('');
+-  return rows ? `<div class="deflist${ranked ? ' ranked' : ''}${!ranked && items.every((it) => it._image) ? ' media-captions' : ''}">${rows}</div>` : '';
++  return rows ? `<div class="deflist${ranked ? ' ranked' : ''}${!ranked && items.every((it) => it._image) ? (items.every((it) => it._detail && !it._name && !it._title) ? ' instruction-media' : ' media-captions') : ''}">${rows}</div>` : '';
+ }
+ function renderAccordion(items, chain, hide, ctx) {
+   const det = items.map((it) => {
+@@ -375,7 +379,7 @@
+   if (form === 'list') return renderList(items, chain, ctx, cols);
+   if (form === 'seq') return renderSeq(items, chain, ctx);
+   if (form === 'controls') return renderControls(items, chain, ctx);
+-  if (form === 'stack') return renderStack(items, chain, hide, mctx, depth, cols, mediaFirstOf(items, form), compactMedia);
++  if (form === 'stack') return renderStack(items, [...chain, node], hide, mctx, depth, cols, mediaFirstOf(items, form), compactMedia);
+   if (form === 'image-strip') return renderImageStrip(items);
+   if (form === 'prose') return renderProse(items);
+   if (form === 'deflist') return renderDeflist(items, chain, ctx, order);
+@@ -555,6 +559,8 @@
+   if (plan.utilityGroup) cls.push('utility-group');
+   if (plan.utilityFacts) cls.push('utility-facts');
+   if (plan.taskForm) cls.push('task-form');
++  if (plan.recordMember) cls.push('record-member');
++  if (plan.identity) cls.push('identity-frame');
+   const demoted = plan.demoted;
+ 
+   const itemsConsumed = new Set(plan.rowConsumed);
+@@ -576,14 +582,14 @@
+     if (f.category === 'installment') continue;                                     // 并入承载行（U-28）
+     if (f.category === 'meta') {
+       const links = plan.inlineChildren.filter(c => c.key === f.key);
+-      metaParts.push(roleLabeled(f, links.length ? inlineChildrenHtml(f.value, links) : factHtmlInline(f.value))); continue;
++      metaParts.push(roleLabeled(f, links.length ? inlineChildrenHtml(f.value, links, ctx) : factHtmlInline(f.value))); continue;
+     }
+     let html;
+     if (f.category === 'unit') html = roleLabeled(f, roleFact(f));               // 评分/评分数：带角色与单位，不留裸数字
+     // 显式原价事实 ⇒ 弱化（删除线）；`list` 标记不进文案（fmt 已忽略）
+     else if (f.category === 'was') html = `<div class="fact was"><span class="val">${fmt(f.value)}${inlineTail(f)}</span></div>`;
+     else if (plan.inlineChildren.some((c) => c.key === f.key)) {
+-      const value = inlineChildrenHtml(f.value, plan.inlineChildren.filter((c) => c.key === f.key));
++      const value = inlineChildrenHtml(f.value, plan.inlineChildren.filter((c) => c.key === f.key), ctx);
+       html = f.category === 'quote' ? `<blockquote class="quote"><span class="val">${value}</span></blockquote>`
+         : `<div class="fact"><span class="val">${value}${inlineTail(f)}</span></div>`;
+     }
+@@ -601,7 +607,7 @@
+   }
+   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
+   for (const f of plan.facts.fields) bodyLead += factHtml(f.value);
+-  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero, ctx.reading || (depth === 0 && plan.leadAction && node._summary && !node._price) ? 'band' : 'bleed');   // declared hero/banner only: edge-to-edge (F-031-§7); everything else stays in-container (round 58, L-3)
++  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero, (depth === 0 && plan.leadAction && node._summary && !node._price) ? 'readable' : ctx.reading ? 'band' : 'bleed');   // declared hero/banner only: edge-to-edge (F-031-§7); everything else stays in-container (round 58, L-3)
+ 
+   let body = '';
+   let bodyField = '';   // 字段+提交的成组区（plan.fieldSubmit）
+@@ -609,6 +615,10 @@
+     const choiceHtml = renderChoice(plan.choice, node, chain, hide, ctx);
+     if (plan.fieldSubmit) bodyField += choiceHtml; else body += choiceHtml;
+   }
++  if (plan.searchSubmit) {
++    const submit = plan.namedChildren.find((c) => c.node._action?.verb === 'submit');
++    body = `<div class="fieldbar">${body}<button type="button" class="action search-submit"${ownerAttr(submit.node,ctx)} aria-label="${esc(node._label?.text ?? '')}" data-verb="submit"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="2"/></svg></button></div>`;
++  }
+   if (plan.titleConsumed) titleText = null;   // the heading IS the switch label: show it once, on the control
+ 
+   // every sibling block item renders in ONE form; nothing renders twice (T-103)
+@@ -631,11 +641,13 @@
+   let headerHtml = '';
+   let footHtml = '';
+   let detailMain = '', detailSide = '', detailTail = '';
++  let orderedActionEmitted = false;
+   const detailLayout = depth === 0 && ctx.pageLayout.kind === 'detail' ? ctx.pageLayout : null;
+   for (const c of plan.namedChildren) {
+     if (itemsConsumed.has(c.node)) continue;
+     const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1, c.key);
+     if (!h) continue;
++    if (plan.actionBeforeChild === c.key && action) { body += action; orderedActionEmitted = true; }
+     const sect = `<section class="group g-${esc(c.key)}">${h}</section>`;
+     if (c.region === 'header') headerHtml += sect;
+     else if (c.region === 'footer') footHtml += sect;
+@@ -694,7 +706,7 @@
+     (img) => `<a class="media-link" href="${esc(plan.action.linkTo)}">${img}</a>`);
+   const intro = `${bodyLead}${heroHtml}${bodyField}${plan.leadAction ? action : ''}`;
+   const opening = plan.introBeforeMedia ? intro + heroImage : heroImage + intro;
+-  const article = `<article${anchorId} class="${cls.join(' ')}"${ownerAttr(node,ctx)}${surfaceStyle}>${headerHtml}${head}${opening}${body}${bodyFoot}${plan.leadAction ? '' : action}${footHtml}</article>`;
++  const article = `<article${anchorId} class="${cls.join(' ')}"${ownerAttr(node,ctx)}${surfaceStyle}>${headerHtml}${head}${opening}${body}${bodyFoot}${plan.leadAction || orderedActionEmitted ? '' : action}${footHtml}</article>`;
+   return done(demoted ? `<aside class="zone">${article}</aside>` : article);
+ }
+ 
+@@ -973,6 +985,14 @@
+ .group.g-footer .ctl{border-color:var(--line);color:var(--ink);background:var(--surface);padding:4px 10px}
+ .group.g-footer a.ctl:hover{background:var(--soft)}
+ .group.g-footer .defrow{border-bottom-color:var(--line)}
++.group.g-footer .controls{gap:6px 18px;margin:4px 0}
++.group.g-footer .ctl{border:0;background:transparent;padding:0;border-radius:0;font-size:13px;font-weight:400}
++.group.g-footer .g-notices>.node>.stack{display:block}
++.group.g-footer .g-notices>.node>.stack>.block{margin:0;padding:0;border:0}
++.group.g-footer .cards{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0}
++.group.g-footer .cards>.item{padding:0;border:0;background:transparent}
++.group.g-footer .cards .ctl{border:0;background:transparent;padding:2px 0;border-radius:0;font-size:13px}
++.group.g-footer .fact{font-size:13px;line-height:1.7;margin:4px 0}
+ /* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
+ .reading-page{--reading-width:800px;max-width:var(--reading-width);margin-inline:auto}
+ .reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
+@@ -1024,6 +1044,35 @@
+ .ordered-media-rows .band .strip{margin:0;width:auto}
+ .ordered-media-rows .band img{max-width:120px;max-height:120px;width:auto;height:auto}
+ @media(max-width:600px){.ordered-media-rows>.stack>.block>.node{grid-template-columns:minmax(0,1fr) 96px;gap:4px 12px}.ordered-media-rows .band img{max-width:96px;max-height:96px}}
++.instruction-media>.defrow{display:block;margin:16px 0}
++.instruction-media img{max-width:100%;max-height:none;width:auto;height:auto}
++.resource-view{margin:8px 0;font-size:14px;max-width:100%;text-align:left}
++.resource-view>summary{cursor:pointer;color:var(--accent);text-decoration:underline;text-underline-offset:3px;padding:6px 0}
++.native-media{max-width:100%;max-height:70vh;overflow:auto;border:1px solid var(--line);background:var(--surface)}
++.native-media img{max-width:none!important;max-height:none!important;width:auto!important;height:auto!important;margin:0!important;border-radius:0}
++.resource-view:focus-within{outline:2px solid var(--accent);outline-offset:2px}
++/* Metadata-bearing editorial/search records are local records, never heroes. */
++.record-member{display:grid!important;grid-template-columns:minmax(0,1fr) 216px;gap:6px 24px;max-width:100%;margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
++.record-member>*{grid-column:1;margin:0!important;min-width:0}
++.record-member>.band,.record-member>.fact:has(img){grid-column:2;grid-row:1 / span 6;align-self:start}
++.record-member img{max-width:216px;max-height:172px;width:auto;height:auto;margin:0}
++.record-member .strip{width:auto;margin:0}
++.record-member>.title{text-align:left;font-size:1.15em}
++.record-member>.fact{max-width:74ch}
++.cards:has(>.item>.record-member){display:block}
++.cards:has(>.item>.record-member)>.item{border:0;padding:0;background:transparent;margin:0}
++.stack:has(>.block>.record-member){display:block}
++.stack:has(>.block>.record-member)>.block{padding:0;margin:0}
++.node.identity-frame{max-width:74ch;margin-inline:0;display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px 24px;align-items:start}
++.identity-frame>*{grid-column:2;margin:0}
++.identity-frame>.ctl,.identity-frame>.action,.identity-frame>.action-plain{justify-self:start}
++.identity-frame>.band{grid-column:1;grid-row:1 / span 4;margin:0}
++.identity-frame .strip{width:auto;margin:0}
++.identity-frame img{max-width:100px;max-height:100px;width:auto;height:auto}
++.node.w-bleed.banner:not(.banner-integrated)>.action,.node.w-bleed.banner:not(.banner-integrated)>.ctl,.node.w-bleed.banner:not(.banner-integrated)>.action-plain{margin-left:max(0px,calc((100% - 1232px)/2))}
++.search-submit{margin:0;display:inline-flex;align-items:center;padding:10px 14px}
++.search-submit:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
++@media(max-width:600px){.record-member{grid-template-columns:minmax(0,1fr);gap:8px}.record-member>.band,.record-member>.fact:has(img){grid-column:1;grid-row:auto}.record-member img{max-width:216px}.identity-frame{gap:8px 16px}}
+ /* Whole-page alignment: local lists, facts and cards inherit the same page frame. */
+ .catalog-page .node.w-prose,.catalog-page .node.w-narrow,.catalog-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+ .catalog-page>.stack>.block{margin:14px 0}

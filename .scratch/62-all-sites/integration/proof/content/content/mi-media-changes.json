@@ -1,0 +1,23 @@
+[
+  {
+    "page": "stripe-dashboard/login",
+    "finding": "MAU-C1",
+    "cookieActions": 4,
+    "limits": "Source footer outside full900px capture not reconstructed/visually claimed."
+  },
+  {
+    "page": "xiaomi-account/login",
+    "finding": "MAU-C2",
+    "independentPolicyTargets": 5
+  },
+  {
+    "page": "bilibili-com/video-bv1gj411x7h7",
+    "findings": [
+      "MAU-C3",
+      "MAU-C4"
+    ],
+    "sourceAttributedImages": 20,
+    "sourceImageCount": 20,
+    "details": "Four captured counts restored with icon/title-proven labels and targetless actions; original report/notes retained"
+  }
+]

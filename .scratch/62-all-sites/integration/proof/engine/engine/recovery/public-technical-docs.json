@@ -1,0 +1,426 @@
+{
+  "pages": [
+    "gov-uk/ni-rates-letters",
+    "gov-uk/register-birth-abroad",
+    "learn-microsoft/vm-sizes",
+    "stripe-docs/payments"
+  ],
+  "coveredHashes": {
+    "m1/curated/renders/gov-uk-ni-rates-letters.html": "4da6e18c6c02d203fce203fdce661bafd897640067789e7244a28d41bb6e70c4",
+    "m1/curated/gov-uk/ni-rates-letters.json": "75c34b7482519a15433099beca60236fa100f6d2d9d558304a42258824430a13",
+    "corpus/gov-uk/ni-rates-letters/dom.html": "391010122447b4357aa7557e08965265811acc6e974fedc3f779bec11cac1f3c",
+    "corpus/gov-uk/ni-rates-letters/nodes.json": "30d1140e2af43550f0c69401fa43f1c72739769d4b6e477934e68baf734cd3ab",
+    "corpus/gov-uk/ni-rates-letters/full.png": "b1b8f27c250809aac70bb5f0e573a2424dcbdfa9dea6d383bdf2f65bafa8ba0d",
+    "corpus/gov-uk/ni-rates-letters/meta.json": "999047562221ee04d0f36ae4de6720172c5acc4b7ce5a10ca918663dd997b698",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-2560.png": "982dc0a49798c715fef45f5d7684b1aadbdf79e7b1ee051ee5087353eb5dc3a4",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-1920.png": "e30ed1dcab65f6a14e5607e930a2834a1613576dce60648c64ebf0a55a33f526",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-1440.png": "d42cd36629241244bb3204f2af670a484c89952b6498289f496294ec8281994f",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-390.png": "dd9ce90ce1c3dd25aba1850c4b7ad6296869b0673618bcbcb8f5bea8526f1b5a",
+    "m1/curated/renders/gov-uk-register-birth-abroad.html": "cfc4341e3743f44cbfd1e964bee880daf6aa6a7be5b82e95343a067b4c6f0f68",
+    "m1/curated/gov-uk/register-birth-abroad.json": "f92cb853faa0d7f6f23a36700bcb56abb836276e5a8ff32a377445471cdc246b",
+    "corpus/gov-uk/register-birth-abroad/dom.html": "fe93b722b4cd146ef096a663f4e4db485fe8d64fac5b816a9ea72876b7a27087",
+    "corpus/gov-uk/register-birth-abroad/nodes.json": "39ef6f6a2e788d3766cf5f07f050805c7addf9c6518ad999c8956fdef45740f2",
+    "corpus/gov-uk/register-birth-abroad/full.png": "c559e02198ce6a35db79a04d630672175581047072e54a1ffa24070c84f8322b",
+    "corpus/gov-uk/register-birth-abroad/meta.json": "4b04f597b488685dd4749e61abe48fccf51561a565a6b93484930be912df8ec6",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-2560.png": "565e7d65bbd41d43e72285ad243bd04ea212b515016425b2038986de8afb3c53",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-1920.png": "46b397206d606f463b55d2efe3e9fdbce51069e0f7ab3209f7bddd1971ee36f4",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-1440.png": "a0b32ce59cf072ce75ed5d02d5d972f63bb0628cba605ee2b6ff4aa89ead154c",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-390.png": "b17ab9aae66ab1db28029b3a10ffb608dfff1a4a7bc37c3c7131a3297da7c0e6",
+    "m1/curated/renders/learn-microsoft-vm-sizes.html": "281a9ac78c07f2b9d447d191d90c00c21c52de75e7584007d1694a9f9dad9979",
+    "m1/curated/learn-microsoft/vm-sizes.json": "b48f2fd37e5c3379b345108eba70079a23adea311ad32cc22d1b54c6a1752054",
+    "corpus/learn-microsoft/vm-sizes/dom.html": "61ec2f739f17a6d240c586ee44359c7645f993a580585a32c629d0322344ffcf",
+    "corpus/learn-microsoft/vm-sizes/nodes.json": "b6cd46ef656007b495fb7aa4145028c920e7af6ca10ff700063d8047657c1ce6",
+    "corpus/learn-microsoft/vm-sizes/full.png": "980605c972aafc5c86ab161fa321257935a8508ebbd71088052b08a4c1392787",
+    "corpus/learn-microsoft/vm-sizes/meta.json": "bab66395823eb3e4c5a3958683747cfa177c22280f47cbbafbe19035c15d7337",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-2560.png": "231d267fec619667228aa211381a1145609c5bc39f71e46db188867636e34460",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-1920.png": "a3f6ebe1d6b4027dd65aa95db3a67469629a2972d7b30fb6e4791ca24fca0a3e",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-1440.png": "7f53c34bf74d8cece5d9dcb2ebc6a0520257af89311cb63b06195cf384fb687f",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-390.png": "53d0e4551b1b090b70fbb37202bb120cbef6e033cdd82c51e8ea31beaae21c17",
+    "m1/curated/renders/stripe-docs-payments.html": "755ec1641d473b3753d2d8a573b715bf180ed9679b5ab9e88146cb8c459976e8",
+    "m1/curated/stripe-docs/payments.json": "3ffb338f4da74a2db94b77cd71fab6ca0b283b5e59879c69589e20481ea88c61",
+    "corpus/stripe-docs/payments/dom.html": "a3c2108992847a669bb0462179ee3cc2795f2b88da0b517896d4ccfab484c910",
+    "corpus/stripe-docs/payments/nodes.json": "d15efc37959414a7655534439e20b2b259662addb2a3496a423df1e8687dcc66",
+    "corpus/stripe-docs/payments/full.png": "d313ba39dd9017972dede476fa6c9f319c91b820dec571aec950c82b57ee8e74",
+    "corpus/stripe-docs/payments/meta.json": "193ca72ea80551916043493a69d0a9281683ae3c927ad9df694397642d263cb3",
+    ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-2560.png": "f96107dbdef71d7ee08aa91963d65f6b382001ba6f4274de066523ef44c498d4",
+    ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-1920.png": "7d23727170862bedf6e12610072fea8c77522280c02eb6b045f4e515a9a01311",
+    ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-1440.png": "575b1b841d0e9bee8565282e617ab60c05d4622315e22442b2de7f437b0d63c3",
+    ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-390.png": "a288df487d54f6a6b31c5faed24acae5e0976832b40cc8f3407efac1bf426dad",
+    ".scratch/62-all-sites/audit-public-technical-docs/packet.md": "aa41fd07a0bb183615187551654bcd7e707f38089fb9db7d4551a8700fa19911",
+    ".scratch/62-all-sites/audit-public-technical-docs/capture.mjs": "25fc84f4d1c2be597c7a3957783a5a1e035932885590c843889644d436870066",
+    ".scratch/62-all-sites/audit-public-technical-docs/capture.log": "ae23a0654c7848380a1747f1603fc197704eb3dee57923314d4c652d0da14f6d",
+    ".scratch/62-all-sites/audit-public-technical-docs/measurements.json": "7046586e19646fb6734660ff022e63e558bc1a7f93553d7ac9d7017c98dabf5e",
+    ".scratch/62-all-sites/audit-public-technical-docs/browser-errors.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-2560-whole-content.png": "4e07ae51c42a118258187617ec6cae8ff831c907abd7e1169a404d0b567fe31d",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-1920-whole-content.png": "31d16004386828f645b6ee9386ba8f4824375ea536a35b013b44d6682b380858",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-1440-whole-content.png": "f03d9a82ec9ac178ecbd169875ef7ba0d1b213414869cb0116f88b38345cd07e",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-2560-whole-content.png": "95125801b5b35d2c1e2226b8f59c1992cd2e0fa79babf3aa863e628dc49c52de",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-1920-whole-content.png": "e3a2ee6d10d55fd9dbf17b22ec16b5c3a152f7f423907eccc680836edcc7f498",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-1440-whole-content.png": "e3a2ee6d10d55fd9dbf17b22ec16b5c3a152f7f423907eccc680836edcc7f498",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-2560-whole-content.png": "c7d115ba03cba8d1679be92c4bb75c0f4650e24145ae41e1e39999a2cdb763b6",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-1920-whole-content.png": "ef45ee27ba027221e595f775d82c8370a3d01a836924518dae1a4c71351c7084",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-1440-whole-content.png": "b8f1aa0e5bd264ac9091b09294fc706a1bd067401416e8d3e92f90a67f7ee6c1",
+    ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-2560-whole-content.png": "fdf24ffd85e89d83e424b7d8000d1656b3bf20ab22e4ae5b79e2ad2140e03544",
+    ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-1920-whole-content.png": "0a81905e1c479b6052abdab50ec05c441ca8c9ead7e35efd08e84c33dd838a3b",
+    ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-1440-whole-content.png": "7612a7eeda8b541822312602c5e9a6640a27972ecea0608563ca5e50c24fbc36",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-390-sheet.png": "7c3163b93168ca4b8a6fef6167ab73bd56d036d58d9df665a233702ce15b298b",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-390-sheet.png": "a48fbaaeaa3a96455843a80cc4a462524e774c8ca04794cdf5117cfc5b61aec9",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-390-sheet.png": "8238ade9d92ea42306a052ea803b81558afbef43e9ec08021eb55a48c120361b",
+    ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-390-sheet.png": "2f2bb2c5c042f623c0d2df519342462022d86d8a99669a081c7c54d2ff4ee21f",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-source-whole.png": "3946f294815591ab2337c8da2b7e19ba0505736817e69ae5180abb5bdc8936be",
+    ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-source-whole.png": "1bc499cf7a795db9ef31e80244a86ba6b3c28a8b895900f4672f40cf2b7bf4fb",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-source-whole.png": "dc2a676c75f8b045900e4347dfbc49f6580660124317fe30d9c3cb3e2593a99a",
+    ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-source-whole.png": "c127701a17f3b8b1f355902f1bfd82f69e48886a6da1982eac80dbc3c25c5534",
+    ".scratch/62-all-sites/audit-public-technical-docs/source-evidence.py": "e823f693a735a5cf6495fef0da6b3775ac42117658175b05ec8a3c729af2dd18",
+    ".scratch/62-all-sites/audit-public-technical-docs/source-summary.log": "4c1e4ea0b56a38b3d82a36de2c3bc30bda4d702bade65f8e41ddddb3555cfedb",
+    ".scratch/62-all-sites/audit-public-technical-docs/source-evidence.json": "4e0c15f112eeac78111c42e5f019b2f283e962486eaf3834185f99ad10c69225",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-source-naming-detail.png": "bbcb0aaf69e8c8a0fa0a0e6b5d71052db2a54b5e978b125303018c0b98c587a2",
+    ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-source-general-purpose-detail.png": "9747616879aa6363ae21704afd1ab26ab81fddd6197058ba9c1414c2e43f1a02",
+    ".scratch/62-all-sites/audit-public-technical-docs/validators.log": "e6301d852fbc1179448dfa87d160292d3df741b2932f44e84df9b8ceed0904a2",
+    ".scratch/62-all-sites/audit-public-technical-docs/mailto-repro.json": "984660b360cceb4b5f16241a452f3aaa6e79c029eb888e2e13b6822140b33425",
+    ".scratch/62-all-sites/audit-public-technical-docs/desktop-pixel-equivalence.json": "7b5787879e188d83c9c8d892b5d3bfd208b60227cfd0856508d82724d6ad8e0a",
+    ".scratch/62-all-sites/audit-public-technical-docs/probe.mjs": "98aa0f907f46b3c8cca3d51d58e2c2e16f67a7686fb6b640dabf95c8c37ce135",
+    ".scratch/62-all-sites/audit-public-technical-docs/probe.log": "d81955c89909731a984492e62682b05612e635bdf578289598d87e31fd8410ff",
+    ".scratch/62-all-sites/audit-public-technical-docs/focused-probe.json": "48a9e83c0a754ffb63ad6056f06c426e5230f33df4b78d4e097693a30b876309",
+    ".scratch/62-all-sites/audit-public-technical-docs/table-fidelity.json": "06ff44ade6cf79c4b76881eb522ab03a7d5bd5d7cf57cc3cb477ae8c0f68a833",
+    "m1/axis.mjs": "fd59354a432ef5268edc15396c6e42f7e5aca6aa03cb3c8edd192565af7c2247",
+    "m1/render.mjs": "f0a47b3f40e5ee15745c9e43fc1c5df2a6129eb8794def78119881cf77951af4",
+    "m1/validate.mjs": "54a3a5806d604ff5c17fcd778ef8942ae5b658c4fa8dd5b2a3e90eddd2478bbd",
+    "docs/m1/layout-axes.md": "72ca1500c85601cb2d5262f3fd3019433056b9a0aca42dce579c369bb028cd52",
+    "docs/m1/axioms-v0.md": "70a2588c3e7b0660483acbca23433cbcd70ad8c1f81b4406c275509738661677",
+    ".scratch/62-all-sites/audit-public-technical-docs/final-state.json": "5e436efc3e0fb03ac41adb224a61b369eef90724f8bff4e80c8be217359bb6ea",
+    ".scratch/62-all-sites/audit-public-technical-docs/ticket.md": "e8670bdaa4fd4972037c2d341adca9d31559f718027be0af752485a4375ce2c9",
+    ".scratch/62-all-sites/audit-public-technical-docs/build-handoff.py": "e600a03a2824f09bedd5bcff52319c43cecd7c8905aeff51685e2d406379c9aa",
+    "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-public-technical-docs.md": "6fe09b54f54609cfe785576cc784f7c5370c101a75dd7ac9359d37140af6676b"
+  },
+  "coverage": {
+    "gov-uk/ni-rates-letters": {
+      "2560": {
+        "render": "whole-height directly inspected via1280px content crop retaining100% page height",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-2560-whole-content.png",
+        "geometry": "measured full viewport"
+      },
+      "1440": {
+        "render": "whole-height directly inspected via1280px content crop retaining100% page height",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-1440-whole-content.png",
+        "geometry": "measured full viewport"
+      },
+      "1920": {
+        "render": "INCOMPLETE: captured but no direct image read within18-read budget; geometry only is not visual PASS",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-1920.png",
+        "geometry": "measured full viewport; content pixel equality false with small raster deltas"
+      },
+      "390": {
+        "render": "whole-height directly inspected as1300px strips with70px overlap",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-390-sheet.png",
+        "geometry": "measured full viewport"
+      },
+      "source": {
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-ni-rates-letters-source-whole.png",
+        "dom": "parsed relevant headings, tables, anchors and image attributes; model/action and table-text comparisons",
+        "visual": "whole source overview inspected; readable relevant source details limited"
+      },
+      "findingIds": [
+        "E1",
+        "E4",
+        "C1",
+        "C2"
+      ],
+      "cleanPage": false,
+      "acceptance": "INCOMPLETE: defects unresolved; baseline diagnostic only"
+    },
+    "gov-uk/register-birth-abroad": {
+      "2560": {
+        "render": "whole-height directly inspected via1280px content crop retaining100% page height",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-2560-whole-content.png",
+        "geometry": "measured full viewport"
+      },
+      "1440": {
+        "render": "whole-height directly inspected via1280px content crop retaining100% page height",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-1440-whole-content.png",
+        "geometry": "measured full viewport"
+      },
+      "1920": {
+        "render": "INCOMPLETE: captured but no direct image read within18-read budget; geometry only is not visual PASS",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-1920.png",
+        "geometry": "measured full viewport; content pixel equality false with small raster deltas"
+      },
+      "390": {
+        "render": "whole-height directly inspected as1300px strips with70px overlap",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-390-sheet.png",
+        "geometry": "measured full viewport"
+      },
+      "source": {
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/gov-uk-register-birth-abroad-source-whole.png",
+        "dom": "parsed relevant headings, tables, anchors and image attributes; model/action and table-text comparisons",
+        "visual": "whole source overview inspected; readable relevant source details limited"
+      },
+      "findingIds": [
+        "E1",
+        "E2"
+      ],
+      "cleanPage": false,
+      "acceptance": "INCOMPLETE: defects unresolved; baseline diagnostic only"
+    },
+    "learn-microsoft/vm-sizes": {
+      "2560": {
+        "render": "whole-height directly inspected via1280px content crop retaining100% page height",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-2560-whole-content.png",
+        "geometry": "measured full viewport"
+      },
+      "1440": {
+        "render": "whole-height directly inspected via1280px content crop retaining100% page height",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-1440-whole-content.png",
+        "geometry": "measured full viewport"
+      },
+      "1920": {
+        "render": "INCOMPLETE: captured but no direct image read within18-read budget; geometry only is not visual PASS",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-1920.png",
+        "geometry": "measured full viewport; content pixel equality false with small raster deltas"
+      },
+      "390": {
+        "render": "whole-height directly inspected as1300px strips with70px overlap",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-390-sheet.png",
+        "geometry": "measured full viewport"
+      },
+      "source": {
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-vm-sizes-source-whole.png",
+        "dom": "parsed relevant headings, tables, anchors and image attributes; model/action and table-text comparisons",
+        "visual": "whole source overview inspected; readable relevant source details limited",
+        "readableCrops": [
+          ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-source-naming-detail.png",
+          ".scratch/62-all-sites/audit-public-technical-docs/learn-microsoft-source-general-purpose-detail.png"
+        ]
+      },
+      "findingIds": [
+        "E1",
+        "E4",
+        "C3",
+        "C4"
+      ],
+      "cleanPage": false,
+      "acceptance": "INCOMPLETE: defects unresolved; baseline diagnostic only"
+    },
+    "stripe-docs/payments": {
+      "2560": {
+        "render": "whole-height directly inspected via1280px content crop retaining100% page height",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-2560-whole-content.png",
+        "geometry": "measured full viewport"
+      },
+      "1440": {
+        "render": "whole-height directly inspected via1280px content crop retaining100% page height",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-1440-whole-content.png",
+        "geometry": "measured full viewport"
+      },
+      "1920": {
+        "render": "INCOMPLETE: captured but no direct image read within18-read budget; geometry only is not visual PASS",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-1920.png",
+        "geometry": "measured full viewport; content pixel equality false with small raster deltas"
+      },
+      "390": {
+        "render": "whole-height directly inspected as1300px strips with70px overlap",
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-390-sheet.png",
+        "geometry": "measured full viewport"
+      },
+      "source": {
+        "image": ".scratch/62-all-sites/audit-public-technical-docs/stripe-docs-payments-source-whole.png",
+        "dom": "parsed relevant headings, tables, anchors and image attributes; model/action and table-text comparisons",
+        "visual": "Only900px original scroll-container viewport exists; below payment options source visual comparison INCOMPLETE; lower groups corroborated by DOM/nodes only"
+      },
+      "findingIds": [
+        "E1",
+        "E3",
+        "C5",
+        "C6"
+      ],
+      "cleanPage": false,
+      "acceptance": "INCOMPLETE: defects unresolved; baseline diagnostic only"
+    }
+  },
+  "findings": [
+    {
+      "id": "E1",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "gov-uk/ni-rates-letters",
+        "gov-uk/register-birth-abroad",
+        "learn-microsoft/vm-sizes",
+        "stripe-docs/payments"
+      ],
+      "criterion": "coherent whole-page alignment / hierarchy",
+      "location": "m1/render.mjs:715-720, 873-876, 925; m1/axis.mjs:805-816; .depth-0>.title and mixed .w-narrow/.w-wide sections",
+      "description": "Desktop document titles and consecutive content sections use unrelated left edges. GOV and Stripe switch edges when the local representation changes; Microsoft keeps its table body axis but not its title axis. Birth lead is centered over the full frame although the source is a left-aligned document lead. This is not an objection to centered outer whitespace or to justified wider tables.",
+      "renderEvidence": "All four *-2560-whole-content.png and *-1440-whole-content.png; birth 390-sheet also shows centered lead against left-aligned body.",
+      "sourceEvidence": "GOV source whole images have continuous main-column heading/body edges; Stripe source top starts at x328 for title/lead/options; Microsoft source naming-detail and general-purpose-detail preserve section/table association.",
+      "geometryEvidence": "measurements.json headings: at2560 title x960/w640; GOV wide x664/w1232 vs narrow x840/w880; Stripe sections alternate x840 and x664. At1920 corresponding x640,344,520; at1440 x400,104,280. Microsoft title x960 vs body x840. At390 section edges largely collapse to x16, but birth lead remains text-align:center.",
+      "improvementCriterion": "Use one document-owned heading/lead/content axis inherited across local list/form/table/card renderings. Wider tables may widen only with explicit coherent heading/table alignment; retain legitimate centered page frame and brand differences. Recheck all four widths and seven accepted references, not a site-name template."
+    },
+    {
+      "id": "E2",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "gov-uk/register-birth-abroad"
+      ],
+      "criterion": "faithful actions / targets",
+      "location": "$.help._action; m1/axis.mjs:77, 400-401, 741-743, 757; .g-help .fact",
+      "description": "The captured email action is in the model but renders as plain text, with no mailto anchor. hasTarget excludes mailto; inlineInto consumes the action despite href:null.",
+      "renderEvidence": "gov-uk-register-birth-abroad-{2560-whole-content,1440-whole-content,390-sheet}.png; focused-probe.json has zero mailto links.",
+      "sourceEvidence": "corpus/gov-uk/register-birth-abroad/dom.html:262 has `<a href=\"mailto:Overseas.RegistrationUnit@fcdo.gov.uk\">`; source whole image shows linked email.",
+      "geometryEvidence": "source-evidence.json: ten model actions, nine rendered anchors; mailto-repro.json: hasTarget:false, href:null, inlineInto:_summary, actionRow:[]. All captured widths lack target.",
+      "improvementCriterion": "Preserve this source-backed email target as a uniquely discoverable inline anchor through the shared safe-target decision; add defect-detecting HTML/Markdown target proof without admitting unsafe protocols."
+    },
+    {
+      "id": "E3",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "stripe-docs/payments"
+      ],
+      "criterion": "closed shared-axis / heading-region association",
+      "location": "$._lines[6]._items[2]._name; m1/render.mjs:499-517; main > article > div > section:nth-of-type(7) > article > div > section:nth-of-type(3) > article",
+      "description": "The local 更多指南/支付方式 heading is suppressed because a same-text heading appeared earlier. Its four bank/wallet links consequently read as continuation of 管理支付. Distinct fact-bearing subgroups are not redundant headings merely because their labels repeat.",
+      "renderEvidence": "stripe-docs-payments-2560-whole-content.png bottom; 1440 whole-content; 390-sheet columns2-3.",
+      "sourceEvidence": "source-evidence.json source nodes: article[1]/div[2]/div[10]/div[2]/span[0], text 支付方式, x763.56/y1704.03; original DOM keeps five distinct 更多指南 groups. This is DOM evidence: the source PNG does not reach this scroll region.",
+      "geometryEvidence": "focused-probe.json: 更多指南 at y1362.5; 管理支付 at y1509.3; next article y1602.25 has heading:null and contains 银行卡/银行借记/银行重定向/钱包; API follows y1656.9. Model has distinct group name/action.",
+      "improvementCriterion": "Keep a local group title or an equally explicit source-faithful boundary for these four links. Repeated labels in distinct populated regions must not erase their semantic parent; preserve all targets and HTML/Markdown/text grouping."
+    },
+    {
+      "id": "E4",
+      "owner": "engine",
+      "severity": "medium",
+      "pages": [
+        "gov-uk/ni-rates-letters",
+        "learn-microsoft/vm-sizes"
+      ],
+      "criterion": "readable table density / responsive axes",
+      "location": "table.data th and td; m1/render.mjs:849-856",
+      "description": "At390 long financial/technical headers and list values are squeezed into narrow columns rather than a readable table viewport. GOV last header becomes many isolated words; Microsoft long series and workload cells grow into tall one-to-two-word columns. No page overflow is not sufficient visual acceptance.",
+      "renderEvidence": "gov-uk-ni-rates-letters-390-sheet.png first/second columns; learn-microsoft-vm-sizes-390-sheet.png all columns.",
+      "sourceEvidence": "Source NI and Microsoft screenshots/DOM are real multi-column tables with intact headers and lists; source mobile rendering is not available, so no claim of pixel-matched mobile design.",
+      "geometryEvidence": "measurements.json: GOV header height158px at390 vs40px desktop, last header width~83px; Microsoft general-purpose columns68/123/167px. focused-probe.json D-family row h779.52px mobile, page height6333 vs2860 desktop. GPU table already has small internal overflow (373px inside358px parent), unlike other compressed tables.",
+      "improvementCriterion": "Retain all declared columns, associations and values while preventing header/technical-value compression into predominantly isolated-word lines. Provide coherent bounded table scrolling where required; no wrapping entities into another comparison row or silently discarding fields. Re-review mobile after link/content restoration."
+    },
+    {
+      "id": "C1",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ],
+      "criterion": "faithful source hierarchy / contextual facts",
+      "location": "$.example insertion order after $.class-1a-1b",
+      "description": "Employee contribution Example appears after employer table and Class1A/1B rates, where its8%/2% calculation is detached from the employee table and can be mistaken for an example of15% employer/Class1A rates.",
+      "renderEvidence": "gov-uk-ni-rates-letters-2560-whole-content.png bottom and390-sheet column3.",
+      "sourceEvidence": "corpus/gov-uk/ni-rates-letters/dom.html:372 Example precedes Employer heading:386. Source whole image shows employee table -> Example -> employer table -> Class1A.",
+      "geometryEvidence": "focused-probe.json: Employee y368.4; Employer y1191.9; Class1A y2015.5; Example y2165.4. Model key order matches wrong render order. Amounts themselves remain source-true.",
+      "improvementCriterion": "Restore the source story sequence or containment associating this exact Example with employee contribution rates before employer content; keep exact£58.66/8%/2% facts, not invented explanatory copy."
+    },
+    {
+      "id": "C2",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "gov-uk/ni-rates-letters"
+      ],
+      "criterion": "faithful facts / targets",
+      "location": "$.contribution-rates, $.employee-rates, $.employer-rates, $.class-1a-1b and bottom guide utilities",
+      "description": "Several main-guide actions and one meaningful Class1A obligation are missing from the factual model: category-letter inline reference, past employee rates, HMRC historical tax-year rates, calculators/tables, expenses-and-benefits target, additional lump-sum/redundancy-payment obligation, and printable whole-guide utility. Existing Class1A detailed-guidance target is correctly retained, including its source2022-2023 slug; do not “correct” it by guessing a newer URL.",
+      "renderEvidence": "gov-uk-ni-rates-letters all inspected widths: only3 anchors (Class1A detail plus two labels for one Next target); source table text itself matches.",
+      "sourceEvidence": "corpus/gov-uk/ni-rates-letters/dom.html:250,260,498-516,528; source-evidence.json matched main-guide anchors. Source states “They must also pay Class1A on some other lump sum payments, for example redundancy payments.”",
+      "geometryEvidence": "source-evidence.json has two model actions vs three rendered anchors, with absent source actions not encoded; table-fidelity.json confirms both17-row table text grids have zero differences.",
+      "improvementCriterion": "Restore captured main-guide facts/actions in closed grammar with source URLs and associations; maintain compact guide utilities. Preserve exact captured2026-2027 rates and existing detailed-guidance target. Do not expand into cookie/global-site chrome reconstruction."
+    },
+    {
+      "id": "C3",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "learn-microsoft/vm-sizes"
+      ],
+      "criterion": "faithful actions / targets",
+      "location": "$.vm-size-and-series-naming.name-structure-breakdown._items[*]._fields.links; $.families-by-type.*._items[*]._fields.family and series-list",
+      "description": "All127 source table anchors have become inert field/list text. The displayed Links column promises navigation, and Enter the Series/Size tab here still instructs a non-existent action. The model contains zero _action entries and the rendering zero anchors: this is factual-target loss, not merely link styling.",
+      "renderEvidence": "learn-microsoft-vm-sizes-2560/1440-whole-content and390-sheet; source-naming-detail and source-general-purpose-detail show blue anchors.",
+      "sourceEvidence": "corpus/learn-microsoft/vm-sizes/dom.html:345/350 ->#name-structure-breakdown;417 A-family ->general-purpose/a-family;419 Av2-series ->general-purpose/a-family#av2-series and End-of-Life target;429 Dsv7/Ddsv7 ->general-purpose/d-family#dsv7-series-and-ddsv7-series. Resolve relative URLs against captured redirected overview URL, not a guessed site base.",
+      "geometryEvidence": "table-fidelity.json source/render link counts for eight tables:8/0,34/0,11/0,30/0,9/0,24/0,2/0,9/0; table text rows/cells themselves all match after whitespace normalization.",
+      "improvementCriterion": "Preserve each captured table destination and meaningful same-page target using existing closed values/actions and shared axes. If this cannot be represented without an escape hatch, route the precise grammar gap to engine rather than inventing presentation keys or dropping targets."
+    },
+    {
+      "id": "C4",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "learn-microsoft/vm-sizes"
+      ],
+      "criterion": "faithful facts / meaningful media / hierarchy",
+      "location": "$.vm-size-and-series-naming.name-structure-breakdown and omitted article regions",
+      "description": "Name structure breakdown incorrectly labels the Type/Series/Size classification table; source places that table before a separate named Series/Size explanation with a DCads_v5 diagram and five footnotes. Those source naming facts, caveat/naming-conventions link and diagram are absent. Intro/workload descriptions and later region-size lookup, REST API, benchmark, other-size-information and next-step body regions are also absent from the model. Do not treat the short table-only output as complete article preservation.",
+      "renderEvidence": "learn-microsoft-vm-sizes-2560-whole-content.png (ends at High performance compute); learn-microsoft-source-naming-detail.png readable full diagram/explanation; source-whole.png overview shows lower article regions.",
+      "sourceEvidence": "corpus/learn-microsoft/vm-sizes/dom.html:325-382 naming structure,368 image media/size-series-breakdown.png and footnotes;738-770 lower article headings/body links. source-evidence.json contains exact headings/image attributes.",
+      "geometryEvidence": "Source img bbox x392/y2007.33/w655.97/h214.67; no rendered img. Source article10850px vs table-only render2860px is context, not a metric by itself. Model roots are only vm-size-and-series-naming/families-by-type.",
+      "improvementCriterion": "Correct the classification-table/actual naming-section association and restore captured meaningful article facts/actions/media within closed grammar. Use existing source-attributable asset bytes and do not enlarge; local original media availability is unverified, so checkpoint missing assets instead of inventing/recapturing silently. Source video poster is also absent; its interaction/asset coverage needs explicit resolution."
+    },
+    {
+      "id": "C5",
+      "owner": "content",
+      "severity": "medium",
+      "pages": [
+        "stripe-docs/payments"
+      ],
+      "criterion": "source-visible title hierarchy",
+      "location": "$._title.text",
+      "description": "The model/visibleH1 uses the SEO document title “付款 | Stripe 文档” although the capture has a visible page title “付款”. This adds site-name SEO text to a content heading contrary to the visible-title rule. It is not the Apple/Taobao identity fix and does not justify a new site-name template.",
+      "renderEvidence": "stripe-docs-payments-2560/1440-whole-content and390-sheet top.",
+      "sourceEvidence": "Source900px whole image shows visible付款 and separate使用Stripe开始接受支付。; source-evidence.json h1 text付款; corpus/dom.html:14.",
+      "geometryEvidence": "measurements.json H1 text付款|Stripe文档, font32px, x960/w640 at2560; root model text identical.",
+      "improvementCriterion": "Use captured visible付款 as the page-title fact, retaining original document-title provenance in intent if needed; engine supplies any compact identity through approved shared semantics, not enlarged brand heading."
+    },
+    {
+      "id": "C6",
+      "owner": "content",
+      "severity": "medium",
+      "pages": [
+        "stripe-docs/payments"
+      ],
+      "criterion": "cohesive source image/title/action / attribution",
+      "location": "$._lines[0] missing captured payments-hero image",
+      "description": "The captured introductory payment hero illustration is completely absent from the model/render. Source puts the image beside the introduction and its source action; current intro is text-only. This is an image-preservation/cohesion gap, not evidence to make the image larger.",
+      "renderEvidence": "stripe-docs-payments source-whole.png upper hero vs2560/1440-whole-content top; no rendered images at any width.",
+      "sourceEvidence": "corpus/stripe-docs/payments/dom.html:14 image https://b.stripecdn.com/docs-statics-srv/assets/payments-hero.84c749136bfe3d7c2b8495ef295c6d89.png; nodes bbox x877/y331.53/w500/h240.5. Source alt empty; do not invent factual alt description.",
+      "geometryEvidence": "measurements.json images:[] all widths; model no _image. Original asset byte availability/natural dimensions not established by this audit.",
+      "improvementCriterion": "Use existing attributable asset bytes if available, associated with the captured intro/action and bounded by natural size (no enlargement). If original bytes unavailable, retain explicit incomplete-image coverage; do not guess a replacement or claim whole-image fidelity."
+    }
+  ],
+  "engineFindings": [
+    "E1",
+    "E2",
+    "E3",
+    "E4"
+  ],
+  "contentFindings": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6"
+  ],
+  "status": "INCOMPLETE",
+  "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-public-technical-docs.md",
+  "limits": [
+    "18/18 image reads used; three bounded sequential browser jobs used, all closed. No1920 direct visual reads; retained all four whole-height captures per page for continuation.",
+    "Source Stripe full.png is1440×900 in a scroll container, not whole article; lower source rendered regions have DOM evidence but no image comparison.",
+    "Long GOV/Microsoft source images were overview reads; readable Microsoft naming/general-purpose crops inspected. Remaining source fine-print/footer detail not independently readable at overview scale.",
+    "All four models omit global header/footer regions. Captured site chrome seen in source overviews, but global chrome completeness is not established; no footer surface claim.",
+    "No action destinations navigated or email client activated; only source/HTML/model target fidelity checked. No native-control interaction, hover/focus or screen-reader review.",
+    "No source asset bytes/natural-size/attribution completeness verified for absent Microsoft/Stripe media. No rendered images exist on these four baseline pages.",
+    "Static text foreground/background contrast probe only; border/focus/native-input and all state contrasts not assessed.",
+    "No source/model/assets/owning Docs edits, tests added, integration, commits, setup reruns or final independent acceptance review performed. Findings apply only to baseline403cd5be096db89b428e130ad57cca730b425fdc."
+  ],
+  "baseline": "403cd5be096db89b428e130ad57cca730b425fdc",
+  "diagnosticScope": "Evidence and ownership diagnosis recorded; no page accepted or repaired",
+  "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-public-technical-docs",
+  "finalState": ".scratch/62-all-sites/audit-public-technical-docs/final-state.json"
+}

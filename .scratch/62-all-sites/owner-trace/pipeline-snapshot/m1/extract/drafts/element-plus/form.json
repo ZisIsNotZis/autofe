@@ -1,0 +1,1997 @@
+{
+  "_intent": "Form | Element Plus — Form Permalink to \"Form\" [draft]",
+  "_title": {
+    "text": "Form | Element Plus"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://element-plus.org/en-US/component/form.html#page-content",
+        "label": "Skip to content"
+      }
+    },
+    {
+      "_intent": "Form Permalink to \"Form\" [draft]",
+      "_title": {
+        "text": "Form Permalink to \"Form\""
+      },
+      "_summary": {
+        "text": "Form consists of input, radio, select, checkbox and so on. With form, you can collect, verify and submit data."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "TIP"
+          }
+        },
+        {
+          "_text": {
+            "text": "The component has been upgraded with a flex layout to replace the old float layout."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Basic Form Permalink to \"Basic Form\" [draft]",
+      "_title": {
+        "text": "Basic Form Permalink to \"Basic Form\""
+      },
+      "_summary": {
+        "text": "It includes all kinds of input items, such as input, select, radio and checkbox."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "In each form component, you need a form-item field to be the container of your input item."
+          }
+        },
+        {
+          "_text": {
+            "text": "Activity name"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Activity zone"
+          }
+        },
+        {
+          "_text": {
+            "text": "please select your zone"
+          }
+        },
+        {
+          "_text": {
+            "text": "Activity time"
+          }
+        },
+        {
+          "_text": {
+            "text": "Instant delivery"
+          }
+        },
+        {
+          "_text": {
+            "text": "Activity type"
+          }
+        },
+        {
+          "_text": {
+            "text": "Online activities"
+          }
+        },
+        {
+          "_text": {
+            "text": "Promotion activities"
+          }
+        },
+        {
+          "_text": {
+            "text": "Offline activities"
+          }
+        },
+        {
+          "_text": {
+            "text": "Simple brand exposure"
+          }
+        },
+        {
+          "_text": {
+            "text": "Resources"
+          }
+        },
+        {
+          "_intent": "Resources [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Sponsor"
+              }
+            },
+            {
+              "_name": {
+                "text": "Venue"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "resources",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Activity form"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-2",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Create"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Cancel"
+          }
+        },
+        {
+          "_text": {
+            "text": "TS"
+          }
+        },
+        {
+          "_text": {
+            "text": "JS"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtZm9ybSA6bW9kZWw9XCJmb3JtXCIgbGFiZWwtd2lkdGg9XCJhdXRvXCIgc3R5bGU9XCJtYXgtd2lkdGg6IDYwMHB4XCI+XG4gICAgPGVsLWZvcm0taXRlbSBsYWJlbD1cIkFjdGl2aXR5IG5hbWVcIj5cbiAgICAgIDxlbC1pbnB1dCB2LW1vZGVsPVwiZm9ybS5uYW1lXCIgLz5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiQWN0aXZpdHkgem9uZVwiPlxuICAgICAgPGVsLXNlbGVjdCB2LW1vZGVsPVwiZm9ybS5yZWdpb25cIiBwbGFjZWhvbGRlcj1cInBsZWFzZSBzZWxlY3QgeW91ciB6b25lXCI+XG4gICAgICAgIDxlbC1vcHRpb24gbGFiZWw9XCJab25lIG9uZVwiIHZhbHVlPVwic2hhbmdoYWlcIiAvPlxuICAgICAgICA8ZWwtb3B0aW9uIGxhYmVsPVwiWm9uZSB0d29cIiB2YWx1ZT1cImJlaWppbmdcIiAvPlxuICAgICAgPC9lbC1zZWxlY3Q+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbSBsYWJlbD1cIkFjdGl2aXR5IHRpbWVcIj5cbiAgICAgIDxlbC1jb2wgOnNwYW49XCIxMVwiPlxuICAgICAgICA8ZWwtZGF0ZS1waWNrZXJcbiAgICAgICAgICB2LW1vZGVsPVwiZm9ybS5kYXRlMVwiXG4gICAgICAgICAgdHlwZT1cImRhdGVcIlxuICAgICAgICAgIHBsYWNlaG9sZGVyPVwiUGljayBhIGRhdGVcIlxuICAgICAgICAgIHN0eWxlPVwid2lkdGg6IDEwMCVcIlxuICAgICAgICAvPlxuICAgICAgPC9lbC1jb2w+XG4gICAgICA8ZWwtY29sIDpzcGFuPVwiMlwiIGNsYXNzPVwidGV4dC1jZW50ZXJcIj5cbiAgICAgICAgPHNwYW4gY2xhc3M9XCJ0ZXh0LWdyYXktNTAwXCI+LTwvc3Bhbj5cbiAgICAgIDwvZWwtY29sPlxuICAgICAgPGVsLWNvbCA6c3Bhbj1cIjExXCI+XG4gICAgICAgIDxlbC10aW1lLXBpY2tlclxuICAgICAgICAgIHYtbW9kZWw9XCJmb3JtLmRhdGUyXCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSB0aW1lXCJcbiAgICAgICAgICBzdHlsZT1cIndpZHRoOiAxMDAlXCJcbiAgICAgICAgLz5cbiAgICAgIDwvZWwtY29sPlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgIDxlbC1mb3JtLWl0ZW0gbGFiZWw9XCJJbnN0YW50IGRlbGl2ZXJ5XCI+XG4gICAgICA8ZWwtc3dpdGNoIHYtbW9kZWw9XCJmb3JtLmRlbGl2ZXJ5XCIgLz5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiQWN0aXZpdHkgdHlwZVwiPlxuICAgICAgPGVsLWNoZWNrYm94LWdyb3VwIHYtbW9kZWw9XCJmb3JtLnR5cGVcIj5cbiAgICAgICAgPGVsLWNoZWNrYm94IHZhbHVlPVwiT25saW5lIGFjdGl2aXRpZXNcIiBuYW1lPVwidHlwZVwiPlxuICAgICAgICAgIE9ubGluZSBhY3Rpdml0aWVzXG4gICAgICAgIDwvZWwtY2hlY2tib3g+XG4gICAgICAgIDxlbC1jaGVja2JveCB2YWx1ZT1cIlByb21vdGlvbiBhY3Rpdml0aWVzXCIgbmFtZT1cInR5cGVcIj5cbiAgICAgICAgICBQcm9tb3Rpb24gYWN0aXZpdGllc1xuICAgICAgICA8L2VsLWNoZWNrYm94PlxuICAgICAgICA8ZWwtY2hlY2tib3ggdmFsdWU9XCJPZmZsaW5lIGFjdGl2aXRpZXNcIiBuYW1lPVwidHlwZVwiPlxuICAgICAgICAgIE9mZmxpbmUgYWN0aXZpdGllc1xuICAgICAgICA8L2VsLWNoZWNrYm94PlxuICAgICAgICA8ZWwtY2hlY2tib3ggdmFsdWU9XCJTaW1wbGUgYnJhbmQgZXhwb3N1cmVcIiBuYW1lPVwidHlwZVwiPlxuICAgICAgICAgIFNpbXBsZSBicmFuZCBleHBvc3VyZVxuICAgICAgICA8L2VsLWNoZWNrYm94PlxuICAgICAgPC9lbC1jaGVja2JveC1ncm91cD5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiUmVzb3VyY2VzXCI+XG4gICAgICA8ZWwtcmFkaW8tZ3JvdXAgdi1tb2RlbD1cImZvcm0ucmVzb3VyY2VcIj5cbiAgICAgICAgPGVsLXJhZGlvIHZhbHVlPVwiU3BvbnNvclwiPlNwb25zb3I8L2VsLXJhZGlvPlxuICAgICAgICA8ZWwtcmFkaW8gdmFsdWU9XCJWZW51ZVwiPlZlbnVlPC9lbC1yYWRpbz5cbiAgICAgIDwvZWwtcmFkaW8tZ3JvdXA+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbSBsYWJlbD1cIkFjdGl2aXR5IGZvcm1cIj5cbiAgICAgIDxlbC1pbnB1dCB2LW1vZGVsPVwiZm9ybS5kZXNjXCIgdHlwZT1cInRleHRhcmVhXCIgLz5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwicHJpbWFyeVwiIEBjbGljaz1cIm9uU3VibWl0XCI+Q3JlYXRlPC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uPkNhbmNlbDwvZWwtYnV0dG9uPlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICA8L2VsLWZvcm0+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVhY3RpdmUgfSBmcm9tICd2dWUnXG5cbi8vIGRvIG5vdCB1c2Ugc2FtZSBuYW1lIHdpdGggcmVmXG5jb25zdCBmb3JtID0gcmVhY3RpdmUoe1xuICBuYW1lOiAnJyxcbiAgcmVnaW9uOiAnJyxcbiAgZGF0ZTE6ICcnLFxuICBkYXRlMjogJycsXG4gIGRlbGl2ZXJ5OiBmYWxzZSxcbiAgdHlwZTogW10sXG4gIHJlc291cmNlOiAnJyxcbiAgZGVzYzogJycsXG59KVxuXG5jb25zdCBvblN1Ym1pdCA9ICgpID0+IHtcbiAgY29uc29sZS5sb2coJ3N1Ym1pdCEnKVxufVxuPC9zY3JpcHQ+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/form/basic-form.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        },
+        {
+          "_text": {
+            "text": "W3C regulates that"
+          }
+        },
+        {
+          "_text": {
+            "text": "When there is only one single-line text input field in a form, t"
+          }
+        },
+        {
+          "_text": {
+            "text": "To prevent this behavior, you can add @submit.prevent on <el-form>."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Inline Form Permalink to \"Inline Form\" [draft]",
+      "_title": {
+        "text": "Inline Form Permalink to \"Inline Form\""
+      },
+      "_summary": {
+        "text": "When the vertical space is limited and the form is relatively simple, you can put it in one line."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Set the inline attribute to true and the form will be inline."
+          }
+        },
+        {
+          "_text": {
+            "text": "Approved by"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "approved-by",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Query"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtZm9ybSA6aW5saW5lPVwidHJ1ZVwiIDptb2RlbD1cImZvcm1JbmxpbmVcIiBjbGFzcz1cImRlbW8tZm9ybS1pbmxpbmVcIj5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiQXBwcm92ZWQgYnlcIj5cbiAgICAgIDxlbC1pbnB1dCB2LW1vZGVsPVwiZm9ybUlubGluZS51c2VyXCIgcGxhY2Vob2xkZXI9XCJBcHByb3ZlZCBieVwiIGNsZWFyYWJsZSAvPlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgIDxlbC1mb3JtLWl0ZW0gbGFiZWw9XCJBY3Rpdml0eSB6b25lXCI+XG4gICAgICA8ZWwtc2VsZWN0XG4gICAgICAgIHYtbW9kZWw9XCJmb3JtSW5saW5lLnJlZ2lvblwiXG4gICAgICAgIHBsYWNlaG9sZGVyPVwiQWN0aXZpdHkgem9uZVwiXG4gICAgICAgIGNsZWFyYWJsZVxuICAgICAgPlxuICAgICAgICA8ZWwtb3B0aW9uIGxhYmVsPVwiWm9uZSBvbmVcIiB2YWx1ZT1cInNoYW5naGFpXCIgLz5cbiAgICAgICAgPGVsLW9wdGlvbiBsYWJlbD1cIlpvbmUgdHdvXCIgdmFsdWU9XCJiZWlqaW5nXCIgLz5cbiAgICAgIDwvZWwtc2VsZWN0PlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgIDxlbC1mb3JtLWl0ZW0gbGFiZWw9XCJBY3Rpdml0eSB0aW1lXCI+XG4gICAgICA8ZWwtZGF0ZS1waWNrZXJcbiAgICAgICAgdi1tb2RlbD1cImZvcm1JbmxpbmUuZGF0ZVwiXG4gICAgICAgIHR5cGU9XCJkYXRlXCJcbiAgICAgICAgcGxhY2Vob2xkZXI9XCJQaWNrIGEgZGF0ZVwiXG4gICAgICAgIGNsZWFyYWJsZVxuICAgICAgLz5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtPlxuICAgICAgPGVsLWJ1dHRvbiB0eXBlPVwicHJpbWFyeVwiIEBjbGljaz1cIm9uU3VibWl0XCI+UXVlcnk8L2VsLWJ1dHRvbj5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgPC9lbC1mb3JtPlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlYWN0aXZlIH0gZnJvbSAndnVlJ1xuXG5jb25zdCBmb3JtSW5saW5lID0gcmVhY3RpdmUoe1xuICB1c2VyOiAnJyxcbiAgcmVnaW9uOiAnJyxcbiAgZGF0ZTogJycsXG59KVxuXG5jb25zdCBvblN1Ym1pdCA9ICgpID0+IHtcbiAgY29uc29sZS5sb2coJ3N1Ym1pdCEnKVxufVxuPC9zY3JpcHQ+XG5cbjxzdHlsZT5cbi5kZW1vLWZvcm0taW5saW5lIC5lbC1pbnB1dCB7XG4gIC0tZWwtaW5wdXQtd2lkdGg6IDIyMHB4O1xufVxuXG4uZGVtby1mb3JtLWlubGluZSAuZWwtc2VsZWN0IHtcbiAgLS1lbC1zZWxlY3Qtd2lkdGg6IDIyMHB4O1xufVxuPC9zdHlsZT5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/form/inline-form.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Alignment Permalink to \"Alignment\" [draft]",
+      "_title": {
+        "text": "Alignment Permalink to \"Alignment\""
+      },
+      "_summary": {
+        "text": "Depending on your design, there are several different ways to align your label element."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "You can set label-position of el-form-item separately 2.7.7. If the value is empty, the label-position of el-form is used."
+          }
+        },
+        {
+          "_text": {
+            "text": "The label-position attribute decides how labels align, it can be top or left. When set to top, labels will be placed at the top of the form field."
+          }
+        },
+        {
+          "_text": {
+            "text": "Form Align"
+          }
+        },
+        {
+          "_intent": "label position [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Left"
+              }
+            },
+            {
+              "_name": {
+                "text": "Right"
+              }
+            },
+            {
+              "_name": {
+                "text": "Top"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "label-position",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Form Item Align"
+          }
+        },
+        {
+          "_intent": "item label position [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Empty"
+              }
+            },
+            {
+              "_name": {
+                "text": "Left"
+              }
+            },
+            {
+              "_name": {
+                "text": "Right"
+              }
+            },
+            {
+              "_name": {
+                "text": "Top"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "item-label",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Name"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-3",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-4",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-5",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtZm9ybVxuICAgIDpsYWJlbC1wb3NpdGlvbj1cImxhYmVsUG9zaXRpb25cIlxuICAgIGxhYmVsLXdpZHRoPVwiYXV0b1wiXG4gICAgOm1vZGVsPVwiZm9ybUxhYmVsQWxpZ25cIlxuICAgIHN0eWxlPVwibWF4LXdpZHRoOiA2MDBweFwiXG4gID5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiRm9ybSBBbGlnblwiIGxhYmVsLXBvc2l0aW9uPVwicmlnaHRcIj5cbiAgICAgIDxlbC1yYWRpby1ncm91cCB2LW1vZGVsPVwibGFiZWxQb3NpdGlvblwiIGFyaWEtbGFiZWw9XCJsYWJlbCBwb3NpdGlvblwiPlxuICAgICAgICA8ZWwtcmFkaW8tYnV0dG9uIHZhbHVlPVwibGVmdFwiPkxlZnQ8L2VsLXJhZGlvLWJ1dHRvbj5cbiAgICAgICAgPGVsLXJhZGlvLWJ1dHRvbiB2YWx1ZT1cInJpZ2h0XCI+UmlnaHQ8L2VsLXJhZGlvLWJ1dHRvbj5cbiAgICAgICAgPGVsLXJhZGlvLWJ1dHRvbiB2YWx1ZT1cInRvcFwiPlRvcDwvZWwtcmFkaW8tYnV0dG9uPlxuICAgICAgPC9lbC1yYWRpby1ncm91cD5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiRm9ybSBJdGVtIEFsaWduXCIgbGFiZWwtcG9zaXRpb249XCJyaWdodFwiPlxuICAgICAgPGVsLXJhZGlvLWdyb3VwXG4gICAgICAgIHYtbW9kZWw9XCJpdGVtTGFiZWxQb3NpdGlvblwiXG4gICAgICAgIGFyaWEtbGFiZWw9XCJpdGVtIGxhYmVsIHBvc2l0aW9uXCJcbiAgICAgID5cbiAgICAgICAgPGVsLXJhZGlvLWJ1dHRvbiB2YWx1ZT1cIlwiPkVtcHR5PC9lbC1yYWRpby1idXR0b24+XG4gICAgICAgIDxlbC1yYWRpby1idXR0b24gdmFsdWU9XCJsZWZ0XCI+TGVmdDwvZWwtcmFkaW8tYnV0dG9uPlxuICAgICAgICA8ZWwtcmFkaW8tYnV0dG9uIHZhbHVlPVwicmlnaHRcIj5SaWdodDwvZWwtcmFkaW8tYnV0dG9uPlxuICAgICAgICA8ZWwtcmFkaW8tYnV0dG9uIHZhbHVlPVwidG9wXCI+VG9wPC9lbC1yYWRpby1idXR0b24+XG4gICAgICA8L2VsLXJhZGlvLWdyb3VwPlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgIDxlbC1mb3JtLWl0ZW0gbGFiZWw9XCJOYW1lXCIgOmxhYmVsLXBvc2l0aW9uPVwiaXRlbUxhYmVsUG9zaXRpb25cIj5cbiAgICAgIDxlbC1pbnB1dCB2LW1vZGVsPVwiZm9ybUxhYmVsQWxpZ24ubmFtZVwiIC8+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbSBsYWJlbD1cIkFjdGl2aXR5IHpvbmVcIiA6bGFiZWwtcG9zaXRpb249XCJpdGVtTGFiZWxQb3NpdGlvblwiPlxuICAgICAgPGVsLWlucHV0IHYtbW9kZWw9XCJmb3JtTGFiZWxBbGlnbi5yZWdpb25cIiAvPlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgIDxlbC1mb3JtLWl0ZW0gbGFiZWw9XCJBY3Rpdml0eSBmb3JtXCIgOmxhYmVsLXBvc2l0aW9uPVwiaXRlbUxhYmVsUG9zaXRpb25cIj5cbiAgICAgIDxlbC1pbnB1dCB2LW1vZGVsPVwiZm9ybUxhYmVsQWxpZ24udHlwZVwiIC8+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gIDwvZWwtZm9ybT5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWFjdGl2ZSwgcmVmIH0gZnJvbSAndnVlJ1xuXG5pbXBvcnQgdHlwZSB7IEZvcm1JdGVtUHJvcHMsIEZvcm1Qcm9wcyB9IGZyb20gJ2VsZW1lbnQtcGx1cydcblxuY29uc3QgbGFiZWxQb3NpdGlvbiA9IHJlZjxGb3JtUHJvcHNbJ2xhYmVsUG9zaXRpb24nXT4oJ3JpZ2h0JylcbmNvbnN0IGl0ZW1MYWJlbFBvc2l0aW9uID0gcmVmPEZvcm1JdGVtUHJvcHNbJ2xhYmVsUG9zaXRpb24nXT4oJycpXG5jb25zdCBmb3JtTGFiZWxBbGlnbiA9IHJlYWN0aXZlKHtcbiAgbmFtZTogJycsXG4gIHJlZ2lvbjogJycsXG4gIHR5cGU6ICcnLFxufSlcbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/form/alignment.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Validation Permalink to \"Validation\" [draft]",
+      "_title": {
+        "text": "Validation Permalink to \"Validation\""
+      },
+      "_summary": {
+        "text": "Form component allows you to verify your data, helping you find and correct errors."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Just add the rules attribute for Form component, pass validation rules, and set prop attribute for FormItem as a specific key that needs to be validated. See more information at async-validator ."
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-6",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Activity count"
+          }
+        },
+        {
+          "_text": {
+            "text": "Activity location"
+          }
+        },
+        {
+          "_text": {
+            "text": "Home"
+          }
+        },
+        {
+          "_text": {
+            "text": "Company"
+          }
+        },
+        {
+          "_text": {
+            "text": "School"
+          }
+        },
+        {
+          "_intent": "* Resources [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Sponsorship"
+              }
+            },
+            {
+              "_name": {
+                "text": "Venue"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "resources-2",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-7",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Create"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtZm9ybVxuICAgIHJlZj1cInJ1bGVGb3JtUmVmXCJcbiAgICBzdHlsZT1cIm1heC13aWR0aDogNjAwcHhcIlxuICAgIDptb2RlbD1cInJ1bGVGb3JtXCJcbiAgICA6cnVsZXM9XCJydWxlc1wiXG4gICAgbGFiZWwtd2lkdGg9XCJhdXRvXCJcbiAgPlxuICAgIDxlbC1mb3JtLWl0ZW0gbGFiZWw9XCJBY3Rpdml0eSBuYW1lXCIgcHJvcD1cIm5hbWVcIj5cbiAgICAgIDxlbC1pbnB1dCB2LW1vZGVsPVwicnVsZUZvcm0ubmFtZVwiIC8+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbSBsYWJlbD1cIkFjdGl2aXR5IHpvbmVcIiBwcm9wPVwicmVnaW9uXCI+XG4gICAgICA8ZWwtc2VsZWN0IHYtbW9kZWw9XCJydWxlRm9ybS5yZWdpb25cIiBwbGFjZWhvbGRlcj1cIkFjdGl2aXR5IHpvbmVcIj5cbiAgICAgICAgPGVsLW9wdGlvbiBsYWJlbD1cIlpvbmUgb25lXCIgdmFsdWU9XCJzaGFuZ2hhaVwiIC8+XG4gICAgICAgIDxlbC1vcHRpb24gbGFiZWw9XCJab25lIHR3b1wiIHZhbHVlPVwiYmVpamluZ1wiIC8+XG4gICAgICA8L2VsLXNlbGVjdD5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiQWN0aXZpdHkgY291bnRcIiBwcm9wPVwiY291bnRcIj5cbiAgICAgIDxlbC1zZWxlY3QtdjJcbiAgICAgICAgdi1tb2RlbD1cInJ1bGVGb3JtLmNvdW50XCJcbiAgICAgICAgcGxhY2Vob2xkZXI9XCJBY3Rpdml0eSBjb3VudFwiXG4gICAgICAgIDpvcHRpb25zPVwib3B0aW9uc1wiXG4gICAgICAvPlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgIDxlbC1mb3JtLWl0ZW0gbGFiZWw9XCJBY3Rpdml0eSB0aW1lXCIgcmVxdWlyZWQ+XG4gICAgICA8ZWwtY29sIDpzcGFuPVwiMTFcIj5cbiAgICAgICAgPGVsLWZvcm0taXRlbSBwcm9wPVwiZGF0ZTFcIj5cbiAgICAgICAgICA8ZWwtZGF0ZS1waWNrZXJcbiAgICAgICAgICAgIHYtbW9kZWw9XCJydWxlRm9ybS5kYXRlMVwiXG4gICAgICAgICAgICB0eXBlPVwiZGF0ZVwiXG4gICAgICAgICAgICBhcmlhLWxhYmVsPVwiUGljayBhIGRhdGVcIlxuICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJQaWNrIGEgZGF0ZVwiXG4gICAgICAgICAgICBzdHlsZT1cIndpZHRoOiAxMDAlXCJcbiAgICAgICAgICAvPlxuICAgICAgICA8L2VsLWZvcm0taXRlbT5cbiAgICAgIDwvZWwtY29sPlxuICAgICAgPGVsLWNvbCBjbGFzcz1cInRleHQtY2VudGVyXCIgOnNwYW49XCIyXCI+XG4gICAgICAgIDxzcGFuIGNsYXNzPVwidGV4dC1ncmF5LTUwMFwiPi08L3NwYW4+XG4gICAgICA8L2VsLWNvbD5cbiAgICAgIDxlbC1jb2wgOnNwYW49XCIxMVwiPlxuICAgICAgICA8ZWwtZm9ybS1pdGVtIHByb3A9XCJkYXRlMlwiPlxuICAgICAgICAgIDxlbC10aW1lLXBpY2tlclxuICAgICAgICAgICAgdi1tb2RlbD1cInJ1bGVGb3JtLmRhdGUyXCJcbiAgICAgICAgICAgIGFyaWEtbGFiZWw9XCJQaWNrIGEgdGltZVwiXG4gICAgICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSB0aW1lXCJcbiAgICAgICAgICAgIHN0eWxlPVwid2lkdGg6IDEwMCVcIlxuICAgICAgICAgIC8+XG4gICAgICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgICAgPC9lbC1jb2w+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbSBsYWJlbD1cIkluc3RhbnQgZGVsaXZlcnlcIiBwcm9wPVwiZGVsaXZlcnlcIj5cbiAgICAgIDxlbC1zd2l0Y2ggdi1tb2RlbD1cInJ1bGVGb3JtLmRlbGl2ZXJ5XCIgLz5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiQWN0aXZpdHkgbG9jYXRpb25cIiBwcm9wPVwibG9jYXRpb25cIj5cbiAgICAgIDxlbC1zZWdtZW50ZWQgdi1tb2RlbD1cInJ1bGVGb3JtLmxvY2F0aW9uXCIgOm9wdGlvbnM9XCJsb2NhdGlvbk9wdGlvbnNcIiAvPlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgIDxlbC1mb3JtLWl0ZW0gbGFiZWw9XCJBY3Rpdml0eSB0eXBlXCIgcHJvcD1cInR5cGVcIj5cbiAgICAgIDxlbC1jaGVja2JveC1ncm91cCB2LW1vZGVsPVwicnVsZUZvcm0udHlwZVwiPlxuICAgICAgICA8ZWwtY2hlY2tib3ggdmFsdWU9XCJPbmxpbmUgYWN0aXZpdGllc1wiIG5hbWU9XCJ0eXBlXCI+XG4gICAgICAgICAgT25saW5lIGFjdGl2aXRpZXNcbiAgICAgICAgPC9lbC1jaGVja2JveD5cbiAgICAgICAgPGVsLWNoZWNrYm94IHZhbHVlPVwiUHJvbW90aW9uIGFjdGl2aXRpZXNcIiBuYW1lPVwidHlwZVwiPlxuICAgICAgICAgIFByb21vdGlvbiBhY3Rpdml0aWVzXG4gICAgICAgIDwvZWwtY2hlY2tib3g+XG4gICAgICAgIDxlbC1jaGVja2JveCB2YWx1ZT1cIk9mZmxpbmUgYWN0aXZpdGllc1wiIG5hbWU9XCJ0eXBlXCI+XG4gICAgICAgICAgT2ZmbGluZSBhY3Rpdml0aWVzXG4gICAgICAgIDwvZWwtY2hlY2tib3g+XG4gICAgICAgIDxlbC1jaGVja2JveCB2YWx1ZT1cIlNpbXBsZSBicmFuZCBleHBvc3VyZVwiIG5hbWU9XCJ0eXBlXCI+XG4gICAgICAgICAgU2ltcGxlIGJyYW5kIGV4cG9zdXJlXG4gICAgICAgIDwvZWwtY2hlY2tib3g+XG4gICAgICA8L2VsLWNoZWNrYm94LWdyb3VwPlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgIDxlbC1mb3JtLWl0ZW0gbGFiZWw9XCJSZXNvdXJjZXNcIiBwcm9wPVwicmVzb3VyY2VcIj5cbiAgICAgIDxlbC1yYWRpby1ncm91cCB2LW1vZGVsPVwicnVsZUZvcm0ucmVzb3VyY2VcIj5cbiAgICAgICAgPGVsLXJhZGlvIHZhbHVlPVwiU3BvbnNvcnNoaXBcIj5TcG9uc29yc2hpcDwvZWwtcmFkaW8+XG4gICAgICAgIDxlbC1yYWRpbyB2YWx1ZT1cIlZlbnVlXCI+VmVudWU8L2VsLXJhZGlvPlxuICAgICAgPC9lbC1yYWRpby1ncm91cD5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiQWN0aXZpdHkgZm9ybVwiIHByb3A9XCJkZXNjXCI+XG4gICAgICA8ZWwtaW5wdXQgdi1tb2RlbD1cInJ1bGVGb3JtLmRlc2NcIiB0eXBlPVwidGV4dGFyZWFcIiAvPlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgIDxlbC1mb3JtLWl0ZW0+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJwcmltYXJ5XCIgQGNsaWNrPVwic3VibWl0Rm9ybShydWxlRm9ybVJlZilcIj5cbiAgICAgICAgQ3JlYXRlXG4gICAgICA8L2VsLWJ1dHRvbj5cbiAgICAgIDxlbC1idXR0b24gQGNsaWNrPVwicmVzZXRGb3JtKHJ1bGVGb3JtUmVmKVwiPlJlc2V0PC9lbC1idXR0b24+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gIDwvZWwtZm9ybT5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWFjdGl2ZSwgcmVmIH0gZnJvbSAndnVlJ1xuXG5pbXBvcnQgdHlwZSB7IEZvcm1JbnN0YW5jZSwgRm9ybVJ1bGVzIH0gZnJvbSAnZWxlbWVudC1wbHVzJ1xuXG5pbnRlcmZhY2UgUnVsZUZvcm0ge1xuICBuYW1lOiBzdHJpbmdcbiAgcmVnaW9uOiBzdHJpbmdcbiAgY291bnQ6IHN0cmluZ1xuICBkYXRlMTogc3RyaW5nXG4gIGRhdGUyOiBzdHJpbmdcbiAgZGVsaXZlcnk6IGJvb2xlYW5cbiAgbG9jYXRpb246IHN0cmluZ1xuICB0eXBlOiBzdHJpbmdbXVxuICByZXNvdXJjZTogc3RyaW5nXG4gIGRlc2M6IHN0cmluZ1xufVxuXG5jb25zdCBydWxlRm9ybVJlZiA9IHJlZjxGb3JtSW5zdGFuY2U+KClcbmNvbnN0IHJ1bGVGb3JtID0gcmVhY3RpdmU8UnVsZUZvcm0+KHtcbiAgbmFtZTogJ0hlbGxvJyxcbiAgcmVnaW9uOiAnJyxcbiAgY291bnQ6ICcnLFxuICBkYXRlMTogJycsXG4gIGRhdGUyOiAnJyxcbiAgZGVsaXZlcnk6IGZhbHNlLFxuICBsb2NhdGlvbjogJycsXG4gIHR5cGU6IFtdLFxuICByZXNvdXJjZTogJycsXG4gIGRlc2M6ICcnLFxufSlcblxuY29uc3QgbG9jYXRpb25PcHRpb25zID0gWydIb21lJywgJ0NvbXBhbnknLCAnU2Nob29sJ11cblxuY29uc3QgcnVsZXMgPSByZWFjdGl2ZTxGb3JtUnVsZXM8UnVsZUZvcm0+Pih7XG4gIG5hbWU6IFtcbiAgICB7IHJlcXVpcmVkOiB0cnVlLCBtZXNzYWdlOiAnUGxlYXNlIGlucHV0IEFjdGl2aXR5IG5hbWUnLCB0cmlnZ2VyOiAnYmx1cicgfSxcbiAgICB7IG1pbjogMywgbWF4OiA1LCBtZXNzYWdlOiAnTGVuZ3RoIHNob3VsZCBiZSAzIHRvIDUnLCB0cmlnZ2VyOiAnYmx1cicgfSxcbiAgXSxcbiAgcmVnaW9uOiBbXG4gICAge1xuICAgICAgcmVxdWlyZWQ6IHRydWUsXG4gICAgICBtZXNzYWdlOiAnUGxlYXNlIHNlbGVjdCBBY3Rpdml0eSB6b25lJyxcbiAgICAgIHRyaWdnZXI6ICdjaGFuZ2UnLFxuICAgIH0sXG4gIF0sXG4gIGNvdW50OiBbXG4gICAge1xuICAgICAgcmVxdWlyZWQ6IHRydWUsXG4gICAgICBtZXNzYWdlOiAnUGxlYXNlIHNlbGVjdCBBY3Rpdml0eSBjb3VudCcsXG4gICAgICB0cmlnZ2VyOiAnY2hhbmdlJyxcbiAgICB9LFxuICBdLFxuICBkYXRlMTogW1xuICAgIHtcbiAgICAgIHR5cGU6ICdkYXRlJyxcbiAgICAgIHJlcXVpcmVkOiB0cnVlLFxuICAgICAgbWVzc2FnZTogJ1BsZWFzZSBwaWNrIGEgZGF0ZScsXG4gICAgICB0cmlnZ2VyOiAnY2hhbmdlJyxcbiAgICB9LFxuICBdLFxuICBkYXRlMjogW1xuICAgIHtcbiAgICAgIHR5cGU6ICdkYXRlJyxcbiAgICAgIHJlcXVpcmVkOiB0cnVlLFxuICAgICAgbWVzc2FnZTogJ1BsZWFzZSBwaWNrIGEgdGltZScsXG4gICAgICB0cmlnZ2VyOiAnY2hhbmdlJyxcbiAgICB9LFxuICBdLFxuICBsb2NhdGlvbjogW1xuICAgIHtcbiAgICAgIHJlcXVpcmVkOiB0cnVlLFxuICAgICAgbWVzc2FnZTogJ1BsZWFzZSBzZWxlY3QgYSBsb2NhdGlvbicsXG4gICAgICB0cmlnZ2VyOiAnY2hhbmdlJyxcbiAgICB9LFxuICBdLFxuICB0eXBlOiBbXG4gICAge1xuICAgICAgdHlwZTogJ2FycmF5JyxcbiAgICAgIHJlcXVpcmVkOiB0cnVlLFxuICAgICAgbWVzc2FnZTogJ1BsZWFzZSBzZWxlY3QgYXQgbGVhc3Qgb25lIGFjdGl2aXR5IHR5cGUnLFxuICAgICAgdHJpZ2dlcjogJ2NoYW5nZScsXG4gICAgfSxcbiAgXSxcbiAgcmVzb3VyY2U6IFtcbiAgICB7XG4gICAgICByZXF1aXJlZDogdHJ1ZSxcbiAgICAgIG1lc3NhZ2U6ICdQbGVhc2Ugc2VsZWN0IGFjdGl2aXR5IHJlc291cmNlJyxcbiAgICAgIHRyaWdnZXI6ICdjaGFuZ2UnLFxuICAgIH0sXG4gIF0sXG4gIGRlc2M6IFtcbiAgICB7IHJlcXVpcmVkOiB0cnVlLCBtZXNzYWdlOiAnUGxlYXNlIGlucHV0IGFjdGl2aXR5IGZvcm0nLCB0cmlnZ2VyOiAnYmx1cicgfSxcbiAgXSxcbn0pXG5cbmNvbnN0IHN1Ym1pdEZvcm0gPSBhc3luYyAoZm9ybUVsOiBGb3JtSW5zdGFuY2UgfCB1bmRlZmluZWQpID0+IHtcbiAgaWYgKCFmb3JtRWwpIHJldHVyblxuICBhd2FpdCBmb3JtRWwudmFsaWRhdGUoKHZhbGlkLCBmaWVsZHMpID0+IHtcbiAgICBpZiAodmFsaWQpIHtcbiAgICAgIGNvbnNvbGUubG9nKCdzdWJtaXQhJylcbiAgICB9IGVsc2Uge1xuICAgICAgY29uc29sZS5sb2coJ2Vycm9yIHN1Ym1pdCEnLCBmaWVsZHMpXG4gICAgfVxuICB9KVxufVxuXG5jb25zdCByZXNldEZvcm0gPSAoZm9ybUVsOiBGb3JtSW5zdGFuY2UgfCB1bmRlZmluZWQpID0+IHtcbiAgaWYgKCFmb3JtRWwpIHJldHVyblxuICBmb3JtRWwucmVzZXRGaWVsZHMoKVxufVxuXG5jb25zdCBvcHRpb25zID0gQXJyYXkuZnJvbSh7IGxlbmd0aDogMTAwMDAgfSkubWFwKChfLCBpZHgpID0+ICh7XG4gIHZhbHVlOiBgJHtpZHggKyAxfWAsXG4gIGxhYmVsOiBgJHtpZHggKyAxfWAsXG59KSlcbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/form/validation.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Custom Validation Rules Permalink to \"Custom Validation Rules\" [draft]",
+      "_title": {
+        "text": "Custom Validation Rules Permalink to \"Custom Validation Rules\""
+      },
+      "_summary": {
+        "text": "This example shows how to customize your own validation rules to finish a two-factor password verification."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Here we use status-icon to reflect validation result as an icon."
+          }
+        },
+        {
+          "_text": {
+            "text": "Password"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-8",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Confirm"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-9",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Age"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-10",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtZm9ybVxuICAgIHJlZj1cInJ1bGVGb3JtUmVmXCJcbiAgICBzdHlsZT1cIm1heC13aWR0aDogNjAwcHhcIlxuICAgIDptb2RlbD1cInJ1bGVGb3JtXCJcbiAgICBzdGF0dXMtaWNvblxuICAgIDpydWxlcz1cInJ1bGVzXCJcbiAgICBsYWJlbC13aWR0aD1cImF1dG9cIlxuICAgIGNsYXNzPVwiZGVtby1ydWxlRm9ybVwiXG4gID5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiUGFzc3dvcmRcIiBwcm9wPVwicGFzc1wiPlxuICAgICAgPGVsLWlucHV0IHYtbW9kZWw9XCJydWxlRm9ybS5wYXNzXCIgdHlwZT1cInBhc3N3b3JkXCIgYXV0b2NvbXBsZXRlPVwib2ZmXCIgLz5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiQ29uZmlybVwiIHByb3A9XCJjaGVja1Bhc3NcIj5cbiAgICAgIDxlbC1pbnB1dFxuICAgICAgICB2LW1vZGVsPVwicnVsZUZvcm0uY2hlY2tQYXNzXCJcbiAgICAgICAgdHlwZT1cInBhc3N3b3JkXCJcbiAgICAgICAgYXV0b2NvbXBsZXRlPVwib2ZmXCJcbiAgICAgIC8+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbSBsYWJlbD1cIkFnZVwiIHByb3A9XCJhZ2VcIj5cbiAgICAgIDxlbC1pbnB1dCB2LW1vZGVsLm51bWJlcj1cInJ1bGVGb3JtLmFnZVwiIC8+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbT5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiBAY2xpY2s9XCJzdWJtaXRGb3JtKHJ1bGVGb3JtUmVmKVwiPlxuICAgICAgICBTdWJtaXRcbiAgICAgIDwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiBAY2xpY2s9XCJyZXNldEZvcm0ocnVsZUZvcm1SZWYpXCI+UmVzZXQ8L2VsLWJ1dHRvbj5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgPC9lbC1mb3JtPlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlYWN0aXZlLCByZWYgfSBmcm9tICd2dWUnXG5cbmltcG9ydCB0eXBlIHsgRm9ybUluc3RhbmNlLCBGb3JtUnVsZXMgfSBmcm9tICdlbGVtZW50LXBsdXMnXG5cbmNvbnN0IHJ1bGVGb3JtUmVmID0gcmVmPEZvcm1JbnN0YW5jZT4oKVxuXG5jb25zdCBjaGVja0FnZSA9IChydWxlOiBhbnksIHZhbHVlOiBhbnksIGNhbGxiYWNrOiBhbnkpID0+IHtcbiAgaWYgKCF2YWx1ZSkge1xuICAgIHJldHVybiBjYWxsYmFjayhuZXcgRXJyb3IoJ1BsZWFzZSBpbnB1dCB0aGUgYWdlJykpXG4gIH1cbiAgc2V0VGltZW91dCgoKSA9PiB7XG4gICAgaWYgKCFOdW1iZXIuaXNJbnRlZ2VyKHZhbHVlKSkge1xuICAgICAgY2FsbGJhY2sobmV3IEVycm9yKCdQbGVhc2UgaW5wdXQgZGlnaXRzJykpXG4gICAgfSBlbHNlIHtcbiAgICAgIGlmICh2YWx1ZSA8IDE4KSB7XG4gICAgICAgIGNhbGxiYWNrKG5ldyBFcnJvcignQWdlIG11c3QgYmUgZ3JlYXRlciB0aGFuIDE4JykpXG4gICAgICB9IGVsc2Uge1xuICAgICAgICBjYWxsYmFjaygpXG4gICAgICB9XG4gICAgfVxuICB9LCAxMDAwKVxufVxuXG5jb25zdCB2YWxpZGF0ZVBhc3MgPSAocnVsZTogYW55LCB2YWx1ZTogYW55LCBjYWxsYmFjazogYW55KSA9PiB7XG4gIGlmICh2YWx1ZSA9PT0gJycpIHtcbiAgICBjYWxsYmFjayhuZXcgRXJyb3IoJ1BsZWFzZSBpbnB1dCB0aGUgcGFzc3dvcmQnKSlcbiAgfSBlbHNlIHtcbiAgICBpZiAocnVsZUZvcm0uY2hlY2tQYXNzICE9PSAnJykge1xuICAgICAgaWYgKCFydWxlRm9ybVJlZi52YWx1ZSkgcmV0dXJuXG4gICAgICBydWxlRm9ybVJlZi52YWx1ZS52YWxpZGF0ZUZpZWxkKCdjaGVja1Bhc3MnKVxuICAgIH1cbiAgICBjYWxsYmFjaygpXG4gIH1cbn1cbmNvbnN0IHZhbGlkYXRlUGFzczIgPSAocnVsZTogYW55LCB2YWx1ZTogYW55LCBjYWxsYmFjazogYW55KSA9PiB7XG4gIGlmICh2YWx1ZSA9PT0gJycpIHtcbiAgICBjYWxsYmFjayhuZXcgRXJyb3IoJ1BsZWFzZSBpbnB1dCB0aGUgcGFzc3dvcmQgYWdhaW4nKSlcbiAgfSBlbHNlIGlmICh2YWx1ZSAhPT0gcnVsZUZvcm0ucGFzcykge1xuICAgIGNhbGxiYWNrKG5ldyBFcnJvcihcIlR3byBpbnB1dHMgZG9uJ3QgbWF0Y2ghXCIpKVxuICB9IGVsc2Uge1xuICAgIGNhbGxiYWNrKClcbiAgfVxufVxuXG5jb25zdCBydWxlRm9ybSA9IHJlYWN0aXZlKHtcbiAgcGFzczogJycsXG4gIGNoZWNrUGFzczogJycsXG4gIGFnZTogJycsXG59KVxuXG5jb25zdCBydWxlcyA9IHJlYWN0aXZlPEZvcm1SdWxlczx0eXBlb2YgcnVsZUZvcm0+Pih7XG4gIHBhc3M6IFt7IHZhbGlkYXRvcjogdmFsaWRhdGVQYXNzLCB0cmlnZ2VyOiAnYmx1cicgfV0sXG4gIGNoZWNrUGFzczogW3sgdmFsaWRhdG9yOiB2YWxpZGF0ZVBhc3MyLCB0cmlnZ2VyOiAnYmx1cicgfV0sXG4gIGFnZTogW3sgdmFsaWRhdG9yOiBjaGVja0FnZSwgdHJpZ2dlcjogJ2JsdXInIH1dLFxufSlcblxuY29uc3Qgc3VibWl0Rm9ybSA9IChmb3JtRWw6IEZvcm1JbnN0YW5jZSB8IHVuZGVmaW5lZCkgPT4ge1xuICBpZiAoIWZvcm1FbCkgcmV0dXJuXG4gIGZvcm1FbC52YWxpZGF0ZSgodmFsaWQpID0+IHtcbiAgICBpZiAodmFsaWQpIHtcbiAgICAgIGNvbnNvbGUubG9nKCdzdWJtaXQhJylcbiAgICB9IGVsc2Uge1xuICAgICAgY29uc29sZS5sb2coJ2Vycm9yIHN1Ym1pdCEnKVxuICAgIH1cbiAgfSlcbn1cblxuY29uc3QgcmVzZXRGb3JtID0gKGZvcm1FbDogRm9ybUluc3RhbmNlIHwgdW5kZWZpbmVkKSA9PiB7XG4gIGlmICghZm9ybUVsKSByZXR1cm5cbiAgZm9ybUVsLnJlc2V0RmllbGRzKClcbn1cbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/form/custom-validation.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        },
+        {
+          "_text": {
+            "text": "Custom validate callback function must be called. See more advanced usage at async-validator ."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Add/Delete Form Item Permalink to \"Add/Delete Form Item\" [draft]",
+      "_title": {
+        "text": "Add/Delete Form Item Permalink to \"Add/Delete Form Item\""
+      },
+      "_summary": {
+        "text": "Email"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "In addition to passing all validation rules at once on the form component, you can also pass the validation rules or delete rules on a single form field dynamically."
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-11",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Domain0"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-12",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Delete"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "New domain"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtZm9ybVxuICAgIHJlZj1cImZvcm1SZWZcIlxuICAgIHN0eWxlPVwibWF4LXdpZHRoOiA2MDBweFwiXG4gICAgOm1vZGVsPVwiZHluYW1pY1ZhbGlkYXRlRm9ybVwiXG4gICAgbGFiZWwtd2lkdGg9XCJhdXRvXCJcbiAgICBjbGFzcz1cImRlbW8tZHluYW1pY1wiXG4gID5cbiAgICA8ZWwtZm9ybS1pdGVtXG4gICAgICBwcm9wPVwiZW1haWxcIlxuICAgICAgbGFiZWw9XCJFbWFpbFwiXG4gICAgICA6cnVsZXM9XCJbXG4gICAgICAgIHtcbiAgICAgICAgICByZXF1aXJlZDogdHJ1ZSxcbiAgICAgICAgICBtZXNzYWdlOiAnUGxlYXNlIGlucHV0IGVtYWlsIGFkZHJlc3MnLFxuICAgICAgICAgIHRyaWdnZXI6ICdibHVyJyxcbiAgICAgICAgfSxcbiAgICAgICAge1xuICAgICAgICAgIHR5cGU6ICdlbWFpbCcsXG4gICAgICAgICAgbWVzc2FnZTogJ1BsZWFzZSBpbnB1dCBjb3JyZWN0IGVtYWlsIGFkZHJlc3MnLFxuICAgICAgICAgIHRyaWdnZXI6IFsnYmx1cicsICdjaGFuZ2UnXSxcbiAgICAgICAgfSxcbiAgICAgIF1cIlxuICAgID5cbiAgICAgIDxlbC1pbnB1dCB2LW1vZGVsPVwiZHluYW1pY1ZhbGlkYXRlRm9ybS5lbWFpbFwiIC8+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbVxuICAgICAgdi1mb3I9XCIoZG9tYWluLCBpbmRleCkgaW4gZHluYW1pY1ZhbGlkYXRlRm9ybS5kb21haW5zXCJcbiAgICAgIDprZXk9XCJkb21haW4ua2V5XCJcbiAgICAgIDpsYWJlbD1cIidEb21haW4nICsgaW5kZXhcIlxuICAgICAgOnByb3A9XCInZG9tYWlucy4nICsgaW5kZXggKyAnLnZhbHVlJ1wiXG4gICAgICA6cnVsZXM9XCJ7XG4gICAgICAgIHJlcXVpcmVkOiB0cnVlLFxuICAgICAgICBtZXNzYWdlOiAnZG9tYWluIGNhbiBub3QgYmUgbnVsbCcsXG4gICAgICAgIHRyaWdnZXI6ICdibHVyJyxcbiAgICAgIH1cIlxuICAgID5cbiAgICAgIDxlbC1pbnB1dCB2LW1vZGVsPVwiZG9tYWluLnZhbHVlXCIgLz5cbiAgICAgIDxlbC1idXR0b24gY2xhc3M9XCJtdC0yXCIgQGNsaWNrLnByZXZlbnQ9XCJyZW1vdmVEb21haW4oZG9tYWluKVwiPlxuICAgICAgICBEZWxldGVcbiAgICAgIDwvZWwtYnV0dG9uPlxuICAgIDwvZWwtZm9ybS1pdGVtPlxuICAgIDxlbC1mb3JtLWl0ZW0+XG4gICAgICA8ZWwtYnV0dG9uIHR5cGU9XCJwcmltYXJ5XCIgQGNsaWNrPVwic3VibWl0Rm9ybShmb3JtUmVmKVwiPlN1Ym1pdDwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbiBAY2xpY2s9XCJhZGREb21haW5cIj5OZXcgZG9tYWluPC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIEBjbGljaz1cInJlc2V0Rm9ybShmb3JtUmVmKVwiPlJlc2V0PC9lbC1idXR0b24+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gIDwvZWwtZm9ybT5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWFjdGl2ZSwgcmVmIH0gZnJvbSAndnVlJ1xuXG5pbXBvcnQgdHlwZSB7IEZvcm1JbnN0YW5jZSB9IGZyb20gJ2VsZW1lbnQtcGx1cydcblxuY29uc3QgZm9ybVJlZiA9IHJlZjxGb3JtSW5zdGFuY2U+KClcbmNvbnN0IGR5bmFtaWNWYWxpZGF0ZUZvcm0gPSByZWFjdGl2ZTx7XG4gIGRvbWFpbnM6IERvbWFpbkl0ZW1bXVxuICBlbWFpbDogc3RyaW5nXG59Pih7XG4gIGRvbWFpbnM6IFtcbiAgICB7XG4gICAgICBrZXk6IDEsXG4gICAgICB2YWx1ZTogJycsXG4gICAgfSxcbiAgXSxcbiAgZW1haWw6ICcnLFxufSlcblxuaW50ZXJmYWNlIERvbWFpbkl0ZW0ge1xuICBrZXk6IG51bWJlclxuICB2YWx1ZTogc3RyaW5nXG59XG5cbmNvbnN0IHJlbW92ZURvbWFpbiA9IChpdGVtOiBEb21haW5JdGVtKSA9PiB7XG4gIGNvbnN0IGluZGV4ID0gZHluYW1pY1ZhbGlkYXRlRm9ybS5kb21haW5zLmluZGV4T2YoaXRlbSlcbiAgaWYgKGluZGV4ICE9PSAtMSkge1xuICAgIGR5bmFtaWNWYWxpZGF0ZUZvcm0uZG9tYWlucy5zcGxpY2UoaW5kZXgsIDEpXG4gIH1cbn1cblxuY29uc3QgYWRkRG9tYWluID0gKCkgPT4ge1xuICBkeW5hbWljVmFsaWRhdGVGb3JtLmRvbWFpbnMucHVzaCh7XG4gICAga2V5OiBEYXRlLm5vdygpLFxuICAgIHZhbHVlOiAnJyxcbiAgfSlcbn1cblxuY29uc3Qgc3VibWl0Rm9ybSA9IChmb3JtRWw6IEZvcm1JbnN0YW5jZSB8IHVuZGVmaW5lZCkgPT4ge1xuICBpZiAoIWZvcm1FbCkgcmV0dXJuXG4gIGZvcm1FbC52YWxpZGF0ZSgodmFsaWQpID0+IHtcbiAgICBpZiAodmFsaWQpIHtcbiAgICAgIGNvbnNvbGUubG9nKCdzdWJtaXQhJylcbiAgICB9IGVsc2Uge1xuICAgICAgY29uc29sZS5sb2coJ2Vycm9yIHN1Ym1pdCEnKVxuICAgIH1cbiAgfSlcbn1cblxuY29uc3QgcmVzZXRGb3JtID0gKGZvcm1FbDogRm9ybUluc3RhbmNlIHwgdW5kZWZpbmVkKSA9PiB7XG4gIGlmICghZm9ybUVsKSByZXR1cm5cbiAgZm9ybUVsLnJlc2V0RmllbGRzKClcbn1cbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/form/form-items.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Number Validate Permalink to \"Number Validate\" [draft]",
+      "_title": {
+        "text": "Number Validate Permalink to \"Number Validate\""
+      },
+      "_summary": {
+        "text": "Number Validate need a .number modifier added on the input v-model binding，it's used to transform the string value to the number which is provided by Vue."
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-13",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtZm9ybVxuICAgIHJlZj1cImZvcm1SZWZcIlxuICAgIHN0eWxlPVwibWF4LXdpZHRoOiA2MDBweFwiXG4gICAgOm1vZGVsPVwibnVtYmVyVmFsaWRhdGVGb3JtXCJcbiAgICBsYWJlbC13aWR0aD1cImF1dG9cIlxuICAgIGNsYXNzPVwiZGVtby1ydWxlRm9ybVwiXG4gID5cbiAgICA8ZWwtZm9ybS1pdGVtXG4gICAgICBsYWJlbD1cImFnZVwiXG4gICAgICBwcm9wPVwiYWdlXCJcbiAgICAgIDpydWxlcz1cIltcbiAgICAgICAgeyByZXF1aXJlZDogdHJ1ZSwgbWVzc2FnZTogJ2FnZSBpcyByZXF1aXJlZCcgfSxcbiAgICAgICAgeyB0eXBlOiAnbnVtYmVyJywgbWVzc2FnZTogJ2FnZSBtdXN0IGJlIGEgbnVtYmVyJyB9LFxuICAgICAgXVwiXG4gICAgPlxuICAgICAgPGVsLWlucHV0XG4gICAgICAgIHYtbW9kZWwubnVtYmVyPVwibnVtYmVyVmFsaWRhdGVGb3JtLmFnZVwiXG4gICAgICAgIHR5cGU9XCJ0ZXh0XCJcbiAgICAgICAgYXV0b2NvbXBsZXRlPVwib2ZmXCJcbiAgICAgIC8+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbT5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiBAY2xpY2s9XCJzdWJtaXRGb3JtKGZvcm1SZWYpXCI+U3VibWl0PC9lbC1idXR0b24+XG4gICAgICA8ZWwtYnV0dG9uIEBjbGljaz1cInJlc2V0Rm9ybShmb3JtUmVmKVwiPlJlc2V0PC9lbC1idXR0b24+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gIDwvZWwtZm9ybT5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWFjdGl2ZSwgcmVmIH0gZnJvbSAndnVlJ1xuXG5pbXBvcnQgdHlwZSB7IEZvcm1JbnN0YW5jZSB9IGZyb20gJ2VsZW1lbnQtcGx1cydcblxuY29uc3QgZm9ybVJlZiA9IHJlZjxGb3JtSW5zdGFuY2U+KClcblxuY29uc3QgbnVtYmVyVmFsaWRhdGVGb3JtID0gcmVhY3RpdmUoe1xuICBhZ2U6ICcnLFxufSlcblxuY29uc3Qgc3VibWl0Rm9ybSA9IChmb3JtRWw6IEZvcm1JbnN0YW5jZSB8IHVuZGVmaW5lZCkgPT4ge1xuICBpZiAoIWZvcm1FbCkgcmV0dXJuXG4gIGZvcm1FbC52YWxpZGF0ZSgodmFsaWQpID0+IHtcbiAgICBpZiAodmFsaWQpIHtcbiAgICAgIGNvbnNvbGUubG9nKCdzdWJtaXQhJylcbiAgICB9IGVsc2Uge1xuICAgICAgY29uc29sZS5sb2coJ2Vycm9yIHN1Ym1pdCEnKVxuICAgIH1cbiAgfSlcbn1cblxuY29uc3QgcmVzZXRGb3JtID0gKGZvcm1FbDogRm9ybUluc3RhbmNlIHwgdW5kZWZpbmVkKSA9PiB7XG4gIGlmICghZm9ybUVsKSByZXR1cm5cbiAgZm9ybUVsLnJlc2V0RmllbGRzKClcbn1cbjwvc2NyaXB0PlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/form/number-validate.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        },
+        {
+          "_text": {
+            "text": "When an el-form-item is nested in another el-form-item, its label width will be 0. You can set label-width on that el-form-item if needed."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Size Control Permalink to \"Size Control\" [draft]",
+      "_title": {
+        "text": "Size Control Permalink to \"Size Control\""
+      },
+      "_summary": {
+        "text": "All components in a Form inherit their size attribute from that Form. Similarly, FormItem also has a size attribute."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Still you can fine tune each component's size if you don't want that component to inherit its size from From or FormItem."
+          }
+        },
+        {
+          "_intent": "size control [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "large"
+              }
+            },
+            {
+              "_name": {
+                "text": "default"
+              }
+            },
+            {
+              "_name": {
+                "text": "small"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "size-control",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "position control [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Left"
+              }
+            },
+            {
+              "_name": {
+                "text": "Right"
+              }
+            },
+            {
+              "_name": {
+                "text": "Top"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "position-control",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-14",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "Activity type [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Online activities"
+              }
+            },
+            {
+              "_name": {
+                "text": "Promotion activities"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "activity-type",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "Resources [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Sponsor"
+              }
+            },
+            {
+              "_name": {
+                "text": "Venue"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "resources-3",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Create"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Cancel"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2PlxuICAgIDxlbC1yYWRpby1ncm91cCB2LW1vZGVsPVwic2l6ZVwiIGFyaWEtbGFiZWw9XCJzaXplIGNvbnRyb2xcIj5cbiAgICAgIDxlbC1yYWRpby1idXR0b24gdmFsdWU9XCJsYXJnZVwiPmxhcmdlPC9lbC1yYWRpby1idXR0b24+XG4gICAgICA8ZWwtcmFkaW8tYnV0dG9uIHZhbHVlPVwiZGVmYXVsdFwiPmRlZmF1bHQ8L2VsLXJhZGlvLWJ1dHRvbj5cbiAgICAgIDxlbC1yYWRpby1idXR0b24gdmFsdWU9XCJzbWFsbFwiPnNtYWxsPC9lbC1yYWRpby1idXR0b24+XG4gICAgPC9lbC1yYWRpby1ncm91cD5cbiAgICA8ZWwtcmFkaW8tZ3JvdXAgdi1tb2RlbD1cImxhYmVsUG9zaXRpb25cIiBhcmlhLWxhYmVsPVwicG9zaXRpb24gY29udHJvbFwiPlxuICAgICAgPGVsLXJhZGlvLWJ1dHRvbiB2YWx1ZT1cImxlZnRcIj5MZWZ0PC9lbC1yYWRpby1idXR0b24+XG4gICAgICA8ZWwtcmFkaW8tYnV0dG9uIHZhbHVlPVwicmlnaHRcIj5SaWdodDwvZWwtcmFkaW8tYnV0dG9uPlxuICAgICAgPGVsLXJhZGlvLWJ1dHRvbiB2YWx1ZT1cInRvcFwiPlRvcDwvZWwtcmFkaW8tYnV0dG9uPlxuICAgIDwvZWwtcmFkaW8tZ3JvdXA+XG4gIDwvZGl2PlxuICA8YnIgLz5cbiAgPGVsLWZvcm1cbiAgICBzdHlsZT1cIm1heC13aWR0aDogNjAwcHhcIlxuICAgIDptb2RlbD1cInNpemVGb3JtXCJcbiAgICBsYWJlbC13aWR0aD1cImF1dG9cIlxuICAgIDpsYWJlbC1wb3NpdGlvbj1cImxhYmVsUG9zaXRpb25cIlxuICAgIDpzaXplPVwic2l6ZVwiXG4gID5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiQWN0aXZpdHkgbmFtZVwiPlxuICAgICAgPGVsLWlucHV0IHYtbW9kZWw9XCJzaXplRm9ybS5uYW1lXCIgLz5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiQWN0aXZpdHkgem9uZVwiPlxuICAgICAgPGVsLXNlbGVjdFxuICAgICAgICB2LW1vZGVsPVwic2l6ZUZvcm0ucmVnaW9uXCJcbiAgICAgICAgcGxhY2Vob2xkZXI9XCJwbGVhc2Ugc2VsZWN0IHlvdXIgem9uZVwiXG4gICAgICA+XG4gICAgICAgIDxlbC1vcHRpb24gbGFiZWw9XCJab25lIG9uZVwiIHZhbHVlPVwic2hhbmdoYWlcIiAvPlxuICAgICAgICA8ZWwtb3B0aW9uIGxhYmVsPVwiWm9uZSB0d29cIiB2YWx1ZT1cImJlaWppbmdcIiAvPlxuICAgICAgPC9lbC1zZWxlY3Q+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbSBsYWJlbD1cIkFjdGl2aXR5IHRpbWVcIj5cbiAgICAgIDxlbC1jb2wgOnNwYW49XCIxMVwiPlxuICAgICAgICA8ZWwtZGF0ZS1waWNrZXJcbiAgICAgICAgICB2LW1vZGVsPVwic2l6ZUZvcm0uZGF0ZTFcIlxuICAgICAgICAgIHR5cGU9XCJkYXRlXCJcbiAgICAgICAgICBhcmlhLWxhYmVsPVwiUGljayBhIGRhdGVcIlxuICAgICAgICAgIHBsYWNlaG9sZGVyPVwiUGljayBhIGRhdGVcIlxuICAgICAgICAgIHN0eWxlPVwid2lkdGg6IDEwMCVcIlxuICAgICAgICAvPlxuICAgICAgPC9lbC1jb2w+XG4gICAgICA8ZWwtY29sIGNsYXNzPVwidGV4dC1jZW50ZXJcIiA6c3Bhbj1cIjFcIiBzdHlsZT1cIm1hcmdpbjogMCAwLjVyZW1cIj4tPC9lbC1jb2w+XG4gICAgICA8ZWwtY29sIDpzcGFuPVwiMTFcIj5cbiAgICAgICAgPGVsLXRpbWUtcGlja2VyXG4gICAgICAgICAgdi1tb2RlbD1cInNpemVGb3JtLmRhdGUyXCJcbiAgICAgICAgICBhcmlhLWxhYmVsPVwiUGljayBhIHRpbWVcIlxuICAgICAgICAgIHBsYWNlaG9sZGVyPVwiUGljayBhIHRpbWVcIlxuICAgICAgICAgIHN0eWxlPVwid2lkdGg6IDEwMCVcIlxuICAgICAgICAvPlxuICAgICAgPC9lbC1jb2w+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbSBsYWJlbD1cIkFjdGl2aXR5IHR5cGVcIj5cbiAgICAgIDxlbC1jaGVja2JveC1ncm91cCB2LW1vZGVsPVwic2l6ZUZvcm0udHlwZVwiPlxuICAgICAgICA8ZWwtY2hlY2tib3gtYnV0dG9uIHZhbHVlPVwiT25saW5lIGFjdGl2aXRpZXNcIiBuYW1lPVwidHlwZVwiPlxuICAgICAgICAgIE9ubGluZSBhY3Rpdml0aWVzXG4gICAgICAgIDwvZWwtY2hlY2tib3gtYnV0dG9uPlxuICAgICAgICA8ZWwtY2hlY2tib3gtYnV0dG9uIHZhbHVlPVwiUHJvbW90aW9uIGFjdGl2aXRpZXNcIiBuYW1lPVwidHlwZVwiPlxuICAgICAgICAgIFByb21vdGlvbiBhY3Rpdml0aWVzXG4gICAgICAgIDwvZWwtY2hlY2tib3gtYnV0dG9uPlxuICAgICAgPC9lbC1jaGVja2JveC1ncm91cD5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiUmVzb3VyY2VzXCI+XG4gICAgICA8ZWwtcmFkaW8tZ3JvdXAgdi1tb2RlbD1cInNpemVGb3JtLnJlc291cmNlXCI+XG4gICAgICAgIDxlbC1yYWRpbyBib3JkZXIgdmFsdWU9XCJTcG9uc29yXCI+U3BvbnNvcjwvZWwtcmFkaW8+XG4gICAgICAgIDxlbC1yYWRpbyBib3JkZXIgdmFsdWU9XCJWZW51ZVwiPlZlbnVlPC9lbC1yYWRpbz5cbiAgICAgIDwvZWwtcmFkaW8tZ3JvdXA+XG4gICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPGVsLWZvcm0taXRlbT5cbiAgICAgIDxlbC1idXR0b24gdHlwZT1cInByaW1hcnlcIiBAY2xpY2s9XCJvblN1Ym1pdFwiPkNyZWF0ZTwvZWwtYnV0dG9uPlxuICAgICAgPGVsLWJ1dHRvbj5DYW5jZWw8L2VsLWJ1dHRvbj5cbiAgICA8L2VsLWZvcm0taXRlbT5cbiAgPC9lbC1mb3JtPlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlYWN0aXZlLCByZWYgfSBmcm9tICd2dWUnXG5cbmltcG9ydCB0eXBlIHsgQ29tcG9uZW50U2l6ZSwgRm9ybVByb3BzIH0gZnJvbSAnZWxlbWVudC1wbHVzJ1xuXG5jb25zdCBzaXplID0gcmVmPENvbXBvbmVudFNpemU+KCdkZWZhdWx0JylcbmNvbnN0IGxhYmVsUG9zaXRpb24gPSByZWY8Rm9ybVByb3BzWydsYWJlbFBvc2l0aW9uJ10+KCdyaWdodCcpXG5cbmNvbnN0IHNpemVGb3JtID0gcmVhY3RpdmUoe1xuICBuYW1lOiAnJyxcbiAgcmVnaW9uOiAnJyxcbiAgZGF0ZTE6ICcnLFxuICBkYXRlMjogJycsXG4gIGRlbGl2ZXJ5OiBmYWxzZSxcbiAgdHlwZTogW10sXG4gIHJlc291cmNlOiAnJyxcbiAgZGVzYzogJycsXG59KVxuXG5mdW5jdGlvbiBvblN1Ym1pdCgpIHtcbiAgY29uc29sZS5sb2coJ3N1Ym1pdCEnKVxufVxuPC9zY3JpcHQ+XG5cbjxzdHlsZT5cbi5lbC1yYWRpby1ncm91cCB7XG4gIG1hcmdpbi1yaWdodDogMTJweDtcbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/form/size-control.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Accessibility Permalink to \"Accessibility\" [draft]",
+      "_title": {
+        "text": "Accessibility Permalink to \"Accessibility\""
+      },
+      "_summary": {
+        "text": "\"Full Name\" label is automatically attached to the input:"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "When only a single input (or related control such as select or checkbox) is inside of a el-form-item, the form item's label will automatically be attached to that input. However, if multiple inputs ar"
+          }
+        },
+        {
+          "_text": {
+            "text": "Full Name"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-15",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "\"Your Information\" serves as a label for the group of inputs. You must specify labels on the individal inputs. Placeholders are not replacements for using the \"label\" attribute."
+          }
+        },
+        {
+          "_text": {
+            "text": "Your Information"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "first-name",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "last-name",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtZm9ybSBsYWJlbC1wb3NpdGlvbj1cImxlZnRcIiBsYWJlbC13aWR0aD1cImF1dG9cIiBzdHlsZT1cIm1heC13aWR0aDogNjAwcHhcIj5cbiAgICA8ZWwtc3BhY2UgZmlsbD5cbiAgICAgIDxlbC1hbGVydCB0eXBlPVwiaW5mb1wiIHNob3ctaWNvbiA6Y2xvc2FibGU9XCJmYWxzZVwiPlxuICAgICAgICA8cD5cIkZ1bGwgTmFtZVwiIGxhYmVsIGlzIGF1dG9tYXRpY2FsbHkgYXR0YWNoZWQgdG8gdGhlIGlucHV0OjwvcD5cbiAgICAgIDwvZWwtYWxlcnQ+XG4gICAgICA8ZWwtZm9ybS1pdGVtIGxhYmVsPVwiRnVsbCBOYW1lXCI+XG4gICAgICAgIDxlbC1pbnB1dCB2LW1vZGVsPVwiZm9ybUFjY2Vzc2liaWxpdHkuZnVsbE5hbWVcIiAvPlxuICAgICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPC9lbC1zcGFjZT5cbiAgICA8ZWwtc3BhY2UgZmlsbD5cbiAgICAgIDxlbC1hbGVydCB0eXBlPVwiaW5mb1wiIHNob3ctaWNvbiA6Y2xvc2FibGU9XCJmYWxzZVwiPlxuICAgICAgICA8cD5cbiAgICAgICAgICBcIllvdXIgSW5mb3JtYXRpb25cIiBzZXJ2ZXMgYXMgYSBsYWJlbCBmb3IgdGhlIGdyb3VwIG9mIGlucHV0cy4gPGJyIC8+XG4gICAgICAgICAgWW91IG11c3Qgc3BlY2lmeSBsYWJlbHMgb24gdGhlIGluZGl2aWRhbCBpbnB1dHMuIFBsYWNlaG9sZGVycyBhcmUgbm90XG4gICAgICAgICAgcmVwbGFjZW1lbnRzIGZvciB1c2luZyB0aGUgXCJsYWJlbFwiIGF0dHJpYnV0ZS5cbiAgICAgICAgPC9wPlxuICAgICAgPC9lbC1hbGVydD5cbiAgICAgIDxlbC1mb3JtLWl0ZW0gbGFiZWw9XCJZb3VyIEluZm9ybWF0aW9uXCI+XG4gICAgICAgIDxlbC1yb3cgOmd1dHRlcj1cIjIwXCI+XG4gICAgICAgICAgPGVsLWNvbCA6c3Bhbj1cIjEyXCI+XG4gICAgICAgICAgICA8ZWwtaW5wdXRcbiAgICAgICAgICAgICAgdi1tb2RlbD1cImZvcm1BY2Nlc3NpYmlsaXR5LmZpcnN0TmFtZVwiXG4gICAgICAgICAgICAgIGFyaWEtbGFiZWw9XCJGaXJzdCBOYW1lXCJcbiAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJGaXJzdCBOYW1lXCJcbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9lbC1jb2w+XG4gICAgICAgICAgPGVsLWNvbCA6c3Bhbj1cIjEyXCI+XG4gICAgICAgICAgICA8ZWwtaW5wdXRcbiAgICAgICAgICAgICAgdi1tb2RlbD1cImZvcm1BY2Nlc3NpYmlsaXR5Lmxhc3ROYW1lXCJcbiAgICAgICAgICAgICAgYXJpYS1sYWJlbD1cIkxhc3QgTmFtZVwiXG4gICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiTGFzdCBOYW1lXCJcbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9lbC1jb2w+XG4gICAgICAgIDwvZWwtcm93PlxuICAgICAgPC9lbC1mb3JtLWl0ZW0+XG4gICAgPC9lbC1zcGFjZT5cbiAgPC9lbC1mb3JtPlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlYWN0aXZlIH0gZnJvbSAndnVlJ1xuXG5jb25zdCBmb3JtQWNjZXNzaWJpbGl0eSA9IHJlYWN0aXZlKHtcbiAgZnVsbE5hbWU6ICcnLFxuICBmaXJzdE5hbWU6ICcnLFxuICBsYXN0TmFtZTogJycsXG59KVxuPC9zY3JpcHQ+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/form/accessibility.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Form API Permalink to \"Form API\" [draft]",
+      "_title": {
+        "text": "Form API Permalink to \"Form API\""
+      },
+      "_lines": [
+        {
+          "_intent": "Form Attributes Permalink to \"Form Attributes\" [draft]",
+          "_title": {
+            "text": "Form Attributes Permalink to \"Form Attributes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (16 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "model"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rules"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "inline"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label-position"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label-width"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label-suffix"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "hide-required-asterisk"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "require-asterisk-position"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "show-message"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "inline-message"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "status-icon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validate-on-rule-change"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "scroll-to-error"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "scroll-into-view-options 2.3.2"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView",
+                    "label": "scrollIntoView"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Form Events Permalink to \"Form Events\" [draft]",
+          "_title": {
+            "text": "Form Events Permalink to \"Form Events\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (1 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "validate"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Form Slots Permalink to \"Form Slots\" [draft]",
+          "_title": {
+            "text": "Form Slots Permalink to \"Form Slots\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (1 rows): Name / Description / Subtags [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "default"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Form Exposes Permalink to \"Form Exposes\" [draft]",
+          "_title": {
+            "text": "Form Exposes Permalink to \"Form Exposes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (8 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "validate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validateField"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "resetFields"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "scrollToField"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clearValidate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "fields 2.7.3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getField 2.10.2"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "setInitialValues 2.13.1"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "FormItem API Permalink to \"FormItem API\" [draft]",
+      "_title": {
+        "text": "FormItem API Permalink to \"FormItem API\""
+      },
+      "_lines": [
+        {
+          "_intent": "FormItem Attributes Permalink to \"FormItem Attributes\" [draft]",
+          "_title": {
+            "text": "FormItem Attributes Permalink to \"FormItem Attributes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (12 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "prop"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label-position 2.7.7"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label-width"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "required"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rules"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://element-plus.org/en-US/component/form.html#formitemrule",
+                          "label": "following table"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://github.com/yiminghe/async-validator",
+                          "label": "async-validator"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "error"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "show-message"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "inline-message"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "for"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validate-status"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "FormItemRule Permalink to \"FormItemRule\" [draft]",
+          "_title": {
+            "text": "FormItemRule Permalink to \"FormItemRule\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (1 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "trigger"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "If you don't want to trigger the validator based on input events, set the validate-event attribute as false on the corresponding input type components (<el-input>, <el-radio>, <el-select>, ...)."
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "FormItem Slots Permalink to \"FormItem Slots\" [draft]",
+          "_title": {
+            "text": "FormItem Slots Permalink to \"FormItem Slots\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "default"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "error"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "FormItem Exposes Permalink to \"FormItem Exposes\" [draft]",
+          "_title": {
+            "text": "FormItem Exposes Permalink to \"FormItem Exposes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (7 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validateMessage"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validateState"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "resetField"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clearValidate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "setInitialValue 2.13.1"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Type Declarations Permalink to \"Type Declarations\" [draft]",
+      "_title": {
+        "text": "Type Declarations Permalink to \"Type Declarations\""
+      },
+      "_summary": {
+        "text": "Show declarations"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "type"
+          }
+        },
+        {
+          "_text": {
+            "text": "Arrayable"
+          }
+        },
+        {
+          "_text": {
+            "text": "FormValidationResult"
+          }
+        },
+        {
+          "_text": {
+            "text": "Promise"
+          }
+        },
+        {
+          "_text": {
+            "text": "boolean"
+          }
+        },
+        {
+          "_text": {
+            "text": "// ValidateFieldsError: see [async-validator](https://github.com"
+          }
+        },
+        {
+          "_text": {
+            "text": "FormValidateCallback"
+          }
+        },
+        {
+          "_text": {
+            "text": "isValid"
+          }
+        },
+        {
+          "_text": {
+            "text": "invalidFields"
+          }
+        },
+        {
+          "_text": {
+            "text": "ValidateFieldsError"
+          }
+        },
+        {
+          "_text": {
+            "text": "=>"
+          }
+        },
+        {
+          "_text": {
+            "text": "void"
+          }
+        },
+        {
+          "_text": {
+            "text": "// RuleItem: see [async-validator](https://github.com/yiminghe/a"
+          }
+        },
+        {
+          "_text": {
+            "text": "interface"
+          }
+        },
+        {
+          "_text": {
+            "text": "FormItemRule"
+          }
+        },
+        {
+          "_text": {
+            "text": "extends"
+          }
+        },
+        {
+          "_text": {
+            "text": "RuleItem"
+          }
+        },
+        {
+          "_text": {
+            "text": "trigger"
+          }
+        },
+        {
+          "_text": {
+            "text": "string"
+          }
+        },
+        {
+          "_text": {
+            "text": "Primitive"
+          }
+        },
+        {
+          "_text": {
+            "text": "null"
+          }
+        },
+        {
+          "_text": {
+            "text": "undefined"
+          }
+        },
+        {
+          "_text": {
+            "text": "number"
+          }
+        },
+        {
+          "_text": {
+            "text": "symbol"
+          }
+        },
+        {
+          "_text": {
+            "text": "bigint"
+          }
+        },
+        {
+          "_text": {
+            "text": "BrowserNativeObject"
+          }
+        },
+        {
+          "_text": {
+            "text": "Date"
+          }
+        },
+        {
+          "_text": {
+            "text": "FileList"
+          }
+        },
+        {
+          "_text": {
+            "text": "File"
+          }
+        },
+        {
+          "_text": {
+            "text": "Blob"
+          }
+        },
+        {
+          "_text": {
+            "text": "RegExp"
+          }
+        },
+        {
+          "_text": {
+            "text": "IsTuple"
+          }
+        },
+        {
+          "_text": {
+            "text": "ReadonlyArray"
+          }
+        },
+        {
+          "_text": {
+            "text": "any"
+          }
+        },
+        {
+          "_text": {
+            "text": ">>"
+          }
+        },
+        {
+          "_text": {
+            "text": "'length'"
+          }
+        },
+        {
+          "_text": {
+            "text": "false"
+          }
+        },
+        {
+          "_text": {
+            "text": "true"
+          }
+        },
+        {
+          "_text": {
+            "text": "ArrayMethodKey"
+          }
+        },
+        {
+          "_text": {
+            "text": "keyof"
+          }
+        },
+        {
+          "_text": {
+            "text": "TupleKey"
+          }
+        },
+        {
+          "_text": {
+            "text": "Exclude"
+          }
+        },
+        {
+          "_text": {
+            "text": "ArrayKey"
+          }
+        },
+        {
+          "_text": {
+            "text": "PathImpl"
+          }
+        },
+        {
+          "_text": {
+            "text": "`${"
+          }
+        },
+        {
+          "_text": {
+            "text": "}`"
+          }
+        },
+        {
+          "_text": {
+            "text": "}.${"
+          }
+        },
+        {
+          "_text": {
+            "text": "Path"
+          }
+        },
+        {
+          "_text": {
+            "text": "infer"
+          }
+        },
+        {
+          "_text": {
+            "text": "in"
+          }
+        },
+        {
+          "_text": {
+            "text": ">]"
+          }
+        },
+        {
+          "_text": {
+            "text": "FieldPath"
+          }
+        },
+        {
+          "_text": {
+            "text": "object"
+          }
+        },
+        {
+          "_text": {
+            "text": "never"
+          }
+        },
+        {
+          "_text": {
+            "text": "// MaybeRef: see [@vueuse/core](https://github.com/vueuse/vueuse"
+          }
+        },
+        {
+          "_text": {
+            "text": "// UnwrapRef: see [vue](https://github.com/vuejs/core/blob/main/"
+          }
+        },
+        {
+          "_text": {
+            "text": "FormRules"
+          }
+        },
+        {
+          "_text": {
+            "text": "MaybeRef"
+          }
+        },
+        {
+          "_text": {
+            "text": "Record"
+          }
+        },
+        {
+          "_text": {
+            "text": "Partial"
+          }
+        },
+        {
+          "_text": {
+            "text": "UnwrapRef"
+          }
+        },
+        {
+          "_text": {
+            "text": "FormItemValidateState"
+          }
+        },
+        {
+          "_text": {
+            "text": "typeof"
+          }
+        },
+        {
+          "_text": {
+            "text": "formItemValidateStates)["
+          }
+        },
+        {
+          "_text": {
+            "text": "FormItemProps"
+          }
+        },
+        {
+          "_text": {
+            "text": "ExtractPropTypes"
+          }
+        },
+        {
+          "_text": {
+            "text": "formItemProps>"
+          }
+        },
+        {
+          "_text": {
+            "text": "FormItemContext"
+          }
+        },
+        {
+          "_text": {
+            "text": "$el"
+          }
+        },
+        {
+          "_text": {
+            "text": "HTMLDivElement"
+          }
+        },
+        {
+          "_text": {
+            "text": "size"
+          }
+        },
+        {
+          "_text": {
+            "text": "ComponentSize"
+          }
+        },
+        {
+          "_text": {
+            "text": "validateMessage"
+          }
+        },
+        {
+          "_text": {
+            "text": "validateState"
+          }
+        },
+        {
+          "_text": {
+            "text": "isGroup"
+          }
+        },
+        {
+          "_text": {
+            "text": "labelId"
+          }
+        },
+        {
+          "_text": {
+            "text": "inputIds"
+          }
+        },
+        {
+          "_text": {
+            "text": "hasLabel"
+          }
+        },
+        {
+          "_text": {
+            "text": "fieldValue"
+          }
+        },
+        {
+          "_text": {
+            "text": "propString"
+          }
+        },
+        {
+          "_text": {
+            "text": "addInputId"
+          }
+        },
+        {
+          "_text": {
+            "text": "id"
+          }
+        },
+        {
+          "_text": {
+            "text": "removeInputId"
+          }
+        },
+        {
+          "_text": {
+            "text": "validate"
+          }
+        },
+        {
+          "_text": {
+            "text": "callback"
+          }
+        },
+        {
+          "_text": {
+            "text": "resetField"
+          }
+        },
+        {
+          "_text": {
+            "text": "clearValidate"
+          }
+        },
+        {
+          "_text": {
+            "text": "setInitialValue"
+          }
+        },
+        {
+          "_text": {
+            "text": "value"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Source Permalink to \"Source\" [draft]",
+      "_title": {
+        "text": "Source Permalink to \"Source\""
+      },
+      "_summary": {
+        "text": "Component • Style • Docs"
+      }
+    },
+    {
+      "_intent": "Contributors Permalink to \"Contributors\" [draft]",
+      "_title": {
+        "text": "Contributors Permalink to \"Contributors\""
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/en-US/component/form.md",
+            "label": "Edit this page on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.org/en-US/component/datetime-picker",
+            "label": "DateTime Picker"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.org/en-US/component/input",
+            "label": "Input"
+          }
+        },
+        {
+          "_intent": "Links [draft]",
+          "_title": {
+            "text": "Links"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://cn.element-plus.org/zh-CN/",
+                "label": "China Mirror 🇨🇳"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/releases",
+                "label": "Changelog"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://element.eleme.io/",
+                "label": "Element UI for Vue 2"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://element-plus.org/sitemap.xml",
+                "label": "Site Map"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Community [draft]",
+          "_title": {
+            "text": "Community"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus",
+                "label": "GitHub"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://discord.com/invite/gXK9XNzW3X",
+                "label": "Discord"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/issues",
+                "label": "Feedback"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/blob/dev/.github/CONTRIBUTING.en-US.md",
+                "label": "Contribution"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://segmentfault.com/t/element-plus",
+                "label": "SegmentFault"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

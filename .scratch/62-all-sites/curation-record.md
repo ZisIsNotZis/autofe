@@ -1,0 +1,7 @@
+# Local gallery evidence commit curation
+
+- Original local-only commit: `8749a21513c07ba5ecd5b1a6853c8afde5ee3526`; recovery ref: `refs/heads/backup/pre-curation-8749a215` (local, do not push). Its parent and earlier history are unchanged.
+- The original commit added 7,771 `.scratch` paths (5,798,186,544 working-tree bytes). Curated paths were selected by the precise `.gitignore` rules, not by a blanket `.scratch` exclusion: 1,007 original paths (55,213,572 bytes) retained, 6,764 (5,742,957,387 bytes) omitted; this record and `.gitignore` are additional to those counts.
+- Keep authored tickets, reports, scripts, small HTML indexes, small source/provenance JSON, source-classification cases and small patches. Omit downloadable/captured binary images and responses, rendering outputs and their repeated measurements, intermediate link scans, snapshot copies of generated HTML, and six large binary-heavy recovery patches. Large `structural-cases.json` and `cases.json` remain because they carry the authored link-classification evidence, not ordinary rendered media.
+- Omitted working files are left on disk and ignored; recover the exact original commit and all omitted bytes from the local backup ref. Rendered gallery HTML indexes may reference omitted images on a fresh clone; regenerate the local visual captures for a viewable gallery. This curation is not a visual-acceptance claim.
+- Existing parent history's tracked assets are untouched. Do not push the backup ref: it deliberately retains the oversized original commit locally.

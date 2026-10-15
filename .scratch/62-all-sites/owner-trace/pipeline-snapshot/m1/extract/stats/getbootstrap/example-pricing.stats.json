@@ -1,0 +1,70 @@
+{
+  "site": "getbootstrap",
+  "page": "example-pricing",
+  "url": "https://getbootstrap.com/docs/5.3/examples/pricing/",
+  "title": "Pricing example · Bootstrap v5.3",
+  "sourceNodes": 172,
+  "counts": {
+    "storylines": 7,
+    "items": 18,
+    "actions": 4,
+    "exposes": 0,
+    "images": 0,
+    "facts": 0,
+    "tables": 1,
+    "lists": 3,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 0,
+    "capHits": []
+  },
+  "storylines": 7,
+  "chrome": [
+    {
+      "role": "banner",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 13,
+      "examples": [
+        "Free: Included",
+        "Pro: Included",
+        "Enterprise: Included"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "col-1",
+      "example": "Public"
+    },
+    {
+      "name": "free",
+      "type": "text",
+      "label": "Free",
+      "example": "Included"
+    },
+    {
+      "name": "pro",
+      "type": "text",
+      "label": "Pro",
+      "example": "Included"
+    },
+    {
+      "name": "enterprise",
+      "type": "text",
+      "label": "Enterprise",
+      "example": "Included"
+    }
+  ]
+}

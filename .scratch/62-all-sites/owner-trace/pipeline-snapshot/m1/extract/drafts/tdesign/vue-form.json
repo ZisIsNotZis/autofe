@@ -1,0 +1,1489 @@
+{
+  "_intent": "Form 表单 | TDesign [draft]",
+  "_title": {
+    "text": "Form 表单 | TDesign"
+  },
+  "_summary": {
+    "text": "Form 表单"
+  },
+  "_lines": [
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input",
+        "type": "text"
+      }
+    },
+    {
+      "_text": {
+        "text": "姓名"
+      }
+    },
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input-2",
+        "type": "text"
+      }
+    },
+    {
+      "_text": {
+        "text": "手机号码"
+      }
+    },
+    {
+      "_intent": "input [draft]",
+      "_expose": {
+        "name": "input-3",
+        "type": "text"
+      }
+    },
+    {
+      "_text": {
+        "text": "课程"
+      }
+    },
+    {
+      "_intent": "checkbox-group [draft]",
+      "_rel": {
+        "compare": true
+      },
+      "_items": [
+        {
+          "_name": {
+            "text": "语文"
+          }
+        },
+        {
+          "_name": {
+            "text": "数学"
+          }
+        },
+        {
+          "_name": {
+            "text": "英语"
+          }
+        },
+        {
+          "_name": {
+            "text": "体育"
+          }
+        }
+      ],
+      "_expose": {
+        "name": "checkbox-group",
+        "type": "text"
+      }
+    },
+    {
+      "_intent": "典型表单 [draft]",
+      "_title": {
+        "text": "典型表单"
+      },
+      "_summary": {
+        "text": "一个典型表单组件包含各种表单项，比如输入框、选择器、单选框、多选框、开关、文本输入等。"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "如果表单内存在提交按钮 <button type=\"submit\">，点击提交按钮时，会自动触发 submit 事件。"
+              }
+            },
+            {
+              "_name": {
+                "text": "如果表单内存在重置按钮 <button type=\"reset\">，点击重置按钮时，会自动触发 reset 事件。"
+              }
+            },
+            {
+              "_name": {
+                "text": "如果表单内不存在提交或重置按钮，您希望点击任意按钮进行提交和重置操作，则可以使用组件实例方法 submit 和 reset，详情请查阅 API 文档。"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-4",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-5",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "接收短信"
+          }
+        },
+        {
+          "_text": {
+            "text": "性别"
+          }
+        },
+        {
+          "_intent": "男 女 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "男"
+              }
+            },
+            {
+              "_name": {
+                "text": "女"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-2",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "checkbox-group [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "语文"
+              }
+            },
+            {
+              "_name": {
+                "text": "数学"
+              }
+            },
+            {
+              "_name": {
+                "text": "英语"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "checkbox-group-2",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "提交"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "登录表单 [draft]",
+      "_title": {
+        "text": "登录表单"
+      },
+      "_summary": {
+        "text": "专门适用于登录页面的账号和密码输入的表单。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-6",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-7",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "登录"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "不同对齐方式的表单 [draft]",
+      "_title": {
+        "text": "不同对齐方式的表单"
+      },
+      "_summary": {
+        "text": "根据具体目标和制约因素，选择最佳的标签对齐方式，默认对齐方式为右对齐。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "左对齐"
+          }
+        },
+        {
+          "_text": {
+            "text": "右对齐"
+          }
+        },
+        {
+          "_text": {
+            "text": "顶部对齐"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-8",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "密码"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-9",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "登录"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "不同布局类型的表单 [draft]",
+      "_title": {
+        "text": "不同布局类型的表单"
+      },
+      "_summary": {
+        "text": "纵向布局"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "行内布局"
+          }
+        },
+        {
+          "_text": {
+            "text": "名字"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-10",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-11",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "不同重置功能的表单 [draft]",
+      "_title": {
+        "text": "不同重置功能的表单"
+      },
+      "_summary": {
+        "text": "表单重置分三类：全部数据重置为空、全部数据重置为初始值、重置任意数据为任意值。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "重置为空"
+          }
+        },
+        {
+          "_text": {
+            "text": "重置为初始值"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-12",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-13",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "checkbox-group [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "语文"
+              }
+            },
+            {
+              "_name": {
+                "text": "数学"
+              }
+            },
+            {
+              "_name": {
+                "text": "英语"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "checkbox-group-3",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "提交"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "只重置手机号码"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "不同状态的表单项 [draft]",
+      "_title": {
+        "text": "不同状态的表单项"
+      },
+      "_summary": {
+        "text": "通过图标及提示文字的形式来提示用户对表单的填写。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "显示校验图标"
+          }
+        },
+        {
+          "_text": {
+            "text": "隐藏校验图标"
+          }
+        },
+        {
+          "_text": {
+            "text": "失败"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-14",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "必填"
+          }
+        },
+        {
+          "_text": {
+            "text": "警告"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-15",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "成功"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-16",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-17",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-18",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-19",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "加载中"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-20",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "帮助"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-21",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "新增"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-22",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "提交"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "不同校验规则的表单 [draft]",
+      "_title": {
+        "text": "不同校验规则的表单"
+      },
+      "_summary": {
+        "text": "用户名"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "表单内置的校验规则有：date / url / email / required / boolean / max / min / len / number / enum / idcard / telnumber / pattern 。其中 date / url / email 等校验规则参数参看：https://github.com/validatorjs/validator.js。各校验规则示例"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-23",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "这是用户名字段帮助说明"
+          }
+        },
+        {
+          "_text": {
+            "text": "个人简介"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-24",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "一句话介绍自己"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-25",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "邮箱"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-26",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "年龄"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-27",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "男 女 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "男"
+              }
+            },
+            {
+              "_name": {
+                "text": "女"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-5",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "checkbox-group [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "语文"
+              }
+            },
+            {
+              "_name": {
+                "text": "数学"
+              }
+            },
+            {
+              "_name": {
+                "text": "英语"
+              }
+            },
+            {
+              "_name": {
+                "text": "体育"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "checkbox-group-4",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "学院"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-28",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "入学时间"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-29",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "个人网站"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-30",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "提交"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "清空校验结果"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可自定义校验规则的表单 [draft]",
+      "_title": {
+        "text": "可自定义校验规则的表单"
+      },
+      "_summary": {
+        "text": "支持自定义配置校验规则，也支持配置异步校验。同一个字段的同一个校验规则可以设定多种不同的校验结果。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "使用 validator 自定义校验函数，支持异步返回结果 Promise，返回结果可以设置不同的校验结果、校验结果类型、校验结果信息。"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-31",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-32",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "同一个校验方法可输出不同的错误信息和类型，依次输入：1234 观察变化"
+          }
+        },
+        {
+          "_text": {
+            "text": "确认密码"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-33",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "自定义异步校验方法"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "提交"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可清空校验结果的表单 [draft]",
+      "_title": {
+        "text": "可清空校验结果的表单"
+      },
+      "_summary": {
+        "text": "在一些复杂的业务场景中，会涉及到自主控制校验结果的显示与否，此时使用实例方法 clearValidate 来清空校验结果。可以清空全部字段的校验结果，也可以清除部分字段的校验结果。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-34",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-35",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-36",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-37",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "男 女 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "男"
+              }
+            },
+            {
+              "_name": {
+                "text": "女"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-7",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "checkbox-group [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "语文"
+              }
+            },
+            {
+              "_name": {
+                "text": "数学"
+              }
+            },
+            {
+              "_name": {
+                "text": "英语"
+              }
+            },
+            {
+              "_name": {
+                "text": "体育"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "checkbox-group-5",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-38",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-39",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-40",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "提交"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "清空校验结果"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "清除指定字段的校验结果"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可统一配置校验信息的表单 [draft]",
+      "_title": {
+        "text": "可统一配置校验信息的表单"
+      },
+      "_summary": {
+        "text": "FormRule 中的每个规则都要默认校验信息，支持通过 Form.errorMessage 覆盖默认校验信息，也支持全局配置（ConfigProvider）各个规则的校验信息。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "使用表单默认校验信息"
+          }
+        },
+        {
+          "_text": {
+            "text": "表单统一配置校验信息"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-41",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-42",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-43",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-44",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "男 女 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "男"
+              }
+            },
+            {
+              "_name": {
+                "text": "女"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-9",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "checkbox-group [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "语文"
+              }
+            },
+            {
+              "_name": {
+                "text": "数学"
+              }
+            },
+            {
+              "_name": {
+                "text": "英语"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "checkbox-group-6",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-45",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-46",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-47",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "提交"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "清空校验结果"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可进行复杂数据校验的表单 [draft]",
+      "_title": {
+        "text": "可进行复杂数据校验的表单"
+      },
+      "_summary": {
+        "text": "很多时候，表单数据的类型往往不仅仅是单纯的对象，还包含着数组、对象数组嵌套等。表单支持这些复杂数据类型的校验。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "学校"
+          }
+        },
+        {
+          "_intent": "学校一 学校二 学校三 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "学校一"
+              }
+            },
+            {
+              "_name": {
+                "text": "学校二"
+              }
+            },
+            {
+              "_name": {
+                "text": "学校三"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-11",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "学生1"
+          }
+        },
+        {
+          "_text": {
+            "text": "学生2"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-48",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "选科"
+          }
+        },
+        {
+          "_intent": "文科 理科 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "文科"
+              }
+            },
+            {
+              "_name": {
+                "text": "理科"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-12",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "checkbox-group [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "全部"
+              }
+            },
+            {
+              "_name": {
+                "text": "语文"
+              }
+            },
+            {
+              "_name": {
+                "text": "数学"
+              }
+            },
+            {
+              "_name": {
+                "text": "物理"
+              }
+            },
+            {
+              "_name": {
+                "text": "化学"
+              }
+            },
+            {
+              "_name": {
+                "text": "地理"
+              }
+            },
+            {
+              "_name": {
+                "text": "历史"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "checkbox-group-7",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "提交"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "禁用态的表单 [draft]",
+      "_title": {
+        "text": "禁用态的表单"
+      },
+      "_summary": {
+        "text": "可以使用 disabled 属性禁用整个表单项。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "是否禁用表单"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-49",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-50",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "寄件地址"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-51",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "收件地址"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-52",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "日期"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-53",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-54",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "短信"
+          }
+        },
+        {
+          "_text": {
+            "text": "接受"
+          }
+        },
+        {
+          "_intent": "男 女 [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "男"
+              }
+            },
+            {
+              "_name": {
+                "text": "女"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "choice-14",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "checkbox-group [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "语文"
+              }
+            },
+            {
+              "_name": {
+                "text": "数学"
+              }
+            },
+            {
+              "_name": {
+                "text": "英语"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "checkbox-group-8",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "绩点"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-55",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "头像"
+          }
+        },
+        {
+          "_text": {
+            "text": "请选择单张图片文件上传"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "提交"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "关闭禁用表单"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "可设置校验信息的表单 [draft]",
+      "_title": {
+        "text": "可设置校验信息的表单"
+      },
+      "_summary": {
+        "text": "使用 validateMessage 属性可以自定义表单校验信息提示，主要用于非组件内部的校验信息呈现，如：表单初次呈现的远程校验结果。如果要启动组件内部的校验功能，该值必须设置为空。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-56",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "自定义用户名校验信息提示"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-57",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "自定义个人简介校验信息提示"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-58",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "提交"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "重置"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "设置校验信息提示"
+          }
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "right"
+              }
+            },
+            {
+              "_name": {
+                "text": "top"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "vertical"
+              }
+            },
+            {
+              "_name": {
+                "text": "inline"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "empty"
+              }
+            },
+            {
+              "_name": {
+                "text": "initial"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

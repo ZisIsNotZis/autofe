@@ -1,0 +1,452 @@
+[
+  {
+    "path": "._action",
+    "label": "立即免费体验",
+    "to": "https://www.aliyun.com/exp",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".hero._action",
+    "label": "立即订阅",
+    "to": "https://www.qianwenai.com/benefits/tokenplan",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".hero.consult._action",
+    "label": "在线咨询",
+    "to": "https://smartservice.console.aliyun.com/service/pre-sales-chat?from=ai&displayMode=widget&channelCode=301&topicCode=sales-im&topicServiceId=1&iframe=true",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".promos._items[0]._action",
+    "label": "Qwen Book 亮相云栖大会",
+    "to": "https://www.qianwenai.com/product/qwenbook",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".promos._items[1]._action",
+    "label": "万小智 3.0，首月低至 15 元",
+    "to": "https://wanwang.aliyun.com/website/xiaozhi",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".promos._items[2]._action",
+    "label": "轻量上云 38 元/年，一键部署 AI Agent",
+    "to": "https://www.aliyun.com/daily-act/ecs/activity_selection",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".promos._items[3]._action",
+    "label": "2.4 万亿参数模型 Qwen3.8-Max",
+    "to": "https://www.qianwenai.com/models/qwen3.8-max",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".ai-exp._items[0]._action",
+    "label": "大语言模型",
+    "to": "https://www.aliyun.com/exp/llm",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".ai-exp._items[1]._action",
+    "label": "视频生成",
+    "to": "https://www.aliyun.com/exp/wan",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".ai-exp._items[2]._action",
+    "label": "智能建站",
+    "to": "https://www.aliyun.com/exp/xiaozhi",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".ai-exp._items[3]._action",
+    "label": "智能运维",
+    "to": "https://www.aliyun.com/exp/starops",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".ai-exp._items[4]._action",
+    "label": "分析智能体",
+    "to": "https://www.aliyun.com/exp/quick-bi",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".ai-exp._items[5]._action",
+    "label": "AI 数据集成",
+    "to": "https://www.aliyun.com/exp/eventbridge",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".qwen-models.intro._action",
+    "label": "千问大模型",
+    "to": "https://www.aliyun.com/product/tongyi",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".qwen-models.intro.market._action",
+    "label": "访问模型市场",
+    "to": "https://www.qianwenai.com/models",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".qwen-models._items[0]._action",
+    "label": "Qwen3.8-Max",
+    "to": "https://platform.qianwenai.com/try-ai?models=qwen3.8-max-0902",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".qwen-models._items[1]._action",
+    "label": "Qwen3-VL-Plus",
+    "to": "https://platform.qianwenai.com/try-ai?models=qwen3-vl-plus",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".qwen-models._items[2]._action",
+    "label": "Qwen-Image-3.0-Pro",
+    "to": "https://platform.qianwenai.com/try-ai/chat?models=qwen-image-3.0-pro",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".qwen-models._items[3]._action",
+    "label": "Wan3.0-Video",
+    "to": "https://www.qianwenai.com/models/wan3.0-video",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".qwen-models._items[4]._action",
+    "label": "Qwen3.5-Omni-Flash",
+    "to": "https://platform.qianwenai.com/try-ai?models=qwen3.5-omni-flash",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".qwen-models._items[5]._action",
+    "label": "Fun-ASR",
+    "to": "https://platform.qianwenai.com/try-ai?models=fun-asr",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".maas.platform._action",
+    "label": "前往千问 AI 平台",
+    "to": "https://www.qianwenai.com/",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".maas.platform._items[0]._action",
+    "label": "查看详情",
+    "to": "https://platform.qianwenai.com/pricing/token-plan",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".maas.platform._items[1]._action",
+    "label": "查看详情",
+    "to": "https://platform.qianwenai.com/home/benefits",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._action",
+    "label": "全部云产品",
+    "to": "https://www.aliyun.com/product/list",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products.tabs._items[1]._action",
+    "label": "人工智能与机器学习",
+    "to": "https://ai.aliyun.com",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products.tabs._items[2]._action",
+    "label": "计算",
+    "to": "https://www.aliyun.com/product/list/ecs",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products.tabs._items[3]._action",
+    "label": "存储",
+    "to": "https://www.aliyun.com/storage/storage?spm=5176.19720258.J_2686872250.30.3f0e4ff6AwBQKs",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products.tabs._items[4]._action",
+    "label": "网络与CDN",
+    "to": "https://www.aliyun.com/product/network/network",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products.tabs._items[5]._action",
+    "label": "安全",
+    "to": "https://www.aliyun.com/product/list/security",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products.tabs._items[6]._action",
+    "label": "中间件",
+    "to": "https://www.aliyun.com/product/list/aliware",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products.tabs._items[8]._action",
+    "label": "大数据计算",
+    "to": "https://www.aliyun.com/product/bigdata/apsarabigdata",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[0]._action",
+    "label": "云服务器 ECS",
+    "to": "https://www.aliyun.com/product/ecs",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[0].buy._action",
+    "label": "立即选购",
+    "to": "https://ecs-buy.aliyun.com/buyRedirect.htm?period=1&periodType=Yearly",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[0].trial._action",
+    "label": "免费试用",
+    "to": "https://free.aliyun.com/?spm&product=1351&crowd",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[1]._action",
+    "label": "千问大模型",
+    "to": "https://www.aliyun.com/product/tongyi",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[1].try._action",
+    "label": "模型体验",
+    "to": "https://bailian.console.aliyun.com/cn-beijing/?tab=model#/model-market",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[2]._action",
+    "label": "大模型服务平台百炼",
+    "to": "https://www.aliyun.com/product/bailian",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[2].build._action",
+    "label": "应用构建",
+    "to": "https://bailian.console.aliyun.com/cn-beijing/?tab=app#/app-market/suggest",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[3]._action",
+    "label": "域名与网站",
+    "to": "https://wanwang.aliyun.com/",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[4]._action",
+    "label": "轻量应用服务器",
+    "to": "https://www.aliyun.com/product/swas",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[5]._action",
+    "label": "对象存储 OSS",
+    "to": "https://www.aliyun.com/product/oss",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[6]._action",
+    "label": "云数据库 RDS",
+    "to": "https://www.aliyun.com/product/rds",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[7]._action",
+    "label": "短信服务",
+    "to": "https://www.aliyun.com/product/sms",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[8]._action",
+    "label": "数字证书管理服务（原SSL证书）",
+    "to": "https://www.aliyun.com/product/cas",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[9]._action",
+    "label": "无影云电脑",
+    "to": "https://www.aliyun.com/product/ecs/gws",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[10]._action",
+    "label": "人工智能平台 PAI",
+    "to": "https://www.aliyun.com/product/bigdata/learn",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[11]._action",
+    "label": "Qoder",
+    "to": "https://www.aliyun.com/product/qoder",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[12]._action",
+    "label": "云解析DNS",
+    "to": "https://www.aliyun.com/product/dns",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[13]._action",
+    "label": "云原生大数据计算服务 MaxCompute",
+    "to": "https://www.aliyun.com/product/maxcompute",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".products._items[14]._action",
+    "label": "云原生数据库 PolarDB",
+    "to": "https://www.aliyun.com/product/polardb",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".solutions._action",
+    "label": "全部 AI 解决方案",
+    "to": "https://www.aliyun.com/solution/tech-solution/ai",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".solutions.consult._action",
+    "label": "联系 AI 专家",
+    "to": "https://smartservice.console.aliyun.com/service/pre-sales-chat?from=ai&displayMode=widget&channelCode=301&topicCode=sales-im&topicServiceId=1&iframe=true",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".solutions._items[0]._action",
+    "label": "分析 Agent 实现一键 AI 数据洞察",
+    "to": "https://www.aliyun.com/solution/tech-solution/quick-bi",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".solutions._items[1]._action",
+    "label": "漫剧工坊：一站式动画创作平台",
+    "to": "https://www.aliyun.com/solution/tech-solution/use-bailian-to-intelligently-create-comics",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".solutions._items[2]._action",
+    "label": "与 AI 智能体进行实时音视频通话",
+    "to": "https://www.aliyun.com/solution/tech-solution/real-time-interaction",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".solutions._items[3]._action",
+    "label": "10 分钟在聊天系统中增加一个 AI 助手",
+    "to": "https://www.aliyun.com/solution/tech-solution/build-a-chatbot-for-your-website-or-chat-system",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".solutions._items[4]._action",
+    "label": "多模态数据信息提取",
+    "to": "https://www.aliyun.com/solution/tech-solution/information-extraction",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".benefits._action",
+    "label": "全部权益",
+    "to": "https://www.aliyun.com/benefit",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".benefits._items[9]._action",
+    "label": "30+ AI 产品，零成本构建 AI 应用",
+    "to": "https://free.aliyun.com/product/ai",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".stories._action",
+    "label": "全部客户案例",
+    "to": "https://www.aliyun.com/customer-stories/customer-case-index",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".stories._items[0]._action",
+    "label": "阿里云持续运用 AI 驱动的云计算技术，全面支持奥林匹克运动会的数字化转型——涵盖奥运会自身运营、转播服务、电力需求优化，以及历史档案的修复与保存。",
+    "to": "https://www.aliyun.com/about/games",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".stories._items[1]._action",
+    "label": "阿里云服务小鹏汽车百日完成数字员工构建，通过 AI 深度集成企业办公全流程，AI 全栈能力助力小鹏汽车办公进入“数字员工协同时代”。",
+    "to": "https://www.aliyun.com/customer-stories/automotive-2025-xiaopeng",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".stories._items[2]._action",
+    "label": "月之暗面 Kimi 大模型基于阿里云ACK 实现海量数据预处理。月之暗面在数据处理能力、资源利用效率和运维管理维度实现了全方位升级。",
+    "to": "https://www.aliyun.com/customer-stories/internet-and-info-tech-2025-moonshot",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".stories._items[3]._action",
+    "label": "森马基于阿里云函数计算，快速实现传统服装行业与 AI “碰撞”，在多场景下以 AIGC 实现生产提效，引领行业数字化、智能化转型的新风尚。",
+    "to": "https://www.aliyun.com/customer-stories/retail-2024-semir",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".stories._items[4]._action",
+    "label": "通过使用通义灵码，中华财险显著提升了研发团队的编码效率，近 60% 员工采纳该工具，不仅减少人工错误，还增强了团队的创新能力。",
+    "to": "https://www.aliyun.com/customer-stories/financial-services-2025-china-insurance",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".stories._items[5]._action",
+    "label": "阿里云以全球云基础设施和千问大模型，支持中央广播电视总台2025年春节联欢晚会，同时满足8K电视大屏、移动小屏等多终端需求。",
+    "to": "https://www.aliyun.com/about/gala",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".infra._action",
+    "label": "了解更多全球基础设施",
+    "to": "https://infrastructure.aliyun.com/",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".services._items[0]._action",
+    "label": "免费体验",
+    "to": "https://free.aliyun.com/",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".services._items[1]._action",
+    "label": "全天候高效服务",
+    "to": "https://smartservice.console.aliyun.com/service/robot-chat",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".services._items[2]._action",
+    "label": "专属贴身服务",
+    "to": "https://www.aliyun.com/service/supportplans",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".services._items[3]._action",
+    "label": "多渠道无忧服务",
+    "to": "https://smartservice.console.aliyun.com/service/self-service-center",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".services._items[4]._action",
+    "label": "专业上云服务",
+    "to": "https://www.aliyun.com/service/list",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".analyst._items[0]._action",
+    "label": "千问大模型，全球基础模型软件领导者",
+    "to": "https://www.aliyun.com/analyst-reports/idc-fms-2026",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".analyst._items[1]._action",
+    "label": "中国 AI 云市场份额领先，超过2-4名总和",
+    "to": "https://www.aliyun.com/analyst-reports/frost-fsai-2025",
+    "targetExactInCapture": true
+  }
+]

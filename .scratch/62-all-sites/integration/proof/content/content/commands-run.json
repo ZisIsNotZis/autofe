@@ -1,0 +1,22 @@
+[
+  {
+    "command": "node m1/validate.mjs m1/curated/36kr-com/home.json m1/curated/36kr-com/information-technology.json m1/curated/36kr-com/search-ai.json m1/curated/36kr-com/search-viz.json m1/curated/aliyun-com/home.json m1/curated/aliyun-com/product-ecs.json m1/curated/apple-com-cn/iphone-17.json m1/curated/apple-com/iphone-16.json m1/curated/apple-com/macbook-air.json m1/curated/aws-amazon/ec2-on-demand.json m1/curated/bilibili-com/read-home.json m1/curated/bilibili-com/video-bv1gj411x7h7.json m1/curated/github-com/login.json m1/curated/gov-uk/ni-rates-letters.json m1/curated/gov-uk/register-birth-abroad.json m1/curated/grafana-play/play-home.json m1/curated/huawei-cn/consumer-phones.json m1/curated/huawei-cn/home.json m1/curated/huawei-cn/search-laptop.json m1/curated/huawei-cn/search-phone.json m1/curated/learn-microsoft/vm-sizes.json m1/curated/linear-app/home.json m1/curated/mi-com/home.json m1/curated/mi-com/search-earbuds.json m1/curated/mi-com/search-phone.json m1/curated/mi-com/shop-category-list.json m1/curated/sspai-com/home.json m1/curated/sspai-com/matrix.json m1/curated/sspai-com/post-102392.json m1/curated/sspai-com/post-114699.json m1/curated/sspai-com/u-jtc092al.json m1/curated/stripe-com/pricing.json m1/curated/stripe-dashboard/login.json m1/curated/stripe-docs/payments.json m1/curated/xiaomi-account/login.json",
+    "result": "passed",
+    "output": ".scratch/62-all-sites/content/final35-validation.log"
+  },
+  {
+    "command": "node .scratch/62-all-sites/content/content-selftest.mjs",
+    "result": "passed",
+    "output": ".scratch/62-all-sites/content/revision-content-selftest.log"
+  },
+  {
+    "command": "python .scratch/62-all-sites/content/source_fidelity_test.py",
+    "result": "passed",
+    "output": ".scratch/62-all-sites/content/revision-source-fidelity.log"
+  },
+  {
+    "command": "git diff --check refs/autofe-private/62-all-sites-baseline -- m1/curated",
+    "result": "passed",
+    "output": ".scratch/62-all-sites/content/revision-diff-check.log"
+  }
+]

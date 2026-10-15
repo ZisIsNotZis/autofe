@@ -1,0 +1,617 @@
+{
+  "_intent": "Buy iPhone 16 - Apple — Buy iPhone 16 [draft]",
+  "_title": {
+    "text": "Buy iPhone 16 - Apple"
+  },
+  "_price": {
+    "money": 799,
+    "currency": "USD"
+  },
+  "_image": {
+    "image": "",
+    "alt": "T-Mobile"
+  },
+  "_summary": {
+    "text": "Carrier Deals at Apple"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "See all deals Carrier Financing"
+      }
+    },
+    {
+      "_text": {
+        "text": "Footnote"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "iPhone 16"
+      }
+    },
+    {
+      "_text": {
+        "text": "$799"
+      }
+    },
+    {
+      "_text": {
+        "text": "/mo."
+      }
+    },
+    {
+      "_text": {
+        "text": "per month"
+      }
+    },
+    {
+      "_text": {
+        "text": "months"
+      }
+    },
+    {
+      "_text": {
+        "text": "Free shipping"
+      }
+    },
+    {
+      "_text": {
+        "text": "Pick up from Store"
+      }
+    },
+    {
+      "_intent": "Buy iPhone 16 [draft]",
+      "_title": {
+        "text": "Buy iPhone 16"
+      },
+      "_summary": {
+        "text": "Previous gallery image Next gallery image"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Learn more about Apple Intelligence for iPhone"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Get $35–$885 for your trade-in. Footnote †"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.apple.com/shop/browse/overlay/iphone/payment_options",
+            "label": "See how to pay monthly."
+          }
+        },
+        {
+          "_text": {
+            "text": "Finish. Pick your favorite."
+          }
+        },
+        {
+          "_text": {
+            "text": "Color"
+          }
+        },
+        {
+          "_intent": "Finish. Pick your favorite. [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Ultramarine"
+              }
+            },
+            {
+              "_name": {
+                "text": "Teal"
+              }
+            },
+            {
+              "_name": {
+                "text": "Pink"
+              }
+            },
+            {
+              "_name": {
+                "text": "White"
+              }
+            },
+            {
+              "_name": {
+                "text": "Black"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "finish-pick",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Storage. How much space do you need?"
+          }
+        },
+        {
+          "_text": {
+            "text": "128GB Footnote 1 Buy from $799 or $33.29/mo. per month for 24 mo"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Apple Trade In.Get $35–$885 credit towards your new iPhone. Footnote † [draft]",
+      "_title": {
+        "text": "Apple Trade In.Get $35–$885 credit towards your new iPhone. Footnote †"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "T-Mobile"
+          },
+          {
+            "image": "",
+            "alt": "Verizon"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "How does trade-in work?"
+      },
+      "_lines": [
+        {
+          "_intent": "Apple Trade In.Get $35–$885 credit towards your new iPhone. Footnote † [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Select a smartphone Answer a few questions to get your estimate."
+              }
+            },
+            {
+              "_name": {
+                "text": "No trade-in"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "apple-trade",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "See all deals Carrier Financing"
+          }
+        },
+        {
+          "_text": {
+            "text": "Learn how you can save on your order with a trade-in. Or recycle"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Show more How does trade-in work?"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Payment options. Select the one that works for you. [draft]",
+      "_title": {
+        "text": "Payment options. Select the one that works for you."
+      },
+      "_summary": {
+        "text": "Not sure which payment option to choose?"
+      },
+      "_lines": [
+        {
+          "_intent": "Buy Pay with Apple Pay or other payment methods. Finance Pay over time at 0% APR. [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Buy Pay with Apple Pay or other payment methods."
+              }
+            },
+            {
+              "_name": {
+                "text": "Finance Pay over time at 0% APR."
+              }
+            }
+          ],
+          "_expose": {
+            "name": "buy-pay",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Compare all pricing and deals to find the option that’s right fo"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Show more Not sure which payment option to choose?"
+          }
+        },
+        {
+          "_text": {
+            "text": "Connectivity. Choose a carrier."
+          }
+        },
+        {
+          "_intent": "AT&T Includes $30 connectivity discount (requires carrier activation) T-Mobile Includes $30 connectivity discount (requires carrier activation) Verizon Includes $30 connectivity discount (requires car [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "AT&T Includes $30 connectivity discount (requires carrier activation)"
+              }
+            },
+            {
+              "_name": {
+                "text": "T-Mobile Includes $30 connectivity discount (requires carrier activation)"
+              }
+            },
+            {
+              "_name": {
+                "text": "Verizon Includes $30 connectivity discount (requires carrier activation)"
+              }
+            },
+            {
+              "_name": {
+                "text": "Connect to any carrier later"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "at-t",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Is it easy to get connected?"
+          }
+        },
+        {
+          "_text": {
+            "text": "Yes. We’ll help you set up your carrier, number, and rate plan —"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Show more Is it easy to get connected?"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "AppleCare coverage. Peace of mind in every plan. Footnote ‡ [draft]",
+      "_title": {
+        "text": "AppleCare coverage. Peace of mind in every plan. Footnote ‡"
+      },
+      "_summary": {
+        "text": "How does AppleCare work?"
+      },
+      "_lines": [
+        {
+          "_intent": "AppleCare+ with Theft and Loss Cover this product only Unlimited repairs for accidents like drops and spills Theft and loss coverage for up to 2 claims every 12 months 24/7 priority support from Apple [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "AppleCare+ with Theft and Loss Cover this product only Unlimited repairs for accidents like drops and spills Theft and loss coverage for up to 2 claims every 12 months 24/7 priority support from Apple experts Express Replacement Service — we’ll ship you a replacement so you don’t have to wait for a repair"
+              }
+            },
+            {
+              "_name": {
+                "text": "AppleCare One Cover multiple products, including this iPhone with AppleCare One Individual All the benefits of AppleCare+ for up to 3 products, including your current devices, at one low price Theft and loss coverage for iPhone, iPad, and Apple Watch up to 3 total claims every 12 months Add more products anytime for $5.99 per month each Cover all your family’s eligible devices with AppleCare One Family. To upgrade go to Settings on your iPhone, iPad, or Mac."
+              }
+            },
+            {
+              "_name": {
+                "text": "No AppleCare coverage"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "applecare-with",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Explore the features and coverage of AppleCare. Fees and deducti"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Show more How does AppleCare work?"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Your new iPhone 16. [draft]",
+      "_title": {
+        "text": "Your new iPhone 16."
+      },
+      "_image": {
+        "image": "",
+        "alt": "iPhone 16, Ultramarine finish, back exterior, top rounded corners, advanced dual-camera system, flash, microphone"
+      },
+      "_summary": {
+        "text": "want it."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Get 3% Daily Cash with Apple Card"
+          }
+        },
+        {
+          "_intent": "Need a moment? [draft]",
+          "_title": {
+            "text": "Need a moment?"
+          },
+          "_summary": {
+            "text": "Keep all your selections by saving this device to Your Saves, th"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Save for later"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Continue"
+              }
+            },
+            {
+              "_text": {
+                "text": "Have more questions? Connect with a Specialist(Opens in a new wi"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "What’s in the Box [draft]",
+      "_title": {
+        "text": "What’s in the Box"
+      },
+      "_summary": {
+        "text": "Our environmental goals. As part of our efforts to reach carbon"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "iPhone 16"
+              }
+            },
+            {
+              "_name": {
+                "text": "USB-C Charge Cable"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Our environmental goals. [draft]",
+      "_title": {
+        "text": "Our environmental goals."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.apple.com/environment",
+            "label": "carbon neutrality by 2030"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Set up your device with one-on-one sessions with a Specialist. [draft]",
+      "_title": {
+        "text": "Set up your device with one-on-one sessions with a Specialist."
+      },
+      "_summary": {
+        "text": "When you buy directly from Apple, you can get help transferring"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Learn more about Personal Setup"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Your new iPhone comes with so much more. [draft]",
+      "_title": {
+        "text": "Your new iPhone comes with so much more."
+      },
+      "_image": {
+        "image": "",
+        "alt": "Apple TV, Apple Music, Apple Arcade, Apple News+, Apple Fitness+"
+      },
+      "_summary": {
+        "text": "Get 3 months of select services free when you purchase an Apple"
+      }
+    },
+    {
+      "_intent": "Which iPhone is right for you? [draft]",
+      "_title": {
+        "text": "Which iPhone is right for you?"
+      },
+      "_summary": {
+        "text": "New iPhone Duo The largest display of any iPhone. Foldable. Posa"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Compare all iPhone models"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Frequently Asked Questions [draft]",
+      "_title": {
+        "text": "Frequently Asked Questions"
+      },
+      "_lines": [
+        {
+          "_intent": "list (12 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Can I activate an iPhone 16 outside of the United States?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Can I activate an iPhone 16 outside of the United States?"
+              }
+            },
+            {
+              "_name": {
+                "text": "Will my new iPhone be unlocked?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Will my new iPhone be unlocked?"
+              }
+            },
+            {
+              "_name": {
+                "text": "When I buy from apple.com, does my iPhone come ready to use?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "When I buy from apple.com, does my iPhone come ready to use?"
+              }
+            },
+            {
+              "_name": {
+                "text": "Will my iPhone work worldwide?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Will my iPhone work worldwide?"
+              }
+            },
+            {
+              "_name": {
+                "text": "Can I return my iPhone?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Can I return my iPhone?"
+              }
+            },
+            {
+              "_name": {
+                "text": "I’m buying an iPhone as a gift. Can it be activated at a later date?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "I’m buying an iPhone as a gift. Can it be activated at a later date?"
+              }
+            },
+            {
+              "_name": {
+                "text": "What resources are available to me to quickly get set up, transfer existing files, and make the most of my new iPhone?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "What resources are available to me to quickly get set up, transfer existing files, and make the most of my new iPhone?"
+              }
+            },
+            {
+              "_name": {
+                "text": "Are there differences between an iPhone for AT&T, T-Mobile, or Verizon?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Are there differences between an iPhone for AT&T, T-Mobile, or Verizon?"
+              }
+            },
+            {
+              "_name": {
+                "text": "Can I easily switch my carrier when I purchase an iPhone?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Can I easily switch my carrier when I purchase an iPhone?"
+              }
+            },
+            {
+              "_name": {
+                "text": "What are connectivity discounts?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "What are connectivity discounts?"
+              }
+            },
+            {
+              "_name": {
+                "text": "Which network providers offer 5G service?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Which network providers offer 5G service?"
+              }
+            },
+            {
+              "_name": {
+                "text": "What products can be covered by AppleCare One?"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "What products can be covered by AppleCare One?"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

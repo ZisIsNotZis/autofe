@@ -1,0 +1,4000 @@
+{
+  "_intent": "Input - Ant Design — Input [draft]",
+  "_title": {
+    "text": "Input - Ant Design"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#when-to-use",
+        "label": "When To Use"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#examples",
+        "label": "Examples"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-basic",
+        "label": "Basic usage"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-size",
+        "label": "Three sizes of Input"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-variant",
+        "label": "Variants"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-compact-style",
+        "label": "Compact Style"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-search-input",
+        "label": "Search box"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-search-input-loading",
+        "label": "Search box with loading"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-textarea",
+        "label": "TextArea"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-autosize-textarea",
+        "label": "Autosizing the height to fit the content"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-otp",
+        "label": "OTP"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-tooltip",
+        "label": "Format Tooltip Input"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-presuffix",
+        "label": "prefix and suffix"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-password-input",
+        "label": "Password box"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-allowclear",
+        "label": "With clear icon"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-show-count",
+        "label": "With character counting"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-advance-count",
+        "label": "Custom count logic"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-status",
+        "label": "Status"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-focus",
+        "label": "Focus"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input-demo-style-class",
+        "label": "Custom semantic dom styling"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#api",
+        "label": "API"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#input",
+        "label": "Input"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#inputtextarea",
+        "label": "Input.TextArea"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#inputsearch",
+        "label": "Input.Search"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#inputpassword",
+        "label": "Input.Password"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#inputotp",
+        "label": "Input.OTP"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#semantic-dom",
+        "label": "Semantic DOM"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#semantic-input",
+        "label": "Input"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#semantic-textarea",
+        "label": "Input.TextArea"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#semantic-search",
+        "label": "Input.Search"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#semantic-password",
+        "label": "Input.Password"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#semantic-otp",
+        "label": "Input.OTP"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#design-token",
+        "label": "Design Token"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#faq",
+        "label": "FAQ"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#faq-lose-focus",
+        "label": "Why Input loses focus when change prefix/suffix/showCount"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/input#faq-textarea-exceed-max",
+        "label": "Why TextArea in control can make value exceed maxLength?"
+      }
+    },
+    {
+      "_intent": "Input [draft]",
+      "_title": {
+        "text": "Input"
+      }
+    },
+    {
+      "_intent": "When To Use [draft]",
+      "_title": {
+        "text": "When To Use"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "A user input in a form field is needed."
+              }
+            },
+            {
+              "_name": {
+                "text": "A search input is required."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Examples [draft]",
+      "_title": {
+        "text": "Examples"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "audio"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "Basic usage example."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "bug"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "basic-usage",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/input#input-demo-basic",
+            "label": "Basic usage"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/basic.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/input-demo-basic?routeId=components%2Finput%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Expand Icon"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "outlined",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "filled",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "borderless",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "underlined",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "filled-2",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "search"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/input#input-demo-variant",
+            "label": "Variants"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/variant.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Variants of Input, there are four variants: outlined filled borderless and underlined."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/input-demo-variant?routeId=components%2Finput%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_text": {
+            "text": "5.13.0"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-search",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-search-2",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "https://"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-search-3",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-search-4",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-search-5",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-search-6",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/input#input-demo-search-input",
+            "label": "Search box"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/search-input.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Example of creating a search box by grouping a standard input with a search button."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/input-demo-search-input?routeId=components%2Finput%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "maxlength-is",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/input#input-demo-textarea",
+            "label": "TextArea"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/textarea.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "For multi-line input."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/input-demo-textarea?routeId=components%2Finput%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "With formatter (Upcase) [draft]",
+          "_title": {
+            "text": "With formatter (Upcase)"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-2",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-3",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-4",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-5",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-6",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "With Disabled [draft]",
+          "_title": {
+            "text": "With Disabled"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-7",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-8",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-9",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-10",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-11",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-12",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "With Length (8) [draft]",
+          "_title": {
+            "text": "With Length (8)"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-13",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-14",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-15",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-16",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-17",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-18",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-19",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-20",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "With variant [draft]",
+          "_title": {
+            "text": "With variant"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-21",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-22",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-23",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-24",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-25",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-26",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "With custom display character [draft]",
+          "_title": {
+            "text": "With custom display character"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-27",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-28",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-29",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-30",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-31",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-32",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "With custom ReactNode separator [draft]",
+          "_title": {
+            "text": "With custom ReactNode separator"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-33",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-34",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-35",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-36",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-37",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-38",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "With custom function separator [draft]",
+          "_title": {
+            "text": "With custom function separator"
+          },
+          "_image": {
+            "list": [
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "user"
+              },
+              {
+                "image": "",
+                "alt": "info-circle"
+              },
+              {
+                "image": "",
+                "alt": "lock"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              }
+            ]
+          },
+          "_summary": {
+            "text": "One time password input."
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-39",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-40",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-41",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-42",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-43",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-44",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-otp",
+                "label": "OTP"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/otp.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-otp?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Expand Icon"
+              }
+            },
+            {
+              "_text": {
+                "text": "5.16.0"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "enter-your",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-2",
+                "type": "text"
+              }
+            },
+            {
+              "_text": {
+                "text": "RMB"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-3",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-password",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Show"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-presuffix",
+                "label": "prefix and suffix"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/presuffix.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Add a prefix or suffix icons inside input. Note: The suffix prop for Input.Password is supported starting from version 5.27.0."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-presuffix?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-with",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "textarea-with",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-allowclear",
+                "label": "With clear icon"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/allowClear.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Input box with the remove icon, click the icon to delete everything."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-allowclear?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Exceed Max [draft]",
+          "_title": {
+            "text": "Exceed Max"
+          },
+          "_summary": {
+            "text": "12 / 10"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-4",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Emoji count as length 1 [draft]",
+          "_title": {
+            "text": "Emoji count as length 1"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-5",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Not exceed max [draft]",
+          "_title": {
+            "text": "Not exceed max"
+          },
+          "_image": {
+            "list": [
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "user"
+              },
+              {
+                "image": "",
+                "alt": "user"
+              },
+              {
+                "image": "",
+                "alt": "user"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "down"
+              },
+              {
+                "image": "",
+                "alt": "search"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "clock-circle"
+              },
+              {
+                "image": "",
+                "alt": "clock-circle"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              },
+              {
+                "image": "",
+                "alt": "CodeSandbox Icon"
+              },
+              {
+                "image": "",
+                "alt": "Hitu Icon"
+              },
+              {
+                "image": "",
+                "alt": "codepen icon"
+              }
+            ]
+          },
+          "_summary": {
+            "text": "6 / 6"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-6",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-advance-count",
+                "label": "Custom count logic"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/advance-count.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "It is necessary to customize the counting ability in some scenarios (such as emoji length is counted as 1), which can be achieved through the count attribute. Use count.max attribute exceeds the limit"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-advance-count?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Expand Icon"
+              }
+            },
+            {
+              "_text": {
+                "text": ">= 5.10.0"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Focus at first"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Focus at last"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Focus to select all"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Focus prevent scroll"
+              }
+            },
+            {
+              "_intent": "toggle [draft]",
+              "_expose": {
+                "name": "input-textarea",
+                "type": "bool"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-7",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-focus",
+                "label": "Focus"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/focus.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Focus with additional option."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-focus?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "large-size",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "default-size",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "small-size",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-size",
+                "label": "Three sizes of Input"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/size.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "There are three sizes of an Input box: large (40px), medium (32px) and small (24px)."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-size?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-8",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-9",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-10",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-search-7",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "search"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-11",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Submit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Zhejiang"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-12",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "large-size-2",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "another-input",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-compact-style",
+                "label": "Compact Style"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/compact-style.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Use Space.Compact create compact style, See the Space.Compact documentation for more."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-compact-style?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-search-8",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "loading"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-search-9",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-search-10",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "loading Search"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-search-input-loading",
+                "label": "Search box with loading"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/search-input-loading.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Search loading when onSearch."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-search-input-loading?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "autosize-height",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "autosize-height-2",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "controlled-autosize",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-autosize-textarea",
+                "label": "Autosizing the height to fit the content"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/autosize-textarea.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "autoSize prop for a textarea type of Input makes the height to automatically adjust based on the content. An option object can be provided to autoSize to specify the minimum and maximum number of line"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-autosize-textarea?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-a",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-tooltip",
+                "label": "Format Tooltip Input"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/tooltip.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "You can use the Input in conjunction with Tooltip component to create a Numeric Input, which can provide a good experience for extra-long content display."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-tooltip?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-password-2",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "Show"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-password-3",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-password-4",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "disabled-input",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-password-input",
+                "label": "Password box"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/password-input.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Input type of password."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-password-input?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-13",
+                "type": "text"
+              }
+            },
+            {
+              "_text": {
+                "text": "0 / 20"
+              }
+            },
+            {
+              "_text": {
+                "text": "0 / 100"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-show-count",
+                "label": "With character counting"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/show-count.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Show character counting."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-show-count?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "error",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "warning",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "error-with",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "warning-with",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-status",
+                "label": "Status"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/status.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "Add status to Input with status, which could be error or warning."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-status?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "object",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "function",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-14",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-15",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-45",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-46",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-47",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-48",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-49",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-50",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "search",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input#input-demo-style-class",
+                "label": "Custom semantic dom styling"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/ant-design/ant-design/edit/master/components/input/demo/style-class.tsx",
+                "label": "edit"
+              }
+            },
+            {
+              "_text": {
+                "text": "You can customize the semantic dom style of Input by passing objects/functions through classNames and styles."
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/~demos/input-demo-style-class?routeId=components%2Finput%2Findex.en-US",
+                "label": "open in new tab"
+              }
+            },
+            {
+              "_text": {
+                "text": "6.0.0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "API [draft]",
+      "_title": {
+        "text": "API"
+      },
+      "_summary": {
+        "text": "Common props ref：Common props"
+      },
+      "_lines": [
+        {
+          "_intent": "Input [draft]",
+          "_title": {
+            "text": "Input"
+          },
+          "_summary": {
+            "text": "When Input is used in a Form.Item context, if the Form.Item has"
+          },
+          "_lines": [
+            {
+              "_intent": "table (19 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "allowClear"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "classNames"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-input",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-input",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "count"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/input#countconfig",
+                    "label": "CountConfig"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "id"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "maxLength"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prefix"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showCount"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "status"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "styles"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-input",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-input",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "suffix"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "type"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://developer.mozilla.org/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types",
+                    "label": "MDN"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "variant"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onPressEnter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onClear"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "The rest of the props of Input are exactly the same as the original input."
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "CountConfig [draft]",
+          "_title": {
+            "text": "CountConfig"
+          },
+          "_summary": {
+            "text": "tsx"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "interface"
+              }
+            },
+            {
+              "_text": {
+                "text": "// Max character count. Different from the native `maxLength`, i"
+              }
+            },
+            {
+              "_text": {
+                "text": "max"
+              }
+            },
+            {
+              "_text": {
+                "text": "number"
+              }
+            },
+            {
+              "_text": {
+                "text": "// Custom character count, for example, the standard emoji lengt"
+              }
+            },
+            {
+              "_text": {
+                "text": "strategy"
+              }
+            },
+            {
+              "_text": {
+                "text": "value"
+              }
+            },
+            {
+              "_text": {
+                "text": "string"
+              }
+            },
+            {
+              "_text": {
+                "text": "=>"
+              }
+            },
+            {
+              "_text": {
+                "text": "// Same as `showCount`"
+              }
+            },
+            {
+              "_text": {
+                "text": "boolean"
+              }
+            },
+            {
+              "_text": {
+                "text": "args"
+              }
+            },
+            {
+              "_text": {
+                "text": "count"
+              }
+            },
+            {
+              "_text": {
+                "text": "maxLength"
+              }
+            },
+            {
+              "_text": {
+                "text": "ReactNode"
+              }
+            },
+            {
+              "_text": {
+                "text": "// Custom clipping logic when the number of characters exceeds `"
+              }
+            },
+            {
+              "_text": {
+                "text": "exceedFormatter"
+              }
+            },
+            {
+              "_text": {
+                "text": "config"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Input.TextArea [draft]",
+          "_title": {
+            "text": "Input.TextArea"
+          },
+          "_summary": {
+            "text": "Same as Input, and more:"
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "autoSize"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "classNames"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-textarea",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-textarea",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "styles"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-textarea",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-textarea",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "The rest of the props of Input.TextArea are the same as the original textarea."
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Input.Search [draft]",
+          "_title": {
+            "text": "Input.Search"
+          },
+          "_summary": {
+            "text": "Supports all props of Input."
+          },
+          "_lines": [
+            {
+              "_intent": "table (7 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "classNames"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-search",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-search",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "enterButton"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loading"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onSearch"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "styles"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-search",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-search",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "searchIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "variant"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input.Password [draft]",
+          "_title": {
+            "text": "Input.Password"
+          },
+          "_lines": [
+            {
+              "_intent": "table (5 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "classNames"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/input#semantic-password",
+                    "label": "SemanticDOM"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "iconRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "styles"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/input#semantic-password",
+                    "label": "SemanticDOM"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "variant"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "visibilityToggle"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/input#visibilitytoggle",
+                    "label": "VisibilityToggle"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input.OTP [draft]",
+          "_title": {
+            "text": "Input.OTP"
+          },
+          "_summary": {
+            "text": "Added in 5.16.0."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Notes for developers When the mask prop is string, we recommend"
+              }
+            },
+            {
+              "_intent": "table (15 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "autoComplete"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "classNames"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-otp",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-otp",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "formatter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "separator"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "styles"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-otp",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/input#semantic-otp",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "mask"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "length"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "status"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "variant"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onInput"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "VisibilityToggle [draft]",
+          "_title": {
+            "text": "VisibilityToggle"
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "tabIndex"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "visible"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onVisibleChange"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input Methods [draft]",
+          "_title": {
+            "text": "Input Methods"
+          },
+          "_lines": [
+            {
+              "_intent": "table (2 rows): Name / Description / Parameters [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "blur"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "focus"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Semantic DOM [draft]",
+      "_title": {
+        "text": "Semantic DOM"
+      },
+      "_lines": [
+        {
+          "_intent": "Input [draft]",
+          "_title": {
+            "text": "Input"
+          },
+          "_measure": {
+            "num": 17
+          },
+          "_lines": [
+            {
+              "_intent": "list (6 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "root Root element with relative positioning, inline-block display, width, min-width, padding, colors, fonts, line-height, border-radius, transitions and other i"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prefix Prefix wrapper element with layout and styling for prefix content"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "input Input element with core interactive styles and text input related styling"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "suffix Suffix wrapper element with layout and styling for suffix content"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear 6.4.0 Clear button element with layout, visibility, and interaction styles for clearing content"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "count Character count element with font and color styles for count display"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input.TextArea [draft]",
+          "_title": {
+            "text": "Input.TextArea"
+          },
+          "_summary": {
+            "text": "17 / 100"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "input-16",
+                "type": "text"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "close-circle"
+              }
+            },
+            {
+              "_intent": "list (4 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "root Root element with textarea wrapper styles, border, border radius, transition animation and state control"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "textarea Textarea element with font, line height, padding, color, background, border, text input and multi-line text display styles"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear 6.4.0 Clear button element with layout, visibility, and interaction styles for clearing content"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "count Count element with character count display position, font, color and numeric statistics styles"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input.Search [draft]",
+          "_title": {
+            "text": "Input.Search"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "loading Searching..."
+              }
+            },
+            {
+              "_intent": "list (9 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "root root element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prefix prefix element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "input input element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "suffix suffix element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear 6.4.0 clear button element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "count count element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "button.root button root element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "button.icon button icon element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "button.content button content element"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input.Password [draft]",
+          "_title": {
+            "text": "Input.Password"
+          },
+          "_lines": [
+            {
+              "_intent": "list (6 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "root root element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prefix prefix element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "input input element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "suffix suffix element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear 6.4.0 clear button element"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "count count element"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Input.OTP [draft]",
+          "_title": {
+            "text": "Input.OTP"
+          },
+          "_lines": [
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-51",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-52",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-53",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-54",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-55",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "input [draft]",
+              "_expose": {
+                "name": "otp-input-56",
+                "type": "text"
+              }
+            },
+            {
+              "_intent": "list (3 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "root Root element, set inline flex layout, alignment, column gap and wrapper styles"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "input Input element, set text center, padding and number input styles"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "separator Separator element, set separator display styles between OTP input boxes"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Design Token [draft]",
+      "_title": {
+        "text": "Design Token"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "right"
+          },
+          {
+            "image": "",
+            "alt": "right"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "How to use?"
+      },
+      "_lines": [
+        {
+          "_intent": "table (17 rows): Token Name / Description / Type [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "activeBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "activeBorderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "activeShadow"
+              }
+            },
+            {
+              "_name": {
+                "text": "addonBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "errorActiveShadow"
+              }
+            },
+            {
+              "_name": {
+                "text": "hoverBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "hoverBorderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "inputFontSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "inputFontSizeLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "inputFontSizeSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingBlock"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingBlockLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingBlockSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingInline"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingInlineLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingInlineSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "warningActiveShadow"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (26 rows): Token Name / Description / Type [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "colorBgContainerDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorBorder"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorBorderDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorError"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorText"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorFillTertiary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorText"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorWarning"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorWarningBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorWarningText"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadius"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadiusLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadiusSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlHeightLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlHeightSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "fontFamily"
+              }
+            },
+            {
+              "_name": {
+                "text": "fontSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineHeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineHeightLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineType"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineWidth"
+              }
+            },
+            {
+              "_name": {
+                "text": "motionDurationSlow"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingXS"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingXXS"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "FAQ [draft]",
+      "_title": {
+        "text": "FAQ"
+      },
+      "_lines": [
+        {
+          "_intent": "Why Input loses focus when change prefix/suffix/showCount [draft]",
+          "_title": {
+            "text": "Why Input loses focus when change prefix/suffix/showCount"
+          },
+          "_summary": {
+            "text": "jsx"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "When Input dynamic add or remove prefix/suffix/showCount will make React recreate the dom structure and new input will be not focused. You can set an empty <span /> element to keep the dom structure:"
+              }
+            },
+            {
+              "_text": {
+                "text": "const"
+              }
+            },
+            {
+              "_text": {
+                "text": "suffix"
+              }
+            },
+            {
+              "_text": {
+                "text": "condition"
+              }
+            },
+            {
+              "_text": {
+                "text": "Icon"
+              }
+            },
+            {
+              "_text": {
+                "text": "type"
+              }
+            },
+            {
+              "_text": {
+                "text": "smile"
+              }
+            },
+            {
+              "_text": {
+                "text": "/>"
+              }
+            },
+            {
+              "_text": {
+                "text": "span"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Why TextArea in control can make value exceed maxLength? [draft]",
+          "_title": {
+            "text": "Why TextArea in control can make value exceed maxLength?"
+          },
+          "_summary": {
+            "text": "When in control, component should show as what it set to avoid submit value not align with store value in Form."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "contributors"
+              }
+            },
+            {
+              "_intent": "list (40 items) [draft]",
+              "_items": [
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/QDyanbing",
+                    "label": "QDyanbing"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/dogledogle",
+                    "label": "dogledogle"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ug-one",
+                    "label": "ug-one"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/afc163",
+                    "label": "afc163"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/guoyunhe",
+                    "label": "guoyunhe"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Leka74",
+                    "label": "Leka74"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/coding-ice",
+                    "label": "coding-ice"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/zombieJ",
+                    "label": "zombieJ"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/thinkasany",
+                    "label": "thinkasany"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/li-jia-nan",
+                    "label": "li-jia-nan"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/EmilyyyLiu",
+                    "label": "EmilyyyLiu"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/meet-student",
+                    "label": "meet-student"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Arktomson",
+                    "label": "Arktomson"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/aojunhao123",
+                    "label": "aojunhao123"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/HaceraI",
+                    "label": "HaceraI"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ustcfury",
+                    "label": "ustcfury"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Wxh16144",
+                    "label": "Wxh16144"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/MadCcc",
+                    "label": "MadCcc"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Eloi0424",
+                    "label": "Eloi0424"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Simon-He95",
+                    "label": "Simon-He95"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/kiner-tang",
+                    "label": "kiner-tang"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Yuiai01",
+                    "label": "Yuiai01"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/PeachScript",
+                    "label": "PeachScript"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/MrHeer",
+                    "label": "MrHeer"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/JarvisArt",
+                    "label": "JarvisArt"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/vagusX",
+                    "label": "vagusX"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/cwjTerrace",
+                    "label": "cwjTerrace"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/pasinter",
+                    "label": "pasinter"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/hengkx",
+                    "label": "hengkx"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/zhangchen915",
+                    "label": "zhangchen915"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/forl",
+                    "label": "forl"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/07akioni",
+                    "label": "07akioni"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/xrkffgg",
+                    "label": "xrkffgg"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/arvinxx",
+                    "label": "arvinxx"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/itellboy",
+                    "label": "itellboy"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/specialorange",
+                    "label": "specialorange"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/yoyo837",
+                    "label": "yoyo837"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/qhanw",
+                    "label": "qhanw"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/0xPoe",
+                    "label": "0xPoe"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/yesmeck",
+                    "label": "yesmeck"
+                  }
+                }
+              ]
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/form",
+                "label": "left Form"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/input-number",
+                "label": "InputNumber right"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Resources [draft]",
+      "_title": {
+        "text": "Resources"
+      },
+      "_summary": {
+        "text": "Landing Templates"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://x.ant.design/",
+            "label": "Ant Design X"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://charts.ant.design/",
+            "label": "Ant Design Charts"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://pro.ant.design/",
+            "label": "Ant Design Pro"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://procomponents.ant.design/",
+            "label": "Pro Components"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://mobile.ant.design/",
+            "label": "Ant Design Mobile"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://mini.ant.design/",
+            "label": "Ant Design Mini"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://web3.ant.design/",
+            "label": "Ant Design Web3"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://landing.ant.design/",
+            "label": "Ant Design Landing"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://scaffold.ant.design/",
+            "label": "Scaffolds"
+          }
+        },
+        {
+          "_text": {
+            "text": "Scaffold Market"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://umijs.org/",
+            "label": "Umi"
+          }
+        },
+        {
+          "_text": {
+            "text": "React Application Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://d.umijs.org/",
+            "label": "dumi"
+          }
+        },
+        {
+          "_text": {
+            "text": "Component doc generator"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://qiankun.umijs.org/",
+            "label": "qiankun"
+          }
+        },
+        {
+          "_text": {
+            "text": "Micro-Frontends Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://motion.ant.design/",
+            "label": "Ant Motion"
+          }
+        },
+        {
+          "_text": {
+            "text": "Motion Solution"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant-design.antgroup.com/",
+            "label": "China Mirror 🇨🇳"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Community [draft]",
+      "_title": {
+        "text": "Community"
+      },
+      "_summary": {
+        "text": "Experience Tech Conference"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/websemantics/awesome-ant-design",
+            "label": "ant-design Awesome Ant Design"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://medium.com/ant-design/",
+            "label": "medium Medium"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://x.com/antdesignui",
+            "label": "x X"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://yuque.com/ant-design/ant-design",
+            "label": "yuque logo Ant Design in YuQue"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.zhihu.com/column/c_1564262000561106944",
+            "label": "zhihu Ant Design in Zhihu"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.zhihu.com/column/c_1543658574504751104",
+            "label": "zhihu Experience Cloud Blog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://seeconf.antfin.com/",
+            "label": "seeconf logo SEE Conf"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Help [draft]",
+      "_title": {
+        "text": "Help"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design",
+            "label": "github GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/changelog",
+            "label": "history Change Log"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/docs/react/faq",
+            "label": "question-circle FAQ"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/docs/react/for-agents.md",
+            "label": "robot For Agents"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://new-issue.ant.design/",
+            "label": "bug Bug Report"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/issues",
+            "label": "issues-close Issues"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/discussions",
+            "label": "message Discussions"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://stackoverflow.com/questions/tagged/antd",
+            "label": "question-circle StackOverflow"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://segmentfault.com/t/antd",
+            "label": "question-circle SegmentFault"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Ant XTech logo More Products [draft]",
+      "_title": {
+        "text": "Ant XTech logo More Products"
+      },
+      "_summary": {
+        "text": "Document Collaboration Platform"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://yuque.com/",
+            "label": "yuque logo YuQue"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://antv.antgroup.com/",
+            "label": "AntV logo AntV"
+          }
+        },
+        {
+          "_text": {
+            "text": "Data Visualization"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://eggjs.org/",
+            "label": "Egg logo Egg"
+          }
+        },
+        {
+          "_text": {
+            "text": "Enterprise Node.js Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://kitchen.alipay.com/",
+            "label": "Kitchen logo Kitchen"
+          }
+        },
+        {
+          "_text": {
+            "text": "Sketch Toolkit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://galacean.antgroup.com/",
+            "label": "Galacean logo Galacean"
+          }
+        },
+        {
+          "_text": {
+            "text": "Interactive Graphics Solution"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://weavefox.cn/",
+            "label": "WeaveFox logo WeaveFox"
+          }
+        },
+        {
+          "_text": {
+            "text": "AI Development with WeaveFox 🦊"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://xtech.antfin.com/",
+            "label": "xtech logo Ant Financial Experience Tech"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/theme-editor",
+            "label": "bg-colors Theme Editor"
+          }
+        },
+        {
+          "_text": {
+            "text": "Ant Group and Ant Design Community"
+          }
+        }
+      ]
+    }
+  ]
+}

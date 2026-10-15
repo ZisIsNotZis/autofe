@@ -1,0 +1,528 @@
+{
+  "_intent": "CSS: Cascading Style Sheets | MDN — CSS: Cascading Style Sheets [draft]",
+  "_title": {
+    "text": "CSS: Cascading Style Sheets | MDN"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://developer.mozilla.org/en-US/docs/Web/CSS#content",
+        "label": "Skip to main content"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://developer.mozilla.org/en-US/docs/Web/CSS#mdn-search",
+        "label": "Skip to search"
+      }
+    },
+    {
+      "_intent": "CSS: Cascading Style Sheets [draft]",
+      "_title": {
+        "text": "CSS: Cascading Style Sheets"
+      },
+      "_summary": {
+        "text": "Cascading Style Sheets (CSS) is a stylesheet language used to de"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "CSS is among the core languages of the open web and is standardi"
+          }
+        },
+        {
+          "_text": {
+            "text": "After CSS 2.1, the scope of the specification increased signific"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Beginner's tutorials [draft]",
+      "_title": {
+        "text": "Beginner's tutorials"
+      },
+      "_summary": {
+        "text": "Our learn web development core modules contain modern, up-to-dat"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Your first website: Styling the content"
+          }
+        },
+        {
+          "_text": {
+            "text": "This article provides a brief tour of what CSS is and how to use"
+          }
+        },
+        {
+          "_text": {
+            "text": "CSS styling basics"
+          }
+        },
+        {
+          "_text": {
+            "text": "This module provides all the CSS fundamentals you'll need to sta"
+          }
+        },
+        {
+          "_text": {
+            "text": "CSS text styling"
+          }
+        },
+        {
+          "_text": {
+            "text": "Here we look at CSS text fundamentals including setting font, bo"
+          }
+        },
+        {
+          "_text": {
+            "text": "CSS layout"
+          }
+        },
+        {
+          "_text": {
+            "text": "This module looks at floats, positioning, other modern layout to"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Guides [draft]",
+      "_title": {
+        "text": "Guides"
+      },
+      "_summary": {
+        "text": "CSS guides are organized by modules and are there to help you le"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Syntax/Introduction",
+            "label": "CSS syntax"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity",
+            "label": "Specificity"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Inheritance",
+            "label": "inheritance"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Introduction",
+            "label": "cascade"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting",
+            "label": "Nesting"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scoping",
+            "label": "scoping"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Shadow_parts",
+            "label": "shadow parts"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries",
+            "label": "Media"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment",
+            "label": "container"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Values_and_units/Numeric_data_types",
+            "label": "Numeric"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Values_and_units/Textual_data_types",
+            "label": "textual"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Introduction",
+            "label": "Box model"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Margin_collapsing",
+            "label": "margin collapse"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Display/Containing_block",
+            "label": "Containing block"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Positioned_layout/Stacking_context",
+            "label": "Stacking"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Display/Block_formatting_context",
+            "label": "block-formatting"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Property_value_processing",
+            "label": "Property value processing"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties",
+            "label": "Shorthand properties"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout",
+            "label": "Flexible box"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Multicol_layout",
+            "label": "multi-column"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout",
+            "label": "grid"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Animations/Using",
+            "label": "Animations"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Transitions/Using",
+            "label": "transitions"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Transforms/Using",
+            "label": "transforms"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "How to [draft]",
+      "_title": {
+        "text": "How to"
+      },
+      "_summary": {
+        "text": "CSS layout cookbook"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Recipes for common layout patterns you might need to implement i"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Tools [draft]",
+      "_title": {
+        "text": "Tools"
+      },
+      "_summary": {
+        "text": "Border-image generator"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Generate CSS border-image values."
+          }
+        },
+        {
+          "_text": {
+            "text": "Border-radius generator"
+          }
+        },
+        {
+          "_text": {
+            "text": "Generate CSS border-radius effects."
+          }
+        },
+        {
+          "_text": {
+            "text": "Box-shadow generator"
+          }
+        },
+        {
+          "_text": {
+            "text": "Add box-shadow effects to your CSS objects."
+          }
+        },
+        {
+          "_text": {
+            "text": "Color format converter"
+          }
+        },
+        {
+          "_text": {
+            "text": "Enter or pick a color and copy its corresponding value in any CS"
+          }
+        },
+        {
+          "_text": {
+            "text": "Color mixer"
+          }
+        },
+        {
+          "_text": {
+            "text": "Mix two colors in any color space using the color-mix() function"
+          }
+        },
+        {
+          "_text": {
+            "text": "Shape generator"
+          }
+        },
+        {
+          "_text": {
+            "text": "Define coordinates and syntax for <basic-shape> features."
+          }
+        },
+        {
+          "_text": {
+            "text": "You can also use the following resources:"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "W3C CSS Validation Service: To check if your CSS is valid. This is an invaluable debugging tool."
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://jigsaw.w3.org/css-validator/",
+                "label": "W3C CSS Validation Service (external)"
+              }
+            },
+            {
+              "_name": {
+                "text": "Firefox Developer Tools: To view and edit a page's live CSS via the Inspector and the Style Editor tools."
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://firefox-source-docs.mozilla.org/devtools-user/index.html",
+                "label": "Firefox Developer Tools (external)"
+              }
+            },
+            {
+              "_name": {
+                "text": "Web Developer extension: To track and edit live CSS on websites in Firefox."
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://addons.mozilla.org/en-US/firefox/addon/web-developer/",
+                "label": "Web Developer extension (external)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Reference [draft]",
+      "_title": {
+        "text": "Reference"
+      },
+      "_summary": {
+        "text": "Browse the complete CSS reference documentation."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "CSS properties"
+          }
+        },
+        {
+          "_text": {
+            "text": "Reference for all CSS properties."
+          }
+        },
+        {
+          "_text": {
+            "text": "CSS selectors"
+          }
+        },
+        {
+          "_text": {
+            "text": "Reference for CSS selectors, combinators, pseudo-classes, and ps"
+          }
+        },
+        {
+          "_text": {
+            "text": "CSS at-rules"
+          }
+        },
+        {
+          "_text": {
+            "text": "Reference for CSS at-rules including media queries."
+          }
+        },
+        {
+          "_text": {
+            "text": "CSS values"
+          }
+        },
+        {
+          "_text": {
+            "text": "Reference for CSS keywords, data types, and functions."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "See also [draft]",
+      "_title": {
+        "text": "See also"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+            "label": "HTML"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/SVG",
+            "label": "SVG"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/MathML",
+            "label": "MathML"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Glossary/XHTML",
+            "label": "XHTML"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/Web/XML/Guides/XML_introduction",
+            "label": "XML"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://stackoverflow.com/questions/tagged/css",
+            "label": "Stack Overflow questions about CSS (external)"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Help improve MDN [draft]",
+      "_title": {
+        "text": "Help improve MDN"
+      },
+      "_summary": {
+        "text": "This page was last modified on Dec 29, 2025 by MDN contributors."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://developer.mozilla.org/en-US/docs/MDN/Community/Getting_started",
+            "label": "Learn how to contribute"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/mdn/content/blob/main/files/en-us/web/css/index.md?plain=1",
+            "label": "View this page on GitHub (external)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/mdn/content/issues/new?template=page-report.yml&mdn-url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FCSS&metadata=%3C%21--+Do+not+make+changes+below+this+line+--%3E%0A%3Cdetails%3E%0A%3Csummary%3EPage+report+details%3C%2Fsummary%3E%0A%0A*+Folder%3A+%60en-us%2Fweb%2Fcss%60%0A*+MDN+URL%3A+https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FCSS%0A*+GitHub+URL%3A+https%3A%2F%2Fgithub.com%2Fmdn%2Fcontent%2Fblob%2Fmain%2Ffiles%2Fen-us%2Fweb%2Fcss%2Findex.md%0A*+Last+commit%3A+https%3A%2F%2Fgithub.com%2Fmdn%2Fcontent%2Fcommit%2F423161782178b119c64cd0b41bff8df20dc84a56%0A*+Document+last+modified%3A+2025-12-29T16%3A36%3A42.000Z%0A%0A%3C%2Fdetails%3E",
+            "label": "Report a problem with this content (external)"
+          }
+        }
+      ]
+    }
+  ]
+}

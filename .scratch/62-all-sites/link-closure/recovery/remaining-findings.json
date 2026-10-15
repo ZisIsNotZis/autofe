@@ -1,0 +1,228 @@
+{
+  "agg": {
+    "pages": 42,
+    "anchors": 6250,
+    "anchorsWithTarget": 5795,
+    "anchorsWithoutTarget": 455,
+    "scanned": 1686,
+    "mapped": 1669,
+    "findings": 21,
+    "declared": 15
+  },
+  "pages": [
+    {
+      "page": "36kr-com/home",
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "path": "flash._action",
+          "text": "\u67e5\u770b\u66f4\u591a",
+          "href": "https://36kr.com/information/web_news/latest?anchor=3988767829277705",
+          "expect": [
+            "https://36kr.com/newsflashes"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "\u6c2a\u777f\u7814\u7a76\u9662",
+          "path": "enterprise._items[0]._name",
+          "href": "https://36kr.com/p/3557922239118726",
+          "expect": [
+            "https://36kr.com/user/6308858"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "text": "\u67e5\u770b\u66f4\u591a",
+          "href": "https://36kr.com/information/web_news/latest?anchor=3988767829277705",
+          "expect": []
+        },
+        {
+          "kind": "wrong-target",
+          "text": "\u6c2a\u777f\u7814\u7a76\u9662",
+          "href": "https://36kr.com/p/3557922239118726",
+          "expect": []
+        }
+      ]
+    },
+    {
+      "page": "36kr-com/information-technology",
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "\u6c2a\u777f\u7814\u7a76\u9662",
+          "href": "https://36kr.com/user/6308858",
+          "expect": []
+        }
+      ]
+    },
+    {
+      "page": "aliyun-com/home",
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "\u67e5\u770b\u8be6\u60c5",
+          "href": "https://platform.qianwenai.com/pricing/token-plan",
+          "expect": []
+        },
+        {
+          "kind": "wrong-target",
+          "text": "\u67e5\u770b\u8be6\u60c5",
+          "href": "https://platform.qianwenai.com/home/benefits",
+          "expect": []
+        }
+      ]
+    },
+    {
+      "page": "apple-com-cn/iphone-17",
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "iPhone 17",
+          "path": "._title",
+          "href": "https://www.apple.com.cn/cn/shop/goto/buy_iphone/iphone_17",
+          "expect": [
+            "https://www.apple.com.cn/iphone-17"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "learn-microsoft/vm-sizes",
+      "findings": [
+        {
+          "kind": "anchor-dropped",
+          "path": "vm-size-and-series-naming.classification-links._lines[0]._items[0]._action",
+          "text": "General purpose",
+          "href": "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#general-purpose",
+          "expect": [
+            "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#general-purpose"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "path": "vm-size-and-series-naming.classification-links._lines[0]._items[1]._action",
+          "text": "Compute optimized",
+          "href": "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#compute-optimized",
+          "expect": [
+            "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#compute-optimized"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "path": "vm-size-and-series-naming.classification-links._lines[0]._items[2]._action",
+          "text": "Memory optimized",
+          "href": "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#memory-optimized",
+          "expect": [
+            "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#memory-optimized"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "path": "vm-size-and-series-naming.classification-links._lines[0]._items[3]._action",
+          "text": "Storage optimized",
+          "href": "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#storage-optimized",
+          "expect": [
+            "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#storage-optimized"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "path": "vm-size-and-series-naming.classification-links._lines[0]._items[4]._action",
+          "text": "GPU accelerated",
+          "href": "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#gpu-accelerated",
+          "expect": [
+            "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#gpu-accelerated"
+          ]
+        },
+        {
+          "kind": "anchor-dropped",
+          "path": "vm-size-and-series-naming.classification-links._lines[0]._items[5]._action",
+          "text": "FPGA accelerated",
+          "href": "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#fpga-accelerated",
+          "expect": [
+            "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#fpga-accelerated"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "mi-com/search-earbuds",
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "\u7ad9\u5185\u641c\u7d22",
+          "href": "https://search.mi.com/search",
+          "expect": []
+        }
+      ]
+    },
+    {
+      "page": "mi-com/search-phone",
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "\u7ad9\u5185\u641c\u7d22",
+          "href": "https://search.mi.com/search",
+          "expect": []
+        }
+      ]
+    },
+    {
+      "page": "mi-com/shop-category-list",
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "\u7ad9\u5185\u641c\u7d22",
+          "href": "https://search.mi.com/search",
+          "expect": []
+        }
+      ]
+    },
+    {
+      "page": "sspai-com/post-114716",
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "path": "_lines[12]._lines[4]._items[1]._action",
+          "text": "\u6765\u6e90",
+          "href": "https://www.bilibili.com/video/BV1EWer6qEts/",
+          "expect": [
+            "https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DIFF4fNg0CEM"
+          ]
+        },
+        {
+          "kind": "wrong-target",
+          "path": "_lines[12]._lines[4]._items[2]._action",
+          "text": "\u6765\u6e90",
+          "href": "https://www.bilibili.com/video/BV1hseH6NEaQ/",
+          "expect": [
+            "https://sspai.com/link?target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DavXdGfYmRhM"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "taobao-com/home",
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "\u6dd8\u5b9d\u79d2\u6740",
+          "href": "https://web.m.taobao.com/app/ltao-fe/tbmx-pc-page/home?custom_content_source=mspd.tbmspc",
+          "expect": []
+        }
+      ]
+    },
+    {
+      "page": "xiaomi-account/login",
+      "findings": [
+        {
+          "kind": "wrong-target",
+          "text": "\u6ce8\u518c",
+          "href": "https://account.xiaomi.com/pass/register",
+          "expect": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "site": "aws-amazon",
+  "page": "ec2-on-demand",
+  "url": "https://aws.amazon.com/ec2/pricing/on-demand/",
+  "title": "EC2 按需实例定价",
+  "sourceNodes": 1981,
+  "counts": {
+    "storylines": 17,
+    "items": 61,
+    "actions": 20,
+    "exposes": 0,
+    "images": 4,
+    "facts": 21,
+    "tables": 3,
+    "lists": 3,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 3,
+    "capHits": [
+      "itemsPerCollection"
+    ]
+  },
+  "storylines": 17,
+  "chrome": [
+    {
+      "role": "navigation",
+      "count": 2
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 47,
+      "examples": [
+        "定价: 每 GB USD 0.00",
+        "定价: 每 GB USD 0.09",
+        "定价: 每 GB USD 0.085",
+        "定价: 每 GB USD 0.07",
+        "定价: 每 GB USD 0.05"
+      ]
+    },
+    {
+      "kind": "embedded-media",
+      "role": "Iframe",
+      "count": 1,
+      "examples": []
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "col-1",
+      "type": "text",
+      "label": "col-1",
+      "example": "数据自互联网传入 Amazon EC2"
+    },
+    {
+      "name": "col-2",
+      "type": "text",
+      "label": "定价",
+      "example": "USD 0.01"
+    },
+    {
+      "name": "amazon-ec2",
+      "type": "text",
+      "label": "数据自 Amazon EC2 传出至",
+      "example": "Amazon CloudFront"
+    },
+    {
+      "name": "aws-amazon-ec2",
+      "type": "text",
+      "label": "在同一 AWS 区域内的本地区域和可用区之间传输的数据，从本地区域中的 Amazon EC2“传入”和“传出”",
+      "example": "数据传入"
+    }
+  ]
+}

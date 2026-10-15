@@ -1,0 +1,573 @@
+{
+  "_intent": "按钮 Button | ArcoDesign — 按钮 Button [draft]",
+  "_title": {
+    "text": "按钮 Button | ArcoDesign"
+  },
+  "_summary": {
+    "text": "未登录"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Open Search Modal"
+      }
+    },
+    {
+      "_text": {
+        "text": "React"
+      }
+    },
+    {
+      "_text": {
+        "text": "Vue"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "menu collapse button"
+      }
+    },
+    {
+      "_text": {
+        "text": "组件 / 通用"
+      }
+    },
+    {
+      "_intent": "按钮 Button [draft]",
+      "_title": {
+        "text": "按钮 Button"
+      },
+      "_summary": {
+        "text": "按钮是一种命令组件，可发起一个即时操作。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Changelog"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "基本用法 [draft]",
+      "_title": {
+        "text": "基本用法"
+      },
+      "_summary": {
+        "text": "按钮分为 主要按钮、次要按钮、虚线按钮、线形按钮和文本按钮五种。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "展开所有代码"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Primary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Secondary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Dashed"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Outline"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Text"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Button, Space } from '@arco-design/web-react'; const Ap"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "图标按钮 [draft]",
+      "_title": {
+        "text": "图标按钮"
+      },
+      "_summary": {
+        "text": "Button 可以嵌入图标，在只设置图标而没有 children 时，按钮的高宽相等。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Delete"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Button, Space } from '@arco-design/web-react'; import {"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "按钮形状 [draft]",
+      "_title": {
+        "text": "按钮形状"
+      },
+      "_summary": {
+        "text": "Button 有多种形状，square - 长方形 (默认), circle - 圆形, round - 全圆角。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Primary"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "按钮尺寸 [draft]",
+      "_title": {
+        "text": "按钮尺寸"
+      },
+      "_summary": {
+        "text": "按钮分为：迷你、小、中、大，四种尺寸。高度分别为：24px/28px/32px/36px。推荐及默认为尺寸「中」。可在不同场景及不同业务需求选择适合尺寸。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Mini"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Small"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Default"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Large"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "按钮状态 [draft]",
+      "_title": {
+        "text": "按钮状态"
+      },
+      "_summary": {
+        "text": "按钮状态分为 警告，危险，成功 三种，可以与按钮类型同时生效，优先级高于按钮类型。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Warning"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Danger"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Success"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Button, Switch } from '@arco-design/web-react'; const A"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "禁用按钮 [draft]",
+      "_title": {
+        "text": "禁用按钮"
+      },
+      "_summary": {
+        "text": "按钮的禁用状态。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Primary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Secondary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Dashed"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Outline"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "加载中按钮 [draft]",
+      "_title": {
+        "text": "加载中按钮"
+      },
+      "_summary": {
+        "text": "通过设置loading可以让一个按钮处于加载中状态。处于加载中状态的按钮不会触发点击事件。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Loading"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Click Me"
+          }
+        },
+        {
+          "_text": {
+            "text": "loading fixed width"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Search"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { useState } from 'react'; import { Button, Divider } fro"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "组合按钮 [draft]",
+      "_title": {
+        "text": "组合按钮"
+      },
+      "_summary": {
+        "text": "可用在同级多项操作，以按钮组合方式出现。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Publish"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Prev"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Next"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Favorite"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Setting"
+          }
+        },
+        {
+          "_text": {
+            "text": "JSTS"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "长按钮 [draft]",
+      "_title": {
+        "text": "长按钮"
+      },
+      "_summary": {
+        "text": "按钮宽度随着容器宽度进行适配。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Primary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Secondary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Dashed"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Default"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "API [draft]",
+      "_title": {
+        "text": "API"
+      },
+      "_lines": [
+        {
+          "_intent": "Button [draft]",
+          "_title": {
+            "text": "Button"
+          },
+          "_lines": [
+            {
+              "_intent": "table (17 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "iconOnly"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loading"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loadingFixedWidth"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "long"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "href"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "target"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "htmlType"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "shape"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "status"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "type"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "icon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "anchorProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "style"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onClick"
+                  }
+                }
+              ]
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/button#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95",
+                "label": "基本用法"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/button#%E5%9B%BE%E6%A0%87%E6%8C%89%E9%92%AE",
+                "label": "图标按钮"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/button#%E6%8C%89%E9%92%AE%E5%BD%A2%E7%8A%B6",
+                "label": "按钮形状"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/button#%E6%8C%89%E9%92%AE%E5%B0%BA%E5%AF%B8",
+                "label": "按钮尺寸"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/button#%E6%8C%89%E9%92%AE%E7%8A%B6%E6%80%81",
+                "label": "按钮状态"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/button#%E7%A6%81%E7%94%A8%E6%8C%89%E9%92%AE",
+                "label": "禁用按钮"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/button#%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%89%E9%92%AE",
+                "label": "加载中按钮"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/button#%E7%BB%84%E5%90%88%E6%8C%89%E9%92%AE",
+                "label": "组合按钮"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/button#%E9%95%BF%E6%8C%89%E9%92%AE",
+                "label": "长按钮"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/button#api",
+                "label": "API"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "anchor collapse button"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "button to open theme box"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

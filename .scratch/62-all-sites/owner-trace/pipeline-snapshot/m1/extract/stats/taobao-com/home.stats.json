@@ -1,0 +1,55 @@
+{
+  "site": "taobao-com",
+  "page": "home",
+  "url": "https://www.taobao.com/",
+  "title": "淘宝",
+  "sourceNodes": 979,
+  "counts": {
+    "storylines": 1,
+    "items": 19,
+    "actions": 78,
+    "exposes": 0,
+    "images": 0,
+    "facts": 1,
+    "tables": 0,
+    "lists": 4,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 5,
+    "capHits": []
+  },
+  "storylines": 1,
+  "chrome": [
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "menubar",
+      "count": 1
+    },
+    {
+      "role": "complementary",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "list-item-multi-action",
+      "role": "listitem",
+      "count": 1,
+      "examples": [
+        "亲，请登录 免费注册"
+      ]
+    },
+    {
+      "kind": "combobox-select",
+      "role": "combobox",
+      "count": 1,
+      "examples": [
+        "请输入搜索文字"
+      ]
+    }
+  ],
+  "fieldsDrafted": []
+}

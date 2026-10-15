@@ -1,0 +1,100 @@
+{
+  "baselineRef": "refs/autofe-private/62-all-sites-baseline",
+  "packet": "/home/z/vibe/autofe/.scratch/62-all-sites/packet.md",
+  "concurrency": 8,
+  "engineCwd": "/home/z/vibe/autofe-worktrees/62-all-sites/engine",
+  "contentCwd": "/home/z/vibe/autofe-worktrees/62-all-sites/content",
+  "audits": [
+    {
+      "key": "36kr-news-search",
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search",
+      "pages": [
+        "36kr-com/home",
+        "36kr-com/information-technology",
+        "36kr-com/search-ai",
+        "36kr-com/search-viz"
+      ],
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-36kr-news-search/ticket.md"
+    },
+    {
+      "key": "sspai-editorial",
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/matrix",
+        "sspai-com/post-102392",
+        "sspai-com/post-114699",
+        "sspai-com/u-jtc092al"
+      ],
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/ticket.md"
+    },
+    {
+      "key": "mi-commerce",
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-mi-commerce",
+      "pages": [
+        "mi-com/home",
+        "mi-com/search-earbuds",
+        "mi-com/search-phone",
+        "mi-com/shop-category-list"
+      ],
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-mi-commerce/.scratch/62-all-sites/audit-mi-commerce/ticket.md"
+    },
+    {
+      "key": "huawei-commerce",
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce",
+      "pages": [
+        "huawei-cn/home",
+        "huawei-cn/consumer-phones",
+        "huawei-cn/search-laptop",
+        "huawei-cn/search-phone"
+      ],
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce/ticket.md"
+    },
+    {
+      "key": "apple-linear-products",
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products",
+      "pages": [
+        "apple-com-cn/iphone-17",
+        "apple-com/iphone-16",
+        "apple-com/macbook-air",
+        "linear-app/home"
+      ],
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-apple-linear-products/ticket.md"
+    },
+    {
+      "key": "cloud-business",
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business",
+      "pages": [
+        "aliyun-com/home",
+        "aliyun-com/product-ecs",
+        "aws-amazon/ec2-on-demand",
+        "stripe-com/pricing",
+        "grafana-play/play-home"
+      ],
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-cloud-business/ticket.md"
+    },
+    {
+      "key": "public-technical-docs",
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs",
+      "pages": [
+        "gov-uk/ni-rates-letters",
+        "gov-uk/register-birth-abroad",
+        "learn-microsoft/vm-sizes",
+        "stripe-docs/payments"
+      ],
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-public-technical-docs/ticket.md"
+    },
+    {
+      "key": "media-auth-utility",
+      "cwd": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility",
+      "pages": [
+        "bilibili-com/read-home",
+        "bilibili-com/video-bv1gj411x7h7",
+        "github-com/login",
+        "stripe-dashboard/login",
+        "xiaomi-account/login"
+      ],
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/ticket.md"
+    }
+  ]
+}

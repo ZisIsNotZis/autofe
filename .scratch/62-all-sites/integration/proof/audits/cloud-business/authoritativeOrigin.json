@@ -1,0 +1,409 @@
+{
+  "pages": [
+    "aliyun-com/home",
+    "aliyun-com/product-ecs",
+    "aws-amazon/ec2-on-demand",
+    "stripe-com/pricing",
+    "grafana-play/play-home"
+  ],
+  "coveredHashes": {
+    "m1/curated/aliyun-com/home.json": "fa2f579d29e4b714f72925db009bd5c0b5ae6b637ff88db5b735929b88b124c0",
+    "m1/curated/renders/aliyun-com-home.html": "8be5d6c4a5715add38dcb54449a45499e8abaffaca0b5e882061a80083e490c7",
+    "m1/curated/renders/aliyun-com-home.png": "982db46918e22883094d08b36cee973d7c666ae51ef16ce059f933c9011ec844",
+    "corpus/aliyun-com/home/full.png": "8e07cfc5aa12ce2cc9de85f7abf031b8db339d761c82ad217606c428cb22eb0d",
+    "corpus/aliyun-com/home/dom.html": "7952a7f63efbe550f85d684ae3bb1db2a6d4a0227b66c14a8d0e0b9c83953cd7",
+    "corpus/aliyun-com/home/nodes.json": "40914a4bdf5e51d5f74ccf30b7460acc4a2d7b7cef81b785be22f1457642f966",
+    "m1/curated/aliyun-com/product-ecs.json": "7b994cd51231c735c545de8276d687ab5cb261abb6721cee7c7cb444eccd5a53",
+    "m1/curated/renders/aliyun-com-product-ecs.html": "456d9f2826c708ecf763fb0f9d2693a51b46b3c83f56f3cd93e9450de2da0c9e",
+    "m1/curated/renders/aliyun-com-product-ecs.png": "343c467cb9c67ba68ff105664c02f9f111da50915280b8c1240c7a9088c63be9",
+    "corpus/aliyun-com/product-ecs/full.png": "1df3760d7bdc2d61cf6b25d9a1c2629af8da9124b52826a9d9610a40cbf5ec32",
+    "corpus/aliyun-com/product-ecs/dom.html": "e24dc9d83ffb6c4516b3da1f6a0e8ffd075a21fa7d3c7b2561e2c7d08e7933ae",
+    "corpus/aliyun-com/product-ecs/nodes.json": "f7296ea376ec80d0516f33117f502f8fccf2d7a02f28a3edc97d5dc5fffeecd0",
+    "m1/curated/aws-amazon/ec2-on-demand.json": "554c4dbc9062253a7e99622745891d5b1de9cdb2a4a0e80fa6531234c0f7abee",
+    "m1/curated/renders/aws-amazon-ec2-on-demand.html": "e8e21f14e14e75f7a14914798449a4c212376ef52a1c7f11d103497b3ce61ee8",
+    "m1/curated/renders/aws-amazon-ec2-on-demand.png": "5ae932f01ddd2064b462abdf03d0e21c4ec85299813d96688adcea66dfd7402d",
+    "corpus/aws-amazon/ec2-on-demand/full.png": "4c1a1eb3d6e82b49cb2e26f7159328959abdee77276a37c3f00c57791cf7884e",
+    "corpus/aws-amazon/ec2-on-demand/dom.html": "8a5056b29e7082f4a6233d667ea3ff9f1278f35017e478c85b3134f7a6463821",
+    "corpus/aws-amazon/ec2-on-demand/nodes.json": "a1f2470897db1df8c9b39e0ebc6ab09056c70150f1b3e6e967d037ae90808c2a",
+    "m1/curated/stripe-com/pricing.json": "c6a9a06216ae9839471ae385634dea1acab65cfbf5561ab37aee503ae4150db3",
+    "m1/curated/renders/stripe-com-pricing.html": "7800d40ace4ab4e133573ff324daabaaaf8dcf2e540a584b1eba1583cc26babb",
+    "m1/curated/renders/stripe-com-pricing.png": "c1428587c85667a5e1470cb6b3c8886885188439340044f2240a6478e9ac6b59",
+    "corpus/stripe-com/pricing/full.png": "8a7899ff25b68a62788e931a9d5e6b774c26959633a399f6eda13621a3cef032",
+    "corpus/stripe-com/pricing/dom.html": "60247ed2718b094db6715da7ee42e4ab234575fc0271eff677b679e0cf2a4714",
+    "corpus/stripe-com/pricing/nodes.json": "8304031a385617a6fe8be29f97e049ecf00d8a05e06e70cd29c1c246f32c57ea",
+    "m1/curated/grafana-play/play-home.json": "5fe9ed9d0df68ea803290a2278476393100192272bf9fa548d70e2d77ed941e4",
+    "m1/curated/renders/grafana-play-play-home.html": "0567d4e75547cf86e6fe475eda977cc70f46340837ea8cb832691281ddff4a9d",
+    "m1/curated/renders/grafana-play-play-home.png": "fa3e42a748d3192e79796de1e684782b5fe677f83384b8a17edeac4d46b68c01",
+    "corpus/grafana-play/play-home/full.png": "df7eae26aa7509017578517f926285c5f9ee30ee3ed81138d31ba7ae91004100",
+    "corpus/grafana-play/play-home/dom.html": "ec8a25bc4813d53dde93fc39d3f448b996f6fa5712fac00e792183f8ae695f5b",
+    "corpus/grafana-play/play-home/nodes.json": "074c1be79361242447745ada705b2eb16dc5e94af884af54e5951404339b698b",
+    "m1/curated/assets/aliyun-ecs-hero.png": "a1da6532d0f293bd7c42fc83ccaa9e5fdc54dd18837bc180018ed31f9d7a4dd9",
+    "m1/axis.mjs": "fd59354a432ef5268edc15396c6e42f7e5aca6aa03cb3c8edd192565af7c2247",
+    "m1/render.mjs": "f0a47b3f40e5ee15745c9e43fc1c5df2a6129eb8794def78119881cf77951af4",
+    "m1/brand-tokens.json": "508083d8158302befb87a9cc27df7a4b30ccbf300fe881dfca336e9b38aaa3be",
+    "m1/curated/renders/manifest.json": "3a6167fe7f1fe3a0cec7443e30837a1891033d3911626b22c5ae284a96e3e394"
+  },
+  "coverage": {
+    "aliyun-com/home": {
+      "2560": {
+        "screenshot": "whole-height",
+        "visual": "whole-height sheet inspected; see limits for reduction/cropping",
+        "geometry": "inspected"
+      },
+      "1440": {
+        "screenshot": "whole-height",
+        "visual": "whole-height sheet inspected",
+        "geometry": "inspected"
+      },
+      "1920": {
+        "screenshot": "whole-height",
+        "visual": "NOT INSPECTED",
+        "geometry": "inspected"
+      },
+      "390": {
+        "screenshot": "whole-height",
+        "visual": "NOT INSPECTED",
+        "geometry": "inspected"
+      },
+      "source": {
+        "capture": "existing1440 whole-height sheet inspected",
+        "fineText": "selective node/DOM comparison, not every source label read at native scale"
+      },
+      "experienceVerdict": "INCOMPLETE"
+    },
+    "aliyun-com/product-ecs": {
+      "2560": {
+        "screenshot": "whole-height",
+        "visual": "whole-height sheet inspected; see limits for reduction/cropping",
+        "geometry": "inspected"
+      },
+      "1440": {
+        "screenshot": "whole-height",
+        "visual": "whole-height sheet inspected",
+        "geometry": "inspected"
+      },
+      "1920": {
+        "screenshot": "whole-height",
+        "visual": "NOT INSPECTED",
+        "geometry": "inspected"
+      },
+      "390": {
+        "screenshot": "whole-height",
+        "visual": "ECS y700..1313 comparison/news crop only; upper region uninspected",
+        "geometry": "inspected"
+      },
+      "source": {
+        "capture": "existing1440 whole-height sheet inspected",
+        "fineText": "selective node/DOM comparison, not every source label read at native scale"
+      },
+      "experienceVerdict": "INCOMPLETE"
+    },
+    "aws-amazon/ec2-on-demand": {
+      "2560": {
+        "screenshot": "whole-height",
+        "visual": "whole-height sheet inspected; see limits for reduction/cropping",
+        "geometry": "inspected"
+      },
+      "1440": {
+        "screenshot": "whole-height",
+        "visual": "whole-height sheet inspected",
+        "geometry": "inspected"
+      },
+      "1920": {
+        "screenshot": "whole-height",
+        "visual": "NOT INSPECTED",
+        "geometry": "inspected"
+      },
+      "390": {
+        "screenshot": "whole-height",
+        "visual": "NOT INSPECTED",
+        "geometry": "inspected"
+      },
+      "source": {
+        "capture": "existing1440 whole-height sheet inspected",
+        "fineText": "selective node/DOM comparison, not every source label read at native scale"
+      },
+      "experienceVerdict": "INCOMPLETE"
+    },
+    "stripe-com/pricing": {
+      "2560": {
+        "screenshot": "whole-height",
+        "visual": "whole-height sheet inspected; see limits for reduction/cropping",
+        "geometry": "inspected"
+      },
+      "1440": {
+        "screenshot": "whole-height",
+        "visual": "whole-height sheet inspected",
+        "geometry": "inspected"
+      },
+      "1920": {
+        "screenshot": "whole-height",
+        "visual": "NOT INSPECTED",
+        "geometry": "inspected"
+      },
+      "390": {
+        "screenshot": "whole-height",
+        "visual": "NOT INSPECTED",
+        "geometry": "inspected"
+      },
+      "source": {
+        "capture": "existing1440 whole-height sheet inspected",
+        "fineText": "selective node/DOM comparison, not every source label read at native scale"
+      },
+      "experienceVerdict": "INCOMPLETE"
+    },
+    "grafana-play/play-home": {
+      "2560": {
+        "screenshot": "whole-height",
+        "visual": "whole-height sheet inspected; see limits for reduction/cropping",
+        "geometry": "inspected"
+      },
+      "1440": {
+        "screenshot": "whole-height",
+        "visual": "whole-height sheet inspected",
+        "geometry": "inspected"
+      },
+      "1920": {
+        "screenshot": "whole-height",
+        "visual": "NOT INSPECTED",
+        "geometry": "inspected"
+      },
+      "390": {
+        "screenshot": "whole-height",
+        "visual": "whole-height inspected",
+        "geometry": "inspected"
+      },
+      "source": {
+        "capture": "existing1440 whole-height sheet inspected",
+        "fineText": "selective node/DOM comparison, not every source label read at native scale"
+      },
+      "experienceVerdict": "INCOMPLETE"
+    }
+  },
+  "findings": [
+    {
+      "id": "CB-E1",
+      "pages": [
+        "aliyun-com/home",
+        "aliyun-com/product-ecs",
+        "grafana-play/play-home"
+      ],
+      "severity": "medium",
+      "owner": "engine",
+      "criterion": "Coherent page-level frame across mixed forms, not type-driven unrelated edges",
+      "location": ".depth-1.w-narrow / .w-wide / .g-banners / .g-toolbar / .g-panels",
+      "renderEvidence": "Aliyun sections reset their left edge with shape. ECS features/news step inward from site/table frame. Most clearly, Grafana banners sit 176px left of its toolbar and panel grid despite belonging to one compact dashboard region.",
+      "sourceEvidence": "Grafana source toolbar, banners and panel region share content origin x=336 (sidebar excluded). Aliyun source contains intentional bleed and inner columns; those must remain distinct from arbitrary width resets.",
+      "geometryEvidence": "2560: narrow x=840,w=880; wide/site root x=664,w=1232. Grafana banners x=664,w=1232 vs toolbar/panels x=840,w=880. 1440 equivalents x=280 vs104. 390 all primary region frames x=16,w=358.",
+      "evidenceFiles": [
+        ".scratch/62-all-sites/audit-cloud-business/measurements.json",
+        ".scratch/62-all-sites/audit-cloud-business/grafana-2560-sheet.png",
+        ".scratch/62-all-sites/audit-cloud-business/grafana-source.png",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-home-1440-sheet.png",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-1440-sheet.png"
+      ],
+      "improvementCriterion": "Anchor connected mixed-form regions to one intentional page frame; permit source-supported inner columns/bleeds, rather than making every section the same width or blanket-centering brands. Recheck whole height at all four widths."
+    },
+    {
+      "id": "CB-E2",
+      "pages": [
+        "aliyun-com/home",
+        "aliyun-com/product-ecs"
+      ],
+      "severity": "high",
+      "owner": "engine",
+      "criterion": "Cohesive image/title/facts/actions; no uncontrolled oversized media",
+      "location": "#aliyun-ecs > figure.strip and .banner figure.strip",
+      "renderEvidence": "ECS technical architecture diagram becomes the first enormous full-viewport image, displacing product summary and purchase far below the title. Aliyun home globe image dominates its closing region; stats and CTA then hug viewport left while the following service region abruptly returns to a narrow inner frame.",
+      "sourceEvidence": "ECS source shows product heading/summary, buy+trial and offers before the compact architecture diagram in product introduction (source y≈1500–2300). Aliyun source globe/stats belong to one contained, centered infrastructure section. Full bleed is not intrinsically a defect, and no intrinsic-pixel upscaling was detected.",
+      "geometryEvidence": "ECS 2560 image x≈0,y=146.625,w=2559.969,h=1350.609; first following section y=1537.828; root buy y=2248.844. 1920 image h=1012.953;1440 h=759.719;390 h=205.75. Natural asset 4640×2448. Home infrastructure banner x=0,w=2560,h=1420.203; succeeding services x=840,w=880.",
+      "evidenceFiles": [
+        ".scratch/62-all-sites/audit-cloud-business/measurements.json",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-2560-sheet.png",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-1440-sheet.png",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-source-sheet.png",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-home-2560-sheet.png",
+        ".scratch/62-all-sites/audit-cloud-business/details-final.png"
+      ],
+      "improvementCriterion": "Keep informational media within a justified shared frame and present product identity/summary/purchase as one visible group. Contain infrastructure facts/CTA with the image’s content edge. Do not solve via site CSS/model presentation flags or forced image enlargement."
+    },
+    {
+      "id": "CB-E3",
+      "pages": [
+        "aliyun-com/home"
+      ],
+      "severity": "high",
+      "owner": "engine",
+      "criterion": "All modeled actions and faithful captured targets survive rendering",
+      "location": "products.tabs._items[1,2,3,4,5,6,8]._action.to → .g-tabs fieldset.expose-product-tab",
+      "renderEvidence": "Seven model navigation destinations disappear completely. Render emits only radio label/value controls; it contains neither href nor any copy of those seven destination URLs. Facts-only fidelity reports 1.00 despite this loss.",
+      "sourceEvidence": "All seven target strings exist in source DOM/nodes (exact-string audit). Relative-anchor normalization alone is insufficient for the two source menu targets not represented as literal anchors; this finding is specifically MODEL→HTML target loss, not an unsupported-target allegation.",
+      "geometryEvidence": "All widths use the same HTML. Product tab strip remains within page geometry (zero overflow), which does not prove action preservation.",
+      "evidenceFiles": [
+        ".scratch/62-all-sites/audit-cloud-business/action-target-checks.json",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-home-actions.json",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-home-metrics.json",
+        ".scratch/62-all-sites/audit-cloud-business/measurements.json",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-home-1440-sheet.png"
+      ],
+      "improvementCriterion": "Preserve each captured destination through shared closed-grammar control/axis decisions while keeping source tab semantics and compact utility density. Add a defect-detecting action-target preservation check independent of text fidelity."
+    },
+    {
+      "id": "CB-E4",
+      "pages": [
+        "grafana-play/play-home"
+      ],
+      "severity": "high",
+      "owner": "engine",
+      "criterion": "Foreground and surface must be paired for readable contrast",
+      "location": ".g-banners a (both Grafana guidance links)",
+      "renderEvidence": "Pale captured dark-theme link color survives on a white rendered surface; both banners are visibly barely legible.",
+      "sourceEvidence": "Source is a dark Grafana dashboard; its light text is supported by dark surface. No requirement to replicate dark theme literally, but foreground cannot be transplanted independently of background.",
+      "geometryEvidence": "All widths: computed foreground rgb(204,204,220), effective background rgb(255,255,255), contrast ratio 1.5887≈1.59:1 at16px. Source dark banner/surrounding panel is visible in capture.",
+      "evidenceFiles": [
+        ".scratch/62-all-sites/audit-cloud-business/targeted-probes.json",
+        ".scratch/62-all-sites/audit-cloud-business/grafana-2560-sheet.png",
+        ".scratch/62-all-sites/audit-cloud-business/grafana-source.png",
+        ".scratch/62-all-sites/audit-cloud-business/grafana-1440-390.png"
+      ],
+      "improvementCriterion": "Pair shared foreground/surface decisions; attain readable normal-size text contrast (4.5:1 diagnostic threshold), then visually recheck actual banners at each width without per-site escape hatches."
+    },
+    {
+      "id": "CB-E5",
+      "pages": [
+        "grafana-play/play-home"
+      ],
+      "severity": "medium",
+      "owner": "engine",
+      "criterion": "One source utility control should remain one compact utility control",
+      "location": "toolbar._items[2] / .g-toolbar .controls",
+      "renderEvidence": "Renderer shows separate “Enter edit mode” and “Edit” pill controls for one source Edit button. Mobile wraps them as two controls, increasing utility height.",
+      "sourceEvidence": "source-excerpts.json proves one button: accessible name Enter edit mode, visible text Edit; bbox x1354,y64,w70,h32. Model carries name plus action label, not two distinct source actions.",
+      "geometryEvidence": "2560 toolbar height77.906;390 height128.219. Four rendered pills from three modeled utility items. Source has one Edit button.",
+      "evidenceFiles": [
+        ".scratch/62-all-sites/audit-cloud-business/targeted-probes.json",
+        ".scratch/62-all-sites/audit-cloud-business/source-excerpts.json",
+        ".scratch/62-all-sites/audit-cloud-business/grafana-1440-390.png"
+      ],
+      "improvementCriterion": "Render this action-only item as a single control with correct visible label and retained accessible meaning; test shared decision/three-target consistency rather than changing facts to hide duplication."
+    },
+    {
+      "id": "CB-E6",
+      "pages": [
+        "stripe-com/pricing"
+      ],
+      "severity": "medium",
+      "owner": "engine",
+      "criterion": "Readable nested pricing hierarchy, not DOM-depth-driven shrinkage",
+      "location": ".g-catalog .title (nested H6 pricing labels)",
+      "renderEvidence": "Section labels such as 信用卡和借记卡, 银行和其他支付方式, 争议, 争议受理费, Tax Basic details shrink to 10.72px despite governing16px body text and pricing. Long catalog needs a clear hierarchy, not smaller-and-smaller headings.",
+      "sourceEvidence": "Source uses compact product cards and distinct pricing columns. It is genuinely a long pricing catalog; long height alone and centered readable whitespace are not defects.",
+      "geometryEvidence": "2560/1920/1440 render height17440;390 height23937. Nested H6 computed font10.72px; body16px; H4 product titles16px; outer H2 23.2px. Catalog depth-1 w880,h12437.453 atdesktop.",
+      "evidenceFiles": [
+        ".scratch/62-all-sites/audit-cloud-business/measurements.json",
+        ".scratch/62-all-sites/audit-cloud-business/stripe-2560-upper.png",
+        ".scratch/62-all-sites/audit-cloud-business/stripe-2560-lower.png",
+        ".scratch/62-all-sites/audit-cloud-business/stripe-1440-sheet.png",
+        ".scratch/62-all-sites/audit-cloud-business/stripe-source-upper.png",
+        ".scratch/62-all-sites/audit-cloud-business/stripe-source-lower.png"
+      ],
+      "improvementCriterion": "Use a legible semantic type hierarchy for all catalog sections independent of model nesting depth; governed body text should not dwarf its headings. Preserve all prices and product distinctions; no arbitrary condensation or blanket card redesign."
+    },
+    {
+      "id": "CB-E7",
+      "pages": [
+        "stripe-com/pricing"
+      ],
+      "severity": "medium",
+      "owner": "engine",
+      "criterion": "Action-only controls are utilities, not empty fact/definition rows",
+      "location": "cta._items[0] → .g-cta .deflist .defrow:first-child",
+      "renderEvidence": "Contact sales appears as a bold definition heading followed by an empty .defval. Primary “立即开始” lives below the whole customer/document deflist. The contact target exists, but its control affordance is misleading and the CTA group is separated by unrelated fact rows.",
+      "sourceEvidence": "Source closing CTA pairs start/contact sales together, with customer/document utilities adjacent. The source action exists; this is not target loss and not a demand for source-specific styling.",
+      "geometryEvidence": "2560 CTA x840,w880,y17062.359,h365.75; FAQ x664,w1232 before it. targeted-probes.json preserves exact .g-cta outerHTML with empty defval for contact sales.",
+      "evidenceFiles": [
+        ".scratch/62-all-sites/audit-cloud-business/targeted-probes.json",
+        ".scratch/62-all-sites/audit-cloud-business/details-final.png",
+        ".scratch/62-all-sites/audit-cloud-business/stripe-source-lower.png"
+      ],
+      "improvementCriterion": "Keep action-only contact/start controls in a coherent compact action group using shared axis grammar; retain customer/doc facts as facts and every existing target. Recheck desktop/mobile grouping and no empty fact rows."
+    },
+    {
+      "id": "CB-C1",
+      "pages": [
+        "aliyun-com/product-ecs"
+      ],
+      "severity": "high",
+      "owner": "content",
+      "criterion": "Source-grounded targets; do not invent action destinations",
+      "location": "_action.to and instances._items[0..3]._action.to",
+      "renderEvidence": "Root buy and four instance buy links render to www.aliyun.com/product/ecs/buy and invented-looking spec=e/u2a/c9i/g9i routes absent from both source DOM and nodes.",
+      "sourceEvidence": "Captured root href is https://ecs-buy.aliyun.com/buyRedirect.htm?period=1&periodType=Yearly. Captured offer buttons are <button>立即购买</button> with no href; absence of captured destination is not authority to synthesize spec routes. News target is not included in this allegation (target string is captured although not a literal anchor).",
+      "geometryEvidence": "Same five incorrect/unsupported URLs at all widths; href target checks distinguish MODEL→RENDER preservation from SOURCE→MODEL fidelity.",
+      "evidenceFiles": [
+        ".scratch/62-all-sites/audit-cloud-business/action-target-checks.json",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-actions.json",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-source-anchors.json",
+        ".scratch/62-all-sites/audit-cloud-business/source-excerpts.json"
+      ],
+      "improvementCriterion": "Restore exact captured root destination; remove unsupported per-instance destinations or replace only with capture-proven targets. Preserve targetless controls without fabricated URLs; add target-integrity regression proof."
+    },
+    {
+      "id": "CB-C2",
+      "pages": [
+        "aliyun-com/product-ecs"
+      ],
+      "severity": "high",
+      "owner": "content",
+      "criterion": "Pricing includes source billing period/qualifiers, not bare misleading amounts",
+      "location": "instances._items[0..2]._price / instances._intent",
+      "renderEvidence": "Offers display bare ¥99,¥1438.68,¥3459.9 with no annual duration; source purchase period and ￥99.00/1年起 qualifier are intentionally not modeled, according to current _intent. Amount fidelity1.00 does not prove offer fidelity.",
+      "sourceEvidence": "Source nodes contain visible 购买时长 : 1年 at x248,y613,w184,h28 (and corresponding offer lines); current _intent itself records e ￥99.00/1年起, u2a￥1438.68/1年, c9i￥3459.90/1年. No price should be invented for g9i.",
+      "geometryEvidence": "At390 visible comparison crop shows bare e/u2a price strings; same model at all widths. Source duration provenance retained in source-excerpts.json.",
+      "evidenceFiles": [
+        ".scratch/62-all-sites/audit-cloud-business/source-excerpts.json",
+        ".scratch/62-all-sites/audit-cloud-business/details-final.png",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-source-sheet.png",
+        ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-metrics.json"
+      ],
+      "improvementCriterion": "Retain annual billing period and “起” where captured through an existing allowed fact/qualifier representation (no new presentation key); retain original amounts and genuine g9i price gap. Validate source/model/render offer semantics, not only amount strings."
+    }
+  ],
+  "engineFindings": [
+    "CB-E1",
+    "CB-E2",
+    "CB-E3",
+    "CB-E4",
+    "CB-E5",
+    "CB-E6",
+    "CB-E7"
+  ],
+  "contentFindings": [
+    "CB-C1",
+    "CB-C2"
+  ],
+  "status": "INCOMPLETE",
+  "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-cloud-business.md",
+  "limits": [
+    "Initial immutable-baseline diagnosis only: no fixes or acceptance of later revisions. Fresh combined technical/experience review remains required.",
+    "18 image reads and2 browser jobs used; no recursive jobs/dependencies/source/model/docs/gallery edits. No independent reviewer verdict in this lane.",
+    "1920 visual inspection missing for all5 pages.390 whole-height visual inspection only Grafana; ECS lower crop only; Aliyun home/AWS/Stripe390 screenshots captured but not visually read. Geometry is not visual PASS.",
+    "Some whole-height sheets are reduced by image tool (maximum display dimension2000). Fine source text and some long-page detail remain unverified at native readable scale. Stripe2560 sheets crop central912px to make catalog readable; brand/root side areas are not completely inspected at2560. ECS/AWS2560 sheets crop centered1280px; full lateral ECS image is shown at1440.",
+    "Aliyun home source capture has popup occlusion in upper hero. Grafana full.png is900px high and shows loading/empty plugin panels; no stats values or graphs can be inferred or fabricated; panel content beyond capture viewport is incomplete.",
+    "AWS intentionally modeled data-transfer subset (_intent); source has compute/filter table, notes and footer absent from curated model. Within modeled subset no engine visual defect found. Full-source page completeness cannot be certified without owner reconciliation of the intended curated scope; do not silently expand the model.",
+    "Original source navigation/footer absent from several curated models are coverage gaps, not alleged renderer deletion. This audit does not treat original site look-and-feel reproduction or all-source expansion as implicitly authorized.",
+    "Remote Aliyun home image bytes were not archived during browser job1; HTML URLs, model/source/PNG hashes and loaded-image geometry are bound, but remote-image bytes are not separately revision-bound. ECS local asset hash is covered.",
+    "No outbound links clicked or production purchases/forms submitted. Source/render targets checked statically and mobile ECS horizontal scroll exercised; complete interaction/runtime behavior remains unverified.",
+    "No regression test source edits authorized. Diagnostic scripts/checks are local evidence only. Known facts/capture/validator/hash gates PASS while visual/action defects persist."
+  ],
+  "diagnosticTaskStatus": "completed within assigned image/browser budget",
+  "baseline": "403cd5be096db89b428e130ad57cca730b425fdc",
+  "evidenceRoot": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-cloud-business",
+  "positiveObservations": {
+    "aws-amazon/ec2-on-demand": "Whole-height2560/1440 + source sheets read. All3 two-column price tables preserve common1232px desktop frame and distinct subgroup headers; no broken/enlarged media or viewport overflow. Centered desktop whitespace and long region roster are legitimate, not blanket-redesign findings. Final PASS withheld for missing390/1920 visual and source-scope coverage.",
+    "aliyun-com/product-ecs": "Mobile comparison remains one horizontal table and scroll reaches538px; no page overflow. Genuine g9i missing price not treated as invented/missing defect.",
+    "stripe-com/pricing": "All66 modeled actions have capture-normalized targets and rendered anchors; checked link contrast is readable. Long catalog is source-true; no request to collapse product diversity.",
+    "grafana-play/play-home": "Source loading panels contain no numeric stats: no fabricated value/chart requirement. Both captured navigation targets preserved.",
+    "aliyun-com/home": "75 modeled actions surveyed; all target strings source-traceable; image loads successful and intrinsic upscaling absent. Seven tab target omissions isolated."
+  }
+}

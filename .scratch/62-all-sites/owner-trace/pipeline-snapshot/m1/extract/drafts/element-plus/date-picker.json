@@ -1,0 +1,1518 @@
+{
+  "_intent": "DatePicker | Element Plus — DatePicker Permalink to \"DatePicker\" [draft]",
+  "_title": {
+    "text": "DatePicker | Element Plus"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://element-plus.org/en-US/component/date-picker.html#page-content",
+        "label": "Skip to content"
+      }
+    },
+    {
+      "_intent": "DatePicker Permalink to \"DatePicker\" [draft]",
+      "_title": {
+        "text": "DatePicker Permalink to \"DatePicker\""
+      },
+      "_summary": {
+        "text": "Use Date Picker for date input."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Changelog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Open issues 65"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Enter Date Permalink to \"Enter Date\" [draft]",
+      "_title": {
+        "text": "Enter Date Permalink to \"Enter Date\""
+      },
+      "_summary": {
+        "text": "Basic date picker measured by 'day'."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "The measurement is determined by the type attribute. You can enable quick options via shortcuts property. The disabled date is set by disabledDate, which is a function."
+          }
+        },
+        {
+          "_intent": "size control [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "large"
+              }
+            },
+            {
+              "_name": {
+                "text": "default"
+              }
+            },
+            {
+              "_name": {
+                "text": "small"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "size-control",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Default"
+          }
+        },
+        {
+          "_text": {
+            "text": "Picker with quick options"
+          }
+        },
+        {
+          "_text": {
+            "text": "TS"
+          }
+        },
+        {
+          "_text": {
+            "text": "JS"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtcmFkaW8tZ3JvdXAgdi1tb2RlbD1cInNpemVcIiBhcmlhLWxhYmVsPVwic2l6ZSBjb250cm9sXCIgY2xhc3M9XCJtYi00XCI+XG4gICAgPGVsLXJhZGlvLWJ1dHRvbiB2YWx1ZT1cImxhcmdlXCI+bGFyZ2U8L2VsLXJhZGlvLWJ1dHRvbj5cbiAgICA8ZWwtcmFkaW8tYnV0dG9uIHZhbHVlPVwiZGVmYXVsdFwiPmRlZmF1bHQ8L2VsLXJhZGlvLWJ1dHRvbj5cbiAgICA8ZWwtcmFkaW8tYnV0dG9uIHZhbHVlPVwic21hbGxcIj5zbWFsbDwvZWwtcmFkaW8tYnV0dG9uPlxuICA8L2VsLXJhZGlvLWdyb3VwPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+RGVmYXVsdDwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUxXCJcbiAgICAgICAgdHlwZT1cImRhdGVcIlxuICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSBkYXlcIlxuICAgICAgICA6c2l6ZT1cInNpemVcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgICA8ZGl2IGNsYXNzPVwiYmxvY2tcIj5cbiAgICAgIDxzcGFuIGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPlBpY2tlciB3aXRoIHF1aWNrIG9wdGlvbnM8L3NwYW4+XG4gICAgICA8ZWwtZGF0ZS1waWNrZXJcbiAgICAgICAgdi1tb2RlbD1cInZhbHVlMlwiXG4gICAgICAgIHR5cGU9XCJkYXRlXCJcbiAgICAgICAgcGxhY2Vob2xkZXI9XCJQaWNrIGEgZGF5XCJcbiAgICAgICAgOmRpc2FibGVkLWRhdGU9XCJkaXNhYmxlZERhdGVcIlxuICAgICAgICA6c2hvcnRjdXRzPVwic2hvcnRjdXRzXCJcbiAgICAgICAgOnNpemU9XCJzaXplXCJcbiAgICAgIC8+XG4gICAgPC9kaXY+XG4gIDwvZGl2PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3Qgc2l6ZSA9IHJlZjwnZGVmYXVsdCcgfCAnbGFyZ2UnIHwgJ3NtYWxsJz4oJ2RlZmF1bHQnKVxuXG5jb25zdCB2YWx1ZTEgPSByZWYoJycpXG5jb25zdCB2YWx1ZTIgPSByZWYoJycpXG5cbmNvbnN0IHNob3J0Y3V0cyA9IFtcbiAge1xuICAgIHRleHQ6ICdUb2RheScsXG4gICAgdmFsdWU6IG5ldyBEYXRlKCksXG4gIH0sXG4gIHtcbiAgICB0ZXh0OiAnWWVzdGVyZGF5JyxcbiAgICB2YWx1ZTogKCkgPT4ge1xuICAgICAgY29uc3QgZGF0ZSA9IG5ldyBEYXRlKClcbiAgICAgIGRhdGUuc2V0VGltZShkYXRlLmdldFRpbWUoKSAtIDM2MDAgKiAxMDAwICogMjQpXG4gICAgICByZXR1cm4gZGF0ZVxuICAgIH0sXG4gIH0sXG4gIHtcbiAgICB0ZXh0OiAnQSB3ZWVrIGFnbycsXG4gICAgdmFsdWU6ICgpID0+IHtcbiAgICAgIGNvbnN0IGRhdGUgPSBuZXcgRGF0ZSgpXG4gICAgICBkYXRlLnNldFRpbWUoZGF0ZS5nZXRUaW1lKCkgLSAzNjAwICogMTAwMCAqIDI0ICogNylcbiAgICAgIHJldHVybiBkYXRlXG4gICAgfSxcbiAgfSxcbl1cblxuY29uc3QgZGlzYWJsZWREYXRlID0gKHRpbWU6IERhdGUpID0+IHtcbiAgcmV0dXJuIHRpbWUuZ2V0VGltZSgpID4gRGF0ZS5ub3coKVxufVxuPC9zY3JpcHQ+XG5cbjxzdHlsZSBzY29wZWQ+XG4uZGVtby1kYXRlLXBpY2tlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHdpZHRoOiAxMDAlO1xuICBwYWRkaW5nOiAwO1xuICBmbGV4LXdyYXA6IHdyYXA7XG59XG5cbi5kZW1vLWRhdGUtcGlja2VyIC5ibG9jayB7XG4gIHBhZGRpbmc6IDEuNXJlbSAwO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJvcmRlci1yaWdodDogc29saWQgMXB4IHZhcigtLWVsLWJvcmRlci1jb2xvcik7XG4gIGZsZXg6IDE7XG4gIG1pbi13aWR0aDogMzAwcHg7XG59XG5cbi5kZW1vLWRhdGUtcGlja2VyIC5ibG9jazpsYXN0LWNoaWxkIHtcbiAgYm9yZGVyLXJpZ2h0OiBub25lO1xufVxuXG4uZGVtby1kYXRlLXBpY2tlciAuZGVtb25zdHJhdGlvbiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBjb2xvcjogdmFyKC0tZWwtdGV4dC1jb2xvci1zZWNvbmRhcnkpO1xuICBmb250LXNpemU6IDE0cHg7XG4gIG1hcmdpbi1ib3R0b206IDFyZW07XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDc2OHB4KSB7XG4gIC5kZW1vLWRhdGUtcGlja2VyIC5ibG9jayB7XG4gICAgZmxleDogMCAwIDEwMCU7XG4gICAgcGFkZGluZzogMXJlbSAwO1xuICAgIG1pbi13aWR0aDogYXV0bztcbiAgICBib3JkZXItcmlnaHQ6IG5vbmU7XG4gICAgYm9yZGVyLWJvdHRvbTogc29saWQgMXB4IHZhcigtLWVsLWJvcmRlci1jb2xvcik7XG4gIH1cblxuICAuZGVtby1kYXRlLXBpY2tlciAuYmxvY2s6bGFzdC1jaGlsZCB7XG4gICAgYm9yZGVyLWJvdHRvbTogbm9uZTtcbiAgfVxufVxuPC9zdHlsZT5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/enter-date.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Other measurements Permalink to \"Other measurements\" [draft]",
+      "_title": {
+        "text": "Other measurements Permalink to \"Other measurements\""
+      },
+      "_summary": {
+        "text": "You can choose week, month, year, quarter or multiple dates by extending the standard date picker component."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Week"
+          }
+        },
+        {
+          "_text": {
+            "text": "Year"
+          }
+        },
+        {
+          "_text": {
+            "text": "Month"
+          }
+        },
+        {
+          "_text": {
+            "text": "Quarter"
+          }
+        },
+        {
+          "_text": {
+            "text": "Dates"
+          }
+        },
+        {
+          "_text": {
+            "text": "Years"
+          }
+        },
+        {
+          "_text": {
+            "text": "Months"
+          }
+        },
+        {
+          "_text": {
+            "text": "Quarters"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJjb250YWluZXJcIj5cbiAgICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgICA8c3BhbiBjbGFzcz1cImRlbW9uc3RyYXRpb25cIj5XZWVrPC9zcGFuPlxuICAgICAgICA8ZWwtZGF0ZS1waWNrZXJcbiAgICAgICAgICB2LW1vZGVsPVwidmFsdWUxXCJcbiAgICAgICAgICB0eXBlPVwid2Vla1wiXG4gICAgICAgICAgZm9ybWF0PVwiW1dlZWtdIHd3XCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSB3ZWVrXCJcbiAgICAgICAgLz5cbiAgICAgIDwvZGl2PlxuICAgICAgPGRpdiBjbGFzcz1cImJsb2NrXCI+XG4gICAgICAgIDxzcGFuIGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPlllYXI8L3NwYW4+XG4gICAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICAgIHYtbW9kZWw9XCJ2YWx1ZTNcIlxuICAgICAgICAgIHR5cGU9XCJ5ZWFyXCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSB5ZWFyXCJcbiAgICAgICAgLz5cbiAgICAgIDwvZGl2PlxuICAgICAgPGRpdiBjbGFzcz1cImJsb2NrXCI+XG4gICAgICAgIDxzcGFuIGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPk1vbnRoPC9zcGFuPlxuICAgICAgICA8ZWwtZGF0ZS1waWNrZXJcbiAgICAgICAgICB2LW1vZGVsPVwidmFsdWU1XCJcbiAgICAgICAgICB0eXBlPVwibW9udGhcIlxuICAgICAgICAgIHBsYWNlaG9sZGVyPVwiUGljayBhIG1vbnRoXCJcbiAgICAgICAgLz5cbiAgICAgIDwvZGl2PlxuICAgICAgPGRpdiBjbGFzcz1cImJsb2NrXCI+XG4gICAgICAgIDxzcGFuIGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPlF1YXJ0ZXI8L3NwYW4+XG4gICAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICAgIHYtbW9kZWw9XCJ2YWx1ZTdcIlxuICAgICAgICAgIHR5cGU9XCJxdWFydGVyXCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSBxdWFydGVyXCJcbiAgICAgICAgLz5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJjb250YWluZXJcIj5cbiAgICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgICA8c3BhbiBjbGFzcz1cImRlbW9uc3RyYXRpb25cIj5EYXRlczwvc3Bhbj5cbiAgICAgICAgPGVsLWRhdGUtcGlja2VyXG4gICAgICAgICAgdi1tb2RlbD1cInZhbHVlMlwiXG4gICAgICAgICAgdHlwZT1cImRhdGVzXCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgb25lIG9yIG1vcmUgZGF0ZXNcIlxuICAgICAgICAvPlxuICAgICAgPC9kaXY+XG4gICAgICA8ZGl2IGNsYXNzPVwiYmxvY2tcIj5cbiAgICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+WWVhcnM8L3NwYW4+XG4gICAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICAgIHYtbW9kZWw9XCJ2YWx1ZTRcIlxuICAgICAgICAgIHR5cGU9XCJ5ZWFyc1wiXG4gICAgICAgICAgcGxhY2Vob2xkZXI9XCJQaWNrIG9uZSBvciBtb3JlIHllYXJzXCJcbiAgICAgICAgLz5cbiAgICAgIDwvZGl2PlxuICAgICAgPGRpdiBjbGFzcz1cImJsb2NrXCI+XG4gICAgICAgIDxzcGFuIGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPk1vbnRoczwvc3Bhbj5cbiAgICAgICAgPGVsLWRhdGUtcGlja2VyXG4gICAgICAgICAgdi1tb2RlbD1cInZhbHVlNlwiXG4gICAgICAgICAgdHlwZT1cIm1vbnRoc1wiXG4gICAgICAgICAgcGxhY2Vob2xkZXI9XCJQaWNrIG9uZSBvciBtb3JlIG1vbnRoc1wiXG4gICAgICAgIC8+XG4gICAgICA8L2Rpdj5cbiAgICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgICA8c3BhbiBjbGFzcz1cImRlbW9uc3RyYXRpb25cIj5RdWFydGVyczwvc3Bhbj5cbiAgICAgICAgPGVsLWRhdGUtcGlja2VyXG4gICAgICAgICAgdi1tb2RlbD1cInZhbHVlOFwiXG4gICAgICAgICAgdHlwZT1cInF1YXJ0ZXJzXCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgb25lIG9yIG1vcmUgcXVhcnRlcnNcIlxuICAgICAgICAvPlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gIDwvZGl2PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgdmFsdWUxID0gcmVmKCcnKVxuY29uc3QgdmFsdWUyID0gcmVmKCcnKVxuY29uc3QgdmFsdWUzID0gcmVmKCcnKVxuY29uc3QgdmFsdWU0ID0gcmVmKCcnKVxuY29uc3QgdmFsdWU1ID0gcmVmKCcnKVxuY29uc3QgdmFsdWU2ID0gcmVmKCcnKVxuY29uc3QgdmFsdWU3ID0gcmVmKCcnKVxuY29uc3QgdmFsdWU4ID0gcmVmKFtdKVxuPC9zY3JpcHQ+XG5cbjxzdHlsZSBzY29wZWQ+XG4uZGVtby1kYXRlLXBpY2tlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHdpZHRoOiAxMDAlO1xuICBwYWRkaW5nOiAwO1xuICBmbGV4LXdyYXA6IHdyYXA7XG59XG5cbi5kZW1vLWRhdGUtcGlja2VyIC5jb250YWluZXIge1xuICBmbGV4OiAxO1xuICBtaW4td2lkdGg6IDMwMHB4O1xuICBib3JkZXItcmlnaHQ6IHNvbGlkIDFweCB2YXIoLS1lbC1ib3JkZXItY29sb3IpO1xufVxuXG4uZGVtby1kYXRlLXBpY2tlciAuY29udGFpbmVyOmxhc3QtY2hpbGQge1xuICBib3JkZXItcmlnaHQ6IG5vbmU7XG59XG5cbi5kZW1vLWRhdGUtcGlja2VyIC5ibG9jayB7XG4gIHBhZGRpbmc6IDEuNXJlbSAwO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5kZW1vLWRhdGUtcGlja2VyIC5jb250YWluZXIgLmJsb2NrOm5vdCg6Zmlyc3QtY2hpbGQpIHtcbiAgYm9yZGVyLXRvcDogc29saWQgMXB4IHZhcigtLWVsLWJvcmRlci1jb2xvcik7XG59XG5cbi5kZW1vLWRhdGUtcGlja2VyIC5kZW1vbnN0cmF0aW9uIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGNvbG9yOiB2YXIoLS1lbC10ZXh0LWNvbG9yLXNlY29uZGFyeSk7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbWFyZ2luLWJvdHRvbTogMXJlbTtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogNzY4cHgpIHtcbiAgLmRlbW8tZGF0ZS1waWNrZXIgLmNvbnRhaW5lciB7XG4gICAgZmxleDogMCAwIDEwMCU7XG4gICAgbWluLXdpZHRoOiBhdXRvO1xuICAgIGJvcmRlci1yaWdodDogbm9uZTtcbiAgICBib3JkZXItYm90dG9tOiBzb2xpZCAxcHggdmFyKC0tZWwtYm9yZGVyLWNvbG9yKTtcbiAgfVxuXG4gIC5kZW1vLWRhdGUtcGlja2VyIC5jb250YWluZXI6bGFzdC1jaGlsZCB7XG4gICAgYm9yZGVyLWJvdHRvbTogbm9uZTtcbiAgfVxuXG4gIC5kZW1vLWRhdGUtcGlja2VyIC5ibG9jayB7XG4gICAgcGFkZGluZzogMXJlbSAwO1xuICB9XG5cbiAgLmRlbW8tZGF0ZS1waWNrZXIgLmNvbnRhaW5lciAuYmxvY2s6bm90KDpmaXJzdC1jaGlsZCkge1xuICAgIGJvcmRlci10b3A6IHNvbGlkIDFweCB2YXIoLS1lbC1ib3JkZXItY29sb3IpO1xuICB9XG59XG48L3N0eWxlPlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/other-measurements.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Date Range Permalink to \"Date Range\" [draft]",
+      "_title": {
+        "text": "Date Range Permalink to \"Date Range\""
+      },
+      "_summary": {
+        "text": "Picking a date range is supported."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "When in range mode, the left and right panels are linked by default. If you want the two panels to switch current months independently, you can use the unlink-panels attribute."
+          }
+        },
+        {
+          "_intent": "size control [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "large"
+              }
+            },
+            {
+              "_name": {
+                "text": "default"
+              }
+            },
+            {
+              "_name": {
+                "text": "small"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "size-control-2",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "To"
+          }
+        },
+        {
+          "_text": {
+            "text": "With quick options"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZWwtcmFkaW8tZ3JvdXAgdi1tb2RlbD1cInNpemVcIiBhcmlhLWxhYmVsPVwic2l6ZSBjb250cm9sXCIgY2xhc3M9XCJtYi00XCI+XG4gICAgPGVsLXJhZGlvLWJ1dHRvbiB2YWx1ZT1cImxhcmdlXCI+bGFyZ2U8L2VsLXJhZGlvLWJ1dHRvbj5cbiAgICA8ZWwtcmFkaW8tYnV0dG9uIHZhbHVlPVwiZGVmYXVsdFwiPmRlZmF1bHQ8L2VsLXJhZGlvLWJ1dHRvbj5cbiAgICA8ZWwtcmFkaW8tYnV0dG9uIHZhbHVlPVwic21hbGxcIj5zbWFsbDwvZWwtcmFkaW8tYnV0dG9uPlxuICA8L2VsLXJhZGlvLWdyb3VwPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+RGVmYXVsdDwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUxXCJcbiAgICAgICAgdHlwZT1cImRhdGVyYW5nZVwiXG4gICAgICAgIHJhbmdlLXNlcGFyYXRvcj1cIlRvXCJcbiAgICAgICAgc3RhcnQtcGxhY2Vob2xkZXI9XCJTdGFydCBkYXRlXCJcbiAgICAgICAgZW5kLXBsYWNlaG9sZGVyPVwiRW5kIGRhdGVcIlxuICAgICAgICA6c2l6ZT1cInNpemVcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgICA8ZGl2IGNsYXNzPVwiYmxvY2tcIj5cbiAgICAgIDxzcGFuIGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPldpdGggcXVpY2sgb3B0aW9uczwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUyXCJcbiAgICAgICAgdHlwZT1cImRhdGVyYW5nZVwiXG4gICAgICAgIHVubGluay1wYW5lbHNcbiAgICAgICAgcmFuZ2Utc2VwYXJhdG9yPVwiVG9cIlxuICAgICAgICBzdGFydC1wbGFjZWhvbGRlcj1cIlN0YXJ0IGRhdGVcIlxuICAgICAgICBlbmQtcGxhY2Vob2xkZXI9XCJFbmQgZGF0ZVwiXG4gICAgICAgIDpzaG9ydGN1dHM9XCJzaG9ydGN1dHNcIlxuICAgICAgICA6c2l6ZT1cInNpemVcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCBzaXplID0gcmVmPCdkZWZhdWx0JyB8ICdsYXJnZScgfCAnc21hbGwnPignZGVmYXVsdCcpXG5cbmNvbnN0IHZhbHVlMSA9IHJlZignJylcbmNvbnN0IHZhbHVlMiA9IHJlZignJylcblxuY29uc3Qgc2hvcnRjdXRzID0gW1xuICB7XG4gICAgdGV4dDogJ0xhc3Qgd2VlaycsXG4gICAgdmFsdWU6ICgpID0+IHtcbiAgICAgIGNvbnN0IGVuZCA9IG5ldyBEYXRlKClcbiAgICAgIGNvbnN0IHN0YXJ0ID0gbmV3IERhdGUoKVxuICAgICAgc3RhcnQuc2V0VGltZShzdGFydC5nZXRUaW1lKCkgLSAzNjAwICogMTAwMCAqIDI0ICogNylcbiAgICAgIHJldHVybiBbc3RhcnQsIGVuZF1cbiAgICB9LFxuICB9LFxuICB7XG4gICAgdGV4dDogJ0xhc3QgbW9udGgnLFxuICAgIHZhbHVlOiAoKSA9PiB7XG4gICAgICBjb25zdCBlbmQgPSBuZXcgRGF0ZSgpXG4gICAgICBjb25zdCBzdGFydCA9IG5ldyBEYXRlKClcbiAgICAgIHN0YXJ0LnNldFRpbWUoc3RhcnQuZ2V0VGltZSgpIC0gMzYwMCAqIDEwMDAgKiAyNCAqIDMwKVxuICAgICAgcmV0dXJuIFtzdGFydCwgZW5kXVxuICAgIH0sXG4gIH0sXG4gIHtcbiAgICB0ZXh0OiAnTGFzdCAzIG1vbnRocycsXG4gICAgdmFsdWU6ICgpID0+IHtcbiAgICAgIGNvbnN0IGVuZCA9IG5ldyBEYXRlKClcbiAgICAgIGNvbnN0IHN0YXJ0ID0gbmV3IERhdGUoKVxuICAgICAgc3RhcnQuc2V0VGltZShzdGFydC5nZXRUaW1lKCkgLSAzNjAwICogMTAwMCAqIDI0ICogOTApXG4gICAgICByZXR1cm4gW3N0YXJ0LCBlbmRdXG4gICAgfSxcbiAgfSxcbl1cbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuLmRlbW8tZGF0ZS1waWNrZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMDtcbiAgZmxleC13cmFwOiB3cmFwO1xufVxuXG4uZGVtby1kYXRlLXBpY2tlciAuYmxvY2sge1xuICBwYWRkaW5nOiAxLjVyZW0gMDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBib3JkZXItcmlnaHQ6IHNvbGlkIDFweCB2YXIoLS1lbC1ib3JkZXItY29sb3IpO1xuICBmbGV4OiAxO1xuICBtaW4td2lkdGg6IDQwMHB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG4uZGVtby1kYXRlLXBpY2tlciAuYmxvY2s6bGFzdC1jaGlsZCB7XG4gIGJvcmRlci1yaWdodDogbm9uZTtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgLmRlbW9uc3RyYXRpb24ge1xuICBkaXNwbGF5OiBibG9jaztcbiAgY29sb3I6IHZhcigtLWVsLXRleHQtY29sb3Itc2Vjb25kYXJ5KTtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBtYXJnaW4tYm90dG9tOiAxcmVtO1xufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMjAwcHgpIHtcbiAgLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrIHtcbiAgICBmbGV4OiAwIDAgMTAwJTtcbiAgICBwYWRkaW5nOiAxcmVtIDA7XG4gICAgbWluLXdpZHRoOiBhdXRvO1xuICAgIGJvcmRlci1yaWdodDogbm9uZTtcbiAgICBib3JkZXItYm90dG9tOiBzb2xpZCAxcHggdmFyKC0tZWwtYm9yZGVyLWNvbG9yKTtcbiAgfVxuXG4gIC5kZW1vLWRhdGUtcGlja2VyIC5ibG9jazpsYXN0LWNoaWxkIHtcbiAgICBib3JkZXItYm90dG9tOiBub25lO1xuICB9XG59XG48L3N0eWxlPlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/date-range.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Month Range Permalink to \"Month Range\" [draft]",
+      "_title": {
+        "text": "Month Range Permalink to \"Month Range\""
+      },
+      "_summary": {
+        "text": "Picking a month range is supported."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "When in range mode, the left and right panels are linked by default. If you want the two panels to switch current years independently, you can use the unlink-panels attribute."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+RGVmYXVsdDwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUxXCJcbiAgICAgICAgdHlwZT1cIm1vbnRocmFuZ2VcIlxuICAgICAgICByYW5nZS1zZXBhcmF0b3I9XCJUb1wiXG4gICAgICAgIHN0YXJ0LXBsYWNlaG9sZGVyPVwiU3RhcnQgbW9udGhcIlxuICAgICAgICBlbmQtcGxhY2Vob2xkZXI9XCJFbmQgbW9udGhcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgICA8ZGl2IGNsYXNzPVwiYmxvY2tcIj5cbiAgICAgIDxzcGFuIGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPldpdGggcXVpY2sgb3B0aW9uczwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUyXCJcbiAgICAgICAgdHlwZT1cIm1vbnRocmFuZ2VcIlxuICAgICAgICB1bmxpbmstcGFuZWxzXG4gICAgICAgIHJhbmdlLXNlcGFyYXRvcj1cIlRvXCJcbiAgICAgICAgc3RhcnQtcGxhY2Vob2xkZXI9XCJTdGFydCBtb250aFwiXG4gICAgICAgIGVuZC1wbGFjZWhvbGRlcj1cIkVuZCBtb250aFwiXG4gICAgICAgIDpzaG9ydGN1dHM9XCJzaG9ydGN1dHNcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCB2YWx1ZTEgPSByZWYoJycpXG5jb25zdCB2YWx1ZTIgPSByZWYoJycpXG5cbmNvbnN0IHNob3J0Y3V0cyA9IFtcbiAge1xuICAgIHRleHQ6ICdUaGlzIG1vbnRoJyxcbiAgICB2YWx1ZTogW25ldyBEYXRlKCksIG5ldyBEYXRlKCldLFxuICB9LFxuICB7XG4gICAgdGV4dDogJ1RoaXMgeWVhcicsXG4gICAgdmFsdWU6ICgpID0+IHtcbiAgICAgIGNvbnN0IGVuZCA9IG5ldyBEYXRlKClcbiAgICAgIGNvbnN0IHN0YXJ0ID0gbmV3IERhdGUobmV3IERhdGUoKS5nZXRGdWxsWWVhcigpLCAwKVxuICAgICAgcmV0dXJuIFtzdGFydCwgZW5kXVxuICAgIH0sXG4gIH0sXG4gIHtcbiAgICB0ZXh0OiAnTGFzdCA2IG1vbnRocycsXG4gICAgdmFsdWU6ICgpID0+IHtcbiAgICAgIGNvbnN0IGVuZCA9IG5ldyBEYXRlKClcbiAgICAgIGNvbnN0IHN0YXJ0ID0gbmV3IERhdGUoKVxuICAgICAgc3RhcnQuc2V0TW9udGgoc3RhcnQuZ2V0TW9udGgoKSAtIDYpXG4gICAgICByZXR1cm4gW3N0YXJ0LCBlbmRdXG4gICAgfSxcbiAgfSxcbl1cbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuLmRlbW8tZGF0ZS1waWNrZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMDtcbiAgZmxleC13cmFwOiB3cmFwO1xufVxuXG4uZGVtby1kYXRlLXBpY2tlciAuYmxvY2sge1xuICBwYWRkaW5nOiAxLjVyZW0gMDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBib3JkZXItcmlnaHQ6IHNvbGlkIDFweCB2YXIoLS1lbC1ib3JkZXItY29sb3IpO1xuICBmbGV4OiAxO1xuICBtaW4td2lkdGg6IDMwMHB4O1xufVxuXG4uZGVtby1kYXRlLXBpY2tlciAuYmxvY2s6bGFzdC1jaGlsZCB7XG4gIGJvcmRlci1yaWdodDogbm9uZTtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgLmRlbW9uc3RyYXRpb24ge1xuICBkaXNwbGF5OiBibG9jaztcbiAgY29sb3I6IHZhcigtLWVsLXRleHQtY29sb3Itc2Vjb25kYXJ5KTtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBtYXJnaW4tYm90dG9tOiAxcmVtO1xufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NjhweCkge1xuICAuZGVtby1kYXRlLXBpY2tlciAuYmxvY2sge1xuICAgIGZsZXg6IDAgMCAxMDAlO1xuICAgIHBhZGRpbmc6IDFyZW0gMDtcbiAgICBtaW4td2lkdGg6IGF1dG87XG4gICAgYm9yZGVyLXJpZ2h0OiBub25lO1xuICAgIGJvcmRlci1ib3R0b206IHNvbGlkIDFweCB2YXIoLS1lbC1ib3JkZXItY29sb3IpO1xuICB9XG5cbiAgLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrOmxhc3QtY2hpbGQge1xuICAgIGJvcmRlci1ib3R0b206IG5vbmU7XG4gIH1cbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/month-range.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Year Range 2.8.0 Permalink to \"Year Range ^(2.8.0)\" [draft]",
+      "_title": {
+        "text": "Year Range 2.8.0 Permalink to \"Year Range ^(2.8.0)\""
+      },
+      "_summary": {
+        "text": "Picking a year range is supported."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "When in range mode, the left and right panels are linked by default. If you want the two panels to switch years independently, you can use the unlink-panels attribute."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+RGVmYXVsdDwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUxXCJcbiAgICAgICAgdHlwZT1cInllYXJyYW5nZVwiXG4gICAgICAgIHJhbmdlLXNlcGFyYXRvcj1cIlRvXCJcbiAgICAgICAgc3RhcnQtcGxhY2Vob2xkZXI9XCJTdGFydCBZZWFyXCJcbiAgICAgICAgZW5kLXBsYWNlaG9sZGVyPVwiRW5kIFllYXJcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgICA8ZGl2IGNsYXNzPVwiYmxvY2tcIj5cbiAgICAgIDxzcGFuIGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPldpdGggcXVpY2sgb3B0aW9uczwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUyXCJcbiAgICAgICAgdHlwZT1cInllYXJyYW5nZVwiXG4gICAgICAgIHVubGluay1wYW5lbHNcbiAgICAgICAgcmFuZ2Utc2VwYXJhdG9yPVwiVG9cIlxuICAgICAgICBzdGFydC1wbGFjZWhvbGRlcj1cIlN0YXJ0IFllYXJcIlxuICAgICAgICBlbmQtcGxhY2Vob2xkZXI9XCJFbmQgWWVhclwiXG4gICAgICAgIDpzaG9ydGN1dHM9XCJzaG9ydGN1dHNcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCB2YWx1ZTEgPSByZWYoKVxuY29uc3QgdmFsdWUyID0gcmVmKClcblxuY29uc3Qgc2hvcnRjdXRzID0gW1xuICB7XG4gICAgdGV4dDogJ1RoaXMgWWVhcicsXG4gICAgdmFsdWU6IFtuZXcgRGF0ZSgpLCBuZXcgRGF0ZSgpXSxcbiAgfSxcbiAge1xuICAgIHRleHQ6ICdMYXN0IDEwIHllYXJzJyxcbiAgICB2YWx1ZTogKCkgPT4ge1xuICAgICAgY29uc3QgZW5kID0gbmV3IERhdGUoKVxuICAgICAgY29uc3Qgc3RhcnQgPSBuZXcgRGF0ZShcbiAgICAgICAgbmV3IERhdGUoKS5zZXRGdWxsWWVhcihuZXcgRGF0ZSgpLmdldEZ1bGxZZWFyKCkgLSAxMClcbiAgICAgIClcbiAgICAgIHJldHVybiBbc3RhcnQsIGVuZF1cbiAgICB9LFxuICB9LFxuICB7XG4gICAgdGV4dDogJ05leHQgNTAgeWVhcnMnLFxuICAgIHZhbHVlOiAoKSA9PiB7XG4gICAgICBjb25zdCBzdGFydCA9IG5ldyBEYXRlKClcbiAgICAgIGNvbnN0IGVuZCA9IG5ldyBEYXRlKFxuICAgICAgICBuZXcgRGF0ZSgpLnNldEZ1bGxZZWFyKG5ldyBEYXRlKCkuZ2V0RnVsbFllYXIoKSArIDUwKVxuICAgICAgKVxuICAgICAgcmV0dXJuIFtzdGFydCwgZW5kXVxuICAgIH0sXG4gIH0sXG5dXG48L3NjcmlwdD5cblxuPHN0eWxlIHNjb3BlZD5cbi5kZW1vLWRhdGUtcGlja2VyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmc6IDA7XG4gIGZsZXgtd3JhcDogd3JhcDtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrIHtcbiAgcGFkZGluZzogMS41cmVtIDA7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYm9yZGVyLXJpZ2h0OiBzb2xpZCAxcHggdmFyKC0tZWwtYm9yZGVyLWNvbG9yKTtcbiAgZmxleDogMTtcbiAgbWluLXdpZHRoOiAzMDBweDtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrOmxhc3QtY2hpbGQge1xuICBib3JkZXItcmlnaHQ6IG5vbmU7XG59XG5cbi5kZW1vLWRhdGUtcGlja2VyIC5kZW1vbnN0cmF0aW9uIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGNvbG9yOiB2YXIoLS1lbC10ZXh0LWNvbG9yLXNlY29uZGFyeSk7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbWFyZ2luLWJvdHRvbTogMXJlbTtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogNzY4cHgpIHtcbiAgLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrIHtcbiAgICBmbGV4OiAwIDAgMTAwJTtcbiAgICBwYWRkaW5nOiAxcmVtIDA7XG4gICAgbWluLXdpZHRoOiBhdXRvO1xuICAgIGJvcmRlci1yaWdodDogbm9uZTtcbiAgICBib3JkZXItYm90dG9tOiBzb2xpZCAxcHggdmFyKC0tZWwtYm9yZGVyLWNvbG9yKTtcbiAgfVxuXG4gIC5kZW1vLWRhdGUtcGlja2VyIC5ibG9jazpsYXN0LWNoaWxkIHtcbiAgICBib3JkZXItYm90dG9tOiBub25lO1xuICB9XG59XG48L3N0eWxlPlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/year-range.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Quarter Range 2.14.5 Permalink to \"Quarter Range ^(2.14.5)\" [draft]",
+      "_title": {
+        "text": "Quarter Range 2.14.5 Permalink to \"Quarter Range ^(2.14.5)\""
+      },
+      "_summary": {
+        "text": "Picking a quarter range is supported."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+RGVmYXVsdDwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUxXCJcbiAgICAgICAgdHlwZT1cInF1YXJ0ZXJyYW5nZVwiXG4gICAgICAgIHJhbmdlLXNlcGFyYXRvcj1cIlRvXCJcbiAgICAgICAgc3RhcnQtcGxhY2Vob2xkZXI9XCJTdGFydCBxdWFydGVyXCJcbiAgICAgICAgZW5kLXBsYWNlaG9sZGVyPVwiRW5kIHF1YXJ0ZXJcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgICA8ZGl2IGNsYXNzPVwiYmxvY2tcIj5cbiAgICAgIDxzcGFuIGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPldpdGggcXVpY2sgb3B0aW9uczwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUyXCJcbiAgICAgICAgdHlwZT1cInF1YXJ0ZXJyYW5nZVwiXG4gICAgICAgIHVubGluay1wYW5lbHNcbiAgICAgICAgcmFuZ2Utc2VwYXJhdG9yPVwiVG9cIlxuICAgICAgICBzdGFydC1wbGFjZWhvbGRlcj1cIlN0YXJ0IHF1YXJ0ZXJcIlxuICAgICAgICBlbmQtcGxhY2Vob2xkZXI9XCJFbmQgcXVhcnRlclwiXG4gICAgICAgIDpzaG9ydGN1dHM9XCJzaG9ydGN1dHNcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCB2YWx1ZTEgPSByZWYoKVxuY29uc3QgdmFsdWUyID0gcmVmKClcblxuY29uc3Qgc2hvcnRjdXRzID0gW1xuICB7XG4gICAgdGV4dDogJ1RoaXMgcXVhcnRlcicsXG4gICAgdmFsdWU6ICgpID0+IHtcbiAgICAgIGNvbnN0IG5vdyA9IG5ldyBEYXRlKClcbiAgICAgIGNvbnN0IHF1YXJ0ZXIgPSBNYXRoLmZsb29yKG5vdy5nZXRNb250aCgpIC8gMylcbiAgICAgIGNvbnN0IHN0YXJ0ID0gbmV3IERhdGUobm93LmdldEZ1bGxZZWFyKCksIHF1YXJ0ZXIgKiAzLCAxKVxuICAgICAgcmV0dXJuIFtzdGFydCwgbm93XVxuICAgIH0sXG4gIH0sXG4gIHtcbiAgICB0ZXh0OiAnTGFzdCA0IHF1YXJ0ZXJzJyxcbiAgICB2YWx1ZTogKCkgPT4ge1xuICAgICAgY29uc3QgZW5kID0gbmV3IERhdGUoKVxuICAgICAgY29uc3Qgc3RhcnQgPSBuZXcgRGF0ZSgpXG4gICAgICBzdGFydC5zZXRNb250aChzdGFydC5nZXRNb250aCgpIC0gMTIpXG4gICAgICByZXR1cm4gW3N0YXJ0LCBlbmRdXG4gICAgfSxcbiAgfSxcbiAge1xuICAgIHRleHQ6ICdOZXh0IDggcXVhcnRlcnMnLFxuICAgIHZhbHVlOiAoKSA9PiB7XG4gICAgICBjb25zdCBzdGFydCA9IG5ldyBEYXRlKClcbiAgICAgIGNvbnN0IGVuZCA9IG5ldyBEYXRlKClcbiAgICAgIGVuZC5zZXRNb250aChlbmQuZ2V0TW9udGgoKSArIDI0KVxuICAgICAgcmV0dXJuIFtzdGFydCwgZW5kXVxuICAgIH0sXG4gIH0sXG5dXG48L3NjcmlwdD5cblxuPHN0eWxlIHNjb3BlZD5cbi5kZW1vLWRhdGUtcGlja2VyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmc6IDA7XG4gIGZsZXgtd3JhcDogd3JhcDtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrIHtcbiAgcGFkZGluZzogMS41cmVtIDA7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYm9yZGVyLXJpZ2h0OiBzb2xpZCAxcHggdmFyKC0tZWwtYm9yZGVyLWNvbG9yKTtcbiAgZmxleDogMTtcbiAgbWluLXdpZHRoOiAzMDBweDtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrOmxhc3QtY2hpbGQge1xuICBib3JkZXItcmlnaHQ6IG5vbmU7XG59XG5cbi5kZW1vLWRhdGUtcGlja2VyIC5kZW1vbnN0cmF0aW9uIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGNvbG9yOiB2YXIoLS1lbC10ZXh0LWNvbG9yLXNlY29uZGFyeSk7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbWFyZ2luLWJvdHRvbTogMXJlbTtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogNzY4cHgpIHtcbiAgLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrIHtcbiAgICBmbGV4OiAwIDAgMTAwJTtcbiAgICBwYWRkaW5nOiAxcmVtIDA7XG4gICAgbWluLXdpZHRoOiBhdXRvO1xuICAgIGJvcmRlci1yaWdodDogbm9uZTtcbiAgICBib3JkZXItYm90dG9tOiBzb2xpZCAxcHggdmFyKC0tZWwtYm9yZGVyLWNvbG9yKTtcbiAgfVxuXG4gIC5kZW1vLWRhdGUtcGlja2VyIC5ibG9jazpsYXN0LWNoaWxkIHtcbiAgICBib3JkZXItYm90dG9tOiBub25lO1xuICB9XG59XG48L3N0eWxlPlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/quarter-range.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Single Panel 2.14.0 Permalink to \"Single Panel ^(2.14.0)\" [draft]",
+      "_title": {
+        "text": "Single Panel 2.14.0 Permalink to \"Single Panel ^(2.14.0)\""
+      },
+      "_summary": {
+        "text": "By default date picker ranges have two panels. If you want one panel set the single-panel attribute."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "date range"
+          }
+        },
+        {
+          "_text": {
+            "text": "month range"
+          }
+        },
+        {
+          "_text": {
+            "text": "year range"
+          }
+        },
+        {
+          "_text": {
+            "text": "quarter range"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+ZGF0ZSByYW5nZTwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlciB2LW1vZGVsPVwidmFsdWUxXCIgdHlwZT1cImRhdGVyYW5nZVwiIHNpbmdsZS1wYW5lbCAvPlxuICAgIDwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+bW9udGggcmFuZ2U8L3NwYW4+XG4gICAgICA8ZWwtZGF0ZS1waWNrZXIgdi1tb2RlbD1cInZhbHVlMlwiIHR5cGU9XCJtb250aHJhbmdlXCIgc2luZ2xlLXBhbmVsIC8+XG4gICAgPC9kaXY+XG4gICAgPGRpdiBjbGFzcz1cImJsb2NrXCI+XG4gICAgICA8c3BhbiBjbGFzcz1cImRlbW9uc3RyYXRpb25cIj55ZWFyIHJhbmdlPC9zcGFuPlxuICAgICAgPGVsLWRhdGUtcGlja2VyIHYtbW9kZWw9XCJ2YWx1ZTNcIiB0eXBlPVwieWVhcnJhbmdlXCIgc2luZ2xlLXBhbmVsIC8+XG4gICAgPC9kaXY+XG4gICAgPGRpdiBjbGFzcz1cImJsb2NrXCI+XG4gICAgICA8c3BhbiBjbGFzcz1cImRlbW9uc3RyYXRpb25cIj5xdWFydGVyIHJhbmdlPC9zcGFuPlxuICAgICAgPGVsLWRhdGUtcGlja2VyIHYtbW9kZWw9XCJ2YWx1ZTRcIiB0eXBlPVwicXVhcnRlcnJhbmdlXCIgc2luZ2xlLXBhbmVsIC8+XG4gICAgPC9kaXY+XG4gIDwvZGl2PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIiBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgdmFsdWUxID0gcmVmKClcbmNvbnN0IHZhbHVlMiA9IHJlZigpXG5jb25zdCB2YWx1ZTMgPSByZWYoKVxuY29uc3QgdmFsdWU0ID0gcmVmKClcbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuLmRlbW8tZGF0ZS1waWNrZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMDtcbiAgZmxleC13cmFwOiB3cmFwO1xufVxuXG4uZGVtby1kYXRlLXBpY2tlciAuYmxvY2sge1xuICBwYWRkaW5nOiAxLjVyZW0gMDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBib3JkZXItcmlnaHQ6IHNvbGlkIDFweCB2YXIoLS1lbC1ib3JkZXItY29sb3IpO1xuICBmbGV4OiAxO1xuICBtaW4td2lkdGg6IDMwMHB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG4uZGVtby1kYXRlLXBpY2tlciAuYmxvY2s6bGFzdC1jaGlsZCB7XG4gIGJvcmRlci1yaWdodDogbm9uZTtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrIDpkZWVwKC5lbC1kYXRlLWVkaXRvcikge1xuICB3aWR0aDogMzAwcHg7XG59XG5cbi5kZW1vLWRhdGUtcGlja2VyIC5kZW1vbnN0cmF0aW9uIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGNvbG9yOiB2YXIoLS1lbC10ZXh0LWNvbG9yLXNlY29uZGFyeSk7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbWFyZ2luLWJvdHRvbTogMXJlbTtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEyMDBweCkge1xuICAuZGVtby1kYXRlLXBpY2tlciAuYmxvY2sge1xuICAgIGZsZXg6IDAgMCA1MCU7XG4gICAgYm9yZGVyLWJvdHRvbTogc29saWQgMXB4IHZhcigtLWVsLWJvcmRlci1jb2xvcik7XG4gIH1cblxuICAuZGVtby1kYXRlLXBpY2tlciAuYmxvY2s6bnRoLWNoaWxkKDJuKSB7XG4gICAgYm9yZGVyLXJpZ2h0OiBub25lO1xuICB9XG5cbiAgLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrOm50aC1sYXN0LWNoaWxkKC1uICsgMik6bnRoLWNoaWxkKDJuICsgMSksXG4gIC5kZW1vLWRhdGUtcGlja2VyIC5ibG9jazpsYXN0LWNoaWxkIHtcbiAgICBib3JkZXItYm90dG9tOiBub25lO1xuICB9XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDc2OHB4KSB7XG4gIC5kZW1vLWRhdGUtcGlja2VyIC5ibG9jayB7XG4gICAgZmxleDogMCAwIDEwMCU7XG4gICAgcGFkZGluZzogMXJlbSAwO1xuICAgIG1pbi13aWR0aDogYXV0bztcbiAgICBib3JkZXItcmlnaHQ6IG5vbmU7XG4gICAgYm9yZGVyLWJvdHRvbTogc29saWQgMXB4IHZhcigtLWVsLWJvcmRlci1jb2xvcik7XG4gIH1cblxuICAuZGVtby1kYXRlLXBpY2tlciAuYmxvY2s6bGFzdC1jaGlsZCB7XG4gICAgYm9yZGVyLWJvdHRvbTogbm9uZTtcbiAgfVxufVxuPC9zdHlsZT5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/single-panel.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Default Value Permalink to \"Default Value\" [draft]",
+      "_title": {
+        "text": "Default Value Permalink to \"Default Value\""
+      },
+      "_summary": {
+        "text": "If user hasn't picked a date, shows today's calendar by default. You can use default-value to set another date. Its value should be parsable by new Date()."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "If type is daterange, default-value sets the left side calendar."
+          }
+        },
+        {
+          "_text": {
+            "text": "date"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+ZGF0ZTwvc3Bhbj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUxXCJcbiAgICAgICAgdHlwZT1cImRhdGVcIlxuICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSBkYXRlXCJcbiAgICAgICAgOmRlZmF1bHQtdmFsdWU9XCJuZXcgRGF0ZSgyMDEwLCA5LCAxKVwiXG4gICAgICAvPlxuICAgIDwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+ZGF0ZXJhbmdlPC9zcGFuPlxuICAgICAgPGVsLWRhdGUtcGlja2VyXG4gICAgICAgIHYtbW9kZWw9XCJ2YWx1ZTJcIlxuICAgICAgICB0eXBlPVwiZGF0ZXJhbmdlXCJcbiAgICAgICAgc3RhcnQtcGxhY2Vob2xkZXI9XCJTdGFydCBEYXRlXCJcbiAgICAgICAgZW5kLXBsYWNlaG9sZGVyPVwiRW5kIERhdGVcIlxuICAgICAgICA6ZGVmYXVsdC12YWx1ZT1cIltuZXcgRGF0ZSgyMDEwLCA5LCAxKSwgbmV3IERhdGUoMjAxMCwgMTAsIDEpXVwiXG4gICAgICAvPlxuICAgIDwvZGl2PlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IHZhbHVlMSA9IHJlZignJylcbmNvbnN0IHZhbHVlMiA9IHJlZignJylcbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuLmRlbW8tZGF0ZS1waWNrZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMDtcbiAgZmxleC13cmFwOiB3cmFwO1xufVxuXG4uZGVtby1kYXRlLXBpY2tlciAuYmxvY2sge1xuICBwYWRkaW5nOiAxLjVyZW0gMDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBib3JkZXItcmlnaHQ6IHNvbGlkIDFweCB2YXIoLS1lbC1ib3JkZXItY29sb3IpO1xuICBmbGV4OiAxO1xuICBtaW4td2lkdGg6IDMwMHB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG4uZGVtby1kYXRlLXBpY2tlciAuYmxvY2s6bGFzdC1jaGlsZCB7XG4gIGJvcmRlci1yaWdodDogbm9uZTtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgLmRlbW9uc3RyYXRpb24ge1xuICBkaXNwbGF5OiBibG9jaztcbiAgY29sb3I6IHZhcigtLWVsLXRleHQtY29sb3Itc2Vjb25kYXJ5KTtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBtYXJnaW4tYm90dG9tOiAxcmVtO1xufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NjhweCkge1xuICAuZGVtby1kYXRlLXBpY2tlciAuYmxvY2sge1xuICAgIGZsZXg6IDAgMCAxMDAlO1xuICAgIHBhZGRpbmc6IDFyZW0gMDtcbiAgICBtaW4td2lkdGg6IGF1dG87XG4gICAgYm9yZGVyLXJpZ2h0OiBub25lO1xuICAgIGJvcmRlci1ib3R0b206IHNvbGlkIDFweCB2YXIoLS1lbC1ib3JkZXItY29sb3IpO1xuICB9XG5cbiAgLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrOmxhc3QtY2hpbGQge1xuICAgIGJvcmRlci1ib3R0b206IG5vbmU7XG4gIH1cbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/default-value.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Date Formats Permalink to \"Date Formats\" [draft]",
+      "_title": {
+        "text": "Date Formats Permalink to \"Date Formats\""
+      },
+      "_summary": {
+        "text": "Use format to control displayed text's format in the input box. Use value-format to control binding value's format."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "By default, the component accepts and emits a Date object."
+          }
+        },
+        {
+          "_text": {
+            "text": "Check the list here of all available formats of Day.js."
+          }
+        },
+        {
+          "_text": {
+            "text": "WARNING"
+          }
+        },
+        {
+          "_text": {
+            "text": "Pay attention to capitalization"
+          }
+        },
+        {
+          "_text": {
+            "text": "Emits Date object"
+          }
+        },
+        {
+          "_text": {
+            "text": "Value:"
+          }
+        },
+        {
+          "_text": {
+            "text": "Use value-format"
+          }
+        },
+        {
+          "_text": {
+            "text": "Timestamp"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+RW1pdHMgRGF0ZSBvYmplY3Q8L3NwYW4+XG4gICAgICA8ZGl2IGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPlZhbHVlOiB7eyB2YWx1ZTEgfX08L2Rpdj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUxXCJcbiAgICAgICAgdHlwZT1cImRhdGVcIlxuICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSBEYXRlXCJcbiAgICAgICAgZm9ybWF0PVwiWVlZWS9NTS9ERFwiXG4gICAgICAvPlxuICAgIDwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+VXNlIHZhbHVlLWZvcm1hdDwvc3Bhbj5cbiAgICAgIDxkaXYgY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+VmFsdWXvvJp7eyB2YWx1ZTIgfX08L2Rpdj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUyXCJcbiAgICAgICAgdHlwZT1cImRhdGVcIlxuICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSBEYXRlXCJcbiAgICAgICAgZm9ybWF0PVwiWVlZWS9NTS9ERFwiXG4gICAgICAgIHZhbHVlLWZvcm1hdD1cIllZWVktTU0tRERcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgICA8ZGl2IGNsYXNzPVwiYmxvY2tcIj5cbiAgICAgIDxzcGFuIGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPlRpbWVzdGFtcDwvc3Bhbj5cbiAgICAgIDxkaXYgY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+VmFsdWXvvJp7eyB2YWx1ZTMgfX08L2Rpdj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUzXCJcbiAgICAgICAgdHlwZT1cImRhdGVcIlxuICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSBEYXRlXCJcbiAgICAgICAgZm9ybWF0PVwiWVlZWS9NTS9ERFwiXG4gICAgICAgIHZhbHVlLWZvcm1hdD1cInhcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0IGxhbmc9XCJ0c1wiIHNldHVwPlxuaW1wb3J0IHsgcmVmIH0gZnJvbSAndnVlJ1xuXG5jb25zdCB2YWx1ZTEgPSByZWYoJycpXG5jb25zdCB2YWx1ZTIgPSByZWYoJycpXG5jb25zdCB2YWx1ZTMgPSByZWYoJycpXG48L3NjcmlwdD5cblxuPHN0eWxlIHNjb3BlZD5cbi5kZW1vLWRhdGUtcGlja2VyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmc6IDA7XG4gIGZsZXgtd3JhcDogd3JhcDtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrIHtcbiAgcGFkZGluZzogMS41cmVtIDA7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYm9yZGVyLXJpZ2h0OiBzb2xpZCAxcHggdmFyKC0tZWwtYm9yZGVyLWNvbG9yKTtcbiAgZmxleDogMTtcbiAgbWluLXdpZHRoOiAzMDBweDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrOmxhc3QtY2hpbGQge1xuICBib3JkZXItcmlnaHQ6IG5vbmU7XG59XG5cbi5kZW1vLWRhdGUtcGlja2VyIC5kZW1vbnN0cmF0aW9uIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGNvbG9yOiB2YXIoLS1lbC10ZXh0LWNvbG9yLXNlY29uZGFyeSk7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbWFyZ2luLWJvdHRvbTogMXJlbTtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEyMDBweCkge1xuICAuZGVtby1kYXRlLXBpY2tlciAuYmxvY2sge1xuICAgIGZsZXg6IDAgMCA1MCU7XG4gICAgYm9yZGVyLWJvdHRvbTogc29saWQgMXB4IHZhcigtLWVsLWJvcmRlci1jb2xvcik7XG4gIH1cblxuICAuZGVtby1kYXRlLXBpY2tlciAuYmxvY2s6bnRoLWNoaWxkKDJuKSB7XG4gICAgYm9yZGVyLXJpZ2h0OiBub25lO1xuICB9XG5cbiAgLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrOm50aC1sYXN0LWNoaWxkKC1uICsgMik6bnRoLWNoaWxkKDJuICsgMSksXG4gIC5kZW1vLWRhdGUtcGlja2VyIC5ibG9jazpsYXN0LWNoaWxkIHtcbiAgICBib3JkZXItYm90dG9tOiBub25lO1xuICB9XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDc2OHB4KSB7XG4gIC5kZW1vLWRhdGUtcGlja2VyIC5ibG9jayB7XG4gICAgZmxleDogMCAwIDEwMCU7XG4gICAgcGFkZGluZzogMXJlbSAwO1xuICAgIG1pbi13aWR0aDogYXV0bztcbiAgICBib3JkZXItcmlnaHQ6IG5vbmU7XG4gICAgYm9yZGVyLWJvdHRvbTogc29saWQgMXB4IHZhcigtLWVsLWJvcmRlci1jb2xvcik7XG4gIH1cblxuICAuZGVtby1kYXRlLXBpY2tlciAuYmxvY2s6bGFzdC1jaGlsZCB7XG4gICAgYm9yZGVyLWJvdHRvbTogbm9uZTtcbiAgfVxufVxuPC9zdHlsZT5cbiJ9",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/date-formats.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Default time for start date and end date Permalink to \"Default time for start date and end date\" [draft]",
+      "_title": {
+        "text": "Default time for start date and end date Permalink to \"Default time for start date and end date\""
+      },
+      "_summary": {
+        "text": "When picking a date range, you can assign the time part for start date and end date."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "By default, the time part of start date and end date are both 00:00:00. Setting default-time can change their time respectively. It accepts an array of up to two Date objects. The first string sets th"
+          }
+        },
+        {
+          "_text": {
+            "text": "Component value："
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHA+Q29tcG9uZW50IHZhbHVl77yae3sgdmFsdWUgfX08L3A+XG4gICAgICA8ZWwtZGF0ZS1waWNrZXJcbiAgICAgICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICAgICAgdHlwZT1cImRhdGVyYW5nZVwiXG4gICAgICAgIHN0YXJ0LXBsYWNlaG9sZGVyPVwiU3RhcnQgZGF0ZVwiXG4gICAgICAgIGVuZC1wbGFjZWhvbGRlcj1cIkVuZCBkYXRlXCJcbiAgICAgICAgdmFsdWUtZm9ybWF0PVwiWVlZWS1NTS1ERCBISDptbTpzc1wiXG4gICAgICAgIDpkZWZhdWx0LXRpbWU9XCJkZWZhdWx0VGltZVwiXG4gICAgICAvPlxuICAgIDwvZGl2PlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IHZhbHVlID0gcmVmKCcnKVxuY29uc3QgZGVmYXVsdFRpbWUgPSByZWY8W0RhdGUsIERhdGVdPihbXG4gIG5ldyBEYXRlKDIwMDAsIDEsIDEsIDAsIDAsIDApLFxuICBuZXcgRGF0ZSgyMDAwLCAyLCAxLCAyMywgNTksIDU5KSxcbl0pXG48L3NjcmlwdD5cblxuPHN0eWxlIHNjb3BlZD5cbi5kZW1vLWRhdGUtcGlja2VyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmc6IDA7XG4gIGZsZXgtd3JhcDogd3JhcDtcbn1cbi5kZW1vLWRhdGUtcGlja2VyIC5ibG9jayB7XG4gIHBhZGRpbmc6IDMwcHggMDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBib3JkZXItcmlnaHQ6IHNvbGlkIDFweCB2YXIoLS1lbC1ib3JkZXItY29sb3IpO1xuICBmbGV4OiAxO1xufVxuLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrOmxhc3QtY2hpbGQge1xuICBib3JkZXItcmlnaHQ6IG5vbmU7XG59XG48L3N0eWxlPlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/default-time.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Set custom content of prefix Permalink to \"Set custom content of prefix\" [draft]",
+      "_title": {
+        "text": "Set custom content of prefix Permalink to \"Set custom content of prefix\""
+      },
+      "_summary": {
+        "text": "The content of prefix can be customized."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Setting prefix-icon to component which you import form other .vue or generated by the render function."
+          }
+        },
+        {
+          "_text": {
+            "text": "set prefix-icon"
+          }
+        },
+        {
+          "_text": {
+            "text": "pre"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxkaXYgY2xhc3M9XCJibG9ja1wiPlxuICAgICAgPHNwYW4gY2xhc3M9XCJkZW1vbnN0cmF0aW9uXCI+c2V0IHByZWZpeC1pY29uPC9zcGFuPlxuICAgICAgPGVsLWRhdGUtcGlja2VyXG4gICAgICAgIHYtbW9kZWw9XCJ2YWx1ZTFcIlxuICAgICAgICB0eXBlPVwiZGF0ZVwiXG4gICAgICAgIHBsYWNlaG9sZGVyPVwiUGljayBhIGRheVwiXG4gICAgICAgIDpwcmVmaXgtaWNvbj1cImN1c3RvbVByZWZpeFwiXG4gICAgICAvPlxuICAgIDwvZGl2PlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyBoLCByZWYsIHNoYWxsb3dSZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IHZhbHVlMSA9IHJlZignJylcblxuY29uc3QgY3VzdG9tUHJlZml4ID0gc2hhbGxvd1JlZih7XG4gIHJlbmRlcigpIHtcbiAgICByZXR1cm4gaCgncCcsICdwcmUnKVxuICB9LFxufSlcbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuLmRlbW8tZGF0ZS1waWNrZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMDtcbiAgZmxleC13cmFwOiB3cmFwO1xufVxuLmRlbW8tZGF0ZS1waWNrZXIgLmJsb2NrIHtcbiAgcGFkZGluZzogMzBweCAwO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJvcmRlci1yaWdodDogc29saWQgMXB4IHZhcigtLWVsLWJvcmRlci1jb2xvcik7XG4gIGZsZXg6IDE7XG59XG4uZGVtby1kYXRlLXBpY2tlciAuYmxvY2s6bGFzdC1jaGlsZCB7XG4gIGJvcmRlci1yaWdodDogbm9uZTtcbn1cbi5kZW1vLWRhdGUtcGlja2VyIC5kZW1vbnN0cmF0aW9uIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGNvbG9yOiB2YXIoLS1lbC10ZXh0LWNvbG9yLXNlY29uZGFyeSk7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbn1cbjwvc3R5bGU+XG4ifQ==",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/custom-prefix-icon.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Custom content Permalink to \"Custom content\" [draft]",
+      "_title": {
+        "text": "Custom content Permalink to \"Custom content\""
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "The content of cell can be customized, in scoped-slot you can get the cell data. Note that the custom content structure should be consistent with the default structure, otherwise style misalignment ma"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlclwiPlxuICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgdi1tb2RlbD1cInZhbHVlXCJcbiAgICAgIHR5cGU9XCJkYXRlXCJcbiAgICAgIHBsYWNlaG9sZGVyPVwiUGljayBhIGRheVwiXG4gICAgICBmb3JtYXQ9XCJZWVlZL01NL0REXCJcbiAgICAgIHZhbHVlLWZvcm1hdD1cIllZWVktTU0tRERcIlxuICAgID5cbiAgICAgIDx0ZW1wbGF0ZSAjZGVmYXVsdD1cImNlbGxcIj5cbiAgICAgICAgPGRpdiBjbGFzcz1cImNlbGxcIiA6Y2xhc3M9XCJ7IGN1cnJlbnQ6IGNlbGwuaXNDdXJyZW50IH1cIj5cbiAgICAgICAgICA8c3BhbiBjbGFzcz1cInRleHRcIj57eyBjZWxsLnRleHQgfX08L3NwYW4+XG4gICAgICAgICAgPHNwYW4gdi1pZj1cImlzSG9saWRheShjZWxsKVwiIGNsYXNzPVwiaG9saWRheVwiIC8+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC90ZW1wbGF0ZT5cbiAgICA8L2VsLWRhdGUtcGlja2VyPlxuICAgIDxlbC1kYXRlLXBpY2tlciB2LW1vZGVsPVwibW9udGhcIiB0eXBlPVwibW9udGhcIiBwbGFjZWhvbGRlcj1cIlBpY2sgYSBtb250aFwiPlxuICAgICAgPHRlbXBsYXRlICNkZWZhdWx0PVwiY2VsbFwiPlxuICAgICAgICA8ZGl2IGNsYXNzPVwiZWwtZGF0ZS10YWJsZS1jZWxsXCIgOmNsYXNzPVwieyBjdXJyZW50OiBjZWxsLmlzQ3VycmVudCB9XCI+XG4gICAgICAgICAgPHNwYW4gY2xhc3M9XCJlbC1kYXRlLXRhYmxlLWNlbGxfX3RleHRcIj57eyBjZWxsLnRleHQgKyAxIH195pyfPC9zcGFuPlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvdGVtcGxhdGU+XG4gICAgPC9lbC1kYXRlLXBpY2tlcj5cbiAgICA8ZWwtZGF0ZS1waWNrZXIgdi1tb2RlbD1cInllYXJcIiB0eXBlPVwieWVhclwiIHBsYWNlaG9sZGVyPVwiUGljayBhIHllYXJcIj5cbiAgICAgIDx0ZW1wbGF0ZSAjZGVmYXVsdD1cImNlbGxcIj5cbiAgICAgICAgPGRpdiBjbGFzcz1cImVsLWRhdGUtdGFibGUtY2VsbFwiIDpjbGFzcz1cInsgY3VycmVudDogY2VsbC5pc0N1cnJlbnQgfVwiPlxuICAgICAgICAgIDxzcGFuIGNsYXNzPVwiZWwtZGF0ZS10YWJsZS1jZWxsX190ZXh0XCI+e3sgY2VsbC50ZXh0ICsgMSB9fXk8L3NwYW4+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC90ZW1wbGF0ZT5cbiAgICA8L2VsLWRhdGUtcGlja2VyPlxuICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgdi1tb2RlbD1cInF1YXJ0ZXJcIlxuICAgICAgdHlwZT1cInF1YXJ0ZXJcIlxuICAgICAgcGxhY2Vob2xkZXI9XCJQaWNrIGEgcXVhcnRlclwiXG4gICAgPlxuICAgICAgPHRlbXBsYXRlICNkZWZhdWx0PVwiY2VsbFwiPlxuICAgICAgICA8ZGl2IGNsYXNzPVwiZWwtZGF0ZS10YWJsZS1jZWxsXCIgOmNsYXNzPVwieyBjdXJyZW50OiBjZWxsLmlzQ3VycmVudCB9XCI+XG4gICAgICAgICAgPHNwYW4gY2xhc3M9XCJlbC1kYXRlLXRhYmxlLWNlbGxfX3RleHRcIj5Re3sgK2NlbGwudGV4dCArIDEgfX08L3NwYW4+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC90ZW1wbGF0ZT5cbiAgICA8L2VsLWRhdGUtcGlja2VyPlxuICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQgbGFuZz1cInRzXCIgc2V0dXA+XG5pbXBvcnQgeyByZWYgfSBmcm9tICd2dWUnXG5cbmNvbnN0IHZhbHVlID0gcmVmKCcyMDIxLTEwLTI5JylcbmNvbnN0IG1vbnRoID0gcmVmKCcnKVxuY29uc3QgeWVhciA9IHJlZignJylcbmNvbnN0IHF1YXJ0ZXIgPSByZWYoJycpXG5jb25zdCBob2xpZGF5cyA9IFtcbiAgJzIwMjEtMTAtMDEnLFxuICAnMjAyMS0xMC0wMicsXG4gICcyMDIxLTEwLTAzJyxcbiAgJzIwMjEtMTAtMDQnLFxuICAnMjAyMS0xMC0wNScsXG4gICcyMDIxLTEwLTA2JyxcbiAgJzIwMjEtMTAtMDcnLFxuXVxuXG5jb25zdCBpc0hvbGlkYXkgPSAoeyBkYXlqcyB9KSA9PiB7XG4gIHJldHVybiBob2xpZGF5cy5pbmNsdWRlcyhkYXlqcy5mb3JtYXQoJ1lZWVktTU0tREQnKSlcbn1cbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuLmRlbW8tZGF0ZS1waWNrZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LXdyYXA6IHdyYXA7XG4gIGdhcDogMXJlbTtcbn1cblxuLmRlbW8tZGF0ZS1waWNrZXIgPiAqIHtcbiAgbWFyZ2luOiAwICFpbXBvcnRhbnQ7XG59XG5cbi5jZWxsIHtcbiAgaGVpZ2h0OiAzMHB4O1xuICBwYWRkaW5nOiAzcHggMDtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLmNlbGwgLnRleHQge1xuICB3aWR0aDogMjRweDtcbiAgaGVpZ2h0OiAyNHB4O1xuICBkaXNwbGF5OiBibG9jaztcbiAgbWFyZ2luOiAwIGF1dG87XG4gIGxpbmUtaGVpZ2h0OiAyNHB4O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG59XG5cbi5jZWxsLmN1cnJlbnQgLnRleHQge1xuICBiYWNrZ3JvdW5kOiAjNjI2YWVmO1xuICBjb2xvcjogI2ZmZjtcbn1cblxuLmNlbGwgLmhvbGlkYXkge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHdpZHRoOiA2cHg7XG4gIGhlaWdodDogNnB4O1xuICBiYWNrZ3JvdW5kOiB2YXIoLS1lbC1jb2xvci1kYW5nZXIpO1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIGJvdHRvbTogMHB4O1xuICBsZWZ0OiA1MCU7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogNzY4cHgpIHtcbiAgLmRlbW8tZGF0ZS1waWNrZXIge1xuICAgIGdhcDogMS41cmVtO1xuICB9XG59XG48L3N0eWxlPlxuIn0=",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/custom-content.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Custom icon 2.8.0 Permalink to \"Custom icon ^(2.8.0)\" [draft]",
+      "_title": {
+        "text": "Custom icon 2.8.0 Permalink to \"Custom icon ^(2.8.0)\""
+      },
+      "_summary": {
+        "text": "Custom icons available with slots."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.run/#eyJBcHAudnVlIjoiPHRlbXBsYXRlPlxuICA8ZGl2IGNsYXNzPVwiZGVtby1kYXRlLXBpY2tlci1pY29uXCI+XG4gICAgPGRpdiBjbGFzcz1cImJsb2NrXCI+XG4gICAgICA8ZGl2IGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPmRhdGU8L2Rpdj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUxXCJcbiAgICAgICAgdHlwZT1cImRhdGVcIlxuICAgICAgICBwbGFjZWhvbGRlcj1cIlBpY2sgYSBkYXlcIlxuICAgICAgICBmb3JtYXQ9XCJZWVlZL01NL0REXCJcbiAgICAgICAgdmFsdWUtZm9ybWF0PVwiWVlZWS1NTS1ERFwiXG4gICAgICA+XG4gICAgICAgIDx0ZW1wbGF0ZSAjcHJldi1tb250aD5cbiAgICAgICAgICA8ZWwtaWNvbj48Q2FyZXRMZWZ0IC8+PC9lbC1pY29uPlxuICAgICAgICA8L3RlbXBsYXRlPlxuICAgICAgICA8dGVtcGxhdGUgI25leHQtbW9udGg+XG4gICAgICAgICAgPGVsLWljb24+PENhcmV0UmlnaHQgLz48L2VsLWljb24+XG4gICAgICAgIDwvdGVtcGxhdGU+XG4gICAgICAgIDx0ZW1wbGF0ZSAjcHJldi15ZWFyPlxuICAgICAgICAgIDxlbC1pY29uPlxuICAgICAgICAgICAgPHN2Z1xuICAgICAgICAgICAgICB2aWV3Qm94PVwiMCAwIDIwIDIwXCJcbiAgICAgICAgICAgICAgdmVyc2lvbj1cIjEuMVwiXG4gICAgICAgICAgICAgIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmdcIlxuICAgICAgICAgICAgPlxuICAgICAgICAgICAgICA8ZyBzdHJva2Utd2lkdGg9XCIxXCIgZmlsbC1ydWxlPVwiZXZlbm9kZFwiPlxuICAgICAgICAgICAgICAgIDxnIGZpbGw9XCJjdXJyZW50Q29sb3JcIj5cbiAgICAgICAgICAgICAgICAgIDxwYXRoXG4gICAgICAgICAgICAgICAgICAgIGQ9XCJNOC43MzE3MSwxNi43OTQ5IEM5LjAzMjY0LDE3LjA3OTUgOS41MDczMywxNy4wNjYzIDkuNzkxOTYsMTYuNzY1NCBDMTAuMDc2NiwxNi40NjQ0IDEwLjA2MzQsMTUuOTg5NyA5Ljc2MjQzLDE1LjcwNTEgTDQuNTIzMzksMTAuNzUgTDE3LjI0NzEsMTAuNzUgQzE3LjY2MTMsMTAuNzUgMTcuOTk3MSwxMC40MTQyIDE3Ljk5NzEsMTAgQzE3Ljk5NzEsOS41ODU3OSAxNy42NjEzLDkuMjUgMTcuMjQ3MSw5LjI1IEw0LjUyMTEyLDkuMjUgTDkuNzYyNDMsNC4yOTI3NSBDMTAuMDYzNCw0LjAwODEyIDEwLjA3NjYsMy41MzM0MyA5Ljc5MTk2LDMuMjMyNSBDOS41MDczMywyLjkzMTU2IDkuMDMyNjQsMi45MTgzNCA4LjczMTcxLDMuMjAyOTcgTDIuMzE0NDksOS4yNzI0MSBDMi4xNDgxOSw5LjQyOTcgMi4wNDgxOSw5LjYyOTgxIDIuMDE0NDgsOS44Mzg2IEMyLjAwMzA4LDkuODkwNTggMS45OTcwNyw5Ljk0NDU5IDEuOTk3MDcsMTAgQzEuOTk3MDcsMTAuMDU3NiAyLjAwMzU2LDEwLjExMzcgMi4wMTU4NSwxMC4xNjc1IEMyLjA1MDg0LDEwLjM3MzMgMi4xNTAzOSwxMC41NzAyIDIuMzE0NDksMTAuNzI1NCBMOC43MzE3MSwxNi43OTQ5IFpcIlxuICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICA8L2c+XG4gICAgICAgICAgICAgIDwvZz5cbiAgICAgICAgICAgIDwvc3ZnPlxuICAgICAgICAgIDwvZWwtaWNvbj5cbiAgICAgICAgPC90ZW1wbGF0ZT5cbiAgICAgICAgPHRlbXBsYXRlICNuZXh0LXllYXI+XG4gICAgICAgICAgPGVsLWljb24+XG4gICAgICAgICAgICA8c3ZnXG4gICAgICAgICAgICAgIHZpZXdCb3g9XCIwIDAgMjAgMjBcIlxuICAgICAgICAgICAgICB2ZXJzaW9uPVwiMS4xXCJcbiAgICAgICAgICAgICAgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Z1wiXG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIDxnIHN0cm9rZS13aWR0aD1cIjFcIiBmaWxsLXJ1bGU9XCJldmVub2RkXCI+XG4gICAgICAgICAgICAgICAgPGcgZmlsbD1cImN1cnJlbnRDb2xvclwiPlxuICAgICAgICAgICAgICAgICAgPHBhdGhcbiAgICAgICAgICAgICAgICAgICAgZD1cIk0xMS4yNjU0LDMuMjA1MTEgQzEwLjk2NDQsMi45MjA0OSAxMC40ODk3LDIuOTMzNzEgMTAuMjA1MSwzLjIzNDY0IEM5LjkyMDQ5LDMuNTM1NTggOS45MzM3MSw0LjAxMDI3IDEwLjIzNDYsNC4yOTQ4OSBMMTUuNDczNyw5LjI1IEwyLjc1LDkuMjUgQzIuMzM1NzksOS4yNSAyLDkuNTg1NzkgMiwxMC4wMDAwMDEyIEMyLDEwLjQxNDIgMi4zMzU3OSwxMC43NSAyLjc1LDEwLjc1IEwxNS40NzYsMTAuNzUgTDEwLjIzNDYsMTUuNzA3MyBDOS45MzM3MSwxNS45OTE5IDkuOTIwNDksMTYuNDY2NiAxMC4yMDUxLDE2Ljc2NzUgQzEwLjQ4OTcsMTcuMDY4NCAxMC45NjQ0LDE3LjA4MTcgMTEuMjY1NCwxNi43OTcgTDE3LjY4MjYsMTAuNzI3NiBDMTcuODQ4OSwxMC41NzAzIDE3Ljk0ODksMTAuMzcwMiAxNy45ODI2LDEwLjE2MTQgQzE3Ljk5NCwxMC4xMDk0IDE4LDEwLjA1NTQgMTgsMTAuMDAwMDAxMiBDMTgsOS45NDI0MSAxNy45OTM1LDkuODg2MzMgMTcuOTgxMiw5LjgzMjQ2IEMxNy45NDYyLDkuNjI2NjcgMTcuODQ2Nyw5LjQyOTc2IDE3LjY4MjYsOS4yNzQ1NSBMMTEuMjY1NCwzLjIwNTExIFpcIlxuICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICA8L2c+XG4gICAgICAgICAgICAgIDwvZz5cbiAgICAgICAgICAgIDwvc3ZnPlxuICAgICAgICAgIDwvZWwtaWNvbj5cbiAgICAgICAgPC90ZW1wbGF0ZT5cbiAgICAgIDwvZWwtZGF0ZS1waWNrZXI+XG4gICAgPC9kaXY+XG4gICAgPGRpdiBjbGFzcz1cImJsb2NrXCI+XG4gICAgICA8ZGl2IGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPmRhdGUgcmFuZ2U8L2Rpdj5cbiAgICAgIDxlbC1kYXRlLXBpY2tlclxuICAgICAgICB2LW1vZGVsPVwidmFsdWUyXCJcbiAgICAgICAgdHlwZT1cImRhdGVyYW5nZVwiXG4gICAgICAgIHN0YXJ0LXBsYWNlaG9sZGVyPVwiU3RhcnQgZGF0ZVwiXG4gICAgICAgIGVuZC1wbGFjZWhvbGRlcj1cIkVuZCBkYXRlXCJcbiAgICAgICAgZm9ybWF0PVwiWVlZWS9NTS9ERFwiXG4gICAgICAgIHZhbHVlLWZvcm1hdD1cIllZWVktTU0tRERcIlxuICAgICAgICB1bmxpbmstcGFuZWxzXG4gICAgICA+XG4gICAgICAgIDx0ZW1wbGF0ZSAjcHJldi1tb250aD5cbiAgICAgICAgICA8ZWwtaWNvbj48Q2FyZXRMZWZ0IC8+PC9lbC1pY29uPlxuICAgICAgICA8L3RlbXBsYXRlPlxuICAgICAgICA8dGVtcGxhdGUgI25leHQtbW9udGg+XG4gICAgICAgICAgPGVsLWljb24+PENhcmV0UmlnaHQgLz48L2VsLWljb24+XG4gICAgICAgIDwvdGVtcGxhdGU+XG4gICAgICAgIDx0ZW1wbGF0ZSAjcHJldi15ZWFyPlxuICAgICAgICAgIDxlbC1pY29uPlxuICAgICAgICAgICAgPHN2Z1xuICAgICAgICAgICAgICB2aWV3Qm94PVwiMCAwIDIwIDIwXCJcbiAgICAgICAgICAgICAgdmVyc2lvbj1cIjEuMVwiXG4gICAgICAgICAgICAgIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmdcIlxuICAgICAgICAgICAgPlxuICAgICAgICAgICAgICA8ZyBzdHJva2Utd2lkdGg9XCIxXCIgZmlsbC1ydWxlPVwiZXZlbm9kZFwiPlxuICAgICAgICAgICAgICAgIDxnIGZpbGw9XCJjdXJyZW50Q29sb3JcIj5cbiAgICAgICAgICAgICAgICAgIDxwYXRoXG4gICAgICAgICAgICAgICAgICAgIGQ9XCJNOC43MzE3MSwxNi43OTQ5IEM5LjAzMjY0LDE3LjA3OTUgOS41MDczMywxNy4wNjYzIDkuNzkxOTYsMTYuNzY1NCBDMTAuMDc2NiwxNi40NjQ0IDEwLjA2MzQsMTUuOTg5NyA5Ljc2MjQzLDE1LjcwNTEgTDQuNTIzMzksMTAuNzUgTDE3LjI0NzEsMTAuNzUgQzE3LjY2MTMsMTAuNzUgMTcuOTk3MSwxMC40MTQyIDE3Ljk5NzEsMTAgQzE3Ljk5NzEsOS41ODU3OSAxNy42NjEzLDkuMjUgMTcuMjQ3MSw5LjI1IEw0LjUyMTEyLDkuMjUgTDkuNzYyNDMsNC4yOTI3NSBDMTAuMDYzNCw0LjAwODEyIDEwLjA3NjYsMy41MzM0MyA5Ljc5MTk2LDMuMjMyNSBDOS41MDczMywyLjkzMTU2IDkuMDMyNjQsMi45MTgzNCA4LjczMTcxLDMuMjAyOTcgTDIuMzE0NDksOS4yNzI0MSBDMi4xNDgxOSw5LjQyOTcgMi4wNDgxOSw5LjYyOTgxIDIuMDE0NDgsOS44Mzg2IEMyLjAwMzA4LDkuODkwNTggMS45OTcwNyw5Ljk0NDU5IDEuOTk3MDcsMTAgQzEuOTk3MDcsMTAuMDU3NiAyLjAwMzU2LDEwLjExMzcgMi4wMTU4NSwxMC4xNjc1IEMyLjA1MDg0LDEwLjM3MzMgMi4xNTAzOSwxMC41NzAyIDIuMzE0NDksMTAuNzI1NCBMOC43MzE3MSwxNi43OTQ5IFpcIlxuICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICA8L2c+XG4gICAgICAgICAgICAgIDwvZz5cbiAgICAgICAgICAgIDwvc3ZnPlxuICAgICAgICAgIDwvZWwtaWNvbj5cbiAgICAgICAgPC90ZW1wbGF0ZT5cbiAgICAgICAgPHRlbXBsYXRlICNuZXh0LXllYXI+XG4gICAgICAgICAgPGVsLWljb24+XG4gICAgICAgICAgICA8c3ZnXG4gICAgICAgICAgICAgIHZpZXdCb3g9XCIwIDAgMjAgMjBcIlxuICAgICAgICAgICAgICB2ZXJzaW9uPVwiMS4xXCJcbiAgICAgICAgICAgICAgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Z1wiXG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIDxnIHN0cm9rZS13aWR0aD1cIjFcIiBmaWxsLXJ1bGU9XCJldmVub2RkXCI+XG4gICAgICAgICAgICAgICAgPGcgZmlsbD1cImN1cnJlbnRDb2xvclwiPlxuICAgICAgICAgICAgICAgICAgPHBhdGhcbiAgICAgICAgICAgICAgICAgICAgZD1cIk0xMS4yNjU0LDMuMjA1MTEgQzEwLjk2NDQsMi45MjA0OSAxMC40ODk3LDIuOTMzNzEgMTAuMjA1MSwzLjIzNDY0IEM5LjkyMDQ5LDMuNTM1NTggOS45MzM3MSw0LjAxMDI3IDEwLjIzNDYsNC4yOTQ4OSBMMTUuNDczNyw5LjI1IEwyLjc1LDkuMjUgQzIuMzM1NzksOS4yNSAyLDkuNTg1NzkgMiwxMC4wMDAwMDEyIEMyLDEwLjQxNDIgMi4zMzU3OSwxMC43NSAyLjc1LDEwLjc1IEwxNS40NzYsMTAuNzUgTDEwLjIzNDYsMTUuNzA3MyBDOS45MzM3MSwxNS45OTE5IDkuOTIwNDksMTYuNDY2NiAxMC4yMDUxLDE2Ljc2NzUgQzEwLjQ4OTcsMTcuMDY4NCAxMC45NjQ0LDE3LjA4MTcgMTEuMjY1NCwxNi43OTcgTDE3LjY4MjYsMTAuNzI3NiBDMTcuODQ4OSwxMC41NzAzIDE3Ljk0ODksMTAuMzcwMiAxNy45ODI2LDEwLjE2MTQgQzE3Ljk5NCwxMC4xMDk0IDE4LDEwLjA1NTQgMTgsMTAuMDAwMDAxMiBDMTgsOS45NDI0MSAxNy45OTM1LDkuODg2MzMgMTcuOTgxMiw5LjgzMjQ2IEMxNy45NDYyLDkuNjI2NjcgMTcuODQ2Nyw5LjQyOTc2IDE3LjY4MjYsOS4yNzQ1NSBMMTEuMjY1NCwzLjIwNTExIFpcIlxuICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICA8L2c+XG4gICAgICAgICAgICAgIDwvZz5cbiAgICAgICAgICAgIDwvc3ZnPlxuICAgICAgICAgIDwvZWwtaWNvbj5cbiAgICAgICAgPC90ZW1wbGF0ZT5cbiAgICAgIDwvZWwtZGF0ZS1waWNrZXI+XG4gICAgPC9kaXY+XG4gICAgPGRpdiBjbGFzcz1cImJsb2NrXCI+XG4gICAgICA8ZGl2IGNsYXNzPVwiZGVtb25zdHJhdGlvblwiPm1vbnRoIHJhbmdlPC9kaXY+XG4gICAgICA8ZWwtZGF0ZS1waWNrZXJcbiAgICAgICAgdi1tb2RlbD1cInZhbHVlM1wiXG4gICAgICAgIHR5cGU9XCJtb250aHJhbmdlXCJcbiAgICAgICAgc3RhcnQtcGxhY2Vob2xkZXI9XCJTdGFydCBkYXRlXCJcbiAgICAgICAgZW5kLXBsYWNlaG9sZGVyPVwiRW5kIGRhdGVcIlxuICAgICAgICBmb3JtYXQ9XCJZWVlZL01NL0REXCJcbiAgICAgICAgdmFsdWUtZm9ybWF0PVwiWVlZWS1NTS1ERFwiXG4gICAgICAgIHVubGluay1wYW5lbHNcbiAgICAgID5cbiAgICAgICAgPHRlbXBsYXRlICNwcmV2LW1vbnRoPlxuICAgICAgICAgIDxlbC1pY29uPjxDYXJldExlZnQgLz48L2VsLWljb24+XG4gICAgICAgIDwvdGVtcGxhdGU+XG4gICAgICAgIDx0ZW1wbGF0ZSAjbmV4dC1tb250aD5cbiAgICAgICAgICA8ZWwtaWNvbj48Q2FyZXRSaWdodCAvPjwvZWwtaWNvbj5cbiAgICAgICAgPC90ZW1wbGF0ZT5cbiAgICAgICAgPHRlbXBsYXRlICNwcmV2LXllYXI+XG4gICAgICAgICAgPGVsLWljb24+XG4gICAgICAgICAgICA8c3ZnXG4gICAgICAgICAgICAgIHZpZXdCb3g9XCIwIDAgMjAgMjBcIlxuICAgICAgICAgICAgICB2ZXJzaW9uPVwiMS4xXCJcbiAgICAgICAgICAgICAgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Z1wiXG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIDxnIHN0cm9rZS13aWR0aD1cIjFcIiBmaWxsLXJ1bGU9XCJldmVub2RkXCI+XG4gICAgICAgICAgICAgICAgPGcgZmlsbD1cImN1cnJlbnRDb2xvclwiPlxuICAgICAgICAgICAgICAgICAgPHBhdGhcbiAgICAgICAgICAgICAgICAgICAgZD1cIk04LjczMTcxLDE2Ljc5NDkgQzkuMDMyNjQsMTcuMDc5NSA5LjUwNzMzLDE3LjA2NjMgOS43OTE5NiwxNi43NjU0IEMxMC4wNzY2LDE2LjQ2NDQgMTAuMDYzNCwxNS45ODk3IDkuNzYyNDMsMTUuNzA1MSBMNC41MjMzOSwxMC43NSBMMTcuMjQ3MSwxMC43NSBDMTcuNjYxMywxMC43NSAxNy45OTcxLDEwLjQxNDIgMTcuOTk3MSwxMCBDMTcuOTk3MSw5LjU4NTc5IDE3LjY2MTMsOS4yNSAxNy4yNDcxLDkuMjUgTDQuNTIxMTIsOS4yNSBMOS43NjI0Myw0LjI5Mjc1IEMxMC4wNjM0LDQuMDA4MTIgMTAuMDc2NiwzLjUzMzQzIDkuNzkxOTYsMy4yMzI1IEM5LjUwNzMzLDIuOTMxNTYgOS4wMzI2NCwyLjkxODM0IDguNzMxNzEsMy4yMDI5NyBMMi4zMTQ0OSw5LjI3MjQxIEMyLjE0ODE5LDkuNDI5NyAyLjA0ODE5LDkuNjI5ODEgMi4wMTQ0OCw5LjgzODYgQzIuMDAzMDgsOS44OTA1OCAxLjk5NzA3LDkuOTQ0NTkgMS45OTcwNywxMCBDMS45OTcwNywxMC4wNTc2IDIuMDAzNTYsMTAuMTEzNyAyLjAxNTg1LDEwLjE2NzUgQzIuMDUwODQsMTAuMzczMyAyLjE1MDM5LDEwLjU3MDIgMi4zMTQ0OSwxMC43MjU0IEw4LjczMTcxLDE2Ljc5NDkgWlwiXG4gICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgIDwvZz5cbiAgICAgICAgICAgICAgPC9nPlxuICAgICAgICAgICAgPC9zdmc+XG4gICAgICAgICAgPC9lbC1pY29uPlxuICAgICAgICA8L3RlbXBsYXRlPlxuICAgICAgICA8dGVtcGxhdGUgI25leHQteWVhcj5cbiAgICAgICAgICA8ZWwtaWNvbj5cbiAgICAgICAgICAgIDxzdmdcbiAgICAgICAgICAgICAgdmlld0JveD1cIjAgMCAyMCAyMFwiXG4gICAgICAgICAgICAgIHZlcnNpb249XCIxLjFcIlxuICAgICAgICAgICAgICB4bWxucz1cImh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnXCJcbiAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgPGcgc3Ryb2tlLXdpZHRoPVwiMVwiIGZpbGwtcnVsZT1cImV2ZW5vZGRcIj5cbiAgICAgICAgICAgICAgICA8ZyBmaWxsPVwiY3VycmVudENvbG9yXCI+XG4gICAgICAgICAgICAgICAgICA8cGF0aFxuICAgICAgICAgICAgICAgICAgICBkPVwiTTExLjI2NTQsMy4yMDUxMSBDMTAuOTY0NCwyLjkyMDQ5IDEwLjQ4OTcsMi45MzM3MSAxMC4yMDUxLDMuMjM0NjQgQzkuOTIwNDksMy41MzU1OCA5LjkzMzcxLDQuMDEwMjcgMTAuMjM0Niw0LjI5NDg5IEwxNS40NzM3LDkuMjUgTDIuNzUsOS4yNSBDMi4zMzU3OSw5LjI1ID",
+            "label": "Edit in Playground"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/examples/date-picker/custom-icon.vue",
+            "label": "Edit on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Copy code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "View source"
+          }
+        },
+        {
+          "_text": {
+            "text": "For data details, please refer:"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Localization Permalink to \"Localization\" [draft]",
+      "_title": {
+        "text": "Localization Permalink to \"Localization\""
+      },
+      "_summary": {
+        "text": "The default locale of is English, if you need to use other languages, please check Internationalization"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Note, date time locale (month name, first day of the week ...) are also configured in localization."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "API Permalink to \"API\" [draft]",
+      "_title": {
+        "text": "API Permalink to \"API\""
+      },
+      "_lines": [
+        {
+          "_intent": "Attributes Permalink to \"Attributes\" [draft]",
+          "_title": {
+            "text": "Attributes Permalink to \"Attributes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (37 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "model-value / v-model"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "readonly"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "editable"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clearable"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placeholder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "start-placeholder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "end-placeholder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "type"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "format"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://element-plus.org/en-US/component/date-picker.html#date-formats",
+                    "label": "date formats"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "popper-class"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "popper-style"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "popper-options"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://popper.js.org/docs/v2/",
+                          "label": "popper.js"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "open",
+                          "label": "Type details"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "range-separator"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "default-value"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "default-time"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value-format"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://element-plus.org/en-US/component/date-picker.html#date-formats",
+                    "label": "date formats"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "id"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "name"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "unlink-panels"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "single-panel 2.14.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prefix-icon"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear-icon"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validate-event"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "disabled-date"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "shortcuts"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "cell-class-name"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "teleported"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "empty-values 2.7.0"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://element-plus.org/en-US/component/config-provider#empty-values-configurations",
+                    "label": "see config-provider"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "value-on-clear 2.7.0"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://element-plus.org/en-US/component/config-provider#empty-values-configurations",
+                    "label": "see config-provider"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "fallback-placements 2.8.4"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements",
+                          "label": "popper.js"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "open",
+                          "label": "Type details"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "placement 2.8.4"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "show-footer 2.10.5"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "show-confirm 2.11.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "show-week-number 2.10.3"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "automatic-dropdown 2.11.4"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Events Permalink to \"Events\" [draft]",
+          "_title": {
+            "text": "Events Permalink to \"Events\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (7 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "change"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "blur"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "focus"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clear 2.7.7"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "calendar-change"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "panel-change"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "visible-change"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Slots Permalink to \"Slots\" [draft]",
+          "_title": {
+            "text": "Slots Permalink to \"Slots\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (6 rows): Name / Description [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "default"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "range-separator"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prev-month 2.8.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "next-month 2.8.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "prev-year 2.8.0"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "next-year 2.8.0"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Exposes Permalink to \"Exposes\" [draft]",
+          "_title": {
+            "text": "Exposes Permalink to \"Exposes\""
+          },
+          "_lines": [
+            {
+              "_intent": "table (4 rows): Name / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "focus"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "blur 2.8.7"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "handleOpen 2.2.16"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "handleClose 2.2.16"
+                  },
+                  "_action": {
+                    "verb": "open",
+                    "label": "Type details"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Type Declarations Permalink to \"Type Declarations\" [draft]",
+      "_title": {
+        "text": "Type Declarations Permalink to \"Type Declarations\""
+      },
+      "_summary": {
+        "text": "Show declarations"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "import"
+          }
+        },
+        {
+          "_text": {
+            "text": "type"
+          }
+        },
+        {
+          "_text": {
+            "text": "{ Options"
+          }
+        },
+        {
+          "_text": {
+            "text": "as"
+          }
+        },
+        {
+          "_text": {
+            "text": "PopperOptions }"
+          }
+        },
+        {
+          "_text": {
+            "text": "from"
+          }
+        },
+        {
+          "_text": {
+            "text": "'@popperjs/core'"
+          }
+        },
+        {
+          "_text": {
+            "text": "TimeLikeType"
+          }
+        },
+        {
+          "_text": {
+            "text": "'datetime'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'datetimerange'"
+          }
+        },
+        {
+          "_text": {
+            "text": "Placement"
+          }
+        },
+        {
+          "_text": {
+            "text": "'top'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'top-start'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'top-end'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'bottom'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'bottom-start'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'bottom-end'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'left'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'left-start'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'left-end'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'right'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'right-start'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'right-end'"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Source Permalink to \"Source\" [draft]",
+      "_title": {
+        "text": "Source Permalink to \"Source\""
+      },
+      "_summary": {
+        "text": "Component • Style • Docs"
+      }
+    },
+    {
+      "_intent": "Contributors Permalink to \"Contributors\" [draft]",
+      "_title": {
+        "text": "Contributors Permalink to \"Contributors\""
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/element-plus/element-plus/edit/dev/docs/en-US/component/date-picker.md",
+            "label": "Edit this page on GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.org/en-US/component/date-picker-panel",
+            "label": "Date Picker Panel"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://element-plus.org/en-US/component/datetime-picker",
+            "label": "DateTime Picker"
+          }
+        },
+        {
+          "_intent": "Links [draft]",
+          "_title": {
+            "text": "Links"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://cn.element-plus.org/zh-CN/",
+                "label": "China Mirror 🇨🇳"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/releases",
+                "label": "Changelog"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://element.eleme.io/",
+                "label": "Element UI for Vue 2"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://element-plus.org/sitemap.xml",
+                "label": "Site Map"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Community [draft]",
+          "_title": {
+            "text": "Community"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus",
+                "label": "GitHub"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://discord.com/invite/gXK9XNzW3X",
+                "label": "Discord"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/issues",
+                "label": "Feedback"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/element-plus/element-plus/blob/dev/.github/CONTRIBUTING.en-US.md",
+                "label": "Contribution"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://segmentfault.com/t/element-plus",
+                "label": "SegmentFault"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

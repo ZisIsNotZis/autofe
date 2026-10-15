@@ -1,0 +1,2360 @@
+{
+  "_intent": "Button - Ant Design — Button [draft]",
+  "_title": {
+    "text": "Button - Ant Design"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#when-to-use",
+        "label": "When To Use"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#examples",
+        "label": "Examples"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-basic",
+        "label": "Syntactic sugar"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-color-variant",
+        "label": "Color & Variant"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-icon",
+        "label": "Icon"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-icon-placement",
+        "label": "Icon Placement"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-size",
+        "label": "Size"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-disabled",
+        "label": "Disabled"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-loading",
+        "label": "Loading"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-multiple",
+        "label": "Multiple Buttons"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-ghost",
+        "label": "Ghost Button"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-danger",
+        "label": "Danger Buttons"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-block",
+        "label": "Block Button"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-linear-gradient",
+        "label": "Gradient Button"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-wave",
+        "label": "Custom Wave"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-custom-disabled-bg",
+        "label": "Custom disabled backgroundColor"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#button-demo-style-class",
+        "label": "Custom semantic dom styling"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#api",
+        "label": "API"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#presetcolors",
+        "label": "PresetColors"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#semantic-dom",
+        "label": "Semantic DOM"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#design-token",
+        "label": "Design Token"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#faq",
+        "label": "FAQ"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#faq-type-color-variant",
+        "label": "How to choose type and color & variant?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#faq-close-wave-effect",
+        "label": "How to close the click wave effect?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/button#design-guide",
+        "label": "Design Guide"
+      }
+    },
+    {
+      "_intent": "Button [draft]",
+      "_title": {
+        "text": "Button"
+      }
+    },
+    {
+      "_intent": "When To Use [draft]",
+      "_title": {
+        "text": "When To Use"
+      },
+      "_summary": {
+        "text": "A button means an operation (or a series of operations). Clicking a button will trigger its corresponding business logic."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "In Ant Design we provide 5 types of button."
+          }
+        },
+        {
+          "_intent": "list (5 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "🔵 Primary button: used for the main action, there can be at most one primary button in a section."
+              }
+            },
+            {
+              "_name": {
+                "text": "⚪️ Default button: used for a series of actions without priority."
+              }
+            },
+            {
+              "_name": {
+                "text": "😶 Dashed button: commonly used for adding more actions."
+              }
+            },
+            {
+              "_name": {
+                "text": "🔤 Text button: used for the most secondary action."
+              }
+            },
+            {
+              "_name": {
+                "text": "🔗 Link button: used for external links."
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "And 4 other properties additionally."
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "🔴 danger: used for actions of risk, like deletion or authorization."
+              }
+            },
+            {
+              "_name": {
+                "text": "👻 ghost: used in situations with complex background, home pages usually."
+              }
+            },
+            {
+              "_name": {
+                "text": "🚫 disabled: used when actions are not available."
+              }
+            },
+            {
+              "_name": {
+                "text": "🔃 loading: adds a loading spinner in button, avoids multiple submits too."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Examples [draft]",
+      "_title": {
+        "text": "Examples"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "Through the type syntactic sugar, use the preset button styles: primary buttons, default buttons, dashed buttons, text buttons, and link buttons."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "bug"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Primary Button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Default Button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Dashed Button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Text Button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Link Button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-basic",
+            "label": "Syntactic sugar"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/basic.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-basic?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Expand Icon"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "search"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "A"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "search Search"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.google.com/",
+            "label": "search"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-icon",
+            "label": "Icon"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/icon.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "You can add an icon using the icon property."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-icon?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_text": {
+            "text": "Large"
+          }
+        },
+        {
+          "_text": {
+            "text": "Medium"
+          }
+        },
+        {
+          "_text": {
+            "text": "Small"
+          }
+        },
+        {
+          "_text": {
+            "text": "Preview"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Primary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Default"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Dashed"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Link"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "download"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "download Download"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-size",
+            "label": "Size"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/size.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Ant Design supports three sizes of buttons: small, medium and large."
+          }
+        },
+        {
+          "_text": {
+            "text": "If a large or small button is desired, set the size property to either large or small respectively. Omit the size property for a button with the default medium size."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-size?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "loading Loading"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "loading"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "sync Loading Icon"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Icon Start"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Icon End"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "poweroff Icon Replace"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "poweroff"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "poweroff Loading Icon"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-loading",
+            "label": "Loading"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/loading.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "A loading indicator can be added to a button by setting the loading property on the Button. The loading.icon can be used to customize the loading icon."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-loading?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Danger"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-ghost",
+            "label": "Ghost Button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/ghost.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "The ghost property will make a button's background transparent, this is commonly used in colored background."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-ghost?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "disabled"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-block",
+            "label": "Block Button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/block.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "The block property will make a button fit to its parent width."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-block?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Inset"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Shake"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Happy Work"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-wave",
+            "label": "Custom Wave"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/wave.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Wave effect brings dynamic. You can also use HappyProvider from @ant-design/happy-work-theme to implement dynamic wave effect."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-wave?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Object"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Function"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-style-class",
+            "label": "Custom semantic dom styling"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/style-class.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "You can customize the semantic dom style of Button by passing objects/functions through classNames and styles."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-style-class?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_text": {
+            "text": "6.0.0"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Solid"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Outlined"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Filled"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-color-variant",
+            "label": "Color & Variant"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/color-variant.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "You can set the color and variant attributes at the same time can derive more variant buttons."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-color-variant?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_text": {
+            "text": "5.21.0"
+          }
+        },
+        {
+          "_text": {
+            "text": "start"
+          }
+        },
+        {
+          "_text": {
+            "text": "end"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-icon-placement",
+            "label": "Icon Placement"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/icon-placement.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "You can set the position of a button's icon by setting the iconPlacement to start or end respectively."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-icon-placement?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_text": {
+            "text": "5.17.0"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Primary(disabled)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Default(disabled)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Dashed(disabled)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Text(disabled)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Link(disabled)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/index-cn",
+            "label": "Href Primary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Href Primary(disabled)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Danger Default"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Danger Default(disabled)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Danger Text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Danger Text(disabled)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Danger Link"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Danger Link(disabled)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Ghost"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Ghost(disabled)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-disabled",
+            "label": "Disabled"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/disabled.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "To mark a button as disabled, add the disabled property to the Button."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-disabled?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "secondary"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Actions"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "ellipsis"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-multiple",
+            "label": "Multiple Buttons"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/multiple.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "If you need several buttons, we recommend that you use 1 primary button + n secondary buttons. If there are more than three operations, you can group some of them into a Dropdown."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-multiple?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-danger",
+            "label": "Danger Buttons"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/danger.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "The danger is a property of buttons after antd 4.0."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-danger?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "ant-design Gradient Button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-linear-gradient",
+            "label": "Gradient Button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/linear-gradient.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Buttons with a gradient background."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-linear-gradient?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/button#button-demo-custom-disabled-bg",
+            "label": "Custom disabled backgroundColor"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/button/demo/custom-disabled-bg.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Customize the background color with disable (applicable to type default and dashed)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/button-demo-custom-disabled-bg?routeId=components%2Fbutton%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "API [draft]",
+      "_title": {
+        "text": "API"
+      },
+      "_summary": {
+        "text": "Common props ref：Common props"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Different button styles generated by setting Button properties. The recommended order is: type -> shape -> size -> loading -> disabled."
+          }
+        },
+        {
+          "_intent": "table (20 rows): Property / Description / Type [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "autoInsertSpace"
+              }
+            },
+            {
+              "_name": {
+                "text": "block"
+              }
+            },
+            {
+              "_name": {
+                "text": "classNames"
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "to": "https://ant.design/components/button#semantic-dom",
+                      "label": "SemanticDOM"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "to": "https://ant.design/components/button#semantic-dom",
+                      "label": "SemanticDOM"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "_name": {
+                "text": "color"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/button#presetcolors",
+                "label": "PresetColors"
+              }
+            },
+            {
+              "_name": {
+                "text": "danger"
+              }
+            },
+            {
+              "_name": {
+                "text": "disabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "ghost"
+              }
+            },
+            {
+              "_name": {
+                "text": "href"
+              }
+            },
+            {
+              "_name": {
+                "text": "htmlType"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type",
+                "label": "MDN"
+              }
+            },
+            {
+              "_name": {
+                "text": "icon"
+              }
+            },
+            {
+              "_name": {
+                "text": "iconPlacement"
+              }
+            },
+            {
+              "_name": {
+                "text": "loading"
+              }
+            },
+            {
+              "_name": {
+                "text": "loadingIcon"
+              }
+            },
+            {
+              "_name": {
+                "text": "onClick"
+              }
+            },
+            {
+              "_name": {
+                "text": "shape"
+              }
+            },
+            {
+              "_name": {
+                "text": "size"
+              }
+            },
+            {
+              "_name": {
+                "text": "styles"
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "to": "https://ant.design/components/button#semantic-dom",
+                      "label": "SemanticDOM"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "to": "https://ant.design/components/button#semantic-dom",
+                      "label": "SemanticDOM"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "_name": {
+                "text": "target"
+              }
+            },
+            {
+              "_name": {
+                "text": "type"
+              }
+            },
+            {
+              "_name": {
+                "text": "variant"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "It accepts all props which native buttons support."
+          }
+        },
+        {
+          "_intent": "PresetColors [draft]",
+          "_title": {
+            "text": "PresetColors"
+          },
+          "_summary": {
+            "text": "type PresetColors = 'blue' | 'purple' | 'cyan' | 'green' | 'mage"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Semantic DOM [draft]",
+      "_title": {
+        "text": "Semantic DOM"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "ant-design Ant Design"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "root 6.0.0 Root element with comprehensive button styling including border, background, padding, border-radius, box-shadow, transitions, cursor, font-weight, al"
+              }
+            },
+            {
+              "_name": {
+                "text": "icon 5.5.0 Icon element with font-size, color inheritance, and SVG style reset for proper icon display"
+              }
+            },
+            {
+              "_name": {
+                "text": "content 6.0.0 Content element that wraps button text with typography styles including nowrap, text-align center, and Chinese character spacing optimization"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Design Token [draft]",
+      "_title": {
+        "text": "Design Token"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "right"
+          },
+          {
+            "image": "",
+            "alt": "right"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "How to use?"
+      },
+      "_lines": [
+        {
+          "_intent": "table (36 rows): Token Name / Description / Type [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "contentFontSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "contentFontSizeLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "contentFontSizeSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "dangerColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "dangerShadow"
+              }
+            },
+            {
+              "_name": {
+                "text": "dashedBgDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultActiveBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultActiveBorderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultActiveColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultBgDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultBorderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultGhostBorderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultGhostColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultHoverBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultHoverBorderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultHoverColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "defaultShadow"
+              }
+            },
+            {
+              "_name": {
+                "text": "fontWeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "ghostBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "iconGap"
+              }
+            },
+            {
+              "_name": {
+                "text": "linkHoverBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "onlyIconSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "onlyIconSizeLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "onlyIconSizeSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingInline"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingInlineLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingInlineSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "primaryColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "primaryShadow"
+              }
+            },
+            {
+              "_name": {
+                "text": "solidTextColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "textHoverBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "textTextActiveColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "textTextColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "textTextHoverColor"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (40 rows): Token Name / Description / Type [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "colorBgContainer"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorBgContainerDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorBgSolid"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorBgSolidActive"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorBgSolidHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorError"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorActive"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorBgActive"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorBgFilledHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorErrorHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorFill"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorFillSecondary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorFillTertiary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorLink"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorLinkActive"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorLinkHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorPrimary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorPrimaryActive"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorPrimaryBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorPrimaryBgHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorPrimaryBorder"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorPrimaryHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextLightSolid"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadius"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadiusLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadiusSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlHeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlHeightLG"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlHeightSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "fontSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineType"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineWidth"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineWidthFocus"
+              }
+            },
+            {
+              "_name": {
+                "text": "motionDurationMid"
+              }
+            },
+            {
+              "_name": {
+                "text": "motionDurationSlow"
+              }
+            },
+            {
+              "_name": {
+                "text": "motionEaseInOut"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://cubic-bezier.com/#0.645,0.045,0.355,1",
+                "label": "External Link Icon"
+              }
+            },
+            {
+              "_name": {
+                "text": "opacityLoading"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingXS"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "FAQ [draft]",
+      "_title": {
+        "text": "FAQ"
+      },
+      "_lines": [
+        {
+          "_intent": "How to choose type and color & variant? [draft]",
+          "_title": {
+            "text": "How to choose type and color & variant?"
+          },
+          "_summary": {
+            "text": "jsx"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "Type is essentially syntactic sugar for colors and variants. It internally provides a set of mapping relationships between colors and variants for the type. If both exist at the same time, the colors"
+              }
+            },
+            {
+              "_text": {
+                "text": "type"
+              }
+            },
+            {
+              "_text": {
+                "text": "click"
+              }
+            },
+            {
+              "_text": {
+                "text": "</"
+              }
+            },
+            {
+              "_text": {
+                "text": "Equivalent"
+              }
+            },
+            {
+              "_text": {
+                "text": "color"
+              }
+            },
+            {
+              "_text": {
+                "text": "variant"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "How to close the click wave effect? [draft]",
+          "_title": {
+            "text": "How to close the click wave effect?"
+          },
+          "_summary": {
+            "text": "If you don't need this feature, you can set disabled of wave in ConfigProvider as true."
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "ConfigProvider"
+              }
+            },
+            {
+              "_text": {
+                "text": "wave"
+              }
+            },
+            {
+              "_text": {
+                "text": "true"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Design Guide [draft]",
+      "_title": {
+        "text": "Design Guide"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://zhuanlan.zhihu.com/p/109644406",
+            "label": "Where should I put my buttons!? | Ant Design 4.0 Series"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/changelog",
+            "label": "left Changelog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/float-button",
+            "label": "FloatButton right"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Resources [draft]",
+      "_title": {
+        "text": "Resources"
+      },
+      "_summary": {
+        "text": "Landing Templates"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://x.ant.design/",
+            "label": "Ant Design X"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://charts.ant.design/",
+            "label": "Ant Design Charts"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://pro.ant.design/",
+            "label": "Ant Design Pro"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://procomponents.ant.design/",
+            "label": "Pro Components"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://mobile.ant.design/",
+            "label": "Ant Design Mobile"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://mini.ant.design/",
+            "label": "Ant Design Mini"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://web3.ant.design/",
+            "label": "Ant Design Web3"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://landing.ant.design/",
+            "label": "Ant Design Landing"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://scaffold.ant.design/",
+            "label": "Scaffolds"
+          }
+        },
+        {
+          "_text": {
+            "text": "Scaffold Market"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://umijs.org/",
+            "label": "Umi"
+          }
+        },
+        {
+          "_text": {
+            "text": "React Application Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://d.umijs.org/",
+            "label": "dumi"
+          }
+        },
+        {
+          "_text": {
+            "text": "Component doc generator"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://qiankun.umijs.org/",
+            "label": "qiankun"
+          }
+        },
+        {
+          "_text": {
+            "text": "Micro-Frontends Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://motion.ant.design/",
+            "label": "Ant Motion"
+          }
+        },
+        {
+          "_text": {
+            "text": "Motion Solution"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant-design.antgroup.com/",
+            "label": "China Mirror 🇨🇳"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Community [draft]",
+      "_title": {
+        "text": "Community"
+      },
+      "_summary": {
+        "text": "Experience Tech Conference"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/websemantics/awesome-ant-design",
+            "label": "ant-design Awesome Ant Design"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://medium.com/ant-design/",
+            "label": "medium Medium"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://x.com/antdesignui",
+            "label": "x X"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://yuque.com/ant-design/ant-design",
+            "label": "yuque logo Ant Design in YuQue"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.zhihu.com/column/c_1564262000561106944",
+            "label": "zhihu Ant Design in Zhihu"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.zhihu.com/column/c_1543658574504751104",
+            "label": "zhihu Experience Cloud Blog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://seeconf.antfin.com/",
+            "label": "seeconf logo SEE Conf"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Help [draft]",
+      "_title": {
+        "text": "Help"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design",
+            "label": "github GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/changelog",
+            "label": "history Change Log"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/docs/react/faq",
+            "label": "question-circle FAQ"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/docs/react/for-agents.md",
+            "label": "robot For Agents"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://new-issue.ant.design/",
+            "label": "bug Bug Report"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/issues",
+            "label": "issues-close Issues"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/discussions",
+            "label": "message Discussions"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://stackoverflow.com/questions/tagged/antd",
+            "label": "question-circle StackOverflow"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://segmentfault.com/t/antd",
+            "label": "question-circle SegmentFault"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Ant XTech logo More Products [draft]",
+      "_title": {
+        "text": "Ant XTech logo More Products"
+      },
+      "_summary": {
+        "text": "Document Collaboration Platform"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://yuque.com/",
+            "label": "yuque logo YuQue"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://antv.antgroup.com/",
+            "label": "AntV logo AntV"
+          }
+        },
+        {
+          "_text": {
+            "text": "Data Visualization"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://eggjs.org/",
+            "label": "Egg logo Egg"
+          }
+        },
+        {
+          "_text": {
+            "text": "Enterprise Node.js Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://kitchen.alipay.com/",
+            "label": "Kitchen logo Kitchen"
+          }
+        },
+        {
+          "_text": {
+            "text": "Sketch Toolkit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://galacean.antgroup.com/",
+            "label": "Galacean logo Galacean"
+          }
+        },
+        {
+          "_text": {
+            "text": "Interactive Graphics Solution"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://weavefox.cn/",
+            "label": "WeaveFox logo WeaveFox"
+          }
+        },
+        {
+          "_text": {
+            "text": "AI Development with WeaveFox 🦊"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://xtech.antfin.com/",
+            "label": "xtech logo Ant Financial Experience Tech"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/theme-editor",
+            "label": "bg-colors Theme Editor"
+          }
+        },
+        {
+          "_text": {
+            "text": "Ant Group and Ant Design Community"
+          }
+        }
+      ]
+    }
+  ]
+}

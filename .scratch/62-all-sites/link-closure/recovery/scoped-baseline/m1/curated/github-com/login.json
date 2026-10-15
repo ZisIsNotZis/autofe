@@ -1,0 +1,162 @@
+{
+  "_intent": "让开发者登录 GitHub",
+  "_title": {
+    "text": "Sign in to GitHub"
+  },
+  "login": {
+    "_intent": "登录块：用户名/邮箱 + 密码 + 提交；并提供 Google/Apple、通行密钥、创建账户与忘记密码入口",
+    "_composite": "login",
+    "_expose": {
+      "name": "signed-in",
+      "type": "bool"
+    },
+    "identifier": {
+      "_intent": "用户名或邮箱标识符输入",
+      "_label": {
+        "text": "Username or email address"
+      },
+      "_expose": {
+        "name": "login",
+        "type": "text"
+      }
+    },
+    "secret": {
+      "_intent": "密码输入",
+      "_label": {
+        "text": "Password"
+      },
+      "_expose": {
+        "name": "password",
+        "type": "secret"
+      }
+    },
+    "submit": {
+      "_intent": "提交凭据登录",
+      "_title": {
+        "text": "Sign in"
+      },
+      "_action": {
+        "verb": "submit",
+        "label": "Sign in"
+      }
+    },
+    "forgot": {
+      "_intent": "找回忘记的密码",
+      "_title": {
+        "text": "Forgot password?"
+      },
+      "_action": {
+        "verb": "navigate",
+        "to": "https://github.com/password_reset",
+        "label": "Forgot password?"
+      }
+    },
+    "alternatives": {
+      "_intent": "其他登录方式：Google、Apple",
+      "_items": [
+        {
+          "_name": {
+            "text": "Continue with Google"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Continue with Google"
+          }
+        },
+        {
+          "_name": {
+            "text": "Continue with Apple"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Continue with Apple"
+          }
+        }
+      ]
+    },
+    "passkey": {
+      "_intent": "用通行密钥登录",
+      "_title": {
+        "text": "Sign in with a passkey"
+      },
+      "_action": {
+        "verb": "operate",
+        "label": "Sign in with a passkey"
+      }
+    },
+    "signup": {
+      "_intent": "没有账号时创建账户",
+      "_title": {
+        "text": "Create an account"
+      },
+      "_action": {
+        "verb": "navigate",
+        "to": "https://github.com/signup",
+        "label": "Create an account"
+      }
+    }
+  },
+  "footer": {
+    "_intent": "捕获的法律、支持与隐私 cookie 工具入口；无 href 的按钮只保留动作含义，不模拟同意状态后端。",
+    "_items": [
+      {
+        "_title": {
+          "text": "Terms"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Terms",
+          "to": "https://docs.github.com/site-policy/github-terms/github-terms-of-service"
+        }
+      },
+      {
+        "_title": {
+          "text": "Privacy"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Privacy",
+          "to": "https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
+        }
+      },
+      {
+        "_title": {
+          "text": "Docs"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Docs",
+          "to": "https://docs.github.com"
+        }
+      },
+      {
+        "_title": {
+          "text": "Contact GitHub Support"
+        },
+        "_action": {
+          "verb": "navigate",
+          "label": "Contact GitHub Support",
+          "to": "https://support.github.com"
+        }
+      },
+      {
+        "_title": {
+          "text": "Manage cookies"
+        },
+        "_action": {
+          "verb": "operate",
+          "label": "Manage cookies"
+        }
+      },
+      {
+        "_title": {
+          "text": "Do not share my personal information"
+        },
+        "_action": {
+          "verb": "operate",
+          "label": "Do not share my personal information"
+        }
+      }
+    ]
+  }
+}

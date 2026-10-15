@@ -1,0 +1,344 @@
+{
+ "$comment": "轮 57 站点 accent token（M5 第一个 token）：从语料量出来（a 元素前景色最高频非黑非白者），由 m1/eval/brand-accent.mjs 生成。fallback:true = 量不出（无样式/全灰/样本不足），用 default。渲染器只读这份配置注入 --accent，不写死站名/色值。",
+ "default": {
+  "accent": "#0b62d0"
+ },
+ "sites": {
+  "36kr-com": {
+   "accent": {
+    "value": "#1890ff",
+    "fallback": false,
+    "evidence": "a 前景色统计：#1890ff × 225/744 个锚点；主证 corpus/36kr-com/home/nodes.json (93/225) + corpus/36kr-com/information-technology/nodes.json (54/225)"
+   }
+  },
+  "_evidence": {
+   "accent": {
+    "value": "#0b62d0",
+    "fallback": true,
+    "evidence": "回退 default：无任何非黑非白锚点色（0 个锚点全为中性色/无样式）；语料 corpus/_evidence/*/nodes.json"
+   }
+  },
+  "airbnb-com": {
+   "accent": {
+    "value": "#0b62d0",
+    "fallback": true,
+    "evidence": "回退 default：最接近的非中性色 #ff385c 仅 1 例（<3），不足为证；语料 corpus/airbnb-com/*/nodes.json"
+   }
+  },
+  "aliyun-com": {
+   "accent": {
+    "value": "#1677ff",
+    "fallback": false,
+    "evidence": "a 前景色统计：#1677ff × 7/276 个锚点；主证 corpus/aliyun-com/product-ecs/nodes.json (7/7)"
+   }
+  },
+  "aliyun-help": {
+   "accent": {
+    "value": "#1366ec",
+    "fallback": false,
+    "evidence": "a 前景色统计：#1366ec × 1648/1721 个锚点；主证 corpus/aliyun-help/ecs-instance-families/nodes.json (1648/1648)"
+   }
+  },
+  "amcharts": {
+   "accent": {
+    "value": "#ff6b35",
+    "fallback": false,
+    "evidence": "a 前景色统计：#ff6b35 × 291/631 个锚点；主证 corpus/amcharts/demos/nodes.json (291/291)"
+   }
+  },
+  "ant-design": {
+   "accent": {
+    "value": "#1677ff",
+    "fallback": false,
+    "evidence": "a 前景色统计：#1677ff × 1012/2427 个锚点；主证 corpus/ant-design/components-table/nodes.json (414/1012) + corpus/ant-design/components-date-picker/nodes.json (174/1012)"
+   }
+  },
+  "antv": {
+   "accent": {
+    "value": "#5312d6",
+    "fallback": false,
+    "evidence": "a 前景色统计：#5312d6 × 14/59 个锚点；主证 corpus/antv/home/nodes.json (14/14)"
+   }
+  },
+  "apexcharts": {
+   "accent": {
+    "value": "#008ffb",
+    "fallback": false,
+    "evidence": "a 前景色统计：#008ffb × 77/394 个锚点；主证 corpus/apexcharts/chart-demos/nodes.json (63/77) + corpus/apexcharts/home/nodes.json (14/77)"
+   }
+  },
+  "apple-com": {
+   "accent": {
+    "value": "#0066cc",
+    "fallback": false,
+    "evidence": "a 前景色统计：#0066cc × 75/622 个锚点；主证 corpus/apple-com/macbook-air/nodes.json (27/75) + corpus/apple-com/home/nodes.json (21/75)"
+   }
+  },
+  "apple-com-cn": {
+   "accent": {
+    "value": "#0066cc",
+    "fallback": false,
+    "evidence": "a 前景色统计：#0066cc × 23/153 个锚点；主证 corpus/apple-com-cn/iphone-17/nodes.json (23/23)"
+   }
+  },
+  "arco-design": {
+   "accent": {
+    "value": "#4e5969",
+    "fallback": false,
+    "evidence": "a 前景色统计：#4e5969 × 160/554 个锚点；主证 corpus/arco-design/components-form/nodes.json (42/160) + corpus/arco-design/components-table/nodes.json (41/160)"
+   }
+  },
+  "aws-amazon": {
+   "accent": {
+    "value": "#0972d3",
+    "fallback": false,
+    "evidence": "a 前景色统计：#0972d3 × 43/94 个锚点；主证 corpus/aws-amazon/ec2-on-demand/nodes.json (43/43)"
+   }
+  },
+  "bilibili-com": {
+   "accent": {
+    "value": "#00699d",
+    "fallback": false,
+    "evidence": "a 前景色统计：#00699d × 8/250 个锚点；主证 corpus/bilibili-com/video-bv1gj411x7h7/nodes.json (8/8)"
+   }
+  },
+  "chartjs": {
+   "accent": {
+    "value": "#3080d0",
+    "fallback": false,
+    "evidence": "a 前景色统计：#3080d0 × 41/50 个锚点；主证 corpus/chartjs/docs-latest/nodes.json (34/41) + corpus/chartjs/samples/nodes.json (7/41)"
+   }
+  },
+  "cloud-tencent": {
+   "accent": {
+    "value": "#495770",
+    "fallback": false,
+    "evidence": "a 前景色统计：#495770 × 141/546 个锚点；主证 corpus/cloud-tencent/home/nodes.json (47/141) + corpus/cloud-tencent/search-db/nodes.json (47/141)"
+   }
+  },
+  "cn-bing": {
+   "accent": {
+    "value": "#0b62d0",
+    "fallback": true,
+    "evidence": "回退 default：无任何非黑非白锚点色（9 个锚点全为中性色/无样式）；语料 corpus/cn-bing/*/nodes.json"
+   }
+  },
+  "cnblogs": {
+   "accent": {
+    "value": "#0066cc",
+    "fallback": false,
+    "evidence": "a 前景色统计：#0066cc × 25/292 个锚点；主证 corpus/cnblogs/blog-cmt/nodes.json (14/25) + corpus/cnblogs/blog-duwenlong/nodes.json (11/25)"
+   }
+  },
+  "d3js": {
+   "accent": {
+    "value": "#0b62d0",
+    "fallback": true,
+    "evidence": "回退 default：最接近的非中性色 #e04600 仅 1 例（<3），不足为证；语料 corpus/d3js/*/nodes.json"
+   }
+  },
+  "douban-movie": {
+   "accent": {
+    "value": "#3377aa",
+    "fallback": false,
+    "evidence": "a 前景色统计：#3377aa × 120/255 个锚点；主证 corpus/douban-movie/home/nodes.json (120/120)"
+   }
+  },
+  "douban-people": {
+   "accent": {
+    "value": "#3377aa",
+    "fallback": false,
+    "evidence": "a 前景色统计：#3377aa × 170/243 个锚点；主证 corpus/douban-people/group-explore/nodes.json (92/170) + corpus/douban-people/people-ahbei/nodes.json (78/170)"
+   }
+  },
+  "echarts": {
+   "accent": {
+    "value": "#337ab7",
+    "fallback": false,
+    "evidence": "a 前景色统计：#337ab7 × 737/878 个锚点；主证 corpus/echarts/examples/nodes.json (365/737) + corpus/echarts/examples-zh/nodes.json (365/737)"
+   }
+  },
+  "element-plus": {
+   "accent": {
+    "value": "#409eff",
+    "fallback": false,
+    "evidence": "a 前景色统计：#409eff × 619/1553 个锚点；主证 corpus/element-plus/table/nodes.json (108/619) + corpus/element-plus/select/nodes.json (107/619)"
+   }
+  },
+  "g2-antv": {
+   "accent": {
+    "value": "#697b8c",
+    "fallback": false,
+    "evidence": "a 前景色统计：#697b8c × 13/61 个锚点；主证 corpus/g2-antv/home/nodes.json (7/13) + corpus/g2-antv/examples-gallery/nodes.json (6/13)"
+   }
+  },
+  "getbootstrap": {
+   "accent": {
+    "value": "#0d6efd",
+    "fallback": false,
+    "evidence": "a 前景色统计：#0d6efd × 50/380 个锚点；主证 corpus/getbootstrap/docs-introduction/nodes.json (26/50) + corpus/getbootstrap/example-dashboard/nodes.json (11/50)"
+   }
+  },
+  "gitee": {
+   "accent": {
+    "value": "#005980",
+    "fallback": false,
+    "evidence": "a 前景色统计：#005980 × 61/296 个锚点；主证 corpus/gitee/oss-profile/nodes.json (33/61) + corpus/gitee/mirrors-org/nodes.json (22/61)"
+   }
+  },
+  "github-com": {
+   "accent": {
+    "value": "#0b62d0",
+    "fallback": true,
+    "evidence": "回退 default：最接近的非中性色 #0969da 仅 2 例（<3），不足为证；语料 corpus/github-com/*/nodes.json"
+   }
+  },
+  "gov-uk": {
+   "accent": {
+    "value": "#1a65a6",
+    "fallback": false,
+    "evidence": "a 前景色统计：#1a65a6 × 98/110 个锚点；主证 corpus/gov-uk/ni-rates-letters/nodes.json (55/98) + corpus/gov-uk/register-birth-abroad/nodes.json (43/98)"
+   }
+  },
+  "grafana-play": {
+   "accent": {
+    "value": "#ccccdc",
+    "fallback": false,
+    "evidence": "a 前景色统计：#ccccdc × 19/20 个锚点；主证 corpus/grafana-play/play-home/nodes.json (19/19)"
+   }
+  },
+  "huaban-com": {
+   "accent": {
+    "value": "#0b62d0",
+    "fallback": true,
+    "evidence": "回退 default：无任何非黑非白锚点色（73 个锚点全为中性色/无样式）；语料 corpus/huaban-com/*/nodes.json"
+   }
+  },
+  "huawei-cn": {
+   "accent": {
+    "value": "#c7000b",
+    "fallback": false,
+    "evidence": "a 前景色统计：#c7000b × 12/353 个锚点；主证 corpus/huawei-cn/home/nodes.json (8/12) + corpus/huawei-cn/search-laptop/nodes.json (2/12)"
+   }
+  },
+  "juejin-cn": {
+   "accent": {
+    "value": "#252933",
+    "fallback": false,
+    "evidence": "a 前景色统计：#252933 × 88/508 个锚点；主证 corpus/juejin-cn/post-7686401413472862214/nodes.json (26/88) + corpus/juejin-cn/post-7686408837753995314/nodes.json (22/88)"
+   }
+  },
+  "learn-microsoft": {
+   "accent": {
+    "value": "#0065b3",
+    "fallback": false,
+    "evidence": "a 前景色统计：#0065b3 × 151/227 个锚点；主证 corpus/learn-microsoft/vm-sizes/nodes.json (151/151)"
+   }
+  },
+  "linear-app": {
+   "accent": {
+    "value": "#0b62d0",
+    "fallback": true,
+    "evidence": "回退 default：无任何非黑非白锚点色（61 个锚点全为中性色/无样式）；语料 corpus/linear-app/*/nodes.json"
+   }
+  },
+  "mdn": {
+   "accent": {
+    "value": "#044c9f",
+    "fallback": false,
+    "evidence": "a 前景色统计：#044c9f × 151/1746 个锚点；主证 corpus/mdn/docs-css/nodes.json (81/151) + corpus/mdn/docs-html/nodes.json (70/151)"
+   }
+  },
+  "mi-com": {
+   "accent": {
+    "value": "#ff6700",
+    "fallback": false,
+    "evidence": "a 前景色统计：#ff6700 × 16/736 个锚点；主证 corpus/mi-com/product-detail-mi15/nodes.json (6/16) + corpus/mi-com/search-earbuds/nodes.json (3/16)"
+   }
+  },
+  "oppo-cn": {
+   "accent": {
+    "value": "#0b62d0",
+    "fallback": true,
+    "evidence": "回退 default：无任何非黑非白锚点色（72 个锚点全为中性色/无样式）；语料 corpus/oppo-cn/*/nodes.json"
+   }
+  },
+  "passport-baidu": {
+   "accent": {
+    "value": "#0000cc",
+    "fallback": false,
+    "evidence": "a 前景色统计：#0000cc × 4/6 个锚点；主证 corpus/passport-baidu/login/nodes.json (4/4)"
+   }
+  },
+  "react-dev": {
+   "accent": {
+    "value": "#23272f",
+    "fallback": false,
+    "evidence": "a 前景色统计：#23272f × 60/133 个锚点；主证 corpus/react-dev/reference-react/nodes.json (36/60) + corpus/react-dev/learn/nodes.json (24/60)"
+   }
+  },
+  "semi-design": {
+   "accent": {
+    "value": "#0064fa",
+    "fallback": false,
+    "evidence": "a 前景色统计：#0064fa × 279/296 个锚点；主证 corpus/semi-design/table/nodes.json (139/279) + corpus/semi-design/getting-started/nodes.json (130/279)"
+   }
+  },
+  "sspai-com": {
+   "accent": {
+    "value": "#0097ff",
+    "fallback": false,
+    "evidence": "a 前景色统计：#0097ff × 73/363 个锚点；主证 corpus/sspai-com/post-114716/nodes.json (38/73) + corpus/sspai-com/post-114699/nodes.json (24/73)"
+   }
+  },
+  "stripe-com": {
+   "accent": {
+    "value": "#533afd",
+    "fallback": false,
+    "evidence": "a 前景色统计：#533afd × 77/252 个锚点；主证 corpus/stripe-com/pricing/nodes.json (77/77)"
+   }
+  },
+  "stripe-dashboard": {
+   "accent": {
+    "value": "#273951",
+    "fallback": false,
+    "evidence": "a 前景色统计：#273951 × 7/12 个锚点；主证 corpus/stripe-dashboard/login/nodes.json (7/7)"
+   }
+  },
+  "stripe-docs": {
+   "accent": {
+    "value": "#5469d4",
+    "fallback": false,
+    "evidence": "a 前景色统计：#5469d4 × 41/98 个锚点；主证 corpus/stripe-docs/payments/nodes.json (41/41)"
+   }
+  },
+  "tailwindcss": {
+   "accent": {
+    "value": "#0b62d0",
+    "fallback": true,
+    "evidence": "回退 default：无任何非黑非白锚点色（224 个锚点全为中性色/无样式）；语料 corpus/tailwindcss/*/nodes.json"
+   }
+  },
+  "taobao-com": {
+   "accent": {
+    "value": "#cc6600",
+    "fallback": false,
+    "evidence": "a 前景色统计：#cc6600 × 16/183 个锚点；主证 corpus/taobao-com/home/nodes.json (16/16)"
+   }
+  },
+  "tdesign": {
+   "accent": {
+    "value": "#0052d9",
+    "fallback": false,
+    "evidence": "a 前景色统计：#0052d9 × 5/69 个锚点；主证 corpus/tdesign/vue-table/nodes.json (4/5) + corpus/tdesign/vue-form/nodes.json (1/5)"
+   }
+  },
+  "xiaomi-account": {
+   "accent": {
+    "value": "#0b62d0",
+    "fallback": true,
+    "evidence": "回退 default：最接近的非中性色 #ff5c00 仅 2 例（<3），不足为证；语料 corpus/xiaomi-account/*/nodes.json"
+   }
+  }
+ }
+}

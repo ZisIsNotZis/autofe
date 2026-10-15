@@ -1,0 +1,2285 @@
+{
+  "refs": {
+    "baseline": "refs/autofe-private/62-all-sites-baseline",
+    "baselineCommit": "403cd5be096db89b428e130ad57cca730b425fdc",
+    "head": "403cd5be096db89b428e130ad57cca730b425fdc",
+    "privateRef": "refs/autofe-private/62-all-sites-engine-7f8287cf4f3a",
+    "commit": "7f8287cf4f3a2be75db7b291d9b5c2fbf0248410",
+    "contentCandidate": "4c82bb77ae162ca4df9b843da74da11972934a2b"
+  },
+  "patch": {
+    "path": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/engine-final.patch",
+    "sha256": "46ed53f4bbabc2a632abccd363ea65dd93483d16b1478e33619c374a9a2418c4",
+    "relativeTo": "refs/autofe-private/62-all-sites-baseline"
+  },
+  "files": [
+    "docs/m1/layout-axes.md",
+    "m1/axis.mjs",
+    "m1/eval/affordance-selftest.mjs",
+    "m1/eval/candidate-seam-selftest.mjs",
+    "m1/eval/foundation-selftest.mjs",
+    "m1/eval/layout-selftest.mjs",
+    "m1/eval/metrics-selftest.mjs",
+    "m1/eval/metrics.mjs",
+    "m1/eval/page-frame-selftest.mjs",
+    "m1/eval/pipeline.mjs",
+    "m1/render-md.mjs",
+    "m1/render-text.mjs",
+    "m1/render.mjs"
+  ],
+  "hashes": {
+    "docs/m1/layout-axes.md": "5ecdc9fe7f789a84844f01c0a2fb9c4d6e2c4ac076118ca77e6a66e0bdd240e0",
+    "m1/axis.mjs": "d290774fe5a5f35d23a49544fce86359eb6074c9c036f27ff51e9e3650b4be79",
+    "m1/eval/affordance-selftest.mjs": "765ebbd41dfe3ec0669c2e1b338c90e38ed84c41848a35f9962fc6135d321fd3",
+    "m1/eval/candidate-seam-selftest.mjs": "e89909f1b58a0113794f7433a1ef4cb73b5074bee0c9da3d968f0e897beffdd6",
+    "m1/eval/foundation-selftest.mjs": "06ad722e0513c9c9c0f0b93121d60006963c33ef4afb3b0ce82acfac48ce5179",
+    "m1/eval/layout-selftest.mjs": "518bdd5525c3b914f5976cfb14fedb2c47323f613474bc75097ace70b5724e5b",
+    "m1/eval/metrics-selftest.mjs": "43a776da68a4e3df5ee01763cd43ead6b8cb3a0857a0bb1b07591082c06866d7",
+    "m1/eval/metrics.mjs": "e447a9d0e7489f03182eb72e1ed420cd856d2a8d76697c0d5e906d2a349c6029",
+    "m1/eval/page-frame-selftest.mjs": "3e7f3823be499193970de7c823f36da9d6b2e6c371d1455151a608815f8c3e4f",
+    "m1/eval/pipeline.mjs": "99d0238c94b2f55a74a7b3573e24c4deb6e2f5cba31c6a87dd1647cc97836ce0",
+    "m1/render-md.mjs": "52936dcb9dcb4c451cd5de598ac6c06f54717c1f6fbf6c547006eb5a00e7d74d",
+    "m1/render-text.mjs": "087ba7a5baa9ddb55be0a578aad2bcfcf13795d4ddd0e540a26babf95c051417",
+    "m1/render.mjs": "b1dcf72aca36855f3db8dad8adcfb9269e77bb90810c40eccdafe414b058bd54"
+  },
+  "dispositions": [
+    {
+      "lane": "36kr-news-search",
+      "id": "E1",
+      "pages": [
+        "36kr-com/information-technology",
+        "36kr-com/search-ai",
+        "36kr-com/search-viz"
+      ],
+      "finding": {
+        "id": "E1",
+        "severity": "high",
+        "owner": "engine",
+        "pages": [
+          "36kr-com/information-technology",
+          "36kr-com/search-ai",
+          "36kr-com/search-viz"
+        ],
+        "criterion": "Faithful action targets; closed shared-axis decisions",
+        "location": "m1/render.mjs:284-301 renderChoice; .g-channels fieldset / .g-search-type fieldset; channels._items[*]._action.to / search-type._items[0,5,6]._action.to",
+        "widths": [
+          2560,
+          1920,
+          1440,
+          390
+        ],
+        "finding": "Choice rendering consumes action-bearing options but produces only labels/radio inputs, not their declared destination actions. Technology has 17 options, 15 action-bearing; all 15 actions disappear at the option, and 14 destinations are absent globally (latest survives elsewhere). Each search loses all 3 declared type targets. Radio selection is not navigation to those captured destinations.",
+        "renderEvidence": [
+          "detail-probe.json: choices[].links=[] at 2560/390",
+          "source-evidence.json: choiceActionsNotRenderedAtOption and modelTargetsMissingFromRender",
+          "information-technology-1440-sheet.png",
+          "search-ai-1440-sheet.png",
+          "search-viz-1440-sheet.png"
+        ],
+        "sourceEvidence": "Every model target exists in source DOM (source-evidence.json). Source channel anchors include 科技 -> /information/technology/; search 文章/作者/项目 retain corresponding links.",
+        "geometryEvidence": "geometry.json anchors count: technology 34 vs 49 model target actions; both searches 20 vs 23. No href/option action rendered at any width.",
+        "improvementCriterion": "Every action-bearing option exposes its captured target at that option, without inventing destinations for targetless options; detect this by option-local action assertions, not global href-set membership alone. All three targets must share the approved axis/action decision."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "a8c6e1cb653af3fe253b02e3faf487b5451a30d4aec983ea8bcbbd7c8d8b1de9",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E1",
+        "pages": [
+          "gov-uk/ni-rates-letters",
+          "gov-uk/register-birth-abroad",
+          "learn-microsoft/vm-sizes",
+          "stripe-docs/payments"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "m1/render.mjs:715-720, 873-876, 925; m1/axis.mjs:805-816; .depth-0>.title and mixed .w-narrow/.w-wide sections",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "36kr-news-search",
+      "id": "E2",
+      "pages": [
+        "36kr-com/home",
+        "36kr-com/information-technology",
+        "36kr-com/search-ai",
+        "36kr-com/search-viz"
+      ],
+      "finding": {
+        "id": "E2",
+        "severity": "high",
+        "owner": "engine",
+        "pages": [
+          "36kr-com/home",
+          "36kr-com/information-technology",
+          "36kr-com/search-ai",
+          "36kr-com/search-viz"
+        ],
+        "criterion": "Coherent page-level alignment across mixed forms; compact content-edge identity",
+        "location": "m1/render.mjs:718-721 root title rules; m1/axis.mjs widthTier; .depth-0>.title, .depth-1.w-narrow / .w-wide",
+        "widths": [
+          2560,
+          1920,
+          1440
+        ],
+        "finding": "Each desktop page has three independent centered left edges: title, utilities/default sections, card/feed sections. Home additionally alternates 880/1232px frames down its whole height. This is an introduced mixed-form alignment defect, not a complaint about centered outer whitespace.",
+        "renderEvidence": [
+          "home-2560-overview.png",
+          "information-technology-2560-overview.png",
+          "search-ai-2560-overview.png",
+          "search-viz-2560-overview.png",
+          "all four *-1440-sheet.png"
+        ],
+        "sourceEvidence": "All source sheets show a stable editorial axis from query/channels/feature through results/feed; the source outer whitespace is legitimate and need not be removed.",
+        "geometryEvidence": "At 2560 title x=960,w=640; narrow x=840,w=880; wide x=664,w=1232. At 1920 x=640/520/344. At 1440 x=400/280/104. At 390 all inspected frames x=16,w=358.",
+        "improvementCriterion": "Root identity/title, query/channels and primary result/feed frame have an intentional shared content edge, with no unexplained 120/176px hops at transitions; retain appropriate outer whitespace and brand variation, no blanket centering/site-specific CSS."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "a8c6e1cb653af3fe253b02e3faf487b5451a30d4aec983ea8bcbbd7c8d8b1de9",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E2",
+        "pages": [
+          "gov-uk/register-birth-abroad"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "$.help._action; m1/axis.mjs:77, 400-401, 741-743, 757; .g-help .fact",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "36kr-news-search",
+      "id": "E3",
+      "pages": [
+        "36kr-com/home"
+      ],
+      "finding": {
+        "id": "E3",
+        "severity": "high",
+        "owner": "engine",
+        "pages": [
+          "36kr-com/home"
+        ],
+        "criterion": "Cohesive image/title/action grouping; readable density; no enlarged images",
+        "location": "m1/render.mjs:211-231 renderDeflist and :813 .defrow align-items:baseline; .g-featured .defrow; .g-hot .defrow:first-child",
+        "widths": [
+          2560,
+          1920,
+          1440,
+          390
+        ],
+        "finding": "Home image-bearing feature items are drawn as baseline-aligned definition rows. A 290px picture sits above/right of its headline at the bottom; headline widths and image left edges vary per item. The five features occupy 1560.7px before latest articles at y=1682.3. Featured images have no enclosing action anchor although the label target is preserved. The first hot entry repeats the detached title/image shape.",
+        "renderEvidence": [
+          "home-featured-readable.png",
+          "home-1440-sheet.png",
+          "home-390-samples.png",
+          "detail-probe.json: defrows"
+        ],
+        "sourceEvidence": "home-source-featured-topics-readable.png: compact lead story and four companion pictures have visibly attached overlay titles; source feature image/title share the article target. No exact source carousel recreation is prescribed.",
+        "geometryEvidence": "2560 first row label x=840,y=347.2,w=236.8 while image x=1090.8,y=103,w=629.2,h=262.2; second label y=685.4, image y=413.4,h=290. At 390 first label y=162.2 vs image y=91; next label y=355.2 vs image y=253.9. Image action ancestor absent.",
+        "improvementCriterion": "Each feature/illustrated ranked item is a clear image-headline-action unit; reading starts near its media, not at the media baseline after a large blank zone. Preserve all five exact targets/facts, make captured image action attribution inspectable, and never upscale assets."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "a8c6e1cb653af3fe253b02e3faf487b5451a30d4aec983ea8bcbbd7c8d8b1de9",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E3",
+        "pages": [
+          "stripe-docs/payments"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "$._lines[6]._items[2]._name; m1/render.mjs:499-517; main > article > div > section:nth-of-type(7) > article > div > section:nth-of-type(3) > article",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "36kr-news-search",
+      "id": "E4",
+      "pages": [
+        "36kr-com/home",
+        "36kr-com/information-technology",
+        "36kr-com/search-ai",
+        "36kr-com/search-viz"
+      ],
+      "finding": {
+        "id": "E4",
+        "severity": "high",
+        "owner": "engine",
+        "pages": [
+          "36kr-com/home",
+          "36kr-com/information-technology",
+          "36kr-com/search-ai",
+          "36kr-com/search-viz"
+        ],
+        "criterion": "Paired foreground/surface contrast; readable density",
+        "location": "m1/brand-tokens.json 36kr accent; .self-link title text on white; .deflist.ranked .rank",
+        "widths": [
+          2560,
+          1920,
+          1440,
+          390
+        ],
+        "finding": "#1890ff article headlines on white are visibly light at ordinary 17.92px/650 size; measured contrast is 3.245:1. Rank numerals #8493a3 on white are 3.142:1 at ordinary body size. General ink/muted text and solid CTA pairs are satisfactory in exercised samples.",
+        "renderEvidence": [
+          "all four *-1440-sheet.png",
+          "all four *-390-samples.png",
+          "detail-probe.json: linkStyles",
+          "contrast.json"
+        ],
+        "sourceEvidence": "Source uses dark body-sized editorial article names (with selectively blue query highlights), not wholesale bright-blue small result titles. Preservation of a blue brand accent does not require using it unchanged for small text on white.",
+        "geometryEvidence": "Result headings 17.92px, weight 650; #1890ff/white 3.245, #17212b/white 16.293, #536171/white 6.333, white/#17212b 16.293.",
+        "improvementCriterion": "Use a coherent paired foreground/surface treatment that retains brand distinction and reaches >=4.5:1 for normal-sized informative/link/rank text; verify computed colors plus rendered experience, not accent token alone."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "a8c6e1cb653af3fe253b02e3faf487b5451a30d4aec983ea8bcbbd7c8d8b1de9",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E4",
+        "pages": [
+          "gov-uk/ni-rates-letters",
+          "learn-microsoft/vm-sizes"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "table.data th and td; m1/render.mjs:849-856",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "36kr-news-search",
+      "id": "E5",
+      "pages": [
+        "36kr-com/home",
+        "36kr-com/information-technology",
+        "36kr-com/search-ai",
+        "36kr-com/search-viz"
+      ],
+      "finding": {
+        "id": "E5",
+        "severity": "medium",
+        "owner": "engine",
+        "pages": [
+          "36kr-com/home",
+          "36kr-com/information-technology",
+          "36kr-com/search-ai",
+          "36kr-com/search-viz"
+        ],
+        "criterion": "Readable editorial density; coherent image/title grouping",
+        "location": ".g-feed .cards.cols-auto; .g-results .cards.cols-auto; shared auto-grid form decision",
+        "widths": [
+          2560,
+          1920,
+          1440
+        ],
+        "finding": "Image-bearing and text-only records share four-column rows, so later image-free items leave conspicuous empty scan lanes beneath short cards. Source-truth lazy image absence must not be fixed by inventing/reloading pictures; the shared form should accommodate the unequal record heights.",
+        "renderEvidence": [
+          "all four *-1440-sheet.png",
+          "detail-probe.json: cards"
+        ],
+        "sourceEvidence": "Source results/feed remain cohesive image+text rows; later image placeholders are present in source capture and their missing image URL facts are source-true. This is layout density, not a request to add images.",
+        "geometryEvidence": "Technology row starting item 8 at y=1190.4 has heights 405.8/485.7/193.2/167.6 (318.1px difference); search-viz row item 8 has 405.8/167.6/138.9/193.2 (266.9px difference).",
+        "improvementCriterion": "Unequal editorial records remain readable in order without hundreds of pixels of dead row space; preserve source image absence and all text/actions and use shared form/axis decisions, not site-specific presentation keys."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "a8c6e1cb653af3fe253b02e3faf487b5451a30d4aec983ea8bcbbd7c8d8b1de9",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-apple-linear-products",
+        "id": "E5",
+        "pages": [
+          "apple-com/iphone-16"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": ".g-inbox .deflist; inbox._items",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "sspai-editorial",
+      "id": "E1",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/matrix",
+        "sspai-com/post-102392",
+        "sspai-com/post-114699",
+        "sspai-com/u-jtc092al"
+      ],
+      "finding": {
+        "id": "E1",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "sspai-com/home",
+          "sspai-com/matrix",
+          "sspai-com/post-102392",
+          "sspai-com/post-114699",
+          "sspai-com/u-jtc092al"
+        ],
+        "criterion": "Coherent whole-page/shared-axis alignment and image/title/actions grouping",
+        "location": "main > article > h1.title; .depth-1.w-wide/.w-narrow; .meta; figure.strip",
+        "renderEvidence": "Root title takes a separate narrower axis on every page. Home/Matrix/news alternate wide collections with inset utility/readable sections. Article102392 separates title, cover, byline and body; user title sits120px right of profile/content edge.",
+        "sourceEvidence": "Source portal deliberately has multiple columns; those are legitimate. Source article102392 title, cover and body all share x380/w680. The defect is introduced uncoordinated sibling-frame shifts, not centered whitespace or full-bleed itself.",
+        "geometryEvidence": "At2560 root h1 x960/w640 on all five. Home banner/editors/feed x664/w1232 vs promo/campaigns/tabs/friends depth-1 x840/w880. Matrix feed x664/w1232 vs filters/yipai/sidebar-derived sections x840/w880. News title x960, author x664, meta x840, news x664. Article102392 img x593/w1374, title x960/w640, byline x664/w1232, body x840/w880. User title x960 vs profile x840/w880. Same desktop shifts at1920/1440;390 collapses main sections to x16/w358.",
+        "improvementCriterion": "Shared decisions must establish an intentional page frame with heading/byline/controls on the corresponding content edge, and intentional consistent reading/cover grouping for articles. Preserve justified source columns and brand variation; do not fix by blanket centering or site-name CSS.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/focus.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-2560-main-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-2560-main-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-2560.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-2560-main-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-2560-main-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-axis-utilities.png"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b8cc3947368f52a2c684f4b53a51c77c10629beda87aaafba555f775ecdef2f1",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E1",
+        "pages": [
+          "gov-uk/ni-rates-letters",
+          "gov-uk/register-birth-abroad",
+          "learn-microsoft/vm-sizes",
+          "stripe-docs/payments"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "m1/render.mjs:715-720, 873-876, 925; m1/axis.mjs:805-816; .depth-0>.title and mixed .w-narrow/.w-wide sections",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "sspai-editorial",
+      "id": "E2",
+      "pages": [
+        "sspai-com/post-114699"
+      ],
+      "finding": {
+        "id": "E2",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "sspai-com/post-114699"
+        ],
+        "criterion": "Readable density; shared semantic axes/closed grammar",
+        "location": "news._items; .g-news .cards > .item; briefs._items",
+        "renderEvidence": "Seven article-body news sections become four-column cards with long paragraphs wrapping into narrow strips. They read as a dashboard rather than sequential editorial sections. Source paragraphs are also missing (separate C2).",
+        "sourceEvidence": "Source news h2/body x380/w680, stacked in article order; readable first-two-section and Panasonic/Bose crops show this is long-form editorial prose, not compact comparable values.",
+        "geometryEvidence": "2560/1920/1440 news title/prose lane inside each card is271.5px, grid1232px. First-row card heights roughly390–454px; section883px.390 stacks at332px internal width (body visual middle not fully inspected).",
+        "improvementCriterion": "Use existing semantic comparability/compactness rules to keep long editorial sections in reading order at a coherent reading width, not cramped four-way comparison; preserve all titles/actions/images. No model presentation escape hatch or site-specific rule.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-source-flow.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-source-product-images.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/focus.json"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b8cc3947368f52a2c684f4b53a51c77c10629beda87aaafba555f775ecdef2f1",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E2",
+        "pages": [
+          "gov-uk/register-birth-abroad"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "$.help._action; m1/axis.mjs:77, 400-401, 741-743, 757; .g-help .fact",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "sspai-editorial",
+      "id": "E3",
+      "pages": [
+        "sspai-com/u-jtc092al"
+      ],
+      "finding": {
+        "id": "E3",
+        "owner": "engine",
+        "severity": "medium",
+        "pages": [
+          "sspai-com/u-jtc092al"
+        ],
+        "criterion": "Readable density and compact utilities",
+        "location": "_lines[2]._lines; .depth-1 statistics section",
+        "renderEvidence": "Five tiny statistical facts consume564px of vertical page height, pushing activity down to y979 on desktop. Large independent section gaps make a short profile panel look unfinished.",
+        "sourceEvidence": "Original profile statistics occupy a compact120px-high panel (nodes bbox x406/y306/w628/h120); source ordered heterogeneous facts are not authority to relabel _lines as a comparable grid.",
+        "geometryEvidence": "Stats depth-1 h564 desktop and390; title/body insets are E1. Source panel120px. Value/title pairs are commonly separated into ~94px blocks in baseline.",
+        "improvementCriterion": "Keep ordered non-comparable facts sequential under the existing grammar, but give short title/value utility facts compact spacing and coherent grouping; avoid promoting them to large content chapters.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-source-profile.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-2560-main-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/focus.json"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b8cc3947368f52a2c684f4b53a51c77c10629beda87aaafba555f775ecdef2f1",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E3",
+        "pages": [
+          "stripe-docs/payments"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "$._lines[6]._items[2]._name; m1/render.mjs:499-517; main > article > div > section:nth-of-type(7) > article > div > section:nth-of-type(3) > article",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "sspai-editorial",
+      "id": "E4",
+      "pages": [
+        "sspai-com/home"
+      ],
+      "finding": {
+        "id": "E4",
+        "owner": "engine",
+        "severity": "medium",
+        "pages": [
+          "sspai-com/home"
+        ],
+        "criterion": "Compact utility density and image/title/action cohesion",
+        "location": "banner._items; editors._items; .g-banner/.g-editors",
+        "renderEvidence": "Two five-item utility/image collections each use four cards plus an isolated second-row card. These two groups alone take1495px before narrower utilities; content feed begins y2033 on desktop. The extra trailing-row whitespace materially overgrows the portal utilities, beyond merely legitimate outer centered whitespace.",
+        "sourceEvidence": "Source presents the banner as a horizontal carousel (all five source img boxes continue x481,959,1437,1915,2393) with one active478px square and adjacent editorial/promotional lanes. It does not display two full stacked 4+1 utility grids above the feed.",
+        "geometryEvidence": "At all desktop probes banner827.8px and editors667.5px tall; feed y2032.6.390 has full stacked collections, banner2337px and editors1739px; middle mobile rendering is not visually accepted.",
+        "improvementCriterion": "Reduce overgrown short utility/image grouping height while keeping every source item/action recoverable and image at or below natural dimensions. Balance compactness using general shared decisions; do not arbitrarily enlarge pictures or force a universal carousel/centering design.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-2560-main-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-1440-source-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-axis-utilities.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b8cc3947368f52a2c684f4b53a51c77c10629beda87aaafba555f775ecdef2f1",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E4",
+        "pages": [
+          "gov-uk/ni-rates-letters",
+          "learn-microsoft/vm-sizes"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "table.data th and td; m1/render.mjs:849-856",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "sspai-editorial",
+      "id": "E5",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/matrix",
+        "sspai-com/post-102392",
+        "sspai-com/post-114699"
+      ],
+      "finding": {
+        "id": "E5",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "sspai-com/home",
+          "sspai-com/matrix",
+          "sspai-com/post-102392",
+          "sspai-com/post-114699"
+        ],
+        "criterion": "Paired surface/foreground contrast",
+        "location": "a.self-link.nav and .linklist links on white",
+        "renderEvidence": "Small link/title text is bright pale blue on white. Computed normal/small-text contrast is3.056:1, below4.5:1 accessibility benchmark and visibly faint in actual cards.",
+        "sourceEvidence": "Source mostly uses dark editorial titles and distinct compact controls. Preserve brand variation; this finding is about the paired foreground/background, not imposing a universal hue.",
+        "geometryEvidence": "rgb(0,151,255) / rgb(255,255,255); card font17.92px weight700 (below18.67px large-bold threshold); missed-story links16px. Examples on home, Matrix, related102392 and past-issues114699. User dynamic23.2px bold is large text and is NOT included in this small-text failure.",
+        "improvementCriterion": "Normal/small rendered link text must be legible on its actual surface (at least4.5:1 where applying AA benchmark), with large-text/controls checked using their appropriate contrast thresholds; fix shared paired tokens without washing out surfaces.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/focus.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-2560-main-full.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-source-images.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-source-examples.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-2560-main-full.png"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b8cc3947368f52a2c684f4b53a51c77c10629beda87aaafba555f775ecdef2f1",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-apple-linear-products",
+        "id": "E5",
+        "pages": [
+          "apple-com/iphone-16"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": ".g-inbox .deflist; inbox._items",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "sspai-editorial",
+      "id": "E6",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/u-jtc092al"
+      ],
+      "finding": {
+        "id": "E6",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "sspai-com/home",
+          "sspai-com/u-jtc092al"
+        ],
+        "criterion": "Responsive readable density; no one/two-character columns",
+        "location": ".defrow .deflabel/.defval; friends._items and user _lines[3]._items",
+        "renderEvidence": "At390 long article labels squeeze the adjacent category/date values into narrow columns. User dates break even numeric tokens into four lines (01/20 -> 01/2 +0); home category values wrap into one/two-character rows. No document overflow still reports success.",
+        "sourceEvidence": "Source desktop rows have readable date/category tags; original390 source was not captured, so no claim of pixel parity on mobile. Defect is directly observed in actual baseline390 top/bottom crop.",
+        "geometryEvidence": "User 01/20 10:35: label305.58px/value38.42px/value97.25px high at390 vs83.17px/24.31px desktop. Home 深度好文 value41.95px high48.63px at390 vs60px/high24.31px desktop.",
+        "improvementCriterion": "At390 preserve whole date tokens and readable category words by allocating sufficient value width or stacking label/value. Keep every target/value and prevent page overflow; geometry must detect squeezed internal columns, not only document width.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/mobile-top-bottom-only.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/deflist-probe.json"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b8cc3947368f52a2c684f4b53a51c77c10629beda87aaafba555f775ecdef2f1",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-apple-linear-products",
+        "id": "E6",
+        "pages": [
+          "linear-app/home"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": ".g-customers .depth-1; customers._items[*]._brand",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "sspai-editorial",
+      "id": "E7",
+      "pages": [
+        "sspai-com/matrix"
+      ],
+      "finding": {
+        "id": "E7",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "sspai-com/matrix"
+        ],
+        "criterion": "Preserve all source/model actions and exact targets",
+        "location": "feed-view._items[0..2]._action; fieldset.expose-matrix-feed-view",
+        "renderEvidence": "Three correct model navigation actions are swallowed by exposure rendering. Output contains radio inputs with key values and labels only: no anchor href, handler or script. Choosing Hot/Random does not supply a navigation destination.",
+        "sourceEvidence": "Source anchors target /matrix, /matrix/hot, /matrix/random. Model has exact corresponding absolute URLs. Therefore no factual-model correction is needed to recover these known targets.",
+        "geometryEvidence": "Same baseline HTML used at four widths; .expose-matrix-feed-view is355px wide desktop and fits358px mobile. Geometry/validators pass despite lost navigation.",
+        "improvementCriterion": "Render all three declared navigation targets as accessible actionable destinations while preserving existing exposure/selection grammar and shared axis decisions. Verify model-to-HTML AND Markdown action fidelity, not only form geometry.",
+        "evidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-2560-main-full.png"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b8cc3947368f52a2c684f4b53a51c77c10629beda87aaafba555f775ecdef2f1",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-apple-linear-products",
+        "id": "E7",
+        "pages": [
+          "apple-com-cn/iphone-17"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": ".which-iphone comparison; _lines[11]._items[1].buy._action; m1/render.mjs:402-421",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "mi-commerce",
+      "id": "MI-E1",
+      "pages": [
+        "search-earbuds",
+        "search-phone",
+        "shop-category-list"
+      ],
+      "finding": {
+        "id": "MI-E1",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "search-earbuds",
+          "search-phone",
+          "shop-category-list"
+        ],
+        "criterion": "Coherent whole-page alignment across mixed forms",
+        "location": "main > .node.depth-0 > .title; .depth-1.w-narrow / .w-wide; category first phones section",
+        "render": "At 2560 H1 box x=960,w=640; search tools x=840,w=880; results x=664,w=1232. Category phones x=840,w=880, other nine categories x=664,w=1232. At 1920 these x values are 640/520/344; at 1440 400/280/104. Mobile all sections x=16. Title text is left-aligned inside its inset box, not centered inside a deliberately different composition.",
+        "source": "1440 originals keep category headings/tiles and search filters/product frame at common x=107; no corresponding first-category-only indentation. Centered desktop outer whitespace is legitimate; local form-driven edge jumps are not.",
+        "evidence": [
+          "geometry.json",
+          "search-earbuds-2560-sheet.png",
+          "search-phone-2560-sheet.png",
+          "shop-category-list-2560-sheet.png",
+          "shop-category-list-source-sheet.png"
+        ],
+        "fixCriterion": "At desktop widths, title, related search tools/results and peer category headings use one justified page-level frame/edge irrespective of local form. Preserve mobile x=16 and brand variation; no blanket text centering."
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-mi-commerce.md",
+      "originSha256": "2c6ffb61da765caedc04e305e69b877fa096805aa7b793f98e9357d172b31daa",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC."
+    },
+    {
+      "lane": "mi-commerce",
+      "id": "MI-E2",
+      "pages": [
+        "search-earbuds",
+        "search-phone"
+      ],
+      "finding": {
+        "id": "MI-E2",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "search-earbuds",
+          "search-phone"
+        ],
+        "criterion": "Readable density and compact utilities",
+        "location": "$.conditions._items (earbuds); $.filters.promo/installment/in-stock (phone); generated bool controls / stack blocks",
+        "render": "Earbuds three small checkboxes consume a 226.78px section with ~81.59px row pitch; first product grid begins y=623.63. Phone filter region is 418.16px tall and results begin y=595.75. Both retain unnecessarily separate boolean rows on 390.",
+        "source": "Original 1440 utility toolbar at y≈304 places sort, delivery and three independent checkboxes together; none needs a full section-sized vertical slot.",
+        "evidence": [
+          "geometry.json",
+          "runtime.json",
+          "search-earbuds-2560-sheet.png",
+          "search-earbuds-390-sheet.png",
+          "search-phone-2560-sheet.png",
+          "source-actions-footer-crops.png"
+        ],
+        "fixCriterion": "Independent short filters share a compact wrapping utility row, preserve labels/inputs, and avoid section-sized gaps. Recheck result-start position and readable wrapping at 390; do not compress product facts."
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-mi-commerce.md",
+      "originSha256": "2c6ffb61da765caedc04e305e69b877fa096805aa7b793f98e9357d172b31daa",
+      "status": "OPEN_MATERIAL_ACCEPTANCE",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "remaining": "Short boolean/filter groups require full density/utility verification; margin tightening alone is insufficient."
+    },
+    {
+      "lane": "mi-commerce",
+      "id": "MI-E3",
+      "pages": [
+        "search-earbuds",
+        "search-phone",
+        "shop-category-list"
+      ],
+      "finding": {
+        "id": "MI-E3",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "search-earbuds",
+          "search-phone",
+          "shop-category-list"
+        ],
+        "criterion": "Paired surface/foreground contrast",
+        "location": "a.self-link; .linklist li.go > a; --accent on white cards/surface",
+        "render": "Computed foreground rgb(255,103,0) (#ff6700) on rgb(255,255,255) gives 2.920:1. Product title links are 17.92px/650, category list links 16px, category linked H1 32px/750. Ratio is below even the 3:1 large-text benchmark, and below 4.5:1 normal text. Visually pale orange dominates several long category lists.",
+        "source": "Original uses orange as brand accent and small prices/selected labels, but predominantly neutral product/category names. Preserve orange branding; do not use the accent as every low-contrast text foreground.",
+        "evidence": [
+          "contrast.json",
+          "runtime.json",
+          "search-phone-2560-sheet.png",
+          "shop-category-list-390-sheet.png"
+        ],
+        "fixCriterion": "Use a readable foreground/surface pair for linked names and controls while retaining brand accent distinction and click affordance. Demonstrate measured contrast for actual rendered text sizes and surfaces."
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-mi-commerce.md",
+      "originSha256": "2c6ffb61da765caedc04e305e69b877fa096805aa7b793f98e9357d172b31daa",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC."
+    },
+    {
+      "lane": "mi-commerce",
+      "id": "MI-E4",
+      "pages": [
+        "home"
+      ],
+      "finding": {
+        "id": "MI-E4",
+        "owner": "engine",
+        "severity": "medium",
+        "pages": [
+          "home"
+        ],
+        "criterion": "Site identity/hierarchy without arbitrary enlarged prose",
+        "location": "$._primary=_summary; .hero.fact-hero .fact .val; m1/render.mjs:492-498 sentence heuristic",
+        "render": "Home H1 is 32px/750; full sentence summary is also 32px/700, 608px wide at desktop and two prominent lines on 390. It competes with the identity above the source image stories.",
+        "source": "The sentence is real source footer slogan at bottom (source-actions-footer-crops.png), not a source giant leading headline. Home banners/legitimate centered whitespace themselves are not defective.",
+        "evidence": [
+          "runtime.json",
+          "home-2560-sheet.png",
+          "home-390-sheet.png",
+          "source-actions-footer-crops.png"
+        ],
+        "fixCriterion": "Preserve the real sentence but give prose a clearly subordinate readable scale; keep a compact meaningful hierarchy without inventing a banner title or forcing a site-specific exception."
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-mi-commerce.md",
+      "originSha256": "2c6ffb61da765caedc04e305e69b877fa096805aa7b793f98e9357d172b31daa",
+      "status": "OPEN_MATERIAL_ACCEPTANCE",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "remaining": "Source footer slogan primary hierarchy requires rendered source-aware confirmation, not heuristic-only acceptance."
+    },
+    {
+      "lane": "mi-commerce",
+      "id": "MI-E5",
+      "pages": [
+        "search-earbuds",
+        "search-phone"
+      ],
+      "finding": {
+        "id": "MI-E5",
+        "owner": "engine",
+        "severity": "medium",
+        "pages": [
+          "search-earbuds",
+          "search-phone"
+        ],
+        "criterion": "Cohesive image/title/action grouping and preserved source affordance",
+        "location": "results/recommendation card figure images versus title self-links",
+        "render": "0/20 earbuds and 0/30 phone rendered images have a containing anchor. Corresponding title links remain correct, so the destination is not entirely lost, but the dominant product visual no longer activates the card destination.",
+        "source": "All 50 declared search images have exact source URL/data-src matches whose containing anchors equal the existing model action target. Main 200x200 source product photos are inside buy-page anchors (e.g. phone source image index174 in anchor172; earbuds image178 in anchor176).",
+        "evidence": [
+          "runtime.json",
+          "declared-image-provenance.json",
+          "provenance.json",
+          "search-phone-2560-sheet.png"
+        ],
+        "fixCriterion": "Associate each product visual and title with its existing captured destination, without new URLs, duplicate invented actions, image enlargement or disconnected controls; inspect keyboard/click affordance after repair."
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-mi-commerce.md",
+      "originSha256": "2c6ffb61da765caedc04e305e69b877fa096805aa7b793f98e9357d172b31daa",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "implementation": "Member visuals use existing node navigation target, keyboard focus outline; no invented image target. Frozen candidate multiplicity tests cover all1462 safe actions."
+    },
+    {
+      "lane": "mi-commerce",
+      "id": "MI-E6",
+      "pages": [
+        "shop-category-list"
+      ],
+      "finding": {
+        "id": "MI-E6",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "shop-category-list"
+        ],
+        "criterion": "Readable directory density and closed shared-axis decisions",
+        "location": "m1/render.mjs:renderList (private cols heuristic); m1/axis.mjs:nodePlan widthTier/items; category linklists",
+        "render": "TV, computing, wearables and audio short destination lists remain single-column; computing consumes 738.56px and audio 825.56px at desktop with most of the 1232px frame empty. Other same-role categories use many compact columns. RenderList privately chooses cols only if every label <=12 characters; one longer product name collapses a whole list. Axis width tier is evaluated separately and first phones is inset.",
+        "source": "Original has consistently grouped category grids; model members are lightweight name+captured-destination entries, not heterogeneous narratives. Existing owning rule says column decisions must be shared and evaluated before width tier.",
+        "evidence": [
+          "geometry.json",
+          "shop-category-list-2560-sheet.png",
+          "shop-category-list-1440-sheet.png",
+          "shop-category-list-source-sheet.png",
+          "m1/render.mjs:127-137",
+          "m1/axis.mjs:805-815"
+        ],
+        "fixCriterion": "Shared semantic axis plan owns directory column/wrapping decisions and its resulting frame. A slightly longer but ordinary product label must wrap readably within a consistent compact directory, not collapse the entire group; no renderer-private/site-specific presentation bypass."
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-mi-commerce.md",
+      "originSha256": "2c6ffb61da765caedc04e305e69b877fa096805aa7b793f98e9357d172b31daa",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "implementation": "Axis-owned destination-directory columns; header flex restoration preserves acceptedMi15 desktop height. Long ordinary label negative case tested."
+    },
+    {
+      "lane": "huawei-commerce",
+      "id": "H-E1",
+      "pages": [
+        "huawei-cn/home"
+      ],
+      "finding": {
+        "id": "H-E1",
+        "severity": "high",
+        "owner": "engine",
+        "pages": [
+          "huawei-cn/home"
+        ],
+        "criterion": "cohesive image/title/actions; whole-page containment; closed shared-axis decisions",
+        "location": "m1/render.mjs:369-380 renderStack; m1/axis.mjs:765; .g-featured .stack.cols-auto .banner>.strip",
+        "renderEvidence": "Four featured images render as overlapping viewport-wide strips. Titles stay in narrow columns, captions/actions cross unrelated pictures; watch panel clips other panels. Native crop reproduces visible occlusion, not merely whitespace.",
+        "sourceEvidence": "1440 source full.png shows four independently contained tiles (tall bank/watch; two short center tiles); no inter-tile overlap.",
+        "geometryEvidence": "At2560 four figures have width2560 and x=-467.25/-155.75/155.75/467.25; scrollWidth3027. At1920 scrollWidth2387,1440=1907. Images retain native909/805/804/699 widths, so this is leaked grid context/placement, NOT permission to enlarge. renderStack passes ctx unchanged despite cols=auto; card rendering passes grid:true.",
+        "improvementCriterion": "Shared grid-context decision must contain every tile image/title/caption/action inside its own region, with no overlap or horizontal document overflow at2560/1920/1440/390; preserve source tall/short variations and native-size caps.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/home-2560-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/home-1440-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/home-featured-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/home-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/capture-home_consumer-phones_search-laptop_search-phone.json"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce/audit-handoff.json",
+      "originSha256": "2bd84c9e3b75c22ff9354300a01cde0706446b9d90d7def148f95e702f3ec295",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC."
+    },
+    {
+      "lane": "huawei-commerce",
+      "id": "H-E2",
+      "pages": [
+        "huawei-cn/home",
+        "huawei-cn/consumer-phones",
+        "huawei-cn/search-laptop",
+        "huawei-cn/search-phone"
+      ],
+      "finding": {
+        "id": "H-E2",
+        "severity": "medium",
+        "owner": "engine",
+        "pages": [
+          "huawei-cn/home",
+          "huawei-cn/consumer-phones",
+          "huawei-cn/search-laptop",
+          "huawei-cn/search-phone"
+        ],
+        "criterion": "coherent whole-page axes across mixed forms",
+        "location": "m1/render.mjs root-title/w-narrow/w-wide rules; .depth-0>.title; .group>.depth-1",
+        "renderEvidence": "Desktop titles, utilities and wider collections use unrelated centered frame widths. Huawei catalog repeatedly changes left edges between series; laptop search controls sit176px inside results, and root title sits120px further inward. These are whole-page discontinuities, not an objection to centered page margins.",
+        "sourceEvidence": "Source corporate title/search has intentionally centered top treatment, while functional results/corporate sections have coherent local frames. Consumer source hero is intentionally centered and must remain a legitimate exception.",
+        "geometryEvidence": "All pages2560 root h1 x960,w640; narrow sectionsx840,w880; wide collectionsx664,w1232. At1440 corresponding x400/280/104. Phone results and filters sharex840, but h1x960. Consumer wide catalog headersx664, series/flagship/Pocket x840.",
+        "improvementCriterion": "Choose closed shared whole-page axis/group rules that align functional section edges coherently; justify centered heroes rather than blanket centering or forcing every brand onto one frame. Verify all four widths and protect accepted references.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/home-2560-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-phones-2560-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-phones-1440-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-phone-1440-sheet.png"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce/audit-handoff.json",
+      "originSha256": "2bd84c9e3b75c22ff9354300a01cde0706446b9d90d7def148f95e702f3ec295",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC."
+    },
+    {
+      "lane": "huawei-commerce",
+      "id": "H-E3",
+      "pages": [
+        "huawei-cn/search-laptop"
+      ],
+      "finding": {
+        "id": "H-E3",
+        "severity": "medium",
+        "owner": "engine",
+        "pages": [
+          "huawei-cn/search-laptop"
+        ],
+        "criterion": "readable density; compact utilities; semantic compact-grid decision",
+        "location": ".g-results>.node>.cards; .g-query/.g-filters/.g-sort",
+        "renderEvidence": "Four narrow text-heavy result columns require repeated multi-line titles and long vertically wrapped summaries; top search, filter/reset and sort are three disjoint stacked utility regions. Phone results correctly remain an ordered readable sequence; do not indiscriminately turn them into matching cards.",
+        "sourceEvidence": "Source1440 laptop results are a readable ordered vertical list with thumbnails, sidebar filtering and compact count/sort row. It is not a product price grid.",
+        "geometryEvidence": "Result frame1232px, four ~298px cards (usable~271.5px). Five of ten modeled result texts exceed the owning compact-member160-character threshold:194/212/201/188/252; source thumbnails currently omitted; top result starts y432.17. At390 category fieldset alone204.38px high (phone249.97px).",
+        "improvementCriterion": "Use the closed semantic/text-density decision to keep long search excerpts readable with compact query/filter/sort grouping. Retain every result and action; no source-specific template or arbitrary widening/enlargement.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-2560-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-1440-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-source-sheet.png"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce/audit-handoff.json",
+      "originSha256": "2bd84c9e3b75c22ff9354300a01cde0706446b9d90d7def148f95e702f3ec295",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "remaining": "Long summary result grid now single-column; paragraph measure/media row compactness still needs final density check."
+    },
+    {
+      "lane": "huawei-commerce",
+      "id": "H-E4",
+      "pages": [
+        "huawei-cn/consumer-phones"
+      ],
+      "finding": {
+        "id": "H-E4",
+        "severity": "medium",
+        "owner": "engine",
+        "pages": [
+          "huawei-cn/consumer-phones"
+        ],
+        "criterion": "cohesive image/title/actions; readable catalog density",
+        "location": "#catalog-pocket .banner; .g-flagship",
+        "renderEvidence": "Pocket lone item is treated as a centered banner: image760x760, centered title, left-edge CTA below the whole image, and another left-edge control below. It dominates nearby card-scale products and creates a1016px break in the catalog. Flagship text/actions are left-aligned while the product visual sits on a different internal center.",
+        "sourceEvidence": "Source hero is intentionally centered (visible pixels). Pocket source DOM declares a296x296 product image beside title/action in a1280px product container; that section is lazy/invisible in source screenshot, so no pixel-perfect size judgment is claimed.",
+        "geometryEvidence": "At2560/1440 Pocket image760x760, source natural760; title/action grouping spans entire760px image height; catalog peers have~271.5px media. At390 Pocket390px, no document overflow.",
+        "improvementCriterion": "Keep lone product title/image/action one cohesive group and make catalog density internally consistent through shared semantics. Do not enlarge any image, erase legitimate centered hero composition, or claim unavailable source pixels prove a fixed size.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-flagship-pocket-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-phones-2560-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-source-hero-footer-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json"
+        ]
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce/audit-handoff.json",
+      "originSha256": "2bd84c9e3b75c22ff9354300a01cde0706446b9d90d7def148f95e702f3ec295",
+      "status": "OPEN_MATERIAL_ACCEPTANCE",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "remaining": "Lone Pocket product still has disproportionate banner/media grouping; not repaired in this replacement slice."
+    },
+    {
+      "lane": "apple-linear-products",
+      "id": "E1",
+      "pages": [
+        "apple-com-cn/iphone-17",
+        "apple-com/iphone-16",
+        "apple-com/macbook-air",
+        "linear-app/home"
+      ],
+      "finding": {
+        "id": "E1",
+        "severity": "medium",
+        "owner": "engine",
+        "pages": [
+          "apple-com-cn/iphone-17",
+          "apple-com/iphone-16",
+          "apple-com/macbook-air",
+          "linear-app/home"
+        ],
+        "criterion": "coherent whole-page shared alignment / no blanket centering",
+        "location": ".depth-0>.title; .depth-0>.fact/.hero/.controls; .depth-1; m1/render.mjs root width rules",
+        "renderEvidence": "All four 2560/1440 whole-height sheets: root title starts inside the section edge; Linear additionally has wide centered lead and left-edge tail actions.",
+        "sourceEvidence": "Original Apple and Linear source sheets have intentional distinct compositions, not this generic 640/960 or 640/880/1232 axis split. This finding does not condemn legitimate centered whitespace or native full-bleed.",
+        "geometryEvidence": "At 2560 Apple h1 x=960,w=640 vs section/fact x=800,w=960 (160px offset). Linear h1 x=960,w=640, inner depth-1 x=840,w=880, root hero/actions x=664,w=1232. 1920/1440 retain corresponding offsets. At 390 root/sections converge to x=16.",
+        "improvementCriterion": "Use one explained page content axis for related root title, lead, controls and body forms; retain source-supported intentional centered/bleed exceptions. Re-review whole height at all widths; do not simply center every section.",
+        "status": "OPEN"
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "c046b78ee4d42e20b4114218989b95c244c6e2cb929a668ac751db6bf8b5505b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E1",
+        "pages": [
+          "gov-uk/ni-rates-letters",
+          "gov-uk/register-birth-abroad",
+          "learn-microsoft/vm-sizes",
+          "stripe-docs/payments"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "m1/render.mjs:715-720, 873-876, 925; m1/axis.mjs:805-816; .depth-0>.title and mixed .w-narrow/.w-wide sections",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "apple-linear-products",
+      "id": "E2",
+      "pages": [
+        "apple-com-cn/iphone-17",
+        "apple-com/macbook-air"
+      ],
+      "finding": {
+        "id": "E2",
+        "severity": "high",
+        "owner": "engine",
+        "pages": [
+          "apple-com-cn/iphone-17",
+          "apple-com/macbook-air"
+        ],
+        "criterion": "cohesive product image/title/price/actions",
+        "location": ".depth-0 > a.action.verb-buy after .stack",
+        "renderEvidence": "Whole-height Apple sheets show purchase CTA only after environment/values, detached from opening product/price. detail-probes.json rootChildren fixes exact DOM order.",
+        "sourceEvidence": "iPhone17 source hero title/price/Buy crop at y=600..880 and source DOM purchase href; Mac source title/price/Buy hero y≈765..1090 and local-nav Buy nodes[811]. Native full-bleed itself is allowed.",
+        "geometryEvidence": "iPhone17 root price y=1820.78, root Buy y=14141.16 at 2560 (12320px separation); y=14397.19 at 390. Mac root price y=595.78, root Buy y=14795.70 (14200px separation); y=19950.5 at 390. Both HTML/model root actions exist; they are misplaced, not missing.",
+        "improvementCriterion": "Keep the source-backed root purchase decision with the corresponding opening product/price/image group using the shared decision seam. A repeated tail CTA may remain only if justified. Do not include Linear: its source legitimately has a closing CTA.",
+        "status": "OPEN"
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "c046b78ee4d42e20b4114218989b95c244c6e2cb929a668ac751db6bf8b5505b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E2",
+        "pages": [
+          "gov-uk/register-birth-abroad"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "$.help._action; m1/axis.mjs:77, 400-401, 741-743, 757; .g-help .fact",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "apple-linear-products",
+      "id": "E3",
+      "pages": [
+        "apple-com/iphone-16"
+      ],
+      "finding": {
+        "id": "E3",
+        "severity": "high",
+        "owner": "engine",
+        "pages": [
+          "apple-com/iphone-16"
+        ],
+        "criterion": "readable forms / density / responsive utilities",
+        "location": ".expose-care-plan table.data td",
+        "renderEvidence": "390 whole-height sheet and readable-defect-crops.png show one-to-three-word text lines forming tall coverage columns; validators and zero document overflow miss it.",
+        "sourceEvidence": "Source nodes[1145] and 1440 full source show coverage choices with their own readable explanatory blocks; model steps._lines[5] preserves the source coverage facts.",
+        "geometryEvidence": "390 table 342.34px; name cell 99.69, purpose 91.25, detail 110.41px incl padding (~94.4px usable). First two rows ~581.6/582.1px each; fieldset h=1313.36px. Desktop detail cell 560.14px and rows ~111px.",
+        "improvementCriterion": "Long coverage explanation must be readable at 390 without reducing type or deleting terms; preserve each option/label/detail association through shared responsive choice layout. Recheck actual image and control geometry.",
+        "status": "OPEN"
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "c046b78ee4d42e20b4114218989b95c244c6e2cb929a668ac751db6bf8b5505b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E3",
+        "pages": [
+          "stripe-docs/payments"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "$._lines[6]._items[2]._name; m1/render.mjs:499-517; main > article > div > section:nth-of-type(7) > article > div > section:nth-of-type(3) > article",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "apple-linear-products",
+      "id": "E4",
+      "pages": [
+        "apple-com/macbook-air"
+      ],
+      "finding": {
+        "id": "E4",
+        "severity": "medium",
+        "owner": "engine",
+        "pages": [
+          "apple-com/macbook-air"
+        ],
+        "criterion": "image/title cohesion and readable density",
+        "location": "#highlights .defrow/.deflabel/.defval (baseline alignment)",
+        "renderEvidence": "Mac 2560/1440 whole-height sheets plus readable crop show long captions at lower-left of each image, with most row area empty; 390 stack is materially more coherent.",
+        "sourceEvidence": "Source highlights y≈1290..1900 have integrated top captions on photographic cards. Model _lines[0]._items[*]._name contains full source captions, not short definition labels.",
+        "geometryEvidence": "First desktop image x=1014,y=707.94,w=696,h=452; caption x=800,y=1141.94,w=190,h=153.56, i.e. 434px below image top. First row h=602.56. Six serial rows cause highlights h≈3616px. All images <= intrinsic size.",
+        "improvementCriterion": "Image-associated long captions must read as captions/story items rather than narrow bottom-baseline definition labels. Preserve six captions/assets and sequence; no image enlargement or site-specific CSS.",
+        "status": "OPEN"
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "c046b78ee4d42e20b4114218989b95c244c6e2cb929a668ac751db6bf8b5505b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E4",
+        "pages": [
+          "gov-uk/ni-rates-letters",
+          "learn-microsoft/vm-sizes"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "table.data th and td; m1/render.mjs:849-856",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "apple-linear-products",
+      "id": "E5",
+      "pages": [
+        "apple-com/iphone-16"
+      ],
+      "finding": {
+        "id": "E5",
+        "severity": "medium",
+        "owner": "engine",
+        "pages": [
+          "apple-com/iphone-16"
+        ],
+        "criterion": "compact coherent image grouping / density",
+        "location": ".g-inbox .deflist; inbox._items",
+        "renderEvidence": "2560/1440/390 sheets show separate full-native-height phone then cable rows; labels attach at lower-left on desktop. The source presents a single paired in-box group.",
+        "sourceEvidence": "Source full.png y≈3164..3700 and nodes[1276] show compact shared What’s in the Box region; both factual item names/assets are already in model.",
+        "geometryEvidence": "Each local image h=784px (phone 346x784,cable 200x784), stacked into inbox h=1660.75 desktop and 1744.75 at390. Images are NOT enlarged; issue is presentation scale/grouping.",
+        "improvementCriterion": "Render the two in-box objects as one understandable compact group with associated names, using existing truthful assets; scale down if appropriate, never enlarge or silently drop an item.",
+        "status": "OPEN"
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "c046b78ee4d42e20b4114218989b95c244c6e2cb929a668ac751db6bf8b5505b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-apple-linear-products",
+        "id": "E5",
+        "pages": [
+          "apple-com/iphone-16"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": ".g-inbox .deflist; inbox._items",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "apple-linear-products",
+      "id": "E6",
+      "pages": [
+        "linear-app/home"
+      ],
+      "finding": {
+        "id": "E6",
+        "severity": "medium",
+        "owner": "engine",
+        "pages": [
+          "linear-app/home"
+        ],
+        "criterion": "compact utilities / readable sparse density",
+        "location": ".g-customers .depth-1; customers._items[*]._brand",
+        "renderEvidence": "Linear 2560/1440 and390 sheets show five small names each occupying its own broad divider-separated row.",
+        "sourceEvidence": "Source full.png y≈1400..1620 shows brand/customer proof as a compact horizontal group; model contains five customer identities.",
+        "geometryEvidence": "Inner customer region w=880,h=244.125 at2560; each short brand occupies a full-width fact row. 390 h=281.25. Current five names remain readable but unnecessarily scattered.",
+        "improvementCriterion": "Use a compact, source-appropriate wrapping identity/proof group while preserving every model customer name and contrast. No global centering rule or invented logos.",
+        "status": "OPEN"
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "c046b78ee4d42e20b4114218989b95c244c6e2cb929a668ac751db6bf8b5505b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-apple-linear-products",
+        "id": "E6",
+        "pages": [
+          "linear-app/home"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": ".g-customers .depth-1; customers._items[*]._brand",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "apple-linear-products",
+      "id": "E7",
+      "pages": [
+        "apple-com-cn/iphone-17"
+      ],
+      "finding": {
+        "id": "E7",
+        "severity": "high",
+        "owner": "engine",
+        "pages": [
+          "apple-com-cn/iphone-17"
+        ],
+        "criterion": "faithful preservation of all actions / shared actionRow",
+        "location": ".which-iphone comparison; _lines[11]._items[1].buy._action; m1/render.mjs:402-421",
+        "renderEvidence": "iPhone Air comparison column retains Learn more but has no Buy anchor. fidelity-probe.py fails with exactly one missing action target; every other captured model target passes.",
+        "sourceEvidence": "Source nodes[1800] name=购买 iPhone Air, y=17040.19; dom.html contains /cn/shop/goto/buy_iphone/iphone_air beside /iphone-air/. Model buy child contains same absolute target.",
+        "geometryEvidence": "The target is absent from baseline HTML and every width anchor list; 390 horizontal scrolling cannot recover an anchor that does not exist. renderCompareTable uses itemExtra().ctl rather than consuming the complete nodePlan actionRow.",
+        "improvementCriterion": "Preserve both source-backed Learn more and Buy in the entity column through shared actionRow for HTML/Markdown/text. Add a comparison-entity own-action + title-only child Buy regression and rerun full target preservation.",
+        "status": "OPEN"
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "c046b78ee4d42e20b4114218989b95c244c6e2cb929a668ac751db6bf8b5505b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-apple-linear-products",
+        "id": "E7",
+        "pages": [
+          "apple-com-cn/iphone-17"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": ".which-iphone comparison; _lines[11]._items[1].buy._action; m1/render.mjs:402-421",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "cloud-business",
+      "id": "CB-E1",
+      "pages": [
+        "aliyun-com/home",
+        "aliyun-com/product-ecs",
+        "grafana-play/play-home"
+      ],
+      "finding": {
+        "id": "CB-E1",
+        "pages": [
+          "aliyun-com/home",
+          "aliyun-com/product-ecs",
+          "grafana-play/play-home"
+        ],
+        "severity": "medium",
+        "owner": "engine",
+        "criterion": "Coherent page-level frame across mixed forms, not type-driven unrelated edges",
+        "location": ".depth-1.w-narrow / .w-wide / .g-banners / .g-toolbar / .g-panels",
+        "renderEvidence": "Aliyun sections reset their left edge with shape. ECS features/news step inward from site/table frame. Most clearly, Grafana banners sit 176px left of its toolbar and panel grid despite belonging to one compact dashboard region.",
+        "sourceEvidence": "Grafana source toolbar, banners and panel region share content origin x=336 (sidebar excluded). Aliyun source contains intentional bleed and inner columns; those must remain distinct from arbitrary width resets.",
+        "geometryEvidence": "2560: narrow x=840,w=880; wide/site root x=664,w=1232. Grafana banners x=664,w=1232 vs toolbar/panels x=840,w=880. 1440 equivalents x=280 vs104. 390 all primary region frames x=16,w=358.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-cloud-business/measurements.json",
+          ".scratch/62-all-sites/audit-cloud-business/grafana-2560-sheet.png",
+          ".scratch/62-all-sites/audit-cloud-business/grafana-source.png",
+          ".scratch/62-all-sites/audit-cloud-business/aliyun-com-home-1440-sheet.png",
+          ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-1440-sheet.png"
+        ],
+        "improvementCriterion": "Anchor connected mixed-form regions to one intentional page frame; permit source-supported inner columns/bleeds, rather than making every section the same width or blanket-centering brands. Recheck whole height at all four widths."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b3b5b15c3018a2cf0b8c9c8469e1c2b0060f01b5a26f64fcaa8678aa6ba6288b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-cloud-business",
+        "id": "CB-E1",
+        "pages": [
+          "aliyun-com/home",
+          "aliyun-com/product-ecs",
+          "grafana-play/play-home"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": ".depth-1.w-narrow / .w-wide / .g-banners / .g-toolbar / .g-panels",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "cloud-business",
+      "id": "CB-E2",
+      "pages": [
+        "aliyun-com/home",
+        "aliyun-com/product-ecs"
+      ],
+      "finding": {
+        "id": "CB-E2",
+        "pages": [
+          "aliyun-com/home",
+          "aliyun-com/product-ecs"
+        ],
+        "severity": "high",
+        "owner": "engine",
+        "criterion": "Cohesive image/title/facts/actions; no uncontrolled oversized media",
+        "location": "#aliyun-ecs > figure.strip and .banner figure.strip",
+        "renderEvidence": "ECS technical architecture diagram becomes the first enormous full-viewport image, displacing product summary and purchase far below the title. Aliyun home globe image dominates its closing region; stats and CTA then hug viewport left while the following service region abruptly returns to a narrow inner frame.",
+        "sourceEvidence": "ECS source shows product heading/summary, buy+trial and offers before the compact architecture diagram in product introduction (source y≈1500–2300). Aliyun source globe/stats belong to one contained, centered infrastructure section. Full bleed is not intrinsically a defect, and no intrinsic-pixel upscaling was detected.",
+        "geometryEvidence": "ECS 2560 image x≈0,y=146.625,w=2559.969,h=1350.609; first following section y=1537.828; root buy y=2248.844. 1920 image h=1012.953;1440 h=759.719;390 h=205.75. Natural asset 4640×2448. Home infrastructure banner x=0,w=2560,h=1420.203; succeeding services x=840,w=880.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-cloud-business/measurements.json",
+          ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-2560-sheet.png",
+          ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-1440-sheet.png",
+          ".scratch/62-all-sites/audit-cloud-business/aliyun-com-product-ecs-source-sheet.png",
+          ".scratch/62-all-sites/audit-cloud-business/aliyun-com-home-2560-sheet.png",
+          ".scratch/62-all-sites/audit-cloud-business/details-final.png"
+        ],
+        "improvementCriterion": "Keep informational media within a justified shared frame and present product identity/summary/purchase as one visible group. Contain infrastructure facts/CTA with the image’s content edge. Do not solve via site CSS/model presentation flags or forced image enlargement."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b3b5b15c3018a2cf0b8c9c8469e1c2b0060f01b5a26f64fcaa8678aa6ba6288b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-cloud-business",
+        "id": "CB-E2",
+        "pages": [
+          "aliyun-com/home",
+          "aliyun-com/product-ecs"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "#aliyun-ecs > figure.strip and .banner figure.strip",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "cloud-business",
+      "id": "CB-E3",
+      "pages": [
+        "aliyun-com/home"
+      ],
+      "finding": {
+        "id": "CB-E3",
+        "pages": [
+          "aliyun-com/home"
+        ],
+        "severity": "high",
+        "owner": "engine",
+        "criterion": "All modeled actions and faithful captured targets survive rendering",
+        "location": "products.tabs._items[1,2,3,4,5,6,8]._action.to → .g-tabs fieldset.expose-product-tab",
+        "renderEvidence": "Seven model navigation destinations disappear completely. Render emits only radio label/value controls; it contains neither href nor any copy of those seven destination URLs. Facts-only fidelity reports 1.00 despite this loss.",
+        "sourceEvidence": "All seven target strings exist in source DOM/nodes (exact-string audit). Relative-anchor normalization alone is insufficient for the two source menu targets not represented as literal anchors; this finding is specifically MODEL→HTML target loss, not an unsupported-target allegation.",
+        "geometryEvidence": "All widths use the same HTML. Product tab strip remains within page geometry (zero overflow), which does not prove action preservation.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-cloud-business/action-target-checks.json",
+          ".scratch/62-all-sites/audit-cloud-business/aliyun-com-home-actions.json",
+          ".scratch/62-all-sites/audit-cloud-business/aliyun-com-home-metrics.json",
+          ".scratch/62-all-sites/audit-cloud-business/measurements.json",
+          ".scratch/62-all-sites/audit-cloud-business/aliyun-com-home-1440-sheet.png"
+        ],
+        "improvementCriterion": "Preserve each captured destination through shared closed-grammar control/axis decisions while keeping source tab semantics and compact utility density. Add a defect-detecting action-target preservation check independent of text fidelity."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b3b5b15c3018a2cf0b8c9c8469e1c2b0060f01b5a26f64fcaa8678aa6ba6288b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-cloud-business",
+        "id": "CB-E3",
+        "pages": [
+          "aliyun-com/home"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "products.tabs._items[1,2,3,4,5,6,8]._action.to → .g-tabs fieldset.expose-product-tab",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "cloud-business",
+      "id": "CB-E4",
+      "pages": [
+        "grafana-play/play-home"
+      ],
+      "finding": {
+        "id": "CB-E4",
+        "pages": [
+          "grafana-play/play-home"
+        ],
+        "severity": "high",
+        "owner": "engine",
+        "criterion": "Foreground and surface must be paired for readable contrast",
+        "location": ".g-banners a (both Grafana guidance links)",
+        "renderEvidence": "Pale captured dark-theme link color survives on a white rendered surface; both banners are visibly barely legible.",
+        "sourceEvidence": "Source is a dark Grafana dashboard; its light text is supported by dark surface. No requirement to replicate dark theme literally, but foreground cannot be transplanted independently of background.",
+        "geometryEvidence": "All widths: computed foreground rgb(204,204,220), effective background rgb(255,255,255), contrast ratio 1.5887≈1.59:1 at16px. Source dark banner/surrounding panel is visible in capture.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-cloud-business/targeted-probes.json",
+          ".scratch/62-all-sites/audit-cloud-business/grafana-2560-sheet.png",
+          ".scratch/62-all-sites/audit-cloud-business/grafana-source.png",
+          ".scratch/62-all-sites/audit-cloud-business/grafana-1440-390.png"
+        ],
+        "improvementCriterion": "Pair shared foreground/surface decisions; attain readable normal-size text contrast (4.5:1 diagnostic threshold), then visually recheck actual banners at each width without per-site escape hatches."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b3b5b15c3018a2cf0b8c9c8469e1c2b0060f01b5a26f64fcaa8678aa6ba6288b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-cloud-business",
+        "id": "CB-E4",
+        "pages": [
+          "grafana-play/play-home"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": ".g-banners a (both Grafana guidance links)",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "cloud-business",
+      "id": "CB-E5",
+      "pages": [
+        "grafana-play/play-home"
+      ],
+      "finding": {
+        "id": "CB-E5",
+        "pages": [
+          "grafana-play/play-home"
+        ],
+        "severity": "medium",
+        "owner": "engine",
+        "criterion": "One source utility control should remain one compact utility control",
+        "location": "toolbar._items[2] / .g-toolbar .controls",
+        "renderEvidence": "Renderer shows separate “Enter edit mode” and “Edit” pill controls for one source Edit button. Mobile wraps them as two controls, increasing utility height.",
+        "sourceEvidence": "source-excerpts.json proves one button: accessible name Enter edit mode, visible text Edit; bbox x1354,y64,w70,h32. Model carries name plus action label, not two distinct source actions.",
+        "geometryEvidence": "2560 toolbar height77.906;390 height128.219. Four rendered pills from three modeled utility items. Source has one Edit button.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-cloud-business/targeted-probes.json",
+          ".scratch/62-all-sites/audit-cloud-business/source-excerpts.json",
+          ".scratch/62-all-sites/audit-cloud-business/grafana-1440-390.png"
+        ],
+        "improvementCriterion": "Render this action-only item as a single control with correct visible label and retained accessible meaning; test shared decision/three-target consistency rather than changing facts to hide duplication."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b3b5b15c3018a2cf0b8c9c8469e1c2b0060f01b5a26f64fcaa8678aa6ba6288b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-cloud-business",
+        "id": "CB-E5",
+        "pages": [
+          "grafana-play/play-home"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "toolbar._items[2] / .g-toolbar .controls",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "cloud-business",
+      "id": "CB-E6",
+      "pages": [
+        "stripe-com/pricing"
+      ],
+      "finding": {
+        "id": "CB-E6",
+        "pages": [
+          "stripe-com/pricing"
+        ],
+        "severity": "medium",
+        "owner": "engine",
+        "criterion": "Readable nested pricing hierarchy, not DOM-depth-driven shrinkage",
+        "location": ".g-catalog .title (nested H6 pricing labels)",
+        "renderEvidence": "Section labels such as 信用卡和借记卡, 银行和其他支付方式, 争议, 争议受理费, Tax Basic details shrink to 10.72px despite governing16px body text and pricing. Long catalog needs a clear hierarchy, not smaller-and-smaller headings.",
+        "sourceEvidence": "Source uses compact product cards and distinct pricing columns. It is genuinely a long pricing catalog; long height alone and centered readable whitespace are not defects.",
+        "geometryEvidence": "2560/1920/1440 render height17440;390 height23937. Nested H6 computed font10.72px; body16px; H4 product titles16px; outer H2 23.2px. Catalog depth-1 w880,h12437.453 atdesktop.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-cloud-business/measurements.json",
+          ".scratch/62-all-sites/audit-cloud-business/stripe-2560-upper.png",
+          ".scratch/62-all-sites/audit-cloud-business/stripe-2560-lower.png",
+          ".scratch/62-all-sites/audit-cloud-business/stripe-1440-sheet.png",
+          ".scratch/62-all-sites/audit-cloud-business/stripe-source-upper.png",
+          ".scratch/62-all-sites/audit-cloud-business/stripe-source-lower.png"
+        ],
+        "improvementCriterion": "Use a legible semantic type hierarchy for all catalog sections independent of model nesting depth; governed body text should not dwarf its headings. Preserve all prices and product distinctions; no arbitrary condensation or blanket card redesign."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b3b5b15c3018a2cf0b8c9c8469e1c2b0060f01b5a26f64fcaa8678aa6ba6288b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-cloud-business",
+        "id": "CB-E6",
+        "pages": [
+          "stripe-com/pricing"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": ".g-catalog .title (nested H6 pricing labels)",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "cloud-business",
+      "id": "CB-E7",
+      "pages": [
+        "stripe-com/pricing"
+      ],
+      "finding": {
+        "id": "CB-E7",
+        "pages": [
+          "stripe-com/pricing"
+        ],
+        "severity": "medium",
+        "owner": "engine",
+        "criterion": "Action-only controls are utilities, not empty fact/definition rows",
+        "location": "cta._items[0] → .g-cta .deflist .defrow:first-child",
+        "renderEvidence": "Contact sales appears as a bold definition heading followed by an empty .defval. Primary “立即开始” lives below the whole customer/document deflist. The contact target exists, but its control affordance is misleading and the CTA group is separated by unrelated fact rows.",
+        "sourceEvidence": "Source closing CTA pairs start/contact sales together, with customer/document utilities adjacent. The source action exists; this is not target loss and not a demand for source-specific styling.",
+        "geometryEvidence": "2560 CTA x840,w880,y17062.359,h365.75; FAQ x664,w1232 before it. targeted-probes.json preserves exact .g-cta outerHTML with empty defval for contact sales.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-cloud-business/targeted-probes.json",
+          ".scratch/62-all-sites/audit-cloud-business/details-final.png",
+          ".scratch/62-all-sites/audit-cloud-business/stripe-source-lower.png"
+        ],
+        "improvementCriterion": "Keep action-only contact/start controls in a coherent compact action group using shared axis grammar; retain customer/doc facts as facts and every existing target. Recheck desktop/mobile grouping and no empty fact rows."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "b3b5b15c3018a2cf0b8c9c8469e1c2b0060f01b5a26f64fcaa8678aa6ba6288b",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-cloud-business",
+        "id": "CB-E7",
+        "pages": [
+          "stripe-com/pricing"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "cta._items[0] → .g-cta .deflist .defrow:first-child",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "public-technical-docs",
+      "id": "E1",
+      "pages": [
+        "gov-uk/ni-rates-letters",
+        "gov-uk/register-birth-abroad",
+        "learn-microsoft/vm-sizes",
+        "stripe-docs/payments"
+      ],
+      "finding": {
+        "id": "E1",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "gov-uk/ni-rates-letters",
+          "gov-uk/register-birth-abroad",
+          "learn-microsoft/vm-sizes",
+          "stripe-docs/payments"
+        ],
+        "criterion": "coherent whole-page alignment / hierarchy",
+        "location": "m1/render.mjs:715-720, 873-876, 925; m1/axis.mjs:805-816; .depth-0>.title and mixed .w-narrow/.w-wide sections",
+        "description": "Desktop document titles and consecutive content sections use unrelated left edges. GOV and Stripe switch edges when the local representation changes; Microsoft keeps its table body axis but not its title axis. Birth lead is centered over the full frame although the source is a left-aligned document lead. This is not an objection to centered outer whitespace or to justified wider tables.",
+        "renderEvidence": "All four *-2560-whole-content.png and *-1440-whole-content.png; birth 390-sheet also shows centered lead against left-aligned body.",
+        "sourceEvidence": "GOV source whole images have continuous main-column heading/body edges; Stripe source top starts at x328 for title/lead/options; Microsoft source naming-detail and general-purpose-detail preserve section/table association.",
+        "geometryEvidence": "measurements.json headings: at2560 title x960/w640; GOV wide x664/w1232 vs narrow x840/w880; Stripe sections alternate x840 and x664. At1920 corresponding x640,344,520; at1440 x400,104,280. Microsoft title x960 vs body x840. At390 section edges largely collapse to x16, but birth lead remains text-align:center.",
+        "improvementCriterion": "Use one document-owned heading/lead/content axis inherited across local list/form/table/card renderings. Wider tables may widen only with explicit coherent heading/table alignment; retain legitimate centered page frame and brand differences. Recheck all four widths and seven accepted references, not a site-name template."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "eb5383c31a17c60c0e1428b1540e6e6bd8b2b4369067804eaf4a61e356f89570",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E1",
+        "pages": [
+          "gov-uk/ni-rates-letters",
+          "gov-uk/register-birth-abroad",
+          "learn-microsoft/vm-sizes",
+          "stripe-docs/payments"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "m1/render.mjs:715-720, 873-876, 925; m1/axis.mjs:805-816; .depth-0>.title and mixed .w-narrow/.w-wide sections",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "public-technical-docs",
+      "id": "E2",
+      "pages": [
+        "gov-uk/register-birth-abroad"
+      ],
+      "finding": {
+        "id": "E2",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "gov-uk/register-birth-abroad"
+        ],
+        "criterion": "faithful actions / targets",
+        "location": "$.help._action; m1/axis.mjs:77, 400-401, 741-743, 757; .g-help .fact",
+        "description": "The captured email action is in the model but renders as plain text, with no mailto anchor. hasTarget excludes mailto; inlineInto consumes the action despite href:null.",
+        "renderEvidence": "gov-uk-register-birth-abroad-{2560-whole-content,1440-whole-content,390-sheet}.png; focused-probe.json has zero mailto links.",
+        "sourceEvidence": "corpus/gov-uk/register-birth-abroad/dom.html:262 has `<a href=\"mailto:Overseas.RegistrationUnit@fcdo.gov.uk\">`; source whole image shows linked email.",
+        "geometryEvidence": "source-evidence.json: ten model actions, nine rendered anchors; mailto-repro.json: hasTarget:false, href:null, inlineInto:_summary, actionRow:[]. All captured widths lack target.",
+        "improvementCriterion": "Preserve this source-backed email target as a uniquely discoverable inline anchor through the shared safe-target decision; add defect-detecting HTML/Markdown target proof without admitting unsafe protocols."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "eb5383c31a17c60c0e1428b1540e6e6bd8b2b4369067804eaf4a61e356f89570",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E2",
+        "pages": [
+          "gov-uk/register-birth-abroad"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "$.help._action; m1/axis.mjs:77, 400-401, 741-743, 757; .g-help .fact",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "public-technical-docs",
+      "id": "E3",
+      "pages": [
+        "stripe-docs/payments"
+      ],
+      "finding": {
+        "id": "E3",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "stripe-docs/payments"
+        ],
+        "criterion": "closed shared-axis / heading-region association",
+        "location": "$._lines[6]._items[2]._name; m1/render.mjs:499-517; main > article > div > section:nth-of-type(7) > article > div > section:nth-of-type(3) > article",
+        "description": "The local 更多指南/支付方式 heading is suppressed because a same-text heading appeared earlier. Its four bank/wallet links consequently read as continuation of 管理支付. Distinct fact-bearing subgroups are not redundant headings merely because their labels repeat.",
+        "renderEvidence": "stripe-docs-payments-2560-whole-content.png bottom; 1440 whole-content; 390-sheet columns2-3.",
+        "sourceEvidence": "source-evidence.json source nodes: article[1]/div[2]/div[10]/div[2]/span[0], text 支付方式, x763.56/y1704.03; original DOM keeps five distinct 更多指南 groups. This is DOM evidence: the source PNG does not reach this scroll region.",
+        "geometryEvidence": "focused-probe.json: 更多指南 at y1362.5; 管理支付 at y1509.3; next article y1602.25 has heading:null and contains 银行卡/银行借记/银行重定向/钱包; API follows y1656.9. Model has distinct group name/action.",
+        "improvementCriterion": "Keep a local group title or an equally explicit source-faithful boundary for these four links. Repeated labels in distinct populated regions must not erase their semantic parent; preserve all targets and HTML/Markdown/text grouping."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "eb5383c31a17c60c0e1428b1540e6e6bd8b2b4369067804eaf4a61e356f89570",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E3",
+        "pages": [
+          "stripe-docs/payments"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "$._lines[6]._items[2]._name; m1/render.mjs:499-517; main > article > div > section:nth-of-type(7) > article > div > section:nth-of-type(3) > article",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "public-technical-docs",
+      "id": "E4",
+      "pages": [
+        "gov-uk/ni-rates-letters",
+        "learn-microsoft/vm-sizes"
+      ],
+      "finding": {
+        "id": "E4",
+        "owner": "engine",
+        "severity": "medium",
+        "pages": [
+          "gov-uk/ni-rates-letters",
+          "learn-microsoft/vm-sizes"
+        ],
+        "criterion": "readable table density / responsive axes",
+        "location": "table.data th and td; m1/render.mjs:849-856",
+        "description": "At390 long financial/technical headers and list values are squeezed into narrow columns rather than a readable table viewport. GOV last header becomes many isolated words; Microsoft long series and workload cells grow into tall one-to-two-word columns. No page overflow is not sufficient visual acceptance.",
+        "renderEvidence": "gov-uk-ni-rates-letters-390-sheet.png first/second columns; learn-microsoft-vm-sizes-390-sheet.png all columns.",
+        "sourceEvidence": "Source NI and Microsoft screenshots/DOM are real multi-column tables with intact headers and lists; source mobile rendering is not available, so no claim of pixel-matched mobile design.",
+        "geometryEvidence": "measurements.json: GOV header height158px at390 vs40px desktop, last header width~83px; Microsoft general-purpose columns68/123/167px. focused-probe.json D-family row h779.52px mobile, page height6333 vs2860 desktop. GPU table already has small internal overflow (373px inside358px parent), unlike other compressed tables.",
+        "improvementCriterion": "Retain all declared columns, associations and values while preventing header/technical-value compression into predominantly isolated-word lines. Provide coherent bounded table scrolling where required; no wrapping entities into another comparison row or silently discarding fields. Re-review mobile after link/content restoration."
+      },
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-handoff.json",
+      "originSha256": "eb5383c31a17c60c0e1428b1540e6e6bd8b2b4369067804eaf4a61e356f89570",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "predecessorDisposition": {
+        "lane": "audit-public-technical-docs",
+        "id": "E4",
+        "pages": [
+          "gov-uk/ni-rates-letters",
+          "learn-microsoft/vm-sizes"
+        ],
+        "status": "IMPLEMENTED_PENDING_EXPERIENCE_REVIEW",
+        "seam": "table.data th and td; m1/render.mjs:849-856",
+        "proof": "m1/eval/page-frame-selftest.mjs; engine/render-proof-v3/measurements.json",
+        "limit": "Geometry/structure checks do not constitute full rendered/source experience acceptance."
+      }
+    },
+    {
+      "lane": "media-auth-utility",
+      "id": "MAU-E1",
+      "pages": [
+        "github-com/login",
+        "stripe-dashboard/login",
+        "xiaomi-account/login",
+        "bilibili-com/read-home"
+      ],
+      "finding": {
+        "id": "MAU-E1",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "github-com/login",
+          "stripe-dashboard/login",
+          "xiaomi-account/login",
+          "bilibili-com/read-home"
+        ],
+        "criterion": "coherent whole-page alignment / compact form hierarchy",
+        "location": "main>.depth-0>.title; .g-login>.w-narrow; .g-search; .g-articles",
+        "observed": "Desktop title and task/content start on different axes. Auth task is an880px mostly empty wrapper with compact controls stuck at its left, while the h1 is centered in a640px wrapper; Stripe/Xiaomi also repeat task headings beneath the page title. This is not an objection to legitimate centered whitespace.",
+        "geometryEvidence": "2560: h1 x960,w640; auth/read sections x840,w880; 1920 x640 vs520;1440 x400 vs280. At390 both root/sections x16,w358.",
+        "sourceEvidence": "GitHub source compact centered352px fields atx544; Stripe source412px fields atx514; Xiaomi source form left730.5. Read source heading and article rows sharex380 (source nodes144/145/158). Source layouts differ; a common coherent axis does not require the same site template.",
+        "renderEvidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/github-com-login-widths.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/stripe-dashboard-login-widths.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/xiaomi-account-login-widths.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-detail-1.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/geometry-summary.json"
+        ],
+        "falsifiableImprovementCriterion": "At all4 widths choose a closed-grammar semantic task frame whose identity/task heading, fields and main actions align coherently. Do not blanket-center all site content; keep brand/source differences and avoid new presentation metadata.",
+        "status": "OPEN_BASELINE_DEFECT"
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+      "originSha256": "edf51f0c32ebf93c0539590cb1f16fdff09b229737d0145194e07332ebeb16da",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "implementation": "Closed login composite compact440px frame with aligned stacked labels/360px field cap; all-width fresh geometry and1440/390 GitHub source-aware inspection. Other cohort modalities incomplete."
+    },
+    {
+      "lane": "media-auth-utility",
+      "id": "MAU-E2",
+      "pages": [
+        "github-com/login",
+        "stripe-dashboard/login",
+        "xiaomi-account/login"
+      ],
+      "finding": {
+        "id": "MAU-E2",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "github-com/login",
+          "stripe-dashboard/login",
+          "xiaomi-account/login"
+        ],
+        "criterion": "forms / readable density / shared axis",
+        "location": "span.expose.expose-input; .deflabel; input[name=login/email/account/password]",
+        "observed": "Inputs start immediately after variable-length inline labels. Identical fields have different left/right edges; at390 a long label wraps above its input while Password remains beside its input, producing mixed form grammar.",
+        "geometryEvidence": "2560 identifier/password x: GitHub1054.28/914.83 (139.45px gap), Stripe904/872(32px), Xiaomi998.44/872(126.44px); each input253px wide.390 GitHub16/90.83;Stripe80/48;Xiaomi16/48.",
+        "sourceEvidence": "Source screenshot/nodes show equal identifier/password field outer edges on all3 forms. Xiaomi password input itself is294px because a60px reveal control occupies the shared354px outer row; do not incorrectly stretch past that source control.",
+        "renderEvidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/measurements.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/github-com-login-widths.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/stripe-dashboard-login-widths.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/xiaomi-account-login-widths.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/source-controls.json"
+        ],
+        "falsifiableImprovementCriterion": "Use one consistent label/field alignment decision within login composites, preserving labels/secret input types/boolean controls. At390 neither field should switch independently to another alignment; input edges agree within1px or a source-supported common label column is used.",
+        "status": "OPEN_BASELINE_DEFECT"
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+      "originSha256": "edf51f0c32ebf93c0539590cb1f16fdff09b229737d0145194e07332ebeb16da",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "implementation": "Closed login composite compact440px frame with aligned stacked labels/360px field cap; all-width fresh geometry and1440/390 GitHub source-aware inspection. Other cohort modalities incomplete."
+    },
+    {
+      "lane": "media-auth-utility",
+      "id": "MAU-E3",
+      "pages": [
+        "github-com/login"
+      ],
+      "finding": {
+        "id": "MAU-E3",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "github-com/login"
+        ],
+        "criterion": "actions preserved as controls / no lost affordance",
+        "location": "$.login.alternatives._items[0..1]._action; .g-alternatives .linklist li",
+        "observed": "Continue with Google / Apple carry modeled open actions but HTML renders plain bullet text, unlike Stripe/Xiaomi alternative controls. They have no control styling/data-verb or declared link, so action intent is visually lost.",
+        "geometryEvidence": "All4 widths; screenshot/HTML show2 plain li entries. Source nodes36/48 are352x40 buttons.",
+        "sourceEvidence": "corpus/github-com/login/nodes.json indices36/48; source full.png visibly shows2 outlined controls. Model has _action.verb=open with no to; no URL may be invented.",
+        "renderEvidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/github-com-login-widths.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/source-controls.json",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/modeled-target-image-fidelity.json"
+        ],
+        "falsifiableImprovementCriterion": "Both modeled alternatives must render once as recognizable secondary no-target controls through the shared action/axis decision. Preserve the no-target constraint; do not fabricate OAuth URLs or runtime authentication.",
+        "status": "OPEN_BASELINE_DEFECT"
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+      "originSha256": "edf51f0c32ebf93c0539590cb1f16fdff09b229737d0145194e07332ebeb16da",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC."
+    },
+    {
+      "lane": "media-auth-utility",
+      "id": "MAU-E4",
+      "pages": [
+        "bilibili-com/read-home"
+      ],
+      "finding": {
+        "id": "MAU-E4",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "bilibili-com/read-home"
+        ],
+        "criterion": "readable feed density / image-title-actions cohesion / image size",
+        "location": "$.articles._lines; .g-articles .run .item; .item .fact img",
+        "observed": "A source compact row feed becomes a long stack of title, multi-line excerpt, category,234x176 thumbnail, then metadata, leaving broad empty space to the thumbnail right.19 articles now require7980px at desktop versus2585px source capture. All text must remain; this is not permission to truncate it or enlarge images.",
+        "geometryEvidence": "2560/1920/1440 rendered height7980;3909913. First render image x840,y263.72,w234,h176 at2560; source node185 image x943,y154,w117,h88. Rendering doubles source display size although it does NOT upscale beyond natural234x176.",
+        "sourceEvidence": "Source full.png shows thumbnail-associated compact ordered rows, not giant cards or a gallery. Source nodes185/217 confirm117x88 display. First two titles/thumbnail associations and all19 destination URLs retained in modeled HTML.",
+        "renderEvidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-whole.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-detail-1.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-detail-2.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-detail-3.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-1440-relevant.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-1440-remainder.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-source.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-390-sheet.png"
+        ],
+        "falsifiableImprovementCriterion": "Use a shared ordered media/text grouping that makes each article title/excerpt/thumbnail/meta a compact cohesive unit without reordering articles, dropping facts/targets, cropping important image content, or increasing image size. Reinspect full height at all4 widths; measure page-height/density improvement, not just zero overflow.",
+        "status": "OPEN_BASELINE_DEFECT"
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+      "originSha256": "edf51f0c32ebf93c0539590cb1f16fdff09b229737d0145194e07332ebeb16da",
+      "status": "OPEN_MATERIAL_ACCEPTANCE",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "remaining": "Bilibili ordered-feed whole-height density/media grouping remains unverified; failed external images prohibit complete image comparison."
+    },
+    {
+      "lane": "media-auth-utility",
+      "id": "MAU-E5",
+      "pages": [
+        "bilibili-com/video-bv1gj411x7h7"
+      ],
+      "finding": {
+        "id": "MAU-E5",
+        "owner": "engine",
+        "severity": "high",
+        "pages": [
+          "bilibili-com/video-bv1gj411x7h7"
+        ],
+        "criterion": "whole-page mixed-form alignment / cohesive media title/actions",
+        "location": "root h1; root image/meta; .g-danmaku; .g-credits; .g-up-next",
+        "observed": "The title, image, meta, input/actions, credits and recommendations use five different edges/widths without a coherent whole-page grouping. In particular credits override their declared narrow tier to main width; recommendations start farther left than the media. Source has a clear media column with a distinct recommendation sidebar, not this drift.",
+        "geometryEvidence": "2560 h1x960/w640; imagex720/w1120; root meta nearx664; danmakux840/w880;creditsx664/w1232;up-nextx664/w1232.1440 corresponding x400/160/104/280/104.390 image x0/w390, other regionsx16/w358; responsive full-bleed image alone is not called a defect.",
+        "sourceEvidence": "Source full.png/media left41..1019, right uploader/recommendations roughlyx1050; source-true sidebar is allowed. Main rendered image is the declared source og:image (not live captured video frame), natural1120x630: that substitution is provenance-labeled in the model and not invented.",
+        "renderEvidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-2560-sheet.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-1440-sheet.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-source.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-390-sheet.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/measurements.json"
+        ],
+        "falsifiableImprovementCriterion": "Close a shared semantic media/task/utilities axis decision; title/image/metadata/input/action groups must have understandable common containment, while related recommendations may retain a distinct source-supported frame. No site-specific selectors or forced identical layout across media/auth pages.",
+        "status": "OPEN_BASELINE_DEFECT"
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+      "originSha256": "edf51f0c32ebf93c0539590cb1f16fdff09b229737d0145194e07332ebeb16da",
+      "status": "IMPLEMENTED_OR_PARTIAL_PENDING_FINAL_EXPERIENCE_REVIEW",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC."
+    },
+    {
+      "lane": "media-auth-utility",
+      "id": "MAU-E6",
+      "pages": [
+        "bilibili-com/video-bv1gj411x7h7"
+      ],
+      "finding": {
+        "id": "MAU-E6",
+        "owner": "engine",
+        "severity": "medium",
+        "pages": [
+          "bilibili-com/video-bv1gj411x7h7"
+        ],
+        "criterion": "compact utilities / no visual duplication",
+        "location": "$.credits._items[0..7]; .g-credits .linklist li + .ctl",
+        "observed": "Each subtitle credit renders the author inside a full sentence and then repeats that author as a pill, doubling8 short source credit lines into taller utilities. On mobile several repeat pills wrap to another line.",
+        "geometryEvidence": "Rendered credit section345.38px desktop /465.38px390; source credits are8 compact single-line linked statements in screenshot. Model first name includes 账号已注销 while action.label repeats it.",
+        "sourceEvidence": "Source full.png and captured DOM credit statement/link; source shows one mention per credited author. Model preserves full descriptive sentence plus action label, so this is rendering/grouping ownership, not source-fact deletion authority.",
+        "renderEvidence": [
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-2560-sheet.png",
+          "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-390-sheet.png"
+        ],
+        "falsifiableImprovementCriterion": "Preserve each language/author/URL while showing each author/action coherently once, or otherwise avoid duplicated inline-label-plus-pill utility rows through an applicable shared rule. No factual model rewrite solely for presentation.",
+        "status": "OPEN_BASELINE_DEFECT"
+      },
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+      "originSha256": "edf51f0c32ebf93c0539590cb1f16fdff09b229737d0145194e07332ebeb16da",
+      "status": "OPEN_MATERIAL_ACCEPTANCE",
+      "proof": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+      "limit": "Shared geometry/static proof cannot close experience/source AC.",
+      "remaining": "Credits sentence/author-pill duplication needs shared inline association correction or explicit final usable proof."
+    }
+  ],
+  "proof": {
+    "directory": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery",
+    "entryCheckpoint": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/entry.patch",
+    "selftests": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/final-selftests-summary.txt",
+    "candidateTargets": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/candidate-selftest-final.log",
+    "safePerNodeTargetInstances": 1462,
+    "original493SerializationLosses": "preserved by shared candidate output; safe target per-node occurrence counts independently checked, not merely distinct URLs",
+    "candidateFidelity": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/candidate/results.json",
+    "candidateModels": 27,
+    "htmlAndMarkdownFidelityOne": 27,
+    "measurements": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/render-proof-final5/measurements.json",
+    "geometry": {
+      "pages": 42,
+      "views": 168,
+      "overflow": [],
+      "upscaledLoadedImages": 0,
+      "failedImages": {
+        "bilibili-com/home": 11,
+        "bilibili-com/read-home": 19,
+        "bilibili-com/video-bv1gj411x7h7": 1
+      }
+    },
+    "acceptedDelta": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/accepted-reference-delta.json",
+    "secretScan": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/recovery/secret-scan.json",
+    "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/engine/.scratch/62-all-sites/engine/ticket.md",
+    "visualModalities": "Targeted1440 whole-height downsample/source sheets GitHub and Huawei laptop;390 whole-height GitHub; native1440 Microsoft table/destinations and Huawei laptop excerpt crops. Not full42×4 visual review. Predecessor inspections remain historical only."
+  },
+  "unmetAC": [
+    {
+      "criterion": "Material shared findings fully closed",
+      "scope": [
+        "H-E4",
+        "MI-E2",
+        "MI-E4",
+        "MAU-E4",
+        "MAU-E6"
+      ],
+      "reason": {
+        "H-E4": "Lone Pocket product still has disproportionate banner/media grouping; not repaired in this replacement slice.",
+        "MI-E2": "Short boolean/filter groups require full density/utility verification; margin tightening alone is insufficient.",
+        "MI-E4": "Source footer slogan primary hierarchy requires rendered source-aware confirmation, not heuristic-only acceptance.",
+        "MAU-E4": "Bilibili ordered-feed whole-height density/media grouping remains unverified; failed external images prohibit complete image comparison.",
+        "MAU-E6": "Credits sentence/author-pill duplication needs shared inline association correction or explicit final usable proof."
+      }
+    },
+    {
+      "criterion": "Whole-height/source-aware experience at2560/1920/1440/390",
+      "scope": "42 pages including seven accepted references and two identities",
+      "reason": "All168 final geometry/capture views saved; actual human/multimodal inspections only targeted subsets. Unknown is INCOMPLETE."
+    },
+    {
+      "criterion": "Fresh independent final technical and experience review",
+      "scope": "Final combined candidate, all42",
+      "reason": "Not performed by sole engine execution worker; Main routes review."
+    },
+    {
+      "criterion": "Microsoft127 table source targets final usability",
+      "scope": "learn-microsoft/vm-sizes",
+      "reason": "Exact targets/labels/order serialized; groups remain beside owning typed table, not new link-valued grammar.1440 crop inspected shows row-labelled destination groups below table with duplicated value/link reading burden; all-width usability remains incomplete."
+    },
+    {
+      "criterion": "Iconfont private glyph readability",
+      "scope": "Mi phone previous/next and source utilities",
+      "reason": "Exact source glyphs preserved; no source-independent directional labels invented. Native icon font shape/readability not established."
+    },
+    {
+      "criterion": "Complete imagery and backend utility behavior",
+      "scope": "Bilibili external imagery, source-lazy/unpainted or clipped captures, auth/cookies/backend",
+      "reason": "Loaded images never upscale; failed images and cropped/static source limits remain explicit. No backend/navigation behavior invented."
+    },
+    {
+      "criterion": "Final integrated focused gallery",
+      "scope": "Combined engine/content delivery",
+      "reason": "Content candidate read-only; no content patch applied and no final main generated outputs edited under current assignment."
+    }
+  ],
+  "status": "INCOMPLETE_SHARED_FINDINGS_AND_FINAL_INTEGRATED_VISUAL_ACCEPTANCE",
+  "auditRouting": [
+    {
+      "cohort": "36kr-news-search",
+      "pages": [
+        "36kr-com/home",
+        "36kr-com/information-technology",
+        "36kr-com/search-ai",
+        "36kr-com/search-viz"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "a8c6e1cb653af3fe253b02e3faf487b5451a30d4aec983ea8bcbbd7c8d8b1de9",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-36kr-news-search.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-36kr-news-search",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-36kr-news-search/.scratch/62-all-sites/audit-36kr-news-search/ticket.md",
+      "contentFindingIds": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "sspai-editorial",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/matrix",
+        "sspai-com/post-102392",
+        "sspai-com/post-114699",
+        "sspai-com/u-jtc092al"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "b8cc3947368f52a2c684f4b53a51c77c10629beda87aaafba555f775ecdef2f1",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-sspai-editorial.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/ticket.md",
+      "contentFindingIds": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "mi-commerce",
+      "pages": [
+        "mi-com/home",
+        "mi-com/search-earbuds",
+        "mi-com/search-phone",
+        "mi-com/shop-category-list"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-mi-commerce/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-mi-commerce.md",
+      "originFormat": "lossless embedded JSON in authoritative runtime Markdown",
+      "originSha256": "2c6ffb61da765caedc04e305e69b877fa096805aa7b793f98e9357d172b31daa",
+      "normalizedReadOnlyData": "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/audit-mi-commerce-extracted-handoff.json",
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-mi-commerce.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-mi-commerce/.scratch/62-all-sites/audit-mi-commerce",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-mi-commerce/.scratch/62-all-sites/audit-mi-commerce/ticket.md",
+      "contentFindingIds": [
+        "MI-C1",
+        "MI-C2",
+        "MI-C3",
+        "MI-C4",
+        "MI-C5"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "huawei-commerce",
+      "pages": [
+        "huawei-cn/home",
+        "huawei-cn/consumer-phones",
+        "huawei-cn/search-laptop",
+        "huawei-cn/search-phone"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "2bd84c9e3b75c22ff9354300a01cde0706446b9d90d7def148f95e702f3ec295",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-huawei-commerce.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce/ticket.md",
+      "contentFindingIds": [
+        "H-C1",
+        "H-C2",
+        "H-C3",
+        "H-C4",
+        "H-C5",
+        "H-C6",
+        "H-C7",
+        "H-C8"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "apple-linear-products",
+      "pages": [
+        "apple-com-cn/iphone-17",
+        "apple-com/iphone-16",
+        "apple-com/macbook-air",
+        "linear-app/home"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "c046b78ee4d42e20b4114218989b95c244c6e2cb929a668ac751db6bf8b5505b",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-apple-linear-products.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-apple-linear-products",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-apple-linear-products/ticket.md",
+      "contentFindingIds": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "cloud-business",
+      "pages": [
+        "aliyun-com/home",
+        "aliyun-com/product-ecs",
+        "aws-amazon/ec2-on-demand",
+        "stripe-com/pricing",
+        "grafana-play/play-home"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "b3b5b15c3018a2cf0b8c9c8469e1c2b0060f01b5a26f64fcaa8678aa6ba6288b",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-cloud-business.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-cloud-business",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-cloud-business/.scratch/62-all-sites/audit-cloud-business/ticket.md",
+      "contentFindingIds": [
+        "CB-C1",
+        "CB-C2"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "public-technical-docs",
+      "pages": [
+        "gov-uk/ni-rates-letters",
+        "gov-uk/register-birth-abroad",
+        "learn-microsoft/vm-sizes",
+        "stripe-docs/payments"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-handoff.json",
+      "originFormat": "JSON",
+      "originSha256": "eb5383c31a17c60c0e1428b1540e6e6bd8b2b4369067804eaf4a61e356f89570",
+      "normalizedReadOnlyData": null,
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-public-technical-docs.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-public-technical-docs",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-public-technical-docs/.scratch/62-all-sites/audit-public-technical-docs/ticket.md",
+      "contentFindingIds": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    },
+    {
+      "cohort": "media-auth-utility",
+      "pages": [
+        "bilibili-com/read-home",
+        "bilibili-com/video-bv1gj411x7h7",
+        "github-com/login",
+        "stripe-dashboard/login",
+        "xiaomi-account/login"
+      ],
+      "producerCompleted": true,
+      "requestedHandoff": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-handoff.json",
+      "authoritativeOrigin": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+      "originFormat": "lossless embedded JSON in authoritative runtime Markdown",
+      "originSha256": "edf51f0c32ebf93c0539590cb1f16fdff09b229737d0145194e07332ebeb16da",
+      "normalizedReadOnlyData": "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/audit-media-auth-utility-extracted-handoff.json",
+      "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+      "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility",
+      "ticket": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/ticket.md",
+      "contentFindingIds": [
+        "MAU-C1",
+        "MAU-C2",
+        "MAU-C3",
+        "MAU-C4"
+      ],
+      "routingStatus": "resolved; all assigned pages retained; baseline diagnosis is not final acceptance",
+      "fixSubstantiation": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/source-fidelity-test.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/asset-provenance.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/content/.scratch/62-all-sites/content/final-hashes.json"
+      ]
+    }
+  ],
+  "noStagedFiles": true,
+  "nextRouting": "Engine continuation for explicit open material findings and Microsoft/glyph usability; integration owner consumes source-only patch plus frozen content candidate; then fresh independent42-page technical/experience review. No re-audit/re-bootstrap."
+}

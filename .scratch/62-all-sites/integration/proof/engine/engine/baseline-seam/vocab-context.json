@@ -1,0 +1,11 @@
+{
+  "$comment": "Controlled context vocabulary (F-017 / F-004 decision a+b): session- and environment-injected facts the model may REFERENCE in conditions but never assign. Injected by the engine per request; the authoritative values come from the backend/session. Names here are the only non-model facts a condition may name.",
+  "version": "0",
+  "context": {
+    "signed-in": { "type": "bool" },
+    "role":      { "type": "text" },
+    "region":    { "type": "text" },
+    "locale":    { "type": "text" },
+    "audience":  { "type": "text" }
+  }
+}

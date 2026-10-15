@@ -1,0 +1,72 @@
+# National Insurance rates and categories
+
+## Contribution rates
+
+An employee’s Class 1 National Insurance is made up of contributions:
+
+The amounts deducted and paid depend on: the category letter, and how much of the employee’s earnings falls within each band.
+
+- deducted from their pay (employee’s National Insurance)
+- paid by their employer (employer’s National Insurance)
+
+## Employee National Insurance rates
+
+This table shows how much employers deduct from employees’ pay from 6 April 2026 to 5 April 2027.
+
+| Category letter | £129 to £242 (£559 to £1,048 a month) | £242.01 to £967 (£1,048.01 to £4,189 a month) | Over £967 a week (£4,189 a month) |
+| --- | --- | --- | --- |
+| A | 0% | 8% | 2% |
+| B | 0% | 1.85% | 2% |
+| C | N/A | N/A | N/A |
+| D | 0% | 2% | 2% |
+| E | 0% | 1.85% | 2% |
+| F | 0% | 8% | 2% |
+| H | 0% | 8% | 2% |
+| I | 0% | 1.85% | 2% |
+| J | 0% | 2% | 2% |
+| K | N/A | N/A | N/A |
+| L | 0% | 2% | 2% |
+| M | 0% | 8% | 2% |
+| N | 0% | 8% | 2% |
+| S | N/A | N/A | N/A |
+| V | 0% | 8% | 2% |
+| Z | 0% | 2% | 2% |
+
+## Employer National Insurance rates
+
+This table shows how much employers pay towards employees’ National Insurance from 6 April 2026 to 5 April 2027.
+
+| Category letter | £96 to £481 (£417 to £2,083 a month) | £481.01 to £967 (£2,083.01 to £4,189 a month) | Over £967 a week (£4,189 a month) |
+| --- | --- | --- | --- |
+| A | 15% | 15% | 15% |
+| B | 15% | 15% | 15% |
+| C | 15% | 15% | 15% |
+| D | 0% | 15% | 15% |
+| E | 0% | 15% | 15% |
+| F | 0% | 15% | 15% |
+| H | 0% | 0% | 15% |
+| I | 0% | 15% | 15% |
+| J | 15% | 15% | 15% |
+| K | 0% | 15% | 15% |
+| L | 0% | 15% | 15% |
+| M | 0% | 0% | 15% |
+| N | 0% | 15% | 15% |
+| S | 0% | 15% | 15% |
+| V | 0% | 0% | 15% |
+| Z | 0% | 0% | 15% |
+
+## [Class 1A and Class 1B rates](https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2022-to-2023)
+
+Employers pay Class 1A and 1B National Insurance on expenses and benefits they give to their employees. The rate from 6 April 2026 to 5 April 2027 on expenses and benefits is 15%.
+
+## Example
+
+If you’re in category A and you earn £1,000 in a week you’ll pay:
+
+This means your National Insurance payment will be £58.66 for the week.
+
+- nothing on the first £242
+- 8% (£58) on your earnings between £242.01 and £967
+- 2% (£0.66) on the remaining earnings above £967
+
+[Category letters](https://www.gov.uk/national-insurance-rates-letters/category-letters) (Next)

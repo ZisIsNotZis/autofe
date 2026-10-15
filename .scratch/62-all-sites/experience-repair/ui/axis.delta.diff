@@ -1,0 +1,86 @@
+--- .scratch/62-all-sites/experience-repair/ui/baseline/axis.mjs	2026-10-14 05:38:07.121121311 +0800
++++ m1/axis.mjs	2026-10-14 06:02:54.329626383 +0800
+@@ -830,7 +830,28 @@
+   // 插到了输入框与「搜索」按钮之间。这是「模型形状 ⇒ 呈现分组」的决定，所以放在共享轴层：当一个元素
+   // 自己的动作是它自己字段的 submit 时，该动作画在字段组内（紧跟字段），元素其余内容跟在组后。
+   const fieldSubmit = Boolean(action && action.verb === 'submit' && controlExp);
+-  const inlineChildren = inlineChildLinks(node);
++  // Footer inventories may declare navigation and its paragraph text separately.
++  // Consume a unique, nonoverlapping label in its owning local footer sentence once.
++  const footer = [...chain, node].find((n) => [...chain, node].some((p) => p.footer === n));
++  const footerBindings = new Map();
++  if (footer) {
++    const inventory = (footer._items ?? []).filter((n) => hasTarget(n._action) && n._action.label);
++    const paragraphs = [];
++    const collect = (n) => { for (const f of factsOf(n)) if (typeof f.value?.text === 'string') paragraphs.push({node:n,key:f.key,text:f.value.text}); for (const c of childrenOf(n)) if (!inventory.includes(c.node)) collect(c.node); };
++    for (const c of namedChildEntries(footer)) collect(c.node);
++    for (const n of inventory) {
++      const a = n._action;
++      const matches = paragraphs.filter((p) => {
++        const at = p.text.indexOf(a.label);
++        return at >= 0 && (at === 0 || /[\s|]/.test(p.text[at - 1])) && (at + a.label.length === p.text.length || /[\s|]/.test(p.text[at + a.label.length]));
++      });
++      if (matches.length !== 1) continue;
++      const p = matches[0];
++      if (!footerBindings.has(p.node)) footerBindings.set(p.node, []);
++      footerBindings.get(p.node).push({key:p.key,label:a.label,href:hrefOf(a.to),node:n});
++    }
++  }
++  const inlineChildren = [...inlineChildLinks(node), ...(footerBindings.get(node) ?? [])];
+   const actionRow = actionRowOf(node, chain, values, (inlineInto || fieldSubmit) ? null : action, toolbar);
+   actionRow.row = actionRow.row.filter((a) => !inlineChildren.some((c) => c.label === a.label && c.href === a.href));
+   actionRow.consumed.push(...inlineChildren.map((c) => c.node));
+@@ -841,12 +862,22 @@
+   // 满幅（hero 槽），不再锁 74ch。网格/表格单元格内的成员（ctx.grid）与自身即页面的深度 0 节点
+   // 不在此列：卡片格里的图不是页框（F-031-§7 同款约束）。
+   const imgFact = facts.list.find((f) => f.key === '_image');
+-  const banner = Boolean(!ctx.grid && depth > 0 && imgFact && headingKey && arrayChildEntries(node).length === 0
++  const recordMember = chain.some((parent) => {
++    const members = [...(parent._items ?? []), ...(parent._lines ?? [])];
++    return members.includes(node) && members.length >= 2 && members.every((it) =>
++      (it._title || it._name) && it._action && !it._price && !it._measure &&
++      (it._author || it._datetime || it._source || it.sourceLink));
++  });
++  const identity = action?.verb === 'follow' && Boolean(imgFact && headingKey);
++  const banner = Boolean(!recordMember && !identity && !ctx.grid && depth > 0 && imgFact && headingKey && arrayChildEntries(node).length === 0
+     && (action || actionRow.row.length)
+     && facts.list.every((f) => ['_image', '_subtitle', '_summary', '_detail'].includes(f.key)));
+   if (banner) { facts.hero = imgFact.value; facts.list = facts.list.filter((f) => f !== imgFact); }
+   const consumedArray = new Set(controlExp && Array.isArray(node._items) ? node._items : []);
+-  const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it) && !actionRow.consumed.includes(it));
++  const boundFooterLinks = [...footerBindings.values()].flat();
++  actionRow.row = actionRow.row.filter((a) => !boundFooterLinks.some((b) => b.label === a.label && b.href === a.href));
++  const footerConsumed = new Set(boundFooterLinks.map((a) => a.node));
++  const rawItems = arrayChildEntries(node).map((c) => c.node).filter((it) => !consumedArray.has(it) && !actionRow.consumed.includes(it) && !footerConsumed.has(it));
+   // A description fact declared AFTER this node's collection is the collection's FOOTNOTE, not
+   // its lead-in: it must render directly BELOW the collection, never float above it and split
+   // the lead-in from its own list (round 37: gov-uk `…for example when you:` + its bullets).
+@@ -855,6 +886,7 @@
+   const collAt = ownKeys.findIndex((k) => k === '_items' || k === '_lines');
+   const trailing = collAt >= 0 ? facts.list.filter((f) => ownKeys.indexOf(f.key) > collAt) : [];
+   const items = seqGroupsOf(rawItems, node, ctx.degradations ?? null);
++  for (const g of items.groups) if (g.form === 'prose' && g.items.some((it) => footerBindings.has(it))) g.form = 'stack';
+   const namedChildren = namedChildEntries(node);
+   const emptyState = (Array.isArray(node._items) && node._items.length === 0 && node._empty) ? node._empty : null;
+   const titleConsumed = Boolean(choice && choice.kind === 'bool' && headingKey);
+@@ -909,8 +941,11 @@
+     titleIsControl, choice, inlineChildren, actionRow: actionRow.row, rowConsumed: actionRow.consumed,
+     items, namedChildren: orderedNamedChildren(namedChildEntries(node).filter((c) =>
+       !namedChildEntries(node).some((t) => tableLinkPair(node, t.node)?.inventory === c.node))), emptyState, titleConsumed, fieldSubmit, banner, headerBar,
++    recordMember, identity,
++    searchSubmit: node._composite === 'search' && namedChildren.some((c) => c.node._action?.verb === 'submit' && !c.node._action.label && !hasTarget(c.node._action)),
+     taskForm: node._composite === 'login',
+     leadAction: depth === 0 && ['buy', 'preorder'].includes(action?.verb),
++    actionBeforeChild: node._composite === 'login' ? namedChildren.find((c) => !actionRow.consumed.includes(c.node) && ownKeys.indexOf(c.key) > ownKeys.findIndex((k) => node[k]?._action?.verb === 'submit'))?.key : null,
+     introBeforeMedia: depth === 0 && ['buy', 'preorder'].includes(action?.verb) && Boolean(node._summary) && !node._price,
+     widthTier,
+     singletonCard: Array.isArray(node._items) && rawItems.length === 1 && Boolean(rawItems[0]._name && rawItems[0]._image && rawItems[0]._action),
+@@ -920,7 +955,7 @@
+       factsOf(it).length <= 2 && !it._image && !it._price && textLenOf(it) <= 48 && childrenOf(it).length === 0),
+     utilityGroup: rawItems.length >= 2 && rawItems.every((it) =>
+       textLenOf(it) <= 32 && factsOf(it).every((f) => ['_name', '_title', '_text', '_brand'].includes(f.key))
+-      && namedChildEntries(it).length === 0),
++      && childrenOf(it).length === 0),
+   };
+ }
+ 

@@ -1,0 +1,7 @@
+# Preparation result
+
+**PREPARED FOR ROUTING; delivery remains INCOMPLETE.** All eight actual independent reports read and hash-bound in reviews.json: seven material FAIL, one INCOMPLETE. Packet consolidates all12 material repair classes, exact affected model/HTML locations, source basis, exclusive writer ownership and closed defect-detecting acceptance. No defect invented from44 unknown owner associations.
+
+One separate exact-frozen oracle worktree: `/home/z/vibe/autofe-worktrees/62-all-sites/experience-repair-oracle-013283d3`. Detached existing recovery base plus current owner overlay; all811 owned and168 source-capture hashes match root/latest owner proof. Root HEAD/refs unchanged, indices empty, original source/dirt/raw proof retained. No implementation, source audit replay, new agents, staging or root commit performed. Freeze contract and separate UX/oracle allowlists prevent guessed shared-file edits; final integration must renew oracle consumption against changed UX and obtain independent final delta/experience proof.
+
+Evidence: freeze.json, reviews.json, root-before.txt, root-after-isolation.txt, refs-before.txt, validation.json, ticket.md; full backlog and original report/evidence pointers in packet.md. Risks remain actual unread native-scale regions, source lazy/partial capture, backend unexercised behavior,44 unverified associations, final combined technical/experience/seven-reference acceptance. Static gates are not visual PASS.

@@ -1,0 +1,547 @@
+{
+  "pages": [
+    "sspai-com/home",
+    "sspai-com/matrix",
+    "sspai-com/post-102392",
+    "sspai-com/post-114699",
+    "sspai-com/u-jtc092al"
+  ],
+  "coveredHashes": {
+    "baselineCommit": "403cd5be096db89b428e130ad57cca730b425fdc",
+    "manifest": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/covered-hashes.json",
+    "pageInputs": {
+      "sspai-com/home": {
+        "m1/curated/sspai-com/home.json": "37fb8befdf21f3a1e78b630ffe2db2249f99279d0ad41fd8f652d88879d27472",
+        "m1/curated/renders/sspai-com-home.html": "f7ac891cc57bfbaadbccf70828378e90cf9226ac8cf1f23a18564eaf472d4be0",
+        "corpus/sspai-com/home/dom.html": "71c3a94ab4cc18c631cd6470c36607dd8715c5d14737da172d828fb4a9442fd8",
+        "corpus/sspai-com/home/nodes.json": "8b7e6cdc8e87305313411c83871cc3b68b618c080832cea858310eb5d9838f5a",
+        "corpus/sspai-com/home/full.png": "aafd02da9315775dbee12be12dc2e031ff9b072503be33ccba34e5e4139b3550"
+      },
+      "sspai-com/matrix": {
+        "m1/curated/sspai-com/matrix.json": "1a52629eccb1da02164ce25d578dfc4b3988f32ceeffb94278b43fb8bee726b6",
+        "m1/curated/renders/sspai-com-matrix.html": "db64ac41f754314758b3506e2a08ca69f3af9fdd05d9403776d2f2d63bf9bb39",
+        "corpus/sspai-com/matrix/dom.html": "f6576d9fc627826b0cd3006026272a56390d59940fe175078af610a8ead2f41e",
+        "corpus/sspai-com/matrix/nodes.json": "248d5889b1cd17c46f0c15504e4728cc1e969f4838b95e66db2161e91aaaa1ff",
+        "corpus/sspai-com/matrix/full.png": "a8de310597cf1c3a27cfbafe4e4bb25921b8142c2f87eebfb45c5a9863a7d4ce"
+      },
+      "sspai-com/post-102392": {
+        "m1/curated/sspai-com/post-102392.json": "144c5241bf54e230f7652477ccd70c71ac103ca51e1bc1d94806374d5ea73ccc",
+        "m1/curated/renders/sspai-com-post-102392.html": "dbb4d06a3c5a769f072f0adb84f29568227009ca9f3e73f94e73ec0343e03fa2",
+        "corpus/sspai-com/post-102392/dom.html": "3d1ba193c20c6c9e1f062af1d506282633bb0637acefadd740bfe07ac02c3d83",
+        "corpus/sspai-com/post-102392/nodes.json": "0510a3de984b6d16855dcce678010b382cd400583f58265dd86187960ce7e1d9",
+        "corpus/sspai-com/post-102392/full.png": "add9a8dfa9d3a4404030f1baf00f65fd723c888ff643ec428b0498c14d61a6ae"
+      },
+      "sspai-com/post-114699": {
+        "m1/curated/sspai-com/post-114699.json": "93224978618e58d7d9bc4455fde5f3ee3dbd289c89a05682e805ea3063ec4855",
+        "m1/curated/renders/sspai-com-post-114699.html": "269ddfb24bb50d193579720a3fe450f0316e0f23220a315d5a5049dcd15e5b8b",
+        "corpus/sspai-com/post-114699/dom.html": "5d3a2926a39d0229359acb9b5ff043b299868eb725d388fed613932d629f608a",
+        "corpus/sspai-com/post-114699/nodes.json": "6529657529b4c7d73e8d2c8d9c9db8853dc69324e56c38f9f0424566bf2deb27",
+        "corpus/sspai-com/post-114699/full.png": "8125e4bf528113286f8bcd679fd06d4f02892ddec65f949de47a2e73437c6b6e"
+      },
+      "sspai-com/u-jtc092al": {
+        "m1/curated/sspai-com/u-jtc092al.json": "e9a3764b333c2d91f47f21cb66b183f8a0be6e989aed18f47c7907ac688b1adf",
+        "m1/curated/renders/sspai-com-u-jtc092al.html": "79e65192a06603a155f0f66119a1a0b5bf6fe10a4a6b6967ba274b975a9d30a2",
+        "corpus/sspai-com/u-jtc092al/dom.html": "f2dfa096d7a6218954f86b621f9e58e04b6f2f989e41e33983dfe7754ddfc763",
+        "corpus/sspai-com/u-jtc092al/nodes.json": "9542249fd27063385ddddf62ebffe7fa4409304181ab886762bd6ab474768a05",
+        "corpus/sspai-com/u-jtc092al/full.png": "27e80bfd1d35174fbdc04d06975f2302b9f328ff5dd704f43ce062e091e6d313"
+      }
+    }
+  },
+  "coverage": {
+    "sspai-com/home": {
+      "2560": {
+        "geometry": "checked",
+        "visual": "whole-height inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-2560.png",
+        "inspectionImage": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-2560-main-full.png"
+      },
+      "1920": {
+        "geometry": "checked",
+        "visual": "not inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-1920.png"
+      },
+      "1440": {
+        "geometry": "checked",
+        "visual": "whole-height rendered/source comparison sheet inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-1440-source-full.png"
+      },
+      "390": {
+        "geometry": "checked",
+        "visual": "top and bottom only; middle incomplete",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-390.png",
+        "inspectionImage": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/mobile-top-bottom-only.png"
+      },
+      "source": {
+        "dom": "anchors/images and targeted factual contexts checked",
+        "nodes": "targeted layout/factual geometry checked",
+        "image": "whole-height overview and relevant readable crops checked; not exhaustive fine-text pixel inspection"
+      },
+      "pageStatus": "DEFECTS_FOUND; final visual acceptance INCOMPLETE",
+      "findings": [
+        "E1",
+        "E4",
+        "E5",
+        "E6",
+        "C1",
+        "C5"
+      ]
+    },
+    "sspai-com/matrix": {
+      "2560": {
+        "geometry": "checked",
+        "visual": "whole-height inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-2560.png",
+        "inspectionImage": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-2560-main-full.png"
+      },
+      "1920": {
+        "geometry": "checked",
+        "visual": "not inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-1920.png"
+      },
+      "1440": {
+        "geometry": "checked",
+        "visual": "whole-height rendered/source comparison sheet inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-1440-source-full.png"
+      },
+      "390": {
+        "geometry": "checked",
+        "visual": "top and bottom only; middle incomplete",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-390.png",
+        "inspectionImage": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/mobile-top-bottom-only.png"
+      },
+      "source": {
+        "dom": "anchors/images and targeted factual contexts checked",
+        "nodes": "targeted layout/factual geometry checked",
+        "image": "whole-height overview and relevant readable crops checked; not exhaustive fine-text pixel inspection"
+      },
+      "pageStatus": "DEFECTS_FOUND; final visual acceptance INCOMPLETE",
+      "findings": [
+        "E1",
+        "E5",
+        "E7",
+        "C4",
+        "C5"
+      ]
+    },
+    "sspai-com/post-102392": {
+      "2560": {
+        "geometry": "checked",
+        "visual": "whole-height inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-2560.png",
+        "inspectionImage": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-2560.png"
+      },
+      "1920": {
+        "geometry": "checked",
+        "visual": "not inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-1920.png"
+      },
+      "1440": {
+        "geometry": "checked",
+        "visual": "whole-height rendered/source comparison sheet inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-1440-source-full.png"
+      },
+      "390": {
+        "geometry": "checked",
+        "visual": "top and bottom only; middle incomplete",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-390.png",
+        "inspectionImage": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/mobile-top-bottom-only.png"
+      },
+      "source": {
+        "dom": "anchors/images and targeted factual contexts checked",
+        "nodes": "targeted layout/factual geometry checked",
+        "image": "whole-height overview and relevant readable crops checked; not exhaustive fine-text pixel inspection"
+      },
+      "pageStatus": "DEFECTS_FOUND; final visual acceptance INCOMPLETE",
+      "findings": [
+        "E1",
+        "E5",
+        "C2",
+        "C5"
+      ]
+    },
+    "sspai-com/post-114699": {
+      "2560": {
+        "geometry": "checked",
+        "visual": "whole-height inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-2560.png",
+        "inspectionImage": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-2560-main-full.png"
+      },
+      "1920": {
+        "geometry": "checked",
+        "visual": "not inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-1920.png"
+      },
+      "1440": {
+        "geometry": "checked",
+        "visual": "whole-height rendered/source comparison sheet inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-1440-source-full.png"
+      },
+      "390": {
+        "geometry": "checked",
+        "visual": "top and bottom only; middle incomplete",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-390.png",
+        "inspectionImage": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/mobile-top-bottom-only.png"
+      },
+      "source": {
+        "dom": "anchors/images and targeted factual contexts checked",
+        "nodes": "targeted layout/factual geometry checked",
+        "image": "whole-height overview and relevant readable crops checked; not exhaustive fine-text pixel inspection"
+      },
+      "pageStatus": "DEFECTS_FOUND; final visual acceptance INCOMPLETE",
+      "findings": [
+        "E1",
+        "E2",
+        "E5",
+        "C1",
+        "C2",
+        "C5"
+      ]
+    },
+    "sspai-com/u-jtc092al": {
+      "2560": {
+        "geometry": "checked",
+        "visual": "whole-height inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-2560.png",
+        "inspectionImage": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-2560-main-full.png"
+      },
+      "1920": {
+        "geometry": "checked",
+        "visual": "not inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-1920.png"
+      },
+      "1440": {
+        "geometry": "checked",
+        "visual": "whole-height rendered/source comparison sheet inspected",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-1440-source-full.png"
+      },
+      "390": {
+        "geometry": "checked",
+        "visual": "top and bottom only; middle incomplete",
+        "evidence": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-390.png",
+        "inspectionImage": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/mobile-top-bottom-only.png"
+      },
+      "source": {
+        "dom": "anchors/images and targeted factual contexts checked",
+        "nodes": "targeted layout/factual geometry checked",
+        "image": "whole-height overview and relevant readable crops checked; not exhaustive fine-text pixel inspection"
+      },
+      "pageStatus": "DEFECTS_FOUND; final visual acceptance INCOMPLETE",
+      "findings": [
+        "E1",
+        "E3",
+        "E6",
+        "C3",
+        "C4",
+        "C5"
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "E1",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/matrix",
+        "sspai-com/post-102392",
+        "sspai-com/post-114699",
+        "sspai-com/u-jtc092al"
+      ],
+      "criterion": "Coherent whole-page/shared-axis alignment and image/title/actions grouping",
+      "location": "main > article > h1.title; .depth-1.w-wide/.w-narrow; .meta; figure.strip",
+      "renderEvidence": "Root title takes a separate narrower axis on every page. Home/Matrix/news alternate wide collections with inset utility/readable sections. Article102392 separates title, cover, byline and body; user title sits120px right of profile/content edge.",
+      "sourceEvidence": "Source portal deliberately has multiple columns; those are legitimate. Source article102392 title, cover and body all share x380/w680. The defect is introduced uncoordinated sibling-frame shifts, not centered whitespace or full-bleed itself.",
+      "geometryEvidence": "At2560 root h1 x960/w640 on all five. Home banner/editors/feed x664/w1232 vs promo/campaigns/tabs/friends depth-1 x840/w880. Matrix feed x664/w1232 vs filters/yipai/sidebar-derived sections x840/w880. News title x960, author x664, meta x840, news x664. Article102392 img x593/w1374, title x960/w640, byline x664/w1232, body x840/w880. User title x960 vs profile x840/w880. Same desktop shifts at1920/1440;390 collapses main sections to x16/w358.",
+      "improvementCriterion": "Shared decisions must establish an intentional page frame with heading/byline/controls on the corresponding content edge, and intentional consistent reading/cover grouping for articles. Preserve justified source columns and brand variation; do not fix by blanket centering or site-name CSS.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/focus.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-2560-main-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-2560-main-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-2560.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-2560-main-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-2560-main-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-axis-utilities.png"
+      ]
+    },
+    {
+      "id": "E2",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "sspai-com/post-114699"
+      ],
+      "criterion": "Readable density; shared semantic axes/closed grammar",
+      "location": "news._items; .g-news .cards > .item; briefs._items",
+      "renderEvidence": "Seven article-body news sections become four-column cards with long paragraphs wrapping into narrow strips. They read as a dashboard rather than sequential editorial sections. Source paragraphs are also missing (separate C2).",
+      "sourceEvidence": "Source news h2/body x380/w680, stacked in article order; readable first-two-section and Panasonic/Bose crops show this is long-form editorial prose, not compact comparable values.",
+      "geometryEvidence": "2560/1920/1440 news title/prose lane inside each card is271.5px, grid1232px. First-row card heights roughly390–454px; section883px.390 stacks at332px internal width (body visual middle not fully inspected).",
+      "improvementCriterion": "Use existing semantic comparability/compactness rules to keep long editorial sections in reading order at a coherent reading width, not cramped four-way comparison; preserve all titles/actions/images. No model presentation escape hatch or site-specific rule.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-source-flow.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-source-product-images.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/focus.json"
+      ]
+    },
+    {
+      "id": "E3",
+      "owner": "engine",
+      "severity": "medium",
+      "pages": [
+        "sspai-com/u-jtc092al"
+      ],
+      "criterion": "Readable density and compact utilities",
+      "location": "_lines[2]._lines; .depth-1 statistics section",
+      "renderEvidence": "Five tiny statistical facts consume564px of vertical page height, pushing activity down to y979 on desktop. Large independent section gaps make a short profile panel look unfinished.",
+      "sourceEvidence": "Original profile statistics occupy a compact120px-high panel (nodes bbox x406/y306/w628/h120); source ordered heterogeneous facts are not authority to relabel _lines as a comparable grid.",
+      "geometryEvidence": "Stats depth-1 h564 desktop and390; title/body insets are E1. Source panel120px. Value/title pairs are commonly separated into ~94px blocks in baseline.",
+      "improvementCriterion": "Keep ordered non-comparable facts sequential under the existing grammar, but give short title/value utility facts compact spacing and coherent grouping; avoid promoting them to large content chapters.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-source-profile.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-2560-main-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/focus.json"
+      ]
+    },
+    {
+      "id": "E4",
+      "owner": "engine",
+      "severity": "medium",
+      "pages": [
+        "sspai-com/home"
+      ],
+      "criterion": "Compact utility density and image/title/action cohesion",
+      "location": "banner._items; editors._items; .g-banner/.g-editors",
+      "renderEvidence": "Two five-item utility/image collections each use four cards plus an isolated second-row card. These two groups alone take1495px before narrower utilities; content feed begins y2033 on desktop. The extra trailing-row whitespace materially overgrows the portal utilities, beyond merely legitimate outer centered whitespace.",
+      "sourceEvidence": "Source presents the banner as a horizontal carousel (all five source img boxes continue x481,959,1437,1915,2393) with one active478px square and adjacent editorial/promotional lanes. It does not display two full stacked 4+1 utility grids above the feed.",
+      "geometryEvidence": "At all desktop probes banner827.8px and editors667.5px tall; feed y2032.6.390 has full stacked collections, banner2337px and editors1739px; middle mobile rendering is not visually accepted.",
+      "improvementCriterion": "Reduce overgrown short utility/image grouping height while keeping every source item/action recoverable and image at or below natural dimensions. Balance compactness using general shared decisions; do not arbitrarily enlarge pictures or force a universal carousel/centering design.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-2560-main-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-1440-source-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-axis-utilities.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json"
+      ]
+    },
+    {
+      "id": "E5",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/matrix",
+        "sspai-com/post-102392",
+        "sspai-com/post-114699"
+      ],
+      "criterion": "Paired surface/foreground contrast",
+      "location": "a.self-link.nav and .linklist links on white",
+      "renderEvidence": "Small link/title text is bright pale blue on white. Computed normal/small-text contrast is3.056:1, below4.5:1 accessibility benchmark and visibly faint in actual cards.",
+      "sourceEvidence": "Source mostly uses dark editorial titles and distinct compact controls. Preserve brand variation; this finding is about the paired foreground/background, not imposing a universal hue.",
+      "geometryEvidence": "rgb(0,151,255) / rgb(255,255,255); card font17.92px weight700 (below18.67px large-bold threshold); missed-story links16px. Examples on home, Matrix, related102392 and past-issues114699. User dynamic23.2px bold is large text and is NOT included in this small-text failure.",
+      "improvementCriterion": "Normal/small rendered link text must be legible on its actual surface (at least4.5:1 where applying AA benchmark), with large-text/controls checked using their appropriate contrast thresholds; fix shared paired tokens without washing out surfaces.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/focus.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-2560-main-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-source-images.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-source-examples.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-2560-main-full.png"
+      ]
+    },
+    {
+      "id": "E6",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/u-jtc092al"
+      ],
+      "criterion": "Responsive readable density; no one/two-character columns",
+      "location": ".defrow .deflabel/.defval; friends._items and user _lines[3]._items",
+      "renderEvidence": "At390 long article labels squeeze the adjacent category/date values into narrow columns. User dates break even numeric tokens into four lines (01/20 -> 01/2 +0); home category values wrap into one/two-character rows. No document overflow still reports success.",
+      "sourceEvidence": "Source desktop rows have readable date/category tags; original390 source was not captured, so no claim of pixel parity on mobile. Defect is directly observed in actual baseline390 top/bottom crop.",
+      "geometryEvidence": "User 01/20 10:35: label305.58px/value38.42px/value97.25px high at390 vs83.17px/24.31px desktop. Home 深度好文 value41.95px high48.63px at390 vs60px/high24.31px desktop.",
+      "improvementCriterion": "At390 preserve whole date tokens and readable category words by allocating sufficient value width or stacking label/value. Keep every target/value and prevent page overflow; geometry must detect squeezed internal columns, not only document width.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/mobile-top-bottom-only.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/deflist-probe.json"
+      ]
+    },
+    {
+      "id": "E7",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "sspai-com/matrix"
+      ],
+      "criterion": "Preserve all source/model actions and exact targets",
+      "location": "feed-view._items[0..2]._action; fieldset.expose-matrix-feed-view",
+      "renderEvidence": "Three correct model navigation actions are swallowed by exposure rendering. Output contains radio inputs with key values and labels only: no anchor href, handler or script. Choosing Hot/Random does not supply a navigation destination.",
+      "sourceEvidence": "Source anchors target /matrix, /matrix/hot, /matrix/random. Model has exact corresponding absolute URLs. Therefore no factual-model correction is needed to recover these known targets.",
+      "geometryEvidence": "Same baseline HTML used at four widths; .expose-matrix-feed-view is355px wide desktop and fits358px mobile. Geometry/validators pass despite lost navigation.",
+      "improvementCriterion": "Render all three declared navigation targets as accessible actionable destinations while preserving existing exposure/selection grammar and shared axis decisions. Verify model-to-HTML AND Markdown action fidelity, not only form geometry.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-2560-main-full.png"
+      ]
+    },
+    {
+      "id": "C1",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/post-114699"
+      ],
+      "criterion": "Faithful exact action targets",
+      "location": "home feed._items[3]._action.to; news briefs._items[1..2].source._action.to",
+      "renderEvidence": "Three targets are truncated/wrong. Agent ends agent-a instead of agent-analysis; BleepingComputer ends some-use instead of some-users%2F; Douyin ends %3Ffro instead of the complete from_tab_name/modal_id/vid query.",
+      "sourceEvidence": "Exact local dom.html anchors are recorded as wrongTargets in handoff. Existing output faithfully repeats these wrong model strings; no remote click/status test performed.",
+      "geometryEvidence": "Content defect independent of viewport. All other declared model URLs were found exactly in source (absolute/relative sspai normalization), not proof every source action is modeled.",
+      "improvementCriterion": "Replace these three target bytes with stored source targets, preserve text/action semantics, validate and rerender. No invented destination or live external execution needed.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory-summary.txt",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json"
+      ]
+    },
+    {
+      "id": "C2",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "sspai-com/post-102392",
+        "sspai-com/post-114699"
+      ],
+      "criterion": "Faithful facts/actions/images; meaningful whole-page articles",
+      "location": "102392 lead/body/closing/related; 114699 news._items",
+      "renderEvidence": "102392 is reduced to a few summary sentences: missing four syntax/example images, captions, body facts and Part.I/II manual actions; only one of four source related stories remains.114699 loses cover and Panasonic/Bose images, EU proposal second paragraph/status, Kimi later capabilities and Bose second-model facts while leaving the left/right caption without its image.",
+      "sourceEvidence": "Source102392 body image URLs contain dd3dfc65...,0f1dfabe...,84aa0dee...,ebb1fcda...; source114699 product images a5eb9d7b... and18e25fb5...; source cover045d7312.... Readable crops show darksrc=invert / darksrc=xxx.jpg syntax, full prose and manual links. All exact anchors/images inventoried in local source-inventory.json.",
+      "geometryEvidence": "Source102392 article x380/w680; syntax/example images y1729.55,1922.39,2324.39,2559. Source114699 cover x336/y56/w768/h330, Panasonic image x413/y3199.97/w614/h244, Bose x380/y3970.13/w680/h355.33. Baseline102392 has only cover+one related image;114699 has only five past-issue images.",
+      "improvementCriterion": "Recover substantive captured paragraphs, instructional images/captions/attribution and linked learning entrances with exact source targets under existing closed grammar. Recover news cover/product images and associated full facts. Preserve attribution and natural-size bounds; no fabricated paraphrase treated as source quote.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-source-examples.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-source-flow.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-source-product-images.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json"
+      ]
+    },
+    {
+      "id": "C3",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "sspai-com/u-jtc092al"
+      ],
+      "criterion": "No invented facts; source-faithful profile",
+      "location": "_lines[2]._lines[3] and missing source writeCount16557",
+      "renderEvidence": "Profile adds 获得充电4 with no support in stored source capture; source profile instead shows article25, writeCount16557, viewCount23535, badge0, since2025 and529days. Character-count datum16557 is omitted. This is an unsupported fact, not proof that actual charging count is zero.",
+      "sourceEvidence": "Source dom.html id=writeCount carries16557 with ssCommunityIcon__character--fill; id=viewCount carries23535. No source text label 获得充电 appears. Source screenshot panel corroborates captured values.",
+      "geometryEvidence": "Unsupported model fact is visible at desktop and mobile; compactness of resulting section is separately E3.",
+      "improvementCriterion": "Remove unsupported charging datum or provide genuine captured provenance; preserve the observed16557 datum with source-supported semantic label (do not guess charging). Preserve25/23535/0/529/SINCE2025 correctly.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-source-profile.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory-summary.txt",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json"
+      ]
+    },
+    {
+      "id": "C4",
+      "owner": "content",
+      "severity": "medium",
+      "pages": [
+        "sspai-com/matrix",
+        "sspai-com/u-jtc092al"
+      ],
+      "criterion": "Cohesive source image/title/action attribution",
+      "location": "matrix feed._items._image; profile identity/activity images",
+      "renderEvidence": "Matrix and user models contain no image values at all. Original Matrix visible articles have identity-bearing160x100 covers; user has a MaxChow avatar and first-three activity covers. Output becomes text-only and loses those source associations.",
+      "sourceEvidence": "Matrix source first cover at x718/y321/w160/h100; subsequent tennis/design/storage/CRM covers shown in readable crop. User source full-height sheet visibly shows avatar and first three VLOOK cover thumbnails (later lazy placeholder images are not claimed loaded).",
+      "geometryEvidence": "Browser confirms zero images for Matrix and user at all four widths; capture source inventory retains exact CDN URLs/alt/data-src. No broken-image gate can detect an entirely omitted modeled image.",
+      "improvementCriterion": "Restore genuine captured image/alt/attribution associations for loaded source covers/avatar using factual model/assets only. Do not synthesize missing/lazy pixels or enlarge pictures; preserve title/action grouping.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-source-images.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/u-jtc092al-1440-source-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/measurements.json"
+      ]
+    },
+    {
+      "id": "C5",
+      "owner": "content",
+      "severity": "medium",
+      "pages": [
+        "sspai-com/home",
+        "sspai-com/matrix",
+        "sspai-com/post-102392",
+        "sspai-com/post-114699",
+        "sspai-com/u-jtc092al"
+      ],
+      "criterion": "Complete compact source utilities/footer and known actions",
+      "location": "missing shared source navigation/footer facts in five curated models",
+      "renderEvidence": "Models omit the source navigation destinations 共创 /create, PRIME /prime, Matrix /matrix, 栏目 /series (some destinations incidentally appear elsewhere). Home/Matrix/both posts omit captured about/agreement/business utility links; Matrix/posts also omit download/contact. Rendering has only a generic page title, not a compact source utility identity/navigation/footer group.",
+      "sourceEvidence": "Exact source anchors are in source-inventory.json. Source footer appears in full source sheets for Matrix/posts; home has side-rail utility links. User capture has no visible footer, so no user-footer loss claim.",
+      "geometryEvidence": "No .g-nav or .g-footer nodes in the five output pages; omitted source utility actions cannot be detected by model-to-HTML gates. All widths inherit the same missing modeled facts.",
+      "improvementCriterion": "Preserve captured identity/navigation/footer facts and targets in compact semantically grouped utilities using existing grammar; engine may style shared utility groups. Do not invent a mandatory generic giant site heading or force source side-rails into universal centering.",
+      "evidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/source-inventory.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/home-1440-source-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/matrix-1440-source-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-102392-1440-source-full.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-sspai-editorial/.scratch/62-all-sites/audit-sspai-editorial/post-114699-1440-source-full.png"
+      ]
+    }
+  ],
+  "engineFindings": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "E7"
+  ],
+  "contentFindings": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5"
+  ],
+  "wrongTargets": [
+    {
+      "page": "sspai-com/home",
+      "path": "$.feed._items[3]._action.to",
+      "actual": "https://sspai.com/prime/story/how-to-obtain-data-for-agent-a",
+      "source": "https://sspai.com/prime/story/how-to-obtain-data-for-agent-analysis"
+    },
+    {
+      "page": "sspai-com/post-114699",
+      "path": "$.briefs._items[1].source._action.to",
+      "actual": "https://sspai.com/link?target=https%3A%2F%2Fwww.bleepingcomputer.com%2Fnews%2Fmicrosoft%2Fwindows-11-kb5124008-update-breaks-domain-trust-for-some-use",
+      "source": "https://sspai.com/link?target=https%3A%2F%2Fwww.bleepingcomputer.com%2Fnews%2Fmicrosoft%2Fwindows-11-kb5124008-update-breaks-domain-trust-for-some-users%2F"
+    },
+    {
+      "page": "sspai-com/post-114699",
+      "path": "$.briefs._items[2].source._action.to",
+      "actual": "https://sspai.com/link?target=https%3A%2F%2Fwww.douyin.com%2Fuser%2FMS4wLjABAAAANDEWKpWPI1HZOYhDHzk-u-n4QapA7hhx4MMmLUBGa4EgmNJfRLo2XrGnIU54PfrB%3Ffro",
+      "source": "https://sspai.com/link?target=https%3A%2F%2Fwww.douyin.com%2Fuser%2FMS4wLjABAAAANDEWKpWPI1HZOYhDHzk-u-n4QapA7hhx4MMmLUBGa4EgmNJfRLo2XrGnIU54PfrB%3Ffrom_tab_name%3Dmain%26modal_id%3D7686082272528715044%26vid%3D7686082272528715044"
+    }
+  ],
+  "status": "INCOMPLETE",
+  "diagnosticStatus": "five-page baseline audit complete with confirmed defects; no clean-page or PASS verdict",
+  "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-sspai-editorial.md",
+  "limits": [
+    "Initial immutable-baseline diagnosis only; not independent acceptance of future repaired/integrated output.",
+    "1920 full-height screenshots captured and geometry checked, but visual inspection not performed.",
+    "390 geometry and top/bottom visual crops checked; middle whole-height visual inspection remains incomplete.",
+    "Long1440/source comparison sheets were overview scans; readable crops/DOM cover identified defects, not every fine-text source pixel or every source fact/action.",
+    "No remote destination navigation, authenticated interaction, backend/form submission or assistive-technology exercise; three wrong URLs proven against stored capture only.",
+    "18/18 image reads and3/3 sequential browser jobs consumed; no setup rerun, source writes or dependencies installed.",
+    "Five-page validators pass, but contrast/action/source omissions and mobile squeezed columns prove static gates cannot establish visual/factual acceptance.",
+    "No protected seven-reference page was changed or accepted by this lane; other pages excluded."
+  ]
+}

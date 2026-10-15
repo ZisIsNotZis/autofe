@@ -1,0 +1,675 @@
+{
+  "pages": [
+    "bilibili-com/read-home",
+    "bilibili-com/video-bv1gj411x7h7",
+    "github-com/login",
+    "stripe-dashboard/login",
+    "xiaomi-account/login"
+  ],
+  "coveredHashes": {
+    "bilibili-com/read-home": {
+      "model": {
+        "path": "m1/curated/bilibili-com/read-home.json",
+        "sha256": "d2f4be71e076ba77f063cd44ddf2d676c31d1560e2e1457e3a40f198b2b3a0d6"
+      },
+      "html": {
+        "path": "m1/curated/renders/bilibili-com-read-home.html",
+        "sha256": "278c6479a1ea7a60d285b01f5708e8fb40cb51fa912c19b1ae19471ec4211a13"
+      },
+      "source": {
+        "dom.html": {
+          "path": "corpus/bilibili-com/read-home/dom.html",
+          "sha256": "72e06509acb6407591d3de06bc99b150fbd22b6acf12a3d854fc02526d62b479"
+        },
+        "nodes.json": {
+          "path": "corpus/bilibili-com/read-home/nodes.json",
+          "sha256": "4d85a9bea84e48e8e9f7d5df9dd5f829dbd152efc1940f0f73d38e3472ecc25e"
+        },
+        "full.png": {
+          "path": "corpus/bilibili-com/read-home/full.png",
+          "sha256": "1063a282f0a3efb8b6001d103f261f3409942eb2fc94af55c3326059fbd05c88"
+        },
+        "meta.json": {
+          "path": "corpus/bilibili-com/read-home/meta.json",
+          "sha256": "e61f3fdb5b53244e887cf7fee2f72920018583baa9dcf625f851a452662e0c43"
+        }
+      },
+      "shots": {
+        "2560": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/bilibili-com-read-home-2560.png",
+          "sha256": "8674e52dc3c6c3c6fa93a1a212fa92ebbcf255088a325638f43473bd7cc075c8"
+        },
+        "1920": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/bilibili-com-read-home-1920.png",
+          "sha256": "35f000c101998f23a385eea6c4f4dc16f22526cda69d2cf6564260ea9945af7b"
+        },
+        "1440": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/bilibili-com-read-home-1440.png",
+          "sha256": "bdd90df66929843016c67f3591378f455d4cc1d86aac676c107a9f0f3726f6c5"
+        },
+        "390": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/bilibili-com-read-home-390.png",
+          "sha256": "19675c93da93fc947d5a59716848add0304eb2bf763430e55c42c32e6aa3f35c"
+        }
+      }
+    },
+    "bilibili-com/video-bv1gj411x7h7": {
+      "model": {
+        "path": "m1/curated/bilibili-com/video-bv1gj411x7h7.json",
+        "sha256": "825df14b34a493d11309008aa8e51e1b8006001b73cdadf90dbd142859d66e27"
+      },
+      "html": {
+        "path": "m1/curated/renders/bilibili-com-video-bv1gj411x7h7.html",
+        "sha256": "133bd907e7468a61108f1cd7195b8ec78c160fb243392237c40b1aad8554e18c"
+      },
+      "source": {
+        "dom.html": {
+          "path": "corpus/bilibili-com/video-bv1gj411x7h7/dom.html",
+          "sha256": "df60e7d2668555c86434acbd10c16b8b15a4bd9c70f167e7fce3bd83315680a7"
+        },
+        "nodes.json": {
+          "path": "corpus/bilibili-com/video-bv1gj411x7h7/nodes.json",
+          "sha256": "1470027d4272a42efb9e498fce5dc8f6ee4e2b2fe8291cb6c966df1b438d92d2"
+        },
+        "full.png": {
+          "path": "corpus/bilibili-com/video-bv1gj411x7h7/full.png",
+          "sha256": "a36c49de5791dcc80d6cd9021da58af69b644901ea6dc027f58866364b98c296"
+        },
+        "meta.json": {
+          "path": "corpus/bilibili-com/video-bv1gj411x7h7/meta.json",
+          "sha256": "6ee881a145c5b098dfe186cbf4a6631eca21106cc7347e569a75061cb78760db"
+        }
+      },
+      "shots": {
+        "2560": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/bilibili-com-video-bv1gj411x7h7-2560.png",
+          "sha256": "4b03f4679f8cf3b3338b69e98032a600e0040fa422458fa2a0a3f6163a6b8c4d"
+        },
+        "1920": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/bilibili-com-video-bv1gj411x7h7-1920.png",
+          "sha256": "75115b9657adfda2f2461ae571ddb1a76b853cacf233e274d4d4ab57729bb4b4"
+        },
+        "1440": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/bilibili-com-video-bv1gj411x7h7-1440.png",
+          "sha256": "c8e09dc3ec18bb107144b93e3780387c97b24eb4e92884042eaf19839dca3eeb"
+        },
+        "390": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/bilibili-com-video-bv1gj411x7h7-390.png",
+          "sha256": "72e57ad7fc0b69ad401d86151bc25f2cfa1df08bf2b520954d8396ff8eee3821"
+        }
+      }
+    },
+    "github-com/login": {
+      "model": {
+        "path": "m1/curated/github-com/login.json",
+        "sha256": "ff50cda50be2cecf03f3a7912a336d95d208ca7186ca297d09e9495d81e97600"
+      },
+      "html": {
+        "path": "m1/curated/renders/github-com-login.html",
+        "sha256": "300129eda0c2ac42e3f6fc96d6d075691901a553b05a3918933e9cd6e0ba9dc7"
+      },
+      "source": {
+        "dom.html": {
+          "path": "corpus/github-com/login/dom.html",
+          "sha256": "8996c3395ecb5f6d500b103599d377ca2f24519338d74d5e570db4d50c928795"
+        },
+        "nodes.json": {
+          "path": "corpus/github-com/login/nodes.json",
+          "sha256": "e365bb5055760138c8c672d416b5e68e6187d8511509a0dc6e96bab65b1dc8a1"
+        },
+        "full.png": {
+          "path": "corpus/github-com/login/full.png",
+          "sha256": "1e64d36c41bf805ea526719618e28d3c63b3656ddb23c7d36593f1e569318397"
+        },
+        "meta.json": {
+          "path": "corpus/github-com/login/meta.json",
+          "sha256": "a4f6c3ae20a7f888a43e58a90e58bfe54d0f1e954e235fbf8c94ddf577f13e48"
+        }
+      },
+      "shots": {
+        "2560": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/github-com-login-2560.png",
+          "sha256": "79491db591af461f322fe4c5e0df2dea48712f691253e91a3ab837d6c3a2c5c7"
+        },
+        "1920": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/github-com-login-1920.png",
+          "sha256": "dc110f1ab94ad7561c6d33548202ebc7d30f5fcb289fcf042d6861c9df1b60d1"
+        },
+        "1440": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/github-com-login-1440.png",
+          "sha256": "5672ba3ff44ca9369846b009ea9e471e75874107f13602506d43d8739df958c5"
+        },
+        "390": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/github-com-login-390.png",
+          "sha256": "660820b3ee0e5244491d4048dd720a6ca14f07b7e872d7a776eff744bedb5c85"
+        }
+      }
+    },
+    "stripe-dashboard/login": {
+      "model": {
+        "path": "m1/curated/stripe-dashboard/login.json",
+        "sha256": "3e555274c1378489840a9db18a4f60fbcc39122b5b5b6103de62f79ee7bf196e"
+      },
+      "html": {
+        "path": "m1/curated/renders/stripe-dashboard-login.html",
+        "sha256": "fc67b25ce7550943533b7147033ea8f49a537d82559ad7f18836305257f612b5"
+      },
+      "source": {
+        "dom.html": {
+          "path": "corpus/stripe-dashboard/login/dom.html",
+          "sha256": "2e9bd2ee8472623c99a71076258c531236a8576457acee50c2c0377fc89263a9"
+        },
+        "nodes.json": {
+          "path": "corpus/stripe-dashboard/login/nodes.json",
+          "sha256": "9092061a9d7261144e04463091559966d10a45b1b677bf7dc08b3cb9d22f024b"
+        },
+        "full.png": {
+          "path": "corpus/stripe-dashboard/login/full.png",
+          "sha256": "8750e2d7076ac98b39f26eeaad4a39dfae4e6790e804db2639f5b5c9f99f3d6d"
+        },
+        "meta.json": {
+          "path": "corpus/stripe-dashboard/login/meta.json",
+          "sha256": "9374c1b03d47bfd6a12b89c4b92ab6b07d52602a971305ac15a3822f6b2b6c43"
+        }
+      },
+      "shots": {
+        "2560": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/stripe-dashboard-login-2560.png",
+          "sha256": "381564f887cbc0a86b95001d8f54ffe839238739a178ce0758b08af51e4cb36a"
+        },
+        "1920": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/stripe-dashboard-login-1920.png",
+          "sha256": "c13ea480d4e637ab1a54672548d6d339f104d656716197514f1c0cf31c72bde3"
+        },
+        "1440": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/stripe-dashboard-login-1440.png",
+          "sha256": "08aab39f133597b52f65f6906345f267761431736f09387ffe8af701d684c869"
+        },
+        "390": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/stripe-dashboard-login-390.png",
+          "sha256": "f5da9d733b1f05d0941e60a8291ab9c0776b586e42a92e5f0f3c82f95d34e1c7"
+        }
+      }
+    },
+    "xiaomi-account/login": {
+      "model": {
+        "path": "m1/curated/xiaomi-account/login.json",
+        "sha256": "a93bd90dc6cf10e80f3aa570c701271ea5682ffeced7dc7c3554b0005b44ffc2"
+      },
+      "html": {
+        "path": "m1/curated/renders/xiaomi-account-login.html",
+        "sha256": "26779cc0f2c39326203490ed3082365be76fb945d95ce9a1ac225db8f779d656"
+      },
+      "source": {
+        "dom.html": {
+          "path": "corpus/xiaomi-account/login/dom.html",
+          "sha256": "0f4ba0754bb72cebec397ce0e82762ae74d8bc53b8e51000f090370e1b2e68ee"
+        },
+        "nodes.json": {
+          "path": "corpus/xiaomi-account/login/nodes.json",
+          "sha256": "267b275d6e05fbba763cc5fa65d653d63e3b660464f081b45d80eacf9bdf09a0"
+        },
+        "full.png": {
+          "path": "corpus/xiaomi-account/login/full.png",
+          "sha256": "7755e26cebe3d91f902ba1967657eee2f151ba5d569512a0d464765c15209452"
+        },
+        "meta.json": {
+          "path": "corpus/xiaomi-account/login/meta.json",
+          "sha256": "4405689f12b7933f72c479e1bc6d70b5f9dcceeac68ac44ccb91d4582451f06b"
+        }
+      },
+      "shots": {
+        "2560": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/xiaomi-account-login-2560.png",
+          "sha256": "48720ad82074f15ee56354f08ddbc5981e150d34f07a9ad54846c01379cdeb34"
+        },
+        "1920": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/xiaomi-account-login-1920.png",
+          "sha256": "f78ba31f4997911bf8c9a769fdf271b1ad6f67265deaeac9ab99c1f2fbc8f6a5"
+        },
+        "1440": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/xiaomi-account-login-1440.png",
+          "sha256": "7c2f5186ff408a9aec27da498607a88d8a45ac2d704199f9d1fbfb259fa1f8b3"
+        },
+        "390": {
+          "path": ".scratch/62-all-sites/audit-media-auth-utility/shots/xiaomi-account-login-390.png",
+          "sha256": "2d3c4e8572256183405087e3495693ec9e8ee448de643e1e4d3292ae4268b6e1"
+        }
+      }
+    }
+  },
+  "coverage": [
+    {
+      "page": "bilibili-com/read-home",
+      "2560": {
+        "rendered": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "1440": {
+        "rendered": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "1920": {
+        "rendered": true,
+        "geometryProbed": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableDetailInspected": false,
+        "note": "Auth whole-height in four-width sheet. Read feed overview only; video not opened at1920. Full native screenshots and pixel-difference counts retained; tiny differences are NOT a PASS."
+      },
+      "390": {
+        "rendered": true,
+        "geometryProbed": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "source1440": {
+        "wholeCaptureVisuallyInspected": true,
+        "domNodesCompared": true,
+        "limits": "Existing captured source only; no live-site replay."
+      },
+      "cleanPage": false,
+      "findingIds": [
+        "MAU-E1",
+        "MAU-E4"
+      ]
+    },
+    {
+      "page": "bilibili-com/video-bv1gj411x7h7",
+      "2560": {
+        "rendered": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "1440": {
+        "rendered": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "1920": {
+        "rendered": true,
+        "geometryProbed": true,
+        "wholeHeightVisuallyInspected": false,
+        "readableDetailInspected": false,
+        "note": "Auth whole-height in four-width sheet. Read feed overview only; video not opened at1920. Full native screenshots and pixel-difference counts retained; tiny differences are NOT a PASS."
+      },
+      "390": {
+        "rendered": true,
+        "geometryProbed": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "source1440": {
+        "wholeCaptureVisuallyInspected": true,
+        "domNodesCompared": true,
+        "limits": "Existing captured source only; no live-site replay."
+      },
+      "cleanPage": false,
+      "findingIds": [
+        "MAU-E5",
+        "MAU-E6",
+        "MAU-C3",
+        "MAU-C4"
+      ]
+    },
+    {
+      "page": "github-com/login",
+      "2560": {
+        "rendered": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "1440": {
+        "rendered": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "1920": {
+        "rendered": true,
+        "geometryProbed": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableDetailInspected": true,
+        "note": "Auth whole-height in four-width sheet. Read feed overview only; video not opened at1920. Full native screenshots and pixel-difference counts retained; tiny differences are NOT a PASS."
+      },
+      "390": {
+        "rendered": true,
+        "geometryProbed": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "source1440": {
+        "wholeCaptureVisuallyInspected": true,
+        "domNodesCompared": true,
+        "limits": "Existing captured source only; no live-site replay."
+      },
+      "cleanPage": false,
+      "findingIds": [
+        "MAU-E1",
+        "MAU-E2",
+        "MAU-E3",
+        "MAU-C1"
+      ]
+    },
+    {
+      "page": "stripe-dashboard/login",
+      "2560": {
+        "rendered": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "1440": {
+        "rendered": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "1920": {
+        "rendered": true,
+        "geometryProbed": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableDetailInspected": true,
+        "note": "Auth whole-height in four-width sheet. Read feed overview only; video not opened at1920. Full native screenshots and pixel-difference counts retained; tiny differences are NOT a PASS."
+      },
+      "390": {
+        "rendered": true,
+        "geometryProbed": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "source1440": {
+        "wholeCaptureVisuallyInspected": true,
+        "domNodesCompared": true,
+        "limits": "Stripe full.png is900px but source footer nodes begin915px; source footer rendering unverified."
+      },
+      "cleanPage": false,
+      "findingIds": [
+        "MAU-E1",
+        "MAU-E2",
+        "MAU-C1"
+      ]
+    },
+    {
+      "page": "xiaomi-account/login",
+      "2560": {
+        "rendered": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "1440": {
+        "rendered": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "1920": {
+        "rendered": true,
+        "geometryProbed": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableDetailInspected": true,
+        "note": "Auth whole-height in four-width sheet. Read feed overview only; video not opened at1920. Full native screenshots and pixel-difference counts retained; tiny differences are NOT a PASS."
+      },
+      "390": {
+        "rendered": true,
+        "geometryProbed": true,
+        "wholeHeightVisuallyInspected": true,
+        "readableCrops": true
+      },
+      "source1440": {
+        "wholeCaptureVisuallyInspected": true,
+        "domNodesCompared": true,
+        "limits": "Existing captured source only; no live-site replay."
+      },
+      "cleanPage": false,
+      "findingIds": [
+        "MAU-E1",
+        "MAU-E2",
+        "MAU-C2"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "MAU-E1",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "github-com/login",
+        "stripe-dashboard/login",
+        "xiaomi-account/login",
+        "bilibili-com/read-home"
+      ],
+      "criterion": "coherent whole-page alignment / compact form hierarchy",
+      "location": "main>.depth-0>.title; .g-login>.w-narrow; .g-search; .g-articles",
+      "observed": "Desktop title and task/content start on different axes. Auth task is an880px mostly empty wrapper with compact controls stuck at its left, while the h1 is centered in a640px wrapper; Stripe/Xiaomi also repeat task headings beneath the page title. This is not an objection to legitimate centered whitespace.",
+      "geometryEvidence": "2560: h1 x960,w640; auth/read sections x840,w880; 1920 x640 vs520;1440 x400 vs280. At390 both root/sections x16,w358.",
+      "sourceEvidence": "GitHub source compact centered352px fields atx544; Stripe source412px fields atx514; Xiaomi source form left730.5. Read source heading and article rows sharex380 (source nodes144/145/158). Source layouts differ; a common coherent axis does not require the same site template.",
+      "renderEvidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/github-com-login-widths.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/stripe-dashboard-login-widths.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/xiaomi-account-login-widths.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-detail-1.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/geometry-summary.json"
+      ],
+      "falsifiableImprovementCriterion": "At all4 widths choose a closed-grammar semantic task frame whose identity/task heading, fields and main actions align coherently. Do not blanket-center all site content; keep brand/source differences and avoid new presentation metadata.",
+      "status": "OPEN_BASELINE_DEFECT"
+    },
+    {
+      "id": "MAU-E2",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "github-com/login",
+        "stripe-dashboard/login",
+        "xiaomi-account/login"
+      ],
+      "criterion": "forms / readable density / shared axis",
+      "location": "span.expose.expose-input; .deflabel; input[name=login/email/account/password]",
+      "observed": "Inputs start immediately after variable-length inline labels. Identical fields have different left/right edges; at390 a long label wraps above its input while Password remains beside its input, producing mixed form grammar.",
+      "geometryEvidence": "2560 identifier/password x: GitHub1054.28/914.83 (139.45px gap), Stripe904/872(32px), Xiaomi998.44/872(126.44px); each input253px wide.390 GitHub16/90.83;Stripe80/48;Xiaomi16/48.",
+      "sourceEvidence": "Source screenshot/nodes show equal identifier/password field outer edges on all3 forms. Xiaomi password input itself is294px because a60px reveal control occupies the shared354px outer row; do not incorrectly stretch past that source control.",
+      "renderEvidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/measurements.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/github-com-login-widths.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/stripe-dashboard-login-widths.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/xiaomi-account-login-widths.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/source-controls.json"
+      ],
+      "falsifiableImprovementCriterion": "Use one consistent label/field alignment decision within login composites, preserving labels/secret input types/boolean controls. At390 neither field should switch independently to another alignment; input edges agree within1px or a source-supported common label column is used.",
+      "status": "OPEN_BASELINE_DEFECT"
+    },
+    {
+      "id": "MAU-E3",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "github-com/login"
+      ],
+      "criterion": "actions preserved as controls / no lost affordance",
+      "location": "$.login.alternatives._items[0..1]._action; .g-alternatives .linklist li",
+      "observed": "Continue with Google / Apple carry modeled open actions but HTML renders plain bullet text, unlike Stripe/Xiaomi alternative controls. They have no control styling/data-verb or declared link, so action intent is visually lost.",
+      "geometryEvidence": "All4 widths; screenshot/HTML show2 plain li entries. Source nodes36/48 are352x40 buttons.",
+      "sourceEvidence": "corpus/github-com/login/nodes.json indices36/48; source full.png visibly shows2 outlined controls. Model has _action.verb=open with no to; no URL may be invented.",
+      "renderEvidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/github-com-login-widths.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/source-controls.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/modeled-target-image-fidelity.json"
+      ],
+      "falsifiableImprovementCriterion": "Both modeled alternatives must render once as recognizable secondary no-target controls through the shared action/axis decision. Preserve the no-target constraint; do not fabricate OAuth URLs or runtime authentication.",
+      "status": "OPEN_BASELINE_DEFECT"
+    },
+    {
+      "id": "MAU-E4",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "bilibili-com/read-home"
+      ],
+      "criterion": "readable feed density / image-title-actions cohesion / image size",
+      "location": "$.articles._lines; .g-articles .run .item; .item .fact img",
+      "observed": "A source compact row feed becomes a long stack of title, multi-line excerpt, category,234x176 thumbnail, then metadata, leaving broad empty space to the thumbnail right.19 articles now require7980px at desktop versus2585px source capture. All text must remain; this is not permission to truncate it or enlarge images.",
+      "geometryEvidence": "2560/1920/1440 rendered height7980;3909913. First render image x840,y263.72,w234,h176 at2560; source node185 image x943,y154,w117,h88. Rendering doubles source display size although it does NOT upscale beyond natural234x176.",
+      "sourceEvidence": "Source full.png shows thumbnail-associated compact ordered rows, not giant cards or a gallery. Source nodes185/217 confirm117x88 display. First two titles/thumbnail associations and all19 destination URLs retained in modeled HTML.",
+      "renderEvidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-whole.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-detail-1.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-detail-2.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-detail-3.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-1440-relevant.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-1440-remainder.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-source.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-read-home-390-sheet.png"
+      ],
+      "falsifiableImprovementCriterion": "Use a shared ordered media/text grouping that makes each article title/excerpt/thumbnail/meta a compact cohesive unit without reordering articles, dropping facts/targets, cropping important image content, or increasing image size. Reinspect full height at all4 widths; measure page-height/density improvement, not just zero overflow.",
+      "status": "OPEN_BASELINE_DEFECT"
+    },
+    {
+      "id": "MAU-E5",
+      "owner": "engine",
+      "severity": "high",
+      "pages": [
+        "bilibili-com/video-bv1gj411x7h7"
+      ],
+      "criterion": "whole-page mixed-form alignment / cohesive media title/actions",
+      "location": "root h1; root image/meta; .g-danmaku; .g-credits; .g-up-next",
+      "observed": "The title, image, meta, input/actions, credits and recommendations use five different edges/widths without a coherent whole-page grouping. In particular credits override their declared narrow tier to main width; recommendations start farther left than the media. Source has a clear media column with a distinct recommendation sidebar, not this drift.",
+      "geometryEvidence": "2560 h1x960/w640; imagex720/w1120; root meta nearx664; danmakux840/w880;creditsx664/w1232;up-nextx664/w1232.1440 corresponding x400/160/104/280/104.390 image x0/w390, other regionsx16/w358; responsive full-bleed image alone is not called a defect.",
+      "sourceEvidence": "Source full.png/media left41..1019, right uploader/recommendations roughlyx1050; source-true sidebar is allowed. Main rendered image is the declared source og:image (not live captured video frame), natural1120x630: that substitution is provenance-labeled in the model and not invented.",
+      "renderEvidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-2560-sheet.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-1440-sheet.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-source.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-390-sheet.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/measurements.json"
+      ],
+      "falsifiableImprovementCriterion": "Close a shared semantic media/task/utilities axis decision; title/image/metadata/input/action groups must have understandable common containment, while related recommendations may retain a distinct source-supported frame. No site-specific selectors or forced identical layout across media/auth pages.",
+      "status": "OPEN_BASELINE_DEFECT"
+    },
+    {
+      "id": "MAU-E6",
+      "owner": "engine",
+      "severity": "medium",
+      "pages": [
+        "bilibili-com/video-bv1gj411x7h7"
+      ],
+      "criterion": "compact utilities / no visual duplication",
+      "location": "$.credits._items[0..7]; .g-credits .linklist li + .ctl",
+      "observed": "Each subtitle credit renders the author inside a full sentence and then repeats that author as a pill, doubling8 short source credit lines into taller utilities. On mobile several repeat pills wrap to another line.",
+      "geometryEvidence": "Rendered credit section345.38px desktop /465.38px390; source credits are8 compact single-line linked statements in screenshot. Model first name includes 账号已注销 while action.label repeats it.",
+      "sourceEvidence": "Source full.png and captured DOM credit statement/link; source shows one mention per credited author. Model preserves full descriptive sentence plus action label, so this is rendering/grouping ownership, not source-fact deletion authority.",
+      "renderEvidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-2560-sheet.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-390-sheet.png"
+      ],
+      "falsifiableImprovementCriterion": "Preserve each language/author/URL while showing each author/action coherently once, or otherwise avoid duplicated inline-label-plus-pill utility rows through an applicable shared rule. No factual model rewrite solely for presentation.",
+      "status": "OPEN_BASELINE_DEFECT"
+    },
+    {
+      "id": "MAU-C1",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "github-com/login",
+        "stripe-dashboard/login"
+      ],
+      "criterion": "faithful source actions / compact footer/utilities",
+      "location": "github root missing footer; stripe root missing captured cookie utilities",
+      "observed": "GitHub loses Terms, Privacy, Docs, Contact GitHub Support, Manage cookies and Do not share my personal information. Stripe loses captured Cookie policy, Manage Cookie, Accept all and Reject all. These are absent from the model, not just hidden by CSS.",
+      "geometryEvidence": "GitHub source footer y850..900; reconstructed page empty below~340px. Stripe source cookie panel x995,y775..885; reconstructed page has no corresponding facts/actions at any width. Stripe footer nodesy915 exceed full.png900: that footer was NOT visually verified.",
+      "sourceEvidence": "GitHub nodes68/70/72/74/77/80 + full.png; Stripe nodes166/167/169/170 + full.png. Exact public URLs in source-public-targets.json; no URLs should be invented for no-href actions.",
+      "renderEvidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/source-controls.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/source-public-targets.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/github-com-login-widths.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/stripe-dashboard-login-widths.png"
+      ],
+      "falsifiableImprovementCriterion": "Restore source-grounded retained utility facts/actions in closed grammar, compact rather than a new huge footer. Content owner must record provenance and resolve any intentionally excluded ephemeral consent UI in scope; absence cannot be counted as faithful whole-source action coverage.",
+      "status": "OPEN_BASELINE_DEFECT"
+    },
+    {
+      "id": "MAU-C2",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "xiaomi-account/login"
+      ],
+      "criterion": "faithful targets / agreement controls",
+      "location": "$.login.agreement._label; root missing utility links",
+      "observed": "The agreement checkbox contains policy names only as a plain label, losing the two source document targets. Header user agreement, privacy and help-center destinations are also absent. The model has no actions/links for these.",
+      "geometryEvidence": "Source agreement anchor nodes83/84: x837.5/963.5,y436; rendered only label.choice.expose-agreement. Source header utility nodes21/22/23 atx1078..1286,y20.",
+      "sourceEvidence": "source-public-targets.json has protocol/agreement?_locale=zh_CN, protocol/privacy?_locale=zh_CN and /helpcenter?_locale=zh_CN. Source full.png explicitly shows these links. Source illustrative left image/brand icons are not demanded as a generic redesign.",
+      "renderEvidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/source-controls.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/source-public-targets.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/xiaomi-account-login-widths.png"
+      ],
+      "falsifiableImprovementCriterion": "Preserve the agreement boolean and source text while retaining independently discoverable protocol/privacy targets; keep header/help utilities compact and source-grounded. Do not make the entire checkbox label navigate or invent a new policy URL.",
+      "status": "OPEN_BASELINE_DEFECT"
+    },
+    {
+      "id": "MAU-C3",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "bilibili-com/video-bv1gj411x7h7"
+      ],
+      "criterion": "image attribution / faithful image-title-actions grouping",
+      "location": "$.up-next._items[0..19] missing _image",
+      "observed": "All20 recommended video thumbnails visible in source are absent from curated items; output recommendations are text-only cards. Each captured thumbnail can be directly attributed to its exact modeled video destination.",
+      "geometryEvidence": "Source right column has20 small preview-image/title/duration/action groups; rendered up-next is1232px four-column text grid desktop,358px one-column mobile. This is distinct from the renderer axis defect.",
+      "sourceEvidence": "source-recommendation-image-attribution.json binds20/20 existing recommendation video IDs to captured DOM nested image URLs. Source full.png displays all thumbnails. No new search/collection is needed.",
+      "renderEvidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/source-recommendation-image-attribution.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-source.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-2560-sheet.png"
+      ],
+      "falsifiableImprovementCriterion": "Content owner should retain source-attributed recommendation images within existing grammar/assets, preserving the same20 titles/URLs/durations/authors and avoiding larger-than-source preview treatment; engine owns final cohesive grouping. Disabled/dead-video source preview art should remain source-true, not invented.",
+      "status": "OPEN_BASELINE_DEFECT"
+    },
+    {
+      "id": "MAU-C4",
+      "owner": "content",
+      "severity": "high",
+      "pages": [
+        "bilibili-com/video-bv1gj411x7h7"
+      ],
+      "criterion": "faithful facts/action meaning",
+      "location": "$.stats._measure; missing like/coin/favorite/share action nodes",
+      "observed": "Four bare numbers encode different interactions but render without their meaning or source control affordances:293.3万127.5万154.3万49.5万. Only report/notes survive as controls. The model intent names the icon order but that explanatory intent is not visible UI.",
+      "geometryEvidence": "Source toolbar nodes498..518 atx41,y764..821; four icon-associated values. Output stats atx840,y1387 desktop/16,y1385 mobile is a raw number line plus report/notes.",
+      "sourceEvidence": "Captured dom.html#arc_toolbar_report has .video-like title=点赞（Q） and video coin/favorite/share affordances; source nodes498..518 confirm exact counts. source-video-stats.json stores only relevant visible/stat node facts, not hidden login payloads.",
+      "renderEvidence": [
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/source-video-stats.json",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-source.png",
+        "/home/z/vibe/autofe-worktrees/62-all-sites/audit-media-auth-utility/.scratch/62-all-sites/audit-media-auth-utility/sheets/bilibili-com-video-bv1gj411x7h7-2560-sheet.png"
+      ],
+      "falsifiableImprovementCriterion": "Represent source-derived labeled counts and no-target interaction intents in supported grammar, preserving all4 exact counts and report/notes. No guessed endpoints or invented live playback/interaction backend.",
+      "status": "OPEN_BASELINE_DEFECT"
+    }
+  ],
+  "engineFindings": [
+    "MAU-E1",
+    "MAU-E2",
+    "MAU-E3",
+    "MAU-E4",
+    "MAU-E5",
+    "MAU-E6"
+  ],
+  "contentFindings": [
+    "MAU-C1",
+    "MAU-C2",
+    "MAU-C3",
+    "MAU-C4"
+  ],
+  "status": "INCOMPLETE",
+  "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-media-auth-utility.md",
+  "limits": [
+    "Baseline diagnostic only; no acceptance review of engine/content repairs, integrated42-page gallery or protected seven references.",
+    "At1920 Bilibili read visually inspected as complete-height overview, not readable strips; Bilibili video geometry/screenshot captured but screenshot not visually opened. Full1920 experience acceptance is INCOMPLETE.",
+    "Only existing1440 source captures available. No source experience comparison at2560/1920/390; no live navigation, actual authentication, playback, cookie persistence or remote action execution tested.",
+    "Stripe source full.png900 does not cover footer nodes at915px; source footer visual comparison is INCOMPLETE.",
+    "Static model validation and explicit model URL/image presence are necessary diagnostics, not complete source-fact/action fidelity, Markdown cross-target fidelity or experience PASS.",
+    "Natural-resolution enlargement gate passes, but Bilibili read thumbnails render234x176 versus captured source117x88 display: source-display expansion is reported, not concealed as a natural-resolution PASS.",
+    "Finite budget:18/18 image reads,1/3 browser jobs, one browser/page, foreground commands<=180s. No source/model/assets/owningDocs edits; no staging/commits/dependency changes/publication."
+  ],
+  "baseline": "403cd5be096db89b428e130ad57cca730b425fdc",
+  "diagnosticOutcome": "Five pages audited at assigned primary modalities;10 baseline defects routed, no clean page or experience PASS. Broader all-width/final-revision acceptance remains incomplete."
+}

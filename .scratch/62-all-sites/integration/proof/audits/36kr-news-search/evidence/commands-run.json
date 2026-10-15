@@ -1,0 +1,47 @@
+[
+  {
+    "command": "timeout 175s node .scratch/62-all-sites/audit-36kr-news-search/capture.mjs",
+    "result": "passed",
+    "summary": "One sequential browser, four pages \u00d7 four widths; full-height screenshots, geometry, HTML/model/source hashes."
+  },
+  {
+    "command": "python .scratch/62-all-sites/audit-36kr-news-search/sheets.py",
+    "result": "passed",
+    "summary": "Full-height overviews and overlapping 1440/source sheets generated; supplemental crops persisted."
+  },
+  {
+    "command": "timeout 100s node .scratch/62-all-sites/audit-36kr-news-search/detail-probe.mjs",
+    "result": "passed",
+    "summary": "Second sequential browser; 2560/390 option-local actions, colors, defrow/image geometry."
+  },
+  {
+    "command": "python .scratch/62-all-sites/audit-36kr-news-search/source-evidence.py",
+    "result": "passed",
+    "summary": "All declared model targets/image URLs found in source; dropped choice actions reproduced; contrast measured."
+  },
+  {
+    "command": "node m1/validate.mjs m1/curated/36kr-com/{home,information-technology,search-ai,search-viz}.json (four separate invocations)",
+    "result": "passed",
+    "summary": "4/4 ok; existing search-composite missing-default warnings disclosed."
+  },
+  {
+    "command": "git diff --check; git diff --cached --exit-code --quiet; git status --short",
+    "result": "passed",
+    "summary": "No tracked source changes, no staged files, pre-existing active-work/corpus artifacts preserved."
+  },
+  {
+    "command": "Python covered-hash, handoff cardinality/status, and untracked evidence whitespace checks",
+    "result": "passed",
+    "summary": "Every covered hash matches; four pages/eight findings/explicit INCOMPLETE status; scripts/Ticket whitespace clean."
+  },
+  {
+    "command": "Optional Python BeautifulSoup inspection",
+    "result": "failed",
+    "summary": "bs4 unavailable; no dependency installed; replaced with working stdlib HTMLParser."
+  },
+  {
+    "command": "Long-line source grep inspection (30s timeout)",
+    "result": "failed",
+    "summary": "Timed out; replaced with bounded Python substring/JSON inspection."
+  }
+]

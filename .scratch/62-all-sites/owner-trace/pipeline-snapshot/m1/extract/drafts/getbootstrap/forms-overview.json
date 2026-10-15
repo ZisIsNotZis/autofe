@@ -1,0 +1,95 @@
+{
+  "_intent": "Forms · Bootstrap v5.3 — Forms [draft]",
+  "_title": {
+    "text": "Forms · Bootstrap v5.3"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://getbootstrap.com/docs/5.3/forms/overview/#content",
+        "label": "Skip to main content"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://getbootstrap.com/docs/5.3/forms/overview/#bd-docs-nav",
+        "label": "Skip to docs navigation"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://github.com/twbs/bootstrap/blob/v5.3.8/site/src/content/docs/forms/overview.mdx",
+        "label": "View on GitHub"
+      }
+    },
+    {
+      "_intent": "Forms [draft]",
+      "_title": {
+        "text": "Forms"
+      },
+      "_summary": {
+        "text": "Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "On this page"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://srv.carbonads.net/ads/click/x/GTND427YF6SIC53NCABLYKQUFTAI6K7ECW7IEZ3JCAADLKQUC6SIVK3KC6BIP2JWC6AIV2QUCTBIP2QICASI62QMHEYI5537CABDTK3ECTNCYBZ52K",
+            "label": "ads via Carbon"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://srv.carbonads.net/ads/click/x/GTND427YF6SIC53NCABLYKQUFTAI6K7ECW7IEZ3JCAADLKQUC6SIVK3KC6BIP2JWC6AIV2QUCTBIP2QICASI62QMHEYI5537CABDTK3ECTNCYBZ52K",
+            "label": "Design and Development tips in your inbox. Every weekday."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://carbonads.net/?utm_source=getbootstrapcom&utm_medium=ad_via_link&utm_campaign=in_unit&utm_term=carbon",
+            "label": "ads via Carbon"
+          }
+        },
+        {
+          "_intent": "Form control Style textual inputs and textareas with support for multiple states. Select Improve browser default select elements with a custom initial appearance. Checks & radios Use our custom radio [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Check me out"
+              }
+            },
+            {
+              "_name": {
+                "text": "Can’t check this"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "form-control",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input",
+            "type": "text"
+          }
+        }
+      ]
+    }
+  ]
+}

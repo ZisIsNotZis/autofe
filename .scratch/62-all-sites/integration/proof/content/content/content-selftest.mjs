@@ -1,0 +1,40 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
+import {validate} from '../../../m1/validate.mjs';
+import {render} from '../../../m1/render.mjs';
+import {renderMarkdown} from '../../../m1/render-md.mjs';
+const baseline='refs/autofe-private/62-all-sites-baseline';
+const root='.scratch/62-all-sites/content';
+const changed=execFileSync('git',['diff','--name-only',baseline,'--','m1/curated/**/*.json'],{encoding:'utf8'}).trim().split('\n').filter(Boolean);
+const pages=JSON.parse(fs.readFileSync('/home/z/vibe/autofe/.scratch/62-all-sites/roster.json','utf8'));
+const walk=(node,fn,p='$')=>{if(!node||typeof node!=='object')return;fn(node,p);for(const [k,v] of Object.entries(node)){if(Array.isArray(v))v.forEach((c,i)=>walk(c,fn,`${p}.${k}[${i}]`));else if(v&&typeof v==='object')walk(v,fn,`${p}.${k}`)}};
+const actions=m=>{let a=[];walk(m,(n,p)=>{if(n._action?.to)a.push({path:p,target:n._action.to,label:n._action.label??n._title?.text??n._name?.text??''})});return a};
+const fields=m=>{let a=[];walk(m,n=>{if(n._items?.length&&n._items.every(x=>x._fields))a.push(n._items.map(x=>x._fields))});return a};
+const load=p=>JSON.parse(fs.readFileSync('m1/curated/'+p+'.json','utf8'));
+let checks=[],htmlMdGaps=[],actionChanges=[],warnings=[];
+function check(name,fn){try{fn();checks.push({name,status:'passed'})}catch(e){checks.push({name,status:'failed',error:e.message})}}
+check('protected seven and two title models unchanged',()=>{for(const p of ['airbnb-com/room-28871','apple-com/home','apple-com/ipad-air','bilibili-com/home','mi-com/product-detail-mi15','sspai-com/post-114716','taobao-com/home'])assert(!changed.includes('m1/curated/'+p+'.json'))});
+check('only remaining-target factual models',()=>{for(const f of changed)assert(/^m1\/curated\/[a-z0-9-]+\/[a-z0-9-]+\.json$/.test(f))});
+for(const f of changed){const m=JSON.parse(fs.readFileSync(f));const old=JSON.parse(execFileSync('git',['show',`${baseline}:${f}`],{encoding:'utf8'}));const p=f.slice('m1/curated/'.length,-5);
+ check(p+' closed schema',()=>{const v=validate(m);warnings.push(...v.warnings.map(w=>({page:p,...w})));assert.equal(v.ok,true,JSON.stringify(v.errors))});
+ check(p+' original typed table facts intact',()=>{assert.deepEqual(fields(m),fields(old))});
+ check(p+' local media bytes present',()=>{walk(m,(n,np)=>{if(typeof n.image==='string'&&!/^https?:/.test(n.image)){assert(fs.existsSync(path.resolve(path.dirname(f),n.image)),np)}})});
+ const newActions=actions(m),oldActions=actions(old);const targetSet=new Set(newActions.map(x=>x.target));actionChanges.push({page:p,removedTargets:oldActions.filter(x=>!targetSet.has(x.target)),addedTargets:newActions.filter(x=>!oldActions.some(a=>a.target===x.target))});
+ const html=render(m,{site:p.split('/')[0]});const md=renderMarkdown(m,{site:p.split('/')[0]});
+ fs.mkdirSync(root+'/candidate-targets',{recursive:true});fs.writeFileSync(root+'/candidate-targets/'+p.replace('/','-')+'.html',html);fs.writeFileSync(root+'/candidate-targets/'+p.replace('/','-')+'.md',md);
+ const esc=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+ for(const a of newActions){if(!/^(https?:|mailto:|\/|#)/.test(a.target))continue;const htmlFound=html.includes('href="'+esc(a.target)+'"');const mdFound=md.includes(a.target);if(!htmlFound||!mdFound)htmlMdGaps.push({page:p,...a,htmlFound,mdFound})}
+}
+check('Aliyun exact root URL and targetless four offer actions',()=>{let m=load('aliyun-com/product-ecs');assert.equal(m._action.to,'https://ecs-buy.aliyun.com/buyRedirect.htm?period=1&periodType=Yearly');m.instances._items.forEach(i=>assert.equal(i._action.to,undefined));assert.deepEqual(m.instances._items.slice(0,3).map(i=>i._price.qualifier),['/1年起','/1年','/1年']);assert.equal(m.instances._items[3]._price,undefined)});
+check('GOV employee example precedes employer table',()=>{let keys=Object.keys(load('gov-uk/ni-rates-letters'));assert(keys.indexOf('employee-rates')<keys.indexOf('example'));assert(keys.indexOf('example')<keys.indexOf('employer-rates'))});
+check('Apple source entity comparison declared',()=>assert.equal(load('apple-com/iphone-16').compare._rel.compare,true));
+check('Stripe captured visible title',()=>assert.equal(load('stripe-docs/payments')._title.text,'付款'));
+check('SSPAI unsupported charging fact removed; character datum restored',()=>{let m=load('sspai-com/u-jtc092al');assert(!JSON.stringify(m).includes('获得充电'));assert.equal(m._lines[2]._lines[3]._measure.num,16557)});
+check('Linear actual changelog dates and targets',()=>{let a=load('linear-app/home').changelog._items;assert.equal(a.length,4);assert.deepEqual(a.map(x=>x._datetime.date),['2026-09-24','2026-09-10','2026-09-03','2026-08-19']);assert(!a.some(x=>x._title.text==='Faster app launch'))});
+check('Microsoft127 adjacent table targets and row identities',()=>{let m=load('learn-microsoft/vm-sizes');let groups=[m['vm-size-and-series-naming']['classification-links'],...Object.values(m['families-by-type']).filter(v=>v.destinations).map(v=>v.destinations)];assert.equal(groups.length,8);assert.equal(groups.flatMap(g=>g._lines.flatMap(row=>row._items)).length,127);for(let g of groups)for(let row of g._lines){assert(row._title.text);for(let item of row._items){assert(item._action.to);assert.equal(item._title.text,item._action.label)}}});
+check('Huawei36 captured catalog buy targets and qualifiers',()=>{let m=load('huawei-cn/consumer-phones');let n=0;for(let [key,group] of Object.entries(m)){if(!key.startsWith('catalog-'))continue;walk(group,node=>{if(node.buy&&node._price&&!node._price.qualifier)throw Error('Missing source qualifier');if(node.buy?._action.to)n++})}assert.equal(n,36)});
+check('source/screenshot recovered media hashes',()=>{let media=JSON.parse(fs.readFileSync(root+'/asset-provenance.json'));for(let r of media.filter(r=>r.asset)){assert(fs.existsSync(r.asset));assert(r.sourceHash);assert(r.sha256);if(r.status==='source-screenshot-crop'){assert.equal(r.bbox.length,4);assert(r.domEvidence);assert(r.naturalSize.every(v=>v>0))}}});
+const report={baseline,changedModels:changed,checks,warnings,actionChanges,htmlMdGaps,staticStatus:checks.every(x=>x.status==='passed')?'PASS':'FAIL',targetRenderStatus:htmlMdGaps.length?'INCOMPLETE_ENGINE_DEPENDENCIES':'PASS',visualAcceptance:'INCOMPLETE_NOT_EXERCISED',limits:['Read-only imported baseline renderer; generated candidate files only in lane evidence, not final renders.','Source gates/candidate action serialization are necessary but do not prove geometry/whole-height UX.','Original model target removal requires per-source disposition; full source-anchor coverage tested separately.']};
+fs.writeFileSync(root+'/content-selftest.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({staticStatus:report.staticStatus,checks:checks.length,failed:checks.filter(x=>x.status==='failed').map(x=>x.name),targetRenderStatus:report.targetRenderStatus,htmlMdGapCount:htmlMdGaps.length,proof:root+'/content-selftest.json'}));if(report.staticStatus!=='PASS')process.exitCode=1;

@@ -1,0 +1,98 @@
+{
+  "site": "element-plus",
+  "page": "date-picker",
+  "url": "https://element-plus.org/en-US/component/date-picker.html",
+  "title": "DatePicker | Element Plus",
+  "sourceNodes": 2183,
+  "counts": {
+    "storylines": 25,
+    "items": 60,
+    "actions": 99,
+    "exposes": 2,
+    "images": 0,
+    "facts": 16,
+    "tables": 4,
+    "lists": 0,
+    "choiceSets": 2,
+    "inputs": 0,
+    "dupeText": 53,
+    "capHits": []
+  },
+  "storylines": 25,
+  "chrome": [
+    {
+      "role": "complementary",
+      "count": 2
+    },
+    {
+      "role": "banner",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "combobox-select",
+      "role": "combobox",
+      "count": 56,
+      "examples": [
+        "Pick a day",
+        "Pick a week",
+        "Pick a year",
+        "Pick a month",
+        "Pick a quarter"
+      ]
+    },
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 54,
+      "examples": [
+        "Default: ''",
+        "Default: false",
+        "Default: true",
+        "Default: date",
+        "Default: YYYY-MM-DD"
+      ]
+    },
+    {
+      "kind": "chart-or-svg",
+      "role": "graphics-document",
+      "count": 18,
+      "examples": []
+    },
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 1,
+      "examples": [
+        "interface DateCell { column: number customClass: string | undefi"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name",
+      "example": "focus"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "focus the DatePicker component"
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "label": "Type",
+      "example": "Function Type details"
+    },
+    {
+      "name": "default",
+      "type": "text",
+      "label": "Default",
+      "example": "''"
+    }
+  ]
+}

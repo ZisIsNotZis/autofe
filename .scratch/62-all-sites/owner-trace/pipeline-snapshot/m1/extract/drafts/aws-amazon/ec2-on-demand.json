@@ -1,0 +1,869 @@
+{
+  "_intent": "EC2 按需实例定价 — Amazon EC2 按需定价 [draft]",
+  "_title": {
+    "text": "EC2 按需实例定价"
+  },
+  "_summary": {
+    "text": "想了解专为中国区域提供的云产品？请访问 www.amazonaws.cn。申请中国区域免费套餐请访问 www.amazonaws.cn/free。"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://aws.amazon.com/cn/ec2/pricing/on-demand/#aws-page-content-main",
+        "label": "Skip to main content link"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Open feedback"
+      }
+    },
+    {
+      "_text": {
+        "text": "Amazon EC2"
+      }
+    },
+    {
+      "_intent": "list (5 items) [draft]",
+      "_items": [
+        {
+          "_name": {
+            "text": "概述"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://aws.amazon.com/cn/ec2/",
+            "label": "概述"
+          }
+        },
+        {
+          "_name": {
+            "text": "功能"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://aws.amazon.com/cn/ec2/features/",
+            "label": "功能"
+          }
+        },
+        {
+          "_name": {
+            "text": "定价"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://aws.amazon.com/cn/ec2/pricing/",
+            "label": "定价"
+          }
+        },
+        {
+          "_name": {
+            "text": "常见问题"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://aws.amazon.com/cn/ec2/faqs/",
+            "label": "常见问题"
+          }
+        },
+        {
+          "_name": {
+            "text": "开始使用"
+          },
+          "_action": {
+            "verb": "navigate",
+            "to": "https://aws.amazon.com/cn/ec2/getting-started/",
+            "label": "开始使用"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Amazon EC2 按需定价 [draft]",
+      "_title": {
+        "text": "Amazon EC2 按需定价"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "免费试用"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "请求报价"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "按需定价 [draft]",
+      "_title": {
+        "text": "按需定价"
+      },
+      "_summary": {
+        "text": "使用按需实例时，您可以按小时或秒（最少 60 秒）支付计算容量费用，无需签订长期合约。这样就可以降低规划、采购和维护硬件的成本和复杂性，并将通常较高的固定成本转换为较小的可变成本。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "以下定价包括在指定操作系统上运行私有和公共AMI的成本（“Windows使用量” 价格适用于Windows Server 2003 R2、2008、2008 R2、2012、2012 R2、2012 R2、2016和2019）。亚马逊还为您提供了运行带有 SQL 服务器的微软 Windows 的 Amazon EC2、运行 SUSE Linux 企业服务器的 Amazon EC2 以及运行红帽企业"
+          }
+        },
+        {
+          "_text": {
+            "text": "注意：Red Hat 已经更新其 Red Hat Enterprise Linux（RHEL）的云定价模式。2024 年 7 月 1 日，EC2 RHEL 的定价更改为基于每个 vCPU 每小时的定价模式。在 AWS 上的 RHEL 定价页面中了解新价格。"
+          }
+        },
+        {
+          "_text": {
+            "text": "定价按每个实例从启动到终止或停止使用的时间计算，以小时为单位。对于 Linux、Windows、装有 SQL Enterprise 的 Windows、装有 SQL Standard 的 Windows 和装有 SQL Web 的 Windows 实例，不足一小时将按秒计费；对于所有其他操作系统类型，则按一小时计费。"
+          }
+        },
+        {
+          "_text": {
+            "text": "vCPU 数量为默认值，是可用于指定 EC2 实例类型的最大 vCPU 数量。您可以在启动此实例类型时指定自定义数量的 vCPU。实例定价将与以上显示的值保持一致。有关有效 vCPU 数量以及如何开始使用此功能的更多详细信息，请访问优化 CPU 文档页面。"
+          }
+        },
+        {
+          "_text": {
+            "text": "需要 T1、M1、C1、CC2、M2、CR1、CG1、I2、HS1、M3、C3 或 R3 实例？ 请参阅上一代实例页面。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "数据传输 [draft]",
+      "_title": {
+        "text": "数据传输"
+      },
+      "_summary": {
+        "text": "以下定价基于“传入”和“传出”Amazon EC2 的数据计算。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "区域："
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "美国东部（俄亥俄州）"
+          }
+        },
+        {
+          "_intent": "table (8 rows): 定价 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "数据自互联网传入 Amazon EC2"
+              }
+            },
+            {
+              "_name": {
+                "text": "所有传入数据"
+              }
+            },
+            {
+              "_name": {
+                "text": "数据自 Amazon EC2 传出至互联网"
+              }
+            },
+            {
+              "_name": {
+                "text": "AWS 客户每月可免费将 100GB 的数据传出至互联网，所有 AWS 服务和区域（中国区域和 GovCloud 区域除外）合并计算。100GB 免费传出至互联网的数据额度全球适用，不单独或分别适用于 AWS 区域。"
+              }
+            },
+            {
+              "_name": {
+                "text": "每月前 10TB"
+              }
+            },
+            {
+              "_name": {
+                "text": "每月随后的 40TB"
+              }
+            },
+            {
+              "_name": {
+                "text": "每月随后的 100TB"
+              }
+            },
+            {
+              "_name": {
+                "text": "每月超出 150TB 的部分"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (67 rows): 数据自 Amazon EC2 传出至 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Amazon CloudFront"
+              }
+            },
+            {
+              "_name": {
+                "text": "AWS European Sovereign Cloud（德国）"
+              }
+            },
+            {
+              "_name": {
+                "text": "AWS GovCloud（美国西部）"
+              }
+            },
+            {
+              "_name": {
+                "text": "AWS GovCloud（美国东部）"
+              }
+            },
+            {
+              "_name": {
+                "text": "非洲（开普敦）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（香港）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（海得拉巴）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（雅加达）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（马来西亚）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（墨尔本）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（孟买）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（新西兰）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（大阪）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（首尔）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（新加坡）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（悉尼）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（台北）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（泰国）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（东京）"
+              }
+            },
+            {
+              "_name": {
+                "text": "加拿大（中部）"
+              }
+            },
+            {
+              "_name": {
+                "text": "加拿大西部（卡尔加里）"
+              }
+            },
+            {
+              "_name": {
+                "text": "欧洲（法兰克福）"
+              }
+            },
+            {
+              "_name": {
+                "text": "欧洲（爱尔兰）"
+              }
+            },
+            {
+              "_name": {
+                "text": "欧洲（伦敦）"
+              }
+            },
+            {
+              "_name": {
+                "text": "欧洲（米兰）"
+              }
+            },
+            {
+              "_name": {
+                "text": "欧洲（巴黎）"
+              }
+            },
+            {
+              "_name": {
+                "text": "欧洲（西班牙）"
+              }
+            },
+            {
+              "_name": {
+                "text": "欧洲（斯德哥尔摩）"
+              }
+            },
+            {
+              "_name": {
+                "text": "欧洲（苏黎世）"
+              }
+            },
+            {
+              "_name": {
+                "text": "以色列（特拉维夫）"
+              }
+            },
+            {
+              "_name": {
+                "text": "墨西哥（中部）"
+              }
+            },
+            {
+              "_name": {
+                "text": "中东（巴林）"
+              }
+            },
+            {
+              "_name": {
+                "text": "中东（阿联酋）"
+              }
+            },
+            {
+              "_name": {
+                "text": "南美洲（圣保罗）"
+              }
+            },
+            {
+              "_name": {
+                "text": "美国东部（弗吉尼亚州北部）"
+              }
+            },
+            {
+              "_name": {
+                "text": "美国西部（洛杉矶）"
+              }
+            },
+            {
+              "_name": {
+                "text": "美国西部（北加利福尼亚）"
+              }
+            },
+            {
+              "_name": {
+                "text": "美国西部（俄勒冈州）"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（KDDI）– 大阪"
+              }
+            },
+            {
+              "_name": {
+                "text": "亚太地区（KDDI）– 东京"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "如果每月的数据传输量大于 500 TB/月，请联系我们。"
+          }
+        },
+        {
+          "_text": {
+            "text": "套餐费率会考虑在 Amazon EC2、Amazon S3、Amazon Glacier、Amazon RDS、Amazon Redshift、Amazon SageMaker、Amazon SES、Amazon SimpleDB、Amazon SQS、Amazon SNS、Amazon DynamoDB、AWS Storage Gateway、AWS CloudShell 和 Amazon Cl"
+          }
+        },
+        {
+          "_text": {
+            "text": "AWS 客户每月可将 100GB 的数据免费传出至互联网，所有 AWS 服务和区域（中国区域和 GovCloud 区域除外）合并计算。 根据《欧洲数据法》，对于符合条件的用例，欧盟客户可以要求降低数据传输速率。请联系 AWS 客户支持以获取更多信息。"
+          }
+        },
+        {
+          "_text": {
+            "text": "当符合条件的客户将所有数据移出AWS或将所有数据移出特定的AWS服务时，AWS还为他们提供免费数据传输到互联网的服务。请查看常见问题解答以获取更多信息，或联系 AWS 客户支持以获取更多信息。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "在同一 AWS 区域内传输数据 [draft]",
+      "_title": {
+        "text": "在同一 AWS 区域内传输数据"
+      },
+      "_summary": {
+        "text": "对于从同一 AWS 区域内各可用区的 Amazon EC2、Amazon RDS、Amazon Redshift、Amazon DynamoDB Accelerator（DAX）、Amazon ElastiCache 实例和弹性网络接口“传入”和“传出”的数据，每个方向均按 0.01 USD/GB 的标准收费。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "IPv4：对于从公有或弹性 IPv4 地址“传入”和“传出”的数据，每个方向均按 0.01 USD/GB 的标准收费。"
+          }
+        },
+        {
+          "_text": {
+            "text": "IPv6：对于从其他 VPC 中的 IPv6 地址“传入”和“传出”的数据，每个方向均按 0.01 USD/GB 的标准收费。"
+          }
+        },
+        {
+          "_text": {
+            "text": "对于在同一 AWS 区域内的本地区域和可用区之间传输的数据，从本地区域中的 Amazon EC2 的“传入”和“传出”按以下费率计费："
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "美国东部（亚特兰大）"
+          }
+        },
+        {
+          "_intent": "table (2 rows): 在同一 AWS 区域内的本地区域和可用区之间传输的数据，从本地区域中的 Amazon EC2“传入”和“传出” / 定价 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "数据传入"
+              }
+            },
+            {
+              "_name": {
+                "text": "数据传出"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "在同一可用区中的 Amazon EC2、Amazon RDS、Amazon Redshift、Amazon ElastiCache 实例和弹性网络接口之间传输数据是免费的。"
+          }
+        },
+        {
+          "_text": {
+            "text": "在同一 AWS 区域中的 Amazon S3、Amazon EBS 直接 API、Amazon Glacier、Amazon DynamoDB、Amazon SES、Amazon SQS、Amazon Kinesis、Amazon ECR、Amazon SNS、Amazon SimpleDB 和 Amazon EC2 实例之间直接传输数据是免费的（参阅端点）。如果其他 AWS 服务在您的数据传输路"
+          }
+        },
+        {
+          "_text": {
+            "text": "*对于 Amazon EBS 直接 API，如果使用 FIPS 端点，将收取数据传输费。"
+          }
+        },
+        {
+          "_text": {
+            "text": "使用私有 IP 地址从 Amazon Classic Elastic Load Balancer 和 Amazon Application Elastic Load Balancer，以及在同一 AWS VPC 中的 EC2 实例和负载均衡器之间“传入”和“传出”数据是免费的。"
+          }
+        },
+        {
+          "_text": {
+            "text": "对于 AWS Transit Gateway 对等连接，在同一 AWS 区域，使用私有 IP 地址从每个传输网关“传出”的数据按 0.01 美元/GB 的标准收费。"
+          }
+        },
+        {
+          "_text": {
+            "text": "对于 AWS Transit Gateway 和 AWS 云 WAN 对等连接，在同一 AWS 区域，使用私有 IP 地址从 Transit Gateway“传出”的数据按 0.01 美元/GB 的标准收费，使用私有 IP 地址“传入”和从云 WAN“传出”的数据按 0.01 美元/GB 的标准收费。"
+          }
+        },
+        {
+          "_text": {
+            "text": "除非另行说明，否则我们的价格不包含适用的税费和关税（包括增值税和适用的销售税）。使用日本账单地址的客户若要使用 AWS，则需支付日本消费税。了解有关 AWS 税收政策的更多信息。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "EBS 优化实例 [draft]",
+      "_title": {
+        "text": "EBS 优化实例"
+      },
+      "_summary": {
+        "text": "对于最新一代实例类型，EBS 优化功能已默认免费开启。对于上一代实例类型，“上一代定价”页面上提供了 EBS 优化功能价格。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "EBS 优化实例将使 EC2 实例充分利用 EBS 卷上预配置的 IOPS 性能。在 Amazon EC2 与 Amazon EBS 之间传输信息时，EBS 优化实例可提供专用吞吐量，选择范围为 500 到 4000Mbps，速度具体取决于所用的实例类型。专用吞吐量从最大程度上减小 Amazon EBS I/O 与您的 EC2 实例的其他流量争用吞吐量的情况，从而为您的 EBS 卷提供最佳性能。E"
+          }
+        },
+        {
+          "_text": {
+            "text": "EBS 优化实例的每小时费用是在受支持实例类型的每小时使用费之外收取的。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "弹性 IP 地址 [draft]",
+      "_title": {
+        "text": "弹性 IP 地址"
+      },
+      "_summary": {
+        "text": "所有正在使用和空闲的弹性 IP 地址均需付费。要查看公有 IPv4 地址的价格，请访问 VPC 定价页面。"
+      }
+    },
+    {
+      "_intent": "运营商 IP 地址 [draft]",
+      "_title": {
+        "text": "运营商 IP 地址"
+      },
+      "_summary": {
+        "text": "您可以免费将一个运营商 IP (CIP) 地址与在 Wavelength 区域中运行的实例相关联。如果将其他 CIP 与该实例关联，则需要按比例对每小时与该实例关联的其他 CIP 付费。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "美国东部（威瑞森）– 亚特兰大"
+          }
+        },
+        {
+          "_text": {
+            "text": "为确保有效使用运营商 IP 地址，当这些 IP 地址未与运行中的实例关联或它们关联到了已停止的实例或未连接的网络接口时，我们将收取小额的小时费用。"
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "USD 0.005（按比例每小时与正在运行的实例相关联的额外 IP 地址）"
+              }
+            },
+            {
+              "_name": {
+                "text": "USD 0.005（按比例每小时与正在运行的实例不相关的运营商 IP 地址）"
+              }
+            },
+            {
+              "_name": {
+                "text": "USD 0.00（按每月前 100 个重映射的运营商 IP 地址重映射）"
+              }
+            },
+            {
+              "_name": {
+                "text": "USD 0.10（按每月超过 100 个重映射的运营商 IP 地址重映射）"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Elastic Load Balancing [draft]",
+      "_title": {
+        "text": "Elastic Load Balancing"
+      },
+      "_summary": {
+        "text": "要查看价格，请访问弹性负载平衡页面。"
+      }
+    },
+    {
+      "_intent": "按需容量预留 [draft]",
+      "_title": {
+        "text": "按需容量预留"
+      },
+      "_summary": {
+        "text": "按需容量预留完全按照相应的（按需）实例使用情况定价。如果充分利用了容量预留，您只需根据实例使用情况付费，而无需支付容量预留费用。如果未能充分利用容量预留，则需要根据实例使用情况付费，同时也要为容量预留中未使用的部分付费。 了解有关按需容量预留的更多信息。"
+      }
+    },
+    {
+      "_intent": "T2/T3/T4g 无限模式定价 [draft]",
+      "_title": {
+        "text": "T2/T3/T4g 无限模式定价"
+      },
+      "_summary": {
+        "text": "对于处于无限模式的 T4g 实例，Linux、RHEL 和 SLES 的 CPU 积分按每 vCPU-小时 0.04 USD 收取。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "对于处于无限模式的 T2 和 T3 实例，CPU 积分的定价规则如下："
+          }
+        },
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "对于 Linux、RHEL 和 SLES，每 vCPU-小时 0.05 USD"
+              }
+            },
+            {
+              "_name": {
+                "text": "对于 Windows 和安装了 SQL Web 的 Windows，每 vCPU-小时 0.096 USD"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "CPU 积分定价适用于所有地区的各种大小的实例，包括按需实例、Spot 实例和预留实例。"
+          }
+        },
+        {
+          "_text": {
+            "text": "请参阅无限模式文档，详细了解收取 CPU 积分费用的时间。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Amazon CloudWatch [draft]",
+      "_title": {
+        "text": "Amazon CloudWatch"
+      },
+      "_summary": {
+        "text": "要查看价格，请访问亚马逊 Cloudwatch 定价页面。"
+      }
+    },
+    {
+      "_intent": "Amazon Elastic Block Store [draft]",
+      "_title": {
+        "text": "Amazon Elastic Block Store"
+      },
+      "_summary": {
+        "text": "要了解更多信息，请访问 EBS 定价页面。"
+      }
+    },
+    {
+      "_intent": "Amazon EC2 Auto Scaling [draft]",
+      "_title": {
+        "text": "Amazon EC2 Auto Scaling"
+      },
+      "_summary": {
+        "text": "Auto Scaling 由 Amazon CloudWatch 启用，无需额外费用。Auto Scaling 启动的每个实例都会自动启用监控功能，并将收取相应的 Amazon Cloudwatch 费用。"
+      }
+    },
+    {
+      "_intent": "AWS GovCloud 区域 [draft]",
+      "_title": {
+        "text": "AWS GovCloud 区域"
+      },
+      "_summary": {
+        "text": "AWS GovCloud 是一个 AWS 区域，旨在允许美国政府机构和承包商通过满足其特定的监管和合规要求将更敏感的工作负载转移到云中。有关新 AWS GovCloud 区域的定价和更多信息，请访问 AWS GovCloud 网页。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "* 每月会计算您的免费套餐在所有区域 (AWS GovCloud 区域除外) 的使用情况，并自动应用到您的账单 – 每月未使用的数量不会转至下月。不包括运行 IBM 软件的 Amazon EC2 或 AWS GovCloud 区域。查看优惠条款，了解更多详情和其他限制。 ** 套餐费率会考虑在 Amazon EC2、Amazon S3、Amazon Glacier、Amazon RDS、Amazo"
+          }
+        },
+        {
+          "_text": {
+            "text": "（Amazon EC2 由 Amazon Web Services, Inc. 销售）"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "AMD SEV-SNP [draft]",
+      "_title": {
+        "text": "AMD SEV-SNP"
+      },
+      "_summary": {
+        "text": "Amazon EC2 支持 AMD 安全加密虚拟化-安全嵌套分页 (AMD SEV-SNP)，这是 AMD EPYC™ 处理器上的一项功能，适用于 M6a、C6a 和 R6a 实例类型。有关 AMD SEV-SNP 和定价的更多信息，请参阅此文档。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "当您启动开启 AMD SEV-SNP 的 Amazon EC2 实例时，需要额外支付每小时使用费，该笔费用相当于所选实例类型的按需小时费率的 10%。"
+          }
+        },
+        {
+          "_text": {
+            "text": "这笔 AMD SEV-SNP 使用费根据 Amazon EC2 实例使用量另外收取。预留实例、Savings Plans 和操作系统使用量不影响此费用"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "其他定价资源 [draft]",
+      "_title": {
+        "text": "其他定价资源"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "Product-Page_Standard-Icons_01_Product-Features_SqInk"
+          },
+          {
+            "image": "",
+            "alt": "Product-Page_Standard-Icons_02_Sign-Up_SqInk"
+          },
+          {
+            "image": "",
+            "alt": "Product-Page_Standard-Icons_03_Start-Building_SqInk"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "轻松计算 AWS 的月度费用"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://calculator.aws/#/addService",
+            "label": "AWS 定价计算器"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://aws.amazon.com/cn/contact-us/sales-support-pricing/",
+            "label": "获取定价协助"
+          }
+        },
+        {
+          "_text": {
+            "text": "联系 AWS 专家获取个性化报价"
+          }
+        },
+        {
+          "_text": {
+            "text": "了解如何开始使用"
+          }
+        },
+        {
+          "_text": {
+            "text": "您可以通过多种方法开始免费使用 Amazon EC2。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://aws.amazon.com/ec2/getting-started/",
+            "label": "了解更多有关 EC2 的信息"
+          }
+        },
+        {
+          "_text": {
+            "text": "注册免费账户"
+          }
+        },
+        {
+          "_text": {
+            "text": "立即享受 AWS Free Tier。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://portal.aws.amazon.com/gp/aws/developer/registration/index.html",
+            "label": "注册"
+          }
+        },
+        {
+          "_text": {
+            "text": "开始在控制台中构建"
+          }
+        },
+        {
+          "_text": {
+            "text": "在 AWS 控制台中开始使用 Amazon EC2 进行构建。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://console.aws.amazon.com/",
+            "label": "登录"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Amazon Quick 提示词库助您快速上手 [draft]",
+      "_title": {
+        "text": "Amazon Quick 提示词库助您快速上手"
+      },
+      "_image": {
+        "image": "",
+        "alt": "Missing alt text value"
+      },
+      "_summary": {
+        "text": "无需从零构思，按角色获取适用于聊天、Agent、流程和研究的示例提示，连接应用与数据，让 Quick 更快投入实际工作"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://aws.amazon.com/cn/quick/ai-prompt-library/?sc_icampaign=gl-cn-footer-quick-prompt-2633?sc_ichannel=ha&sc_iplace=above-footer-banner&trk=83d7f589-7646-45e2-8294-2067fbc0b1c1",
+            "label": "探索 AI 提示词库: Amazon Quick 提示词库助您快速上手"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "GPU跑AI训练/推理？H200/A100/L40S帮您估算成本+选对区域(库存紧张帮你您找)"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "亚马逊云科技CHAT"
+          }
+        },
+        {
+          "_text": {
+            "text": "联系 售前"
+          }
+        },
+        {
+          "_text": {
+            "text": "智能 售后"
+          }
+        }
+      ]
+    }
+  ]
+}

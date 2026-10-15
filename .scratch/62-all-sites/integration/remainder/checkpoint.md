@@ -1,0 +1,11 @@
+# Exact frozen incomplete remainder checkpoint
+
+Current private scoped commit `61b11ad2e9ece277835dd5edad1d389d200a4966`; hash/ref/tree/full patch: `checkpoint-hashes.json`, `checkpoint.patch`. Root integration HEAD unchanged and index empty. No source writers/jobs in flight. Parent resumes from `continuation.md`; final-dispatch status NOT_REVIEW_READY with reviews[].
+
+SRC-1 source-exact repair remains schema/source/HTML/Markdown self-proven. Supported H-E4/MI-E2/MI-E4/MAU-E4/MAU-E6 structural repairs implemented, not independent acceptance. Ordinary sourceURL retrieval diagnosed browser failures:31 HTTP200 original resources now local hash-provenanced assets, no access bypass. Latest all42×4 actual gallery-HTML captures:zero failed images/loaded-image upscaling/document overflow; actual native/source experience still INCOMPLETE. Targeted visual overview reads only; credits directory correction captured but not yet visually rechecked.
+
+Combined `node m1/eval/pipeline.mjs --shots` remains FAIL in pipeline-checkpoint.log:foundation/source-capture/link coverage/emphasis/footer/visual families require focused diagnosis and repair; no thresholds waived. Source/render output matches latest capture HTML/model hashes. Scoped diff-check PASS. Applied engine/content once; raw completed audits/provenance/review/recovery originals retained.
+
+Historical source snapshot67dec2f immutable; historical gallery/native strips/manifests preserved under ../historical-67dec2f/. Evidence incident:reused capture script overwrote old root integration/views original whole-shot PNG transport bytes and original measurementsJSON. Old recorded screenshot/measurement hashes cannot be reused as intact original proof; historical strips preserve pixel evidence, not lost original transport encoding. Old review snapshot proof symlinks reach mixed mutable root evidence, so must never be sent as current/reusable complete old capture proof.
+
+Next:sole-root replacement diagnoses current combined gates and actual native/source experience, then regenerates complete current gallery/hashes/new review snapshots. No final reviewers currently started; do not dispatch old67dec2f cohorts. No user artifact opening/publication/PASS.

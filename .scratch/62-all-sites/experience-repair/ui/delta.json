@@ -1,0 +1,2420 @@
+{
+  "hashes": {
+    "m1/axis.mjs": {
+      "before": "364406d7df8267ee115a3ae58b601220207580b6b48af6d64da0513fbbc6f712",
+      "after": "a6722c7210c32f2a229f5b9be6be7d001913858a3669b4b91c18de55943e323b"
+    },
+    "m1/render.mjs": {
+      "before": "88921fe9564f23fb394b90fe3493646f527a5aa356c809f8e2f1946f6ae7d0b6",
+      "after": "9d97cab3733b8aea8b278257c5f3701c2b79f709e288b4022161989baea2f4d9"
+    },
+    "m1/render-md.mjs": {
+      "before": "46d5a5ae77bef13ffea52b813207f3a8a4f9144eaa0484ff033e0faa28282358",
+      "after": "1d930422c260f64f222353e14c98548be7be36c168cb160c4e90479c46a6a132"
+    },
+    "m1/render-text.mjs": {
+      "before": "315c5d1e1a0bec42538e68d26b5a4853dbc57bbd1895bfa11d67f92ef51fcc6d",
+      "after": "bbb7c498caeb204aed91dd10bf743041f7499756112e717e33061537ce01472e"
+    },
+    "docs/m1/layout-axes.md": {
+      "before": "44defc3db7d171df9b3972867c023982600f0ea95ab4820c369022e6865e8d0e",
+      "after": "f1d5d601bf5d76ab6a85ab9b7e8d9590a6c6ce053df8e5ff0e7309995c146b80"
+    },
+    "m1/curated/learn-microsoft/vm-sizes.json": {
+      "before": "f5e50e0a6e73dddd6151e70c74ea41de7a371dbb28a4e43ae4a1ef4a148cb1e0",
+      "after": "178595bdb719e852670086d1d724fe0cea5fd24a79dcd42669987d4258190fb1"
+    },
+    "m1/curated/mi-com/home.json": {
+      "before": "b92cd2aa266d1481d73f5f395259f43fcc351121fe4c8c8e5973af5f8624ab78",
+      "after": "5bf784235e7730ea73afd0ace6c35f2d97d7f5d8ac2a032a8a0401a65b2cd41d"
+    },
+    "m1/curated/mi-com/search-earbuds.json": {
+      "before": "0641c7801f140b1d0cd6c18adb2a35f2da748d5146f0d4f22af101a600f8456d",
+      "after": "0e89bf345921f745e757ad3712b97bbb095aa7c850519a3b30559b6873717afa"
+    },
+    "m1/curated/mi-com/search-phone.json": {
+      "before": "88deaf146a4ae5c0ee917e43f97214caf7568e50850be3b5368ba30fc465c726",
+      "after": "c7c520ef242edeb2ae68adaacc28faa2b9ccef6793a9571ddcdbb0cec0aa02e3"
+    },
+    "m1/curated/mi-com/shop-category-list.json": {
+      "before": "377a9b077660cf6168f74430efe21ce9764f73dc58d09458b791c197fc3953af",
+      "after": "b6b6ed134e45bb83ee6981264e56d7caf2ed8bdc27b0191e5c0bfb07c61b6819"
+    },
+    "m1/ux-experience-selftest.mjs": {
+      "before": null,
+      "after": "d580af76b5c1de1b8c8a0d09a999a900ae12ae6c605b814ce2de44e2c88c43f6"
+    }
+  },
+  "modelDeltas": [
+    {
+      "file": "m1/curated/learn-microsoft/vm-sizes.json",
+      "beforeHash": "f5e50e0a6e73dddd6151e70c74ea41de7a371dbb28a4e43ae4a1ef4a148cb1e0",
+      "afterHash": "178595bdb719e852670086d1d724fe0cea5fd24a79dcd42669987d4258190fb1",
+      "orderedActions": 147,
+      "remaps": [
+        {
+          "before": "vm-size-and-series-naming.name-structure-breakdown._lines[3].link-0",
+          "after": "vm-size-and-series-naming.name-structure-breakdown._lines[8].link-0",
+          "action": {
+            "verb": "navigate",
+            "label": "Azure VM sizes naming conventions",
+            "to": "https://learn.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions"
+          }
+        }
+      ]
+    },
+    {
+      "file": "m1/curated/mi-com/home.json",
+      "beforeHash": "b92cd2aa266d1481d73f5f395259f43fcc351121fe4c8c8e5973af5f8624ab78",
+      "afterHash": "5bf784235e7730ea73afd0ace6c35f2d97d7f5d8ac2a032a8a0401a65b2cd41d",
+      "orderedActions": 64,
+      "remaps": [
+        {
+          "before": "footer._items[0]",
+          "after": "footer._lines[0]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "手机",
+            "to": "https://www.mi.com/search?keyword=%E6%89%8B%E6%9C%BA"
+          }
+        },
+        {
+          "before": "footer._items[1]",
+          "after": "footer._lines[0]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "电视",
+            "to": "https://www.mi.com/search?keyword=%E7%94%B5%E8%A7%86"
+          }
+        },
+        {
+          "before": "footer._items[2]",
+          "after": "footer._lines[0]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "笔记本",
+            "to": "https://www.mi.com/search?keyword=%E7%AC%94%E8%AE%B0%E6%9C%AC"
+          }
+        },
+        {
+          "before": "footer._items[3]",
+          "after": "footer._lines[0]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "平板",
+            "to": "https://www.mi.com/search?keyword=%E5%B9%B3%E6%9D%BF"
+          }
+        },
+        {
+          "before": "footer._items[4]",
+          "after": "footer._lines[0]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "穿戴",
+            "to": "https://www.mi.com/search?keyword=%E6%99%BA%E8%83%BD%E7%A9%BF%E6%88%B4"
+          }
+        },
+        {
+          "before": "footer._items[5]",
+          "after": "footer._lines[0]._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "耳机",
+            "to": "https://www.mi.com/search?keyword=%E8%80%B3%E6%9C%BA"
+          }
+        },
+        {
+          "before": "footer._items[6]",
+          "after": "footer._lines[0]._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "家电",
+            "to": "https://www.mi.com/search?keyword=%E5%AE%B6%E7%94%B5"
+          }
+        },
+        {
+          "before": "footer._items[7]",
+          "after": "footer._lines[0]._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "路由器",
+            "to": "https://www.mi.com/search?keyword=%E8%B7%AF%E7%94%B1%E5%99%A8"
+          }
+        },
+        {
+          "before": "footer._items[8]",
+          "after": "footer._lines[0]._items[8]",
+          "action": {
+            "verb": "navigate",
+            "label": "音箱",
+            "to": "https://www.mi.com/search?keyword=%E9%9F%B3%E7%AE%B1"
+          }
+        },
+        {
+          "before": "footer._items[9]",
+          "after": "footer._lines[0]._items[9]",
+          "action": {
+            "verb": "navigate",
+            "label": "配件",
+            "to": "https://www.mi.com/search?keyword=%E9%85%8D%E4%BB%B6"
+          }
+        },
+        {
+          "before": "footer._items[10]",
+          "after": "footer._lines[1]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "申请售后",
+            "to": "https://www.mi.com/service/aftersale/front"
+          }
+        },
+        {
+          "before": "footer._items[11]",
+          "after": "footer._lines[1]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务政策",
+            "to": "https://www.mi.com/service/exchange"
+          }
+        },
+        {
+          "before": "footer._items[12]",
+          "after": "footer._lines[1]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务价格",
+            "to": "https://m.mi.com/aftersale/new-service#/pages/service-charge/product-search/index"
+          }
+        },
+        {
+          "before": "footer._items[13]",
+          "after": "footer._lines[1]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "订单查询",
+            "to": "https://www.mi.com/user/orderList"
+          }
+        },
+        {
+          "before": "footer._items[14]",
+          "after": "footer._lines[1]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "以旧换新",
+            "to": "https://www.mi.com/a/h/16769.html"
+          }
+        },
+        {
+          "before": "footer._items[15]",
+          "after": "footer._lines[1]._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "保障服务",
+            "to": "https://micare.mi.com.cn/"
+          }
+        },
+        {
+          "before": "footer._items[16]",
+          "after": "footer._lines[1]._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "防伪查询",
+            "to": "https://www.mi.com/service/imei"
+          }
+        },
+        {
+          "before": "footer._items[17]",
+          "after": "footer._lines[1]._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "F码通道",
+            "to": "https://www.mi.com/order/fcode"
+          }
+        },
+        {
+          "before": "footer._items[18]",
+          "after": "footer._lines[2]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米之家",
+            "to": "https://www.mi.com/service/mihome/list"
+          }
+        },
+        {
+          "before": "footer._items[19]",
+          "after": "footer._lines[2]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务网点",
+            "to": "https://www.mi.com/service/sitelist"
+          }
+        },
+        {
+          "before": "footer._items[20]",
+          "after": "footer._lines[2]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "授权体验店/专区",
+            "to": "https://www.mi.com/service/family-location"
+          }
+        },
+        {
+          "before": "footer._items[21]",
+          "after": "footer._lines[3]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "了解小米",
+            "to": "https://www.mi.com/about/"
+          }
+        },
+        {
+          "before": "footer._items[22]",
+          "after": "footer._lines[3]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "加入小米",
+            "to": "https://hr.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[23]",
+          "after": "footer._lines[3]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "投资者关系",
+            "to": "https://ir.mi.com/zh-hans"
+          }
+        },
+        {
+          "before": "footer._items[24]",
+          "after": "footer._lines[3]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "ESG与可持续发展",
+            "to": "https://www.mi.com/csr"
+          }
+        },
+        {
+          "before": "footer._items[25]",
+          "after": "footer._lines[3]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "廉洁举报",
+            "to": "https://www.mi.com/integrity"
+          }
+        },
+        {
+          "before": "footer._items[26]",
+          "after": "footer._lines[4]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "新浪微博",
+            "to": "https://weibo.com/xiaomishangcheng"
+          }
+        },
+        {
+          "before": "footer._items[27]",
+          "after": "footer._lines[4]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "联系我们",
+            "to": "https://www.mi.com/about/contact/"
+          }
+        },
+        {
+          "before": "footer._items[28]",
+          "after": "footer._lines[4]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "公益基金会",
+            "to": "https://www.mi.com/foundation/index"
+          }
+        },
+        {
+          "before": "footer._items[29]",
+          "after": "footer._lines[4]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米高校合作",
+            "to": "https://utc.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[30]",
+          "after": "footer._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城",
+            "to": "https://www.mi.com/shop"
+          }
+        },
+        {
+          "before": "footer._items[31]",
+          "after": "footer._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米澎湃OS",
+            "to": "https://hyperos.mi.com/"
+          }
+        },
+        {
+          "before": "footer._items[32]",
+          "after": "footer._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "米家",
+            "to": "https://home.mi.com/index.html"
+          }
+        },
+        {
+          "before": "footer._items[33]",
+          "after": "footer._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "多看",
+            "to": "https://www.duokan.com/"
+          }
+        },
+        {
+          "before": "footer._items[34]",
+          "after": "footer._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "游戏",
+            "to": "https://game.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[35]",
+          "after": "footer._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "音乐",
+            "to": "https://www.mi.com/music"
+          }
+        },
+        {
+          "before": "footer._items[36]",
+          "after": "footer._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米智能存储",
+            "to": "https://smartstorage.xiaomi.com"
+          }
+        },
+        {
+          "before": "footer._items[37]",
+          "after": "footer._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "政企服务",
+            "to": "https://b.mi.com/?client_id=180100031058&masid=17409.0358"
+          }
+        },
+        {
+          "before": "footer._items[38]",
+          "after": "footer._items[8]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米天猫店",
+            "to": "https://xiaomi.tmall.com/"
+          }
+        },
+        {
+          "before": "footer._items[39]",
+          "after": "footer._items[9]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米集团隐私政策",
+            "to": "https://privacy.mi.com/all/zh_CN/"
+          }
+        },
+        {
+          "before": "footer._items[40]",
+          "after": "footer._items[10]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米公司儿童信息保护规则",
+            "to": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html"
+          }
+        },
+        {
+          "before": "footer._items[41]",
+          "after": "footer._items[11]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城隐私政策",
+            "to": "https://m.mi.com/support/module?id=63&headless=1"
+          }
+        },
+        {
+          "before": "footer._items[42]",
+          "after": "footer._items[12]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城用户协议",
+            "to": "https://www.mi.com/aptitude/list?id=62"
+          }
+        },
+        {
+          "before": "footer._items[43]",
+          "after": "footer._items[13]",
+          "action": {
+            "verb": "navigate",
+            "label": "问题反馈",
+            "to": "https://static.mi.com/feedback/"
+          }
+        },
+        {
+          "before": "footer._items[44]",
+          "after": "footer._items[14]",
+          "action": {
+            "verb": "navigate",
+            "label": "北京互联网法院法律服务工作站",
+            "to": "http://www.mi.com/beihu"
+          }
+        },
+        {
+          "before": "footer._items[45]",
+          "after": "footer._items[15]",
+          "action": {
+            "verb": "navigate",
+            "label": "中国消费者协会",
+            "to": "http://www.cca.org.cn/"
+          }
+        },
+        {
+          "before": "footer._items[46]",
+          "after": "footer._items[16]",
+          "action": {
+            "verb": "navigate",
+            "label": "北京市消费者协会",
+            "to": "http://www.bj315.org/"
+          }
+        },
+        {
+          "before": "footer._items[47]",
+          "after": "footer._items[17]",
+          "action": {
+            "verb": "navigate",
+            "label": "京ICP备10046444号",
+            "to": "http://beian.miit.gov.cn/"
+          }
+        },
+        {
+          "before": "footer._items[48]",
+          "after": "footer._items[18]",
+          "action": {
+            "verb": "navigate",
+            "label": "京公网安备11010802020134号",
+            "to": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134"
+          }
+        },
+        {
+          "before": "footer._items[49]",
+          "after": "footer._items[19]",
+          "action": {
+            "verb": "navigate",
+            "label": "营业执照",
+            "to": "https://www.mi.com/business-license/"
+          }
+        },
+        {
+          "before": "footer._items[50]",
+          "after": "footer._items[20]",
+          "action": {
+            "verb": "navigate",
+            "label": "医疗器械质量公告",
+            "to": "https://www.mi.com/medical/list/"
+          }
+        },
+        {
+          "before": "footer._items[51]",
+          "after": "footer._items[21]",
+          "action": {
+            "verb": "navigate",
+            "label": "增值电信业务经营许可证编号：京B2-20180851",
+            "to": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/pc/5f93056c-bc30-401e-9526-66839114ffb9.png"
+          }
+        },
+        {
+          "before": "footer._items[52]",
+          "after": "footer._items[22]",
+          "action": {
+            "verb": "navigate",
+            "label": "食品经营许可证",
+            "to": "https://www.mi.com/article/detail/972d1e084d35.html"
+          }
+        },
+        {
+          "before": "footer._items[53]",
+          "after": "footer._items[23]",
+          "action": {
+            "verb": "navigate",
+            "label": "知识产权侵权投诉",
+            "to": "https://www.mi.com/intellectual"
+          }
+        }
+      ]
+    },
+    {
+      "file": "m1/curated/mi-com/search-earbuds.json",
+      "beforeHash": "0641c7801f140b1d0cd6c18adb2a35f2da748d5146f0d4f22af101a600f8456d",
+      "afterHash": "0e89bf345921f745e757ad3712b97bbb095aa7c850519a3b30559b6873717afa",
+      "orderedActions": 114,
+      "remaps": [
+        {
+          "before": "footer._items[0]",
+          "after": "footer._lines[0]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "预约维修服务",
+            "to": "https://www.mi.com/service/aftersale/front"
+          }
+        },
+        {
+          "before": "footer._items[1]",
+          "after": "footer._lines[0]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "7天无理由退货",
+            "to": "https://www.mi.com/service/exchange#back"
+          }
+        },
+        {
+          "before": "footer._items[2]",
+          "after": "footer._lines[0]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "15天免费换货",
+            "to": "https://www.mi.com/service/exchange#back"
+          }
+        },
+        {
+          "before": "footer._items[3]",
+          "after": "footer._lines[0]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "满69包邮",
+            "to": "https://www.mi.com/service/buy/Postal%20policy"
+          }
+        },
+        {
+          "before": "footer._items[4]",
+          "after": "footer._lines[0]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "1100余家售后网点",
+            "to": "https://www.mi.com/service/sitelist"
+          }
+        },
+        {
+          "before": "footer._items[5]",
+          "after": "footer._lines[1]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "手机",
+            "to": "https://www.mi.com/search?keyword=%E6%89%8B%E6%9C%BA"
+          }
+        },
+        {
+          "before": "footer._items[6]",
+          "after": "footer._lines[1]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "电视",
+            "to": "https://www.mi.com/search?keyword=%E7%94%B5%E8%A7%86"
+          }
+        },
+        {
+          "before": "footer._items[7]",
+          "after": "footer._lines[1]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "笔记本",
+            "to": "https://www.mi.com/search?keyword=%E7%AC%94%E8%AE%B0%E6%9C%AC"
+          }
+        },
+        {
+          "before": "footer._items[8]",
+          "after": "footer._lines[1]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "平板",
+            "to": "https://www.mi.com/search?keyword=%E5%B9%B3%E6%9D%BF"
+          }
+        },
+        {
+          "before": "footer._items[9]",
+          "after": "footer._lines[1]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "穿戴",
+            "to": "https://www.mi.com/search?keyword=%E6%99%BA%E8%83%BD%E7%A9%BF%E6%88%B4"
+          }
+        },
+        {
+          "before": "footer._items[10]",
+          "after": "footer._lines[1]._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "耳机",
+            "to": "https://www.mi.com/search?keyword=%E8%80%B3%E6%9C%BA"
+          }
+        },
+        {
+          "before": "footer._items[11]",
+          "after": "footer._lines[1]._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "家电",
+            "to": "https://www.mi.com/search?keyword=%E5%AE%B6%E7%94%B5"
+          }
+        },
+        {
+          "before": "footer._items[12]",
+          "after": "footer._lines[1]._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "路由器",
+            "to": "https://www.mi.com/search?keyword=%E8%B7%AF%E7%94%B1%E5%99%A8"
+          }
+        },
+        {
+          "before": "footer._items[13]",
+          "after": "footer._lines[1]._items[8]",
+          "action": {
+            "verb": "navigate",
+            "label": "音箱",
+            "to": "https://www.mi.com/search?keyword=%E9%9F%B3%E7%AE%B1"
+          }
+        },
+        {
+          "before": "footer._items[14]",
+          "after": "footer._lines[1]._items[9]",
+          "action": {
+            "verb": "navigate",
+            "label": "配件",
+            "to": "https://www.mi.com/search?keyword=%E9%85%8D%E4%BB%B6"
+          }
+        },
+        {
+          "before": "footer._items[15]",
+          "after": "footer._lines[2]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "申请售后",
+            "to": "https://www.mi.com/service/aftersale/front"
+          }
+        },
+        {
+          "before": "footer._items[16]",
+          "after": "footer._lines[2]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务政策",
+            "to": "https://www.mi.com/service/exchange"
+          }
+        },
+        {
+          "before": "footer._items[17]",
+          "after": "footer._lines[2]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务价格",
+            "to": "https://m.mi.com/aftersale/new-service#/pages/service-charge/product-search/index"
+          }
+        },
+        {
+          "before": "footer._items[18]",
+          "after": "footer._lines[2]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "订单查询",
+            "to": "https://www.mi.com/user/orderList"
+          }
+        },
+        {
+          "before": "footer._items[19]",
+          "after": "footer._lines[2]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "以旧换新",
+            "to": "https://www.mi.com/a/h/16769.html"
+          }
+        },
+        {
+          "before": "footer._items[20]",
+          "after": "footer._lines[2]._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "保障服务",
+            "to": "https://micare.mi.com.cn/"
+          }
+        },
+        {
+          "before": "footer._items[21]",
+          "after": "footer._lines[2]._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "防伪查询",
+            "to": "https://www.mi.com/service/imei"
+          }
+        },
+        {
+          "before": "footer._items[22]",
+          "after": "footer._lines[2]._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "F码通道",
+            "to": "https://www.mi.com/order/fcode"
+          }
+        },
+        {
+          "before": "footer._items[23]",
+          "after": "footer._lines[3]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米之家",
+            "to": "https://www.mi.com/service/mihome/list"
+          }
+        },
+        {
+          "before": "footer._items[24]",
+          "after": "footer._lines[3]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务网点",
+            "to": "https://www.mi.com/service/sitelist"
+          }
+        },
+        {
+          "before": "footer._items[25]",
+          "after": "footer._lines[3]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "授权体验店/专区",
+            "to": "https://www.mi.com/service/family-location"
+          }
+        },
+        {
+          "before": "footer._items[26]",
+          "after": "footer._lines[4]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "了解小米",
+            "to": "https://www.mi.com/about/"
+          }
+        },
+        {
+          "before": "footer._items[27]",
+          "after": "footer._lines[4]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "加入小米",
+            "to": "https://hr.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[28]",
+          "after": "footer._lines[4]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "投资者关系",
+            "to": "https://ir.mi.com/zh-hans"
+          }
+        },
+        {
+          "before": "footer._items[29]",
+          "after": "footer._lines[4]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "ESG与可持续发展",
+            "to": "https://www.mi.com/csr"
+          }
+        },
+        {
+          "before": "footer._items[30]",
+          "after": "footer._lines[4]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "廉洁举报",
+            "to": "https://www.mi.com/integrity"
+          }
+        },
+        {
+          "before": "footer._items[31]",
+          "after": "footer._lines[5]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "新浪微博",
+            "to": "https://weibo.com/xiaomishangcheng"
+          }
+        },
+        {
+          "before": "footer._items[32]",
+          "after": "footer._lines[5]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "联系我们",
+            "to": "https://www.mi.com/about/contact/"
+          }
+        },
+        {
+          "before": "footer._items[33]",
+          "after": "footer._lines[5]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "公益基金会",
+            "to": "https://www.mi.com/foundation/index"
+          }
+        },
+        {
+          "before": "footer._items[34]",
+          "after": "footer._lines[5]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米高校合作",
+            "to": "https://utc.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[35]",
+          "after": "footer._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城",
+            "to": "https://www.mi.com/shop"
+          }
+        },
+        {
+          "before": "footer._items[36]",
+          "after": "footer._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米澎湃OS",
+            "to": "https://hyperos.mi.com/"
+          }
+        },
+        {
+          "before": "footer._items[37]",
+          "after": "footer._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "米家",
+            "to": "https://home.mi.com/index.html"
+          }
+        },
+        {
+          "before": "footer._items[38]",
+          "after": "footer._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "多看",
+            "to": "https://www.duokan.com/"
+          }
+        },
+        {
+          "before": "footer._items[39]",
+          "after": "footer._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "游戏",
+            "to": "https://game.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[40]",
+          "after": "footer._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "音乐",
+            "to": "https://www.mi.com/music"
+          }
+        },
+        {
+          "before": "footer._items[41]",
+          "after": "footer._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米智能存储",
+            "to": "https://smartstorage.xiaomi.com"
+          }
+        },
+        {
+          "before": "footer._items[42]",
+          "after": "footer._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "政企服务",
+            "to": "https://b.mi.com/?client_id=180100031058&masid=17409.0358"
+          }
+        },
+        {
+          "before": "footer._items[43]",
+          "after": "footer._items[8]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米天猫店",
+            "to": "https://xiaomi.tmall.com/"
+          }
+        },
+        {
+          "before": "footer._items[44]",
+          "after": "footer._items[9]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米集团隐私政策",
+            "to": "https://privacy.mi.com/all/zh_CN/"
+          }
+        },
+        {
+          "before": "footer._items[45]",
+          "after": "footer._items[10]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米公司儿童信息保护规则",
+            "to": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html"
+          }
+        },
+        {
+          "before": "footer._items[46]",
+          "after": "footer._items[11]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城隐私政策",
+            "to": "https://m.mi.com/support/module?id=63&headless=1"
+          }
+        },
+        {
+          "before": "footer._items[47]",
+          "after": "footer._items[12]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城用户协议",
+            "to": "https://www.mi.com/aptitude/list?id=62"
+          }
+        },
+        {
+          "before": "footer._items[48]",
+          "after": "footer._items[13]",
+          "action": {
+            "verb": "navigate",
+            "label": "问题反馈",
+            "to": "https://static.mi.com/feedback/"
+          }
+        },
+        {
+          "before": "footer._items[49]",
+          "after": "footer._items[14]",
+          "action": {
+            "verb": "navigate",
+            "label": "北京互联网法院法律服务工作站",
+            "to": "http://www.mi.com/beihu"
+          }
+        },
+        {
+          "before": "footer._items[50]",
+          "after": "footer._items[15]",
+          "action": {
+            "verb": "navigate",
+            "label": "中国消费者协会",
+            "to": "http://www.cca.org.cn/"
+          }
+        },
+        {
+          "before": "footer._items[51]",
+          "after": "footer._items[16]",
+          "action": {
+            "verb": "navigate",
+            "label": "北京市消费者协会",
+            "to": "http://www.bj315.org/"
+          }
+        },
+        {
+          "before": "footer._items[52]",
+          "after": "footer._items[17]",
+          "action": {
+            "verb": "navigate",
+            "label": "京ICP备10046444号",
+            "to": "http://beian.miit.gov.cn/"
+          }
+        },
+        {
+          "before": "footer._items[53]",
+          "after": "footer._items[18]",
+          "action": {
+            "verb": "navigate",
+            "label": "京公网安备11010802020134号",
+            "to": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134"
+          }
+        },
+        {
+          "before": "footer._items[54]",
+          "after": "footer._items[19]",
+          "action": {
+            "verb": "navigate",
+            "label": "营业执照",
+            "to": "https://www.mi.com/business-license/"
+          }
+        },
+        {
+          "before": "footer._items[55]",
+          "after": "footer._items[20]",
+          "action": {
+            "verb": "navigate",
+            "label": "医疗器械质量公告",
+            "to": "https://www.mi.com/medical/list/"
+          }
+        },
+        {
+          "before": "footer._items[56]",
+          "after": "footer._items[21]",
+          "action": {
+            "verb": "navigate",
+            "label": "增值电信业务经营许可证编号：京B2-20180851",
+            "to": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/pc/5f93056c-bc30-401e-9526-66839114ffb9.png"
+          }
+        },
+        {
+          "before": "footer._items[57]",
+          "after": "footer._items[22]",
+          "action": {
+            "verb": "navigate",
+            "label": "食品经营许可证",
+            "to": "https://www.mi.com/article/detail/972d1e084d35.html"
+          }
+        },
+        {
+          "before": "footer._items[58]",
+          "after": "footer._items[23]",
+          "action": {
+            "verb": "navigate",
+            "label": "知识产权侵权投诉",
+            "to": "https://www.mi.com/intellectual"
+          }
+        }
+      ]
+    },
+    {
+      "file": "m1/curated/mi-com/search-phone.json",
+      "beforeHash": "88deaf146a4ae5c0ee917e43f97214caf7568e50850be3b5368ba30fc465c726",
+      "afterHash": "c7c520ef242edeb2ae68adaacc28faa2b9ccef6793a9571ddcdbb0cec0aa02e3",
+      "orderedActions": 115,
+      "remaps": [
+        {
+          "before": "footer._items[0]",
+          "after": "footer._lines[0]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "预约维修服务",
+            "to": "https://www.mi.com/service/aftersale/front"
+          }
+        },
+        {
+          "before": "footer._items[1]",
+          "after": "footer._lines[0]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "7天无理由退货",
+            "to": "https://www.mi.com/service/exchange#back"
+          }
+        },
+        {
+          "before": "footer._items[2]",
+          "after": "footer._lines[0]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "15天免费换货",
+            "to": "https://www.mi.com/service/exchange#back"
+          }
+        },
+        {
+          "before": "footer._items[3]",
+          "after": "footer._lines[0]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "满69包邮",
+            "to": "https://www.mi.com/service/buy/Postal%20policy"
+          }
+        },
+        {
+          "before": "footer._items[4]",
+          "after": "footer._lines[0]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "1100余家售后网点",
+            "to": "https://www.mi.com/service/sitelist"
+          }
+        },
+        {
+          "before": "footer._items[5]",
+          "after": "footer._lines[1]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "手机",
+            "to": "https://www.mi.com/search?keyword=%E6%89%8B%E6%9C%BA"
+          }
+        },
+        {
+          "before": "footer._items[6]",
+          "after": "footer._lines[1]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "电视",
+            "to": "https://www.mi.com/search?keyword=%E7%94%B5%E8%A7%86"
+          }
+        },
+        {
+          "before": "footer._items[7]",
+          "after": "footer._lines[1]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "笔记本",
+            "to": "https://www.mi.com/search?keyword=%E7%AC%94%E8%AE%B0%E6%9C%AC"
+          }
+        },
+        {
+          "before": "footer._items[8]",
+          "after": "footer._lines[1]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "平板",
+            "to": "https://www.mi.com/search?keyword=%E5%B9%B3%E6%9D%BF"
+          }
+        },
+        {
+          "before": "footer._items[9]",
+          "after": "footer._lines[1]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "穿戴",
+            "to": "https://www.mi.com/search?keyword=%E6%99%BA%E8%83%BD%E7%A9%BF%E6%88%B4"
+          }
+        },
+        {
+          "before": "footer._items[10]",
+          "after": "footer._lines[1]._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "耳机",
+            "to": "https://www.mi.com/search?keyword=%E8%80%B3%E6%9C%BA"
+          }
+        },
+        {
+          "before": "footer._items[11]",
+          "after": "footer._lines[1]._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "家电",
+            "to": "https://www.mi.com/search?keyword=%E5%AE%B6%E7%94%B5"
+          }
+        },
+        {
+          "before": "footer._items[12]",
+          "after": "footer._lines[1]._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "路由器",
+            "to": "https://www.mi.com/search?keyword=%E8%B7%AF%E7%94%B1%E5%99%A8"
+          }
+        },
+        {
+          "before": "footer._items[13]",
+          "after": "footer._lines[1]._items[8]",
+          "action": {
+            "verb": "navigate",
+            "label": "音箱",
+            "to": "https://www.mi.com/search?keyword=%E9%9F%B3%E7%AE%B1"
+          }
+        },
+        {
+          "before": "footer._items[14]",
+          "after": "footer._lines[1]._items[9]",
+          "action": {
+            "verb": "navigate",
+            "label": "配件",
+            "to": "https://www.mi.com/search?keyword=%E9%85%8D%E4%BB%B6"
+          }
+        },
+        {
+          "before": "footer._items[15]",
+          "after": "footer._lines[2]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "申请售后",
+            "to": "https://www.mi.com/service/aftersale/front"
+          }
+        },
+        {
+          "before": "footer._items[16]",
+          "after": "footer._lines[2]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务政策",
+            "to": "https://www.mi.com/service/exchange"
+          }
+        },
+        {
+          "before": "footer._items[17]",
+          "after": "footer._lines[2]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务价格",
+            "to": "https://m.mi.com/aftersale/new-service#/pages/service-charge/product-search/index"
+          }
+        },
+        {
+          "before": "footer._items[18]",
+          "after": "footer._lines[2]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "订单查询",
+            "to": "https://www.mi.com/user/orderList"
+          }
+        },
+        {
+          "before": "footer._items[19]",
+          "after": "footer._lines[2]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "以旧换新",
+            "to": "https://www.mi.com/a/h/16769.html"
+          }
+        },
+        {
+          "before": "footer._items[20]",
+          "after": "footer._lines[2]._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "保障服务",
+            "to": "https://micare.mi.com.cn/"
+          }
+        },
+        {
+          "before": "footer._items[21]",
+          "after": "footer._lines[2]._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "防伪查询",
+            "to": "https://www.mi.com/service/imei"
+          }
+        },
+        {
+          "before": "footer._items[22]",
+          "after": "footer._lines[2]._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "F码通道",
+            "to": "https://www.mi.com/order/fcode"
+          }
+        },
+        {
+          "before": "footer._items[23]",
+          "after": "footer._lines[3]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米之家",
+            "to": "https://www.mi.com/service/mihome/list"
+          }
+        },
+        {
+          "before": "footer._items[24]",
+          "after": "footer._lines[3]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务网点",
+            "to": "https://www.mi.com/service/sitelist"
+          }
+        },
+        {
+          "before": "footer._items[25]",
+          "after": "footer._lines[3]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "授权体验店/专区",
+            "to": "https://www.mi.com/service/family-location"
+          }
+        },
+        {
+          "before": "footer._items[26]",
+          "after": "footer._lines[4]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "了解小米",
+            "to": "https://www.mi.com/about/"
+          }
+        },
+        {
+          "before": "footer._items[27]",
+          "after": "footer._lines[4]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "加入小米",
+            "to": "https://hr.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[28]",
+          "after": "footer._lines[4]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "投资者关系",
+            "to": "https://ir.mi.com/zh-hans"
+          }
+        },
+        {
+          "before": "footer._items[29]",
+          "after": "footer._lines[4]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "ESG与可持续发展",
+            "to": "https://www.mi.com/csr"
+          }
+        },
+        {
+          "before": "footer._items[30]",
+          "after": "footer._lines[4]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "廉洁举报",
+            "to": "https://www.mi.com/integrity"
+          }
+        },
+        {
+          "before": "footer._items[31]",
+          "after": "footer._lines[5]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "新浪微博",
+            "to": "https://weibo.com/xiaomishangcheng"
+          }
+        },
+        {
+          "before": "footer._items[32]",
+          "after": "footer._lines[5]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "联系我们",
+            "to": "https://www.mi.com/about/contact/"
+          }
+        },
+        {
+          "before": "footer._items[33]",
+          "after": "footer._lines[5]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "公益基金会",
+            "to": "https://www.mi.com/foundation/index"
+          }
+        },
+        {
+          "before": "footer._items[34]",
+          "after": "footer._lines[5]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米高校合作",
+            "to": "https://utc.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[35]",
+          "after": "footer._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城",
+            "to": "https://www.mi.com/shop"
+          }
+        },
+        {
+          "before": "footer._items[36]",
+          "after": "footer._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米澎湃OS",
+            "to": "https://hyperos.mi.com/"
+          }
+        },
+        {
+          "before": "footer._items[37]",
+          "after": "footer._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "米家",
+            "to": "https://home.mi.com/index.html"
+          }
+        },
+        {
+          "before": "footer._items[38]",
+          "after": "footer._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "多看",
+            "to": "https://www.duokan.com/"
+          }
+        },
+        {
+          "before": "footer._items[39]",
+          "after": "footer._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "游戏",
+            "to": "https://game.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[40]",
+          "after": "footer._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "音乐",
+            "to": "https://www.mi.com/music"
+          }
+        },
+        {
+          "before": "footer._items[41]",
+          "after": "footer._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米智能存储",
+            "to": "https://smartstorage.xiaomi.com"
+          }
+        },
+        {
+          "before": "footer._items[42]",
+          "after": "footer._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "政企服务",
+            "to": "https://b.mi.com/?client_id=180100031058&masid=17409.0358"
+          }
+        },
+        {
+          "before": "footer._items[43]",
+          "after": "footer._items[8]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米天猫店",
+            "to": "https://xiaomi.tmall.com/"
+          }
+        },
+        {
+          "before": "footer._items[44]",
+          "after": "footer._items[9]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米集团隐私政策",
+            "to": "https://privacy.mi.com/all/zh_CN/"
+          }
+        },
+        {
+          "before": "footer._items[45]",
+          "after": "footer._items[10]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米公司儿童信息保护规则",
+            "to": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html"
+          }
+        },
+        {
+          "before": "footer._items[46]",
+          "after": "footer._items[11]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城隐私政策",
+            "to": "https://m.mi.com/support/module?id=63&headless=1"
+          }
+        },
+        {
+          "before": "footer._items[47]",
+          "after": "footer._items[12]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城用户协议",
+            "to": "https://www.mi.com/aptitude/list?id=62"
+          }
+        },
+        {
+          "before": "footer._items[48]",
+          "after": "footer._items[13]",
+          "action": {
+            "verb": "navigate",
+            "label": "问题反馈",
+            "to": "https://static.mi.com/feedback/"
+          }
+        },
+        {
+          "before": "footer._items[49]",
+          "after": "footer._items[14]",
+          "action": {
+            "verb": "navigate",
+            "label": "北京互联网法院法律服务工作站",
+            "to": "http://www.mi.com/beihu"
+          }
+        },
+        {
+          "before": "footer._items[50]",
+          "after": "footer._items[15]",
+          "action": {
+            "verb": "navigate",
+            "label": "中国消费者协会",
+            "to": "http://www.cca.org.cn/"
+          }
+        },
+        {
+          "before": "footer._items[51]",
+          "after": "footer._items[16]",
+          "action": {
+            "verb": "navigate",
+            "label": "北京市消费者协会",
+            "to": "http://www.bj315.org/"
+          }
+        },
+        {
+          "before": "footer._items[52]",
+          "after": "footer._items[17]",
+          "action": {
+            "verb": "navigate",
+            "label": "京ICP备10046444号",
+            "to": "http://beian.miit.gov.cn/"
+          }
+        },
+        {
+          "before": "footer._items[53]",
+          "after": "footer._items[18]",
+          "action": {
+            "verb": "navigate",
+            "label": "京公网安备11010802020134号",
+            "to": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134"
+          }
+        },
+        {
+          "before": "footer._items[54]",
+          "after": "footer._items[19]",
+          "action": {
+            "verb": "navigate",
+            "label": "营业执照",
+            "to": "https://www.mi.com/business-license/"
+          }
+        },
+        {
+          "before": "footer._items[55]",
+          "after": "footer._items[20]",
+          "action": {
+            "verb": "navigate",
+            "label": "医疗器械质量公告",
+            "to": "https://www.mi.com/medical/list/"
+          }
+        },
+        {
+          "before": "footer._items[56]",
+          "after": "footer._items[21]",
+          "action": {
+            "verb": "navigate",
+            "label": "增值电信业务经营许可证编号：京B2-20180851",
+            "to": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/pc/5f93056c-bc30-401e-9526-66839114ffb9.png"
+          }
+        },
+        {
+          "before": "footer._items[57]",
+          "after": "footer._items[22]",
+          "action": {
+            "verb": "navigate",
+            "label": "食品经营许可证",
+            "to": "https://www.mi.com/article/detail/972d1e084d35.html"
+          }
+        },
+        {
+          "before": "footer._items[58]",
+          "after": "footer._items[23]",
+          "action": {
+            "verb": "navigate",
+            "label": "知识产权侵权投诉",
+            "to": "https://www.mi.com/intellectual"
+          }
+        }
+      ]
+    },
+    {
+      "file": "m1/curated/mi-com/shop-category-list.json",
+      "beforeHash": "377a9b077660cf6168f74430efe21ce9764f73dc58d09458b791c197fc3953af",
+      "afterHash": "b6b6ed134e45bb83ee6981264e56d7caf2ed8bdc27b0191e5c0bfb07c61b6819",
+      "orderedActions": 226,
+      "remaps": [
+        {
+          "before": "footer._items[0]",
+          "after": "footer._lines[0]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "预约维修服务",
+            "to": "https://www.mi.com/service/aftersale/front"
+          }
+        },
+        {
+          "before": "footer._items[1]",
+          "after": "footer._lines[0]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "7天无理由退货",
+            "to": "https://www.mi.com/service/exchange#back"
+          }
+        },
+        {
+          "before": "footer._items[2]",
+          "after": "footer._lines[0]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "15天免费换货",
+            "to": "https://www.mi.com/service/exchange#back"
+          }
+        },
+        {
+          "before": "footer._items[3]",
+          "after": "footer._lines[0]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "满69包邮",
+            "to": "https://www.mi.com/service/buy/Postal%20policy"
+          }
+        },
+        {
+          "before": "footer._items[4]",
+          "after": "footer._lines[0]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "1100余家售后网点",
+            "to": "https://www.mi.com/service/sitelist"
+          }
+        },
+        {
+          "before": "footer._items[5]",
+          "after": "footer._lines[1]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "手机",
+            "to": "https://www.mi.com/search?keyword=%E6%89%8B%E6%9C%BA"
+          }
+        },
+        {
+          "before": "footer._items[6]",
+          "after": "footer._lines[1]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "电视",
+            "to": "https://www.mi.com/search?keyword=%E7%94%B5%E8%A7%86"
+          }
+        },
+        {
+          "before": "footer._items[7]",
+          "after": "footer._lines[1]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "笔记本",
+            "to": "https://www.mi.com/search?keyword=%E7%AC%94%E8%AE%B0%E6%9C%AC"
+          }
+        },
+        {
+          "before": "footer._items[8]",
+          "after": "footer._lines[1]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "平板",
+            "to": "https://www.mi.com/search?keyword=%E5%B9%B3%E6%9D%BF"
+          }
+        },
+        {
+          "before": "footer._items[9]",
+          "after": "footer._lines[1]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "穿戴",
+            "to": "https://www.mi.com/search?keyword=%E6%99%BA%E8%83%BD%E7%A9%BF%E6%88%B4"
+          }
+        },
+        {
+          "before": "footer._items[10]",
+          "after": "footer._lines[1]._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "耳机",
+            "to": "https://www.mi.com/search?keyword=%E8%80%B3%E6%9C%BA"
+          }
+        },
+        {
+          "before": "footer._items[11]",
+          "after": "footer._lines[1]._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "家电",
+            "to": "https://www.mi.com/search?keyword=%E5%AE%B6%E7%94%B5"
+          }
+        },
+        {
+          "before": "footer._items[12]",
+          "after": "footer._lines[1]._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "路由器",
+            "to": "https://www.mi.com/search?keyword=%E8%B7%AF%E7%94%B1%E5%99%A8"
+          }
+        },
+        {
+          "before": "footer._items[13]",
+          "after": "footer._lines[1]._items[8]",
+          "action": {
+            "verb": "navigate",
+            "label": "音箱",
+            "to": "https://www.mi.com/search?keyword=%E9%9F%B3%E7%AE%B1"
+          }
+        },
+        {
+          "before": "footer._items[14]",
+          "after": "footer._lines[1]._items[9]",
+          "action": {
+            "verb": "navigate",
+            "label": "配件",
+            "to": "https://www.mi.com/search?keyword=%E9%85%8D%E4%BB%B6"
+          }
+        },
+        {
+          "before": "footer._items[15]",
+          "after": "footer._lines[2]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "申请售后",
+            "to": "https://www.mi.com/service/aftersale/front"
+          }
+        },
+        {
+          "before": "footer._items[16]",
+          "after": "footer._lines[2]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务政策",
+            "to": "https://www.mi.com/service/exchange"
+          }
+        },
+        {
+          "before": "footer._items[17]",
+          "after": "footer._lines[2]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务价格",
+            "to": "https://m.mi.com/aftersale/new-service#/pages/service-charge/product-search/index"
+          }
+        },
+        {
+          "before": "footer._items[18]",
+          "after": "footer._lines[2]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "订单查询",
+            "to": "https://www.mi.com/user/orderList"
+          }
+        },
+        {
+          "before": "footer._items[19]",
+          "after": "footer._lines[2]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "以旧换新",
+            "to": "https://www.mi.com/a/h/16769.html"
+          }
+        },
+        {
+          "before": "footer._items[20]",
+          "after": "footer._lines[2]._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "保障服务",
+            "to": "https://micare.mi.com.cn/"
+          }
+        },
+        {
+          "before": "footer._items[21]",
+          "after": "footer._lines[2]._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "防伪查询",
+            "to": "https://www.mi.com/service/imei"
+          }
+        },
+        {
+          "before": "footer._items[22]",
+          "after": "footer._lines[2]._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "F码通道",
+            "to": "https://www.mi.com/order/fcode"
+          }
+        },
+        {
+          "before": "footer._items[23]",
+          "after": "footer._lines[3]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米之家",
+            "to": "https://www.mi.com/service/mihome/list"
+          }
+        },
+        {
+          "before": "footer._items[24]",
+          "after": "footer._lines[3]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "服务网点",
+            "to": "https://www.mi.com/service/sitelist"
+          }
+        },
+        {
+          "before": "footer._items[25]",
+          "after": "footer._lines[3]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "授权体验店/专区",
+            "to": "https://www.mi.com/service/family-location"
+          }
+        },
+        {
+          "before": "footer._items[26]",
+          "after": "footer._lines[4]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "了解小米",
+            "to": "https://www.mi.com/about/"
+          }
+        },
+        {
+          "before": "footer._items[27]",
+          "after": "footer._lines[4]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "加入小米",
+            "to": "https://hr.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[28]",
+          "after": "footer._lines[4]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "投资者关系",
+            "to": "https://ir.mi.com/zh-hans"
+          }
+        },
+        {
+          "before": "footer._items[29]",
+          "after": "footer._lines[4]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "ESG与可持续发展",
+            "to": "https://www.mi.com/csr"
+          }
+        },
+        {
+          "before": "footer._items[30]",
+          "after": "footer._lines[4]._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "廉洁举报",
+            "to": "https://www.mi.com/integrity"
+          }
+        },
+        {
+          "before": "footer._items[31]",
+          "after": "footer._lines[5]._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "新浪微博",
+            "to": "https://weibo.com/xiaomishangcheng"
+          }
+        },
+        {
+          "before": "footer._items[32]",
+          "after": "footer._lines[5]._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "联系我们",
+            "to": "https://www.mi.com/about/contact/"
+          }
+        },
+        {
+          "before": "footer._items[33]",
+          "after": "footer._lines[5]._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "公益基金会",
+            "to": "https://www.mi.com/foundation/index"
+          }
+        },
+        {
+          "before": "footer._items[34]",
+          "after": "footer._lines[5]._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米高校合作",
+            "to": "https://utc.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[35]",
+          "after": "footer._items[0]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城",
+            "to": "https://www.mi.com/shop"
+          }
+        },
+        {
+          "before": "footer._items[36]",
+          "after": "footer._items[1]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米澎湃OS",
+            "to": "https://hyperos.mi.com/"
+          }
+        },
+        {
+          "before": "footer._items[37]",
+          "after": "footer._items[2]",
+          "action": {
+            "verb": "navigate",
+            "label": "米家",
+            "to": "https://home.mi.com/index.html"
+          }
+        },
+        {
+          "before": "footer._items[38]",
+          "after": "footer._items[3]",
+          "action": {
+            "verb": "navigate",
+            "label": "多看",
+            "to": "https://www.duokan.com/"
+          }
+        },
+        {
+          "before": "footer._items[39]",
+          "after": "footer._items[4]",
+          "action": {
+            "verb": "navigate",
+            "label": "游戏",
+            "to": "https://game.xiaomi.com/"
+          }
+        },
+        {
+          "before": "footer._items[40]",
+          "after": "footer._items[5]",
+          "action": {
+            "verb": "navigate",
+            "label": "音乐",
+            "to": "https://www.mi.com/music"
+          }
+        },
+        {
+          "before": "footer._items[41]",
+          "after": "footer._items[6]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米智能存储",
+            "to": "https://smartstorage.xiaomi.com"
+          }
+        },
+        {
+          "before": "footer._items[42]",
+          "after": "footer._items[7]",
+          "action": {
+            "verb": "navigate",
+            "label": "政企服务",
+            "to": "https://b.mi.com/?client_id=180100031058&masid=17409.0358"
+          }
+        },
+        {
+          "before": "footer._items[43]",
+          "after": "footer._items[8]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米天猫店",
+            "to": "https://xiaomi.tmall.com/"
+          }
+        },
+        {
+          "before": "footer._items[44]",
+          "after": "footer._items[9]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米集团隐私政策",
+            "to": "https://privacy.mi.com/all/zh_CN/"
+          }
+        },
+        {
+          "before": "footer._items[45]",
+          "after": "footer._items[10]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米公司儿童信息保护规则",
+            "to": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html"
+          }
+        },
+        {
+          "before": "footer._items[46]",
+          "after": "footer._items[11]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城隐私政策",
+            "to": "https://m.mi.com/support/module?id=63&headless=1"
+          }
+        },
+        {
+          "before": "footer._items[47]",
+          "after": "footer._items[12]",
+          "action": {
+            "verb": "navigate",
+            "label": "小米商城用户协议",
+            "to": "https://www.mi.com/aptitude/list?id=62"
+          }
+        },
+        {
+          "before": "footer._items[48]",
+          "after": "footer._items[13]",
+          "action": {
+            "verb": "navigate",
+            "label": "问题反馈",
+            "to": "https://static.mi.com/feedback/"
+          }
+        },
+        {
+          "before": "footer._items[49]",
+          "after": "footer._items[14]",
+          "action": {
+            "verb": "navigate",
+            "label": "北京互联网法院法律服务工作站",
+            "to": "http://www.mi.com/beihu"
+          }
+        },
+        {
+          "before": "footer._items[50]",
+          "after": "footer._items[15]",
+          "action": {
+            "verb": "navigate",
+            "label": "中国消费者协会",
+            "to": "http://www.cca.org.cn/"
+          }
+        },
+        {
+          "before": "footer._items[51]",
+          "after": "footer._items[16]",
+          "action": {
+            "verb": "navigate",
+            "label": "北京市消费者协会",
+            "to": "http://www.bj315.org/"
+          }
+        },
+        {
+          "before": "footer._items[52]",
+          "after": "footer._items[17]",
+          "action": {
+            "verb": "navigate",
+            "label": "京ICP备10046444号",
+            "to": "http://beian.miit.gov.cn/"
+          }
+        },
+        {
+          "before": "footer._items[53]",
+          "after": "footer._items[18]",
+          "action": {
+            "verb": "navigate",
+            "label": "京公网安备11010802020134号",
+            "to": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134"
+          }
+        },
+        {
+          "before": "footer._items[54]",
+          "after": "footer._items[19]",
+          "action": {
+            "verb": "navigate",
+            "label": "营业执照",
+            "to": "https://www.mi.com/business-license/"
+          }
+        },
+        {
+          "before": "footer._items[55]",
+          "after": "footer._items[20]",
+          "action": {
+            "verb": "navigate",
+            "label": "医疗器械质量公告",
+            "to": "https://www.mi.com/medical/list/"
+          }
+        },
+        {
+          "before": "footer._items[56]",
+          "after": "footer._items[21]",
+          "action": {
+            "verb": "navigate",
+            "label": "增值电信业务经营许可证编号：京B2-20180851",
+            "to": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/pc/5f93056c-bc30-401e-9526-66839114ffb9.png"
+          }
+        },
+        {
+          "before": "footer._items[57]",
+          "after": "footer._items[22]",
+          "action": {
+            "verb": "navigate",
+            "label": "食品经营许可证",
+            "to": "https://www.mi.com/article/detail/972d1e084d35.html"
+          }
+        },
+        {
+          "before": "footer._items[58]",
+          "after": "footer._items[23]",
+          "action": {
+            "verb": "navigate",
+            "label": "知识产权侵权投诉",
+            "to": "https://www.mi.com/intellectual"
+          }
+        }
+      ]
+    }
+  ],
+  "outputs": {
+    ".scratch/62-all-sites/experience-repair/ui/renders/36kr-com-home.html": "18c890b3beee2e071aa84518808a9faeced739df33488409f1d3dd5280f5b53b",
+    ".scratch/62-all-sites/experience-repair/ui/renders/36kr-com-information-technology.html": "9da51bae6536f680aaf5004f98f834562601902804a5604726b7da9c6cb77512",
+    ".scratch/62-all-sites/experience-repair/ui/renders/36kr-com-search-ai.html": "7b2c68a6c1c440f96f67e904153bbfe3dd7e1f201add94dc8998ab186239cb3f",
+    ".scratch/62-all-sites/experience-repair/ui/renders/36kr-com-search-viz.html": "3d42955ba13d0e7217dbce1c0793560ea3c367482ae38e1146dac6f536266a06",
+    ".scratch/62-all-sites/experience-repair/ui/renders/airbnb-com-room-28871.html": "a9539745c0348856e09ee545ae1ba42965f1a2191589f59bc9009d833c575560",
+    ".scratch/62-all-sites/experience-repair/ui/renders/aliyun-com-home.html": "a579f02015d8fc96995578c20c70f87ab7b3bd283b45d7acbc7fc8da124889dd",
+    ".scratch/62-all-sites/experience-repair/ui/renders/aliyun-com-product-ecs.html": "0713dc91503bc9640a43ac7dace244d932aa2f978358a006c08fc19f1d282f62",
+    ".scratch/62-all-sites/experience-repair/ui/renders/apple-com-cn-iphone-17.html": "9530e320a9c93fbc5bd53f4c654545779e840ad11a491070840e7a2bf4919fde",
+    ".scratch/62-all-sites/experience-repair/ui/renders/apple-com-home.html": "e6eb076ce9802deca848f4871004a46a10e4d89d2ace96532acfbe03c7b03ba7",
+    ".scratch/62-all-sites/experience-repair/ui/renders/apple-com-ipad-air.html": "0597c0fe3dccf46160c24f11b9c66bac185779e440e891dc469ff2d7e7c894a2",
+    ".scratch/62-all-sites/experience-repair/ui/renders/apple-com-iphone-16.html": "b168aa3ee5c55dbd085c21ad5f5d8f64033ff23ca9c1febad266b55252238fcf",
+    ".scratch/62-all-sites/experience-repair/ui/renders/apple-com-macbook-air.html": "ef04de1367a3c59599dda412d13ffc8c5a04037d41fa264b26ab0dbab228e0a4",
+    ".scratch/62-all-sites/experience-repair/ui/renders/aws-amazon-ec2-on-demand.html": "a043917a6cd1e7867b7cf714c3506577d860609710092c18c43cc675ca6bda1d",
+    ".scratch/62-all-sites/experience-repair/ui/renders/bilibili-com-home.html": "6c3bf75bffc832c8fed9f52f9842eeb56d3c3e390cdf910e562eaacb2bd02052",
+    ".scratch/62-all-sites/experience-repair/ui/renders/bilibili-com-read-home.html": "84abf32091ec83c1747ee3399565c07fe25dd059a47541cd18533d4d3b32f8a6",
+    ".scratch/62-all-sites/experience-repair/ui/renders/bilibili-com-video-bv1gj411x7h7.html": "265c77bd18a95a3329e843e47f35464a37ce2b4bf0bbcd06da30c5bbdc82e3b2",
+    ".scratch/62-all-sites/experience-repair/ui/renders/github-com-login.html": "d50173d38f6761d84ca9e99ffd7620a13ec4a8a7e21ca5acc50903b08ae16baa",
+    ".scratch/62-all-sites/experience-repair/ui/renders/gov-uk-ni-rates-letters.html": "efbfefa4d39f6e67264b3a9cffa9f2eef7949f6b1df80642aae1c2821ef037de",
+    ".scratch/62-all-sites/experience-repair/ui/renders/gov-uk-register-birth-abroad.html": "347cf9a1dc613e3119cad922cc05386b088e029e45c6c3ac8509c2b09aa46b3f",
+    ".scratch/62-all-sites/experience-repair/ui/renders/grafana-play-play-home.html": "4954e839c584b7a0c42f6f87f94ef1726c935cd1ff1580ecd6098c4ae3471ea7",
+    ".scratch/62-all-sites/experience-repair/ui/renders/huawei-cn-consumer-phones.html": "010aec10f59b0eeb25ad04074bd0246b7b83e5608d258ac74eeba6de26540bb9",
+    ".scratch/62-all-sites/experience-repair/ui/renders/huawei-cn-home.html": "74c1470fa83f7bf62f9814ca122e5d74e2f993de45c6cc52df885c880ae92d91",
+    ".scratch/62-all-sites/experience-repair/ui/renders/huawei-cn-search-laptop.html": "d51247bba162e8fc29b2fcf5437e2942f72fa138d778ead2a65860d64c768da4",
+    ".scratch/62-all-sites/experience-repair/ui/renders/huawei-cn-search-phone.html": "0cf7962dba00a319d1688c2894b904a82621c83b5a84564cbd424f11c1844006",
+    ".scratch/62-all-sites/experience-repair/ui/renders/learn-microsoft-vm-sizes.html": "56bf6bc53bf9bdef9719ff0af98fe8c638904c227fc614ea7ebba04dc5149352",
+    ".scratch/62-all-sites/experience-repair/ui/renders/linear-app-home.html": "7015ea93afe6aa3d8b1849d789a64deb9cd86756629d5ec78affd192be53142d",
+    ".scratch/62-all-sites/experience-repair/ui/renders/mi-com-home.html": "975b9d6b297f4fd6f556f19a91615b2d4709eaca8034a8b8754d69a7ceac5e1d",
+    ".scratch/62-all-sites/experience-repair/ui/renders/mi-com-product-detail-mi15.html": "ab6a2c92ebeba5909116ed8fea223428aa568e7a11b474c4b7afe1ff4b8bc23d",
+    ".scratch/62-all-sites/experience-repair/ui/renders/mi-com-search-earbuds.html": "4e691450bb58ed953007a176aa1da77417da4d9be35ac9972b87ba9e1d9b95ad",
+    ".scratch/62-all-sites/experience-repair/ui/renders/mi-com-search-phone.html": "173a8469a57d48a1633c5a0621695ca4d33a8f8e8a0d064a430fec72045974a0",
+    ".scratch/62-all-sites/experience-repair/ui/renders/mi-com-shop-category-list.html": "82054de5893a70e9f2e06123cfee957eb66ffea7d4296d5c36d091399b3ebcd6",
+    ".scratch/62-all-sites/experience-repair/ui/renders/sspai-com-home.html": "6bb5f143e50db23ae140a8ffb3fdc89c35978da275d85dc8fc5717f41120a9d0",
+    ".scratch/62-all-sites/experience-repair/ui/renders/sspai-com-matrix.html": "f1d79c4222c88d5be7d2f3e7488c3869692776e1ed5b2adb89502bbfe19b86a5",
+    ".scratch/62-all-sites/experience-repair/ui/renders/sspai-com-post-102392.html": "35995064ceda113d5f53a4d50a7b2f488e296860cc7d4ad35f2b50d1e7b29165",
+    ".scratch/62-all-sites/experience-repair/ui/renders/sspai-com-post-114699.html": "1e0111d94a37736a630e1537394bd47babfb7c08cd628b73e9385c3442bf8934",
+    ".scratch/62-all-sites/experience-repair/ui/renders/sspai-com-post-114716.html": "4ca5b59d8e8e561689c3a46a3489a552fbe4294759fdc4bdda2587adf7ffbd4c",
+    ".scratch/62-all-sites/experience-repair/ui/renders/sspai-com-u-jtc092al.html": "2087ae220c8994313f42d49c0fded59dfe6489ef554f88869253f69434601341",
+    ".scratch/62-all-sites/experience-repair/ui/renders/stripe-com-pricing.html": "e4b480012c4910789f3388e55079bda1fb88239394dfeaa38f31ef882bd2c461",
+    ".scratch/62-all-sites/experience-repair/ui/renders/stripe-dashboard-login.html": "d760270206bff50f490f31fa9088fb52f3de6b967b30a11041991a01c2e90c2c",
+    ".scratch/62-all-sites/experience-repair/ui/renders/stripe-docs-payments.html": "375fe6446ea1d070de96ecf4e0b994ef3bb2e973ec00150fdecf301e91d0862e",
+    ".scratch/62-all-sites/experience-repair/ui/renders/taobao-com-home.html": "24fd43090fba06f427bb9d14346ae1967ffed1952a49a40a9bc4166ce1fad3f2",
+    ".scratch/62-all-sites/experience-repair/ui/renders/xiaomi-account-login.html": "e0f5db3547b162607e402329fed92c6138cacb5319b6e6be55c5404ac55cfe4c"
+  },
+  "evidence": {
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-home-1440.png": "e65251c7798a1a2cbbd802e971de7105a1e6409e163892ca1925ad84dd07f292",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-home-1920.png": "ce5ff64a649412b69dbba86a5cdc8db9757fd100a23b2a5e87e3aacf5c7b1a4d",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-home-2560.png": "1a82f94eff771a1620d9f47a751158bac2d28871c00cf0afa03271ea530e375c",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-home-390.png": "df2fbbdb4e20241c198fbc4f4845f62b53888b897a3da8b4ca62786dcfa86da2",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-information-technology-1440.png": "0940f468f732fa7f4a0cfe2638ea7015fc11412f60b9bbb2372fa8d99fb96ea5",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-information-technology-1920.png": "38ed10f6c35cbc86c62c73149b2810bca2ffc4937f6a1d046b51630ad6b8cb2d",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-information-technology-2560.png": "11e4b24fc299698932b5ec25edcb87fb16e99cc8f9df58a4df2a6ebcf70bd1b9",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-information-technology-390.png": "cbd16311e861c7bac73d264bc562705c03c6c5a467b33a4c0d2d5d168c81ec31",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-search-ai-1440.png": "51da2a75047ac5d64fb42b9ecdbeab9546fe0def8d6133e90ceb1f85f3ba7dda",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-search-ai-1920.png": "284dff9d3e0c9224bcd12da8e9b309adc4020b3f0a50c3aff2de40056b1b6ed3",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-search-ai-2560.png": "9a851355730eeb4ad9158849cb3a0a05e6a254796cbd28f6c8a3461f55f86518",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-search-ai-390.png": "ebd9a14ab13d1177de026ec6a0a1cbfed6cd6d1839a5b4207251cfb95478e0e4",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-search-viz-1440.png": "45770794c054596d4f300d0b2292457c59f75c796dc4d3403290e773fdcf6f1e",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-search-viz-1920.png": "400c94f076e991f9f39f9e7437b9d04d4fad3427e3d2b348e52008be9a74379e",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-search-viz-2560.png": "52ecae227ce590f5af02b8d86b595d69232db44598fb32e4ad9103596a1c0adc",
+    ".scratch/62-all-sites/experience-repair/ui/36kr-com-search-viz-390.png": "365f245c212b58f072bc450196afb5649e4a0ef4adbab5979ef084a76e48041f",
+    ".scratch/62-all-sites/experience-repair/ui/airbnb-com-room-28871-1440.png": "521b8a28150b3e74fed9679cc46d471aa82f2ee7d58370826166cc28ef2a5212",
+    ".scratch/62-all-sites/experience-repair/ui/airbnb-com-room-28871-1920.png": "f3c7b24420fa547a9bcbabb7817797f250823884debdd16d5ec8898309dffef3",
+    ".scratch/62-all-sites/experience-repair/ui/airbnb-com-room-28871-2560.png": "89b07b8bbecfa52da5bf1929bb3f915635a43208864f9c749153bde9ad19ae26",
+    ".scratch/62-all-sites/experience-repair/ui/airbnb-com-room-28871-390.png": "51a0ab4bc6c16290ef1ca76208b89e8bdda857b79aeb0653497fcfb0fa41a45d",
+    ".scratch/62-all-sites/experience-repair/ui/aliyun-com-product-ecs-1440.png": "c35b8b32b54f026f0992df17a7b9bf06e3cec1c3aa1bd669bb70b289a07e449d",
+    ".scratch/62-all-sites/experience-repair/ui/aliyun-com-product-ecs-1920.png": "2603ad421941e7e7a9869a1aab387a08853c15de2bb094e523813bb7ec1f3b33",
+    ".scratch/62-all-sites/experience-repair/ui/aliyun-com-product-ecs-2560.png": "f6a091bd7deffaefce09d0aef3bd14c499967d3f8d34b46cb5933b29c2514327",
+    ".scratch/62-all-sites/experience-repair/ui/aliyun-com-product-ecs-390.png": "4ef7bcc404a1badfc6f99d7709c132b1e1ba349a21afc06fd613ea067dc02e72",
+    ".scratch/62-all-sites/experience-repair/ui/apple-com-home-1440.png": "4652150e6a80821982d0b71f265846f50739a93c0eb9d598c9ee86c9bcdb58d1",
+    ".scratch/62-all-sites/experience-repair/ui/apple-com-home-1920.png": "14f1a82cc249407198b3ba046129161fe3fd98e9d08f86f8957b98d5fecc5f7a",
+    ".scratch/62-all-sites/experience-repair/ui/apple-com-home-2560.png": "cf7c4332472cc95c50abb8e377b17e1d42c5caccc9f5d47739168e2adf5079e6",
+    ".scratch/62-all-sites/experience-repair/ui/apple-com-home-390.png": "7d7bdb2260e79495c66a4b9acdc7e6e53e0e18e4d42f766329e33da0ae056c66",
+    ".scratch/62-all-sites/experience-repair/ui/apple-com-ipad-air-1440.png": "688cfaeaca4f360e3d5132bd71b69d42cd68536cdf4f0669b71ee6d9464f82d3",
+    ".scratch/62-all-sites/experience-repair/ui/apple-com-ipad-air-1920.png": "14c9d73d5177ebf0a7b210815f8c4ed867c2084ce426818004500d24cdd7255c",
+    ".scratch/62-all-sites/experience-repair/ui/apple-com-ipad-air-2560.png": "03cde6e7e7c66e718c3a4b1929502b262e8d9ee45814c30db4959770e0553fb3",
+    ".scratch/62-all-sites/experience-repair/ui/apple-com-ipad-air-390.png": "e32f5feb6ce67ecf5592a4e756e19ecb9f89173b19d1bce333a045890c4b3f79",
+    ".scratch/62-all-sites/experience-repair/ui/auth-native-0.png": "31cb154d9ea27699eded437cdb071bae860b540dee1d21632f859988db9d3489",
+    ".scratch/62-all-sites/experience-repair/ui/auth-native-1.png": "8a4b1191eacbd2397a75045c621a7a92cbc19c1880ab075d8010d79146815dd0",
+    ".scratch/62-all-sites/experience-repair/ui/auth-native-2.png": "dea3b3191ba92f603e2212917633d6cff0bcdc6b2168537051c4ea3010c75cd6",
+    ".scratch/62-all-sites/experience-repair/ui/auth-native-3.png": "c7c2cf037653944508588337eaca2747ce5b0bd2ee6757e2fb0466b0500e9406",
+    ".scratch/62-all-sites/experience-repair/ui/auth-native-4.png": "86d784f3d64f6e2befce3bad3e62cdd408bf947ce35bd74d1c34d007b4616743",
+    ".scratch/62-all-sites/experience-repair/ui/auth-native-5.png": "be144bf22ce3d8552eaf4a287eaaeb18c3846a0982712032b095919d4db98d2c",
+    ".scratch/62-all-sites/experience-repair/ui/auth-native-all.jpg": "e2ef191c3514700db1458d4ccbcab521567ef1edb746b1e8a960cb23157acc59",
+    ".scratch/62-all-sites/experience-repair/ui/auth-wholeheight.jpg": "524448ea633b8b7affeab482be49a6f22107a3ee9d43af0cd353a2790ac2e7da",
+    ".scratch/62-all-sites/experience-repair/ui/bilibili-com-home-1440.png": "94d5fa77d5c60dec26d3bb078f79a1a2015d8fd8ba483bf0ff772418a75cb260",
+    ".scratch/62-all-sites/experience-repair/ui/bilibili-com-home-1920.png": "ac62d39b82650e9d5cf0f83640d6c97e8751369fb16407377fa0741becfd5ae4",
+    ".scratch/62-all-sites/experience-repair/ui/bilibili-com-home-2560.png": "8b843afa04aa992f64952667335256cc631cfd047eb09968b07df5195c9e5e1a",
+    ".scratch/62-all-sites/experience-repair/ui/bilibili-com-home-390.png": "ad9c6526d2835566915ee9cb5710c866ee9c095576e2460dc936834e9d8b3952",
+    ".scratch/62-all-sites/experience-repair/ui/browser-validation.json": "5e5dcaefdb947948e6b7038e56adbd62a185246ffb6498615c0e63f9a1944123",
+    ".scratch/62-all-sites/experience-repair/ui/delta.json": "46377f5a59269d1726d616a1a3e68abba2291796f053bf2f44c24fe251c3f3b6",
+    ".scratch/62-all-sites/experience-repair/ui/editorial-native-0.png": "9789c98fe3a0eb3bc93dcfcb0221b4acdc31dd243b833ef3ca3eac62135231e3",
+    ".scratch/62-all-sites/experience-repair/ui/editorial-native-1.png": "bdef7200605d9970e9e2d5411202b6135968b23c8c5f6e5ec510d904751772d2",
+    ".scratch/62-all-sites/experience-repair/ui/editorial-native-2.png": "a437b732923cc4588206422bd45eea18550df3612091188b249ee0a8e1024c33",
+    ".scratch/62-all-sites/experience-repair/ui/editorial-native-3.png": "a848a091191860342b1f64dcacc1ec93360835306c16aa222d02c294e70a2e32",
+    ".scratch/62-all-sites/experience-repair/ui/editorial-native-all.jpg": "eb9c216958ce98a94825d38cb05abc38dbe50d94e4d79b3a6d453da7e8a482e9",
+    ".scratch/62-all-sites/experience-repair/ui/editorial-wholeheight.jpg": "c7bcde602159282c8bc132957b0a3cdb21f0c5b55b695af45946947c99ee15cb",
+    ".scratch/62-all-sites/experience-repair/ui/final-auth.jpg": "0bed0569f5bec539e17ed1d4ea38f26c4f9a17fdcd093beeef9890e58b1efecf",
+    ".scratch/62-all-sites/experience-repair/ui/final-identity-footer.jpg": "f3f932a360b8b2b29013c395f6433ccdd2dd5fdce7aeb774b65abc8fb2722f95",
+    ".scratch/62-all-sites/experience-repair/ui/final-instruction-source-access.jpg": "15c49dd160d741e99f5bfb68b875832f1898532b37b3e687428921d29ce6e712",
+    ".scratch/62-all-sites/experience-repair/ui/final-microsoft-source.jpg": "436db91713ed61b605d2d583998753a0be7509e554a76f2f0f41257a8217a551",
+    ".scratch/62-all-sites/experience-repair/ui/final-news-source-measure.jpg": "45e86122eefc4e441f0e179e183c48e5c2970c16f30214b7b7aa7cdfec7ad4cf",
+    ".scratch/62-all-sites/experience-repair/ui/final-stripe-ecs-access.jpg": "32fb4f135095c7a98f8188767c85ad9b57f2f2959454e3807c5732abfc4ca7fd",
+    ".scratch/62-all-sites/experience-repair/ui/final-wholeheight-delta.jpg": "658ea820045940ff4a8a24f0452c24ba42e745726893fc995850b1f9f9dc453a",
+    ".scratch/62-all-sites/experience-repair/ui/footer-native-0.png": "eb04e8fb7194a72b5d723478b330c94b6a82adfebd4422fe46b1af63847dec1d",
+    ".scratch/62-all-sites/experience-repair/ui/footer-native-1.png": "e5427b34c682306e75956a58ecfef9dd894c14e691702bceb50a21ddd65b4b98",
+    ".scratch/62-all-sites/experience-repair/ui/footer-native-2.png": "f612ad1ffa3c6a8f355800ed0141e1129cddfdb237d4894a8723df7abfb249e2",
+    ".scratch/62-all-sites/experience-repair/ui/footer-native-3.png": "c05be333b2272b5fe8efd51c940885cb4e30d1652a436c6e1930b88143af7955",
+    ".scratch/62-all-sites/experience-repair/ui/footer-native-4.png": "4bbf4266a02372109a78715701e8948173a3f9d510bc02040efe455e311b2dee",
+    ".scratch/62-all-sites/experience-repair/ui/footer-native-5.png": "ad9c52274dcdd9446735652ec567639c69d4e9b13080978520dacb68b3f2317e",
+    ".scratch/62-all-sites/experience-repair/ui/footer-native-6.png": "f9c309a26443bf9a3c8b380a7f91a013e096f235adbc4fc750d9fee096649323",
+    ".scratch/62-all-sites/experience-repair/ui/footer-native-7.png": "ccc0bd6e1f34352305dc9b3c2f97c9eaec83ae92c791c5a077dfe38b4b214770",
+    ".scratch/62-all-sites/experience-repair/ui/footer-native-all.jpg": "db22f94f20b7b6cdd956e77eff03946b4093e137af7d2110ea8c311e272ffeed",
+    ".scratch/62-all-sites/experience-repair/ui/footer-wholeheight.jpg": "50f37a49f381a4c75d7e8458bce560f2c96fbb920950170d54ea70a093782d52",
+    ".scratch/62-all-sites/experience-repair/ui/freeze-delta.json": "bae1e0a622c1b4fe0c4bf4c09e5af517b38ecc40083b491a48637f9a03b71a3b",
+    ".scratch/62-all-sites/experience-repair/ui/geometry.json": "3360835857c514bfb401f10bce9ec938bb8e6c6be0aa4edd827f174a5987a9c2",
+    ".scratch/62-all-sites/experience-repair/ui/github-com-login-1440.png": "4d0fe92cce629fded5f659b5b05e12118ebb838214e95d01aedf7113136f45d4",
+    ".scratch/62-all-sites/experience-repair/ui/github-com-login-1920.png": "ced091c073a52838ab911c70d91e83e81ffe2dab8b70282eae154adcf34807c9",
+    ".scratch/62-all-sites/experience-repair/ui/github-com-login-2560.png": "dfb38e217f81e83745aca30c58da3a83b9ebea4df2cc2f834534ebefe20deb5f",
+    ".scratch/62-all-sites/experience-repair/ui/github-com-login-390.png": "3785285f56594a0b32bcf1384607a1c6a81e0dfe3cf41eff58230d48cc9be8f4",
+    ".scratch/62-all-sites/experience-repair/ui/home-owner-remap.json": "17319b1a43fd602c2b3393b1df8b5b786dbfa6408d6871c419c3ff70887bd8ea",
+    ".scratch/62-all-sites/experience-repair/ui/huawei-cn-search-laptop-1440.png": "a7832be7588da0d69080cfc0163ecca12b162c2f99d988a64a59bac893875414",
+    ".scratch/62-all-sites/experience-repair/ui/huawei-cn-search-laptop-1920.png": "159d7f972e7d5fe6ef1b5dbbd9a00f1b339a2c63d9299c37b98240c483d86674",
+    ".scratch/62-all-sites/experience-repair/ui/huawei-cn-search-laptop-2560.png": "e172dc69638612d152927ea9666f22103c4086e597874d7365e91bb5885c311b",
+    ".scratch/62-all-sites/experience-repair/ui/huawei-cn-search-laptop-390.png": "cbaf20bac6aee35fc980370fc92360d947110810e4e37daf175c0f8690e34e16",
+    ".scratch/62-all-sites/experience-repair/ui/huawei-cn-search-phone-1440.png": "4798646d05de9b638fcf55796fb6d7401c5fa1202af496c1726f2bdd0e7e0b1b",
+    ".scratch/62-all-sites/experience-repair/ui/huawei-cn-search-phone-1920.png": "4ea192d860c35cb14941060fe72dad6de2ef54b61224dd8b30e4df9c566fc47e",
+    ".scratch/62-all-sites/experience-repair/ui/huawei-cn-search-phone-2560.png": "496de599044af102831fb301b32c2ea7db793b3aade23b1f67943394fba611cf",
+    ".scratch/62-all-sites/experience-repair/ui/huawei-cn-search-phone-390.png": "dcf7438bee7cf9e5114ca24e41f58fd6b8946b073e428e6b3b9dd315c8e1605f",
+    ".scratch/62-all-sites/experience-repair/ui/instructions-native-0.png": "9a40b5cedf9dcb6340feba30cba91697df218d9cc431e5a0015e020c08cf8851",
+    ".scratch/62-all-sites/experience-repair/ui/instructions-native-1.png": "59caf4536351e563d3bf2c82d3612f8e794cc300f7e2328626b077b9e3cd311a",
+    ".scratch/62-all-sites/experience-repair/ui/instructions-native-all.jpg": "072c76120d9b5250dfaae6ebf4de31b91201e9e6a6980150ac3368c2cd847f29",
+    ".scratch/62-all-sites/experience-repair/ui/instructions-wholeheight.jpg": "cb8a1eb6aab39d34cf762c016b5037a876007fee93785e1a5e0ef932bb91248f",
+    ".scratch/62-all-sites/experience-repair/ui/learn-microsoft-vm-sizes-1440.png": "d0014e93b319f3a98c6020ac504f2b21ad86a4c65013c96dfa2df2af6e330d52",
+    ".scratch/62-all-sites/experience-repair/ui/learn-microsoft-vm-sizes-1920.png": "07cb33c9d9c23fbd95594b1b30f63af69037eb9bdd24c99899333fb56e1f9560",
+    ".scratch/62-all-sites/experience-repair/ui/learn-microsoft-vm-sizes-2560.png": "761c9064de428de299ed9b8123f5c9532960693a8bce70bd6b0b94bca5c82d81",
+    ".scratch/62-all-sites/experience-repair/ui/learn-microsoft-vm-sizes-390.png": "86014808fd4ebbf498182f7b207df10ee88d070f01a6d31ee471951419b6b859",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-home-1440.png": "72ad962e154ebff8ee6122acdacffdd97cf5791088feedc629b84c2d3e77471d",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-home-1920.png": "4d99505679913e6ea5185cc9a46fe65539fc7d59b05ec1fc67306b92a636b979",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-home-2560.png": "0e900ff9648bfeb4df74df94bfd863697817c5f9e4ed7b4e6594ed94a89a3a23",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-home-390.png": "5049e7803754805c8ec8950c18ffe355a013cfedca853af8ffabc15feaba1a01",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-product-detail-mi15-1440.png": "39bae75f8c8212761dee605229149ce21ec4825c4d3dc618d4b4f880ca2f31e5",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-product-detail-mi15-1920.png": "cfde4da1350e061cd40e4203f90c8219ad15e6f12fadae3f4abaa257ba44bec9",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-product-detail-mi15-2560.png": "3c68cba1971204fbc89644104040a6e927d6d615638b53bec9473c9f5c4af28e",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-product-detail-mi15-390.png": "ae436e84f90516f33daad2513013da2a864de30f385a8c401c41c354b4d00f3a",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-search-earbuds-1440.png": "b4dce41df8eca706298f21261c46bc26b33bf95ff3e0b6f4e151900bc48cc864",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-search-earbuds-1920.png": "62cd7350345c659b10e95aa6b5a8204c1e1809f9e39f81f8da4851f7464e4672",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-search-earbuds-2560.png": "3fef20483f107751c9f7b059273630d5536bbc48cc49909280baf19b113cab77",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-search-earbuds-390.png": "cf0dcda85ff79e41f8933e7c2bb9c8348b78f2e87d7789cf38001d7e6e459f54",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-search-phone-1440.png": "fb18fe8d982c389df3253f18a14ac806f1109a76390d3ab91dd39f0865064f35",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-search-phone-1920.png": "e9719db2713569b1eb861aa10c928bbb822cf09b3c2a3bdadf3c365544353b11",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-search-phone-2560.png": "c6850c4cd321c38268fec47d60fc7bc6df7fb26e3c2797f39e9eaa11aadf9885",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-search-phone-390.png": "0cd2f126fcda7cef8f4b0d0790ba6551379bfaf8414a85f7313c065e7a24fda3",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-shop-category-list-1440.png": "8bf3eaeaa35b1ab7909ee91fa932da00f95e3241310297b7a0b45df6d89d729e",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-shop-category-list-1920.png": "6a3d1d72f71716003a750fdcb288447c3d36cf3d6d9e3e1ffdce1dd6e56246c9",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-shop-category-list-2560.png": "f64ff82246141512439ac5b77e0df25ac92920ce6f8089d50344ba964a5cbe2c",
+    ".scratch/62-all-sites/experience-repair/ui/mi-com-shop-category-list-390.png": "c8db6dab383454eb2c3d5e3661aca918ac65c4ba62cf44fb9da8365db149bc04",
+    ".scratch/62-all-sites/experience-repair/ui/native-access.json": "48d1d636ccb7e0f5f78284f3c412092898446ba9f42af5551814ab994b524b65",
+    ".scratch/62-all-sites/experience-repair/ui/native-access.png": "50ccbc4437be90e27713cfd053ee45b9b263d5114e66fadf87699f0c69853b51",
+    ".scratch/62-all-sites/experience-repair/ui/news-native-0.png": "bae851d6280bf6268c41b7b8e2d59a69f8a4f049a48339efdf0199a99c69057c",
+    ".scratch/62-all-sites/experience-repair/ui/news-native-1.png": "2c26573530bb22288a885df3e6fb4ec99eb3a6a7bd29f5f199d0f2b48dcf604e",
+    ".scratch/62-all-sites/experience-repair/ui/news-native-2.png": "964805fe0244f36c63da9f81ba2d56fc80d9ae6163b506e7d5b81342c3223e4d",
+    ".scratch/62-all-sites/experience-repair/ui/news-native-3.png": "05956ef184d09e20697d92e08532a5461174a1a6b394b0338a86bbad6f3f89f8",
+    ".scratch/62-all-sites/experience-repair/ui/news-native-4.png": "500f88ff5a29f77eadfff38203d566bbe661fcd86eaca9abcbbbcbb45910f359",
+    ".scratch/62-all-sites/experience-repair/ui/news-native-5.png": "e6059c513446d70d0860a8c8419ea38cceeb6dffc45279294263ae9d368cdd49",
+    ".scratch/62-all-sites/experience-repair/ui/news-native-6.png": "d6f01fa4035ae805be98b3a3764b69514da727a31a67b16be75d4b8be3ad228d",
+    ".scratch/62-all-sites/experience-repair/ui/news-native-7.png": "8535a101d7d043ba505ed0641a95d02690ec792d3e19157acc329c102d3ecf61",
+    ".scratch/62-all-sites/experience-repair/ui/news-native-all.jpg": "757348bedfd8e74d0f17aa6e8edc88c233f81e3b8c63fc15d41f8235258bece7",
+    ".scratch/62-all-sites/experience-repair/ui/news-wholeheight.jpg": "34cb0051c412ac6f7b070a7d83ce139314afceb02723cce2ff3a630256b9f01f",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-0.png": "b75c2a0e4e71d816a2b906e84a8af665eb05a378d064f0e3df0fc586f448f9e2",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-1.png": "59cdf83e9b73b6a6f7c82781a19d126ec382e6a674acabd3427f919e360cc890",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-10.png": "9702416381428fee7393603e23662445d6974a47487b1dd90782eb72bde29f84",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-11.png": "09bf4346dda9ee7ad041126811e4b9a9d254b9bb4f09635327c41a03edc8a5ad",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-12.png": "8d51a0e5f9faa9efe16064350df1b4dc81d8b3110cef6c475a291ef620eb1f23",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-13.png": "c30e1e25a1b0a47bcf3e8a9e06e577c10630b1a0cd88c8eced892b97cd645e75",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-2.png": "fd5bb51bbc364ac256274d803f8f103584e8c3ed3b5c90aa80b1c55f54078897",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-3.png": "0bdae0a70594917f9639d325a0d9f0010a6774dcba906673618bb0eeb40bdd0f",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-4.png": "af706fb480a5ed35ba73cadf67e8e146fea6616e9ea5ab9f30615628fb91d2a7",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-5.png": "13b913865b97d68ba485eba5c6492bee53d57ab9ca6a7951245001b9b60ba69a",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-6.png": "96aa0f71c72112392b83e7d996d83fd2c41218222fcff635b985121df54ad79f",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-7.png": "0fbdbe3ed24c3aaaa67101141f787f8405dc9ff891bbacc9196b7c094080fed3",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-8.png": "fee124e7fb577bf4f834e27308b5cb68e3f7b62117a333185b1ebc5ff5f944b2",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-9.png": "4e7afc00bdf399b98c14fee24139acc8834f53da228680462a9da478c0bddf0b",
+    ".scratch/62-all-sites/experience-repair/ui/protected-native-all.jpg": "53f4cf7cd2e4f2597870b7b94611d0be1c16e63cf0896772380eefc369565e97",
+    ".scratch/62-all-sites/experience-repair/ui/protected-wholeheight.jpg": "06b33df1a06ee9f9a34d9217b04fcaefe074866e1865dd89833e3fab88d92a61",
+    ".scratch/62-all-sites/experience-repair/ui/search-earbuds-owner-remap.json": "5dbf78c616ebb787dd5c3e0175a2fc5c9620960705dd50567e53bee406639cc9",
+    ".scratch/62-all-sites/experience-repair/ui/search-native-0.png": "b1e3a77295bcb503af5d7e2fa6eb9556df56c9493f1bc58493c2d14088fc5211",
+    ".scratch/62-all-sites/experience-repair/ui/search-native-1.png": "e57f7c973e992853191063e8155df64f6fc3bd1ae0122f13a0478d39daf292de",
+    ".scratch/62-all-sites/experience-repair/ui/search-native-2.png": "e5fb5d9d93924b00f75cb77cef57faafef25367ab6da62aec6b0af773ec7a175",
+    ".scratch/62-all-sites/experience-repair/ui/search-native-3.png": "054082d6de0d83bab8c2067b5c1f7bf187959e96140d18418bf81bf0b6ab008b",
+    ".scratch/62-all-sites/experience-repair/ui/search-native-all.jpg": "38b5f75e89f414b39955482fede8f4bbf19e2b17d65547f9cbca0353644aa0fe",
+    ".scratch/62-all-sites/experience-repair/ui/search-phone-owner-remap.json": "5dbf78c616ebb787dd5c3e0175a2fc5c9620960705dd50567e53bee406639cc9",
+    ".scratch/62-all-sites/experience-repair/ui/search-wholeheight.jpg": "00df936d274d518e2c1dff6a80ad1e564490a052699100e40e88fa2d2b676700",
+    ".scratch/62-all-sites/experience-repair/ui/serialization-target-delta.json": "d1b8639852cce94eb71e62ad5c9d0c636efcf7e650190f6d572d612f2c878cdf",
+    ".scratch/62-all-sites/experience-repair/ui/shop-category-list-owner-remap.json": "5dbf78c616ebb787dd5c3e0175a2fc5c9620960705dd50567e53bee406639cc9",
+    ".scratch/62-all-sites/experience-repair/ui/snippet-0-native-access.png": "88e474257bd3ea164034b10cad78fc9786f18489f77f7bd91770f01480bfa26c",
+    ".scratch/62-all-sites/experience-repair/ui/snippet-2-native-access.png": "3dee402224a96dce517e793c911baa92d921dbc12dab12b2851af279f92ff9c3",
+    ".scratch/62-all-sites/experience-repair/ui/source-witnesses.json": "0e4109da2f0d50c5ee1162a43960a72625b96eef6b1b45c638f4ac6196999db1",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-home-1440.png": "9207564c2342ae47b721ca325d90d1ca8ee5bf203466444ad70ad0d93921ac58",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-home-1920.png": "c1cb7f85ebd3e4014bcb8c0235f0e5784ffe50bc3864d8796bd6cd3ea5d52ccc",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-home-2560.png": "5123cdb7aade9600244ef886d9f935e6361b01fb402a4ede97aa7457b576802f",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-home-390.png": "8d3bc7f2cbf657b8b2ec650ff84728b4a936157c5741556d36001146610c14c2",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-post-102392-1440.png": "7a360b81d78c7a8bf6f30f69a7f4ebbb3417758c010bed77292e76d5352601cc",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-post-102392-1920.png": "9024a4efc1a9e6b2e7493f15ef31fa24e3875caa3f7ebb46c525bf1ebc08164f",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-post-102392-2560.png": "0677cbb927eae7cc1c493eb96128f2e2a09f93caca3e6788aec11d6346d753a8",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-post-102392-390.png": "5344637c70571c71ccf0f0d48cc494146eadc9765e61679824a7856f9a9f4fa1",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-post-114716-1440.png": "df286eb43d05822fbb94c90ec0e15ff755a984da10a790bf1a20cb21c6d05b15",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-post-114716-1920.png": "6dbca57a34f4c80dbe5678acdde3d68a892f3ace26fd6414f7ebc80f3904c71e",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-post-114716-2560.png": "c1bdf291dca7ebcd65e30da7b703f084b723e175028635e89463bb966e7297bb",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-post-114716-390.png": "967ccf77ff0ee4404da5dd374477809fa25d53cdec2882cdb28e4bbc84d28a26",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-u-jtc092al-1440.png": "f3eb8b3442d0e923699b692eab7d5d0dad1bf35b99e791eee6a80db574ce2f52",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-u-jtc092al-1920.png": "78315d33e3daa617937384a3eae3253bd2b72b7fb3cccbc440ec938037ab915c",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-u-jtc092al-2560.png": "79ce80b53a8dbbc37c6503b619776ffe3238b856786c2d3c7bff95c6807e6c00",
+    ".scratch/62-all-sites/experience-repair/ui/sspai-com-u-jtc092al-390.png": "a2c4970e98d58dbed72ebaeb97c398cbf974336ad6d605346a6ed628c9c88a3b",
+    ".scratch/62-all-sites/experience-repair/ui/stripe-dashboard-login-1440.png": "7b6cec2c92597327ac30b6296a899870723d0b7e90191115825880304599f332",
+    ".scratch/62-all-sites/experience-repair/ui/stripe-dashboard-login-1920.png": "1074d5074ae6459254c9f92874c2c26966d1adfd82846cbbc8c5aec15639129f",
+    ".scratch/62-all-sites/experience-repair/ui/stripe-dashboard-login-2560.png": "bfcbf3fc1799cb404bd0535f8bf2bf28f725d91351200afeeedf3c849d7ff79e",
+    ".scratch/62-all-sites/experience-repair/ui/stripe-dashboard-login-390.png": "7e31958cf5cad4587f6dd5496db76d470b68ebb1392a40cdd821007215e8b1d4",
+    ".scratch/62-all-sites/experience-repair/ui/stripe-docs-payments-1440.png": "e01f9767e7ecb982dc2e2c75378b82cfa30fa9d645fa505b86630c18dfec8524",
+    ".scratch/62-all-sites/experience-repair/ui/stripe-docs-payments-1920.png": "2d71e8e4f2948aa7f60e06ec1b0475c6977a365c46f28d9a4dfde652700a77dd",
+    ".scratch/62-all-sites/experience-repair/ui/stripe-docs-payments-2560.png": "defe387232475c8ed14cb9349dec9e32abea707e04b278ec5e1486a08969df8e",
+    ".scratch/62-all-sites/experience-repair/ui/stripe-docs-payments-390.png": "329b2647c74694d51b887f82a4fb4b2e5b8dfdd5f50da3d1913d5d34c55916de",
+    ".scratch/62-all-sites/experience-repair/ui/taobao-com-home-1440.png": "68bc189d0cf4cea6f212b65870a91aaa239ef38f176e000d681abcdd1f1226c6",
+    ".scratch/62-all-sites/experience-repair/ui/taobao-com-home-1920.png": "88131f95877eb77bb2ac073a9c993b5d47c55a54cc40c980951bc3fd3ecf984c",
+    ".scratch/62-all-sites/experience-repair/ui/taobao-com-home-2560.png": "c5ef50e42997deec74b341d50a116b86141949c74e8bf1306fde3de50b9f07ea",
+    ".scratch/62-all-sites/experience-repair/ui/taobao-com-home-390.png": "712b2ee0b5184baeb8c8fbe7465c0ec350817d6dd9ed1b2a07c7941e4f35d717",
+    ".scratch/62-all-sites/experience-repair/ui/technical-native-0.png": "c035ccd8528aec8f0d76a91a131c508a0fd92e321dd274d0afa8de2a7f6a2988",
+    ".scratch/62-all-sites/experience-repair/ui/technical-native-1.png": "a8461e16bb0a070c8e5214d6685dd448f4a4b9d45a28516e9cb14c5fac78ade9",
+    ".scratch/62-all-sites/experience-repair/ui/technical-native-2.png": "9c7cb13f5db4542bc89beeab06674950f686407b0c81053f00dfa62a321a398a",
+    ".scratch/62-all-sites/experience-repair/ui/technical-native-3.png": "1c10163bdce666cf04b84dd5615d6315ff88bbe74486a8d33acb1fb8429aca79",
+    ".scratch/62-all-sites/experience-repair/ui/technical-native-4.png": "05c5b01a47164d1ed35c3905c41c9553201cef9e00422bd5a95798a285bcefc2",
+    ".scratch/62-all-sites/experience-repair/ui/technical-native-5.png": "645ddd353d47a535678b5b5f6cce8bfb67780ba9518a3601f7db38b33db5cdaf",
+    ".scratch/62-all-sites/experience-repair/ui/technical-native-all.jpg": "b8351d767b771a41f1ca80be10ab8229b82651eb69e41f5249555e22520acda5",
+    ".scratch/62-all-sites/experience-repair/ui/technical-wholeheight.jpg": "41fa6904b5644650232f3818099b5275d428f5de4f6482651869116dea068e41",
+    ".scratch/62-all-sites/experience-repair/ui/xiaomi-account-login-1440.png": "8c9ef7235b292b06d79c4df830d137086b83a89e2b38272f1bb81a5dd0d9c481",
+    ".scratch/62-all-sites/experience-repair/ui/xiaomi-account-login-1920.png": "efda9c072ab15c7c86f6b1189d6f05ba1a15b2aaf4739655671419f9fbc0bbab",
+    ".scratch/62-all-sites/experience-repair/ui/xiaomi-account-login-2560.png": "cc1761aea99db9689d9a89b6e74cfb3cef258d61a23aa459adbb5907d5d64bf7",
+    ".scratch/62-all-sites/experience-repair/ui/xiaomi-account-login-390.png": "5493a538736eb28e2ee292c99c4777de93e586ce1dd907adbf30806e62fb5920"
+  },
+  "allSharedHtmlInvalidated": true,
+  "canonicalRenders": "Not overwritten; scoped current HTML is in UI renders. Final integrator must regenerate canonical HTML/PNG/manifest after oracle merge.",
+  "lossless": "All ordered model actions unchanged; Microsoft five units concatenate exactly to old paragraph. Footer5 new headings captured per-page DOM; existing facts/images unchanged."
+}

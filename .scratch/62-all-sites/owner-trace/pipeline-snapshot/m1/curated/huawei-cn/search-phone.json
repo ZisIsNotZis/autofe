@@ -1,0 +1,837 @@
+{
+ "_intent": "告诉搜索 phone 的用户站内搜索状态：3562 条结果，本页展示前 10 条（消费者业务与集团网站的页面结果，无价格——华为集团站内搜索不承载价格，价格在消费者商城）；可更换关键词、按类别过滤或翻页",
+ "_key": "huawei-site-search",
+ "_title": {
+  "text": "搜索结果"
+ },
+ "query": {
+  "_intent": "输入关键词重新搜索",
+  "_composite": "search",
+  "_label": {
+   "text": "请输入关键字"
+  },
+  "_expose": {
+   "name": "keyword",
+   "type": "text"
+  },
+  "_default": {
+   "text": "手机"
+  },
+  "submit": {
+   "_intent": "捕获的搜索提交功能，无实际提交目标，不编造 endpoint。",
+   "_action": {
+    "verb": "submit"
+   }
+  }
+ },
+ "filters": {
+  "_intent": "按内容类别过滤搜索结果，类别名后的数字是各类别结果数",
+  "_title": {
+   "text": "类别"
+  },
+  "_items": [
+   {
+    "_key": "cat-all",
+    "_name": {
+     "text": "全部 (3562)"
+    }
+   },
+   {
+    "_key": "cat-product",
+    "_name": {
+     "text": "产品与解决方案 (160)"
+    }
+   },
+   {
+    "_key": "cat-support",
+    "_name": {
+     "text": "服务支持 (1443)"
+    }
+   },
+   {
+    "_key": "cat-discuss",
+    "_name": {
+     "text": "技术探讨 (181)"
+    }
+   },
+   {
+    "_key": "cat-news",
+    "_name": {
+     "text": "新闻与活动 (330)"
+    }
+   }
+  ],
+  "_expose": {
+   "name": "category",
+   "type": "text"
+  },
+  "reset": {
+   "_intent": "清空类别筛选，回到全部",
+   "_title": {
+    "text": "重置"
+   },
+   "_action": {
+    "verb": "operate",
+    "label": "重置"
+   }
+  },
+  "_default": {
+   "text": "全部 (3562)"
+  }
+ },
+ "results": {
+  "_intent": "当前关键词下的命中结果：3562 条，本页 10 条，每条为来源站点的一个页面（标题 + 摘要 + 来源站点）（原 `_items` 误标为可互换实例：10 条结果不同形——部分只有标题+摘要、部分只有标题+类别，且两条同名；回改为 `_lines` 有序序列）",
+  "_count": {
+   "num": 3562,
+   "unit": "条结果"
+  },
+  "_lines": [
+   {
+    "_name": {
+     "text": "华为手机 - 华为官网"
+    },
+    "_summary": {
+     "text": "探索并选购华为最新手机，了解 Mate 系列、Pura 系列、Pocket 系列、nova 系列、畅享系列及相关配件，体验鸿蒙 AI 、影像、通信等功能。"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/phones/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "手机克隆 - 华为官网"
+    },
+    "_summary": {
+     "text": "使用手机克隆 App，实现数据大挪移，轻松换新机。无线且无需流量，扫描二维码或自建 WLAN 热点即可跨平台（Android/iOS）无障碍快速互传。"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/emui/clone/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "手机许可计划 - 华为"
+    },
+    "_summary": {
+     "text": "华为的手机专利许可计划。"
+    },
+    "_detail": {
+     "text": "来源：集团网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.huawei.com/cn/ipr/license/mobile-handset"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：集团网站",
+      "to": "https://www.huawei.com/cn"
+     }
+    },
+    "_image": {
+     "image": "../assets/62-huawei-cn-search-phone-385798fdf4ed.png",
+     "alt": ""
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "华为手机服务 | 华为官网"
+    },
+    "_summary": {
+     "text": "了解如何设置和使用华为手机，获取手机克隆、数据备份、屏幕维修和手机发热等常见问题解决方案以及维修服务相关资讯。"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/support/phones/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "让手机持久耐用 | 屏幕外层玻璃维修"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/support/recommend/2/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "华为磁吸手机支架 - 华为官网"
+    },
+    "_summary": {
+     "text": "华为磁吸手机支架，集舒适手感与细腻质感于一体，多色可选，多种支撑方式，与磁吸手机壳一吸即用。"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/accessories/huawei-pura-magnetic-phone-stand/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_image": {
+     "image": "../assets/62-huawei-cn-search-phone-8f234dda5c50.png",
+     "alt": ""
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "华为磁吸手机支架 - 华为官网"
+    },
+    "_summary": {
+     "text": "华为磁吸手机支架，斑斓色彩，四种颜色可选，一贴即合，横竖都能看，便捷随行。"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/accessories/huawei-magnetic-phone-stand/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_image": {
+     "image": "../assets/62-huawei-cn-search-phone-d54b0cb435e1.png",
+     "alt": ""
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "华为折叠手机金秋礼遇活动 | 华为官网"
+    },
+    "_summary": {
+     "text": "2026年9月1日-2026年9月30日，购买HUAWEI Mate XTs非凡大师、HUAWEI Mate X7、 HUAWEI Mate X6、 HUAWEI Pura X Max、HUAWEI Pura X，即可领取对应设备的HUAWEI Care+ 意外无忧（一年期）服务权益"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/support/receive-huawei-care/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "让手机持久耐用 | 换电池及内存升级"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/support/recommend/6/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "云手机"
+    },
+    "_summary": {
+     "text": "华为鲲鹏云手机是运行在云端虚拟出带有原生安卓操作系统，具有虚拟手机功能的云服务器。免费云手机0元领取体验，可发放60台云手机实例！云手机业务数据提供云端数据企业级云上安全防护。云手机可用于云手游、移动办公等场景"
+    },
+    "_detail": {
+     "text": "来源：华为云业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.huaweicloud.com/product/cloudphone.html"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：华为云业务网站",
+      "to": "https://www.huaweicloud.com/intl/zh-cn"
+     }
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   }
+  ],
+  "pagination": {
+   "_intent": "结果分页控件行：第 1 页（当前页），共 357 页；源站为 javascript:void 链接，捕获 DOM 未给出真实地址 ⇒ 保持控件观感（不造 <a href>）",
+   "_composite": "paginator",
+   "_ref": {
+    "ref": "/results"
+   },
+   "_items": [
+    {
+     "_key": "page-1",
+     "_name": {
+      "text": "1"
+     },
+     "_action": {
+      "verb": "navigate"
+     }
+    },
+    {
+     "_name": {
+      "text": "2"
+     },
+     "_action": {
+      "verb": "navigate"
+     }
+    },
+    {
+     "_name": {
+      "text": "3"
+     },
+     "_action": {
+      "verb": "navigate"
+     }
+    },
+    {
+     "_name": {
+      "text": "4"
+     },
+     "_action": {
+      "verb": "navigate"
+     }
+    },
+    {
+     "_name": {
+      "text": "5"
+     },
+     "_action": {
+      "verb": "navigate"
+     }
+    },
+    {
+     "_name": {
+      "text": "..."
+     },
+     "_action": {
+      "verb": "navigate"
+     }
+    },
+    {
+     "_name": {
+      "text": "357"
+     },
+     "_action": {
+      "verb": "navigate"
+     }
+    }
+   ]
+  }
+ },
+ "sort": {
+  "_intent": "捕获的当前排序值与改变排序动作，不建任意文本输入、不编造选项或网络地址。",
+  "_text": {
+   "text": "相关性"
+  },
+  "_action": {
+   "verb": "select"
+  }
+ },
+ "footer": {
+  "_intent": "捕获并可见的支持/公司/法律页脚入口及原文说明，不重建 cookie 行为。",
+  "_items": [
+   {
+    "_title": {
+     "text": "首页"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "首页",
+     "to": "https://www.huawei.com/cn"
+    }
+   },
+   {
+    "_title": {
+     "text": "公司简介"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "公司简介",
+     "to": "https://www.huawei.com/cn/corporate-information"
+    }
+   },
+   {
+    "_title": {
+     "text": "可持续发展"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "可持续发展",
+     "to": "https://www.huawei.com/cn/sustainability"
+    }
+   },
+   {
+    "_title": {
+     "text": "信任中心"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "信任中心",
+     "to": "https://www.huawei.com/cn/trust-center"
+    }
+   },
+   {
+    "_title": {
+     "text": "管理层信息"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "管理层信息",
+     "to": "https://www.huawei.com/cn/executives"
+    }
+   },
+   {
+    "_title": {
+     "text": "招贤纳士"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "招贤纳士",
+     "to": "https://career.huawei.com/cn"
+    }
+   },
+   {
+    "_title": {
+     "text": "供应商"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "供应商",
+     "to": "https://supplier.huawei.com/supplier/"
+    }
+   },
+   {
+    "_title": {
+     "text": "查看更多"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "查看更多",
+     "to": "https://www.huawei.com/cn/about-huawei"
+    }
+   },
+   {
+    "_title": {
+     "text": "新闻"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "新闻",
+     "to": "https://www.huawei.com/cn/news"
+    }
+   },
+   {
+    "_title": {
+     "text": "展会活动"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "展会活动",
+     "to": "https://www.huawei.com/cn/events"
+    }
+   },
+   {
+    "_title": {
+     "text": "多媒体"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "多媒体",
+     "to": "https://www.huawei.com/cn/gallery"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为技术专栏"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为技术专栏",
+     "to": "https://www.huawei.com/cn/huaweitech"
+    }
+   },
+   {
+    "_title": {
+     "text": "智能世界2035"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "智能世界2035",
+     "to": "https://www.huawei.com/cn/giv"
+    }
+   },
+   {
+    "_title": {
+     "text": "迈向智能世界"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "迈向智能世界",
+     "to": "https://www.huawei.com/cn/intelligent-world#striding"
+    }
+   },
+   {
+    "_title": {
+     "text": "全球数智化指数"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "全球数智化指数",
+     "to": "https://www.huawei.com/minisite/gdii/cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "出版物"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "出版物",
+     "to": "https://www.huawei.com/cn/publications"
+    }
+   },
+   {
+    "_title": {
+     "text": "个人及家庭产品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "个人及家庭产品",
+     "to": "https://consumer.huawei.com/cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "企业业务产品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "企业业务产品",
+     "to": "https://e.huawei.com/cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "运营商网络产品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "运营商网络产品",
+     "to": "https://carrier.huawei.com/cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为云服务"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为云服务",
+     "to": "https://www.huaweicloud.com/product/"
+    }
+   },
+   {
+    "_title": {
+     "text": "数字能源产品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "数字能源产品",
+     "to": "https://digitalpower.huawei.com/cn"
+    }
+   },
+   {
+    "_title": {
+     "text": "消费者技术支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "消费者技术支持",
+     "to": "https://consumer.huawei.com/cn/support/"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为云技术支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为云技术支持",
+     "to": "https://support.huaweicloud.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "企业技术支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "企业技术支持",
+     "to": "https://support.huawei.com/enterprise/zh/index.html"
+    }
+   },
+   {
+    "_title": {
+     "text": "运营商技术支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "运营商技术支持",
+     "to": "https://support.huawei.com/carrier"
+    }
+   },
+   {
+    "_title": {
+     "text": "数字能源技术支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "数字能源技术支持",
+     "to": "https://digitalpower.huawei.com/cn/service/support"
+    }
+   },
+   {
+    "_title": {
+     "text": "安全应急响应"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "安全应急响应",
+     "to": "https://www.huawei.com/cn/psirt"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为商城"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为商城",
+     "to": "https://www.vmall.com/?cid=122288"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为云"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为云",
+     "to": "https://www.huaweicloud.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为JDC社区"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为JDC社区",
+     "to": "https://jdc.huawei.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为心声社区"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为心声社区",
+     "to": "https://xinsheng.huawei.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "粤A2-20044005号"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "粤A2-20044005号",
+     "to": "https://beian.miit.gov.cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "粤公网安备44030702002388号"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "粤公网安备44030702002388号",
+     "to": "https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030702002388"
+    }
+   },
+   {
+    "_title": {
+     "text": "联系我们"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "联系我们",
+     "to": "https://www.huawei.com/cn/contact-us"
+    }
+   },
+   {
+    "_title": {
+     "text": "法律声明"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "法律声明",
+     "to": "https://www.huawei.com/cn/legal"
+    }
+   },
+   {
+    "_title": {
+     "text": "隐私政策"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "隐私政策",
+     "to": "https://www.huawei.com/cn/privacy-policy"
+    }
+   },
+   {
+    "_title": {
+     "text": "除名查询"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "除名查询",
+     "to": "https://www.huawei.com/cn/terminations"
+    }
+   }
+  ],
+  "copyright": {
+   "_text": {
+    "text": "版权所有 © 1998-2026 华为技术有限公司"
+   }
+  }
+ },
+ "navigation": {
+  "_intent": "捕获的可见顶栏导航入口，不展开隐藏菜单或重造品牌标题。",
+  "_items": [
+   {
+    "_title": {
+     "text": "个人及家庭产品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "个人及家庭产品",
+     "to": "javascript:;"
+    }
+   },
+   {
+    "_title": {
+     "text": "商用产品及方案"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "商用产品及方案",
+     "to": "javascript:;"
+    }
+   },
+   {
+    "_title": {
+     "text": "服务支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "服务支持",
+     "to": "javascript:;"
+    }
+   },
+   {
+    "_title": {
+     "text": "合作伙伴与开发者"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "合作伙伴与开发者",
+     "to": "javascript:;"
+    }
+   },
+   {
+    "_title": {
+     "text": "关于华为"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "关于华为",
+     "to": "javascript:;"
+    }
+   }
+  ]
+ }
+}

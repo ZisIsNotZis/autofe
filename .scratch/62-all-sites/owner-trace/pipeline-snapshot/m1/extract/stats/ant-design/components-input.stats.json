@@ -1,0 +1,120 @@
+{
+  "site": "ant-design",
+  "page": "components-input",
+  "url": "https://ant.design/components/input",
+  "title": "Input - Ant Design",
+  "sourceNodes": 4027,
+  "counts": {
+    "storylines": 36,
+    "items": 167,
+    "actions": 212,
+    "exposes": 114,
+    "images": 67,
+    "facts": 85,
+    "tables": 9,
+    "lists": 7,
+    "choiceSets": 0,
+    "inputs": 114,
+    "dupeText": 68,
+    "capHits": [
+      "itemsPerCollection"
+    ]
+  },
+  "storylines": 36,
+  "chrome": [
+    {
+      "role": "banner",
+      "count": 1
+    },
+    {
+      "role": "menu",
+      "count": 1
+    },
+    {
+      "role": "LayoutTable",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 300,
+      "examples": [
+        "Default: -",
+        "Version: disabled: 6.4.0",
+        "Global Config: 5.15.0",
+        "Version: 5.4.0",
+        "Global Config: 5.7.0"
+      ]
+    },
+    {
+      "kind": "list-item-unlabeled",
+      "role": "listitem",
+      "count": 40,
+      "examples": []
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "property",
+      "type": "text",
+      "label": "Property",
+      "example": "tabIndex"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "Control the background color of container in disabled state."
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "label": "Type",
+      "example": "string"
+    },
+    {
+      "name": "default",
+      "type": "text",
+      "label": "Default",
+      "example": "0"
+    },
+    {
+      "name": "version",
+      "type": "text",
+      "label": "Version",
+      "example": "option - 4.10.0"
+    },
+    {
+      "name": "global-config",
+      "type": "text",
+      "label": "Global Config",
+      "example": "×"
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "label": "Name",
+      "example": "blur"
+    },
+    {
+      "name": "parameters",
+      "type": "text",
+      "label": "Parameters",
+      "example": "-"
+    },
+    {
+      "name": "token-name",
+      "type": "text",
+      "label": "Token Name",
+      "example": "colorBgContainerDisabled"
+    },
+    {
+      "name": "default-value",
+      "type": "text",
+      "label": "Default Value",
+      "example": "rgba(0,0,0,0.04)"
+    }
+  ]
+}

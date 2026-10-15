@@ -1,0 +1,1243 @@
+{
+  "_intent": "iPhone 翻译工具选型笔记：六个场景各用什么我在 iPhone 上碰到外文的地方很杂：Safari 里的技术文档、「 - 掘金 — iPhone 翻译工具选型笔记：六个场景各用什么 [draft]",
+  "_title": {
+    "text": "iPhone 翻译工具选型笔记：六个场景各用什么我在 iPhone 上碰到外文的地方很杂：Safari 里的技术文档、「 - 掘金"
+  },
+  "_lines": [
+    {
+      "_intent": "iPhone 翻译工具选型笔记：六个场景各用什么 [draft]",
+      "_title": {
+        "text": "iPhone 翻译工具选型笔记：六个场景各用什么"
+      },
+      "_summary": {
+        "text": "Fri Sep 18 2026 01:59:06 GMT+0800 (中国标准时间)"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3893829198942554/posts",
+            "label": "赛博五金店"
+          }
+        },
+        {
+          "_text": {
+            "text": "阅读11分钟"
+          }
+        },
+        {
+          "_text": {
+            "text": "利益相关：本文作者与 TransPeek 开发团队有关联。以下为实机体验记录，结论请自行验证。"
+          }
+        },
+        {
+          "_text": {
+            "text": "我在 iPhone 上碰到外文的地方很杂：Safari 里的技术文档、「图书」App 里的英文原版、社交 App 的时间线、别人发来的截图、App 里的视频字幕，偶尔还有出门时的菜单。一开始想找一个工具全包，查了一圈发现不现实，于是换了个思路：按场景拆开，每个场景挑一个摩擦最小的方案，最后看手机上到底需要留几个。"
+          }
+        },
+        {
+          "_text": {
+            "text": "先交代这篇笔记的边界，免得误读："
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "自己用过的只有 TransPeek，下文对它的描述来自实机录屏（TransPeek 1.5.1，英语→简体中文，苹果「图书」App）。录屏里没有 Safari 和社交 App 的画面，所以这两个场景下它表现如何，我不下结论。"
+              }
+            },
+            {
+              "_name": {
+                "text": "其他工具没有安装实测，能力描述全部按官方帮助文档、官网或公开报道整理，链接放在对应位置，核对日期是 2026 年 9 月 14 日。"
+              }
+            },
+            {
+              "_name": {
+                "text": "没做同条件准确率测试，所以不排“谁最准”，也不写价格，价格以各家官方页面为准。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "实机录屏截帧：左边是在 TransPeek 里启动屏幕翻译，右边切到「图书」后，悬浮窗还在翻译界面上的文字。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "选型时我看的三个维度 [draft]",
+      "_title": {
+        "text": "选型时我看的三个维度"
+      },
+      "_summary": {
+        "text": "带着这三条去看场景。"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "触发成本：每遇到一段外文，要做几个动作才能看到译文。选中、复制、截图、切 App，每多一步都会劝退连续阅读。"
+              }
+            },
+            {
+              "_name": {
+                "text": "覆盖范围：工具只在浏览器里生效，还是能跨 App；文字不能选中、在图片里的时候还能不能用。"
+              }
+            },
+            {
+              "_name": {
+                "text": "数据去向：文字是在本机处理，还是会发给某个云端翻译服务。私信、工作文档这类内容我会在意。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "场景一：Safari 里读网页 [draft]",
+      "_title": {
+        "text": "场景一：Safari 里读网页"
+      },
+      "_summary": {
+        "text": "这是选择最多的场景。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Safari 自带网页翻译：在地址栏的页面菜单里选“翻译为中文”，整页替换成译文，零安装。苹果文档写明语言和网页有限制，菜单里没有这个选项，一般就是当前页面或语言不受支持。（苹果支持：在 iPhone 上使用 Safari 浏览）"
+          }
+        },
+        {
+          "_text": {
+            "text": "沉浸式翻译：按官网介绍，它在 iPhone 上可以作为 Safari 扩展使用，把译文插在原文段落下方，做成双语对照；可接入 DeepL、DeepSeek、OpenAI、Gemini 等 20 多种翻译服务，另外有 PDF、ePub 文档翻译、网站视频双语字幕和图片翻译，分免费功能和 Pro 会员。（沉浸式翻译官网）"
+          }
+        },
+        {
+          "_text": {
+            "text": "我的选择：只想知道页面讲什么，用 Safari 自带的就行；要长时间读英文文档、又想保留原文对照，或者想换不同翻译服务比较结果，沉浸式翻译更对口。"
+          }
+        },
+        {
+          "_text": {
+            "text": "要注意的是“在 Safari 里”这个前提。很多 App 里点开的链接走的是应用内浏览器，不在 Safari 扩展的作用范围内，这种页面只能退回系统选词翻译之类的办法。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "场景二：电子书 [draft]",
+      "_title": {
+        "text": "场景二：电子书"
+      },
+      "_summary": {
+        "text": "系统选词翻译：在支持的 App 里选中文字，菜单点“翻译”。（苹果支持：翻译 App 中的文本）偶尔卡住一个词，用它最省事。问题在于读原版书时生词是成片出现的，每次都要选中、看结果、关掉，一页下来节奏全断了。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "我的 TransPeek 录屏正好就是这个场景。流程是：在 TransPeek 里点开始，确认 iOS 的录屏（“开始直播”）弹窗，然后切到「图书」去读。之后不用再切回来，悬浮窗会持续识别窗口附近的文字，显示原文、译文，并把生词编号标出来附上释义。"
+          }
+        },
+        {
+          "_text": {
+            "text": "实机录屏截帧：读英文书时，窗口标出 2 个生词并给出释义。"
+          }
+        },
+        {
+          "_text": {
+            "text": "用下来要说清楚的几点："
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "译文不是每句都对。录屏里 fiftieth 被释义成“第五十个”，和句子里的意思对不上；有一句把“粗出五十分之一”译成了“只有五十分之一”；个别句子还夹了繁体。所以悬浮窗更适合当“提示”，拿不准的地方回原文确认。"
+              }
+            },
+            {
+              "_name": {
+                "text": "源语言要手动选，不会自动识别。录屏里设置是英→简时翻到一本俄文书，窗口只是原样回显俄文，看起来像“没翻译”，其实是语言方向没切。一个会话只处理一个方向。"
+              }
+            },
+            {
+              "_name": {
+                "text": "生词标注按词频阈值判断，中文设备上英语默认按 CET-4 水平。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "场景三：社交 App [draft]",
+      "_title": {
+        "text": "场景三：社交 App"
+      },
+      "_summary": {
+        "text": "先看平台自带翻译。不少平台在帖子旁边就有翻译按钮。以 X 为例，TechCrunch 报道它在 2026 年 4 月起全球推出由 Grok 驱动的帖子自动翻译，非设定语言的帖子会自动显示译文，可以按语言关掉。（TechCrunch 报道）"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "平台翻译的问题是覆盖不齐：图片里的字、界面文字、一部分评论可能不翻；而且各家平台做法不一样，换个 App 就得重新摸索。译文也是平台自己的服务生成的。"
+          }
+        },
+        {
+          "_text": {
+            "text": "我的选择：帖子正文先用平台按钮。平台没有翻译入口、或者文字不能选中时，屏幕翻译类工具在原理上是能补上的，因为它读的是屏幕画面而不是文本。但说实话，我手上的 TransPeek 录屏没有在社交 App 里录，这个场景的实际效果我没有资格替它背书，建议自己装上刷一会儿再判断。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "场景四：图片、截图、漫画 [draft]",
+      "_title": {
+        "text": "场景四：图片、截图、漫画"
+      },
+      "_summary": {
+        "text": "实况文本：照片、截图或暂停的视频画面里的文字可以直接识别，再选翻译。（苹果支持：使用实况文本）"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Google 翻译：官方帮助页写明 iPhone App 支持导入照片翻译，还能只选图片里的一部分文字。（Google 翻译帮助：翻译图片）"
+          }
+        },
+        {
+          "_text": {
+            "text": "我的选择：单张图，实况文本就够，不用装东西。需要一边滑动一边看一串图，逐张截图导入就太累了，这时候才考虑屏幕翻译。"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "场景五：视频字幕、游戏对话 [draft]",
+      "_title": {
+        "text": "场景五：视频字幕、游戏对话"
+      },
+      "_summary": {
+        "text": "字幕和游戏对话有个特点：位置固定、内容一直在变。选中文字这条路基本走不通。"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "网站上的视频：按沉浸式翻译官网，它支持网站视频双语字幕。"
+              }
+            },
+            {
+              "_name": {
+                "text": "App 里的视频、游戏：用屏幕翻译的固定区域模式，把窗口对准字幕位置。按产品说明，TransPeek 大约每秒做一次 OCR，窗口放不下时会先缩字号、再省略原文行、最后每 4 秒翻页。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "有个硬限制：受版权保护、禁止录屏的画面，屏幕翻译读不到。苹果文档也说明部分 App 不允许录制。（苹果支持：录制屏幕）"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "场景六：菜单、路牌等线下文字 [draft]",
+      "_title": {
+        "text": "场景六：菜单、路牌等线下文字"
+      },
+      "_summary": {
+        "text": "这个场景没什么可纠结的，用相机。"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "苹果翻译 App：后置摄像头对准文字实时翻译，也能导入照片。（苹果支持：翻译 App 相机）"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://link.juejin.cn/?target=https%3A%2F%2Fsupport.apple.com%2Fzh-cn%2Fguide%2Fiphone%2Fiphea8b95631%2Fios",
+                "label": "苹果支持：翻译 App 相机"
+              }
+            },
+            {
+              "_name": {
+                "text": "Google 翻译：相机即时翻译，下载源语言和目标语言后可以离线用。（Google 翻译帮助）"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://link.juejin.cn/?target=https%3A%2F%2Fsupport.google.com%2Ftranslate%2Fanswer%2F6142483%3Fhl%3Dzh-Hans%26co%3DGENIE.Platform%253DiOS",
+                "label": "Google 翻译帮助"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "出国前记得提前下载语言包。苹果翻译离线同样需要先下载语言。（苹果支持：下载语言以离线翻译）"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "对照表 [draft]",
+      "_title": {
+        "text": "对照表"
+      },
+      "_summary": {
+        "text": "“依据”一列标明信息来源：实机是 TransPeek 实机录屏里看到的，文档是按官方或公开资料整理的。"
+      },
+      "_lines": [
+        {
+          "_intent": "table (8 rows): 工具 / 主要作用范围 / 文字不能选中时 [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "系统选词翻译"
+              }
+            },
+            {
+              "_name": {
+                "text": "Safari 网页翻译"
+              }
+            },
+            {
+              "_name": {
+                "text": "实况文本"
+              }
+            },
+            {
+              "_name": {
+                "text": "苹果翻译 App 相机"
+              }
+            },
+            {
+              "_name": {
+                "text": "沉浸式翻译"
+              }
+            },
+            {
+              "_name": {
+                "text": "Google 翻译"
+              }
+            },
+            {
+              "_name": {
+                "text": "平台自带翻译"
+              }
+            },
+            {
+              "_name": {
+                "text": "TransPeek"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "我自己的组合 [draft]",
+      "_title": {
+        "text": "我自己的组合"
+      },
+      "_summary": {
+        "text": "按上面的拆解，我的组合是这样："
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "系统自带全开着：选词翻译、Safari 网页翻译、实况文本、翻译 App 相机，覆盖“偶尔一次”的所有情况。"
+              }
+            },
+            {
+              "_name": {
+                "text": "读英文原版书时开 TransPeek：这是我需求里唯一要“持续看”的高频场景，也是录屏实际验证过的场景。"
+              }
+            },
+            {
+              "_name": {
+                "text": "网页读得多的人可以把沉浸式翻译加进来；只是偶尔看看，Safari 自带的够用。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "多数人其实装一两个就够了。系统能力的共同点是“单次”，偶尔用完全不累；只有当你发现自己一天要重复几十遍“选中、翻译、关闭”，才值得再加一个持续显示的工具。"
+          }
+        },
+        {
+          "_text": {
+            "text": "如果还在犹豫，可以用这四个问题自查："
+          }
+        },
+        {
+          "_intent": "list (4 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "外文主要出现在 Safari，还是散落在各种 App 里？"
+              }
+            },
+            {
+              "_name": {
+                "text": "一天遇到几次，还是一读就是半小时？"
+              }
+            },
+            {
+              "_name": {
+                "text": "想直接看中文，还是想借机读懂原文？前者整页译文快，后者生词标注和原文对照更合适。"
+              }
+            },
+            {
+              "_name": {
+                "text": "内容敏不敏感？私信、合同、工作文档优先用设备端处理的方案，或者先看清所用翻译服务的数据政策。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "各工具的坑 [draft]",
+      "_title": {
+        "text": "各工具的坑"
+      },
+      "_summary": {
+        "text": "系统选词翻译：文字必须能选中，每次都要重复一整套动作，不适合连续阅读。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Safari 网页翻译：语言和页面有限制，找不到菜单项时基本就是不支持；应用内浏览器打开的页面用不上。"
+          }
+        },
+        {
+          "_text": {
+            "text": "实况文本：一次一张，适合查，不适合读。"
+          }
+        },
+        {
+          "_text": {
+            "text": "沉浸式翻译：以 Safari 扩展形式工作，应用内浏览器和原生 App 不在扩展范围内；接第三方翻译服务时，文字会发给对应服务处理。它的 iOS App 能不能在其他 App 上方持续翻译、能不能离线，本文没有确认。"
+          }
+        },
+        {
+          "_text": {
+            "text": "Google 翻译：翻译别的 App 里的内容得先截图再导入，适合单次查询。"
+          }
+        },
+        {
+          "_text": {
+            "text": "平台自带翻译：各家覆盖范围不同，图片里的字、界面、部分评论可能没有译文。"
+          }
+        },
+        {
+          "_text": {
+            "text": "TransPeek（前两条录屏里能直接看到，其余来自产品说明）："
+          }
+        },
+        {
+          "_intent": "list (5 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "每次启动都要确认 iOS 录屏弹窗，“启动一次后不用再切 App”，但不是“永远不用点”；禁止录屏的 App 读不到。"
+              }
+            },
+            {
+              "_name": {
+                "text": "只翻当前屏幕上的内容，没法像网页翻译那样整页一次翻完。"
+              }
+            },
+            {
+              "_name": {
+                "text": "翻译只用苹果的设备端模型，不能换别的翻译服务，个别句子会译错或出现繁体，上面电子书部分已经举了例子。"
+              }
+            },
+            {
+              "_name": {
+                "text": "源语言手动选，一个会话一个语言方向。"
+              }
+            },
+            {
+              "_name": {
+                "text": "关于“不联网”要说准确：识别和翻译在设备上完成，屏幕内容不上传，不需要注册账号；但语言包要从苹果下载，购买走 App Store，所以不是完全不碰网络。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "附：几个常被问到的问题 [draft]",
+      "_title": {
+        "text": "附：几个常被问到的问题"
+      },
+      "_measure": {
+        "list": [
+          {
+            "num": 369
+          },
+          {
+            "num": 5,
+            "unit": "k"
+          },
+          {
+            "num": 42
+          },
+          {
+            "num": 3.4,
+            "unit": "k"
+          },
+          {
+            "num": 3.3,
+            "unit": "k"
+          },
+          {
+            "num": 29
+          },
+          {
+            "num": 2,
+            "unit": "k"
+          },
+          {
+            "num": 4.4,
+            "unit": "k"
+          },
+          {
+            "num": 24
+          },
+          {
+            "num": 14
+          },
+          {
+            "num": 192
+          },
+          {
+            "num": 13,
+            "unit": "k"
+          },
+          {
+            "num": 493
+          },
+          {
+            "num": 287
+          },
+          {
+            "num": 16,
+            "unit": "k"
+          },
+          {
+            "num": 22
+          },
+          {
+            "num": 1.7,
+            "unit": "k"
+          },
+          {
+            "num": 3.8,
+            "unit": "k"
+          },
+          {
+            "num": 2.5,
+            "unit": "k"
+          }
+        ]
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "avatar"
+          },
+          {
+            "image": "",
+            "alt": "image"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "iPhone 上有能翻译整个屏幕的 App 吗？ 有，屏幕翻译 App 通过 iOS 的录屏授权拿到画面再识别文字，TransPeek 是其中一种。启动时要确认系统弹窗，部分禁止录屏的 App 读不了。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "哪个最准？ 没做同条件实测，不排名。译文质量取决于识别结果、语言方向和背后的翻译服务，拿自己常看的内容各试一下最靠谱。"
+          }
+        },
+        {
+          "_text": {
+            "text": "离线能用哪些？ 苹果翻译 App 和 Google 翻译下载语言后都支持离线；TransPeek 下载对应语言包后，识别和翻译也能离线进行。依赖云端大模型的服务通常要联网。"
+          }
+        },
+        {
+          "_text": {
+            "text": "标签："
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/iOS",
+            "label": "iOS"
+          }
+        },
+        {
+          "_text": {
+            "text": "评论 0"
+          }
+        },
+        {
+          "_text": {
+            "text": "/ 1000"
+          }
+        },
+        {
+          "_text": {
+            "text": "标点符号、链接等不计算在有效字数内"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "发送"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "登录 / 注册"
+          }
+        },
+        {
+          "_text": {
+            "text": "即可发布评论！"
+          }
+        },
+        {
+          "_text": {
+            "text": "暂无评论数据"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3893829198942554/posts",
+            "label": "avatar 赛博五金店"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3893829198942554/posts",
+            "label": "2 文章"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3893829198942554/posts",
+            "label": "15 阅读"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3893829198942554/followers",
+            "label": "0 粉丝"
+          }
+        },
+        {
+          "_text": {
+            "text": "关注"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/notification/im?participantId=3893829198942554",
+            "label": "私信"
+          }
+        },
+        {
+          "_text": {
+            "text": "精选内容"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686406221083410478",
+            "label": "QML 常见的四种导航布局 Quz · 61阅读 · 0点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686341072616652838",
+            "label": "我让 AI 当面试官面了我一轮：第 3 个追问我就卡住了（附 10 道追问清单） kyriewen · 106阅读 · 1点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686361321609904174",
+            "label": "页面内存只涨不跌? 一次泄漏排查, 牵出 WeakMap 的诞生 JamesZhang80078 · 90阅读 · 2点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686341072616144934",
+            "label": "第 6 章 组件进阶 Z小明 · 44阅读 · 1点赞"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7686347234724085803",
+            "label": "OmniPic Studio v3.2.1 核心技术架构与全平台发版解析文档 superOmni · 43阅读 · 0点赞"
+          }
+        },
+        {
+          "_text": {
+            "text": "找对属于你的技术圈子"
+          }
+        },
+        {
+          "_text": {
+            "text": "回复「进群」加入官方微信群"
+          }
+        },
+        {
+          "_text": {
+            "text": "为你推荐"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6844903701161705485",
+            "label": "SpringCloud学习笔记：微服务和SpringCloud是什么？"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/606586149808222",
+            "label": "渐渐z"
+          }
+        },
+        {
+          "_text": {
+            "text": "7年前"
+          }
+        },
+        {
+          "_text": {
+            "text": "点赞"
+          }
+        },
+        {
+          "_text": {
+            "text": "评论"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E5%BE%AE%E6%9C%8D%E5%8A%A1",
+            "label": "微服务"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E6%9E%B6%E6%9E%84",
+            "label": "架构"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/Java",
+            "label": "Java"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6963139567872376863",
+            "label": "分享非常实用的网站和工具"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/1257497031376792",
+            "label": "Jason同学"
+          }
+        },
+        {
+          "_text": {
+            "text": "5年前"
+          }
+        },
+        {
+          "_text": {
+            "text": "5.0k"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E5%89%8D%E7%AB%AF",
+            "label": "前端"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6905257881105334280",
+            "label": "VNC 选型参考"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/4336129591492391",
+            "label": "lvbirui"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/Linux",
+            "label": "Linux"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6921501326799011853",
+            "label": "带你入门前端工程（一）：技术选型"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/1433418893103645",
+            "label": "谭sir"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/JavaScript",
+            "label": "JavaScript"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6931192464347037709",
+            "label": "架构视角：什么业务场景用Hbase？"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/492194451423709",
+            "label": "洪文聊架构"
+          }
+        },
+        {
+          "_text": {
+            "text": "2.0k"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/HBase",
+            "label": "HBase"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6844903864970248205",
+            "label": "前端开发人员使用的生产力工具"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/1943592287085453",
+            "label": "起风了8866"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6916753361706418184",
+            "label": "快速了解：什么是零代码开发平台？零代码适合谁用？"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/958429871216967",
+            "label": "CORNERSTONE"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91",
+            "label": "敏捷开发"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7316968289422802954",
+            "label": "如何利用ChatGPT进行翻译--通用翻译篇"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/1548527766871239",
+            "label": "手游发行引擎"
+          }
+        },
+        {
+          "_text": {
+            "text": "2年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD",
+            "label": "人工智能"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E6%8E%98%E9%87%91%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92",
+            "label": "掘金翻译计划"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/ChatGPT",
+            "label": "ChatGPT"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7342427366092652578",
+            "label": "企业场景排行榜简介: 现实世界用例排行榜"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/611789528634712",
+            "label": "HuggingFace"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E8%B5%84%E8%AE%AF",
+            "label": "资讯"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7072638161091821599",
+            "label": "大学社团小程序自研笔记一：使用场景与技术方案的选择"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3940294063035885",
+            "label": "CC小程序"
+          }
+        },
+        {
+          "_text": {
+            "text": "4年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/6940783618541223972",
+            "label": "简书、掘金、印象笔记、有道云笔记、石墨、腾讯文档、飞书、Notion、语雀、谁更好用，你会怎么选？"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/377887733071672",
+            "label": "肯古巴"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/%E7%AC%94%E8%AE%B0",
+            "label": "笔记"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7233031907293757501",
+            "label": "Prompt learning 教学[最终篇]：Chatgpt使用场景推荐、优秀学习资料推荐、AI工具推荐"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/4020284493662029",
+            "label": "汀丶人工智能"
+          }
+        },
+        {
+          "_text": {
+            "text": "3年前"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/NLP",
+            "label": "NLP"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7055500695503372302",
+            "label": "简单实用的科研代码笔记工具：Joplin"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/2788017221151117",
+            "label": "sheldonxxd"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7397638569732456488",
+            "label": "MathJax与KaTex的对比与选型"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3087084382595400",
+            "label": "我不想上班"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/post/7122346873440075812",
+            "label": "你真的会用苹果备忘录吗？iPhone用户必须学会的10个备忘录使用技巧"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/user/3017506781935239",
+            "label": "数据蛙恢复专家"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://juejin.cn/tag/Apple",
+            "label": "Apple"
+          }
+        },
+        {
+          "_text": {
+            "text": "友情链接："
+          }
+        },
+        {
+          "_intent": "list (10 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "酒店里喜欢炸金花的那群精神小伙 七弟运气是真的好#剧情 #炸金花 #一人分饰多角"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686069013369235685",
+                "label": "酒店里喜欢炸金花的那群精神小伙 七弟运气是真的好#剧情 #炸金花 #一人分饰多角"
+              }
+            },
+            {
+              "_name": {
+                "text": "原始部落 #原始部落 #非洲生活 #美食 #非洲"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686068990233953129",
+                "label": "原始部落 #原始部落 #非洲生活 #美食 #非洲"
+              }
+            },
+            {
+              "_name": {
+                "text": "古代说书人大胆开麦会怎样？ #历史#历史冷知识 #趣味历史#大明#说书人"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686068954380504326",
+                "label": "古代说书人大胆开麦会怎样？ #历史#历史冷知识 #趣味历史#大明#说书人"
+              }
+            },
+            {
+              "_name": {
+                "text": "这些西周国宝才是真正的历史书，它们为何能坐实西周12位君王？ #西周青铜器 #西周历史 #晋侯鸟尊 #大盂鼎 #何尊 @DOU+小助手 @抖音作者助手 @抖音精选小助手"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686068923472563510",
+                "label": "这些西周国宝才是真正的历史书，它们为何能坐实西周12位君王？ #西周青铜器 #西周历史 #晋侯鸟尊 #大盂鼎 #何尊 @DOU+小助手 @抖音作者助手 @抖音精选小助手"
+              }
+            },
+            {
+              "_name": {
+                "text": "该工作就认真工作 #玩就玩个痛快#做就做个踏实 #没有龙船划就工作#工作快乐"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686068901817415845",
+                "label": "该工作就认真工作 #玩就玩个痛快#做就做个踏实 #没有龙船划就工作#工作快乐"
+              }
+            },
+            {
+              "_name": {
+                "text": "#万科前董事局主席郁亮被限制高消费 #媒体精选计划"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686068808133397801",
+                "label": "#万科前董事局主席郁亮被限制高消费 #媒体精选计划"
+              }
+            },
+            {
+              "_name": {
+                "text": "#姑娘我爱你 #经典歌曲 #音乐分享 @DOU+小助手"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686068780997696104",
+                "label": "#姑娘我爱你 #经典歌曲 #音乐分享 @DOU+小助手"
+              }
+            },
+            {
+              "_name": {
+                "text": "真正能给你撑腰的是，那个永远打不败的自己##@豆荚小助手"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686068771115130041",
+                "label": "真正能给你撑腰的是，那个永远打不败的自己##@豆荚小助手"
+              }
+            },
+            {
+              "_name": {
+                "text": "我现在真的越来越期待了#鸿蒙os #喜濤"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686068765611648689",
+                "label": "我现在真的越来越期待了#鸿蒙os #喜濤"
+              }
+            },
+            {
+              "_name": {
+                "text": "好不容易存点钱，去一趟医院又回到解放前#搞笑视频 #改编歌曲 #医院趣事 #真实生活分享计划"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://m.ixigua.com/dx/7686068767835126245",
+                "label": "好不容易存点钱，去一趟医院又回到解放前#搞笑视频 #改编歌曲 #医院趣事 #真实生活分享计划"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "收藏成功！ 已添加到「」， 点击更改"
+          }
+        },
+        {
+          "_text": {
+            "text": "微信微信扫码分享新浪微博QQ"
+          }
+        },
+        {
+          "_text": {
+            "text": "AI代码助手上线啦"
+          }
+        },
+        {
+          "_text": {
+            "text": "选中代码，体验AI替你一键快速解读代码"
+          }
+        },
+        {
+          "_text": {
+            "text": "立即体验"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "建议反馈"
+          }
+        },
+        {
+          "_text": {
+            "text": "下载APP 下载APP 微信扫一扫 微信公众号 新浪微博"
+          }
+        }
+      ]
+    }
+  ]
+}

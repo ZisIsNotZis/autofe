@@ -1,0 +1,52 @@
+[
+  {
+    "command": "node .scratch/62-all-sites/audit-cloud-business/capture.mjs",
+    "result": "passed",
+    "summary": "20 full-height captures/measurements; one sequential browser/page; zero overflow/broken/intrinsically enlarged images"
+  },
+  {
+    "command": "python .scratch/62-all-sites/audit-cloud-business/sheets.py",
+    "result": "passed",
+    "summary": "17 whole-height/readable sheets; supplemental detail image separately generated;18 total image reads"
+  },
+  {
+    "command": "node .scratch/62-all-sites/audit-cloud-business/probe.mjs",
+    "result": "passed",
+    "summary": "Second sequential browser job; reproduces Grafana contrast/duplication and exercises ECS mobile scroll"
+  },
+  {
+    "command": "node m1/eval/pipeline.mjs --check-shots --only aliyun-com/home,aliyun-com/product-ecs,aws-amazon/ec2-on-demand,stripe-com/pricing,grafana-play/play-home",
+    "result": "passed",
+    "summary": "5/5 existing HTML/PNG hashes match manifest"
+  },
+  {
+    "command": "node m1/validate.mjs m1/curated/aliyun-com/home.json m1/curated/aliyun-com/product-ecs.json m1/curated/aws-amazon/ec2-on-demand.json m1/curated/stripe-com/pricing.json m1/curated/grafana-play/play-home.json",
+    "result": "passed",
+    "summary": "5/5 models valid"
+  },
+  {
+    "command": "node m1/eval/capture-integrity.mjs --only aliyun-com/home,aliyun-com/product-ecs,aws-amazon/ec2-on-demand,stripe-com/pricing,grafana-play/play-home",
+    "result": "passed",
+    "summary": "814 facts;697 adjudicated;0 misses;5 declared conversions"
+  },
+  {
+    "command": "for key in aliyun-com/home aliyun-com/product-ecs aws-amazon/ec2-on-demand stripe-com/pricing grafana-play/play-home; do node m1/eval/metrics.mjs \"m1/curated/$key.json\" \"m1/curated/renders/${key//\\//-}.html\" \"corpus/$key\"; done",
+    "result": "passed",
+    "summary": "Fidelity1.00 all five; distinct output JSONs retained"
+  },
+  {
+    "command": "python .scratch/62-all-sites/audit-cloud-business/verify-evidence.py",
+    "result": "passed",
+    "summary": "Input/screenshot hashes unchanged;7 target losses and5 unsupported URLs reproduced;66 Stripe targets verified;no staged files"
+  },
+  {
+    "command": "python .scratch/62-all-sites/audit-cloud-business/build-report.py",
+    "result": "passed",
+    "summary": "9 actionable findings with criterion/location/source/render/geometry/fix proof;explicit incomplete coverage"
+  },
+  {
+    "command": "git diff --check; git diff --cached --name-only; git status --short",
+    "result": "passed",
+    "summary": "No tracked source changes, whitespace defects or staged files;preexisting untracked packet/active link/corpus preserved"
+  }
+]

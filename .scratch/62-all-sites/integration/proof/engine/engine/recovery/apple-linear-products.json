@@ -1,0 +1,617 @@
+{
+  "pages": [
+    "apple-com-cn/iphone-17",
+    "apple-com/iphone-16",
+    "apple-com/macbook-air",
+    "linear-app/home"
+  ],
+  "baseline": "403cd5be096db89b428e130ad57cca730b425fdc",
+  "coveredHashes": {
+    "m1/curated/renders/apple-com-cn-iphone-17.html": "41168565a65f2540dcde8bdfa4a90bdd649cea5b0f6ad0dd8c0471ad367ca59d",
+    "m1/curated/apple-com-cn/iphone-17.json": "9bd062e38ff3727cc080e3196316ca2fe0aea8591c5393a2c0cf34de93ae771d",
+    "corpus/apple-com-cn/iphone-17/dom.html": "d07c0b8dd9959cfd2494cfe1e70d44f9b288f7f3cbb861cbd53a749ed0f677c8",
+    "corpus/apple-com-cn/iphone-17/nodes.json": "f472894ba24daa1919b9d14314ae5ea5e2b5bf6a983469b96b0ee6505d65ab25",
+    "corpus/apple-com-cn/iphone-17/full.png": "8dd97db99caa18eb4da918132410032f9fd8b774c0b00be478d88fe87e3efd65",
+    "corpus/apple-com-cn/iphone-17/meta.json": "2b3431bff60c76712b58a506a1f85ad7a09add79cf6ce29c39cd42fa9186eef4",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-2560.png": "ced24a3a55671d1ed5e01d3a0792f90c44176536be6638c4d24d36300a87a68c",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-1920.png": "80c6a19020c697e9f02c61de61b5c7628cbb535d52a25430856627336b7c1b52",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-1440.png": "3d2ea6816bb37bb39403297c1b4e57befd91b14adcf136d73390bbe3390e75dc",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-390.png": "d57e4228d1efd500759a265a6b2f046c03c22bb8bdde64f1c56bbfd353908584",
+    "m1/curated/renders/apple-com-iphone-16.html": "15b22af1f3e6bab8be305cb4c42576f972e156808d8ca5e5b83c63a147a9e3fd",
+    "m1/curated/apple-com/iphone-16.json": "f2911f6a8b509e87ec65a0d9a425571766ae6b1c28fe411504505991e79e19e0",
+    "corpus/apple-com/iphone-16/dom.html": "0ee9c9ca2cbdb695585f7b44aaf3f0ceeef737f76fab5d511ed1ae5fee37bcb5",
+    "corpus/apple-com/iphone-16/nodes.json": "a679c3ee47a9b389edf01496cb4455446b3784ef67ae9cc8b38fb2c57b9f9c31",
+    "corpus/apple-com/iphone-16/full.png": "9e7983540a1016d452341e6d0ba2475657d466a1be6a0a1e158803dbbf00e3ec",
+    "corpus/apple-com/iphone-16/meta.json": "ac68be307c9c728d9150e8abc35113f7b6beff7c813d51514a738d74a6cb3872",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-2560.png": "f197ac4b826ebb2b2d62c23ced6d812029628205606b6dbe0260fa232ca7907b",
+    "m1/curated/assets/apple16-hero.jpg": "8db9dd33f134f6a65061e2606a6967f90cc3a785518084027df479fbc17049f3",
+    "m1/curated/assets/apple16-recap.jpg": "050a81f739c491a637b7db57a12f5605878d810a996f1df1e38843595078b2dc",
+    "m1/curated/assets/apple16-inbox-phone.png": "897ead93fc9039f98df116e93ea5b8b866b245069e64962e069e37ee056a0ef3",
+    "m1/curated/assets/apple16-inbox-cable.png": "7bccded83a118ae486cfecaec39805b84d0c377095988e936027af81319336ba",
+    "m1/curated/assets/apple16-services.png": "a9492d5559810a527c1af0dea956d4acdf529d1f1f4ebffac9d424e52e2f1319",
+    "m1/curated/assets/apple16-compare-duo.png": "0c028b8e57a2f30d48eb031104bd8f5dd6561fa9b75f7d7eb31dda1848f4be93",
+    "m1/curated/assets/apple16-compare-18pro.png": "cb9770fbd7c37f1527bd2d5c2d8e58bd6555fc01b4947801f5a6e87853dd8fb8",
+    "m1/curated/assets/apple16-compare-air.png": "376430a0318c452fcc56e1d3e47aa8ff1cb52a144ca218ae5228a957dd8956e6",
+    "m1/curated/assets/apple16-compare-17.png": "1da6c54e6010e87dd7d894df573e9e780bf0928267be6ec8e61cd8563b60922d",
+    "m1/curated/assets/apple16-compare-17e.png": "aa35e7c4b44ac2a95e4f78ab6db0b4aae15b52415600fa68ef81ae055de2b63d",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-1920.png": "5a6cc85fafa09e98719bc9651334a6d6c3e0d0dffa094fa3a2686a9b27687e79",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-1440.png": "ea43a2d206f3feb792f98b67aab053d6da03112d68ee0b32b3ad921e73684cd4",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-390.png": "1ccad3b98fd12109412580aeebced4d8513e5a89a552dd986de52a8b729605f2",
+    "m1/curated/renders/apple-com-macbook-air.html": "1337b644008b6ac208157750249d3037b8e9569abe1850c3c60f68d958dd73b4",
+    "m1/curated/apple-com/macbook-air.json": "68e31a28243b6986986fd2a614e1f801c5833178005e8ca1f91bdb3674b0d713",
+    "corpus/apple-com/macbook-air/dom.html": "be63abdf4c6c77c106794326225163d2e8587141e55887fb62858c075acaec81",
+    "corpus/apple-com/macbook-air/nodes.json": "211b3fd7ac413628c61b53e05f644886aeca9a33904bf29b7ec84bdabf80ee6d",
+    "corpus/apple-com/macbook-air/full.png": "ade77a3f69a0fe7931ce7d0b4388ba0c2e760eba65b1d9d1900516f5189ae7aa",
+    "corpus/apple-com/macbook-air/meta.json": "d6db419eb58372a609a4f08901636d4d087c121f815172a29906c9f3a6e3e87a",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-2560.png": "9dd6030976cdc995a10b2ad21b975101baafde21ad02247f4e5294256a2c422b",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-1920.png": "14931ded5a0efcc24fbf7a9e3812f74689599cdaec4346a9a0c26bbe179a4118",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-1440.png": "c02ab3d746791d7d40a9edf89ac717c282a4eb944825843e94fd4cefa1c8942a",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-390.png": "d5d812737d24dbcbea7d4cd02164eb36c74ba9c1e794ab4ff7616d3869d8f406",
+    "m1/curated/renders/linear-app-home.html": "a926acfb62d7baed50fe8cfbd9344ec30cb87b179e518db0859b5c63b52a97bb",
+    "m1/curated/linear-app/home.json": "68bbad4cf5dd19a6f5e49d8f1a95a48364cdede806b21d68711ff48b877e4402",
+    "corpus/linear-app/home/dom.html": "5b1019c360d3ec0183f9744830c53a39793d66157b75b4a0b73399e566e9c9aa",
+    "corpus/linear-app/home/nodes.json": "6ca91eed81842cac72f16d6d11f360f545a5b6b8c2f97719e8b1264aeeca5d33",
+    "corpus/linear-app/home/full.png": "ac0f4e4ed877aeb0a0b361167b01a4e0d1b580048b25b6f4bf67e90d05ad473d",
+    "corpus/linear-app/home/meta.json": "3690bbcbe450487ebb799e8bdffc2be9ccf8bd6e6e846beec77fe535ddadfb38",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-2560.png": "3232fc709cb3af14fab6548ccb3fda02c19511b9b755a97bcbbc085c9c2b325e",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-1920.png": "48bc30245079601876cf4d6ac18241dd5b9b96664a429b5646a3cb54758c2ce2",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-1440.png": "a327510ddea892bdb71722c11c438c9214a4078503fb71a94637519dae3e49f8",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-390.png": "cea9ae02b7770f6bb6fb2c2b07e8163ab4f675ce429cccf52a708f31e8dfa9b6",
+    ".scratch/62-all-sites/audit-apple-linear-products/online/apple-com-cn-iphone-17-2560.png": "5f8147206c623c40d09a0ff7c7173e71a626e3246548336548350c7fa928bbc5",
+    ".scratch/62-all-sites/audit-apple-linear-products/online/apple-com-cn-iphone-17-1920.png": "23a69aba20108efe230ad0d5588738e880778f34440bb3d462358f48761c061e",
+    ".scratch/62-all-sites/audit-apple-linear-products/online/apple-com-cn-iphone-17-1440.png": "cb5bc4255f04e968ba16f180f6a1496381de4d690cdb91d00c9b3afcd64d102a",
+    ".scratch/62-all-sites/audit-apple-linear-products/online/apple-com-cn-iphone-17-390.png": "698ddc1b6189e863f65d5b15ddc366a4bd849ce8bc287c8ddda4df5c826383ad",
+    ".scratch/62-all-sites/audit-apple-linear-products/online/apple-com-macbook-air-2560.png": "c6f22e362dd3acb6e605e791abc50bfe7cba8b8639e2be230dc90a45192b65c0",
+    ".scratch/62-all-sites/audit-apple-linear-products/online/apple-com-macbook-air-1920.png": "ab93b902e4a581bdfb379b6699052044fdd51229db88f42656263925792d110c",
+    ".scratch/62-all-sites/audit-apple-linear-products/online/apple-com-macbook-air-1440.png": "1a30cf5485add84ea20ceed16b98ed2ad04fe7e388c8bf63484d10de7d4b53cb",
+    ".scratch/62-all-sites/audit-apple-linear-products/online/apple-com-macbook-air-390.png": "f0457cac86c8c0a119dde6212f95b4b37355f4e2e6c0b7a188467cc8eff115c5",
+    ".scratch/62-all-sites/audit-apple-linear-products/packet.md": "5fc5480e66162f6faffeb0dae59d9cb4863b308259f469993f720f159954bd7a",
+    ".scratch/62-all-sites/audit-apple-linear-products/capture.mjs": "fce0f51e67f36cfe90b1aa10fc9a38ab89a0448a76b92a4edb59bd000bd26135",
+    ".scratch/62-all-sites/audit-apple-linear-products/capture.log": "87e9d600001bb08f4276263411f8d0a0fa54fae77c39c29b1dd0bd32081fbb67",
+    ".scratch/62-all-sites/audit-apple-linear-products/measurements.json": "4da2863a676a3f5bdfa44bbd6f5ea6d8057c044ba437c9d14a45883d2baba67f",
+    ".scratch/62-all-sites/audit-apple-linear-products/covered-hashes.json": "a37f3c7ba2ccb641ab7382fbfc67c40a6e2623b6183244d7078355927704afb8",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-2560-sheet.png": "0b0b76c7d0d007ab5e7919a148bc9716e7eb074ad1cf6361e291240d3a26f1de",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-1440-sheet.png": "ae9b0b1426b9ecec484af7319f5472a2135c9dd906b7d88e6b1c4343061f3c0b",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-source-sheet.png": "3ce972a59e01912c7a59444f107cbc59a51364cb28b9f50d6ee64e7923b99ae6",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-390-sheet.png": "c4667978fb2ddff4d219cf7609b8ec41d35c4e50ca9fbcf3673e907672d7637d",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-2560-sheet.png": "c551e5a48792cbe61d916f98d5a0c3ed316cd12c51f964afc3d3805b5bd6e4be",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-1440-sheet.png": "9bc42f02b389399362bcbca79e0c2400bb6abaf9dc760f7b527ebe8b6e19d8ef",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-source-sheet.png": "70068776acc9fcc12b9103e5a5740bdd440fb08d24cd42f8632ee7dbadb80c76",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-390-sheet.png": "ed916afc329ccddaa454e097215ef3d3189e2674ba0adbfc3ff63d839dad8202",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-2560-sheet.png": "d0b2314039b7f6aa7856862d9aed68d6d0e5dda6000445c136faedc181787b9d",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-1440-sheet.png": "a7967983dd9823df43ddcaf52c08260ec42de1e9e5da3c6a49579a22868cc969",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-source-sheet.png": "a4e1aac5953b5061ddffea78af9a56d29c86d0a637c9a3f1e8434b5b067517cc",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-390-sheet.png": "155a025e9ee0957b881cc7ceabd33bbc7d2b0f3e89ece33bbcb4c02b7a23e162",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-2560-sheet.png": "50c669f22e3df5e63ad4db7e03349f3a1c6d237099625d53eaa044da96ea4450",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-1440-sheet.png": "55ab85c8ad3e5716bcc0baf1a002c81535a94cdac30d911d1783259d2e7f232b",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-source-sheet.png": "b5446cca6b57c89996c1672c043fd084aa3e27dcde676160623a07dc68c1471d",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-390-sheet.png": "f2d72ebef92b4643e7e3718035ada03341cc1e4a8351cf3750d2a08a6cbfeccd",
+    ".scratch/62-all-sites/audit-apple-linear-products/capture-online.mjs": "67e739bd804a6f97e8f1bdca51a6079ac553ff8d66af93fd89b260d0cda8c7cc",
+    ".scratch/62-all-sites/audit-apple-linear-products/capture-online.log": "25b0880148914493de08441c285ff337daee2802822ef2302de07f5f98fc25c2",
+    ".scratch/62-all-sites/audit-apple-linear-products/sheets.py": "a893caa2b5c598d0f3eeb064a967dffd489a333692d3abc0f5c8668315186cc1",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-2560-review.png": "2107d4e2f485f5e93cba44c87ff4b13ceb06858fe9e2b563084b7e917242323f",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-1440-review.png": "c04246d2e0aeaad562e089613f2361551ca56e286a464715a57d2b95e11a0118",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-source-review.png": "07f39ac8b1aa48d909c559885b9b4c9e191e92d0362f27393ed42e3fc9e5c07d",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-390-review.png": "4898546f71290381adc35eb0e6e14a85e6806ca8378b15dd208357cc044864d8",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-2560-review.png": "107007e63d038af72d4a59755982b43f036d074d83b00ed483aefcf7c850b2cf",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-1440-review.png": "9612162f8089233a84efbc6f9f16aa9d18b740f911cf18285d8b29d6d6918a62",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-source-review.png": "300590ebc39a86106dde7ad1206abc51d1045f15aba3241626d1a3c2debf8be1",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-390-review.png": "758704f55dc1804400a408d384da8911899e1fe4ced0ba1b6a2d4469d396c3c7",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-2560-review.png": "e89a7d5378d5785da1b35cbc0794c0e927e525b6c306b2175f938346bfa40977",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-1440-review.png": "20e4ce64aeedefca6723b54bc8418000bb67c964ce902e6d0e41c4d33f2e5c7e",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-source-review.png": "257575a2124fd47d2a10023a0aa8da58ba3861da845ac58903b6ec6333eb29ca",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-390-review.png": "8ec7dc424235809561d106ecddf5ca3117c3c30160ca0f91349dc72e1c0a50bb",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-2560-review.png": "3cc827c83617f09287f8cc3fbf7b08de82ccf38e99e8b12d92d6cb9a71dc329d",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-1440-review.png": "6ce03180144afd710dd958c4cdec4a9369ae08b2ca9846fdfe5b8e3241e8bafe",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-source-review.png": "39562d6542e47dc24ec94258e8d897ea42b54d290aef8ee1028860ee269ef26e",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-390-review.png": "aa5500c9de11ffed0d76b3dce2a2155016bd1831bdd9c7aa36243c24534c929f",
+    ".scratch/62-all-sites/audit-apple-linear-products/sheets-compact.py": "cd814240cad7179687a73b669fb8f5000052cc141ca943da6c6aa939704115fb",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-2560-compact.png": "9b2af6973a9ebf0bfbeae1d68c674246d0b630fdc9c314be08b1067dee9e5a68",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-1440-compact.png": "de0495e8ad6501c6d92ff4d40cfc4b1914937f92f9c707fbdf8c15de0a0a02be",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-source-compact.png": "82e07233f560942159c1ff6e3b042e043f7e8e2669a0b50d73ec0e327a75d773",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-cn-iphone-17-390-compact.png": "2915562645ef4a86761885fbdd9c92f344ba24d5fe3e86481e2f4c735a33cd47",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-2560-compact.png": "e6b1efbce692819fa40b63b6441bc316eaa6e29f0fea5d31c0d703d8136fae6b",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-1440-compact.png": "bd5def5bd1bd46076a4777a604b1e6c00afea33ef62471a503d866c3e6a42d29",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-source-compact.png": "0d6b9ac5081c1a96b498d8338249d0fd2629f2d28b60d38578ac28d8f353fd97",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-iphone-16-390-compact.png": "9af11fd5c124925ef7c7c48c856c45525e852ccc2d8754ae0ad442d25dac2735",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-2560-compact.png": "b9f3cba3928df7e3ad1fa0b26f451c08102286110fe93ac6f96755dd92121a61",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-1440-compact.png": "0e201086942fbf3e82351e7261ef39671d68c67473683f15e61c617b2c0f0564",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-source-compact.png": "4e52503c34909994eb01707bcb41f5f2b03dca68c536a40a7d0b73d1c4ac4811",
+    ".scratch/62-all-sites/audit-apple-linear-products/apple-com-macbook-air-390-compact.png": "c3abeb12dc6fbd085eeb55df2d938a9b7231a2208b41a394f8cd539fac0b654b",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-2560-compact.png": "c93b860be9371970df0409e7049a723d09dfcb116048e0b406a21208d1ed5af3",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-1440-compact.png": "193bde42d788a57158b0cf3a2260167652b005c2c0f1b149467ff7837e16bb42",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-source-compact.png": "283f5c7edb9a4ffe4548ce3ffd6431e8c46cfcee46b34ff93ac711570d273324",
+    ".scratch/62-all-sites/audit-apple-linear-products/linear-app-home-390-compact.png": "da42b3ce22d828949524c947a1d5fa0814c3c71b2d0fe394e444fa5cb4027e8b",
+    ".scratch/62-all-sites/audit-apple-linear-products/source-probes.json": "4dd54169e657113d3541e01f218d9c7ef6f150877a477302871355c8da1f9687",
+    ".scratch/62-all-sites/audit-apple-linear-products/detail-probes.mjs": "04a211d09493592ad56dd95c1c96907e1a503ce0c57bbe31aaffee05a9559535",
+    ".scratch/62-all-sites/audit-apple-linear-products/detail-probes.log": "4c0f08753f58851239b3ec84af840392b6e6639da5662ee2feff6c720d2a7fc5",
+    ".scratch/62-all-sites/audit-apple-linear-products/detail-probes.json": "0fbecda6c8cef1b2b101e5acae2669669d89aecc448cd22177b0822becee64ea",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-asset-hashes.json": "3bdfee805c302da2f4b15ae14c5ac83fafcb86b891b5d7dfe09fb658f1e96756",
+    ".scratch/62-all-sites/audit-apple-linear-products/readable-defect-crops.png": "ca32c9155b831195d8d2a1d53537c13a5679a6f1a0da2e99e7eed0e8f7546fc2",
+    ".scratch/62-all-sites/audit-apple-linear-products/validators.log": "6d2fda03eeed5f59718cfa8909a159cb95f618bbf10113763c8b325cb5005baf",
+    ".scratch/62-all-sites/audit-apple-linear-products/model-render-fidelity.json": "e2eaf0f3f3a98862b1f00040c07b7fab70b6ec9f4707ed7139da08b85fcc070e",
+    ".scratch/62-all-sites/audit-apple-linear-products/fidelity-probe.py": "5cde01b4830c15784773bb2c11ac0d4875bd2a8453c0f3d11cdf20128b059c05",
+    ".scratch/62-all-sites/audit-apple-linear-products/fidelity-probe.log": "76058ca491f51c6ba656dded6d8774744bba5e8f2a421cb66a345a1754ae8fa3",
+    ".scratch/62-all-sites/audit-apple-linear-products/baseline-capture-integrity.json": "ad9a42bd9abfe3a82bb6b6096b4a92ec08dcd60fea9e0acee1bdb6f845b274c8",
+    ".scratch/62-all-sites/audit-apple-linear-products/online/measurements.json": "b1087249e16ed7031107395481ca5183dd406377a98e283a557e1e93c3e37937",
+    ".scratch/62-all-sites/audit-apple-linear-products/online/covered-hashes.json": "e54b2bf11ff703049140a0fe583ef649690fa5dcd964e8305b3032eb87f8a78b",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/e1de4d58d2f047a04a21d78eea11683b3168fa345be6bed9e4afe2f1b04734af.jpg": "e1de4d58d2f047a04a21d78eea11683b3168fa345be6bed9e4afe2f1b04734af",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/808f08c578a3c74fc9bfcea9d00f80dc98cc1c21c0fbef671826be5638d03635.jpg": "808f08c578a3c74fc9bfcea9d00f80dc98cc1c21c0fbef671826be5638d03635",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/3a968e2834fcd941f08cfb377986ae1d2d4eae9be4441b9da771863fc9497a8b.webp": "3a968e2834fcd941f08cfb377986ae1d2d4eae9be4441b9da771863fc9497a8b",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/e726b8dd6383078625c6392452c8ee595f36ca7a64c4ee120ab715eeb343c654.jpg": "e726b8dd6383078625c6392452c8ee595f36ca7a64c4ee120ab715eeb343c654",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/e9dcac156436a20a9fb3b9d05b9e873cfeb126f784c8dca02d7a7567ec3ff8b2.webp": "e9dcac156436a20a9fb3b9d05b9e873cfeb126f784c8dca02d7a7567ec3ff8b2",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/a5c21d90a8c8b90e4edd2a9e01d8b0f485d60980a523f927f195eb3797012bba.webp": "a5c21d90a8c8b90e4edd2a9e01d8b0f485d60980a523f927f195eb3797012bba",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/4ed1f8c26a7afc994c6d78d56fd1b41c4e83220de711df26412f6e1bf5c83c16.jpg": "4ed1f8c26a7afc994c6d78d56fd1b41c4e83220de711df26412f6e1bf5c83c16",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/ea93bb2fe4b21565ae678c79055931b3608690af65a6a7e0ef3ebf24812e6761.jpg": "ea93bb2fe4b21565ae678c79055931b3608690af65a6a7e0ef3ebf24812e6761",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/4873ea10cc2d2d274e503d1b97949cd6aed00a317f03bc6dbea125dc24eabf3f.webp": "4873ea10cc2d2d274e503d1b97949cd6aed00a317f03bc6dbea125dc24eabf3f",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/589e9b505e578a57f2e4b93eff3fbdbce15a0b65ddf24abb99c8e67c77188316.jpg": "589e9b505e578a57f2e4b93eff3fbdbce15a0b65ddf24abb99c8e67c77188316",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/e64cc016e580e3cda6699e8085281170be247d70b9393dac79a513ee2b4597fb.webp": "e64cc016e580e3cda6699e8085281170be247d70b9393dac79a513ee2b4597fb",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/306a691388a701dceb9d8d7164adaa9f5e17fc5aa5c017df4b3a167bd02cef53.jpg": "306a691388a701dceb9d8d7164adaa9f5e17fc5aa5c017df4b3a167bd02cef53",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/263d79996d1e49f109584763e8489de80cd61cab7d371b78586f5ecc10015021.jpg": "263d79996d1e49f109584763e8489de80cd61cab7d371b78586f5ecc10015021",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/efcf0b58e43ba413ef5990ca0b25676d1f52cd81e100f09a08ece17986ec521d.jpg": "efcf0b58e43ba413ef5990ca0b25676d1f52cd81e100f09a08ece17986ec521d",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/bb4ba8cbeb4428cf258ac0733223d151f40fcf31ffcb677a0b4f4eb44e959de9.jpg": "bb4ba8cbeb4428cf258ac0733223d151f40fcf31ffcb677a0b4f4eb44e959de9",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/9d34260ea6ef9bf603f7655f407b244ea1d81880ac4918b428cbeb6f4badc8e4.jpg": "9d34260ea6ef9bf603f7655f407b244ea1d81880ac4918b428cbeb6f4badc8e4",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/5f4e0a3c14ebcbf0ae872bac5edcab2fb83eebcc6e8b6d0866f1ec59d21456ab.jpg": "5f4e0a3c14ebcbf0ae872bac5edcab2fb83eebcc6e8b6d0866f1ec59d21456ab",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/7b5c527bfa456a87312a78c8648d6d64a816834d91a4c251fe95ce052e4dd0eb.jpg": "7b5c527bfa456a87312a78c8648d6d64a816834d91a4c251fe95ce052e4dd0eb",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/899bb0cea8a6ef9858fbd0523f85e539556c523bee10f7642ff51e1feaf0fb9e.jpg": "899bb0cea8a6ef9858fbd0523f85e539556c523bee10f7642ff51e1feaf0fb9e",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/5e26c82ce3bdc6782c360a69f29e0a244d661378bae1fa09259f231653079ff3.jpg": "5e26c82ce3bdc6782c360a69f29e0a244d661378bae1fa09259f231653079ff3",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/103c9751a87babca0e442c2a905e596b2b49448aac53e4461e76b6a8218e8f25.jpg": "103c9751a87babca0e442c2a905e596b2b49448aac53e4461e76b6a8218e8f25",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/526392504ec5adcb2b3abfab36b6b06b16f4fb381559f9a2e9cd397802e74f21.jpg": "526392504ec5adcb2b3abfab36b6b06b16f4fb381559f9a2e9cd397802e74f21",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/37c02887cfb280a8780dc16ec657d5c5e63f6c5f2ec1f3075bbd6652e806a3e4.jpg": "37c02887cfb280a8780dc16ec657d5c5e63f6c5f2ec1f3075bbd6652e806a3e4",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/726a94cbdc2a5c2dbef15e123d4e54a5ee3fdfac1870bf03e9494428d6b8a317.jpg": "726a94cbdc2a5c2dbef15e123d4e54a5ee3fdfac1870bf03e9494428d6b8a317",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/08c8207030f1315f6e8e98aee47452f81da0afc89c3d08440d8ff5ba48647cb2.png": "08c8207030f1315f6e8e98aee47452f81da0afc89c3d08440d8ff5ba48647cb2",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/11ac2bf61bd0805d378a2f833ae45346edc676d6c203506c136404f14e61a4d8.jpg": "11ac2bf61bd0805d378a2f833ae45346edc676d6c203506c136404f14e61a4d8",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/5735b943f85e3cfce018782f848b1b6fcf2ace62ed570a47daba08f55350c109.jpg": "5735b943f85e3cfce018782f848b1b6fcf2ace62ed570a47daba08f55350c109",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/6675ade05a11d4c67531fab64e39143a5318b2fdac6bc8e6bc45bd6860d09a20.jpg": "6675ade05a11d4c67531fab64e39143a5318b2fdac6bc8e6bc45bd6860d09a20",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/3aca127d12b8308a22d799179b179562cca07938a52778c6db950f8debb0b15c.png": "3aca127d12b8308a22d799179b179562cca07938a52778c6db950f8debb0b15c",
+    ".scratch/62-all-sites/audit-apple-linear-products/remote-assets/b1243e266158752c028d25cbc1f7ca17d2a8453af27ae047f3a1037b7f1f4a13.jpg": "b1243e266158752c028d25cbc1f7ca17d2a8453af27ae047f3a1037b7f1f4a13",
+    "m1/render.mjs": "f0a47b3f40e5ee15745c9e43fc1c5df2a6129eb8794def78119881cf77951af4",
+    "m1/axis.mjs": "fd59354a432ef5268edc15396c6e42f7e5aca6aa03cb3c8edd192565af7c2247",
+    "m1/brand-tokens.json": "508083d8158302befb87a9cc27df7a4b30ccbf300fe881dfca336e9b38aaa3be",
+    "m1/media-surfaces.json": "0d270dcd760b53d01b513b179ef1ee6cf780b886610ff19c539b6e61cadfacbb",
+    "docs/m1/layout-axes.md": "72ca1500c85601cb2d5262f3fd3019433056b9a0aca42dce579c369bb028cd52",
+    "m1/curated/renders/manifest.json": "3a6167fe7f1fe3a0cec7443e30837a1891033d3911626b22c5ae284a96e3e394"
+  },
+  "coverage": {
+    "apple-com-cn/iphone-17": {
+      "status": "INCOMPLETE",
+      "diagnosis": "material findings recorded",
+      "widths": {
+        "2560": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 14197,
+          "documentWidth": 2560
+        },
+        "1920": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": false,
+          "height": 14197,
+          "documentWidth": 1920
+        },
+        "1440": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 13800,
+          "documentWidth": 1440
+        },
+        "390": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 14453,
+          "documentWidth": 390
+        }
+      },
+      "source": {
+        "fullHeightOverviewInspected": true,
+        "domAndNodesProbed": true,
+        "allDenseSourceTextReadablyInspected": false
+      },
+      "contrast": {
+        "sampledLowContrastPairs": 0,
+        "method": "computed text fg + nearest opaque ancestor background; not composited image/transparency contrast"
+      },
+      "images": {
+        "count": 11,
+        "loaded": true,
+        "noIntrinsicUpscaling": true
+      },
+      "positiveChecks": [
+        "No document-level horizontal overflow at all four widths",
+        "Source-backed native full-bleed/centered whitespace not treated as defects",
+        "No image/model-image reference omitted from HTML"
+      ],
+      "findings": [
+        "E1",
+        "E2",
+        "E7"
+      ]
+    },
+    "apple-com/iphone-16": {
+      "status": "INCOMPLETE",
+      "diagnosis": "material findings recorded",
+      "widths": {
+        "2560": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 9574,
+          "documentWidth": 2560
+        },
+        "1920": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": false,
+          "height": 9214,
+          "documentWidth": 1920
+        },
+        "1440": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 8944,
+          "documentWidth": 1440
+        },
+        "390": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 13018,
+          "documentWidth": 390
+        }
+      },
+      "source": {
+        "fullHeightOverviewInspected": true,
+        "domAndNodesProbed": true,
+        "allDenseSourceTextReadablyInspected": false
+      },
+      "contrast": {
+        "sampledLowContrastPairs": 0,
+        "method": "computed text fg + nearest opaque ancestor background; not composited image/transparency contrast"
+      },
+      "images": {
+        "count": 10,
+        "loaded": true,
+        "noIntrinsicUpscaling": true
+      },
+      "positiveChecks": [
+        "No document-level horizontal overflow at all four widths",
+        "Source-backed native full-bleed/centered whitespace not treated as defects",
+        "No image/model-image reference omitted from HTML"
+      ],
+      "findings": [
+        "E1",
+        "E3",
+        "E5",
+        "C3"
+      ]
+    },
+    "apple-com/macbook-air": {
+      "status": "INCOMPLETE",
+      "diagnosis": "material findings recorded",
+      "widths": {
+        "2560": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 14851,
+          "documentWidth": 2560
+        },
+        "1920": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": false,
+          "height": 14851,
+          "documentWidth": 1920
+        },
+        "1440": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 14851,
+          "documentWidth": 1440
+        },
+        "390": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 20006,
+          "documentWidth": 390
+        }
+      },
+      "source": {
+        "fullHeightOverviewInspected": true,
+        "domAndNodesProbed": true,
+        "allDenseSourceTextReadablyInspected": false
+      },
+      "contrast": {
+        "sampledLowContrastPairs": 0,
+        "method": "computed text fg + nearest opaque ancestor background; not composited image/transparency contrast"
+      },
+      "images": {
+        "count": 19,
+        "loaded": true,
+        "noIntrinsicUpscaling": true
+      },
+      "positiveChecks": [
+        "No document-level horizontal overflow at all four widths",
+        "Source-backed native full-bleed/centered whitespace not treated as defects",
+        "No image/model-image reference omitted from HTML"
+      ],
+      "findings": [
+        "E1",
+        "E2",
+        "E4"
+      ]
+    },
+    "linear-app/home": {
+      "status": "INCOMPLETE",
+      "diagnosis": "material findings recorded",
+      "widths": {
+        "2560": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 1006,
+          "documentWidth": 2560
+        },
+        "1920": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": false,
+          "height": 1006,
+          "documentWidth": 1920
+        },
+        "1440": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 1006,
+          "documentWidth": 1440
+        },
+        "390": {
+          "wholeHeightCapture": true,
+          "geometryProbed": true,
+          "wholeHeightImageInspected": true,
+          "height": 1359,
+          "documentWidth": 390
+        }
+      },
+      "source": {
+        "fullHeightOverviewInspected": true,
+        "domAndNodesProbed": true,
+        "allDenseSourceTextReadablyInspected": true
+      },
+      "contrast": {
+        "sampledLowContrastPairs": 0,
+        "method": "computed text fg + nearest opaque ancestor background; not composited image/transparency contrast"
+      },
+      "images": {
+        "count": 0,
+        "loaded": true,
+        "noIntrinsicUpscaling": true
+      },
+      "positiveChecks": [
+        "No document-level horizontal overflow at all four widths",
+        "Source-backed native full-bleed/centered whitespace not treated as defects",
+        "No image/model-image reference omitted from HTML"
+      ],
+      "findings": [
+        "E1",
+        "E6",
+        "C1",
+        "C2",
+        "C4"
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "E1",
+      "severity": "medium",
+      "owner": "engine",
+      "pages": [
+        "apple-com-cn/iphone-17",
+        "apple-com/iphone-16",
+        "apple-com/macbook-air",
+        "linear-app/home"
+      ],
+      "criterion": "coherent whole-page shared alignment / no blanket centering",
+      "location": ".depth-0>.title; .depth-0>.fact/.hero/.controls; .depth-1; m1/render.mjs root width rules",
+      "renderEvidence": "All four 2560/1440 whole-height sheets: root title starts inside the section edge; Linear additionally has wide centered lead and left-edge tail actions.",
+      "sourceEvidence": "Original Apple and Linear source sheets have intentional distinct compositions, not this generic 640/960 or 640/880/1232 axis split. This finding does not condemn legitimate centered whitespace or native full-bleed.",
+      "geometryEvidence": "At 2560 Apple h1 x=960,w=640 vs section/fact x=800,w=960 (160px offset). Linear h1 x=960,w=640, inner depth-1 x=840,w=880, root hero/actions x=664,w=1232. 1920/1440 retain corresponding offsets. At 390 root/sections converge to x=16.",
+      "improvementCriterion": "Use one explained page content axis for related root title, lead, controls and body forms; retain source-supported intentional centered/bleed exceptions. Re-review whole height at all widths; do not simply center every section.",
+      "status": "OPEN"
+    },
+    {
+      "id": "E2",
+      "severity": "high",
+      "owner": "engine",
+      "pages": [
+        "apple-com-cn/iphone-17",
+        "apple-com/macbook-air"
+      ],
+      "criterion": "cohesive product image/title/price/actions",
+      "location": ".depth-0 > a.action.verb-buy after .stack",
+      "renderEvidence": "Whole-height Apple sheets show purchase CTA only after environment/values, detached from opening product/price. detail-probes.json rootChildren fixes exact DOM order.",
+      "sourceEvidence": "iPhone17 source hero title/price/Buy crop at y=600..880 and source DOM purchase href; Mac source title/price/Buy hero y≈765..1090 and local-nav Buy nodes[811]. Native full-bleed itself is allowed.",
+      "geometryEvidence": "iPhone17 root price y=1820.78, root Buy y=14141.16 at 2560 (12320px separation); y=14397.19 at 390. Mac root price y=595.78, root Buy y=14795.70 (14200px separation); y=19950.5 at 390. Both HTML/model root actions exist; they are misplaced, not missing.",
+      "improvementCriterion": "Keep the source-backed root purchase decision with the corresponding opening product/price/image group using the shared decision seam. A repeated tail CTA may remain only if justified. Do not include Linear: its source legitimately has a closing CTA.",
+      "status": "OPEN"
+    },
+    {
+      "id": "E3",
+      "severity": "high",
+      "owner": "engine",
+      "pages": [
+        "apple-com/iphone-16"
+      ],
+      "criterion": "readable forms / density / responsive utilities",
+      "location": ".expose-care-plan table.data td",
+      "renderEvidence": "390 whole-height sheet and readable-defect-crops.png show one-to-three-word text lines forming tall coverage columns; validators and zero document overflow miss it.",
+      "sourceEvidence": "Source nodes[1145] and 1440 full source show coverage choices with their own readable explanatory blocks; model steps._lines[5] preserves the source coverage facts.",
+      "geometryEvidence": "390 table 342.34px; name cell 99.69, purpose 91.25, detail 110.41px incl padding (~94.4px usable). First two rows ~581.6/582.1px each; fieldset h=1313.36px. Desktop detail cell 560.14px and rows ~111px.",
+      "improvementCriterion": "Long coverage explanation must be readable at 390 without reducing type or deleting terms; preserve each option/label/detail association through shared responsive choice layout. Recheck actual image and control geometry.",
+      "status": "OPEN"
+    },
+    {
+      "id": "E4",
+      "severity": "medium",
+      "owner": "engine",
+      "pages": [
+        "apple-com/macbook-air"
+      ],
+      "criterion": "image/title cohesion and readable density",
+      "location": "#highlights .defrow/.deflabel/.defval (baseline alignment)",
+      "renderEvidence": "Mac 2560/1440 whole-height sheets plus readable crop show long captions at lower-left of each image, with most row area empty; 390 stack is materially more coherent.",
+      "sourceEvidence": "Source highlights y≈1290..1900 have integrated top captions on photographic cards. Model _lines[0]._items[*]._name contains full source captions, not short definition labels.",
+      "geometryEvidence": "First desktop image x=1014,y=707.94,w=696,h=452; caption x=800,y=1141.94,w=190,h=153.56, i.e. 434px below image top. First row h=602.56. Six serial rows cause highlights h≈3616px. All images <= intrinsic size.",
+      "improvementCriterion": "Image-associated long captions must read as captions/story items rather than narrow bottom-baseline definition labels. Preserve six captions/assets and sequence; no image enlargement or site-specific CSS.",
+      "status": "OPEN"
+    },
+    {
+      "id": "E5",
+      "severity": "medium",
+      "owner": "engine",
+      "pages": [
+        "apple-com/iphone-16"
+      ],
+      "criterion": "compact coherent image grouping / density",
+      "location": ".g-inbox .deflist; inbox._items",
+      "renderEvidence": "2560/1440/390 sheets show separate full-native-height phone then cable rows; labels attach at lower-left on desktop. The source presents a single paired in-box group.",
+      "sourceEvidence": "Source full.png y≈3164..3700 and nodes[1276] show compact shared What’s in the Box region; both factual item names/assets are already in model.",
+      "geometryEvidence": "Each local image h=784px (phone 346x784,cable 200x784), stacked into inbox h=1660.75 desktop and 1744.75 at390. Images are NOT enlarged; issue is presentation scale/grouping.",
+      "improvementCriterion": "Render the two in-box objects as one understandable compact group with associated names, using existing truthful assets; scale down if appropriate, never enlarge or silently drop an item.",
+      "status": "OPEN"
+    },
+    {
+      "id": "E6",
+      "severity": "medium",
+      "owner": "engine",
+      "pages": [
+        "linear-app/home"
+      ],
+      "criterion": "compact utilities / readable sparse density",
+      "location": ".g-customers .depth-1; customers._items[*]._brand",
+      "renderEvidence": "Linear 2560/1440 and390 sheets show five small names each occupying its own broad divider-separated row.",
+      "sourceEvidence": "Source full.png y≈1400..1620 shows brand/customer proof as a compact horizontal group; model contains five customer identities.",
+      "geometryEvidence": "Inner customer region w=880,h=244.125 at2560; each short brand occupies a full-width fact row. 390 h=281.25. Current five names remain readable but unnecessarily scattered.",
+      "improvementCriterion": "Use a compact, source-appropriate wrapping identity/proof group while preserving every model customer name and contrast. No global centering rule or invented logos.",
+      "status": "OPEN"
+    },
+    {
+      "id": "E7",
+      "severity": "high",
+      "owner": "engine",
+      "pages": [
+        "apple-com-cn/iphone-17"
+      ],
+      "criterion": "faithful preservation of all actions / shared actionRow",
+      "location": ".which-iphone comparison; _lines[11]._items[1].buy._action; m1/render.mjs:402-421",
+      "renderEvidence": "iPhone Air comparison column retains Learn more but has no Buy anchor. fidelity-probe.py fails with exactly one missing action target; every other captured model target passes.",
+      "sourceEvidence": "Source nodes[1800] name=购买 iPhone Air, y=17040.19; dom.html contains /cn/shop/goto/buy_iphone/iphone_air beside /iphone-air/. Model buy child contains same absolute target.",
+      "geometryEvidence": "The target is absent from baseline HTML and every width anchor list; 390 horizontal scrolling cannot recover an anchor that does not exist. renderCompareTable uses itemExtra().ctl rather than consuming the complete nodePlan actionRow.",
+      "improvementCriterion": "Preserve both source-backed Learn more and Buy in the entity column through shared actionRow for HTML/Markdown/text. Add a comparison-entity own-action + title-only child Buy regression and rerun full target preservation.",
+      "status": "OPEN"
+    },
+    {
+      "id": "C1",
+      "severity": "high",
+      "owner": "content",
+      "pages": [
+        "linear-app/home"
+      ],
+      "criterion": "faithful facts / source semantics / no invented updates",
+      "location": "changelog._items[0..1], changelog._rel.order=time",
+      "renderEvidence": "Linear output labels Faster app launch and Reset dimmed ride rows as Changelog items, with vehicle_state/ride-row issue instructions beneath.",
+      "sourceEvidence": "Those source texts occur inside the hero product demo: source nodes[158]/[350] y≈550/980. Real source Changelog at y≈7844 has New controls for Linear coding agent, Loops for product management, Priority inbox, Coding sessions, with dated specific source URLs. readable-defect-crops.png independently shows all four.",
+      "geometryEvidence": "Output timeline y=543.75..672.5 at2560 uses false category; source actual update nodes[2828],[2837],[2846] and DOM anchors are retained in source-probes.json/source DOM. No dates in current model.",
+      "improvementCriterion": "Represent captured actual changelog entries with their visible dates/descriptions and specific source targets. Keep demo issue text only in its truthful demo context if retained; do not invent dates or infer them from URL strings.",
+      "status": "OPEN"
+    },
+    {
+      "id": "C2",
+      "severity": "high",
+      "owner": "content",
+      "pages": [
+        "linear-app/home"
+      ],
+      "criterion": "coherent feature stories / faithful facts and targets",
+      "location": "beats._lines[0..3]",
+      "renderEvidence": "Four feature stories become an unexplained numbered title-only list; no feature description/action survives because model never includes them.",
+      "sourceEvidence": "Source nodes[699..705] Intake and integrations includes full visible paragraph and Learn more to /intake; other source chapters link /plan,/ai,/build. Whole source sheet shows each feature explanation and action.",
+      "geometryEvidence": "Model beats occupies111.19px (all widths) and has only four title objects. Source DOM has four chapter anchors; baseline model/action preservation check cannot detect omitted source actions.",
+      "improvementCriterion": "Restore each source-supported feature description and respective absolute source target using current closed grammar, with clear section ownership; do not synthesize explanations from screenshot pixels.",
+      "status": "OPEN"
+    },
+    {
+      "id": "C3",
+      "severity": "medium",
+      "owner": "content",
+      "pages": [
+        "apple-com/iphone-16"
+      ],
+      "criterion": "preserve semantic comparison / closed shared-axis decision",
+      "location": "compare._lines; missing _rel.compare",
+      "renderEvidence": "Which iPhone is right for you becomes three cards plus two on another row at2560/1440, then a4925px serial product run at390.",
+      "sourceEvidence": "Original source full.png y≈5087..8750 presents five entities as columns and common property rows. Current model _intent explicitly calls it 选型对照 but classifies it as sequence because members differ slightly; they share battery/chip/camera/front properties.",
+      "geometryEvidence": "Current compare h=2089.56 at2560, 4925.09 at390; no comparison table in geometry. F-031 shared compare rules are not invoked because factual relationship is undeclared. This is not a renderer bypass of a declared compare relation.",
+      "improvementCriterion": "Correct the source-backed comparison relationship in the factual model, retaining entity names, properties, images and source truth. Engine then consumes declared comparison with fixed entity columns/horizontal scrolling; no positional row pairing, presentation keys, or font compression.",
+      "status": "OPEN"
+    },
+    {
+      "id": "C4",
+      "severity": "high",
+      "owner": "content",
+      "pages": [
+        "linear-app/home"
+      ],
+      "criterion": "preserve brand differences / meaningful visual product story",
+      "location": "root / beats missing source image/demo representations (engine surface support secondary)",
+      "renderEvidence": "Source black, image-led product workflow narrative collapses to1006px white text outline with0 model/render images; genuine product demonstrations are absent, not merely rearranged. Foreground/background contrast itself passes sampled pairs.",
+      "sourceEvidence": "Whole source sheet contains the hero issue/workspace demo and illustrated feature workflow panels throughout; source full.png y≈400..7200. Source SVG/DOM-heavy demos may need provenance-backed screenshot assets rather than fabricated remote images.",
+      "geometryEvidence": "Source full height9960, output1006 at desktop; all four current models/HTML hashes are bound. Linear has0 declared images; therefore renderer cannot restore missing visuals alone.",
+      "improvementCriterion": "Restore meaningful capture-backed visual product context without screenshot-to-text invention or image enlargement. Coordinate source-backed brand surface/foreground handling with engine through existing shared seams; this finding does not mandate a site-name template or blanket full-page black redesign.",
+      "status": "OPEN"
+    }
+  ],
+  "engineFindings": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "E7"
+  ],
+  "contentFindings": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "status": "INCOMPLETE",
+  "diagnosticStatus": "Scoped diagnosis complete; baseline fails material criteria; uninspected modalities retained",
+  "report": "/home/z/.pi/agent/sessions/--home-z-vibe-autofe--/subagent-artifacts/outputs/cb0e12c1-b85a-4cb1-a055-55bf9c1b0c52/audit-apple-linear-products.md",
+  "limits": [
+    "1920 full-height screenshots and geometry captured, but images not visually read (all four pages); no1920 experience PASS.",
+    "18 image reads consumed; three browser jobs consumed. Initial offline remote-image render retained but not used for Apple visual conclusions.",
+    "Downscaled source sheets do not prove small-print/footnote/footer/legal-term completeness or contrast on Apple sources. Source captures themselves have unloaded/lazy blank areas.",
+    "390 iPhone17 comparison right-hand horizontal-scroll state not visually exercised; containment measured, document remains390px.",
+    "No external action navigation/submission exercised; model target preservation checked against local HTML only.",
+    "Computed contrast probe does not cover image backgrounds, blend/transparency compositing, focus/hover or input-state styling.",
+    "Initial diagnostic baseline only; no source changes or fresh independent final-fix review. Unknown coverage remains INCOMPLETE.",
+    "Remote asset bytes saved/hashes obtained during third detail job; original first online screenshot payload bytes were not intercepted. Screenshots, URLs and intrinsic dimensions are bound; temporal remote-content equality is not assumed."
+  ],
+  "resources": {
+    "imageReads": 18,
+    "browserJobs": 3,
+    "commandsBoundedSeconds": 180
+  },
+  "evidenceDirectory": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-apple-linear-products/.scratch/62-all-sites/audit-apple-linear-products"
+}

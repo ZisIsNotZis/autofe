@@ -1,0 +1,77 @@
+{
+  "site": "getbootstrap",
+  "page": "docs-introduction",
+  "url": "https://getbootstrap.com/docs/5.3/getting-started/introduction/",
+  "title": "Get started with Bootstrap · Bootstrap v5.3",
+  "sourceNodes": 909,
+  "counts": {
+    "storylines": 11,
+    "items": 15,
+    "actions": 23,
+    "exposes": 1,
+    "images": 0,
+    "facts": 7,
+    "tables": 1,
+    "lists": 1,
+    "choiceSets": 0,
+    "inputs": 1,
+    "dupeText": 2,
+    "capHits": []
+  },
+  "storylines": 11,
+  "chrome": [
+    {
+      "role": "banner",
+      "count": 1
+    },
+    {
+      "role": "complementary",
+      "count": 1
+    },
+    {
+      "role": "navigation",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "code-block",
+      "role": "code",
+      "count": 10,
+      "examples": [
+        "<!doctype html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <meta name=\"viewp",
+        "<script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.",
+        "<script type=\"module\">",
+        "<!doctype html> <html lang=\"en\"> ... </html>",
+        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+      ]
+    },
+    {
+      "kind": "table-column-unmapped",
+      "role": "cell",
+      "count": 2,
+      "examples": [
+        "URL: https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css",
+        "URL: https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.j"
+      ]
+    }
+  ],
+  "fieldsDrafted": [
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "example": "CSS"
+    },
+    {
+      "name": "url",
+      "type": "text",
+      "label": "URL",
+      "example": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootst"
+    }
+  ]
+}

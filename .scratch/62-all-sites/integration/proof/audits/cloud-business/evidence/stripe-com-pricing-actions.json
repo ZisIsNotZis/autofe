@@ -1,0 +1,398 @@
+[
+  {
+    "path": ".plans._items[0]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".plans._items[1]._action",
+    "label": "联系销售",
+    "to": "https://stripe.com/cn/contact/sales",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[0]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[0].pricing._lines[0]._lines[3]._action",
+    "label": "货币兑换",
+    "to": "https://docs.stripe.com/currencies",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[0].pricing._lines[1]._action",
+    "label": "查看更多支付方式",
+    "to": "https://stripe.com/cn/pricing/local-payment-methods",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[0]._items[0].pricing._lines[3]._action",
+    "label": "了解更多",
+    "to": "https://docs.stripe.com/disputes",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[0].pricing._lines[4]._action",
+    "label": "了解更多",
+    "to": "https://docs.stripe.com/disputes/smart-disputes",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[0].pricing._lines[5]._lines[0]._action",
+    "label": "争议拦截查询",
+    "to": "https://docs.stripe.com/disputes/prevention-preview#deflection",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[0].pricing._lines[5]._lines[1]._action",
+    "label": "Visa 争议解决",
+    "to": "https://docs.stripe.com/disputes/get-started/prevention#rapid-dispute-resolution",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[0].pricing._lines[5]._lines[2]._action",
+    "label": "Visa Compelling Evidence 3.0 拦截",
+    "to": "https://docs.stripe.com/disputes/get-started/prevention#compelling-evidence-3.0-with-oi",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[0].pricing._lines[5]._lines[3]._action",
+    "label": "Mastercard 争议解决",
+    "to": "https://docs.stripe.com/disputes/get-started/prevention#ethoca-alerts",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[1]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register/payment_links",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[1].pricing._items[1]._action",
+    "label": "了解更多",
+    "to": "https://support.stripe.com/questions/custom-domain-on-stripe-checkout-faq",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[1].pricing._items[2]._action",
+    "label": "了解更多",
+    "to": "https://support.stripe.com/questions/pricing-for-post-payment-invoices-for-one-time-purchases-via-checkout-and-payment-links",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[2]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register/checkout",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[2].pricing._items[1]._action",
+    "label": "了解更多",
+    "to": "https://support.stripe.com/questions/custom-domain-on-stripe-checkout-faq",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[2].pricing._items[2]._action",
+    "label": "了解更多",
+    "to": "https://support.stripe.com/questions/pricing-for-post-payment-invoices-for-one-time-purchases-via-checkout-and-payment-links",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[3]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[3].pricing._items[0]._action",
+    "label": "了解更多",
+    "to": "https://support.stripe.com/questions/managed-payments-pricing",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[4]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/get-started/terminal",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[0]._items[4].pricing._items[0]._lines[2]._action",
+    "label": "Tap to Pay",
+    "to": "https://stripe.com/cn/terminal/tap-to-pay",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[1]._action",
+    "label": "资金管理",
+    "to": "https://stripe.com/cn/money-management/availability",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[1]._items[0]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register/connect",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[1]._items[0].pricing._items[0]._action",
+    "label": "收入分成",
+    "to": "https://support.stripe.com/questions/monetizing-payments-with-stripe-connect",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[1]._items[0].pricing._items[0]._lines[0]._action",
+    "label": "查看定价详情",
+    "to": "https://stripe.com/cn/connect/pricing",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[2]._items[0]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register/billing",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[2]._items[0].pricing._action",
+    "label": "方案对比",
+    "to": "https://stripe.com/cn/billing/pricing",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[2]._items[1]._action",
+    "label": "使用 Metronome 注册",
+    "to": "https://signup.metronome.com/",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[2]._items[1].pricing._items[0]._action",
+    "label": "了解更多",
+    "to": "https://metronome.com/pricing",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[2]._items[1].pricing._items[1]._action",
+    "label": "联系 Metronome",
+    "to": "https://metronome.com/contact-sales",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[2]._items[1].pricing._items[1]._lines[1]._action",
+    "label": "数据导出",
+    "to": "https://docs.metronome.com/guides/platform-configuration/metronome-pricing-model#data-export",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[2]._items[2]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register/invoicing",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[2]._items[2].pricing._items[0]._action",
+    "label": "查看定价详情",
+    "to": "https://stripe.com/cn/invoicing/pricing",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[2]._items[3]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register/tax",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[2]._items[3].pricing._action",
+    "label": "方案对比",
+    "to": "https://stripe.com/cn/tax/pricing",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[2]._items[4]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register?redirect=%2Fsigma%2Fqueries",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[2]._items[4].pricing._action",
+    "label": "方案对比",
+    "to": "https://stripe.com/cn/sigma/pricing",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[2]._items[5]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/data-management",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[2]._items[5].pricing._action",
+    "label": "方案对比",
+    "to": "https://stripe.com/cn/data-pipeline/pricing",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[2]._items[6]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/revenue-recognition",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[2]._items[6].pricing._action",
+    "label": "方案对比",
+    "to": "https://stripe.com/cn/revenue-recognition/pricing",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[3]._items[0]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[3]._items[0].pricing._action",
+    "label": "方案对比",
+    "to": "https://stripe.com/cn/radar/pricing",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[3]._items[1]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register/atlas",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[3]._items[1].pricing._items[0]._action",
+    "label": "查看定价详情",
+    "to": "https://stripe.com/cn/atlas",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".catalog._lines[3]._items[2]._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register?redirect=%2Fworkflows",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".catalog._lines[3]._items[2].pricing._items[0]._action",
+    "label": "了解更多",
+    "to": "https://docs.stripe.com/workflows",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".enterprise._action",
+    "label": "联系销售",
+    "to": "https://stripe.com/cn/contact/sales",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".enterprise._lines[0]._items[0]._action",
+    "label": "Payments",
+    "to": "https://stripe.com/cn/payments",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".enterprise._lines[0]._items[1]._action",
+    "label": "Radar",
+    "to": "https://stripe.com/cn/radar",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".enterprise._lines[0]._items[2]._action",
+    "label": "Connect",
+    "to": "https://stripe.com/cn/connect",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".enterprise._lines[0]._items[3]._action",
+    "label": "Invoicing",
+    "to": "https://stripe.com/cn/invoicing",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".enterprise._lines[0]._items[4]._action",
+    "label": "Billing",
+    "to": "https://stripe.com/cn/billing",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".enterprise._lines[0]._items[5]._action",
+    "label": "等等",
+    "to": "https://stripe.com/cn/enterprise",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".enterprise._lines[1]._items[0]._action",
+    "label": "技术账户管理",
+    "to": "https://stripe.com/cn/support-plans",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".enterprise._lines[1]._items[1]._action",
+    "label": "专业服务",
+    "to": "https://stripe.com/cn/professional-services",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".enterprise._lines[1]._items[2]._action",
+    "label": "认证实施合作伙伴",
+    "to": "https://stripe.com/cn/partners",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".report._lines[0]._action",
+    "label": "阅读报告",
+    "to": "https://go.stripe.global/rs/072-MDK-283/images/TEI-of-Stripe.pdf",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".report._lines[1]._action",
+    "label": "阅读案例",
+    "to": "https://stripe.com/cn/newsroom/news/bmw-and-stripe",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".report._lines[2]._action",
+    "label": "阅读案例",
+    "to": "https://stripe.com/cn/customers/amazon",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".report._lines[3]._action",
+    "label": "阅读案例",
+    "to": "https://stripe.com/cn/newsroom/stories/maersk-and-stripe",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".report._lines[4]._action",
+    "label": "阅读案例",
+    "to": "https://stripe.com/cn/customers/twilio",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".cta._action",
+    "label": "立即开始",
+    "to": "https://dashboard.stripe.com/register",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".cta._items[0]._action",
+    "label": "联系销售",
+    "to": "https://stripe.com/cn/contact/sales",
+    "targetExactInCapture": true
+  },
+  {
+    "path": ".cta._items[1]._action",
+    "label": "了解更多",
+    "to": "https://stripe.com/cn/customers",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".cta._items[2]._action",
+    "label": "阅读文档",
+    "to": "https://docs.stripe.com/",
+    "targetExactInCapture": true
+  }
+]

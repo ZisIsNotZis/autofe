@@ -1,0 +1,2524 @@
+{
+  "_intent": "表单 Form | ArcoDesign — 表单 Form [draft]",
+  "_title": {
+    "text": "表单 Form | ArcoDesign"
+  },
+  "_summary": {
+    "text": "未登录"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Open Search Modal"
+      }
+    },
+    {
+      "_text": {
+        "text": "React"
+      }
+    },
+    {
+      "_text": {
+        "text": "Vue"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "menu collapse button"
+      }
+    },
+    {
+      "_text": {
+        "text": "组件 / 数据输入"
+      }
+    },
+    {
+      "_intent": "表单 Form [draft]",
+      "_title": {
+        "text": "表单 Form"
+      },
+      "_summary": {
+        "text": "具有数据收集、校验和提交功能的表单，包含复选框、单选框、输入框、下拉选择框等元素。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Changelog"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "基础用法 [draft]",
+      "_title": {
+        "text": "基础用法"
+      },
+      "_summary": {
+        "text": "非受控模式的用法。"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "展开所有代码"
+          }
+        },
+        {
+          "_text": {
+            "text": "Username"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Post"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-2",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "I have read the manual"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Form, Input, Button, Checkbox } from '@arco-design/web-"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表单布局 [draft]",
+      "_title": {
+        "text": "表单布局"
+      },
+      "_summary": {
+        "text": "Form 支持三种排列方式："
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "horizontal 水平排列 (默认)、 vertical 垂直排列、 inline 行内排列"
+          }
+        },
+        {
+          "_text": {
+            "text": "Layout"
+          }
+        },
+        {
+          "_text": {
+            "text": "horizontal"
+          }
+        },
+        {
+          "_text": {
+            "text": "vertical"
+          }
+        },
+        {
+          "_text": {
+            "text": "inline"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "username-username",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-3",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_text": {
+            "text": "import React from 'react'; import { Form, Input, Checkbox, Butto"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "受控表单 [draft]",
+      "_title": {
+        "text": "受控表单"
+      },
+      "_image": {
+        "image": "",
+        "alt": "20200717"
+      },
+      "_summary": {
+        "text": "可以在Form.Item传入field属性，即可使控件变为受控组件，表单项的值都将会被 Form 收集。"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "受控模式下`Form.Item`会接管控件，自动给表单控件添加相应的 `value`（或 `triggerPropName` 指定的其他属性）和`onChange`（或 `trigger` 指定的其他属性)，所有的数据收集都由 `Form` 内部完成。"
+              }
+            },
+            {
+              "_name": {
+                "text": "受控下不要为表单控件添加 `defaultValue`。默认值可以通过 `Form` 的 `initialValues` 或 `Form.Item` 的 `initialValue` 来设置。"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "Form size"
+          }
+        },
+        {
+          "_text": {
+            "text": "mini"
+          }
+        },
+        {
+          "_text": {
+            "text": "small"
+          }
+        },
+        {
+          "_text": {
+            "text": "default"
+          }
+        },
+        {
+          "_text": {
+            "text": "large"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "username-username-2",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Age"
+          }
+        },
+        {
+          "_text": {
+            "text": "Province"
+          }
+        },
+        {
+          "_text": {
+            "text": "Auto-complete"
+          }
+        },
+        {
+          "_text": {
+            "text": "Multiple Choice"
+          }
+        },
+        {
+          "_text": {
+            "text": "TreeSelect"
+          }
+        },
+        {
+          "_text": {
+            "text": "Score"
+          }
+        },
+        {
+          "_text": {
+            "text": "Date"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Switch"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "switch-switch",
+            "type": "bool"
+          }
+        },
+        {
+          "_text": {
+            "text": "Radio"
+          }
+        },
+        {
+          "_text": {
+            "text": "Slide"
+          }
+        },
+        {
+          "_text": {
+            "text": "Upload"
+          }
+        },
+        {
+          "_text": {
+            "text": "I have read the employee manual"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Get touched fields"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { useRef, useEffect, useState } from 'react'; import { Fo"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表单方法调用 [draft]",
+      "_title": {
+        "text": "表单方法调用"
+      },
+      "_summary": {
+        "text": "在函数式组件里可以使用Form.useForm获取表单实例。通过该实例调用表单方法，例如设置表单字段值，重置表单等。 在类组件里可以使用ref 获取表单实例。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-4",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Fill Form"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "validateOnly"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Form, Input, Button, InputNumber } from '@arco-design/w"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "控制表单项错误状态 [draft]",
+      "_title": {
+        "text": "控制表单项错误状态"
+      },
+      "_summary": {
+        "text": "通过 setFields 方法的 error 参数，可以在外部控制表单项的错误状态。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-5",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Set Error Age"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "复杂类型的数据 [draft]",
+      "_title": {
+        "text": "复杂类型的数据"
+      },
+      "_summary": {
+        "text": "通过设置 field 为 a.b.c 格式，可以得到 {a:{b:{c: xx}}}。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "username",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "post",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Volunteers"
+          }
+        },
+        {
+          "_text": {
+            "text": "Volunteer1"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "volunteer1",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Volunteer2"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "volunteer2",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Form data:"
+          }
+        },
+        {
+          "_text": {
+            "text": "import React from 'react'; import { Form, Input, Button, Modal }"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表单控件嵌套 [draft]",
+      "_title": {
+        "text": "表单控件嵌套"
+      },
+      "_summary": {
+        "text": "Form.Item 可以互相嵌套。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "User"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-6",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-7",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Gender"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Form, Input, Button, Grid, Select, InputNumber, Tooltip"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表单控件联动 [draft]",
+      "_title": {
+        "text": "表单控件联动"
+      },
+      "_summary": {
+        "text": "可以通过shouldUpdate 实现控件间的联动。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Type"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "OK"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { useRef, useState, useEffect } from 'react'; import { Fo"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "动态增减表单项 [draft]",
+      "_title": {
+        "text": "动态增减表单项"
+      },
+      "_summary": {
+        "text": "通过Form.List管理数组类型的表单结构。设置校验规则时 Form.List 会渲染出额外的 DOM 节点用来展示校验信息，如果不需要可以传入 noStyle=false，并通过 Form.useFormState 自定义校验信息的展示。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-2",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Post-0"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "post-2",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Add post"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Add post to the second slot"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Set `Post-0` to error state"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { useRef, useState } from 'react'; import { Form, Input,"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "动态增减嵌套类型的表单项 [draft]",
+      "_title": {
+        "text": "动态增减嵌套类型的表单项"
+      },
+      "_summary": {
+        "text": "通过Form.List管理数组类型的表单结构。可以通过对 field 进行一些处理，实现动态增减复杂类型的表单项"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "User 0"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-3",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-4",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Add User"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { useRef, useState } from 'react'; import { Form, Space,"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "自定义表单控件 [draft]",
+      "_title": {
+        "text": "自定义表单控件"
+      },
+      "_summary": {
+        "text": "Form.Item 会给自己的直接子节点（必须是唯一子节点）传递 onChange 和 value 属性，自定义控件只有在调用这个onChange 之后，自己的值才能被 Form.Item 收集到 。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Custom"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "处理表单项的值 [draft]",
+      "_title": {
+        "text": "处理表单项的值"
+      },
+      "_summary": {
+        "text": "Number"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "首先，在使用受控表单时，所有表单项的值在改变时，都会被 Form 收集到。如果需要对表单项的值进行处理后再存储在 Form 中，可以使用 normalize 属性。与之相对，在进行表单项的渲染时，都会从 Form 中取值，并作为 value 属性传递给对应的表单项，如果需要对从 Form 中取出的值进行转换再传递给表单项，可以使用 formatter 属性。注意：form.setFieldValu"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "number",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Please enter number"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-5",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-6",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "OK"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Form, DatePicker, Input, Button } from '@arco-design/we"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "注册表单 [draft]",
+      "_title": {
+        "text": "注册表单"
+      },
+      "_summary": {
+        "text": "填写必须的信息以注册新用户"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-8",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-9",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-confirm",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Register"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Form, Input, Button, Message } from '@arco-design/web-r"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "全局禁用 [draft]",
+      "_title": {
+        "text": "全局禁用"
+      },
+      "_image": {
+        "image": "",
+        "alt": "20200717"
+      },
+      "_summary": {
+        "text": "给 Form 组件设置 disabled 可以全局禁用所有表单控件。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-10",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-7",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle",
+            "type": "bool"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Get touched fields"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "不同尺寸 [draft]",
+      "_title": {
+        "text": "不同尺寸"
+      },
+      "_summary": {
+        "text": "通过 size 属性可以设置不同尺寸的表单"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-11",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-8",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "自定义表单校验状态 [draft]",
+      "_title": {
+        "text": "自定义表单校验状态"
+      },
+      "_summary": {
+        "text": "Form.Item 支持通过 hasFeedbackvalidateStatus 和 help 属性自定义表单校验状态及校验文案。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "validating"
+          }
+        },
+        {
+          "_text": {
+            "text": "success"
+          }
+        },
+        {
+          "_text": {
+            "text": "error"
+          }
+        },
+        {
+          "_text": {
+            "text": "warning"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-9",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "This is custom message"
+          }
+        },
+        {
+          "_text": {
+            "text": "This is extra text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "input-10",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Choose at least one"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "start-time",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "end-time",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "Please select date"
+          }
+        },
+        {
+          "_text": {
+            "text": "This is InputNumber"
+          }
+        },
+        {
+          "_text": {
+            "text": "Select tree node"
+          }
+        },
+        {
+          "_text": {
+            "text": "import React from 'react'; import { Form, AutoComplete, Input, S"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表单校验 [draft]",
+      "_title": {
+        "text": "表单校验"
+      },
+      "_summary": {
+        "text": "可以通过 form.validate 方法进行表单字段的校验。可以通过参数指定校验特定字段。"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-12",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Validate Form"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Validate Username"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Form, Input, Button, Message, InputNumber } from '@arco"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表单异步校验 [draft]",
+      "_title": {
+        "text": "表单异步校验"
+      },
+      "_summary": {
+        "text": "在 rules 中自定义 validator 方法，并返回一个 Promise 即可实现表单的异步校验。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "p.s: 如果用 lodash.debounce 不生效，建议使用 debounce.promise ，它返回的是一个 promise。"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-13",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表单校验信息模板 [draft]",
+      "_title": {
+        "text": "表单校验信息模板"
+      },
+      "_summary": {
+        "text": "可以通过 validateMessages 属性设置校验信息提示模板(2.32.0支持)。示例"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "也可以在 ConfigProvider 组件的 componentConfig 参数，为全局的 Form 组件设置 validateMessages 。"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-14",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Validate"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "滚动到指定表单字段 [draft]",
+      "_title": {
+        "text": "滚动到指定表单字段"
+      },
+      "_summary": {
+        "text": "user1"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Scroll to the last field"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "user0",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "user1",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "user2"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "user2",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "user3"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "user3",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "user4"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "user4",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "user5"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "user5",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "user6"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "user6",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "user7"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "user7",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "user8"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "user8",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "user9"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "user9",
+            "type": "text"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "表单校验失败不阻塞提交 [draft]",
+      "_title": {
+        "text": "表单校验失败不阻塞提交"
+      },
+      "_summary": {
+        "text": "可以通过 validateLevel 设置表单校验失败是显示为 warning 状态，不阻塞表单提交。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Email"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "email",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Validate Form"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Validate Email"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "多表单联动 [draft]",
+      "_title": {
+        "text": "多表单联动"
+      },
+      "_summary": {
+        "text": "可以通过 Form.Provider 组件管理多个表单的数据。2.30.0 支持。需要想要获得对应的表单实例，需要为 Form 组件设置 id 属性。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "Name"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "email: null"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Search"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Add filter"
+          }
+        },
+        {
+          "_text": {
+            "text": "Result"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Refresh"
+          }
+        },
+        {
+          "_intent": "table (5 rows): Name / Salary / Gender [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jane Doe 0"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "gender": {
+                  "text": "female"
+                },
+                "age": {
+                  "num": 20
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jane Doe 1"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "gender": {
+                  "text": "male"
+                },
+                "age": {
+                  "num": 21
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jane Doe 2"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "gender": {
+                  "text": "female"
+                },
+                "age": {
+                  "num": 22
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jane Doe 3"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "gender": {
+                  "text": "male"
+                },
+                "age": {
+                  "num": 23
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jane Doe 4"
+              },
+              "_measure": {
+                "num": 23000
+              },
+              "_fields": {
+                "gender": {
+                  "text": "female"
+                },
+                "age": {
+                  "num": 24
+                },
+                "email": {
+                  "text": "jane.doe@example.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "上一页"
+              }
+            },
+            {
+              "_name": {
+                "text": "第 1 页"
+              }
+            },
+            {
+              "_name": {
+                "text": "下一页"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "import React from 'react'; import { Form, Grid, Input, Button, M"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "useWatch [draft]",
+      "_title": {
+        "text": "useWatch"
+      },
+      "_summary": {
+        "text": "可以通过 Form.useWatch 监听表单内部字段值的变动。（2.33.0 支持）"
+      },
+      "_lines": [
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "enter-name",
+            "type": "text"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Form, Typography, Input, InputNumber } from '@arco-desi"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "获取表单上下文 [draft]",
+      "_title": {
+        "text": "获取表单上下文"
+      },
+      "_summary": {
+        "text": "Disabled"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "在函数式组件里可以使用 Form.useFormContext 获取 Form 组件上下文，便于表单控件的封装。(version 2.33.0, isSubmitting in 2.44.0). isSubmitting 仅在通过 type=submit 的 button 触发表单 Form 的 onSubmit 属性进行提交时有效。如果 onSubmit 内部包含异步逻辑，请返回一个 Promi"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle-2",
+            "type": "bool"
+          }
+        },
+        {
+          "_intent": "input [draft]",
+          "_expose": {
+            "name": "please-enter-15",
+            "type": "text"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_text": {
+            "text": "import React, { useEffect, useRef } from 'react'; import { Form,"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "useFormState [draft]",
+      "_title": {
+        "text": "useFormState"
+      },
+      "_summary": {
+        "text": "可以通过 Form.useFormState 监听表单内部状态的变动。（2.44.0 支持）"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "校验状态:"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Submit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reset"
+          }
+        },
+        {
+          "_text": {
+            "text": "import { Form, Typography, Input, InputNumber, Space, Button } f"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "API [draft]",
+      "_title": {
+        "text": "API"
+      },
+      "_lines": [
+        {
+          "_intent": "Form [draft]",
+          "_title": {
+            "text": "Form"
+          },
+          "_lines": [
+            {
+              "_intent": "table (22 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "id"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "labelAlign"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "layout"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "requiredSymbol"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "colon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "form"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#forminstance",
+                    "label": "FormInstance"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "initialValues"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "labelCol"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/grid",
+                          "label": "<Grid.Col>"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/grid#col",
+                          "label": "ColProps"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onValuesChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "scrollToFirstError"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "style"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validateMessages"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C%E4%BF%A1%E6%81%AF%E6%A8%A1%E6%9D%BF",
+                    "label": "demo"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validateTrigger"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "wrapper"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#componenttype",
+                    "label": "ComponentType"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "wrapperCol"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/grid",
+                          "label": "ColProps"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/grid#col",
+                          "label": "ColProps"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "wrapperProps"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#indexedobject",
+                    "label": "IndexedObject"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onSubmit"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onSubmitFailed"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#fielderror",
+                    "label": "FieldError"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Form.Item [draft]",
+          "_title": {
+            "text": "Form.Item"
+          },
+          "_lines": [
+            {
+              "_intent": "table (30 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "disabled"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "hasFeedback"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "hidden"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "required"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "trigger"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "triggerPropName"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "labelAlign"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "layout"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "requiredSymbol"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validateStatus"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "colon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "extra"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "help"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "label"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "children"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#formitemchildrenfn",
+                    "label": "FormItemChildrenFn"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "dependencies"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "field"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "initialValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "labelCol"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/grid",
+                          "label": "<Grid.Col>"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/grid#col",
+                          "label": "ColProps"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "normalize"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "noStyle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rules"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#rules",
+                    "label": "RulesProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "shouldUpdate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "style"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tooltip"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/tooltip#tooltip",
+                    "label": "TooltipProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "validateTrigger"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "wrapperCol"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/grid",
+                          "label": "ColProps"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://arco.design/react/components/grid#col",
+                          "label": "ColProps"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "formatter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getValueFromEvent"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Form.List [draft]",
+          "_title": {
+            "text": "Form.List"
+          },
+          "_lines": [
+            {
+              "_intent": "table (5 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "noStyle"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#formitem",
+                    "label": "FormItemProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "field"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "initialValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rules"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#rules",
+                    "label": "RulesProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "children"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Form.Provider(2.30.0) [draft]",
+          "_title": {
+            "text": "Form.Provider(2.30.0)"
+          },
+          "_lines": [
+            {
+              "_intent": "table (2 rows): 参数名 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "onFormSubmit"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#forminstance",
+                    "label": "FormInstance"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onFormValuesChange"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://arco.design/react/components/form#forminstance",
+                    "label": "FormInstance"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "FormInstance [draft]",
+          "_title": {
+            "text": "FormInstance"
+          }
+        },
+        {
+          "_intent": "InnerMethodsReturnType [draft]",
+          "_title": {
+            "text": "InnerMethodsReturnType"
+          }
+        },
+        {
+          "_intent": "ComponentType [draft]",
+          "_title": {
+            "text": "ComponentType"
+          }
+        },
+        {
+          "_intent": "IndexedObject [draft]",
+          "_title": {
+            "text": "IndexedObject"
+          }
+        },
+        {
+          "_intent": "FieldError [draft]",
+          "_title": {
+            "text": "FieldError"
+          }
+        },
+        {
+          "_intent": "FormItemChildrenFn [draft]",
+          "_title": {
+            "text": "FormItemChildrenFn"
+          }
+        },
+        {
+          "_intent": "Rules [draft]",
+          "_title": {
+            "text": "Rules"
+          },
+          "_summary": {
+            "text": "底层使用 b-validate。"
+          }
+        },
+        {
+          "_intent": "this.form [draft]",
+          "_title": {
+            "text": "this.form"
+          },
+          "_summary": {
+            "text": "通过ref可以拿到this.form，this.form包含了表单的验证、设值等常用操作。"
+          },
+          "_lines": [
+            {
+              "_intent": "table (14 rows): 方法 / 描述 / 类型 [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "validate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "submit"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "setFieldValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "setFields"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "setFieldsValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getFieldValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getFields"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getFieldsValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getFieldError"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getFieldsError"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "scrollToField"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/stipsan/scroll-into-view-if-needed/blob/master/src/index.ts#L16",
+                    "label": "ScrollIntoViewOptions"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getTouchedFields"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "resetFields"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "clearFields"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "validate 用法 [draft]",
+          "_title": {
+            "text": "validate 用法"
+          }
+        },
+        {
+          "_intent": "setFields 用法 [draft]",
+          "_title": {
+            "text": "setFields 用法"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "常见问题 [draft]",
+      "_title": {
+        "text": "常见问题"
+      },
+      "_lines": [
+        {
+          "_intent": "为什么无法调用 Modal 里嵌套的 Form 的方法？ [draft]",
+          "_title": {
+            "text": "为什么无法调用 Modal 里嵌套的 Form 的方法？"
+          },
+          "_summary": {
+            "text": "例如以下使用方式："
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "这是因为在调用 form 的方法时，Modal 还未挂载，Form 还未创建。 可以设置 Modal 的 mountOnEnter=false 。"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Form.Control [draft]",
+          "_title": {
+            "text": "Form.Control"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "非常非常极其不建议直接使用Form.Control. 在1.15.0及以上版本，组件库对 Form.Item 进行了较多功能扩展，简化了受控表单的写法，不再推荐直接使用Form.Control 组件（当然1.x兼容了此写法）。但升级到2.0后，Form.Control作为Form的一个内部组件，为了功能升级或bugfix，可能会进行一些改动，较少考虑到外部直接使用的场景，所以非常建议使用Form."
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "如何设置表单控件的默认值？（为什么给控件例如 Input ，直接设置 defaultValue 不生效） [draft]",
+          "_title": {
+            "text": "如何设置表单控件的默认值？（为什么给控件例如 Input ，直接设置 defaultValue 不生效）"
+          },
+          "_summary": {
+            "text": "在被 FormItem包裹，并且 Form.Item 设置了 field 属性的控件上，不要再设置 defaultValue和 value 属性。 可以在 Form.Item 上通过 initialValue 来设置默认值。"
+          }
+        },
+        {
+          "_intent": "Modal 里嵌套的 Form 时，无法调用 Form 的方法。 [draft]",
+          "_title": {
+            "text": "Modal 里嵌套的 Form 时，无法调用 Form 的方法。"
+          },
+          "_summary": {
+            "text": "Modal 默认在打开时挂载，所以页面加载完成时 Modal 还未挂载，Form 还未创建。 可以设置 Modal 的 mountOnEnter=false 。"
+          }
+        },
+        {
+          "_intent": "传了 initialValue 但不生效。 [draft]",
+          "_title": {
+            "text": "传了 initialValue 但不生效。"
+          },
+          "_summary": {
+            "text": "initialValue 解释为初始值，只会在表单挂载时生效，如果表单数据是异步加载的请用 setFieldValue / setFieldsValue / setFields 更新表单值。"
+          }
+        },
+        {
+          "_intent": "Form.Item 未收集到所包裹表单控件的值 / 未触发校验？ [draft]",
+          "_title": {
+            "text": "Form.Item 未收集到所包裹表单控件的值 / 未触发校验？"
+          },
+          "_summary": {
+            "text": "Form.Item 设置了 field 属性"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "唯一子节点"
+              }
+            },
+            {
+              "_text": {
+                "text": "Form.Item 所包裹的控件是挂载状态（即未被销毁）"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "某个表单元素填了值但已经被销毁，我如何获取这个值？ [draft]",
+          "_title": {
+            "text": "某个表单元素填了值但已经被销毁，我如何获取这个值？"
+          },
+          "_summary": {
+            "text": "**getFields**方法会获取所有在 Form 中注册过的字段的值，包括被创建后销毁的表单项。"
+          }
+        },
+        {
+          "_intent": "校验节流 或 异步校验？ [draft]",
+          "_title": {
+            "text": "校验节流 或 异步校验？"
+          },
+          "_summary": {
+            "text": "在 rules 中自定义 validator 方法，并返回一个 Promise 即可实现表单的异步校验。 节流如果用 lodash.debounce 不生效，建议使用 debounce.promise ，它返回的是一个 promise。 官网示例"
+          }
+        },
+        {
+          "_intent": "Form 中对 Checkbox/Switch/Upload 设置值不生效 [draft]",
+          "_title": {
+            "text": "Form 中对 Checkbox/Switch/Upload 设置值不生效"
+          },
+          "_summary": {
+            "text": "在 Checkbox/Switch 对应的 Form.Item 上设置 triggerPropName=checked 在 Upload 对应的 Form.Item 上设置 triggerPropName=fileList 其他组件类似"
+          }
+        },
+        {
+          "_intent": "Form 内 Input 出现浅蓝色背景色（Chrome 浏览器）？ [draft]",
+          "_title": {
+            "text": "Form 内 Input 出现浅蓝色背景色（Chrome 浏览器）？"
+          },
+          "_summary": {
+            "text": "蓝色背景色是 Chrome 浏览器的自动填充样式，关闭 form 的自动填充即可。"
+          }
+        },
+        {
+          "_intent": "如何关闭自动填充？ [draft]",
+          "_title": {
+            "text": "如何关闭自动填充？"
+          },
+          "_summary": {
+            "text": "Form 组件的原生属性，设置 autoComplete=off 即可。"
+          }
+        },
+        {
+          "_intent": "点击 label 会触发对应表单控件的行为改变？如：switch 切换，checkbox 选中， input 聚焦 [draft]",
+          "_title": {
+            "text": "点击 label 会触发对应表单控件的行为改变？如：switch 切换，checkbox 选中， input 聚焦"
+          },
+          "_summary": {
+            "text": "https://www.runoob.com/tags/tag-label.html 标签定义及使用说明 label 标签为 i"
+          }
+        },
+        {
+          "_intent": "对错误信息的展示进行高级定制 [draft]",
+          "_title": {
+            "text": "对错误信息的展示进行高级定制"
+          },
+          "_summary": {
+            "text": "https://codepen.io/yinkaihui/pen/GRwRQao?editors=1011"
+          }
+        },
+        {
+          "_intent": "DatePicker.WeekPicker 传值解析不了 [draft]",
+          "_title": {
+            "text": "DatePicker.WeekPicker 传值解析不了"
+          },
+          "_summary": {
+            "text": "DatePicker.QuarterPicker 同理 给 Form.Item 加上 getValueFromEvent={(v"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95",
+                "label": "基础用法"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%A1%A8%E5%8D%95%E5%B8%83%E5%B1%80",
+                "label": "表单布局"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E5%8F%97%E6%8E%A7%E8%A1%A8%E5%8D%95",
+                "label": "受控表单"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%A1%A8%E5%8D%95%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8",
+                "label": "表单方法调用"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E6%8E%A7%E5%88%B6%E8%A1%A8%E5%8D%95%E9%A1%B9%E9%94%99%E8%AF%AF%E7%8A%B6%E6%80%81",
+                "label": "控制表单项错误状态"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E5%A4%8D%E6%9D%82%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE",
+                "label": "复杂类型的数据"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%A1%A8%E5%8D%95%E6%8E%A7%E4%BB%B6%E5%B5%8C%E5%A5%97",
+                "label": "表单控件嵌套"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%A1%A8%E5%8D%95%E6%8E%A7%E4%BB%B6%E8%81%94%E5%8A%A8",
+                "label": "表单控件联动"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E5%8A%A8%E6%80%81%E5%A2%9E%E5%87%8F%E8%A1%A8%E5%8D%95%E9%A1%B9",
+                "label": "动态增减表单项"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E5%8A%A8%E6%80%81%E5%A2%9E%E5%87%8F%E5%B5%8C%E5%A5%97%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%A1%A8%E5%8D%95%E9%A1%B9",
+                "label": "动态增减嵌套类型的表单项"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%A8%E5%8D%95%E6%8E%A7%E4%BB%B6",
+                "label": "自定义表单控件"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E5%A4%84%E7%90%86%E8%A1%A8%E5%8D%95%E9%A1%B9%E7%9A%84%E5%80%BC",
+                "label": "处理表单项的值"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%8D%95",
+                "label": "注册表单"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E5%85%A8%E5%B1%80%E7%A6%81%E7%94%A8",
+                "label": "全局禁用"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E4%B8%8D%E5%90%8C%E5%B0%BA%E5%AF%B8",
+                "label": "不同尺寸"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C%E7%8A%B6%E6%80%81",
+                "label": "自定义表单校验状态"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C",
+                "label": "表单校验"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%A1%A8%E5%8D%95%E5%BC%82%E6%AD%A5%E6%A0%A1%E9%AA%8C",
+                "label": "表单异步校验"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C%E4%BF%A1%E6%81%AF%E6%A8%A1%E6%9D%BF",
+                "label": "表单校验信息模板"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E6%BB%9A%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9A%E8%A1%A8%E5%8D%95%E5%AD%97%E6%AE%B5",
+                "label": "滚动到指定表单字段"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C%E5%A4%B1%E8%B4%A5%E4%B8%8D%E9%98%BB%E5%A1%9E%E6%8F%90%E4%BA%A4",
+                "label": "表单校验失败不阻塞提交"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E5%A4%9A%E8%A1%A8%E5%8D%95%E8%81%94%E5%8A%A8",
+                "label": "多表单联动"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#useWatch",
+                "label": "useWatch"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%8D%95%E4%B8%8A%E4%B8%8B%E6%96%87",
+                "label": "获取表单上下文"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#useFormState",
+                "label": "useFormState"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#api",
+                "label": "API"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://arco.design/react/components/form#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98",
+                "label": "常见问题"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "anchor collapse button"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "label": "button to open theme box"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

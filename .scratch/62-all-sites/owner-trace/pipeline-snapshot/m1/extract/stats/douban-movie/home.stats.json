@@ -1,0 +1,60 @@
+{
+  "site": "douban-movie",
+  "page": "home",
+  "url": "https://movie.douban.com/",
+  "title": "豆瓣电影",
+  "sourceNodes": 2147,
+  "counts": {
+    "storylines": 10,
+    "items": 64,
+    "actions": 115,
+    "exposes": 0,
+    "images": 1,
+    "facts": 6,
+    "tables": 0,
+    "lists": 5,
+    "choiceSets": 0,
+    "inputs": 0,
+    "dupeText": 7,
+    "capHits": [
+      "itemsPerCollection"
+    ]
+  },
+  "storylines": 10,
+  "chrome": [],
+  "unmapped": [
+    {
+      "kind": "list-item-multi-action",
+      "role": "listitem",
+      "count": 39,
+      "examples": [
+        "野山 7.9 选座购票",
+        "电梯上 8.0 选座购票",
+        "丝路花雨 9.0 选座购票",
+        "人生 8.0 选座购票",
+        "杀死比尔：血色全传 8.7 选座购票"
+      ]
+    },
+    {
+      "kind": "list-item-unlabeled",
+      "role": "listitem",
+      "count": 1,
+      "examples": []
+    },
+    {
+      "kind": "table-without-headers",
+      "role": "table",
+      "count": 1,
+      "examples": [
+        "1 | 罗斯"
+      ]
+    },
+    {
+      "kind": "embedded-media",
+      "role": "Iframe",
+      "count": 1,
+      "examples": []
+    }
+  ],
+  "fieldsDrafted": []
+}

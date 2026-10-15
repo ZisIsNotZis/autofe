@@ -1,0 +1,2398 @@
+{
+ "_intent": "小米商城「全部商品分类」目录页：10 大品类分区下共 150 个分类/在售机型入口，每项可进入对应检索或购买页。页面 H1 来源：dom.html 无 <h1>，nodes.json 中「全部商品分类」为可见文本（导航标题），故 `_title` 用该可见文本（轮 27b 修正：原为文档 `<title>`「全部商品分类-小米商城」）。",
+ "_key": "mi-category-directory",
+ "_title": {
+  "text": "全部商品分类"
+ },
+ "_action": {
+  "verb": "navigate",
+  "to": "https://www.mi.com/shop/category/list"
+ },
+ "phones": {
+  "_intent": "手机分类入口：按系列进入对应商品列表或直达在售机型",
+  "_title": {
+   "text": "手机"
+  },
+  "_action": {
+   "verb": "navigate",
+   "to": "https://www.mi.com/search?keyword=%E6%89%8B%E6%9C%BA"
+  },
+  "_items": [
+   {
+    "_key": "kw-xiaomi数字系列",
+    "_name": {
+     "text": "Xiaomi 数字旗舰"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=xiaomi%E6%95%B0%E5%AD%97%E7%B3%BB%E5%88%97"
+    }
+   },
+   {
+    "_key": "kw-xiaomimix系列",
+    "_name": {
+     "text": "Xiaomi MIX系列"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=xiaomimix%E7%B3%BB%E5%88%97"
+    }
+   },
+   {
+    "_key": "kw-xiaomicivi系列",
+    "_name": {
+     "text": "Xiaomi Civi系列"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=xiaomicivi%E7%B3%BB%E5%88%97"
+    }
+   },
+   {
+    "_key": "kw-redmiK系列",
+    "_name": {
+     "text": "REDMI K系列"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=redmiK%E7%B3%BB%E5%88%97"
+    }
+   },
+   {
+    "_key": "kw-Redmi-Turbo系列",
+    "_name": {
+     "text": "REDMI Turbo系列"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=Redmi%20Turbo%E7%B3%BB%E5%88%97"
+    }
+   },
+   {
+    "_key": "kw-redminote系列",
+    "_name": {
+     "text": "REDMI Note系列"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=redminote%E7%B3%BB%E5%88%97"
+    }
+   },
+   {
+    "_key": "kw-redmi数字系列",
+    "_name": {
+     "text": "REDMI 数字系列"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=redmi%E6%95%B0%E5%AD%97%E7%B3%BB%E5%88%97"
+    }
+   }
+  ]
+ },
+ "tv": {
+  "_intent": "电视分类入口：在售机型直达与按定位分类（旗舰/巨幕/游戏/性价比）",
+  "_title": {
+   "text": "电视"
+  },
+  "_action": {
+   "verb": "navigate",
+   "to": "https://www.mi.com/search?keyword=%E7%94%B5%E8%A7%86"
+  },
+  "_items": [
+   {
+    "_key": "pid-10050236",
+    "_name": {
+     "text": "S Pro RGB-Mini LED"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=10050236"
+    }
+   },
+   {
+    "_key": "pid-10050173",
+    "_name": {
+     "text": "S Mini LED 2026"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=10050173"
+    }
+   },
+   {
+    "_key": "pid-10050131",
+    "_name": {
+     "text": "小米电视SPro MiniLED2026"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=10050131"
+    }
+   },
+   {
+    "_key": "pid-10050050",
+    "_name": {
+     "text": "旗舰系列-S Pro Mini LED"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=10050050"
+    }
+   },
+   {
+    "_key": "pid-10050072",
+    "_name": {
+     "text": "巨幕影院-REDMI MAX"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=10050072"
+    }
+   },
+   {
+    "_key": "pid-10050135",
+    "_name": {
+     "text": "游戏高刷-REDMI 电视 X 2026"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=10050135"
+    }
+   },
+   {
+    "_key": "pid-10050074",
+    "_name": {
+     "text": "性价比爆款-REDMI A Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=10050074"
+    }
+   },
+   {
+    "_key": "pid-10050071",
+    "_name": {
+     "text": "性价比爆款-REDMI A 2025"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=10050071"
+    }
+   }
+  ]
+ },
+ "appliances": {
+  "_intent": "家电分类入口：空调、冰箱、洗衣机、厨电与环境电器等类目",
+  "_title": {
+   "text": "家电"
+  },
+  "_action": {
+   "verb": "navigate",
+   "to": "https://www.mi.com/search?keyword=%E5%AE%B6%E7%94%B5"
+  },
+  "_items": [
+   {
+    "_key": "kw-壁挂空调",
+    "_name": {
+     "text": "壁挂空调"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%A3%81%E6%8C%82%E7%A9%BA%E8%B0%83"
+    }
+   },
+   {
+    "_key": "kw-立式空调",
+    "_name": {
+     "text": "立式空调"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%AB%8B%E5%BC%8F%E7%A9%BA%E8%B0%83"
+    }
+   },
+   {
+    "_key": "kw-中央空调",
+    "_name": {
+     "text": "中央空调Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E4%B8%AD%E5%A4%AE%E7%A9%BA%E8%B0%83"
+    }
+   },
+   {
+    "_key": "kw-冰箱",
+    "_name": {
+     "text": "冰箱"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%86%B0%E7%AE%B1"
+    }
+   },
+   {
+    "_key": "kw-滚筒洗衣机",
+    "_name": {
+     "text": "滚筒洗衣机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%BB%9A%E7%AD%92%E6%B4%97%E8%A1%A3%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-波轮洗衣机",
+    "_name": {
+     "text": "波轮洗衣机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%B3%A2%E8%BD%AE%E6%B4%97%E8%A1%A3%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-电暖器",
+    "_name": {
+     "text": "电暖器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%94%B5%E6%9A%96%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-除湿机",
+    "_name": {
+     "text": "除湿机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E9%99%A4%E6%B9%BF%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-洗地机",
+    "_name": {
+     "text": "洗地机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%B4%97%E5%9C%B0%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-净水器",
+    "_name": {
+     "text": "净水器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%87%80%E6%B0%B4%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-微波炉-电烤箱",
+    "_name": {
+     "text": "微蒸烤"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%BE%AE%E6%B3%A2%E7%82%89%20%20%E7%94%B5%E7%83%A4%E7%AE%B1"
+    }
+   },
+   {
+    "_key": "kw-烟灶",
+    "_name": {
+     "text": "烟灶"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%83%9F%E7%81%B6"
+    }
+   },
+   {
+    "_key": "kw-洗碗机",
+    "_name": {
+     "text": "洗碗机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%B4%97%E7%A2%97%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-扫地机器人",
+    "_name": {
+     "text": "扫地机器人"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%89%AB%E5%9C%B0%E6%9C%BA%E5%99%A8%E4%BA%BA"
+    }
+   },
+   {
+    "_key": "kw-吸尘器",
+    "_name": {
+     "text": "吸尘器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%90%B8%E5%B0%98%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-加湿器",
+    "_name": {
+     "text": "加湿器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%8A%A0%E6%B9%BF%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-空气净化器",
+    "_name": {
+     "text": "空气净化器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%A9%BA%E6%B0%94%E5%87%80%E5%8C%96%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-电饭煲-电压力锅",
+    "_name": {
+     "text": "电饭煲"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%94%B5%E9%A5%AD%E7%85%B2%20%E7%94%B5%E5%8E%8B%E5%8A%9B%E9%94%85"
+    }
+   },
+   {
+    "_key": "kw-电磁炉",
+    "_name": {
+     "text": "电磁炉"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%94%B5%E7%A3%81%E7%82%89"
+    }
+   },
+   {
+    "_key": "kw-电水壶-电煮壶-滤水壶",
+    "_name": {
+     "text": "水壶"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%94%B5%E6%B0%B4%E5%A3%B6%20%E7%94%B5%E7%85%AE%E5%A3%B6%20%E6%BB%A4%E6%B0%B4%E5%A3%B6"
+    }
+   },
+   {
+    "_key": "kw-落地风扇",
+    "_name": {
+     "text": "落地风扇"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E8%90%BD%E5%9C%B0%E9%A3%8E%E6%89%87"
+    }
+   },
+   {
+    "_key": "kw-投影仪",
+    "_name": {
+     "text": "投影仪"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%8A%95%E5%BD%B1%E4%BB%AA"
+    }
+   },
+   {
+    "_key": "kw-灯具",
+    "_name": {
+     "text": "灯具"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%81%AF%E5%85%B7"
+    }
+   },
+   {
+    "_key": "kw-除螨仪",
+    "_name": {
+     "text": "除螨仪"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E9%99%A4%E8%9E%A8%E4%BB%AA"
+    }
+   }
+  ]
+ },
+ "computing": {
+  "_intent": "笔记本、平板与显示器分类入口：在售机型直达与类目检索",
+  "_title": {
+   "text": "笔记本 平板 显示器"
+  },
+  "_items": [
+   {
+    "_key": "pid-25445",
+    "_name": {
+     "text": "Xiaomi Pad 9 Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=25445"
+    }
+   },
+   {
+    "_key": "pid-25446",
+    "_name": {
+     "text": "Xiaomi Pad 9"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=25446"
+    }
+   },
+   {
+    "_key": "pid-25324",
+    "_name": {
+     "text": "Xiaomi Pad 9 Pro Max"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=25324"
+    }
+   },
+   {
+    "_key": "pid-24037",
+    "_name": {
+     "text": "REDMIBookPro 16 2026"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=24037"
+    }
+   },
+   {
+    "_key": "pid-24035",
+    "_name": {
+     "text": "REDMIBookPro 14 2026"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=24035"
+    }
+   },
+   {
+    "_key": "pid-23472",
+    "_name": {
+     "text": "Xiaomi Book Pro 14"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=23472"
+    }
+   },
+   {
+    "_key": "pid-23974",
+    "_name": {
+     "text": "REDMI K Pad 2"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=23974"
+    }
+   },
+   {
+    "_key": "pid-24235",
+    "_name": {
+     "text": "REDMI Pad 2 SE"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=24235"
+    }
+   },
+   {
+    "_key": "pid-22535",
+    "_name": {
+     "text": "REDMI Pad 2 Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=22535"
+    }
+   },
+   {
+    "_key": "pid-24282",
+    "_name": {
+     "text": "REDMI Book 14 2026"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=24282"
+    }
+   },
+   {
+    "_key": "pid-24038",
+    "_name": {
+     "text": "REDMI Book 16 2026"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=24038"
+    }
+   },
+   {
+    "_key": "pid-21871",
+    "_name": {
+     "text": "Xiaomi Pad 8 Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21871"
+    }
+   },
+   {
+    "_key": "pid-21872",
+    "_name": {
+     "text": "Xiaomi Pad 8"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21872"
+    }
+   },
+   {
+    "_key": "pid-21591",
+    "_name": {
+     "text": "REDMI Pad 2"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21591"
+    }
+   },
+   {
+    "_key": "pid-10050240",
+    "_name": {
+     "text": "显示器 A27U 2027系列"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=10050240"
+    }
+   },
+   {
+    "_key": "kw-电竞显示器",
+    "_name": {
+     "text": "游戏电竞显示器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%94%B5%E7%AB%9E%E6%98%BE%E7%A4%BA%E5%99%A8"
+    }
+   },
+   {
+    "_key": "pid-21413",
+    "_name": {
+     "text": "REDMI K Pad"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21413"
+    }
+   },
+   {
+    "_key": "pid-19618",
+    "_name": {
+     "text": "REDMI 显示器 G34WQ"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=19618"
+    }
+   },
+   {
+    "_key": "pid-21406",
+    "_name": {
+     "text": "Xiaomi Pad 7S Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21406"
+    }
+   },
+   {
+    "_key": "pid-21130",
+    "_name": {
+     "text": "Xiaomi Pad 7 Ultra"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21130"
+    }
+   },
+   {
+    "_key": "pid-18544",
+    "_name": {
+     "text": "Redmi 显示器A27 IPS版"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=18544"
+    }
+   },
+   {
+    "_key": "pid-20598",
+    "_name": {
+     "text": "Xiaomi Pad 7 Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=20598"
+    }
+   },
+   {
+    "_key": "pid-20593",
+    "_name": {
+     "text": "Xiaomi Pad 7"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=20593"
+    }
+   },
+   {
+    "_key": "kw-办公显示器",
+    "_name": {
+     "text": "办公娱乐显示器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%8A%9E%E5%85%AC%E6%98%BE%E7%A4%BA%E5%99%A8"
+    }
+   }
+  ]
+ },
+ "wearables": {
+  "_intent": "出行与穿戴分类入口：手环、手表、眼镜等在售机型",
+  "_title": {
+   "text": "出行 穿戴"
+  },
+  "_items": [
+   {
+    "_key": "pid-25307",
+    "_name": {
+     "text": "小米手环11 NFC版"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=25307"
+    }
+   },
+   {
+    "_key": "pid-25306",
+    "_name": {
+     "text": "小米手环11 标准版"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=25306"
+    }
+   },
+   {
+    "_key": "pid-23408",
+    "_name": {
+     "text": "Xiaomi Watch S5"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=23408"
+    }
+   },
+   {
+    "_key": "pid-22418",
+    "_name": {
+     "text": "Xiaomi Watch 5"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=22418"
+    }
+   },
+   {
+    "_key": "pid-22153",
+    "_name": {
+     "text": "REDMI Watch 6"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=22153"
+    }
+   },
+   {
+    "_key": "pid-21399",
+    "_name": {
+     "text": "小米AI眼镜"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21399"
+    }
+   },
+   {
+    "_key": "pid-21405",
+    "_name": {
+     "text": "Xiaomi Watch S4 41mm"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21405"
+    }
+   },
+   {
+    "_key": "pid-24629",
+    "_name": {
+     "text": "小米手环10 Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=24629"
+    }
+   },
+   {
+    "_key": "pid-20581",
+    "_name": {
+     "text": "REDMI 手环 3"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=20581"
+    }
+   },
+   {
+    "_key": "pid-25161",
+    "_name": {
+     "text": "REDMI Watch 6 活力版"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=25161"
+    }
+   },
+   {
+    "_key": "kw-眼镜",
+    "_name": {
+     "text": "眼镜"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%9C%BC%E9%95%9C"
+    }
+   }
+  ]
+ },
+ "audio": {
+  "_intent": "耳机与音箱分类入口：真无线、头戴、骨传导、音箱与智能家庭屏",
+  "_title": {
+   "text": "耳机 音箱"
+  },
+  "_items": [
+   {
+    "_key": "pid-24645",
+    "_name": {
+     "text": "REDMI 头戴降噪耳机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=24645"
+    }
+   },
+   {
+    "_key": "pid-24647",
+    "_name": {
+     "text": "Xiaomi 耳夹式耳机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=24647"
+    }
+   },
+   {
+    "_key": "pid-23966",
+    "_name": {
+     "text": "REDMI Buds 8"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=23966"
+    }
+   },
+   {
+    "_key": "pid-23261",
+    "_name": {
+     "text": "REDMI Buds 8 活力版"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=23261"
+    }
+   },
+   {
+    "_key": "pid-23260",
+    "_name": {
+     "text": "REDMI Buds 8 青春版"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=23260"
+    }
+   },
+   {
+    "_key": "pid-22137",
+    "_name": {
+     "text": "REDMI Buds 8 Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=22137"
+    }
+   },
+   {
+    "_key": "pid-22419",
+    "_name": {
+     "text": "Xiaomi Buds 6"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=22419"
+    }
+   },
+   {
+    "_key": "pid-21588",
+    "_name": {
+     "text": "Xiaomi 骨传导耳机2"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21588"
+    }
+   },
+   {
+    "_key": "pid-20978",
+    "_name": {
+     "text": "Xiaomi Buds 5 Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=20978"
+    }
+   },
+   {
+    "_key": "pid-21418",
+    "_name": {
+     "text": "Xiaomi 开放式耳机 Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21418"
+    }
+   },
+   {
+    "_key": "pid-20426",
+    "_name": {
+     "text": "REDMI Buds 6"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=20426"
+    }
+   },
+   {
+    "_key": "pid-21120",
+    "_name": {
+     "text": "REDMI Buds 7S"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=21120"
+    }
+   },
+   {
+    "_key": "pid-2230001744",
+    "_name": {
+     "text": "REDMI Buds 6 活力版"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=2230001744"
+    }
+   },
+   {
+    "_key": "pid-10015",
+    "_name": {
+     "text": "小米小爱音箱 Play"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=10015"
+    }
+   },
+   {
+    "_key": "kw-Xiaomi-蓝牙音箱-Mini",
+    "_name": {
+     "text": "Xiaomi 蓝牙音箱 Mini"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/xiaomi-bluetooth-speaker-mini"
+    }
+   },
+   {
+    "_key": "pid-2230003993",
+    "_name": {
+     "text": "Xiaomi智能音箱"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=2230003993"
+    }
+   },
+   {
+    "_key": "kw-Xiaomi智能家庭屏Pro-8",
+    "_name": {
+     "text": "Xiaomi智能家庭屏Pro 8"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/xiaomi-smartdisplay-pro-8"
+    }
+   },
+   {
+    "_key": "pid-16311",
+    "_name": {
+     "text": "Xiaomi智能家庭屏 6"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=16311"
+    }
+   },
+   {
+    "_key": "pid-15858",
+    "_name": {
+     "text": "Xiaomi智能家庭屏 10"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=15858"
+    }
+   },
+   {
+    "_key": "pid-2230003632",
+    "_name": {
+     "text": "Xiaomi 智能音箱 Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=2230003632"
+    }
+   },
+   {
+    "_key": "pid-14596",
+    "_name": {
+     "text": "小爱音箱Play 增强版"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=14596"
+    }
+   },
+   {
+    "_key": "pid-20760",
+    "_name": {
+     "text": "Xiaomi 智能家庭屏 Mini"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=20760"
+    }
+   },
+   {
+    "_key": "pid-16800",
+    "_name": {
+     "text": "Xiaomi Sound Pro"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=16800"
+    }
+   },
+   {
+    "_key": "pid-2230005417",
+    "_name": {
+     "text": "Xiaomi Sound 2 Max"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=2230005417"
+    }
+   }
+  ]
+ },
+ "health-kids": {
+  "_intent": "健康与儿童分类入口：个护、体脂秤、健身器材与儿童用品",
+  "_title": {
+   "text": "健康 儿童"
+  },
+  "_items": [
+   {
+    "_key": "kw-洗手机",
+    "_name": {
+     "text": "洗手机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%B4%97%E6%89%8B%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-剃须刀",
+    "_name": {
+     "text": "剃须刀"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%89%83%E9%A1%BB%E5%88%80"
+    }
+   },
+   {
+    "_key": "kw-米家修剪器",
+    "_name": {
+     "text": "修剪器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%B1%B3%E5%AE%B6%E4%BF%AE%E5%89%AA%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-牙刷",
+    "_name": {
+     "text": "牙刷"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%89%99%E5%88%B7"
+    }
+   },
+   {
+    "_key": "kw-吹风机",
+    "_name": {
+     "text": "吹风机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%90%B9%E9%A3%8E%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-体重秤",
+    "_name": {
+     "text": "体重秤"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E4%BD%93%E9%87%8D%E7%A7%A4"
+    }
+   },
+   {
+    "_key": "kw-体脂秤",
+    "_name": {
+     "text": "体脂秤"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E4%BD%93%E8%84%82%E7%A7%A4"
+    }
+   },
+   {
+    "_key": "kw-跑步机",
+    "_name": {
+     "text": "米家跑步机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E8%B7%91%E6%AD%A5%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "pid-18543",
+    "_name": {
+     "text": "米家动感单车"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/buy?product_id=18543"
+    }
+   },
+   {
+    "_key": "kw-米家走步机",
+    "_name": {
+     "text": "走步机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%B1%B3%E5%AE%B6%E8%B5%B0%E6%AD%A5%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-益智积木",
+    "_name": {
+     "text": "益智积木"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%9B%8A%E6%99%BA%E7%A7%AF%E6%9C%A8"
+    }
+   },
+   {
+    "_key": "kw-儿童手表",
+    "_name": {
+     "text": "儿童手表"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%84%BF%E7%AB%A5%E6%89%8B%E8%A1%A8"
+    }
+   },
+   {
+    "_key": "kw-儿童滑板车",
+    "_name": {
+     "text": "儿童滑板车"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%84%BF%E7%AB%A5%E6%BB%91%E6%9D%BF%E8%BD%A6"
+    }
+   },
+   {
+    "_key": "kw-折叠婴儿推车",
+    "_name": {
+     "text": "婴儿推车"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%8A%98%E5%8F%A0%E5%A9%B4%E5%84%BF%E6%8E%A8%E8%BD%A6"
+    }
+   },
+   {
+    "_key": "kw-婴儿理发器",
+    "_name": {
+     "text": "理发器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%A9%B4%E5%84%BF%E7%90%86%E5%8F%91%E5%99%A8"
+    }
+   }
+  ]
+ },
+ "lifestyle": {
+  "_intent": "生活与箱包分类入口：包袋、服饰、床品与日常杂货",
+  "_title": {
+   "text": "生活 箱包"
+  },
+  "_items": [
+   {
+    "_key": "kw-小米小背包",
+    "_name": {
+     "text": "小背包"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E5%B0%8F%E8%83%8C%E5%8C%85"
+    }
+   },
+   {
+    "_key": "kw-双肩包",
+    "_name": {
+     "text": "双肩包"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%8F%8C%E8%82%A9%E5%8C%85"
+    }
+   },
+   {
+    "_key": "kw-胸包",
+    "_name": {
+     "text": "胸包"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E8%83%B8%E5%8C%85"
+    }
+   },
+   {
+    "_key": "kw-旅行箱",
+    "_name": {
+     "text": "旅行箱"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%97%85%E8%A1%8C%E7%AE%B1"
+    }
+   },
+   {
+    "_key": "kw-收纳袋",
+    "_name": {
+     "text": "收纳袋"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%94%B6%E7%BA%B3%E8%A2%8B"
+    }
+   },
+   {
+    "_key": "kw-运动鞋",
+    "_name": {
+     "text": "运动鞋"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E8%BF%90%E5%8A%A8%E9%9E%8B"
+    }
+   },
+   {
+    "_key": "kw-衣服",
+    "_name": {
+     "text": "服饰"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E8%A1%A3%E6%9C%8D"
+    }
+   },
+   {
+    "_key": "kw-床垫",
+    "_name": {
+     "text": "床垫"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%BA%8A%E5%9E%AB"
+    }
+   },
+   {
+    "_key": "kw-枕头",
+    "_name": {
+     "text": "枕头"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%9E%95%E5%A4%B4"
+    }
+   },
+   {
+    "_key": "kw-螺丝刀",
+    "_name": {
+     "text": "螺丝刀"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E8%9E%BA%E4%B8%9D%E5%88%80"
+    }
+   },
+   {
+    "_key": "kw-水杯",
+    "_name": {
+     "text": "水杯"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%B0%B4%E6%9D%AF"
+    }
+   },
+   {
+    "_key": "kw-驱蚊器",
+    "_name": {
+     "text": "驱蚊器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E9%A9%B1%E8%9A%8A%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-毛巾",
+    "_name": {
+     "text": "毛巾/浴巾"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%AF%9B%E5%B7%BE"
+    }
+   },
+   {
+    "_key": "kw-笔",
+    "_name": {
+     "text": "笔"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%AC%94"
+    }
+   }
+  ]
+ },
+ "smart-home": {
+  "_intent": "智能家庭与路由器分类入口：路由、摄像、门锁、打印与K歌麦克风",
+  "_title": {
+   "text": "智能 路由器"
+  },
+  "_items": [
+   {
+    "_key": "kw-MIJIA-K歌麦克风",
+    "_name": {
+     "text": "MIJIA K歌麦克风"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/mjmike"
+    }
+   },
+   {
+    "_key": "kw-打印机",
+    "_name": {
+     "text": "打印机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%89%93%E5%8D%B0%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-小米路由器",
+    "_name": {
+     "text": "小米路由器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-红米路由器",
+    "_name": {
+     "text": "REDMI路由器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%BA%A2%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-网关",
+    "_name": {
+     "text": "智能家庭"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%BD%91%E5%85%B3"
+    }
+   },
+   {
+    "_key": "kw-对讲机",
+    "_name": {
+     "text": "对讲机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%AF%B9%E8%AE%B2%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-摄像机",
+    "_name": {
+     "text": "摄像机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%91%84%E5%83%8F%E6%9C%BA"
+    }
+   },
+   {
+    "_key": "kw-智能门锁",
+    "_name": {
+     "text": "智能门锁"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%99%BA%E8%83%BD%E9%97%A8%E9%94%81"
+    }
+   },
+   {
+    "_key": "kw-门铃",
+    "_name": {
+     "text": "门铃/猫眼"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E9%97%A8%E9%93%83"
+    }
+   },
+   {
+    "_key": "kw-小爱音箱",
+    "_name": {
+     "text": "小爱音箱"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%B0%8F%E7%88%B1%E9%9F%B3%E7%AE%B1"
+    }
+   },
+   {
+    "_key": "kw-家庭屏",
+    "_name": {
+     "text": "家庭屏"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%AE%B6%E5%BA%AD%E5%B1%8F"
+    }
+   }
+  ]
+ },
+ "power": {
+  "_intent": "电源与配件分类入口：充电、线缆、电池与手机平板配件",
+  "_title": {
+   "text": "电源 配件"
+  },
+  "_items": [
+   {
+    "_key": "kw-插排",
+    "_name": {
+     "text": "插座插排"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%8F%92%E6%8E%92"
+    }
+   },
+   {
+    "_key": "kw-移动电源",
+    "_name": {
+     "text": "移动电源"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%A7%BB%E5%8A%A8%E7%94%B5%E6%BA%90"
+    }
+   },
+   {
+    "_key": "kw-数据线",
+    "_name": {
+     "text": "数据线"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%95%B0%E6%8D%AE%E7%BA%BF"
+    }
+   },
+   {
+    "_key": "kw-腕带",
+    "_name": {
+     "text": "穿戴配件"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E8%85%95%E5%B8%A6"
+    }
+   },
+   {
+    "_key": "kw-平板配件",
+    "_name": {
+     "text": "平板配件"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%B9%B3%E6%9D%BF%E9%85%8D%E4%BB%B6"
+    }
+   },
+   {
+    "_key": "kw-充电器",
+    "_name": {
+     "text": "充电器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%85%85%E7%94%B5%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-电池",
+    "_name": {
+     "text": "电池"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E7%94%B5%E6%B1%A0"
+    }
+   },
+   {
+    "_key": "kw-自拍杆",
+    "_name": {
+     "text": "自拍杆"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E8%87%AA%E6%8B%8D%E6%9D%86"
+    }
+   },
+   {
+    "_key": "kw-手机壳",
+    "_name": {
+     "text": "手机壳"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%89%8B%E6%9C%BA%E5%A3%B3"
+    }
+   },
+   {
+    "_key": "kw-手机贴膜",
+    "_name": {
+     "text": "手机贴膜"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%89%8B%E6%9C%BA%E8%B4%B4%E8%86%9C"
+    }
+   },
+   {
+    "_key": "kw-无线充电器",
+    "_name": {
+     "text": "无线充电器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E6%97%A0%E7%BA%BF%E5%85%85%E7%94%B5%E5%99%A8"
+    }
+   },
+   {
+    "_key": "kw-其他电源配件",
+    "_name": {
+     "text": "其他配件"
+    },
+    "_action": {
+     "verb": "navigate",
+     "to": "https://www.mi.com/shop/search?keyword=%E5%85%B6%E4%BB%96%E7%94%B5%E6%BA%90%E9%85%8D%E4%BB%B6"
+    }
+   }
+  ]
+ },
+ "footer": {
+  "_intent": "捕获且可见的服务、联系、法律与站点说明入口，保留原文目标；不重建未知 banner 点击或 lazy 营销内容。",
+  "_items": [
+   {
+    "_title": {
+     "text": "预约维修服务"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "预约维修服务",
+     "to": "https://www.mi.com/service/aftersale/front"
+    }
+   },
+   {
+    "_title": {
+     "text": "7天无理由退货"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "7天无理由退货",
+     "to": "https://www.mi.com/service/exchange#back"
+    }
+   },
+   {
+    "_title": {
+     "text": "15天免费换货"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "15天免费换货",
+     "to": "https://www.mi.com/service/exchange#back"
+    }
+   },
+   {
+    "_title": {
+     "text": "满69包邮"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "满69包邮",
+     "to": "https://www.mi.com/service/buy/Postal%20policy"
+    }
+   },
+   {
+    "_title": {
+     "text": "1100余家售后网点"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "1100余家售后网点",
+     "to": "https://www.mi.com/service/sitelist"
+    }
+   },
+   {
+    "_title": {
+     "text": "手机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "手机",
+     "to": "https://www.mi.com/search?keyword=%E6%89%8B%E6%9C%BA"
+    }
+   },
+   {
+    "_title": {
+     "text": "电视"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "电视",
+     "to": "https://www.mi.com/search?keyword=%E7%94%B5%E8%A7%86"
+    }
+   },
+   {
+    "_title": {
+     "text": "笔记本"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "笔记本",
+     "to": "https://www.mi.com/search?keyword=%E7%AC%94%E8%AE%B0%E6%9C%AC"
+    }
+   },
+   {
+    "_title": {
+     "text": "平板"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "平板",
+     "to": "https://www.mi.com/search?keyword=%E5%B9%B3%E6%9D%BF"
+    }
+   },
+   {
+    "_title": {
+     "text": "穿戴"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "穿戴",
+     "to": "https://www.mi.com/search?keyword=%E6%99%BA%E8%83%BD%E7%A9%BF%E6%88%B4"
+    }
+   },
+   {
+    "_title": {
+     "text": "耳机"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "耳机",
+     "to": "https://www.mi.com/search?keyword=%E8%80%B3%E6%9C%BA"
+    }
+   },
+   {
+    "_title": {
+     "text": "家电"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "家电",
+     "to": "https://www.mi.com/search?keyword=%E5%AE%B6%E7%94%B5"
+    }
+   },
+   {
+    "_title": {
+     "text": "路由器"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "路由器",
+     "to": "https://www.mi.com/search?keyword=%E8%B7%AF%E7%94%B1%E5%99%A8"
+    }
+   },
+   {
+    "_title": {
+     "text": "音箱"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "音箱",
+     "to": "https://www.mi.com/search?keyword=%E9%9F%B3%E7%AE%B1"
+    }
+   },
+   {
+    "_title": {
+     "text": "配件"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "配件",
+     "to": "https://www.mi.com/search?keyword=%E9%85%8D%E4%BB%B6"
+    }
+   },
+   {
+    "_title": {
+     "text": "申请售后"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "申请售后",
+     "to": "https://www.mi.com/service/aftersale/front"
+    }
+   },
+   {
+    "_title": {
+     "text": "服务政策"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "服务政策",
+     "to": "https://www.mi.com/service/exchange"
+    }
+   },
+   {
+    "_title": {
+     "text": "服务价格"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "服务价格",
+     "to": "https://m.mi.com/aftersale/new-service#/pages/service-charge/product-search/index"
+    }
+   },
+   {
+    "_title": {
+     "text": "订单查询"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "订单查询",
+     "to": "https://www.mi.com/user/orderList"
+    }
+   },
+   {
+    "_title": {
+     "text": "以旧换新"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "以旧换新",
+     "to": "https://www.mi.com/a/h/16769.html"
+    }
+   },
+   {
+    "_title": {
+     "text": "保障服务"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "保障服务",
+     "to": "https://micare.mi.com.cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "防伪查询"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "防伪查询",
+     "to": "https://www.mi.com/service/imei"
+    }
+   },
+   {
+    "_title": {
+     "text": "F码通道"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "F码通道",
+     "to": "https://www.mi.com/order/fcode"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米之家"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米之家",
+     "to": "https://www.mi.com/service/mihome/list"
+    }
+   },
+   {
+    "_title": {
+     "text": "服务网点"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "服务网点",
+     "to": "https://www.mi.com/service/sitelist"
+    }
+   },
+   {
+    "_title": {
+     "text": "授权体验店/专区"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "授权体验店/专区",
+     "to": "https://www.mi.com/service/family-location"
+    }
+   },
+   {
+    "_title": {
+     "text": "了解小米"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "了解小米",
+     "to": "https://www.mi.com/about/"
+    }
+   },
+   {
+    "_title": {
+     "text": "加入小米"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "加入小米",
+     "to": "https://hr.xiaomi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "投资者关系"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "投资者关系",
+     "to": "https://ir.mi.com/zh-hans"
+    }
+   },
+   {
+    "_title": {
+     "text": "ESG与可持续发展"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "ESG与可持续发展",
+     "to": "https://www.mi.com/csr"
+    }
+   },
+   {
+    "_title": {
+     "text": "廉洁举报"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "廉洁举报",
+     "to": "https://www.mi.com/integrity"
+    }
+   },
+   {
+    "_title": {
+     "text": "新浪微博"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "新浪微博",
+     "to": "https://weibo.com/xiaomishangcheng"
+    }
+   },
+   {
+    "_title": {
+     "text": "联系我们"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "联系我们",
+     "to": "https://www.mi.com/about/contact/"
+    }
+   },
+   {
+    "_title": {
+     "text": "公益基金会"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "公益基金会",
+     "to": "https://www.mi.com/foundation/index"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米高校合作"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米高校合作",
+     "to": "https://utc.xiaomi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米商城"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米商城",
+     "to": "https://www.mi.com/shop"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米澎湃OS"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米澎湃OS",
+     "to": "https://hyperos.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "米家"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "米家",
+     "to": "https://home.mi.com/index.html"
+    }
+   },
+   {
+    "_title": {
+     "text": "多看"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "多看",
+     "to": "https://www.duokan.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "游戏"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "游戏",
+     "to": "https://game.xiaomi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "音乐"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "音乐",
+     "to": "https://www.mi.com/music"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米智能存储"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米智能存储",
+     "to": "https://smartstorage.xiaomi.com"
+    }
+   },
+   {
+    "_title": {
+     "text": "政企服务"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "政企服务",
+     "to": "https://b.mi.com/?client_id=180100031058&masid=17409.0358"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米天猫店"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米天猫店",
+     "to": "https://xiaomi.tmall.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米集团隐私政策"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米集团隐私政策",
+     "to": "https://privacy.mi.com/all/zh_CN/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米公司儿童信息保护规则"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米公司儿童信息保护规则",
+     "to": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米商城隐私政策"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米商城隐私政策",
+     "to": "https://m.mi.com/support/module?id=63&headless=1"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米商城用户协议"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米商城用户协议",
+     "to": "https://www.mi.com/aptitude/list?id=62"
+    }
+   },
+   {
+    "_title": {
+     "text": "问题反馈"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "问题反馈",
+     "to": "https://static.mi.com/feedback/"
+    }
+   },
+   {
+    "_title": {
+     "text": "北京互联网法院法律服务工作站"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "北京互联网法院法律服务工作站",
+     "to": "http://www.mi.com/beihu"
+    }
+   },
+   {
+    "_title": {
+     "text": "中国消费者协会"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "中国消费者协会",
+     "to": "http://www.cca.org.cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "北京市消费者协会"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "北京市消费者协会",
+     "to": "http://www.bj315.org/"
+    }
+   },
+   {
+    "_title": {
+     "text": "京ICP备10046444号"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "京ICP备10046444号",
+     "to": "http://beian.miit.gov.cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "京公网安备11010802020134号"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "京公网安备11010802020134号",
+     "to": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134"
+    }
+   },
+   {
+    "_title": {
+     "text": "营业执照"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "营业执照",
+     "to": "https://www.mi.com/business-license/"
+    }
+   },
+   {
+    "_title": {
+     "text": "医疗器械质量公告"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "医疗器械质量公告",
+     "to": "https://www.mi.com/medical/list/"
+    }
+   },
+   {
+    "_title": {
+     "text": "增值电信业务经营许可证编号：京B2-20180851"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "增值电信业务经营许可证编号：京B2-20180851",
+     "to": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/pc/5f93056c-bc30-401e-9526-66839114ffb9.png"
+    }
+   },
+   {
+    "_title": {
+     "text": "食品经营许可证"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "食品经营许可证",
+     "to": "https://www.mi.com/article/detail/972d1e084d35.html"
+    }
+   },
+   {
+    "_title": {
+     "text": "知识产权侵权投诉"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "知识产权侵权投诉",
+     "to": "https://www.mi.com/intellectual"
+    }
+   }
+  ],
+  "notices": {
+   "_intent": "源站页脚电话、时间、适用条件与备案等原文说明。",
+   "_lines": [
+    {
+     "_text": {
+      "text": "950816"
+     }
+    },
+    {
+     "_text": {
+      "text": "8:00-18:00（仅收市话费）"
+     }
+    },
+    {
+     "_text": {
+      "text": "950818"
+     }
+    },
+    {
+     "_text": {
+      "text": "8:00-18:00（仅收市话费）"
+     }
+    },
+    {
+     "_text": {
+      "text": "手机适用于：Xiaomi MIX Fold系列、MIX Flip系列、Xiaomi Ultra系列、Xiaomi Pro Max系列"
+     }
+    },
+    {
+     "_text": {
+      "text": "电视适用于：98寸、100寸以上大电视系列"
+     }
+    },
+    {
+     "_text": {
+      "text": "小米商城 | 小米澎湃OS | 米家 | 多看 | 游戏 | 音乐 | 小米智能存储 | 政企服务 | 小米天猫店 | 小米集团隐私政策 | 小米公司儿童信息保护规则 | 小米商城隐私政策 | 小米商城用户协议 | 问题反馈 | Select Location"
+     }
+    },
+    {
+     "_text": {
+      "text": "北京互联网法院法律服务工作站 | 中国消费者协会 | 北京市消费者协会"
+     }
+    },
+    {
+     "_text": {
+      "text": "© mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2026]0015-006号 （京）网械平台备字（2018）第00005号 药品医疗器械网络信息服务备案 (京)网药械信息备字（2024）第00478号 营业执照 医疗器械质量公告 增值电信业务经营许可证编号：京B2-20180851 网络食品经营备案 京食药网食备202010048 食品经营许可证 新出发京批字第直220280号 违法和不良信息举报电话：171-5104-4404 知识产权侵权投诉 本网站所列数据，除特殊说明，所有数据均出自我司实验室测试"
+     }
+    }
+   ]
+  }
+ },
+ "navigation": {
+  "_intent": "捕获的可见小米站点工具导航。",
+  "_items": [
+   {
+    "_title": {
+     "text": "小米官网"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米官网",
+     "to": "https://www.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米商城"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米商城",
+     "to": "https://www.mi.com/shop"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米澎湃OS"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米澎湃OS",
+     "to": "https://hyperos.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小米汽车"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小米汽车",
+     "to": "https://www.xiaomiev.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "云服务"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "云服务",
+     "to": "https://i.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "IoT"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "IoT",
+     "to": "https://iot.mi.com"
+    }
+   },
+   {
+    "_title": {
+     "text": "有品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "有品",
+     "to": "https://youpin.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "小爱开放平台"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "小爱开放平台",
+     "to": "https://xiaoai.mi.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "资质证照"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "资质证照",
+     "to": "https://www.mi.com/aptitude/list/?id=88"
+    }
+   },
+   {
+    "_title": {
+     "text": "协议规则"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "协议规则",
+     "to": "https://www.mi.com/aptitude/list/"
+    }
+   },
+   {
+    "_title": {
+     "text": "下载app 小米商城APP"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "下载app 小米商城APP",
+     "to": "https://www.mi.com/appdownload/"
+    }
+   },
+   {
+    "_title": {
+     "text": "购物车（0）"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "购物车（0）",
+     "to": "https://www.mi.com/shop/buy/cart"
+    }
+   }
+  ]
+ },
+ "query": {
+  "_intent": "捕获 form#J_searchForm 的 GET 搜索入口；输入名 keyword，原 DOM 占位文字耳机；没有可证实的当前值，不把请求页关键词或截图文字当作输入默认值。",
+  "_composite": "search",
+  "_label": {
+   "text": "耳机"
+  },
+  "_expose": {
+   "name": "keyword",
+   "type": "text"
+  },
+  "submit": {
+   "_intent": "原站捕获的搜索提交目标，未实现网络执行或站点后端。",
+   "_title": {
+    "text": "站内搜索"
+   },
+   "_action": {
+    "verb": "submit",
+    "to": "https://search.mi.com/search",
+    "params": {
+     "keyword": "text"
+    },
+    "label": "站内搜索"
+   }
+  }
+ }
+}

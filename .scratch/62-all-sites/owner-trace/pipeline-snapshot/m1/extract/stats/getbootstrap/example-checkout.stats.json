@@ -1,0 +1,43 @@
+{
+  "site": "getbootstrap",
+  "page": "example-checkout",
+  "url": "https://getbootstrap.com/docs/5.3/examples/checkout/",
+  "title": "Checkout example · Bootstrap v5.3",
+  "sourceNodes": 125,
+  "counts": {
+    "storylines": 3,
+    "items": 7,
+    "actions": 2,
+    "exposes": 2,
+    "images": 0,
+    "facts": 0,
+    "tables": 0,
+    "lists": 1,
+    "choiceSets": 1,
+    "inputs": 1,
+    "dupeText": 0,
+    "capHits": []
+  },
+  "storylines": 3,
+  "chrome": [
+    {
+      "role": "presentation",
+      "count": 1
+    },
+    {
+      "role": "contentinfo",
+      "count": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "kind": "checkbox-multi-select-as-choice-set",
+      "role": "checkbox",
+      "count": 1,
+      "examples": [
+        "Billing address First name Last name Username @ Email (Optional) Address Address"
+      ]
+    }
+  ],
+  "fieldsDrafted": []
+}

@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checks": [
+    "home: original inputs unchanged; four screenshot hashes/dimensions valid; decoded modeled images <= native dimensions",
+    "consumer-phones: original inputs unchanged; four screenshot hashes/dimensions valid; decoded modeled images <= native dimensions",
+    "search-laptop: original inputs unchanged; four screenshot hashes/dimensions valid; decoded modeled images <= native dimensions",
+    "search-phone: original inputs unchanged; four screenshot hashes/dimensions valid; decoded modeled images <= native dimensions",
+    "H-E1 reproduced: horizontal overflow at2560/1920/1440, full-bleed figures in grid",
+    "H-C1/C2/C3:36 missing buy hrefs,36 missing \u8d77 qualifiers,1 missing consumer image confirmed",
+    "No tracked project source/model/assets/Docs changes and no staged files; finding evidence paths and covered hashes valid"
+  ],
+  "limit": "artifact-integrity/diagnostic selfcheck, not independent visual acceptance"
+}

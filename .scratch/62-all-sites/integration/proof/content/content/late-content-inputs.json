@@ -1,0 +1,345 @@
+[
+  {
+    "lane": "audit-huawei-commerce",
+    "path": "/home/z/vibe/autofe-worktrees/62-all-sites/audit-huawei-commerce/.scratch/62-all-sites/audit-huawei-commerce/audit-handoff.json",
+    "status": "INCOMPLETE",
+    "findings": [
+      {
+        "id": "H-C1",
+        "severity": "high",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/consumer-phones"
+        ],
+        "criterion": "faithful actions/targets",
+        "location": "36 catalog item /buy/_action/to (exact paths in product-comparison.json)",
+        "renderEvidence": "Most catalog 购买 pills are spans without href even though source has usable targets; they look like purchase actions but their captured destinations are dropped.",
+        "sourceEvidence": "Source product-col blocks contain a.global-buy-button[href] for36 corresponding modeled items. Example source indexes850 MateXTs /cn/phones/mate-xts-ultimate-design and819 MateX7 /cn/phones/mate-x7. Use captured href, not hidden buyBtnInfo alternate store links.",
+        "geometryEvidence": "36 missing targets identified by product-name-normalized DOM comparison; the same loss exists at every viewport and is model-owned, not renderer omission.",
+        "improvementCriterion": "Populate only source-backed36 buy targets and prove every captured modeled buy action produces its exact normalized captured href; do not invent store/checkout routes.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/product-comparison.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-catalog-reasons-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json"
+        ]
+      },
+      {
+        "id": "H-C2",
+        "severity": "high",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/consumer-phones"
+        ],
+        "criterion": "faithful price facts",
+        "location": "36 catalog item /_price/qualifier (paths in product-comparison.json)",
+        "renderEvidence": "Catalog prices appear as fixed ¥ amounts while source explicitly says 起; flagship retains 起 correctly.",
+        "sourceEvidence": "Source price-origin text for36 matched catalog products includes 起. Example source indexes845 MateXTs ￥17999 起,814 MateX7 ￥12999 起,1310 nova14活力版 ￥2399 起. Zero unmatched product names after whitespace/U+2060 normalization.",
+        "geometryEvidence": "36 omitted qualifiers, all four viewports affected.",
+        "improvementCriterion": "Restore source 起 qualifiers using existing typed price fact grammar, without changing captured amounts or adding prices to source-unpriced models.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/product-comparison.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-catalog-reasons-readable.png"
+        ]
+      },
+      {
+        "id": "H-C3",
+        "severity": "medium",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/consumer-phones",
+          "huawei-cn/search-laptop",
+          "huawei-cn/search-phone"
+        ],
+        "criterion": "faithful image attribution; cohesive image/title/actions",
+        "location": "consumer /catalog-mate/_items/10/_image; laptop results _items1,3,4,5,6,7,8; phone results _lines2,5,6",
+        "renderEvidence": "Consumer Mate70Pro优享版 is the sole text-only hole among image-led catalog peers. Both searches omit all captured result thumbnails (seven laptop, three phone), making the two identically named phone accessories harder to distinguish.",
+        "sourceEvidence": "Consumer source img954 data-src /content/dam/huawei-cbg-site/cn/mkt/launch/241126/plp/phones/new-241204/all-huawei-mate70-pro.png. Laptop source img199/226/241/256/271/286/301 URLs and phone img212/256/273 recorded verbatim in source-inventory; thumbnails are visible in search source pixels.",
+        "geometryEvidence": "Fresh consumer images all decode (no runner failure); missing item has no model _image. Search DOM rendered image count0 vs source7/3 relevant thumbnails.",
+        "improvementCriterion": "Restore only captured image URLs/attribution or byte-identical sanctioned mirrors at nonenlarged size; source-lazy consumer imagery comparison remains limited to DOM/data-src.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/product-comparison.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-catalog-reasons-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-phone-source-sheet.png"
+        ]
+      },
+      {
+        "id": "H-C4",
+        "severity": "high",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/search-laptop"
+        ],
+        "criterion": "faithful targets",
+        "location": "/results/_items/1/_action/to",
+        "renderEvidence": "HUAWEI MateBook Pro links to https://consumer.huawei.com/cn/laptops/matebook-pro/.",
+        "sourceEvidence": "Captured anchor195 href is //consumer.huawei.com/cn/harmonyos-computer/matebook-pro/; screenshot visible URL agrees. This is a path mismatch after relative/protocol normalization, not a slash-only/style mismatch.",
+        "geometryEvidence": "Same href at all four widths, recorded by rendered action inventory.",
+        "improvementCriterion": "Render exact normalized captured harmonyos-computer/matebook-pro target and assert source-target equality.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/capture-home_consumer-phones_search-laptop_search-phone.json"
+        ]
+      },
+      {
+        "id": "H-C5",
+        "severity": "medium",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/search-laptop",
+          "huawei-cn/search-phone"
+        ],
+        "criterion": "faithful form facts/actions/current state",
+        "location": "/query; /filters; laptop /sort/_expose; phone missing /sort",
+        "renderEvidence": "Query shows empty watermark, no search submit affordance; no category radio is selected. Laptop current sort becomes an unlabeled arbitrary free-text input; phone loses captured 相关性 entirely.",
+        "sourceEvidence": "Source screenshots show query 笔记本/手机, search-icon affordance, active 全部 category and 相关性 dropdown. Cleaned DOM input123 has search/enterkeyhint=search/placeholder but omits its live value attribute; source current-query evidence is pixels, not falsely claimed DOM value. Sort169/170 is a span/dropdown, not a free-edit textbox.",
+        "geometryEvidence": "At2560 query253px wide, filters864.23/880px; laptop sort an input253px. At390 filters204.38/249.97px. Validator warns W_COMPOSITE_NAME_ONLY_WATERMARK for both query models.",
+        "improvementCriterion": "Model only captured values/selected state and available actions in existing grammar. Keep no-real-target controls targetless rather than inventing an endpoint. Model sort as captured current state/action, not arbitrary text entry; engine may need shared control-layout support after facts are restored.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-phone-1440-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-phone-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/validators.log"
+        ]
+      },
+      {
+        "id": "H-C6",
+        "severity": "medium",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/home"
+        ],
+        "criterion": "faithful title source/hierarchy; owning title provenance rule",
+        "location": "/_title/text and /_intent",
+        "renderEvidence": "H1 contains full SEO title 华为 - 构建万物互联的智能世界 rather than first segment, while brand promise already appears below; source-visible corporate site identity is compact.",
+        "sourceEvidence": "meta.json document title is that full SEO string. Source full.png visible identity is HUAWEI logo; nodes/DOM show slogan only in lower brand section. Model intent does not document fallback provenance. Owning layout-axes§5.3 requires fallback first segment and provenance.",
+        "geometryEvidence": "H1 font32px, max640px; at390 slogan wraps into two large lines. This is not an instruction to impose Apple/Taobao identity scope on every other site.",
+        "improvementCriterion": "Use captured first-segment title/provenance rule without deleting full document-title provenance or fabricating visible page text; engine should preserve a compact coherent identity where justified by shared semantics.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/home-2560-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/home-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/home-390-readable-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json"
+        ]
+      },
+      {
+        "id": "H-C7",
+        "severity": "medium",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/home",
+          "huawei-cn/consumer-phones",
+          "huawei-cn/search-laptop",
+          "huawei-cn/search-phone"
+        ],
+        "criterion": "compact utilities/footer; preservation of captured facts/actions",
+        "location": "root models: missing header/footer/support/disclaimer regions",
+        "renderEvidence": "Each page starts directly with model title and ends at core content/pagination; source navigation, footer and support/legal actions are absent. Compact footer acceptance cannot be proven by deleting footer content.",
+        "sourceEvidence": "Corporate home/search source shows header logo/nav, footer 公司简介/可持续发展/信任中心/法律声明/隐私政策 etc. Consumer source footer visibly has warranty/service-center/retail links, hotline950800, legal links and product/image disclaimers. Source actions and visible nodes preserved in inventory.",
+        "geometryEvidence": "All four rendered HTMLs have no modeled header/footer region; every viewport shares this omission. Source footer inspected whole-height on all pages; consumer footer also native readable crop.",
+        "improvementCriterion": "Reconcile captured utility/legal facts and actions under authorized curated-page fidelity scope, preserve source-backed essential regions compactly with existing grammar. Do not recreate cookie behavior or invent nav/footer facts; source omission is content-owned, layout/paired surface remains engine-owned.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/home-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-phone-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-source-hero-footer-readable.png"
+        ]
+      },
+      {
+        "id": "H-C8",
+        "severity": "low",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/home"
+        ],
+        "criterion": "faithful exact target query parameters",
+        "location": "/featured/_items/1/_action/to",
+        "renderEvidence": "乾崑 action drops -200w from utm_campaign value.",
+        "sourceEvidence": "Source anchors258/262 end utm_campaign=20260914-200w; model/render end20260914. Destination path otherwise identical; no navigation failure is asserted.",
+        "geometryEvidence": "Target mismatch isolated after relative/protocol normalization; not the benign consumer privacy trailing slash.",
+        "improvementCriterion": "Retain captured query string exactly unless an authorized normalization explicitly covers analytics parameters.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json"
+        ]
+      }
+    ],
+    "contentFindings": [
+      {
+        "id": "H-C1",
+        "severity": "high",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/consumer-phones"
+        ],
+        "criterion": "faithful actions/targets",
+        "location": "36 catalog item /buy/_action/to (exact paths in product-comparison.json)",
+        "renderEvidence": "Most catalog 购买 pills are spans without href even though source has usable targets; they look like purchase actions but their captured destinations are dropped.",
+        "sourceEvidence": "Source product-col blocks contain a.global-buy-button[href] for36 corresponding modeled items. Example source indexes850 MateXTs /cn/phones/mate-xts-ultimate-design and819 MateX7 /cn/phones/mate-x7. Use captured href, not hidden buyBtnInfo alternate store links.",
+        "geometryEvidence": "36 missing targets identified by product-name-normalized DOM comparison; the same loss exists at every viewport and is model-owned, not renderer omission.",
+        "improvementCriterion": "Populate only source-backed36 buy targets and prove every captured modeled buy action produces its exact normalized captured href; do not invent store/checkout routes.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/product-comparison.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-catalog-reasons-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json"
+        ]
+      },
+      {
+        "id": "H-C2",
+        "severity": "high",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/consumer-phones"
+        ],
+        "criterion": "faithful price facts",
+        "location": "36 catalog item /_price/qualifier (paths in product-comparison.json)",
+        "renderEvidence": "Catalog prices appear as fixed ¥ amounts while source explicitly says 起; flagship retains 起 correctly.",
+        "sourceEvidence": "Source price-origin text for36 matched catalog products includes 起. Example source indexes845 MateXTs ￥17999 起,814 MateX7 ￥12999 起,1310 nova14活力版 ￥2399 起. Zero unmatched product names after whitespace/U+2060 normalization.",
+        "geometryEvidence": "36 omitted qualifiers, all four viewports affected.",
+        "improvementCriterion": "Restore source 起 qualifiers using existing typed price fact grammar, without changing captured amounts or adding prices to source-unpriced models.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/product-comparison.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-catalog-reasons-readable.png"
+        ]
+      },
+      {
+        "id": "H-C3",
+        "severity": "medium",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/consumer-phones",
+          "huawei-cn/search-laptop",
+          "huawei-cn/search-phone"
+        ],
+        "criterion": "faithful image attribution; cohesive image/title/actions",
+        "location": "consumer /catalog-mate/_items/10/_image; laptop results _items1,3,4,5,6,7,8; phone results _lines2,5,6",
+        "renderEvidence": "Consumer Mate70Pro优享版 is the sole text-only hole among image-led catalog peers. Both searches omit all captured result thumbnails (seven laptop, three phone), making the two identically named phone accessories harder to distinguish.",
+        "sourceEvidence": "Consumer source img954 data-src /content/dam/huawei-cbg-site/cn/mkt/launch/241126/plp/phones/new-241204/all-huawei-mate70-pro.png. Laptop source img199/226/241/256/271/286/301 URLs and phone img212/256/273 recorded verbatim in source-inventory; thumbnails are visible in search source pixels.",
+        "geometryEvidence": "Fresh consumer images all decode (no runner failure); missing item has no model _image. Search DOM rendered image count0 vs source7/3 relevant thumbnails.",
+        "improvementCriterion": "Restore only captured image URLs/attribution or byte-identical sanctioned mirrors at nonenlarged size; source-lazy consumer imagery comparison remains limited to DOM/data-src.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/product-comparison.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-catalog-reasons-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-phone-source-sheet.png"
+        ]
+      },
+      {
+        "id": "H-C4",
+        "severity": "high",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/search-laptop"
+        ],
+        "criterion": "faithful targets",
+        "location": "/results/_items/1/_action/to",
+        "renderEvidence": "HUAWEI MateBook Pro links to https://consumer.huawei.com/cn/laptops/matebook-pro/.",
+        "sourceEvidence": "Captured anchor195 href is //consumer.huawei.com/cn/harmonyos-computer/matebook-pro/; screenshot visible URL agrees. This is a path mismatch after relative/protocol normalization, not a slash-only/style mismatch.",
+        "geometryEvidence": "Same href at all four widths, recorded by rendered action inventory.",
+        "improvementCriterion": "Render exact normalized captured harmonyos-computer/matebook-pro target and assert source-target equality.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/capture-home_consumer-phones_search-laptop_search-phone.json"
+        ]
+      },
+      {
+        "id": "H-C5",
+        "severity": "medium",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/search-laptop",
+          "huawei-cn/search-phone"
+        ],
+        "criterion": "faithful form facts/actions/current state",
+        "location": "/query; /filters; laptop /sort/_expose; phone missing /sort",
+        "renderEvidence": "Query shows empty watermark, no search submit affordance; no category radio is selected. Laptop current sort becomes an unlabeled arbitrary free-text input; phone loses captured 相关性 entirely.",
+        "sourceEvidence": "Source screenshots show query 笔记本/手机, search-icon affordance, active 全部 category and 相关性 dropdown. Cleaned DOM input123 has search/enterkeyhint=search/placeholder but omits its live value attribute; source current-query evidence is pixels, not falsely claimed DOM value. Sort169/170 is a span/dropdown, not a free-edit textbox.",
+        "geometryEvidence": "At2560 query253px wide, filters864.23/880px; laptop sort an input253px. At390 filters204.38/249.97px. Validator warns W_COMPOSITE_NAME_ONLY_WATERMARK for both query models.",
+        "improvementCriterion": "Model only captured values/selected state and available actions in existing grammar. Keep no-real-target controls targetless rather than inventing an endpoint. Model sort as captured current state/action, not arbitrary text entry; engine may need shared control-layout support after facts are restored.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-readable.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-phone-1440-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-phone-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/validators.log"
+        ]
+      },
+      {
+        "id": "H-C6",
+        "severity": "medium",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/home"
+        ],
+        "criterion": "faithful title source/hierarchy; owning title provenance rule",
+        "location": "/_title/text and /_intent",
+        "renderEvidence": "H1 contains full SEO title 华为 - 构建万物互联的智能世界 rather than first segment, while brand promise already appears below; source-visible corporate site identity is compact.",
+        "sourceEvidence": "meta.json document title is that full SEO string. Source full.png visible identity is HUAWEI logo; nodes/DOM show slogan only in lower brand section. Model intent does not document fallback provenance. Owning layout-axes§5.3 requires fallback first segment and provenance.",
+        "geometryEvidence": "H1 font32px, max640px; at390 slogan wraps into two large lines. This is not an instruction to impose Apple/Taobao identity scope on every other site.",
+        "improvementCriterion": "Use captured first-segment title/provenance rule without deleting full document-title provenance or fabricating visible page text; engine should preserve a compact coherent identity where justified by shared semantics.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/home-2560-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/home-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/home-390-readable-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json"
+        ]
+      },
+      {
+        "id": "H-C7",
+        "severity": "medium",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/home",
+          "huawei-cn/consumer-phones",
+          "huawei-cn/search-laptop",
+          "huawei-cn/search-phone"
+        ],
+        "criterion": "compact utilities/footer; preservation of captured facts/actions",
+        "location": "root models: missing header/footer/support/disclaimer regions",
+        "renderEvidence": "Each page starts directly with model title and ends at core content/pagination; source navigation, footer and support/legal actions are absent. Compact footer acceptance cannot be proven by deleting footer content.",
+        "sourceEvidence": "Corporate home/search source shows header logo/nav, footer 公司简介/可持续发展/信任中心/法律声明/隐私政策 etc. Consumer source footer visibly has warranty/service-center/retail links, hotline950800, legal links and product/image disclaimers. Source actions and visible nodes preserved in inventory.",
+        "geometryEvidence": "All four rendered HTMLs have no modeled header/footer region; every viewport shares this omission. Source footer inspected whole-height on all pages; consumer footer also native readable crop.",
+        "improvementCriterion": "Reconcile captured utility/legal facts and actions under authorized curated-page fidelity scope, preserve source-backed essential regions compactly with existing grammar. Do not recreate cookie behavior or invent nav/footer facts; source omission is content-owned, layout/paired surface remains engine-owned.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json",
+          ".scratch/62-all-sites/audit-huawei-commerce/home-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-laptop-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/search-phone-source-sheet.png",
+          ".scratch/62-all-sites/audit-huawei-commerce/consumer-source-hero-footer-readable.png"
+        ]
+      },
+      {
+        "id": "H-C8",
+        "severity": "low",
+        "owner": "content",
+        "pages": [
+          "huawei-cn/home"
+        ],
+        "criterion": "faithful exact target query parameters",
+        "location": "/featured/_items/1/_action/to",
+        "renderEvidence": "乾崑 action drops -200w from utm_campaign value.",
+        "sourceEvidence": "Source anchors258/262 end utm_campaign=20260914-200w; model/render end20260914. Destination path otherwise identical; no navigation failure is asserted.",
+        "geometryEvidence": "Target mismatch isolated after relative/protocol normalization; not the benign consumer privacy trailing slash.",
+        "improvementCriterion": "Retain captured query string exactly unless an authorized normalization explicitly covers analytics parameters.",
+        "evidenceFiles": [
+          ".scratch/62-all-sites/audit-huawei-commerce/source-inventory.json"
+        ]
+      }
+    ]
+  },
+  {
+    "lane": "audit-mi-commerce",
+    "missing": true
+  },
+  {
+    "lane": "audit-media-auth-utility",
+    "missing": true
+  }
+]

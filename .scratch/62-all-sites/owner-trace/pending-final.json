@@ -1,0 +1,620 @@
+{
+  "count": 44,
+  "pageCount": 14,
+  "cases": [
+    {
+      "page": "36kr-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "查看更多资讯",
+        "href": "https://36kr.com/information/web_news/latest?anchor=3988767829277705",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "36kr-com/home:strict:0"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "aliyun-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "立即免费体验",
+        "href": "https://www.aliyun.com/exp",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "aliyun-com/home:strict:4"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "aliyun-com/product-ecs",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "产品动态",
+        "href": "https://www.aliyun.com/product/news",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "aliyun-com/product-ecs:strict:0"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com-cn/iphone-17",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "进一步了解个人设置辅导",
+        "href": "https://www.apple.com.cn/cn/shop/goto/personal_setup",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com-cn/iphone-17:strict:0"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com-cn/iphone-17",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "进一步了解 Apple Store App",
+        "href": "https://apps.apple.com/cn/app/apple-store/id375380948",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com-cn/iphone-17:strict:1"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Stream now",
+        "href": "https://tv.apple.com/us/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o?l=en-US?itscg=10000&amp;itsct=atv-apl_hp-stream_now--220622",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/home:strict:2"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Stream now",
+        "href": "https://tv.apple.com/us/room/formula-1/uts.room.formula-1?itscg=10000&amp;itsct=atv-apl_hp-stream_now--220622",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/home:strict:3"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Stream now",
+        "href": "https://tv.apple.com/us/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy?l=en-US?itscg=10000&amp;itsct=atv-apl_hp-stream_now--220622",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/home:strict:4"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Stream now",
+        "href": "https://tv.apple.com/us/channel/mls/tvs.sbd.7000?itscg=10000&amp;itsct=atv-apl_hp-stream_now--220622",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/home:strict:5"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "See the schedule",
+        "href": "https://tv.apple.com/us/room/friday-night-baseball/edt.item.62327df1-6874-470e-98b2-a5bbeac509a2?itscg=10000&amp;itsct=atv-apl_hp-stream_now--220622",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/home:strict:6"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Stream now",
+        "href": "https://tv.apple.com/us/movie/mayday/umc.cmc.shin43vzfoz3h4ggx41z8rf?l=en-US?itscg=10000&amp;itsct=atv-apl_hp-stream_now--220622",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/home:strict:7"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Stream now",
+        "href": "https://tv.apple.com/us/show/widows-bay/umc.cmc.1zzly0vah46bnvnwf0qkrjhh2?l=en-US?itscg=10000&amp;itsct=atv-apl_hp-stream_now--220622",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/home:strict:8"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Stream now",
+        "href": "https://tv.apple.com/us/show/dark-matter/umc.cmc.4luj45vtqpmjsvb6sc2675oeg?l=en-US?itscg=10000&amp;itsct=atv-apl_hp-stream_now--220622",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/home:strict:9"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Stream now",
+        "href": "https://tv.apple.com/us/show/last-seen/umc.cmc.4pbw9c936a4pigdvsg23u2bsa?l=en-US?itscg=10000&amp;itsct=atv-apl_hp-stream_now--220622",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/home:strict:10"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/iphone-16",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Learn more about Apple Intelligence for iPhone",
+        "href": "https://www.apple.com/shop/browse/overlay/iphone/domore/apple_intelligence",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/iphone-16:strict:0"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/iphone-16",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "See all deals",
+        "href": "https://www.apple.com/shop/buy-iphone/carrier-offers",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/iphone-16:strict:1"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/iphone-16",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "See how to pay monthly.",
+        "href": "https://www.apple.com/shop/browse/overlay/iphone/payment_options",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/iphone-16:strict:2"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/macbook-air",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Help me choose the best Mac for me",
+        "href": "https://www.apple.com/mac/best-mac/#usage/",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/macbook-air:strict:1"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "apple-com/macbook-air",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Get 3% Daily Cash back with Apple Card.",
+        "href": "https://www.apple.com/apple-card",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "apple-com/macbook-air:strict:2"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "huawei-cn/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "了解更多",
+        "href": "https://www.huawei.com/cn/events/huaweiconnect",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "huawei-cn/home:strict:1"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "linear-app/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Changelog",
+        "href": "https://linear.app/changelog",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "linear-app/home:strict:0"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "linear-app/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Get started",
+        "href": "https://linear.app/signup",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "linear-app/home:strict:1"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "mi-com/shop-category-list",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "眼镜",
+        "href": "https://www.mi.com/shop/search?keyword=%E7%9C%BC%E9%95%9C",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "mi-com/shop-category-list:strict:0"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "iPhone 18 配件一站式配齐",
+        "href": "https://sspai.com/a/zl75GK",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:0"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "全场最快的车，为什么听一辆慢车指挥",
+        "href": "https://sspai.com/a/K1492J",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:1"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "编辑部的新玩意 #250",
+        "href": "https://sspai.com/a/z263Zz",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:2"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "近期值得关注的 App",
+        "href": "https://sspai.com/a/nX5bDJ",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:3"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "196 张盗版碟，和我的游戏启蒙史",
+        "href": "https://sspai.com/a/KE64Vz",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:4"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "YoooClaw C·ONE",
+        "href": "https://sspai.com/a/J7yrpz",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:5"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "YoooClaw C·ONE",
+        "href": "https://sspai.com/create/yoooclaw",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:7"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "口袋先知墨水屏",
+        "href": "https://sspai.com/create/rand0",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:8"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "白描 PDF 鸿蒙版",
+        "href": "https://sspai.com/create/baimiao",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:9"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "中古掌机收藏选购指南",
+        "href": "https://sspai.com/create/retro-handheld-guide",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:10"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "灵犀Linx 68 带屏键盘",
+        "href": "https://sspai.com/create/linx",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/home:strict:11"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "sspai-com/matrix",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "快速投票：换机只选 512GB 起步？",
+        "href": "https://sspai.com/bullet/1789222518",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "sspai-com/matrix:strict:0"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "stripe-com/pricing",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "资金管理",
+        "href": "https://stripe.com/cn/money-management/availability",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "stripe-com/pricing:strict:6"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "stripe-com/pricing",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Payments",
+        "href": "https://stripe.com/cn/payments",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "stripe-com/pricing:strict:10"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "stripe-com/pricing",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Radar",
+        "href": "https://stripe.com/cn/radar",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "stripe-com/pricing:strict:11"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "stripe-com/pricing",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Connect",
+        "href": "https://stripe.com/cn/connect",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "stripe-com/pricing:strict:12"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "stripe-com/pricing",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Invoicing",
+        "href": "https://stripe.com/cn/invoicing",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "stripe-com/pricing:strict:13"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "stripe-com/pricing",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "Billing",
+        "href": "https://stripe.com/cn/billing",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "stripe-com/pricing:strict:14"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "stripe-com/pricing",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "等等",
+        "href": "https://stripe.com/cn/enterprise",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "stripe-com/pricing:strict:15"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "stripe-com/pricing",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "以及更多",
+        "href": "https://stripe.com/cn/enterprise",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [
+        "stripe-com/pricing:strict:16"
+      ],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    },
+    {
+      "page": "taobao-com/home",
+      "finding": {
+        "kind": "wrong-target",
+        "text": "更多低价商品",
+        "href": "https://www.taobao.com/",
+        "expect": [],
+        "reason": "render-owner-unverified"
+      },
+      "inheritedCaseIds": [],
+      "disposition": "UNVERIFIED_NOT_PROVEN_WRONG_URL"
+    }
+  ]
+}

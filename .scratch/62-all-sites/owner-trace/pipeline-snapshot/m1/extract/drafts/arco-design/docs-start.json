@@ -1,0 +1,401 @@
+{
+  "_intent": "快速上手 | ArcoDesign — 快速上手 [draft]",
+  "_title": {
+    "text": "快速上手 | ArcoDesign"
+  },
+  "_summary": {
+    "text": "未登录"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "Open Search Modal"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://pro.arco.design/",
+        "label": "Arco Pro 中后台最佳实践"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://arco.design/themes",
+        "label": "DesignLab 设计系统配置平台"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://arco.design/material/",
+        "label": "Material Market 物料平台"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://arco.design/iconbox/",
+        "label": "IconBox 图标平台"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://arco.design/palette/list",
+        "label": "Platte 色彩配置工具"
+      }
+    },
+    {
+      "_text": {
+        "text": "React"
+      }
+    },
+    {
+      "_text": {
+        "text": "Vue"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "label": "menu collapse button"
+      }
+    },
+    {
+      "_text": {
+        "text": "开发指南"
+      }
+    },
+    {
+      "_intent": "快速上手 [draft]",
+      "_title": {
+        "text": "快速上手"
+      },
+      "_summary": {
+        "text": "跟随以下的步骤，快速上手组件库的使用。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "ArcoPro 最佳实践"
+          }
+        },
+        {
+          "_text": {
+            "text": "使用 ArcoPro，快速构建现代网页。"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://pro.arco.design/",
+            "label": "立即使用"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "安装 [draft]",
+      "_title": {
+        "text": "安装"
+      },
+      "_summary": {
+        "text": "需要同时安装 react >= 16.8 和 react-dom >= 16.8。"
+      },
+      "_lines": [
+        {
+          "_intent": "通过 CDN 使用 [draft]",
+          "_title": {
+            "text": "通过 CDN 使用"
+          },
+          "_summary": {
+            "text": "除了可以通过 npm 安装之外，你也可以直接使用 CDN 资源，我们提供了 umd 格式的代码产物。"
+          },
+          "_lines": [
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://unpkg.com/@arco-design/web-react@latest/dist/arco.development.js",
+                "label": "https://unpkg.com/@arco-design/web-react@latest/dist/arco.development.js"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://unpkg.com/@arco-design/web-react@latest/dist/arco.min.js",
+                "label": "https://unpkg.com/@arco-design/web-react@latest/dist/arco.min.js"
+              }
+            },
+            {
+              "_intent": "list (2 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "图标: https://unpkg.com/@arco-design/web-react@latest/dist/arco-icon.min.js"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://unpkg.com/@arco-design/web-react@latest/dist/arco-icon.min.js",
+                    "label": "https://unpkg.com/@arco-design/web-react@latest/dist/arco-icon.min.js"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "样式: https://unpkg.com/@arco-design/web-react@latest/dist/css/arco.min.css"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://unpkg.com/@arco-design/web-react@latest/dist/css/arco.min.css",
+                    "label": "https://unpkg.com/@arco-design/web-react@latest/dist/css/arco.min.css"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "不过，我们不建议通过 CDN 使用，因为 CDN 会引入全量的组件代码，这样会影响页面加载速度。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "基础使用 [draft]",
+      "_title": {
+        "text": "基础使用"
+      },
+      "_summary": {
+        "text": "以 Button 组件为例。"
+      }
+    },
+    {
+      "_intent": "兼容 React 19 [draft]",
+      "_title": {
+        "text": "兼容 React 19"
+      },
+      "_summary": {
+        "text": "需要在入口文件顶部直接引入 `"
+      }
+    },
+    {
+      "_intent": "按需加载 [draft]",
+      "_title": {
+        "text": "按需加载"
+      }
+    },
+    {
+      "_intent": "按需加载 [draft]",
+      "_title": {
+        "text": "按需加载"
+      },
+      "_summary": {
+        "text": "@arco-design/web-react 的组件默认支持 tree shaking, 使用 import { Button } from '@arco-design/web-react'; 方式引入即可按需加载。"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "如果按需加载失效，或者需要样式按需加载以及图标按需加载的可使用以下两种方式处理："
+          }
+        },
+        {
+          "_intent": "使用 Arco 官方插件 [draft]",
+          "_title": {
+            "text": "使用 Arco 官方插件"
+          },
+          "_summary": {
+            "text": "Arco 的 官方插件库 提供的插件功能如下："
+          },
+          "_lines": [
+            {
+              "_intent": "list (4 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "组件库样式按需加载"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "组件库图标按需加载"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "风格配置平台导出的主题引入"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "组件库的图标库替换"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "插件列表 [draft]",
+          "_title": {
+            "text": "插件列表"
+          },
+          "_summary": {
+            "text": "具体使用方式请点击插件链接到详情页中查看"
+          },
+          "_lines": [
+            {
+              "_intent": "list (4 items) [draft]",
+              "_items": [
+                {
+                  "_name": {
+                    "text": "@arco-plugins/unplugin-react 🚧 适用于包括 Rspack 在内多种 Bundler 的 Unplugin 插件"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/arco-design/arco-plugins/blob/main/packages/unplugin-react/README.zh-CN.md",
+                    "label": "@arco-plugins/unplugin-react 🚧"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "@arco-plugins/webpack-react 适用于 Arco react 组件的 webpack 插件"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/arco-design/arco-plugins/blob/main/packages/plugin-webpack-react/README.zh-CN.md",
+                    "label": "@arco-plugins/webpack-react"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "@arco-plugins/vite-react 适用于 Arco react 组件库的 vite 插件"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/arco-design/arco-plugins/blob/main/packages/plugin-vite-react/README.zh-CN.md",
+                    "label": "@arco-plugins/vite-react"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "@arco-plugins/vite-vue 适用于 Arco vue 组件库的 vite 插件"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/arco-design/arco-plugins/blob/main/packages/plugin-vite-vue/README.zh-CN.md",
+                    "label": "@arco-plugins/vite-vue"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "使用 babel-plugin-import [draft]",
+          "_title": {
+            "text": "使用 babel-plugin-import"
+          },
+          "_summary": {
+            "text": "添加配置"
+          }
+        },
+        {
+          "_intent": "组件和样式的按需加载 [draft]",
+          "_title": {
+            "text": "组件和样式的按需加载"
+          },
+          "_summary": {
+            "text": "在 babel 配置中加入："
+          }
+        },
+        {
+          "_intent": "Icon 按需加载 [draft]",
+          "_title": {
+            "text": "Icon 按需加载"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "浏览器兼容性 [draft]",
+      "_title": {
+        "text": "浏览器兼容性"
+      },
+      "_lines": [
+        {
+          "_intent": "table (1 rows): IE / Edge IE / Edge / Firefox Firefox / Chrome Chrome [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Edge 16"
+              },
+              "_measure": {
+                "num": 31
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/docs/start#%E5%AE%89%E8%A3%85",
+            "label": "安装"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/docs/start#%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8",
+            "label": "基础使用"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/docs/start#%E5%85%BC%E5%AE%B9-react-19",
+            "label": "兼容 React 19"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/docs/start#%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD",
+            "label": "按需加载"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/docs/start#%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD-1",
+            "label": "按需加载"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://arco.design/react/docs/start#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7",
+            "label": "浏览器兼容性"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "anchor collapse button"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "button to open theme box"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+    PID    PPID     ELAPSED COMMAND
+      1       0  5-13:20:43 /sbin/init
+      2       0  5-13:20:43 [kthreadd]
+      3       2  5-13:20:43 [pool_workqueue_release]
+      4       2  5-13:20:43 [kworker/R-rcu_gp]
+      5       2  5-13:20:43 [kworker/R-sync_wq]
+      6       2  5-13:20:43 [kworker/R-kvfree_rcu_reclaim]
+      7       2  5-13:20:43 [kworker/R-slub_flushwq]
+      8       2  5-13:20:43 [kworker/R-netns]
+     10       2  5-13:20:43 [kworker/0:0H-kblockd]
+     13       2  5-13:20:43 [kworker/R-mm_percpu_wq]
+     14       2  5-13:20:43 [ksoftirqd/0]
+     15       2  5-13:20:43 [rcu_preempt]
+     16       2  5-13:20:43 [rcu_exp_par_gp_kthread_worker/0]
+     17       2  5-13:20:43 [rcu_exp_gp_kthread_worker]
+     18       2  5-13:20:43 [migration/0]
+     19       2  5-13:20:43 [kprobe-optimizer]
+     20       2  5-13:20:43 [idle_inject/0]
+     21       2  5-13:20:43 [cpuhp/0]
+     22       2  5-13:20:43 [cpuhp/1]
+     23       2  5-13:20:43 [idle_inject/1]
+     24       2  5-13:20:43 [migration/1]
+     25       2  5-13:20:43 [ksoftirqd/1]
+     27       2  5-13:20:43 [kworker/1:0H-kblockd]
+     28       2  5-13:20:43 [cpuhp/2]
+     29       2  5-13:20:43 [idle_inject/2]
+     30       2  5-13:20:43 [migration/2]
+     31       2  5-13:20:43 [ksoftirqd/2]
+     33       2  5-13:20:43 [kworker/2:0H-kblockd]
+     34       2  5-13:20:43 [cpuhp/3]
+     35       2  5-13:20:43 [idle_inject/3]
+     36       2  5-13:20:43 [migration/3]
+     37       2  5-13:20:43 [ksoftirqd/3]
+     39       2  5-13:20:43 [kworker/3:0H-kblockd]
+     40       2  5-13:20:43 [cpuhp/4]
+     41       2  5-13:20:43 [idle_inject/4]
+     42       2  5-13:20:43 [migration/4]
+     43       2  5-13:20:43 [ksoftirqd/4]
+     45       2  5-13:20:43 [kworker/4:0H-kblockd]
+     46       2  5-13:20:43 [cpuhp/5]
+     47       2  5-13:20:43 [idle_inject/5]
+     48       2  5-13:20:43 [migration/5]
+     49       2  5-13:20:43 [ksoftirqd/5]
+     51       2  5-13:20:43 [kworker/5:0H-kblockd]
+     52       2  5-13:20:43 [cpuhp/6]
+     53       2  5-13:20:43 [idle_inject/6]
+     54       2  5-13:20:43 [migration/6]
+     55       2  5-13:20:43 [ksoftirqd/6]
+     57       2  5-13:20:43 [kworker/6:0H-kblockd]
+     58       2  5-13:20:43 [cpuhp/7]
+     59       2  5-13:20:43 [idle_inject/7]
+     60       2  5-13:20:43 [migration/7]
+     61       2  5-13:20:43 [ksoftirqd/7]
+     63       2  5-13:20:43 [kworker/7:0H-kblockd]
+     64       2  5-13:20:43 [cpuhp/8]
+     65       2  5-13:20:43 [idle_inject/8]
+     66       2  5-13:20:43 [migration/8]
+     67       2  5-13:20:43 [ksoftirqd/8]
+     69       2  5-13:20:43 [kworker/8:0H-kblockd]
+     70       2  5-13:20:43 [cpuhp/9]
+     71       2  5-13:20:43 [idle_inject/9]
+     72       2  5-13:20:43 [migration/9]
+     73       2  5-13:20:43 [ksoftirqd/9]
+     75       2  5-13:20:43 [kworker/9:0H-kblockd]
+     76       2  5-13:20:43 [cpuhp/10]
+     77       2  5-13:20:43 [idle_inject/10]
+     78       2  5-13:20:43 [migration/10]
+     79       2  5-13:20:43 [ksoftirqd/10]
+     81       2  5-13:20:43 [kworker/10:0H-kblockd]
+     82       2  5-13:20:43 [cpuhp/11]
+     83       2  5-13:20:43 [idle_inject/11]
+     84       2  5-13:20:43 [migration/11]
+     85       2  5-13:20:43 [ksoftirqd/11]
+     87       2  5-13:20:43 [kworker/11:0H-kblockd]
+     88       2  5-13:20:43 [kdevtmpfs]
+     89       2  5-13:20:43 [kworker/R-inet_frag_wq]
+     90       2  5-13:20:43 [rcu_tasks_kthread]
+     91       2  5-13:20:43 [rcu_tasks_rude_kthread]
+     92       2  5-13:20:43 [kauditd]
+     93       2  5-13:20:43 [khungtaskd]
+     94       2  5-13:20:43 [oom_reaper]
+     97       2  5-13:20:43 [kworker/R-writeback]
+     98       2  5-13:20:43 [kcompactd0]
+     99       2  5-13:20:43 [ksmd]
+    100       2  5-13:20:43 [khugepaged]
+    101       2  5-13:20:43 [kworker/R-kblockd]
+    102       2  5-13:20:43 [kworker/R-blkcg_punt_bio]
+    103       2  5-13:20:43 [kworker/R-kintegrityd]
+    105       2  5-13:20:43 [irq/9-acpi]
+    110       2  5-13:20:37 [kworker/R-tpm_dev_wq]
+    111       2  5-13:20:37 [kworker/R-ata_sff]
+    112       2  5-13:20:37 [kworker/R-md_bitmap]
+    113       2  5-13:20:37 [kworker/R-md_llbitmap_io]
+    114       2  5-13:20:37 [kworker/R-md_llbitmap_unplug]
+    115       2  5-13:20:37 [kworker/R-edac-poller]
+    116       2  5-13:20:37 [kworker/R-devfreq_wq]
+    117       2  5-13:20:37 [watchdogd]
+    119       2  5-13:20:37 [kworker/R-quota_events_unbound]
+    120       2  5-13:20:37 [kswapd0]
+    121       2  5-13:20:37 [ecryptfs-kthread]
+    122       2  5-13:20:37 [kworker/R-kthrotld]
+    124       2  5-13:20:37 [irq/24-aerdrv]
+    125       2  5-13:20:37 [irq/25-aerdrv]
+    126       2  5-13:20:37 [irq/26-aerdrv]
+    127       2  5-13:20:37 [irq/27-aerdrv]
+    128       2  5-13:20:37 [kworker/R-acpi_thermal_pm]
+    129       2  5-13:20:37 [hwrng]
+    133       2  5-13:20:37 [kworker/R-mld]
+    134       2  5-13:20:37 [kworker/R-ipv6_addrconf]
+    135       2  5-13:20:37 [kworker/R-kstrp]
+    140       2  5-13:20:37 [kworker/u49:0]
+    155       2  5-13:20:37 [kworker/R-charger_manager]
+    230       2  5-13:20:36 [kworker/R-nvme-wq]
+    231       2  5-13:20:36 [kworker/R-nvme-reset-wq]
+    232       2  5-13:20:36 [kworker/R-nvme-delete-wq]
+    233       2  5-13:20:36 [kworker/R-nvme-auth-wq]
+    258       2  5-13:20:35 [kworker/R-raid5wq]
+    518       2  5-13:20:31 [kworker/R-kdmflush/252:0]
+    519       2  5-13:20:31 [kworker/R-kcryptd_io-252:0-1]
+    520       2  5-13:20:31 [kworker/R-kcryptd-252:0-1]
+    521       2  5-13:20:31 [dmcrypt_write/252:0]
+    528       2  5-13:20:31 [kworker/R-kdmflush/252:1]
+    557       2  5-13:20:31 [kworker/R-btrfs-worker]
+    558       2  5-13:20:31 [kworker/R-btrfs-delalloc]
+    559       2  5-13:20:31 [kworker/R-btrfs-flush_delalloc]
+    560       2  5-13:20:31 [kworker/R-btrfs-cache]
+    561       2  5-13:20:31 [kworker/R-btrfs-fixup]
+    562       2  5-13:20:31 [kworker/R-btrfs-endio]
+    563       2  5-13:20:31 [kworker/R-btrfs-endio-meta]
+    564       2  5-13:20:31 [kworker/R-btrfs-rmw]
+    565       2  5-13:20:31 [kworker/R-btrfs-endio-write]
+    566       2  5-13:20:31 [kworker/R-btrfs-freespace-write]
+    567       2  5-13:20:31 [kworker/R-btrfs-delayed-meta]
+    568       2  5-13:20:31 [kworker/R-btrfs-qgroup-rescan]
+    569       2  5-13:20:31 [btrfs-cleaner]
+    570       2  5-13:20:31 [btrfs-transaction]
+    592       2  5-13:20:30 [kworker/1:1H-kblockd]
+    593       2  5-13:20:30 [kworker/2:1H-kblockd]
+    602       2  5-13:20:30 [kworker/8:1H-kblockd]
+    604       2  5-13:20:30 [kworker/6:1H-kblockd]
+    609       2  5-13:20:30 [kworker/4:1H-kblockd]
+    614       2  5-13:20:30 [kworker/5:1H-kblockd]
+    621       2  5-13:20:30 [kworker/3:1H-kblockd]
+    629       2  5-13:20:30 [kworker/10:1H-kblockd]
+    630       2  5-13:20:30 [kworker/0:1H-kblockd]
+    636       2  5-13:20:30 [kworker/7:1H-kblockd]
+    644       1  5-13:20:30 /usr/lib/systemd/systemd-journald
+    663       2  5-13:20:30 [kworker/9:1H-kblockd]
+    665       2  5-13:20:30 [kworker/11:1H-kblockd]
+    708       1  5-13:20:30 /usr/lib/systemd/systemd-udevd
+    713       2  5-13:20:30 [psimon]
+    776       2  5-13:20:30 [kworker/R-ext4-rsv-conversion]
+    858       2  5-13:20:29 [kworker/R-cfg80211]
+    860       2  5-13:20:29 [irq/64-mei_me]
+    887       2  5-13:20:29 [jbd2/nvme1n1p2-8]
+    888       2  5-13:20:29 [kworker/R-ext4-rsv-conversion]
+    925       1  5-13:20:29 /usr/lib/systemd/systemd-networkd
+   1091       2  5-13:20:28 [nv_queue]
+   1092       2  5-13:20:28 [nv_queue]
+   1093       2  5-13:20:28 [nv_open_q]
+   1096       2  5-13:20:28 [nvidia-modeset/kthread_q]
+   1097       2  5-13:20:28 [nvidia-modeset/deferred_close_kthread_q]
+   1099       2  5-13:20:28 [irq/66-nvidia]
+   1100       2  5-13:20:28 [nvidia]
+   1101       2  5-13:20:28 [nv_queue]
+   1210       2  5-13:20:26 [UVM global queue]
+   1211       2  5-13:20:26 [UVM deferred release queue]
+   1212       2  5-13:20:26 [UVM Tools Event Queue]
+   1223       1  5-13:20:23 /usr/lib/systemd/systemd-oomd
+   1224       1  5-13:20:22 /usr/lib/systemd/systemd-resolved
+   1230       1  5-13:20:22 avahi-daemon: running [z3.local]
+   1231       1  5-13:20:22 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+   1238       1  5-13:20:22 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+   1241       1  5-13:20:22 /usr/lib/polkit-1/polkitd --no-debug
+   1242       1  5-13:20:22 /usr/libexec/power-profiles-daemon
+   1244       1  5-13:20:22 /usr/sbin/sssd -i --logger=files
+   1245       1  5-13:20:22 /usr/libexec/switcheroo-control
+   1251       1  5-13:20:22 /usr/libexec/udisks2/udisksd
+   1259    1230  5-13:20:22 avahi-daemon: chroot helper
+   1297       1  5-13:20:22 /usr/sbin/NetworkManager --no-daemon
+   1299       1  5-13:20:22 /usr/sbin/wpa_supplicant -u -s -O DIR=/run/wpa_supplicant GROUP=netdev
+   1313       1  5-13:20:22 /usr/sbin/rsyslogd -n -iNONE
+   1332       1  5-13:20:22 /usr/sbin/ModemManager
+   1333       1  5-13:20:22 /usr/libexec/boltd
+   1360    1244  5-13:20:22 /usr/libexec/sssd/sssd_be --domain AD001.SIEMENS.NET --uid 0 --gid 0 --logger=files
+   1381    1244  5-13:20:22 /usr/libexec/sssd/sssd_pac --uid 0 --gid 0 --logger=files
+   1384       1  5-13:20:22 /usr/libexec/accounts-daemon
+   1386       1  5-13:20:22 /usr/sbin/CRON -f -P
+   1387       1  5-13:20:22 /usr/sbin/CRON -f -P
+   1388       1  5-13:20:22 /usr/sbin/CRON -f -P
+   1389       1  5-13:20:22 /usr/lib/systemd/systemd-logind
+   1414       1  5-13:20:22 /usr/libexec/sssd/sssd_nss --logger=files --socket-activated
+   1448    1387  5-13:20:22 /bin/sh -c bash -ic 'while sleep 99;do npx -y wechat-acp@next --agent claude;done'
+   1449    1388  5-13:20:22 /bin/sh -c bash -ic 'while sleep 99;do omniroute;done'
+   1450    1386  5-13:20:22 /bin/sh -c bash -ic 'while sleep 99;do npx -y screenpipe@latest record;done'
+   1451    1449  5-13:20:22 bash -ic while sleep 99;do omniroute;done
+   1452    1450  5-13:20:22 bash -ic while sleep 99;do npx -y screenpipe@latest record;done
+   1453    1448  5-13:20:22 bash -ic while sleep 99;do npx -y wechat-acp@next --agent claude;done
+   1571       1  5-13:20:21 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+   1579       1  5-13:20:21 /usr/lib/systemd/systemd --user
+   1608    1579  5-13:20:21 (sd-pam)
+   1615       1  5-13:20:21 /usr/sbin/gdm3
+   1650    1579  5-13:20:21 /usr/bin/pipewire
+   1652    1579  5-13:20:21 /usr/bin/pipewire -c filter-chain.conf
+   1653    1579  5-13:20:21 /usr/bin/wireplumber
+   1654    1579  5-13:20:21 /usr/bin/pipewire-pulse
+   1655    1579  5-13:20:21 /home/z/.local/share/fnm/node-versions/v24.18.1/installation/bin/node /home/z/.pi/agent/npm/node_modules/remote-pi/dist/bin/supervisord.js
+   1657    1579  5-13:20:21 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+   1679       1  5-13:20:21 /usr/libexec/rtkit-daemon
+   1791       1  5-13:20:18 /usr/libexec/colord
+   1842       1  5-13:20:17 /usr/libexec/upowerd
+   1979       1  5-13:20:17 /usr/sbin/pcscd --foreground --auto-exit
+   2149    1615  5-13:20:16 gdm-session-worker [pam/gdm-password]
+   2157    1579  5-13:20:12 /usr/bin/gnome-keyring-daemon --foreground --components=pkcs11,secrets --control-directory=/run/user/1000/keyring
+   2178    2149  5-13:20:11 /usr/libexec/gdm-x-session --run-script env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu
+   2180    2178  5-13:20:11 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -nolisten tcp -background none -noreset -keeptty -novtswitch -verbose 3
+   2198       2  5-13:20:10 [nvidia-drm/timeline-9]
+   2208    2178  5-13:20:09 /usr/libexec/gnome-session-binary --session=ubuntu
+   2314    1579  5-13:20:09 /usr/libexec/at-spi-bus-launcher
+   2321    2314  5-13:20:09 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 11 --address=unix:path=/run/user/1000/at-spi/bus_1
+   2327    1579  5-13:20:09 /usr/libexec/gcr-ssh-agent --base-dir /run/user/1000/gcr
+   2328    1579  5-13:20:09 /usr/libexec/gnome-session-ctl --monitor
+   2342    1579  5-13:20:09 /usr/libexec/gvfsd
+   2350    1579  5-13:20:09 /usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f
+   2353    1579  5-13:20:09 /usr/libexec/gnome-session-binary --systemd-service --session=ubuntu
+   2385    1579  5-13:20:09 /usr/bin/gnome-shell
+   2421       2  5-13:20:09 [nvidia-drm/timeline-b]
+   2422    2385  5-13:20:08 /usr/libexec/mutter-x11-frames
+   2425    1579  5-13:20:08 /usr/libexec/at-spi2-registryd --use-gnome-session
+   2449    1579  5-13:20:08 /usr/libexec/xdg-permission-store
+   2451    1579  5-13:20:08 /usr/libexec/gnome-shell-calendar-server
+   2463    1579  5-13:20:08 /usr/libexec/evolution-source-registry
+   2478    1579  5-13:20:08 /usr/bin/gjs -m /usr/share/gnome-shell/org.gnome.Shell.Notifications
+   2502    1579  5-13:20:08 /usr/libexec/gsd-a11y-settings
+   2505    1579  5-13:20:08 /usr/libexec/gsd-color
+   2507    1579  5-13:20:08 /usr/libexec/gsd-datetime
+   2510    1579  5-13:20:08 /usr/libexec/gsd-housekeeping
+   2519    1579  5-13:20:08 /usr/libexec/gsd-keyboard
+   2520    1579  5-13:20:08 /usr/libexec/gsd-media-keys
+   2523    1579  5-13:20:08 /usr/libexec/gsd-power
+   2526    1579  5-13:20:08 /usr/libexec/gsd-print-notifications
+   2528    1579  5-13:20:08 /usr/libexec/gsd-rfkill
+   2530    1579  5-13:20:08 /usr/libexec/gsd-screensaver-proxy
+   2531    1579  5-13:20:08 /usr/libexec/gsd-sharing
+   2536    1579  5-13:20:08 /usr/libexec/gsd-smartcard
+   2537    1579  5-13:20:08 /usr/libexec/gsd-sound
+   2545    1579  5-13:20:08 /usr/libexec/gsd-wacom
+   2553    1579  5-13:20:08 /usr/libexec/gsd-xsettings
+   2572    2353  5-13:20:08 /usr/libexec/gsd-disk-utility-notify
+   2580    2353  5-13:20:08 /usr/libexec/evolution-data-server/evolution-alarm-notify
+   2587    1579  5-13:20:08 /usr/libexec/gvfs-udisks2-volume-monitor
+   2611    1579  5-13:20:08 /usr/libexec/goa-daemon
+   2697    1579  5-13:20:08 /usr/libexec/goa-identity-service
+   2703    1579  5-13:20:08 /usr/libexec/evolution-calendar-factory
+   2734    1579  5-13:20:08 /usr/libexec/evolution-addressbook-factory
+   2740    1579  5-13:20:08 /usr/libexec/gvfs-mtp-volume-monitor
+   2748    1579  5-13:20:08 /usr/libexec/gvfs-gphoto2-volume-monitor
+   2765    1579  5-13:20:08 /usr/libexec/gvfs-goa-volume-monitor
+   2773    1579  5-13:20:08 /usr/libexec/gvfs-afc-volume-monitor
+   2784    1579  5-13:20:08 /usr/bin/gjs -m /usr/share/gnome-shell/org.gnome.ScreenSaver
+   2802    1579  5-13:20:08 /usr/libexec/tracker-miner-fs-3
+   2849    1579  5-13:20:07 /usr/libexec/dconf-service
+   2860    1579  5-13:20:07 /usr/libexec/gsd-printer
+   3229    2342  5-13:20:04 /usr/libexec/gvfsd-trash --spawner :1.23 /org/gtk/gvfs/exec_spaw/0
+   3245    1579  5-13:20:04 /usr/libexec/xdg-desktop-portal
+   3251    1579  5-13:20:04 /usr/libexec/xdg-document-portal
+   3257    3251  5-13:20:04 fusermount3 -o rw,nosuid,nodev,fsname=portal,auto_unmount,subtype=portal -- /run/user/1000/doc
+   3262    1579  5-13:20:04 /usr/libexec/xdg-desktop-portal-gnome
+   3276    1579  5-13:20:04 /usr/libexec/xdg-desktop-portal-gtk
+   3414    1579  5-13:19:55 /usr/libexec/gnome-terminal-server
+   3548       1  5-13:19:41 /opt/microsoft/intune/bin/intune-daemon
+   3549       1  5-13:19:41 /usr/lib/jvm/java-11-openjdk-amd64/bin/java -classpath /opt/microsoft/identity-broker/lib/LinuxBrokerPackage-2.0.1.jar:/opt/microsoft/identity-broker/lib/LinuxBroker-2.0.1.jar:/opt/microsoft/identity-broker/lib/secret-service-1.7.1.jar:/opt/microsoft/identity-broker/lib/dbus-java-3.3.0.jar:/opt/microsoft/identity-broker/lib/broker4j-11.5.0.jar:/opt/microsoft/identity-broker/lib/moshi-adapters-1.14.0.jar:/opt/microsoft/identity-broker/lib/moshi-1.14.0.jar:/opt/microsoft/identity-broker/lib/kotlinx-coroutines-core-jvm-1.6.4.jar:/opt/microsoft/identity-broker/lib/kotlinx-coroutines-jdk8-1.6.4.jar:/opt/microsoft/identity-broker/lib/okio-jvm-3.4.0.jar:/opt/microsoft/identity-broker/lib/kotlin-stdlib-jdk8-1.8.0.jar:/opt/microsoft/identity-broker/lib/common4j-14.5.0.jar:/opt/microsoft/identity-broker/lib/oshi-core-5.7.5.jar:/opt/microsoft/identity-broker/lib/mapdb-3.0.8.jar:/opt/microsoft/identity-broker/lib/httpclient-4.5.8.jar:/opt/microsoft/identity-broker/lib/javafx-web-15-linux.jar:/opt/microsoft/identity-broker/lib/javafx-controls-15-linux.jar:/opt/microsoft/identity-broker/lib/javafx-controls-15.jar:/opt/microsoft/identity-broker/lib/javafx-media-15-linux.jar:/opt/microsoft/identity-broker/lib/javafx-media-15.jar:/opt/microsoft/identity-broker/lib/javafx-graphics-15-linux.jar:/opt/microsoft/identity-broker/lib/javafx-graphics-15.jar:/opt/microsoft/identity-broker/lib/javafx-base-15-linux.jar:/opt/microsoft/identity-broker/lib/javafx-base-15.jar:/opt/microsoft/identity-broker/lib/jnr-unixsocket-0.38.5.jar:/opt/microsoft/identity-broker/lib/slf4j-api-1.7.30.jar:/opt/microsoft/identity-broker/lib/kotlin-stdlib-jdk7-1.8.0.jar:/opt/microsoft/identity-broker/lib/kotlin-stdlib-1.8.0.jar:/opt/microsoft/identity-broker/lib/nimbus-jose-jwt-9.37.3.jar:/opt/microsoft/identity-broker/lib/gson-2.8.9.jar:/opt/microsoft/identity-broker/lib/json-20231013.jar:/opt/microsoft/identity-broker/lib/jcip-annotations-1.0-1.jar:/opt/microsoft/identity-broker/lib/opentelemetry-api-1.18.0.jar:/opt/microsoft/identity-broker/lib/bcpkix-jdk15to18-1.78.jar:/opt/microsoft/identity-broker/lib/bctls-jdk15to18-1.78.jar:/opt/microsoft/identity-broker/lib/bcutil-jdk15to18-1.78.jar:/opt/microsoft/identity-broker/lib/bcprov-jdk15to18-1.78.jar:/opt/microsoft/identity-broker/lib/protobuf-javalite-3.21.9.jar:/opt/microsoft/identity-broker/lib/jna-platform-5.8.0.jar:/opt/microsoft/identity-broker/lib/jna-5.8.0.jar:/opt/microsoft/identity-broker/lib/eclipse-collections-forkjoin-12.0.0.M3.jar:/opt/microsoft/identity-broker/lib/eclipse-collections-12.0.0.M3.jar:/opt/microsoft/identity-broker/lib/eclipse-collections-api-12.0.0.M3.jar:/opt/microsoft/identity-broker/lib/guava-33.3.1-jre.jar:/opt/microsoft/identity-broker/lib/lz4-1.3.0.jar:/opt/microsoft/identity-broker/lib/elsa-3.0.0-M5.jar:/opt/microsoft/identity-broker/lib/hkdf-1.1.0.jar:/opt/microsoft/identity-broker/lib/jnr-enxio-0.32.3.jar:/opt/microsoft/identity-broker/lib/jnr-posix-3.1.4.jar:/opt/microsoft/identity-broker/lib/jnr-ffi-2.2.1.jar:/opt/microsoft/identity-broker/lib/jnr-constants-0.10.1.jar:/opt/microsoft/identity-broker/lib/kotlin-stdlib-common-1.8.0.jar:/opt/microsoft/identity-broker/lib/annotations-13.0.jar:/opt/microsoft/identity-broker/lib/opentelemetry-context-1.18.0.jar:/opt/microsoft/identity-broker/lib/failureaccess-1.0.2.jar:/opt/microsoft/identity-broker/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/opt/microsoft/identity-broker/lib/jsr305-3.0.2.jar:/opt/microsoft/identity-broker/lib/checker-qual-3.43.0.jar:/opt/microsoft/identity-broker/lib/error_prone_annotations-2.28.0.jar:/opt/microsoft/identity-broker/lib/j2objc-annotations-3.0.0.jar:/opt/microsoft/identity-broker/lib/jffi-1.3.1.jar:/opt/microsoft/identity-broker/lib/jffi-1.3.1-native.jar:/opt/microsoft/identity-broker/lib/asm-commons-9.0.jar:/opt/microsoft/identity-broker/lib/asm-util-9.0.jar:/opt/microsoft/identity-broker/lib/asm-analysis-9.0.jar:/opt/microsoft/identity-broker/lib/asm-tree-9.0.jar:/opt/microsoft/identity-broker/lib/asm-9.0.jar:/opt/microsoft/identity-broker/lib/jnr-a64asm-1.0.0.jar:/opt/microsoft/identity-broker/lib/jnr-x86asm-1.0.2.jar com.microsoft.identity.broker.service.DeviceBrokerService
+   3553       1  5-13:19:41 /usr/sbin/CmWebAdmin
+   3554       1  5-13:19:41 /usr/sbin/CodeMeterLin -f
+   3588       1  5-13:19:41 /usr/bin/containerd
+   4019    1579  5-13:19:34 /usr/bin/ghostty --gtk-single-instance=true --initial-window=false
+   4125       2  5-13:19:34 [nvidia-drm/timeline-10]
+   4963    1579  5-13:19:08 /usr/libexec/gvfsd-metadata
+   4971    2353  5-13:19:08 /usr/bin/update-notifier
+   6765       1  5-13:18:29 /usr/bin/ruby /usr/bin/puppet agent --no-daemonize
+   6768       1  5-13:18:29 /usr/sbin/kerneloops --test
+   6777       1  5-13:18:29 /usr/sbin/kerneloops
+   7181       2  5-13:18:25 [kworker/R-tls-strp]
+  11830    1579  5-13:17:34 /usr/lib/jvm/java-11-openjdk-amd64/bin/java -classpath /opt/microsoft/identity-broker/lib/LinuxBrokerPackage-2.0.1.jar:/opt/microsoft/identity-broker/lib/LinuxBroker-2.0.1.jar:/opt/microsoft/identity-broker/lib/secret-service-1.7.1.jar:/opt/microsoft/identity-broker/lib/dbus-java-3.3.0.jar:/opt/microsoft/identity-broker/lib/broker4j-11.5.0.jar:/opt/microsoft/identity-broker/lib/moshi-adapters-1.14.0.jar:/opt/microsoft/identity-broker/lib/moshi-1.14.0.jar:/opt/microsoft/identity-broker/lib/kotlinx-coroutines-core-jvm-1.6.4.jar:/opt/microsoft/identity-broker/lib/kotlinx-coroutines-jdk8-1.6.4.jar:/opt/microsoft/identity-broker/lib/okio-jvm-3.4.0.jar:/opt/microsoft/identity-broker/lib/kotlin-stdlib-jdk8-1.8.0.jar:/opt/microsoft/identity-broker/lib/common4j-14.5.0.jar:/opt/microsoft/identity-broker/lib/oshi-core-5.7.5.jar:/opt/microsoft/identity-broker/lib/mapdb-3.0.8.jar:/opt/microsoft/identity-broker/lib/httpclient-4.5.8.jar:/opt/microsoft/identity-broker/lib/javafx-web-15-linux.jar:/opt/microsoft/identity-broker/lib/javafx-controls-15-linux.jar:/opt/microsoft/identity-broker/lib/javafx-controls-15.jar:/opt/microsoft/identity-broker/lib/javafx-media-15-linux.jar:/opt/microsoft/identity-broker/lib/javafx-media-15.jar:/opt/microsoft/identity-broker/lib/javafx-graphics-15-linux.jar:/opt/microsoft/identity-broker/lib/javafx-graphics-15.jar:/opt/microsoft/identity-broker/lib/javafx-base-15-linux.jar:/opt/microsoft/identity-broker/lib/javafx-base-15.jar:/opt/microsoft/identity-broker/lib/jnr-unixsocket-0.38.5.jar:/opt/microsoft/identity-broker/lib/slf4j-api-1.7.30.jar:/opt/microsoft/identity-broker/lib/kotlin-stdlib-jdk7-1.8.0.jar:/opt/microsoft/identity-broker/lib/kotlin-stdlib-1.8.0.jar:/opt/microsoft/identity-broker/lib/nimbus-jose-jwt-9.37.3.jar:/opt/microsoft/identity-broker/lib/gson-2.8.9.jar:/opt/microsoft/identity-broker/lib/json-20231013.jar:/opt/microsoft/identity-broker/lib/jcip-annotations-1.0-1.jar:/opt/microsoft/identity-broker/lib/opentelemetry-api-1.18.0.jar:/opt/microsoft/identity-broker/lib/bcpkix-jdk15to18-1.78.jar:/opt/microsoft/identity-broker/lib/bctls-jdk15to18-1.78.jar:/opt/microsoft/identity-broker/lib/bcutil-jdk15to18-1.78.jar:/opt/microsoft/identity-broker/lib/bcprov-jdk15to18-1.78.jar:/opt/microsoft/identity-broker/lib/protobuf-javalite-3.21.9.jar:/opt/microsoft/identity-broker/lib/jna-platform-5.8.0.jar:/opt/microsoft/identity-broker/lib/jna-5.8.0.jar:/opt/microsoft/identity-broker/lib/eclipse-collections-forkjoin-12.0.0.M3.jar:/opt/microsoft/identity-broker/lib/eclipse-collections-12.0.0.M3.jar:/opt/microsoft/identity-broker/lib/eclipse-collections-api-12.0.0.M3.jar:/opt/microsoft/identity-broker/lib/guava-33.3.1-jre.jar:/opt/microsoft/identity-broker/lib/lz4-1.3.0.jar:/opt/microsoft/identity-broker/lib/elsa-3.0.0-M5.jar:/opt/microsoft/identity-broker/lib/hkdf-1.1.0.jar:/opt/microsoft/identity-broker/lib/jnr-enxio-0.32.3.jar:/opt/microsoft/identity-broker/lib/jnr-posix-3.1.4.jar:/opt/microsoft/identity-broker/lib/jnr-ffi-2.2.1.jar:/opt/microsoft/identity-broker/lib/jnr-constants-0.10.1.jar:/opt/microsoft/identity-broker/lib/kotlin-stdlib-common-1.8.0.jar:/opt/microsoft/identity-broker/lib/annotations-13.0.jar:/opt/microsoft/identity-broker/lib/opentelemetry-context-1.18.0.jar:/opt/microsoft/identity-broker/lib/failureaccess-1.0.2.jar:/opt/microsoft/identity-broker/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/opt/microsoft/identity-broker/lib/jsr305-3.0.2.jar:/opt/microsoft/identity-broker/lib/checker-qual-3.43.0.jar:/opt/microsoft/identity-broker/lib/error_prone_annotations-2.28.0.jar:/opt/microsoft/identity-broker/lib/j2objc-annotations-3.0.0.jar:/opt/microsoft/identity-broker/lib/jffi-1.3.1.jar:/opt/microsoft/identity-broker/lib/jffi-1.3.1-native.jar:/opt/microsoft/identity-broker/lib/asm-commons-9.0.jar:/opt/microsoft/identity-broker/lib/asm-util-9.0.jar:/opt/microsoft/identity-broker/lib/asm-analysis-9.0.jar:/opt/microsoft/identity-broker/lib/asm-tree-9.0.jar:/opt/microsoft/identity-broker/lib/asm-9.0.jar:/opt/microsoft/identity-broker/lib/jnr-a64asm-1.0.0.jar:/opt/microsoft/identity-broker/lib/jnr-x86asm-1.0.2.jar com.microsoft.identity.broker.service.IdentityBrokerService
+  11916       2  5-13:17:33 [nvidia-drm/timeline-15]
+  15049    4019  5-13:16:29 /bin/sh -c /usr/bin/zsh
+  15051   15049  5-13:16:29 /usr/bin/zsh
+  15291    4019  5-13:16:07 /bin/sh -c /usr/bin/zsh
+  15293   15291  5-13:16:07 /usr/bin/zsh
+  15545    4019  5-13:15:57 /bin/sh -c /usr/bin/zsh
+  15547   15545  5-13:15:57 /usr/bin/zsh
+  15803    4019  5-13:15:48 /bin/sh -c /usr/bin/zsh
+  15808   15803  5-13:15:48 /usr/bin/zsh
+  16209    4019  5-13:15:35 /bin/sh -c /usr/bin/zsh
+  16211   16209  5-13:15:35 /usr/bin/zsh
+  16581    1452  5-13:15:24 npm exec screenpipe@latest record
+  16969   16581  5-13:15:08 sh -c 'screenpipe' record
+  16970   16969  5-13:15:08 node /home/z/.npm/_npx/e158bcd0e578b626/node_modules/.bin/screenpipe record
+  16982   16970  5-13:15:08 /home/z/.npm/_npx/e158bcd0e578b626/node_modules/@screenpipe/cli-linux-x64/bin/screenpipe record
+  17413    4019  5-13:14:46 /bin/sh -c /usr/bin/zsh
+  17415   17413  5-13:14:46 /usr/bin/zsh
+  23988    1579  5-13:06:18 fcitx5 -d
+  25141    2385  5-13:04:26 /opt/microsoft/msedge/msedge
+  25147   25141  5-13:04:26 cat
+  25148   25141  5-13:04:26 cat
+  25150    1579  5-13:04:26 /opt/microsoft/msedge/msedge_crashpad_handler --monitor-self --monitor-self-annotation=ptype=crashpad-handler --database=/home/z/.config/microsoft-edge/Crash Reports --annotation=IsOfficialBuild=1 --annotation=exe=msedge --annotation=lsb-release=Ubuntu 24.04.5 LTS --annotation=plat=Linux --annotation=prod=Chrome_Linux --annotation=ver=154.0.4258.62 --initial-client-fd=5 --shared-client-connection
+  25152    1579  5-13:04:26 /opt/microsoft/msedge/msedge_crashpad_handler --no-periodic-tasks --monitor-self-annotation=ptype=crashpad-handler --database=/home/z/.config/microsoft-edge/Crash Reports --annotation=IsOfficialBuild=1 --annotation=exe=msedge --annotation=lsb-release=Ubuntu 24.04.5 LTS --annotation=plat=Linux --annotation=prod=Chrome_Linux --annotation=ver=154.0.4258.62 --initial-client-fd=4 --shared-client-connection
+  25158   25141  5-13:04:26 /opt/microsoft/msedge/msedge --type=zygote --no-zygote-sandbox --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable
+  25159   25141  5-13:04:26 /opt/microsoft/msedge/msedge-sandbox /opt/microsoft/msedge/msedge --type=zygote --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable
+  25160   25159  5-13:04:26 /opt/microsoft/msedge/msedge --type=zygote --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable
+  25162   25160  5-13:04:26 /opt/microsoft/msedge/msedge --type=zygote --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable
+  25187   25158  5-13:04:26 /opt/microsoft/msedge/msedge --type=gpu-process --gpu-recent-crash-count=0 --ozone-platform=x11 --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --gpu-preferences=YAAAAAAAAAAgAQAEAAAAAAAAAAAAAGAASAAAAAAAAAABAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAwAAAAAAAAAAEAAAAAAAAACAAAAAAAAAAMAAAAAQAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAA== --shared-files --metrics-shmem-handle=4,i,24588060068698401,872415417048385375,262144 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190708988185955192
+  25191   25141  5-13:04:26 /opt/microsoft/msedge/msedge --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,15664119503698099460,3365731171016040704,524288 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190708989122997041
+  25202       2  5-13:04:25 [nvidia-drm/timeline-18]
+  25215   25162  5-13:04:25 /opt/microsoft/msedge/msedge --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=utility --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,17143678040617251781,1503472603952643566,524288 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190708990060038890
+  25247   25187  5-13:04:25 /opt/microsoft/msedge/msedge --type=broker
+  25276   25162  5-13:04:25 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=978508591 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,8355794730288900491,18200874432905254652,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190708991934122588
+  25298   25162  5-13:04:25 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --extension-process --renderer-sub-type=extension --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=978551078 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,18041404363940571367,4438270788082181865,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190708992871164437
+  25633   25162  5-13:04:22 /opt/microsoft/msedge/msedge --type=renderer --top-chrome-webui --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=15 --launch-time-ticks=981443805 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,18377857657407819417,17254819241078410334,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709000367499229
+  28598       1  5-13:03:21 /opt/microsoft/mdatp/sbin/wdavdaemon
+  28784   28598  5-13:03:17 /opt/microsoft/mdatp/sbin/wdavdaemon edr 23 25 22 --log_level info
+  30677       1  5-13:02:50 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+  31764   25162    14:22:39 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=856 --launch-time-ticks=428285068100 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,10326573056892127949,7152099019133424224,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709788419694238
+  54099    4019  5-13:01:16 /bin/sh -c /usr/bin/zsh
+  54101   54099  5-13:01:16 /usr/bin/zsh
+  92848   25141  5-12:11:13 /opt/microsoft/msedge/msedge --type=utility --utility-sub-type=audio.mojom.AudioService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,1281114232487485820,6095262738318781190,524288 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709017234252511
+ 121555    2342  5-11:24:11 /usr/libexec/gvfsd-recent --spawner :1.23 /org/gtk/gvfs/exec_spaw/1
+ 136444   28598    13:00:35 /opt/microsoft/mdatp/sbin/wdavdaemon unprivileged 43 45 47 406 42 --log_level info
+ 144655       1  5-11:16:03 /usr/bin/containerd-shim-runc-v2 -namespace moby -id dc787041fa360b86e76da6215d4d4cc6939dab23dd7aa89adc6c52ac036ab9dd -address /run/containerd/containerd.sock
+ 144678  144655  5-11:16:03 postgres
+ 144717  144678  5-11:16:03 postgres: checkpointer 
+ 144718  144678  5-11:16:03 postgres: background writer 
+ 144720  144678  5-11:16:03 postgres: walwriter 
+ 144721  144678  5-11:16:03 postgres: autovacuum launcher 
+ 144722  144678  5-11:16:03 postgres: logical replication launcher 
+ 174936       2    11:52:11 [kworker/6:2-events]
+ 288420   25162    10:42:27 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=928 --launch-time-ticks=441497031476 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,15922499830599081465,9822049717975626095,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709855886707366
+ 289962   25162    10:40:49 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=932 --launch-time-ticks=441594446092 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,15092438724514573863,14040684885482615008,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709859634874762
+ 294888   25162    10:32:08 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=939 --launch-time-ticks=442115390699 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,14963491179838101324,9752933371887521600,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709866194167705
+ 298271    1579    10:28:48 /bin/bash -c cd /home/z/hf/research && chmod +x .wrapup/axes_finisher.sh && setsid bash .wrapup/axes_finisher.sh >/dev/null 2>&1 < /dev/null & sleep 45; echo "finisher pid: $(pgrep -f axes_finisher.sh | tr '\n' ' ')"; echo "=== log tail ==="; tail -8 .wrapup/axes_finisher.log 2>/dev/null; echo "=== AXES_RESULTS.md head ==="; head -30 .wrapup/AXES_RESULTS.md 2>/dev/null; echo "=== reorder watcher alive? ==="; pgrep -af axes_reorder_watcher | head -1
+ 298274  298271    10:28:48 bash .wrapup/axes_finisher.sh
+ 309311       2    10:18:02 [kworker/7:0-events]
+ 321270   25162    10:11:15 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=942 --launch-time-ticks=443369056408 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,15468734732853634933,3325672960192200964,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709869005293252
+ 341319   16211    09:41:22 pi
+ 342046   17415    09:40:17 pi
+ 342886    4019    09:39:02 /bin/sh -c /usr/bin/zsh
+ 342888  342886    09:39:02 /usr/bin/zsh
+ 342978  342888    09:38:51 pi
+ 345740       1  5-10:17:46 /usr/sbin/chronyd -F 1
+ 345741  345740  5-10:17:46 /usr/sbin/chronyd -F 1
+ 372053    4019    09:29:31 /bin/sh -c /usr/bin/zsh
+ 372055  372053    09:29:31 /usr/bin/zsh
+ 390856  372055    09:18:04 pi
+ 393259   25162    09:15:56 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=951 --launch-time-ticks=446687292162 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,16213251658589174289,10405702797681962080,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709877438669893
+ 400195    4019    09:12:39 /bin/sh -c /usr/bin/zsh
+ 400198  400195    09:12:39 /usr/bin/zsh
+ 400718  400198    09:12:26 pi
+ 433764    4019    09:01:18 /bin/sh -c /usr/bin/zsh
+ 433766  433764    09:01:18 /usr/bin/zsh
+ 434303  433766    09:01:10 pi
+ 436762    1579    08:59:24 Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp
+ 436769    1579    08:59:22 mpv --fullscreen --loop-playlist --mute=yes --no-terminal --vo=x11 --gpu-context=x11egl /home/z/Videos/backseat-data/【官方 MV】Never Gonna Give You Up - Rick Astley.mp4 /home/z/Videos/backseat-data/【焦急的罗曼史】【成勋×宋枝恩】甜蜜向剪辑.mp4
+ 436829    1579    08:59:20 python3 -m backseat --data-dir /home/z/backseat-data
+ 473269   25162    08:46:13 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=956 --launch-time-ticks=448470545568 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,9590256612242104441,16461755428280701250,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709882123879138
+ 479004    1579    08:43:20 bash .wrapup/campaign.sh
+ 490576       2    08:37:01 [kworker/3:1-mm_percpu_wq]
+ 527295       2    08:12:22 [kworker/4:1-events]
+ 703669  144678    06:31:09 postgres: postgres postgres 127.0.0.1(58586) idle
+ 718649       2    06:19:35 [kworker/10:2-mm_percpu_wq]
+ 744324   25162    05:59:51 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=967 --launch-time-ticks=458453054424 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,6285097454194977128,8082058840349946035,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709892431339477
+ 793417   25162    05:17:16 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=968 --launch-time-ticks=461007739347 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,1757574483697455248,12410617768372991742,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709893368381326
+ 842254       2    04:42:50 [kworker/0:0-events_freezable]
+ 884087       2    04:18:57 [kworker/8:0-rcu_gp]
+ 920267   25162    03:54:09 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=976 --launch-time-ticks=465995009754 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,872584375387182862,1158492608679684350,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709900864716118
+ 931977       2    03:45:26 [kworker/9:1-events]
+ 936050       1    03:40:36 /usr/sbin/cupsd -l
+ 936080       1    03:40:36 /usr/sbin/cups-browsed
+ 947633   25162    03:34:55 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=977 --launch-time-ticks=467148250492 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,361997881617935186,17843294971771184309,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709901801757967
+1003571    3414  4-17:33:55 zsh
+1004261 1003571  4-17:32:18 /home/z/.venv/bin/python3 /home/z/.venv/bin/litellm
+1004657 1004261  4-17:31:49 /home/z/.cache/prisma-python/binaries/5.17.0/393aa359c9ad4a4bb28630fb5613f9c281cde053/node_modules/prisma/query-engine-debian-openssl-3.0.x -p 37959 --enable-metrics --enable-raw-queries
+1018858       2    02:45:58 [kworker/2:0-cgroup_free]
+1026232       2    02:39:53 [kworker/u48:2-btrfs-endio-meta]
+1054586       2    02:10:55 [kworker/u48:3-btrfs-endio-write]
+1054588       2    02:10:55 [kworker/u48:16-btrfs-endio-meta]
+1086315 3779065    01:55:37 /home/z/.local/share/fnm/node-versions/v24.18.1/installation/bin/node --import file:///home/z/.pi/agent/npm/node_modules/pi-subagents/runner-peer-preload.mjs /home/z/.pi/agent/npm/node_modules/pi-subagents/src/runs/background/subagent-runner-bootstrap.js /tmp/pi-subagents-uid-1000/async-cfg-c259a0e9-3668-4a22-ae13-41823f691a26.json
+1087715       2    01:54:27 [kworker/1:2-events]
+1089475       2    01:53:25 [kworker/u48:5-kcryptd-252:0-1]
+1096547   25162    01:47:44 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=985 --launch-time-ticks=473580019353 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,2317852016358925765,15488770168227911717,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709909298092759
+1116785       2    01:34:34 [kworker/u48:19-btrfs-endio-write]
+1123774       2    01:26:59 [kworker/5:2-events]
+1135067       2    01:19:06 [kworker/u48:15-kcryptd-252:0-1]
+1149346       2    01:05:40 [kworker/u48:4-kcryptd-252:0-1]
+1149426       2    01:05:38 [kworker/u48:7-btrfs-endio-write]
+1149815       2    01:05:06 [kworker/u48:10-kcryptd-252:0-1]
+1174355  144678       48:40 postgres: postgres postgres 127.0.0.1(39716) idle
+1178723       2       47:43 [kworker/u48:11-events_unbound]
+1187303       2       41:29 [kworker/u48:1-btrfs-endio-meta]
+1188905       2       40:28 [kworker/u48:9-btrfs-endio-write]
+1188906       2       40:28 [kworker/u48:12-btrfs-endio-meta]
+1196545       2       36:16 [kworker/u48:13-events_unbound]
+1196546       2       36:16 [kworker/u48:14-kcryptd-252:0-1]
+1197486       2       35:19 [kworker/u48:18-btrfs-endio-write]
+1206842       2       25:00 [kworker/u48:8-btrfs-endio-meta]
+1215969       2       17:11 [kworker/u48:0-kcryptd-252:0-1]
+1215970       2       17:11 [kworker/u48:6-btrfs-endio]
+1220176       2       14:46 [kworker/u48:17-kcryptd-252:0-1]
+1224856       2       11:13 [kworker/8:2-cgroup_release]
+1225123       2       10:32 [kworker/6:0-cgroup_free]
+1225221       2       10:27 [kworker/9:2-cgroup_free]
+1225534       2       10:07 [kworker/2:1-cgroup_free]
+1226650       2       09:26 [kworker/10:1-cgroup_free]
+1226820       2       09:15 [kworker/11:1-cgroup_free]
+1227291       2       08:44 [kworker/1:0-cgroup_release]
+1227561  144678       08:21 postgres: postgres postgres 127.0.0.1(47040) idle
+1227754  298274       08:13 sleep 600
+1227797       2       07:52 [kworker/5:1-cgroup_free]
+1227817       2       07:42 [kworker/4:0-cgroup_release]
+1227826       2       07:37 [kworker/7:2-cgroup_free]
+1227892  479004       07:26 /bin/bash /home/z/hf/research/.wrapup/codepanel.sh /home/z/hf/gemma-4-E4B-it-qat-UD-Q2_K_XL.gguf m149-qat-gemma-e4b-q2 100
+1227907 1227892       07:26 llama-server -m /home/z/hf/models--unsloth--gemma-4-E4B-it-qat-GGUF/blobs/79dde517866cfbb5c00230b530de17910fc7fc78f8827554d0e14281ce5faf03 --port 9200 --host 127.0.0.1 -c 8192 -np 1 -ngl 99 --jinja --reasoning off --reasoning-format none
+1227917       2       07:26 [vidmem lazy free]
+1227918       2       07:26 [UVM GPU1 BH]
+1227919       2       07:26 [UVM GPU1 KC]
+1227964 1227892       07:23 timeout 7200 /home/z/hf/research/.wrapup/evalpy/bin/evalplus.codegen m149-qat-gemma-e4b-q2 humaneval --backend openai --base_url http://127.0.0.1:9200/v1 --temperature 0.0 --greedy True --root /home/z/hf/research/.wrapup/mres/m149-qat-gemma-e4b-q2/codegen
+1227965 1227964       07:23 /home/z/hf/research/.wrapup/evalpy/bin/python /home/z/hf/research/.wrapup/evalpy/bin/evalplus.codegen m149-qat-gemma-e4b-q2 humaneval --backend openai --base_url http://127.0.0.1:9200/v1 --temperature 0.0 --greedy True --root /home/z/hf/research/.wrapup/mres/m149-qat-gemma-e4b-q2/codegen
+1228789       2       06:19 [kworker/0:1-events]
+1229142       2       05:48 [kworker/3:0-cgroup_free]
+1229243 3787785       05:39 /home/z/.local/share/fnm/node-versions/v24.18.1/installation/bin/node --import file:///home/z/.pi/agent/npm/node_modules/pi-subagents/runner-peer-preload.mjs /home/z/.pi/agent/npm/node_modules/pi-subagents/src/runs/background/subagent-runner-bootstrap.js /tmp/pi-subagents-uid-1000/async-cfg-9c35db32-513a-4164-a6df-acd8172cc98b.json
+1229956       2       04:52 [kworker/8:1-cgroup_free]
+1230407       2       04:21 [kworker/9:0-cgroup_free]
+1230514    1453       04:11 npm exec wechat-acp@next --agent claude
+1230530 1230514       04:09 sh -c 'wechat-acp' --agent claude
+1230531 1230530       04:09 node /home/z/.npm/_npx/0be8cca3e6856b35/node_modules/.bin/wechat-acp --agent claude
+1230830       2       03:50 [kworker/2:2-events]
+1230916       2       03:45 [kworker/11:0-cgroup_free]
+1231462       2       02:58 [kworker/10:0-cgroup_free]
+1231969       2       02:26 [kworker/1:1-cgroup_free]
+1235941       2       02:00 [kworker/5:0]
+1236601       2       01:21 [kworker/7:1]
+1236630 3968714       01:20 /home/z/.local/share/fnm/node-versions/v24.18.1/installation/bin/node --import file:///home/z/.pi/agent/npm/node_modules/pi-subagents/runner-peer-preload.mjs /home/z/.pi/agent/npm/node_modules/pi-subagents/src/runs/background/subagent-runner-bootstrap.js /tmp/pi-subagents-uid-1000/async-cfg-5caab505-d8aa-4664-95ae-a78fc4839545.json
+1237329       2       01:05 [kworker/4:2-cgroup_free]
+1238501       2       00:39 [kworker/6:1-events]
+1238665 1086315       00:34 /bin/bash -c cd /home/z/hf/research && sleep 115; date -Is; tail -1 .wrapup/axes_finisher.log; echo "--- DB m149 ---"; sqlite3 experiments.sqlite "SELECT _bench,_score FROM experiments WHERE run_tag LIKE 'm149%' ORDER BY _bench;" 2>/dev/null || true; true
+1238666 1238665       00:34 sleep 115
+1238669  144678       00:31 postgres: postgres postgres 127.0.0.1(57900) idle
+1238760  341319       00:29 /home/z/.local/share/fnm/node-versions/v24.18.1/installation/bin/node --import file:///home/z/.pi/agent/npm/node_modules/pi-subagents/runner-peer-preload.mjs /home/z/.pi/agent/npm/node_modules/pi-subagents/src/runs/background/subagent-runner-bootstrap.js /tmp/pi-subagents-uid-1000/async-cfg-afe11d6e-8a37-4b72-9844-2a45e24a4862.json
+1238998    1451       00:13 sleep 99
+1238999 1236630       00:11 /bin/bash -c python3 - <<'PY' import os,json,hashlib,subprocess,pathlib,datetime r=pathlib.Path('.scratch/62-all-sites/link-closure/recovery');r.mkdir(exist_ok=True) old=json.load(open('.scratch/62-all-sites/link-closure/current-hashes.json'));print(type(old).__name__,str(old)[:450]) (r/'root-scoped.patch').write_bytes(subprocess.check_output(['git','diff','--binary','HEAD','--','m1','docs/m1/layout-axes.md'])) (r/'git-status.txt').write_bytes(subprocess.check_output(['git','status','--porcelain=v1'])) (r/'processes.txt').write_bytes(subprocess.check_output(['ps','-eo','pid,ppid,etime,args'])) print('snapshot saved') PY find .scratch/62-all-sites/link-closure/recovery/files -type f | wc -l; find /tmp/pi-subagents-uid-1000 -maxdepth 1 -type f -name '*d4c9d408*' -o -name '*1863fd3b*'
+1239000 1238999       00:11 python3 -
+1239198 1239000       00:00 ps -eo pid,ppid,etime,args
+1279583  144678  4-12:47:23 postgres: postgres postgres 127.0.0.1(36034) idle
+1302171    1579  4-12:45:13 /opt/sublime_text/sublime_text --detached
+1302179    1579  4-12:45:13 /opt/sublime_text/crash_handler --no-rate-limit --database=/home/z/.cache/sublime-text/Crash Reports --metrics-dir=/home/z/.cache/sublime-text/Crash Reports --url=https://crash-server.sublimehq.com/api/upload --annotation=hash=18051757765095205172 --annotation=ident=sublime_text_4215 --initial-client-fd=15 --shared-client-connection
+1302214 1302171  4-12:45:13 /opt/sublime_text/plugin_host-3.14 1302171 /opt/sublime_text/sublime_text 14:1302179 true /home/z/.config/sublime-text /home/z/.cache/sublime-text /opt/sublime_text/Packages
+1970503  144678  4-07:13:23 postgres: postgres postgres 127.0.0.1(49536) idle
+2318323  144678  4-05:20:10 postgres: postgres postgres 127.0.0.1(57356) idle
+2937126       1  3-21:09:27 /usr/libexec/fwupd/fwupd
+3140188   25162  3-11:57:32 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=502 --launch-time-ticks=177791726766 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,8400705287902234849,12773723552755955975,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709456706879692
+3140624   25162  3-11:57:13 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=513 --launch-time-ticks=177810249230 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,2790648998297034923,17677409765491285451,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709467014340031
+3324424       2  2-21:14:17 [psimon]
+3440638    1579  2-03:43:10 /opt/microsoft/intune/bin/intune-agent
+3619162    1579  1-01:46:03 /usr/bin/python3 /usr/bin/update-manager --no-update --no-focus-on-map
+3674922       1    21:16:40 /usr/sbin/cron -f -P
+3674924       1    21:16:40 /usr/libexec/gnome-remote-desktop-daemon --system
+3708521    1579    20:42:53 /usr/bin/gnome-text-editor /home/z/vibe/pathlm/.scratch/54-subproject-schema/INVENTORY.md
+3708543       2    20:42:53 [nvidia-drm/timeline-28]
+3766892   25162    19:31:31 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=693 --launch-time-ticks=409752355387 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,2578727247059213924,11965967176257148827,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709635681872851
+3766910   25162    19:31:30 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=694 --launch-time-ticks=409753887219 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,9156153293519092703,13828631895636724556,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709636618914700
+3767683   15051    19:29:10 pi
+3768874   25162    19:27:07 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=697 --launch-time-ticks=410016566102 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,11553892816096843239,10076751578350527049,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709639430040247
+3768887   25162    19:27:07 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=698 --launch-time-ticks=410016761762 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,14402398307585391009,1232410532563753583,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709640367082096
+3775255    1579    19:13:13 /usr/bin/eog /home/z/hf/research/figures/fig1_sensitivity.png
+3778483    2385    18:59:17 /usr/bin/gnome-control-center network
+3778519       2    18:59:17 [nvidia-drm/timeline-29]
+3778951       1    18:56:08 /bin/ssh -R zisisnotzis3:22:127.0.0.1:22 -o ServerAliveInterval=30 -o ServerAliveCountMax=3 serveo.net
+3779065   15293    18:54:53 pi
+3787785   15547    18:00:01 pi
+3789179   54101    17:56:32 pi
+3868257       2    17:25:11 [kworker/11:2-mm_percpu_wq]
+3968714   15808    16:39:20 pi
+3978647   25162    16:29:32 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=796 --launch-time-ticks=420672115174 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,9029505206761690498,13173336845399295505,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709732197183298
+3985554   25162    16:28:46 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=799 --launch-time-ticks=420717510646 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,1310995818160609696,2102182669774615226,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709735008308845
+3990317   25162    16:25:02 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=817 --launch-time-ticks=420941380402 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,2166644728895622920,4042368907888202931,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709751875062127
+3994923   25162    16:22:56 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=822 --launch-time-ticks=421067471282 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,2829193239166042924,2735298127567589553,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709756560271372
+3998147   25162    16:20:33 /opt/microsoft/msedge/msedge --type=renderer --crashpad-handler-pid=25150 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --js-flags --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=831 --launch-time-ticks=421211033927 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,18400091445546805580,6993265902667274621,1048576 --field-trial-handle=3,i,321379602496665356,2066707537903190560,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,5925318788649937291,3965513047847533065,4 --trace-process-track-uuid=3190709764993648013

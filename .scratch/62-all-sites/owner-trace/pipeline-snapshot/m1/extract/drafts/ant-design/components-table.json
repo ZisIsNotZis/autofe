@@ -1,0 +1,6689 @@
+{
+  "_intent": "Table - Ant Design — Table [draft]",
+  "_title": {
+    "text": "Table - Ant Design"
+  },
+  "_lines": [
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#when-to-use",
+        "label": "When To Use"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#how-to-use",
+        "label": "How To Use"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#promotion",
+        "label": "Promotion"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#examples",
+        "label": "Examples"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-basic",
+        "label": "Basic Usage"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-jsx",
+        "label": "JSX style API"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-row-selection",
+        "label": "selection"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-row-selection-and-operation",
+        "label": "Selection and operation"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-row-selection-custom",
+        "label": "Custom selection"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-head",
+        "label": "Filter and sorter"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-filter-in-tree",
+        "label": "Filter in Tree"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-filter-search",
+        "label": "Filter search"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-multiple-sorter",
+        "label": "Multiple sorter"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-reset-filter",
+        "label": "Reset filters and sorters"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-custom-filter-panel",
+        "label": "Customized filter panel"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-ajax",
+        "label": "Ajax"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-size",
+        "label": "size"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-bordered",
+        "label": "border, title and footer"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-expand",
+        "label": "Expandable Row"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-order-column",
+        "label": "Order Specific Column"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-colspan-rowspan",
+        "label": "colSpan and rowSpan"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-tree-data",
+        "label": "Tree data"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-fixed-header",
+        "label": "Fixed Header"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-auto-height",
+        "label": "Auto height"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-fixed-columns",
+        "label": "Fixed Columns"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-fixed-gapped-columns",
+        "label": "Stack Fixed Columns"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-fixed-columns-header",
+        "label": "Fixed Columns and Header"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-hidden-columns",
+        "label": "Hidden Columns"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-grouping-columns",
+        "label": "Grouping table head"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-edit-cell",
+        "label": "Editable Cells"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-edit-row",
+        "label": "Editable Rows"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-nested-table",
+        "label": "Nested tables"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-drag-sorting",
+        "label": "Drag sorting"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-drag-column-sorting",
+        "label": "Drag Column sorting"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-drag-sorting-handler",
+        "label": "Drag sorting with handler"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-ellipsis",
+        "label": "ellipsis column"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-column-defaults",
+        "label": "Shared column props"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-ellipsis-custom-tooltip",
+        "label": "ellipsis column custom tooltip"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-custom-empty",
+        "label": "Custom empty"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-summary",
+        "label": "Summary"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-virtual-list",
+        "label": "Virtual list"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-responsive",
+        "label": "Responsive"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-pagination",
+        "label": "Pagination Settings"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-sticky",
+        "label": "Fixed header and scroll bar with the page"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-dynamic-settings",
+        "label": "Dynamic Settings"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-demo-style-class",
+        "label": "Custom semantic dom styling"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#api",
+        "label": "API"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table",
+        "label": "Table"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#table-ref",
+        "label": "Table ref"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#column",
+        "label": "Column"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#columngroup",
+        "label": "ColumnGroup"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#pagination",
+        "label": "pagination"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#expandable",
+        "label": "expandable"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#rowselection",
+        "label": "rowSelection"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#scroll",
+        "label": "scroll"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#selection",
+        "label": "selection"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#using-in-typescript",
+        "label": "Using in TypeScript"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#semantic-dom",
+        "label": "Semantic DOM"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#design-token",
+        "label": "Design Token"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#note",
+        "label": "Note"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#faq",
+        "label": "FAQ"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#faq-hide-pagination",
+        "label": "How to hide pagination when single page or no data?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#faq-filter-to-first-page",
+        "label": "Table will return to first page when filter data."
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#faq-size-changer",
+        "label": "Why Table pagination show size changer?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#faq-state-update-rerender",
+        "label": "Why Table fully render when state change?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#faq-table-performance",
+        "label": "How should I troubleshoot Table performance issues?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#faq-fixed-column-zindex",
+        "label": "How to handle fixed column display over the mask layout?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#faq-custom-checkbox-render",
+        "label": "How to custom render Table Checkbox（For example, adding Tooltip）?"
+      }
+    },
+    {
+      "_action": {
+        "verb": "navigate",
+        "to": "https://ant.design/components/table#faq-virtual-wrapper-ref",
+        "label": "Why does components.body.wrapper or components.body.row report an error when virtual is enabled?"
+      }
+    },
+    {
+      "_intent": "Table [draft]",
+      "_title": {
+        "text": "Table"
+      }
+    },
+    {
+      "_intent": "When To Use [draft]",
+      "_title": {
+        "text": "When To Use"
+      },
+      "_lines": [
+        {
+          "_intent": "list (2 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "To display a collection of structured data."
+              }
+            },
+            {
+              "_name": {
+                "text": "To sort, search, paginate, filter data."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "How To Use [draft]",
+      "_title": {
+        "text": "How To Use"
+      },
+      "_measure": {
+        "list": [
+          {
+            "num": 32
+          },
+          {
+            "num": 42
+          }
+        ]
+      },
+      "_summary": {
+        "text": "Specify dataSource of Table as an array of data."
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "jsx"
+          }
+        },
+        {
+          "_text": {
+            "text": "const"
+          }
+        },
+        {
+          "_text": {
+            "text": "dataSource"
+          }
+        },
+        {
+          "_text": {
+            "text": "key"
+          }
+        },
+        {
+          "_text": {
+            "text": "'1'"
+          }
+        },
+        {
+          "_text": {
+            "text": "name"
+          }
+        },
+        {
+          "_text": {
+            "text": "'Mike'"
+          }
+        },
+        {
+          "_text": {
+            "text": "age"
+          }
+        },
+        {
+          "_text": {
+            "text": "address"
+          }
+        },
+        {
+          "_text": {
+            "text": "'10 Downing Street'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'2'"
+          }
+        },
+        {
+          "_text": {
+            "text": "'John'"
+          }
+        },
+        {
+          "_text": {
+            "text": "columns"
+          }
+        },
+        {
+          "_text": {
+            "text": "title"
+          }
+        },
+        {
+          "_text": {
+            "text": "dataIndex"
+          }
+        },
+        {
+          "_text": {
+            "text": "/>"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Promotion [draft]",
+      "_title": {
+        "text": "Promotion"
+      },
+      "_lines": [
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Kitchen Sketch Plugin 💎"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://kitchen.alipay.com/",
+                "label": "Kitchen Sketch Plugin 💎"
+              }
+            },
+            {
+              "_name": {
+                "text": "ProTable - Advanced Tables"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://procomponents.ant.design/en-US/components/table",
+                "label": "ProTable - Advanced Tables"
+              }
+            },
+            {
+              "_name": {
+                "text": "S2 - Analytical Tables"
+              },
+              "_action": {
+                "verb": "navigate",
+                "to": "https://github.com/antvis/s2/",
+                "label": "S2 - Analytical Tables"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Examples [draft]",
+      "_title": {
+        "text": "Examples"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          },
+          {
+            "image": "",
+            "alt": "CodeSandbox Icon"
+          },
+          {
+            "image": "",
+            "alt": "Hitu Icon"
+          },
+          {
+            "image": "",
+            "alt": "codepen icon"
+          }
+        ]
+      },
+      "_summary": {
+        "text": "Simple table with actions."
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "code"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "bug"
+          }
+        },
+        {
+          "_intent": "table (3 rows): Name / Age / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "New York No. 1 Lake Park"
+                }
+              },
+              "_tag": {
+                "list": [
+                  {
+                    "text": "NICE"
+                  },
+                  {
+                    "text": "DEVELOPER"
+                  }
+                ]
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Invite John Brown"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Delete"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_fields": {
+                "age": {
+                  "num": 42
+                },
+                "address": {
+                  "text": "London No. 1 Lake Park"
+                }
+              },
+              "_tag": {
+                "list": [
+                  {
+                    "text": "KAWAII"
+                  }
+                ]
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Invite Jim Green"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Delete"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              },
+              "_tag": {
+                "list": [
+                  {
+                    "text": "COOL"
+                  },
+                  {
+                    "text": "TEACHER"
+                  }
+                ]
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Invite Joe Black"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Delete"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-basic",
+            "label": "Basic Usage"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/basic.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-basic?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Expand Icon"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Name / Age / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John"
+              },
+              "_fields": {
+                "age": {
+                  "text": "Brown"
+                },
+                "address": {
+                  "text": "32"
+                }
+              },
+              "_tag": {
+                "list": [
+                  {
+                    "text": "New"
+                  },
+                  {
+                    "text": "York"
+                  },
+                  {
+                    "text": "No."
+                  },
+                  {
+                    "text": "Lake"
+                  },
+                  {
+                    "text": "Park"
+                  }
+                ]
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Invite Brown"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Delete"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim"
+              },
+              "_fields": {
+                "age": {
+                  "text": "Green"
+                },
+                "address": {
+                  "text": "42"
+                }
+              },
+              "_tag": {
+                "list": [
+                  {
+                    "text": "London"
+                  },
+                  {
+                    "text": "No."
+                  },
+                  {
+                    "text": "Lake"
+                  },
+                  {
+                    "text": "Park"
+                  }
+                ]
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Invite Green"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Delete"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe"
+              },
+              "_fields": {
+                "age": {
+                  "text": "Black"
+                },
+                "address": {
+                  "text": "32"
+                }
+              },
+              "_tag": {
+                "list": [
+                  {
+                    "text": "Sydney"
+                  },
+                  {
+                    "text": "No."
+                  },
+                  {
+                    "text": "Lake"
+                  },
+                  {
+                    "text": "Park"
+                  }
+                ]
+              },
+              "actions": {
+                "_intent": "row actions [draft]",
+                "_lines": [
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Invite Black"
+                    }
+                  },
+                  {
+                    "_action": {
+                      "verb": "navigate",
+                      "label": "Delete"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-jsx",
+            "label": "JSX style API"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/jsx.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Using JSX style API (introduced in 2.5.0)"
+          }
+        },
+        {
+          "_text": {
+            "text": "Since this is just a syntax sugar for the prop columns, you can'"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-jsx?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "Checkbox radio [draft]",
+          "_rel": {
+            "compare": true
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Checkbox"
+              }
+            },
+            {
+              "_name": {
+                "text": "radio"
+              }
+            }
+          ],
+          "_expose": {
+            "name": "checkbox-radio",
+            "type": "text"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Select all / Name / Age [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Select row 1"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "New York No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "John Brown"
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 2"
+              },
+              "_fields": {
+                "age": {
+                  "num": 42
+                },
+                "address": {
+                  "text": "London No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Jim Green"
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 3"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Joe Black"
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 4"
+              },
+              "_fields": {
+                "age": {
+                  "num": 99
+                },
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Disabled User"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-row-selection",
+            "label": "selection"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/row-selection.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Rows can be selectable by making first column as a selectable co"
+          }
+        },
+        {
+          "_text": {
+            "text": "selection happens when clicking checkbox by default. You can see"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-row-selection?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Reload"
+          }
+        },
+        {
+          "_intent": "table (10 rows): Select all / Name / Age [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Select row 1"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 0"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 2"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 1"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 3"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 2"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 4"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 3"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 5"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 4"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 6"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 5"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 7"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 6"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 8"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 7"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 9"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 8"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 10"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 9"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (7 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "2"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "2"
+              }
+            },
+            {
+              "_name": {
+                "text": "3"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "3"
+              }
+            },
+            {
+              "_name": {
+                "text": "4"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "4"
+              }
+            },
+            {
+              "_name": {
+                "text": "5"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "5"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-row-selection-and-operation",
+            "label": "Selection and operation"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/row-selection-and-operation.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "To perform operations and clear selections after selecting some"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-row-selection-and-operation?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (10 rows): Custom selection down / Name / Age [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Select row 1"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 0"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 2"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 1"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 3"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 2"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 4"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 3"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 5"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 4"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 6"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 5"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 7"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 6"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 8"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 7"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 9"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 8"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 10"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London, Park Lane no. 9"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (7 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "2"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "2"
+              }
+            },
+            {
+              "_name": {
+                "text": "3"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "3"
+              }
+            },
+            {
+              "_name": {
+                "text": "4"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "4"
+              }
+            },
+            {
+              "_name": {
+                "text": "5"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "5"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-row-selection-custom",
+            "label": "Custom selection"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/row-selection-custom.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Use rowSelection.selections custom selections, default no select"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-row-selection-custom?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Name / Age / Address filter [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_fields": {
+                "age": {
+                  "num": 42
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Red"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-head",
+            "label": "Filter and sorter"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/head.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Use filters to generate filter menu in columns, onFilter to dete"
+          }
+        },
+        {
+          "_text": {
+            "text": "Use defaultFilteredValue to make a column filtered by default."
+          }
+        },
+        {
+          "_text": {
+            "text": "Use sorter to make a column sortable. sorter can be a function o"
+          }
+        },
+        {
+          "_text": {
+            "text": "sortDirections: ['ascend', 'descend'] defines available sort met"
+          }
+        },
+        {
+          "_text": {
+            "text": "Use defaultSortOrder to make a column sorted by default."
+          }
+        },
+        {
+          "_text": {
+            "text": "If a sortOrder or defaultSortOrder is specified with the value a"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-head?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Name filter / Age / Address filter [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_fields": {
+                "age": {
+                  "num": 42
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Red"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-filter-in-tree",
+            "label": "Filter in Tree"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/filter-in-tree.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "You can use filterMode to change default filter interface, optio"
+          }
+        },
+        {
+          "_text": {
+            "text": "filterSearch is used for making filter dropdown items searchable"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-filter-in-tree?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Name filter / Age / Address filter [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_fields": {
+                "age": {
+                  "num": 42
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Red"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-filter-search",
+            "label": "Filter search"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/filter-search.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "filterSearch is used to enable search of filter items, and you c"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-filter-search?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Name / Chinese Score / Math Score [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_measure": {
+                "num": 98
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_measure": {
+                "num": 98
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_measure": {
+                "num": 98
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Red"
+              },
+              "_measure": {
+                "num": 88
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-multiple-sorter",
+            "label": "Multiple sorter"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/multiple-sorter.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "column.sorter support multiple to config the priority of sort co"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-multiple-sorter?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Sort age"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Clear filters"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "Clear filters and sorters"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Name / Age / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "New York No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_fields": {
+                "age": {
+                  "num": 42
+                },
+                "address": {
+                  "text": "London No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Red"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "London No. 2 Lake Park"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-reset-filter",
+            "label": "Reset filters and sorters"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/reset-filter.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Control filters and sorters by filteredValue and sortOrder."
+          }
+        },
+        {
+          "_text": {
+            "text": "Defining filteredValue or sortOrder means that it is in the cont"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-reset-filter?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Name search / Age search / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_measure": {
+                "num": 32
+              },
+              "_fields": {
+                "address": {
+                  "text": "New York No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_measure": {
+                "num": 42
+              },
+              "_fields": {
+                "address": {
+                  "text": "London No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_measure": {
+                "num": 32
+              },
+              "_fields": {
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Red"
+              },
+              "_measure": {
+                "num": 32
+              },
+              "_fields": {
+                "address": {
+                  "text": "London No. 2 Lake Park"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-custom-filter-panel",
+            "label": "Customized filter panel"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/custom-filter-panel.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Implement a customized column search example via filterDropdown."
+          }
+        },
+        {
+          "_text": {
+            "text": "Add the boolean type parameter closeDropdown to the function cle"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-custom-filter-panel?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (10 rows): Name / Gender filter / Email [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Mr. Greg Grimes"
+              },
+              "_fields": {
+                "email": {
+                  "text": "Twila57@gmail.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Timothy Brakus"
+              },
+              "_fields": {
+                "email": {
+                  "text": "Derek_Wyman@gmail.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Nicholas Feest"
+              },
+              "_fields": {
+                "email": {
+                  "text": "Garrick.McKenzie@yahoo.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Ms. Ida Carroll"
+              },
+              "_fields": {
+                "email": {
+                  "text": "Joshuah85@hotmail.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Aaron Satterfield"
+              },
+              "_fields": {
+                "email": {
+                  "text": "Alan_Kuhlman85@gmail.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Heidi Kris"
+              },
+              "_fields": {
+                "email": {
+                  "text": "Dion.Mohr@yahoo.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Julio Schmeler"
+              },
+              "_fields": {
+                "email": {
+                  "text": "Chaim_Nolan57@hotmail.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Heather Leuschke"
+              },
+              "_fields": {
+                "email": {
+                  "text": "Sonia71@gmail.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Ben Lesch"
+              },
+              "_fields": {
+                "email": {
+                  "text": "Allie_Friesen-Schmeler20@hotmail.com"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Harriet Hamill"
+              },
+              "_fields": {
+                "email": {
+                  "text": "Dimitri85@gmail.com"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (10 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "2"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "2"
+              }
+            },
+            {
+              "_name": {
+                "text": "3"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "3"
+              }
+            },
+            {
+              "_name": {
+                "text": "4"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "4"
+              }
+            },
+            {
+              "_name": {
+                "text": "5"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "5"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next 5 Pages"
+              }
+            },
+            {
+              "_name": {
+                "text": "10"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "10"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            },
+            {
+              "_name": {
+                "text": "10 / page"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-ajax",
+            "label": "Ajax"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/ajax.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "This example shows how to fetch and present data from a remote s"
+          }
+        },
+        {
+          "_text": {
+            "text": "Setting rowSelection.preserveSelectedRowKeys to keep the key whe"
+          }
+        },
+        {
+          "_text": {
+            "text": "Note, this example use Mock API that you can look up in Network"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-ajax?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_text": {
+            "text": "Medium size table"
+          }
+        },
+        {
+          "_intent": "table (3 rows): Name / Age / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "New York No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_fields": {
+                "age": {
+                  "num": 42
+                },
+                "address": {
+                  "text": "London No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "Small size table"
+          }
+        },
+        {
+          "_intent": "table (3 rows): Name / Age / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "New York No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_fields": {
+                "age": {
+                  "num": 42
+                },
+                "address": {
+                  "text": "London No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-size",
+            "label": "size"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/size.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "There are two compacted table sizes: medium and small. The small"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-size?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_text": {
+            "text": "Header"
+          }
+        },
+        {
+          "_intent": "table (3 rows): Name / Cash Assets / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_fields": {
+                "cash-assets": {
+                  "text": "￥300,000.00"
+                },
+                "address": {
+                  "text": "New York No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_fields": {
+                "cash-assets": {
+                  "text": "￥1,256,000.00"
+                },
+                "address": {
+                  "text": "London No. 1 Lake Park"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_fields": {
+                "cash-assets": {
+                  "text": "￥120,000.00"
+                },
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "Footer"
+          }
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-bordered",
+            "label": "border, title and footer"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/bordered.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Add border, title and footer for table."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-bordered?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Name / Age / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Expand row"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "New York No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Delete"
+              }
+            },
+            {
+              "_name": {
+                "text": "Expand row"
+              },
+              "_fields": {
+                "age": {
+                  "num": 42
+                },
+                "address": {
+                  "text": "London No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Delete"
+              }
+            },
+            {
+              "_fields": {
+                "age": {
+                  "num": 29
+                },
+                "address": {
+                  "text": "Jiangsu No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Delete"
+              }
+            },
+            {
+              "_name": {
+                "text": "Expand row"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Delete"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-expand",
+            "label": "Expandable Row"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/expand.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "When there's too much information to show and the table can't di"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-expand?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (4 rows): Name / Age / Select all [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "John Brown"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "New York No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Expand row"
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_fields": {
+                "age": {
+                  "num": 42
+                },
+                "address": {
+                  "text": "London No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Expand row"
+              }
+            },
+            {
+              "_name": {
+                "text": "Not Expandable"
+              },
+              "_fields": {
+                "age": {
+                  "num": 29
+                },
+                "address": {
+                  "text": "Jiangsu No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Expand row"
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Expand row"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-order-column",
+            "label": "Order Specific Column"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/order-column.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "You can control the order of the expand and select columns by us"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-order-column?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (5 rows): RowHead / Name / Age [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "18889898989"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "John Brown"
+              }
+            },
+            {
+              "_name": {
+                "text": "2"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Jim Green"
+              }
+            },
+            {
+              "_name": {
+                "text": "3"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "18900010002"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Joe Black"
+              }
+            },
+            {
+              "_name": {
+                "text": "4"
+              },
+              "_fields": {
+                "age": {
+                  "num": 18
+                },
+                "address": {
+                  "text": "18900010002"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Jim Red"
+              }
+            },
+            {
+              "_name": {
+                "text": "5"
+              },
+              "_fields": {
+                "age": {
+                  "num": 18
+                },
+                "address": {
+                  "text": "Dublin No. 2 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "Jake White"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-colspan-rowspan",
+            "label": "colSpan and rowSpan"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/colspan-rowspan.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Table column title supports colSpan that set in column."
+          }
+        },
+        {
+          "_text": {
+            "text": "Table cell supports colSpan and rowSpan that set in onCell retur"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-colspan-rowspan?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_text": {
+            "text": "CheckStrictly:"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "toggle",
+            "type": "bool"
+          }
+        },
+        {
+          "_intent": "table (2 rows): Select all / Name / Age [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "Select row 1"
+              },
+              "_fields": {
+                "age": {
+                  "num": 60
+                },
+                "address": {
+                  "text": "New York No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Expand row"
+              }
+            },
+            {
+              "_name": {
+                "text": "Select row 2"
+              },
+              "_fields": {
+                "age": {
+                  "num": 32
+                },
+                "address": {
+                  "text": "Sydney No. 1 Lake Park"
+                }
+              },
+              "_action": {
+                "verb": "open",
+                "label": "Expand row"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "list (3 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-tree-data",
+            "label": "Tree data"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/tree-data.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Display tree structure data in Table when there is field key chi"
+          }
+        },
+        {
+          "_text": {
+            "text": "You can control the indent width by setting indentSize."
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-tree-data?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "table (0 rows): Name / Age / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": []
+        },
+        {
+          "_intent": "list (5 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "2"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "2"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            },
+            {
+              "_name": {
+                "text": "50 / page"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-fixed-header",
+            "label": "Fixed Header"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/fixed-header.tsx",
+            "label": "edit"
+          }
+        },
+        {
+          "_text": {
+            "text": "Display large amounts of data in scrollable view."
+          }
+        },
+        {
+          "_text": {
+            "text": "Specify width of columns if header and cell do not align properl"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/~demos/table-demo-fixed-header?routeId=components%2Ftable%2Findex.en-US",
+            "label": "open in new tab"
+          }
+        },
+        {
+          "_intent": "toggle [draft]",
+          "_expose": {
+            "name": "more-data",
+            "type": "bool"
+          }
+        },
+        {
+          "_intent": "table (0 rows): Name / Age / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": []
+        },
+        {
+          "_intent": "list (5 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "Previous Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "left"
+              }
+            },
+            {
+              "_name": {
+                "text": "1"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "1"
+              }
+            },
+            {
+              "_name": {
+                "text": "2"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "2"
+              }
+            },
+            {
+              "_name": {
+                "text": "3"
+              },
+              "_action": {
+                "verb": "navigate",
+                "label": "3"
+              }
+            },
+            {
+              "_name": {
+                "text": "Next Page"
+              },
+              "_action": {
+                "verb": "open",
+                "label": "right"
+              }
+            }
+          ]
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/components/table#table-demo-auto-height",
+            "label": "Auto height"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/edit/master/components/table/demo/auto-height.tsx",
+            "label": "edit"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "API [draft]",
+      "_title": {
+        "text": "API"
+      },
+      "_summary": {
+        "text": "Common props ref：Common props"
+      },
+      "_lines": [
+        {
+          "_intent": "Table [draft]",
+          "_title": {
+            "text": "Table"
+          },
+          "_lines": [
+            {
+              "_intent": "table (31 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "bordered"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "classNames"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/table#semantic-dom",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/table#semantic-dom",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "column"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/table#column",
+                    "label": "ColumnType"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "columns"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/table#column",
+                    "label": "ColumnsType"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "components"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/react-component/table/blob/75ee0064e54a4b3215694505870c9d6c817e9e4a/src/interface.ts#L129",
+                    "label": "TableComponents"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "dataSource"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "expandable"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/table#expandable",
+                    "label": "expandable"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "footer"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getPopupContainer"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "loading"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/spin#api",
+                    "label": "Spin Props"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "locale"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ant-design/ant-design/blob/6dae4a7e18ad1ba193aedd5ab6867e1d823e2aa4/components/locale/en_US.tsx#L19-L37",
+                    "label": "Default Value"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "pagination"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/table#pagination",
+                          "label": "config"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/pagination",
+                          "label": "pagination"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rowClassName"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rowKey"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rowSelection"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/table#rowselection",
+                    "label": "config"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rowHoverable"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "scroll"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/table#scroll",
+                    "label": "config"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showHeader"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showSorterTooltip"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/tooltip#api",
+                    "label": "Tooltip props"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "size"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "sortDirections"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "sticky"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "styles"
+                  },
+                  "actions": {
+                    "_intent": "row actions [draft]",
+                    "_lines": [
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/table#semantic-dom",
+                          "label": "SemanticDOM"
+                        }
+                      },
+                      {
+                        "_action": {
+                          "verb": "navigate",
+                          "to": "https://ant.design/components/table#semantic-dom",
+                          "label": "SemanticDOM"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "summary"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "tableLayout"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout",
+                    "label": "table-layout"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "title"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "virtual"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onHeaderRow"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onRow"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onScroll"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "Table ref [draft]",
+          "_title": {
+            "text": "Table ref"
+          },
+          "_lines": [
+            {
+              "_intent": "table (2 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "nativeElement"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "scrollTo"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "onRow usage [draft]",
+          "_title": {
+            "text": "onRow usage"
+          },
+          "_summary": {
+            "text": "Same as onRow onHeaderRow onCell onHeaderCell"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "onRow"
+              }
+            },
+            {
+              "_text": {
+                "text": "record"
+              }
+            },
+            {
+              "_text": {
+                "text": "rowIndex"
+              }
+            },
+            {
+              "_text": {
+                "text": "=>"
+              }
+            },
+            {
+              "_text": {
+                "text": "return"
+              }
+            },
+            {
+              "_text": {
+                "text": "onClick"
+              }
+            },
+            {
+              "_text": {
+                "text": "event"
+              }
+            },
+            {
+              "_text": {
+                "text": "// click row"
+              }
+            },
+            {
+              "_text": {
+                "text": "onDoubleClick"
+              }
+            },
+            {
+              "_text": {
+                "text": "// double click row"
+              }
+            },
+            {
+              "_text": {
+                "text": "onContextMenu"
+              }
+            },
+            {
+              "_text": {
+                "text": "// right button click row"
+              }
+            },
+            {
+              "_text": {
+                "text": "onMouseEnter"
+              }
+            },
+            {
+              "_text": {
+                "text": "// mouse enter row"
+              }
+            },
+            {
+              "_text": {
+                "text": "onMouseLeave"
+              }
+            },
+            {
+              "_text": {
+                "text": "// mouse leave row"
+              }
+            },
+            {
+              "_text": {
+                "text": "onHeaderRow"
+              }
+            },
+            {
+              "_text": {
+                "text": "index"
+              }
+            },
+            {
+              "_text": {
+                "text": "// click header row"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Column [draft]",
+          "_title": {
+            "text": "Column"
+          },
+          "_summary": {
+            "text": "One of the Table columns prop for describing the table's columns"
+          },
+          "_lines": [
+            {
+              "_intent": "table (36 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "align"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "className"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "colSpan"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "dataIndex"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultFilteredValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterResetToDefaultFilteredValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultSortOrder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "ellipsis"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterDropdown"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ant-design/ant-design/blob/ecc54dda839619e921c0ace530408871f0281c2a/components/table/interface.tsx#L79",
+                    "label": "FilterDropdownProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filtered"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filteredValue"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterOnClose"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterMultiple"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterMode"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterSearch"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filters"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "filterDropdownProps"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/dropdown#api",
+                    "label": "DropdownProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "fixed"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "key"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "render"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "responsive"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ant-design/ant-design/blob/015109b42b85c63146371b4e32b883cf97b088e8/components/_util/responsiveObserve.ts#L1",
+                    "label": "Breakpoint"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rowScope"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "shouldCellUpdate"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showSorterTooltip"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/tooltip",
+                    "label": "Tooltip props"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "sortDirections"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "sorter"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort",
+                    "label": "Array.sort"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "sortOrder"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "sortIcon"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "title"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "width"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ant-design/ant-design/issues/13825#issuecomment-449889241",
+                    "label": "width not working?"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "minWidth"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "hidden"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onCell"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onFilter"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onHeaderCell"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "ColumnGroup [draft]",
+          "_title": {
+            "text": "ColumnGroup"
+          },
+          "_lines": [
+            {
+              "_intent": "table (1 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "title"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "pagination [draft]",
+          "_title": {
+            "text": "pagination"
+          },
+          "_summary": {
+            "text": "Properties for pagination."
+          },
+          "_lines": [
+            {
+              "_intent": "table (1 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "placement"
+                  }
+                }
+              ]
+            },
+            {
+              "_text": {
+                "text": "More about pagination, please check Pagination."
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "expandable [draft]",
+          "_title": {
+            "text": "expandable"
+          },
+          "_summary": {
+            "text": "Properties for expandable."
+          },
+          "_lines": [
+            {
+              "_intent": "table (17 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "childrenColumnName"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "columnTitle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "columnWidth"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultExpandAllRows"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultExpandedRowKeys"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "expandedRowClassName"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "expandedRowKeys"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "expandedRowRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "expandIcon"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://codesandbox.io/s/fervent-bird-nuzpr",
+                    "label": "example"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "expandRowByClick"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "fixed"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "forceRender"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "indentSize"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "rowExpandable"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "showExpandColumn"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onExpand"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onExpandedRowsChange"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "rowSelection [draft]",
+          "_title": {
+            "text": "rowSelection"
+          },
+          "_summary": {
+            "text": "Properties for row selection."
+          },
+          "_lines": [
+            {
+              "_intent": "table (17 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "align"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "checkStrictly"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "columnTitle"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "columnWidth"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "fixed"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getCheckboxProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "getTitleCheckboxProps"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "hideSelectAll"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "preserveSelectedRowKeys"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "renderCell"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "selectedRowKeys"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "defaultSelectedRowKeys"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "selections"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://ant.design/components/table#selection",
+                    "label": "config"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "type"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onCell"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onSelect"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "scroll [draft]",
+          "_title": {
+            "text": "scroll"
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "scrollToFirstRowOnChange"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "x"
+                  },
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://developer.mozilla.org/en-US/docs/Web/CSS/width#max-content",
+                    "label": "'max-content'"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "y"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_intent": "selection [draft]",
+          "_title": {
+            "text": "selection"
+          },
+          "_lines": [
+            {
+              "_intent": "table (3 rows): Property / Description / Type [draft]",
+              "_rel": {
+                "order": "none"
+              },
+              "_items": [
+                {
+                  "_name": {
+                    "text": "key"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "text"
+                  }
+                },
+                {
+                  "_name": {
+                    "text": "onSelect"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Using in TypeScript [draft]",
+      "_title": {
+        "text": "Using in TypeScript"
+      },
+      "_summary": {
+        "text": "tsx"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "import"
+          }
+        },
+        {
+          "_text": {
+            "text": "React"
+          }
+        },
+        {
+          "_text": {
+            "text": "from"
+          }
+        },
+        {
+          "_text": {
+            "text": "'antd'"
+          }
+        },
+        {
+          "_text": {
+            "text": "type"
+          }
+        },
+        {
+          "_text": {
+            "text": "TableColumnsType"
+          }
+        },
+        {
+          "_text": {
+            "text": "interface"
+          }
+        },
+        {
+          "_text": {
+            "text": "User"
+          }
+        },
+        {
+          "_text": {
+            "text": "number"
+          }
+        },
+        {
+          "_text": {
+            "text": "string"
+          }
+        },
+        {
+          "_text": {
+            "text": "data"
+          }
+        },
+        {
+          "_text": {
+            "text": "'Jack'"
+          }
+        },
+        {
+          "_text": {
+            "text": "Demo"
+          }
+        },
+        {
+          "_text": {
+            "text": "FC"
+          }
+        },
+        {
+          "_text": {
+            "text": "<Table<User> columns="
+          }
+        },
+        {
+          "_text": {
+            "text": "dataSource="
+          }
+        },
+        {
+          "_text": {
+            "text": "/* JSX style usage */"
+          }
+        },
+        {
+          "_text": {
+            "text": "<Table<User> dataSource="
+          }
+        },
+        {
+          "_text": {
+            "text": "<Table.Column<User> key=\"name\" title=\"Name\" dataIndex=\"name\" />"
+          }
+        },
+        {
+          "_text": {
+            "text": "</"
+          }
+        },
+        {
+          "_text": {
+            "text": "export"
+          }
+        },
+        {
+          "_text": {
+            "text": "default"
+          }
+        },
+        {
+          "_text": {
+            "text": "Here is the CodeSandbox for TypeScript."
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Semantic DOM [draft]",
+      "_title": {
+        "text": "Semantic DOM"
+      },
+      "_summary": {
+        "text": "table title"
+      },
+      "_lines": [
+        {
+          "_intent": "table (4 rows): Personal Info / Address [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "thinkasany"
+              },
+              "_fields": {
+                "address": {
+                  "text": "24"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Jim Green"
+              },
+              "_fields": {
+                "address": {
+                  "text": "42"
+                }
+              }
+            },
+            {
+              "_name": {
+                "text": "Joe Black"
+              },
+              "_fields": {
+                "address": {
+                  "text": "32"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_text": {
+            "text": "table footer"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "left"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "1"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "2"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "label": "right"
+          }
+        },
+        {
+          "_intent": "list (13 items) [draft]",
+          "_items": [
+            {
+              "_name": {
+                "text": "root Root element with font-size, background, border-radius, scrollbar-color and other basic table container styles"
+              }
+            },
+            {
+              "_name": {
+                "text": "title Title element with table title styling and layout"
+              }
+            },
+            {
+              "_name": {
+                "text": "content Content element with table content area styling and layout"
+              }
+            },
+            {
+              "_name": {
+                "text": "header.wrapper Header wrapper element with table header layout and container styles"
+              }
+            },
+            {
+              "_name": {
+                "text": "header.row Header row element with table header row layout and styling"
+              }
+            },
+            {
+              "_name": {
+                "text": "header.cell Header cell element with relative positioning, padding, word-wrap, background, text color, font-weight and other header cell styles"
+              }
+            },
+            {
+              "_name": {
+                "text": "section Container element with clear-fix, max-width, scrollbar background and other table wrapper styles"
+              }
+            },
+            {
+              "_name": {
+                "text": "body.wrapper Body wrapper element with table body layout and container styles"
+              }
+            },
+            {
+              "_name": {
+                "text": "body.row Body row element with hover effects, selected states, expanded states and other interactive row styles"
+              }
+            },
+            {
+              "_name": {
+                "text": "body.cell Body cell element with relative positioning, padding, word-wrap and other basic data cell styles"
+              }
+            },
+            {
+              "_name": {
+                "text": "footer Footer element with table footer background color, text color and other footer styles"
+              }
+            },
+            {
+              "_name": {
+                "text": "pagination.root Pagination root element with pagination component basic styles and layout"
+              }
+            },
+            {
+              "_name": {
+                "text": "pagination.item Pagination item element with pagination item styling and interactive effects"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Design Token [draft]",
+      "_title": {
+        "text": "Design Token"
+      },
+      "_image": {
+        "list": [
+          {
+            "image": "",
+            "alt": "right"
+          },
+          {
+            "image": "",
+            "alt": "right"
+          }
+        ]
+      },
+      "_lines": [
+        {
+          "_intent": "table (31 rows): Token Name / Description / Type [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "bodySortBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellFontSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellFontSizeMD"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellFontSizeSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellPaddingBlock"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellPaddingBlockMD"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellPaddingBlockSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellPaddingInline"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellPaddingInlineMD"
+              }
+            },
+            {
+              "_name": {
+                "text": "cellPaddingInlineSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "expandIconBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "filterDropdownBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "filterDropdownMenuBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "fixedHeaderSortActiveBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "footerBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "footerColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "headerBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "headerBorderRadius"
+              }
+            },
+            {
+              "_name": {
+                "text": "headerColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "headerFilterHoverBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "headerSortActiveBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "headerSortHoverBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "headerSplitColor"
+              }
+            },
+            {
+              "_name": {
+                "text": "rowExpandedBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "rowHoverBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "rowSelectedBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "rowSelectedHoverBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "selectionColumnWidth"
+              }
+            },
+            {
+              "_name": {
+                "text": "stickyScrollBarBg"
+              }
+            },
+            {
+              "_name": {
+                "text": "stickyScrollBarBorderRadius"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "table (37 rows): Token Name / Description / Type [draft]",
+          "_rel": {
+            "order": "none"
+          },
+          "_items": [
+            {
+              "_name": {
+                "text": "colorBgContainer"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorFillQuaternary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorIcon"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorLink"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorLinkActive"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorLinkHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorPrimary"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorPrimaryBorder"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorSplit"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorText"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextDisabled"
+              }
+            },
+            {
+              "_name": {
+                "text": "colorTextHeading"
+              }
+            },
+            {
+              "_name": {
+                "text": "borderRadius"
+              }
+            },
+            {
+              "_name": {
+                "text": "boxShadowSecondary"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlInteractiveSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlItemBgActive"
+              }
+            },
+            {
+              "_name": {
+                "text": "controlItemBgHover"
+              }
+            },
+            {
+              "_name": {
+                "text": "fontFamily"
+              }
+            },
+            {
+              "_name": {
+                "text": "fontSize"
+              }
+            },
+            {
+              "_name": {
+                "text": "fontSizeIcon"
+              }
+            },
+            {
+              "_name": {
+                "text": "fontSizeSM"
+              }
+            },
+            {
+              "_name": {
+                "text": "fontWeightStrong"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineHeight"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineType"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineWidth"
+              }
+            },
+            {
+              "_name": {
+                "text": "lineWidthFocus"
+              }
+            },
+            {
+              "_name": {
+                "text": "linkDecoration"
+              }
+            },
+            {
+              "_name": {
+                "text": "linkFocusDecoration"
+              }
+            },
+            {
+              "_name": {
+                "text": "linkHoverDecoration"
+              }
+            },
+            {
+              "_name": {
+                "text": "margin"
+              }
+            },
+            {
+              "_name": {
+                "text": "marginXXS"
+              }
+            },
+            {
+              "_name": {
+                "text": "motionDurationMid"
+              }
+            },
+            {
+              "_name": {
+                "text": "motionDurationSlow"
+              }
+            },
+            {
+              "_name": {
+                "text": "opacityLoading"
+              }
+            },
+            {
+              "_name": {
+                "text": "padding"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingXS"
+              }
+            },
+            {
+              "_name": {
+                "text": "paddingXXS"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Note [draft]",
+      "_title": {
+        "text": "Note"
+      },
+      "_summary": {
+        "text": "According to the React documentation, every child in an array sh"
+      },
+      "_lines": [
+        {
+          "_text": {
+            "text": "If dataSource[i].key is not provided, then you should specify th"
+          }
+        },
+        {
+          "_text": {
+            "text": "// primary key is uid"
+          }
+        },
+        {
+          "_text": {
+            "text": "rowKey"
+          }
+        },
+        {
+          "_text": {
+            "text": "uid"
+          }
+        },
+        {
+          "_text": {
+            "text": "// or"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "FAQ [draft]",
+      "_title": {
+        "text": "FAQ"
+      },
+      "_lines": [
+        {
+          "_intent": "How to hide pagination when single page or no data? [draft]",
+          "_title": {
+            "text": "How to hide pagination when single page or no data?"
+          },
+          "_summary": {
+            "text": "You can set hideOnSinglePage with pagination prop."
+          }
+        },
+        {
+          "_intent": "Table will return to first page when filter data. [draft]",
+          "_title": {
+            "text": "Table will return to first page when filter data."
+          },
+          "_summary": {
+            "text": "Table total page count usually reduce after filter data, we by d"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "You may need to keep current page after filtering when fetch dat"
+              }
+            },
+            {
+              "_text": {
+                "text": "Also you can use the action from extra param to determine when r"
+              }
+            }
+          ]
+        },
+        {
+          "_intent": "Why Table pagination show size changer? [draft]",
+          "_title": {
+            "text": "Why Table pagination show size changer?"
+          },
+          "_summary": {
+            "text": "In order to improve user experience, Pagination show size change"
+          }
+        },
+        {
+          "_intent": "Why Table fully render when state change? [draft]",
+          "_title": {
+            "text": "Why Table fully render when state change?"
+          },
+          "_summary": {
+            "text": "Table can not tell what state used in columns.render, so it alwa"
+          }
+        },
+        {
+          "_intent": "How should I troubleshoot Table performance issues? [draft]",
+          "_title": {
+            "text": "How should I troubleshoot Table performance issues?"
+          },
+          "_summary": {
+            "text": "React DevTools may add extra overhead when profiling complex tab"
+          }
+        },
+        {
+          "_intent": "How to handle fixed column display over the mask layout? [draft]",
+          "_title": {
+            "text": "How to handle fixed column display over the mask layout?"
+          },
+          "_summary": {
+            "text": "Fixed column use z-index to make it over other columns. You will"
+          }
+        },
+        {
+          "_intent": "How to custom render Table Checkbox（For example, adding Tooltip）? [draft]",
+          "_title": {
+            "text": "How to custom render Table Checkbox（For example, adding Tooltip）?"
+          },
+          "_summary": {
+            "text": "Since 4.1.0, You can use rowSelection.renderCell to custom rende"
+          }
+        },
+        {
+          "_intent": "Why does components.body.wrapper or components.body.row report an error when virtual is enabled? [draft]",
+          "_title": {
+            "text": "Why does components.body.wrapper or components.body.row report an error when virtual is enabled?"
+          },
+          "_measure": {
+            "num": 36
+          },
+          "_summary": {
+            "text": "Because virtual table needs to get its ref to do some calculatio"
+          },
+          "_lines": [
+            {
+              "_text": {
+                "text": "EditableRow"
+              }
+            },
+            {
+              "_text": {
+                "text": "forwardRef"
+              }
+            },
+            {
+              "_text": {
+                "text": "HTMLTableRowElement"
+              }
+            },
+            {
+              "_text": {
+                "text": "EditableRowProps"
+              }
+            },
+            {
+              "_text": {
+                "text": "props"
+              }
+            },
+            {
+              "_text": {
+                "text": "ref"
+              }
+            },
+            {
+              "_text": {
+                "text": "form"
+              }
+            },
+            {
+              "_text": {
+                "text": "useForm"
+              }
+            },
+            {
+              "_text": {
+                "text": "component"
+              }
+            },
+            {
+              "_text": {
+                "text": "false"
+              }
+            },
+            {
+              "_text": {
+                "text": "EditableContext.Provider"
+              }
+            },
+            {
+              "_text": {
+                "text": "value"
+              }
+            },
+            {
+              "_text": {
+                "text": "tr"
+              }
+            },
+            {
+              "_text": {
+                "text": "For scenarios with fixed row heights and vertical scrolling, you"
+              }
+            },
+            {
+              "_text": {
+                "text": "//@ts-ignore // This property is not exported, but it can be pas"
+              }
+            },
+            {
+              "_text": {
+                "text": "listItemHeight"
+              }
+            },
+            {
+              "_text": {
+                "text": "// This helps virtual scrolling calculate the height correctly,"
+              }
+            },
+            {
+              "_text": {
+                "text": "contributors"
+              }
+            },
+            {
+              "_intent": "list (40 items) [draft]",
+              "_items": [
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/QDyanbing",
+                    "label": "QDyanbing"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/dogledogle",
+                    "label": "dogledogle"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/lonewolfyx",
+                    "label": "lonewolfyx"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/NoiseFan",
+                    "label": "NoiseFan"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/nikzanda",
+                    "label": "nikzanda"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/zombieJ",
+                    "label": "zombieJ"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ug-one",
+                    "label": "ug-one"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/EmilyyyLiu",
+                    "label": "EmilyyyLiu"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/QdabuliuQ",
+                    "label": "QdabuliuQ"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/gavanx",
+                    "label": "gavanx"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/coding-ice",
+                    "label": "coding-ice"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/meet-student",
+                    "label": "meet-student"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/li-jia-nan",
+                    "label": "li-jia-nan"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Passing-of-A-Dream",
+                    "label": "Passing-of-A-Dream"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/thinkasany",
+                    "label": "thinkasany"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/GeoDaoyu",
+                    "label": "GeoDaoyu"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/crazyair",
+                    "label": "crazyair"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/afc163",
+                    "label": "afc163"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/kiner-tang",
+                    "label": "kiner-tang"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/showier-drastic",
+                    "label": "showier-drastic"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/chenshuai2144",
+                    "label": "chenshuai2144"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/yxplus1116",
+                    "label": "yxplus1116"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Wxh16144",
+                    "label": "Wxh16144"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Jarryxin",
+                    "label": "Jarryxin"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/linxianxi",
+                    "label": "linxianxi"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/hennry3",
+                    "label": "hennry3"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/rykercheung",
+                    "label": "rykercheung"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Ke1sy",
+                    "label": "Ke1sy"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/xsjcTony",
+                    "label": "xsjcTony"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/leslie555",
+                    "label": "leslie555"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Zhou-Bill",
+                    "label": "Zhou-Bill"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/ajuner",
+                    "label": "ajuner"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/yoyo837",
+                    "label": "yoyo837"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/kovsu",
+                    "label": "kovsu"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/MadCcc",
+                    "label": "MadCcc"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/lihuan-bot",
+                    "label": "lihuan-bot"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/wongest",
+                    "label": "wongest"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/sawadyecma",
+                    "label": "sawadyecma"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/Dunqing",
+                    "label": "Dunqing"
+                  }
+                },
+                {
+                  "_action": {
+                    "verb": "navigate",
+                    "to": "https://github.com/heiyu4585",
+                    "label": "heiyu4585"
+                  }
+                }
+              ]
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/statistic",
+                "label": "left Statistic"
+              }
+            },
+            {
+              "_action": {
+                "verb": "navigate",
+                "to": "https://ant.design/components/tag",
+                "label": "Tag right"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_intent": "Resources [draft]",
+      "_title": {
+        "text": "Resources"
+      },
+      "_summary": {
+        "text": "Landing Templates"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://x.ant.design/",
+            "label": "Ant Design X"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://charts.ant.design/",
+            "label": "Ant Design Charts"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://pro.ant.design/",
+            "label": "Ant Design Pro"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://procomponents.ant.design/",
+            "label": "Pro Components"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://mobile.ant.design/",
+            "label": "Ant Design Mobile"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://mini.ant.design/",
+            "label": "Ant Design Mini"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://web3.ant.design/",
+            "label": "Ant Design Web3"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://landing.ant.design/",
+            "label": "Ant Design Landing"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://scaffold.ant.design/",
+            "label": "Scaffolds"
+          }
+        },
+        {
+          "_text": {
+            "text": "Scaffold Market"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://umijs.org/",
+            "label": "Umi"
+          }
+        },
+        {
+          "_text": {
+            "text": "React Application Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://d.umijs.org/",
+            "label": "dumi"
+          }
+        },
+        {
+          "_text": {
+            "text": "Component doc generator"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://qiankun.umijs.org/",
+            "label": "qiankun"
+          }
+        },
+        {
+          "_text": {
+            "text": "Micro-Frontends Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://motion.ant.design/",
+            "label": "Ant Motion"
+          }
+        },
+        {
+          "_text": {
+            "text": "Motion Solution"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant-design.antgroup.com/",
+            "label": "China Mirror 🇨🇳"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Community [draft]",
+      "_title": {
+        "text": "Community"
+      },
+      "_summary": {
+        "text": "Experience Tech Conference"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/websemantics/awesome-ant-design",
+            "label": "ant-design Awesome Ant Design"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://medium.com/ant-design/",
+            "label": "medium Medium"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://x.com/antdesignui",
+            "label": "x X"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://yuque.com/ant-design/ant-design",
+            "label": "yuque logo Ant Design in YuQue"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.zhihu.com/column/c_1564262000561106944",
+            "label": "zhihu Ant Design in Zhihu"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://www.zhihu.com/column/c_1543658574504751104",
+            "label": "zhihu Experience Cloud Blog"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://seeconf.antfin.com/",
+            "label": "seeconf logo SEE Conf"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Help [draft]",
+      "_title": {
+        "text": "Help"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design",
+            "label": "github GitHub"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/changelog",
+            "label": "history Change Log"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/docs/react/faq",
+            "label": "question-circle FAQ"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/docs/react/for-agents.md",
+            "label": "robot For Agents"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://new-issue.ant.design/",
+            "label": "bug Bug Report"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/issues",
+            "label": "issues-close Issues"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://github.com/ant-design/ant-design/discussions",
+            "label": "message Discussions"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "http://stackoverflow.com/questions/tagged/antd",
+            "label": "question-circle StackOverflow"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://segmentfault.com/t/antd",
+            "label": "question-circle SegmentFault"
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "Ant XTech logo More Products [draft]",
+      "_title": {
+        "text": "Ant XTech logo More Products"
+      },
+      "_summary": {
+        "text": "Document Collaboration Platform"
+      },
+      "_lines": [
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://yuque.com/",
+            "label": "yuque logo YuQue"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://antv.antgroup.com/",
+            "label": "AntV logo AntV"
+          }
+        },
+        {
+          "_text": {
+            "text": "Data Visualization"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://eggjs.org/",
+            "label": "Egg logo Egg"
+          }
+        },
+        {
+          "_text": {
+            "text": "Enterprise Node.js Framework"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://kitchen.alipay.com/",
+            "label": "Kitchen logo Kitchen"
+          }
+        },
+        {
+          "_text": {
+            "text": "Sketch Toolkit"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://galacean.antgroup.com/",
+            "label": "Galacean logo Galacean"
+          }
+        },
+        {
+          "_text": {
+            "text": "Interactive Graphics Solution"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://weavefox.cn/",
+            "label": "WeaveFox logo WeaveFox"
+          }
+        },
+        {
+          "_text": {
+            "text": "AI Development with WeaveFox 🦊"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://xtech.antfin.com/",
+            "label": "xtech logo Ant Financial Experience Tech"
+          }
+        },
+        {
+          "_action": {
+            "verb": "navigate",
+            "to": "https://ant.design/theme-editor",
+            "label": "bg-colors Theme Editor"
+          }
+        },
+        {
+          "_text": {
+            "text": "Ant Group and Ant Design Community"
+          }
+        }
+      ]
+    }
+  ]
+}

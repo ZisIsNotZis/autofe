@@ -1,0 +1,38 @@
+[
+  {
+    "path": "._action",
+    "label": "立即购买",
+    "to": "https://www.aliyun.com/product/ecs/buy",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".instances._items[0]._action",
+    "label": "立即购买",
+    "to": "https://www.aliyun.com/product/ecs/buy?spec=e",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".instances._items[1]._action",
+    "label": "立即购买",
+    "to": "https://www.aliyun.com/product/ecs/buy?spec=u2a",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".instances._items[2]._action",
+    "label": "立即购买",
+    "to": "https://www.aliyun.com/product/ecs/buy?spec=c9i",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".instances._items[3]._action",
+    "label": "立即购买",
+    "to": "https://www.aliyun.com/product/ecs/buy?spec=g9i",
+    "targetExactInCapture": false
+  },
+  {
+    "path": ".news._action",
+    "label": "产品动态",
+    "to": "https://www.aliyun.com/product/news",
+    "targetExactInCapture": true
+  }
+]
