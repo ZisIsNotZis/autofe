@@ -228,9 +228,9 @@ const MI = JSON.parse(fs.readFileSync(path.join(root, 'm1/curated/mi-com/search-
 const GOV = JSON.parse(fs.readFileSync(path.join(root, 'm1/curated/gov-uk/ni-rates-letters.json'), 'utf8'));
 const row = (html) => (html.match(/<div class="controls">[\s\S]*?<\/div>/) || [''])[0];
 const rowWith = (html, needle) => (html.match(/<div class="controls">[\s\S]*?<\/div>/g) || []).find((d) => d.includes(needle)) || '';
-const hwRow = rowWith(render(HUAWEI), '>8</span>');
+const hwRow = rowWith(render(HUAWEI), '>9</span>');
 check('paginator huawei page controls render as a control row',
-  hwRow.includes('>1</span>') && hwRow.includes('>8</span>') && !hwRow.includes('<a class="ctl"'));
+  hwRow.includes('>1</span>') && hwRow.includes('>9</span>') && !hwRow.includes('<a class="ctl"'));
 check('paginator mi page controls render as a control row',
   row(render(MI)).includes('>1</span>') && row(render(MI)).includes('>2</span>') && !row(render(MI)).includes('<a class="ctl"'));
 const govPagination = (html) => html.slice(html.indexOf('<section class="group g-pagination"'));

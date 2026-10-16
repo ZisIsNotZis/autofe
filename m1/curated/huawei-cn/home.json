@@ -1,702 +1,702 @@
 {
-  "_intent": "华为集团中文首页：轮播主推 Mate XT 2 旗舰与华为全联接大会 2026，导流六大业务板块，呈现推荐信息与当日新闻，并给出品牌主张 根级标题无源站可见文本标题，依据 meta.json 文档标题首段回退为「华为」；完整文档标题「华为 - 构建万物互联的智能世界」保留为出处，不把 SEO 品牌主张作为大标题。",
-  "_key": "huawei-corp-home",
+ "_intent": "华为集团中文首页：轮播主推 Mate XT 2 旗舰与华为全联接大会 2026，导流六大业务板块，呈现推荐信息与当日新闻，并给出品牌主张 根级标题无源站可见文本标题，依据 meta.json 文档标题首段回退为「华为」；完整文档标题「华为 - 构建万物互联的智能世界」保留为出处，不把 SEO 品牌主张作为大标题。",
+ "_key": "huawei-corp-home",
+ "_title": {
+  "text": "华为"
+ },
+ "hero": {
+  "_intent": "首屏主推轮播：捕获时刻绘制一张主打卡（Mate 90 Pro Max），带了解更多入口",
+  "_rel": {
+   "order": "sequence"
+  },
+  "_items": [
+   {
+    "_image": {
+     "image": "https://www-file.huawei.com/dam/asset/view/mate-90-max-pc.webp",
+     "alt": "HUAWEI Mate 90 Pro Max"
+    },
+    "_key": "hero-mate-90-pro-max",
+    "_name": {
+     "text": "HUAWEI Mate 90 Pro Max"
+    },
+    "_subtitle": {
+     "text": "踏光向前"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/phones/mate90-pro-max/?utm_medium=hwdc&utm_source=corp_banner1_mate90-pro-max=phones",
+     "label": "了解更多"
+    }
+   }
+  ]
+ },
+ "business": {
+  "_intent": "华为的六大业务板块，整卡链接到各自业务站点",
   "_title": {
-    "text": "华为"
+   "text": "我们的业务"
   },
-  "hero": {
-    "_intent": "首屏主推轮播：当前展示的两张主打卡，各带了解更多入口",
-    "_rel": {
-      "order": "sequence"
+  "_items": [
+   {
+    "_name": {
+     "text": "企业业务"
     },
-    "_items": [
-      {
-        "_image": {
-          "image": "https://www-file.huawei.com/dam/asset/view/mate-xt2-pc-v2.jpg",
-          "alt": "HUAWEI Mate XT 2"
-        },
-        "_key": "hero-mate-xt-2",
-        "_name": {
-          "text": "HUAWEI Mate XT 2 非凡大师"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://consumer.huawei.com/cn/phones/mate-xt-2-ultimate-design/?utm_medium=hwdc&utm_source=corp_banner2_mate-xt-2-ultimate-design=phones",
-          "label": "了解更多"
-        }
-      },
-      {
-        "_image": {
-          "image": "https://www-file.huawei.com/dam/asset/view/hc2026-kv-banner-pc.jpg",
-          "alt": "华为全联接大会2026"
-        },
-        "_key": "hero-hdc-2026",
-        "_name": {
-          "text": "华为全联接大会2026"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://www.huawei.com/cn/events/huaweiconnect",
-          "label": "了解更多"
-        }
-      }
-    ]
+    "_action": {
+     "verb": "open",
+     "to": "https://e.huawei.com/cn/"
+    }
+   },
+   {
+    "_name": {
+     "text": "运营商业务"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.huawei.com/cn/carrier"
+    }
+   },
+   {
+    "_name": {
+     "text": "消费者业务"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/?utm_medium=hwdc&utm_source=corp_our_business_consumer"
+    }
+   },
+   {
+    "_name": {
+     "text": "华为云业务"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.huaweicloud.com/"
+    }
+   },
+   {
+    "_name": {
+     "text": "数字能源业务"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://digitalpower.huawei.com/cn"
+    }
+   },
+   {
+    "_name": {
+     "text": "智能汽车解决方案业务"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://auto.huawei.com/cn/?utm_medium=ownmedia&utm_source=huaweicorp&utm_campaign=alwayson-module"
+    }
+   }
+  ]
+ },
+ "featured": {
+  "_intent": "推荐信息：ICT 大赛报名、乾崑用户里程碑、全闪数据中心方案与 Mate 90 RS 新品各一",
+  "_title": {
+   "text": "推荐信息"
   },
-  "business": {
-    "_intent": "华为的六大业务板块，整卡链接到各自业务站点",
+  "_items": [
+   {
+    "_image": {
+     "image": "https://www-file.huawei.com/dam/asset/view/ict-challenge-2026-909.jpg",
+     "alt": "第十一届华为ICT大赛报名启动"
+    },
     "_title": {
-      "text": "我们的业务"
+     "text": "第十一届华为ICT大赛报名启动"
     },
-    "_items": [
-      {
-        "_name": {
-          "text": "企业业务"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://e.huawei.com/cn/"
-        }
-      },
-      {
-        "_name": {
-          "text": "运营商业务"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://www.huawei.com/cn/carrier"
-        }
-      },
-      {
-        "_name": {
-          "text": "消费者业务"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://consumer.huawei.com/cn/?utm_medium=hwdc&utm_source=corp_our_business_consumer"
-        }
-      },
-      {
-        "_name": {
-          "text": "华为云业务"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://www.huaweicloud.com/"
-        }
-      },
-      {
-        "_name": {
-          "text": "数字能源业务"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://digitalpower.huawei.com/cn"
-        }
-      },
-      {
-        "_name": {
-          "text": "智能汽车解决方案业务"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://auto.huawei.com/cn/?utm_medium=ownmedia&utm_source=huaweicorp&utm_campaign=alwayson"
-        }
-      }
-    ]
-  },
-  "featured": {
-    "_intent": "推荐信息：客户案例、乾崑用户里程碑、行业展会与穿戴新品各一",
+    "_detail": {
+     "text": "用ICT联接世界，以AI创造未来"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://e.huawei.com/cn/talent/ict-academy/#/ict-contest?compId=85132018",
+     "label": "了解更多"
+    }
+   },
+   {
+    "_image": {
+     "image": "https://www-file.huawei.com/dam/asset/view/qiiankun-200w-805.jpg",
+     "alt": "华为乾崑，守护200万份信任"
+    },
     "_title": {
-      "text": "推荐信息"
+     "text": "华为乾崑，守护200万份信任"
     },
-    "_items": [
-      {
-        "_image": {
-          "image": "https://www-file.huawei.com/dam/asset/view/tianjin-binhai-rural-commercial-bank-909.webp",
-          "alt": "华为助力天津滨海农商银行上线分布式新核心系统"
-        },
-        "_title": {
-          "text": "华为助力天津滨海农商银行成功上线分布式新核心系统"
-        },
-        "_detail": {
-          "text": "构筑现代数智银行新底座，加速数字化转型新征程"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://e.huawei.com/cn/case-studies/industries/finance/202607-tianjin-binhai-rural-commercial-bank",
-          "label": "了解更多"
-        }
-      },
-      {
-        "_image": {
-          "image": "https://www-file.huawei.com/dam/asset/view/qiiankun-200w-805.jpg",
-          "alt": "华为乾崑，守护200万份信任"
-        },
-        "_title": {
-          "text": "华为乾崑，守护200万份信任"
-        },
-        "_detail": {
-          "text": "乾崑智驾、鸿蒙座舱搭载量，华为乾崑APP用户数，同步突破200万"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://auto.huawei.com/cn/campaign/ads-harmonyspace-app-2million/?utm_medium=ownmedia&utm_source=huaweicorp&utm_campaign=20260914-200w",
-          "label": "了解更多"
-        }
-      },
-      {
-        "_image": {
-          "image": "https://www-file.huawei.com/dam/asset/view/idee2026-804.jpg",
-          "alt": "International Digital Energy Expo (IDEE) 2026"
-        },
-        "_title": {
-          "text": "2026国际数字能源展"
-        },
-        "_detail": {
-          "text": "2026年09月15日-17日 中国，深圳"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://digitalpower.huawei.com/cn/events/idee2026",
-          "label": "了解更多"
-        }
-      },
-      {
-        "_image": {
-          "image": "https://www-file.huawei.com/dam/asset/view/watch-6-pro-699.jpg",
-          "alt": "Watch 6 pro"
-        },
-        "_title": {
-          "text": "HUAWEI WATCH 6 Pro"
-        },
-        "_detail": {
-          "text": "鸿蒙AI手表 智慧健康旗舰"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://consumer.huawei.com/cn/wearables/watch-6-pro/?utm_medium=hwdc&utm_source=corp_boxrow1right_watch-6-pro",
-          "label": "了解更多"
-        }
-      }
-    ]
-  },
-  "news": {
-    "_intent": "新闻动态：六条新闻均发布于 2026-09-18，整卡链接到新闻正文，更多新闻进入新闻频道",
+    "_detail": {
+     "text": "乾崑智驾、鸿蒙座舱搭载量，华为乾崑APP用户数，同步突破200万"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://auto.huawei.com/cn/campaign/ads-harmonyspace-app-2million/?utm_medium=ownmedia&utm_source=huaweicorp&utm_campaign=20260914-200w",
+     "label": "了解更多"
+    }
+   },
+   {
+    "_image": {
+     "image": "https://www-file.huawei.com/dam/asset/view/all-flash-data-center-804.jpg",
+     "alt": "极简全闪数据中心2.0"
+    },
     "_title": {
-      "text": "新闻动态"
+     "text": "极简全闪数据中心2.0"
     },
+    "_detail": {
+     "text": "数智普惠，一步到位"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://e.huawei.com/cn/industries/commercial-market/simplified-all-flash-data-center",
+     "label": "了解更多"
+    }
+   },
+   {
+    "_image": {
+     "image": "https://www-file.huawei.com/dam/asset/view/mate-90-rs-699.webp",
+     "alt": "HUAWEI Mate 90 RS 非凡大师"
+    },
+    "_title": {
+     "text": "HUAWEI Mate 90 RS 非凡大师"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/phones/mate90-rs-ultimate-design/?utm_medium=hwdc&utm_source=corp_boxrow1right_mate90-rs-ultimate-design",
+     "label": "了解更多"
+    }
+   }
+  ]
+ },
+ "news": {
+  "_intent": "新闻动态：六条新闻发布于 2026-10-15/16，整卡链接到新闻正文，更多新闻进入新闻频道",
+  "_title": {
+   "text": "新闻动态"
+  },
+  "_action": {
+   "verb": "open",
+   "to": "https://www.huawei.com/cn/news",
+   "label": "更多新闻"
+  },
+  "_items": [
+   {
     "_datetime": {
-      "date": "2026-09-18"
+     "date": "2026-10-16"
     },
-    "_action": {
-      "verb": "open",
-      "to": "https://www.huawei.com/cn/news",
-      "label": "更多新闻"
-    },
-    "_items": [
-      {
-        "_title": {
-          "text": "华为发布六大电力全球样板点，以AI与能源双向赋能驱动电力新未来"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://www.huawei.com/cn/news/2026/9/hc-power-six-showcase"
-        }
-      },
-      {
-        "_title": {
-          "text": "华为发布制造与大企业七大方案与两项计划，加速行业AI 价值落地"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://www.huawei.com/cn/news/2026/9/hc-manufacturing-summit"
-        }
-      },
-      {
-        "_title": {
-          "text": "华为揭晓2026年度优秀合作伙伴奖：88家伙伴获奖共筑Agentic AI时代数智生态"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://www.huawei.com/cn/news/2026/9/hc-partner-summit"
-        }
-      },
-      {
-        "_title": {
-          "text": "咪咕音乐携手华为软件打造软件运维智能体，实现运维效率与能力双提升"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://www.huawei.com/cn/news/2026/9/software-migu-music"
-        }
-      },
-      {
-        "_title": {
-          "text": "新方法、新组织、新工具：华为发布AI行业落地新路径"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://www.huawei.com/cn/news/2026/9/hc-ai-industry-adoption"
-        }
-      },
-      {
-        "_title": {
-          "text": "构建“以客户为中心”的“华为+伙伴”协同体系，让AI惠及千行百业"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://www.huawei.com/cn/news/2026/9/hc-scale-industrial-intelligence"
-        }
-      }
-    ]
-  },
-  "brand": {
-    "_intent": "品牌主张：公司简介入口",
     "_title": {
-      "text": "构建万物互联的 智能世界"
-    },
-    "_summary": {
-      "text": "华为创立于1987年，是全球领先的ICT（信息与通信）基础设施和智能终端提供商。我们致力于把数字世界带入每个人、每个家庭、每个组织，构建万物互联的智能世界。"
+     "text": "华为AI WAN新一代广域网解决方案规模商用，筑牢立体安全底座，智领运营商新增长"
     },
     "_action": {
-      "verb": "open",
-      "to": "https://www.huawei.com/cn/corporate-information",
-      "label": "了解华为"
+     "verb": "open",
+     "to": "https://www.huawei.com/cn/news/2026/10/ubbf-ai-wan-solution"
     }
-  },
-  "footer": {
-    "_intent": "捕获并可见的支持/公司/法律页脚入口及原文说明，不重建 cookie 行为。",
-    "_items": [
-      {
-        "_title": {
-          "text": "首页"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "首页",
-          "to": "https://www.huawei.com/cn"
-        }
-      },
-      {
-        "_title": {
-          "text": "公司简介"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "公司简介",
-          "to": "https://www.huawei.com/cn/corporate-information"
-        }
-      },
-      {
-        "_title": {
-          "text": "可持续发展"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "可持续发展",
-          "to": "https://www.huawei.com/cn/sustainability"
-        }
-      },
-      {
-        "_title": {
-          "text": "信任中心"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "信任中心",
-          "to": "https://www.huawei.com/cn/trust-center"
-        }
-      },
-      {
-        "_title": {
-          "text": "管理层信息"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "管理层信息",
-          "to": "https://www.huawei.com/cn/executives"
-        }
-      },
-      {
-        "_title": {
-          "text": "招贤纳士"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "招贤纳士",
-          "to": "https://career.huawei.com/cn"
-        }
-      },
-      {
-        "_title": {
-          "text": "供应商"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "供应商",
-          "to": "https://supplier.huawei.com/supplier/"
-        }
-      },
-      {
-        "_title": {
-          "text": "查看更多"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "查看更多",
-          "to": "https://www.huawei.com/cn/about-huawei"
-        }
-      },
-      {
-        "_title": {
-          "text": "新闻"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "新闻",
-          "to": "https://www.huawei.com/cn/news"
-        }
-      },
-      {
-        "_title": {
-          "text": "展会活动"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "展会活动",
-          "to": "https://www.huawei.com/cn/events"
-        }
-      },
-      {
-        "_title": {
-          "text": "多媒体"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "多媒体",
-          "to": "https://www.huawei.com/cn/gallery"
-        }
-      },
-      {
-        "_title": {
-          "text": "华为技术专栏"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "华为技术专栏",
-          "to": "https://www.huawei.com/cn/huaweitech"
-        }
-      },
-      {
-        "_title": {
-          "text": "智能世界2035"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "智能世界2035",
-          "to": "https://www.huawei.com/cn/giv"
-        }
-      },
-      {
-        "_title": {
-          "text": "迈向智能世界"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "迈向智能世界",
-          "to": "https://www.huawei.com/cn/intelligent-world#striding"
-        }
-      },
-      {
-        "_title": {
-          "text": "全球数智化指数"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "全球数智化指数",
-          "to": "https://www.huawei.com/minisite/gdii/cn/"
-        }
-      },
-      {
-        "_title": {
-          "text": "出版物"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "出版物",
-          "to": "https://www.huawei.com/cn/publications"
-        }
-      },
-      {
-        "_title": {
-          "text": "个人及家庭产品"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "个人及家庭产品",
-          "to": "https://consumer.huawei.com/cn/"
-        }
-      },
-      {
-        "_title": {
-          "text": "企业业务产品"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "企业业务产品",
-          "to": "https://e.huawei.com/cn/"
-        }
-      },
-      {
-        "_title": {
-          "text": "运营商网络产品"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "运营商网络产品",
-          "to": "https://carrier.huawei.com/cn/"
-        }
-      },
-      {
-        "_title": {
-          "text": "华为云服务"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "华为云服务",
-          "to": "https://www.huaweicloud.com/product/"
-        }
-      },
-      {
-        "_title": {
-          "text": "数字能源产品"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "数字能源产品",
-          "to": "https://digitalpower.huawei.com/cn"
-        }
-      },
-      {
-        "_title": {
-          "text": "消费者技术支持"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "消费者技术支持",
-          "to": "https://consumer.huawei.com/cn/support/"
-        }
-      },
-      {
-        "_title": {
-          "text": "华为云技术支持"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "华为云技术支持",
-          "to": "https://support.huaweicloud.com/"
-        }
-      },
-      {
-        "_title": {
-          "text": "企业技术支持"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "企业技术支持",
-          "to": "https://support.huawei.com/enterprise/zh/index.html"
-        }
-      },
-      {
-        "_title": {
-          "text": "运营商技术支持"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "运营商技术支持",
-          "to": "https://support.huawei.com/carrier"
-        }
-      },
-      {
-        "_title": {
-          "text": "数字能源技术支持"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "数字能源技术支持",
-          "to": "https://digitalpower.huawei.com/cn/service/support"
-        }
-      },
-      {
-        "_title": {
-          "text": "安全应急响应"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "安全应急响应",
-          "to": "https://www.huawei.com/cn/psirt"
-        }
-      },
-      {
-        "_title": {
-          "text": "华为商城"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "华为商城",
-          "to": "https://www.vmall.com/?cid=122288"
-        }
-      },
-      {
-        "_title": {
-          "text": "华为云"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "华为云",
-          "to": "https://www.huaweicloud.com/"
-        }
-      },
-      {
-        "_title": {
-          "text": "华为JDC社区"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "华为JDC社区",
-          "to": "https://jdc.huawei.com/"
-        }
-      },
-      {
-        "_title": {
-          "text": "华为心声社区"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "华为心声社区",
-          "to": "https://xinsheng.huawei.com/"
-        }
-      },
-      {
-        "_title": {
-          "text": "粤A2-20044005号"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "粤A2-20044005号",
-          "to": "https://beian.miit.gov.cn/"
-        }
-      },
-      {
-        "_title": {
-          "text": "粤公网安备44030702002388号"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "粤公网安备44030702002388号",
-          "to": "https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030702002388"
-        }
-      },
-      {
-        "_title": {
-          "text": "联系我们"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "联系我们",
-          "to": "https://www.huawei.com/cn/contact-us"
-        }
-      },
-      {
-        "_title": {
-          "text": "法律声明"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "法律声明",
-          "to": "https://www.huawei.com/cn/legal"
-        }
-      },
-      {
-        "_title": {
-          "text": "隐私政策"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "隐私政策",
-          "to": "https://www.huawei.com/cn/privacy-policy"
-        }
-      },
-      {
-        "_title": {
-          "text": "除名查询"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "除名查询",
-          "to": "https://www.huawei.com/cn/terminations"
-        }
-      }
-    ],
-    "copyright": {
-      "_text": {
-        "text": "版权所有 © 1998-2026 华为技术有限公司"
-      }
+   },
+   {
+    "_datetime": {
+     "date": "2026-10-16"
+    },
+    "_title": {
+     "text": "华为ADN解决方案斩获OSS整体和单领域管理软件市场份额排名双项第一"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.huawei.com/cn/news/2026/10/adn-oss-share"
     }
+   },
+   {
+    "_datetime": {
+     "date": "2026-10-15"
+    },
+    "_title": {
+     "text": "华为携手客户与伙伴，共建更智能、绿色的欧洲"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.huawei.com/cn/news/2026/10/huaweiconnect-europe"
+    }
+   },
+   {
+    "_datetime": {
+     "date": "2026-10-15"
+    },
+    "_title": {
+     "text": "华为AgenticCore解决方案荣获NetworkX大奖，以AI原生创新加速下一代核心网演进"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.huawei.com/cn/news/2026/10/ubbf-networkx-agenticcore"
+    }
+   },
+   {
+    "_datetime": {
+     "date": "2026-10-15"
+    },
+    "_title": {
+     "text": "华为荣获Network X 2026两项大奖，AI-FTTR与AI-FTTO引领光接入创新"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.huawei.com/cn/news/2026/10/ubbf-networkx-fttr-ftto"
+    }
+   },
+   {
+    "_datetime": {
+     "date": "2026-10-15"
+    },
+    "_title": {
+     "text": "智驭未来，安领澳门：CTM携手华为共建AI时代网络安全"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.huawei.com/cn/news/2026/10/ubbf-networkx-ctm"
+    }
+   }
+  ]
+ },
+ "brand": {
+  "_intent": "品牌主张：公司简介入口",
+  "_title": {
+   "text": "构建万物互联的 智能世界"
   },
-  "navigation": {
-    "_intent": "捕获的可见顶栏导航入口，不展开隐藏菜单或重造品牌标题。",
-    "_items": [
-      {
-        "_title": {
-          "text": "个人及家庭产品"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "个人及家庭产品",
-          "to": "javascript:;"
-        }
-      },
-      {
-        "_title": {
-          "text": "商用产品及方案"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "商用产品及方案",
-          "to": "javascript:;"
-        }
-      },
-      {
-        "_title": {
-          "text": "服务支持"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "服务支持",
-          "to": "javascript:;"
-        }
-      },
-      {
-        "_title": {
-          "text": "合作伙伴与开发者"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "合作伙伴与开发者",
-          "to": "javascript:;"
-        }
-      },
-      {
-        "_title": {
-          "text": "关于华为"
-        },
-        "_action": {
-          "verb": "navigate",
-          "label": "关于华为",
-          "to": "javascript:;"
-        }
-      }
-    ]
+  "_summary": {
+   "text": "华为创立于1987年，是全球领先的ICT（信息与通信）基础设施和智能终端提供商。我们致力于把数字世界带入每个人、每个家庭、每个组织，构建万物互联的智能世界。"
+  },
+  "_action": {
+   "verb": "open",
+   "to": "https://www.huawei.com/cn/corporate-information",
+   "label": "了解华为"
   }
+ },
+ "footer": {
+  "_intent": "捕获并可见的支持/公司/法律页脚入口及原文说明，不重建 cookie 行为。",
+  "_items": [
+   {
+    "_title": {
+     "text": "首页"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "首页",
+     "to": "https://www.huawei.com/cn"
+    }
+   },
+   {
+    "_title": {
+     "text": "公司简介"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "公司简介",
+     "to": "https://www.huawei.com/cn/corporate-information"
+    }
+   },
+   {
+    "_title": {
+     "text": "可持续发展"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "可持续发展",
+     "to": "https://www.huawei.com/cn/sustainability"
+    }
+   },
+   {
+    "_title": {
+     "text": "信任中心"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "信任中心",
+     "to": "https://www.huawei.com/cn/trust-center"
+    }
+   },
+   {
+    "_title": {
+     "text": "管理层信息"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "管理层信息",
+     "to": "https://www.huawei.com/cn/executives"
+    }
+   },
+   {
+    "_title": {
+     "text": "招贤纳士"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "招贤纳士",
+     "to": "https://career.huawei.com/cn"
+    }
+   },
+   {
+    "_title": {
+     "text": "供应商"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "供应商",
+     "to": "https://supplier.huawei.com/supplier/"
+    }
+   },
+   {
+    "_title": {
+     "text": "查看更多"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "查看更多",
+     "to": "https://www.huawei.com/cn/about-huawei"
+    }
+   },
+   {
+    "_title": {
+     "text": "新闻"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "新闻",
+     "to": "https://www.huawei.com/cn/news"
+    }
+   },
+   {
+    "_title": {
+     "text": "展会活动"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "展会活动",
+     "to": "https://www.huawei.com/cn/events"
+    }
+   },
+   {
+    "_title": {
+     "text": "多媒体"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "多媒体",
+     "to": "https://www.huawei.com/cn/gallery"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为技术专栏"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为技术专栏",
+     "to": "https://www.huawei.com/cn/huaweitech"
+    }
+   },
+   {
+    "_title": {
+     "text": "智能世界2035"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "智能世界2035",
+     "to": "https://www.huawei.com/cn/giv/action"
+    }
+   },
+   {
+    "_title": {
+     "text": "迈向智能世界"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "迈向智能世界",
+     "to": "https://www.huawei.com/cn/intelligent-world#striding"
+    }
+   },
+   {
+    "_title": {
+     "text": "全球数智化指数"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "全球数智化指数",
+     "to": "https://www.huawei.com/minisite/gdii/cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "出版物"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "出版物",
+     "to": "https://www.huawei.com/cn/publications"
+    }
+   },
+   {
+    "_title": {
+     "text": "个人及家庭产品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "个人及家庭产品",
+     "to": "https://consumer.huawei.com/cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "企业业务产品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "企业业务产品",
+     "to": "https://e.huawei.com/cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "运营商网络产品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "运营商网络产品",
+     "to": "https://carrier.huawei.com/cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为云服务"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为云服务",
+     "to": "https://www.huaweicloud.com/product/"
+    }
+   },
+   {
+    "_title": {
+     "text": "数字能源产品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "数字能源产品",
+     "to": "https://digitalpower.huawei.com/cn"
+    }
+   },
+   {
+    "_title": {
+     "text": "消费者技术支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "消费者技术支持",
+     "to": "https://consumer.huawei.com/cn/support/"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为云技术支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为云技术支持",
+     "to": "https://support.huaweicloud.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "企业技术支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "企业技术支持",
+     "to": "https://support.huawei.com/enterprise/zh/index.html"
+    }
+   },
+   {
+    "_title": {
+     "text": "运营商技术支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "运营商技术支持",
+     "to": "https://support.huawei.com/carrier"
+    }
+   },
+   {
+    "_title": {
+     "text": "数字能源技术支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "数字能源技术支持",
+     "to": "https://digitalpower.huawei.com/cn/service/support"
+    }
+   },
+   {
+    "_title": {
+     "text": "安全应急响应"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "安全应急响应",
+     "to": "https://www.huawei.com/cn/psirt"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为商城"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为商城",
+     "to": "https://www.vmall.com/?cid=122288"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为云"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为云",
+     "to": "https://www.huaweicloud.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为JDC社区"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为JDC社区",
+     "to": "https://jdc.huawei.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "华为心声社区"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "华为心声社区",
+     "to": "https://xinsheng.huawei.com/"
+    }
+   },
+   {
+    "_title": {
+     "text": "粤A2-20044005号"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "粤A2-20044005号",
+     "to": "https://beian.miit.gov.cn/"
+    }
+   },
+   {
+    "_title": {
+     "text": "粤公网安备44030702002388号"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "粤公网安备44030702002388号",
+     "to": "https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030702002388"
+    }
+   },
+   {
+    "_title": {
+     "text": "联系我们"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "联系我们",
+     "to": "https://www.huawei.com/cn/contact-us"
+    }
+   },
+   {
+    "_title": {
+     "text": "法律声明"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "法律声明",
+     "to": "https://www.huawei.com/cn/legal"
+    }
+   },
+   {
+    "_title": {
+     "text": "隐私政策"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "隐私政策",
+     "to": "https://www.huawei.com/cn/privacy-policy"
+    }
+   },
+   {
+    "_title": {
+     "text": "除名查询"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "除名查询",
+     "to": "https://www.huawei.com/cn/terminations"
+    }
+   }
+  ],
+  "copyright": {
+   "_text": {
+    "text": "版权所有 © 1998-2026 华为技术有限公司"
+   }
+  }
+ },
+ "navigation": {
+  "_intent": "捕获的可见顶栏导航入口，不展开隐藏菜单或重造品牌标题。",
+  "_items": [
+   {
+    "_title": {
+     "text": "个人及家庭产品"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "个人及家庭产品",
+     "to": "javascript:;"
+    }
+   },
+   {
+    "_title": {
+     "text": "商用产品及方案"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "商用产品及方案",
+     "to": "javascript:;"
+    }
+   },
+   {
+    "_title": {
+     "text": "服务支持"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "服务支持",
+     "to": "javascript:;"
+    }
+   },
+   {
+    "_title": {
+     "text": "合作伙伴与开发者"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "合作伙伴与开发者",
+     "to": "javascript:;"
+    }
+   },
+   {
+    "_title": {
+     "text": "关于华为"
+    },
+    "_action": {
+     "verb": "navigate",
+     "label": "关于华为",
+     "to": "javascript:;"
+    }
+   }
+  ]
+ }
 }

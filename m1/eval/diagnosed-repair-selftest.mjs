@@ -18,6 +18,9 @@ const clone = structuredClone;
 let checks = 0;
 const check = (label, value) => { assert.ok(value,label); checks++; console.log('ok ' + label); };
 const icon = JSON.parse(fs.readFileSync('m1/eval/icon-provenance.json')).bindings[0];
+if (!icon) {
+  console.log('skip source-bound icon proofs: no active binding record (轮63: u-jtc092al 标签退役，见 icon-provenance.json retired 字段). The mechanism re-arms when a new binding is recorded.');
+} else {
 const profile = load(icon.page), profileDom = fs.readFileSync(`corpus/${icon.page}/dom.html`,'utf8');
 check('source-bound icon current proof', verifyIconBinding(profile,profileDom,icon).ok);
 for (const mutation of ['count','order','label','target']) {
@@ -32,6 +35,7 @@ check('evidence cannot declare arbitrary label for captured icon', !verifyIconBi
 check('evidence cannot declare arbitrary semantic role', !verifyIconBinding(profile,profileDom,{...icon,role:'charging-count'}).ok);
 const missingIcon = profileDom.replace(icon.iconClass,'removed-icon');
 check('icon removal fails even at refreshed DOM hash', !verifyIconBinding(profile,missingIcon,{...icon,domSha256:sha(missingIcon)}).ok);
+}
 const quoteModel = load('sspai-com/post-102392'), ev = quoteEvidence('sspai-com/post-102392').ev;
 const rawQuotes = (m) => auditPage('sspai-com/post-102392',m,ev,[]);
 check('restored quotes have zero raw differences', !rawQuotes(quoteModel).droppedAll.length && !rawQuotes(quoteModel).unsupportedAll.length);
@@ -44,8 +48,8 @@ check('eight complete ordered brief members, no duplicate body', briefs.length==
 check('ordered linked paragraphs choose stack in shared form', selectForm(briefs,'sequence') === 'stack');
 check('compact utility controls stay controls', selectForm([{_title:{text:'One'},_action:{verb:'navigate',to:'/one'}},{_title:{text:'Two'},_action:{verb:'navigate',to:'/two'}}],'set') === 'controls');
 const require = createRequire(import.meta.url);
-const { chromium } = require('/home/z/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
-const executablePath = process.env.HOME+'/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell';
+const { chromium } = require(process.env.AUTOFE_PLAYWRIGHT_CORE || '/home/z/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
+const executablePath = process.env.AUTOFE_CHROME_PATH || (process.env.HOME+'/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
 const browser = await chromium.launch({executablePath,headless:true,args:['--no-sandbox']});
 try {
   const page = await browser.newPage(); await page.route('**/*',r=>r.abort());

@@ -50,7 +50,7 @@ const style = (HTML.match(/<style>([\s\S]*?)<\/style>/) || [, ''])[1];
     if (!sel || !decl) continue;
     if (!/(^|[\s,>])img\b/.test(sel)) continue;
     const m = /(^|;)\s*width\s*:\s*([^;]+)/.exec(decl);
-    if (m && !/^\s*auto\s*$/.test(m[2])) offenders.push(`${sel.trim()} { width:${m[2].trim()} }`);
+    if (m && !/^\s*auto(\s*!important)?\s*$/.test(m[2])) offenders.push(`${sel.trim()} { width:${m[2].trim()} }`);
   }
   assert(offenders.length === 0, `no image rule forces a width (found ${offenders.length})${offenders.length ? ': ' + offenders.join(' | ') : ''}`);
   assert(/(^|[\s,>])img\b[^{]*\{[^}]*max-width\s*:\s*100%/.test(style) || /img\{[^}]*max-width:100%/.test(style), 'images carry max-width:100% (they shrink for narrow containers)');
@@ -58,8 +58,8 @@ const style = (HTML.match(/<style>([\s\S]*?)<\/style>/) || [, ''])[1];
 }
 
 // ---- B. CONSTRUCTION: 200px image in a 1000px container displays at <=200px ----------
-const PW = process.env.HOME + '/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core';
-const CHROME = process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell';
+const PW = process.env.AUTOFE_PLAYWRIGHT_CORE || (process.env.HOME + '/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
+const CHROME = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
 let browserMeasured = false;
 if (fs.existsSync(PW) && fs.existsSync(CHROME)) {
   const { chromium } = createRequire(import.meta.url)(PW);

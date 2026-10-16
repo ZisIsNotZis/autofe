@@ -795,3 +795,9 @@
 - 2026-10-09 21:18 出现 `vendor/huashu-design/`（仅 .git 指针）+ `.git/modules/vendor/huashu-design`（完整 clone，remote=github.com/alchaincyf/huashu-design，6.7MB）。
 - 无 index gitlink、无任何文件引用、无任何轮次授权引入依赖。处理：整目录删除；`git add` 改为显式路径（m1/docs/.scratch），不再裸用 `add -A`。
 - 待观察：若再现，按供应链事件升级（查全部子代理命令历史）。
+
+## F-100 重新克隆后语料重采：36kr feed/stripe 登录/apple iphone-16 不可再采（轮 63，语料退役）
+- **背景**：仓库重克隆（浅克隆 `41fdf70`，2026-10-15 快照）丢失全部 gitignored 语料与私有修复分支；42 页语料于 2026-10-16 用确定性客户端全量重采。
+- **发现**：① `36kr.com` 首页/科技频道对声明式 UA（`AutoFE-Research-Bot/0.1`）返回导航壳（重复导航、零 feed；12s 等待 + 普通 UA 可得全文 ⇒ 站点对声明 bot 降级）；② `accounts.stripe.com/login` 反爬壳（15s 后仅 197 字符 0 输入框）；③ `apple.com/iphone-16` 301 → shop goto URL 持续 503（3 次跨 10 分钟）。
+- **处置（D-63c/D-63d，主代理裁定）**：诚实 UA 不改（不伪装身份换内容）。退役 4 页：`36kr-com/home`、`36kr-com/information-technology`（36kr 两个 search 页仍可采、保留）、`apple-com/iphone-16`、`stripe-dashboard/login`；替换 2 页：`apple-com/airpods-pro`（product-detail，HTTP 200）、`sspai-com/login`（form/checkout/settings，robots 允许；login.taobao.com 整站 Disallow 故不可用）。门禁分母 42 → **40**（待 2 新页策展后计入）。
+- **影响面**：`m3-scale.json`、`sites.json`（skip + notes）、对应 curated 模型/renders 已删；旧"42/42"口径全部作废，以本轮重跑为准。

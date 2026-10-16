@@ -119,9 +119,11 @@ check('营销图片与文本同 surface（元数据驱动）', css.includes('.ba
 
 // Whole-page frame classification is structural, not a per-site override.
 const modelAt = (site, slug) => JSON.parse(fs.readFileSync(path.join(root, 'm1/curated', site, slug + '.json'), 'utf8'));
+// 轮63：Apple 产品页（ipad-air）在新 capture 中不再有根级价格 ⇒ pageLayoutOf 归 'default'；
+// 'product' 分支改用合成 fixture 保持可证伪（F-100 语料漂移，覆盖率主张见 active-work.md）。
 check('目录/商品/营销/详情页有页面级布局契约',
   pageLayoutOf(modelAt('taobao-com','home')).kind === 'catalog'
-  && pageLayoutOf(modelAt('apple-com','ipad-air')).kind === 'product'
+  && pageLayoutOf({_image: img('https://x.example/p.jpg'), _price: {money: 899, currency: 'USD'}, _title: {text: 'P'}}).kind === 'product'
   && pageLayoutOf(modelAt('apple-com','home')).kind === 'marketing'
   && pageLayoutOf(modelAt('airbnb-com','room-28871')).kind === 'detail');
 check('已认可的阅读/净化器/B站布局不被新契约误伤',

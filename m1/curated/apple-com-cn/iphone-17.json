@@ -3,26 +3,14 @@
   "image": "https://www.apple.com.cn/iphone-17/images/overview/welcome/hero_startframe__e9e7pcnguyqi_xlarge.webp",
   "alt": "多部 iPhone 17 设备排列成展开的扇形，外观颜色分别为：黑色、薰衣草紫色、青雾蓝色、鼠尾草绿色、白色。"
  },
- "_intent": "iPhone 17 中国大陆产品页：以「神通妙彩」为主题讲设计、芯片续航、摄像头的升级，核心交易信息是 RMB 6799 起（或 RMB 284/月 24 期），页面主旨是产品与起售价",
- "_primary": "_price",
+ "_intent": "iPhone 17 中国大陆产品页：以「神通妙彩」为主题讲设计、芯片续航、摄像头的升级，核心动作是购买入口；2026-10-16 采集页面上已不含价格/分期数字（页首与对比卡均无价格），故本模型不设价格事实",
+ "_primary": "_subtitle",
  "_key": "apple-cn-iphone-17",
  "_title": {
   "text": "iPhone 17"
  },
  "_subtitle": {
   "text": "神通妙彩"
- },
- "_price": {
-  "money": 6799,
-  "currency": "RMB",
-  "qualifier": "起"
- },
- "_duration": {
-  "num": 24,
-  "unit": "期"
- },
- "_summary": {
-  "text": "RMB 6799 起或 RMB 284/月 起"
  },
  "_action": {
   "verb": "buy",
@@ -34,7 +22,7 @@
    "_intent": "页首折抵横幅：旧机换购的预计优惠区间，是价格之外的第一个交易事实",
    "_key": "tradein-banner",
    "_summary": {
-    "text": "用 iPhone 13 或后续机型来换购 iPhone 17，预计可享 RMB 900 至 RMB 5100 的折抵优惠。"
+    "text": "用符合条件的设备换购新 iPhone，可享折抵优惠。"
    },
    "_ref": {
     "ref": "key:benefits-tradein"
@@ -616,7 +604,7 @@
       "text": "换购新 iPhone， 还能省一笔。"
      },
      "_detail": {
-      "text": "用 iPhone 13 或后续机型来换购 iPhone 17，可享预计为 RMB 900 至 RMB 5100 的折抵优惠。"
+      "text": "用符合条件的设备换购新 iPhone，可享折抵优惠。"
      }
     },
     {
@@ -731,14 +719,6 @@
      "_subtitle": {
       "text": "拉高好感度， 再添耐用性。"
      },
-     "_price": {
-      "money": 6799,
-      "currency": "RMB",
-      "qualifier": "起"
-     },
-     "_summary": {
-      "text": "RMB 6799 起或 RMB 284/月 (24 期) 起"
-     },
      "_tag": {
       "text": "当前浏览"
      },
@@ -830,14 +810,6 @@
      },
      "_subtitle": {
       "text": "超轻超薄， Pro 级性能表现。"
-     },
-     "_price": {
-      "money": 8799,
-      "currency": "RMB",
-      "qualifier": "起"
-     },
-     "_summary": {
-      "text": "RMB 8799 起或 RMB 367/月 (24 期) 起"
      },
      "_rel": {
       "compare": true

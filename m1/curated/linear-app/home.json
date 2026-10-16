@@ -131,6 +131,21 @@
     "_items": [
       {
         "_title": {
+          "text": "Stacked pull requests"
+        },
+        "_summary": {
+          "text": "Stacked pull requests are now displayed in Linear Diffs. Move through a stack and see review, CI, and merge status at a glance. Related PRs are grouped into a single collapsible row in Reviews, alongside their issue and project context."
+        },
+        "_datetime": {
+          "date": "2026-10-08"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://linear.app/changelog/2026-10-08-stacked-pull-requests"
+        }
+      },
+      {
+        "_title": {
           "text": "New controls for Linear coding agent"
         },
         "_summary": {
@@ -173,21 +188,6 @@
           "verb": "open",
           "to": "https://linear.app/changelog/2026-09-03-priority-inbox"
         }
-      },
-      {
-        "_title": {
-          "text": "Coding sessions"
-        },
-        "_summary": {
-          "text": "Linear Agent can now set up, run, and test your code before returning its work. That means fewer handoffs and changes that are further along when they come back to you."
-        },
-        "_datetime": {
-          "date": "2026-08-19"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://linear.app/changelog/2026-08-20-coding-environments"
-        }
       }
     ]
   },
@@ -203,37 +203,10 @@
     }
   },
   "customers": {
-    "_intent": "被一流团队验证",
+    "_intent": "被一流团队验证。轮 63 重采后：客户 logo 墙在 capture 中是无名称的 SVG 字标（nodes/a11y name 为空，DOM 无文本、无 alt），任何品牌名都无法从本次 capture 逐字举证——原 OpenAI/Vercel/Figma/Coinbase/Ramp 条目按 F-025 纪律全部删除（OpenAI/Ramp 仅出现在证言署名里，作 logo 事实是误归属）。区块以标题保留。",
     "_title": {
       "text": "Powering the companies building the future"
-    },
-    "_items": [
-      {
-        "_brand": {
-          "text": "OpenAI"
-        }
-      },
-      {
-        "_brand": {
-          "text": "Vercel"
-        }
-      },
-      {
-        "_brand": {
-          "text": "Figma"
-        }
-      },
-      {
-        "_brand": {
-          "text": "Coinbase"
-        }
-      },
-      {
-        "_brand": {
-          "text": "Ramp"
-        }
-      }
-    ]
+    }
   },
   "demo": {
     "_intent": "源站 hero 的工作区示例，不是 Changelog。静态演示像素来自捕获图；事实文字来自 DOM，原始完整 DOM/nodes 保留为 provenance。",

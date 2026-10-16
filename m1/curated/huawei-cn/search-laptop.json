@@ -1,5 +1,5 @@
 {
-  "_intent": "告诉搜索 laptop 的用户站内搜索状态：80 条结果，本页展示前 10 条（MateBook 产品页与服务页，无价格——华为集团站内搜索不承载价格，价格在消费者商城）；可更换关键词、按类别过滤或翻页",
+  "_intent": "告诉搜索 laptop 的用户站内搜索状态：81 条结果，本页展示前 10 条（MateBook 产品页与服务页，无价格——华为集团站内搜索不承载价格，价格在消费者商城）；可更换关键词、按类别过滤或翻页",
   "_key": "huawei-site-search",
   "_title": {
     "text": "搜索结果"
@@ -33,7 +33,7 @@
       {
         "_key": "cat-all",
         "_name": {
-          "text": "全部 (80)"
+          "text": "全部 (81)"
         }
       },
       {
@@ -45,7 +45,7 @@
       {
         "_key": "cat-support",
         "_name": {
-          "text": "服务支持 (33)"
+          "text": "服务支持 (34)"
         }
       },
       {
@@ -76,7 +76,7 @@
       }
     },
     "_default": {
-      "text": "全部 (80)"
+      "text": "全部 (81)"
     }
   },
   "sort": {
@@ -91,7 +91,7 @@
   "results": {
     "_intent": "当前关键词下的命中结果：80 条，本页 10 条，每条为来源站点的一个页面（标题 + 摘要 + 来源站点）",
     "_count": {
-      "num": 80,
+      "num": 81,
       "unit": "条结果"
     },
     "_items": [
@@ -109,61 +109,37 @@
           "verb": "open",
           "to": "https://consumer.huawei.com/cn/laptops/"
         },
-        "sourceLink": { "_action": { "verb": "navigate", "label": "来源：消费者业务网站", "to": "https://consumer.huawei.com/cn" } }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI MateBook Pro - 华为官网"
-        },
-        "_summary": {
-          "text": "HUAWEI MateBook Pro,首款鸿蒙笔记本电脑,搭载鸿蒙 AI 小艺，生产力效率起飞。轻至 970 克，采用 OLED 云晰柔光屏。鸿蒙互联，支持手眼同行功能。隐私安全由你掌控，畅享纯净安全体验。"
-        },
-        "_detail": {
-          "text": "来源：消费者业务网站"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://consumer.huawei.com/cn/harmonyos-computer/matebook-pro/"
-        },
-        "sourceLink": { "_action": { "verb": "navigate", "label": "来源：消费者业务网站", "to": "https://consumer.huawei.com/cn" } },
-        "_image": {
-          "image": "../assets/62-huawei-cn-search-laptop-bf445fa113c9.png",
-          "alt": ""
+        "sourceLink": {
+          "_action": {
+            "verb": "navigate",
+            "label": "来源：消费者业务网站",
+            "to": "https://consumer.huawei.com/cn"
+          }
         }
       },
       {
         "_name": {
-          "text": "华为鸿蒙电脑 - 华为官网"
+          "text": "HUAWEI MateBook 14 酷睿 Ultra - 华为官网"
         },
         "_summary": {
-          "text": "探索并选购华为最新鸿蒙电脑，了解 HUAWEI MateBook Fold 非凡大师、HUAWEI MateBook Pro 及鸿蒙操作系统 5，购买华为鸿蒙电脑享受便捷服务。"
+          "text": "HUAWEI MateBook 14 酷睿 Ultra，原野绿一见清新。14.2 英寸 OLED 触控屏， 120 Hz 高刷屏搭配 2.8K 分辨率，清晰细腻。获得莱茵 TÜV Eye Comfort 2.0 认证，支持 1920 Hz 高频调光，舒适护眼。搭载第一代英特尔®酷睿™ Ultra 处理器，提供强大生产力。全新酷睿™ Ultra 处理器集成 AI 专属加速芯片 NPU，释放本地超强 AIGC 能力。"
         },
         "_detail": {
           "text": "来源：消费者业务网站"
         },
         "_action": {
           "verb": "open",
-          "to": "https://consumer.huawei.com/cn/harmonyos-computer/"
+          "to": "https://consumer.huawei.com/cn/laptops/matebook-14-2024/"
         },
-        "sourceLink": { "_action": { "verb": "navigate", "label": "来源：消费者业务网站", "to": "https://consumer.huawei.com/cn" } }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI MateBook Fold 非凡大师 - 华为官网"
+        "sourceLink": {
+          "_action": {
+            "verb": "navigate",
+            "label": "来源：消费者业务网站",
+            "to": "https://consumer.huawei.com/cn"
+          }
         },
-        "_summary": {
-          "text": "HUAWEI MateBook Fold 非凡大师，一折一展，落笔非凡。全新 UTG 玻璃，配合 HUAWEI M-Pen 3 支持智慧手写。搭载 HarmonyOS 6.1 和麒麟X90 Plus 处理器。"
-        },
-        "_detail": {
-          "text": "来源：消费者业务网站"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://consumer.huawei.com/cn/harmonyos-computer/matebook-fold-ultimate-design/"
-        },
-        "sourceLink": { "_action": { "verb": "navigate", "label": "来源：消费者业务网站", "to": "https://consumer.huawei.com/cn" } },
         "_image": {
-          "image": "../assets/62-huawei-cn-search-laptop-f117a9f99bfc.png",
+          "image": "../assets/62-huawei-cn-search-laptop-d3f37165db2d.png",
           "alt": ""
         }
       },
@@ -181,7 +157,13 @@
           "verb": "open",
           "to": "https://consumer.huawei.com/cn/laptops/matebook-gt-14/"
         },
-        "sourceLink": { "_action": { "verb": "navigate", "label": "来源：消费者业务网站", "to": "https://consumer.huawei.com/cn" } },
+        "sourceLink": {
+          "_action": {
+            "verb": "navigate",
+            "label": "来源：消费者业务网站",
+            "to": "https://consumer.huawei.com/cn"
+          }
+        },
         "_image": {
           "image": "../assets/62-huawei-cn-search-laptop-d07372fe2736.png",
           "alt": ""
@@ -201,7 +183,13 @@
           "verb": "open",
           "to": "https://consumer.huawei.com/cn/laptops/matebook-d-14-2024-13th-gen-core/"
         },
-        "sourceLink": { "_action": { "verb": "navigate", "label": "来源：消费者业务网站", "to": "https://consumer.huawei.com/cn" } },
+        "sourceLink": {
+          "_action": {
+            "verb": "navigate",
+            "label": "来源：消费者业务网站",
+            "to": "https://consumer.huawei.com/cn"
+          }
+        },
         "_image": {
           "image": "../assets/62-huawei-cn-search-laptop-25a7edb74e77.png",
           "alt": ""
@@ -221,9 +209,89 @@
           "verb": "open",
           "to": "https://consumer.huawei.com/cn/laptops/matebook-d-16-2024/"
         },
-        "sourceLink": { "_action": { "verb": "navigate", "label": "来源：消费者业务网站", "to": "https://consumer.huawei.com/cn" } },
+        "sourceLink": {
+          "_action": {
+            "verb": "navigate",
+            "label": "来源：消费者业务网站",
+            "to": "https://consumer.huawei.com/cn"
+          }
+        },
         "_image": {
           "image": "../assets/62-huawei-cn-search-laptop-483d7c298376.png",
+          "alt": ""
+        }
+      },
+      {
+        "_name": {
+          "text": "HUAWEI MateBook Pro - 华为官网"
+        },
+        "_summary": {
+          "text": "HUAWEI MateBook Pro,首款鸿蒙笔记本电脑,搭载鸿蒙 AI 小艺，生产力效率起飞。轻至 970 克，采用 OLED 云晰柔光屏。鸿蒙互联，支持手眼同行功能。隐私安全由你掌控，畅享纯净安全体验。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/harmonyos-computer/matebook-pro/"
+        },
+        "sourceLink": {
+          "_action": {
+            "verb": "navigate",
+            "label": "来源：消费者业务网站",
+            "to": "https://consumer.huawei.com/cn"
+          }
+        },
+        "_image": {
+          "image": "../assets/62-huawei-cn-search-laptop-bf445fa113c9.png",
+          "alt": ""
+        }
+      },
+      {
+        "_name": {
+          "text": "华为鸿蒙电脑 - 华为官网"
+        },
+        "_summary": {
+          "text": "探索并选购华为最新鸿蒙电脑，了解 HUAWEI MateBook Fold 非凡大师、HUAWEI MateBook Pro 及鸿蒙操作系统 5，购买华为鸿蒙电脑享受便捷服务。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/harmonyos-computer/"
+        },
+        "sourceLink": {
+          "_action": {
+            "verb": "navigate",
+            "label": "来源：消费者业务网站",
+            "to": "https://consumer.huawei.com/cn"
+          }
+        }
+      },
+      {
+        "_name": {
+          "text": "HUAWEI MateBook Fold 非凡大师 - 华为官网"
+        },
+        "_summary": {
+          "text": "HUAWEI MateBook Fold 非凡大师，一折一展，落笔非凡。全新 UTG 玻璃，配合 HUAWEI M-Pen 3 支持智慧手写。搭载 HarmonyOS 6.1 和麒麟X90 Plus 处理器。"
+        },
+        "_detail": {
+          "text": "来源：消费者业务网站"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://consumer.huawei.com/cn/harmonyos-computer/matebook-fold-ultimate-design/"
+        },
+        "sourceLink": {
+          "_action": {
+            "verb": "navigate",
+            "label": "来源：消费者业务网站",
+            "to": "https://consumer.huawei.com/cn"
+          }
+        },
+        "_image": {
+          "image": "../assets/62-huawei-cn-search-laptop-f117a9f99bfc.png",
           "alt": ""
         }
       },
@@ -241,29 +309,15 @@
           "verb": "open",
           "to": "https://consumer.huawei.com/cn/laptops/matebook-x-pro-ultra-premium-edition/"
         },
-        "sourceLink": { "_action": { "verb": "navigate", "label": "来源：消费者业务网站", "to": "https://consumer.huawei.com/cn" } },
+        "sourceLink": {
+          "_action": {
+            "verb": "navigate",
+            "label": "来源：消费者业务网站",
+            "to": "https://consumer.huawei.com/cn"
+          }
+        },
         "_image": {
           "image": "../assets/62-huawei-cn-search-laptop-2cdf522d2b97.png",
-          "alt": ""
-        }
-      },
-      {
-        "_name": {
-          "text": "HUAWEI MateBook 14 酷睿 Ultra - 华为官网"
-        },
-        "_summary": {
-          "text": "HUAWEI MateBook 14 酷睿 Ultra，原野绿一见清新。14.2 英寸 OLED 触控屏， 120 Hz 高刷屏搭配 2.8K 分辨率，清晰细腻。获得莱茵 TÜV Eye Comfort 2.0 认证，支持 1920 Hz 高频调光，舒适护眼。搭载第一代英特尔®酷睿™ Ultra 处理器，提供强大生产力。全新酷睿™ Ultra 处理器集成 AI 专属加速芯片 NPU，释放本地超强 AIGC 能力。"
-        },
-        "_detail": {
-          "text": "来源：消费者业务网站"
-        },
-        "_action": {
-          "verb": "open",
-          "to": "https://consumer.huawei.com/cn/laptops/matebook-14-2024/"
-        },
-        "sourceLink": { "_action": { "verb": "navigate", "label": "来源：消费者业务网站", "to": "https://consumer.huawei.com/cn" } },
-        "_image": {
-          "image": "../assets/62-huawei-cn-search-laptop-d3f37165db2d.png",
           "alt": ""
         }
       },
@@ -281,11 +335,17 @@
           "verb": "open",
           "to": "https://consumer.huawei.com/cn/support/laptops/"
         },
-        "sourceLink": { "_action": { "verb": "navigate", "label": "来源：消费者业务网站", "to": "https://consumer.huawei.com/cn" } }
+        "sourceLink": {
+          "_action": {
+            "verb": "navigate",
+            "label": "来源：消费者业务网站",
+            "to": "https://consumer.huawei.com/cn"
+          }
+        }
       }
     ],
     "pagination": {
-      "_intent": "结果分页控件行：第 1 页（当前页），共 8 页；源站为 javascript:void 链接，捕获 DOM 未给出真实地址 ⇒ 保持控件观感（不造 <a href>）",
+      "_intent": "结果分页控件行：第 1 页（当前页），共 9 页；源站为 javascript:void 链接，捕获 DOM 未给出真实地址 ⇒ 保持控件观感（不造 <a href>）",
       "_composite": "paginator",
       "_ref": {
         "ref": "/results"
@@ -342,7 +402,7 @@
         },
         {
           "_name": {
-            "text": "8"
+            "text": "9"
           },
           "_action": {
             "verb": "navigate"
@@ -481,7 +541,7 @@
         "_action": {
           "verb": "navigate",
           "label": "智能世界2035",
-          "to": "https://www.huawei.com/cn/giv"
+          "to": "https://www.huawei.com/cn/giv/action"
         }
       },
       {

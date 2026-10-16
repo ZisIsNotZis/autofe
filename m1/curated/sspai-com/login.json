@@ -1,0 +1,104 @@
+{
+ "_intent": "少数派登录页（最小捕获，36 节点）：手机号/邮箱 + 登录/注册提交，捕获时刻展开的区号选择面板、其他登录方式与协议条款；密码输入位在捕获时刻为隐藏的备用输入（comp__PasswordInput--hidden，aria-hidden），按 visible:false 采集证据不建模",
+ "_key": "sspai-login",
+ "_title": {
+  "text": "登录少数派"
+ },
+ "login": {
+  "_intent": "登录块：账号位 + 区号面板 + 提交 + 条款链接；无可访问名的图标控件不发明名称",
+  "identifier": {
+   "_intent": "手机号或邮箱输入位",
+   "_label": {
+    "text": "输入手机号 或 邮箱"
+   },
+   "_expose": {
+    "name": "login",
+    "type": "text"
+   }
+  },
+  "region": {
+   "_intent": "国际区号选择面板（捕获时刻展开）：选项在捕获中合并为一段文本，原样保留；结尾码点 57 属被 200 字符名称截断的下一个选项，dom.html 不含该面板、无法补全，按采集截断丢弃并在此记录",
+   "_detail": {
+    "text": "+86 中国 86美国 1日本 81中国香港 852中国台湾 886马来西亚 60澳大利亚 61加拿大 1英国 44新加坡 65德国 49俄罗斯 7埃及 20南非 27希腊 30荷兰 31比利时 32法国 33西班牙 34匈牙利 36意大利 39罗马尼亚 40瑞士 41奥地利 43丹麦 45瑞典 46挪威 47波兰 48秘鲁 51墨西哥 52古巴 53阿根廷 54巴西 55智利 56哥伦比亚 57"
+   }
+  },
+  "submit": {
+   "_intent": "提交手机号/邮箱继续登录或注册",
+   "_title": {
+    "text": "登录 / 注册"
+   },
+   "_action": {
+    "verb": "submit",
+    "label": "登录 / 注册"
+   }
+  },
+  "alternatives": {
+   "_intent": "其他登录方式：两个字体图标按钮（CSS 类 ssCommunityIcon__weixin / ssCommunityIcon__weibo；a11y 可访问名只有私用区码点，无可见文字、无捕获目标），不发明可见名称，只保留捕获到的组标签",
+   "_title": {
+    "text": "其他方式"
+   }
+  },
+  "agreement": {
+   "_intent": "登录即同意条款：自动登录说明与两个协议链接（新窗口打开）",
+   "_summary": {
+    "text": "未注册手机号验证后自动登录, 注册或登录即代表同意"
+   },
+   "_items": [
+    {
+     "_key": "agree-terms",
+     "_name": {
+      "text": "用户协议"
+     },
+     "_action": {
+      "verb": "navigate",
+      "label": "用户协议",
+      "to": "https://sspai.com/page/agreement"
+     }
+    },
+    {
+     "_key": "agree-privacy",
+     "_name": {
+      "text": "隐私条款"
+     },
+     "_action": {
+      "verb": "navigate",
+      "label": "隐私条款",
+      "to": "https://sspai.com/page/privacy_policy"
+     }
+    }
+   ]
+  }
+ },
+ "support": {
+  "_intent": "页脚工具条：客服/邮件/商务合作/少数派 App 四个入口（捕获无目标，保持无动作）与扫码咨询提示；两个字体图标按钮（ss__customer__service__button / ss__backtop__button，均无可访问名）不发明名称",
+  "_summary": {
+   "text": "请用微信手机端扫码咨询客服"
+  },
+  "_items": [
+   {
+    "_key": "support-service",
+    "_name": {
+     "text": "联系客服"
+    }
+   },
+   {
+    "_key": "support-mail",
+    "_name": {
+     "text": "发送邮件"
+    }
+   },
+   {
+    "_key": "support-biz",
+    "_name": {
+     "text": "商务合作"
+    }
+   },
+   {
+    "_key": "support-app",
+    "_name": {
+     "text": "少数派 App"
+    }
+   }
+  ]
+ }
+}

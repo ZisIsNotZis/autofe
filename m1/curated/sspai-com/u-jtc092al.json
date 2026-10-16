@@ -51,7 +51,7 @@
       "text": "成为少数派"
      },
      "_measure": {
-      "num": 529,
+      "num": 557,
       "unit": "天"
      },
      "_detail": {
@@ -67,21 +67,27 @@
      }
     },
     {
-     "_name": {
-      "text": "创作字数"
-     },
      "_measure": {
       "num": 16557
      },
-     "_intent": "源站 writeCount=16557，对应 character--fill 字数图标；不是未捕获的充电量。"
+     "_intent": "无标签字数副计数：源站 DOM id=writeCount、character--fill 字数图标（轮 63 重采中该子项标签为纯图标，无可访问名，故不设 _name）。"
     },
     {
      "_name": {
       "text": "文章阅读量"
      },
      "_measure": {
-      "num": 23535
+      "num": 25015
      }
+    },
+    {
+     "_name": {
+      "text": "获得充电"
+     },
+     "_count": {
+      "num": 4
+     },
+     "_intent": "轮 63 重采新增：成就面板合并行『获得充电4』拆分（DOM id=viewCount 同区，充电量为独立子计数）。"
     },
     {
      "_name": {

@@ -218,6 +218,9 @@ export function loadAllow(p = 'm1/eval/capture-integrity-allow.json') {
 // split; unmatched values are partitioned into declared conversions, declared capture
 // gaps (collection TODOs) and OPEN (gate-failing) items.
 export function checkPage(page, model, corpusDir = `corpus/${page}`, allow = loadAllow()) {
+  if (!fs.existsSync(path.join(corpusDir, 'dom.html'))) {
+    return { page, error: 'capture missing', factsTotal: 0, scanned: 0, unmatched: [], allowlisted: [], captureGaps: [], iconEvidence: [], provenanceErrors: [] };
+  }
   const hay = loadHaystack(corpusDir);
   const icons = iconProofs(page, model, corpusDir);
   const dead = suppressedNodes(model);

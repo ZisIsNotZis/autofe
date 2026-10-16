@@ -147,6 +147,363 @@
    "text": "少数派编辑部",
    "reason": "该文本是 _summary 角色事实（正文/标签/署名），不是节点的入口标签；模型里只有节点能持 _action，同一节点的链接由该节点自己的 _action 承载，故此处不重复建链。",
    "round": 55
+  },
+  {
+   "page": "bilibili-com/home",
+   "kind": "wrong-target",
+   "text": "【直播】2026IVL秋季赛W3D1",
+   "reason": "同名双锚：捕获 div[11]…/div[1]/a[2] 文本逐字=【直播】2026IVL秋季赛W3D1 → live.bilibili.com/6650029?live_from=81003（模型 feed._items[10] 采用，逐字一致）；div[12]…/h3[0]/a[0] 文本'直播中 【直播】…' → 长 session_id URL（live_from=81002）。oracle 以包含式文本匹配把模型事实配到 div[12] 锚；两目标均真实存在，属重复相近文本错配，非伪造。",
+   "round": 63
+  },
+  {
+   "page": "bilibili-com/home",
+   "kind": "wrong-target",
+   "text": "中国制造就是好，用了不烧心！",
+   "reason": "目标 https://www.bilibili.com/bangumi/play/ss323486?spm_id_from=333.337.0.0 逐字存在于捕获轮播卡封面链 div[0]…/div[3]/div[0]/div[0]/a[1]，该锚可见文本为空、标题仅存于 img alt；引擎对空文本锚不入 realKey，模型把卡片标题事实与封面链目标关联后渲染，无法获所有权证实；目标真实，非伪造。",
+   "round": 63
+  },
+  {
+   "page": "airbnb-com/room-28871",
+   "kind": "wrong-target",
+   "text": "815 条评价",
+   "reason": "55 轮 witness 的 sourceHash 被回捕作废；锚点仍在原地址 /html[0]/body[1]/div[1]/…/section[0]/div[2]/a[4]，文本“815 条评价”、href(/rooms/28871/reviews?review_page_entrypoint=pdp_header) 与现采集逐一相符，模型目标仍被采集逐字承载。",
+   "round": 63
+  },
+  {
+   "page": "aliyun-com/product-ecs",
+   "kind": "wrong-target",
+   "text": "产品动态",
+   "reason": "news._action 无 label，归属 oracle 判 null，render 侧链接无法上下文核验；采集恰有一个“产品动态”锚点 href=https://www.aliyun.com/product/news/，规范化后与模型目标逐字一致（F-025 合规），故为准许的关联误报。",
+   "round": 63
+  },
+  {
+   "page": "taobao-com/home",
+   "kind": "wrong-target",
+   "text": "淘宝秒杀 天天好价 产地直发 批发价 爆款低至0.99元起",
+   "reason": "55 轮 witness 绑定的是旧轮播帧（淘宝秒杀卡→web.m.taobao.com/…mspd.tbmspc），63 轮回捕后该帧与目标均不存在；模型 _lines[6]._items[0] 的现目标 https://huodong.taobao.com/wow/z/tbhome/tb-m2pc/m2pc-light-industry-599890-1?custom_content_source=a2113w.47103445 仍被采集以同文本锚点逐字承载（×3），故模型不改、准许该过期 witness 差额。",
+   "round": 63
+  },
+  {
+   "page": "apple-com/home",
+   "kind": "wrong-target",
+   "text": "Stream now",
+   "reason": "全部8个 tv.apple.com 目标均逐字存在于新捕获 dom.html（tenzing/matchbox/brothers/ted-lasso/slow-horses/mayday/widows-bay 带 ?l=en-US?itscg=…（源站本身双问号），formula-1/mls 无 l 参数）；模型 _lines[4].tv._items[*]._action 与捕获一致。渲染链路 render-owner-unverified：所有权 oracle 对 tv 卡片未产出可与渲染锚地址对上的 owned-exact-action，非 URL 伪造。",
+   "round": 63
+  },
+  {
+   "page": "mi-com/shop-category-list",
+   "kind": "wrong-target",
+   "text": "站内搜索",
+   "reason": "55 轮 witness 的 sourceHash 被回捕作废；表单 J_searchForm 仍在原地址 /html[0]/body[1]/div[0]/div[0]/div[0]/div[1]/div[0]/div[2]/form[0]，action=//search.mi.com/search 绝对化后与模型目标一致，render 亦在 data-model-owner=query 下绘出同目标锚点。",
+   "round": 63
+  },
+  {
+   "page": "apple-com/airpods-pro",
+   "kind": "wrong-target",
+   "text": "Learn more in our Product Environmental Report (PDF)",
+   "reason": "目标 /environment/pdf/products/airpods/Apple_AirPods_Pro_3_PER_Sept2025.pdf 逐字存在于捕获 main[6]/section[6]/div[0]/header[0]/div[1]/ul[0]/li[0]/a[0]，锚可见文本与模型动作标签逐字一致（a11y name 同，另含 (opens in new window) 后缀）；所有权 oracle 未判 owned-exact-action，属关联证实失败，非 URL 伪造。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/post-114716",
+   "kind": "wrong-target",
+   "text": "[电影] 伪钞之王",
+   "reason": "55 轮 witness 的 sourceHash 被回捕作废；锚点仍在原地址 …div[20]/div[1]/p[0]/a[0]，text/href 与 witness 记录逐字一致，模型目标（尾斜杠按 normalizeHref 等价）未变。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/post-114716",
+   "kind": "wrong-target",
+   "text": "[美剧] 劣探德克尔 第二季",
+   "reason": "同上：hash 作废，绑定在 …div[20]/div[1]/p[1]/a[0] 仍逐字成立。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/post-114716",
+   "kind": "wrong-target",
+   "text": "[电影] 安昂传奇：最后的气宗",
+   "reason": "同上：hash 作废，绑定在 …div[20]/div[1]/p[2]/a[0] 仍逐字成立。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/post-114716",
+   "kind": "wrong-target",
+   "text": "电影《绅士行动：暗战》首支预告：",
+   "reason": "同上：hash 作废，绑定在 …div[22]/p[16]/a[0] 仍逐字成立。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/post-114716",
+   "kind": "wrong-target",
+   "text": "来源",
+   "reason": "两个 sourceLink（p[16]/a[1] 与 p[17]/a[1]）hash 作废但绑定逐字成立；allow 按 text 键共享一条。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/post-114716",
+   "kind": "wrong-target",
+   "text": "恐怖电影《另一个妈妈》正式预告：",
+   "reason": "同上：hash 作废，绑定在 …div[22]/p[17]/a[0] 仍逐字成立。",
+   "round": 63
+  },
+  {
+   "page": "mi-com/search-earbuds",
+   "kind": "wrong-target",
+   "text": "站内搜索",
+   "reason": "55 轮 witness 的 sourceHash 被回捕作废；表单 J_searchForm 仍在原地址 /html[0]/body[1]/div[0]/div[0]/div[0]/div[1]/div[0]/div[2]/form[0]，action=//search.mi.com/search 绝对化后与模型目标一致，render 亦在 data-model-owner=query 下绘出同目标锚点。",
+   "round": 63
+  },
+  {
+   "page": "apple-com/macbook-air",
+   "kind": "wrong-target",
+   "text": "Help me choose the best Mac for me",
+   "reason": "目标 /mac/best-mac/#usage/ 逐字存在于捕获 main[6]/section[14]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/a[1]（aria-label 与 href 同锚逐字一致）；所有权 oracle 未判 owned-exact-action，非 URL 伪造。",
+   "round": 63
+  },
+  {
+   "page": "apple-com/macbook-air",
+   "kind": "wrong-target",
+   "text": "Get 3% Daily Cash back with Apple Card.",
+   "reason": "目标 /apple-card（捕获 /apple-card/，归一化相等）由页脚 footer[7]/div[0]/nav[4]/div[0]/div[1]/ul[1]/li[1]/a[0]（文本 Apple Card）携带；模型事实文本来自 a11y 节点（nodes.json name 'Apple Card Get 3% Daily Cash back with Apple Card. …'），源站该句为纯文本脚注不包锚，渲染锚无 owned-exact-action，非 URL 伪造。",
+   "round": 63
+  },
+  {
+   "page": "linear-app/home",
+   "kind": "wrong-target",
+   "text": "Coding sessions Linear Agent can now set up, run, and test your code before returning its work. That means fewer handoffs and changes that are further along when they come back to you. Aug 19, 2026",
+   "reason": "55 轮 witness 记录的旧 changelog 条目已滚出列表；同地址 div[24]/div[2]/div[4]/a[1] 现为 Priority inbox → /changelog/2026-09-03-priority-inbox，模型 items[3] 已按新捕获重写且一致。应改 witness 绑定（allow 对 witness finding 无效）。",
+   "round": 63
+  },
+  {
+   "page": "linear-app/home",
+   "kind": "wrong-target",
+   "text": "Contact sales",
+   "reason": "witness sourceHash 被回捕作废；锚点仍在 section[27]/div[1]/a[1]，text/href/模型目标逐字一致。",
+   "round": 63
+  },
+  {
+   "page": "linear-app/home",
+   "kind": "wrong-target",
+   "text": "Changelog",
+   "reason": "渲染把 changelog 节的 _action（navigate → /changelog）画在节标题上；源站该目标由页脚 Changelog 锚点（footer[2]/…/ul[1]/li[7]/a[0]）真实携带，target 非构造。owner-oracle 无法把节级动作绑到具体渲染锚点。",
+   "round": 63
+  },
+  {
+   "page": "linear-app/home",
+   "kind": "wrong-target",
+   "text": "Get started",
+   "reason": "渲染的模板 CTA（div[7]/a[0]，无 data-model-owner 祖先）；源站同 text+href 锚点在 main[1]/…/section[27]/div[1]/a[0]，target /signup 真实携带。",
+   "round": 63
+  },
+  {
+   "page": "aliyun-com/home",
+   "kind": "wrong-target",
+   "text": "立即免费体验",
+   "reason": "模型根 _action(to=https://www.aliyun.com/exp) 的归属 oracle 在 63 轮回捕后返回 null，render 侧无法上下文核验；采集恰有一个该文本锚点且 href 与模型目标逐字一致（F-025 合规，非构造 URL），故为准许的关联误报。",
+   "round": 63
+  },
+  {
+   "page": "aliyun-com/home",
+   "kind": "wrong-target",
+   "text": "Token Plan 个人版上线，团队版降价，更低成本畅用 Qwen3.8-Max 等先进模型 查看详情",
+   "reason": "55 轮 witness 的 sourceHash 被回捕作废；地址 /html[0]/body[1]/div[0]/div[1]/div[0]/div[3]/div[1]/div[1]/div[1]/div[1]/div[0]/a[0]、文本、href(https://platform.qianwenai.com/pricing/token-plan) 与现采集逐一相符，模型目标仍被采集逐字承载。",
+   "round": 63
+  },
+  {
+   "page": "aliyun-com/home",
+   "kind": "wrong-target",
+   "text": "免费额度 登录即送免费 token，一个 API 调用全部模型，新用户赠千万 tokens 免费额度 查看详情",
+   "reason": "55 轮 witness 的 sourceHash 被回捕作废；地址 /html[0]/body[1]/div[0]/div[1]/div[0]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/a[0]、文本、href(https://platform.qianwenai.com/home/benefits) 与现采集逐一相符，模型目标仍被采集逐字承载。",
+   "round": 63
+  },
+  {
+   "page": "learn-microsoft/vm-sizes",
+   "kind": "wrong-target",
+   "text": "General purpose",
+   "reason": "55 轮 witness 的 sourceHash 被回捕作废；锚点仍在 main[2]/…/td[2]/a[0]，text=#general-purpose 绑定逐字成立，模型目标未变。",
+   "round": 63
+  },
+  {
+   "page": "learn-microsoft/vm-sizes",
+   "kind": "wrong-target",
+   "text": "Compute optimized",
+   "reason": "同上，a[2]/#compute-optimized。",
+   "round": 63
+  },
+  {
+   "page": "learn-microsoft/vm-sizes",
+   "kind": "wrong-target",
+   "text": "Memory optimized",
+   "reason": "同上，a[4]/#memory-optimized。",
+   "round": 63
+  },
+  {
+   "page": "learn-microsoft/vm-sizes",
+   "kind": "wrong-target",
+   "text": "Storage optimized",
+   "reason": "同上，a[6]/#storage-optimized。",
+   "round": 63
+  },
+  {
+   "page": "learn-microsoft/vm-sizes",
+   "kind": "wrong-target",
+   "text": "GPU accelerated",
+   "reason": "同上，a[8]/#gpu-accelerated。",
+   "round": 63
+  },
+  {
+   "page": "learn-microsoft/vm-sizes",
+   "kind": "wrong-target",
+   "text": "FPGA accelerated",
+   "reason": "同上，a[10]/#fpga-accelerated。",
+   "round": 63
+  },
+  {
+   "page": "stripe-com/pricing",
+   "kind": "wrong-target",
+   "text": "资金管理",
+   "reason": "渲染的页脚/导航链接；源站同 text+href 锚点在 header 巨型菜单 ul[1]/li[8]/a[0] 与页脚 nav[0]/div[2]/section[0]/ul[1]/li[10]/a[0]，target 真实携带，owner-oracle 未能绑到该渲染锚点。",
+   "round": 63
+  },
+  {
+   "page": "stripe-com/pricing",
+   "kind": "wrong-target",
+   "text": "Payments",
+   "reason": "同上：/cn/payments 携带于 header div[0]/div[2]/ul[0]/li[0]/a[0] 与页脚 ul[1]/li[18]/a[0]。",
+   "round": 63
+  },
+  {
+   "page": "stripe-com/pricing",
+   "kind": "wrong-target",
+   "text": "Radar",
+   "reason": "同上：/cn/radar 携带于 header aside[5]/div[1]/ul[0]/li[1]/a[0] 与页脚 ul[1]/li[20]/a[0]。",
+   "round": 63
+  },
+  {
+   "page": "stripe-com/pricing",
+   "kind": "wrong-target",
+   "text": "Connect",
+   "reason": "同上：/cn/connect 携带于 header div[3]/div[2]/ul[0]/li[0]/a[0] 与页脚 ul[1]/li[7]/a[0]。",
+   "round": 63
+  },
+  {
+   "page": "stripe-com/pricing",
+   "kind": "wrong-target",
+   "text": "Invoicing",
+   "reason": "同上：/cn/invoicing 携带于 header div[1]/div[2]/ul[0]/li[3]/a[0] 与页脚 ul[1]/li[13]/a[0]。",
+   "round": 63
+  },
+  {
+   "page": "stripe-com/pricing",
+   "kind": "wrong-target",
+   "text": "Billing",
+   "reason": "同上：/cn/billing 携带于 header div[1]/div[2]/ul[0]/li[0]/a[0] 与页脚 ul[1]/li[3]/a[0]。",
+   "round": 63
+  },
+  {
+   "page": "stripe-com/pricing",
+   "kind": "wrong-target",
+   "text": "等等",
+   "reason": "enterprise 磁贴锚点 section[5]/…/div[1]/p[0]/a[0] 文本恰为“等等”→ /cn/enterprise；渲染磁贴链接与之一致，owner 绑定未达。",
+   "round": 63
+  },
+  {
+   "page": "apple-com-cn/iphone-17",
+   "kind": "wrong-target",
+   "text": "进一步了解个人设置辅导",
+   "reason": "目标 /cn/shop/goto/personal_setup 逐字存在于捕获 7 处（全局导航 div[1]/nav[0] ×5 响应式克隆 + main[3]/section[13] 站点地图），锚文本为短形'个人设置辅导'；权益卡 benefits-setup 所在 section[9] 新捕获无锚点，渲染 run 文本=动作标签全形，所有权无法证实，非 URL 伪造。",
+   "round": 63
+  },
+  {
+   "page": "apple-com-cn/iphone-17",
+   "kind": "wrong-target",
+   "text": "进一步了解 Apple Store App",
+   "reason": "目标 https://apps.apple.com/cn/app/apple-store/id375380948 逐字存在于捕获 footer[4]/div[0]/nav[3]/div[2]/div[0]/ul[1]/li[5]/a[0]（文本 Apple Store App）；权益卡 benefits-app 所在 section[9] 无锚点，渲染 run 文本=动作标签，所有权无法证实，非 URL 伪造。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/home",
+   "kind": "wrong-target",
+   "text": "一派投票",
+   "reason": "源站把“一派投票”作为频道标签重复链接到 /u/（6 处锚点）；模型把它建模为投票卡的 meta 事实，卡片动作 bullet/1791445045 由标题锚点承载且已通过 owned-exact 验证。检查器把节点动作套到该 meta 事实上造成误配；渲染语法把 meta 画为纯文本，无法为此建链。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/home",
+   "kind": "wrong-target",
+   "text": "学得会的快捷指令",
+   "reason": "源站 banner 卡为纯图片锚点（可见文本为空，名称在 img alt）：/a/Kd8QBK 逐字携带于 …div[1]/a[0]，模型 _action 与之一致；文本键 owner-oracle 无法绑定空文本锚点。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/home",
+   "kind": "wrong-target",
+   "text": "Apple 怎么看 iPhone Duo？专访 Apple 零售副总裁 Deirdre",
+   "reason": "同上：/a/KjNYBK 逐字携带于 editors 区图片锚点，alt 与模型 _name 一致。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/home",
+   "kind": "wrong-target",
+   "text": "中古掌机收藏选购指南",
+   "reason": "同上：/create/retro-handheld-guide 逐字携带于 campaigns 区图片锚点。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/home",
+   "kind": "wrong-target",
+   "text": "灵犀Linx 68 带屏键盘",
+   "reason": "同上：/create/linx 逐字携带于 campaigns 区图片锚点。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/home",
+   "kind": "wrong-target",
+   "text": "YoooClaw C·ONE",
+   "reason": "同上：/create/yoooclaw 逐字携带于 campaigns 区图片锚点。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/home",
+   "kind": "wrong-target",
+   "text": "口袋先知墨水屏",
+   "reason": "同上：/create/rand0 逐字携带于 campaigns 区图片锚点。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/home",
+   "kind": "wrong-target",
+   "text": "白描 PDF 鸿蒙版",
+   "reason": "同上：/create/baimiao 逐字携带于 campaigns 区图片锚点。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/matrix",
+   "kind": "wrong-target",
+   "text": "Bear熊掌记 1014 人关注",
+   "reason": "55 轮 witness 记录的旧侧栏专栏已滚出列表；同地址 aside[1]/div[2]/ul[1]/li[2]/a[0] 现为 六蠹集 822 人关注 → /column/310，模型 columns._items[2] 已按新捕获重写且一致。应改 witness 绑定（allow 对 witness finding 无效）。",
+   "round": 63
+  },
+  {
+   "page": "sspai-com/matrix",
+   "kind": "wrong-target",
+   "text": "这次长假出门，你带了哪些「全程没掏出来」的数码装备？",
+   "reason": "源站投票卡里问题文本为纯文本，动作链接由同节点“我来说一说”锚点（aside[1]/div[0]/div[3]/a[0] → /bullet/1791445045）承载；渲染按节点动作画整卡链接，target 为源站真实携带，非构造 URL。",
+   "round": 63
+  },
+  {
+   "page": "mi-com/search-phone",
+   "kind": "wrong-target",
+   "text": "站内搜索",
+   "reason": "55 轮 witness 的 sourceHash 被回捕作废；表单 J_searchForm 仍在原地址 /html[0]/body[1]/div[0]/div[0]/div[0]/div[1]/div[0]/div[2]/form[0]，action=//search.mi.com/search 绝对化后与模型目标一致，render 亦在 data-model-owner=query 下绘出同目标锚点。",
+   "round": 63
+  },
+  {
+   "page": "stripe-com/pricing",
+   "kind": "wrong-target",
+   "text": "以及更多",
+   "reason": "模型磁贴 _items[5]{_name 以及更多, _action{label 等等, → /cn/enterprise}}；渲染磁贴链接覆盖 label+name 两个文本 run，“以及更多”run 随磁贴链接指向源站真实携带的 /cn/enterprise（section[5]/…/div[1]/p[0]/a[0] 锚点文本恰为“等等”）。",
+   "round": 63
   }
  ]
 }

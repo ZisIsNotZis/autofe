@@ -14,18 +14,6 @@
    "why": "整句不在模型中（区域覆盖缺口，无 _quote 可言）；轮 56 模型侧只核对 3 页（sspai×2、apple-cn），未扩此页。待下轮。"
   },
   {
-   "page": "apple-com/macbook-air",
-   "kind": "dropped",
-   "text": "From $1299 or $108.25/mo. for 12 mo.**",
-   "why": "文本已并入定价事实（模型 ._summary 与 _items 合并句「From $1299 …Apple Upgrade」，capture-integrity-allow.json 有对应转换声明），但强调承载未声明 _quote；轮 56 范围外，待下轮。"
-  },
-  {
-   "page": "apple-com/macbook-air",
-   "kind": "dropped",
-   "text": "Lease from $24.99/mo. for 36 mo. with Apple Upgrade◊",
-   "why": "同上：文本已并入定价事实，未声明 _quote；轮 56 范围外，待下轮。"
-  },
-  {
    "page": "aws-amazon/ec2-on-demand",
    "kind": "dropped",
    "text": "注意：Red Hat 已经更新",

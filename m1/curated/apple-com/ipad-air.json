@@ -3,26 +3,21 @@
   "image": "https://www.apple.com/v/ipad-air/ah/images/overview/hero/hero_endframe__6gl84bccyaqi_large.png",
   "alt": "iPad Air front and back view showcasing thin construction"
  },
- "_intent": "iPad Air 产品页：M4 芯片是本代主叙事（性能、AI、图形），核心交易信息 From $749（可租赁），页面按亮点→芯片→系统→AI→尺寸→连接→配件→相机→购买理由→机型对比→环保推进",
- "_primary": "_price",
+ "_intent": "iPad Air 产品页：M4 芯片是本代主叙事（性能、AI、图形），页面按亮点→芯片→系统→AI→尺寸→连接→配件→相机→购买理由→机型对比→环保推进；2026-10-16 采集页面上已无任何价格/分期数字，商务信息仅剩顶部 Apple Upgrade 租赁横幅",
+ "_primary": "_summary",
  "_key": "apple-ipad-air",
  "_title": {
   "text": "iPad Air"
  },
  "_subtitle": {
-  "text": "Whoosh."
- },
- "_price": {
-  "money": 749,
-  "currency": "USD",
-  "qualifier": "From"
+  "text": "Whoosh. Now supercharged by M4."
  },
  "_duration": {
   "num": 12,
   "unit": "mo."
  },
  "_summary": {
-  "text": "From $749 or $62.41/mo. Lease from $15.99/mo. for 36 mo. with Apple Upgrade"
+  "text": "Lease a new iPad with low monthly payments for 24 or 36 months and upgrade at the end of your term with Apple Upgrade.§"
  },
  "_action": {
   "verb": "buy",
@@ -299,7 +294,7 @@
     "unit": "G"
    },
    "_detail": {
-    "text": "Your games, streaming content, and workflows go wherever you do with the better performance and reliability of Wi-Fi 7, Bluetooth 6, and Thread — all enabled by N1, our new wireless networking chip. And you can easily connect to external displays, drives, and devices with USB-C. The new C1X cellular modem supports 50 percent faster data speeds at greater efficiency while maintaining worldwide 5G coverage. So you can securely access files, communicate with collaborators, and back up data while out and about. And eSIM enables a fast, convenient, and secure way to activate a cellular data plan directly on your device."
+    "text": "Your games, streaming content, and workflows go wherever you do with the better performance and reliability of Wi-Fi 7, 8 Bluetooth 6, and Thread — all enabled by N1, our new wireless networking chip. And you can easily connect to external displays, drives, and devices with USB-C. The new C1X cellular modem supports 50 percent faster data speeds at greater efficiency while maintaining worldwide 5G coverage. So you can securely access files, communicate with collaborators, and back up data while out and about. 8 And eSIM enables a fast, convenient, and secure way to activate a cellular data plan directly on your device. 9"
    },
    "_items": [
     {
@@ -415,7 +410,7 @@
     {
      "_key": "why-tradein",
      "_name": {
-      "text": "Save up to $905 with Apple Trade In."
+      "text": "Save with Apple Trade In."
      },
      "_detail": {
       "text": "Get credit toward your next iPad when you trade in an eligible device."
@@ -495,12 +490,7 @@
       "text": "iPad Air"
      },
      "_summary": {
-      "text": "Serious performance in a thin and light design. From $749 or $62.41/mo. for 12 mo. Lease from $15.99/mo. for 36 mo. with Apple Upgrade"
-     },
-     "_price": {
-      "money": 749,
-      "currency": "USD",
-      "qualifier": "From"
+      "text": "Serious performance in a thin and light design."
      },
      "_tag": {
       "text": "Currently viewing"
@@ -515,7 +505,7 @@
      },
      "display": {
       "_detail": {
-       "text": "13” or 11” Liquid Retina display · P3 wide color · True Tone · Antireflective coating"
+       "text": "13” or 11” Liquid Retina display 3 · P3 wide color · True Tone · Antireflective coating"
       }
      },
      "chip": {
@@ -548,7 +538,7 @@
        "text": "Supports Magic Keyboard for iPad Air"
       }
      },
-     "_intent": "对照实体：iPad Air（本页浏览机型）——定位标签、起售价与七项规格子块"
+     "_intent": "对照实体：iPad Air（本页浏览机型）——定位标签与七项规格子块（2026-10-16 采集无起售价与分期文案，display 行带脚注 3）"
     },
     {
      "_key": "cmp-ipad-pro",
@@ -556,12 +546,7 @@
       "text": "iPad Pro"
      },
      "_summary": {
-      "text": "The ultimate iPad experience with the most advanced technology. From $1199 or $99.91/mo. for 12 mo. Lease from $24.99/mo. for 36 mo. with Apple Upgrade"
-     },
-     "_price": {
-      "money": 1199,
-      "currency": "USD",
-      "qualifier": "From"
+      "text": "The ultimate iPad experience with the most advanced technology."
      },
      "_subtitle": {
       "text": "Available in Space black, and Silver"
@@ -584,7 +569,7 @@
      },
      "display": {
       "_detail": {
-       "text": "13” or 11” Ultra Retina XDR display · ProMotion technology · P3 wide color · True Tone · Antireflective coating · Nano-texture display glass option on 1TB and 2TB models"
+       "text": "13” or 11” Ultra Retina XDR display 3 · ProMotion technology · P3 wide color · True Tone · Antireflective coating · Nano-texture display glass option on 1TB and 2TB models"
       }
      },
      "chip": {

@@ -1,5 +1,5 @@
 {
- "_intent": "告诉搜索 phone 的用户站内搜索状态：3562 条结果，本页展示前 10 条（消费者业务与集团网站的页面结果，无价格——华为集团站内搜索不承载价格，价格在消费者商城）；可更换关键词、按类别过滤或翻页",
+ "_intent": "告诉搜索 phone 的用户站内搜索状态：3577 条结果，本页展示前 10 条（消费者业务产品页结果，无价格——集团站内搜索不承载价格，价格在消费者商城）；可更换关键词、按类别过滤或翻页",
  "_key": "huawei-site-search",
  "_title": {
   "text": "搜索结果"
@@ -33,19 +33,19 @@
    {
     "_key": "cat-all",
     "_name": {
-     "text": "全部 (3562)"
+     "text": "全部 (3577)"
     }
    },
    {
     "_key": "cat-product",
     "_name": {
-     "text": "产品与解决方案 (160)"
+     "text": "产品与解决方案 (173)"
     }
    },
    {
     "_key": "cat-support",
     "_name": {
-     "text": "服务支持 (1443)"
+     "text": "服务支持 (1444)"
     }
    },
    {
@@ -57,7 +57,7 @@
    {
     "_key": "cat-news",
     "_name": {
-     "text": "新闻与活动 (330)"
+     "text": "新闻与活动 (331)"
     }
    }
   ],
@@ -76,13 +76,13 @@
    }
   },
   "_default": {
-   "text": "全部 (3562)"
+   "text": "全部 (3577)"
   }
  },
  "results": {
-  "_intent": "当前关键词下的命中结果：3562 条，本页 10 条，每条为来源站点的一个页面（标题 + 摘要 + 来源站点）（原 `_items` 误标为可互换实例：10 条结果不同形——部分只有标题+摘要、部分只有标题+类别，且两条同名；回改为 `_lines` 有序序列）",
+  "_intent": "当前关键词下的命中结果：3577 条，本页 10 条，每条为来源站点的一个页面（标题 + 摘要 + 来源站点）（原 `_items` 误标为可互换实例：10 条结果不同形——部分只有标题+摘要、部分只有标题+类别，且两条同名；回改为 `_lines` 有序序列）",
   "_count": {
-   "num": 3562,
+   "num": 3577,
    "unit": "条结果"
   },
   "_lines": [
@@ -111,17 +111,17 @@
    },
    {
     "_name": {
-     "text": "手机克隆 - 华为官网"
+     "text": "HUAWEI Mate 70 RS 非凡大师 - 华为官网"
     },
     "_summary": {
-     "text": "使用手机克隆 App，实现数据大挪移，轻松换新机。无线且无需流量，扫描二维码或自建 WLAN 热点即可跨平台（Android/iOS）无障碍快速互传。"
+     "text": "HUAWEI Mate 70 RS 非凡大师，鸿蒙 AI, 支持 AI 隔空传送、AI 消息随身、AI 静谧通话，双层 OLED 临境显示，高亮钛玄武架构，红枫原色影像，支持卫星寻呼，可发送北斗卫星图片消息，第二代灵犀通信。"
     },
     "_detail": {
      "text": "来源：消费者业务网站"
     },
     "_action": {
      "verb": "open",
-     "to": "https://consumer.huawei.com/cn/emui/clone/"
+     "to": "https://consumer.huawei.com/cn/phones/mate70-rs-ultimate-design/"
     },
     "sourceLink": {
      "_action": {
@@ -134,44 +134,17 @@
    },
    {
     "_name": {
-     "text": "手机许可计划 - 华为"
+     "text": "HUAWEI Mate 70 Pro - 华为官网"
     },
     "_summary": {
-     "text": "华为的手机专利许可计划。"
-    },
-    "_detail": {
-     "text": "来源：集团网站"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://www.huawei.com/cn/ipr/license/mobile-handset"
-    },
-    "sourceLink": {
-     "_action": {
-      "verb": "navigate",
-      "label": "来源：集团网站",
-      "to": "https://www.huawei.com/cn"
-     }
-    },
-    "_image": {
-     "image": "../assets/62-huawei-cn-search-phone-385798fdf4ed.png",
-     "alt": ""
-    },
-    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
-   },
-   {
-    "_name": {
-     "text": "华为手机服务 | 华为官网"
-    },
-    "_summary": {
-     "text": "了解如何设置和使用华为手机，获取手机克隆、数据备份、屏幕维修和手机发热等常见问题解决方案以及维修服务相关资讯。"
+     "text": "HUAWEI Mate 70 Pro，鸿蒙 AI, 支持 AI 运动轨迹、AI 隔空传送、AI 降噪通话，超可靠玄武架构，红枫原色影像，可发送北斗卫星图片消息，第二代灵犀通信，5500 mAh 高硅大电池，支持 100 W 华为超级快充。"
     },
     "_detail": {
      "text": "来源：消费者业务网站"
     },
     "_action": {
      "verb": "open",
-     "to": "https://consumer.huawei.com/cn/support/phones/"
+     "to": "https://consumer.huawei.com/cn/phones/mate70-pro/"
     },
     "sourceLink": {
      "_action": {
@@ -184,37 +157,17 @@
    },
    {
     "_name": {
-     "text": "让手机持久耐用 | 屏幕外层玻璃维修"
-    },
-    "_detail": {
-     "text": "来源：消费者业务网站"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://consumer.huawei.com/cn/support/recommend/2/"
-    },
-    "sourceLink": {
-     "_action": {
-      "verb": "navigate",
-      "label": "来源：消费者业务网站",
-      "to": "https://consumer.huawei.com/cn"
-     }
-    },
-    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
-   },
-   {
-    "_name": {
-     "text": "华为磁吸手机支架 - 华为官网"
+     "text": "HUAWEI Mate 70 Pro+ - 华为官网"
     },
     "_summary": {
-     "text": "华为磁吸手机支架，集舒适手感与细腻质感于一体，多色可选，多种支撑方式，与磁吸手机壳一吸即用。"
+     "text": "HUAWEI Mate 70 Pro+，金丝银锦新色，高亮钛玄武架构，鸿蒙 AI, 支持 AI 运动轨迹、AI 隔空传送、AI 降噪通话，红枫原色影像，全新卫星寻呼，可发送北斗卫星图片消息，第二代灵犀通信，5700 mAh 高硅大电池，支持 100 W 华为超级快充。"
     },
     "_detail": {
      "text": "来源：消费者业务网站"
     },
     "_action": {
      "verb": "open",
-     "to": "https://consumer.huawei.com/cn/accessories/huawei-pura-magnetic-phone-stand/"
+     "to": "https://consumer.huawei.com/cn/phones/mate70-pro-plus/"
     },
     "sourceLink": {
      "_action": {
@@ -223,25 +176,21 @@
       "to": "https://consumer.huawei.com/cn"
      }
     },
-    "_image": {
-     "image": "../assets/62-huawei-cn-search-phone-8f234dda5c50.png",
-     "alt": ""
-    },
     "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
    },
    {
     "_name": {
-     "text": "华为磁吸手机支架 - 华为官网"
+     "text": "HUAWEI nova 14 Pro - 华为官网"
     },
     "_summary": {
-     "text": "华为磁吸手机支架，斑斓色彩，四种颜色可选，一贴即合，横竖都能看，便捷随行。"
+     "text": "HUAWEI nova 14 Pro，支持多焦段质感人像，鸿蒙 AI，可发送北斗卫星图片消息，冰晶纹理设计。"
     },
     "_detail": {
      "text": "来源：消费者业务网站"
     },
     "_action": {
      "verb": "open",
-     "to": "https://consumer.huawei.com/cn/accessories/huawei-magnetic-phone-stand/"
+     "to": "https://consumer.huawei.com/cn/phones/nova14-pro/"
     },
     "sourceLink": {
      "_action": {
@@ -250,25 +199,21 @@
       "to": "https://consumer.huawei.com/cn"
      }
     },
-    "_image": {
-     "image": "../assets/62-huawei-cn-search-phone-d54b0cb435e1.png",
-     "alt": ""
-    },
     "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
    },
    {
     "_name": {
-     "text": "华为折叠手机金秋礼遇活动 | 华为官网"
+     "text": "HUAWEI Pura 80 Pro+ - 华为官网"
     },
     "_summary": {
-     "text": "2026年9月1日-2026年9月30日，购买HUAWEI Mate XTs非凡大师、HUAWEI Mate X7、 HUAWEI Mate X6、 HUAWEI Pura X Max、HUAWEI Pura X，即可领取对应设备的HUAWEI Care+ 意外无忧（一年期）服务权益"
+     "text": "HUAWEI Pura 80 Pro+，远超所望。釉色天成，耀目风向标，璀璨新生。1英寸高动态主摄，出片不分昼夜。鸿蒙AI，支持AI辅助构图，个性色卡，超清全景模式，小艺看世界，还有双卫星通信，第二代玄武钢化昆仑玻璃。"
     },
     "_detail": {
      "text": "来源：消费者业务网站"
     },
     "_action": {
      "verb": "open",
-     "to": "https://consumer.huawei.com/cn/support/receive-huawei-care/"
+     "to": "https://consumer.huawei.com/cn/phones/pura80-pro-plus/"
     },
     "sourceLink": {
      "_action": {
@@ -281,50 +226,99 @@
    },
    {
     "_name": {
-     "text": "让手机持久耐用 | 换电池及内存升级"
-    },
-    "_detail": {
-     "text": "来源：消费者业务网站"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://consumer.huawei.com/cn/support/recommend/6/"
-    },
-    "sourceLink": {
-     "_action": {
-      "verb": "navigate",
-      "label": "来源：消费者业务网站",
-      "to": "https://consumer.huawei.com/cn"
-     }
-    },
-    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
-   },
-   {
-    "_name": {
-     "text": "云手机"
+     "text": "HUAWEI Pura 80 Ultra - 华为官网"
     },
     "_summary": {
-     "text": "华为鲲鹏云手机是运行在云端虚拟出带有原生安卓操作系统，具有虚拟手机功能的云服务器。免费云手机0元领取体验，可发放60台云手机实例！云手机业务数据提供云端数据企业级云上安全防护。云手机可用于云手游、移动办公等场景"
+     "text": "HUAWEI Pura 80 Ultra，远超所望。耀目风向标，太阳饰纹，璀璨新生。超大底双长焦，支持3.7倍和10倍光学焦段，1英寸超高动态主摄，洞见明暗。鸿蒙AI，支持AI辅助构图，个性色卡，小艺看世界，还有双卫星通信，第二代玄武钢化昆仑玻璃。"
     },
     "_detail": {
-     "text": "来源：华为云业务网站"
+     "text": "来源：消费者业务网站"
     },
     "_action": {
      "verb": "open",
-     "to": "https://www.huaweicloud.com/product/cloudphone.html"
+     "to": "https://consumer.huawei.com/cn/phones/pura80-ultra/"
     },
     "sourceLink": {
      "_action": {
       "verb": "navigate",
-      "label": "来源：华为云业务网站",
-      "to": "https://www.huaweicloud.com/intl/zh-cn"
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura X - 华为官网"
+    },
+    "_summary": {
+     "text": "HUAWEI Pura X，1610 阔型屏，为内容而生；配合智能便捷外屏，事事玩得转；更有鸿蒙 AI，智慧再进化。"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/phones/pura-x/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura 80 Pro - 华为官网"
+    },
+    "_summary": {
+     "text": "HUAWEI Pura 80 Pro，远超所望。釉色天成，独具意蕴。1英寸主摄，红枫原色影像，出片不分昼夜。鸿蒙AI，支持AI辅助构图，个性色卡，超清全景模式，小艺看世界，AI防窥保护，还有AI舞林萌主，北斗卫星智能选星，第二代昆仑玻璃。"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/phones/pura80-pro/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
+     }
+    },
+    "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
+   },
+   {
+    "_name": {
+     "text": "HUAWEI Pura 80 - 华为官网"
+    },
+    "_summary": {
+     "text": "HUAWEI Pura 80 Pro，远超所望。丝绒玻璃，利落直屏。红枫原色影像，个性色卡，出片更出彩。鸿蒙AI，支持小艺看世界，AI防窥保护，AI舞林萌主，AI防窥保护，AI隔空传送，AI降噪通话，还有北斗卫星智能选星，第二代昆仑玻璃。"
+    },
+    "_detail": {
+     "text": "来源：消费者业务网站"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://consumer.huawei.com/cn/phones/pura80/"
+    },
+    "sourceLink": {
+     "_action": {
+      "verb": "navigate",
+      "label": "来源：消费者业务网站",
+      "to": "https://consumer.huawei.com/cn"
      }
     },
     "_intent": "来源搜索结果：保持标题、摘要和来源站点动作属于同一命中条目"
    }
   ],
   "pagination": {
-   "_intent": "结果分页控件行：第 1 页（当前页），共 357 页；源站为 javascript:void 链接，捕获 DOM 未给出真实地址 ⇒ 保持控件观感（不造 <a href>）",
+   "_intent": "结果分页控件行：第 1 页（当前页），共 358 页；源站为 javascript:void 链接，捕获 DOM 未给出真实地址 ⇒ 保持控件观感（不造 <a href>）",
    "_composite": "paginator",
    "_ref": {
     "ref": "/results"
@@ -381,7 +375,7 @@
     },
     {
      "_name": {
-      "text": "357"
+      "text": "358"
      },
      "_action": {
       "verb": "navigate"
@@ -529,7 +523,7 @@
     "_action": {
      "verb": "navigate",
      "label": "智能世界2035",
-     "to": "https://www.huawei.com/cn/giv"
+     "to": "https://www.huawei.com/cn/giv/action"
     }
    },
    {

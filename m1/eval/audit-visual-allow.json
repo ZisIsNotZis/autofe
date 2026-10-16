@@ -1,0 +1,11 @@
+{
+ "_doc": "audit-visual（视觉自查）的声明式豁免：page+flag 命中后该 flag 降级为 (info)——仍展示在板面、不计入待修。每条必须有书面 reason 与 round；真渲染缺陷不得进入此文件，必须改模型或渲染器。",
+ "entries": [
+  {
+   "page": "huawei-cn-home",
+   "flag": "img-variance",
+   "reason": "源站该区为 3 列拼贴 mosaic（473×680 | 418×330×2 堆叠 | 363×680），模型取的是正确节点、纵横比差异是源版式固有；渲染器尚无 mosaic 形态（见 .scratch/63-recapture-recuration/visual-warnings.md §c，轮 63）。",
+   "round": 63
+  }
+ ]
+}

@@ -1,5 +1,5 @@
 {
-  "_intent": "B 站首页（未登录）：核心故事是推荐视频流——每张卡片回答「看什么、谁发的、多火、多长」，搜索框和直播卡是两个并列入口",
+  "_intent": "B 站首页（未登录）：核心故事是推荐视频流——每张卡片回答「看什么、谁发的、多火、多长」；头部轮播横幅当前帧是番剧推广，搜索框灰字是轮播热搜占位",
   "_key": "bilibili-home",
   "_title": {
     "text": "哔哩哔哩 (゜-゜)つロ 干杯~-bilibili"
@@ -8,7 +8,7 @@
     "_intent": "全站搜索：自由输入关键词（框内灰字是轮播的热搜提示，此处为抓取时的占位文案）",
     "_composite": "search",
     "_label": {
-      "text": "磊哥游戏"
+      "text": "影视飓风"
     },
     "_expose": {
       "name": "query",
@@ -16,426 +16,1129 @@
     }
   },
   "banner": {
-    "_intent": "首屏轮播横幅：当前展示「第五人格亲密之月」活动（其余轮播帧为隐藏推广）",
+    "_intent": "首屏轮播横幅：当前帧为「小魔万物大百科 科技篇」番剧推广（其余轮播帧在轨道外，且被访问环境的广告拦截插件替换为屏蔽提示，不可作为页面事实）",
     "_name": {
-      "text": "第五人格亲密之月"
+      "text": "中国制造就是好，用了不烧心！"
     },
     "_action": {
       "verb": "navigate",
-      "to": "https://www.bilibili.com/blackboard/era/e6cm1INqsA4Ob3ej.html"
+      "to": "https://www.bilibili.com/bangumi/play/ss323486?spm_id_from=333.337.0.0"
     },
     "_image": {
-      "image": "../assets/bilibili-banner.png",
-      "alt": ""
+      "image": "https://i0.hdslb.com/bfs/banner/5fc83b1c8e099fc21cd07c754ebda9fe86d52064.png@976w_550h_!web-home-carousel-cover",
+      "alt": "中国制造就是好，用了不烧心！"
     }
   },
   "feed": {
-    "_intent": "推荐视频流（**不是对照实体集**：源站是卡片式视频流，无「列=实体/行=属性」结构）——已删除 _rel.compare，由集合形态自选",
+    "_intent": "推荐视频流（非对照实体集：源站是卡片式视频流，无「列=实体/行=属性」结构）——抓取时刻完整画出的 30 张卡片（29 视频 + 1 直播推广位），按源站 DOM 顺序；信息流广告卡（高途/豆包/seedance，链接指向 cm.bilibili.com 广告域）不入模",
     "_items": [
       {
-        "_key": "v-bv1dzej6jeg5",
+        "_key": "v-bv1obpx6iema",
         "_name": {
-          "text": "当你带着大运误闯魔族腹地时！"
+          "text": "50块钱可以在熟食店卖那些东西？"
         },
         "_author": {
-          "text": "啊力解说 · 09-15"
+          "text": "半斤盐焗鸡 · 10月12日"
         },
         "_count": {
-          "num": 20.2,
+          "num": 231.1,
           "unit": "万"
         },
         "_measure": {
-          "num": 155
+          "num": 4958
         },
         "_detail": {
-          "text": "07:47"
+          "text": "03:06"
         },
         "_image": {
-          "image": "../assets/62-resource-645f1b674b4e3840.jpg",
-          "alt": "当你带着大运误闯魔族腹地时！"
+          "image": "https://i0.hdslb.com/bfs/archive/59069a7357ba2381e4f1bf290b97032fc2d44978.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "50块钱可以在熟食店卖那些东西？"
         },
         "_action": {
           "verb": "open",
-          "to": "https://www.bilibili.com/video/BV1Dzej6JEG5"
+          "to": "https://www.bilibili.com/video/BV1oBpX6iEMA"
         },
         "authorLink": {
           "_name": {
-            "text": "啊力解说 · 09-15"
+            "text": "半斤盐焗鸡 · 10月12日"
           },
           "_action": {
             "verb": "navigate",
-            "label": "啊力解说 · 09-15",
-            "to": "https://space.bilibili.com/3493074456021651"
+            "label": "半斤盐焗鸡 · 10月12日",
+            "to": "https://space.bilibili.com/3706968153786512"
           }
         }
       },
       {
-        "_key": "v-bv1lzyf65epq",
+        "_key": "v-bv1bzpd6ee6e",
         "_name": {
-          "text": "【JO家日常】#13 迪亚波罗：我死定了姐妹们……【bilibilionly同人扶持计划】"
+          "text": "苏轼在考卷里编了个典故"
         },
         "_author": {
-          "text": "粥粥的奇妙冒险 · 11小时前"
+          "text": "不是砖头 · 10月12日"
         },
         "_count": {
-          "num": 4.4,
+          "num": 32.5,
           "unit": "万"
         },
         "_measure": {
-          "num": 112
+          "num": 230
         },
         "_detail": {
-          "text": "01:09"
+          "text": "04:07"
         },
         "_image": {
-          "image": "../assets/62-resource-4abcc8547fdebbbe.jpg",
-          "alt": "【JO家日常】#13 迪亚波罗：我死定了姐妹们……【bilibilionly同人扶持计划】"
+          "image": "https://i0.hdslb.com/bfs/archive/b0313eef98a4d4e30c3631a1bc14de21cb0e15ba.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "苏轼在考卷里编了个典故"
         },
         "_action": {
           "verb": "open",
-          "to": "https://www.bilibili.com/video/BV1LZYf65Epq"
+          "to": "https://www.bilibili.com/video/BV1bzpd6eE6e"
         },
         "authorLink": {
           "_name": {
-            "text": "粥粥的奇妙冒险 · 11小时前"
+            "text": "不是砖头 · 10月12日"
           },
           "_action": {
             "verb": "navigate",
-            "label": "粥粥的奇妙冒险 · 11小时前",
-            "to": "https://space.bilibili.com/6768352"
+            "label": "不是砖头 · 10月12日",
+            "to": "https://space.bilibili.com/3632319111891518"
           }
         }
       },
       {
-        "_key": "v-bv1chew68eew",
+        "_key": "v-bv1rvpb64ei2",
         "_name": {
-          "text": "都在做AI手机，为什么真正能干活的却没几台？【差评君】"
+          "text": "食品安全新闻解读"
         },
         "_author": {
-          "text": "差评君 · 09-16"
+          "text": "食品科学阿祖 · 3天前"
         },
         "_count": {
-          "num": 18,
+          "num": 67.5,
           "unit": "万"
         },
         "_measure": {
-          "num": 93
+          "num": 226
         },
         "_detail": {
-          "text": "09:28"
+          "text": "02:13"
         },
         "_image": {
-          "image": "../assets/62-resource-504764e81c60c639.jpg",
-          "alt": "都在做AI手机，为什么真正能干活的却没几台？【差评君】"
+          "image": "https://i1.hdslb.com/bfs/archive/a1b4bab0bb29504830e2b8208cf24cde2e5bc194.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "食品安全新闻解读"
         },
         "_action": {
           "verb": "open",
-          "to": "https://www.bilibili.com/video/BV1chew68EEw"
+          "to": "https://www.bilibili.com/video/BV1RVpB64Ei2"
         },
         "authorLink": {
           "_name": {
-            "text": "差评君 · 09-16"
+            "text": "食品科学阿祖 · 3天前"
           },
           "_action": {
             "verb": "navigate",
-            "label": "差评君 · 09-16",
-            "to": "https://space.bilibili.com/19319172"
+            "label": "食品科学阿祖 · 3天前",
+            "to": "https://space.bilibili.com/3546377478998801"
           }
         }
       },
       {
-        "_key": "v-bv1qyen6aelc",
+        "_key": "v-bv1vqjs6jewr",
         "_name": {
-          "text": "老辈子手搓还有人看吗？"
+          "text": "逆天！神人母女偷钱炒外汇巨亏2000万，四旬老爹何时才能逃离原生家庭丨《FX战士久留美》吐槽【呜喵】"
         },
         "_author": {
-          "text": "自醒画画 · 09-15"
+          "text": "呜喵Mania · 4小时前"
         },
         "_count": {
-          "num": 31.9,
+          "num": 1.8,
           "unit": "万"
         },
         "_measure": {
-          "num": 108
+          "num": 166
         },
         "_detail": {
-          "text": "00:19"
+          "text": "16:54"
         },
         "_image": {
-          "image": "../assets/62-resource-e2a32fa237e329da.jpg",
-          "alt": "老辈子手搓还有人看吗？"
+          "image": "https://i0.hdslb.com/bfs/archive/d0b0215519bbca91c44e83f73bb2fd960357f4b9.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "逆天！神人母女偷钱炒外汇巨亏2000万，四旬老爹何时才能逃离原生家庭丨《FX战士久留美》吐槽【呜喵】"
         },
         "_action": {
           "verb": "open",
-          "to": "https://www.bilibili.com/video/BV1Qyen6aELC"
+          "to": "https://www.bilibili.com/video/BV1vQJS6JEWR"
         },
         "authorLink": {
           "_name": {
-            "text": "自醒画画 · 09-15"
+            "text": "呜喵Mania · 4小时前"
           },
           "_action": {
             "verb": "navigate",
-            "label": "自醒画画 · 09-15",
-            "to": "https://space.bilibili.com/65836364"
+            "label": "呜喵Mania · 4小时前",
+            "to": "https://space.bilibili.com/346059"
           }
         }
       },
       {
-        "_key": "v-bv1yreg6ae99",
+        "_key": "v-bv1krpb6meds",
         "_name": {
-          "text": "这才是正确的粤语读音？Bro你说句话啊！"
+          "text": "「根本没有这种邦布!?」大合集(终)"
         },
         "_author": {
-          "text": "粤知一二 · 昨天"
+          "text": "白泉颐今天更新了没 · 2天前"
         },
         "_count": {
-          "num": 6.4,
+          "num": 30.9,
           "unit": "万"
         },
         "_measure": {
-          "num": 405
+          "num": 515
         },
         "_detail": {
-          "text": "07:05"
+          "text": "09:15"
         },
         "_image": {
-          "image": "../assets/62-resource-57450324e4ca1448.jpg",
-          "alt": "这才是正确的粤语读音？Bro你说句话啊！"
+          "image": "https://i0.hdslb.com/bfs/archive/d7dcba79eeef651c7f2589e2e71f6f31bea26a46.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "「根本没有这种邦布!?」大合集(终)"
         },
         "_action": {
           "verb": "open",
-          "to": "https://www.bilibili.com/video/BV1yreG6aE99"
+          "to": "https://www.bilibili.com/video/BV1krpB6MEDS"
         },
         "authorLink": {
           "_name": {
-            "text": "粤知一二 · 昨天"
+            "text": "白泉颐今天更新了没 · 2天前"
           },
           "_action": {
             "verb": "navigate",
-            "label": "粤知一二 · 昨天",
-            "to": "https://space.bilibili.com/95515699"
+            "label": "白泉颐今天更新了没 · 2天前",
+            "to": "https://space.bilibili.com/13747986"
           }
         }
       },
       {
-        "_key": "v-bv1xrer6jenr",
+        "_key": "v-bv1ovpe66epw",
         "_name": {
-          "text": "新角色【大肥鱼】"
+          "text": "用opus5.5生成的动画和文案，音乐是バケモノの唄"
         },
         "_author": {
-          "text": "不爱唠嗑的芒果 · 14小时前"
+          "text": "游不起来的水木鱼 · 10月11日"
         },
         "_count": {
-          "num": 1.4,
+          "num": 16.7,
           "unit": "万"
         },
         "_measure": {
-          "num": 101
+          "num": 121
         },
         "_detail": {
-          "text": "01:13"
+          "text": "00:39"
         },
         "_image": {
-          "image": "../assets/62-resource-d98b1e5dcec62ae1.jpg",
-          "alt": "新角色【大肥鱼】"
+          "image": "https://i1.hdslb.com/bfs/archive/b10a538fe4869be3b63eda48ace9f85500aa495c.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "用opus5.5生成的动画和文案，音乐是バケモノの唄"
         },
         "_action": {
           "verb": "open",
-          "to": "https://www.bilibili.com/video/BV1xRer6jENr"
+          "to": "https://www.bilibili.com/video/BV1ovpE66EPW"
         },
         "authorLink": {
           "_name": {
-            "text": "不爱唠嗑的芒果 · 14小时前"
+            "text": "游不起来的水木鱼 · 10月11日"
           },
           "_action": {
             "verb": "navigate",
-            "label": "不爱唠嗑的芒果 · 14小时前",
-            "to": "https://space.bilibili.com/52034298"
+            "label": "游不起来的水木鱼 · 10月11日",
+            "to": "https://space.bilibili.com/3546726050826315"
           }
         }
       },
       {
-        "_key": "v-bv1zny96nevn",
+        "_key": "v-bv1map26tej4",
         "_name": {
-          "text": "《原神》7.1版本「往冥府的安魂歌」前瞻特别节目"
+          "text": "云南真不愧是快乐老家！"
         },
         "_author": {
-          "text": "原神 · 09-12"
+          "text": "彭大虾Nora · 2天前"
         },
         "_count": {
-          "num": 150.4,
+          "num": 44.8,
           "unit": "万"
         },
         "_measure": {
-          "num": 4.6,
-          "unit": "万"
+          "num": 141
         },
         "_detail": {
-          "text": "59:46"
+          "text": "00:15"
         },
         "_image": {
-          "image": "../assets/62-resource-e7c764e11d7d13d9.jpg",
-          "alt": "《原神》7.1版本「往冥府的安魂歌」前瞻特别节目"
+          "image": "https://i1.hdslb.com/bfs/archive/a879e6eabdd2e3f35b18cfa064281b45359ba2b4.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "云南真不愧是快乐老家！"
         },
         "_action": {
           "verb": "open",
-          "to": "https://www.bilibili.com/video/BV1znY96NEvn"
+          "to": "https://www.bilibili.com/video/BV1MAp26TEJ4"
         },
         "authorLink": {
           "_name": {
-            "text": "原神 · 09-12"
+            "text": "彭大虾Nora · 2天前"
           },
           "_action": {
             "verb": "navigate",
-            "label": "原神 · 09-12",
-            "to": "https://space.bilibili.com/401742377"
+            "label": "彭大虾Nora · 2天前",
+            "to": "https://space.bilibili.com/17696303"
           }
         }
       },
       {
-        "_key": "v-bv19fe36reek",
+        "_key": "v-bv1wmpk6dexc",
         "_name": {
-          "text": "曾靠剧情火爆全球的游戏，二十年后重制更新了什么！？"
+          "text": "你 J 哥的大狙，不烧心"
         },
         "_author": {
-          "text": "阿银紫 · 昨天"
+          "text": "SauceSoy · 2天前"
         },
         "_count": {
-          "num": 8.9,
+          "num": 56.2,
           "unit": "万"
         },
         "_measure": {
-          "num": 113
+          "num": 123
         },
         "_detail": {
-          "text": "02:29"
+          "text": "01:23"
         },
         "_image": {
-          "image": "../assets/62-resource-ec2d0b79fd09fc63.jpg",
-          "alt": "曾靠剧情火爆全球的游戏，二十年后重制更新了什么！？"
+          "image": "https://i2.hdslb.com/bfs/archive/e83a13c58bc0b0d2bd39d783a02df481a651b6bd.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "你 J 哥的大狙，不烧心"
         },
         "_action": {
           "verb": "open",
-          "to": "https://www.bilibili.com/video/BV19Fe36rEEK"
+          "to": "https://www.bilibili.com/video/BV1wmpk6DExc"
         },
         "authorLink": {
           "_name": {
-            "text": "阿银紫 · 昨天"
+            "text": "SauceSoy · 2天前"
           },
           "_action": {
             "verb": "navigate",
-            "label": "阿银紫 · 昨天",
-            "to": "https://space.bilibili.com/172447618"
+            "label": "SauceSoy · 2天前",
+            "to": "https://space.bilibili.com/352479603"
           }
         }
       },
       {
-        "_key": "v-bv1q6ee64eee",
+        "_key": "v-bv1dlpr6ceiw",
         "_name": {
-          "text": "中国模特勇闯欧洲时装周|面试实录第一集"
+          "text": "【神人短剧】神人TV最新力作🔥全网最\"烧心\"版本🔥棍母快餐vs费八分钱，管饱【AI全民制作人】"
         },
         "_author": {
-          "text": "李东恒z · 09-12"
+          "text": "闲夜空茫 · 10月12日"
         },
         "_count": {
-          "num": 29.8,
+          "num": 36.3,
           "unit": "万"
         },
         "_measure": {
-          "num": 252
+          "num": 1014
         },
         "_detail": {
-          "text": "07:25"
+          "text": "10:15"
         },
         "_image": {
-          "image": "../assets/62-resource-94cbcd782575fe6a.jpg",
-          "alt": "中国模特勇闯欧洲时装周|面试实录第一集"
+          "image": "https://i2.hdslb.com/bfs/archive/644c606ae599389da44b2488c68637002dbf5907.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "【神人短剧】神人TV最新力作🔥全网最\"烧心\"版本🔥棍母快餐vs费八分钱，管饱【AI全民制作人】"
         },
         "_action": {
           "verb": "open",
-          "to": "https://www.bilibili.com/video/BV1SAYd6sEtv"
+          "to": "https://www.bilibili.com/video/BV1DLpR6cEiW"
         },
         "authorLink": {
           "_name": {
-            "text": "李东恒z · 09-12"
+            "text": "闲夜空茫 · 10月12日"
           },
           "_action": {
             "verb": "navigate",
-            "label": "李东恒z · 09-12",
-            "to": "https://space.bilibili.com/43788290"
+            "label": "闲夜空茫 · 10月12日",
+            "to": "https://space.bilibili.com/36024653"
           }
         }
       },
       {
-        "_key": "v-bv1sayd6setv",
+        "_key": "v-bv1ovp66neaq",
         "_name": {
-          "text": "这什么物价？！二周年彩蛋终于破解！"
+          "text": "动态速写"
         },
         "_author": {
-          "text": "小普-三角洲重生版 · 09-15"
+          "text": "王贺手绘 · 2天前"
         },
         "_count": {
-          "num": 38,
+          "num": 76.8,
           "unit": "万"
         },
         "_measure": {
-          "num": 94
+          "num": 315
         },
         "_detail": {
-          "text": "00:38"
+          "text": "00:29"
         },
         "_image": {
-          "image": "../assets/62-resource-f7bb39d07685e7cf.jpg",
-          "alt": "这什么物价？！二周年彩蛋终于破解！"
+          "image": "https://i1.hdslb.com/bfs/archive/f0df6dd0907434de8b7aa346120ffea55d7ed2d7.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "动态速写"
         },
         "_action": {
           "verb": "open",
-          "to": "https://www.bilibili.com/video/BV1Q6eE64EeE"
+          "to": "https://www.bilibili.com/video/BV1oVp66NEaq"
         },
         "authorLink": {
           "_name": {
-            "text": "小普-三角洲重生版 · 09-15"
+            "text": "王贺手绘 · 2天前"
           },
           "_action": {
             "verb": "navigate",
-            "label": "小普-三角洲重生版 · 09-15",
-            "to": "https://space.bilibili.com/492905896"
+            "label": "王贺手绘 · 2天前",
+            "to": "https://space.bilibili.com/3546736060533403"
           }
         }
       },
       {
-        "_key": "live-1939977064",
+        "_key": "live-6650029",
         "_name": {
-          "text": "这个维什戴尔跳舞好有劲！"
+          "text": "【直播】2026IVL秋季赛W3D1"
         },
         "_tag": {
           "text": "直播中"
         },
         "_category": {
-          "text": "团播"
+          "text": "游戏赛事"
         },
         "_author": {
-          "text": "SG-次元姬"
+          "text": "第五人格赛事"
         },
         "_count": {
-          "num": 1.9,
+          "num": 181.3,
           "unit": "万"
+        },
+        "_image": {
+          "image": "https://i0.hdslb.com/bfs/live/new_room_cover/b1fbd487201dde0603b95cd023bdf33be5808d25.jpg@672w_378h_1c",
+          "alt": "第五人格赛事"
         },
         "_action": {
           "verb": "open",
-          "to": "https://live.bilibili.com/1939977064?hotRank=0&live_from=81003"
-        },
-        "_image": {
-          "image": "../assets/62-resource-b656424786535dd8.jpg"
+          "to": "https://live.bilibili.com/6650029?live_from=81003"
         },
         "authorLink": {
           "_name": {
-            "text": "SG-次元姬"
+            "text": "第五人格赛事"
           },
           "_action": {
             "verb": "navigate",
-            "label": "SG-次元姬",
-            "to": "https://space.bilibili.com/3706966576728649"
+            "label": "第五人格赛事",
+            "to": "https://space.bilibili.com/105022844"
+          }
+        }
+      },
+      {
+        "_key": "v-bv15fjk6ae79",
+        "_name": {
+          "text": "通关全部危险陷阱，直接拿走100万美金！你能到第几关？"
+        },
+        "_author": {
+          "text": "野兽先生MrBeast · 21小时前"
+        },
+        "_count": {
+          "num": 36.1,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 1264
+        },
+        "_detail": {
+          "text": "19:34"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/cb8eedebb71854604f6781087b7791f534be818d.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "通关全部危险陷阱，直接拿走100万美金！你能到第几关？"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV15fJk6aE79?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "野兽先生MrBeast · 21小时前"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "野兽先生MrBeast · 21小时前",
+            "to": "https://space.bilibili.com/1027737427"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1jkp46yevr",
+        "_name": {
+          "text": "最近玩比特厉害的人越来越多了"
+        },
+        "_author": {
+          "text": "林正特老祖 · 10月9日"
+        },
+        "_count": {
+          "num": 109.1,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 3255
+        },
+        "_detail": {
+          "text": "01:37"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/88735b152a0131752caa3b4b683299c8b1151474.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "最近玩比特厉害的人越来越多了"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1JKp46YEvr?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "林正特老祖 · 10月9日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "林正特老祖 · 10月9日",
+            "to": "https://space.bilibili.com/3706987646814783"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1luhh6fe9x",
+        "_name": {
+          "text": "【万字合集】午夜梦回，恶灵古堡！爆发夜之前重温《生化危机》系列！丧尸题材千千万，它才是我心中的红月光~"
+        },
+        "_author": {
+          "text": "迷影区间 · 9月21日"
+        },
+        "_count": {
+          "num": 265.3,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 1
+        },
+        "_detail": {
+          "text": "03:38:51"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/e16d2ff981e3a1da3764231e9bfc73c60d51a878.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "【万字合集】午夜梦回，恶灵古堡！爆发夜之前重温《生化危机》系列！丧尸题材千千万，它才是我心中的红月光~"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1LUhh6fE9x?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "迷影区间 · 9月21日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "迷影区间 · 9月21日",
+            "to": "https://space.bilibili.com/245069296"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1voey6reyf",
+        "_name": {
+          "text": "琵琶曲 | 全站最逆天版本"
+        },
+        "_author": {
+          "text": "碧天蓝钻 · 9月18日"
+        },
+        "_count": {
+          "num": 396.4,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 6360
+        },
+        "_detail": {
+          "text": "01:43"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/86a1c39bd79b0cc5ae7178b26d564e666d1f561a.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "琵琶曲 | 全站最逆天版本"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1voey6rEyF?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "碧天蓝钻 · 9月18日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "碧天蓝钻 · 9月18日",
+            "to": "https://space.bilibili.com/7275647"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1sfa965eng",
+        "_name": {
+          "text": "美国富人区最顶级美食！连吃24小时！老钱吃得有多离谱？"
+        },
+        "_author": {
+          "text": "子文又饿了 · 9月30日"
+        },
+        "_count": {
+          "num": 138.7,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 4854
+        },
+        "_detail": {
+          "text": "23:29"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/b5f01bd0bae0b41fed3ae68f5630403f1b6f940b.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "美国富人区最顶级美食！连吃24小时！老钱吃得有多离谱？"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1sfa965ENG?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "子文又饿了 · 9月30日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "子文又饿了 · 9月30日",
+            "to": "https://space.bilibili.com/8894411"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1e2es69es3",
+        "_name": {
+          "text": "站起来就是活，连起来就是招！【人类沙雕纪录片】"
+        },
+        "_author": {
+          "text": "人类早期纪录片 · 9月19日"
+        },
+        "_count": {
+          "num": 181.7,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 635
+        },
+        "_detail": {
+          "text": "03:38"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/5ee1caec46233289c6ac19ce3eeb8320a133fa75.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "站起来就是活，连起来就是招！【人类沙雕纪录片】"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1e2eS69ES3?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "人类早期纪录片 · 9月19日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "人类早期纪录片 · 9月19日",
+            "to": "https://space.bilibili.com/474267806"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1k6jy6peen",
+        "_name": {
+          "text": "一秒变异！夺舍6头6甲+M14+AWM，501万撤离！"
+        },
+        "_author": {
+          "text": "苏醒游戏解说 · 22小时前"
+        },
+        "_count": {
+          "num": 16.4,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 238
+        },
+        "_detail": {
+          "text": "03:05"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/63a2101905d0d7702b58b9069813600e47d0b931.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "一秒变异！夺舍6头6甲+M14+AWM，501万撤离！"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1K6Jy6pEEN?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "苏醒游戏解说 · 22小时前"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "苏醒游戏解说 · 22小时前",
+            "to": "https://space.bilibili.com/331514361"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1kijk67ezw",
+        "_name": {
+          "text": "让百万人尖叫的鬼屋？我们发现了这里的秘密……"
+        },
+        "_author": {
+          "text": "影视飓风 · 22小时前"
+        },
+        "_count": {
+          "num": 108.6,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 2791
+        },
+        "_detail": {
+          "text": "14:34"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/b6c3790c45a6355285e7960e4aca084b6e9b0b74.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "让百万人尖叫的鬼屋？我们发现了这里的秘密……"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1KiJk67Ezw?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "影视飓风 · 22小时前"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "影视飓风 · 22小时前",
+            "to": "https://space.bilibili.com/946974"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1fba26yeaw",
+        "_name": {
+          "text": "吃剩的肯德基鸡架千万不要扔小伙教你做泡饭，加入水果香料味道真不错"
+        },
+        "_author": {
+          "text": "咸鱼梦想家vlog · 10月2日"
+        },
+        "_count": {
+          "num": 572,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 6764
+        },
+        "_detail": {
+          "text": "06:36"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/c4512c2b47c9bf83808703613cbb6dff608a2169.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "吃剩的肯德基鸡架千万不要扔小伙教你做泡饭，加入水果香料味道真不错"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1fBa26yEaW?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "咸鱼梦想家vlog · 10月2日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "咸鱼梦想家vlog · 10月2日",
+            "to": "https://space.bilibili.com/272654283"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1dgyf63eu8",
+        "_name": {
+          "text": "高 人。"
+        },
+        "_author": {
+          "text": "稽木白柏cypress · 9月30日"
+        },
+        "_count": {
+          "num": 215.7,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 6406
+        },
+        "_detail": {
+          "text": "04:58"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/49e21de2d404cfb4891fc071756a07a1b4b0b2d1.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "高 人。"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1dgYF63Eu8?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "稽木白柏cypress · 9月30日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "稽木白柏cypress · 9月30日",
+            "to": "https://space.bilibili.com/454557163"
+          }
+        }
+      },
+      {
+        "_key": "v-bv15pph6mejq",
+        "_name": {
+          "text": "妙脆角猫 | 吃饭是要靠脑袋的"
+        },
+        "_author": {
+          "text": "饼型地雷 · 10月10日"
+        },
+        "_count": {
+          "num": 32.4,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 104
+        },
+        "_detail": {
+          "text": "01:09"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/827ab82b7fc5c3b1dddc185f14c63d4a08253f8b.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "妙脆角猫 | 吃饭是要靠脑袋的"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV15pph6MEJq?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "饼型地雷 · 10月10日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "饼型地雷 · 10月10日",
+            "to": "https://space.bilibili.com/3690997928167927"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1f6po6qe2y",
+        "_name": {
+          "text": "萌新原创末日故事连载《归墟》第十九集-树根【AI全民制作人】"
+        },
+        "_author": {
+          "text": "泫九AI · 3天前"
+        },
+        "_count": {
+          "num": 34.4,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 744
+        },
+        "_detail": {
+          "text": "08:55"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/8da1719b800c4588653201c67d2f39520ec2ceea.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "萌新原创末日故事连载《归墟》第十九集-树根【AI全民制作人】"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1F6po6QE2y?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "泫九AI · 3天前"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "泫九AI · 3天前",
+            "to": "https://space.bilibili.com/21384754"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1t5hw6qeds",
+        "_name": {
+          "text": "猫斋志异|根本就没有这样的事！【聊斋志异|尸变】"
+        },
+        "_author": {
+          "text": "芳芳bu慌慌 · 10月5日"
+        },
+        "_count": {
+          "num": 53.2,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 856
+        },
+        "_detail": {
+          "text": "07:12"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/153b852355f77fde013df45e04caedf8d70d7742.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "猫斋志异|根本就没有这样的事！【聊斋志异|尸变】"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1T5HW6qEdS?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "芳芳bu慌慌 · 10月5日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "芳芳bu慌慌 · 10月5日",
+            "to": "https://space.bilibili.com/543889118"
+          }
+        }
+      },
+      {
+        "_key": "v-bv13spr68edy",
+        "_name": {
+          "text": "鹅城县诞生！开始从零建设一座城市！！#01"
+        },
+        "_author": {
+          "text": "大椿哥哥吖 · 2天前"
+        },
+        "_count": {
+          "num": 13.1,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 420
+        },
+        "_detail": {
+          "text": "08:38"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/f9456ee91e66687c005422827f969d7601c9a33f.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "鹅城县诞生！开始从零建设一座城市！！#01"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV13Spr68EDY?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "大椿哥哥吖 · 2天前"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "大椿哥哥吖 · 2天前",
+            "to": "https://space.bilibili.com/527452972"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1mxh466eif",
+        "_name": {
+          "text": "琵琶曲 完整版（真人无AI手搓）"
+        },
+        "_author": {
+          "text": "癫癫零点五 · 9月23日"
+        },
+        "_count": {
+          "num": 421.7,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 1356
+        },
+        "_detail": {
+          "text": "01:20"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/244a08be727b1ca2317e3e77cf8b54f27ece2ac0.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "琵琶曲 完整版（真人无AI手搓）"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1MXh466Eif?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "癫癫零点五 · 9月23日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "癫癫零点五 · 9月23日",
+            "to": "https://space.bilibili.com/1652834405"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1wihj6uesr",
+        "_name": {
+          "text": "全 站 最 烧 心 版 本！！！【AI全民制作人】"
+        },
+        "_author": {
+          "text": "茶咩cc · 10月4日"
+        },
+        "_count": {
+          "num": 807.6,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 5
+        },
+        "_detail": {
+          "text": "01:10"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/5138ce39155c3aaf9c6b9c23372ab117f74f00a2.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "全 站 最 烧 心 版 本！！！【AI全民制作人】"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1wiHj6uEsr?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "茶咩cc · 10月4日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "茶咩cc · 10月4日",
+            "to": "https://space.bilibili.com/6054967"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1e6h46uefg",
+        "_name": {
+          "text": "『飙马野郎 JOJO的奇妙冒险』 OP Kroi 「SPIN」"
+        },
+        "_author": {
+          "text": "WBJ_Anime · 9月23日"
+        },
+        "_count": {
+          "num": 455,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 1
+        },
+        "_detail": {
+          "text": "01:31"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/3b49aa06630a79d9ab887709ff8126a591a26859.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "『飙马野郎 JOJO的奇妙冒险』 OP Kroi 「SPIN」"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1e6h46UEfG?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "WBJ_Anime · 9月23日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "WBJ_Anime · 9月23日",
+            "to": "https://space.bilibili.com/2061838341"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1vvpo6geyg",
+        "_name": {
+          "text": "【A2O】A2O LITE 'NEON' Official Video"
+        },
+        "_author": {
+          "text": "A2O_WORLD · 10月12日"
+        },
+        "_count": {
+          "num": 223.2,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 1
+        },
+        "_detail": {
+          "text": "03:43"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/561841a87b9faa6213cda58630d8cb7376cd2638.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "【A2O】A2O LITE 'NEON' Official Video"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1VVpo6gEYg?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "A2O_WORLD · 10月12日"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "A2O_WORLD · 10月12日",
+            "to": "https://space.bilibili.com/670061998"
+          }
+        }
+      },
+      {
+        "_key": "v-bv1zxpk6je1r",
+        "_name": {
+          "text": "豆奶噬之殇【AI全民制作人】"
+        },
+        "_author": {
+          "text": "奶山苏苏 · 2天前"
+        },
+        "_count": {
+          "num": 62.7,
+          "unit": "万"
+        },
+        "_measure": {
+          "num": 595
+        },
+        "_detail": {
+          "text": "02:32"
+        },
+        "_image": {
+          "image": "https://i1.hdslb.com/bfs/archive/77194a5fa1167ae000c667d2f7b21267c5a3df13.jpg@672w_378h_1c_!web-home-common-cover",
+          "alt": "豆奶噬之殇【AI全民制作人】"
+        },
+        "_action": {
+          "verb": "open",
+          "to": "https://www.bilibili.com/video/BV1zXpk6jE1R?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"
+        },
+        "authorLink": {
+          "_name": {
+            "text": "奶山苏苏 · 2天前"
+          },
+          "_action": {
+            "verb": "navigate",
+            "label": "奶山苏苏 · 2天前",
+            "to": "https://space.bilibili.com/433838208"
           }
         }
       }

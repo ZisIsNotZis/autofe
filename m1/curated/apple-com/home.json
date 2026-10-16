@@ -1,578 +1,586 @@
 {
- "_intent": "Apple 官网首页：每条故事线主推一款当季产品或服务（iPhone 18 Pro 打头），页面的任务是分流到各产品页，主旨是 iPhone 18 Pro",
- "_key": "apple-home",
- "_title": {
-  "text": "Apple"
- },
- "_action": {
-  "verb": "navigate",
-  "to": "https://www.apple.com"
- },
- "_lines": [
-  {
-   "_intent": "首页主推：iPhone 18 Pro 旗舰横幅，页面以它开场",
-   "_key": "iphone-18-pro",
-   "_title": {
-    "text": "iPhone 18 Pro"
-   },
-   "_subtitle": {
-    "text": "Pro further."
-   },
-   "_image": {
-    "image": "https://www.apple.com/v/homepage/images/iphone-18-pro/a/hero_iphone_18_pro__fqe1motd0ymy_large.jpg",
-    "alt": "iPhone 18 Pro, burgundy color (dark red), back exterior, Pro Fusion camera system at top, Apple logo in center, Side exterior, Side button, Camera Control, the word Pro written in large silver colored text and glowing with a blue and pink neon effect"
-   },
-   "_action": {
-    "verb": "open",
-    "label": "Learn more",
-    "to": "https://www.apple.com/iphone-18-pro/"
-   },
-   "buy": {
-    "_intent": "购买 iPhone 18 Pro",
-    "_title": {
-     "text": "Buy"
-    },
-    "_action": {
-     "verb": "buy",
-     "label": "Buy",
-     "to": "https://www.apple.com/us/shop/goto/buy_iphone/iphone_18_pro"
-    }
-   }
+  "_intent": "苹果官网首页：HomeView 新品横幅开场，iPhone 18 Pro / iPhone Duo 主推，六张产品磁贴，endless entertainment 片库与服务轮播",
+  "_key": "apple-home",
+  "_title": {
+    "text": "Apple"
   },
-  {
-   "_intent": "折叠屏新机：预热状态，预售与开售两个日期是本故事线的事实",
-   "_key": "iphone-duo",
-   "_title": {
-    "text": "iPhone Duo"
-   },
-   "_subtitle": {
-    "text": "Hello, hello."
-   },
-   "_image": {
-    "image": "https://www.apple.com/v/homepage/images/iphone-duo/a/hero_iphone_duo_announce__fh4u8yzndpe2_large.jpg",
-    "alt": "iPhone Duo, held by two hands in landscape orientation, unfolded, interior display features Home Screen"
-   },
-   "_summary": {
-    "text": "Pre-order starting 5:00 a.m. PT on 10.16"
-   },
-   "_detail": {
-    "text": "Available starting 10.23"
-   },
-   "_action": {
-    "verb": "open",
-    "label": "Learn more",
-    "to": "https://www.apple.com/iphone-duo/"
-   },
-   "pricing": {
-    "_intent": "查看 iPhone Duo 价格",
-    "_title": {
-     "text": "View pricing"
-    },
-    "_action": {
-     "verb": "open",
-     "label": "View pricing",
-     "to": "https://www.apple.com/us/shop/goto/buy_iphone/iphone_duo"
-    }
-   }
+  "_action": {
+    "verb": "navigate",
+    "to": "https://www.apple.com"
   },
-  {
-   "_intent": "Apple Watch Series 12 主推：心率传感精度是本代卖点",
-   "_key": "watch-series-12",
-   "_title": {
-    "text": "Apple Watch Series 12"
-   },
-   "_summary": {
-    "text": "The most accurate heart rate sensing in a wearable."
-   },
-   "_image": {
-    "image": "https://www.apple.com/v/homepage/images/apple-watch-series-12/a/hero_apple_watch_series_12__n9rln7bzvwya_large.jpg",
-    "alt": "Two Apple Watch Series 12 devices, aluminum case, dark bronze color, olive Sport Band, one showing front of watch with Heart Rate app, one showing back of watch with Health Sensing System with glowing green LED lights"
-   },
-   "_action": {
-    "verb": "open",
-    "label": "Learn more",
-    "to": "https://www.apple.com/apple-watch-series-12/"
-   },
-   "buy": {
-    "_intent": "购买 Apple Watch Series 12",
-    "_title": {
-     "text": "Buy"
+  "_lines": [
+    {
+      "_intent": "首页主推：Apple HomeView 新品横幅（捕获时刻页面第一单元）",
+      "_key": "apple-homeview",
+      "_title": {
+        "text": "Apple HomeView"
+      },
+      "_subtitle": {
+        "text": "Designed for life at home."
+      },
+      "_status": {
+        "text": "Available starting 11.13"
+      },
+      "_image": {
+        "image": "https://www.apple.com/v/homepage/images/apple-homeview/a/hero_apple_homeview_animated_preorder__c2imtprr2qy6_large.jpg",
+        "alt": "Multiple Apple HomeView devices, shown in an assortment of colors, highlighting a variety of colorful screens"
+      },
+      "_action": {
+        "verb": "open",
+        "label": "Learn more",
+        "to": "https://www.apple.com/apple-homeview/"
+      },
+      "buy": {
+        "_intent": "预购 Apple HomeView",
+        "_title": {
+          "text": "Pre-order"
+        },
+        "_action": {
+          "verb": "buy",
+          "label": "Pre-order",
+          "to": "https://www.apple.com/us/shop/goto/buy_home/apple_homeview"
+        }
+      }
     },
-    "_action": {
-     "verb": "buy",
-     "label": "Buy",
-     "to": "https://www.apple.com/us/shop/goto/buy_watch/apple_watch_series_12"
+    {
+      "_intent": "首页主推：iPhone 18 Pro 旗舰横幅，页面以它开场",
+      "_key": "iphone-18-pro",
+      "_title": {
+        "text": "iPhone 18 Pro"
+      },
+      "_subtitle": {
+        "text": "Pro further."
+      },
+      "_image": {
+        "image": "https://www.apple.com/v/homepage/images/iphone-18-pro/a/hero_iphone_18_pro__fqe1motd0ymy_large.jpg",
+        "alt": "iPhone 18 Pro, burgundy color (dark red), back exterior, Pro Fusion camera system at top, Apple logo in center, Side exterior, Side button, Camera Control, the word Pro written in large silver colored text and glowing with a blue and pink neon effect"
+      },
+      "_action": {
+        "verb": "open",
+        "label": "Learn more",
+        "to": "https://www.apple.com/iphone-18-pro/"
+      },
+      "buy": {
+        "_intent": "购买 iPhone 18 Pro",
+        "_title": {
+          "text": "Buy"
+        },
+        "_action": {
+          "verb": "buy",
+          "label": "Buy",
+          "to": "https://www.apple.com/us/shop/goto/buy_iphone/iphone_18_pro"
+        }
+      }
+    },
+    {
+      "_intent": "折叠屏新机：预热状态，预售与开售两个日期是本故事线的事实",
+      "_key": "iphone-duo",
+      "_title": {
+        "text": "iPhone Duo"
+      },
+      "_subtitle": {
+        "text": "Hello, hello."
+      },
+      "_image": {
+        "image": "https://www.apple.com/v/homepage/images/iphone-duo/a/hero_iphone_duo_announce__fh4u8yzndpe2_large.jpg",
+        "alt": "iPhone Duo, held by two hands in landscape orientation, unfolded, interior display features Home Screen"
+      },
+      "_summary": {
+        "text": "Pre-order starting 5:00 a.m. PT on 10.16"
+      },
+      "_detail": {
+        "text": "Available starting 10.23"
+      },
+      "_action": {
+        "verb": "open",
+        "label": "Learn more",
+        "to": "https://www.apple.com/iphone-duo/"
+      },
+      "pricing": {
+        "_intent": "查看 iPhone Duo 价格",
+        "_title": {
+          "text": "View pricing"
+        },
+        "_action": {
+          "verb": "open",
+          "label": "View pricing",
+          "to": "https://www.apple.com/us/shop/goto/buy_iphone/iphone_duo"
+        }
+      }
+    },
+    {
+      "_intent": "产品磁贴：三对并列卡片（TV 4K/HomePod mini 2、Home Collection/Watch Series 12、Upgrade/Card），每张主推一款产品",
+      "_key": "tiles",
+      "_items": [
+        {
+          "_key": "tile-apple-tv-4k",
+          "_image": {
+            "image": "https://www.apple.com/v/homepage/images/apple-tv-4k/a/promo_apple_tv_4k_preorder__d4z5g4tm3qoi_large.jpg",
+            "alt": "Apple TV 4K, front exterior, black color, square shape, Apple logo on top, rounded corners. Siri Remote, front exterior, circular touch-enabled clickpad, raised buttons"
+          },
+          "_name": {
+            "text": "Apple TV 4K"
+          },
+          "_summary": {
+            "text": "Stunning picture. Stunningly simple."
+          },
+          "_status": {
+            "text": "Available starting 11.13"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Learn more",
+            "to": "https://www.apple.com/apple-tv-4k/"
+          },
+          "buy": {
+            "_intent": "预购 Apple TV 4K",
+            "_title": {
+              "text": "Pre-order"
+            },
+            "_action": {
+              "verb": "buy",
+              "label": "Pre-order",
+              "to": "https://www.apple.com/us/shop/goto/buy_tv/apple_tv_4k"
+            }
+          }
+        },
+        {
+          "_key": "tile-homepod-mini-2",
+          "_image": {
+            "image": "https://www.apple.com/v/homepage/images/homepod-mini-2/a/promo_homepod_mini_2_preorder__emihici4p1si_large.jpg",
+            "alt": "HomePod mini 2, all five colors: white, pink, green, blue, and midnight"
+          },
+          "_name": {
+            "text": "HomePod mini 2"
+          },
+          "_summary": {
+            "text": "Sound in living color."
+          },
+          "_status": {
+            "text": "Available starting 10.30"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Learn more",
+            "to": "https://www.apple.com/homepod-mini/"
+          },
+          "buy": {
+            "_intent": "预购 HomePod mini 2",
+            "_title": {
+              "text": "Pre-order"
+            },
+            "_action": {
+              "verb": "buy",
+              "label": "Pre-order",
+              "to": "https://www.apple.com/us/shop/goto/buy_homepod/homepod_mini"
+            }
+          }
+        },
+        {
+          "_key": "tile-home-collection",
+          "_image": {
+            "image": "https://www.apple.com/v/homepage/images/apple-home-collection/a/promo_apple_home_collection_announce__djijq9sc9e6a_large.jpg",
+            "alt": "Apple Home Collection smart home accessories, including thermostat, silver color, displaying temperature of 68 degrees, and camera, black color, mounted on a white stand"
+          },
+          "_name": {
+            "text": "Apple Home Collection"
+          },
+          "_summary": {
+            "text": "Created for a better smart home experience."
+          },
+          "_status": {
+            "text": "Coming later"
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Learn more",
+            "to": "https://www.apple.com/home/accessories/"
+          },
+          "buy": {
+            "_intent": "选购 Home Collection",
+            "_title": {
+              "text": "Shop"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Shop",
+              "to": "https://www.apple.com/us/shop/goto/home_accessories/home_collection"
+            }
+          }
+        },
+        {
+          "_key": "tile-watch-series-12",
+          "_image": {
+            "image": "https://www.apple.com/v/homepage/images/apple-watch-series-12/a/promo_apple_watch_series_12__gnlprtt8526a_large.jpg",
+            "alt": "Two Apple Watch Series 12 devices, aluminum case, dark bronze color, olive Sport Band, one showing front of watch with Heart Rate app, one showing back of watch with Health Sensing System with glowing green LED lights"
+          },
+          "_name": {
+            "text": "Apple Watch Series 12"
+          },
+          "_summary": {
+            "text": "The most accurate heart rate sensing in a wearable."
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Learn more",
+            "to": "https://www.apple.com/apple-watch-series-12/"
+          },
+          "buy": {
+            "_intent": "购买 Apple Watch Series 12",
+            "_title": {
+              "text": "Buy"
+            },
+            "_action": {
+              "verb": "buy",
+              "label": "Buy",
+              "to": "https://www.apple.com/us/shop/goto/buy_watch/apple_watch_series_12"
+            }
+          }
+        },
+        {
+          "_key": "tile-upgrade",
+          "_image": {
+            "image": "https://www.apple.com/v/homepage/images/apple-upgrade/a/promo_apple_upgrade__jvn6udm4tx2e_large.jpg",
+            "alt": "iPhone 18 Pro, back exterior, iPhone silhouette fans out from behind into spectrum of purple and red colors"
+          },
+          "_name": {
+            "text": "Apple Upgrade"
+          },
+          "_summary": {
+            "text": "Love it. Lease it. Upgrade it."
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Learn more",
+            "to": "https://www.apple.com/us/shop/goto/apple_upgrade"
+          }
+        },
+        {
+          "_key": "tile-apple-card",
+          "_image": {
+            "image": "https://www.apple.com/v/homepage/images/apple-card/a/promo_apple_card__d8xz4kd4evwy_large.jpg",
+            "alt": "Apple Card, front, Apple logo in top left, cardholder name in middle left Marisa Robertson, card chip in middle right."
+          },
+          "_name": {
+            "text": "Apple Card"
+          },
+          "_summary": {
+            "text": "Get up to 3% Daily Cash back with every purchase."
+          },
+          "_action": {
+            "verb": "open",
+            "label": "Learn more",
+            "to": "https://www.apple.com/apple-card/"
+          },
+          "apply": {
+            "_intent": "申请 Apple Card",
+            "_title": {
+              "text": "Apply now"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Apply now",
+              "to": "https://card.apple.com/apply/application?referrer=cid%3Dapy-200-10000036&start=false"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_intent": "娱乐内容：Apple TV+ 影视与各服务内容的即时入口，标题即承诺「看不完的娱乐」",
+      "_key": "entertainment",
+      "_title": {
+        "text": "Endless entertainment."
+      },
+      "tv": {
+        "_intent": "Apple TV 片库轮播：捕获时刻的九个单元（Tenzing、Matchbox、F1、Brothers、MLS、Ted Lasso、Slow Horses、Mayday、Widow's Bay）",
+        "_items": [
+          {
+            "_key": "tv-tenzing",
+            "_image": {
+              "image": "https://is1-ssl.mzstatic.com/image/thumb/CO4lIyj7dXy2D79e7FjgDA/1250x668sr.jpg"
+            },
+            "_name": {
+              "text": "Tenzing"
+            },
+            "_category": {
+              "text": "Drama"
+            },
+            "_detail": {
+              "text": "Based on the true story of the thrilling quest to summit Everest for the first time."
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Stream now",
+              "to": "https://tv.apple.com/us/movie/tenzing/umc.cmc.6lic0hhuxkrbem0n29vzjopii?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
+            }
+          },
+          {
+            "_key": "tv-matchbox",
+            "_image": {
+              "image": "https://is1-ssl.mzstatic.com/image/thumb/tJfeKcRIT_sFwIKianB3GQ/1250x668sr.jpg"
+            },
+            "_name": {
+              "text": "Matchbox The Movie"
+            },
+            "_category": {
+              "text": "Action"
+            },
+            "_detail": {
+              "text": "Save the world, bring your friends."
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Stream now",
+              "to": "https://tv.apple.com/us/movie/matchbox-the-movie/umc.cmc.31qa8j1tn2cnpyk3fx43w928d?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
+            }
+          },
+          {
+            "_key": "tv-f1",
+            "_image": {
+              "image": "https://is1-ssl.mzstatic.com/image/thumb/Features/v4/47/76/ea/4776ea5e-5e00-a76b-c8f1-6fda44050f30/3dd9b6d8-a87a-4a15-80bb-0cc06dfa62d4.png/1250x668sr.jpg"
+            },
+            "_name": {
+              "text": "Formula 1"
+            },
+            "_category": {
+              "text": "F1 on Apple TV"
+            },
+            "_detail": {
+              "text": "Every Grand Prix™, live and on demand—all in one place, all year long."
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Stream now",
+              "to": "https://tv.apple.com/us/room/formula-1/uts.room.formula-1?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
+            }
+          },
+          {
+            "_key": "tv-brothers",
+            "_image": {
+              "image": "https://is1-ssl.mzstatic.com/image/thumb/oglUrIV-GAOPYCYKh5AlBQ/1250x668sr.jpg"
+            },
+            "_name": {
+              "text": "Brothers"
+            },
+            "_category": {
+              "text": "Comedy"
+            },
+            "_detail": {
+              "text": "Friends. And family?"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Stream now",
+              "to": "https://tv.apple.com/us/show/brothers/umc.cmc.17g1y5mzqp92sc0ge1c0hdorg?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
+            }
+          },
+          {
+            "_key": "tv-mls",
+            "_image": {
+              "image": "https://is1-ssl.mzstatic.com/image/thumb/Features/v4/78/57/f6/7857f6ec-a4ed-87dc-dea9-a6ed02888722/ebd59c17-8e95-49b1-aec0-44aec57388ee.png/1250x668sr.jpg"
+            },
+            "_name": {
+              "text": "MLS"
+            },
+            "_category": {
+              "text": "MLS on Apple TV"
+            },
+            "_detail": {
+              "text": "Watch every club, every match, live—all season long."
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Stream now",
+              "to": "https://tv.apple.com/us/channel/mls/tvs.sbd.7000?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
+            }
+          },
+          {
+            "_key": "tv-ted-lasso",
+            "_image": {
+              "image": "https://is1-ssl.mzstatic.com/image/thumb/eD8DZGJ170t3MyFhlWOkdw/1250x668sr.jpg"
+            },
+            "_name": {
+              "text": "Ted Lasso"
+            },
+            "_category": {
+              "text": "Comedy"
+            },
+            "_detail": {
+              "text": "The hit comedy is back and Tedder than ever."
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Stream now",
+              "to": "https://tv.apple.com/us/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
+            }
+          },
+          {
+            "_key": "tv-slow-horses",
+            "_image": {
+              "image": "https://is1-ssl.mzstatic.com/image/thumb/x5JjmiSD75wN12-HmmZRcg/1250x668sr.jpg"
+            },
+            "_name": {
+              "text": "Slow Horses"
+            },
+            "_category": {
+              "text": "Thriller"
+            },
+            "_detail": {
+              "text": "MI5’s most unruly spies are back and under attack."
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Stream now",
+              "to": "https://tv.apple.com/us/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
+            }
+          },
+          {
+            "_key": "tv-mayday",
+            "_image": {
+              "image": "https://is1-ssl.mzstatic.com/image/thumb/ZUCp6pyyffalTQpg4UESLQ/1250x668sr.jpg"
+            },
+            "_name": {
+              "text": "Mayday"
+            },
+            "_category": {
+              "text": "Action"
+            },
+            "_detail": {
+              "text": "A friendship with major red flags."
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Stream now",
+              "to": "https://tv.apple.com/us/movie/mayday/umc.cmc.shin43vzfoz3h4ggx41z8rf?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
+            }
+          },
+          {
+            "_key": "tv-widows-bay",
+            "_image": {
+              "image": "https://is1-ssl.mzstatic.com/image/thumb/CqMFl0CvUAUE1axxV4k-ew/1250x668sr.jpg"
+            },
+            "_name": {
+              "text": "Widow’s Bay"
+            },
+            "_category": {
+              "text": "Mystery"
+            },
+            "_detail": {
+              "text": "14 Emmy® Awards Including Best Comedy"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Stream now",
+              "to": "https://tv.apple.com/us/show/widows-bay/umc.cmc.1zzly0vah46bnvnwf0qkrjhh2?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
+            }
+          }
+        ]
+      },
+      "services": {
+        "_intent": "服务目录轮播：捕获时刻的九项（Hello Kitty、Miley 访谈、Ted Lasso 健身、PowerWash、New Music Daily、Meditation、Madden NFL 27、Today's Hits、Programs）",
+        "_items": [
+          {
+            "_key": "svc-hello-kitty",
+            "_name": {
+              "text": "Hello Kitty Island Adventure"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Play now",
+              "to": "https://apps.apple.com/us/app/hello-kitty-island-adventure/id1553505132?itscg=10000&itsct=aa-apl_hp-play_now--240326"
+            }
+          },
+          {
+            "_key": "svc-miley",
+            "_name": {
+              "text": "Miley: The Zane Lowe Interview"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Listen now",
+              "to": "https://music.apple.com/us/station/miley-the-zane-lowe-interview/ra.6810826773?itscg=10000&itsct=am-apl_hp-listen_now--240326"
+            }
+          },
+          {
+            "_key": "svc-join-the-team",
+            "_name": {
+              "text": "Join the Team with “Ted Lasso”"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Watch now",
+              "to": "https://fitness.apple.com/us/studio-collection/join-the-team-with-ted-lasso/1673607671?itscg=10000&itsct=afp-apl_hp-watch_now--240326"
+            }
+          },
+          {
+            "_key": "svc-powerwash",
+            "_name": {
+              "text": "PowerWash Simulator"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Play now",
+              "to": "https://apps.apple.com/us/app/powerwash-simulator/id6477445344?itscg=10000&itsct=aa-apl_hp-play_now--240326"
+            }
+          },
+          {
+            "_key": "svc-new-music-daily",
+            "_name": {
+              "text": "New Music Daily"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Listen now",
+              "to": "https://music.apple.com/us/playlist/new-music-daily/pl.2b0e6e332fdf4b7a91164da3162127b5?itscg=10000&itsct=am-apl_hp-listen_now--240326"
+            }
+          },
+          {
+            "_key": "svc-meditation",
+            "_name": {
+              "text": "Meditation with Christian"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Watch now",
+              "to": "https://fitness.apple.com/us/workout/meditation-with-christian/6808747339?itscg=10000&itsct=afp-apl_hp-watch_now--240326"
+            }
+          },
+          {
+            "_key": "svc-madden",
+            "_name": {
+              "text": "Madden NFL 27 Arcade Edition"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Play now",
+              "to": "https://apps.apple.com/us/app/madden-nfl-27-arcade-edition/id6755553408?itscg=10000&itsct=aa-apl_hp-play_now--240326"
+            }
+          },
+          {
+            "_key": "svc-todays-hits",
+            "_name": {
+              "text": "Today’s Hits"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Listen now",
+              "to": "https://music.apple.com/us/playlist/todays-hits/pl.f4d106fed2bd41149aaacabb233eb5eb?itscg=10000&itsct=am-apl_hp-listen_now--240326"
+            }
+          },
+          {
+            "_key": "svc-programs",
+            "_name": {
+              "text": "Programs"
+            },
+            "_action": {
+              "verb": "open",
+              "label": "Watch now",
+              "to": "https://fitness.apple.com/us/studio-collection/programs/1896349052?itscg=10000&itsct=afp-apl_hp-watch_now--240326"
+            }
+          }
+        ]
+      }
     }
-   }
-  },
-  {
-   "_intent": "产品磁贴：六张并列卡片，每张主推一款产品或一项购买权益",
-   "_key": "tiles",
-   "_items": [
-    {
-     "_key": "tile-watch-ultra-4",
-     "_image": {
-      "image": "https://www.apple.com/v/homepage/images/apple-watch-ultra-4/a/promo_apple_watch_ultra_4__e4r3qertak2u_large.jpg",
-      "alt": "Apple Watch Ultra 4, titanium case, natural color, right exterior, Digital Crown, raised side button, digital watch face, translucent gray Ocean Band"
-     },
-     "_name": {
-      "text": "Apple Watch Ultra 4"
-     },
-     "_summary": {
-      "text": "A battery you can’t outrun."
-     },
-     "_action": {
-      "verb": "open",
-      "label": "Learn more",
-      "to": "https://www.apple.com/apple-watch-ultra-4/"
-     },
-     "buy": {
-      "_intent": "购买 Apple Watch Ultra 4",
-      "_title": {
-       "text": "Buy"
-      },
-      "_action": {
-       "verb": "buy",
-       "label": "Buy",
-       "to": "https://www.apple.com/us/shop/goto/buy_watch/apple_watch_ultra_4"
-      }
-     }
-    },
-    {
-     "_key": "tile-airpods-5",
-     "_image": {
-      "image": "https://www.apple.com/v/homepage/images/airpods-5/a/promo_airpods_5__mnwdue4dcp66_large.jpg",
-      "alt": "AirPods 5, white color, worn in the ear, person silhouetted against multi-color background"
-     },
-     "_name": {
-      "text": "AirPods 5"
-     },
-     "_summary": {
-      "text": "Discover the magic of Active Noise Cancellation."
-     },
-     "_action": {
-      "verb": "open",
-      "label": "Learn more",
-      "to": "https://www.apple.com/airpods-5/"
-     },
-     "buy": {
-      "_intent": "购买 AirPods 5",
-      "_title": {
-       "text": "Buy"
-      },
-      "_action": {
-       "verb": "buy",
-       "label": "Buy",
-       "to": "https://www.apple.com/us/shop/goto/buy_airpods/airpods_5"
-      }
-     }
-    },
-    {
-     "_key": "tile-upgrade",
-     "_image": {
-      "image": "https://www.apple.com/v/homepage/images/apple-upgrade/a/promo_apple_upgrade__jvn6udm4tx2e_large.jpg",
-      "alt": "iPhone 18 Pro, back exterior, iPhone silhouette fans out from behind into spectrum of purple and red colors"
-     },
-     "_name": {
-      "text": "Apple Upgrade"
-     },
-     "_summary": {
-      "text": "Love it. Lease it. Upgrade it."
-     },
-     "_action": {
-      "verb": "open",
-      "label": "Learn more",
-      "to": "https://www.apple.com/us/shop/goto/apple_upgrade"
-     }
-    },
-    {
-     "_key": "tile-carrier-deals",
-     "_image": {
-      "image": "https://www.apple.com/v/homepage/images/carriers/a/promo_carriers__bkbchi56n5qq_large.jpg",
-      "alt": "iPhone models: iPhone 17e, soft pink color, iPhone 17, lavender color, iPhone Air, sky blue color, iPhone 18 Pro, burgundy color (dark red), iPhone Duo, folded, star white color"
-     },
-     "_name": {
-      "text": "Incredible carrier deals at Apple"
-     },
-     "_summary": {
-      "text": "Explore deals that accept eligible trade-in devices in any condition."
-     },
-     "_action": {
-      "verb": "open",
-      "label": "Find your deal",
-      "to": "https://www.apple.com/us/shop/goto/buy_iphone/carrier_offers"
-     }
-    },
-    {
-     "_key": "tile-macbook-air",
-     "_image": {
-      "image": "https://www.apple.com/v/homepage/images/macbook-air-m5/a/promo_macbook_air_m5__e5xk2yysqiie_large.jpg",
-      "alt": "Two open MacBook Air laptops in sky blue color forming arrow shape, emphasizing narrow profile"
-     },
-     "_name": {
-      "text": "MacBook Air"
-     },
-     "_summary": {
-      "text": "Now supercharged by M5."
-     },
-     "_action": {
-      "verb": "open",
-      "label": "Learn more",
-      "to": "https://www.apple.com/macbook-air/"
-     },
-     "buy": {
-      "_intent": "购买 MacBook Air",
-      "_title": {
-       "text": "Buy"
-      },
-      "_action": {
-       "verb": "buy",
-       "label": "Buy",
-       "to": "https://www.apple.com/us/shop/goto/buy_mac/macbook_air"
-      }
-     }
-    },
-    {
-     "_key": "tile-apple-card",
-     "_image": {
-      "image": "https://www.apple.com/v/homepage/images/apple-card/a/promo_apple_card__d8xz4kd4evwy_large.jpg",
-      "alt": "Apple Card, front, Apple logo in top left, cardholder name in middle left Marisa Robertson, card chip in middle right."
-     },
-     "_name": {
-      "text": "Apple Card"
-     },
-     "_summary": {
-      "text": "Get up to 3% Daily Cash back with every purchase."
-     },
-     "_action": {
-      "verb": "open",
-      "label": "Learn more",
-      "to": "https://www.apple.com/apple-card/"
-     },
-     "apply": {
-      "_intent": "申请 Apple Card",
-      "_title": {
-       "text": "Apply now"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Apply now",
-       "to": "https://card.apple.com/apply/application?referrer=cid%3Dapy-200-10000036&start=false"
-      }
-     }
-    }
-   ]
-  },
-  {
-   "_intent": "娱乐内容：Apple TV+ 影视与各服务内容的即时入口，标题即承诺「看不完的娱乐」",
-   "_key": "entertainment",
-   "_title": {
-    "text": "Endless entertainment."
-   },
-   "tv": {
-    "_intent": "Apple TV+ 片单轮播：每张卡片是片名 + 类型 + 一句话看点",
-    "_items": [
-     {
-      "_key": "tv-slow-horses",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/x5JjmiSD75wN12-HmmZRcg/1250x668sr.jpg"
-      },
-      "_name": {
-       "text": "Slow Horses"
-      },
-      "_category": {
-       "text": "Thriller"
-      },
-      "_detail": {
-       "text": "New season."
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Stream now",
-       "to": "https://tv.apple.com/us/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
-      }
-     },
-     {
-      "_key": "tv-f1",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/Features/v4/47/76/ea/4776ea5e-5e00-a76b-c8f1-6fda44050f30/3dd9b6d8-a87a-4a15-80bb-0cc06dfa62d4.png/1250x668sr.jpg"
-      },
-      "_name": {
-       "text": "Formula 1"
-      },
-      "_category": {
-       "text": "F1 on Apple TV"
-      },
-      "_detail": {
-       "text": "Every Grand Prix™, live and on demand—all in one place, all year long."
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Stream now",
-       "to": "https://tv.apple.com/us/room/formula-1/uts.room.formula-1?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
-      }
-     },
-     {
-      "_key": "tv-ted-lasso",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/eD8DZGJ170t3MyFhlWOkdw/1250x668sr.jpg"
-      },
-      "_name": {
-       "text": "Ted Lasso"
-      },
-      "_category": {
-       "text": "Comedy"
-      },
-      "_detail": {
-       "text": "The hit comedy is back and Tedder than ever."
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Stream now",
-       "to": "https://tv.apple.com/us/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
-      }
-     },
-     {
-      "_key": "tv-mls",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/Features/v4/78/57/f6/7857f6ec-a4ed-87dc-dea9-a6ed02888722/ebd59c17-8e95-49b1-aec0-44aec57388ee.png/1250x668sr.jpg"
-      },
-      "_name": {
-       "text": "MLS"
-      },
-      "_category": {
-       "text": "MLS on Apple TV"
-      },
-      "_detail": {
-       "text": "Watch every club, every match, live—all season long."
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Stream now",
-       "to": "https://tv.apple.com/us/channel/mls/tvs.sbd.7000?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
-      }
-     },
-     {
-      "_key": "tv-friday-baseball",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/Features/v4/33/9e/cf/339ecfe7-f515-8594-2e48-d991803409ea/5a944fdc-acd7-47a8-89e7-274d84cf4276.png/1250x668sr.jpg"
-      },
-      "_name": {
-       "text": "Friday Night Baseball"
-      },
-      "_detail": {
-       "text": "Live MLB games, every Friday."
-      },
-      "_action": {
-       "verb": "open",
-       "label": "See the schedule",
-       "to": "https://tv.apple.com/us/room/friday-night-baseball/edt.item.62327df1-6874-470e-98b2-a5bbeac509a2?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
-      }
-     },
-     {
-      "_key": "tv-mayday",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/ZUCp6pyyffalTQpg4UESLQ/1250x668sr.jpg"
-      },
-      "_name": {
-       "text": "Mayday"
-      },
-      "_category": {
-       "text": "Action"
-      },
-      "_detail": {
-       "text": "A friendship with major red flags."
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Stream now",
-       "to": "https://tv.apple.com/us/movie/mayday/umc.cmc.shin43vzfoz3h4ggx41z8rf?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
-      }
-     },
-     {
-      "_key": "tv-widows-bay",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/CqMFl0CvUAUE1axxV4k-ew/1250x668sr.jpg"
-      },
-      "_name": {
-       "text": "Widow’s Bay"
-      },
-      "_category": {
-       "text": "Comedy"
-      },
-      "_detail": {
-       "text": "14 Emmy® Awards Including Best Comedy"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Stream now",
-       "to": "https://tv.apple.com/us/show/widows-bay/umc.cmc.1zzly0vah46bnvnwf0qkrjhh2?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
-      }
-     },
-     {
-      "_key": "tv-dark-matter",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/b-b9eb0IET479YbfP-t1cA/1250x668sr.jpg"
-      },
-      "_name": {
-       "text": "Dark Matter"
-      },
-      "_category": {
-       "text": "Sci-Fi"
-      },
-      "_detail": {
-       "text": "There’s no world like home."
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Stream now",
-       "to": "https://tv.apple.com/us/show/dark-matter/umc.cmc.4luj45vtqpmjsvb6sc2675oeg?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
-      }
-     },
-     {
-      "_key": "tv-last-seen",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/JtVQR0x0f4EX3vFy1yWxaQ/1250x668sr.jpg"
-      },
-      "_name": {
-       "text": "Last Seen"
-      },
-      "_category": {
-       "text": "Thriller"
-      },
-      "_detail": {
-       "text": "He’s waited years for the truth to call."
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Stream now",
-       "to": "https://tv.apple.com/us/show/last-seen/umc.cmc.4pbw9c936a4pigdvsg23u2bsa?l=en-US?itscg=10000&itsct=atv-apl_hp-stream_now--220622"
-      }
-     }
-    ]
-   },
-   "services": {
-    "_intent": "服务内容轮播：Arcade 游戏、Fitness+ 课程、Music 歌单等内容入口",
-    "_items": [
-     {
-      "_key": "svc-sabrina",
-      "_name": {
-       "text": "Sabrina Carpenter: The Zane Lowe Interview"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Listen now",
-       "to": "https://music.apple.com/us/station/sabrina-carpenter-the-zane-lowe-interview/ra.1837392419?itscg=10000&itsct=am-apl_hp-listen_now--240326"
-      }
-     },
-     {
-      "_key": "svc-hello-kitty",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/5b/b3/4a/5bb34a60-695c-a96f-75ec-8a957fc2a20b/45899847-e52c-44a1-9ce5-09aedebb7a78.png/470x264.jpg"
-      },
-      "_name": {
-       "text": "Hello Kitty Island Adventure"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Play now",
-       "to": "https://apps.apple.com/us/app/hello-kitty-island-adventure/id1553505132?itscg=10000&itsct=aa-apl_hp-play_now--240326"
-      }
-     },
-     {
-      "_key": "svc-david-bowie",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/Features221/v4/c1/e6/09/c1e609c8-914d-6037-cda2-4cfdaf87a263/07eaa70a-574b-4abe-aea4-bcb530d837e3.png/470x264.jpg"
-      },
-      "_name": {
-       "text": "David Bowie"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Watch now",
-       "to": "https://fitness.apple.com/us/studio-collection/david-bowie/1896935217?itscg=10000&itsct=afp-apl_hp-watch_now--240326"
-      }
-     },
-     {
-      "_key": "svc-a-list-pop",
-      "_name": {
-       "text": "A-List Pop"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Listen now",
-       "to": "https://music.apple.com/us/playlist/a-list-pop/pl.5ee8333dbe944d9f9151e97d92d1ead9?itscg=10000&itsct=am-apl_hp-listen_now--240326"
-      }
-     },
-     {
-      "_key": "svc-powerwash",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/53/55/d7/5355d758-e5b7-b406-f004-bb98d03ecb38/9388d284-2a0b-43e8-86e0-5852e8559d18.png/470x264.jpg"
-      },
-      "_name": {
-       "text": "PowerWash Simulator"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Play now",
-       "to": "https://apps.apple.com/us/app/powerwash-simulator/id6477445344?itscg=10000&itsct=aa-apl_hp-play_now--240326"
-      }
-     },
-     {
-      "_key": "svc-hiit",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/Video221/v4/24/25/85/2425854a-14c7-fb09-533b-110aaf585363/HI_BW_0217_artwork_en_ID336111_0.png/470x264.jpg"
-      },
-      "_name": {
-       "text": "HIIT with Bakari"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Watch now",
-       "to": "https://fitness.apple.com/us/workout/hiit-with-bakari/6783451184?itscg=10000&itsct=afp-apl_hp-watch_now--240326"
-      }
-     },
-     {
-      "_key": "svc-new-music-daily",
-      "_name": {
-       "text": "New Music Daily"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Listen now",
-       "to": "https://music.apple.com/us/playlist/new-music-daily/pl.2b0e6e332fdf4b7a91164da3162127b5?itscg=10000&itsct=am-apl_hp-listen_now--240326"
-      }
-     },
-     {
-      "_key": "svc-balatro",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/Features221/v4/89/07/9c/89079c5b-29da-cd1f-4ce3-ad68f3d28a68/f0346506-4c9f-4be1-b275-11fa4004b103.png/470x264.jpg"
-      },
-      "_name": {
-       "text": "Balatro+"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Play now",
-       "to": "https://apps.apple.com/us/app/balatro/id6502451661?itscg=10000&itsct=aa-apl_hp-play_now--240326"
-      }
-     },
-     {
-      "_key": "svc-programs",
-      "_image": {
-       "image": "https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/2a/75/df/2a75df27-703b-4712-6d95-9c9e29ca1dc6/fa77ffdb-61aa-47e7-920a-7da1876f3929.png/470x264.jpg"
-      },
-      "_name": {
-       "text": "Programs"
-      },
-      "_action": {
-       "verb": "open",
-       "label": "Watch now",
-       "to": "https://fitness.apple.com/us/studio-collection/programs/1896349052?itscg=10000&itsct=afp-apl_hp-watch_now--240326"
-      }
-     }
-    ]
-   }
-  }
- ]
+  ]
 }

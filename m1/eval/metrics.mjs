@@ -145,7 +145,7 @@ export function evaluate(model, renderHtml, sourceDir) {
   // Inline Markdown destinations are metadata, just like HTML href attributes.
   // Evaluate the visible label without interrupting its surrounding prose, and
   // never certify a fact solely because it occurs in the hidden destination.
-  const visible = renderHtml.endsWith('.md') ? html.replace(/!?\[([^\]\n]*)\]\((?:\\.|[^)\n])*\)/g, '$1') : html;
+  const visible = renderHtml.endsWith('.md') ? html.replace(/!?\[([^\]\n]*)\]\((?:\\.|[^)\n])*\)/g, ' $1 ') : html;
   const H = indexNorm(pageText(visible));
   const dead = suppressedNodes(model);
   const facts = factValues(model, dead);

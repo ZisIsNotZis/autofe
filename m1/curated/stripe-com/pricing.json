@@ -421,7 +421,7 @@
                     "text": "信用卡和借记卡"
                   },
                   "_detail": {
-                    "text": "接受广泛使用的信用卡、借记卡、预付卡进行在线支付。"
+                    "text": "接受广泛使用的信用卡和借记卡、预付卡进行在线支付。"
                   },
                   "_lines": [
                     {
@@ -1295,11 +1295,6 @@
                   },
                   "_lines": [
                     {
-                      "_text": {
-                        "text": "定制价格"
-                      }
-                    },
-                    {
                       "_detail": {
                         "text": "数据导出仅在自定义方案中可用："
                       },
@@ -1599,78 +1594,31 @@
               "text": "Data Pipeline"
             },
             "_detail": {
-              "text": "将 Stripe 数据和报表直接同步至您的数据仓库或云存储平台。包含 Stripe Sigma 访问权限。"
+              "text": "将 Stripe 数据实时流式传输至 Postgres，或将 Stripe 数据同步至您的数据仓库或云存储。"
             },
             "_items": [
               {
                 "_name": {
-                  "text": "无需写代码，几分钟内即可设置好数据管道，实现自动化的数据传输。"
+                  "text": "数分钟内即可设置好数据管道，实现自动化的数据传输。"
                 }
               },
               {
                 "_name": {
-                  "text": "加快财务关账速度，获取更全面的业务数据洞察。"
+                  "text": "在 Postgres 中使用实时 Stripe 数据构建应用程序，无需管理 API 或 Webhook"
                 }
               },
               {
                 "_name": {
-                  "text": "借助 Stripe Sigma 获取更快速的数据洞察，并生成完全可定制的报表。"
+                  "text": "更快完成结账，获得关于收入和流失的更丰富洞察"
                 }
               }
             ],
             "pricing": {
-              "_intent": "Data Pipeline 的订阅方案费率",
-              "_items": [
-                {
-                  "_name": {
-                    "text": "按月订阅"
-                  },
-                  "_detail": {
-                    "text": "灵活的月度方案，可随时取消。"
-                  },
-                  "_lines": [
-                    {
-                      "_price": {
-                        "money": 508,
-                        "currency": "HKD"
-                      },
-                      "_detail": {
-                        "text": "每月"
-                      }
-                    }
-                  ],
-                  "_text": {
-                    "text": "免费试用 30 天"
-                  }
-                },
-                {
-                  "_name": {
-                    "text": "按年订阅"
-                  },
-                  "_detail": {
-                    "text": "选择按月支付的年度套餐，享受更多优惠。"
-                  },
-                  "_lines": [
-                    {
-                      "_price": {
-                        "money": 391,
-                        "currency": "HKD",
-                        "qualifier": "起始价："
-                      },
-                      "_detail": {
-                        "text": "每月，1 年期合同"
-                      }
-                    }
-                  ],
-                  "_text": {
-                    "text": "需遵守订阅与取消条款。"
-                  }
-                }
-              ],
+              "_intent": "Data Pipeline 定价详情入口（新 capture 中该卡无内嵌费率行，仅保留查看定价详情链接）",
               "_action": {
                 "verb": "open",
                 "to": "https://stripe.com/cn/data-pipeline/pricing",
-                "label": "方案对比"
+                "label": "查看定价详情"
               }
             },
             "_action": {

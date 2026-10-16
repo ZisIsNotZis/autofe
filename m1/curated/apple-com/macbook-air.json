@@ -3,26 +3,21 @@
   "image": "https://www.apple.com/v/macbook-air/z/images/overview/hero/hero_static__c9sislzzicq6_large.png",
   "alt": "Two open MacBook Air laptops in sky blue color forming arrow shape, emphasizing narrow profile"
  },
- "_intent": "MacBook Air 产品页：M5 芯片与 18 小时续航是主叙事，交易信息 From $1299（可租赁可折抵），页面按亮点→设计→性能→AI→macOS→Continuity→换机→显示→影音→接口→安全→升级→机型对比→购买方案→环保推进",
- "_primary": "_price",
+ "_intent": "MacBook Air 产品页：M5 芯片与 18 小时续航是主叙事，页面按亮点→设计→性能→AI→macOS→Continuity→换机→显示→影音→接口→安全→升级→机型对比→购买方案→环保推进；2026-10-16 采集页面上已无任何价格/分期数字，商务信息仅剩顶部 Apple Upgrade 租赁横幅",
+ "_primary": "_summary",
  "_key": "apple-macbook-air",
  "_title": {
   "text": "MacBook Air"
  },
  "_subtitle": {
-  "text": "Might takes flight."
- },
- "_price": {
-  "money": 1299,
-  "currency": "USD",
-  "qualifier": "From"
+  "text": "Might takes flight. Now supercharged by M5."
  },
  "_duration": {
   "num": 12,
   "unit": "mo."
  },
  "_summary": {
-  "text": "From $1299 or $108.25/mo. Lease from $24.99/mo. for 36 mo. with Apple Upgrade"
+  "text": "Lease a new Mac with low monthly payments for 24 or 36 months and upgrade at the end of your term with Apple Upgrade.§"
  },
  "_action": {
   "verb": "buy",
@@ -62,7 +57,7 @@
      },
      "_key": "hl-battery",
      "_name": {
-      "text": "Up to 18 hours of battery life. Won’t call it a day until you do."
+      "text": "Up to 18 hours of battery life. 1 Won’t call it a day until you do."
      }
     },
     {
@@ -72,7 +67,7 @@
      },
      "_key": "hl-ai",
      "_name": {
-      "text": "A powerful platform for AI. And Apple Intelligence is built right in. Now that’s smart."
+      "text": "A powerful platform for AI. And Apple Intelligence is built right in. 2 Now that’s smart."
      }
     },
     {
@@ -211,7 +206,7 @@
        "text": "MacBook Air 13”"
       },
       "_detail": {
-       "text": "With up to 18 hours of battery life, MacBook Air is built for the long haul."
+       "text": "With up to 18 hours of battery life, 1 MacBook Air is built for the long haul."
       }
      },
      {
@@ -305,7 +300,7 @@
      "text": "Live a full battery life."
     },
     "_detail": {
-     "text": "MacBook Air has up to 18 hours of battery life. And it supports fast charging, getting up to 50 percent in about 30 minutes. So you can power through everything from work to class to your favorite movies without worrying about your battery."
+     "text": "Live a full battery life. MacBook Air has up to 18 hours of battery life. And it supports fast charging, getting up to 50 percent in about 30 minutes. 16 So you can power through everything from work to class to your favorite movies without worrying about your battery."
     }
    }
   },
@@ -419,7 +414,7 @@
       "text": "Live Translation."
      },
      "_detail": {
-      "text": "Communicate effortlessly across languages. Instantly translate texts in Messages, display live translated captions in FaceTime, and get real-time spoken translations in the Phone app."
+      "text": "Live Translation. Communicate effortlessly across languages. Instantly translate texts in Messages, 17 display live translated captions in FaceTime, and get real-time spoken translations in the Phone app. 18"
      }
     }
    ]
@@ -538,7 +533,7 @@
       "text": "Packed with powerful apps."
      },
      "_detail": {
-      "text": "Mac comes with apps like FaceTime, Freeform, and Keynote that let you get to work creating and collaborating on your next big idea."
+      "text": "Mac comes with apps like FaceTime, 21 Freeform, and Keynote that let you get to work creating and collaborating on your next big idea."
      }
     },
     {
@@ -778,7 +773,7 @@
    }
   },
   {
-   "_intent": "机型对比：MacBook Air 13”/15” 与 MacBook Pro 14”/16” 的定位、起售价与规格速览",
+   "_intent": "机型对比：MacBook Air 13”/15” 与 MacBook Pro 14”/16” 的定位与规格速览（2026-10-16 采集无起售价与分期文案，规格行带脚注数字）",
    "_key": "compare",
    "_title": {
     "text": "Which laptop is right for you?"
@@ -789,16 +784,8 @@
      "_name": {
       "text": "MacBook Air 13” and 15” M5 chip"
      },
-     "_price": {
-      "money": 1299,
-      "currency": "USD",
-      "qualifier": "From"
-     },
-     "_summary": {
-      "text": "From $1299 or $108.25/mo. for 12 mo. Lease from $24.99/mo. for 36 mo. with Apple Upgrade"
-     },
      "_detail": {
-      "text": "13.6-inch or 15.3-inch Liquid Retina display · Apple M5 chip · Apple Intelligence · 16GB to 32GB unified memory · 512GB to 4TB storage · Up to 18 hours battery life · Touch ID"
+      "text": "13.6-inch or 15.3-inch Liquid Retina display 24 · Apple M5 chip · Apple Intelligence 2 · 16GB to 32GB unified memory · 512GB to 4TB storage 25 · Up to 18 hours battery life 1 · Touch ID"
      },
      "_action": {
       "verb": "buy",
@@ -811,16 +798,8 @@
      "_name": {
       "text": "MacBook Pro 14” and 16” M5, M5 Pro, or M5 Max chip"
      },
-     "_price": {
-      "money": 1999,
-      "currency": "USD",
-      "qualifier": "From"
-     },
-     "_summary": {
-      "text": "From $1999 or $166.58/mo. for 12 mo. Lease from $38.99/mo. for 36 mo. with Apple Upgrade"
-     },
      "_detail": {
-      "text": "14.2-inch or 16.2-inch Liquid Retina XDR display · Apple M5, M5 Pro, or M5 Max chip · Apple Intelligence · 16GB to 128GB unified memory · 1TB to 8TB storage · Up to 24 hours battery life · Touch ID"
+      "text": "14.2-inch or 16.2-inch Liquid Retina XDR display 24 · Apple M5, M5 Pro, or M5 Max chip · Apple Intelligence 2 · 16GB to 128GB unified memory · 1TB to 8TB storage 25 · Up to 24 hours battery life 26 · Touch ID"
      },
      "_action": {
       "verb": "buy",

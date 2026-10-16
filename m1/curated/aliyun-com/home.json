@@ -40,18 +40,18 @@
   }
  },
  "promos": {
-  "_intent": "首屏下方的四个精选促销入口：Qwen Book、万小智 3.0 建站、轻量上云、旗舰模型",
+  "_intent": "首屏下方的四个精选促销入口：Qwen3.8-Flash、万小智 3.0 建站、云服务器 99 元/年、旗舰模型",
   "_items": [
    {
     "_name": {
-     "text": "Qwen Book 亮相云栖大会"
+     "text": "多模态 MOE 模型 Qwen3.8-Flash"
     },
     "_detail": {
-     "text": "阿里云 Qwen Book：第一台，每天都会变更聪明的 AI 智能体电脑"
+     "text": "支持百万级上下文窗口，能一次性处理超长文档、代码仓库"
     },
     "_action": {
      "verb": "open",
-     "to": "https://www.qianwenai.com/product/qwenbook"
+     "to": "https://www.qianwenai.com/models/qwen3.8-flash"
     }
    },
    {
@@ -68,14 +68,14 @@
    },
    {
     "_name": {
-     "text": "轻量上云 38 元/年，一键部署 AI Agent"
+     "text": "云服务器 99 元/年，续费不涨价"
     },
     "_detail": {
-     "text": "预装官方热门应用，全程可视化操作，轻量便捷，开箱即用"
+     "text": "2 核 2G 3M不限流量，一口价锁至 2029 年，送安全防护与备份"
     },
     "_action": {
      "verb": "open",
-     "to": "https://www.aliyun.com/daily-act/ecs/activity_selection"
+     "to": "https://www.aliyun.com/activity/ecs/99program"
     }
    },
    {
@@ -637,22 +637,10 @@
    },
    {
     "_name": {
-     "text": "数字证书管理服务（原SSL证书）"
-    },
-    "_detail": {
-     "text": "实现全站HTTPS与全场景一键证书托管"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://www.aliyun.com/product/cas"
-    }
-   },
-   {
-    "_name": {
      "text": "无影云电脑"
     },
     "_detail": {
-     "text": "随时随地安全接入的云上超级电脑"
+     "text": "易用、安全、高效的云上电脑"
     },
     "_action": {
      "verb": "open",
@@ -672,6 +660,18 @@
     "_action": {
      "verb": "open",
      "to": "https://www.aliyun.com/product/bigdata/learn"
+    }
+   },
+   {
+    "_name": {
+     "text": "云原生大数据计算服务 MaxCompute"
+    },
+    "_detail": {
+     "text": "面向分析的企业级SaaS模式云数据仓库"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.aliyun.com/product/maxcompute"
     }
    },
    {
@@ -700,18 +700,6 @@
    },
    {
     "_name": {
-     "text": "云原生大数据计算服务 MaxCompute"
-    },
-    "_detail": {
-     "text": "面向分析的企业级SaaS模式云数据仓库"
-    },
-    "_action": {
-     "verb": "open",
-     "to": "https://www.aliyun.com/product/maxcompute"
-    }
-   },
-   {
-    "_name": {
      "text": "云原生数据库 PolarDB"
     },
     "_detail": {
@@ -720,6 +708,18 @@
     "_action": {
      "verb": "open",
      "to": "https://www.aliyun.com/product/polardb"
+    }
+   },
+   {
+    "_name": {
+     "text": "大数据开发治理平台 DataWorks"
+    },
+    "_detail": {
+     "text": "Data Agent 驱动的一站式 Data+AI 开发治理平台"
+    },
+    "_action": {
+     "verb": "open",
+     "to": "https://www.aliyun.com/product/dide"
     }
    }
   ]

@@ -111,3 +111,22 @@
 - Contract/history: `.scratch/62-all-sites/ticket.md`; current repair handoff: `.scratch/62-all-sites/focused-diagnosis/repair-handoff.json`; exact continuation: `.scratch/62-all-sites/focused-diagnosis/repair/continuation.md`.
 - Source checkpoint `ccea4ace4bbba9ac989ca2ade80d5b0f050826e9`, root HEAD/index unchanged, unrelated dirt preserved. Combined pipeline FAIL at strengthened link/source-association gate; full42 four-width experience/independent acceptance INCOMPLETE. Do not route stale old captures/review snapshots.
 - Single user delivery gate remains all remaining pages + Apple/Taobao identity fixes; no publication, new milestone or PASS.
+
+---
+## Active: 63 — 重克隆后语料重建 + 重采再策展（父代理编排，2026-10-16）
+- **背景**：仓库重克隆（浅，`41fdf70`）丢失 gitignored 语料 + 私有修复 ref + repair.patch 文件本体；旧"42/42"口径作废。工具链已重建：chromium_headless_shell-1248 + playwright-core（`tools/capture/node_modules`，经 `AUTOFE_CHROME_PATH`/`AUTOFE_PLAYWRIGHT_CORE` 传入）；6 个 eval 工具的硬编码浏览器路径改为 env 可覆盖；`capture-integrity.mjs` 缺语料由崩溃改为记录 error。
+- **全量重采完成**（2026-10-16）：41/42 页重采成功；`apple-com/iphone-16` 503 不可采。
+- **漂移探测**（`.scratch/63-recapture-recuration/drift-probe.json`）：13 页 0 未命中；13 页轻漂移（1–24）；13 页重漂移（29–185，动态 feed 轮换）。
+- **裁定**（详见 ticket）：D-63a 全部重策展；D-63b allow 文件父代理独占整合；D-63c 壳采=采集失败，退役换页；D-63d iphone-16→airpods-pro、stripe-dashboard/login→sspai-com/login。**36kr 首页/科技频道对声明式 UA 返回壳 → 退役（36kr search 两页保留）；门禁分母 42 → 40**。F-100 已登记；`m3-scale.json`/`sites.json` 已同步；4 个退役模型+renders 已删。
+- **进行中**：6 个 worker 并行再策展（wave1 轻×20 页、wave2 重×6 页、wave3 新策展×2 页），报告落 `.scratch/63-recapture-recuration/`。
+- **整合待办（父代理）**：合并 allow 提案（capture-integrity-allow / quote-allow 清过期项）→ 资产提案落盘 → `pipeline --shots` 全量复跑 → 重新声明基线（分母 40）→ 之后再续轮 62 链接闭环。
+
+---
+## 轮 63 收尾快照（2026-10-16 父代理；门禁全绿，exit=0）
+- **门禁**：`node m1/eval/pipeline.mjs --shots` → **渲染 40/40 · HTML 保真 1.00 40/40 · Markdown 保真 1.00 40/40 · 46 模型校验 · 17 道门禁+自测全通过 · 视觉自查 40/40 干净 · 证据一致性通过**。新基线分母 **40**（F-100：36kr feed×2 / iphone-16 / stripe-dashboard login 退役；+airpods-pro / sspai-login 新策展）。
+- **工具链**：chromium_headless_shell-1248 + playwright-core（`AUTOFE_CHROME_PATH`/`AUTOFE_PLAYWRIGHT_CORE` 贯穿全部 eval 工具）；capture-integrity 缺语料不再崩溃。
+- **度量口径修复**：metrics 对 .md 目标的链接标签剥离改为带边界替换（CJK 标签不再粘进上下文词）——小米/少数派两页 md 保真恢复 1.00。
+- **审计修复**：audit-visual 豁免渲染器自身的 `.search-submit` 图标钮（svg 计为内容）；新增 `audit-visual-allow.json` 声明式豁免（huawei-home img-variance mosaic 固有，降级 info 仍展示）。
+- **白名单整合（全部书面理由 + 轮号）**：capture-integrity-allow 65 条、link-coverage-allow 72、quote-allow 清 2 条过期、icon-provenance u-jtc092al 绑定退役（标签已按 F-025 删除）、link-owner-witnesses 重建（6 条随页退役、其余重绑新采语料地址/hash/文本）。
+- **资产**：`62-*` 资产改为入库（.gitignore 撤销该行；再克隆不可再生，29+31 张本地化）；3 条不可再生引用以源站逐字 URL 承载（mi×2 offscreen、stripe hero）。
+- **未竟/移交**：huawei 搜索页图标钮为引擎自主决策（axis:958 + render:620），audit 已对齐；「product 布局契约」现无语料页行使（Apple 页面去价格，合成 fixture 保可证伪）——archetype 覆盖主张变化待用户知悉；轮 62 链接闭环的独立验收与 42×4 体验复核仍未做（需在 40 页新基线上重排）。

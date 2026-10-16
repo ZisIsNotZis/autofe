@@ -1,0 +1,900 @@
+{
+ "_image": {
+  "image": "https://www.apple.com/v/airpods-pro/t/images/overview/welcome/hero__b0eal3mn03ua_large.jpg",
+  "alt": "AirPods Pro 3, left and right wireless headphones, white color, silicone tips"
+ },
+ "_intent": "AirPods Pro 3 美国产品页：以「全球最佳入耳式主动降噪」为主叙事，按亮点→细看→降噪→音质→个性化→健身→听力健康→体验→续航→购买权益→机型对比→环保→价值观推进；2026-10-16 采集页面上无任何价格/分期数字，商务信息仅为 Apple Card 免息分期文案与购买入口",
+ "_primary": "_subtitle",
+ "_key": "apple-airpods-pro",
+ "_title": {
+  "text": "AirPods Pro 3"
+ },
+ "_subtitle": {
+  "text": "The world’s best in‑ear Active Noise Cancellation."
+ },
+ "_summary": {
+  "text": "Up to 2x more than AirPods Pro 2."
+ },
+ "_action": {
+  "verb": "buy",
+  "label": "Buy",
+  "to": "https://www.apple.com/us/shop/goto/buy_airpods/airpods_pro_3"
+ },
+ "_lines": [
+  {
+   "_intent": "亮点轮播：六张要点卡覆盖音质、心率、声学、翻译、助听、续航；Watch the film 是本章的产品影片入口",
+   "_key": "highlights",
+   "_title": {
+    "text": "Get the highlights."
+   },
+   "_rel": {
+    "order": "sequence"
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Watch the film",
+    "to": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/films/product/airpods-pro-product-tpl-us-2025_16x9.m3u8"
+   },
+   "_items": [
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_noise_cancellation__cxd50c0etw4m_large.jpg",
+      "alt": "A dancer uses AirPods Pro 3 as they move to a beat with their arms spread wide"
+     },
+     "_key": "hl-spatial",
+     "_name": {
+      "text": "High definition spacial listening"
+     },
+     "_detail": {
+      "text": "An exceptional spatial listening experience, with high-definition, three-dimensional audio."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_heart_rate__emqj469iyfsm_large.jpg",
+      "alt": "AirPods Pro 3, white color, lower half of iPhone 17 Pro screen, Fitness app, heart rate sensing feature"
+     },
+     "_key": "hl-heart-rate",
+     "_name": {
+      "text": "All-new heart rate sensing"
+     },
+     "_detail": {
+      "text": "All-new heart rate sensing. Now you can track your heart rate and calories burned during workouts."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_acoustic__fiq4ppflft6q_large.jpg",
+      "alt": "AirPods Pro 3 inserted in the ear of a dancer as they enjoy a hands-free listening experience"
+     },
+     "_key": "hl-acoustic",
+     "_name": {
+      "text": "Better acoustic performance"
+     },
+     "_detail": {
+      "text": "Redesigned from the inside out for a more secure fit and better acoustic performance."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_live_translation__ga7nep85dr6m_large.jpg",
+      "alt": "AirPods Pro 3, earbud with silicone tip, Live Translation changes Chinese characters reading 'hello' to English on iPhone screen"
+     },
+     "_key": "hl-live-translation",
+     "_name": {
+      "text": "Live translation"
+     },
+     "_detail": {
+      "text": "Live Translation helps you communicate across languages. Available in select languages and regions. For more information, see Feature Availability."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_hearing_aid__dh5og4rjwcq6_large.jpg",
+      "alt": "A person wearing AirPods Pro 3, pulsating waves around their ear"
+     },
+     "_key": "hl-hearing-aid",
+     "_name": {
+      "text": "Hearing Aid capability"
+     },
+     "_detail": {
+      "text": "Hearing Aid capability now features automatic Conversation Boost and 67% more battery life in Transparency."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_battery_endframe__f5ljqvliqpym_large.jpg"
+     },
+     "_key": "hl-battery",
+     "_name": {
+      "text": "8 hours of listening"
+     },
+     "_detail": {
+      "text": "Get up to 8 hours of listening time with Active Noise Cancellation on a single charge."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "细看图库：六个产品视角卡，逐一给出该视角的一句话卖点",
+   "_key": "closer-look",
+   "_title": {
+    "text": "Take a closer look."
+   },
+   "_items": [
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_initial__cksqga5hm77m_large.jpg"
+     },
+     "_key": "cl-sound",
+     "_name": {
+      "text": "Sound quality."
+     },
+     "_detail": {
+      "text": "A new multiport acoustic architecture for deeper bass, a wider soundstage so you hear every note, and stunningly vivid vocal clarity."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_fit_feel__blsfw2dgyj6q_large.jpg"
+     },
+     "_key": "cl-fit",
+     "_name": {
+      "text": "Fit and feel."
+     },
+     "_detail": {
+      "text": "The ear tips are now rotated inward for a more secure fit, and a new layer of foam-infused microspheres increases noise cancellation."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_heart_rate__bt709o8p7t5y_large.jpg"
+     },
+     "_key": "cl-heart-rate",
+     "_name": {
+      "text": "Heart rate sensing."
+     },
+     "_detail": {
+      "text": "Our smallest heart rate sensor ever pulses invisible light to give you accurate workout metrics from the gym to the track."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_water_resistance__btut3m43on36_large.jpg"
+     },
+     "_key": "cl-ip57",
+     "_name": {
+      "text": "Dust, sweat, and water resistance."
+     },
+     "_detail": {
+      "text": "The first AirPods to be IP57 certified, AirPods Pro 3 can handle the sweatiest workouts and even a sudden downpour."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_touch_control__dqo4p6ue36gm_large.jpg"
+     },
+     "_key": "cl-force-sensor",
+     "_name": {
+      "text": "Force sensor with volume swipe."
+     },
+     "_detail": {
+      "text": "Use simple gestures like pressing to play and swiping to adjust volume. And the camera remote makes taking videos or pics a snap."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_case__bjx2hp0oo16u_large.jpg"
+     },
+     "_key": "cl-case",
+     "_name": {
+      "text": "Charging case."
+     },
+     "_detail": {
+      "text": "Next-generation Ultra Wideband technology increases the distance of Precision Finding by 1.5x, so you don’t lose track of your AirPods."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "降噪章节：全球最佳入耳式 ANC 的两个量化对比与四项降噪功能卡",
+   "_key": "noise-control",
+   "_title": {
+    "text": "Intelligent noise control"
+   },
+   "_subtitle": {
+    "text": "The best thing you’ve never heard."
+   },
+   "_detail": {
+    "text": "Introducing the world’s best in-ear Active Noise Cancellation for the most immersive listening experience ever. Designed with an upgraded acoustic seal, AirPods Pro 3 automatically adapt to your environment and preferences. And new ultra-low-noise microphones remove even more unwanted sound. So you only hear what you want — in an unheard-of audio experience."
+   },
+   "_items": [
+    {
+     "_key": "anc-vs-pro2",
+     "_name": {
+      "text": "Removes up to 2x more unwanted noise than AirPods Pro 2"
+     }
+    },
+    {
+     "_key": "anc-vs-pro1",
+     "_name": {
+      "text": "Removes up to 4x more unwanted noise than original AirPods Pro"
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/noise-control/gallery/noise_control_low_noise_mic__kb6kvtgc5aa2_large.jpg",
+      "alt": "AirPods Pro 3, noise-cancelling microphone"
+     },
+     "_key": "anc-mics",
+     "_name": {
+      "text": "New ultra-low-noise microphones."
+     },
+     "_detail": {
+      "text": "Using advanced computational audio to remove more noise around you than ever, AirPods Pro 3 let you zone in (or out) when you need to. And five all-new ear tips — including an XXS option — fuse a thin layer of soft foam to the silicone shell to give you even better acoustic performance."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/noise-control/gallery/noise_control_voice_isolation__c6b9qlmdbx4y_large.jpg",
+      "alt": "AirPods Pro 3, white color, noise-cancelling microphone, silicone tip, short stem"
+     },
+     "_key": "anc-voice-isolation",
+     "_name": {
+      "text": "Voice Isolation."
+     },
+     "_detail": {
+      "text": "AirPods Pro 3 reduce background noise and isolate voices during calls. So whether you’re on the bus or in a café, every conversation is loud and clear."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/noise-control/gallery/noise_control_adaptive_audio__gcfn46ubu82u_large.jpg",
+      "alt": "A person wearing AirPods Pro 3 staring into their iPhone"
+     },
+     "_key": "anc-adaptive",
+     "_name": {
+      "text": "Adaptive Audio."
+     },
+     "_detail": {
+      "text": "AirPods Pro 3 combine Active Noise Cancellation with next-level Transparency, which makes your voice and the world around you sound even more natural and vibrant, intelligently adapting to your environment to prioritize what you need to hear, when you need to hear it."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/noise-control/gallery/noise_control_conversation_awareness__fl1nx541suye_large.jpg",
+      "alt": "Ambience sound waves as colorful arcs, top and bottom, text on center reads: Conversation Awareness"
+     },
+     "_key": "anc-conversation",
+     "_name": {
+      "text": "Conversation Awareness."
+     },
+     "_detail": {
+      "text": "AirPods Pro 3 can detect when you’re talking to someone nearby and automatically lower the volume of whatever you’re listening to. When you’re done, the volume goes right back to where you had it."
+     }
+    }
+   ]
+  },
+  {
+   "_image": {
+    "image": "https://www.apple.com/v/airpods-pro/t/images/overview/audio-performance/audio_airpods_pro_pair__v28g95nj97mq_large.png",
+    "alt": "AirPods Pro 3, left and right wireless headphones"
+   },
+   "_intent": "音质章节：H2 芯片与重新设计的声学架构",
+   "_key": "audio-performance",
+   "_title": {
+    "text": "Audio performance"
+   },
+   "_subtitle": {
+    "text": "The sound of science."
+   },
+   "_detail": {
+    "text": "Powered by the Apple-designed H2 chip, AirPods Pro 3 feature a completely redesigned acoustic architecture that brings breathtaking, all-around-you audio to everything you listen to — from your pump-up playlist to your weekly FaceTime call with family. A new multiport acoustic architecture with more precise airflow control — featuring an inward-facing microphone that points directly into the ear canal — delivers deeper bass, vivid vocal clarity, and a wider soundstage, so you never miss a note. A custom-built driver and amplifier work with the H2 chip to create high-definition, three-dimensional sound, with superlow distortion during playback."
+   }
+  },
+  {
+   "_image": {
+    "image": "https://www.apple.com/v/airpods-pro/t/images/overview/personalized-listening/personalized_listening__geshsqt82yeu_large.jpg",
+    "alt": "AirPods Pro 3 inserted in the ear of a dancer as they enjoy a hands-free listening experience"
+   },
+   "_intent": "个性化听感章节：自适应 EQ、个性化空间音频与动态头部追踪",
+   "_key": "personalized-listening",
+   "_title": {
+    "text": "Personalized listening"
+   },
+   "_subtitle": {
+    "text": "For your ears only."
+   },
+   "_detail": {
+    "text": "AirPods Pro 3 feature next-generation Adaptive EQ, which customizes a sound signature for your unique ear geometry and fit. And Personalized Volume uses machine learning to understand your listening patterns and adapt to your preferences over time."
+   },
+   "_items": [
+    {
+     "_key": "eq",
+     "_name": {
+      "text": "Adaptive EQ."
+     },
+     "_detail": {
+      "text": "Adaptive EQ uses inward-facing microphones to tune music to your ears in real time. And with new Custom EQ, three intuitive controls let you easily personalize your perfect sound."
+     }
+    },
+    {
+     "_key": "spatial",
+     "_name": {
+      "text": "Personalized Spatial Audio."
+     },
+     "_detail": {
+      "text": "Personalized Spatial Audio uses the TrueDepth camera on your iPhone to create a custom profile based on the geometry of your head, delivering deeply immersive sound tailored to you."
+     }
+    },
+    {
+     "_key": "head-tracking",
+     "_name": {
+      "text": "Dynamic head tracking."
+     },
+     "_detail": {
+      "text": "Dynamic head tracking makes conversations feel like they’re happening in the same room — whether you’re gaming with friends or hosting a Group FaceTime call with family."
+     }
+    }
+   ]
+  },
+  {
+   "_image": {
+    "image": "https://www.apple.com/v/airpods-pro/t/images/overview/fitness/fitness_hero_endframe__cbbu1uukdjyq_large.png",
+    "alt": "AirPods Pro 3, wireless headphone, white color, side exterior, short tubular stem, noise-canceling microphone"
+   },
+   "_intent": "健身章节：心率传感、Fitness app 联动与 IP57 防护",
+   "_key": "fitness",
+   "_title": {
+    "text": "Fitness"
+   },
+   "_subtitle": {
+    "text": "Introducing heart rate sensing."
+   },
+   "_detail": {
+    "text": "All-new heart rate sensing helps you track your heart rate and calories burned during workouts. Using LEDs that pulse invisible light 256 times per second — and sensor fusion from the accelerometers — AirPods Pro 3 give you incredibly accurate data for up to 50 different workout types in the Fitness app. And with a more secure in-ear fit, you can go all out and they won’t come out."
+   },
+   "_items": [
+    {
+     "_key": "fitness-app",
+     "_name": {
+      "text": "Fitness app."
+     },
+     "_detail": {
+      "text": "With just AirPods Pro 3 and iPhone, you can dive into the new workout experience in the Fitness app, which includes things like walking, cycling, and HIIT. You can set your favorite music and podcasts to play automatically when you start a workout. With the new Apple Intelligence–enabled Workout Buddy feature, you can get personalized messages that keep you going. And with access to your Move ring — and even the Burn Bar in Fitness+ — you might just never stop."
+     }
+    },
+    {
+     "_key": "fitness-ip57",
+     "_name": {
+      "text": "IP57 dust, sweat, and water resistance."
+     },
+     "_detail": {
+      "text": "A first for AirPods, an IP57 rating means AirPods Pro 3 are more durable than ever. Thanks to precision engineering combined with robust testing, you can feel confident during even the sweatiest workouts."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "听力健康章节：端到端听力健康体验的四个功能卡与了解入口",
+   "_key": "hearing-health",
+   "_title": {
+    "text": "Hearing Health"
+   },
+   "_subtitle": {
+    "text": "Check, aid, and help protect your hearing."
+   },
+   "_detail": {
+    "text": "AirPods Pro 3 bring improvements to the world’s first end-to-end hearing health experience. Now you can take a scientifically validated Hearing Test in a broader range of background conditions. The Hearing Aid feature adds improved voice clarity, automatic Conversation Boost, and 67 percent more battery life in Transparency on a single charge. And active Hearing Protection helps prevent exposure to loud environmental noise."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Learn more",
+    "to": "https://www.apple.com/airpods-pro/hearing-health/"
+   },
+   "_items": [
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/battery_startframe__gd2rd0dmx866_large.jpg",
+      "alt": "Lightning bolt, green background"
+     },
+     "_key": "hh-battery",
+     "_name": {
+      "text": "Battery life."
+     },
+     "_summary": {
+      "text": "4 more hours for the Hearing Aid feature"
+     },
+     "_detail": {
+      "text": "Hearing Aid users now get 67 percent more battery life in Transparency on a single charge. That’s a total of up to 10 hours, making it easier than ever to use this breakthrough capability morning, noon, and night."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_health_conversation_boost__cn2jd958nnde_large.jpg",
+      "alt": "A person wearing AirPods Pro 3, laughing in conversation with another person, both holding a cup of coffee"
+     },
+     "_key": "hh-boost",
+     "_name": {
+      "text": "Automatic Conversation Boost."
+     },
+     "_detail": {
+      "text": "Now when you’re having a conversation in a busy restaurant or office, Conversation Boost will automatically amplify the voice of the person you’re talking to while minimizing the distracting noises around you. And with the new microphones, transducer, and amplifier, your voice will sound clearer and more natural than ever."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_health_hearing_test__dk85fxy6khci_large.jpg",
+      "alt": "Blue circular sound ripple"
+     },
+     "_key": "hh-test",
+     "_name": {
+      "text": "Hearing Test and Hearing Aid."
+     },
+     "_detail": {
+      "text": "With a better fit and increased noise cancellation, you can now take a scientifically validated Hearing Test in a broader range of everyday background conditions — from the comfort of your home. And if you have mild to moderate hearing loss, you can use the improved Hearing Aid feature wherever you go."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_health_hearing_protection__d4fo4gj3b9ci_large.jpg",
+      "alt": "Blue bars indicating levels of Hearing Protection"
+     },
+     "_key": "hh-protection",
+     "_name": {
+      "text": "Hearing Protection."
+     },
+     "_detail": {
+      "text": "In addition to passive noise reduction from the ear tips, active Hearing Protection helps prevent exposure to loud environmental noise. Machine learning on the H2 chip reduces noise 48,000 times per second while maintaining natural and vibrant sound for whatever you’re listening to."
+     }
+    }
+   ]
+  },
+  {
+   "_image": {
+    "image": "https://www.apple.com/v/airpods-pro/t/images/overview/magical/magical_experience_live_translation__gjk070yu926a_large.jpg",
+    "alt": "AirPods Pro 3, earbud with silicone tip, Live Translation changes Chinese characters reading ‘hello’ to English on iPhone screen"
+   },
+   "_intent": "体验章节：Siri AI、播报通知与音频共享三项日常体验；展示大图是章节级 showcase（源页面通栏展示框），不属于 New Siri AI 卡片",
+   "_key": "experience",
+   "_title": {
+    "text": "Experience"
+   },
+   "_subtitle": {
+    "text": "Magic to your ears."
+   },
+   "_detail": {
+    "text": "AirPods Pro 3 are packed with features that make even the simplest moments seem extraordinary. From the all-new Live Translation feature to superconvenient camera control, there’s so much more to AirPods than meets the ear."
+   },
+   "_items": [
+    {
+     "_key": "exp-siri-ai",
+     "_name": {
+      "text": "New Siri AI."
+     },
+     "_detail": {
+      "text": "Get more done every day with hands-free access to an even more powerful and personalized AI assistant on your iPhone. Ask open-ended questions, brainstorm, and have full conversations. Available in select languages and regions. For more information, see Feature Availability."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/magical/icon_notifications__dz0hl8mc152e_large.png",
+      "alt": "Notifications bell icon"
+     },
+     "_key": "exp-announce",
+     "_name": {
+      "text": "Announce Notifications."
+     },
+     "_detail": {
+      "text": "Siri can read out messages and alerts as they arrive, and you can respond with just your voice. With Siri Interactions, you can even use intuitive head gestures — like a nod or a shake — to answer or ignore calls and texts."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/magical/icon_audio_sharing__bk0bzzrjku1y_large.png",
+      "alt": "Audio Sharing icon"
+     },
+     "_key": "exp-sharing",
+     "_name": {
+      "text": "Audio Sharing."
+     },
+     "_detail": {
+      "text": "Easily share what you’re watching or listening to with a friend. Just bring their AirPods near the iPhone, iPad, or Apple TV you’re connected to. And voilà."
+     }
+    }
+   ]
+  },
+  {
+   "_image": {
+    "image": "https://www.apple.com/v/airpods-pro/t/images/overview/battery/case__b87ou7jna9de_large.png",
+    "alt": "AirPods Pro 3 and MagSafe Charging Case (USB-C), rounded case exterior, LED power indicator, case lid open, white background"
+   },
+   "_intent": "续航章节：两条续航量化对比、Find My 精确查找与 1.5x 增距",
+   "_key": "battery",
+   "_title": {
+    "text": "All-day battery life"
+   },
+   "_subtitle": {
+    "text": "They’re workin’ 9 to 5."
+   },
+   "_detail": {
+    "text": "The MagSafe Charging Case is full of helpful features — like a built-in speaker and more powerful Precision Finding — that let you keep track of your AirPods Pro 3 no matter where they are. And now just a single charge will take you all the way through the workday. Plus overtime."
+   },
+   "_items": [
+    {
+     "_key": "batt-8hrs",
+     "_name": {
+      "text": "Up to 8 hrs of battery life with Active Noise Cancellation on a single charge"
+     },
+     "_detail": {
+      "text": "2 hours more than AirPods Pro 2"
+     }
+    },
+    {
+     "_key": "batt-10hrs",
+     "_name": {
+      "text": "Up to 10 hrs of battery life in Transparency with the Hearing Aid feature on a single charge"
+     },
+     "_detail": {
+      "text": "4 hours more than AirPods Pro 2"
+     }
+    }
+   ],
+   "findmy": {
+    "_intent": "精确查找：新 UWB 芯片把查找距离提升 1.5 倍，充电盒内置扬声器",
+    "_title": {
+     "text": "Find My with Precision Finding."
+    },
+    "_detail": {
+     "text": "Easily locate the exact place you left your AirPods Pro. A new generation of Ultra Wideband technology in the Charging Case increases the distance for Precision Finding by 1.5x. And with a built-in speaker in the case, you’ll be able to find your AirPods no matter how deep in the couch cushions they are."
+    },
+    "_summary": {
+     "text": "1.5x increase with AirPods Pro 3"
+    }
+   }
+  },
+  {
+   "_intent": "购买权益章节：五项官方购买服务与配件商店入口",
+   "_key": "buy",
+   "_title": {
+    "text": "Why Apple is the best place to buy AirPods."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Shop AirPods",
+    "to": "https://www.apple.com/us/shop/goto/airpods/accessories"
+   },
+   "_items": [
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/incentive/watch_personalize_short__e504hsifgd2e_large.jpg",
+      "alt": "Custom-engraved Apple products: MagSafe Charging Case (USB-C) engraving on front reads: rock-on emoji"
+     },
+     "_key": "buy-engraving",
+     "_name": {
+      "text": "Free Engraving"
+     },
+     "_detail": {
+      "text": "Personalize your new AirPods. Make them yours with a mix of emoji, names, initials, and numbers."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/incentive/delivery_pickup_short__cbpkg4axy99e_large.jpg",
+      "alt": "A carrier bag with the Apple logo on the front center"
+     },
+     "_key": "buy-delivery",
+     "_name": {
+      "text": "Delivery and Pickup"
+     },
+     "_detail": {
+      "text": "Get your order quickly and easily. Choose two-hour delivery from an Apple Store, free delivery, or easy pickup options."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/incentive/apple_card_short__frvlox42m6ie_large.jpg",
+      "alt": "Apple Card"
+     },
+     "_key": "buy-financing",
+     "_name": {
+      "text": "Financing"
+     },
+     "_detail": {
+      "text": "Pay over time, interest-free. When you choose to check out at Apple with Apple Card Monthly Installments."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/incentive/iphone_specialist_short__eved87stcp26_large.jpg",
+      "alt": "A person wearing a t-shirt with Apple logo printed on the top right"
+     },
+     "_key": "buy-video-shopping",
+     "_name": {
+      "text": "Guided Video Shopping"
+     },
+     "_detail": {
+      "text": "Shop live with a Specialist. Let us help you find what you need and answer all of your questions, one on one over video."
+     }
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/incentive/apple_store_app_short__fe85q9auybu6_large.jpg",
+      "alt": "Apple Store app"
+     },
+     "_key": "buy-store-app",
+     "_name": {
+      "text": "Apple Store App"
+     },
+     "_detail": {
+      "text": "Explore a shopping experience designed around you. Use the app to get a more personal way to shop."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "机型对比：AirPods Pro 3（当前浏览）与 AirPods 5 两张在售机型的定位、规格速览与购买入口",
+   "_key": "compare",
+   "_title": {
+    "text": "Keep exploring AirPods."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Explore all AirPods",
+    "to": "https://www.apple.com/airpods/"
+   },
+   "_items": [
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/explore_airpods_pro_3_open__e4dxk8zpalkm_large.jpg",
+      "alt": "AirPods Pro 3"
+     },
+     "_key": "cmp-pro-3",
+     "_name": {
+      "text": "AirPods Pro 3"
+     },
+     "_summary": {
+      "text": "The world’s best in-ear Active Noise Cancellation, with heart rate sensing during workouts."
+     },
+     "_tag": {
+      "text": "Currently viewing"
+     },
+     "_rel": {
+      "compare": true
+     },
+     "_action": {
+      "verb": "buy",
+      "label": "Buy",
+      "to": "https://www.apple.com/us/shop/goto/buy_airpods/airpods_pro_3"
+     },
+     "_items": [
+      {
+       "_key": "cmp3-anc",
+       "_name": {
+        "text": "Up to 3x more Active Noise Cancellation compared with AirPods 5"
+       }
+      },
+      {
+       "_key": "cmp3-adaptive",
+       "_name": {
+        "text": "Adaptive Audio and Transparency"
+       }
+      },
+      {
+       "_key": "cmp3-spatial",
+       "_name": {
+        "text": "Personalized Spatial Audio with dynamic head tracking"
+       }
+      },
+      {
+       "_key": "cmp3-heart-rate",
+       "_name": {
+        "text": "Heart rate sensing during workouts"
+       }
+      },
+      {
+       "_key": "cmp3-hearing",
+       "_name": {
+        "text": "Hearing Test, Hearing Aid, and Hearing Protection features"
+       }
+      },
+      {
+       "_key": "cmp3-translation",
+       "_name": {
+        "text": "Live Translation and Siri AI"
+       }
+      },
+      {
+       "_key": "cmp3-battery",
+       "_name": {
+        "text": "8 hrs"
+       },
+       "_detail": {
+        "text": "Up to 8 hours of battery life on one charge with Active Noise Cancellation, and up to 10 hours in Transparency using the Hearing Aid feature"
+       }
+      },
+      {
+       "_key": "cmp3-siri",
+       "_name": {
+        "text": "Voice Isolation, Hey Siri, and Siri Interactions"
+       }
+      }
+     ]
+    },
+    {
+     "_image": {
+      "image": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/explore_airpods_5_wcc_open__gh79h5ud4jau_large.jpg",
+      "alt": "learn more - AirPods 5 with Wireless Charging Case"
+     },
+     "_key": "cmp-airpods-5",
+     "_name": {
+      "text": "AirPods 5"
+     },
+     "_summary": {
+      "text": "Active Noise Cancellation, volume swipe, and longer battery life."
+     },
+     "_rel": {
+      "compare": true
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more",
+      "to": "https://www.apple.com/airpods-5/"
+     },
+     "_items": [
+      {
+       "_key": "cmp5-anc",
+       "_name": {
+        "text": "Up to 1.5x more Active Noise Cancellation than AirPods 4 with Active Noise Cancellation"
+       }
+      },
+      {
+       "_key": "cmp5-adaptive",
+       "_name": {
+        "text": "Adaptive Audio and Transparency"
+       }
+      },
+      {
+       "_key": "cmp5-spatial",
+       "_name": {
+        "text": "Personalized Spatial Audio with dynamic head tracking"
+       }
+      },
+      {
+       "_key": "cmp5-heart-rate",
+       "_name": {
+        "text": "Heart rate sensing, not applicable"
+       }
+      },
+      {
+       "_key": "cmp5-hearing",
+       "_name": {
+        "text": "Hearing Aid feature, not applicable"
+       }
+      },
+      {
+       "_key": "cmp5-translation",
+       "_name": {
+        "text": "Live Translation and Siri AI"
+       }
+      },
+      {
+       "_key": "cmp5-battery",
+       "_name": {
+        "text": "5 hrs"
+       },
+       "_detail": {
+        "text": "Up to 5 hours of battery life on one charge with Active Noise Cancellation"
+       }
+      },
+      {
+       "_key": "cmp5-siri",
+       "_name": {
+        "text": "Voice Isolation, Hey Siri, and Siri Interactions"
+       }
+      }
+     ],
+     "buy": {
+      "_intent": "购买 AirPods 5",
+      "_action": {
+       "verb": "buy",
+       "label": "Buy",
+       "to": "https://www.apple.com/us/shop/goto/buy_airpods/airpods_5/with_wireless_charging_case"
+      }
+     }
+    }
+   ],
+   "all": {
+    "_intent": "完整机型对比入口",
+    "_action": {
+     "verb": "open",
+     "label": "Compare all AirPods models",
+     "to": "https://www.apple.com/airpods/compare/"
+    }
+   }
+  },
+  {
+   "_intent": "环境章节：三项量化环保事实与产品环境报告",
+   "_key": "environment",
+   "_title": {
+    "text": "AirPods Pro 3 and the environment."
+   },
+   "_action": {
+    "verb": "open",
+    "label": "Learn more in our Product Environmental Report (PDF)",
+    "to": "https://www.apple.com/environment/pdf/products/airpods/Apple_AirPods_Pro_3_PER_Sept2025.pdf"
+   },
+   "_items": [
+    {
+     "_key": "env-recycled",
+     "_name": {
+      "text": "Made with 40% recycled material by weight."
+     }
+    },
+    {
+     "_key": "env-renewable",
+     "_name": {
+      "text": "Manufactured with 40% renewable electricity."
+     }
+    },
+    {
+     "_key": "env-packaging",
+     "_name": {
+      "text": "Ships in compact packaging for 25% more units per trip."
+     }
+    }
+   ]
+  },
+  {
+   "_intent": "价值观章节：环境责任、隐私、无障碍三项品牌承诺",
+   "_key": "values",
+   "_title": {
+    "text": "Our values lead the way."
+   },
+   "_items": [
+    {
+     "_key": "value-environment",
+     "_name": {
+      "text": "A plan as innovative as our products."
+     },
+     "_detail": {
+      "text": "We’re committed to bringing net emissions to zero across our entire carbon footprint by 2030."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more about environment",
+      "to": "https://www.apple.com/environment/"
+     }
+    },
+    {
+     "_key": "value-privacy",
+     "_name": {
+      "text": "Privacy. That’s Apple."
+     },
+     "_detail": {
+      "text": "Privacy is a fundamental human right. Every product and service is designed to help keep your data safe and secure."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more about privacy",
+      "to": "https://www.apple.com/privacy/"
+     }
+    },
+    {
+     "_key": "value-accessibility",
+     "_name": {
+      "text": "Innovation that’s accessible by design."
+     },
+     "_detail": {
+      "text": "Our products and services are designed for everyone, with built-in features to help you do what you love, your way."
+     },
+     "_action": {
+      "verb": "open",
+      "label": "Learn more about accessibility",
+      "to": "https://www.apple.com/accessibility/"
+     }
+    }
+   ]
+  }
+ ]
+}

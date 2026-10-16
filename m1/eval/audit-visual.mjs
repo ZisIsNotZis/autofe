@@ -4,9 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
-const PW = '/home/z/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core';
+const PW = process.env.AUTOFE_PLAYWRIGHT_CORE || '/home/z/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core';
 const { chromium } = require(PW);
-const CHROME = process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell';
+const CHROME = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
 
 let files = process.argv.slice(2);
 if (!files.length || files[0] === '--all') {
@@ -53,7 +53,7 @@ for (const f of files) {
   const probe = await page.evaluate(() => {
     const T = (el) => (el.textContent || '').replace(/\s+/g, ' ').trim();
     const out = { fabricated: 0, emptyAnchors: 0, checkmarks: 0, emptyText: [], dups: [], durOptions: [], frag: [], imgVar: [], broken: [], unitStack: [], titleDup: [] };
-    out.fabricated = document.querySelectorAll('button.action').length;
+    out.fabricated = document.querySelectorAll('button.action:not(.search-submit)').length;
     // T-101/T-104: controls the source never had
     out.emptyAnchors = [...document.querySelectorAll('a')].filter((a) => !T(a) && !a.querySelector('img')).length;
     out.checkmarks = (document.body.textContent.match(/✓/g) || []).length;
@@ -89,7 +89,7 @@ for (const f of files) {
     for (const img of document.querySelectorAll('img')) if (!img.complete || !img.naturalWidth) out.broken.push((img.getAttribute('src') || '').slice(-40));
     for (const el of document.querySelectorAll('.chip-item,.choice,.defrow,.item,li,a,button,.promo,.prose p')) {
       const t = T(el);
-      if (!t && !el.querySelector('img,input,button,a')) out.emptyText.push(el.tagName + '.' + (el.className || '').split(' ')[0]);
+      if (!t && !el.querySelector('img,svg,input,button,a')) out.emptyText.push(el.tagName + '.' + (el.className || '').split(' ')[0]);
     }
     // F-037 unit stacking: a number followed by TWO adjacent unit tokens (never legitimate).
     const UNIT = '(?:条评价|人好评|万人好评|条|次|项|个|件|分|元|星|人|万|张|间|位|年|月|日|天|公里|千米|米|厘米|小时|分钟|秒|%)';
@@ -115,6 +115,11 @@ for (const f of files) {
     (cap && captureCount(cap, t) >= 2 ? sourceTrue : introduced).push(d);
   }
   const optionsIntroduced = probe.durOptions.filter((t) => !(cap && captureCount(cap, t) >= 2));
+  // declared-inherent flags (m1/eval/audit-visual-allow.json): page+flag with a written reason;
+  // a declared flag is downgraded to (info) — visible in the board, never silently waived.
+  const allowDoc = fs.existsSync('m1/eval/audit-visual-allow.json') ? JSON.parse(fs.readFileSync('m1/eval/audit-visual-allow.json','utf8')) : { entries: [] };
+  const pageSlug = path.basename(f, '.html');
+  const allowed = (flag) => allowDoc.entries.some((e) => e.page === pageSlug && flag.startsWith(e.flag) && e.reason?.trim());
   const optionsSourceTrue = probe.durOptions.filter((t) => cap && captureCount(cap, t) >= 2);
   const titleIntroduced = probe.titleDup.filter((t) => !(cap && captureCount(cap, t) >= 2));
   const titleSourceTrue = probe.titleDup.filter((t) => cap && captureCount(cap, t) >= 2);
@@ -133,8 +138,8 @@ for (const f of files) {
     probe.sourceTrue.length && 'dup-source-true(info):' + probe.sourceTrue.length,
     optionsIntroduced.length && 'dup-options:' + optionsIntroduced.length,
     optionsSourceTrue.length && 'dup-options-source-true(info):' + optionsSourceTrue.length,
-    probe.frag.length && 'form-fragmentation:' + probe.frag.length,
-    probe.imgVar.length && 'img-variance:' + probe.imgVar.join(','),
+    probe.frag.length && (allowed('form-fragmentation') ? 'form-fragmentation(info):' : 'form-fragmentation:') + probe.frag.length,
+    probe.imgVar.length && (allowed('img-variance') ? 'img-variance(info):' : 'img-variance:') + probe.imgVar.join(','),
     probe.broken.length && 'broken-img:' + probe.broken.length,
   ].filter(Boolean);
   rows.push({ page: path.basename(f), flags, detail: probe });

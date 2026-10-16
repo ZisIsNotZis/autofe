@@ -258,6 +258,14 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .group.g-footer .ctl{border-color:var(--line);color:var(--ink);background:var(--surface);padding:4px 10px}
 .group.g-footer a.ctl:hover{background:var(--soft)}
 .group.g-footer .defrow{border-bottom-color:var(--line)}
+.group.g-footer .controls{gap:6px 18px;margin:4px 0}
+.group.g-footer .ctl{border:0;background:transparent;padding:0;border-radius:0;font-size:13px;font-weight:400}
+.group.g-footer .g-notices>.node>.stack{display:block}
+.group.g-footer .g-notices>.node>.stack>.block{margin:0;padding:0;border:0}
+.group.g-footer .cards{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0}
+.group.g-footer .cards>.item{padding:0;border:0;background:transparent}
+.group.g-footer .cards .ctl{border:0;background:transparent;padding:2px 0;border-radius:0;font-size:13px}
+.group.g-footer .fact{font-size:13px;line-height:1.7;margin:4px 0}
 /* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
 .reading-page{--reading-width:800px;max-width:var(--reading-width);margin-inline:auto}
 .reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
@@ -309,6 +317,35 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .ordered-media-rows .band .strip{margin:0;width:auto}
 .ordered-media-rows .band img{max-width:120px;max-height:120px;width:auto;height:auto}
 @media(max-width:600px){.ordered-media-rows>.stack>.block>.node{grid-template-columns:minmax(0,1fr) 96px;gap:4px 12px}.ordered-media-rows .band img{max-width:96px;max-height:96px}}
+.instruction-media>.defrow{display:block;margin:16px 0}
+.instruction-media img{max-width:100%;max-height:none;width:auto;height:auto}
+.resource-view{margin:8px 0;font-size:14px;max-width:100%;text-align:left}
+.resource-view>summary{cursor:pointer;color:var(--accent);text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+.native-media{max-width:100%;max-height:70vh;overflow:auto;border:1px solid var(--line);background:var(--surface)}
+.native-media img{max-width:none!important;max-height:none!important;width:auto!important;height:auto!important;margin:0!important;border-radius:0}
+.resource-view:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+/* Metadata-bearing editorial/search records are local records, never heroes. */
+.record-member{display:grid!important;grid-template-columns:minmax(0,1fr) 216px;gap:6px 24px;max-width:100%;margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
+.record-member>*{grid-column:1;margin:0!important;min-width:0}
+.record-member>.band,.record-member>.fact:has(img){grid-column:2;grid-row:1 / span 6;align-self:start}
+.record-member img{max-width:216px;max-height:172px;width:auto;height:auto;margin:0}
+.record-member .strip{width:auto;margin:0}
+.record-member>.title{text-align:left;font-size:1.15em}
+.record-member>.fact{max-width:74ch}
+.cards:has(>.item>.record-member){display:block}
+.cards:has(>.item>.record-member)>.item{border:0;padding:0;background:transparent;margin:0}
+.stack:has(>.block>.record-member){display:block}
+.stack:has(>.block>.record-member)>.block{padding:0;margin:0}
+.node.identity-frame{max-width:74ch;margin-inline:0;display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px 24px;align-items:start}
+.identity-frame>*{grid-column:2;margin:0}
+.identity-frame>.ctl,.identity-frame>.action,.identity-frame>.action-plain{justify-self:start}
+.identity-frame>.band{grid-column:1;grid-row:1 / span 4;margin:0}
+.identity-frame .strip{width:auto;margin:0}
+.identity-frame img{max-width:100px;max-height:100px;width:auto;height:auto}
+.node.w-bleed.banner:not(.banner-integrated)>.action,.node.w-bleed.banner:not(.banner-integrated)>.ctl,.node.w-bleed.banner:not(.banner-integrated)>.action-plain{margin-left:max(0px,calc((100% - 1232px)/2))}
+.search-submit{margin:0;display:inline-flex;align-items:center;padding:10px 14px}
+.search-submit:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:600px){.record-member{grid-template-columns:minmax(0,1fr);gap:8px}.record-member>.band,.record-member>.fact:has(img){grid-column:1;grid-row:auto}.record-member img{max-width:216px}.identity-frame{gap:8px 16px}}
 /* Whole-page alignment: local lists, facts and cards inherit the same page frame. */
 .catalog-page .node.w-prose,.catalog-page .node.w-narrow,.catalog-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
 .catalog-page>.stack>.block{margin:14px 0}

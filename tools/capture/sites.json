@@ -130,7 +130,9 @@
         {
           "slug": "iphone-16",
           "url": "https://www.apple.com/iphone-16/",
-          "archetype": "product-detail"
+          "archetype": "product-detail",
+          "skip": true,
+          "notes": " [2026-10-16 D-63d: /iphone-16/ now 301-> shop goto URL that returns 503 persistently; retired, replaced by airpods-pro.]"
         },
         {
           "slug": "ipad-air",
@@ -140,6 +142,11 @@
         {
           "slug": "macbook-air",
           "url": "https://www.apple.com/macbook-air/",
+          "archetype": "product-detail"
+        },
+        {
+          "slug": "airpods-pro",
+          "url": "https://www.apple.com/airpods-pro/",
           "archetype": "product-detail"
         }
       ]
@@ -455,6 +462,11 @@
           "url": "https://sspai.com/u/jtc092al",
           "archetype": "profile/account",
           "note": "author profile"
+        },
+        {
+          "slug": "login",
+          "url": "https://sspai.com/login",
+          "archetype": "form/checkout/settings"
         }
       ]
     },
@@ -472,12 +484,24 @@
         {
           "slug": "home",
           "url": "https://36kr.com/",
-          "archetype": "landing/home"
+          "archetype": "landing/home",
+          "interactions": [
+            {
+              "waitMs": 12000
+            }
+          ],
+          "notes": ""
         },
         {
           "slug": "information-technology",
           "url": "https://36kr.com/information/technology",
-          "archetype": "category/list"
+          "archetype": "category/list",
+          "interactions": [
+            {
+              "waitMs": 12000
+            }
+          ],
+          "notes": ""
         },
         {
           "slug": "search-viz",
@@ -1451,14 +1475,15 @@
       "language": "en-US/zh-CN",
       "industry": "payments-infrastructure",
       "styleTag": "clean-gradient",
-      "tier": "exemplar",
-      "justification": "The Stripe Dashboard login is the auth gate of the industry-reference payments platform (same brand as the stripe-com/stripe-docs exemplars); real identifier + password login page (round 9, fills the exemplar-layer `login` gap)",
+      "tier": "support",
+      "justification": "The Stripe Dashboard login is the auth gate of the industry-reference payments platform (same brand as the stripe-com/stripe-docs exemplars); real identifier + password login page (round 9, fills the exemplar-layer `login` gap) [2026-10-16 D-63c: accounts.stripe.com now serves an anti-bot shell (197 chars after 15s) to the deterministic client; page retired from the exemplar gate, replaced by sspai-com/login.]",
       "pages": [
         {
           "slug": "login",
           "url": "https://dashboard.stripe.com/login",
           "archetype": "form/checkout/settings",
-          "note": "round 9: public login form, no credentials submitted; embeds a third-party identity frame (flagged cross_origin_frame, frame content not persisted)"
+          "note": "round 9: public login form, no credentials submitted; embeds a third-party identity frame (flagged cross_origin_frame, frame content not persisted)",
+          "skip": true
         }
       ]
     },
