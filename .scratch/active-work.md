@@ -130,3 +130,5 @@
 - **白名单整合（全部书面理由 + 轮号）**：capture-integrity-allow 65 条、link-coverage-allow 72、quote-allow 清 2 条过期、icon-provenance u-jtc092al 绑定退役（标签已按 F-025 删除）、link-owner-witnesses 重建（6 条随页退役、其余重绑新采语料地址/hash/文本）。
 - **资产**：`62-*` 资产改为入库（.gitignore 撤销该行；再克隆不可再生，29+31 张本地化）；3 条不可再生引用以源站逐字 URL 承载（mi×2 offscreen、stripe hero）。
 - **未竟/移交**：huawei 搜索页图标钮为引擎自主决策（axis:958 + render:620），audit 已对齐；「product 布局契约」现无语料页行使（Apple 页面去价格，合成 fixture 保可证伪）——archetype 覆盖主张变化待用户知悉；轮 62 链接闭环的独立验收与 42×4 体验复核仍未做（需在 40 页新基线上重排）。
+
+- **SSOT 修正（2026-10-16）**：交付承诺/验收判据/唯一用户里程碑现唯一住在 `docs/product.md`（product 层）；本文件与各 ticket 只引用，不再持有该事实。
