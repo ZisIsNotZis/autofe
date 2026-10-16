@@ -158,7 +158,7 @@ for (const r of scale) {
 }
 console.log(`\n链接对照: 源站锚点 ${anchors}（有目标 ${withTarget} / 源站本身无目标 ${noTarget}）| 模型复现的锚点事实 ${facts}｜已有目标 ${linked} | 未声明差额 ${allFindings.length} | 白名单声明 ${declared}（共 ${allow.entries.length} 条）`);
 if (allFindings.length) { console.log('未声明差额清单:'); for (const f of allFindings) console.log(`   ✗ ${f}`); }
-else console.log('未声明差额清单: 无（42 页的锚点事实全部有目标或有书面理由）');
+else console.log(`未声明差额清单: 无（${scale.length} 页的锚点事实全部有目标或有书面理由）`);
 
 console.log(`\n链接覆盖自测(第13道): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);
 process.exit(bad ? 1 : 0);

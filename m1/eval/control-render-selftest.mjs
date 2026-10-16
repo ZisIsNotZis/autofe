@@ -147,7 +147,7 @@ for (const r of scale) {
 }
 console.log(`\n控件对照: 应渲染 _expose 控件 ${expectedTotal} | HTML 命中 ${foundTotal} | 单项降级为事实(非控件) ${downgradedTotal} | state(不画控件) ${stateTotal}`);
 if (allMism.length) { console.log('不一致清单:'); for (const m of allMism) console.log(`   ✗ ${m}`); }
-else console.log(`不一致清单: 无（42 页全部一致）`);
+else console.log(`不一致清单: 无（${scale.length} 页全部一致）`);
 
 console.log(`\n控件渲染自测(第12道): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);
 process.exit(bad ? 1 : 0);

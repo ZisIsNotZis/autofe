@@ -22,6 +22,6 @@
 ## 4. 当前事实（2026-10-16，轮 63 后）
 
 - 语料基线 **40 页**（原 42 页：36kr 首页/科技频道、apple iphone-16、stripe-dashboard login 因反爬/503 不可再采而退役，依据 `m1/failures.md` F-100；新增 apple airpods-pro、sspai login）。
-- 门禁现状：`node m1/eval/pipeline.mjs --shots` 全绿（渲染/HTML 保真/Markdown 保真 40/40，46 模型校验，17 道门禁+自测，视觉自查 40/40，证据哈希一致）；独立验收于新基线上**尚未完成**（进行中）。
+- 门禁现状：`node m1/eval/pipeline.mjs --shots` 全绿（渲染/HTML 保真/Markdown 保真 40/40，46 模型校验，17 道门禁+自测，视觉自查 40/40，证据哈希一致）；独立验收已于 2026-10-16 在新基线上完成：**ACCEPT（4/4 判据）**，报告 `.scratch/63-recapture-recuration/independent-acceptance.md`。
 - **覆盖变化（用户须知，待确认接受与否）**：「product」布局契约现无真实语料页行使（Apple 产品页已去价格；以合成 fixture 保持可证伪）。
 - 里程碑剩余差距：① 新基线上的独立验收；② Apple/Taobao 身份修复是否仍适用于轮换后的语料页（Taobao 首页已重策展、Apple 落地页在册）——需用户裁定适用范围；③ 聚焦画廊（人审版）成型。
