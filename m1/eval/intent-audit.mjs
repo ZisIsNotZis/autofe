@@ -312,8 +312,10 @@ export function emittedClasses(html) {
 export function compositionViolations(pages) {
   const out = [];
   for (const p of pages) {
-    if (p.kind === 'default') {
-      out.push({ k: p.k, class: 'undetermined', kind: p.kind, detail: '页面原型未解析（回落 default）' });
+    // `default` is not a legal result (composition.md §2): the derivation returns `undefined`
+    // for a page it cannot name, and the old `default` sentinel is reported the same way.
+    if (!p.kind || p.kind === 'default') {
+      out.push({ k: p.k, class: 'undetermined', kind: p.kind, detail: p.kind === 'default' ? '页面原型未解析（回落 default）' : '页面原型未解析（推导无原型）' });
       continue;
     }
     const expected = p.kind === 'reading' ? 'reading-page' : `${p.kind}-page`;

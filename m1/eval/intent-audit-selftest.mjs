@@ -159,8 +159,15 @@ check('正样本: 真实 CSS 里 pageKindClasses 能落到真实渲染上（不�
 const realEmitCount = {};
 for (const p of realPages) for (const c of p.emitted) realEmitCount[c] = (realEmitCount[c] ?? 0) + 1;
 const realDead = deadSelectors(realRules, realEmitCount);
-check('发现非空: 真实 CSS 的死选择器检测到了 .product-page（§6 已知缺陷）',
-  realDead.some((d) => d.classes.includes('product-page')), JSON.stringify(realDead.slice(0, 5)));
+// 轮 63：§6 的「页种 CSS 写了不生效」已被构图推导消灭 —— 引擎 CSS 里的每个 `*-page` 类都至少被
+// 一页打出（以前 `.product-page` 0 命中）。反向的「检测器没空转」证据改用真实语料里仍然存在的
+// 非页种类死类名。
+const liveKindClasses = kindClasses.filter((c) => realEmitCount[c] > 0);
+check('发现非空: 每个页种类类名都至少被一页打出（§6 页种 CSS 不生效的缺陷已消灭）',
+  liveKindClasses.length === kindClasses.length,
+  `dead=${JSON.stringify(kindClasses.filter((c) => !(realEmitCount[c] > 0)))}`);
+check('发现非空: 真实 CSS 的死选择器检测仍有命中（检测器没空转）',
+  realDead.length > 0, JSON.stringify(realDead.slice(0, 5)));
 
 // ----------------------------------------------------------- d) 运行时覆盖
 const require = createRequire(import.meta.url);

@@ -119,17 +119,18 @@ check('营销图片与文本同 surface（元数据驱动）', css.includes('.ba
 
 // Whole-page frame classification is structural, not a per-site override.
 const modelAt = (site, slug) => JSON.parse(fs.readFileSync(path.join(root, 'm1/curated', site, slug + '.json'), 'utf8'));
-// 轮63：Apple 产品页（ipad-air）在新 capture 中不再有根级价格 ⇒ pageLayoutOf 归 'default'；
-// 'product' 分支改用合成 fixture 保持可证伪（F-100 语料漂移，覆盖率主张见 active-work.md）。
+// 轮63：合成 fixture（无 `_scope`）走结构兜底分支，真实的商品/目录页走它们声明的角色。
 check('目录/商品/营销/详情页有页面级布局契约',
-  pageLayoutOf(modelAt('taobao-com','home')).kind === 'catalog'
+  pageLayoutOf(modelAt('huawei-cn','consumer-phones')).kind === 'catalog'
   && pageLayoutOf({_image: img('https://x.example/p.jpg'), _price: {money: 899, currency: 'USD'}, _title: {text: 'P'}}).kind === 'product'
   && pageLayoutOf(modelAt('apple-com','home')).kind === 'marketing'
   && pageLayoutOf(modelAt('airbnb-com','room-28871')).kind === 'detail');
-check('已认可的阅读/净化器/B站布局不被新契约误伤',
+// 轮 63（S1b-ii）：页面原型由声明的 `_scope`/`_subject` 与业务结构推导，`default` 不再是合法结果 ——
+// 这三页以前回落 `default`，现在各自落到它声明的角色上。
+check('已认可的阅读/商品/入口页布局不被新契约误伤',
   pageLayoutOf(modelAt('sspai-com','post-114716')).kind === 'reading'
-  && pageLayoutOf(modelAt('mi-com','product-detail-mi15')).kind === 'default'
-  && pageLayoutOf(modelAt('bilibili-com','home')).kind === 'default');
+  && pageLayoutOf(modelAt('mi-com','product-detail-mi15')).kind === 'product'
+  && pageLayoutOf(modelAt('bilibili-com','home')).kind === 'marketing');
 const detailFixture = { _title:{text:'详情'}, gallery:{_items:[1,2,3].map(n=>({_image:img('https://x.example/'+n)}))},
   summary:{_detail:{text:'主体信息'}}, request:{_composite:'form',_summary:{text:'任务面板'}}, reviews:{_text:{text:'评价'}} };
 const detailPage = bodyOf(render(detailFixture));

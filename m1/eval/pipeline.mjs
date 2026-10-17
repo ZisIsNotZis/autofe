@@ -275,6 +275,11 @@ if (!gAF.ok) console.log(gAF.out);
 const gLO = gate('node m1/eval/layout-selftest.mjs');
 console.log(`[pipeline] 布局系统自测(轮58 · 第17道): ${gLO.ok ? '通过' : '失败'}`);
 if (!gLO.ok) console.log(gLO.out);
+// 页面构图推导必须完备：40 页各自落到其 archetype 允许的闭式原型上，且含混页不得编造原型
+// （composition.md §2/§5-1；负样本证明树会诚实返回 undefined）。
+const gCOMP = gate('node m1/eval/composition-selftest.mjs');
+console.log(`[pipeline] 构图推导自测(轮63): ${gCOMP.ok ? '通过' : '失败'}`);
+if (!gCOMP.ok) console.log(gCOMP.out);
 // Actual wide/mobile geometry + option-local actions; no static fallback or experience verdict.
 const gPF = gate('node m1/eval/page-frame-selftest.mjs');
 console.log(`[pipeline] 页面框架/动作可执行自测: ${gPF.ok ? '通过' : '失败'}`);
@@ -282,7 +287,7 @@ if (!gPF.ok) console.log(gPF.out);
 const gDR = gate('node m1/eval/diagnosed-repair-selftest.mjs');
 console.log(`[pipeline] 来源/关联修复可证伪自测: ${gDR.ok ? '通过' : '失败'}`);
 if (!gDR.ok) console.log(gDR.out);
-const gatesFailed = !gOWN.ok || !gWIT.ok || !gDR.ok || !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok || !gLO.ok || !gPF.ok;
+const gatesFailed = !gOWN.ok || !gWIT.ok || !gDR.ok || !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok || !gLO.ok || !gPF.ok || !gCOMP.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';

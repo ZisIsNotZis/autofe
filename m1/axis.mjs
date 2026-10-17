@@ -975,50 +975,137 @@ export function nodePlan(node, ctx = {}) {
   };
 }
 
+// ==== page composition (docs/m1/composition.md §1.1, §2) ====================
+// A page resolves to exactly one prototype from a CLOSED set, decided by two kinds of
+// evidence that are NOT interchangeable:
+//   • a page-level DECLARATION — the closed semantics keys `_scope`/`_subject` (§1.1) and the
+//     composites that name the page's own job (a login gate, a search bound to its results,
+//     a data table at the page's own level);
+//   • an incidental MEASURE — how many long paragraphs, prices or banners a page happens to
+//     hold. A measure decides only a page that declares nothing about its role.
+// The order below is declarations first, measures last, because a measure that overrides a
+// declaration is the tree inventing an archetype: the S1b analysis measured prose volume
+// putting 4 product pages into the reading bucket (`.scratch/63-recapture-recuration/
+// composition-derivation-analysis.md` §2).
+//
+// `undefined` (never `default`) is the honest answer for a page the tree cannot name: the
+// intent gate reports 未定构图 instead of silently laying the page out as a plain document.
+export const PAGE_KINDS = ['authentication', 'search', 'profile', 'table', 'reading', 'product', 'detail', 'catalog', 'marketing'];
+// Long text is what a reader reads. The old measure counted `_text` alone, so a page that
+// keeps its prose in `_quote`/`_summary`/`_detail` was declared "not prose" (composition.md §2).
+const LONG_TEXT_KEYS = ['_text', '_quote', '_summary', '_detail'];
+const LONG_TEXT_CHARS = 80;   // a label or a spec cell is shorter; a sentence of prose is not
+const READING_MEASURE = 8;    // sustained: one long note is not a story the page is built around
+// `_price` / a commerce verb in SUBJECT position is the page offering something itself
+// (m1/vocab-domain.json; `submit` is a commitment but not an offer).
+const OFFER_VERBS = new Set(['buy', 'preorder', 'add-to-cart']);
+
+// Every node of the model, collection members included.
+function eachNode(node, fn) {
+  if (Array.isArray(node)) { node.forEach((n) => eachNode(n, fn)); return; }
+  if (!node || typeof node !== 'object') return;
+  fn(node);
+  for (const c of childrenOf(node)) eachNode(c.node, fn);
+}
+
+// The page's OWN structure: its named children and `_lines` sections, never a collection
+// member — a card's price or button is the collection's content, not the page's subject.
+// A primitive member is not a subtree: `childrenOf` treats a string as indexable, so a
+// non-object child must be refused here or the walk recurses forever.
+function eachOwnNode(node, fn) {
+  if (!node || typeof node !== 'object' || Array.isArray(node)) return;
+  fn(node);
+  for (const c of childrenOf(node)) {
+    if (!c.key.startsWith('_items[') && !c.key.startsWith('_lines[')) eachOwnNode(c.node, fn);
+  }
+}
+
 // Long-form stories own one reading measure, even when their local forms differ.
 // This is a page decision, not a per-section guess or site-name exception.
 export function readingPageOf(model) {
-  let paragraphs = 0;
-  const visit = (n) => {
-    if (!n || typeof n !== 'object') return;
-    if (typeof n._text?.text === 'string' && n._text.text.length > 120) paragraphs++;
-    for (const [k,v] of Object.entries(n)) {
-      if (!k.startsWith('_') || k === '_lines' || k === '_items') {
-        if (Array.isArray(v)) v.forEach(visit); else visit(v);
-      }
+  let blocks = 0;
+  eachNode(model, (n) => {
+    for (const k of LONG_TEXT_KEYS) {
+      const text = n[k]?.text;
+      if (typeof text === 'string' && text.length > LONG_TEXT_CHARS) blocks++;
     }
+  });
+  return blocks >= READING_MEASURE;
+}
+
+// A search control bound to a result set is a search page, not a page with a search box:
+// the `results` slot of m1/composites.json `search` (a declared result collection), or a
+// recorded query value the results answer. A header search box declares neither.
+function declaresSearchResults(node) {
+  if (node._composite !== 'search') return false;
+  if (typeof node._default?.text === 'string') return true;
+  return namedChildEntries(node).some((c) => Array.isArray(c.node._items) && c.node._items.length > 0);
+}
+
+// Does the page carry a subject of its own — media, money or a transaction in subject
+// position? A page whose own level holds none is a data-table page even when tables are
+// declared (the clause that separates aws-amazon/ec2-on-demand from aliyun-com/product-ecs).
+function hasPageSubject(model) {
+  if (model._image) return true;
+  let own = false;
+  eachOwnNode(model, (n) => { if (n._price || OFFER_VERBS.has(n._action?.verb)) own = true; });
+  return own;
+}
+
+// A media wall followed by a task form is a detail page: media and the thing to do with it
+// are the page's two regions (composition.md §3). Shared by the declared `offer` subject and
+// the structural residue, so one layout decision cannot be written twice.
+function mediaTaskLayout(model) {
+  const children = namedChildEntries(model);
+  const gallery = children.findIndex((c) => c.node._items?.length >= 3 && c.node._items.every((n) => n._image));
+  const taskAt = children.findIndex((c) => c.node._composite === 'form');
+  if (gallery < 0 || taskAt < 0 || gallery > taskAt) return null;
+  return {
+    galleryKey: children[gallery].key, taskKey: children[taskAt].key,
+    mainKeys: children.slice(gallery + 1, taskAt).map((c) => c.key),
+    tailKeys: children.slice(taskAt + 1).map((c) => c.key),
   };
-  visit(model);
-  return paragraphs >= 8;
 }
 
 // Page-scale composition owns the alignment baseline; local forms must not choose
-// incompatible page widths. These profiles use model structure, never site names.
+// incompatible page widths. These profiles use the page's declared semantics and its
+// business structure, never site names and never a per-page exception.
 export function pageLayoutOf(model) {
-  if (readingPageOf(model)) return { kind: 'reading' };
   const children = namedChildEntries(model);
-  if (children.some((c) => c.node._composite === 'login')) return { kind: 'authentication' };
-  const gallery = children.find((c) => c.node._items?.length >= 3 && c.node._items.every((n) => n._image));
-  const task = children.find((c) => c.node._composite === 'form');
-  if (gallery && task && children.indexOf(gallery) < children.indexOf(task)) {
-    const taskAt = children.indexOf(task);
-    return { kind: 'detail', galleryKey: gallery.key, taskKey: task.key,
-      mainKeys: children.slice(children.indexOf(gallery) + 1, taskAt).map((c) => c.key),
-      tailKeys: children.slice(taskAt + 1).map((c) => c.key) };
-  }
-  const lines = model._lines ?? [];
-  const banners = lines.filter((n) => n._image && (n._title || n._name) && n._action && !n._price);
-  if (banners.length >= 2) return { kind: 'marketing', headingRole: model._action?.verb === 'navigate' && !model._action?.label ? 'identity' : 'page' };
-  if (model._image && model._price) return { kind: 'product' };
+  // The site's own name is the page heading only where the page IS the site (a labelless
+  // navigate action on the root is the identity link back home).
+  const headingRole = model._action?.verb === 'navigate' && !model._action?.label ? 'identity' : 'page';
+  const detail = () => {
+    const layout = mediaTaskLayout(model);
+    return layout ? { kind: 'detail', rule: 'offer-with-media-and-task', ...layout } : { kind: 'product', rule: 'offer-subject' };
+  };
+
+  // ---- declarations --------------------------------------------------------
+  if (children.some((c) => c.node._composite === 'login')) return { kind: 'authentication', rule: 'login-gate' };
+  if (model._scope === 'form') return { kind: 'authentication', rule: 'scope:form' };
+  if (children.some((c) => declaresSearchResults(c.node))) return { kind: 'search', rule: 'search-results-binding' };
+  if (model._scope === 'query') return { kind: 'search', rule: 'scope:query' };
+  if (model._scope === 'account' || model._subject === 'account') return { kind: 'profile', rule: 'subject:account' };
+  if (model._subject === 'dataset') return { kind: 'table', rule: 'subject:dataset' };
+  if (children.some((c) => c.node._composite === 'table') && !hasPageSubject(model)) return { kind: 'table', rule: 'page-level-table' };
+  if (model._scope === 'document' || model._subject === 'document') return { kind: 'reading', rule: 'subject:document' };
+  if (model._subject === 'offer') return detail();
+  if (model._scope === 'category') return { kind: 'catalog', rule: 'scope:category' };
+  if (model._scope === 'entry') return { kind: 'marketing', rule: 'scope:entry', headingRole };
+
+  // ---- measures (a page that declared no role of its own) ------------------
+  if (readingPageOf(model)) return { kind: 'reading', rule: 'reading-measure' };
+  const layout = mediaTaskLayout(model);
+  if (layout) return { kind: 'detail', rule: 'media-and-task', ...layout };
+  if (hasPageSubject(model)) return { kind: 'product', rule: 'subject-positioned-offer' };
+  const banners = (model._lines ?? []).filter((n) => n._image && (n._title || n._name) && n._action && !n._price);
+  if (banners.length >= 2) return { kind: 'marketing', rule: 'banner-sequence', headingRole };
   let prices = 0;
-  const visit = (n) => { if (!n || typeof n !== 'object') return; if (n._price) prices++;
-    for (const c of namedChildEntries(n)) visit(c.node);
-    for (const k of ['_items', '_lines']) (n[k] ?? []).forEach(visit); };
-  visit(model);
-  const menus = lines.filter((n) => n._items?.length >= 2 && n._items.every((it) =>
-    factsOf(it).every((f) => ['_name','_title','_text'].includes(f.key)) && namedChildEntries(it).length === 0));
-  const kind = prices >= 6 && menus.length >= 3 ? 'catalog' : 'default';
-  return { kind, headingRole: kind === 'catalog' && model._action?.verb === 'navigate' && !model._action?.label ? 'identity' : 'page' };
+  eachNode(model, (n) => { if (n._price) prices++; });
+  const menus = (model._lines ?? []).filter((n) => n._items?.length >= 2 && n._items.every((it) =>
+    factsOf(it).every((f) => ['_name', '_title', '_text'].includes(f.key)) && namedChildEntries(it).length === 0));
+  if (prices >= 6 && menus.length >= 3) return { kind: 'catalog', rule: 'priced-card-grid', headingRole };
+  return { kind: undefined, rule: 'undetermined' };
 }
 
 // ---- model-wide `key:` → label index (target-neutral) ----------------------

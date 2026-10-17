@@ -36,7 +36,7 @@ import {
   qualifierPlacement, quantityLabel,
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
   nodePlan, itemActionPlan, controlItemPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
-  rankedSequence, hasValue, tableRowLabel, tableCellLinks, mediaFirstOf, readingPageOf, pageLayoutOf,
+  rankedSequence, hasValue, tableRowLabel, tableCellLinks, mediaFirstOf, pageLayoutOf,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -693,8 +693,12 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   // 轮 58（L-6）条目内聚：图与标题永不分家（同一 article 内）；媒体优先成员（视频/卡片条目，
   // 轴层 mediaFirst ⇒ .media-first）由呈现层把图排到题上方（flex order，不拆 DOM）。footer 组
   // 总是渲染在一切之后（L-2 钉扎）。
-  if (depth === 0 && ctx.reading) cls.push('reading-page');
-  if (depth === 0 && !['default', 'reading'].includes(ctx.pageLayout.kind)) cls.push(`${ctx.pageLayout.kind}-page`);
+  // The page-level class IS the resolved prototype (composition.md §2/§5): one class per page,
+  // `reading-page` for the reading prototype and `<kind>-page` for every other. A page the tree
+  // could not name gets no page class at all — the intent gate reports it, the layout never
+  // guesses one (no `default`, no fabricated kind).
+  const kind = ctx.pageLayout.kind;
+  if (depth === 0 && kind) cls.push(kind === 'reading' ? 'reading-page' : `${kind}-page`);
   const surface = plan.banner ? MEDIA_SURFACES[plan.facts.hero?.image] : null;
   let surfaceStyle = '';
   if (surface) {
@@ -719,8 +723,10 @@ export function render(model, context = {}, report = null) {
   const paths=new WeakMap();
   const index=(n,p='')=>{if(!n||typeof n!=='object')return;paths.set(n,p);for(const c of childrenOf(n))index(c.node,p?`${p}.${c.key}`:c.key);};index(model);
   const ctx = { values: context.values ?? {}, degradations: report ?? [], headings: new Set(), paths };
-  ctx.reading = readingPageOf(model);
   ctx.pageLayout = pageLayoutOf(model);
+  // The reading measure is a property of the resolved prototype, not a second opinion: the
+  // prose count is evidence the derivation may use, never a page frame chosen behind its back.
+  ctx.reading = ctx.pageLayout.kind === 'reading';
   const html = renderNode(model, [], false, hide, ctx, 0);
   const title = esc(model._title ? fmt(model._title) : (model._intent ?? 'surface'));
   const brand = model._brand ? fmt(model._brand) : '';
