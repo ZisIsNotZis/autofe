@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>少数派 - 高效工作，品质生活</title>
 <style>
-:root{color-scheme:light;--accent:#0078ce;--surface:#fff;--page-tint:#f6f7f9;--band:#f4f5f7;--card:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;--measure:36em;--measure-row:59ch;/* 媒体槽（S3b）：槽宽是角色声明，图在槽内等比、绝不放大。搜索结果行（3 行摘要）与记录行（标题+摘要+meta）
+:root{color-scheme:light;--accent:#da282a;--surface:#fff;--page-tint:#f6f7f9;--band:#f4f5f7;--card:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;--measure:36em;--measure-row:59ch;/* 媒体槽（S3b）：槽宽是角色声明，图在槽内等比、绝不放大。搜索结果行（3 行摘要）与记录行（标题+摘要+meta）
      共用 216px 槽；两角色的高度上限按各自文字块定：搜索结果行 216×144，记录行 216×135（不再是脱离文字块的 172px 死框）。 */--media-search:216px;--media-search-h:144px;--media-row:216px;--media-row-h:135px;--scale:1.25;--radius:12px;--radius-pill:999px;--shadow:0 1px 2px #17212b0a,0 8px 24px #17212b0d;--pad-band:56px;
   /* S3a 排印（typography.md §1/§2/§4/§6）：西文字体在前，汉字逐字符穿透到中文字体（4.2 的价值就在这个顺序）。
      本机装的 CJK 家族是 "Noto Sans CJK SC"/"Noto Serif CJK SC"，故排在通用名之后兜底，装与不装都不掉回系统宋体。 */
@@ -100,8 +100,8 @@ article{margin:12px 0}
 .chips-rows{display:block}
 .chips-rows .chip-item{display:block;background:none;border:0;border-radius:0;padding:3px 0;font-size:.95em}
 .cards .item img,.run .item img,.cards img{width:auto;max-width:100%;height:auto;display:block;border-radius:8px}
-/* Compact product media: an upper bound only, never crop or upscale source thumbnails. */
-.product-cards img{max-height:160px}
+/* S3c：非记录行的卡片媒体不再被 160px 封顶——封顶把 mi 搜索页源图 800×800 的商品卡压成 160 高，
+   卡片媒体按角色定尺（容器给宽、图等比、绝不放大，layout-axes.md §7.1），目录卡片的 4/3 媒体框自己管高度。 */
 /* S3a 动作系统：主操作 = accent 实心药丸（唯一 accent 着色处之一）；副操作 = 描边/幽灵。
    旧形态（每个品牌一个黑矩形、副操作蓝色文字）不成系统，且 accent 已按站点注入。 */
 .action-plain{display:inline-block;padding:12px 24px;border:1px solid var(--accent);border-radius:var(--radius-pill);background:var(--accent);color:#fff;font-size:.95em;font-weight:650}

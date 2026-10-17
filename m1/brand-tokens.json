@@ -1,5 +1,5 @@
 {
- "$comment": "轮 57 站点 accent token（M5 第一个 token）：从语料量出来（a 元素前景色最高频非黑非白者），由 m1/eval/brand-accent.mjs 生成。fallback:true = 量不出（无样式/全灰/样本不足），用 default。渲染器只读这份配置注入 --accent，不写死站名/色值。",
+ "$comment": "站点 accent token：由 m1/eval/brand-accent.mjs 从语料量出的**品牌 chrome** 色（logos 像素主色 > 顶栏背景色 > theme-color > 内联 CSS 变量 > 顶栏上色 > 正文链接色），每条带证据路径与信号名。fallback:true = 无任何饱和信号，用 default。渲染器只读这份配置注入 --accent，不写死站名/色值。corpus/ 下未采语料的站点保留上次量得值。",
  "default": {
   "accent": "#0b62d0"
  },
@@ -8,28 +8,28 @@
    "accent": {
     "value": "#1890ff",
     "fallback": false,
-    "evidence": "a 前景色统计：#1890ff × 225/744 个锚点；主证 corpus/36kr-com/home/nodes.json (93/225) + corpus/36kr-com/information-technology/nodes.json (54/225)"
+    "evidence": "品牌 chrome 的「顶栏元素上色」：a 的 color，证据 4 页 corpus/36kr-com/home/nodes.json；链接色 #1890ff 同相（ΔH 0°）⇒ 保留链接量得值"
    }
   },
   "_evidence": {
    "accent": {
     "value": "#0b62d0",
     "fallback": true,
-    "evidence": "回退 default：无任何非黑非白锚点色（0 个锚点全为中性色/无样式）；语料 corpus/_evidence/*/nodes.json"
+    "evidence": "回退 default：本次语料量不出（0 页 / 0 个锚点）；语料 corpus/_evidence/*"
    }
   },
   "airbnb-com": {
    "accent": {
-    "value": "#0b62d0",
-    "fallback": true,
-    "evidence": "回退 default：最接近的非中性色 #ff385c 仅 1 例（<3），不足为证；语料 corpus/airbnb-com/*/nodes.json"
+    "value": "#ff385c",
+    "fallback": false,
+    "evidence": "品牌 chrome 的「logo 像素主色」：顶栏 logo 元素 (48,32 102×32) 的像素主色 #ff385c（占该元素 25%），证据 1 页 corpus/airbnb-com/room-28871/viewport.png；无合格链接色可佐证⇒ 按品牌 chrome 取值"
    }
   },
   "aliyun-com": {
    "accent": {
-    "value": "#1677ff",
+    "value": "#fe6b04",
     "fallback": false,
-    "evidence": "a 前景色统计：#1677ff × 7/276 个锚点；主证 corpus/aliyun-com/product-ecs/nodes.json (7/7)"
+    "evidence": "品牌 chrome 的「logo 像素主色」：顶栏 logo 元素 (84,83.11 80×17.77) 的像素主色 #fe6b04（占该元素 46%），证据 1 页 corpus/aliyun-com/product-ecs/viewport.png；链接色 #1366ec 不同相（ΔH 168°）⇒ 按品牌 chrome 取值"
    }
   },
   "aliyun-help": {
@@ -71,14 +71,14 @@
    "accent": {
     "value": "#0066cc",
     "fallback": false,
-    "evidence": "a 前景色统计：#0066cc × 75/622 个锚点；主证 corpus/apple-com/macbook-air/nodes.json (27/75) + corpus/apple-com/home/nodes.json (21/75)"
+    "evidence": "品牌 chrome 的「顶栏元素上色」：a 的 backgroundColor，证据 3 页 corpus/apple-com/airpods-pro/nodes.json；链接色 #0066cc 同相（ΔH 0°）⇒ 保留链接量得值"
    }
   },
   "apple-com-cn": {
    "accent": {
     "value": "#0066cc",
     "fallback": false,
-    "evidence": "a 前景色统计：#0066cc × 23/153 个锚点；主证 corpus/apple-com-cn/iphone-17/nodes.json (23/23)"
+    "evidence": "无品牌 chrome 信号（logo 像素、顶栏背景、theme-color、内联 CSS 变量、顶栏上色 均无合格饱和值），退回链接色统计：#0066cc × 23/150 个锚点；主证 corpus/apple-com-cn/iphone-17/nodes.json"
    }
   },
   "arco-design": {
@@ -92,14 +92,14 @@
    "accent": {
     "value": "#0972d3",
     "fallback": false,
-    "evidence": "a 前景色统计：#0972d3 × 43/94 个锚点；主证 corpus/aws-amazon/ec2-on-demand/nodes.json (43/43)"
+    "evidence": "品牌 chrome 的「顶栏元素上色」：a 的 color，证据 1 页 corpus/aws-amazon/ec2-on-demand/nodes.json；链接色 #0972d3 同相（ΔH 0°）⇒ 保留链接量得值"
    }
   },
   "bilibili-com": {
    "accent": {
     "value": "#00699d",
     "fallback": false,
-    "evidence": "a 前景色统计：#00699d × 8/250 个锚点；主证 corpus/bilibili-com/video-bv1gj411x7h7/nodes.json (8/8)"
+    "evidence": "品牌 chrome 的「logo 像素主色」：顶栏 logo 元素 (24,18.28 60×27.42) 的像素主色 #00aeec（占该元素 43%），证据 2 页 corpus/bilibili-com/read-home/viewport.png；链接色 #00699d 同相（ΔH 4°）⇒ 保留链接量得值"
    }
   },
   "chartjs": {
@@ -190,21 +190,21 @@
    "accent": {
     "value": "#0b62d0",
     "fallback": true,
-    "evidence": "回退 default：最接近的非中性色 #0969da 仅 2 例（<3），不足为证；语料 corpus/github-com/*/nodes.json"
+    "evidence": "回退 default：无品牌 chrome 信号，且 7 个锚点里没有 ≥3 例的非中性色（1 页）；语料 corpus/github-com/*"
    }
   },
   "gov-uk": {
    "accent": {
     "value": "#1a65a6",
     "fallback": false,
-    "evidence": "a 前景色统计：#1a65a6 × 98/110 个锚点；主证 corpus/gov-uk/ni-rates-letters/nodes.json (55/98) + corpus/gov-uk/register-birth-abroad/nodes.json (43/98)"
+    "evidence": "品牌 chrome 的「theme-color」：theme-color #1d70b8，证据 2 页 corpus/gov-uk/ni-rates-letters/dom.html；链接色 #1a65a6 同相（ΔH 0°）⇒ 保留链接量得值"
    }
   },
   "grafana-play": {
    "accent": {
-    "value": "#ccccdc",
+    "value": "#f05a28",
     "fallback": false,
-    "evidence": "a 前景色统计：#ccccdc × 19/20 个锚点；主证 corpus/grafana-play/play-home/nodes.json (19/19)"
+    "evidence": "品牌 chrome 的「logo 像素主色」：顶栏 logo 元素 (12.45,11.5 23.08×23.98) 的像素主色 #f05a28（占该元素 43%），证据 1 页 corpus/grafana-play/play-home/viewport.png；无合格链接色可佐证⇒ 按品牌 chrome 取值"
    }
   },
   "huaban-com": {
@@ -218,7 +218,7 @@
    "accent": {
     "value": "#c7000b",
     "fallback": false,
-    "evidence": "a 前景色统计：#c7000b × 12/353 个锚点；主证 corpus/huawei-cn/home/nodes.json (8/12) + corpus/huawei-cn/search-laptop/nodes.json (2/12)"
+    "evidence": "品牌 chrome 的「logo 像素主色」：顶栏 logo 元素 (60.33,48 133×30) 的像素主色 #c7000a（占该元素 17%），证据 3 页 corpus/huawei-cn/home/viewport.png；链接色 #c7000b 同相（ΔH 0°）⇒ 保留链接量得值"
    }
   },
   "juejin-cn": {
@@ -232,14 +232,14 @@
    "accent": {
     "value": "#0065b3",
     "fallback": false,
-    "evidence": "a 前景色统计：#0065b3 × 151/227 个锚点；主证 corpus/learn-microsoft/vm-sizes/nodes.json (151/151)"
+    "evidence": "品牌 chrome 的「顶栏元素上色」：a 的 color，证据 1 页 corpus/learn-microsoft/vm-sizes/nodes.json；链接色 #0065b3 同相（ΔH 0°）⇒ 保留链接量得值"
    }
   },
   "linear-app": {
    "accent": {
     "value": "#0b62d0",
     "fallback": true,
-    "evidence": "回退 default：无任何非黑非白锚点色（61 个锚点全为中性色/无样式）；语料 corpus/linear-app/*/nodes.json"
+    "evidence": "回退 default：无品牌 chrome 信号，且 61 个锚点里没有 ≥3 例的非中性色（1 页）；语料 corpus/linear-app/*"
    }
   },
   "mdn": {
@@ -253,7 +253,7 @@
    "accent": {
     "value": "#ff6700",
     "fallback": false,
-    "evidence": "a 前景色统计：#ff6700 × 16/736 个锚点；主证 corpus/mi-com/product-detail-mi15/nodes.json (6/16) + corpus/mi-com/search-earbuds/nodes.json (3/16)"
+    "evidence": "品牌 chrome 的「logo 像素主色」：顶栏 logo 元素 (15,15.5 34×34) 的像素主色 #ff6900（占该元素 77%），证据 1 页 corpus/mi-com/home/viewport.png；链接色 #ff6700 同相（ΔH 0°）⇒ 保留链接量得值"
    }
   },
   "oppo-cn": {
@@ -286,30 +286,30 @@
   },
   "sspai-com": {
    "accent": {
-    "value": "#0097ff",
+    "value": "#da282a",
     "fallback": false,
-    "evidence": "a 前景色统计：#0097ff × 73/363 个锚点；主证 corpus/sspai-com/post-114716/nodes.json (38/73) + corpus/sspai-com/post-114699/nodes.json (24/73)"
+    "evidence": "品牌 chrome 的「logo 像素主色」：顶栏 logo 元素 (120,10 117×36) 的像素主色 #da282a（占该元素 21%），证据 6 页 corpus/sspai-com/home/viewport.png；链接色 #0097ff 不同相（ΔH 155°）⇒ 按品牌 chrome 取值"
    }
   },
   "stripe-com": {
    "accent": {
     "value": "#533afd",
     "fallback": false,
-    "evidence": "a 前景色统计：#533afd × 77/252 个锚点；主证 corpus/stripe-com/pricing/nodes.json (77/77)"
+    "evidence": "品牌 chrome 的「顶栏元素上色」：a 的 color，证据 1 页 corpus/stripe-com/pricing/nodes.json；链接色 #533afd 同相（ΔH 5°）⇒ 保留链接量得值"
    }
   },
   "stripe-dashboard": {
    "accent": {
     "value": "#273951",
     "fallback": false,
-    "evidence": "a 前景色统计：#273951 × 7/12 个锚点；主证 corpus/stripe-dashboard/login/nodes.json (7/7)"
+    "evidence": "a 前景色统计：#273951 × 7/12 个锚点；主证 corpus/stripe-dashboard/login/nodes.json (7/7)｜本次语料量不出（1 页 / 0 个锚点），沿用上次量得值"
    }
   },
   "stripe-docs": {
    "accent": {
-    "value": "#5469d4",
+    "value": "#556cd6",
     "fallback": false,
-    "evidence": "a 前景色统计：#5469d4 × 41/98 个锚点；主证 corpus/stripe-docs/payments/nodes.json (41/41)"
+    "evidence": "品牌 chrome 的「logo 像素主色」：顶栏 logo 元素 (32,28 121×25) 的像素主色 #556cd6（占该元素 14%），证据 1 页 corpus/stripe-docs/payments/viewport.png；无合格链接色可佐证⇒ 按品牌 chrome 取值"
    }
   },
   "tailwindcss": {
@@ -323,7 +323,7 @@
    "accent": {
     "value": "#cc6600",
     "fallback": false,
-    "evidence": "a 前景色统计：#cc6600 × 16/183 个锚点；主证 corpus/taobao-com/home/nodes.json (16/16)"
+    "evidence": "无品牌 chrome 信号（logo 像素、顶栏背景、theme-color、内联 CSS 变量、顶栏上色 均无合格饱和值），退回链接色统计：#cc6600 × 16/540 个锚点；主证 corpus/taobao-com/home/nodes.json"
    }
   },
   "tdesign": {
@@ -335,9 +335,9 @@
   },
   "xiaomi-account": {
    "accent": {
-    "value": "#0b62d0",
-    "fallback": true,
-    "evidence": "回退 default：最接近的非中性色 #ff5c00 仅 2 例（<3），不足为证；语料 corpus/xiaomi-account/*/nodes.json"
+    "value": "#ff6900",
+    "fallback": false,
+    "evidence": "品牌 chrome 的「logo 像素主色」：顶栏 logo 元素 (395,20 40×40) 的像素主色 #ff6900（占该元素 75%），证据 1 页 corpus/xiaomi-account/login/viewport.png；无合格链接色可佐证⇒ 按品牌 chrome 取值"
    }
   }
  }
