@@ -109,6 +109,7 @@
 - `search` / `table` / `profile` 原型仍只有通用形态，未到原型专属框架。
 - 非记录行卡片的**媒体尺寸不再由图片属性决定**（S3c）：`max-height:160px` 的图片封顶已删除，卡片媒体只受角色槽约束（容器给宽、图等比、绝不放大）。mi 搜索页商品卡当前仍显示 160×160，但那是 `.cards.compact-media` 的轨道（194px）决定的槽宽，不是图片封顶：槽变宽，图随之变大。
 - 潜在残留：`.linklist.cols{2,3,4}` 的 `column-gap` 被合并规则的 `gap` 简写覆盖（属性键不同，门禁不报；删除为视觉零变）。
+- 观测性：`no-upscale-selftest` 在找不到浏览器时降级为 cascade-only 仍 exit 0；真实无放大证明需带 `AUTOFE_CHROME_PATH`/`AUTOFE_PLAYWRIGHT_CORE`。`manifest.json` 含 `version/generatedAt/mtimeMs`，非内容稳定，故每次 `--shots` 都会改写画廊产物（内容哈希一致时不算证据变化）。
 
 S1/S2/S3 已消灭：构图静默回落、死分支、阅读判定只看 `_text`、死声明、airbnb 照片墙运行时覆盖、320px 封面盖、靠左 hero、record-row 页宽死沟、行网格参差、对比表重复行标题、业务药丸行/新闻流水行、默认蓝链接、2× 字阶（现 h1=3.01× 正文）；S3c：通用蓝 accent（改量品牌 chrome 色，见 `docs/m1/layout-axes.md` §9）、卡片图 160px 图片封顶。
 
