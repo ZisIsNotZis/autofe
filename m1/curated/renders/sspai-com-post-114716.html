@@ -2,7 +2,8 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>本周看什么 | 最近值得一看的 9 部作品</title>
 <style>
-:root{color-scheme:light;--accent:#0078ce;--surface:#fff;--page-tint:#f6f7f9;--band:#f4f5f7;--card:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;--measure:36em;--measure-row:59ch;--scale:1.25;--radius:12px;--radius-pill:999px;--shadow:0 1px 2px #17212b0a,0 8px 24px #17212b0d;--pad-band:56px;
+:root{color-scheme:light;--accent:#0078ce;--surface:#fff;--page-tint:#f6f7f9;--band:#f4f5f7;--card:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;--measure:36em;--measure-row:59ch;/* 媒体槽（S3b）：槽宽是角色声明，图在槽内等比、绝不放大。搜索结果行（3 行摘要）与记录行（标题+摘要+meta）
+     共用 216px 槽；两角色的高度上限按各自文字块定：搜索结果行 216×144，记录行 216×135（不再是脱离文字块的 172px 死框）。 */--media-search:216px;--media-search-h:144px;--media-row:216px;--media-row-h:135px;--scale:1.25;--radius:12px;--radius-pill:999px;--shadow:0 1px 2px #17212b0a,0 8px 24px #17212b0d;--pad-band:56px;
   /* S3a 排印（typography.md §1/§2/§4/§6）：西文字体在前，汉字逐字符穿透到中文字体（4.2 的价值就在这个顺序）。
      本机装的 CJK 家族是 "Noto Sans CJK SC"/"Noto Serif CJK SC"，故排在通用名之后兜底，装与不装都不掉回系统宋体。 */
   --font-body:"Inter","SF Pro Text",-apple-system,"Segoe UI","Helvetica Neue",Arial,"Noto Sans SC","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
@@ -238,7 +239,7 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
    轮 58（U-24）：做马赛克就要对齐——每块瓷砖固定正方形（aspect-ratio），图在瓷砖内等比
    contain 居中（绝不放大、不裁内容），大图缩到瓷砖、瓷砖间不再有参差缝隙。 */
 .gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0}
-.gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;align-self:start;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
 .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
 /* Local forms inherit their page frame; only declared banner bleed can escape it.
@@ -346,10 +347,10 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 /* Metadata-bearing editorial/search records are local records, never heroes.
    行宽 = 文字测量宽 + 媒体槽 + 声明的间距：整行不许拉到页边，否则未用的中段就是「文字与图之间
    的空白」（sspai matrix 实测 608px 中位死沟）。 */
-.record-member{display:grid!important;grid-template-columns:minmax(0,1fr) 216px;gap:6px 24px;max-width:min(100%,calc(var(--measure-row) + 240px));margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
+.record-member{display:grid!important;grid-template-columns:minmax(0,1fr) var(--media-row);gap:6px 24px;max-width:min(100%,calc(var(--measure-row) + var(--media-row) + 24px));margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
 .record-member>*{grid-column:1;margin:0!important;min-width:0;max-width:var(--measure-row)}
 .record-member>.band,.record-member>.fact:has(img){grid-column:2;grid-row:1 / span 6;align-self:start}
-.record-member img{max-width:216px;max-height:172px;width:auto;height:auto;margin:0}
+.record-member img{max-width:var(--media-row);max-height:var(--media-row-h);width:auto;height:auto;margin:0}
 .record-member .strip{width:auto;margin:0}
 .record-member>.title{text-align:left;font-size:1.15em}
 .record-member>.fact{max-width:var(--measure-row)}
@@ -465,9 +466,12 @@ main:has(.marketing-page){max-width:1728px}
 .catalog-page .ordered-media-rows>.stack>.block>.node{display:flex;flex-direction:column;gap:6px;margin:0;padding:0}
 .catalog-page .ordered-media-rows .band{order:-1;margin:0;align-self:stretch}
 .catalog-page .ordered-media-rows .band img{max-width:100%;max-height:160px;width:auto;height:auto}
-/* search：结果行 = 媒体（160–220px）靠左 + 文本列（measure 封顶）；筛选条紧凑。 */
+/* search：结果行 = 媒体槽（216px 上限）靠左 + 文本列（measure 封顶、摘要夹 3 行）；筛选条紧凑。
+   媒体列用 fit-content(216px)：源图本来就小（如 78×100）时不靠一个 216px 宽的死槽把文字推远。 */
 .search-page .record-member{grid-template-columns:minmax(0,1fr);align-items:start}
-.search-page .record-member:has(img){grid-template-columns:216px minmax(0,1fr)}
+.search-page .record-member:has(img){grid-template-columns:fit-content(var(--media-search)) minmax(0,1fr)}
+.search-page .record-member img{max-width:var(--media-search);max-height:var(--media-search-h)}
+.search-page .record-member>.fact:not(:has(img)){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
 .search-page .record-member>*{grid-column:2}
 .search-page .record-member:not(:has(img))>*{grid-column:1}
 .search-page .record-member>.band,.search-page .record-member>.fact:has(img){grid-column:1;grid-row:1 / span 8;justify-self:start}
