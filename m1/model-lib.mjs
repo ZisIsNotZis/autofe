@@ -15,7 +15,12 @@ export const VERBS = new Set([...VOCAB.verbs, ...(DOMAIN.verbs ?? [])]);
 // m1/composites.json (closed). `_default` (round 47): the default-value slot of a composite
 // (name and default are two parts, D-3) — a new reserved key, grammar change logged in
 // docs/m1/composites.md §2.4. Both are grammar changes: log + review first (axioms §0).
-export const RESERVED = new Set(['_intent', '_primary', '_key', '_when', '_action', '_rel', '_lines', '_items', '_expose', '_fields', '_empty', '_composite', '_default']);
+export const RESERVED = new Set(['_intent', '_primary', '_key', '_when', '_action', '_rel', '_lines', '_items', '_expose', '_fields', '_empty', '_composite', '_default', '_scope', '_subject']);
+// Page semantics (docs/m1/composition.md §1.1): `_scope` is the page's role in its site and
+// `_subject` what the page is about. Both are CLOSED business facts declared at the document
+// root only — adding a value is a grammar change; presentation keys stay banned (§1).
+export const SCOPE_VALUES = ['entry', 'category', 'query', 'entity', 'document', 'account', 'form'];
+export const SUBJECT_VALUES = ['offer', 'document', 'account', 'dataset'];
 export const COMPOSITES = fs.existsSync(path.join(here, 'composites.json'))
   ? JSON.parse(fs.readFileSync(path.join(here, 'composites.json'), 'utf8'))
   : { composites: {} };

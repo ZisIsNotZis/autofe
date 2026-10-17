@@ -6,9 +6,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const CONTEXT = JSON.parse(fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), 'vocab-context.json'), 'utf8')).context;
 import {
-  VOCAB, ROLES, VERBS, FIELDS, COMPOSITES, isReserved, isRoleKey, roleOf, isNamedChildKey,
+  VOCAB, ROLES, VERBS, FIELDS, COMPOSITES, SCOPE_VALUES, SUBJECT_VALUES,
+  isReserved, isRoleKey, roleOf, isNamedChildKey,
   valueTypeOf, resolvePath, findKey, childrenOf, parseExpr, exprPaths, exposeOf,
 } from './model-lib.mjs';
+// Page semantics (docs/m1/composition.md §1.1): closed value sets, keyed by reserved key.
+// Declared at the document root only — a nested node carrying either key is an error, because
+// these are page-level business facts, not per-node style or per-page escape hatches.
+const PAGE_SEMANTICS = { _scope: SCOPE_VALUES, _subject: SUBJECT_VALUES };
 
 // typed values are a closed set: a reserved key holding a non-typed object is a hard error (F-031)
 const VALUE_KEYS = ['text', 'num', 'money', 'date', 'time', 'bool', 'image', 'video', 'icon', 'ref', 'list', 'secret'];
@@ -83,6 +88,14 @@ export function validate(model) {
       if (VALUE_HOLDERS.includes(k)) {
         // a malformed typed value would silently print as raw JSON in the render
         if (valueTypeOf(node[k]) === null) err(`${p}.${k}`, `${k} must hold a closed typed value`);
+        continue;
+      }
+      if (k in PAGE_SEMANTICS) {
+        // `_subject` may be absent (a page whose subject the grammar cannot name, §1.1);
+        // `_scope` is required by the derivation, not by this validator: the handwritten
+        // fixtures under m1/models/** are legal models without it.
+        if (!PAGE_SEMANTICS[k].includes(node[k])) err(`${p}.${k}`, `${k} must be one of ${PAGE_SEMANTICS[k].join('|')} (got ${JSON.stringify(node[k])})`, 'E_PAGE_SEMANTICS_VALUE');
+        if (p !== '') err(`${p}.${k}`, `${k} is a page-level fact and may only be declared at the document root (composition.md §1.1)`, 'E_PAGE_SEMANTICS_NESTED');
         continue;
       }
       if (isReserved(k)) continue;

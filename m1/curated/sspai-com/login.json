@@ -1,6 +1,7 @@
 {
  "_intent": "少数派登录页（最小捕获，36 节点）：手机号/邮箱 + 登录/注册提交，捕获时刻展开的区号选择面板、其他登录方式与协议条款；密码输入位在捕获时刻为隐藏的备用输入（comp__PasswordInput--hidden，aria-hidden），按 visible:false 采集证据不建模",
  "_key": "sspai-login",
+ "_scope": "form",
  "_title": {
   "text": "登录少数派"
  },
