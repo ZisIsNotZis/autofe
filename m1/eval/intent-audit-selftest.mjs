@@ -245,13 +245,17 @@ for (const kind of ['composition', 'deadDeclaration', 'runtime']) {
 check('正样本: 四类都为 0 → exit 0',
   gateOutcome({ composition: 0, deadDeclaration: 0, runtime: 0, deadSelectors: 0 }).exitCode === 0);
 // 真实语料口径：错误合计 = 未定构图 + 死声明 + 运行时覆盖，与警告分开计。
+// S1c 起真实语料上的三项错误都是 0（§6 的引擎缺陷已消灭），所以本项断言「干净」而非「非空」：
+// 求和恒等式仍成立、警告照旧非空且不阻断、exit 0。检测器没有空转由本节上面的负样本证明
+// （死声明夹具、真实 CSS 死选择器仍有命中、非正方形瓷砖被抓），而任何人再写出自相矛盾的声明，
+// errors.total 立刻非 0，本项随之失败 —— 断言方向反过来了，可证伪性没有削弱。
 const realVerdict = gateOutcome({
   composition: compositionViolations(realPages).length,
   deadDeclaration: cascadeConflicts(realRules, new Set(Object.keys(realEmitCount))).length,
   runtime: 0, deadSelectors: realDead.length,
 });
-check('发现非空: 真实语料上错误与警告分开计且错误非空',
-  realVerdict.errors.total > 0 && realVerdict.warnings.total > 0
+check('真实语料: 错误 0、警告非空且不阻断、exit 0（错误合计恒等式成立）',
+  realVerdict.errors.total === 0 && realVerdict.warnings.total > 0 && realVerdict.exitCode === 0
   && realVerdict.errors.total === realVerdict.errors.composition + realVerdict.errors.deadDeclaration + realVerdict.errors.runtime,
   JSON.stringify(realVerdict));
 

@@ -608,7 +608,7 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   }
   if (metaParts.length) bodyLead += `<div class="meta">${metaParts.join('<span class="sep">·</span>')}</div>`;
   for (const f of plan.facts.fields) bodyLead += factHtml(f.value);
-  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero, (depth === 0 && plan.leadAction && node._summary && !node._price) ? 'readable' : ctx.reading ? 'band' : 'bleed');   // declared hero/banner only: edge-to-edge (F-031-§7); everything else stays in-container (round 58, L-3)
+  if (plan.facts.hero) heroImage = imageFigures(plan.facts.hero, (depth === 0 && plan.leadAction && node._summary && !node._price) ? 'readable' : ctx.pageLayout.kind === 'reading' ? 'band' : 'bleed');   // declared hero/banner only: edge-to-edge (F-031-§7); everything else stays in-container (round 58, L-3)
 
   let body = '';
   let bodyField = '';   // 字段+提交的成组区（plan.fieldSubmit）
@@ -724,9 +724,6 @@ export function render(model, context = {}, report = null) {
   const index=(n,p='')=>{if(!n||typeof n!=='object')return;paths.set(n,p);for(const c of childrenOf(n))index(c.node,p?`${p}.${c.key}`:c.key);};index(model);
   const ctx = { values: context.values ?? {}, degradations: report ?? [], headings: new Set(), paths };
   ctx.pageLayout = pageLayoutOf(model);
-  // The reading measure is a property of the resolved prototype, not a second opinion: the
-  // prose count is evidence the derivation may use, never a page frame chosen behind its back.
-  ctx.reading = ctx.pageLayout.kind === 'reading';
   const html = renderNode(model, [], false, hide, ctx, 0);
   const title = esc(model._title ? fmt(model._title) : (model._intent ?? 'surface'));
   const brand = model._brand ? fmt(model._brand) : '';
@@ -871,9 +868,9 @@ a.ctl:hover{background:#f2f7ff}
 .manifest{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
 .manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:var(--soft-ink);overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
-.linklist.cols2{columns:2;column-gap:28px}
-.linklist.cols3{columns:3;column-gap:24px}
-.linklist.cols4{columns:4;column-gap:20px}
+.linklist.cols2{column-gap:28px}
+.linklist.cols3{column-gap:24px}
+.linklist.cols4{column-gap:20px}
 .linklist li{margin:5px 0;line-height:1.5}
 .seq{margin:8px 0;padding-left:1.5em}
 .seq li{margin:4px 0;line-height:1.55}
@@ -951,7 +948,7 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 /* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小，像源站构图。
    轮 58（U-24）：做马赛克就要对齐——每块瓷砖固定正方形（aspect-ratio），图在瓷砖内等比
    contain 居中（绝不放大、不裁内容），大图缩到瓷砖、瓷砖间不再有参差缝隙。 */
-.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0;align-items:stretch}
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0}
 .gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
 .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
@@ -988,7 +985,7 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .group.g-footer .chip-item{padding:0;border:0;background:transparent;border-radius:0;font-size:13px;color:var(--ink)}
 .group.g-footer .title,.group.g-footer a,.group.g-footer .linklist li.go>a,.group.g-footer .chips a{color:var(--ink)}
 .group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:var(--muted)}
-.group.g-footer .ctl{border-color:var(--line);color:var(--ink);background:var(--surface);padding:4px 10px}
+.group.g-footer .ctl{border-color:var(--line);color:var(--ink)}
 .group.g-footer a.ctl:hover{background:var(--soft)}
 .group.g-footer .defrow{border-bottom-color:var(--line)}
 .group.g-footer .controls{gap:6px 18px;margin:4px 0}
@@ -1120,9 +1117,6 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .detail-tail .g-reviews>.node>.g-mentions{grid-column:1/-1}
 .detail-tail .g-mentions .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:4px 24px}
 .detail-tail .g-mentions .defrow{justify-content:space-between}
-.detail-page .gallery-mosaic{grid-auto-rows:180px;grid-template-columns:2fr 1fr 1fr}
-.detail-page .gallery-mosaic .strip{aspect-ratio:auto}
-.detail-page .gallery-mosaic .strip:first-child{grid-column:span 1;grid-row:span 2}
 main:has(.marketing-page){max-width:1728px}
 .marketing-page>.title{max-width:none}
 .marketing-page .node.w-bleed{width:100%;margin-inline:0}
@@ -1138,7 +1132,7 @@ main:has(.marketing-page){max-width:1728px}
 .marketing-page .g-services .defrow{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:12px}
 .marketing-page .g-services .defval img{max-height:180px;margin:auto}
 @media(min-width:1920px){body:has(.marketing-page){background:#f5f5f7}main:has(.marketing-page){max-width:1728px;padding-inline:24px}.marketing-page>.stack>.block{margin-block:16px}}
-@media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr);gap:20px}.detail-tail .g-reviews>.node{grid-template-columns:minmax(0,1fr)}.marketing-page .g-tv .cards.cols-auto{grid-template-columns:1fr}.detail-page .gallery-mosaic{grid-auto-rows:130px;grid-template-columns:repeat(2,minmax(0,1fr))}.detail-page .gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.marketing-page .cards.cols-auto{grid-template-columns:1fr}.product-page .defrow{flex-wrap:wrap}.product-page .deflabel{flex-basis:100%}}
+@media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr);gap:20px}.detail-tail .g-reviews>.node{grid-template-columns:minmax(0,1fr)}.marketing-page .g-tv .cards.cols-auto{grid-template-columns:1fr}.marketing-page .cards.cols-auto{grid-template-columns:1fr}.product-page .defrow{flex-wrap:wrap}.product-page .deflabel{flex-basis:100%}}
 /* Media surface metadata keeps marketing image and text in the same panel. The
    original image is centered at natural height; only uniform lateral gutters clip. */
 .banner-integrated{position:relative;isolation:isolate;overflow:hidden;min-height:580px;padding:32px 24px!important;background:var(--banner-bg);color:var(--banner-fg);display:flex;flex-direction:column;align-items:center;margin-block:12px}

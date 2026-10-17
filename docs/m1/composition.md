@@ -82,12 +82,18 @@
 - **可证伪**：门禁必须先用已知缺陷做负样本证明能抓到，再谈通过（`docs/proof` 的 gate_probe 原则）。
 - 权重口径：与既有「门禁全绿只是必要条件」一致；本门禁只证明「引擎兑现了自己的声明」，不证明设计好看——后者仍靠人审与独立复核（`docs/product.md` §2）。
 
-## 6. 当前引擎缺陷（必须消灭，作为负样本）
+## 6. 剩余缺陷（框架 / 设计层，S2 / S3）
 
-- CSS 覆盖自身声明：`.gallery-mosaic{align-items:stretch}` 压掉 `aspect-ratio:1/1`（airbnb 照片墙，门禁作为运行时覆盖报出）；`.singleton-card>.stack{max-width:320px}` 把声明为 hero 的 banner 掐成 320px。（`.singleton-card .banner>.title{text-align:left}` 是基础+特化覆盖，合法，**不是**缺陷。）
-- 5 条死声明（`.ctl` 的 padding/background 在 footer 组内、`.linklist.cols{2,3,4}` 的 columns）由门禁逐条报出。
-- 无「主列 + 侧栏」区域概念，侧栏在单列流里掉到正文之后。
-- 以上都属框架层（§3），由 S2 消灭；构图推导与页级类的缺陷已消灭：`pageLayoutOf` 不再回落 `default`（40/40 落在 archetype 允许集），引擎 CSS 的每个 `*-page` 类都至少被一页打出。
+- `.singleton-card>.stack{max-width:320px}` 把声明为 hero 的 banner 掐成 320px（huawei home）。
+- `.banner{…align-items:flex-start}` + 标题左对齐，使声明为居中的 hero 被左置。
+- `.record-member{grid-template-columns:minmax(0,1fr) 216px}` 的文字列无上限 → 搜索/feed 出现数百像素死沟。
+- 无「主列 + 侧栏」区域概念，侧栏在单列流里掉到正文之后（sspai matrix）；需要一次 `_region` 语义裁决。
+- `search` / `table` / `profile` 原型尚无 CSS 框架（11/40 页带无效果的页级类）。
+- 媒体只按原图像素（`width:auto`）绘制，hero/band/卡片没有角色尺寸。
+- 排版仍是单一 system-ui、2× 标题层级、中文 74ch 行宽（S3）。
+- 潜在残留：`.linklist.cols{2,3,4}` 的 `column-gap` 被合并规则的 `gap` 简写覆盖（属性键不同，门禁不报；删除为视觉零变）。
+
+S1 已消灭的项不再列入：构图静默回落、死分支、阅读判定只看 `_text`、5 条死声明、airbnb 照片墙的 `aspect-ratio` 运行时覆盖。
 
 ## 7. 验收（10 页样板，铺开前）
 

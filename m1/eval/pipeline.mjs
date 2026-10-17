@@ -280,6 +280,14 @@ if (!gLO.ok) console.log(gLO.out);
 const gCOMP = gate('node m1/eval/composition-selftest.mjs');
 console.log(`[pipeline] 构图推导自测(轮63): ${gCOMP.ok ? '通过' : '失败'}`);
 if (!gCOMP.ok) console.log(gCOMP.out);
+// 意图门禁（composition.md §5）：把引擎的声明与渲染/计算样式逐页对账，阻断项为「未定构图 /
+// 死声明 / 运行时意图未兑现」，死选择器只作警告。它跑真浏览器量 `.gallery-mosaic .strip` 的
+// 计算宽高比，浏览器来源沿用本流水线的既有约定：AUTOFE_CHROME_PATH / AUTOFE_PLAYWRIGHT_CORE
+// 由调用方环境继承（与 audit-visual.mjs 同一条路，非 --shots 分支不自己 relaunch）。
+const gIAU = gate('node m1/eval/intent-audit.mjs');
+console.log(`[pipeline] 意图门禁(声明→兑现, S1c): ${gIAU.ok ? '通过' : '失败'}`);
+for (const l of gIAU.out.split('\n')) if (l.startsWith('意图门禁:')) console.log(`[pipeline] ${l.trim()}`);
+if (!gIAU.ok) console.log(gIAU.out);
 // Actual wide/mobile geometry + option-local actions; no static fallback or experience verdict.
 const gPF = gate('node m1/eval/page-frame-selftest.mjs');
 console.log(`[pipeline] 页面框架/动作可执行自测: ${gPF.ok ? '通过' : '失败'}`);
@@ -287,7 +295,7 @@ if (!gPF.ok) console.log(gPF.out);
 const gDR = gate('node m1/eval/diagnosed-repair-selftest.mjs');
 console.log(`[pipeline] 来源/关联修复可证伪自测: ${gDR.ok ? '通过' : '失败'}`);
 if (!gDR.ok) console.log(gDR.out);
-const gatesFailed = !gOWN.ok || !gWIT.ok || !gDR.ok || !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok || !gLO.ok || !gPF.ok || !gCOMP.ok;
+const gatesFailed = !gOWN.ok || !gWIT.ok || !gDR.ok || !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok || !gLO.ok || !gPF.ok || !gCOMP.ok || !gIAU.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';
