@@ -1108,6 +1108,63 @@ export function pageLayoutOf(model) {
   return { kind: undefined, rule: 'undetermined' };
 }
 
+// ---- feed + rail: the two-region frame (S2c; composition.md §3/§6) ---------
+// A catalog page whose content is ONE dominant collection and whose trailing sections are
+// short cards is a two-region page: the feed owns the main column, the short cards own a rail
+// beside it. Stacking the rail under the feed buries it behind the whole scroll (sspai matrix:
+// 一派 / 值得关注 / 专栏推荐 arrived after 20 records as plain rows), and a single page-wide
+// column is what left the record rows' unused middle as a dead band.
+//
+// The split is DERIVED from the model's own structure — sibling order plus the largest
+// collection — never from a site name or a per-page exception: the feed is the largest
+// collection when it dominates its siblings (FEED_DOMINANCE× the next collection, and at least
+// FEED_MIN_ITEMS long); the rail is the SHORT card sections that follow it; the sections before
+// it stay above the feed in the main column (a view switcher, a create control).
+// Two cases keep the single column (negative controls of page-frame-selftest.mjs): sibling
+// collections that are comparable are two feeds, not a feed and its rail; and a prototype that
+// owns a different frame (search results, marketing bands) is never re-cut into feed+rail.
+const FEED_MIN_ITEMS = 8;          // below this a collection is a section, not the page's feed
+const FEED_DOMINANCE = 2;          // the feed must be at least this many times the next collection
+const RAIL_MAX_ITEMS = 6;          // a short card group; a longer collection is another feed
+const itemCount = (n) => (Array.isArray(n?._items) ? n._items.length : 0);
+// A rail card is ONE card or a SHORT group of cards. A long collection is another feed, a plain
+// destination list is site navigation, and a prose section is reading — none of them is a side
+// card, so those sections stay in the main column (nothing is dropped from the page).
+const isRailCard = (n) => {
+  if (LONG_TEXT_KEYS.some((k) => typeof n?.[k]?.text === 'string' && n[k].text.length > LONG_TEXT_CHARS)) return false;
+  if (!Array.isArray(n._items)) return true;
+  if (n._items.length === 0 || n._items.length > RAIL_MAX_ITEMS) return false;
+  return !n._items.every((it) => isLabelOnlyItem(it) && hasTarget(it._action));
+};
+// `feedKey` opens the main column; `railKeys` is the rail (rendered beside the feed, in document
+// order); `tailKeys` is what follows the feed but is not a side card.
+export function feedRailOf(model, layout = pageLayoutOf(model)) {
+  if (layout?.kind !== 'catalog') return null;   // this frame belongs to the catalog/feed family
+  const body = namedChildEntries(model).filter((c) => regionOf(c.key) === 'body');
+  let feedAt = -1;
+  let feedCount = 0;
+  body.forEach((c, i) => { const n = itemCount(c.node); if (n > feedCount) { feedCount = n; feedAt = i; } });
+  if (feedAt < 0 || feedCount < FEED_MIN_ITEMS) return null;
+  const rival = Math.max(0, ...body.filter((c, i) => i !== feedAt).map((c) => itemCount(c.node)));
+  if (feedCount < rival * FEED_DOMINANCE) return null;   // comparable collections: two feeds, one column
+  const trailing = body.slice(feedAt + 1);
+  const railKeys = trailing.filter((c) => isRailCard(c.node)).map((c) => c.key);
+  if (!railKeys.length) return null;                     // nothing to put in a rail
+  const tailKeys = trailing.filter((c) => !isRailCard(c.node)).map((c) => c.key);
+  return { rule: 'feed-and-side-cards', feedKey: body[feedAt].key, railKeys, tailKeys };
+}
+
+// A matrix of entrance cards fills whole rows: the column count is the largest divisor of the
+// entrance count within 2..MATRIX_MAX_COLUMNS (6 entrances → 3, 8 → 4), so no row is left with a
+// lone card. A prime count has no such divisor and falls back to the balanced split
+// ceil(n / ceil(n / MATRIX_MAX_COLUMNS)) (7 → 4+3 rather than 4+2+1).
+const MATRIX_MAX_COLUMNS = 4;
+export function matrixColumns(n) {
+  if (!Number.isInteger(n) || n < 2) return n === 1 ? 1 : 0;
+  for (let c = Math.min(MATRIX_MAX_COLUMNS, n); c >= 2; c--) if (n % c === 0) return c;
+  return Math.ceil(n / Math.ceil(n / MATRIX_MAX_COLUMNS));
+}
+
 // ---- model-wide `key:` → label index (target-neutral) ----------------------
 // A `key:` target points at an element identified by `_key`; on screen the raw key must
 // never leak (F-022) — the label is that element's own title/name. Building this index

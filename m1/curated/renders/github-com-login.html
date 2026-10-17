@@ -489,13 +489,28 @@ main:has(.marketing-page){max-width:1728px}
 .masonry>hr.region{display:none}
 @media(max-width:900px){.marketing-page .cards.masonry,.marketing-page .g-tv .cards.masonry{columns:1}}
 /* 营销页的入口矩阵（render.mjs renderControls 判定 plan.link-matrix：≥4 个带目标的控件）：
-   每个入口一张卡，不再是一排药丸。动作栏（无目标 / 不足 4 项）保持药丸行。 */
-.marketing-page .controls.link-matrix{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px;margin:24px 0}
+   每个入口一张卡，不再是一排药丸。动作栏（无目标 / 不足 4 项）保持药丸行。
+   列数由入口个数整除决定（axis.mjs matrixColumns，落成 --matrix-cols）：6 个入口 3 列、8 个 4 列，
+   不再用 auto-fit（1232px 下取 4 列，6 项就成 4+2 的偏行）。 */
+.marketing-page .controls.link-matrix{display:grid;grid-template-columns:repeat(var(--matrix-cols,2),minmax(0,1fr));gap:16px;margin:24px 0}
 .marketing-page .controls.link-matrix>.ctl{display:flex;align-items:center;justify-content:center;min-height:116px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;color:var(--ink);font-size:1.05em;font-weight:600;text-align:center;line-height:1.4}
 /* 营销页一个小节的短列表（标题 + 一行事实：新闻动态的「标题 + 日期」）= 2–3 列卡片格，
    不是一条条流水行。只作用于页面小节自己的 .deflist，不动卡片/表格内部的列表。 */
 .marketing-page>.group>.node>.deflist,.marketing-page>.stack>.block>.node>.deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px;margin:20px 0}
 .marketing-page>.group>.node>.deflist>.defrow,.marketing-page>.stack>.block>.node>.deflist>.defrow{display:flex;flex-direction:column;gap:10px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;align-items:flex-start}
 .marketing-page>.group>.node>.deflist>.defrow>.defval,.marketing-page>.stack>.block>.node>.deflist>.defrow>.defval{color:var(--muted);font-size:.92em;order:-1}
+/* ——— S2c：feed + 侧栏两区（composition.md §3/§6）。帧判定在 axis.mjs feedRailOf（结构推出：
+   一个占优的集合 + 其后的小卡片小节），本层只落形态：feed 左主列、侧卡右栏（380px，滚动时停靠）。
+   旧形态把侧栏堆在 feed 之后，读者要滚完整个 feed 才见到它；同时单列吃满 1232px，记录行自己
+   封顶后剩下的中段就是死沟。 */
+.feed-rail{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:start;margin-top:8px}
+.feed-main,.feed-rail-side{min-width:0}
+.feed-rail-side{display:flex;flex-direction:column;gap:20px;position:sticky;top:16px}
+.feed-rail-side>.group{margin:0;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.feed-rail-side>.group>.node>.title{font-size:1.05em;margin:0 0 12px}
+.feed-rail-side .fact,.feed-rail-side .meta{max-width:none}
+@media(max-width:900px){.feed-rail{grid-template-columns:minmax(0,1fr);gap:24px}.feed-rail-side{position:static}
+.marketing-page .controls.link-matrix{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.marketing-page .controls.link-matrix{grid-template-columns:minmax(0,1fr)}}
 </style></head>
 <body><main><article class="node depth-0 authentication-page" data-model-owner=""><h1 class="title">Sign in to GitHub</h1><section class="group g-login"><article class="node depth-1 w-narrow task-form" data-model-owner="login"><section class="group g-identifier"><article class="node depth-2" data-model-owner="login.identifier"><span class="expose expose-input expose-login"><span class="deflabel">Username or email address</span><input type="text" name="login" data-type="text" aria-label="Username or email address"></span></article></section><section class="group g-secret"><article class="node depth-2" data-model-owner="login.secret"><span class="expose expose-input expose-password"><span class="deflabel">Password</span><input type="password" name="password" data-type="secret" aria-label="Password"></span></article></section><div class="controls"><span class="action-plain">Sign in</span><a class="ctl" href="https://github.com/password_reset">Forgot password?</a><span class="ctl" data-verb="operate">Sign in with a passkey</span><a class="ctl" href="https://github.com/signup?source=login">Create an account</a></div><section class="group g-alternatives"><article class="node depth-2" data-model-owner="login.alternatives"><div class="controls"><span class="ctl" data-verb="open">Continue with Google</span><span class="ctl" data-verb="open">Continue with Apple</span></div></article></section></article></section><section class="group g-footer"><article class="node depth-1 w-wide" data-model-owner="footer"><div class="controls"><a class="ctl" href="https://docs.github.com/site-policy/github-terms/github-terms-of-service">Terms</a><a class="ctl" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement">Privacy</a><a class="ctl" href="https://docs.github.com">Docs</a><a class="ctl" href="https://support.github.com">Contact GitHub Support</a><span class="ctl" data-verb="operate">Manage cookies</span><span class="ctl" data-verb="operate">Do not share my personal information</span></div></article></section></article></main></body></html>

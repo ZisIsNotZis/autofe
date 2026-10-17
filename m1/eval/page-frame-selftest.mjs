@@ -6,7 +6,7 @@ import { createRequire } from 'node:module';
 import { render } from '../render.mjs';
 import { renderMarkdown } from '../render-md.mjs';
 import { renderText } from '../render-text.mjs';
-import { hasTarget, nodePlan, selectForm } from '../axis.mjs';
+import { hasTarget, nodePlan, selectForm, feedRailOf, matrixColumns } from '../axis.mjs';
 
 let checks = 0;
 const check = (label, condition) => { assert.ok(condition, label); checks++; };
@@ -47,15 +47,37 @@ check('accepted named feature comparison keeps its established card axis', nodeP
 const acceptedReading = JSON.parse(fs.readFileSync(new URL('../curated/sspai-com/post-114716.json', import.meta.url), 'utf8'));
 check('accepted reading utilities retain compact definition form', nodePlan(acceptedReading._lines[11]).items.groups[0].form === 'deflist');
 
+// ---- S2c: feed+rail frame and even link matrix (docs/m1/composition.md §3/§6) ---------------
+// The frame is DERIVED (axis.mjs feedRailOf): the largest collection when it dominates its
+// siblings, plus the short card sections that follow it. These are its two refusals.
+const list = (n, prefix, extra = {}) => ({ _items: Array.from({ length: n }, (_, i) => ({ _name: { text: `${prefix} ${i + 1}` }, ...extra, _action: action('Open', `https://example.test/${prefix}/${i + 1}`) })) });
+const railPage = (feedCount, rivalCount, scope = 'category') => ({ _scope: scope, _title: { text: 'Community' },
+  feed: list(feedCount, 'Post', { _detail: { text: 'A short post description.' } }),
+  other: { _title: { text: 'Series' }, ...list(rivalCount, 'Series', { _detail: { text: 'A short series description.' } }) },
+  side: { _title: { text: 'Worth following' }, _image: { image: 'https://example.test/side.png', alt: '' }, _action: action('Open', 'https://example.test/side') },
+  nav: { _items: [{ _title: { text: 'Home' }, _action: action('Home', 'https://example.test/', 'navigate') }] } });
+const derived = feedRailOf(railPage(9, 4));
+check('catalog feed + trailing short cards becomes feed+rail', derived?.feedKey === 'feed' && derived.railKeys.join() === 'other,side' && derived.tailKeys.join() === 'nav');
+check('two comparable collections keep the single column', feedRailOf(railPage(9, 8)) === null);
+check('a collection too short to be the page feed keeps the single column', feedRailOf(railPage(7, 3)) === null);
+check('a prototype with its own frame (search) is never re-cut into feed+rail', feedRailOf(railPage(9, 4, 'query')) === null);
+check('a feed whose only trailing section is site navigation has no rail', feedRailOf({ _scope: 'category', feed: list(9, 'Post'), nav: railPage(9, 4).nav }) === null);
+check('matrix columns divide the entrance count evenly', matrixColumns(6) === 3 && matrixColumns(8) === 4 && matrixColumns(4) === 4 && matrixColumns(3) === 3 && matrixColumns(12) === 4 && matrixColumns(7) === 4);
+
 // Every modeled safe action survives both link-capable targets, including label-less
 // navigation. An option-local DOM check below prevents a false pass from a duplicate
 // destination located elsewhere on the page.
+// The same sweep records which pages the S2c feed+rail frame claims, so the honest coverage
+// figure in composition.md §3 (1/40) is pinned: a frame that starts firing on another page
+// fails here instead of shipping silently.
+const framed = [];
 for (const site of fs.readdirSync(new URL('../curated/', import.meta.url))) {
   if (!fs.statSync(new URL(`../curated/${site}`, import.meta.url)).isDirectory() || ['assets', 'renders'].includes(site)) continue;
   const dir = new URL(`../curated/${site}/`, import.meta.url);
   for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.json'))) {
     const model = JSON.parse(fs.readFileSync(new URL(file, dir), 'utf8'));
     const html = render(model, { site }).split('<body>')[1].replaceAll('&amp;', '&');
+    if (html.includes('<div class="feed-rail">')) framed.push(`${site}/${file.replace(/\.json$/, '')}`);
     const md = renderMarkdown(model);
     const visit = (n, p = '$') => {
       if (!n || typeof n !== 'object') return;
@@ -69,6 +91,7 @@ for (const site of fs.readdirSync(new URL('../curated/', import.meta.url))) {
     visit(model);
   }
 }
+check('the feed+rail frame claims exactly the one catalog feed page (1/40)', framed.join() === 'sspai-com/matrix');
 
 const pw = process.env.AUTOFE_PLAYWRIGHT_CORE || (process.env.HOME + '/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
 const chrome = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
@@ -153,12 +176,14 @@ try {
       container: row.closest('main').getBoundingClientRect().width };
   });
   const row = await rowFrame();
-  check('record row is capped at its own text measure + media + gap', row.width <= row.maxWidth + 1 && row.maxWidth < row.container);
+  // 同一条不变式两向用：行自有量宽成立时封顶，去掉后必须被同一个谓词抓到。
+  const cappedRow = (m) => m.width <= m.maxWidth + 1 && m.maxWidth < m.container;
+  check('record row is capped at its own text measure + media + gap', cappedRow(row));
   check('record row text column and media are adjacent at the declared gap', Math.abs(row.mediaLead - (row.tracks[0] + row.gap)) <= 2);
   await page.addStyleTag({ content: '.record-member{max-width:100%!important}' });
   const stretched = await rowFrame();
   // 负样本：去掉自有量宽（回到旧的一行拉满）必须被同一条不变式抓到。
-  check('record row without its own measure is detected', stretched.width > row.width + 100 && stretched.maxWidth < row.maxWidth);
+  check('record row without its own measure is detected', !cappedRow(stretched) && stretched.width > row.width);
   // 2. A collection whose cards cannot share a row height is column flow (masonry) on marketing
   //    image walls and on a catalog feed with uneven excerpts; a uniform product grid stays a grid.
   await page.setContent(render(curated('huawei-cn', 'home'), { site: 'huawei-cn' }), { waitUntil: 'domcontentloaded' });
@@ -192,5 +217,57 @@ try {
   }));
   check('comparison rows carry labels', cmp.filter((r) => r.label).length >= 5);
   check('comparison cell never repeats the row label', cmp.every((r) => r.repeats === 0));
+
+  // ---- S2c frame: feed+rail two regions, and an even link matrix ----------------------
+  // 1. sspai matrix: the sidebar (一派 / 值得关注 / 专栏推荐) is a RAIL beside the feed, not a
+  //    stack under it, and the feed column is no longer page-wide — the row's own cap and its
+  //    column now agree, so the text↔media gap is the declared gap instead of dead canvas.
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.setContent(render(curated('sspai-com', 'matrix'), { site: 'sspai-com' }), { waitUntil: 'domcontentloaded' });
+  const regions = () => page.evaluate(() => {
+    const frame = document.querySelector('.feed-rail');
+    if (!frame) return { frame: false };
+    const cs = getComputedStyle(frame);
+    const feed = document.querySelector('.feed-main').getBoundingClientRect();
+    const rail = document.querySelector('.feed-rail-side').getBoundingClientRect();
+    const rows = [...document.querySelectorAll('.feed-main .record-member')];
+    const withMedia = rows.map((r) => ({ row: r, media: r.querySelector(':scope>.band,:scope>.fact:has(img)') })).filter((x) => x.media);
+    return { frame: true, display: cs.display, tracks: cs.gridTemplateColumns.trim().split(/\s+/).length,
+      feedW: Math.round(feed.width), railW: Math.round(rail.width), feedTop: Math.round(feed.top), railTop: Math.round(rail.top),
+      feedIsLeft: rail.left >= feed.right, rows: rows.length,
+      // only a media-bearing row declares a media slot: a row without one caps at the text measure
+      slack: withMedia.map((x) => Math.round(feed.right - x.row.getBoundingClientRect().right)),
+      mediaAtRowEdge: withMedia.every((x) => Math.abs(x.media.getBoundingClientRect().right - x.row.getBoundingClientRect().right) <= 2),
+      railText: document.querySelector('.feed-rail-side').textContent, insideRail: Boolean(document.querySelector('.feed-rail-side .g-worth-following') && document.querySelector('.feed-rail-side .g-columns')) };
+  });
+  const twoRegion = await regions();
+  check('matrix page is laid out as two regions (feed + rail)', twoRegion.frame && twoRegion.display === 'grid' && twoRegion.tracks === 2);
+  check('the rail sits to the right of the feed, beside it rather than after it',
+    twoRegion.feedIsLeft && Math.abs(twoRegion.railTop - twoRegion.feedTop) <= 2 && twoRegion.feedW > twoRegion.railW * 2);
+  check('the trailing side cards ARE the rail', twoRegion.insideRail && twoRegion.railText.includes('值得关注') && twoRegion.railText.includes('专栏推荐'));
+  check('feed rows fill their column: no page-wide dead band', twoRegion.rows >= 20 && twoRegion.slack.every((s) => s >= 0 && s <= 40) && twoRegion.mediaAtRowEdge);
+  await page.addStyleTag({ content: '.feed-rail{display:block!important}' });
+  check('a stacked rail is detected (the two-region frame can fail)', (await regions()).frame === false || (await regions()).display !== 'grid');
+  await page.setContent(render(curated('sspai-com', 'matrix'), { site: 'sspai-com' }), { waitUntil: 'domcontentloaded' });
+  await page.addStyleTag({ content: '.feed-rail{grid-template-columns:minmax(0,1fr) 120px!important}' });
+  const narrowRail = await regions();
+  check('a rail too narrow for the feed column\'s own measure leaves a dead band and is detected', narrowRail.railW <= 130 && narrowRail.slack.some((s) => s > 40));
+  // 2. A marketing page's entrance matrix fills whole rows: the column count divides the entrance
+  //    count (6 entrances → 3 across), so no row is left with a lone card.
+  await page.setContent(render(curated('huawei-cn', 'home'), { site: 'huawei-cn' }), { waitUntil: 'domcontentloaded' });
+  const evenMatrix = () => page.evaluate(() => {
+    const c = document.querySelector('.g-business .controls.link-matrix');
+    const cards = [...c.querySelectorAll('a.ctl')].map((a) => a.getBoundingClientRect());
+    const perRow = {};
+    for (const r of cards) perRow[Math.round(r.y)] = (perRow[Math.round(r.y)] ?? 0) + 1;
+    return { cols: getComputedStyle(c).gridTemplateColumns.trim().split(/\s+/).length,
+      declared: getComputedStyle(c).getPropertyValue('--matrix-cols').trim(), n: cards.length, rows: Object.values(perRow) };
+  });
+  const even = await evenMatrix();
+  check('link matrix columns divide its 6 entrances evenly (3 across, 2 full rows)',
+    even.cols === 3 && even.declared === '3' && even.n === 6 && even.rows.length === 2 && even.rows.every((r) => r === 3));
+  await page.addStyleTag({ content: '.marketing-page .controls.link-matrix{grid-template-columns:repeat(4,minmax(0,1fr))!important}' });
+  const ragged = await evenMatrix();
+  check('a 4-column matrix (the old auto-fit) is detected as a ragged 4+2 row', ragged.cols === 4 && ragged.rows.includes(4) && ragged.rows.includes(2));
 } finally { await browser.close(); }
 console.log(`PASS page-frame/action regressions: ${checks} assertions; Chromium 2560/1920/1440/390; no experience verdict.`);

@@ -37,6 +37,7 @@ import {
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
   nodePlan, itemActionPlan, controlItemPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
   rankedSequence, hasValue, tableRowLabel, tableCellLinks, mediaFirstOf, pageLayoutOf, textLenOf,
+  feedRailOf, matrixColumns,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -445,7 +446,10 @@ function renderControls(items, chain, ctx) {
   // S2b：≥4 个**带目标**的控件不是一条动作栏，而是一张入口矩阵（huawei home 「我们的业务」六项）——
   // 每个入口是一张卡而不是一枚药丸。无目标（本站自有的标签位）与不足 4 项仍是动作栏。
   const linkMatrix = plans.length >= 4 && plans.every((c) => c.href);
-  return btns ? `<div class="controls${linkMatrix ? ' link-matrix' : ''}">${btns}</div>` : '';
+  // 矩阵列数由入口个数决定（axis.mjs matrixColumns）：列数整除入口数，最后一行不留孤卡
+  // （6 项 → 3 列，8 项 → 4 列）。旧 auto-fit 在 1232px 下取 4 列，6 项就成 4+2。
+  const matrixStyle = linkMatrix ? ` style="--matrix-cols:${matrixColumns(plans.length)}"` : '';
+  return btns ? `<div class="controls${linkMatrix ? ' link-matrix' : ''}"${matrixStyle}>${btns}</div>` : '';
 }
 // 横向对比表（F-031-§3）：行键/单元格/行标题/退化判定/**实体表头属性集**均在 axis.mjs；
 // 这里只管 HTML 呈现。表头集合是共享决策 `compareHeaderEntries`，本函数只把每个入口画成
@@ -669,8 +673,13 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   let headerHtml = '';
   let footHtml = '';
   let detailMain = '', detailSide = '', detailTail = '';
+  let feedMain = '', railHtml = '', feedTail = '';
   let orderedActionEmitted = false;
   const detailLayout = depth === 0 && ctx.pageLayout.kind === 'detail' ? ctx.pageLayout : null;
+  // S2c feed + 侧栏两区：拆分由 axis.mjs feedRailOf 从页面自己的结构推出（一个占优的集合 + 其后
+  // 的短卡片小节），这里只选槽位。feed 在侧栏左侧（.feed-rail 的两条轨道），侧栏卡片不再掉到
+  // feed 之后；不是侧卡的后段（如站点导航链接列）留主列、跟在两区之后。
+  const feedRail = depth === 0 ? ctx.feedRail : null;
   for (const c of plan.namedChildren) {
     if (itemsConsumed.has(c.node)) continue;
     const h = renderNode(c.node, [...chain, node], false, hide, ctx, depth + 1, c.key);
@@ -682,11 +691,20 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
     else if (detailLayout && c.key === detailLayout.taskKey) detailSide += sect;
     else if (detailLayout && detailLayout.mainKeys.includes(c.key)) detailMain += sect;
     else if (detailLayout && detailLayout.tailKeys.includes(c.key)) detailTail += sect;
+    else if (feedRail && c.key === feedRail.feedKey) feedMain += sect;
+    else if (feedRail && feedRail.railKeys.includes(c.key)) railHtml += sect;
+    else if (feedRail && feedRail.tailKeys.includes(c.key)) feedTail += sect;
     else body += sect;
     prevGroupHadTitle = Boolean(c.node._title || c.node._name || c.node._text);
   }
 
   if (detailLayout) body += `<div class="detail-layout"><div class="detail-main">${detailMain}</div><aside class="detail-task">${detailSide}</aside></div><div class="detail-tail">${detailTail}</div>`;
+  // 两区只在两侧都真的有东西时成立；否则按顺序把它们交回单列（绝不因帧判定丢掉一小节）。
+  if (feedMain || railHtml || feedTail) {
+    body += feedMain && railHtml
+      ? `<div class="feed-rail"><div class="feed-main">${feedMain}</div><aside class="feed-rail-side">${railHtml}</aside></div>${feedTail}`
+      : feedMain + railHtml + feedTail;
+  }
 
   // a control whose only content is its own title renders as a control bar, not a promo card (F-031-§4)
   if (depth > 0 && titleText && (titleIsControl || linkTo) && !bodyLead && !heroHtml && !heroImage && !body && !action) {
@@ -752,6 +770,8 @@ export function render(model, context = {}, report = null) {
   const index=(n,p='')=>{if(!n||typeof n!=='object')return;paths.set(n,p);for(const c of childrenOf(n))index(c.node,p?`${p}.${c.key}`:c.key);};index(model);
   const ctx = { values: context.values ?? {}, degradations: report ?? [], headings: new Set(), paths };
   ctx.pageLayout = pageLayoutOf(model);
+  // S2c：页框层面的两区判定（axis.mjs feedRailOf），一次一页，节点层只选槽位。
+  ctx.feedRail = feedRailOf(model, ctx.pageLayout);
   const html = renderNode(model, [], false, hide, ctx, 0);
   const title = esc(model._title ? fmt(model._title) : (model._intent ?? 'surface'));
   const brand = model._brand ? fmt(model._brand) : '';
@@ -1247,14 +1267,29 @@ main:has(.marketing-page){max-width:1728px}
 .masonry>hr.region{display:none}
 @media(max-width:900px){.marketing-page .cards.masonry,.marketing-page .g-tv .cards.masonry{columns:1}}
 /* 营销页的入口矩阵（render.mjs renderControls 判定 plan.link-matrix：≥4 个带目标的控件）：
-   每个入口一张卡，不再是一排药丸。动作栏（无目标 / 不足 4 项）保持药丸行。 */
-.marketing-page .controls.link-matrix{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px;margin:24px 0}
+   每个入口一张卡，不再是一排药丸。动作栏（无目标 / 不足 4 项）保持药丸行。
+   列数由入口个数整除决定（axis.mjs matrixColumns，落成 --matrix-cols）：6 个入口 3 列、8 个 4 列，
+   不再用 auto-fit（1232px 下取 4 列，6 项就成 4+2 的偏行）。 */
+.marketing-page .controls.link-matrix{display:grid;grid-template-columns:repeat(var(--matrix-cols,2),minmax(0,1fr));gap:16px;margin:24px 0}
 .marketing-page .controls.link-matrix>.ctl{display:flex;align-items:center;justify-content:center;min-height:116px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;color:var(--ink);font-size:1.05em;font-weight:600;text-align:center;line-height:1.4}
 /* 营销页一个小节的短列表（标题 + 一行事实：新闻动态的「标题 + 日期」）= 2–3 列卡片格，
    不是一条条流水行。只作用于页面小节自己的 .deflist，不动卡片/表格内部的列表。 */
 .marketing-page>.group>.node>.deflist,.marketing-page>.stack>.block>.node>.deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px;margin:20px 0}
 .marketing-page>.group>.node>.deflist>.defrow,.marketing-page>.stack>.block>.node>.deflist>.defrow{display:flex;flex-direction:column;gap:10px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;align-items:flex-start}
 .marketing-page>.group>.node>.deflist>.defrow>.defval,.marketing-page>.stack>.block>.node>.deflist>.defrow>.defval{color:var(--muted);font-size:.92em;order:-1}
+/* ——— S2c：feed + 侧栏两区（composition.md §3/§6）。帧判定在 axis.mjs feedRailOf（结构推出：
+   一个占优的集合 + 其后的小卡片小节），本层只落形态：feed 左主列、侧卡右栏（380px，滚动时停靠）。
+   旧形态把侧栏堆在 feed 之后，读者要滚完整个 feed 才见到它；同时单列吃满 1232px，记录行自己
+   封顶后剩下的中段就是死沟。 */
+.feed-rail{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:start;margin-top:8px}
+.feed-main,.feed-rail-side{min-width:0}
+.feed-rail-side{display:flex;flex-direction:column;gap:20px;position:sticky;top:16px}
+.feed-rail-side>.group{margin:0;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.feed-rail-side>.group>.node>.title{font-size:1.05em;margin:0 0 12px}
+.feed-rail-side .fact,.feed-rail-side .meta{max-width:none}
+@media(max-width:900px){.feed-rail{grid-template-columns:minmax(0,1fr);gap:24px}.feed-rail-side{position:static}
+.marketing-page .controls.link-matrix{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.marketing-page .controls.link-matrix{grid-template-columns:minmax(0,1fr)}}
 </style></head>
 <body><main>${brand ? `<header class="site"><span class="brand">${brand}</span></header>` : ''}${html}</main></body></html>
 `;
