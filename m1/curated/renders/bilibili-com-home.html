@@ -2,9 +2,17 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
 <style>
-:root{color-scheme:light;--accent:#00699d;--surface:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;--measure:36em;--measure-row:62ch}
+:root{color-scheme:light;--accent:#00699d;--surface:#fff;--page-tint:#f6f7f9;--band:#f4f5f7;--card:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;--measure:36em;--measure-row:59ch;--scale:1.25;--radius:12px;--radius-pill:999px;--shadow:0 1px 2px #17212b0a,0 8px 24px #17212b0d;--pad-band:56px;
+  /* S3a 排印（typography.md §1/§2/§4/§6）：西文字体在前，汉字逐字符穿透到中文字体（4.2 的价值就在这个顺序）。
+     本机装的 CJK 家族是 "Noto Sans CJK SC"/"Noto Serif CJK SC"，故排在通用名之后兜底，装与不装都不掉回系统宋体。 */
+  --font-body:"Inter","SF Pro Text",-apple-system,"Segoe UI","Helvetica Neue",Arial,"Noto Sans SC","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --font-display:"Newsreader","Source Serif 4","Noto Serif SC","Songti SC","Noto Serif CJK SC",serif}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--surface)}
+/* 中文正文基准 17px/1.8（typography.md §1 正文 17–18px、§2 中文长行 1.8–2.0）；
+   font-synthesis:none 断掉伪造斜体/加粗（§4.3），line-break:strict 是避头尾底线（§4.4）。 */
+body{margin:0;font-family:var(--font-body);font-size:17px;line-height:1.8;color:var(--ink);background:var(--surface);font-synthesis:none;line-break:strict;overflow-wrap:break-word}
+/* 标题按行均衡（≤4 行，§2），正文消灭行尾孤字 */
+p{text-wrap:pretty}
 /* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
    accent 由 m1/brand-tokens.json 按站点注入（上面的 --accent），本文件不写死站名/色值。
    层1 目的地列表：.linklist 条目名自身带 _action.to ⇒ 标记 • 换 accent ›（::marker），
@@ -16,14 +24,17 @@ a{color:inherit;text-decoration:none;cursor:pointer}
 a:hover{text-decoration:underline;text-decoration-color:currentColor}
 a.ref,.val a.body-link,.prose a,.chips a,.data a.table-link{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 .linklist li.go::marker{content:"›";color:var(--accent);font-weight:700}
-.linklist li.go>a{color:var(--accent);text-decoration:none}
+/* S3a 标题/卡片链接用墨色，不用 accent（"蓝色标题"是上一版最刺眼的缺陷）：一处 accent 只留给
+   主操作、正文层链接、焦点环与列表标记。常态不常显下划线，hover/focus 才画 —— 一种链接样式。 */
+.linklist li.go>a{color:var(--ink);text-decoration:none}
 .linklist li.go>a:hover{text-decoration:underline}
-a.self-link{color:var(--accent);text-decoration:none}
+a.self-link{color:var(--ink);text-decoration:none}
 a.self-link:hover{text-decoration:underline}
 .media-link{display:contents}
 .media-link:focus-visible img{outline:2px solid var(--accent);outline-offset:2px}
 a.self-link.nav::after{content:" ›";font-weight:650}
-th.cmp-col>a{color:var(--accent);text-decoration:none}
+th.cmp-col>a{color:var(--ink);text-decoration:none}
+th.cmp-col>a:hover{text-decoration:underline}
 /* 轮 57 站点头区横栏（nodePlan.headerBar，规则见 axis.mjs region==='header'）：header 区域
    是一条水平顶栏 —— 导航项横排（accent、无标记、顶栏本身即可供性），无目标的账号入口 pill
    靠右。所有页的 header 同一规则；文本/MD 目标保持逐行。 */
@@ -33,7 +44,8 @@ th.cmp-col>a{color:var(--accent);text-decoration:none}
 .header-bar>.block:last-of-type>.node{margin-left:auto}
 .header-bar .linklist{display:flex;flex-wrap:wrap;gap:2px 20px;margin:0;padding-left:0}
 .header-bar .linklist li{margin:0;list-style:none}
-.header-bar .linklist a{color:var(--accent);font-size:.95em}
+.header-bar .linklist a{color:var(--ink);font-size:.95em}
+.header-bar .linklist a:hover{color:var(--accent);text-decoration:underline}
 .header-bar .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0}
 /* 轮 57 hero/banner：满幅图带。nodePlan.banner 判定后 _image 走 hero 槽（.strip 已满幅），
    不再锁 74ch；标题/副题/按钮在满幅带内居中，该突出的突出。 */
@@ -53,14 +65,19 @@ main{max-width:1280px;margin:0 auto;padding:32px 24px 0}
 .depth-0>.fact,.depth-0>.hero{margin-inline:0}
 .depth-0>.fieldbar{justify-content:flex-start}
 .depth-0>.site-identity{font-size:18px;line-height:1.4;text-align:left;margin:0 0 16px;font-weight:650}
-h4.title,h5.title,h6.title{font-size:1em;line-height:1.5;margin:.7em 0 .35em;font-weight:650}
-header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #17212b}
+/* S3a 字号音阶（--scale 大三度）：正文 17px → h3 1.30em(22px) → h2 1.70em(29px) → h1 clamp 43–51px(2.5–3.0×) →
+   display 脱离音阶由版面决定（typography.md §1）。汉字比西文显挤，标题比纯音阶再宽一点才分得开（§4.6）。
+   字重是中文 display 的主武器（§4.6）：正文 400 对标题 650–750，不靠换字体。 */
+h4.title,h5.title,h6.title{font-size:1.05em;line-height:1.5;margin:.7em 0 .35em;font-weight:650}
+header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
 header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
-h1.title{font-size:2em;line-height:1.25;margin:.1em 0 .35em;font-weight:750}
-h2.title{font-size:1.45em;margin:1.1em 0 .45em;font-weight:700}
-h3.title{font-size:1.12em;margin:.8em 0 .35em;font-weight:650}
-.hero{margin:4px 0 24px}
-.hero.fact-hero .fact .val{font-size:2em;font-weight:700}
+h1.title{font-size:clamp(2.7rem,1.4rem + 2.4vw,3.2rem);line-height:1.16;margin:.1em 0 .35em;font-weight:750;letter-spacing:-.01em;text-wrap:balance}
+h2.title{font-size:calc(1em * var(--scale) * var(--scale) * 1.09);line-height:1.3;margin:1.05em 0 .45em;font-weight:700;letter-spacing:-.005em;text-wrap:balance}
+h3.title{font-size:calc(1em * var(--scale) * 1.04);line-height:1.4;margin:.8em 0 .35em;font-weight:680;text-wrap:balance}
+.hero{margin:4px 0 32px}
+.hero.fact-hero .fact .val{font-size:clamp(2rem,1rem + 2.6vw,3.2rem);font-weight:750;line-height:1.2;letter-spacing:-.01em;text-wrap:balance}
+/* 阅读页的标题用衬线（typography.md §6 --font-display：文章/编辑型标题），本机回落 Noto Serif CJK SC。 */
+.reading-page h1.title,.reading-page h2.title{font-family:var(--font-display)}
 /* a lead sentence is not a headline: H1-sized prose collapses the page's heading levels */
 .hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:var(--soft-ink)}
 article{margin:12px 0}
@@ -69,7 +86,7 @@ article{margin:12px 0}
 .timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
 .cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
 .cards.cols-auto{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-.cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
+.cards .item{border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:0;background:var(--card);box-shadow:var(--shadow)}
 /* 中文行宽 22–38 字（typography.md §2）：36em 在中文≈36 字/行、西文≈70 字符/行，两种语言同一把尺。 */
 .fact{margin:3px 0;max-width:var(--measure)}
 .hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
@@ -84,8 +101,10 @@ article{margin:12px 0}
 .cards .item img,.run .item img,.cards img{width:auto;max-width:100%;height:auto;display:block;border-radius:8px}
 /* Compact product media: an upper bound only, never crop or upscale source thumbnails. */
 .product-cards img{max-height:160px}
-.action-plain{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;font-weight:600}
-.promo{border:1px solid #e3e8ee;background:#f8fafc;border-radius:10px;padding:10px 14px;color:var(--soft-ink);font-weight:600;margin:10px 0}
+/* S3a 动作系统：主操作 = accent 实心药丸（唯一 accent 着色处之一）；副操作 = 描边/幽灵。
+   旧形态（每个品牌一个黑矩形、副操作蓝色文字）不成系统，且 accent 已按站点注入。 */
+.action-plain{display:inline-block;padding:12px 24px;border:1px solid var(--accent);border-radius:var(--radius-pill);background:var(--accent);color:#fff;font-size:.95em;font-weight:650}
+.promo{border:1px solid var(--line);background:var(--band);border-radius:var(--radius);padding:12px 16px;color:var(--soft-ink);font-weight:600;margin:10px 0}
 .promo-image{padding:0;overflow:hidden}
 .promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
 .meta{display:flex;flex-wrap:wrap;gap:0 6px;color:var(--muted);font-size:.9em;margin-top:2px}
@@ -118,26 +137,26 @@ hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
 .controls .action{margin:0}
 /* 行内的主 CTA 必须可辨：无抓取目标的动作（.action-plain）在行内也按实心强调
    （无目标不得造真实按钮标签；强调是样式，不是新控件，T-101/F-031-§4） */
-.controls .action-plain{margin:0;background:#17212b;color:#fff;border-color:#17212b}
-.ctl{display:inline-block;padding:7px 16px;border:1px solid #c9d3de;border-radius:999px;color:#0b62d0;font-size:.95em;text-decoration:none;background:#fff}
+.controls .action-plain{margin:0}
+.ctl{display:inline-block;padding:10px 18px;border:1px solid var(--line);border-radius:var(--radius-pill);color:var(--ink);font-size:.95em;text-decoration:none;background:var(--surface);font-weight:600}
 /* 时间流文本（弹幕）：行内紧凑流，每条单行省略——不铺成竖排文本墙（§10.5） */
 .stream{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0}
 .stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--soft);border-radius:999px;padding:2px 10px;font-size:.85em}
 a.ctl{font-weight:600}
-a.ctl:hover{background:#f2f7ff}
+a.ctl:hover{background:var(--soft);border-color:var(--ink)}
 /* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
 .cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
 .cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
 .cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
-.cmp-table th.cmp-row{white-space:nowrap;color:var(--muted);font-weight:600;background:#fafcfe;width:1%;position:sticky;left:0}
+.cmp-table th.cmp-row{white-space:nowrap;color:var(--muted);font-weight:600;background:var(--band);width:1%;position:sticky;left:0}
 .cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
-.cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:#0b62d0;background:#eaf3ff;border-radius:999px;padding:1px 8px}
+.cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:var(--soft-ink);background:var(--soft);border-radius:999px;padding:1px 8px}
 .cmp-price{font-weight:700;margin-top:4px}
 .cmp-sub{color:var(--muted);font-size:.92em;margin-top:2px}
 .cmp-ctl{margin-top:6px}
 /* 纯标签清单：一组等格条目名，读作"一组面板/条目"，不是 1..N 的目录（轮 34 grafana） */
 .manifest{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
-.manifest-item{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;background:#fafcfe;font-weight:600;color:var(--soft-ink);overflow-wrap:anywhere}
+.manifest-item{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;background:var(--card);font-weight:600;color:var(--soft-ink);overflow-wrap:anywhere}
 .linklist{margin:8px 0;padding-left:1.1em}
 .linklist.cols2{column-gap:28px}
 .linklist.cols3{column-gap:24px}
@@ -184,7 +203,9 @@ legend{font-size:.8em;color:var(--muted);text-transform:uppercase;letter-spacing
 .expose .hint{display:block;color:var(--muted);font-size:.85em;margin:2px 0 8px}
 .choice-extra{color:var(--muted);font-size:.9em;margin-left:4px}
 input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
-.action{display:inline-block;margin:10px 0 0;padding:9px 18px;border-radius:9px;background:#17212b;color:#fff;text-decoration:none;border:0;font:inherit;cursor:pointer}
+.action{display:inline-block;margin:14px 0 0;padding:12px 24px;border-radius:var(--radius-pill);background:var(--accent);color:#fff;text-decoration:none;border:1px solid var(--accent);font:inherit;font-size:.95em;font-weight:650;cursor:pointer}
+.action:hover{background:var(--ink);border-color:var(--ink)}
+.action:focus-visible,.ctl:focus-visible,.action-plain:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 /* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮）；
    层2 规则在上面的统一块里（accent + 1px 常显下划线）。 */
 /* 不放大（round 45 · F-082）：图片按自身自然尺寸显示，容器更窄时才收缩——width:auto
@@ -261,7 +282,7 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .group.g-footer .g-notices>.node>.stack{display:block}
 .group.g-footer .g-notices>.node>.stack>.block{margin:0;padding:0;border:0}
 .group.g-footer .cards{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0}
-.group.g-footer .cards>.item{padding:0;border:0;background:transparent}
+.group.g-footer .cards>.item{padding:0;border:0;background:transparent;box-shadow:none}
 .group.g-footer .cards .ctl{border:0;background:transparent;padding:2px 0;border-radius:0;font-size:13px}
 .group.g-footer .fact{font-size:13px;line-height:1.7;margin:4px 0}
 /* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
@@ -299,7 +320,7 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 /* Shared structural compact forms: singleton catalog entries, ordered editorial media, boolean utilities. */
 /* 声明为 hero 的 banner 填满自己的框架（旧 320px 盖把 hero 掐成缩略图），内容居中而不靠左。 */
 .singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:center;padding:0}
-.singleton-card .banner>.title{font-size:1.12em;text-align:center;margin:8px 0}
+.singleton-card .banner>.title{font-size:calc(1em * var(--scale) * var(--scale) * 1.04);line-height:1.3;text-align:center;margin:8px 0;text-wrap:balance}
 .singleton-card .banner>.band{order:0;margin:0;max-width:100%}
 .singleton-card .banner>.band .strip{margin:0}
 .singleton-card .banner>.controls,.singleton-card .banner>.action{order:2;margin:8px 0}
@@ -318,7 +339,7 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .instruction-media>.defrow{display:block;margin:16px 0}
 .instruction-media img{max-width:100%;max-height:none;width:auto;height:auto}
 .resource-view{margin:8px 0;font-size:14px;max-width:100%;text-align:left}
-.resource-view>summary{cursor:pointer;color:var(--accent);text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+.resource-view>summary{cursor:pointer;color:var(--ink);text-decoration:underline;text-underline-offset:3px;padding:6px 0}
 .native-media{max-width:100%;max-height:70vh;overflow:auto;border:1px solid var(--line);background:var(--surface)}
 .native-media img{max-width:none!important;max-height:none!important;width:auto!important;height:auto!important;margin:0!important;border-radius:0}
 .resource-view:focus-within{outline:2px solid var(--accent);outline-offset:2px}
@@ -353,11 +374,11 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .catalog-page>.stack>.block{margin:14px 0}
 .catalog-page .depth-1>.fact{max-width:none}
 .catalog-page>.stack>.block:has(>.node>.deflist) .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-.catalog-page>.stack>.block:has(>.node>.deflist) .defrow{display:block;padding:16px;background:#f6f7f9;border:1px solid var(--line);border-radius:12px}
+.catalog-page>.stack>.block:has(>.node>.deflist) .defrow{display:block;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
 .catalog-page .deflabel{margin-bottom:8px}
 .catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:14px}
 .catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block{margin:0;padding:0}
-.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block>.node{margin:0;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fafbfc}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block>.node{margin:0;padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
 .catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>hr{display:none}
 .product-page{max-width:960px;margin-inline:auto}
 .product-page .node.w-prose,.product-page .node.w-narrow,.product-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
@@ -394,16 +415,16 @@ main:has(.marketing-page){max-width:1728px}
 .marketing-page .node.w-bleed{width:100%;margin-inline:0}
 .marketing-page .node.w-narrow,.marketing-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
 .marketing-page .cards.cols-auto{grid-template-columns:repeat(2,minmax(0,1fr))}
-.marketing-page .cards.cols-auto .item{padding:20px;border-radius:12px;background:#f5f5f7}
+.marketing-page .cards.cols-auto .item{padding:20px;border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
 .marketing-page .cards.cols-auto .title{text-align:center;font-size:26px}
 .marketing-page .cards.cols-auto .fact{max-width:none;text-align:center}
 .marketing-page .cards.cols-auto .fact img{margin:auto}
 .marketing-page .cards.cols-auto .controls{justify-content:center}
 .marketing-page .g-tv .cards.cols-auto{grid-template-columns:repeat(3,minmax(0,1fr))}
 .marketing-page .g-services .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.marketing-page .g-services .defrow{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:12px}
+.marketing-page .g-services .defrow{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
 .marketing-page .g-services .defval img{max-height:180px;margin:auto}
-@media(min-width:1920px){body:has(.marketing-page){background:#f5f5f7}main:has(.marketing-page){max-width:1728px;padding-inline:24px}.marketing-page>.stack>.block{margin-block:16px}}
+@media(min-width:1920px){body:has(.marketing-page){background:#f5f5f7}main:has(.marketing-page){max-width:1728px;padding-inline:24px}.marketing-page>.stack>.block{margin-block:16px}.marketing-page{--band:#e8eaee}}
 @media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr);gap:20px}.detail-tail .g-reviews>.node{grid-template-columns:minmax(0,1fr)}.marketing-page .g-tv .cards.cols-auto{grid-template-columns:1fr}.marketing-page .cards.cols-auto{grid-template-columns:1fr}.product-page .defrow{flex-wrap:wrap}.product-page .deflabel{flex-basis:100%}}
 /* Media surface metadata keeps marketing image and text in the same panel. The
    original image is centered at natural height; only uniform lateral gutters clip. */
@@ -413,8 +434,8 @@ main:has(.marketing-page){max-width:1728px}
 .banner-integrated>.title{font-size:48px;line-height:1.1;margin:8px 0}
 .banner-integrated>.fact{font-size:22px;max-width:640px;line-height:1.35;margin:4px 0}
 .banner-integrated>.controls{margin:16px 0}
-.banner-integrated .ctl{background:transparent;color:#2997ff;border-color:#2997ff;border-radius:999px}
-.banner-integrated .action{background:#0071e3;color:#fff;border-radius:999px}
+.banner-integrated .ctl{background:transparent;color:var(--banner-fg);border-color:var(--banner-fg)}
+.banner-integrated .action{background:var(--accent);color:#fff;border-color:var(--accent)}
 .banner-integrated.media-centered>.fact:first-of-type{margin-top:auto}
 .banner-integrated.media-centered>.controls{margin-bottom:0}
 @media(max-width:700px){main{padding:20px 16px 0}.group.g-footer{margin-inline:-16px;padding:20px 16px}.banner-integrated{min-height:540px}.banner-integrated>.title{font-size:34px}.banner-integrated>.strip{height:540px}.banner-integrated>.strip img{width:auto;max-width:min(calc(var(--media-width)*.7),calc((100vw - 48px) * var(--media-ratio)));height:auto;object-fit:contain;align-self:flex-start;margin-top:160px}.banner-integrated>.fact{font-size:18px}.banner-integrated.media-centered>.strip img{margin-top:45px}.gallery-mosaic{grid-template-columns:repeat(2,1fr)}.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.stack.cols-auto,.cards{grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}}
@@ -424,7 +445,7 @@ main:has(.marketing-page){max-width:1728px}
 /* marketing（+无任务卡的商品落地页）：band 序列——depth-1 段落满幅、段标题居中、48–72px 纵向节奏。 */
 .marketing-page>.group,.product-page>.group,.marketing-page>.stack>.block{margin-block:0;padding-block:56px}
 .marketing-page>.group+.group,.product-page>.group+.group,.marketing-page>.stack>.block+.block,.product-page>.stack>.block+.block{border-top:1px solid var(--line)}
-.marketing-page>.group>.node>.title,.product-page>.group>.node>.title,.marketing-page>.stack>.block>.node>.title,.product-page>.stack>.block>.node>.title{text-align:center;margin-top:0}
+.marketing-page>.group>.node>.title,.product-page>.group>.node>.title,.marketing-page>.stack>.block>.node:not(.banner-integrated)>.title,.product-page>.stack>.block>.node:not(.banner-integrated)>.title{text-align:center;margin-top:0;font-size:calc(1em * var(--scale) * var(--scale) * 1.09)}
 .marketing-page>.group>.node,.product-page>.group>.node{width:100%;margin-inline:0}
 .marketing-page .band,.product-page .band{width:100%;margin-inline:0}
 /* catalog：响应式卡片网格（auto-fill 240px）；卡片 = 固定比例媒体框（contain）+ 标题 + 价格 + 动作，行高对齐。 */
@@ -462,7 +483,7 @@ main:has(.marketing-page){max-width:1728px}
 .profile-page .identity-frame>.band{grid-column:1;grid-row:auto;order:-1;margin:0}
 .profile-page .identity-frame .controls,.profile-page .identity-frame>.action,.profile-page .identity-frame>.action-plain{justify-self:center}
 .profile-page .stack .stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:12px;margin:16px 0}
-.profile-page .stack .stack>.block{margin:0;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fafbfc;text-align:center}
+.profile-page .stack .stack>.block{margin:0;padding:14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);text-align:center}
 .profile-page .stack .stack hr.region{display:none}
 .profile-page .stack .stack .title{font-size:.9em;font-weight:600;color:var(--muted);margin:0 0 4px}
 .profile-page .stack .stack .meta,.profile-page .stack .stack .fact{font-size:1.3em;font-weight:700;color:var(--ink);margin:0}
@@ -489,11 +510,12 @@ main:has(.marketing-page){max-width:1728px}
    列数由入口个数整除决定（axis.mjs matrixColumns，落成 --matrix-cols）：6 个入口 3 列、8 个 4 列，
    不再用 auto-fit（1232px 下取 4 列，6 项就成 4+2 的偏行）。 */
 .marketing-page .controls.link-matrix{display:grid;grid-template-columns:repeat(var(--matrix-cols,2),minmax(0,1fr));gap:16px;margin:24px 0}
-.marketing-page .controls.link-matrix>.ctl{display:flex;align-items:center;justify-content:center;min-height:116px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;color:var(--ink);font-size:1.05em;font-weight:600;text-align:center;line-height:1.4}
+.marketing-page .controls.link-matrix>.ctl{display:flex;align-items:center;justify-content:center;min-height:116px;padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--band);color:var(--ink);font-size:1.05em;font-weight:600;text-align:center;line-height:1.4}
+.marketing-page .controls.link-matrix>.ctl:hover{background:var(--surface);border-color:var(--accent);color:var(--accent)}
 /* 营销页一个小节的短列表（标题 + 一行事实：新闻动态的「标题 + 日期」）= 2–3 列卡片格，
    不是一条条流水行。只作用于页面小节自己的 .deflist，不动卡片/表格内部的列表。 */
 .marketing-page>.group>.node>.deflist,.marketing-page>.stack>.block>.node>.deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px;margin:20px 0}
-.marketing-page>.group>.node>.deflist>.defrow,.marketing-page>.stack>.block>.node>.deflist>.defrow{display:flex;flex-direction:column;gap:10px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;align-items:flex-start}
+.marketing-page>.group>.node>.deflist>.defrow,.marketing-page>.stack>.block>.node>.deflist>.defrow{display:flex;flex-direction:column;gap:10px;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);align-items:flex-start}
 .marketing-page>.group>.node>.deflist>.defrow>.defval,.marketing-page>.stack>.block>.node>.deflist>.defrow>.defval{color:var(--muted);font-size:.92em;order:-1}
 /* ——— S2c：feed + 侧栏两区（composition.md §3/§6）。帧判定在 axis.mjs feedRailOf（结构推出：
    一个占优的集合 + 其后的小卡片小节），本层只落形态：feed 左主列、侧卡右栏（380px，滚动时停靠）。
@@ -502,11 +524,26 @@ main:has(.marketing-page){max-width:1728px}
 .feed-rail{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:start;margin-top:8px}
 .feed-main,.feed-rail-side{min-width:0}
 .feed-rail-side{display:flex;flex-direction:column;gap:20px;position:sticky;top:16px}
-.feed-rail-side>.group{margin:0;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.feed-rail-side>.group{margin:0;padding:18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
 .feed-rail-side>.group>.node>.title{font-size:1.05em;margin:0 0 12px}
 .feed-rail-side .fact,.feed-rail-side .meta{max-width:none}
 @media(max-width:900px){.feed-rail{grid-template-columns:minmax(0,1fr);gap:24px}.feed-rail-side{position:static}
 .marketing-page .controls.link-matrix{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.marketing-page .controls.link-matrix{grid-template-columns:minmax(0,1fr)}}
+
+/* ——— S3a 设计语言层（composition.md §3/§4 的呈现侧）：表面、节奏与排印的统一口径。
+   引擎侧，无站点名、无逐页 CSS；accent 仍只来自 m1/brand-tokens.json。
+   · 表面只有三个 token：--surface（页/卡白面）、--band（带底色）、--card（卡片面），配 --line/--shadow。
+   · 营销/商品页的 depth-1 内容带隔带换底色。满幅靠 ::before 铺到视口，盒模型一格不动 ——
+     页框对齐与「绝不放大源图」两条判据因此完全不受影响；自带底色的带（footer、图像 hero）自然盖住
+     这条底，交错不会把一处底纹叠到另一处底纹上。
+   · 目录/搜索/表页整体落 --page-tint，卡片（白面+细边框+一处阴影）浮在上面；阅读页保持白纸。
+   · 纵向节奏一律 8pt 的倍数：带 56px、卡片 16–20px。 */
+body:has(.catalog-page),body:has(.search-page),body:has(.table-page){background:var(--page-tint)}
+.marketing-page>.group:nth-of-type(even),.marketing-page>.stack>.block:nth-of-type(even),.product-page>.group:nth-of-type(even),.product-page>.stack>.block:nth-of-type(even),.search-page>.group:first-of-type{position:relative}
+.marketing-page>.group:nth-of-type(even)::before,.marketing-page>.stack>.block:nth-of-type(even)::before,.product-page>.group:nth-of-type(even)::before,.product-page>.stack>.block:nth-of-type(even)::before,.search-page>.group:first-of-type::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);width:100vw;background:var(--band);z-index:-1}
+.search-page>.group:first-of-type{padding-block:24px}
+/* 数据用等宽数字（typography.md §6）：1 与 8 同宽，列不抖。 */
+table.data,.cmp-table,td{font-variant-numeric:tabular-nums}
 </style></head>
 <body><main><article id="bilibili-home" class="node depth-0 marketing-page" data-model-owner=""><h1 class="title">哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</h1><section class="group g-search"><article class="node depth-1 w-narrow" data-model-owner="search"><span class="expose expose-input expose-query"><span class="deflabel sr-only">影视飓风</span><input type="text" name="query" data-type="text" aria-label="影视飓风" placeholder="影视飓风"></span></article></section><section class="group g-banner"><article class="node depth-1 w-bleed banner" data-model-owner="banner"><h2 class="title"><a class="self-link nav" href="https://www.bilibili.com/bangumi/play/ss323486?spm_id_from=333.337.0.0">中国制造就是好，用了不烧心！</a></h2><figure class="strip"><img src="https://i0.hdslb.com/bfs/banner/5fc83b1c8e099fc21cd07c754ebda9fe86d52064.png@976w_550h_!web-home-carousel-cover" alt="中国制造就是好，用了不烧心！"></figure></article></section><section class="group g-feed"><article class="node depth-1 w-wide" data-model-owner="feed"><div class="cards cols-auto media-first masonry"><div class="item"><article id="v-bv1obpx6iema" class="node depth-2" data-model-owner="feed._items[0]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1oBpX6iEMA">50块钱可以在熟食店卖那些东西？</a></h3><div class="fact"><span class="val">03:06</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1oBpX6iEMA"><img src="https://i0.hdslb.com/bfs/archive/59069a7357ba2381e4f1bf290b97032fc2d44978.jpg@672w_378h_1c_!web-home-common-cover" alt="50块钱可以在熟食店卖那些东西？"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[0].authorLink" href="https://space.bilibili.com/3706968153786512">半斤盐焗鸡 · 10月12日</a><span class="sep">·</span>231.1 万<span class="sep">·</span>4958</div></article></div><div class="item"><article id="v-bv1bzpd6ee6e" class="node depth-2" data-model-owner="feed._items[1]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1bzpd6eE6e">苏轼在考卷里编了个典故</a></h3><div class="fact"><span class="val">04:07</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1bzpd6eE6e"><img src="https://i0.hdslb.com/bfs/archive/b0313eef98a4d4e30c3631a1bc14de21cb0e15ba.jpg@672w_378h_1c_!web-home-common-cover" alt="苏轼在考卷里编了个典故"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[1].authorLink" href="https://space.bilibili.com/3632319111891518">不是砖头 · 10月12日</a><span class="sep">·</span>32.5 万<span class="sep">·</span>230</div></article></div><div class="item"><article id="v-bv1rvpb64ei2" class="node depth-2" data-model-owner="feed._items[2]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1RVpB64Ei2">食品安全新闻解读</a></h3><div class="fact"><span class="val">02:13</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1RVpB64Ei2"><img src="https://i1.hdslb.com/bfs/archive/a1b4bab0bb29504830e2b8208cf24cde2e5bc194.jpg@672w_378h_1c_!web-home-common-cover" alt="食品安全新闻解读"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[2].authorLink" href="https://space.bilibili.com/3546377478998801">食品科学阿祖 · 3天前</a><span class="sep">·</span>67.5 万<span class="sep">·</span>226</div></article></div><div class="item"><article id="v-bv1vqjs6jewr" class="node depth-2" data-model-owner="feed._items[3]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1vQJS6JEWR">逆天！神人母女偷钱炒外汇巨亏2000万，四旬老爹何时才能逃离原生家庭丨《FX战士久留美》吐槽【呜喵】</a></h3><div class="fact"><span class="val">16:54</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1vQJS6JEWR"><img src="https://i0.hdslb.com/bfs/archive/d0b0215519bbca91c44e83f73bb2fd960357f4b9.jpg@672w_378h_1c_!web-home-common-cover" alt="逆天！神人母女偷钱炒外汇巨亏2000万，四旬老爹何时才能逃离原生家庭丨《FX战士久留美》吐槽【呜喵】"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[3].authorLink" href="https://space.bilibili.com/346059">呜喵Mania · 4小时前</a><span class="sep">·</span>1.8 万<span class="sep">·</span>166</div></article></div><div class="item"><article id="v-bv1krpb6meds" class="node depth-2" data-model-owner="feed._items[4]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1krpB6MEDS">「根本没有这种邦布!?」大合集(终)</a></h3><div class="fact"><span class="val">09:15</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1krpB6MEDS"><img src="https://i0.hdslb.com/bfs/archive/d7dcba79eeef651c7f2589e2e71f6f31bea26a46.jpg@672w_378h_1c_!web-home-common-cover" alt="「根本没有这种邦布!?」大合集(终)"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[4].authorLink" href="https://space.bilibili.com/13747986">白泉颐今天更新了没 · 2天前</a><span class="sep">·</span>30.9 万<span class="sep">·</span>515</div></article></div><div class="item"><article id="v-bv1ovpe66epw" class="node depth-2" data-model-owner="feed._items[5]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1ovpE66EPW">用opus5.5生成的动画和文案，音乐是バケモノの唄</a></h3><div class="fact"><span class="val">00:39</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1ovpE66EPW"><img src="https://i1.hdslb.com/bfs/archive/b10a538fe4869be3b63eda48ace9f85500aa495c.jpg@672w_378h_1c_!web-home-common-cover" alt="用opus5.5生成的动画和文案，音乐是バケモノの唄"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[5].authorLink" href="https://space.bilibili.com/3546726050826315">游不起来的水木鱼 · 10月11日</a><span class="sep">·</span>16.7 万<span class="sep">·</span>121</div></article></div><div class="item"><article id="v-bv1map26tej4" class="node depth-2" data-model-owner="feed._items[6]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1MAp26TEJ4">云南真不愧是快乐老家！</a></h3><div class="fact"><span class="val">00:15</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1MAp26TEJ4"><img src="https://i1.hdslb.com/bfs/archive/a879e6eabdd2e3f35b18cfa064281b45359ba2b4.jpg@672w_378h_1c_!web-home-common-cover" alt="云南真不愧是快乐老家！"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[6].authorLink" href="https://space.bilibili.com/17696303">彭大虾Nora · 2天前</a><span class="sep">·</span>44.8 万<span class="sep">·</span>141</div></article></div><div class="item"><article id="v-bv1wmpk6dexc" class="node depth-2" data-model-owner="feed._items[7]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1wmpk6DExc">你 J 哥的大狙，不烧心</a></h3><div class="fact"><span class="val">01:23</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1wmpk6DExc"><img src="https://i2.hdslb.com/bfs/archive/e83a13c58bc0b0d2bd39d783a02df481a651b6bd.jpg@672w_378h_1c_!web-home-common-cover" alt="你 J 哥的大狙，不烧心"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[7].authorLink" href="https://space.bilibili.com/352479603">SauceSoy · 2天前</a><span class="sep">·</span>56.2 万<span class="sep">·</span>123</div></article></div><div class="item"><article id="v-bv1dlpr6ceiw" class="node depth-2" data-model-owner="feed._items[8]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1DLpR6cEiW">【神人短剧】神人TV最新力作🔥全网最&quot;烧心&quot;版本🔥棍母快餐vs费八分钱，管饱【AI全民制作人】</a></h3><div class="fact"><span class="val">10:15</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1DLpR6cEiW"><img src="https://i2.hdslb.com/bfs/archive/644c606ae599389da44b2488c68637002dbf5907.jpg@672w_378h_1c_!web-home-common-cover" alt="【神人短剧】神人TV最新力作🔥全网最&quot;烧心&quot;版本🔥棍母快餐vs费八分钱，管饱【AI全民制作人】"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[8].authorLink" href="https://space.bilibili.com/36024653">闲夜空茫 · 10月12日</a><span class="sep">·</span>36.3 万<span class="sep">·</span>1014</div></article></div><div class="item"><article id="v-bv1ovp66neaq" class="node depth-2" data-model-owner="feed._items[9]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1oVp66NEaq">动态速写</a></h3><div class="fact"><span class="val">00:29</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1oVp66NEaq"><img src="https://i1.hdslb.com/bfs/archive/f0df6dd0907434de8b7aa346120ffea55d7ed2d7.jpg@672w_378h_1c_!web-home-common-cover" alt="动态速写"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[9].authorLink" href="https://space.bilibili.com/3546736060533403">王贺手绘 · 2天前</a><span class="sep">·</span>76.8 万<span class="sep">·</span>315</div></article></div><div class="item"><article id="live-6650029" class="node depth-2" data-model-owner="feed._items[10]"><h3 class="title"><a class="self-link nav" href="https://live.bilibili.com/6650029?live_from=81003">【直播】2026IVL秋季赛W3D1</a></h3><div class="fact"><span class="val">直播中</span></div><div class="fact"><span class="val">游戏赛事</span></div><div class="fact"><span class="val"><a class="media-link" href="https://live.bilibili.com/6650029?live_from=81003"><img src="https://i0.hdslb.com/bfs/live/new_room_cover/b1fbd487201dde0603b95cd023bdf33be5808d25.jpg@672w_378h_1c" alt="第五人格赛事"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[10].authorLink" href="https://space.bilibili.com/105022844">第五人格赛事</a><span class="sep">·</span>181.3 万</div></article></div><div class="item"><article id="v-bv15fjk6ae79" class="node depth-2" data-model-owner="feed._items[11]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV15fJk6aE79?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666">通关全部危险陷阱，直接拿走100万美金！你能到第几关？</a></h3><div class="fact"><span class="val">19:34</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV15fJk6aE79?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"><img src="https://i1.hdslb.com/bfs/archive/cb8eedebb71854604f6781087b7791f534be818d.jpg@672w_378h_1c_!web-home-common-cover" alt="通关全部危险陷阱，直接拿走100万美金！你能到第几关？"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[11].authorLink" href="https://space.bilibili.com/1027737427">野兽先生MrBeast · 21小时前</a><span class="sep">·</span>36.1 万<span class="sep">·</span>1264</div></article></div><div class="item"><article id="v-bv1jkp46yevr" class="node depth-2" data-model-owner="feed._items[12]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1JKp46YEvr?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666">最近玩比特厉害的人越来越多了</a></h3><div class="fact"><span class="val">01:37</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1JKp46YEvr?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"><img src="https://i1.hdslb.com/bfs/archive/88735b152a0131752caa3b4b683299c8b1151474.jpg@672w_378h_1c_!web-home-common-cover" alt="最近玩比特厉害的人越来越多了"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[12].authorLink" href="https://space.bilibili.com/3706987646814783">林正特老祖 · 10月9日</a><span class="sep">·</span>109.1 万<span class="sep">·</span>3255</div></article></div><div class="item"><article id="v-bv1luhh6fe9x" class="node depth-2" data-model-owner="feed._items[13]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1LUhh6fE9x?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666">【万字合集】午夜梦回，恶灵古堡！爆发夜之前重温《生化危机》系列！丧尸题材千千万，它才是我心中的红月光~</a></h3><div class="fact"><span class="val">03:38:51</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1LUhh6fE9x?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"><img src="https://i1.hdslb.com/bfs/archive/e16d2ff981e3a1da3764231e9bfc73c60d51a878.jpg@672w_378h_1c_!web-home-common-cover" alt="【万字合集】午夜梦回，恶灵古堡！爆发夜之前重温《生化危机》系列！丧尸题材千千万，它才是我心中的红月光~"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[13].authorLink" href="https://space.bilibili.com/245069296">迷影区间 · 9月21日</a><span class="sep">·</span>265.3 万<span class="sep">·</span>1</div></article></div><div class="item"><article id="v-bv1voey6reyf" class="node depth-2" data-model-owner="feed._items[14]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1voey6rEyF?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666">琵琶曲 | 全站最逆天版本</a></h3><div class="fact"><span class="val">01:43</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1voey6rEyF?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"><img src="https://i1.hdslb.com/bfs/archive/86a1c39bd79b0cc5ae7178b26d564e666d1f561a.jpg@672w_378h_1c_!web-home-common-cover" alt="琵琶曲 | 全站最逆天版本"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[14].authorLink" href="https://space.bilibili.com/7275647">碧天蓝钻 · 9月18日</a><span class="sep">·</span>396.4 万<span class="sep">·</span>6360</div></article></div><div class="item"><article id="v-bv1sfa965eng" class="node depth-2" data-model-owner="feed._items[15]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1sfa965ENG?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666">美国富人区最顶级美食！连吃24小时！老钱吃得有多离谱？</a></h3><div class="fact"><span class="val">23:29</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1sfa965ENG?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"><img src="https://i1.hdslb.com/bfs/archive/b5f01bd0bae0b41fed3ae68f5630403f1b6f940b.jpg@672w_378h_1c_!web-home-common-cover" alt="美国富人区最顶级美食！连吃24小时！老钱吃得有多离谱？"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[15].authorLink" href="https://space.bilibili.com/8894411">子文又饿了 · 9月30日</a><span class="sep">·</span>138.7 万<span class="sep">·</span>4854</div></article></div><div class="item"><article id="v-bv1e2es69es3" class="node depth-2" data-model-owner="feed._items[16]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1e2eS69ES3?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666">站起来就是活，连起来就是招！【人类沙雕纪录片】</a></h3><div class="fact"><span class="val">03:38</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1e2eS69ES3?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"><img src="https://i1.hdslb.com/bfs/archive/5ee1caec46233289c6ac19ce3eeb8320a133fa75.jpg@672w_378h_1c_!web-home-common-cover" alt="站起来就是活，连起来就是招！【人类沙雕纪录片】"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[16].authorLink" href="https://space.bilibili.com/474267806">人类早期纪录片 · 9月19日</a><span class="sep">·</span>181.7 万<span class="sep">·</span>635</div></article></div><div class="item"><article id="v-bv1k6jy6peen" class="node depth-2" data-model-owner="feed._items[17]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1K6Jy6pEEN?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666">一秒变异！夺舍6头6甲+M14+AWM，501万撤离！</a></h3><div class="fact"><span class="val">03:05</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1K6Jy6pEEN?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"><img src="https://i1.hdslb.com/bfs/archive/63a2101905d0d7702b58b9069813600e47d0b931.jpg@672w_378h_1c_!web-home-common-cover" alt="一秒变异！夺舍6头6甲+M14+AWM，501万撤离！"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[17].authorLink" href="https://space.bilibili.com/331514361">苏醒游戏解说 · 22小时前</a><span class="sep">·</span>16.4 万<span class="sep">·</span>238</div></article></div><div class="item"><article id="v-bv1kijk67ezw" class="node depth-2" data-model-owner="feed._items[18]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1KiJk67Ezw?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666">让百万人尖叫的鬼屋？我们发现了这里的秘密……</a></h3><div class="fact"><span class="val">14:34</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1KiJk67Ezw?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"><img src="https://i1.hdslb.com/bfs/archive/b6c3790c45a6355285e7960e4aca084b6e9b0b74.jpg@672w_378h_1c_!web-home-common-cover" alt="让百万人尖叫的鬼屋？我们发现了这里的秘密……"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[18].authorLink" href="https://space.bilibili.com/946974">影视飓风 · 22小时前</a><span class="sep">·</span>108.6 万<span class="sep">·</span>2791</div></article></div><div class="item"><article id="v-bv1fba26yeaw" class="node depth-2" data-model-owner="feed._items[19]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1fBa26yEaW?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666">吃剩的肯德基鸡架千万不要扔小伙教你做泡饭，加入水果香料味道真不错</a></h3><div class="fact"><span class="val">06:36</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1fBa26yEaW?trackid=web_pegasus_0.router-web-pegasus-2479516-sm4rx.1792137391158.666"><img src="https://i1.hdslb.com/bfs/archive/c4512c2b47c9bf83808703613cbb6dff608a2169.jpg@672w_378h_1c_!web-home-common-cover" alt="吃剩的肯德基鸡架千万不要扔小伙教你做泡饭，加入水果香料味道真不错"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[19].authorLink" href="https://space.bilibili.com/272654283">咸鱼梦想家vlog · 10月2日</a><span class="sep">·</span>572 万<span class="sep">·</span>6764</div></article></div><div class="item"><article id="v-bv1dgyf63eu8" class="node depth-2" data-model-owner="feed._items[20]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1dgYF63Eu8?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435">高 人。</a></h3><div class="fact"><span class="val">04:58</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1dgYF63Eu8?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"><img src="https://i1.hdslb.com/bfs/archive/49e21de2d404cfb4891fc071756a07a1b4b0b2d1.jpg@672w_378h_1c_!web-home-common-cover" alt="高 人。"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[20].authorLink" href="https://space.bilibili.com/454557163">稽木白柏cypress · 9月30日</a><span class="sep">·</span>215.7 万<span class="sep">·</span>6406</div></article></div><div class="item"><article id="v-bv15pph6mejq" class="node depth-2" data-model-owner="feed._items[21]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV15pph6MEJq?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435">妙脆角猫 | 吃饭是要靠脑袋的</a></h3><div class="fact"><span class="val">01:09</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV15pph6MEJq?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"><img src="https://i1.hdslb.com/bfs/archive/827ab82b7fc5c3b1dddc185f14c63d4a08253f8b.jpg@672w_378h_1c_!web-home-common-cover" alt="妙脆角猫 | 吃饭是要靠脑袋的"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[21].authorLink" href="https://space.bilibili.com/3690997928167927">饼型地雷 · 10月10日</a><span class="sep">·</span>32.4 万<span class="sep">·</span>104</div></article></div><div class="item"><article id="v-bv1f6po6qe2y" class="node depth-2" data-model-owner="feed._items[22]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1F6po6QE2y?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435">萌新原创末日故事连载《归墟》第十九集-树根【AI全民制作人】</a></h3><div class="fact"><span class="val">08:55</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1F6po6QE2y?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"><img src="https://i1.hdslb.com/bfs/archive/8da1719b800c4588653201c67d2f39520ec2ceea.jpg@672w_378h_1c_!web-home-common-cover" alt="萌新原创末日故事连载《归墟》第十九集-树根【AI全民制作人】"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[22].authorLink" href="https://space.bilibili.com/21384754">泫九AI · 3天前</a><span class="sep">·</span>34.4 万<span class="sep">·</span>744</div></article></div><div class="item"><article id="v-bv1t5hw6qeds" class="node depth-2" data-model-owner="feed._items[23]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1T5HW6qEdS?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435">猫斋志异|根本就没有这样的事！【聊斋志异|尸变】</a></h3><div class="fact"><span class="val">07:12</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1T5HW6qEdS?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"><img src="https://i1.hdslb.com/bfs/archive/153b852355f77fde013df45e04caedf8d70d7742.jpg@672w_378h_1c_!web-home-common-cover" alt="猫斋志异|根本就没有这样的事！【聊斋志异|尸变】"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[23].authorLink" href="https://space.bilibili.com/543889118">芳芳bu慌慌 · 10月5日</a><span class="sep">·</span>53.2 万<span class="sep">·</span>856</div></article></div><div class="item"><article id="v-bv13spr68edy" class="node depth-2" data-model-owner="feed._items[24]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV13Spr68EDY?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435">鹅城县诞生！开始从零建设一座城市！！#01</a></h3><div class="fact"><span class="val">08:38</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV13Spr68EDY?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"><img src="https://i1.hdslb.com/bfs/archive/f9456ee91e66687c005422827f969d7601c9a33f.jpg@672w_378h_1c_!web-home-common-cover" alt="鹅城县诞生！开始从零建设一座城市！！#01"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[24].authorLink" href="https://space.bilibili.com/527452972">大椿哥哥吖 · 2天前</a><span class="sep">·</span>13.1 万<span class="sep">·</span>420</div></article></div><div class="item"><article id="v-bv1mxh466eif" class="node depth-2" data-model-owner="feed._items[25]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1MXh466Eif?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435">琵琶曲 完整版（真人无AI手搓）</a></h3><div class="fact"><span class="val">01:20</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1MXh466Eif?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"><img src="https://i1.hdslb.com/bfs/archive/244a08be727b1ca2317e3e77cf8b54f27ece2ac0.jpg@672w_378h_1c_!web-home-common-cover" alt="琵琶曲 完整版（真人无AI手搓）"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[25].authorLink" href="https://space.bilibili.com/1652834405">癫癫零点五 · 9月23日</a><span class="sep">·</span>421.7 万<span class="sep">·</span>1356</div></article></div><div class="item"><article id="v-bv1wihj6uesr" class="node depth-2" data-model-owner="feed._items[26]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1wiHj6uEsr?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435">全 站 最 烧 心 版 本！！！【AI全民制作人】</a></h3><div class="fact"><span class="val">01:10</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1wiHj6uEsr?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"><img src="https://i1.hdslb.com/bfs/archive/5138ce39155c3aaf9c6b9c23372ab117f74f00a2.jpg@672w_378h_1c_!web-home-common-cover" alt="全 站 最 烧 心 版 本！！！【AI全民制作人】"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[26].authorLink" href="https://space.bilibili.com/6054967">茶咩cc · 10月4日</a><span class="sep">·</span>807.6 万<span class="sep">·</span>5</div></article></div><div class="item"><article id="v-bv1e6h46uefg" class="node depth-2" data-model-owner="feed._items[27]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1e6h46UEfG?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435">『飙马野郎 JOJO的奇妙冒险』 OP Kroi 「SPIN」</a></h3><div class="fact"><span class="val">01:31</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1e6h46UEfG?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"><img src="https://i1.hdslb.com/bfs/archive/3b49aa06630a79d9ab887709ff8126a591a26859.jpg@672w_378h_1c_!web-home-common-cover" alt="『飙马野郎 JOJO的奇妙冒险』 OP Kroi 「SPIN」"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[27].authorLink" href="https://space.bilibili.com/2061838341">WBJ_Anime · 9月23日</a><span class="sep">·</span>455 万<span class="sep">·</span>1</div></article></div><div class="item"><article id="v-bv1vvpo6geyg" class="node depth-2" data-model-owner="feed._items[28]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1VVpo6gEYg?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435">【A2O】A2O LITE 'NEON' Official Video</a></h3><div class="fact"><span class="val">03:43</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1VVpo6gEYg?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"><img src="https://i1.hdslb.com/bfs/archive/561841a87b9faa6213cda58630d8cb7376cd2638.jpg@672w_378h_1c_!web-home-common-cover" alt="【A2O】A2O LITE 'NEON' Official Video"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[28].authorLink" href="https://space.bilibili.com/670061998">A2O_WORLD · 10月12日</a><span class="sep">·</span>223.2 万<span class="sep">·</span>1</div></article></div><div class="item"><article id="v-bv1zxpk6je1r" class="node depth-2" data-model-owner="feed._items[29]"><h3 class="title"><a class="self-link nav" href="https://www.bilibili.com/video/BV1zXpk6jE1R?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435">豆奶噬之殇【AI全民制作人】</a></h3><div class="fact"><span class="val">02:32</span></div><div class="fact"><span class="val"><a class="media-link" href="https://www.bilibili.com/video/BV1zXpk6jE1R?trackid=web_pegasus_0.router-web-pegasus-2479516-gfll4.1792137392061.435"><img src="https://i1.hdslb.com/bfs/archive/77194a5fa1167ae000c667d2f7b21267c5a3df13.jpg@672w_378h_1c_!web-home-common-cover" alt="豆奶噬之殇【AI全民制作人】"></a></span></div><div class="meta"><a class="body-link" data-model-owner="feed._items[29].authorLink" href="https://space.bilibili.com/433838208">奶山苏苏 · 2天前</a><span class="sep">·</span>62.7 万<span class="sep">·</span>595</div></article></div></div></article></section></article></main></body></html>
