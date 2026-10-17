@@ -40,7 +40,8 @@
 ## 2. 构图必须完备，不得静默回落
 
 - 每个页面解析出恰好一个页面原型（闭式集合：`reading` / `catalog` / `marketing` / `detail` / `product` / `authentication` / `search` / `profile` / `table`），否则是**显式错误**。（`feed` 不是独立原型：它是 §3 里 catalog / feed / search 共用的框架族，今日语料 0 页需要单独原型。）
-- `default` 不是合法结果。解析不出原型 = 引擎错误（门禁失败），不是「普通页」；门禁在渲染上要求页面带上恰好一个与原型同名的页级类（`reading-page` / `<kind>-page`）。
+- `default` 不是合法结果。解析不出原型 = 引擎错误（门禁失败），不是「普通页」；门禁在渲染上要求页面带上与其原型对应的页级类（`reading-page` / `<kind>-page`）。
+- **覆盖口径诚实**：40/40 是「声明 → 投影」检查，不是「从结构推导出原型」——40 页都声明了 `_scope`/`_subject`，因此测度分支在真实语料上 0 次触发；结构规则与含混负样本由自测行使（`composition-selftest.mjs`）。声明的**正确性**是策展事实，门禁只能保证声明不被静默改写。
 - **唯一实现**是 `m1/axis.mjs` 的 `pageLayoutOf`（返回 `kind` 与裁定它的 `rule`，裁不出时 `kind` 是 `undefined`）；门禁 `m1/eval/composition-selftest.mjs` 在 pipeline 里运行，断言 40 页各自落在其采集 archetype 的允许集内，并用含混负样本证明树会诚实返回 `undefined`。
 - 判定依赖业务结构（角色、`_lines`/`_items` 层级、`_rel`、关系、复合件）加两个闭式语义键（scope/subject）；**不得**依赖站点名或逐页例外。声明与偶然计数不可互换：声明了 scope/subject 的页面由声明裁定，计数（长段数、价格数、横幅数）只在未声明角色的页面上兜底——否则 4 个商品页会被长段数判成阅读页。
 - 长文/阅读型判定统计**全部长文本**（`_text`、`_quote`、`_summary`、`_detail`，嵌套含 `_lines`），不得只看单一字段。
@@ -83,7 +84,7 @@
 
 ## 6. 当前引擎缺陷（必须消灭，作为负样本）
 
-- CSS 覆盖自身声明：`.gallery-mosaic{align-items:stretch}` 压掉 `aspect-ratio:1/1`（airbnb 照片墙，门禁作为运行时覆盖报出）；`.banner>.title{text-align:center}` 被同权重后置 `text-align:left` 覆盖；`.singleton-card>.stack{max-width:320px}` 把声明为 hero 的 banner 掐成 320px。
+- CSS 覆盖自身声明：`.gallery-mosaic{align-items:stretch}` 压掉 `aspect-ratio:1/1`（airbnb 照片墙，门禁作为运行时覆盖报出）；`.singleton-card>.stack{max-width:320px}` 把声明为 hero 的 banner 掐成 320px。（`.singleton-card .banner>.title{text-align:left}` 是基础+特化覆盖，合法，**不是**缺陷。）
 - 5 条死声明（`.ctl` 的 padding/background 在 footer 组内、`.linklist.cols{2,3,4}` 的 columns）由门禁逐条报出。
 - 无「主列 + 侧栏」区域概念，侧栏在单列流里掉到正文之后。
 - 以上都属框架层（§3），由 S2 消灭；构图推导与页级类的缺陷已消灭：`pageLayoutOf` 不再回落 `default`（40/40 落在 archetype 允许集），引擎 CSS 的每个 `*-page` 类都至少被一页打出。
@@ -96,7 +97,8 @@
 
 ## 8. 开放缺口（已知、暂不掩盖）
 
-- **dashboard/data-viz 无语法表达**：语料里唯一的 dashboard 页 `num 0`、无图表/序列/带单位的值原语；它现在只能落到 dataset 框架。需要一次图表原语的语法演化（n=1，先在结果里记录限制，不假装已解决）。
+- **dashboard/data-viz 无语法表达**：语料里唯一的 dashboard 页 `num 0`、无图表/序列/带单位的值原语；它现在只能落到 `table` 原型（框架未实现，S2）。需要一次图表原语的语法演化（n=1，先在结果里记录限制，不假装已解决）。
+- **框架缺口**：`search` / `table` / `profile` 原型尚无 CSS 框架（11/40 页带着无效果的页级类），由 S2 落地；门禁只查「CSS → 语料」方向，不查「页级类 → 有框架」。
 - **`docs/design-system` 与 `article/editorial` 同属 document**：两者共用阅读框架；`docs/design-system` 在语料里 n=1，暂不单独建模。
 - **`table-heavy` 的表「角色」靠位置近似**（深度 1 的表=页级数据集，实体下的表=属性面板）；这是策展纪律，不是不变式。
 - **两处建模缺口（不是推导规则问题）**：`sspai-com/login` 缺 `login` 声明（推导按 `_scope:form` 判定）；`mi-com/search-phone` 缺查询态。
