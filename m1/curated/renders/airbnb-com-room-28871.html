@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>舒适的双人房</title>
 <style>
-:root{color-scheme:light;--accent:#0b62d0;--surface:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec}
+:root{color-scheme:light;--accent:#0b62d0;--surface:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;--measure:36em;--measure-row:62ch}
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--surface)}
 /* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
@@ -70,7 +70,8 @@ article{margin:12px 0}
 .cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
 .cards.cols-auto{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
-.fact{margin:3px 0;max-width:74ch}
+/* 中文行宽 22–38 字（typography.md §2）：36em 在中文≈36 字/行、西文≈70 字符/行，两种语言同一把尺。 */
+.fact{margin:3px 0;max-width:var(--measure)}
 .hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
 .fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
@@ -92,8 +93,8 @@ article{margin:12px 0}
 /* 并入价格行的分期时长（U-28）：与承载句同行、弱化如 meta，不再是容器外孤块 */
 .fact .installment{color:var(--muted);font-size:.9em}
 .fact .installment .sep{color:#c2ccd6}
-.prose{max-width:74ch;margin-inline:0}
-.prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
+.prose{max-width:var(--measure);margin-inline:0}
+.prose p{margin:.5em 0;line-height:1.75;max-width:var(--measure)}
 /* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
    轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
    内容图带（.band 内的 .strip，image-strip 形态）绝不满幅：居中、压到容器宽（U-20/U-21）。 */
@@ -210,7 +211,7 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 /* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
-blockquote.quote{margin:12px 0;padding:4px 0 4px 16px;border-left:4px solid #17212b;max-width:74ch}
+blockquote.quote{margin:12px 0;padding:4px 0 4px 16px;border-left:4px solid #17212b;max-width:var(--measure)}
 blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13202c}
 /* 字段+提交成组（U-02）：输入与它的提交按钮同一条栏，其余内容在栏后。 */
 .fieldbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
@@ -267,7 +268,7 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .group.g-footer .cards .ctl{border:0;background:transparent;padding:2px 0;border-radius:0;font-size:13px}
 .group.g-footer .fact{font-size:13px;line-height:1.7;margin:4px 0}
 /* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
-.reading-page{--reading-width:800px;max-width:var(--reading-width);margin-inline:auto}
+.reading-page{--reading-width:var(--measure);max-width:var(--reading-width);margin-inline:auto}
 .reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
 .reading-page .node.w-prose,.reading-page .node.w-narrow,.reading-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
 .reading-page .fact,.reading-page .prose,.reading-page .prose p,.reading-page .quote{max-width:none}
@@ -299,13 +300,13 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .utility-group>.deflist{display:flex;flex-wrap:wrap;gap:8px 24px}
 .utility-group>.deflist>.defrow{border:0;padding:0}
 /* Shared structural compact forms: singleton catalog entries, ordered editorial media, boolean utilities. */
-.singleton-card>.stack{max-width:320px}
-.singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:flex-start;padding:0}
-.singleton-card .banner>.title{font-size:1.12em;text-align:left;order:1;margin:8px 0}
-.singleton-card .banner>.band{order:0;margin:0;max-width:320px}
+/* 声明为 hero 的 banner 填满自己的框架（旧 320px 盖把 hero 掐成缩略图），内容居中而不靠左。 */
+.singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:center;padding:0}
+.singleton-card .banner>.title{font-size:1.12em;text-align:center;margin:8px 0}
+.singleton-card .banner>.band{order:0;margin:0;max-width:100%}
 .singleton-card .banner>.band .strip{margin:0}
 .singleton-card .banner>.controls,.singleton-card .banner>.action{order:2;margin:8px 0}
-.singleton-card .banner img{max-width:100%;max-height:320px;width:auto;height:auto}
+.singleton-card .banner img{max-width:100%;width:auto;height:auto}
 .boolean-utilities>.stack{display:flex;flex-wrap:wrap;gap:8px 16px}
 .boolean-utilities>.stack>.block,.boolean-utilities>.stack>.block>.node{margin:0;padding:0}
 .boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox]){display:inline-block;margin:4px 16px 4px 0}
@@ -326,17 +327,17 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .resource-view:focus-within{outline:2px solid var(--accent);outline-offset:2px}
 /* Metadata-bearing editorial/search records are local records, never heroes. */
 .record-member{display:grid!important;grid-template-columns:minmax(0,1fr) 216px;gap:6px 24px;max-width:100%;margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
-.record-member>*{grid-column:1;margin:0!important;min-width:0}
+.record-member>*{grid-column:1;margin:0!important;min-width:0;max-width:var(--measure-row)}
 .record-member>.band,.record-member>.fact:has(img){grid-column:2;grid-row:1 / span 6;align-self:start}
 .record-member img{max-width:216px;max-height:172px;width:auto;height:auto;margin:0}
 .record-member .strip{width:auto;margin:0}
 .record-member>.title{text-align:left;font-size:1.15em}
-.record-member>.fact{max-width:74ch}
+.record-member>.fact{max-width:var(--measure-row)}
 .cards:has(>.item>.record-member){display:block}
 .cards:has(>.item>.record-member)>.item{border:0;padding:0;background:transparent;margin:0}
 .stack:has(>.block>.record-member){display:block}
 .stack:has(>.block>.record-member)>.block{padding:0;margin:0}
-.node.identity-frame{max-width:74ch;margin-inline:0;display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px 24px;align-items:start}
+.node.identity-frame{max-width:var(--measure);margin-inline:0;display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px 24px;align-items:start}
 .identity-frame>*{grid-column:2;margin:0}
 .identity-frame>.ctl,.identity-frame>.action,.identity-frame>.action-plain{justify-self:start}
 .identity-frame>.band{grid-column:1;grid-row:1 / span 4;margin:0}
@@ -362,14 +363,15 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .product-page .fact,.product-page .prose,.product-page .prose p{max-width:none}
 .product-page .fact img{margin-inline:auto}
 .product-page>.meta{margin-inline:0}
-.product-page>.stack>.block{margin-block:32px}
+.product-page>.stack>.block{margin-block:0;padding-block:48px}
 .product-page .defrow{gap:24px}
 .product-page .deflabel{flex:0 0 190px;min-width:0}
 .product-page .media-captions .deflabel{flex:0 0 auto}
 .detail-page>.title{max-width:none;margin-inline:0}
 .detail-page>.fact{max-width:none}
 .detail-page .node.w-prose,.detail-page .node.w-narrow,.detail-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
-.detail-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start;margin-top:24px}
+/* 媒体墙 + 主列（measure 封顶）+ 任务卡右侧停靠：两区贴着放，不再留一条死沟。 */
+.detail-layout{display:grid;grid-template-columns:minmax(0,var(--measure)) 340px;gap:48px;align-items:start;justify-content:center;margin-top:24px}
 .detail-main,.detail-task{min-width:0}
 .detail-main>.group{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
 .detail-main .fact,.detail-main .prose{max-width:none}
@@ -416,5 +418,60 @@ main:has(.marketing-page){max-width:1728px}
 .banner-integrated.media-centered>.fact:first-of-type{margin-top:auto}
 .banner-integrated.media-centered>.controls{margin-bottom:0}
 @media(max-width:700px){main{padding:20px 16px 0}.group.g-footer{margin-inline:-16px;padding:20px 16px}.banner-integrated{min-height:540px}.banner-integrated>.title{font-size:34px}.banner-integrated>.strip{height:540px}.banner-integrated>.strip img{width:auto;max-width:min(calc(var(--media-width)*.7),calc((100vw - 48px) * var(--media-ratio)));height:auto;object-fit:contain;align-self:flex-start;margin-top:160px}.banner-integrated>.fact{font-size:18px}.banner-integrated.media-centered>.strip img{margin-top:45px}.gallery-mosaic{grid-template-columns:repeat(2,1fr)}.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.stack.cols-auto,.cards{grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}}
+/* ——— S2a：原型 → 框架（composition.md §3）。只管形态：无站点名、无逐页例外；图一律 contain、绝不放大源图。
+   每个框架只作用于引擎自己已落的页级类（marketing-page / product-page / catalog-page / search-page /
+   table-page / profile-page / detail-page / reading-page），模型不因此新增任何键。 ——— */
+/* marketing（+无任务卡的商品落地页）：band 序列——depth-1 段落满幅、段标题居中、48–72px 纵向节奏。 */
+.marketing-page>.group,.product-page>.group,.marketing-page>.stack>.block{margin-block:0;padding-block:56px}
+.marketing-page>.group+.group,.product-page>.group+.group,.marketing-page>.stack>.block+.block,.product-page>.stack>.block+.block{border-top:1px solid var(--line)}
+.marketing-page>.group>.node>.title,.product-page>.group>.node>.title,.marketing-page>.stack>.block>.node>.title,.product-page>.stack>.block>.node>.title{text-align:center;margin-top:0}
+.marketing-page>.group>.node,.product-page>.group>.node{width:100%;margin-inline:0}
+.marketing-page .band,.product-page .band{width:100%;margin-inline:0}
+/* catalog：响应式卡片网格（auto-fill 240px）；卡片 = 固定比例媒体框（contain）+ 标题 + 价格 + 动作，行高对齐。 */
+.catalog-page .cards{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;align-items:stretch}
+.catalog-page .cards>.item{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.catalog-page .cards .fact:has(>.val>img){aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;margin:0;border-radius:10px;background:var(--soft);overflow:hidden}
+.catalog-page .cards .fact:has(>.val>img)>.val{display:flex;flex:1 1 auto;align-items:center;justify-content:center;height:100%}
+.catalog-page .cards .fact:has(>.val>img) img{max-width:100%;max-height:100%;width:auto;height:auto}
+.catalog-page .cards .title{font-size:1.05em;line-height:1.4;margin:0}
+.catalog-page .product-cards img{max-height:none}
+.catalog-page .cards .controls{margin:auto 0 0}
+/* 目录里成组的条目名（无封面）：等宽卡片格，不再是一条 110px 的文字瀑布。 */
+.catalog-page .linklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px 20px;margin:16px 0}
+.catalog-page .linklist li{margin:0;padding:8px 0;border-bottom:1px solid var(--line)}
+.catalog-page .ordered-media-rows>.stack{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin:14px 0}
+.catalog-page .ordered-media-rows>.stack>.block{margin:0;padding:14px;border:1px solid var(--line);border-radius:12px}
+.catalog-page .ordered-media-rows>.stack>.block>.node{display:flex;flex-direction:column;gap:6px;margin:0;padding:0}
+.catalog-page .ordered-media-rows .band{order:-1;margin:0;align-self:stretch}
+.catalog-page .ordered-media-rows .band img{max-width:100%;max-height:160px;width:auto;height:auto}
+/* search：结果行 = 媒体（160–220px）靠左 + 文本列（measure 封顶）；筛选条紧凑。 */
+.search-page .record-member{grid-template-columns:minmax(0,1fr);align-items:start}
+.search-page .record-member:has(img){grid-template-columns:216px minmax(0,1fr)}
+.search-page .record-member>*{grid-column:2}
+.search-page .record-member:not(:has(img))>*{grid-column:1}
+.search-page .record-member>.band,.search-page .record-member>.fact:has(img){grid-column:1;grid-row:1 / span 8;justify-self:start}
+.search-page fieldset.expose.chipbar{display:flex;flex-wrap:wrap;gap:6px;padding:8px 10px}
+.search-page .choice{margin:0 6px 0 0;padding:3px 10px;border-radius:999px;font-size:.92em}
+/* table：页级数据表满幅、等宽数字、单元格留白舒适。 */
+.table-page .data-scroll{border:1px solid var(--line);border-radius:12px}
+.table-page table.data{font-variant-numeric:tabular-nums}
+.table-page table.data th,.table-page table.data td{padding:10px 14px}
+/* profile：居中身份卡（图+名+简介+动作）+ 行内统计块 + 活动 feed 列表。 */
+.profile-page>.title{text-align:center}
+.profile-page .identity-frame{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;gap:10px;max-width:var(--measure);margin-inline:auto}
+.profile-page .identity-frame>.band{grid-column:1;grid-row:auto;order:-1;margin:0}
+.profile-page .identity-frame .controls,.profile-page .identity-frame>.action,.profile-page .identity-frame>.action-plain{justify-self:center}
+.profile-page .stack .stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:12px;margin:16px 0}
+.profile-page .stack .stack>.block{margin:0;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fafbfc;text-align:center}
+.profile-page .stack .stack hr.region{display:none}
+.profile-page .stack .stack .title{font-size:.9em;font-weight:600;color:var(--muted);margin:0 0 4px}
+.profile-page .stack .stack .meta,.profile-page .stack .stack .fact{font-size:1.3em;font-weight:700;color:var(--ink);margin:0}
+.profile-page .cards{display:block;margin:12px 0}
+.profile-page .cards>.item{border:0;border-top:1px solid var(--line);border-radius:0;padding:16px 0;background:transparent}
+.profile-page .cards>.item>.node{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 20px;align-items:start}
+.profile-page .cards .fact:has(.val img){grid-column:1;grid-row:1 / span 4;margin:0}
+.profile-page .cards .title,.profile-page .cards .fact,.profile-page .cards .meta{grid-column:2}
+.profile-page .cards img{max-width:200px}
+@media(max-width:700px){.search-page .record-member,.profile-page .cards>.item>.node{grid-template-columns:minmax(0,1fr)}.search-page .record-member>.band,.search-page .record-member>.fact:has(img),.search-page .record-member>*,.profile-page .cards .fact:has(.val img),.profile-page .cards .title,.profile-page .cards .fact,.profile-page .cards .meta{grid-column:1;grid-row:auto}}
 </style></head>
 <body><main><article id="airbnb-room-28871" class="node depth-0 detail-page" data-model-owner=""><h1 class="title">舒适的双人房</h1><div class="fact"><span class="val">阿姆斯特丹市中心的基本卧室。</span></div><section class="group g-actions"><article class="node depth-1 w-narrow" data-model-owner="actions"><div class="controls"><span class="ctl" data-verb="operate">共享</span><span class="ctl" data-verb="operate">添加至心愿单</span></div></article></section><section class="group g-gallery"><article class="node depth-1 w-wide" data-model-owner="gallery"><div class="gallery-mosaic"><figure class="strip tile"><img src="../assets/airbnb-room-photo-1.jpg" alt=""></figure><figure class="strip tile"><img src="../assets/airbnb-room-photo-2.jpg" alt=""></figure><figure class="strip tile"><img src="../assets/airbnb-room-photo-3.jpg" alt=""></figure><figure class="strip tile"><img src="../assets/airbnb-room-photo-4.jpg" alt=""></figure><figure class="strip tile"><img src="../assets/airbnb-room-photo-5.jpg" alt=""></figure></div><span class="action-plain">显示所有照片</span></article></section><div class="detail-layout"><div class="detail-main"><section class="group g-overview"><article class="node depth-1 w-narrow" data-model-owner="overview"><div class="fact"><span class="val">房间 ｜ 荷兰北荷兰阿姆斯特丹</span></div><div class="fact"><span class="val">1 张约 1.5 米宽双人床 · 共用卫生间</span></div><section class="group g-rating"><article class="node depth-2" data-model-owner="overview.rating"><div class="fact"><span class="val">评分为 4.86 星（满分 5 星）。</span></div><a class="action verb-open" href="https://www.airbnb.com/rooms/28871/reviews?review_page_entrypoint=pdp_header">815 条评价</a></article></section><section class="group g-host"><article class="node depth-2" data-model-owner="overview.host"><h3 class="title">入住 Edwin 的房源</h3><div class="fact"><span class="val">Edwin</span></div><div class="fact"><span class="val">超赞房东 · 16 年出租经验</span></div><span class="action-plain">了解Edwin的更多信息</span></article></section></article></section><section class="group g-highlights"><article class="node depth-1 w-narrow utility-facts" data-model-owner="highlights"><h2 class="title">房源亮点</h2><div class="deflist"><div class="defrow" data-model-owner="highlights._items[0]"><div class="deflabel">入住体验良好</div><div class="defval">近期客人对入住的顺畅体验感到满意。</div></div><div class="defrow" data-model-owner="highlights._items[1]"><div class="deflabel">周边可玩性强</div><div class="defval">客人认为该区域有很多地方值得探索。</div></div><div class="defrow" data-model-owner="highlights._items[2]"><div class="deflabel">出租单元里的房间</div><div class="defval">整栋住宅中的一个独立房间，以及共用区⁠域。</div></div></div></article></section><section class="group g-description"><article class="node depth-1 w-narrow" data-model-owner="description"><h2 class="title">房源介绍</h2><div class="fact"><span class="val">部分信息已自动翻译。</span></div><div class="fact"><span class="val">我们位于阿姆斯特丹市中心的一栋古老房屋内，为希望享受家一般舒适住宿体验的游客提供两间客房（一间单人房和一间双人房），此外，房源位于历史悠久的市中心，靠近所有重要的博物馆、购物街、餐厅、酒吧和俱乐部。两间客房共用一间卫生间，可免费使用无线网络。</span></div><div class="fact"><span class="val">我们位于阿姆斯特丹最重要的夜生活区中心，这里充满活力，但也很吵。因此，请在预订时考虑这一点</span></div><a class="action verb-operate" href="https://www.airbnb.com/rooms/28871?modal=DESCRIPTION">显示更多</a></article></section><section class="group g-sleeping"><article class="node depth-1 w-narrow" data-model-owner="sleeping"><h2 class="title">睡眠空间</h2><div class="stack"><section class="block"><article class="node depth-2" data-model-owner="sleeping._items[0]"><h3 class="title">卧室</h3><div class="fact"><span class="val">1 张约 1.5 米宽双人床</span></div></article></section></div></article></section><section class="group g-amenities"><article class="node depth-1 w-narrow utility-group utility-facts" data-model-owner="amenities"><h2 class="title">房源亮点与便利设施</h2><div class="meta">18 项便利设施</div><div class="chips"><span class="chip-item" data-model-owner="amenities._items[0]">卧室门锁</span><span class="chip-item" data-model-owner="amenities._items[1]">无线网络</span><span class="chip-item" data-model-owner="amenities._items[2]">吹风机</span><span class="chip-item" data-model-owner="amenities._items[3]">冰箱</span></div><span class="action-plain">显示所有18项便利设施</span></article></section></div><aside class="detail-task"><section class="group g-booking"><article class="node depth-1 w-narrow" data-model-owner="booking"><div class="fact"><span class="val">添加日期以查看价格</span></div><section class="group g-check-in"><article class="node depth-2" data-model-owner="booking.check-in"><span class="expose expose-input expose-check-in"><span class="deflabel">入住日期</span><span class="hint">添加日期</span><input type="date" name="check-in" data-type="date" aria-label="入住日期"></span></article></section><section class="group g-check-out"><article class="node depth-2" data-model-owner="booking.check-out"><span class="expose expose-input expose-check-out"><span class="deflabel">退房日期</span><span class="hint">添加日期</span><input type="date" name="check-out" data-type="date" aria-label="退房日期"></span></article></section><section class="group g-guests"><article class="node depth-2" data-model-owner="booking.guests"><span class="expose expose-input expose-guests"><span class="deflabel">房客</span><span class="hint">1 位客人</span><input type="number" name="guests" data-type="num" aria-label="房客"></span></article></section><div class="controls"><span class="ctl" data-verb="operate">查看可订状态</span><span class="ctl" data-verb="operate">举报此房源</span></div></article></section></aside></div><div class="detail-tail"><section class="group g-reviews"><article id="reviews" class="node depth-1 w-narrow" data-model-owner="reviews"><h2 class="title">总体评分</h2><section class="group g-score"><article class="node depth-2" data-model-owner="reviews.score"><span class="role-label">评分</span> 4.86 分</article></section><section class="group g-count"><article class="node depth-2" data-model-owner="reviews.count"><span class="role-label">评价数</span> 815 条评价</article></section><section class="group g-distribution"><article class="node depth-2 utility-group utility-facts" data-model-owner="reviews.distribution"><div class="chips chips-rows"><span class="chip-item" data-model-owner="reviews.distribution._items[0]">5 星，88% 的评价</span><span class="chip-item" data-model-owner="reviews.distribution._items[1]">4 星，11% 的评价</span><span class="chip-item" data-model-owner="reviews.distribution._items[2]">3 星，1% 的评价</span><span class="chip-item" data-model-owner="reviews.distribution._items[3]">2 星，0% 的评价</span><span class="chip-item" data-model-owner="reviews.distribution._items[4]">1 星，0% 的评价</span></div></article></section><section class="group g-aspects"><article class="node depth-2 utility-facts" data-model-owner="reviews.aspects"><div class="cmp-scroll"><table class="cmp-table"><thead><tr><th class="cmp-row"></th><th class="cmp-col" data-model-owner="reviews.aspects._items[0]">干净卫生</th><th class="cmp-col" data-model-owner="reviews.aspects._items[1]">如实描述</th><th class="cmp-col" data-model-owner="reviews.aspects._items[2]">入住便捷</th><th class="cmp-col" data-model-owner="reviews.aspects._items[3]">沟通顺畅</th><th class="cmp-col" data-model-owner="reviews.aspects._items[4]">地段优越</th><th class="cmp-col" data-model-owner="reviews.aspects._items[5]">高性价比</th></tr></thead><tbody><tr><th class="cmp-row">评分</th><td class="cmp-cell">4.8</td><td class="cmp-cell">4.9</td><td class="cmp-cell">4.9</td><td class="cmp-cell">4.9</td><td class="cmp-cell">4.9</td><td class="cmp-cell">4.8</td></tr></tbody></table></div></article></section><section class="group g-mentions"><article class="node depth-2 utility-facts" data-model-owner="reviews.mentions"><div class="deflist"><div class="defrow" data-model-owner="reviews.mentions._items[0]"><div class="deflabel">地段</div><div class="defval">616</div></div><div class="defrow" data-model-owner="reviews.mentions._items[1]"><div class="deflabel">待客之道</div><div class="defval">582</div></div><div class="defrow" data-model-owner="reviews.mentions._items[2]"><div class="deflabel">共用空间</div><div class="defval">57</div></div><div class="defrow" data-model-owner="reviews.mentions._items[3]"><div class="deflabel">步行便利程度</div><div class="defval">161</div></div><div class="defrow" data-model-owner="reviews.mentions._items[4]"><div class="deflabel">洁净程度</div><div class="defval">220</div></div><div class="defrow" data-model-owner="reviews.mentions._items[5]"><div class="deflabel">卫生间</div><div class="defval">105</div></div><div class="defrow" data-model-owner="reviews.mentions._items[6]"><div class="deflabel">睡眠质量</div><div class="defval">92</div></div><div class="defrow" data-model-owner="reviews.mentions._items[7]"><div class="deflabel">噪音</div><div class="defval">106</div></div><div class="defrow" data-model-owner="reviews.mentions._items[8]"><div class="deflabel">周边</div><div class="defval">141</div></div><div class="defrow" data-model-owner="reviews.mentions._items[9]"><div class="deflabel">舒适性</div><div class="defval">123</div></div></div></article></section><div class="controls"><span class="ctl" data-verb="open">评价的运作机制</span><span class="ctl" data-verb="open">显示全部 815 条评价</span></div></article></section></div></article></main></body></html>

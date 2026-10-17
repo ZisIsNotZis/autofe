@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>人工智能相关文章</title>
 <style>
-:root{color-scheme:light;--accent:#1373ce;--surface:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec}
+:root{color-scheme:light;--accent:#1373ce;--surface:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;--measure:36em;--measure-row:62ch}
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--surface)}
 /* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
@@ -70,7 +70,8 @@ article{margin:12px 0}
 .cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
 .cards.cols-auto{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 .cards .item{border:1px solid #e6eaf0;border-radius:10px;padding:12px;margin:0}
-.fact{margin:3px 0;max-width:74ch}
+/* 中文行宽 22–38 字（typography.md §2）：36em 在中文≈36 字/行、西文≈70 字符/行，两种语言同一把尺。 */
+.fact{margin:3px 0;max-width:var(--measure)}
 .hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
 .fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
 .val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
@@ -92,8 +93,8 @@ article{margin:12px 0}
 /* 并入价格行的分期时长（U-28）：与承载句同行、弱化如 meta，不再是容器外孤块 */
 .fact .installment{color:var(--muted);font-size:.9em}
 .fact .installment .sep{color:#c2ccd6}
-.prose{max-width:74ch;margin-inline:0}
-.prose p{margin:.5em 0;line-height:1.75;max-width:74ch}
+.prose{max-width:var(--measure);margin-inline:0}
+.prose p{margin:.5em 0;line-height:1.75;max-width:var(--measure)}
 /* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
    轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
    内容图带（.band 内的 .strip，image-strip 形态）绝不满幅：居中、压到容器宽（U-20/U-21）。 */
@@ -210,7 +211,7 @@ table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .row-ops{display:flex;flex-direction:column;gap:4px}
 .row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
 /* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
-blockquote.quote{margin:12px 0;padding:4px 0 4px 16px;border-left:4px solid #17212b;max-width:74ch}
+blockquote.quote{margin:12px 0;padding:4px 0 4px 16px;border-left:4px solid #17212b;max-width:var(--measure)}
 blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13202c}
 /* 字段+提交成组（U-02）：输入与它的提交按钮同一条栏，其余内容在栏后。 */
 .fieldbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
@@ -267,7 +268,7 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .group.g-footer .cards .ctl{border:0;background:transparent;padding:2px 0;border-radius:0;font-size:13px}
 .group.g-footer .fact{font-size:13px;line-height:1.7;margin:4px 0}
 /* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
-.reading-page{--reading-width:800px;max-width:var(--reading-width);margin-inline:auto}
+.reading-page{--reading-width:var(--measure);max-width:var(--reading-width);margin-inline:auto}
 .reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
 .reading-page .node.w-prose,.reading-page .node.w-narrow,.reading-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
 .reading-page .fact,.reading-page .prose,.reading-page .prose p,.reading-page .quote{max-width:none}
@@ -299,13 +300,13 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .utility-group>.deflist{display:flex;flex-wrap:wrap;gap:8px 24px}
 .utility-group>.deflist>.defrow{border:0;padding:0}
 /* Shared structural compact forms: singleton catalog entries, ordered editorial media, boolean utilities. */
-.singleton-card>.stack{max-width:320px}
-.singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:flex-start;padding:0}
-.singleton-card .banner>.title{font-size:1.12em;text-align:left;order:1;margin:8px 0}
-.singleton-card .banner>.band{order:0;margin:0;max-width:320px}
+/* 声明为 hero 的 banner 填满自己的框架（旧 320px 盖把 hero 掐成缩略图），内容居中而不靠左。 */
+.singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:center;padding:0}
+.singleton-card .banner>.title{font-size:1.12em;text-align:center;margin:8px 0}
+.singleton-card .banner>.band{order:0;margin:0;max-width:100%}
 .singleton-card .banner>.band .strip{margin:0}
 .singleton-card .banner>.controls,.singleton-card .banner>.action{order:2;margin:8px 0}
-.singleton-card .banner img{max-width:100%;max-height:320px;width:auto;height:auto}
+.singleton-card .banner img{max-width:100%;width:auto;height:auto}
 .boolean-utilities>.stack{display:flex;flex-wrap:wrap;gap:8px 16px}
 .boolean-utilities>.stack>.block,.boolean-utilities>.stack>.block>.node{margin:0;padding:0}
 .boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox]){display:inline-block;margin:4px 16px 4px 0}
@@ -326,17 +327,17 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .resource-view:focus-within{outline:2px solid var(--accent);outline-offset:2px}
 /* Metadata-bearing editorial/search records are local records, never heroes. */
 .record-member{display:grid!important;grid-template-columns:minmax(0,1fr) 216px;gap:6px 24px;max-width:100%;margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
-.record-member>*{grid-column:1;margin:0!important;min-width:0}
+.record-member>*{grid-column:1;margin:0!important;min-width:0;max-width:var(--measure-row)}
 .record-member>.band,.record-member>.fact:has(img){grid-column:2;grid-row:1 / span 6;align-self:start}
 .record-member img{max-width:216px;max-height:172px;width:auto;height:auto;margin:0}
 .record-member .strip{width:auto;margin:0}
 .record-member>.title{text-align:left;font-size:1.15em}
-.record-member>.fact{max-width:74ch}
+.record-member>.fact{max-width:var(--measure-row)}
 .cards:has(>.item>.record-member){display:block}
 .cards:has(>.item>.record-member)>.item{border:0;padding:0;background:transparent;margin:0}
 .stack:has(>.block>.record-member){display:block}
 .stack:has(>.block>.record-member)>.block{padding:0;margin:0}
-.node.identity-frame{max-width:74ch;margin-inline:0;display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px 24px;align-items:start}
+.node.identity-frame{max-width:var(--measure);margin-inline:0;display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px 24px;align-items:start}
 .identity-frame>*{grid-column:2;margin:0}
 .identity-frame>.ctl,.identity-frame>.action,.identity-frame>.action-plain{justify-self:start}
 .identity-frame>.band{grid-column:1;grid-row:1 / span 4;margin:0}
@@ -362,14 +363,15 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .product-page .fact,.product-page .prose,.product-page .prose p{max-width:none}
 .product-page .fact img{margin-inline:auto}
 .product-page>.meta{margin-inline:0}
-.product-page>.stack>.block{margin-block:32px}
+.product-page>.stack>.block{margin-block:0;padding-block:48px}
 .product-page .defrow{gap:24px}
 .product-page .deflabel{flex:0 0 190px;min-width:0}
 .product-page .media-captions .deflabel{flex:0 0 auto}
 .detail-page>.title{max-width:none;margin-inline:0}
 .detail-page>.fact{max-width:none}
 .detail-page .node.w-prose,.detail-page .node.w-narrow,.detail-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
-.detail-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start;margin-top:24px}
+/* 媒体墙 + 主列（measure 封顶）+ 任务卡右侧停靠：两区贴着放，不再留一条死沟。 */
+.detail-layout{display:grid;grid-template-columns:minmax(0,var(--measure)) 340px;gap:48px;align-items:start;justify-content:center;margin-top:24px}
 .detail-main,.detail-task{min-width:0}
 .detail-main>.group{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
 .detail-main .fact,.detail-main .prose{max-width:none}
@@ -416,5 +418,60 @@ main:has(.marketing-page){max-width:1728px}
 .banner-integrated.media-centered>.fact:first-of-type{margin-top:auto}
 .banner-integrated.media-centered>.controls{margin-bottom:0}
 @media(max-width:700px){main{padding:20px 16px 0}.group.g-footer{margin-inline:-16px;padding:20px 16px}.banner-integrated{min-height:540px}.banner-integrated>.title{font-size:34px}.banner-integrated>.strip{height:540px}.banner-integrated>.strip img{width:auto;max-width:min(calc(var(--media-width)*.7),calc((100vw - 48px) * var(--media-ratio)));height:auto;object-fit:contain;align-self:flex-start;margin-top:160px}.banner-integrated>.fact{font-size:18px}.banner-integrated.media-centered>.strip img{margin-top:45px}.gallery-mosaic{grid-template-columns:repeat(2,1fr)}.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.stack.cols-auto,.cards{grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}}
+/* ——— S2a：原型 → 框架（composition.md §3）。只管形态：无站点名、无逐页例外；图一律 contain、绝不放大源图。
+   每个框架只作用于引擎自己已落的页级类（marketing-page / product-page / catalog-page / search-page /
+   table-page / profile-page / detail-page / reading-page），模型不因此新增任何键。 ——— */
+/* marketing（+无任务卡的商品落地页）：band 序列——depth-1 段落满幅、段标题居中、48–72px 纵向节奏。 */
+.marketing-page>.group,.product-page>.group,.marketing-page>.stack>.block{margin-block:0;padding-block:56px}
+.marketing-page>.group+.group,.product-page>.group+.group,.marketing-page>.stack>.block+.block,.product-page>.stack>.block+.block{border-top:1px solid var(--line)}
+.marketing-page>.group>.node>.title,.product-page>.group>.node>.title,.marketing-page>.stack>.block>.node>.title,.product-page>.stack>.block>.node>.title{text-align:center;margin-top:0}
+.marketing-page>.group>.node,.product-page>.group>.node{width:100%;margin-inline:0}
+.marketing-page .band,.product-page .band{width:100%;margin-inline:0}
+/* catalog：响应式卡片网格（auto-fill 240px）；卡片 = 固定比例媒体框（contain）+ 标题 + 价格 + 动作，行高对齐。 */
+.catalog-page .cards{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;align-items:stretch}
+.catalog-page .cards>.item{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.catalog-page .cards .fact:has(>.val>img){aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;margin:0;border-radius:10px;background:var(--soft);overflow:hidden}
+.catalog-page .cards .fact:has(>.val>img)>.val{display:flex;flex:1 1 auto;align-items:center;justify-content:center;height:100%}
+.catalog-page .cards .fact:has(>.val>img) img{max-width:100%;max-height:100%;width:auto;height:auto}
+.catalog-page .cards .title{font-size:1.05em;line-height:1.4;margin:0}
+.catalog-page .product-cards img{max-height:none}
+.catalog-page .cards .controls{margin:auto 0 0}
+/* 目录里成组的条目名（无封面）：等宽卡片格，不再是一条 110px 的文字瀑布。 */
+.catalog-page .linklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px 20px;margin:16px 0}
+.catalog-page .linklist li{margin:0;padding:8px 0;border-bottom:1px solid var(--line)}
+.catalog-page .ordered-media-rows>.stack{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin:14px 0}
+.catalog-page .ordered-media-rows>.stack>.block{margin:0;padding:14px;border:1px solid var(--line);border-radius:12px}
+.catalog-page .ordered-media-rows>.stack>.block>.node{display:flex;flex-direction:column;gap:6px;margin:0;padding:0}
+.catalog-page .ordered-media-rows .band{order:-1;margin:0;align-self:stretch}
+.catalog-page .ordered-media-rows .band img{max-width:100%;max-height:160px;width:auto;height:auto}
+/* search：结果行 = 媒体（160–220px）靠左 + 文本列（measure 封顶）；筛选条紧凑。 */
+.search-page .record-member{grid-template-columns:minmax(0,1fr);align-items:start}
+.search-page .record-member:has(img){grid-template-columns:216px minmax(0,1fr)}
+.search-page .record-member>*{grid-column:2}
+.search-page .record-member:not(:has(img))>*{grid-column:1}
+.search-page .record-member>.band,.search-page .record-member>.fact:has(img){grid-column:1;grid-row:1 / span 8;justify-self:start}
+.search-page fieldset.expose.chipbar{display:flex;flex-wrap:wrap;gap:6px;padding:8px 10px}
+.search-page .choice{margin:0 6px 0 0;padding:3px 10px;border-radius:999px;font-size:.92em}
+/* table：页级数据表满幅、等宽数字、单元格留白舒适。 */
+.table-page .data-scroll{border:1px solid var(--line);border-radius:12px}
+.table-page table.data{font-variant-numeric:tabular-nums}
+.table-page table.data th,.table-page table.data td{padding:10px 14px}
+/* profile：居中身份卡（图+名+简介+动作）+ 行内统计块 + 活动 feed 列表。 */
+.profile-page>.title{text-align:center}
+.profile-page .identity-frame{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;gap:10px;max-width:var(--measure);margin-inline:auto}
+.profile-page .identity-frame>.band{grid-column:1;grid-row:auto;order:-1;margin:0}
+.profile-page .identity-frame .controls,.profile-page .identity-frame>.action,.profile-page .identity-frame>.action-plain{justify-self:center}
+.profile-page .stack .stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:12px;margin:16px 0}
+.profile-page .stack .stack>.block{margin:0;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fafbfc;text-align:center}
+.profile-page .stack .stack hr.region{display:none}
+.profile-page .stack .stack .title{font-size:.9em;font-weight:600;color:var(--muted);margin:0 0 4px}
+.profile-page .stack .stack .meta,.profile-page .stack .stack .fact{font-size:1.3em;font-weight:700;color:var(--ink);margin:0}
+.profile-page .cards{display:block;margin:12px 0}
+.profile-page .cards>.item{border:0;border-top:1px solid var(--line);border-radius:0;padding:16px 0;background:transparent}
+.profile-page .cards>.item>.node{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 20px;align-items:start}
+.profile-page .cards .fact:has(.val img){grid-column:1;grid-row:1 / span 4;margin:0}
+.profile-page .cards .title,.profile-page .cards .fact,.profile-page .cards .meta{grid-column:2}
+.profile-page .cards img{max-width:200px}
+@media(max-width:700px){.search-page .record-member,.profile-page .cards>.item>.node{grid-template-columns:minmax(0,1fr)}.search-page .record-member>.band,.search-page .record-member>.fact:has(img),.search-page .record-member>*,.profile-page .cards .fact:has(.val img),.profile-page .cards .title,.profile-page .cards .fact,.profile-page .cards .meta{grid-column:1;grid-row:auto}}
 </style></head>
 <body><main><article id="36kr-search" class="node depth-0 search-page" data-model-owner=""><h1 class="title">人工智能相关文章</h1><section class="group g-query"><article class="node depth-1 w-narrow" data-model-owner="query"><span class="expose expose-input expose-query"><span class="deflabel sr-only">请输入关键词</span><span class="sr-only">人工智能</span><input type="text" name="query" data-type="text" value="人工智能" aria-label="请输入关键词" placeholder="请输入关键词"></span><span class="action-plain">站内搜索</span></article></section><section class="group g-search-type"><article class="node depth-1 w-narrow" data-model-owner="search-type"><fieldset class="expose chipbar expose-search-type"><label class="choice"><input type="radio" name="search-type" value="文章" checked> <a class="option-link" href="https://36kr.com/search/articles/人工智能">文章</a></label><label class="choice"><input type="radio" name="search-type" value="快讯"> 快讯</label><label class="choice"><input type="radio" name="search-type" value="直播"> 直播</label><label class="choice"><input type="radio" name="search-type" value="视频"> 视频</label><label class="choice"><input type="radio" name="search-type" value="专题"> 专题</label><label class="choice"><input type="radio" name="search-type" value="作者"> <a class="option-link" href="https://36kr.com/search/user/人工智能">作者</a></label><label class="choice"><input type="radio" name="search-type" value="项目"> <a class="option-link" href="https://36kr.com/search/projects/人工智能">项目</a></label><label class="choice"><input type="radio" name="search-type" value="企业号"> 企业号</label></fieldset></article></section><section class="group g-sort"><article class="node depth-1 w-narrow" data-model-owner="sort"><fieldset class="expose chipbar expose-sort"><label class="choice"><input type="radio" name="sort" value="相关性" checked> 相关性</label><label class="choice"><input type="radio" name="sort" value="发布时间"> 发布时间</label></fieldset></article></section><section class="group g-results"><article class="node depth-1 w-wide" data-model-owner="results"><div class="cards"><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[0]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3984437255289864">“人工智能泡沫可能破裂”，美股投资者慌了……美债收益率破5%，创2007年以来新高，“还可能很快破6%”，关键变量是美联储</a></h3><div class="fact"><span class="val">10年期美债收益率破5%，冲击市场引发担忧。</span></div><div class="fact"><span class="val"><a class="media-link" href="https://36kr.com/p/3984437255289864"><img src="https://img.36krcdn.com/hsossms/20260915/v2_b12007d24b494eb0bcc5bdfed2549bdf@5888275@ai_oswg762314oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp" alt="“人工智能泡沫可能破裂”，美股投资者慌了……美债收益率破5%，创2007年以来新高，“还可能很快破6%”，关键变量是美联储"></a></span></div><div class="meta">2026-09-15</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[1]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3983906594257667">8点1氪丨选手赛中失禁污染赛道，HYROX中国宣布整改；机构预计美股明年将暴跌21%；苹果推出Siri人工智能</a></h3><div class="fact"><span class="val">HYROX北京站选手赛场失禁引发争议，赛事方发布公告承认规则漏洞并推出整改措施。</span></div><div class="fact"><span class="val"><a class="media-link" href="https://36kr.com/p/3983906594257667"><img src="https://img.36krcdn.com/hsossms/20260915/v2_4356463f0ff24ae493679b2ecef6893f@5667365_oswg82810oswg1053oswg495_img_jpg?x-oss-process=image/resize,m_mfit,w_600,h_400,limit_0/crop,w_600,h_400,g_center/format,webp" alt="8点1氪丨选手赛中失禁污染赛道，HYROX中国宣布整改；机构预计美股明年将暴跌21%；苹果推出Siri人工智能"></a></span></div><div class="meta">2026-09-15</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[2]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3977429406832520">313起融资，小鹏机器人、帕西尼领跑，算力脑机企业接续发力，351.59亿同比翻四倍：2026年8月人工智能领域投融资分析</a></h3><div class="fact"><span class="val">资本重仓AI实体，具身智能成月度核心风口。</span></div><div class="fact"><span class="val"><a class="media-link" href="https://36kr.com/p/3977429406832520"><img src="https://img.36krcdn.com/hsossms/20260910/v2_5da8a23e2591438c897bbd6987f35326@46958@ai_oswg781612oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp" alt="313起融资，小鹏机器人、帕西尼领跑，算力脑机企业接续发力，351.59亿同比翻四倍：2026年8月人工智能领域投融资分析"></a></span></div><div class="meta">2026-09-10</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[3]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3975586356123525">从电力到人工智能：一种通用技术怎样发现和定价未来世界</a></h3><div class="fact"><span class="val">通用技术如何定价未来。</span></div><div class="fact"><span class="val"><a class="media-link" href="https://36kr.com/p/3975586356123525"><img src="https://img.36krcdn.com/hsossms/20260909/v2_420b1e7e9b004348ba3ad4b24d837df6@5091053@ai_oswg864075oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp" alt="从电力到人工智能：一种通用技术怎样发现和定价未来世界"></a></span></div><div class="meta">2026-09-09</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[4]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3973093545292038">拿掉“AI”两个字，你究竟发明了什么？——人工智能专利技术贡献的审查标准演进</a></h3><div class="fact"><span class="val">如果把“AI”两个字从权利要求里拿掉，你还能不能清楚说明，自己究竟发明了什么？</span></div><div class="fact"><span class="val"><a class="media-link" href="https://36kr.com/p/3973093545292038"><img src="https://img.36krcdn.com/hsossms/20260907/v2_048a731830f641dea1a3781c1e4a1868@000000@ai_oswg686422oswg2304oswg1728_img_000~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp" alt="拿掉“AI”两个字，你究竟发明了什么？——人工智能专利技术贡献的审查标准演进"></a></span></div><div class="meta">2026-09-07</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[5]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3967489473533569">人工智能体代客操作“双重许可”法律问题分析</a></h3><div class="fact"><span class="val">人工智能体代客操作需否第三方许可的法律分析</span></div><div class="fact"><span class="val"><a class="media-link" href="https://36kr.com/p/3967489473533569"><img src="https://img.36krcdn.com/hsossms/20260903/v2_664b1e86c54447c28f023b021c794523@1743780481@ai_oswg878749oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp" alt="人工智能体代客操作“双重许可”法律问题分析"></a></span></div><div class="meta">2026-09-04</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[6]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3963006194728324">36氪首发｜东莞人工智能研究院孵化，瞄准模具制造领域物理AI研发，这家企业获创新工场数千万种子轮融资</a></h3><div class="fact"><span class="val">部分关键工艺识读提升准确率可达到95%以上</span></div><div class="fact"><span class="val"><a class="media-link" href="https://36kr.com/p/3963006194728324"><img src="https://img.36krcdn.com/hsossms/20260831/v2_e32f250babd04d34b562d75c5b9248ab@5920579_oswg374716oswg1053oswg495_img_png?x-oss-process=image/resize,m_mfit,w_600,h_400,limit_0/crop,w_600,h_400,g_center/format,webp" alt="36氪首发｜东莞人工智能研究院孵化，瞄准模具制造领域物理AI研发，这家企业获创新工场数千万种子轮融资"></a></span></div><div class="meta">2026-09-02</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[7]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3964522476707329">从铁路狂热到人工智能狂热：技术革命如何穿越资本泡沫</a></h3><div class="fact"><span class="val">AI投资类比铁路，需警惕资本错配风险，回归资本回报</span></div><div class="fact"><span class="val"><a class="media-link" href="https://36kr.com/p/3964522476707329"><img src="https://img.36krcdn.com/hsossms/20260901/v2_3e38eeed618246068cd65ef274971fb6@5667365@ai_oswg1122253oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp" alt="从铁路狂热到人工智能狂热：技术革命如何穿越资本泡沫"></a></span></div><div class="meta">2026-09-01</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[8]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3963202325567113">人工智能将如何改变管理者的工作？</a></h3><div class="fact"><span class="val">人与人之间为什么这样分工？团队为什么这样组成？管理者为什么存在？</span></div><div class="fact"><span class="val"><a class="media-link" href="https://36kr.com/p/3963202325567113"><img src="https://img.36krcdn.com/hsossms/20260831/v2_00a51655e32b40e6ab24c52062577f3a@5888275@ai_oswg963643oswg1053oswg495_img_png~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg?x-oss-process=image/format,webp" alt="人工智能将如何改变管理者的工作？"></a></span></div><div class="meta">2026-08-31</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[9]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3963212413926791">今天，“人工智能”这个学科诞生70年了</a></h3><div class="fact"><span class="val">跌宕起伏七十年，如今正在加速进化……</span></div><div class="meta">2026-08-31</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[10]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3962848011081600">瑞士生物科技企业Nerai Bioscience研发基于人工智能的高通量蛋白质工程技术，生产新型CRISPR基因编辑工具 | 瑞士创新100强</a></h3><div class="fact"><span class="val">已布局8条CRISPR基因编辑工具管线。</span></div><div class="meta">2026-08-31</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[11]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3950400732216457">泰康发布养医大模型1.0：以人工智能赋能养老产业发展</a></h3><div class="fact"><span class="val">泰康正式发布养医大模型1.0</span></div><div class="meta">2026-08-22</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[12]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3947761738873990">陶哲轩最新发文：人工智能时代的数学</a></h3><div class="fact"><span class="val">从证明稀缺，走向证明过剩</span></div><div class="meta">2026-08-20</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[13]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3947744722123909">超600个项目申报，2026徐汇人工智能青年创业基金AI创业营开营</a></h3><div class="fact"><span class="val">徐汇区将继续发挥国有资本的引导撬动作用，吸引更多优质AI项目与创新人才集聚徐汇，为区域新质生产力发展注入源源不断的青春动能。</span></div><div class="meta">2026-08-20</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[14]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3947658974068097">首批，优必选行者具身智能模型完成生成式人工智能服务备案</a></h3><div class="fact"><span class="val">让智能科技更好赋能美好生活。</span></div><div class="meta">2026-08-20</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[15]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3947607753161860">人工智能的五个悖论</a></h3><div class="fact"><span class="val">让我们期待这一次不同。</span></div><div class="meta">2026-08-20</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[16]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3904980881360518">史上最短技术热潮：为何 “人工智能时代” 落幕会比你预想的更快</a></h3><div class="fact"><span class="val">我们已然全速冲向行业饱和临界点。</span></div><div class="meta">2026-08-19</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[17]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3944916410334337">“人工智能+制造”提速，制造业企业如何破解多智能体协同难题？爱化身科技给出企业级AI路径</a></h3><div class="fact"><span class="val">制造业多智能体协同需建统一企业级AI运行体系</span></div><div class="meta">2026-08-18</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[18]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3944695998496137">人工智能70年：繁荣与萧条周期的14个启示</a></h3><div class="fact"><span class="val">德银梳理AI 70年发展脉络，提炼出14条历史启示。AI呈指数级非线性增长，成本下降将激发更大需求；但技术路线迭代频繁，硬件与供应链瓶颈显现。尽管消费端普及迅速，企业端商业化落地仍处于早期，当前市场估值已逼近历史高位，投资者需警惕技术更迭与供应链风险。</span></div><div class="meta">2026-08-18</div></article></div><div class="item"><article class="node depth-2 record-member" data-model-owner="results._items[19]"><h3 class="title"><a class="self-link nav" href="https://36kr.com/p/3943664392420736">一家Collective AGI公司，要给人工智能加一层「组织」</a></h3><div class="fact"><span class="val">不是先有公司再去找需求，而是系统先被验证，需求自己站到了门口。</span></div><div class="meta">2026-08-18</div></article></div></div></article></section><section class="group g-navigation"><article class="node depth-1 w-narrow" data-model-owner="navigation"><a class="action verb-navigate" href="https://ai.36kr.com">AI测评网</a></article></section><span class="action-plain">查看更多</span><section class="group g-footer"><article class="node depth-1 w-wide" data-model-owner="footer"><section class="group g-notices"><article class="node depth-2" data-model-owner="footer.notices"><div class="stack"><section class="block"><article class="node depth-3" data-model-owner="footer.notices._lines[0]"><div class="fact"><span class="val">本站由 阿里云提供计算与安全服务 违法和不良信息、未成年人保护举报电话：010-89650707 举报邮箱：jubao@36kr.com <a class="body-link" data-model-owner="footer._items[11]" href="https://www.12377.cn">网上有害信息举报</a></span></div></article></section><section class="block"><article class="node depth-3" data-model-owner="footer.notices._lines[1]"><div class="fact"><span class="val">© 2011~2026 北京多氪信息科技有限公司 |<a class="body-link" data-model-owner="footer._items[12]" href="https://beian.miit.gov.cn/#/Integrated/index">京ICP备12031756号-6</a> | <a class="body-link" data-model-owner="footer._items[13]" href="https://dxzhgl.miit.gov.cn/dxxzsp/xkz/xkzgl/resource/qiyesearch.jsp?num=%25E5%258C%2597%25E4%25BA%25AC%25E5%25A4%259A%25E6%25B0%25AA%25E4%25BF%25A1%25E6%2581%25AF%25E7%25A7%2591%25E6%258A%2580%25E6%259C%2589%25E9%2599%2590%25E5%2585%25AC%25E5%258F%25B8&amp;type=xuke">京ICP证150143号</a> | <a class="body-link" data-model-owner="footer._items[14]" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502057322">京公网安备11010502057322号</a></span></div></article></section></div></article></section><div class="controls"><a class="ctl" href="https://36kr.com/station-business">城市合作</a><a class="ctl" href="https://36kr.com/seek-report-new">项目推荐</a><a class="ctl" href="http://ir.36kr.com">投资者关系</a><a class="ctl" href="https://36kr.com/pages/about">关于我们</a><a class="ctl" href="https://zhaopin.36kr.com">加入我们</a><a class="ctl" href="https://36kr.com/refute-rumor-notice">网络谣言信息举报入口</a><a class="ctl" href="https://36kr.com/hot-list/catalog">热门资讯</a><a class="ctl" href="https://36kr.com/project">热门产品</a><a class="ctl" href="https://36kr.com/tags">文章标签</a><a class="ctl" href="https://36kr.com/nftags">快讯标签</a><a class="ctl" href="https://www.aliyun.com/">阿里云</a></div></article></section></article></main></body></html>
