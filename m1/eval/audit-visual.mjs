@@ -72,6 +72,11 @@ for (const f of files) {
     // T-103 form fragmentation: sibling blocks rendered at different widths
     for (const g of document.querySelectorAll('.run,.cards,.deflist')) {
       if (g.parentElement?.closest('.run,.cards,.compare,.deflist')) continue;  // nested lists may be narrow
+      // S2b: a masonry container is COLUMN flow — it has no rows, so "siblings sharing a row top"
+      // is not a property it can have. Judging it by tops reads coincidental alignment across
+      // columns as fragmentation. The masonry layout's own invariants are asserted separately
+      // in page-frame-selftest.mjs (children inside the container, container not a grid).
+      if (g.classList.contains('masonry')) continue;
       const kids = [...g.children].filter((k) => T(k));
       if (kids.length < 5) continue;
       const tops = kids.map((k) => Math.round(k.getBoundingClientRect().top));

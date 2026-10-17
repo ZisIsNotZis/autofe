@@ -36,7 +36,7 @@ import {
   qualifierPlacement, quantityLabel,
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
   nodePlan, itemActionPlan, controlItemPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
-  rankedSequence, hasValue, tableRowLabel, tableCellLinks, mediaFirstOf, pageLayoutOf,
+  rankedSequence, hasValue, tableRowLabel, tableCellLinks, mediaFirstOf, pageLayoutOf, textLenOf,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -371,6 +371,24 @@ function renderStream(items) {
   return cells ? `<div class="stream">${cells}</div>` : '';
 }
 
+// S2b 瀑布流（docs/m1/composition.md §3）：一个卡片集合的成员高度由内容决定、无法等高时，行网格
+// 会把短成员垫进空洞、让最长者给整行定行距。masonry 只用在页级框架真的会排成多列行网格的容器上
+// （gridded：轴层声明的列数，或 catalog 页框自己的多列网格），否则换列流只是把单列列表拆碎。
+// 两个可测的触发条件，都由引擎自己判定，模型不新增键：
+//   ① 成员文字量差距过大（bilibili read-home 180 条：最短 23 字、最长 325 字）；
+//   ② 营销页的图片卡片墙——页级框架没有给卡片媒体声明比例框，卡片高度由原图比例决定，而原图比例
+//      在渲染期不可知，所以这类墙一律按内容高度打包（huawei home 推荐信息：四张卡片 588–1049px）。
+// 统一的产品网格（catalog 卡片的媒体框声明为 4/3，行本来就等高）保持行网格。
+const MASONRY_TEXT_SPREAD = 120;   // 最长与最短成员的字符量差，低于此值是同一量级的内容
+const masonryOf = (items, ctx, gridded) => {
+  if (!gridded || items.length < 4) return false;
+  const imageShare = items.filter((it) => it._image).length / items.length;
+  if (imageShare < 0.75) return false;   // 文字块/芯片组不是卡片墙：行网格或单列照旧
+  const lens = items.map(textLenOf);
+  const hi = Math.max(...lens), lo = Math.min(...lens);
+  if (hi - lo >= MASONRY_TEXT_SPREAD && hi >= 2 * Math.max(lo, 60)) return true;
+  return ctx.pageLayout?.kind === 'marketing';
+};
 function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0, compactMedia = false) {
   // 集合成员是卡片语境（轮 58 · L-4/L-6：列数与“图在题上”是轴层声明，这里只落类名/传参）
   const mctx = { ...ctx, member: true };
@@ -393,7 +411,9 @@ function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0,
     return inner ? `<div class="item">${inner}</div>` : '';
   }).join('');
   // cols（轴层声明）落在网格容器上：.cards 本身就是 auto-fill 网格，标记使声明可见、可断言。
-  return cards ? `<div class="${cls}${cols ? ' cols-auto' : ''}${compactMedia ? ' compact-media' : ''}${mf ? ' media-first' : ''}">${cards}</div>` : '';
+  // masonry（本层形态决策）把同一个容器改成 column 流：行列不再对齐，内容自己打包。
+  const masonry = masonryOf(items, ctx, Boolean(cols));
+  return cards ? `<div class="${cls}${cols ? ' cols-auto' : ''}${compactMedia ? ' compact-media' : ''}${mf ? ' media-first' : ''}${masonry ? ' masonry' : ''}">${cards}</div>` : '';
 }
 
 // 序列：不可比的区块各自成立，各带标题；无标题块用区域分隔（F-031-§1/§5）。
@@ -410,20 +430,22 @@ function renderStack(items, chain, hide, ctx, depth, cols = 0, mediaFirst = fals
     out += `<section class="block">${inner}</section>`;
     prevHadTitle = hasTitle;
   }
-  return out ? `<div class="stack${cols ? ' cols-auto' : ''}${compactMedia ? ' compact-media' : ''}${mediaFirst ? ' media-first' : ''}">${out}</div>` : '';
+  return out ? `<div class="stack${cols ? ' cols-auto' : ''}${compactMedia ? ' compact-media' : ''}${mediaFirst ? ' media-first' : ''}${masonryOf(items, ctx, Boolean(cols) || Boolean(ctx.sectionGrid)) ? ' masonry' : ''}">${out}</div>` : '';
 }
 // 控件条：_action-only 成员是控件，不是内容（F-031-§4）；动作 label 是源站自己的控件文字（F-022），
 // 与条目名不是同一事实时另出一枚控件；同一事实的两种写法（一个包含另一个）只渲染信息更全的一处。
 function renderControls(items, chain, ctx) {
-  const btns = items.map((it) => {
-    const c = controlItemPlan(it, chain, ctx.values);
-    if (!c.label) return '';
+  const plans = items.map((it) => controlItemPlan(it, chain, ctx.values)).filter((c) => c.label);
+  const btns = plans.map((c) => {
     const alias = c.accessibleLabel ? ` aria-label="${esc(c.accessibleLabel)}"` : '';
     const copy = esc(c.label) + (c.accessibleLabel ? `<span class="sr-only">${esc(c.accessibleLabel)}</span>` : '');
     return c.href ? `<a class="ctl" href="${esc(c.href)}"${alias}>${copy}</a>`
       : `<span class="ctl"${alias}${c.verb ? ` data-verb="${esc(c.verb)}"` : ''}>${copy}</span>`;
   }).join('');
-  return btns ? `<div class="controls">${btns}</div>` : '';
+  // S2b：≥4 个**带目标**的控件不是一条动作栏，而是一张入口矩阵（huawei home 「我们的业务」六项）——
+  // 每个入口是一张卡而不是一枚药丸。无目标（本站自有的标签位）与不足 4 项仍是动作栏。
+  const linkMatrix = plans.length >= 4 && plans.every((c) => c.href);
+  return btns ? `<div class="controls${linkMatrix ? ' link-matrix' : ''}">${btns}</div>` : '';
 }
 // 横向对比表（F-031-§3）：行键/单元格/行标题/退化判定/**实体表头属性集**均在 axis.mjs；
 // 这里只管 HTML 呈现。表头集合是共享决策 `compareHeaderEntries`，本函数只把每个入口画成
@@ -458,7 +480,7 @@ function renderCompareTable(items, chain, hide, ctx) {
     const cells = items.map((it) => {
       const c = compareCellOf(it, key);
       if (c.kind === 'empty') return '<td class="cmp-cell"></td>';
-      if (c.kind === 'node') return `<td class="cmp-cell">${renderNode(c.node, [...chain, it], false, hide, { ...ctx, grid: true }, 4)}</td>`;
+      if (c.kind === 'node') return `<td class="cmp-cell">${renderNode(c.node, [...chain, it], false, hide, { ...ctx, grid: true, omitHeading: label }, 4)}</td>`;
       return `<td class="cmp-cell">${fmt(c.value)}</td>`;
     }).join('');
     return `<tr><th class="cmp-row">${esc(label)}</th>${cells}</tr>`;
@@ -534,6 +556,9 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   }
 
   let titleText = plan.headingValue ? fmt(plan.headingValue) : null;
+  // 行标题已经写在行首（th.cmp-row）时，单元格里的同一个标题是同一事实的第二遍：删掉单元格那份，
+  // 行标题留着。判据是「文字相同」，不按站点/页面。
+  if (titleText && ctx.omitHeading && plan.headingValue?.text === ctx.omitHeading) titleText = null;
   // Only an empty repeated ancestor label can be redundant. Populated sibling
   // groups retain their local heading, even when the same text appeared elsewhere.
   const headingTextValue = plan.headingValue ? plan.headingValue.text : null;
@@ -624,7 +649,10 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   // every sibling block item renders in ONE form; nothing renders twice (T-103)
   // 轴分组（compare 实体/连续正文段/普通集合）在 axis.mjs seqGroupsOf；D2/P3 同理。
   const { groups, order } = plan.items;
-  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, ctx, depth, node, order, g.cols, g.compactMedia);
+  // 页框把本节点自己的集合排成多列行网格时（plan.orderedMediaRows 的页级分节），集合不需要自己声明列数
+  // 就已经是行网格：masonry 的判据要看到这一点。
+  const formCtx = plan.orderedMediaRows && depth === 1 ? { ...ctx, sectionGrid: true } : ctx;
+  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, formCtx, depth, node, order, g.cols, g.compactMedia);
   for (const g of groups) g.items.forEach((it) => itemsConsumed.add(it));
   // order:time shows a time axis only over a vertical sequence — never a stray rail across a grid (F-031-§1)
   if (order === 'time' && groups.length && groups.every((g) => g.form === 'deflist' || g.form === 'seq')) cls.push('timeline');
@@ -1055,14 +1083,18 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .native-media{max-width:100%;max-height:70vh;overflow:auto;border:1px solid var(--line);background:var(--surface)}
 .native-media img{max-width:none!important;max-height:none!important;width:auto!important;height:auto!important;margin:0!important;border-radius:0}
 .resource-view:focus-within{outline:2px solid var(--accent);outline-offset:2px}
-/* Metadata-bearing editorial/search records are local records, never heroes. */
-.record-member{display:grid!important;grid-template-columns:minmax(0,1fr) 216px;gap:6px 24px;max-width:100%;margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
+/* Metadata-bearing editorial/search records are local records, never heroes.
+   行宽 = 文字测量宽 + 媒体槽 + 声明的间距：整行不许拉到页边，否则未用的中段就是「文字与图之间
+   的空白」（sspai matrix 实测 608px 中位死沟）。 */
+.record-member{display:grid!important;grid-template-columns:minmax(0,1fr) 216px;gap:6px 24px;max-width:min(100%,calc(var(--measure-row) + 240px));margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
 .record-member>*{grid-column:1;margin:0!important;min-width:0;max-width:var(--measure-row)}
 .record-member>.band,.record-member>.fact:has(img){grid-column:2;grid-row:1 / span 6;align-self:start}
 .record-member img{max-width:216px;max-height:172px;width:auto;height:auto;margin:0}
 .record-member .strip{width:auto;margin:0}
 .record-member>.title{text-align:left;font-size:1.15em}
 .record-member>.fact{max-width:var(--measure-row)}
+/* 无媒体的记录行没有媒体槽：行宽回到文字测量宽，不得把 216+24px 的空槽留在行尾。 */
+.record-member:not(:has(img)){max-width:min(100%,var(--measure-row))}
 .cards:has(>.item>.record-member){display:block}
 .cards:has(>.item>.record-member)>.item{border:0;padding:0;background:transparent;margin:0}
 .stack:has(>.block>.record-member){display:block}
@@ -1203,6 +1235,26 @@ main:has(.marketing-page){max-width:1728px}
 .profile-page .cards .title,.profile-page .cards .fact,.profile-page .cards .meta{grid-column:2}
 .profile-page .cards img{max-width:200px}
 @media(max-width:700px){.search-page .record-member,.profile-page .cards>.item>.node{grid-template-columns:minmax(0,1fr)}.search-page .record-member>.band,.search-page .record-member>.fact:has(img),.search-page .record-member>*,.profile-page .cards .fact:has(.val img),.profile-page .cards .title,.profile-page .cards .fact,.profile-page .cards .meta{grid-column:1;grid-row:auto}}
+/* ——— S2b：内容自己打包的集合（composition.md §3）。Masonry 只在 render.mjs 判定为「成员高度不可等高」
+   时落到容器上（render.mjs masonryOf）：文字量差距过大，或营销页的图片卡片墙无媒体比例框。
+   列流要求容器是普通块，而现有三条网格规则（.cards / .stack.cols-auto / catalog 的
+   .depth-1:not(:has(> .fieldbar))>.stack:not(.cols-auto)）已经到 (0,5,0)：不走上不封顶的
+   specificity 军备竞赛，只对 display 用一处 !important，范围限定在 masonry 容器自身。 */
+.cards.masonry,.stack.masonry,.catalog-page .ordered-media-rows>.stack.masonry{display:block!important;columns:auto 240px;column-gap:16px}
+.marketing-page .cards.masonry{columns:2;column-gap:14px}
+.marketing-page .g-tv .cards.masonry{columns:3}
+.masonry>*{break-inside:avoid}
+.masonry>hr.region{display:none}
+@media(max-width:900px){.marketing-page .cards.masonry,.marketing-page .g-tv .cards.masonry{columns:1}}
+/* 营销页的入口矩阵（render.mjs renderControls 判定 plan.link-matrix：≥4 个带目标的控件）：
+   每个入口一张卡，不再是一排药丸。动作栏（无目标 / 不足 4 项）保持药丸行。 */
+.marketing-page .controls.link-matrix{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px;margin:24px 0}
+.marketing-page .controls.link-matrix>.ctl{display:flex;align-items:center;justify-content:center;min-height:116px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;color:var(--ink);font-size:1.05em;font-weight:600;text-align:center;line-height:1.4}
+/* 营销页一个小节的短列表（标题 + 一行事实：新闻动态的「标题 + 日期」）= 2–3 列卡片格，
+   不是一条条流水行。只作用于页面小节自己的 .deflist，不动卡片/表格内部的列表。 */
+.marketing-page>.group>.node>.deflist,.marketing-page>.stack>.block>.node>.deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px;margin:20px 0}
+.marketing-page>.group>.node>.deflist>.defrow,.marketing-page>.stack>.block>.node>.deflist>.defrow{display:flex;flex-direction:column;gap:10px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;align-items:flex-start}
+.marketing-page>.group>.node>.deflist>.defrow>.defval,.marketing-page>.stack>.block>.node>.deflist>.defrow>.defval{color:var(--muted);font-size:.92em;order:-1}
 </style></head>
 <body><main>${brand ? `<header class="site"><span class="brand">${brand}</span></header>` : ''}${html}</main></body></html>
 `;

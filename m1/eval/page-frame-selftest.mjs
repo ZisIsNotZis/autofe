@@ -136,5 +136,61 @@ try {
       check(`${site} compact content-edge identity at ${width}`, g.size <= 18 && Math.abs(g.x - g.root) <= 2 && g.align === 'left');
     }
   }
+
+  // ---- S2b frame regressions (docs/m1/composition.md §3/§6) -------------------
+  // 1. A feed/record row is capped at its own text measure + media + declared gap: the unused
+  //    middle of a page-wide row WAS the text↔media gap (sspai matrix, 608px median before).
+  const curated = (site, slug) => JSON.parse(fs.readFileSync(new URL(`../curated/${site}/${slug}.json`, import.meta.url), 'utf8'));
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.setContent(render(curated('sspai-com', 'matrix'), { site: 'sspai-com' }), { waitUntil: 'domcontentloaded' });
+  const rowFrame = () => page.evaluate(() => {
+    const row = document.querySelector('.record-member');
+    const cs = getComputedStyle(row);
+    const tracks = cs.gridTemplateColumns.trim().split(/\s+/).map(parseFloat);
+    const media = row.querySelector(':scope>.band,:scope>.fact:has(img)');
+    return { maxWidth: parseFloat((cs.maxWidth.match(/([\d.]+)px/) || [])[1] ?? '0'), width: row.getBoundingClientRect().width, tracks,
+      gap: parseFloat(cs.columnGap), mediaLead: media.getBoundingClientRect().left - row.getBoundingClientRect().left,
+      container: row.closest('main').getBoundingClientRect().width };
+  });
+  const row = await rowFrame();
+  check('record row is capped at its own text measure + media + gap', row.width <= row.maxWidth + 1 && row.maxWidth < row.container);
+  check('record row text column and media are adjacent at the declared gap', Math.abs(row.mediaLead - (row.tracks[0] + row.gap)) <= 2);
+  await page.addStyleTag({ content: '.record-member{max-width:100%!important}' });
+  const stretched = await rowFrame();
+  // 负样本：去掉自有量宽（回到旧的一行拉满）必须被同一条不变式抓到。
+  check('record row without its own measure is detected', stretched.width > row.width + 100 && stretched.maxWidth < row.maxWidth);
+  // 2. A collection whose cards cannot share a row height is column flow (masonry) on marketing
+  //    image walls and on a catalog feed with uneven excerpts; a uniform product grid stays a grid.
+  await page.setContent(render(curated('huawei-cn', 'home'), { site: 'huawei-cn' }), { waitUntil: 'domcontentloaded' });
+  const collage = await page.evaluate(() => {
+    const c = document.querySelector('.g-featured .cards');
+    const cs = getComputedStyle(c);
+    const box = c.getBoundingClientRect();
+    const kids = [...c.children].map((k) => k.getBoundingClientRect());
+    return { cls: c.className, display: cs.display, columns: cs.columnCount,
+      inside: kids.every((k) => k.left >= box.left - 1 && k.right <= box.right + 1), n: kids.length };
+  });
+  check('heterogeneous marketing collage is masonry (column flow, 2 columns)', collage.cls.includes('masonry') && collage.display === 'block' && collage.columns === '2');
+  check('masonry cards stay inside the container', collage.inside && collage.n === 4);
+  await page.setContent(render(curated('huawei-cn', 'consumer-phones'), { site: 'huawei-cn' }), { waitUntil: 'domcontentloaded' });
+  check('uniform product grid stays a row grid (not masonry)', await page.evaluate(() => [...document.querySelectorAll('.cards')].every((c) => !c.className.includes('masonry') && getComputedStyle(c).display === 'grid')));
+  // 3. A marketing page's set of ≥4 link controls is an entrance matrix of cards, not a pill row.
+  await page.setContent(render(curated('huawei-cn', 'home'), { site: 'huawei-cn' }), { waitUntil: 'domcontentloaded' });
+  const matrix = await page.evaluate(() => {
+    const c = document.querySelector('.g-business .controls');
+    const cards = [...c.querySelectorAll('a.ctl')].map((a) => a.getBoundingClientRect());
+    return { cls: c.className, display: getComputedStyle(c).display, n: cards.length,
+      cardLike: cards.every((r) => r.width >= 200 && r.height >= 100) };
+  });
+  check('marketing link matrix renders each entrance as a card', matrix.cls.includes('link-matrix') && matrix.display === 'grid' && matrix.n === 6 && matrix.cardLike);
+  // 4. A comparison row prints its label ONCE: the cell must not repeat the row heading.
+  await page.setContent(render(curated('apple-com-cn', 'iphone-17'), { site: 'apple-com-cn' }), { waitUntil: 'domcontentloaded' });
+  const cmp = await page.evaluate(() => [...document.querySelectorAll('.cmp-table tbody tr')].map((tr) => {
+    const th = tr.querySelector('th.cmp-row');
+    const label = th ? th.textContent.trim() : '';
+    return { label, repeats: label ? [...tr.querySelectorAll('td .title')].filter((e) => e.textContent.trim() === label).length : 0 };
+  }));
+  check('comparison rows carry labels', cmp.filter((r) => r.label).length >= 5);
+  check('comparison cell never repeats the row label', cmp.every((r) => r.repeats === 0));
 } finally { await browser.close(); }
 console.log(`PASS page-frame/action regressions: ${checks} assertions; Chromium 2560/1920/1440/390; no experience verdict.`);

@@ -325,14 +325,18 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .native-media{max-width:100%;max-height:70vh;overflow:auto;border:1px solid var(--line);background:var(--surface)}
 .native-media img{max-width:none!important;max-height:none!important;width:auto!important;height:auto!important;margin:0!important;border-radius:0}
 .resource-view:focus-within{outline:2px solid var(--accent);outline-offset:2px}
-/* Metadata-bearing editorial/search records are local records, never heroes. */
-.record-member{display:grid!important;grid-template-columns:minmax(0,1fr) 216px;gap:6px 24px;max-width:100%;margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
+/* Metadata-bearing editorial/search records are local records, never heroes.
+   行宽 = 文字测量宽 + 媒体槽 + 声明的间距：整行不许拉到页边，否则未用的中段就是「文字与图之间
+   的空白」（sspai matrix 实测 608px 中位死沟）。 */
+.record-member{display:grid!important;grid-template-columns:minmax(0,1fr) 216px;gap:6px 24px;max-width:min(100%,calc(var(--measure-row) + 240px));margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
 .record-member>*{grid-column:1;margin:0!important;min-width:0;max-width:var(--measure-row)}
 .record-member>.band,.record-member>.fact:has(img){grid-column:2;grid-row:1 / span 6;align-self:start}
 .record-member img{max-width:216px;max-height:172px;width:auto;height:auto;margin:0}
 .record-member .strip{width:auto;margin:0}
 .record-member>.title{text-align:left;font-size:1.15em}
 .record-member>.fact{max-width:var(--measure-row)}
+/* 无媒体的记录行没有媒体槽：行宽回到文字测量宽，不得把 216+24px 的空槽留在行尾。 */
+.record-member:not(:has(img)){max-width:min(100%,var(--measure-row))}
 .cards:has(>.item>.record-member){display:block}
 .cards:has(>.item>.record-member)>.item{border:0;padding:0;background:transparent;margin:0}
 .stack:has(>.block>.record-member){display:block}
@@ -473,5 +477,25 @@ main:has(.marketing-page){max-width:1728px}
 .profile-page .cards .title,.profile-page .cards .fact,.profile-page .cards .meta{grid-column:2}
 .profile-page .cards img{max-width:200px}
 @media(max-width:700px){.search-page .record-member,.profile-page .cards>.item>.node{grid-template-columns:minmax(0,1fr)}.search-page .record-member>.band,.search-page .record-member>.fact:has(img),.search-page .record-member>*,.profile-page .cards .fact:has(.val img),.profile-page .cards .title,.profile-page .cards .fact,.profile-page .cards .meta{grid-column:1;grid-row:auto}}
+/* ——— S2b：内容自己打包的集合（composition.md §3）。Masonry 只在 render.mjs 判定为「成员高度不可等高」
+   时落到容器上（render.mjs masonryOf）：文字量差距过大，或营销页的图片卡片墙无媒体比例框。
+   列流要求容器是普通块，而现有三条网格规则（.cards / .stack.cols-auto / catalog 的
+   .depth-1:not(:has(> .fieldbar))>.stack:not(.cols-auto)）已经到 (0,5,0)：不走上不封顶的
+   specificity 军备竞赛，只对 display 用一处 !important，范围限定在 masonry 容器自身。 */
+.cards.masonry,.stack.masonry,.catalog-page .ordered-media-rows>.stack.masonry{display:block!important;columns:auto 240px;column-gap:16px}
+.marketing-page .cards.masonry{columns:2;column-gap:14px}
+.marketing-page .g-tv .cards.masonry{columns:3}
+.masonry>*{break-inside:avoid}
+.masonry>hr.region{display:none}
+@media(max-width:900px){.marketing-page .cards.masonry,.marketing-page .g-tv .cards.masonry{columns:1}}
+/* 营销页的入口矩阵（render.mjs renderControls 判定 plan.link-matrix：≥4 个带目标的控件）：
+   每个入口一张卡，不再是一排药丸。动作栏（无目标 / 不足 4 项）保持药丸行。 */
+.marketing-page .controls.link-matrix{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px;margin:24px 0}
+.marketing-page .controls.link-matrix>.ctl{display:flex;align-items:center;justify-content:center;min-height:116px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;color:var(--ink);font-size:1.05em;font-weight:600;text-align:center;line-height:1.4}
+/* 营销页一个小节的短列表（标题 + 一行事实：新闻动态的「标题 + 日期」）= 2–3 列卡片格，
+   不是一条条流水行。只作用于页面小节自己的 .deflist，不动卡片/表格内部的列表。 */
+.marketing-page>.group>.node>.deflist,.marketing-page>.stack>.block>.node>.deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px;margin:20px 0}
+.marketing-page>.group>.node>.deflist>.defrow,.marketing-page>.stack>.block>.node>.deflist>.defrow{display:flex;flex-direction:column;gap:10px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f5f5f7;align-items:flex-start}
+.marketing-page>.group>.node>.deflist>.defrow>.defval,.marketing-page>.stack>.block>.node>.deflist>.defrow>.defval{color:var(--muted);font-size:.92em;order:-1}
 </style></head>
 <body><main><article id="sspai-login" class="node depth-0 authentication-page" data-model-owner=""><h1 class="title">登录少数派</h1><section class="group g-login"><article class="node depth-1 w-narrow" data-model-owner="login"><section class="group g-identifier"><article class="node depth-2" data-model-owner="login.identifier"><span class="expose expose-input expose-login"><span class="deflabel">输入手机号 或 邮箱</span><input type="text" name="login" data-type="text" aria-label="输入手机号 或 邮箱"></span></article></section><section class="group g-region"><article class="node depth-2" data-model-owner="login.region"><div class="fact"><span class="val">+86 中国 86美国 1日本 81中国香港 852中国台湾 886马来西亚 60澳大利亚 61加拿大 1英国 44新加坡 65德国 49俄罗斯 7埃及 20南非 27希腊 30荷兰 31比利时 32法国 33西班牙 34匈牙利 36意大利 39罗马尼亚 40瑞士 41奥地利 43丹麦 45瑞典 46挪威 47波兰 48秘鲁 51墨西哥 52古巴 53阿根廷 54巴西 55智利 56哥伦比亚 57</span></div></article></section><section class="group g-alternatives"><article class="node depth-2" data-model-owner="login.alternatives"><h3 class="title">其他方式</h3></article></section><section class="group g-agreement"><article class="node depth-2" data-model-owner="login.agreement"><div class="fact"><span class="val">未注册手机号验证后自动登录, 注册或登录即代表同意</span></div><div class="controls"><a class="ctl" href="https://sspai.com/page/agreement">用户协议</a><a class="ctl" href="https://sspai.com/page/privacy_policy">隐私条款</a></div></article></section><span class="action-plain">登录 / 注册</span></article></section><section class="group g-support"><article class="node depth-1 w-narrow utility-group utility-facts" data-model-owner="support"><div class="fact"><span class="val">请用微信手机端扫码咨询客服</span></div><div class="chips"><span class="chip-item" data-model-owner="support._items[0]">联系客服</span><span class="chip-item" data-model-owner="support._items[1]">发送邮件</span><span class="chip-item" data-model-owner="support._items[2]">商务合作</span><span class="chip-item" data-model-owner="support._items[3]">少数派 App</span></div></article></section></article></main></body></html>
