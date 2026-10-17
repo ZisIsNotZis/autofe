@@ -132,7 +132,16 @@ export function selectForm(items, order) {
   if (!comparable(items)) return 'stack';
   // a "product card" needs a name: a price with no named product is not a card (F-030)
   if (items.some((it) => it._price) && items.every((it) => it._name || it._title)) return 'product-cards';
-  const deflist = items.every((it) => {
+  // A SET OF LABELED IMAGE TILES is a card grid, not a compact definition (S2d): the label↔thumbnail
+  // row squeezed each photo into the value column — the mi category directory's 150 tiles (icon above
+  // its name in the source) came out as 166px slivers beside their labels, and apple's camera-mode
+  // stills the same way. A card grid draws the image above its title (`mediaFirstOf`). The rule is
+  // deliberately SET-level, so the forms that are not a tile grid keep their existing shape: a mixed
+  // list where only some members carry an image (sspai related reads), a label-less
+  // image+explanation member (sequential instruction imagery), and a DECLARED ranked leaderboard
+  // (order `rank`, whose rank+thumbnail rows are the form).
+  const tileSet = order !== 'rank' && items.every((it) => it._image && (it._name || it._title));
+  const deflist = !tileSet && items.every((it) => {
     if (it._fields || childrenOf(it).length) return false;
     const f = factsOf(it);
     if (f.length < 1 || f.length > 2) return false;

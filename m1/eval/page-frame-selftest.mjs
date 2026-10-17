@@ -130,14 +130,21 @@ try {
   for (const width of [2560, 1920, 1440, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.setContent(render(mediaPage), { waitUntil: 'load' });
+    // S2d: a name+image member set is a CARD grid (`axis.selectForm` keeps an `_image` member out of
+    // the compact-definition form), so cohesion is checked on the member, not on the retired
+    // `media-captions` row: the photo lives inside the same member as its caption, is never drawn
+    // larger than its natural pixels, and (media-first) is presented above that caption.
     const g = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth - innerWidth,
-      rows: [...document.querySelectorAll('.media-captions .defrow')].map((e) => {
-        const im = e.querySelector('img'), r = im.getBoundingClientRect(), label = e.querySelector('.deflabel').getBoundingClientRect();
-        return { width: r.width, height: r.height, natural: im.naturalWidth, captionY: label.y, imageY: r.y };
+      members: [...document.querySelectorAll('.cards .item')].map((e) => {
+        const im = e.querySelector('img'), r = im.getBoundingClientRect(), label = e.querySelector('.title');
+        return { width: r.width, height: r.height, natural: im.naturalWidth, naturalHeight: im.naturalHeight,
+          inMember: Boolean(label) && e.contains(label), captionY: label?.getBoundingClientRect().y, imageY: r.y };
       }), choice: document.querySelector('fieldset:has(table)').getBoundingClientRect().width }));
     check('media/fieldset do not overflow actual page at ' + width, g.overflow <= 1 && g.choice <= width);
-    check('tall source objects remain compact, caption-cohesive and never enlarged at ' + width,
-      g.rows.length === 2 && g.rows.every((r) => r.height <= 360 && r.width <= r.natural && r.captionY < r.imageY));
+    check('tall source objects are never enlarged and keep their caption inside the same member at ' + width,
+      g.members.length === 2 && g.members.every((r) => r.width <= r.natural && r.height <= r.naturalHeight + 0.5 && r.inMember));
+    check('the image-led member set draws its media above the caption at ' + width,
+      g.members.length === 2 && g.members.every((r) => r.captionY >= r.imageY));
   }
   const contrast = () => {
     const a = document.querySelector('.self-link'); const s = getComputedStyle(a); const rgb = s.color.match(/[\d.]+/g).slice(0, 3).map(Number);

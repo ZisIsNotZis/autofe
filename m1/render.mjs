@@ -252,7 +252,11 @@ function renderDeflist(items, chain, ctx, order) {
     // no empty label cell: an unlabeled row keeps its full width (F-031-§5)
     return `<div class="defrow${it._image ? ' media-row' : ''}${labelTextOf(it).length > 24 ? ' long-label' : ''}"${ownerAttr(it,ctx)}>${rank}${l ? `<div class="deflabel">${l}</div>` : ''}<div class="defval">${v}</div></div>`;
   }).join('');
-  return rows ? `<div class="deflist${ranked ? ' ranked' : ''}${!ranked && items.every((it) => it._image) ? (items.every((it) => it._detail && !it._name && !it._title) ? ' instruction-media' : ' media-captions') : ''}">${rows}</div>` : '';
+  // `instruction-media` = sequential instructional imagery: an image followed by its explanation, no
+  // label to put beside it. Such a member keeps the block form (one step per row). The `media-captions`
+  // variant is gone: a LABELED image member is a card grid now (`axis.selectForm`), so an all-image
+  // set can only reach this form as the label-less instruction shape above, or as a ranked leaderboard.
+  return rows ? `<div class="deflist${ranked ? ' ranked' : ''}${!ranked && items.every((it) => it._image) ? ' instruction-media' : ''}">${rows}</div>` : '';
 }
 function renderAccordion(items, chain, hide, ctx) {
   const det = items.map((it) => {
@@ -931,9 +935,6 @@ a.ctl:hover{background:#f2f7ff}
 .defrow.media-row{display:block}
 .defrow.media-row .deflabel{flex:none;min-width:0;margin-bottom:8px}
 .defrow.media-row .defval{min-width:0;max-width:100%}
-.deflist.media-captions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(280px,calc((100% - 32px)/3))),1fr));gap:16px}
-.deflist.media-captions .defrow{display:flex;flex-direction:column;flex-wrap:nowrap;border:0}
-.deflist.media-captions img{max-height:360px;width:auto;height:auto}
 .deflabel{min-width:130px;font-weight:600}
 .deflabel a{color:inherit}
 .timeline .defrow{position:relative}
@@ -1148,7 +1149,6 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .product-page>.stack>.block{margin-block:0;padding-block:48px}
 .product-page .defrow{gap:24px}
 .product-page .deflabel{flex:0 0 190px;min-width:0}
-.product-page .media-captions .deflabel{flex:0 0 auto}
 .detail-page>.title{max-width:none;margin-inline:0}
 .detail-page>.fact{max-width:none}
 .detail-page .node.w-prose,.detail-page .node.w-narrow,.detail-page .node.w-wide{max-width:none;margin-inline:0;width:100%}

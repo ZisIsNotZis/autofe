@@ -851,5 +851,57 @@ const primaryActionRows = (model) => {
     && nodePlan(plainRef, { chain: [], values: {}, depth: 1 }).facts.list.some((f) => f.key === '_ref'), '');
 }
 
+// W. a set of LABELED IMAGE TILES is a card grid, not a compact definition (S2d).
+// The mi category directory is 150 source tiles of "icon above its name"; the compact definition
+// form (`.deflist`: label in a narrow column, value at the right) turned each photo into a 166px
+// sliver beside its label, and apple's camera-mode stills the same way. The rule under test is
+// SET-level — a tile grid is a card grid (media-first when the text is card-sized) — so three
+// NEGATIVE CONTROLS pin the forms it must NOT swallow: image-less label+value pairs, a mixed list
+// where only some members carry an image, and label-less image+explanation steps.
+{
+  const tiles = ['Xiaomi 数字旗舰', 'Xiaomi MIX系列', 'REDMI K系列'].map((t, i) => ({
+    _name: { text: t }, _image: { image: `https://x.test/tile-${i}.png`, alt: t },
+    _action: { verb: 'navigate', to: `https://x.test/q/${i}` },
+  }));
+  const gridModel = { _intent: 'x', _title: { text: 'Categories' }, catalog: { _intent: 'c', _title: { text: '手机' }, _items: tiles } };
+  check('W0 a set of labeled image tiles takes the card form, not the compact definition', selectForm(tiles) === 'cards', selectForm(tiles));
+  const gridHtml = render(gridModel);
+  check('W1 every tile is drawn as a member holding its own <img>',
+    gridHtml.includes('class="cards cols-auto compact-media media-first"')
+    && (gridHtml.match(/<div class="item">/g) || []).length === 3
+    && (gridHtml.match(/<img src="https:\/\/x\.test\/tile-/g) || []).length === 3,
+    gridHtml.match(/<div class="cards[^"]*"[^>]*>/)?.[0] ?? '');
+  check('W2 the card grid draws no label↔value rows', !gridHtml.includes('class="deflist'), '');
+  // media-first is a presentation-order rule (flex `order`), not a DOM move: the photo must stay
+  // INSIDE its member article and the stylesheet must raise it above the title (U-27, 图题不分家).
+  const tileArticle = /<article[^>]*>(?:(?!<\/article>)[\s\S])*tile-0\.png(?:(?!<\/article>)[\s\S])*Xiaomi 数字旗舰/;
+  check('W3 the tile photo stays inside its own member and media-first raises it above the title',
+    tileArticle.test(gridHtml) && /\.media-first \.node>\.fact:has\(\.val img\)[^{]*\{[^}]*order:-1/.test(gridHtml), '');
+  // NEGATIVE CONTROL 1: no image — the compact definition form is untouched.
+  const pairs = [['邮件', 'imap.example.com'], ['网页', 'https://mail.example.com']].map(([n, v]) => ({ _name: { text: n }, _detail: { text: v } }));
+  const pairHtml = render({ _intent: 'x', _title: { text: 'Settings' }, rows: { _intent: 'r', _title: { text: '收信设置' }, _items: pairs } });
+  check('W4 NEGATIVE CONTROL: image-less label+value pairs still take the compact definition', selectForm(pairs) === 'deflist', selectForm(pairs));
+  check('W5 its HTML is still `.deflist` and never a card grid', /<div class="deflist[^"]*"/.test(pairHtml) && !pairHtml.includes('class="cards'), '');
+  // NEGATIVE CONTROL 2: a mixed list (only the first member carries a photo, as in sspai's related
+  // reads) keeps its rows — the rule must not turn one thumbnail into a whole card wall.
+  const mixed = [{ _title: { text: '弯道超车｜赛车入门指北 03' }, _image: { image: 'https://x.test/rel-0.png' }, _action: { verb: 'open', to: 'https://x.test/0' } },
+    ...['怀旧手记｜从迷你电脑到口袋笔记本', '派早报：本周值得关注的软件更新'].map((t, i) => ({ _title: { text: t }, _action: { verb: 'open', to: `https://x.test/r${i}` } }))];
+  const mixedHtml = render({ _intent: 'x', _title: { text: 'Article' }, related: { _intent: 'r', _title: { text: '相关阅读' }, _items: mixed } });
+  check('W6 NEGATIVE CONTROL: a mixed list keeps its compact rows (one photo is not a tile grid)', selectForm(mixed) === 'deflist', selectForm(mixed));
+  check('W7 that list renders as `.deflist` with the photo on its own row', /<div class="deflist[^"]*"/.test(mixedHtml) && mixedHtml.includes('defrow media-row') && !mixedHtml.includes('class="cards'), '');
+  // NEGATIVE CONTROL 3: label-less image+explanation members are sequential instruction steps —
+  // full-width blocks, never a side-by-side grid (sspai post-102392).
+  const steps = [1, 2].map((n) => ({ _image: { image: `https://x.test/step-${n}.png` }, _detail: { text: '第 ' + n + ' 步的说明文字。' } }));
+  const stepsHtml = render({ _intent: 'x', _title: { text: 'Guide' }, body: { _intent: 'b', _title: { text: '以「反色」方式进行适配' }, _items: steps } });
+  check('W8 NEGATIVE CONTROL: label-less image+explanation steps keep the sequential instruction form',
+    selectForm(steps) === 'deflist' && stepsHtml.includes('class="deflist instruction-media"') && !stepsHtml.includes('class="cards'), stepsHtml.match(/<div class="[^"]*deflist[^"]*"[^>]*>/)?.[0] ?? '');
+  // A DECLARED rank leaderboard keeps its rank+thumbnail rows; its ordinals are the form.
+  const board = tiles.map((it) => ({ _name: it._name, _image: it._image }));
+  const boardHtml = render({ _intent: 'x', _title: { text: 'Board' }, hot: { _intent: 'h', _rel: { order: 'rank' }, _title: { text: '热榜' }, _items: board } });
+  check('W9 a DECLARED ranked leaderboard keeps its rank+thumbnail rows',
+    selectForm(board, 'rank') === 'deflist' && boardHtml.includes('class="deflist ranked"') && boardHtml.includes('class="rank">1<'),
+    boardHtml.match(/<div class="deflist[^"]*"[^>]*>/)?.[0] ?? '');
+}
+
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);
 process.exit(bad ? 1 : 0);
