@@ -5,18 +5,43 @@
 
 本层回答一个问题：**页面级「怎么排」由谁定、如何保证引擎真的做到了。** 它位于「业务语义（模型）」与「DOM/CSS」之间。
 
-## 1. 构图是引擎的形态决策，不是模型原语
+## 1. 语义归属 vs 形态：谁声明、谁决定
 
-- 模型只表达业务：角色事实（`_title`/`_image`/`_price`/`_text`/`_quote`…）、关系（`_lines`/`_items`/`_rel`）、动作（`_action`）、意图（`_intent`）、复合件（`_composite`）。
-- 页面原型（品类页 / 文章 / 落地页 / feed / 搜索 / 个人页…）、区域带（band）、侧栏（aside）、媒体角色都是**形态**，由引擎决定。因此本层只改引擎，不改模型语法、不加 UI 键。
-- 反例：把「这是商品列表页」写进模型 = 表现混入语义，等价于站点级逃生口，违反 `docs/design-basis.md` §5。
-- 模型保持纯业务 ⇒ 「无站点级 CSS/表现逃生口」的验收判据不破（`docs/product.md` §2）。
+- **页面语义归属（scope/subject）是闭式业务事实，必须由模型声明**。它回答「这是站点入口、某一分类、一次查询、一个实体、一份文档、还是账号/表单」以及「主体是商品/dataset/文档/账号」。
+  - 证据：仅凭业务结构推导，10 类里只能干净分出 5 类，40 页最好 20/40 与 19 页残留；`landing/home` 与 `category/list` 同构（12 页，同站成对）、`product-detail` 与 `article/editorial`/`table-heavy` 同构。这不是阈值问题，是缺一个语义位（`.scratch/63-recapture-recuration/composition-derivation-analysis.md`）。
+  - 它是**闭式枚举**（如 `_composite`），不是 UI 旋钮、不是逐页手写样式；由采集/策展依据源站页面角色自动填入。
+- **布局框架与媒体角色是引擎的形态决策**：同一 scope/subject 可以由引擎选不同的 band/网格/阅读列；模型不表达这些。
+- 因此本层既改引擎（构图推导与框架），也向语法加**两个闭式语义键**；不加任何表现/样式键。
+- 反例：在模型里写 `_kind: "catalog"` 或每页 CSS，是表现混入语义或站点级逃生口，仍禁止。
+
+## 1.1 两个闭式语义键
+
+| 键 | 闭式取值 | 含义 |
+|---|---|---|
+| `_scope` | `entry` / `category` / `query` / `entity` / `document` / `account` / `form` | 页面在站点中的角色 |
+| `_subject` | `offer` / `document` / `account` / `dataset`（可缺省） | 页面的主体种类 |
+
+采集 archetype → 语义键的映射（迁移依据）：
+
+| 采集 archetype | `_scope` | `_subject` |
+|---|---|---|
+| `landing/home` | `entry` | — |
+| `category/list` | `category` | — |
+| `search-results` | `query` | — |
+| `product-detail` | `entity` | `offer` |
+| `article/editorial` | `document` | `document` |
+| `docs/design-system` | `document` | `document` |
+| `profile/account` | `account` | `account` |
+| `table-heavy/admin` | `entity` | `dataset` |
+| `dashboard/data-viz` | `entity` | `dataset` |
+| `form/checkout/settings` | `form` | — |
+
 
 ## 2. 构图必须完备，不得静默回落
 
 - 每个页面解析出恰好一个页面原型（闭式集合：`reading` / `catalog` / `marketing` / `detail` / `product` / `authentication` / `feed` / `profile` / `search`），否则是**显式错误**。
 - `default` 不是合法结果。解析不出原型 = 引擎错误（门禁失败），不是「普通页」。
-- 判定只依赖业务结构（角色、`_lines`/`_items` 层级、`_rel`、关系、复合件），**不得**依赖站点名或「数价格/数菜单/数长段」这类偶然计数阈值。
+- 判定依赖业务结构（角色、`_lines`/`_items` 层级、`_rel`、关系、复合件）加两个闭式语义键（scope/subject）；**不得**依赖站点名或「数价格/数菜单/数长段」这类偶然计数阈值。
 - 长文/阅读型判定统计**全部长文本**（`_text`、`_quote`、嵌套 `_lines`），不得只看单一字段或固定段数阈值。
 
 ## 3. 布局框架（frames）是一等概念
@@ -57,6 +82,7 @@
 
 ## 6. 当前引擎缺陷（必须消灭，作为负样本）
 
+- `pageLayoutOf` 对 10 类页面：对 **6/40**、错 **2/40**、**32/40 沉默**；且 `model._image && model._price → product` 分支在 40 页里命中 **0 次**（死分支），kind 词表最多只能命名 10 类中的 5 类。
 - 页面原型靠作品数阈值推断，40 页中 32 页回落 `default`，无任何信号。
 - 页种 CSS 大量「写了不生效」：`product-page` 0 命中、`catalog-page` 1、`marketing-page` 1。
 - 阅读判定只数 `_text` 且跳过 `_quote`，长文被判成普通页。
@@ -68,3 +94,10 @@
 - 10 个缺陷页作为样板：每页原型非 `default`、声明意图 100% 兑现、门禁负样本全部被抓。
 - 交付形态：每页「原站 | 渲染」并排图 + 门禁报告。
 - 样板通过后才铺到全部 40 页并重跑全部门禁 + 新独立验收。
+
+## 8. 开放缺口（已知、暂不掩盖）
+
+- **dashboard/data-viz 无语法表达**：语料里唯一的 dashboard 页 `num 0`、无图表/序列/带单位的值原语；它现在只能落到 dataset 框架。需要一次图表原语的语法演化（n=1，先在结果里记录限制，不假装已解决）。
+- **`docs/design-system` 与 `article/editorial` 同属 document**：两者共用阅读框架；`docs/design-system` 在语料里 n=1，暂不单独建模。
+- **`table-heavy` 的表「角色」靠位置近似**（深度 1 的表=页级数据集，实体下的表=属性面板）；这是策展纪律，不是不变式。
+- **两处建模缺口（不是推导规则问题）**：`sspai-com/login` 缺 `login` 声明；`mi-com/search-phone` 缺查询态。搜索应由声明的 `search.results` 绑定判定，而不是 facet 代理。
