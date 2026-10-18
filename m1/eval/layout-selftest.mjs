@@ -43,7 +43,9 @@ const page = bodyOf(render(structuredClone(pageFixture), {}));
 const css = cssOf(render(structuredClone(pageFixture), {}));
 
 // ---- a) 页面容器 -------------------------------------------------------------
-check('容器居中：main=1280px + margin auto + 对称 padding', /main\{max-width:1280px;margin:0 auto;padding:32px 24px 0\}/.test(css));
+// S6（composition.md §3）把页框从「吃满 1280」改成「中央一条 --page-measure 内容带 + --page-pad 页边」：
+// 容器仍是 margin auto 的居中盒，但它的内容是带，不是视口。
+check('容器居中：main = 内容带 + 两侧页边 + margin auto', /main\{max-width:calc\(var\(--page-measure\) \+ 2 \* var\(--page-pad\)\);margin:0 auto;padding:32px var\(--page-pad\) 0\}/.test(css));
 check('局部形态继承页面框架（prose/narrow/wide），声明 banner 可 bleed',
   css.includes('.node.w-prose,.node.w-narrow,.node.w-wide{max-width:none;margin-inline:0;width:100%}')
   && css.includes('.node.w-bleed{max-width:none;width:100vw'));
@@ -239,7 +241,7 @@ check('N3 解除 .band 包裹 ⇒ 裸 strip 出现在非声明处，必须失败
   return false;
 })(), '负例未构造出违规');
 const badCss = mutate(css, (s) => s.replace('margin:0 auto', 'margin:0'));
-check('N4 容器去居中 ⇒ 必须失败', !/main\{max-width:1280px;margin:0 auto;padding:32px 24px 0\}/.test(badCss), '负例未构造出违规');
+check('N4 容器去居中 ⇒ 必须失败', !/main\{max-width:calc\(var\(--page-measure\) \+ 2 \* var\(--page-pad\)\);margin:0 auto;padding:32px var\(--page-pad\) 0\}/.test(badCss), '负例未构造出违规');
 const badOobMargin = mutate(page, (s) => s.replace('<main>', '<main><div style="margin-left:-999px">孤儿块</div>'));
 check('N5 margin-left:-999px 内联逃逸 ⇒ 必须失败', oobViolations(badOobMargin).some((v) => v.includes('margin-left')), '负例未构造出违规');
 const badOobTop = mutate(page, (s) => s.replace('</main>', '</main><div>容器外顶层节点</div>'));

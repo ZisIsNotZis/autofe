@@ -199,8 +199,12 @@ try {
     return { width: box.width, left: box.left - holder.left, holder: holder.width,
       marginAuto: cs.marginLeft !== '0px' && cs.marginLeft === cs.marginRight };
   });
-  check('record list is one centred column of the row measure',
-    Math.abs(column.width - (row.maxWidth)) <= 2 && column.marginAuto && Math.abs(column.left - (column.holder - column.width) / 2) <= 2);
+  // S6：页框收成一条 1160px 内容带后，两区帧（feed 748 + 380 侧栏）比行自有量宽（798）窄 —— 这时
+  // 绑定的是列而不是行量宽：行填满 feed 列。列比容器窄时（下面的搜索页）仍按 auto margin 居中。
+  const fitsFeed = Math.abs(column.width - column.holder) <= 2;
+  check('record list is one centred column of min(row measure, feed column)',
+    Math.abs(column.width - Math.min(row.maxWidth, column.holder)) <= 2
+      && (fitsFeed ? column.left <= 1 : column.marginAuto && Math.abs(column.left - (column.holder - column.width) / 2) <= 2));
   await page.addStyleTag({ content: '.cards:has(>.item>.record-member),.stack:has(>.block>.record-member){margin-inline:0!important}' });
   const flushed = await page.evaluate(() => {
     const cards = document.querySelector('.cards:has(>.item>.record-member),.stack:has(>.block>.record-member)');
@@ -272,8 +276,10 @@ try {
   });
   const twoRegion = await regions();
   check('matrix page is laid out as two regions (feed + rail)', twoRegion.frame && twoRegion.display === 'grid' && twoRegion.tracks === 2);
+  // S6：页框收成 1160px 内容带后，feed 列是 748（380 侧栏 + 32 间距之外的全部），比旧 1232 页框下的
+  // 820 窄 —— 断言的是「feed 是占优的主列」，不是某个旧页框算出的 2 倍。
   check('the rail sits to the right of the feed, beside it rather than after it',
-    twoRegion.feedIsLeft && Math.abs(twoRegion.railTop - twoRegion.feedTop) <= 2 && twoRegion.feedW > twoRegion.railW * 2);
+    twoRegion.feedIsLeft && Math.abs(twoRegion.railTop - twoRegion.feedTop) <= 2 && twoRegion.feedW > twoRegion.railW * 1.5);
   check('the trailing side cards ARE the rail', twoRegion.insideRail && twoRegion.railText.includes('值得关注') && twoRegion.railText.includes('专栏推荐'));
   check('feed rows fill their column: no page-wide dead band', twoRegion.rows >= 20 && twoRegion.slack.every((s) => s >= 0 && s <= 40) && twoRegion.mediaAtRowEdge);
   await page.addStyleTag({ content: '.feed-rail{display:block!important}' });
@@ -301,11 +307,14 @@ try {
   check('a 4-column matrix (the old auto-fit) is detected as a ragged 4+2 row', ragged.cols === 4 && ragged.rows.includes(4) && ragged.rows.includes(2));
   // ---- S5a wide-screen composition (docs/m1/composition.md §3/§6) ---------------------
   // The owner's wide-screen complaints, each reduced to the geometry that caused them.
+  // S6：页框是 main 的内容盒（左侧 = --page-pad），所以「贴左」要与 frameLeft 比，不能再用写死的 24px。
   const bands = (holderSel, innerSel) => page.evaluate(([holderSel, innerSel]) => {
     const holder = document.querySelector(holderSel), inner = innerSel ? document.querySelector(innerSel) : holder;
-    const main = document.querySelector('main').getBoundingClientRect();
+    const mainEl = document.querySelector('main');
+    const main = mainEl.getBoundingClientRect();
     const box = holder.getBoundingClientRect();
     return { left: Math.round(box.left - main.left), right: Math.round(main.right - box.right),
+      frameLeft: Math.round(parseFloat(getComputedStyle(mainEl).paddingLeft)),
       width: Math.round(box.width), innerWidth: Math.round(inner.getBoundingClientRect().width),
       innerLeft: Math.round(inner.getBoundingClientRect().left - main.left) };
   }, [holderSel, innerSel]);
@@ -320,7 +329,7 @@ try {
   await page.addStyleTag({ content: '.cards:has(>.item>.record-member){margin-inline:0!important}' });
   const flushedSearch = await bands('.cards:has(>.item>.record-member)', '.record-member');
   check('a left-flushed search column leaves a one-sided band and is detected',
-    flushedSearch.left <= 30 && flushedSearch.right > 200);
+    flushedSearch.left <= flushedSearch.frameLeft + 2 && flushedSearch.right > 200);
   // 2. A reading page is ONE column: a declared bleed band inside it (hero image + its root-level
   //    action) stays inside the reading measure instead of running the full page width.
   await page.setContent(render(curated('stripe-docs', 'payments'), { site: 'stripe-docs' }), { waitUntil: 'domcontentloaded' });

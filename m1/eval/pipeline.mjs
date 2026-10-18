@@ -292,10 +292,18 @@ if (!gIAU.ok) console.log(gIAU.out);
 const gPF = gate('node m1/eval/page-frame-selftest.mjs');
 console.log(`[pipeline] 页面框架/动作可执行自测: ${gPF.ok ? '通过' : '失败'}`);
 if (!gPF.ok) console.log(gPF.out);
+// 18th self-test suite (round 63 · S6): PAGE-LEVEL TASTE. A lone page-level action/control bar must not
+// sit at the band's left edge with most of the band empty to its right, footers must distribute their
+// link groups across the band, and the page frame must stay a central band (composition.md §3).
+// The predicate is geometry, so it runs in Chromium over all 40 pages, and a synthetic left-flushed
+// fixture is the negative control that proves the predicate can still fail.
+const gTST = gate('node m1/eval/taste-selftest.mjs');
+console.log(`[pipeline] 页级品味自测(S6 · 第18道): ${gTST.ok ? '通过' : '失败'}`);
+if (!gTST.ok) console.log(gTST.out);
 const gDR = gate('node m1/eval/diagnosed-repair-selftest.mjs');
 console.log(`[pipeline] 来源/关联修复可证伪自测: ${gDR.ok ? '通过' : '失败'}`);
 if (!gDR.ok) console.log(gDR.out);
-const gatesFailed = !gOWN.ok || !gWIT.ok || !gDR.ok || !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok || !gLO.ok || !gPF.ok || !gCOMP.ok || !gIAU.ok;
+const gatesFailed = !gOWN.ok || !gWIT.ok || !gDR.ok || !gValid.ok || !gVST.ok || !gFS.ok || !gMS.ok || !gTS.ok || !gAS.ok || !gMD.ok || !gSH.ok || !gIA.ok || !gCI.ok || !gCIS.ok || !gNU.ok || !gCS.ok || !gCR.ok || !gLC.ok || !gLL.ok || !gQS.ok || !gAF.ok || !gLO.ok || !gPF.ok || !gCOMP.ok || !gIAU.ok || !gTST.ok;
 
 // ---- 2. audit (9-class visual self-audit) ----------------------------------
 const auditTargets = only ? rows.map((r) => 'm1/curated/renders/' + r.k.replace(/\//g, '-') + '.html').join(' ') : '--all';
