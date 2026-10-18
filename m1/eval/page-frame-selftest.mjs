@@ -221,15 +221,19 @@ try {
     const box = c.getBoundingClientRect();
     const gap = parseFloat(cs.columnGap);
     const kids = [...c.children].map((k) => k.getBoundingClientRect());
-    // S5a: 列数由「容器宽 + 卡片最小宽」（CSS 的 280px）决定，不再写死 2 列。
-    const expected = Math.max(1, Math.floor((box.width + gap) / (280 + gap)));
-    return { cls: c.className, display: cs.display, columns: cs.columnCount, gap, expected,
+    // S5a: 列数由「容器宽 + 卡片最小宽」（CSS 的 280px）决定，不写死 2 列。
+    const byWidth = Math.max(1, Math.floor((box.width + gap) / (280 + gap)));
+    // S7: 成员数再给一个上界（--masonry-cols，render.mjs masonryCols）——5 张卡不再排成 4 列 2/1/1/1。
+    // 实际列数 = min(声明上界, 宽度推出的列数)：窄视口仍会继续收缩，宽视口不会超过成员数允许的列数。
+    const declared = parseInt(cs.getPropertyValue('--masonry-cols').trim(), 10);
+    return { cls: c.className, display: cs.display, declared, gap, byWidth, expected: Math.min(declared, byWidth),
       distinctX: new Set(kids.map((k) => Math.round(k.left))).size,
       inside: kids.every((k) => k.left >= box.left - 1 && k.right <= box.right + 1), n: kids.length };
   });
-  check('heterogeneous marketing collage is masonry (column flow, columns from the frame width)',
+  check('heterogeneous marketing collage is masonry (column flow, columns from the frame width capped by the member count)',
     collage.cls.includes('masonry') && collage.display === 'block'
-      && collage.columns === 'auto' && collage.distinctX === Math.min(collage.n, collage.expected) && collage.expected >= 3);
+      && Number.isInteger(collage.declared) && collage.declared <= collage.n
+      && collage.distinctX === collage.expected && collage.byWidth >= 3);
   check('masonry cards stay inside the container', collage.inside && collage.n === 4);
   await page.setContent(render(curated('huawei-cn', 'consumer-phones'), { site: 'huawei-cn' }), { waitUntil: 'domcontentloaded' });
   check('uniform product grid stays a row grid (not masonry)', await page.evaluate(() => [...document.querySelectorAll('.cards')].every((c) => !c.className.includes('masonry') && getComputedStyle(c).display === 'grid')));

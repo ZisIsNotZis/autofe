@@ -2,8 +2,12 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>安全可靠的云服务器 ECS</title>
 <style>
-:root{color-scheme:light;--accent:#c45100;--surface:#fff;--page-tint:#f6f7f9;--band:#f4f5f7;--card:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;--measure:36em;--measure-row:59ch;/* 搜索结果行的文字测量宽（S5a）：结果块是「标题 + 3 行夹紧摘要 + meta」，不是正文段，
-     故取 CJK 行长区间的上界 38em（docs/m1/layout-axes.md §5 的 22–38 字），比 feed 记录行的 59ch 宽一档。 */--measure-search:38em;/* 认证页框（S5b）：表单卡宽度不是随手取的 440px，而要盛得下它自己声明的句子；xiaomi-account 的
+:root{color-scheme:light;--accent:#c45100;--surface:#fff;--page-tint:#f6f7f9;--band:#f4f5f7;--card:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;/* 长表斑马纹与分节行底色（S7）：偶数行落在比页白/页底都深一档的 --zebra 上，
+     两两可辨；--group-band 再深一档，使「小节行」不与斑马纹混为一谈。 */--zebra:#edf2f8;--group-band:#e3e9f1;--measure:36em;--measure-row:59ch;/* 搜索结果行的文字测量宽（S5a）：结果块是「标题 + 3 行夹紧摘要 + meta」，不是正文段，
+     故取 CJK 行长区间的上界 38em（docs/m1/layout-axes.md §5 的 22–38 字），比 feed 记录行的 59ch 宽一档。 */--measure-search:38em;/* 搜索结果列的列宽（S7）：带图 = 38em 文字测量（646px @17px 正文）+ 216px 媒体槽 + 24px 间距 = 886px，
+     无图 = 只有文字测量 646px。写 px 是刻意的：这两个值同时组成页级动作行的对齐基线 --content-col，
+     而自定义属性里的 em 会按**引用它的元素**字号解析（动作行 .95em ⇒ 列宽缩成 854px、动作行落在 153px
+     而不是 137px）。px 让列容器与动作行算出同一个左边缘。 */--col-results:886px;--col-results-text:646px;/* 认证页框（S5b）：表单卡宽度不是随手取的 440px，而要盛得下它自己声明的句子；xiaomi-account 的
      协议行「☑ 已阅读并同意｜小米账号使用协议｜和｜小米账号隐私政策」在 17px 正文下需 428px 内容宽＝454px 框，
      原 440px 框的内容盒只有 400px（短 28px 就逐字断行，量于 Chromium，见 docs/m1/composition.md §3）；
      取 28em=476px，更长的句子由 .choice{flex-wrap:wrap} 在成员之间断行。 */--auth-width:28em;/* 媒体槽（S3b）：槽宽是角色声明，图在槽内等比、绝不放大。搜索结果行（3 行摘要）与记录行（标题+摘要+meta）
@@ -67,18 +71,28 @@ th.cmp-col>a:hover{text-decoration:underline}
    bleed=仅限声明的 banner（满幅带，内文仍守 padding）。同页各 section 宽度各归其层，
    不再无规则跳变（U-23/U-25/U-26/U-27）。 */
 main{max-width:calc(var(--page-measure) + 2 * var(--page-pad));margin:0 auto;padding:32px var(--page-pad) 0}
-/* S6 品味先验一：页级（root 的直接子元素、页级节点的直接子元素）单独成行的动作与控件条居中——
-   容器居中、块内文字仍左对齐。依据是量出来的：36kr 搜索页根级 SPAN.action-plain 落在 x=24、
-   右侧 1117px 空着，sspai matrix 的「开始创作」、taobao 的「搜同款」同形；一个孤立控件贴在最左，
-   而页面其余内容居中，会把注意力拖到画面最左（owner 裁定）。两个例外不是风格选择而是关系的约束：
-   标题与品牌标识是页面基线左边缘（那是排印基线，不是孤立控件）；直接拥有一个单行字段的节点
-   把提交钮留在字段那一行（36kr 搜索的 span.expose-input + 「站内搜索」是一行，不是两个孤立件）。
-   负样本见 m1/eval/taste-selftest.mjs：贴左的孤立按钮必须被抓到。 */
+/* S7 内容列（--content-col）：页级动作行的对齐基线，是「该页内容实际开始的那条左边缘」，不是视口边、
+   也不是浮动在页心的位置。多数页框自己就是内容列（营销/目录/表/详情/阅读/商品/认证/个人页的行
+   都在自己的列内，列左边缘＝其包含块左边缘，故默认 100% ⇒ 偏移 0）；搜索页是唯一的特例：结果行
+   是一条比页框窄、居中的子列（--measure-search + 媒体槽 + 24px 间距），页级动作要对齐到这条子列的
+   左边缘（36kr 搜索 197 = 帧 60 + 子列偏移 137），而不是页框边缘或页面中线。 */
+main{--content-col:100%}
+.search-page:has(.record-member img){--content-col:var(--col-results)}
+.search-page:has(.record-member):not(:has(.record-member img)){--content-col:var(--col-results-text)}
+/* S7 页级动作行对齐内容列左边缘（owner 在 S6 后裁定：S6 的「居中」在源站不居中的页面上同样怪）。
+   家族不变——页级（root 的直接子元素、页级节点的直接子元素）单独成行的 .action / .action-plain /
+   .controls，含页级小节里的动作行——但基线从「页心」改成内容列左边缘；块内文字仍左对齐。
+   保留的两类例外仍是关系约束而不是风格：标题与品牌标识保持页面基线左边缘（排印基线，不是动作行）；
+   直接拥有单行字段的节点把提交钮留在字段那一行（span.expose-input/expose-select/.fieldbar ⇒ 36kr 搜索
+   的「站内搜索」跟在输入框后）。声明为 hero 的带（.banner / .banner-integrated）是构图决定，内文居中。
+   负样本见 m1/eval/taste-selftest.mjs：居中漂浮、或贴着页框左边缘（搜索页）都必须被抓到。 */
 .depth-0:not(:has(>.fieldbar,>.expose-input,>.expose-select))>.action,
 .depth-0:not(:has(>.fieldbar,>.expose-input,>.expose-select))>.action-plain,
 .depth-1:not(:has(>.fieldbar,>.expose-input,>.expose-select))>.action,
-.depth-1:not(:has(>.fieldbar,>.expose-input,>.expose-select))>.action-plain{display:block;width:fit-content;margin-inline:auto}
-.depth-0>.controls,.depth-1>.controls{justify-content:center}
+.depth-1:not(:has(>.fieldbar,>.expose-input,>.expose-select))>.action-plain{display:block;width:fit-content;margin-inline-start:max(0px,calc((100% - var(--content-col)) / 2))}
+.depth-0>.controls:not(.link-matrix),.depth-1>.controls:not(.link-matrix){width:fit-content;margin-inline-start:max(0px,calc((100% - var(--content-col)) / 2));justify-content:flex-start}
+.banner:not(.banner-integrated)>.action,.banner:not(.banner-integrated)>.action-plain{display:block;width:fit-content;margin-inline:auto}
+.banner:not(.banner-integrated)>.controls{width:auto;margin-inline:0;justify-content:center}
 /* Root identity, lead and controls inherit the owning content edge, not a separate
    centered title column. The outer page frame may be centered; its text need not be. */
 .depth-0>.title{max-width:none;margin-inline:0}
@@ -248,10 +262,23 @@ img{max-width:100%;width:auto;border-radius:10px;display:block}
 .expose table.data{min-width:640px}
 fieldset.expose:has(>table.data){min-inline-size:0;min-width:0;width:100%;max-width:100%;overflow-x:auto}
 a.option-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
-table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:10px 0}
-table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:8px 10px;text-align:left;vertical-align:top}
+table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:14px 0 22px}
+table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:11px 14px;text-align:left;vertical-align:top;line-height:1.55}
 table.data th{color:var(--muted);font-weight:600;background:#f7f9fb}
 table.data tr.row-group th{text-align:left;color:var(--soft-ink);font-weight:700;background:var(--soft)}
+/* S7 长表可读性（owner：aws 79 行「一行看不清、键与值隔得太远」）：
+   ① 行斑马纹——偶数行落 --zebra，奇数行落白面；单元格背景 inherit 行色，于是首列停靠时也仍不透明；
+   ② 单元格留白 11×14 → 表页 13×16，行高 1.55，行距不再贴行；
+   ③ 两列键值表把键列收成内容宽（width:1% + 不折行，值紧跟键：aws 值列从 x=852 到 x=317），
+      表宽仍是 100%，剩余宽留给值列；
+   ④ 首列在横向滚动时停靠（sticky），键始终可见；等宽数字仍是 tabular-nums。
+   小节行（row-group）保持自成一档的底色，不与斑马纹抢。负样本见 taste-selftest.mjs。 */
+table.data tbody tr{background:var(--surface)}
+table.data tbody tr:nth-child(even){background:var(--zebra)}
+table.data tbody tr>*{background:inherit}
+table.data tbody tr.row-group,table.data tbody tr.row-group>*{background:var(--group-band)}
+table.data td:first-child,table.data th:first-child{position:sticky;left:0;z-index:1}
+table.data:not(:has(tr>td:nth-child(3))):not(:has(tr>th:nth-child(3))) tbody>tr>:first-child{width:1%;white-space:nowrap}
 table.data td.sel,table.data th.sel{width:34px;text-align:center}
 .chip{display:inline-block;background:var(--soft);border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
 .row-ops{display:flex;flex-direction:column;gap:4px}
@@ -321,7 +348,8 @@ blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13
 .group.g-footer .fact{font-size:13px;line-height:1.7;margin:4px 0}
 /* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
 .reading-page{--reading-width:var(--measure);max-width:var(--reading-width);margin-inline:auto}
-.reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.controls,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
+/* S7：阅读页根级控件条不再单独居中（页级动作行统一对齐内容列左边缘）；标题与 band 仍是阅读列宽度。 */
+.reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
 .reading-page .node.w-prose,.reading-page .node.w-narrow,.reading-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
 .reading-page .fact,.reading-page .prose,.reading-page .prose p,.reading-page .quote{max-width:none}
 /* S5a：阅读页里声明的满幅 band 不再逃出阅读列——hero 图、band 底带与其根级动作全部收进同一
@@ -510,8 +538,8 @@ main:has(.marketing-page){max-width:1728px}
    媒体列用 fit-content(216px)：源图本来就小（如 78×100）时不靠一个 216px 宽的死槽把文字推远。 */
 /* S5a：搜索结果列用更宽的文字测量（--measure-search），行填满该列。搜索结果页没有贴左的
    记录行，故整列按「文字测量 + 媒体槽 + 24px」取宽并居中，不再窄成手机列表。 */
-.search-page .cards:has(>.item>.record-member),.search-page .stack:has(>.block>.record-member){max-width:min(100%,var(--measure-search));margin-inline:auto}
-.search-page .cards:has(>.item>.record-member):has(img),.search-page .stack:has(>.block>.record-member):has(img){max-width:min(100%,calc(var(--measure-search) + var(--media-row) + 24px))}
+.search-page .cards:has(>.item>.record-member),.search-page .stack:has(>.block>.record-member){max-width:min(100%,var(--col-results-text));margin-inline:auto}
+.search-page .cards:has(>.item>.record-member):has(img),.search-page .stack:has(>.block>.record-member):has(img){max-width:min(100%,var(--col-results))}
 .search-page .record-member,.search-page .record-member:not(:has(img)){max-width:100%}
 .search-page .record-member>*{max-width:var(--measure-search)}
 .search-page .record-member{grid-template-columns:minmax(0,1fr);align-items:start}
@@ -524,9 +552,9 @@ main:has(.marketing-page){max-width:1728px}
 .search-page fieldset.expose.chipbar{display:flex;flex-wrap:wrap;gap:6px;padding:8px 10px}
 .search-page .choice{margin:0 6px 0 0;padding:3px 10px;border-radius:999px;font-size:.92em}
 /* table：页级数据表满幅、等宽数字、单元格留白舒适。 */
-.table-page .data-scroll{border:1px solid var(--line);border-radius:12px}
+.table-page .data-scroll{border:1px solid var(--line);border-radius:12px;margin-block:18px}
 .table-page table.data{font-variant-numeric:tabular-nums}
-.table-page table.data th,.table-page table.data td{padding:10px 14px}
+.table-page table.data th,.table-page table.data td{padding:13px 16px}
 /* S5a 表页引言列居中：小节标题与其下的引文（表前导语）同列居中，不再在满幅表格上方留一条
    半页死带（aws-amazon/ec2-on-demand：表 1230px，导语却 612px 贴左）。表格本身仍满幅。 */
 .table-page .node>.title:has(+.fact),.table-page .node>.title:has(+.prose),.table-page .node>.title+.fact,.table-page .node>.title+.prose{max-width:var(--measure);margin-inline:auto}
@@ -552,11 +580,13 @@ main:has(.marketing-page){max-width:1728px}
    列流要求容器是普通块，而现有三条网格规则（.cards / .stack.cols-auto / catalog 的
    .depth-1:not(:has(> .fieldbar))>.stack:not(.cols-auto)）已经到 (0,5,0)：不走上不封顶的
    specificity 军备竞赛，只对 display 用一处 !important，范围限定在 masonry 容器自身。 */
-/* S5a 列数由容器宽度与卡片最小宽度（280–320px）决定，不写死：1232px 页框 ⇒ 4 列、852px ⇒ 2 列、
-   342px ⇒ 1 列。写死 2 列让 1232px 的 PC 页框只剩两列（bilibili-com/home 30 张卡）。 */
-.cards.masonry,.stack.masonry,.catalog-page .ordered-media-rows>.stack.masonry{display:block!important;columns:auto 280px;column-gap:16px}
-.marketing-page .cards.masonry{columns:auto 280px;column-gap:14px}
-.marketing-page .g-tv .cards.masonry{columns:auto 240px}
+/* S5a 列数由容器宽度与卡片最小宽度（280–240px）决定，不写死：1160px 页框 ⇒ 4 列、852px ⇒ 2 列、
+   342px ⇒ 1 列。写死 2 列让 1232px 的 PC 页框只剩两列（bilibili-com/home 30 张卡）。
+   S7：列数上界由成员数收一次（render.mjs masonryCols 落成 --masonry-cols）——5 个成员不再排成 4 列
+   的 2/1/1/1（尾列只剩一张卡的孤列），而是 2 列（3+2）；CSS 只保留最小列宽，窄视口仍再收缩。 */
+.cards.masonry,.stack.masonry,.catalog-page .ordered-media-rows>.stack.masonry{display:block!important;columns:var(--masonry-cols,2) 280px;column-gap:16px}
+.marketing-page .cards.masonry{columns:var(--masonry-cols,2) 280px;column-gap:14px}
+.marketing-page .g-tv .cards.masonry{columns:var(--masonry-cols,2) 240px}
 .masonry>*{break-inside:avoid}
 .masonry>hr.region{display:none}
 /* 营销页的入口矩阵（render.mjs renderControls 判定 plan.link-matrix：≥4 个带目标的控件）：
