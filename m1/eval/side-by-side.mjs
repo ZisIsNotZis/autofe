@@ -22,9 +22,12 @@ const FLAGGED = [
 ];
 
 let keys = process.argv.slice(2);
-if (!keys.length || keys[0] === '--flagged') {
+const indexOnly = keys.includes('--index-only');
+const flagged = keys.includes('--flagged');
+keys = keys.filter((a) => !a.startsWith('--'));
+if (!keys.length && !indexOnly) {
   const all = JSON.parse(fs.readFileSync('m1/eval/m3-final.json', 'utf8')).map((r) => r.k);
-  keys = keys[0] === '--flagged' ? FLAGGED : all;
+  keys = flagged ? FLAGGED : all;
 }
 
 const OUT = 'm1/curated/renders/sbs';
@@ -71,9 +74,16 @@ for (const k of keys) {
   console.log('✓', k, '→', out);
 }
 await browser.close();
-const cards = made.map((m) => `<figure><a href="${m.png}"><img src="${m.png}" loading="lazy"></a><figcaption>${m.k}</figcaption></figure>`).join('\n');
+const pageKeys = JSON.parse(fs.readFileSync('m1/eval/m3-final.json', 'utf8')).map((r) => r.k);
+const byDash = new Map(pageKeys.map((k) => [k.replace(/\//g, '-'), k]));
+const files = fs.readdirSync(OUT).filter((f) => f.endsWith('.png') && !f.startsWith('.tmp-')).sort();
+const cards = files.map((png) => {
+  const dash = png.replace(/\.png$/, '');
+  const k = byDash.get(dash) || dash;
+  return `<figure><a href="${png}"><img src="${png}" loading="lazy"></a><figcaption>${k}</figcaption></figure>`;
+}).join('\n');
 fs.writeFileSync(path.join(OUT, 'index.html'), `<!doctype html><meta charset=utf-8><title>AutoFE 原站 | 渲染 并排对照</title>
 <style>body{margin:0;background:#111;color:#eee;font:14px system-ui}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:14px;padding:14px}
 figure{margin:0}figure img{width:100%;background:#fff}figcaption{padding:4px 0;font-size:13px;color:#9fd0ff}</style>
-<h1 style="padding:14px">原站 | 渲染 并排对照（${made.length} 页）</h1><div class="grid">${cards}</div>`);
-console.log('并排对照:', made.length, '页 →', path.join(OUT, 'index.html'));
+<h1 style="padding:14px">原站 | 渲染 并排对照（${files.length} 页）</h1><div class="grid">${cards}</div>`);
+console.log('并排对照索引:', files.length, '页 →', path.join(OUT, 'index.html'));
