@@ -163,7 +163,7 @@ try {
       await page.setViewportSize({ width, height: 900 });
       await page.setContent(render(model, { site }), { waitUntil: 'domcontentloaded' });
       const g = await page.locator('main>.node>.site-identity').evaluate((e) => ({ x: e.getBoundingClientRect().x, root: e.parentElement.getBoundingClientRect().x, size: parseFloat(getComputedStyle(e).fontSize), align: getComputedStyle(e).textAlign }));
-      check(`${site} compact content-edge identity at ${width}`, g.size <= 18 && Math.abs(g.x - g.root) <= 2 && g.align === 'left');
+      check(`${site} brand identity at ${width}`, g.size <= 32 && g.size >= 22 && Math.abs(g.x - g.root) <= 2 && g.align === 'left');
     }
   }
 
@@ -187,10 +187,27 @@ try {
   const cappedRow = (m) => m.width <= m.maxWidth + 1 && m.maxWidth < m.container;
   check('record row is capped at its own text measure + media + gap', cappedRow(row));
   check('record row text column and media are adjacent at the declared gap', Math.abs(row.mediaLead - (row.tracks[0] + row.gap)) <= 2);
-  await page.addStyleTag({ content: '.record-member{max-width:100%!important}' });
-  const stretched = await rowFrame();
-  // 负样本：去掉自有量宽（回到旧的一行拉满）必须被同一条不变式抓到。
-  check('record row without its own measure is detected', !cappedRow(stretched) && stretched.width > row.width);
+  // S5a: the row keeps its own measure, but the LIST it lives in is that same width and centred, so
+  // the unused half of the frame is no longer one left-hugging band. The negative sample therefore
+  // removes the column cap (what the page frame would supply): the row must then follow it. The
+  // text-only row line is pinned too: a column of text-only rows is the text measure, not the
+  // media row width, or the media slot would be empty space inside every row.
+  const column = await page.evaluate(() => {
+    const cards = document.querySelector('.cards:has(>.item>.record-member),.stack:has(>.block>.record-member)');
+    const cs = getComputedStyle(cards);
+    const box = cards.getBoundingClientRect(), holder = cards.parentElement.getBoundingClientRect();
+    return { width: box.width, left: box.left - holder.left, holder: holder.width,
+      marginAuto: cs.marginLeft !== '0px' && cs.marginLeft === cs.marginRight };
+  });
+  check('record list is one centred column of the row measure',
+    Math.abs(column.width - (row.maxWidth)) <= 2 && column.marginAuto && Math.abs(column.left - (column.holder - column.width) / 2) <= 2);
+  await page.addStyleTag({ content: '.cards:has(>.item>.record-member),.stack:has(>.block>.record-member){margin-inline:0!important}' });
+  const flushed = await page.evaluate(() => {
+    const cards = document.querySelector('.cards:has(>.item>.record-member),.stack:has(>.block>.record-member)');
+    return cards.getBoundingClientRect().left - cards.parentElement.getBoundingClientRect().left;
+  });
+  // 负样本：去掉列的居中（回到 S5a 之前的贴左）必须被「列居中」这条谓词抓到。
+  check('a left-flushed record column is detected', Math.abs(flushed) <= 1);
   // 2. A collection whose cards cannot share a row height is column flow (masonry) on marketing
   //    image walls and on a catalog feed with uneven excerpts; a uniform product grid stays a grid.
   await page.setContent(render(curated('huawei-cn', 'home'), { site: 'huawei-cn' }), { waitUntil: 'domcontentloaded' });
@@ -198,11 +215,17 @@ try {
     const c = document.querySelector('.g-featured .cards');
     const cs = getComputedStyle(c);
     const box = c.getBoundingClientRect();
+    const gap = parseFloat(cs.columnGap);
     const kids = [...c.children].map((k) => k.getBoundingClientRect());
-    return { cls: c.className, display: cs.display, columns: cs.columnCount,
+    // S5a: 列数由「容器宽 + 卡片最小宽」（CSS 的 280px）决定，不再写死 2 列。
+    const expected = Math.max(1, Math.floor((box.width + gap) / (280 + gap)));
+    return { cls: c.className, display: cs.display, columns: cs.columnCount, gap, expected,
+      distinctX: new Set(kids.map((k) => Math.round(k.left))).size,
       inside: kids.every((k) => k.left >= box.left - 1 && k.right <= box.right + 1), n: kids.length };
   });
-  check('heterogeneous marketing collage is masonry (column flow, 2 columns)', collage.cls.includes('masonry') && collage.display === 'block' && collage.columns === '2');
+  check('heterogeneous marketing collage is masonry (column flow, columns from the frame width)',
+    collage.cls.includes('masonry') && collage.display === 'block'
+      && collage.columns === 'auto' && collage.distinctX === Math.min(collage.n, collage.expected) && collage.expected >= 3);
   check('masonry cards stay inside the container', collage.inside && collage.n === 4);
   await page.setContent(render(curated('huawei-cn', 'consumer-phones'), { site: 'huawei-cn' }), { waitUntil: 'domcontentloaded' });
   check('uniform product grid stays a row grid (not masonry)', await page.evaluate(() => [...document.querySelectorAll('.cards')].every((c) => !c.className.includes('masonry') && getComputedStyle(c).display === 'grid')));
@@ -276,5 +299,49 @@ try {
   await page.addStyleTag({ content: '.marketing-page .controls.link-matrix{grid-template-columns:repeat(4,minmax(0,1fr))!important}' });
   const ragged = await evenMatrix();
   check('a 4-column matrix (the old auto-fit) is detected as a ragged 4+2 row', ragged.cols === 4 && ragged.rows.includes(4) && ragged.rows.includes(2));
+  // ---- S5a wide-screen composition (docs/m1/composition.md §3/§6) ---------------------
+  // The owner's wide-screen complaints, each reduced to the geometry that caused them.
+  const bands = (holderSel, innerSel) => page.evaluate(([holderSel, innerSel]) => {
+    const holder = document.querySelector(holderSel), inner = innerSel ? document.querySelector(innerSel) : holder;
+    const main = document.querySelector('main').getBoundingClientRect();
+    const box = holder.getBoundingClientRect();
+    return { left: Math.round(box.left - main.left), right: Math.round(main.right - box.right),
+      width: Math.round(box.width), innerWidth: Math.round(inner.getBoundingClientRect().width),
+      innerLeft: Math.round(inner.getBoundingClientRect().left - main.left) };
+  }, [holderSel, innerSel]);
+  const centred = (b) => Math.abs(b.left - b.right) <= 2 && b.left > 100;
+  // 1. A search results column narrower than its frame is CENTRED on it: the leftover half of the
+  //    page is split, not dumped to the right of a left-flushed list (36kr 798px inside 1232px).
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.setContent(render(curated('36kr-com', 'search-ai'), { site: '36kr-com' }), { waitUntil: 'domcontentloaded' });
+  const searchBands = await bands('.cards:has(>.item>.record-member)', '.record-member');
+  check('search result column is centred in the page frame', centred(searchBands));
+  check('search result row keeps a readable text column, not the page frame', searchBands.width < 1000 && searchBands.width > 800);
+  await page.addStyleTag({ content: '.cards:has(>.item>.record-member){margin-inline:0!important}' });
+  const flushedSearch = await bands('.cards:has(>.item>.record-member)', '.record-member');
+  check('a left-flushed search column leaves a one-sided band and is detected',
+    flushedSearch.left <= 30 && flushedSearch.right > 200);
+  // 2. A reading page is ONE column: a declared bleed band inside it (hero image + its root-level
+  //    action) stays inside the reading measure instead of running the full page width.
+  await page.setContent(render(curated('stripe-docs', 'payments'), { site: 'stripe-docs' }), { waitUntil: 'domcontentloaded' });
+  const inReading = () => page.evaluate(() => {
+    const rp = document.querySelector('.reading-page').getBoundingClientRect();
+    const act = document.querySelector('.reading-page .action').getBoundingClientRect();
+    return { page: Math.round(rp.left), pageRight: Math.round(rp.right),
+      actLeft: Math.round(act.left), actRight: Math.round(act.right), viewportLeft: 24 };
+  });
+  const contained = await inReading();
+  check('reading page keeps one measure: its root action sits inside the reading column',
+    contained.page > 300 && contained.actLeft >= contained.page && contained.actRight <= contained.pageRight);
+  check('the reading band rule is what contains the hero/action pair',
+    render(curated('stripe-docs', 'payments')).includes('.reading-page .node.w-bleed{width:100%;margin-inline:0}'));
+  await page.addStyleTag({ content: '.reading-page .node.w-bleed{width:100vw!important;margin-left:calc(50% - 50vw)!important}' });
+  const escaped = await inReading();
+  check('a bleed band escaping the reading measure is detected', escaped.actLeft < escaped.page - 100);
+  // 3. A table page's intro text is centred under its full-width table instead of hugging the left
+  //    edge (aws: table 1230px, intro 612px flush left).
+  await page.setContent(render(curated('aws-amazon', 'ec2-on-demand'), { site: 'aws-amazon' }), { waitUntil: 'domcontentloaded' });
+  const introBands = await bands('.table-page .fact');
+  check('table-page intro text is centred, its table stays full width', centred(introBands) && introBands.innerWidth < 700);
 } finally { await browser.close(); }
 console.log(`PASS page-frame/action regressions: ${checks} assertions; Chromium 2560/1920/1440/390; no experience verdict.`);
