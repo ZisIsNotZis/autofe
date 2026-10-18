@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
 import { renderMarkdown } from '../render-md.mjs';
-import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName, hasValue, tableRowLabel, exposeRendersAsControl, refRendersAsFact } from '../axis.mjs';
+import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName, hasValue, tableRowLabel, exposeRendersAsControl, refRendersAsFact, CHOICE_CHIP_MAX } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
@@ -287,6 +287,27 @@ check('C7 `compareSetVerdict` returns ok:true for a dense set',
     text.includes('( ) Small') && text.includes('( ) Large'), 'no option list');
   check('D4 Markdown draws the shared decision as an option list',
     md.includes('- ( ) Small') && md.includes('- ( ) Large'), 'no option list');
+}
+// D5–D6. The choice-set FORM has a length boundary (S5b, docs/m1/layout-axes.md §6): up to
+// CHOICE_CHIP_MAX options one chipbar/table holds them; above it the set is ONE closed control
+// (a native `<select>`), because N chips are not a control inside a form column. Both sides of
+// the boundary are asserted, so the threshold cannot be silently inverted or removed.
+{
+  const set = (n, withDetail) => ({ _intent: 'x', _expose: { name: 'pick', type: 'text' }, _items: Array.from({ length: n }, (_, i) => (withDetail ? { _name: { text: `opt${i}` }, _detail: { text: `v${i}` } } : { _name: { text: `opt${i}` } })) });
+  const long = set(CHOICE_CHIP_MAX + 1, true);
+  const pl = nodePlan(long, { chain: [], values: {}, depth: 1 });
+  const hl = render({ _title: { text: 't' }, pick: long }, {}, []);
+  check(`D5 ${CHOICE_CHIP_MAX + 1} options ⇒ one closed control, not a chipbar`,
+    pl.choice?.select === true && pl.choice?.table === null
+      && hl.includes(`<select name="pick">`) && (hl.match(/<option /g) ?? []).length === CHOICE_CHIP_MAX + 1
+      && !hl.includes('class="choice"'),
+    JSON.stringify(pl.choice && { select: pl.choice.select, table: Boolean(pl.choice.table) }));
+  const short = set(CHOICE_CHIP_MAX, false);
+  const ps = nodePlan(short, { chain: [], values: {}, depth: 1 });
+  const hs = render({ _title: { text: 't' }, pick: short }, {}, []);
+  check(`D6 ${CHOICE_CHIP_MAX} options stay a chipbar (boundary is not off by one)`,
+    ps.choice?.select === false && !hs.includes('<select') && hs.includes('class="expose chipbar'),
+    JSON.stringify(ps.choice && { select: ps.choice.select }));
 }
 
 // E. corpus-wide: on the real curated models, all three targets must record the SAME

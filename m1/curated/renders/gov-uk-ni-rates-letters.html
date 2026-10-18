@@ -3,7 +3,10 @@
 <title>National Insurance rates and categories</title>
 <style>
 :root{color-scheme:light;--accent:#1a65a6;--surface:#fff;--page-tint:#f6f7f9;--band:#f4f5f7;--card:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;--measure:36em;--measure-row:59ch;/* 搜索结果行的文字测量宽（S5a）：结果块是「标题 + 3 行夹紧摘要 + meta」，不是正文段，
-     故取 CJK 行长区间的上界 38em（docs/m1/layout-axes.md §5 的 22–38 字），比 feed 记录行的 59ch 宽一档。 */--measure-search:38em;/* 媒体槽（S3b）：槽宽是角色声明，图在槽内等比、绝不放大。搜索结果行（3 行摘要）与记录行（标题+摘要+meta）
+     故取 CJK 行长区间的上界 38em（docs/m1/layout-axes.md §5 的 22–38 字），比 feed 记录行的 59ch 宽一档。 */--measure-search:38em;/* 认证页框（S5b）：表单卡宽度不是随手取的 440px，而要盛得下它自己声明的句子；xiaomi-account 的
+     协议行「☑ 已阅读并同意｜小米账号使用协议｜和｜小米账号隐私政策」在 17px 正文下需 428px 内容宽＝454px 框，
+     原 440px 框的内容盒只有 400px（短 28px 就逐字断行，量于 Chromium，见 docs/m1/composition.md §3）；
+     取 28em=476px，更长的句子由 .choice{flex-wrap:wrap} 在成员之间断行。 */--auth-width:28em;/* 媒体槽（S3b）：槽宽是角色声明，图在槽内等比、绝不放大。搜索结果行（3 行摘要）与记录行（标题+摘要+meta）
      共用 216px 槽；两角色的高度上限按各自文字块定：搜索结果行 216×144，记录行 216×135（不再是脱离文字块的 172px 死框）。 */--media-search:216px;--media-search-h:144px;--media-row:216px;--media-row-h:135px;--scale:1.25;--radius:12px;--radius-pill:999px;--shadow:0 1px 2px #17212b0a,0 8px 24px #17212b0d;--pad-band:56px;
   /* S3a 排印（typography.md §1/§2/§4/§6）：西文字体在前，汉字逐字符穿透到中文字体（4.2 的价值就在这个顺序）。
      本机装的 CJK 家族是 "Noto Sans CJK SC"/"Noto Serif CJK SC"，故排在通用名之后兜底，装与不装都不掉回系统宋体。 */
@@ -185,7 +188,10 @@ details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
 details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
 details.qa .qa-a{padding:6px 0;color:var(--muted);font-size:.95em}
 .expose{display:block;margin:8px 0}
-.choice{display:inline-flex;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
+/* S5b：多段选项标签（复选框文案 + 两个协议链接）在窄框里只能换行。flex-wrap:nowrap（默认）时 flex 把
+   每个成员压到内容宽以下，汉字遂逐字断行（xiaomi-account 的「已阅读并同/意」）；wrap 让每个成员保持
+   max-content，只在成员之间换行，行内文字永不被拆开。 */
+.choice{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
 fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
 /* a few short options must not sit inside a full-width frame with a dead right half:
    the fieldset hugs its content and only wraps when the content itself is wider (round 27) */
@@ -194,7 +200,7 @@ fieldset.expose.chipbar{display:inline-block;max-width:100%}
    实测同色无下划线）：轮 57 起并入层2 —— accent + 常显细下划线（上面的 .chips a 规则）。 */
 /* D-3: a text input is an inline field so its submit control sits on the same bar */
 span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
-.authentication-page{max-width:440px;margin-inline:auto}
+.authentication-page{max-width:var(--auth-width);margin-inline:auto}
 .task-form .expose-input{display:flex;flex-direction:column;align-items:stretch;gap:6px;max-width:360px;width:100%;margin:8px 0}
 .task-form .expose-input>.deflabel{min-width:0}
 .task-form .expose-input>input{box-sizing:border-box;width:100%;min-width:0}
@@ -204,7 +210,12 @@ span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8
 legend{font-size:.8em;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .expose .hint{display:block;color:var(--muted);font-size:.85em;margin:2px 0 8px}
 .choice-extra{color:var(--muted);font-size:.9em;margin-left:4px}
-input[type=text],input[type=password]{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit}
+input[type=text],input[type=password],select{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit;background:var(--surface);color:var(--ink)}
+/* 长选项表（axis choice.select）画成一个开合的闭合控件：给宽、不铺满表单框的空右半（§5.2） */
+span.expose.expose-select{display:block;margin:8px 0}
+span.expose.expose-select select{max-width:100%;min-width:12em}
+.task-form span.expose.expose-select select{width:100%}
+span.expose.expose-select .deflabel{display:block;min-width:0;margin-bottom:4px}
 .action{display:inline-block;margin:14px 0 0;padding:12px 24px;border-radius:var(--radius-pill);background:var(--accent);color:#fff;text-decoration:none;border:1px solid var(--accent);font:inherit;font-size:.95em;font-weight:650;cursor:pointer}
 .action:hover{background:var(--ink);border-color:var(--ink)}
 .action:focus-visible,.ctl:focus-visible,.action-plain:focus-visible{outline:3px solid var(--accent);outline-offset:3px}

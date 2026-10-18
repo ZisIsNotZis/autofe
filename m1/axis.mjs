@@ -610,6 +610,11 @@ function actionRowOf(node, chain, values, action, toolbar) {
 // A choice set's form (F-030): one option is not a choice (plain fact); two or more are a
 // choice set; a bare `_expose` is a boolean switch or an input. `rich` says the options
 // carry their own attributes — a target may draw those as a table or as annotated options.
+// `select` says the option list is too long for a chipbar/table: a control the reader opens
+// (a native `<select>`) instead of a wall of chips. Corpus evidence: every chipbar choice set
+// in the 40 exemplars has ≤9 options (36kr search-type 8, aliyun product-tab 9, huawei filters
+// 5); sspai-com/login's phone-code list has 143 (docs/m1/layout-axes.md §6).
+export const CHOICE_CHIP_MAX = 12;
 function optionOf(it, i, chain, values) {
   const fieldsFirst = it._fields ? Object.values(it._fields)[0] : undefined;
   return {
@@ -667,8 +672,11 @@ export function choicePlan(node, exp, chain = [], values = {}) {
     });
     const rich = items.some((it) => (it._fields && Object.keys(it._fields).length))
       || items.some((it) => factsOf(it).some((f) => !['_name', '_title'].includes(f.key)));
-    return { kind: 'choice', items, options, legend, hint, multi, name: exp.name, type: exp.type, rich,
-      table: rich ? selectTablePlan(items, options) : null };
+    // A long list is neither a chipbar nor a table of options: both would put one option per
+    // chip/row on the page, which is not a control a reader can use inside a form column.
+    const select = !multi && options.length > CHOICE_CHIP_MAX;
+    return { kind: 'choice', items, options, legend, hint, multi, name: exp.name, type: exp.type, rich, select,
+      table: rich && !select ? selectTablePlan(items, options) : null };
   }
   if (exp.type === 'bool') return { kind: 'bool', items, legend, hint, name: exp.name, nodeName: node._name ?? node._title ?? null };
   // D-3: for a TEXT input the captured label is the field's watermark (placeholder), not an
