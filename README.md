@@ -5,6 +5,7 @@ Intent-driven frontend: a business/intent intermediate language plus an isomorph
 Status: M1–M3 implementation and 42 curated exemplar models are present. `m1/axis.mjs` shares decisions across HTML, text and Markdown renderers; `m1/composites.json` declares composite types. The latest round-62 visual repair is a WIP checkpoint with an incomplete gate, **not** M4 acceptance or a publication-ready release. Earlier accepted results are recorded in `.scratch/state-report.md`; rerun the gates below for this revision.
 
 - Design basis: `docs/design-basis.md`
+- A curated exemplar render: `m1/curated/assets/62-linear-demo-0.png` (round-62 WIP, not M4 acceptance)
 - Provenance (superseded draft): `docs/sources/draft-doubao.md`
 - M0 ticket/spec: `.scratch/01-corpus-pipeline/spec.md`
 - Capture pipeline: `tools/capture/` (see `tools/capture/README.md`)
