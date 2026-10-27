@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Stats</title>
+<style>
+:root{color-scheme:light;--accent:#ca4a20;--surface:#fff;--page-tint:#f6f7f9;--band:#f4f5f7;--card:#fff;--ink:#17212b;--muted:#536171;--soft:#eef2f7;--soft-ink:#33475b;--line:#dbe3ec;/* 长表斑马纹与分节行底色（S7）：偶数行落在比页白/页底都深一档的 --zebra 上，
+     两两可辨；--group-band 再深一档，使「小节行」不与斑马纹混为一谈。 */--zebra:#edf2f8;--group-band:#e3e9f1;--measure:36em;--measure-row:59ch;/* 搜索结果行的文字测量宽（S5a）：结果块是「标题 + 3 行夹紧摘要 + meta」，不是正文段，
+     故取 CJK 行长区间的上界 38em（docs/m1/layout-axes.md §5 的 22–38 字），比 feed 记录行的 59ch 宽一档。 */--measure-search:38em;/* 搜索结果列的列宽（S7）：带图 = 38em 文字测量（646px @17px 正文）+ 216px 媒体槽 + 24px 间距 = 886px，
+     无图 = 只有文字测量 646px。写 px 是刻意的：这两个值同时组成页级动作行的对齐基线 --content-col，
+     而自定义属性里的 em 会按**引用它的元素**字号解析（动作行 .95em ⇒ 列宽缩成 854px、动作行落在 153px
+     而不是 137px）。px 让列容器与动作行算出同一个左边缘。 */--col-results:886px;--col-results-text:646px;/* 认证页框（S5b）：表单卡宽度不是随手取的 440px，而要盛得下它自己声明的句子；xiaomi-account 的
+     协议行「☑ 已阅读并同意｜小米账号使用协议｜和｜小米账号隐私政策」在 17px 正文下需 428px 内容宽＝454px 框，
+     原 440px 框的内容盒只有 400px（短 28px 就逐字断行，量于 Chromium，见 docs/m1/composition.md §3）；
+     取 28em=476px，更长的句子由 .choice{flex-wrap:wrap} 在成员之间断行。 */--auth-width:28em;/* 媒体槽（S3b）：槽宽是角色声明，图在槽内等比、绝不放大。搜索结果行（3 行摘要）与记录行（标题+摘要+meta）
+     共用 216px 槽；两角色的高度上限按各自文字块定：搜索结果行 216×144，记录行 216×135（不再是脱离文字块的 172px 死框）。 */--media-search:216px;--media-search-h:144px;--media-row:216px;--media-row-h:135px;/* S6 页面量宽与页边（composition.md §3）：页框不是「吃满 1280」，而是中央一段舒适的内容带。
+     --page-measure 是内容带宽（1120–1200px 区间取 1160），--page-pad 是页边（24–72px），
+     main 的外盒 = 内容带 + 两侧页边，于是 1280 视口下内容落在 60px 处、大屏恒为 1160 宽的一段，
+     既不贴边也不缩到「1/10 与 9/10」。 */--page-measure:1160px;--page-pad:clamp(24px,4vw,72px);--scale:1.25;--radius:12px;--radius-pill:999px;--shadow:0 1px 2px #17212b0a,0 8px 24px #17212b0d;--pad-band:56px;
+  /* S3a 排印（typography.md §1/§2/§4/§6）：西文字体在前，汉字逐字符穿透到中文字体（4.2 的价值就在这个顺序）。
+     本机装的 CJK 家族是 "Noto Sans CJK SC"/"Noto Serif CJK SC"，故排在通用名之后兜底，装与不装都不掉回系统宋体。 */
+  --font-body:"Inter","SF Pro Text",-apple-system,"Segoe UI","Helvetica Neue",Arial,"Noto Sans SC","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --font-display:"Newsreader","Source Serif 4","Noto Serif SC","Songti SC","Noto Serif CJK SC",serif}
+*{box-sizing:border-box}
+/* 中文正文基准 17px/1.8（typography.md §1 正文 17–18px、§2 中文长行 1.8–2.0）；
+   font-synthesis:none 断掉伪造斜体/加粗（§4.3），line-break:strict 是避头尾底线（§4.4）。 */
+body{margin:0;font-family:var(--font-body);font-size:17px;line-height:1.8;color:var(--ink);background:var(--surface);font-synthesis:none;line-break:strict;overflow-wrap:break-word}
+/* 标题按行均衡（≤4 行，§2），正文消灭行尾孤字 */
+p{text-wrap:pretty}
+/* 轮 57 三层链接可供性（用户裁定：不一定是蓝色也不一定是下划线，但要一看可知可点）。
+   accent 由 m1/brand-tokens.json 按站点注入（上面的 --accent），本文件不写死站名/色值。
+   层1 目的地列表：.linklist 条目名自身带 _action.to ⇒ 标记 • 换 accent ›（::marker），
+       文字 accent 无下划线；纯事实条目保持 •（标记即声明，.go 由 renderList 落）。
+   层2 正文内链接：accent + 常显细下划线（1px，offset 2px）。
+   层3 标题/卡片链接：accent、无下划线，hover 下划线；导航型标题（无 label 的 navigate/open
+       链接，nodePlan.isLabellessLink）尾部 ›。控件/按钮形态不动（.ctl/.action 照旧）。 */
+a{color:inherit;text-decoration:none;cursor:pointer}
+a:hover{text-decoration:underline;text-decoration-color:currentColor}
+a.ref,.val a.body-link,.prose a,.chips a,.data a.table-link{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+.linklist li.go::marker{content:"›";color:var(--accent);font-weight:700}
+/* S3a 标题/卡片链接用墨色，不用 accent（"蓝色标题"是上一版最刺眼的缺陷）：一处 accent 只留给
+   主操作、正文层链接、焦点环与列表标记。常态不常显下划线，hover/focus 才画 —— 一种链接样式。 */
+.linklist li.go>a{color:var(--ink);text-decoration:none}
+.linklist li.go>a:hover{text-decoration:underline}
+a.self-link{color:var(--ink);text-decoration:none}
+a.self-link:hover{text-decoration:underline}
+.media-link{display:contents}
+.media-link:focus-visible img{outline:2px solid var(--accent);outline-offset:2px}
+a.self-link.nav::after{content:" ›";font-weight:650}
+th.cmp-col>a{color:var(--ink);text-decoration:none}
+th.cmp-col>a:hover{text-decoration:underline}
+/* 轮 57 站点头区横栏（nodePlan.headerBar，规则见 axis.mjs region==='header'）：header 区域
+   是一条水平顶栏 —— 导航项横排（accent、无标记、顶栏本身即可供性），无目标的账号入口 pill
+   靠右。所有页的 header 同一规则；文本/MD 目标保持逐行。 */
+.header-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 26px;margin:0}
+.header-bar>.block{display:contents}
+.header-bar .node{margin:0}
+.header-bar>.block:last-of-type>.node{margin-left:auto}
+.header-bar .linklist{display:flex;flex-wrap:wrap;gap:2px 20px;margin:0;padding-left:0}
+.header-bar .linklist li{margin:0;list-style:none}
+.header-bar .linklist a{color:var(--ink);font-size:.95em}
+.header-bar .linklist a:hover{color:var(--accent);text-decoration:underline}
+.header-bar .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+/* 轮 57 hero/banner：满幅图带。nodePlan.banner 判定后 _image 走 hero 槽（.strip 已满幅），
+   不再锁 74ch；标题/副题/按钮在满幅带内居中，该突出的突出。 */
+.banner>.title{text-align:center}
+.banner>.fact{max-width:none;text-align:center}
+.banner>.controls{justify-content:center}
+.role-label{color:var(--muted);font-size:.9em;margin-right:2px}
+/* 轮 58 · L-1 页面栅格：唯一页面容器 = main（居中、内容带 --page-measure、左右对称 --page-pad）。
+   section 宽度分层且由 nodePlan 按 section 种类声明（plan.widthTier，规则在 axis.mjs）：
+   prose=阅读文本 74ch 居中 / narrow=默认内容 880px 居中 / wide=卡片与 Feed 网格（容器全宽）/
+   bleed=仅限声明的 banner（满幅带，内文仍守 padding）。同页各 section 宽度各归其层，
+   不再无规则跳变（U-23/U-25/U-26/U-27）。 */
+main{max-width:calc(var(--page-measure) + 2 * var(--page-pad));margin:0 auto;padding:32px var(--page-pad) 0}
+/* S7 内容列（--content-col）：页级动作行的对齐基线，是「该页内容实际开始的那条左边缘」，不是视口边、
+   也不是浮动在页心的位置。多数页框自己就是内容列（营销/目录/表/详情/阅读/商品/认证/个人页的行
+   都在自己的列内，列左边缘＝其包含块左边缘，故默认 100% ⇒ 偏移 0）；搜索页是唯一的特例：结果行
+   是一条比页框窄、居中的子列（--measure-search + 媒体槽 + 24px 间距），页级动作要对齐到这条子列的
+   左边缘（36kr 搜索 197 = 帧 60 + 子列偏移 137），而不是页框边缘或页面中线。 */
+main{--content-col:100%}
+.search-page:has(.record-member img){--content-col:var(--col-results)}
+.search-page:has(.record-member):not(:has(.record-member img)){--content-col:var(--col-results-text)}
+/* S7 页级动作行对齐内容列左边缘（owner 在 S6 后裁定：S6 的「居中」在源站不居中的页面上同样怪）。
+   家族不变——页级（root 的直接子元素、页级节点的直接子元素）单独成行的 .action / .action-plain /
+   .controls，含页级小节里的动作行——但基线从「页心」改成内容列左边缘；块内文字仍左对齐。
+   保留的两类例外仍是关系约束而不是风格：标题与品牌标识保持页面基线左边缘（排印基线，不是动作行）；
+   直接拥有单行字段的节点把提交钮留在字段那一行（span.expose-input/expose-select/.fieldbar ⇒ 36kr 搜索
+   的「站内搜索」跟在输入框后）。声明为 hero 的带（.banner / .banner-integrated）是构图决定，内文居中。
+   负样本见 m1/eval/taste-selftest.mjs：居中漂浮、或贴着页框左边缘（搜索页）都必须被抓到。 */
+.depth-0:not(:has(>.fieldbar,>.expose-input,>.expose-select))>.action,
+.depth-0:not(:has(>.fieldbar,>.expose-input,>.expose-select))>.action-plain,
+.depth-1:not(:has(>.fieldbar,>.expose-input,>.expose-select))>.action,
+.depth-1:not(:has(>.fieldbar,>.expose-input,>.expose-select))>.action-plain{display:block;width:fit-content;margin-inline-start:max(0px,calc((100% - var(--content-col)) / 2))}
+.depth-0>.controls:not(.link-matrix),.depth-1>.controls:not(.link-matrix){width:fit-content;margin-inline-start:max(0px,calc((100% - var(--content-col)) / 2));justify-content:flex-start}
+.banner:not(.banner-integrated)>.action,.banner:not(.banner-integrated)>.action-plain{display:block;width:fit-content;margin-inline:auto}
+.banner:not(.banner-integrated)>.controls{width:auto;margin-inline:0;justify-content:center}
+/* Root identity, lead and controls inherit the owning content edge, not a separate
+   centered title column. The outer page frame may be centered; its text need not be. */
+.depth-0>.title{max-width:none;margin-inline:0}
+.depth-0>.fact,.depth-0>.hero{margin-inline:0}
+.depth-0>.fieldbar{justify-content:flex-start}
+.depth-0>.site-identity{font-size:clamp(1.5rem,1.1rem + .8vw,2rem);line-height:1.4;text-align:left;margin:0 0 16px;font-weight:650}
+/* S3a 字号音阶（--scale 大三度）：正文 17px → h3 1.30em(22px) → h2 1.70em(29px) → h1 clamp 43–51px(2.5–3.0×) →
+   display 脱离音阶由版面决定（typography.md §1）。汉字比西文显挤，标题比纯音阶再宽一点才分得开（§4.6）。
+   字重是中文 display 的主武器（§4.6）：正文 400 对标题 650–750，不靠换字体。 */
+h4.title,h5.title,h6.title{font-size:1.05em;line-height:1.5;margin:.7em 0 .35em;font-weight:650}
+header.site{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+header.site .brand{font-weight:700;font-size:1.15em;letter-spacing:.02em}
+h1.title{font-size:clamp(2.7rem,1.4rem + 2.4vw,3.2rem);line-height:1.16;margin:.1em 0 .35em;font-weight:750;letter-spacing:-.01em;text-wrap:balance}
+h2.title{font-size:calc(1em * var(--scale) * var(--scale) * 1.09);line-height:1.3;margin:1.05em 0 .45em;font-weight:700;letter-spacing:-.005em;text-wrap:balance}
+h3.title{font-size:calc(1em * var(--scale) * 1.04);line-height:1.4;margin:.8em 0 .35em;font-weight:680;text-wrap:balance}
+.hero{margin:4px 0 32px}
+.hero.fact-hero .fact .val{font-size:clamp(2rem,1rem + 2.6vw,3.2rem);font-weight:750;line-height:1.2;letter-spacing:-.01em;text-wrap:balance}
+/* 阅读页的标题用衬线（typography.md §6 --font-display：文章/编辑型标题），本机回落 Noto Serif CJK SC。 */
+.reading-page h1.title,.reading-page h2.title{font-family:var(--font-display)}
+/* a lead sentence is not a headline: H1-sized prose collapses the page's heading levels */
+.hero.fact-hero.hero-prose .fact .val{font-size:1.15em;font-weight:600;line-height:1.7;color:var(--soft-ink)}
+article{margin:12px 0}
+.timeline{border-left:2px solid #d6dde6;margin-left:8px;padding-left:18px}
+.timeline .item{position:relative;padding:6px 0}
+.timeline .item::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+.cards.cols-auto{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.cards .item{border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:0;background:var(--card);box-shadow:var(--shadow)}
+/* 中文行宽 22–38 字（typography.md §2）：36em 在中文≈36 字/行、西文≈70 字符/行，两种语言同一把尺。 */
+.fact{margin:3px 0;max-width:var(--measure)}
+.hero .fact,.cards .fact,.cmp-table .fact,.defval .fact{max-width:none}
+.fact.was .val{text-decoration:line-through;color:#8493a3;font-weight:400}
+.val{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+/* label chips need a visible chip body, or the row reads as one bare string of text (round 27) */
+.chips .chip-item{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9em;line-height:1.5}
+/* a sentence member is prose, not a tag: keep it on its own plain line */
+.chips-rows{display:block}
+.chips-rows .chip-item{display:block;background:none;border:0;border-radius:0;padding:3px 0;font-size:.95em}
+.cards .item img,.run .item img,.cards img{width:auto;max-width:100%;height:auto;display:block;border-radius:8px}
+/* S3c：非记录行的卡片媒体不再被 160px 封顶——封顶把 mi 搜索页源图 800×800 的商品卡压成 160 高，
+   卡片媒体按角色定尺（容器给宽、图等比、绝不放大，layout-axes.md §7.1），目录卡片的 4/3 媒体框自己管高度。 */
+/* S3a 动作系统：主操作 = accent 实心药丸（唯一 accent 着色处之一）；副操作 = 描边/幽灵。
+   旧形态（每个品牌一个黑矩形、副操作蓝色文字）不成系统，且 accent 已按站点注入。 */
+.action-plain{display:inline-block;padding:12px 24px;border:1px solid var(--accent);border-radius:var(--radius-pill);background:var(--accent);color:#fff;font-size:.95em;font-weight:650}
+.promo{border:1px solid var(--line);background:var(--band);border-radius:var(--radius);padding:12px 16px;color:var(--soft-ink);font-weight:600;margin:10px 0}
+.promo-image{padding:0;overflow:hidden}
+.promo-image img{width:auto;max-width:100%;height:auto;display:block;border-radius:9px}
+.meta{display:flex;flex-wrap:wrap;gap:0 6px;color:var(--muted);font-size:.9em;margin-top:2px}
+.meta .sep{color:#c2ccd6}
+/* 并入价格行的分期时长（U-28）：与承载句同行、弱化如 meta，不再是容器外孤块 */
+.fact .installment{color:var(--muted);font-size:.9em}
+.fact .installment .sep{color:#c2ccd6}
+.prose{max-width:var(--measure);margin-inline:0}
+.prose p{margin:.5em 0;line-height:1.75;max-width:var(--measure)}
+/* F-031-§7 图像主导页：满幅图带——仅限声明的 hero/banner（.strip 无修饰类，轴层 facts.hero）。
+   轮 58（L-3）：带内图像居中（margin-inline:auto）——窄于视口的 hero 图不再贴左（U-27）。
+   内容图带（.band 内的 .strip，image-strip 形态）绝不满幅：居中、压到容器宽（U-20/U-21）。 */
+.strip{margin:0;padding:0;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+.strip img{width:auto;max-width:100%;height:auto;display:block;margin-inline:auto;border-radius:0}
+.band{margin:14px 0}
+.band .strip{width:auto;max-width:100%;margin:0 auto}
+.band .strip img{border-radius:10px}
+.cards .strip,.run .strip,.promo .strip,.cmp-table .strip,.defval .strip,td .strip,.band .strip{width:auto;margin-left:auto;margin-right:auto}
+.cards .strip img{border-radius:8px}
+/* F-055 无源图片：退化为已抓取的 alt 文本（绝不输出空 src 的 img 标签） */
+.img-alt{display:block;color:var(--muted);font-size:.9em;padding:8px 12px;background:#f4f7fa;border-radius:8px}
+.promo-image .img-alt{padding:10px 14px;border-radius:0}
+main>.node>.strip:first-child,article>.strip{margin-top:0;margin-bottom:0}
+/* F-031: 序列区块（不可比内容各自成立） */
+.block{margin:18px 0;padding:0 0 6px}
+.block>.node{max-width:none}
+hr.region{border:0;border-top:1px solid #e3e8ee;margin:22px 0}
+/* F-031-§4 控件条 */
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0;align-items:center}
+.controls .action{margin:0}
+/* 行内的主 CTA 必须可辨：无抓取目标的动作（.action-plain）在行内也按实心强调
+   （无目标不得造真实按钮标签；强调是样式，不是新控件，T-101/F-031-§4） */
+.controls .action-plain{margin:0}
+.ctl{display:inline-block;padding:10px 18px;border:1px solid var(--line);border-radius:var(--radius-pill);color:var(--ink);font-size:.95em;text-decoration:none;background:var(--surface);font-weight:600}
+/* 时间流文本（弹幕）：行内紧凑流，每条单行省略——不铺成竖排文本墙（§10.5） */
+.stream{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0}
+.stream-item{max-width:16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--soft);border-radius:999px;padding:2px 10px;font-size:.85em}
+a.ctl{font-weight:600}
+a.ctl:hover{background:var(--soft);border-color:var(--ink)}
+/* F-031-§3 横向对比表：列=实体 行=属性，不换行可横滚 */
+.cmp-scroll{overflow-x:auto;margin:14px 0;border:1px solid #e6eaf0;border-radius:10px}
+.cmp-table{border-collapse:collapse;width:100%;font-size:.95em}
+.cmp-table th,.cmp-table td{border-bottom:1px solid #eef2f6;padding:10px 12px;vertical-align:top;text-align:left}
+.cmp-table th.cmp-row{white-space:nowrap;color:var(--muted);font-weight:600;background:var(--band);width:1%;position:sticky;left:0}
+.cmp-table th.cmp-col{min-width:210px;font-size:1.02em;color:#13202c}
+.cmp-tag{display:inline-block;margin-left:6px;font-size:.78em;color:var(--soft-ink);background:var(--soft);border-radius:999px;padding:1px 8px}
+.cmp-price{font-weight:700;margin-top:4px}
+.cmp-sub{color:var(--muted);font-size:.92em;margin-top:2px}
+.cmp-ctl{margin-top:6px}
+/* 纯标签清单：一组等格条目名，读作"一组面板/条目"，不是 1..N 的目录（轮 34 grafana） */
+.manifest{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
+.manifest-item{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;background:var(--card);font-weight:600;color:var(--soft-ink);overflow-wrap:anywhere}
+.linklist{margin:8px 0;padding-left:1.1em}
+.linklist.cols2{column-gap:28px}
+.linklist.cols3{column-gap:24px}
+.linklist.cols4{column-gap:20px}
+.linklist li{margin:5px 0;line-height:1.5}
+.seq{margin:8px 0;padding-left:1.5em}
+.seq li{margin:4px 0;line-height:1.55}
+.chip-item{break-inside:avoid}
+.deflist{margin:8px 0}
+.deflist.ranked .rank{min-width:1.5em;color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums}
+.deflist.ranked .deflabel{font-weight:500}
+.defrow{display:flex;gap:14px;padding:7px 0;border-bottom:1px dashed #eef1f5;align-items:flex-start}
+.defrow.media-row{display:block}
+.defrow.media-row .deflabel{flex:none;min-width:0;margin-bottom:8px}
+.defrow.media-row .defval{min-width:0;max-width:100%}
+.deflabel{min-width:130px;font-weight:600}
+.deflabel a{color:inherit}
+.timeline .defrow{position:relative}
+.timeline .defrow::before{content:"";position:absolute;left:-24px;top:14px;width:9px;height:9px;border-radius:50%;background:#17212b}
+.defval{color:var(--muted);font-size:.95em;overflow-wrap:anywhere;min-width:100px}
+@media(max-width:700px){.defrow.long-label{display:block}.defrow.long-label .deflabel{min-width:0;margin-bottom:4px}.defval{min-width:0}.defval .val{word-break:normal}}
+.accordion{margin:8px 0}
+details.qa{border-bottom:1px solid #eef1f5;padding:6px 0}
+details.qa summary{cursor:pointer;font-weight:600;padding:4px 0}
+details.qa .qa-a{padding:6px 0;color:var(--muted);font-size:.95em}
+.expose{display:block;margin:8px 0}
+/* S5b：多段选项标签（复选框文案 + 两个协议链接）在窄框里只能换行。flex-wrap:nowrap（默认）时 flex 把
+   每个成员压到内容宽以下，汉字遂逐字断行（xiaomi-account 的「已阅读并同/意」）；wrap 让每个成员保持
+   max-content，只在成员之间换行，行内文字永不被拆开。 */
+.choice{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 14px 6px 0;padding:6px 12px;border:1px solid #d6dde6;border-radius:8px}
+fieldset.expose{border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px}
+/* a few short options must not sit inside a full-width frame with a dead right half:
+   the fieldset hugs its content and only wraps when the content itself is wider (round 27) */
+fieldset.expose.chipbar{display:inline-block;max-width:100%}
+/* 一组标签里有可点条目时，可点的那个必须看得出来（F-031-§4；轮 34，mi15「售后服务政策」
+   实测同色无下划线）：轮 57 起并入层2 —— accent + 常显细下划线（上面的 .chips a 规则）。 */
+/* D-3: a text input is an inline field so its submit control sits on the same bar */
+span.expose.expose-input{display:inline-block;vertical-align:middle;margin:8px 8px 8px 0}
+.authentication-page{max-width:var(--auth-width);margin-inline:auto}
+.task-form .expose-input{display:flex;flex-direction:column;align-items:stretch;gap:6px;max-width:360px;width:100%;margin:8px 0}
+.task-form .expose-input>.deflabel{min-width:0}
+.task-form .expose-input>input{box-sizing:border-box;width:100%;min-width:0}
+.task-form .fieldbar{flex-wrap:wrap;justify-content:flex-start}
+/* a watermark is not a label: the name stays in the document, read but not shown (F-064) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+legend{font-size:.8em;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.expose .hint{display:block;color:var(--muted);font-size:.85em;margin:2px 0 8px}
+.choice-extra{color:var(--muted);font-size:.9em;margin-left:4px}
+input[type=text],input[type=password],select{padding:7px 10px;border:1px solid #d6dde6;border-radius:8px;font:inherit;background:var(--surface);color:var(--ink)}
+/* 长选项表（axis choice.select）画成一个开合的闭合控件：给宽、不铺满表单框的空右半（§5.2） */
+span.expose.expose-select{display:block;margin:8px 0}
+span.expose.expose-select select{max-width:100%;min-width:12em}
+.task-form span.expose.expose-select select{width:100%}
+span.expose.expose-select .deflabel{display:block;min-width:0;margin-bottom:4px}
+.action{display:inline-block;margin:14px 0 0;padding:12px 24px;border-radius:var(--radius-pill);background:var(--accent);color:#fff;text-decoration:none;border:1px solid var(--accent);font:inherit;font-size:.95em;font-weight:650;cursor:pointer}
+.action:hover{background:var(--ink);border-color:var(--ink)}
+.action:focus-visible,.ctl:focus-visible,.action-plain:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+/* §9: 正文链接是句子的一部分——行内、同字号、仅颜色+下划线（绝不画成按钮）；
+   层2 规则在上面的统一块里（accent + 1px 常显下划线）。 */
+/* 不放大（round 45 · F-082）：图片按自身自然尺寸显示，容器更窄时才收缩——width:auto
+   + max-width:100% 合起来保证 displayed = min(naturalWidth, container)，绝不把 234×176 的
+   源缩略图拉到容器宽（旧规则 width:100% 会把封面放大 2~3 倍、发虚并把页面撑到 1.4 万像素）。
+   同时保留原比例（不 object-fit:cover），不裁内容；自然宽 ≥ 容器的满幅图仍铺满。 */
+img{max-width:100%;width:auto;border-radius:10px;display:block}
+/* 同一条「不放大」规则覆盖卡片/条目/正文图：自然宽 ≥ 容器则铺满，否则按自然尺寸居中显示 */
+.fact img,.cards img,.cards .item img,.run .item img{width:auto;max-width:100%;height:auto}
+.data-scroll{max-width:100%;overflow-x:auto}
+.data-scroll table.data{min-width:640px}
+.expose table.data{min-width:640px}
+fieldset.expose:has(>table.data){min-inline-size:0;min-width:0;width:100%;max-width:100%;overflow-x:auto}
+a.option-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+table.data{border-collapse:collapse;width:100%;font-size:.92em;margin:14px 0 22px}
+table.data th,table.data td{border-bottom:1px solid #e6eaf0;padding:11px 14px;text-align:left;vertical-align:top;line-height:1.55}
+table.data th{color:var(--muted);font-weight:600;background:#f7f9fb}
+table.data tr.row-group th{text-align:left;color:var(--soft-ink);font-weight:700;background:var(--soft)}
+/* S7 长表可读性（owner：aws 79 行「一行看不清、键与值隔得太远」）：
+   ① 行斑马纹——偶数行落 --zebra，奇数行落白面；单元格背景 inherit 行色，于是首列停靠时也仍不透明；
+   ② 单元格留白 11×14 → 表页 13×16，行高 1.55，行距不再贴行；
+   ③ 两列键值表把键列收成内容宽（width:1% + 不折行，值紧跟键：aws 值列从 x=852 到 x=317），
+      表宽仍是 100%，剩余宽留给值列；
+   ④ 首列在横向滚动时停靠（sticky），键始终可见；等宽数字仍是 tabular-nums。
+   小节行（row-group）保持自成一档的底色，不与斑马纹抢。负样本见 taste-selftest.mjs。 */
+table.data tbody tr{background:var(--surface)}
+table.data tbody tr:nth-child(even){background:var(--zebra)}
+table.data tbody tr>*{background:inherit}
+table.data tbody tr.row-group,table.data tbody tr.row-group>*{background:var(--group-band)}
+table.data td:first-child,table.data th:first-child{position:sticky;left:0;z-index:1}
+table.data:not(:has(tr>td:nth-child(3))):not(:has(tr>th:nth-child(3))) tbody>tr>:first-child{width:1%;white-space:nowrap}
+table.data td.sel,table.data th.sel{width:34px;text-align:center}
+.chip{display:inline-block;background:var(--soft);border-radius:999px;padding:2px 10px;margin:1px 4px 1px 0;font-size:.85em}
+.row-ops{display:flex;flex-direction:column;gap:4px}
+.row-ops .action{margin:2px 0;padding:4px 10px;font-size:.85em}
+/* 引用/被强调整段（_quote，轮 56 · U-13）：醒目形态=大字+加粗+左侧竖线。视觉上与正文分得开。 */
+blockquote.quote{margin:12px 0;padding:4px 0 4px 16px;border-left:4px solid #17212b;max-width:var(--measure)}
+blockquote.quote .val{font-size:1.25em;font-weight:700;line-height:1.5;color:#13202c}
+/* 字段+提交成组（U-02）：输入与它的提交按钮同一条栏，其余内容在栏后。 */
+.fieldbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.fieldbar input[type=text],.fieldbar input[type=password]{min-width:220px}
+/* 小图集照片墙（轮 56 · U-07）：1 大（跨 2×2）+ N 小，像源站构图。
+   轮 58（U-24）：做马赛克就要对齐——每块瓷砖固定正方形（aspect-ratio），图在瓷砖内等比
+   contain 居中（绝不放大、不裁内容），大图缩到瓷砖、瓷砖间不再有参差缝隙。 */
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:6px;margin:14px 0}
+.gallery-mosaic .strip{width:auto;margin:0;aspect-ratio:1/1;align-self:start;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.gallery-mosaic .strip img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;border-radius:8px}
+.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:span 2}
+/* Local forms inherit their page frame; only declared banner bleed can escape it.
+   Reading/product/detail composition sets the parent measure, not each local form. */
+.node.w-prose,.node.w-narrow,.node.w-wide{max-width:none;margin-inline:0;width:100%}
+.node.w-bleed{max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 var(--page-pad)}
+/* 轮 58（L-6）媒体优先卡片：图与标题永不分家（同一 article）；条目图在题上方（视频/卡片站
+   惯例）。轴层 mediaFirstOf 声明，这里用 flex order 画 —— 不拆 DOM，长文条目不受影响。 */
+.media-first .node{display:flex;flex-direction:column}
+.media-first .node>.fact:has(.val img),.media-first .node>.band{order:-1}
+/* 轮 58（L-4）宽层卡片/Feed 集合：轴层声明 cols='auto' ⇒ auto-fill 网格（桌面 2–4 列）。
+   阅读型堆叠（长文成员）保持单列。 */
+.stack.cols-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;align-items:start;margin:14px 0}
+.stack.cols-auto .block{margin:0}
+.cards.compact-media,.stack.compact-media{grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
+.stack.cols-auto hr.region{display:none}
+/* 轮 58（L-5）footer 是一块独立表面（浅底、次级信息）：模型声明的 footer 区域（.g-footer）自带前景/
+   背景色对，满幅形态见下面的 S6 规则。无 footer 区域的页自然没有这条带。 */
+/* Surfaces own foreground AND background tokens. A footer is secondary site information,
+   not automatically a dark hero. Match the captured light, compact utility region. */
+/* S6 品味先验二：页脚是一条居中的满幅带（铺到视口），内文与页框内容左右边缘对齐，链接组在带内
+   分布成网格而不是贴左的一条短列表（36kr 页脚：6 个链接在 x=24..520，右侧 700px 空着）。
+   内边距取 max(页边, (视口 − 页框内容宽)/2)，于是无论页框是 1160、阅读列 612 还是认证卡 476，
+   页脚内文都落在该页自己的内容带左边缘上（100% = 页脚所在根节点的内容盒宽）。
+   下面的 .controls 网格是「链接组分布」的落点：display/width 覆盖页级控件条的居中规则（页脚的行
+   要铺满带，而不是缩成 fit-content 居中）。 */
+.group.g-footer{--surface:#f5f5f7;--ink:#30343b;--muted:#536171;--soft:#e8eaee;--soft-ink:#30343b;--line:#d5d8df;background:var(--surface);color:var(--ink);width:100vw;margin:32px calc(50% - 50vw) 0;padding:24px max(var(--page-pad),calc((100vw - 100%) / 2))}
+.group.g-footer .node,.group.g-footer .block{margin:0;padding:0}
+.group.g-footer .stack{display:flex;flex-wrap:wrap;gap:14px 24px}
+.group.g-footer .stack>.block{flex:1 1 250px}
+.group.g-footer .stack>.block:first-child{flex-basis:100%}
+.group.g-footer .linklist{columns:auto;display:flex;flex-wrap:wrap;gap:6px 18px;padding:0;margin:0}
+.group.g-footer .linklist li{list-style:none;margin:0;font-size:13px;line-height:1.65}
+.group.g-footer .seq{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding:0}
+.group.g-footer .seq li{list-style:none;margin:0;font-size:12px;line-height:1.6}
+.group.g-footer .stack>.block:has(.seq),.group.g-footer .stack>.block:has(.chips-rows){flex-basis:100%;padding-top:12px;border-top:1px solid var(--line)}
+.group.g-footer .linklist li.go::marker{content:""}
+.group.g-footer .chips{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0}
+.group.g-footer .chip-item{padding:0;border:0;background:transparent;border-radius:0;font-size:13px;color:var(--ink)}
+.group.g-footer .title,.group.g-footer a,.group.g-footer .linklist li.go>a,.group.g-footer .chips a{color:var(--ink)}
+.group.g-footer .defval,.group.g-footer .fact,.group.g-footer .meta{color:var(--muted)}
+.group.g-footer .ctl{border-color:var(--line);color:var(--ink)}
+.group.g-footer a.ctl:hover{background:var(--soft)}
+.group.g-footer .defrow{border-bottom-color:var(--line)}
+.group.g-footer .controls{display:grid;width:auto;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:6px 18px;margin:4px 0}
+.group.g-footer .ctl{border:0;background:transparent;padding:0;border-radius:0;font-size:13px;font-weight:400}
+.group.g-footer .g-notices>.node>.stack{display:block}
+.group.g-footer .g-notices>.node>.stack>.block{margin:0;padding:0;border:0}
+.group.g-footer .cards{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0}
+.group.g-footer .cards>.item{padding:0;border:0;background:transparent;box-shadow:none}
+.group.g-footer .cards .ctl{border:0;background:transparent;padding:2px 0;border-radius:0;font-size:13px}
+.group.g-footer .fact{font-size:13px;line-height:1.7;margin:4px 0}
+/* Reading pages inherit ONE column. Local forms never reset its width or left edge. */
+.reading-page{--reading-width:var(--measure);max-width:var(--reading-width);margin-inline:auto}
+/* S7：阅读页根级控件条不再单独居中（页级动作行统一对齐内容列左边缘）；标题与 band 仍是阅读列宽度。 */
+.reading-page>.title,.reading-page>.band,.reading-page>.meta,.reading-page>.stack{max-width:var(--reading-width);margin-inline:auto}
+.reading-page .node.w-prose,.reading-page .node.w-narrow,.reading-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.reading-page .fact,.reading-page .prose,.reading-page .prose p,.reading-page .quote{max-width:none}
+/* S5a：阅读页里声明的满幅 band 不再逃出阅读列——hero 图、band 底带与其根级动作全部收进同一
+   个 measure，整篇文章读作一列（stripe-docs/payments：hero 1232 满幅 + 根级动作落在 x=24）。 */
+.reading-page .node.w-bleed{width:100%;margin-inline:0}
+.reading-page .band img,.reading-page .banner img{max-width:100%;width:auto;height:auto}
+.reading-page .fact img{margin-inline:auto}
+.reading-page .defrow{display:block;padding:16px 0}
+.reading-page .deflabel{margin-bottom:6px}
+.reading-page .defval{font-size:1em;line-height:1.75}
+.reading-page .cards:not(:has(img)){display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.reading-page .cards:not(:has(img))>.item{border:0;padding:0}
+.reading-page .cards:not(:has(img)) .node{margin:0}
+.reading-page .cards:not(:has(img)) .action{margin:0;border-radius:999px;padding:5px 14px;background:var(--soft);color:var(--soft-ink)}
+/* Label-only destination groups are navigation, not a vertical sitemap. */
+.utility-group>.chips-rows{display:flex;flex-wrap:wrap}
+.utility-group>.chips-rows .chip-item{display:inline-block;padding:3px 8px}
+.stack>.block:has(>.utility-group){margin-block:8px;padding:0}
+.utility-group{margin-block:4px}
+.node.w-narrow:has(>.linklist),.node.w-narrow:has(>.chips){max-width:none}
+.linklist.cols2,.linklist.cols3,.linklist.cols4{columns:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:3px 18px}
+.header-bar .linklist.cols2,.header-bar .linklist.cols3,.header-bar .linklist.cols4{display:flex;grid-template-columns:none}
+.node:has(>.chips)>.chips{gap:6px 12px}
+/* Related sections inherit the page frame; long fact lines keep their reading measure. */
+.depth-0>.meta{margin-inline:0}
+.utility-facts>.stack>.block{margin:4px 0;padding:0}
+.utility-facts>.stack>.block>.node{margin:0}
+.utility-facts .title{font-size:1em;margin:4px 0}
+.utility-group>.stack{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.stack>.block{margin:0;padding:0}
+.utility-group>.stack>.block>.node{margin:0}
+.utility-group>.deflist{display:flex;flex-wrap:wrap;gap:8px 24px}
+.utility-group>.deflist>.defrow{border:0;padding:0}
+/* Shared structural compact forms: singleton catalog entries, ordered editorial media, boolean utilities. */
+/* 声明为 hero 的 banner 填满自己的框架（旧 320px 盖把 hero 掐成缩略图），内容居中而不靠左。 */
+.singleton-card>.stack>.block>.node.banner{display:flex;flex-direction:column;align-items:center;padding:0}
+.singleton-card .banner>.title{font-size:calc(1em * var(--scale) * var(--scale) * 1.04);line-height:1.3;text-align:center;margin:8px 0;text-wrap:balance}
+.singleton-card .banner>.band{order:0;margin:0;max-width:100%}
+.singleton-card .banner>.band .strip{margin:0}
+.singleton-card .banner>.controls,.singleton-card .banner>.action{order:2;margin:8px 0}
+.singleton-card .banner img{max-width:100%;width:auto;height:auto}
+.boolean-utilities>.stack{display:flex;flex-wrap:wrap;gap:8px 16px}
+.boolean-utilities>.stack>.block,.boolean-utilities>.stack>.block>.node{margin:0;padding:0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox]){display:inline-block;margin:4px 16px 4px 0}
+.boolean-utilities>.group:has(>.node>label.choice>input[type=checkbox])>.node{margin:0;padding:0}
+.ordered-media-rows>.stack>.block{margin:12px 0;padding:12px 0;border-bottom:1px solid var(--line)}
+.ordered-media-rows>.stack>.block>.node{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:4px 20px;margin:0;padding:0}
+.ordered-media-rows>.stack>.block>.node>*{grid-column:1;margin:0}
+.ordered-media-rows>.stack>.block>.node>.band{grid-column:2;grid-row:1 / span 5;margin:0;align-self:start}
+.ordered-media-rows .band .strip{margin:0;width:auto}
+.ordered-media-rows .band img{max-width:120px;max-height:120px;width:auto;height:auto}
+@media(max-width:600px){.ordered-media-rows>.stack>.block>.node{grid-template-columns:minmax(0,1fr) 96px;gap:4px 12px}.ordered-media-rows .band img{max-width:96px;max-height:96px}}
+.instruction-media>.defrow{display:block;margin:16px 0}
+.instruction-media img{max-width:100%;max-height:none;width:auto;height:auto}
+.resource-view{margin:8px 0;font-size:14px;max-width:100%;text-align:left}
+.resource-view>summary{cursor:pointer;color:var(--ink);text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+.native-media{max-width:100%;max-height:70vh;overflow:auto;border:1px solid var(--line);background:var(--surface)}
+.native-media img{max-width:none!important;max-height:none!important;width:auto!important;height:auto!important;margin:0!important;border-radius:0}
+.resource-view:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+/* Metadata-bearing editorial/search records are local records, never heroes.
+   行宽 = 文字测量宽 + 媒体槽 + 声明的间距：整行不许拉到页边，否则未用的中段就是「文字与图之间
+   的空白」（sspai matrix 实测 608px 中位死沟）。 */
+.record-member{display:grid!important;grid-template-columns:minmax(0,1fr) var(--media-row);gap:6px 24px;max-width:min(100%,calc(var(--measure-row) + var(--media-row) + 24px));margin:0!important;padding:16px 0!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important}
+.record-member>*{grid-column:1;margin:0!important;min-width:0;max-width:var(--measure-row)}
+.record-member>.band,.record-member>.fact:has(img){grid-column:2;grid-row:1 / span 6;align-self:start}
+.record-member img{max-width:var(--media-row);max-height:var(--media-row-h);width:auto;height:auto;margin:0}
+.record-member .strip{width:auto;margin:0}
+.record-member>.title{text-align:left;font-size:1.15em}
+.record-member>.fact{max-width:var(--measure-row)}
+/* 无媒体的记录行没有媒体槽：行宽回到文字测量宽，不得把 216+24px 的空槽留在行尾。 */
+.record-member:not(:has(img)){max-width:min(100%,var(--measure-row))}
+/* S5a 内容列居中：记录/结果列窄于页框时整列居中，不贴左留一条半页空带（36kr 搜索结果 798px
+   贴左 ⇒ 右侧 434px 死带；sspai home 记录行 558px 贴左 ⇒ 底部「真的靠左」）。列宽仍由行自身
+   量宽决定（§3 的行封顶不变），只是列居中了；行本身填满列，同一列的行左边缘因此对齐。 */
+.cards:has(>.item>.record-member),.stack:has(>.block>.record-member){display:block;max-width:min(100%,var(--measure-row));margin-inline:auto}
+.cards:has(>.item>.record-member):has(img),.stack:has(>.block>.record-member):has(img){max-width:min(100%,calc(var(--measure-row) + var(--media-row) + 24px))}
+.cards:has(>.item>.record-member)>.item{border:0;padding:0;background:transparent;margin:0}
+.stack:has(>.block>.record-member)>.block{padding:0;margin:0}
+.node.identity-frame{max-width:var(--measure);margin-inline:0;display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px 24px;align-items:start}
+.identity-frame>*{grid-column:2;margin:0}
+.identity-frame>.ctl,.identity-frame>.action,.identity-frame>.action-plain{justify-self:start}
+.identity-frame>.band{grid-column:1;grid-row:1 / span 4;margin:0}
+.identity-frame .strip{width:auto;margin:0}
+.identity-frame img{max-width:100px;max-height:100px;width:auto;height:auto}
+.node.w-bleed.banner:not(.banner-integrated)>.action,.node.w-bleed.banner:not(.banner-integrated)>.ctl,.node.w-bleed.banner:not(.banner-integrated)>.action-plain{margin-left:max(0px,calc((100% - 1232px)/2))}
+.search-submit{margin:0;display:inline-flex;align-items:center;padding:10px 14px}
+.search-submit:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:600px){.record-member{grid-template-columns:minmax(0,1fr);gap:8px}.record-member>.band,.record-member>.fact:has(img){grid-column:1;grid-row:auto}.record-member img{max-width:216px}.identity-frame{gap:8px 16px}}
+/* Whole-page alignment: local lists, facts and cards inherit the same page frame. */
+.catalog-page .node.w-prose,.catalog-page .node.w-narrow,.catalog-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+.catalog-page>.stack>.block{margin:14px 0}
+.catalog-page .depth-1>.fact{max-width:none}
+.catalog-page>.stack>.block:has(>.node>.deflist) .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.catalog-page>.stack>.block:has(>.node>.deflist) .defrow{display:block;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.catalog-page .deflabel{margin-bottom:8px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:14px}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block{margin:0;padding:0}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>.block>.node{margin:0;padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+.catalog-page .depth-1:not(:has(>.fieldbar))>.stack:not(.cols-auto)>hr{display:none}
+.product-page{max-width:960px;margin-inline:auto}
+.product-page .node.w-prose,.product-page .node.w-narrow,.product-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.product-page .fact,.product-page .prose,.product-page .prose p{max-width:none}
+.product-page .fact img{margin-inline:auto}
+.product-page>.meta{margin-inline:0}
+.product-page>.stack>.block{margin-block:0;padding-block:48px}
+.product-page .defrow{gap:24px}
+.product-page .deflabel{flex:0 0 190px;min-width:0}
+.detail-page>.title{max-width:none;margin-inline:0}
+.detail-page>.fact{max-width:none}
+.detail-page .node.w-prose,.detail-page .node.w-narrow,.detail-page .node.w-wide{max-width:none;margin-inline:0;width:100%}
+/* 媒体墙 + 主列（measure 封顶）+ 任务卡右侧停靠：两区贴着放，不再留一条死沟。 */
+.detail-layout{display:grid;grid-template-columns:minmax(0,var(--measure)) 340px;gap:48px;align-items:start;justify-content:center;margin-top:24px}
+.detail-main,.detail-task{min-width:0}
+.detail-main>.group{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.detail-main .fact,.detail-main .prose{max-width:none}
+.detail-task{padding:20px 24px;border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 24px #17212b10}
+.detail-task .group{margin:12px 0}
+.detail-task input{max-width:100%}
+.detail-tail{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.detail-tail .g-distribution .chips-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.detail-tail .g-distribution .chip-item{padding:8px 12px;border-radius:8px;background:var(--soft)}
+.detail-tail .g-aspects .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:4px 24px}
+.detail-tail .g-reviews>.node{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.detail-tail .g-reviews>.node>*{min-width:0}
+.detail-tail .g-reviews>.node>.title,.detail-tail .g-reviews>.node>.controls,.detail-tail .g-reviews>.node>.g-distribution,.detail-tail .g-reviews>.node>.g-aspects{grid-column:1/-1}
+.detail-tail .g-aspects .cmp-table th.cmp-col{min-width:120px}
+.detail-tail .g-reviews>.node>.g-mentions{grid-column:1/-1}
+.detail-tail .g-mentions .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:4px 24px}
+.detail-tail .g-mentions .defrow{justify-content:space-between}
+main:has(.marketing-page){max-width:1728px}
+.marketing-page>.title{max-width:none}
+.marketing-page .node.w-bleed{width:100%;margin-inline:0}
+.marketing-page .node.w-narrow,.marketing-page .node.w-wide{max-width:none;width:100%;margin-inline:0}
+.marketing-page .cards.cols-auto{grid-template-columns:repeat(2,minmax(0,1fr))}
+.marketing-page .cards.cols-auto .item{padding:20px;border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+.marketing-page .cards.cols-auto .title{text-align:center;font-size:26px}
+.marketing-page .cards.cols-auto .fact{max-width:none;text-align:center}
+.marketing-page .cards.cols-auto .fact img{margin:auto}
+.marketing-page .cards.cols-auto .controls{justify-content:center}
+.marketing-page .g-tv .cards.cols-auto{grid-template-columns:repeat(3,minmax(0,1fr))}
+.marketing-page .g-services .deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.marketing-page .g-services .defrow{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+.marketing-page .g-services .defval img{max-height:180px;margin:auto}
+@media(min-width:1920px){body:has(.marketing-page){background:#f5f5f7}main:has(.marketing-page){max-width:1728px;padding-inline:var(--page-pad)}.marketing-page>.stack>.block{margin-block:16px}.marketing-page{--band:#e8eaee}}
+@media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr);gap:20px}.detail-tail .g-reviews>.node{grid-template-columns:minmax(0,1fr)}.marketing-page .g-tv .cards.cols-auto{grid-template-columns:1fr}.marketing-page .cards.cols-auto{grid-template-columns:1fr}.product-page .defrow{flex-wrap:wrap}.product-page .deflabel{flex-basis:100%}}
+/* Media surface metadata keeps marketing image and text in the same panel. The
+   original image is centered at natural height; only uniform lateral gutters clip. */
+.banner-integrated{position:relative;isolation:isolate;overflow:hidden;min-height:580px;padding:32px 24px!important;background:var(--banner-bg);color:var(--banner-fg);display:flex;flex-direction:column;align-items:center;margin-block:12px}
+.banner-integrated>.strip{position:absolute;inset:0;width:100%;height:580px;margin:0;z-index:-1;display:flex;justify-content:center}
+.banner-integrated>.strip img{flex:none;max-width:none;width:auto;height:auto;align-self:flex-start;margin:0;border-radius:0}
+.banner-integrated>.title{font-size:48px;line-height:1.1;margin:8px 0}
+.banner-integrated>.fact{font-size:22px;max-width:640px;line-height:1.35;margin:4px 0}
+.banner-integrated>.controls{margin:16px 0}
+.banner-integrated .ctl{background:transparent;color:var(--banner-fg);border-color:var(--banner-fg)}
+.banner-integrated .action{background:var(--accent);color:#fff;border-color:var(--accent)}
+.banner-integrated.media-centered>.fact:first-of-type{margin-top:auto}
+.banner-integrated.media-centered>.controls{margin-bottom:0}
+@media(max-width:700px){main{padding:20px var(--page-pad) 0}.group.g-footer{padding-block:20px}.banner-integrated{min-height:540px}.banner-integrated>.title{font-size:34px}.banner-integrated>.strip{height:540px}.banner-integrated>.strip img{width:auto;max-width:min(calc(var(--media-width)*.7),calc((100vw - 48px) * var(--media-ratio)));height:auto;object-fit:contain;align-self:flex-start;margin-top:160px}.banner-integrated>.fact{font-size:18px}.banner-integrated.media-centered>.strip img{margin-top:45px}.gallery-mosaic{grid-template-columns:repeat(2,1fr)}.gallery-mosaic .strip:first-child{grid-column:span 2;grid-row:auto}.stack.cols-auto,.cards{grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}}
+/* ——— S2a：原型 → 框架（composition.md §3）。只管形态：无站点名、无逐页例外；图一律 contain、绝不放大源图。
+   每个框架只作用于引擎自己已落的页级类（marketing-page / product-page / catalog-page / search-page /
+   table-page / profile-page / detail-page / reading-page），模型不因此新增任何键。 ——— */
+/* marketing（+无任务卡的商品落地页）：band 序列——depth-1 段落满幅、段标题居中、48–72px 纵向节奏。 */
+.marketing-page>.group,.product-page>.group,.marketing-page>.stack>.block{margin-block:0;padding-block:56px}
+.marketing-page>.group+.group,.product-page>.group+.group,.marketing-page>.stack>.block+.block,.product-page>.stack>.block+.block{border-top:1px solid var(--line)}
+.marketing-page>.group>.node>.title,.product-page>.group>.node>.title,.marketing-page>.stack>.block>.node:not(.banner-integrated)>.title,.product-page>.stack>.block>.node:not(.banner-integrated)>.title{text-align:center;margin-top:0;font-size:calc(1em * var(--scale) * var(--scale) * 1.09)}
+.marketing-page>.group>.node,.product-page>.group>.node{width:100%;margin-inline:0}
+.marketing-page .band,.product-page .band{width:100%;margin-inline:0}
+/* catalog：响应式卡片网格（auto-fill 240px）；卡片 = 固定比例媒体框（contain）+ 标题 + 价格 + 动作，行高对齐。 */
+.catalog-page .cards{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;align-items:stretch}
+.catalog-page .cards>.item{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.catalog-page .cards .fact:has(>.val>img){aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;margin:0;border-radius:10px;background:var(--soft);overflow:hidden}
+.catalog-page .cards .fact:has(>.val>img)>.val{display:flex;flex:1 1 auto;align-items:center;justify-content:center;height:100%}
+.catalog-page .cards .fact:has(>.val>img) img{max-width:100%;max-height:100%;width:auto;height:auto}
+.catalog-page .cards .title{font-size:1.05em;line-height:1.4;margin:0}
+.catalog-page .product-cards img{max-height:none}
+.catalog-page .cards .controls{margin:auto 0 0}
+/* 目录里成组的条目名（无封面）：等宽卡片格，不再是一条 110px 的文字瀑布。 */
+.catalog-page .linklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px 20px;margin:16px 0}
+.catalog-page .linklist li{margin:0;padding:8px 0;border-bottom:1px solid var(--line)}
+.catalog-page .ordered-media-rows>.stack{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin:14px 0}
+.catalog-page .ordered-media-rows>.stack>.block{margin:0;padding:14px;border:1px solid var(--line);border-radius:12px}
+.catalog-page .ordered-media-rows>.stack>.block>.node{display:flex;flex-direction:column;gap:6px;margin:0;padding:0}
+.catalog-page .ordered-media-rows .band{order:-1;margin:0;align-self:stretch}
+.catalog-page .ordered-media-rows .band img{max-width:100%;max-height:160px;width:auto;height:auto}
+/* search：结果行 = 媒体槽（216px 上限）靠左 + 文本列（measure 封顶、摘要夹 3 行）；筛选条紧凑。
+   媒体列用 fit-content(216px)：源图本来就小（如 78×100）时不靠一个 216px 宽的死槽把文字推远。 */
+/* S5a：搜索结果列用更宽的文字测量（--measure-search），行填满该列。搜索结果页没有贴左的
+   记录行，故整列按「文字测量 + 媒体槽 + 24px」取宽并居中，不再窄成手机列表。 */
+.search-page .cards:has(>.item>.record-member),.search-page .stack:has(>.block>.record-member){max-width:min(100%,var(--col-results-text));margin-inline:auto}
+.search-page .cards:has(>.item>.record-member):has(img),.search-page .stack:has(>.block>.record-member):has(img){max-width:min(100%,var(--col-results))}
+.search-page .record-member,.search-page .record-member:not(:has(img)){max-width:100%}
+.search-page .record-member>*{max-width:var(--measure-search)}
+.search-page .record-member{grid-template-columns:minmax(0,1fr);align-items:start}
+.search-page .record-member:has(img){grid-template-columns:fit-content(var(--media-search)) minmax(0,1fr)}
+.search-page .record-member img{max-width:var(--media-search);max-height:var(--media-search-h)}
+.search-page .record-member>.fact:not(:has(img)){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.search-page .record-member>*{grid-column:2}
+.search-page .record-member:not(:has(img))>*{grid-column:1}
+.search-page .record-member>.band,.search-page .record-member>.fact:has(img){grid-column:1;grid-row:1 / span 8;justify-self:start}
+.search-page fieldset.expose.chipbar{display:flex;flex-wrap:wrap;gap:6px;padding:8px 10px}
+.search-page .choice{margin:0 6px 0 0;padding:3px 10px;border-radius:999px;font-size:.92em}
+/* table：页级数据表满幅、等宽数字、单元格留白舒适。 */
+.table-page .data-scroll{border:1px solid var(--line);border-radius:12px;margin-block:18px}
+.table-page table.data{font-variant-numeric:tabular-nums}
+.table-page table.data th,.table-page table.data td{padding:13px 16px}
+/* S5a 表页引言列居中：小节标题与其下的引文（表前导语）同列居中，不再在满幅表格上方留一条
+   半页死带（aws-amazon/ec2-on-demand：表 1230px，导语却 612px 贴左）。表格本身仍满幅。 */
+.table-page .node>.title:has(+.fact),.table-page .node>.title:has(+.prose),.table-page .node>.title+.fact,.table-page .node>.title+.prose{max-width:var(--measure);margin-inline:auto}
+/* profile：居中身份卡（图+名+简介+动作）+ 行内统计块 + 活动 feed 列表。 */
+.profile-page>.title{text-align:center}
+.profile-page .identity-frame{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;gap:10px;max-width:var(--measure);margin-inline:auto}
+.profile-page .identity-frame>.band{grid-column:1;grid-row:auto;order:-1;margin:0}
+.profile-page .identity-frame .controls,.profile-page .identity-frame>.action,.profile-page .identity-frame>.action-plain{justify-self:center}
+.profile-page .stack .stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:12px;margin:16px 0}
+.profile-page .stack .stack>.block{margin:0;padding:14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);text-align:center}
+.profile-page .stack .stack hr.region{display:none}
+.profile-page .stack .stack .title{font-size:.9em;font-weight:600;color:var(--muted);margin:0 0 4px}
+.profile-page .stack .stack .meta,.profile-page .stack .stack .fact{font-size:1.3em;font-weight:700;color:var(--ink);margin:0}
+.profile-page .cards{display:block;margin:12px 0}
+.profile-page .cards>.item{border:0;border-top:1px solid var(--line);border-radius:0;padding:16px 0;background:transparent}
+.profile-page .cards>.item>.node{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 20px;align-items:start}
+.profile-page .cards .fact:has(.val img){grid-column:1;grid-row:1 / span 4;margin:0}
+.profile-page .cards .title,.profile-page .cards .fact,.profile-page .cards .meta{grid-column:2}
+.profile-page .cards img{max-width:200px}
+@media(max-width:700px){.search-page .record-member,.profile-page .cards>.item>.node{grid-template-columns:minmax(0,1fr)}.search-page .record-member>.band,.search-page .record-member>.fact:has(img),.search-page .record-member>*,.profile-page .cards .fact:has(.val img),.profile-page .cards .title,.profile-page .cards .fact,.profile-page .cards .meta{grid-column:1;grid-row:auto}}
+/* ——— S2b：内容自己打包的集合（composition.md §3）。Masonry 只在 render.mjs 判定为「成员高度不可等高」
+   时落到容器上（render.mjs masonryOf）：文字量差距过大，或营销页的图片卡片墙无媒体比例框。
+   列流要求容器是普通块，而现有三条网格规则（.cards / .stack.cols-auto / catalog 的
+   .depth-1:not(:has(> .fieldbar))>.stack:not(.cols-auto)）已经到 (0,5,0)：不走上不封顶的
+   specificity 军备竞赛，只对 display 用一处 !important，范围限定在 masonry 容器自身。 */
+/* S5a 列数由容器宽度与卡片最小宽度（280–240px）决定，不写死：1160px 页框 ⇒ 4 列、852px ⇒ 2 列、
+   342px ⇒ 1 列。写死 2 列让 1232px 的 PC 页框只剩两列（bilibili-com/home 30 张卡）。
+   S7：列数上界由成员数收一次（render.mjs masonryCols 落成 --masonry-cols）——5 个成员不再排成 4 列
+   的 2/1/1/1（尾列只剩一张卡的孤列），而是 2 列（3+2）；CSS 只保留最小列宽，窄视口仍再收缩。 */
+.cards.masonry,.stack.masonry,.catalog-page .ordered-media-rows>.stack.masonry{display:block!important;columns:var(--masonry-cols,2) 280px;column-gap:16px}
+.marketing-page .cards.masonry{columns:var(--masonry-cols,2) 280px;column-gap:14px}
+.marketing-page .g-tv .cards.masonry{columns:var(--masonry-cols,2) 240px}
+.masonry>*{break-inside:avoid}
+.masonry>hr.region{display:none}
+/* 营销页的入口矩阵（render.mjs renderControls 判定 plan.link-matrix：≥4 个带目标的控件）：
+   每个入口一张卡，不再是一排药丸。动作栏（无目标 / 不足 4 项）保持药丸行。
+   列数由入口个数整除决定（axis.mjs matrixColumns，落成 --matrix-cols）：6 个入口 3 列、8 个 4 列，
+   不再用 auto-fit（1232px 下取 4 列，6 项就成 4+2 的偏行）。 */
+.marketing-page .controls.link-matrix{display:grid;grid-template-columns:repeat(var(--matrix-cols,2),minmax(0,1fr));gap:16px;margin:24px 0}
+.marketing-page .controls.link-matrix>.ctl{display:flex;align-items:center;justify-content:center;min-height:116px;padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--band);color:var(--ink);font-size:1.05em;font-weight:600;text-align:center;line-height:1.4}
+.marketing-page .controls.link-matrix>.ctl:hover{background:var(--surface);border-color:var(--accent);color:var(--accent)}
+/* 营销页一个小节的短列表（标题 + 一行事实：新闻动态的「标题 + 日期」）= 2–3 列卡片格，
+   不是一条条流水行。只作用于页面小节自己的 .deflist，不动卡片/表格内部的列表。 */
+.marketing-page>.group>.node>.deflist,.marketing-page>.stack>.block>.node>.deflist,.marketing-page>.stack>.block>.node>.stack>.block>.node>.deflist{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px;margin:20px 0}
+.marketing-page>.group>.node>.deflist>.defrow,.marketing-page>.stack>.block>.node>.deflist>.defrow,.marketing-page>.stack>.block>.node>.stack>.block>.node>.deflist>.defrow{display:flex;flex-direction:column;gap:10px;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);align-items:flex-start}
+.marketing-page>.group>.node>.deflist>.defrow>.defval,.marketing-page>.stack>.block>.node>.deflist>.defrow>.defval{color:var(--muted);font-size:.92em;order:-1}
+/* ——— S2c：feed + 侧栏两区（composition.md §3/§6）。帧判定在 axis.mjs feedRailOf（结构推出：
+   一个占优的集合 + 其后的小卡片小节），本层只落形态：feed 左主列、侧卡右栏（380px，滚动时停靠）。
+   旧形态把侧栏堆在 feed 之后，读者要滚完整个 feed 才见到它；同时单列吃满 1232px，记录行自己
+   封顶后剩下的中段就是死沟。 */
+.feed-rail{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:start;margin-top:8px}
+.feed-main,.feed-rail-side{min-width:0}
+.feed-rail-side{display:flex;flex-direction:column;gap:20px;position:sticky;top:16px}
+.feed-rail-side>.group{margin:0;padding:18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+.feed-rail-side>.group>.node>.title{font-size:1.05em;margin:0 0 12px}
+.feed-rail-side .fact,.feed-rail-side .meta{max-width:none}
+@media(max-width:900px){.feed-rail{grid-template-columns:minmax(0,1fr);gap:24px}.feed-rail-side{position:static}
+.marketing-page .controls.link-matrix{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.marketing-page .controls.link-matrix{grid-template-columns:minmax(0,1fr)}}
+
+/* ——— S3a 设计语言层（composition.md §3/§4 的呈现侧）：表面、节奏与排印的统一口径。
+   引擎侧，无站点名、无逐页 CSS；accent 仍只来自 m1/brand-tokens.json。
+   · 表面只有三个 token：--surface（页/卡白面）、--band（带底色）、--card（卡片面），配 --line/--shadow。
+   · 营销/商品页的 depth-1 内容带隔带换底色。满幅靠 ::before 铺到视口，盒模型一格不动 ——
+     页框对齐与「绝不放大源图」两条判据因此完全不受影响；自带底色的带（footer、图像 hero）自然盖住
+     这条底，交错不会把一处底纹叠到另一处底纹上。
+   · 目录/搜索/表页整体落 --page-tint，卡片（白面+细边框+一处阴影）浮在上面；阅读页保持白纸。
+   · 纵向节奏一律 8pt 的倍数：带 56px、卡片 16–20px。 */
+body:has(.catalog-page),body:has(.search-page),body:has(.table-page){background:var(--page-tint)}
+.marketing-page>.group:nth-of-type(even),.marketing-page>.stack>.block:nth-of-type(even),.product-page>.group:nth-of-type(even),.product-page>.stack>.block:nth-of-type(even),.search-page>.group:first-of-type{position:relative}
+.marketing-page>.group:nth-of-type(even)::before,.marketing-page>.stack>.block:nth-of-type(even)::before,.product-page>.group:nth-of-type(even)::before,.product-page>.stack>.block:nth-of-type(even)::before,.search-page>.group:first-of-type::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);width:100vw;background:var(--band);z-index:-1}
+.search-page>.group:first-of-type{padding-block:24px}
+/* 数据用等宽数字（typography.md §6）：1 与 8 同宽，列不抖。 */
+table.data,.cmp-table,td{font-variant-numeric:tabular-nums}
+
+/* ——— M2 · dashboard 页框（composition.md §3）：数据看板不是一个阅读列，而是 1160px 内容带里的
+   面板区。页级类仍由解析出的原型给出（renderNode 落 dashboard-page），没有站点名、没有逐页 CSS。
+   面板 2 列（≤852 收 1 列）；面板内的统计墙 3 列（≤852 收 2 列、≤390 收 1 列）；全部 minmax(0,1fr)，
+   窄视口不横向溢出。统计的数值与单位同属一个读数：thin space 相连，单位不另起标签。 */
+.dashboard-page .g-toolbar>.node{display:block;margin-bottom:20px}
+.dashboard-page .g-toolbar .fact{margin:0 0 8px;color:var(--muted);font-size:.92em}
+.dashboard-page .g-toolbar .controls{display:inline-flex;align-items:center;gap:8px;margin:0 12px 0 0;vertical-align:middle}
+.dashboard-page .g-banners>.node{display:flex;flex-direction:column;gap:10px;margin:0 0 8px}
+.dashboard-page .g-banners .controls{display:flex;flex-direction:column;align-items:stretch;gap:10px;margin:0}
+.dashboard-page .g-banners .ctl{display:block;padding:12px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--band);color:var(--ink);font-weight:500;line-height:1.45;white-space:normal}
+.dashboard-page .panel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start;margin-top:24px}
+.dashboard-page .panel-grid>.block{min-width:0;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+.dashboard-page .panel-grid .prose,.dashboard-page .panel-grid .node>.fact{max-width:var(--measure)}
+.dashboard-page .panel-grid .title{font-size:1.12em;margin:0 0 12px}
+.stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:14px}
+.stat{display:flex;flex-direction:column;gap:4px;min-width:0;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.stat-name{font-size:13px;line-height:1.35;font-weight:500;color:var(--muted);overflow-wrap:anywhere}
+.stat-value{font-size:clamp(22px,2.2vw,30px);line-height:1.12;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.01em;overflow-wrap:anywhere}
+.stat-unit{font-size:.82em;font-weight:500;color:var(--muted)}
+@media(max-width:852px){.dashboard-page .panel-grid{grid-template-columns:minmax(0,1fr)}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:390px){.stat-grid{grid-template-columns:minmax(0,1fr)}}
+</style></head>
+<body><main><article id="grafana-play-stats-dashboard" class="node depth-0 dashboard-page" data-model-owner=""><h1 class="title">Stats</h1><section class="group g-toolbar"><article class="node depth-1 w-narrow" data-model-owner="toolbar"><div class="fact"><span class="val">Time range selected: Last 6 hours</span></div><div class="controls"><span class="ctl" data-verb="operate">Last 6 hours</span><span class="ctl" data-verb="operate">Refresh</span><span class="ctl" data-verb="operate">Edit</span></div></article></section><section class="group g-banners"><article class="node depth-1 w-narrow" data-model-owner="banners"><div class="controls"><a class="ctl" href="https://grafana.com/auth/sign-up/create-user?pg=play">Want to build a dashboard like this? Get started fast with the Grafana Cloud free tier!</a><a class="ctl" href="https://grafana.com/docs/learning-journeys/?src=play&amp;camp=learning-journey-button">Learn about Grafana through our Learning Journeys</a></div></article></section><section class="group g-panels"><article class="node depth-1 w-narrow" data-model-owner="panels"><div class="stack panel-grid"><section class="block"><article class="node depth-2" data-model-owner="panels._items[0]"><h3 class="title">Introduction</h3><section class="group g-content"><article class="node depth-3" data-model-owner="panels._items[0].content"><h4 class="title">Stat Visualizations in Grafana</h4><div class="fact"><span class="val">This dashboard is a series of examples showing you what you can do in practice with the <a class="body-link" data-model-owner="panels._items[0].content.statPanel" href="https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/stat/">Stat Panel</a> visualization type in Grafana</span></div><section class="group g-note"><article class="node depth-4" data-model-owner="panels._items[0].content.note"><div class="fact"><span class="val">Stats show one large stat value with an optional graph sparkline.</span></div></article></section></article></section></article></section><section class="block"><article class="node depth-2" data-model-owner="panels._items[1]"><h3 class="title">Color background</h3><section class="group g-stats"><article class="node depth-3 utility-facts" data-model-owner="panels._items[1].stats"><div class="stat-grid"><div class="stat"><span class="stat-name">Cellar</span><span class="stat-value">85<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">Living room</span><span class="stat-value">77.3<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">Porch</span><span class="stat-value">251<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">Bedroom</span><span class="stat-value">53.7<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">Guest room</span><span class="stat-value">99.9<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">Kitchen</span><span class="stat-value">48.8<span class="stat-unit"> m²</span></span></div></div></article></section></article></section><section class="block"><article class="node depth-2" data-model-owner="panels._items[2]"><h3 class="title">The Basics</h3><section class="group g-steps"><article class="node depth-3" data-model-owner="panels._items[2].steps"><div class="prose"><p>Hover over any visualization, select the ... menu at the top right of the visualization &gt; edit</p><p>Check out how it's configured</p><p>Try modifying the options on the right in the edit menu!</p></div></article></section></article></section><section class="block"><article class="node depth-2" data-model-owner="panels._items[3]"><h3 class="title">Color value</h3><section class="group g-stats"><article class="node depth-3 utility-facts" data-model-owner="panels._items[3].stats"><div class="stat-grid"><div class="stat"><span class="stat-name">Cellar</span><span class="stat-value">65.4<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">Living room</span><span class="stat-value">60.8<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">Porch</span><span class="stat-value">80.7<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">Bedroom</span><span class="stat-value">49.3<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">Guest room</span><span class="stat-value">63.5<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">Kitchen</span><span class="stat-value">53.4<span class="stat-unit"> m²</span></span></div></div></article></section></article></section><section class="block"><article class="node depth-2" data-model-owner="panels._items[4]"><h3 class="title">Horizontal with graph</h3><section class="group g-stats"><article class="node depth-3 utility-facts" data-model-owner="panels._items[4].stats"><div class="stat-grid"><div class="stat"><span class="stat-name">Backend-ops-01</span><span class="stat-value">111<span class="stat-unit"> GB</span></span></div><div class="stat"><span class="stat-name">Backend-ops-02</span><span class="stat-value">108<span class="stat-unit"> GB</span></span></div><div class="stat"><span class="stat-name">Backend-ops-03</span><span class="stat-value">290<span class="stat-unit"> GB</span></span></div><div class="stat"><span class="stat-name">Backend-ops-04</span><span class="stat-value">70.1<span class="stat-unit"> GB</span></span></div><div class="stat"><span class="stat-name">Frontend-web-01</span><span class="stat-value">90.3<span class="stat-unit"> GB</span></span></div><div class="stat"><span class="stat-name">Frontend-web-02</span><span class="stat-value">57<span class="stat-unit"> GB</span></span></div><div class="stat"><span class="stat-name">Frontend-web-03</span><span class="stat-value">35.9<span class="stat-unit"> GB</span></span></div></div></article></section></article></section><section class="block"><article class="node depth-2" data-model-owner="panels._items[5]"><h3 class="title">Horizontal</h3><section class="group g-stats"><article class="node depth-3 utility-facts" data-model-owner="panels._items[5].stats"><div class="stat-grid"><div class="stat"><span class="stat-name">A-series</span><span class="stat-value">5.15<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">B-series</span><span class="stat-value">3.44<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">C-series</span><span class="stat-value">27.2<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">D-series</span><span class="stat-value">80.1<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">E-series</span><span class="stat-value">57.9<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">F-series</span><span class="stat-value">26<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">G-series</span><span class="stat-value">38.8<span class="stat-unit"> m²</span></span></div></div></article></section></article></section><section class="block"><article class="node depth-2" data-model-owner="panels._items[6]"><h3 class="title">Text mode name</h3><section class="group g-names"><article class="node depth-3 utility-group utility-facts" data-model-owner="panels._items[6].names"><div class="manifest"><span class="manifest-item">Backend-ops-01</span><span class="manifest-item">Backend-ops-02</span><span class="manifest-item">Backend-ops-03</span><span class="manifest-item">Backend-ops-04</span><span class="manifest-item">Frontend-web-01</span><span class="manifest-item">Frontend-web-02</span><span class="manifest-item">Frontend-web-03</span></div></article></section></article></section><section class="block"><article class="node depth-2" data-model-owner="panels._items[7]"><h3 class="title">Auto grid</h3><section class="group g-stats"><article class="node depth-3 utility-facts" data-model-owner="panels._items[7].stats"><div class="stat-grid"><div class="stat"><span class="stat-name">A-series</span><span class="stat-value">4.12<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">B-series</span><span class="stat-value">48.5<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">C-series</span><span class="stat-value">94.2<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">D-series</span><span class="stat-value">65.2<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">E-series</span><span class="stat-value">50.9<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">F-series</span><span class="stat-value">16.1<span class="stat-unit"> m²</span></span></div><div class="stat"><span class="stat-name">G-series</span><span class="stat-value">49.2<span class="stat-unit"> m²</span></span></div></div></article></section></article></section><section class="block"><article class="node depth-2" data-model-owner="panels._items[8]"><h3 class="title">Value only</h3></article></section><section class="block"><article class="node depth-2" data-model-owner="panels._items[9]"><h3 class="title">No text</h3></article></section><section class="block"><article class="node depth-2" data-model-owner="panels._items[10]"><h3 class="title">Emoji in stat names</h3></article></section></div></article></section></article></main></body></html>

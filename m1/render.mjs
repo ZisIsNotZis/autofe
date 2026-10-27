@@ -37,7 +37,7 @@ import {
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections, namedChildEntries,
   nodePlan, itemActionPlan, controlItemPlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, buildRefLabels,
   rankedSequence, hasValue, tableRowLabel, tableCellLinks, mediaFirstOf, pageLayoutOf, textLenOf,
-  feedRailOf, matrixColumns,
+  feedRailOf, matrixColumns, statGridOf, panelGridOf,
 } from './axis.mjs';
 
 const decodeEntities = (s) => String(s).replace(/&(nbsp|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, (m, e) => {
@@ -432,16 +432,27 @@ const masonryOf = (items, ctx, gridded) => {
   if (hi - lo >= MASONRY_TEXT_SPREAD && hi >= 2 * Math.max(lo, 60)) return true;
   return ctx.pageLayout?.kind === 'marketing';
 };
-function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0, compactMedia = false) {
+// 统计墙（M2 · dashboard）：共享计划是 axis.statGridOf（名称 + typed `_measure`），
+// 这里只把每个统计画成一格。数值与单位之间用 thin space（U+2009）——单位不是另一个标签，
+// 它是数值的读数单位；文件名、站点名、自定义 CSS 均不进入本函数。
+const statValueHtml = (v) => `${esc(v.num)}<span class="stat-unit">\u2009${esc(v.unit)}</span>`;
+function renderStatGrid(items) {
+  const plan = statGridOf(items);
+  if (!plan) return '';
+  const cells = plan.map((s) => `<div class="stat"><span class="stat-name">${fmt(s.name)}</span><span class="stat-value">${statValueHtml(s.value)}</span></div>`).join('');
+  return `<div class="stat-grid">${cells}</div>`;
+}
+function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0, compactMedia = false, extraCls = '') {
   // 集合成员是卡片语境（轮 58 · L-4/L-6：列数与“图在题上”是轴层声明，这里只落类名/传参）
   const mctx = { ...ctx, member: true };
+  if (form === 'stat-grid') return renderStatGrid(items);
   if (order === 'stream' && items.every(isBareLabel)) return renderStream(items);
   if (form === 'compare-table') return renderCompareTable(items, chain, hide, ctx);
   if (form === 'chips') return renderChips(items, chain, ctx);
   if (form === 'list') return renderList(items, chain, ctx, cols);
   if (form === 'seq') return renderSeq(items, chain, ctx);
   if (form === 'controls') return renderControls(items, chain, ctx);
-  if (form === 'stack') return renderStack(items, [...chain, node], hide, mctx, depth, cols, mediaFirstOf(items, form), compactMedia);
+  if (form === 'stack') return renderStack(items, [...chain, node], hide, mctx, depth, cols, mediaFirstOf(items, form), compactMedia, extraCls);
   if (form === 'image-strip') return renderImageStrip(items);
   if (form === 'prose') return renderProse(items);
   if (form === 'deflist') return renderDeflist(items, chain, ctx, order);
@@ -463,7 +474,7 @@ function renderForm(form, items, chain, hide, ctx, depth, node, order, cols = 0,
 // 序列：不可比的区块各自成立，各带标题；无标题块用区域分隔（F-031-§1/§5）。
 // 轮 58（L-4）：轴层声明了列数（cols='auto'，成员皆带图的卡片/Feed 集合）时，堆叠包成
 // auto-fill 网格（桌面 2–4 列）；阅读型堆叠保持单列。包裹层不改变任何事实文本。
-function renderStack(items, chain, hide, ctx, depth, cols = 0, mediaFirst = false, compactMedia = false) {
+function renderStack(items, chain, hide, ctx, depth, cols = 0, mediaFirst = false, compactMedia = false, extraCls = '') {
   let out = '';
   let prevHadTitle = false;
   for (const it of items) {
@@ -475,7 +486,7 @@ function renderStack(items, chain, hide, ctx, depth, cols = 0, mediaFirst = fals
     prevHadTitle = hasTitle;
   }
   const masonry = masonryOf(items, ctx, Boolean(cols) || Boolean(ctx.sectionGrid));
-  return out ? `<div class="stack${cols ? ' cols-auto' : ''}${compactMedia ? ' compact-media' : ''}${mediaFirst ? ' media-first' : ''}${masonry ? ' masonry' : ''}"${masonry ? ` style="--masonry-cols:${masonryCols(items.length)}"` : ''}>${out}</div>` : '';
+  return out ? `<div class="stack${cols ? ' cols-auto' : ''}${compactMedia ? ' compact-media' : ''}${mediaFirst ? ' media-first' : ''}${masonry ? ' masonry' : ''}${extraCls ? ` ${extraCls}` : ''}"${masonry ? ` style="--masonry-cols:${masonryCols(items.length)}"` : ''}>${out}</div>` : '';
 }
 // 控件条：_action-only 成员是控件，不是内容（F-031-§4）；动作 label 是源站自己的控件文字（F-022），
 // 与条目名不是同一事实时另出一枚控件；同一事实的两种写法（一个包含另一个）只渲染信息更全的一处。
@@ -700,7 +711,15 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
   // 页框把本节点自己的集合排成多列行网格时（plan.orderedMediaRows 的页级分节），集合不需要自己声明列数
   // 就已经是行网格：masonry 的判据要看到这一点。
   const formCtx = plan.orderedMediaRows && depth === 1 ? { ...ctx, sectionGrid: true } : ctx;
-  for (const g of groups) body += renderForm(g.form, g.items, chain, hide, formCtx, depth, node, order, g.cols, g.compactMedia);
+  // 仪表盘面板区（M2）：页框把面板画成 2 列区格；容器上的类名由共享判定 panelGridOf 决定，
+  // 这里只把类名放到第一个堆叠容器上（面板成员本身不认站点、不写逐页样式）。
+  const panelGrid = ctx.pageLayout?.kind === 'dashboard' && depth === 1 && panelGridOf(node);
+  let panelGridEmitted = false;
+  for (const g of groups) {
+    const cls = panelGrid && !panelGridEmitted && g.form === 'stack' ? 'panel-grid' : '';
+    if (cls) panelGridEmitted = true;
+    body += renderForm(g.form, g.items, chain, hide, formCtx, depth, node, order, g.cols, g.compactMedia, cls);
+  }
   for (const g of groups) g.items.forEach((it) => itemsConsumed.add(it));
   // order:time shows a time axis only over a vertical sequence — never a stray rail across a grid (F-031-§1)
   if (order === 'time' && groups.length && groups.every((g) => g.form === 'deflist' || g.form === 'seq')) cls.push('timeline');
@@ -807,6 +826,33 @@ function renderNode(node, chain, isHero, hide, ctx, depth, region = null) {
 // expose groups skip their label/summary facts in bodyLead (they become legend/hint)
 // `report` (optional): an array the renderer appends compare degradations to (D2 audit)
 const ownerAttr = (node,ctx) => ctx.paths?.has(node) ? ` data-model-owner="${esc(ctx.paths.get(node))}"` : '';
+const DASHBOARD_CSS = `
+/* ——— M2 · dashboard 页框（composition.md §3）：数据看板不是一个阅读列，而是 1160px 内容带里的
+   面板区。页级类仍由解析出的原型给出（renderNode 落 dashboard-page），没有站点名、没有逐页 CSS。
+   面板 2 列（≤852 收 1 列）；面板内的统计墙 3 列（≤852 收 2 列、≤359 收 1 列）；全部 minmax(0,1fr)，
+   窄视口不横向溢出。统计的数值与单位同属一个读数：thin space 相连，单位不另起标签。 */
+.dashboard-page .g-toolbar>.node{display:block;margin-bottom:20px}
+.dashboard-page .g-toolbar .fact{margin:0 0 8px;color:var(--muted);font-size:.92em}
+.dashboard-page .g-toolbar .controls{display:inline-flex;align-items:center;gap:8px;margin:0 12px 0 0;vertical-align:middle}
+.dashboard-page .g-banners>.node{display:flex;flex-direction:column;gap:10px;margin:0 0 8px;max-width:none;width:100%}
+.dashboard-page .g-banners .controls{display:flex;flex-direction:column;align-items:stretch;gap:10px;margin:0;width:100%}
+.dashboard-page .g-banners .ctl{display:block;width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--band);color:var(--ink);font-weight:500;line-height:1.45;white-space:normal}
+.dashboard-page .panel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch;margin-top:24px}
+.dashboard-page .panel-grid>.block{min-width:0;margin-block:0;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+/* A panel whose captured body is empty is a section label, not a failed card: the frame would
+   otherwise claim "the source panel is empty", which the capture contradicts (the body is a real
+   box; only its elements were not captured). Keep the title; drop the card claim. (round 65) */
+.dashboard-page .panel-grid>.block:not(:has(.stat-grid,.prose,.fact,.controls,.manifest,.deflist,.list,.stack,.band)){align-self:start;padding:12px 20px;border-style:dashed;background:transparent;box-shadow:none}
+.dashboard-page .panel-grid .prose,.dashboard-page .panel-grid .node>.fact{max-width:var(--measure)}
+.dashboard-page .panel-grid .title{font-size:1.12em;margin:0 0 12px}
+.stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:14px}
+.stat{display:flex;flex-direction:column;gap:4px;min-width:0;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.stat-name{font-size:13px;line-height:1.35;font-weight:500;color:var(--muted);overflow-wrap:anywhere}
+.stat-value{font-size:clamp(22px,2.2vw,30px);line-height:1.12;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.01em;overflow-wrap:anywhere}
+.stat-unit{font-size:.82em;font-weight:500;color:var(--muted)}
+@media(max-width:852px){.dashboard-page .panel-grid{grid-template-columns:minmax(0,1fr)}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:359px){.stat-grid{grid-template-columns:minmax(0,1fr)}}
+`;
 export function render(model, context = {}, report = null) {
   refLabels = buildRefLabels(model);
   const hide = new Map();
@@ -814,6 +860,9 @@ export function render(model, context = {}, report = null) {
   const index=(n,p='')=>{if(!n||typeof n!=='object')return;paths.set(n,p);for(const c of childrenOf(n))index(c.node,p?`${p}.${c.key}`:c.key);};index(model);
   const ctx = { values: context.values ?? {}, degradations: report ?? [], headings: new Set(), paths };
   ctx.pageLayout = pageLayoutOf(model);
+  // The dashboard frame is emitted ONLY for the dashboard prototype: a page that is not a
+  // dashboard must render byte-for-byte as it did before M2 (its HTML carries no dead rules).
+  const dashboardCss = ctx.pageLayout.kind === 'dashboard' ? DASHBOARD_CSS : '';
   // S2c：页框层面的两区判定（axis.mjs feedRailOf），一次一页，节点层只选槽位。
   ctx.feedRail = feedRailOf(model, ctx.pageLayout);
   const html = renderNode(model, [], false, hide, ctx, 0);
@@ -1451,7 +1500,7 @@ body:has(.catalog-page),body:has(.search-page),body:has(.table-page){background:
 .search-page>.group:first-of-type{padding-block:24px}
 /* 数据用等宽数字（typography.md §6）：1 与 8 同宽，列不抖。 */
 table.data,.cmp-table,td{font-variant-numeric:tabular-nums}
-</style></head>
+${dashboardCss}</style></head>
 <body><main>${brand ? `<header class="site"><span class="brand">${brand}</span></header>` : ''}${html}</main></body></html>
 `;
 }

@@ -29,7 +29,7 @@ import {
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections,
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
   itemActionPlan, controlItemPlan, nodePlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, roleLabel,
-  hasValue, tableRowLabel, tableCellLinks,
+  hasValue, tableRowLabel, tableCellLinks, statGridOf,
 } from './axis.mjs';
 
 // ---- width-aware plain-text table ------------------------------------------
@@ -149,6 +149,7 @@ function renderCompareTable(items, chain, ctx, depth) {
 }
 
 function renderForm(form, items, chain, ctx, depth, node) {
+  if (form === 'stat-grid') return renderStatGrid(items, depth);
   if (form === 'compare-table') return renderCompareTable(items, chain, ctx, depth);
   if (form === 'image-strip') return items.map((it) => line(depth, imageText(it._image))).filter((l) => l.trim()).join('\n');
   if (form === 'prose') return items.map((it) => { const t = labelOf(it); return t ? line(depth, fmt(t)) : ''; }).filter(Boolean).join('\n\n');
@@ -187,6 +188,13 @@ function renderListItem(it, chain, ctx, depth, bullet) {
   const ctl = itemControl(it, chain, ctx);
   if (!label && !ctl) return '';
   return line(depth, `${bullet} ${label}${ctl ? ' ' + ctl : ''}`.trim());
+}
+// 统计墙（M2 · dashboard）：共享计划 axis.statGridOf；文本目标一行一个统计，
+// 名称是标签、数值带单位（例：`Cellar: 85 m²`）。与 HTML/Markdown 同一决策，只是记号不同。
+function renderStatGrid(items, depth) {
+  const plan = statGridOf(items);
+  if (!plan) return '';
+  return plan.map((s) => line(depth, `${fmt(s.name)}: ${fmt(s.value)}`)).join('\n');
 }
 function renderDeflist(items, chain, ctx, depth) {
   return items.map((it) => {

@@ -30,7 +30,7 @@ const ALLOWED = {
   'docs/design-system': ['reading'],
   'profile/account': ['profile'],
   'table-heavy/admin': ['table'],
-  'dashboard/data-viz': ['table'],
+  'dashboard/data-viz': ['dashboard'],
   'form/checkout/settings': ['authentication'],
 };
 
@@ -100,6 +100,49 @@ for (const key of ['_text', '_quote', '_summary', '_detail']) {
   check(`长文度量读到 ${key} 的 8 段长文（>80 字）`, readingPageOf(prose(key)) === true);
 }
 check('短文不足 8 段不算长文页', readingPageOf(prose('_quote')) === true && readingPageOf({ _lines: prose('_quote')._lines.slice(0, 7) }) === false);
+
+// ---- d) 仪表盘（M2 · dashboard）：统计墙是页面主体 -------------------------------
+// 正样本：`_subject:dataset` + 页内至少两个「名称 + 带单位读数」的集合 ⇒ dashboard。
+// 负样本分开证明三点：dataset 的普通表仍是 table；只有名称的集合不是统计墙；
+// 只有一个统计集合是「表格带一节」，不是仪表盘（阈值 = 2）。
+const stat = (name, num, unit) => ({ _name: txt(name), _measure: { num, unit } });
+const walls = (name) => ({ _intent: 'wall', _items: [stat('Cellar', 85, 'm²'), stat('Porch', 251, 'm²')] });
+const dashboardPage = {
+  _subject: 'dataset', _title: txt('Stats'),
+  panels: { _intent: 'p', _items: [
+    { _name: txt('Wall A'), stats: walls('a') },
+    { _name: txt('Wall B'), stats: walls('b') },
+  ] },
+};
+const dashOut = pageLayoutOf(dashboardPage);
+check('_subject:dataset + 两个统计集合 ⇒ dashboard', dashOut.kind === 'dashboard' && dashOut.rule === 'subject:dataset-stat-walls', JSON.stringify(dashOut));
+
+const plainTable = {
+  _subject: 'dataset', _title: txt('Rows'),
+  rows: { _intent: 'r', _items: [
+    { _name: txt('alpha'), _detail: txt('one') },
+    { _name: txt('beta'), _detail: txt('two') },
+  ] },
+};
+const plainOut = pageLayoutOf(plainTable);
+check('NEGATIVE: dataset 页的普通表仍是 table（不是 dashboard）', plainOut.kind === 'table', JSON.stringify(plainOut));
+
+const namedOnly = {
+  _subject: 'dataset', _title: txt('Names'),
+  panels: { _intent: 'p', _items: [
+    { _name: txt('Wall A'), names: { _intent: 'n', _items: [{ _name: txt('alpha') }, { _name: txt('beta') }] } },
+    { _name: txt('Wall B'), names: { _intent: 'n', _items: [{ _name: txt('gamma') }, { _name: txt('delta') }] } },
+  ] },
+};
+const namedOut = pageLayoutOf(namedOnly);
+check('NEGATIVE: 只有名称的集合不是统计墙 ⇒ 不是 dashboard', namedOut.kind !== 'dashboard', JSON.stringify(namedOut));
+
+const oneWall = {
+  _subject: 'dataset', _title: txt('One wall'),
+  panels: { _intent: 'p', _items: [{ _name: txt('Wall A'), stats: walls('a') }] },
+};
+const oneOut = pageLayoutOf(oneWall);
+check('NEGATIVE: 只有一个统计集合（阈值 2）⇒ 不是 dashboard', oneOut.kind !== 'dashboard', JSON.stringify(oneOut));
 
 console.log(failed
   ? `\n构图推导自测: 失败 ${failed} 项`

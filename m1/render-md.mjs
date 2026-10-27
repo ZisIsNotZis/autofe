@@ -28,7 +28,7 @@ import {
   labelOf, labelTextOf, compareRowKeys, compareHeaderEntries, nestedCollections,
   CURRENCY_GLYPH, LIST_QUALIFIER, ROLE_UNIT, hasOwnUnit,
   itemActionPlan, controlItemPlan, nodePlan, runPlan, compareCellOf, resolveRowLabel, columnLabel, roleLabel, buildRefLabels,
-  hasValue, tableRowLabel, tableCellLinks,
+  hasValue, tableRowLabel, tableCellLinks, statGridOf,
 } from './axis.mjs';
 
 // `key:` label index (axis.mjs buildRefLabels) — held for the duration of one render.
@@ -169,6 +169,7 @@ function renderCompareTable(items, chain, ctx) {
 }
 
 function renderForm(form, items, chain, ctx, depth, node) {
+  if (form === 'stat-grid') return renderStatGrid(items);
   if (form === 'compare-table') return renderCompareTable(items, chain, ctx);
   if (form === 'image-strip') return items.map((it) => imageMd(it._image)).filter(Boolean).join('\n\n');
   if (form === 'prose') return items.map((it) => { const t = labelOf(it); return t ? fmt(t) : ''; }).filter(Boolean).join('\n\n');
@@ -208,6 +209,13 @@ function renderListItem(it, chain, ctx, bullet) {
   const a = itemActionPlan(it, chain, ctx.values);
   const name = a && a.hasTarget && !a.isControl ? controlMd({ label, hasTarget: true, href: a.href }) : label;
   return `${bullet} ${name}${ctl ? ' ' + ctl : ''}`.trim();
+}
+// 统计墙（M2 · dashboard）：共享计划 axis.statGridOf；Markdown 把每个统计写成
+// `- **名称:** 数值 单位`（名称是标签，单位紧跟数值）。名称/数值/单位一个都不丢。
+function renderStatGrid(items) {
+  const plan = statGridOf(items);
+  if (!plan) return '';
+  return plan.map((s) => `- **${fmt(s.name)}:** ${fmt(s.value)}`).join('\n');
 }
 function renderDeflist(items, chain, ctx) {
   return items.map((it) => {

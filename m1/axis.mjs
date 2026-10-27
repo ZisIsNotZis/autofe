@@ -93,9 +93,39 @@ export function isProseItem(it) {
   return f.length > 0 && f.every((x) => x.key === '_text') && !it._fields && childrenOf(it).length === 0 && !it._action;
 }
 
+// ---- stat wall (M2 · dashboard) --------------------------------------------
+// A stat is the smallest measured fact a dashboard shows: a NAME plus a typed
+// `_measure {num, unit}`, nothing else — no children, no action. The unit is the whole
+// point (a number without one is not a reading), so `hasOwnUnit` is part of the
+// predicate. The decision is a SET decision: a collection is a stat collection only
+// when EVERY member is a stat, and `statGridOf` returns the shared plan (one entry
+// per stat) that every target draws in its own notation.
+const STAT_KEYS = ['_name', '_measure'];
+export function isStatMember(it) {
+  if (!it || typeof it !== 'object' || Array.isArray(it)) return false;
+  if (!it._name || !it._measure || !hasOwnUnit(it._measure)) return false;
+  if (it._action || childrenOf(it).length) return false;
+  return factsOf(it).every((f) => STAT_KEYS.includes(f.key));
+}
+export function statGridOf(items) {
+  if (!Array.isArray(items) || !items.length || !items.every(isStatMember)) return null;
+  return items.map((it) => ({ name: it._name, value: it._measure }));
+}
+// A dashboard's PANEL container: a collection whose members each own a real collection.
+// The page frame (composition.md §3) lays those panels out as a 2-up section grid; the
+// decision names what a panel is, the target only draws the grid.
+export function panelGridOf(node) {
+  if (!node || !Array.isArray(node._items) || node._items.length < 2) return false;
+  if (!node._items.every((it) => it && typeof it === 'object' && (it._name || it._title))) return false;
+  let walls = 0;
+  for (const it of node._items) eachNode(it, (n) => { if (statGridOf(n._items)) walls++; });
+  return walls >= 2;
+}
+
 // ---- item-set form selection (F-030) ---------------------------------------
 export function selectForm(items, order) {
   if (!items.length) return 'none';
+  if (statGridOf(items)) return 'stat-grid';               // 带单位的统计值集合 ⇒ 统计墙（M2）
   if (items.every(isImageOnlyItem)) return 'image-strip';   // 图像主导 ⇒ 满幅（F-031-§7）
   if (items.every(isProseItem)) return 'prose';
   // Ordered paragraphs with locally owned source links remain a reading sequence.
@@ -1007,7 +1037,15 @@ export function nodePlan(node, ctx = {}) {
 //
 // `undefined` (never `default`) is the honest answer for a page the tree cannot name: the
 // intent gate reports 未定构图 instead of silently laying the page out as a plain document.
-export const PAGE_KINDS = ['authentication', 'search', 'profile', 'table', 'reading', 'product', 'detail', 'catalog', 'marketing'];
+export const PAGE_KINDS = ['authentication', 'search', 'profile', 'table', 'dashboard', 'reading', 'product', 'detail', 'catalog', 'marketing'];
+// How many distinct stat collections does the page's tree carry? Each `_items` array that
+// is ENTIRELY stats is one wall (the panel member itself is not counted twice).
+function statWallCount(model) {
+  let walls = 0;
+  eachNode(model, (n) => { if (statGridOf(n._items)) walls++; });
+  return walls;
+}
+
 // Long text is what a reader reads. The old measure counted `_text` alone, so a page that
 // keeps its prose in `_quote`/`_summary`/`_detail` was declared "not prose" (composition.md §2).
 const LONG_TEXT_KEYS = ['_text', '_quote', '_summary', '_detail'];
@@ -1103,6 +1141,12 @@ export function pageLayoutOf(model) {
   if (children.some((c) => declaresSearchResults(c.node))) return { kind: 'search', rule: 'search-results-binding' };
   if (model._scope === 'query') return { kind: 'search', rule: 'scope:query' };
   if (model._scope === 'account' || model._subject === 'account') return { kind: 'profile', rule: 'subject:account' };
+  // A dataset page BUILT AROUND measured walls is a dashboard, not a data table (M2):
+  // at least two distinct collections of named, unit-bearing stats in the page's own
+  // structure. One wall is a section (a table can carry one); two are the page's body.
+  // This branch sits BEFORE `subject:dataset` so the declaration still wins over the
+  // structural measure for a dataset page that has no such walls.
+  if (model._subject === 'dataset' && statWallCount(model) >= 2) return { kind: 'dashboard', rule: 'subject:dataset-stat-walls' };
   if (model._subject === 'dataset') return { kind: 'table', rule: 'subject:dataset' };
   if (children.some((c) => c.node._composite === 'table') && !hasPageSubject(model)) return { kind: 'table', rule: 'page-level-table' };
   if (model._scope === 'document' || model._subject === 'document') return { kind: 'reading', rule: 'subject:document' };

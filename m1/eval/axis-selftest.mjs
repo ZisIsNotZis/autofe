@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { render } from '../render.mjs';
 import { renderText } from '../render-text.mjs';
 import { renderMarkdown } from '../render-md.mjs';
-import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName, hasValue, tableRowLabel, exposeRendersAsControl, refRendersAsFact, CHOICE_CHIP_MAX } from '../axis.mjs';
+import { selectForm, comparable, compareSetVerdict, nodePlan, runPlan, compareHeaderEntries, compareRowKeys, resolveRowLabel, COMPARE_HEADER_KEYS, rankedSequence, isVisibleFieldName, hasValue, tableRowLabel, exposeRendersAsControl, refRendersAsFact, CHOICE_CHIP_MAX, pageLayoutOf, statGridOf } from '../axis.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
@@ -63,6 +63,8 @@ const SHARED_NAMES = [
   'hasValue', 'tableRowLabel',
   // round 49/50: a slot's ROLE (state|field|pointer, m1/composites.json) decides how its key renders
   'exposeRendersAsControl', 'refRendersAsFact',
+  // round 64 (M2): the dashboard stat-wall decision
+  'isStatMember', 'statGridOf', 'panelGridOf',
 ];
 for (const f of TARGETS) {
   const src = fs.readFileSync(path.join(root, 'm1', f), 'utf8');
@@ -922,6 +924,44 @@ const primaryActionRows = (model) => {
   check('W9 a DECLARED ranked leaderboard keeps its rank+thumbnail rows',
     selectForm(board, 'rank') === 'deflist' && boardHtml.includes('class="deflist ranked"') && boardHtml.includes('class="rank">1<'),
     boardHtml.match(/<div class="deflist[^"]*"[^>]*>/)?.[0] ?? '');
+}
+
+// Y. STAT WALLS (M2 · dashboard). One decision, three drawings: a collection whose every
+// member is `_name` + unit-bearing `_measure` is a stat grid on every target, and the page
+// that is built from two such walls resolves to the `dashboard` prototype. The name is the
+// stat's label; the role word for `_measure` must never leak beside it.
+{
+  const s = (name, num, unit) => ({ _name: { text: name }, _measure: { num, unit } });
+  const wall = (items) => ({ _intent: 'wall', _items: items });
+  const page = {
+    _intent: 'x', _scope: 'entity', _subject: 'dataset', _title: { text: 'Stats' },
+    panels: { _intent: 'p', _items: [
+      { _name: { text: 'Wall A' }, stats: wall([s('Cellar', 85, 'm²'), s('Porch', 251, 'm²')]) },
+      { _name: { text: 'Wall B' }, stats: wall([s('Backend-ops-01', 111, 'GB'), s('Frontend-web-03', 35.9, 'GB')]) },
+    ] },
+  };
+  const stats = page.panels._items.flatMap((p) => p.stats._items);
+  const layout = pageLayoutOf(page);
+  check('Y0 a dataset page built from two stat walls resolves to dashboard', layout.kind === 'dashboard' && layout.rule === 'subject:dataset-stat-walls', JSON.stringify(layout));
+  const collection = page.panels._items[0].stats._items;
+  check('Y1 the stat collection is ONE shared form (stat-grid)', selectForm(collection) === 'stat-grid', selectForm(collection));
+  check('Y1b statGridOf returns the shared plan (name + measure), not a renderer-local shape',
+    (() => { const p = statGridOf(collection); return Array.isArray(p) && p.length === 2 && p[0].name.text === 'Cellar' && p[0].value.unit === 'm²'; })());
+  const html = render(page), text = renderText(page), md = renderMarkdown(page);
+  const seen = (out, st) => out.includes(st._name.text) && out.includes(String(st._measure.num)) && out.includes(st._measure.unit);
+  check('Y2 all three targets carry every stat name, value and unit',
+    stats.every((st) => seen(html, st) && seen(text, st) && seen(md, st)),
+    JSON.stringify(stats.filter((st) => !(seen(html, st) && seen(text, st) && seen(md, st))).map((st) => st._name.text)));
+  check('Y3 HTML draws the stat wall as .stat-grid with one .stat per member',
+    (html.match(/class="stat-grid"/g) || []).length === 2 && (html.match(/class="stat"/g) || []).length === 4);
+  check('Y4 the stat name is its label — the `_measure` role word 规格 never leaks',
+    !html.includes('规格') && !text.includes('规格') && !md.includes('规格'));
+  // NEGATIVE CONTROL: the predicate above must be able to fail. Strip the units from the
+  // three outputs — exactly what a renderer that "forgot the unit" would produce — and the
+  // same cross-target assertion must reject it.
+  const unitless = (out) => out.replaceAll('m²', '').replaceAll('GB', '');
+  check('Y5 NEGATIVE CONTROL: a target that drops the unit fails Y2',
+    !stats.every((st) => seen(unitless(html), st) && seen(unitless(text), st) && seen(unitless(md), st)));
 }
 
 console.log(`\n轴一致性自测(三目标): ${bad === 0 ? '全部通过' : `待修 ${bad}`} (${assertions} 条断言)`);

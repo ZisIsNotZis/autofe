@@ -39,7 +39,7 @@
 
 ## 2. 构图必须完备，不得静默回落
 
-- 每个页面解析出恰好一个页面原型（闭式集合：`reading` / `catalog` / `marketing` / `detail` / `product` / `authentication` / `search` / `profile` / `table`），否则是**显式错误**。（`feed` 不是独立原型：它是 §3 里 catalog / feed / search 共用的框架族，今日语料 0 页需要单独原型。）
+- 每个页面解析出恰好一个页面原型（闭式集合：`reading` / `catalog` / `marketing` / `detail` / `product` / `authentication` / `search` / `profile` / `table` / `dashboard`），否则是**显式错误**。（`feed` 不是独立原型：它是 §3 里 catalog / feed / search 共用的框架族，今日语料 0 页需要单独原型。）
 - `default` 不是合法结果。解析不出原型 = 引擎错误（门禁失败），不是「普通页」；门禁在渲染上要求页面带上与其原型对应的页级类（`reading-page` / `<kind>-page`）。
 - **覆盖口径诚实**：40/40 是「声明 → 投影」检查，不是「从结构推导出原型」——40 页都声明了 `_scope`/`_subject`，因此测度分支在真实语料上 0 次触发；结构规则与含混负样本由自测行使（`composition-selftest.mjs`）。声明的**正确性**是策展事实，门禁只能保证声明不被静默改写。
 - **唯一实现**是 `m1/axis.mjs` 的 `pageLayoutOf`（返回 `kind` 与裁定它的 `rule`，裁不出时 `kind` 是 `undefined`）；门禁 `m1/eval/composition-selftest.mjs` 在 pipeline 里运行，断言 40 页各自落在其采集 archetype 的允许集内，并用含混负样本证明树会诚实返回 `undefined`。
@@ -58,6 +58,7 @@
 | detail | 媒体墙 + 主列 + 任务卡（右侧或栏内停靠） |
 | profile | 居中身份卡 + 统计块 + 活动 feed |
 | authentication | 居中表单卡 |
+| dashboard | 1160px 内容带内的面板区：面板 2 列（≤852 收 1 列），面板内统计墙 3 列（≤852 收 2 列、≤390 收 1 列） |
 
 - **区域（region）**：主列与侧栏是两个区域，侧栏内容不得在单列流里掉到正文之后。
 - **feed + 侧栏（两区帧）**：页面主体是**一个占优的集合**（成员数 ≥8 且 ≥ 次大集合的 2 倍）时，排在它**之后**的**短卡片小节**（单张卡片，或成员 ≤6 的短集合）进右栏（380px，滚动停靠），feed 占左主列；排在它之前的小节（视图切换、创作入口）留在主列、feed 之上。判定全属引擎侧（`m1/axis.mjs` 的 `feedRailOf`，规则名 `feed-and-side-cards`，模型不新增键）：同站没有站点名、没有逐页例外。两个反例保持单列（自测负样本）：并列集合（两个 feed 而非 feed+侧栏）、以及本来就有自己帧的原型（`search` 的结果行、`marketing` 的 band 序列不重切成两区）。链接列（纯目的地列表）与长文小节不是侧卡，留在主列、跟在两区之后，不因帧判定被吞掉。**覆盖口径诚实**：40 页里只有 `sspai-com/matrix` 触发（1/40），其余 39 页的单列形态不变。
@@ -130,8 +131,8 @@ S1/S2/S3 已消灭：构图静默回落、死分支、阅读判定只看 `_text`
 
 ## 8. 开放缺口（已知、暂不掩盖）
 
-- **dashboard/data-viz 无语法表达**：语料里唯一的 dashboard 页 `num 0`、无图表/序列/带单位的值原语；它现在只能落到 `table` 原型（框架未实现，S2）。需要一次图表原语的语法演化（n=1，先在结果里记录限制，不假装已解决）。
-- **框架缺口**：`search` / `table` / `profile` 原型尚无 CSS 框架（11/40 页带着无效果的页级类），由 S2 落地；门禁只查「CSS → 语料」方向，不查「页级类 → 有框架」。
+- **dashboard 已由 `_subject:dataset` + 统计墙表达（M2）**：页内至少两个「名称 + 带单位读数」（`_name` + `_measure{num,unit}`、无子件/无动作）的集合 ⇒ `dashboard`（规则 `subject:dataset-stat-walls`）；单个统计集合或普通数据表仍是 `table`。图表/序列原语仍缺：迷你图等未被采集为数据的面板只保留标题与已采集的读数，不伪造图表。
+- **页框已覆盖全部原型（S2）**：`search` / `table` / `profile` 等页级类都有自己的框架；门禁只查「CSS → 语料」方向，不查「页级类 → 有框架」；未被语料行使的 24 个选择器只作警告。
 - **`docs/design-system` 与 `article/editorial` 同属 document**：两者共用阅读框架；`docs/design-system` 在语料里 n=1，暂不单独建模。
 - **`table-heavy` 的表「角色」靠位置近似**（深度 1 的表=页级数据集，实体下的表=属性面板）；这是策展纪律，不是不变式。
 - **两处建模缺口（不是推导规则问题）**：`sspai-com/login` 缺 `login` 声明（推导按 `_scope:form` 判定）；`mi-com/search-phone` 缺查询态。

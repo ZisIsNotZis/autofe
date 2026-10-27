@@ -17,7 +17,7 @@
         "_action": { "verb": "operate", "label": "Refresh" }
       },
       {
-        "_name": { "text": "Enter edit mode" },
+        "_name": { "text": "Edit" },
         "_action": { "verb": "operate", "label": "Edit" }
       }
     ]
@@ -46,20 +46,149 @@
     ]
   },
   "panels": {
-    "_intent": "Stats 面板示例集：每个面板演示一种统计面板布局形态（介绍、彩色背景、基础、彩色数值、带图横向、横向、名称文本模式、自动网格、仅数值、无文本、名称含 emoji）",
+    "_intent": "Stats 面板示例集：按源站顺序演示统计面板的布局形态（介绍、彩色背景、基础、彩色数值、带图横向、横向、名称文本模式、自动网格、仅数值、无文本、名称含 emoji）",
     "_rel": { "order": "sequence" },
     "_items": [
-      { "_name": { "text": "Introduction" } },
-      { "_name": { "text": "Color background" } },
-      { "_name": { "text": "The Basics" } },
-      { "_name": { "text": "Color value" } },
-      { "_name": { "text": "Horizontal with graph" } },
-      { "_name": { "text": "Horizontal" } },
-      { "_name": { "text": "Text mode name" } },
-      { "_name": { "text": "Auto grid" } },
-      { "_name": { "text": "Value only" } },
-      { "_name": { "text": "No text" } },
-      { "_name": { "text": "Emoji in stat names" } }
+      {
+        "_name": { "text": "Introduction" },
+        "content": {
+          "_intent": "面板正文：示例说明，含指向 Stat Panel 文档的正文内链接",
+          "_title": { "text": "Stat Visualizations in Grafana" },
+          "_text": {
+            "text": "This dashboard is a series of examples showing you what you can do in practice with the Stat Panel visualization type in Grafana"
+          },
+          "statPanel": {
+            "_intent": "正文句子里的行内链接（目标逐字来自采集）",
+            "_name": { "text": "Stat Panel" },
+            "_action": {
+              "verb": "navigate",
+              "to": "https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/stat/",
+              "label": "Stat Panel"
+            }
+          },
+          "note": {
+            "_intent": "面板结尾的一句说明",
+            "_text": { "text": "Stats show one large stat value with an optional graph sparkline." }
+          }
+        }
+      },
+      {
+        "_name": { "text": "Color background" },
+        "stats": {
+          "_intent": "彩色背景模式的 6 个统计值（名称 + 带单位的读数）",
+          "_items": [
+            { "_name": { "text": "Cellar" }, "_measure": { "num": 85.0, "unit": "m²" } },
+            { "_name": { "text": "Living room" }, "_measure": { "num": 77.3, "unit": "m²" } },
+            { "_name": { "text": "Porch" }, "_measure": { "num": 251, "unit": "m²" } },
+            { "_name": { "text": "Bedroom" }, "_measure": { "num": 53.7, "unit": "m²" } },
+            { "_name": { "text": "Guest room" }, "_measure": { "num": 99.9, "unit": "m²" } },
+            { "_name": { "text": "Kitchen" }, "_measure": { "num": 48.8, "unit": "m²" } }
+          ]
+        }
+      },
+      {
+        "_name": { "text": "The Basics" },
+        "steps": {
+          "_intent": "基础用法的三条说明（源站为一个无序列表）",
+          "_rel": { "order": "sequence" },
+          "_items": [
+            {
+              "_text": {
+                "text": "Hover over any visualization, select the ... menu at the top right of the visualization > edit"
+              }
+            },
+            { "_text": { "text": "Check out how it's configured" } },
+            { "_text": { "text": "Try modifying the options on the right in the edit menu!" } }
+          ]
+        }
+      },
+      {
+        "_name": { "text": "Color value" },
+        "stats": {
+          "_intent": "彩色数值模式的 6 个统计值（名称 + 带单位的读数）",
+          "_items": [
+            { "_name": { "text": "Cellar" }, "_measure": { "num": 65.4, "unit": "m²" } },
+            { "_name": { "text": "Living room" }, "_measure": { "num": 60.8, "unit": "m²" } },
+            { "_name": { "text": "Porch" }, "_measure": { "num": 80.7, "unit": "m²" } },
+            { "_name": { "text": "Bedroom" }, "_measure": { "num": 49.3, "unit": "m²" } },
+            { "_name": { "text": "Guest room" }, "_measure": { "num": 63.5, "unit": "m²" } },
+            { "_name": { "text": "Kitchen" }, "_measure": { "num": 53.4, "unit": "m²" } }
+          ]
+        }
+      },
+      {
+        "_name": { "text": "Horizontal with graph" },
+        "stats": {
+          "_intent": "带迷你图的横向模式：7 台主机的磁盘读数；迷你图本身未被采集为数据，不伪造图表",
+          "_items": [
+            { "_name": { "text": "Backend-ops-01" }, "_measure": { "num": 111, "unit": "GB" } },
+            { "_name": { "text": "Backend-ops-02" }, "_measure": { "num": 108, "unit": "GB" } },
+            { "_name": { "text": "Backend-ops-03" }, "_measure": { "num": 290, "unit": "GB" } },
+            { "_name": { "text": "Backend-ops-04" }, "_measure": { "num": 70.1, "unit": "GB" } },
+            { "_name": { "text": "Frontend-web-01" }, "_measure": { "num": 90.3, "unit": "GB" } },
+            { "_name": { "text": "Frontend-web-02" }, "_measure": { "num": 57.0, "unit": "GB" } },
+            { "_name": { "text": "Frontend-web-03" }, "_measure": { "num": 35.9, "unit": "GB" } }
+          ]
+        }
+      },
+      {
+        "_name": { "text": "Horizontal" },
+        "stats": {
+          "_intent": "横向模式的 7 个统计值（名称 + 带单位的读数）",
+          "_items": [
+            { "_name": { "text": "A-series" }, "_measure": { "num": 5.15, "unit": "m²" } },
+            { "_name": { "text": "B-series" }, "_measure": { "num": 3.44, "unit": "m²" } },
+            { "_name": { "text": "C-series" }, "_measure": { "num": 27.2, "unit": "m²" } },
+            { "_name": { "text": "D-series" }, "_measure": { "num": 80.1, "unit": "m²" } },
+            { "_name": { "text": "E-series" }, "_measure": { "num": 57.9, "unit": "m²" } },
+            { "_name": { "text": "F-series" }, "_measure": { "num": 26.0, "unit": "m²" } },
+            { "_name": { "text": "G-series" }, "_measure": { "num": 38.8, "unit": "m²" } }
+          ]
+        }
+      },
+      {
+        "_name": { "text": "Text mode name" },
+        "names": {
+          "_intent": "文本模式只显示名称：7 个名称，采集未带数值（不补值）",
+          "_rel": { "order": "sequence" },
+          "_items": [
+            { "_name": { "text": "Backend-ops-01" } },
+            { "_name": { "text": "Backend-ops-02" } },
+            { "_name": { "text": "Backend-ops-03" } },
+            { "_name": { "text": "Backend-ops-04" } },
+            { "_name": { "text": "Frontend-web-01" } },
+            { "_name": { "text": "Frontend-web-02" } },
+            { "_name": { "text": "Frontend-web-03" } }
+          ]
+        }
+      },
+      {
+        "_name": { "text": "Auto grid" },
+        "stats": {
+          "_intent": "自动网格模式的 7 个统计值（名称 + 带单位的读数）",
+          "_items": [
+            { "_name": { "text": "A-series" }, "_measure": { "num": 4.12, "unit": "m²" } },
+            { "_name": { "text": "B-series" }, "_measure": { "num": 48.5, "unit": "m²" } },
+            { "_name": { "text": "C-series" }, "_measure": { "num": 94.2, "unit": "m²" } },
+            { "_name": { "text": "D-series" }, "_measure": { "num": 65.2, "unit": "m²" } },
+            { "_name": { "text": "E-series" }, "_measure": { "num": 50.9, "unit": "m²" } },
+            { "_name": { "text": "F-series" }, "_measure": { "num": 16.1, "unit": "m²" } },
+            { "_name": { "text": "G-series" }, "_measure": { "num": 49.2, "unit": "m²" } }
+          ]
+        }
+      },
+      {
+        "_name": { "text": "Value only" },
+        "_intent": "采集缺口：仅数值模式的面板内容在采集中为空（无可建模的数值），只保留面板标题"
+      },
+      {
+        "_name": { "text": "No text" },
+        "_intent": "采集缺口：无文本模式的面板内容在采集中为空（无可建模的数值），只保留面板标题"
+      },
+      {
+        "_name": { "text": "Emoji in stat names" },
+        "_intent": "采集缺口：名称含 emoji 模式的面板内容在采集中为空（无可建模的数值），只保留面板标题"
+      }
     ]
   }
 }
