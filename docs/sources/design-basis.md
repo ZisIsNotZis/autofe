@@ -1,4 +1,9 @@
-# AutoFE 设计基线
+# AutoFE 设计基线（研究源，2026-09）
+
+> **SOURCE, not a fact home.** The decisions this document argued for now live in `docs/3_REQUIREMENT.md`
+> and `docs/5_PRODUCT.md`; the technical rules live in `docs/m1/*.md`. Kept as the research record
+> (open questions, rejected alternatives, the arguments that settled them). If it conflicts with the
+> chain docs, the chain docs win.
 
 状态：brainstorm 收敛稿，经一轮对抗审查（reviewer，独立上下文）后修订。标 `[开放]` 的条目尚未定案。
 溯源：取代早期草稿 `docs/sources/draft-doubao.md`（保留作溯源）。
@@ -164,7 +169,7 @@
 
 ## 9. Milestones（第一大目标 = 元语）
 
-> 当前**执行顺序**（先修引擎构图错误，再加构图框架与设计语言，最后铺开与交付）见 `docs/product.md` §5。本节是研究里程碑，不替代 §3 的唯一交付里程碑。
+> 当前**执行顺序**（先修引擎构图错误，再加构图框架与设计语言，最后铺开与交付）见 `docs/0_ROADMAP.md`。本节是研究里程碑，不替代 §3 的唯一交付里程碑。
 
 - **M0** 分类 + 分层语料 + 采集管线。判据：覆盖到分类、管线可复现。
 - **M1** 第一版语法 + **最小渲染器**（单设备原型）+ 手写编码 5–10 页。判据：**能渲染出来**且匹配标注角色；无逃生口；产出失败日志。

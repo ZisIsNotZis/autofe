@@ -1,4 +1,9 @@
-# AutoFE 产品层：交付承诺、里程碑与执行路线
+# AutoFE 产品层（2026-10 原始记录）
+
+> **SOURCE, not a fact home.** Its current facts were migrated on 2026-10-27 into `docs/2_GOAL.md`
+> (the Goal), `docs/3_REQUIREMENT.md` (acceptance and constraints), `docs/5_PRODUCT.md` (product
+> decisions) and `docs/0_ROADMAP.md` (M1 delivery and its review state). Kept verbatim as the record
+> of what the user confirmed; if it conflicts with the chain docs, the chain docs win.
 
 状态：当前事实（就地重写，不带历史叙事；历史见 `.scratch/` 工作记录）。
 溯源：交付承诺与验收判据源自用户确认（2026-10 记录于 62 号工作票据，迁入本文件作为唯一家）。执行路线在 2026-10 依据「先修错、再加能力」的用户指示重排。

@@ -2,9 +2,10 @@
 
 ## Scope
 
-AutoFE is a closed, single-author research codebase (see `docs/product.md` §1: the product is a
-curated gallery for one user, and publication is a separate authorisation). The engine, the
-grammar and the curated corpus are therefore not open to external pull requests.
+AutoFE is a closed, single-author research codebase (see `docs/3_REQUIREMENT.md` and
+`docs/5_PRODUCT.md`: the product is a curated gallery for one user, and publication is a separate
+authorisation). The engine, the grammar and the curated corpus are therefore not open to external
+pull requests.
 
 Two kinds of input are welcome:
 
@@ -29,7 +30,8 @@ node m1/eval/pipeline.mjs --shots           # also re-shoot PNGs and rebuild the
 ```
 
 Exit code 0 means every gate passed. A change is not done because the pipeline is green — the gates
-are a necessary condition, not a sufficient one (`docs/product.md` §2). Visual changes are reviewed
+are a necessary condition, not a sufficient one (`docs/3_REQUIREMENT.md`, the user's acceptance
+list). Visual changes are reviewed
 against the original page, side by side:
 
 ```sh

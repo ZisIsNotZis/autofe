@@ -4,7 +4,7 @@ Renders a stratified page set headlessly and stores DOM + accessibility tree + J
 screenshots + per-element geometry/style, all aligned. Node only, no dependencies: it uses
 the already-installed browser and `playwright-core` from disk and installs nothing.
 
-Ticket: `.scratch/01-corpus-pipeline/spec.md` (M0). Design context: `docs/design-basis.md` §7–§8.
+Ticket: `.scratch/01-corpus-pipeline/spec.md` (M0). Design context: `docs/sources/design-basis.md` §7–§8.
 
 ## Usage
 
