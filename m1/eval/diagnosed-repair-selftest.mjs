@@ -3,13 +3,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
-import { createRequire } from 'node:module';
 import { render } from '../render.mjs';
 import { renderMarkdown } from '../render-md.mjs';
 import { renderText } from '../render-text.mjs';
 import { selectForm, tableLinkPair, namedChildEntries, tableCellLinks } from '../axis.mjs';
 import { auditPage } from './quote-selftest.mjs';
 import { quoteEvidence } from './quote-evidence.mjs';
+import { launchBrowser } from './browser.mjs';
 import { verifyIconBinding } from './icon-provenance.mjs';
 const load = (k) => JSON.parse(fs.readFileSync(`m1/curated/${k}.json`));
 const clean = (s) => s.replace(/\s+/g,'').toLowerCase();
@@ -47,10 +47,7 @@ const briefModel = load('sspai-com/post-114699'), briefs = briefModel.briefs._li
 check('eight complete ordered brief members, no duplicate body', briefs.length===8 && !briefModel.briefs._items && briefs.every((n)=>n._text && n['link-0']));
 check('ordered linked paragraphs choose stack in shared form', selectForm(briefs,'sequence') === 'stack');
 check('compact utility controls stay controls', selectForm([{_title:{text:'One'},_action:{verb:'navigate',to:'/one'}},{_title:{text:'Two'},_action:{verb:'navigate',to:'/two'}}],'set') === 'controls');
-const require = createRequire(import.meta.url);
-const { chromium } = require(process.env.AUTOFE_PLAYWRIGHT_CORE || '/home/z/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
-const executablePath = process.env.AUTOFE_CHROME_PATH || (process.env.HOME+'/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
-const browser = await chromium.launch({executablePath,headless:true,args:['--no-sandbox']});
+const browser = await launchBrowser();
 try {
   const page = await browser.newPage(); await page.route('**/*',r=>r.abort());
   const dom = fs.readFileSync('corpus/sspai-com/post-114699/dom.html','utf8');

@@ -1,0 +1,39 @@
+# WP2.5 empty-env proof — every command below is run as:
+#   env -u AUTOFE_CHROME_PATH -u AUTOFE_PLAYWRIGHT_CORE <command>
+
+## node m1/eval/pipeline.mjs  -> exit 0
+视觉自查: 40/40 干净
+[pipeline] 证据一致性（PNG ⇄ HTML）: 通过（40 页与截图同源, 画廊 v=mvqrsrn6）
+   · 提示（不判失败）: 36kr-com/search-ai — HTML 比 PNG 新 837 秒（两向哈希都与清单一致，仅提示）
+   · 提示（不判失败）: 36kr-com/search-viz — HTML 比 PNG 新 836 秒（两向哈希都与清单一致，仅提示）
+   · 提示（不判失败）: airbnb-com/room-28871 — HTML 比 PNG 新 836 秒（两向哈希都与清单一致，仅提示）
+   · 提示（不判失败）: aliyun-com/home — HTML 比 PNG 新 834 秒（两向哈希都与清单一致，仅提示）
+   · 提示（不判失败）: aliyun-com/product-ecs — HTML 比 PNG 新 834 秒（两向哈希都与清单一致，仅提示）
+   · 另 34 页 HTML 比 PNG 新（仅提示，不判失败）
+
+## node tools/capture/index.mjs --dry-run  -> exit 0
+taxonomy: 10 archetypes from tools/capture/archetypes.md
+selection: 120 pages / 50 sites / 10 archetypes
+dry run written to corpus/robots-dry-run.json
+
+## node m1/eval/taste-selftest.mjs  -> exit 0
+PASS page-level taste regressions: 271 assertions; 40 exemplar pages + 6 owner pages pinned + 4 bounded negative controls; no experience verdict.
+
+## node m1/eval/no-upscale-selftest.mjs  -> exit 0
+PASS no-upscale: 6 passed, 0 failed (measured in Chromium)
+
+## node m1/eval/page-frame-selftest.mjs  -> exit 0
+PASS page-frame/action regressions: 4219 assertions; Chromium 2560/1920/1440/390; no experience verdict.
+
+## node m1/eval/intent-audit-selftest.mjs  -> exit 0
+意图门禁自测: 42/42 控制项通过
+
+## node m1/eval/shots-selftest.mjs  -> exit 0
+证据门禁自测（哈希优先）: 8/8 通过
+
+## node m1/eval/imgattr-selftest.mjs  -> exit 0
+归属工具自测: 全部通过 (13 条断言)
+
+## node m1/eval/media-role-measure.mjs  -> exit 0
+upscale violations: 0
+

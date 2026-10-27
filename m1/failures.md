@@ -801,3 +801,21 @@
 - **发现**：① `36kr.com` 首页/科技频道对声明式 UA（`AutoFE-Research-Bot/0.1`）返回导航壳（重复导航、零 feed；12s 等待 + 普通 UA 可得全文 ⇒ 站点对声明 bot 降级）；② `accounts.stripe.com/login` 反爬壳（15s 后仅 197 字符 0 输入框）；③ `apple.com/iphone-16` 301 → shop goto URL 持续 503（3 次跨 10 分钟）。
 - **处置（D-63c/D-63d，主代理裁定）**：诚实 UA 不改（不伪装身份换内容）。退役 4 页：`36kr-com/home`、`36kr-com/information-technology`（36kr 两个 search 页仍可采、保留）、`apple-com/iphone-16`、`stripe-dashboard/login`；替换 2 页：`apple-com/airpods-pro`（product-detail，HTTP 200）、`sspai-com/login`（form/checkout/settings，robots 允许；login.taobao.com 整站 Disallow 故不可用）。门禁分母 42 → **40**（待 2 新页策展后计入）。
 - **影响面**：`m3-scale.json`、`sites.json`（skip + notes）、对应 curated 模型/renders 已删；旧"42/42"口径全部作废，以本轮重跑为准。
+
+## F-101 `num` 不能承载源站的小数位写法（仪表盘读数 `85.0` 落成 `85`）
+- **发现于**：M2 统计墙（轮 64）。Grafana Stats 页的读数在采集中是 `85.0`、`57.0`、`26.0`（源站按有效数字格式化），但 `{"num": 85.0}` 在 JSON 解析后就是 IEEE double `85`，类型化值没有保存“词法精度”的位置；`_measure` 只允许 `{num, unit}`（`model-lib.mjs VALUE_SHAPE`），`num` 必须是 number。
+- **为什么不能补 `.0`**：第 1 道保真门禁（`metrics.mjs isRendered`）按**模型数值的 token 边界**认渲染：模型 `85` 在渲染里必须出现为独立的 `85` token；渲染成 `85.0` 时 `85` 的右邻是 `.0`（数字延续），会被判**未渲染**、保真 < 1.00。所以“按源站补尾零”不是展示选择，而是会让门禁失败的伪造精度。
+- **处置（不是语法逃生口）**：模型保存采集到的数值（`85`、`5.15`、`57.9`、`3.44` …），渲染按数值本身输出；尾零属于源站的格式化约定，不进入事实层。已采集的小数精度（`5.15`/`57.9`/`3.44`/`70.1`/`35.9`）逐字保留，capture-integrity 数值比对 0 未命中。
+- **若要根治**：需要类型化值支持“显示精度”（例如 `num` 的封闭 `precision` 字段或 `text` 形态的受限读数），属语法变更，走失败日志 → 审查；本轮不即席添加。
+
+## F-102 仪表盘面板的格式选项未采集：色块 / 迷你图 / 三个空面板（轮 65）
+- **发现于**：M2 仪表盘独立视觉复核（`.scratch/65-dashboard-review/report.md`）。Grafana Stats 页的面板语义有一半是**格式演示**：`Color background` / `Color value` 用彩色单元格，`Horizontal with graph` 带 sparkline；采集只拿到名称与读数，没拿到单元格颜色、序列或 sparkline。
+- **另一处**：`Value only` / `No text` / `Emoji in stat names` 三个面板的 body 在采集里是空元素（`nodes.json` 有 464×334 / 550×334 / 1022×258 的 body 盒，元素内容未落盘），页面只能保留标题。渲染把无 body 的面板画成**紧凑标题条**（虚线细框，无卡片阴影），不伪造内容、不隐藏标题；缺口登记在 `m1/curated/curation-log-m2.md`。
+- **不修的理由**：颜色/序列/迷你图不是 `nodes.json` 的事实；从截图取色或画假 sparkline 会违反 capture=truth。根治需要采集层把 panel body 的元素、颜色与序列落盘（采集保真工作包），以及一个闭式 chart/series 原语；两者都不在本轮即席添加。
+- **状态**：已登记，未修；影响面仅 `grafana-play/play-home` 的三个标题与三处格式演示。
+
+## F-103 品味自测在图片到达前量瀑布流，偶发误报（轮 65）
+- **发现于**：M2 发布空环境复跑时，`taste-selftest.mjs` 一次在 `apple-com/home` 报「waterfall of 6 has no orphan column (3 columns [1,2,3])」，同一代码随后带/不带环境变量各跑一次均通过。页面 HTML 未变。
+- **根因**：`taste-selftest` 用 `page.setContent(..., {waitUntil:'domcontentloaded'})` 后立即量几何；页面热链源站 CDN 图片，模型不带宽高，图片未到时卡片高度是 0，瀑布流列数因此变化。这是**测试的时序缺陷**，不是页面布局回归。
+- **修**：`load()` 在 `setContent` 后等待 `document.images` 全部 load/error，每张上限 5s；超时按网络事实处理，不让 CDN 拖死门禁。带/不带环境变量各跑一次均 271 断言通过。
+- **教训**：依赖外部图片几何的门禁必须先等图片落定；否则「通过」与「失败」都可能是网络时序，不是页面事实。

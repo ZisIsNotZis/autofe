@@ -2,8 +2,8 @@
 // is a falsification gate, not experience acceptance. No generated gallery writes.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { createRequire } from 'node:module';
 import { render } from '../render.mjs';
+import { launchBrowser } from './browser.mjs';
 import { renderMarkdown } from '../render-md.mjs';
 import { renderText } from '../render-text.mjs';
 import { hasTarget, nodePlan, selectForm, feedRailOf, matrixColumns } from '../axis.mjs';
@@ -93,11 +93,9 @@ for (const site of fs.readdirSync(new URL('../curated/', import.meta.url))) {
 }
 check('the feed+rail frame claims exactly the one catalog feed page (1/40)', framed.join() === 'sspai-com/matrix');
 
-const pw = process.env.AUTOFE_PLAYWRIGHT_CORE || (process.env.HOME + '/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
-const chrome = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
-assert.ok(fs.existsSync(pw) && fs.existsSync(chrome), 'Chromium required; static fallback cannot certify frame geometry');
-const { chromium } = createRequire(import.meta.url)(pw);
-const browser = await chromium.launch({ executablePath: chrome, args: ['--no-sandbox'] });
+// Chromium is required; a static fallback cannot certify frame geometry. The shared resolver
+// reports an actionable install error.
+const browser = await launchBrowser();
 try {
   const page = await browser.newPage();
   const fixture = { _title: { text: 'Mixed frame' }, _summary: { text: 'Same owning frame.' }, choice,

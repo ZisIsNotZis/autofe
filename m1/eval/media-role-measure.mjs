@@ -12,11 +12,8 @@
 // Exit 0 = no upscale anywhere and every role has media; 1 = an upscaled image or a hard error.
 import fs from 'node:fs';
 import path from 'node:path';
-import { createRequire } from 'node:module';
 
-const require = createRequire(import.meta.url);
-const PW = process.env.AUTOFE_PLAYWRIGHT_CORE || (process.env.HOME + '/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
-const CHROME = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell');
+import { launchBrowser } from './browser.mjs';
 
 const args = process.argv.slice(2);
 const widthArg = args.find((a) => a.startsWith('--width='));
@@ -30,13 +27,13 @@ if (!files.length) {
   files = scale.map((x) => `${RENDERS}/${x.k.replace(/\//g, '-')}.html`);
 }
 
-if (!fs.existsSync(PW) || !fs.existsSync(CHROME)) {
-  console.log(`SKIP media-role-measure: playwright (${PW}) or chromium (${CHROME}) not found`);
+let b;
+try {
+  b = await launchBrowser();
+} catch (error) {
+  console.log(`SKIP media-role-measure: ${String(error.message).split('\n')[0]}`);
   process.exit(0);
 }
-const { chromium } = require(PW);
-
-const b = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
 const p = await b.newPage({ viewport: { width: WIDTH, height: 1000 } });
 const perRole = new Map();
 const violations = [];

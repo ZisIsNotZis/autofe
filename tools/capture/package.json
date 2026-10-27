@@ -1,7 +1,7 @@
 {
   "name": "capture",
   "version": "1.0.0",
-  "description": "Renders a stratified page set headlessly and stores DOM + accessibility tree + JSON-LD + screenshots + per-element geometry/style, all aligned. Node only, no dependencies: it uses the already-installed browser and `playwright-core` from disk and installs nothing.",
+  "description": "Renders a stratified page set headlessly and stores DOM + accessibility tree + JSON-LD + screenshots + per-element geometry/style, all aligned. Node only; playwright-core and the headless browser are resolved from this directory (npm --prefix tools/capture install).",
   "main": "index.js",
   "directories": {
     "lib": "lib"

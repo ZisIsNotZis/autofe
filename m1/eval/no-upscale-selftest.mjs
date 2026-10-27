@@ -14,8 +14,8 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import zlib from 'node:zlib';
-import { createRequire } from 'node:module';
 import { render } from '../render.mjs';
+import { launchBrowser } from './browser.mjs';
 
 let passed = 0, failed = 0;
 function assert(cond, msg) {
@@ -58,27 +58,30 @@ const style = (HTML.match(/<style>([\s\S]*?)<\/style>/) || [, ''])[1];
 }
 
 // ---- B. CONSTRUCTION: 200px image in a 1000px container displays at <=200px ----------
-const PW = process.env.AUTOFE_PLAYWRIGHT_CORE || (process.env.HOME + '/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
-const CHROME = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
 let browserMeasured = false;
-if (fs.existsSync(PW) && fs.existsSync(CHROME)) {
-  const { chromium } = createRequire(import.meta.url)(PW);
+let browser = null;
+try {
+  browser = await launchBrowser();
+} catch (error) {
+  console.log(`  skip Chromium measurement (${String(error.message).split('\n')[0]}) — cascade check above still enforced`);
+}
+if (browser) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'autofe-upscale-'));
   // container is forced to 1000px so the old `width:100%` rule would have produced 1000px.
   const page = '<!doctype html><html><head><meta charset=utf-8><style>' + style + 'main{max-width:none}#c{width:1000px}</style></head><body><main><div id="c"><div class="fact"><span class="val">' + HTML.match(/<img[^>]*>/)[0] + '</span></div></div></main></body></html>';
   const f = path.join(dir, 'page.html'); fs.writeFileSync(f, page);
-  const b = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
-  const p = await b.newPage({ viewport: { width: 1200, height: 400 } });
-  await p.goto('file://' + f);
-  const r = await p.evaluate(() => { const im = document.images[0]; const bb = im.getBoundingClientRect(); return { nw: im.naturalWidth, dw: Math.round(bb.width), cw: document.getElementById('c').getBoundingClientRect().width }; });
-  await b.close();
-  browserMeasured = true;
-  assert(r.cw === 1000, `container is 1000px wide by construction (got ${r.cw})`);
-  assert(r.nw === 200, `image natural width is 200px (got ${r.nw})`);
-  assert(r.dw <= 200, `200px image in a 1000px container displays at <=200px (got ${r.dw})`);
-  fs.rmSync(dir, { recursive: true, force: true });
-} else {
-  console.log('  skip Chromium measurement (playwright/chrome not found) — cascade check above still enforced');
+  try {
+    const p = await browser.newPage({ viewport: { width: 1200, height: 400 } });
+    await p.goto('file://' + f);
+    const r = await p.evaluate(() => { const im = document.images[0]; const bb = im.getBoundingClientRect(); return { nw: im.naturalWidth, dw: Math.round(bb.width), cw: document.getElementById('c').getBoundingClientRect().width }; });
+    browserMeasured = true;
+    assert(r.cw === 1000, `container is 1000px wide by construction (got ${r.cw})`);
+    assert(r.nw === 200, `image natural width is 200px (got ${r.nw})`);
+    assert(r.dw <= 200, `200px image in a 1000px container displays at <=200px (got ${r.dw})`);
+  } finally {
+    await browser.close();
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 }
 
 console.log(`\n${failed ? 'FAIL' : 'PASS'} no-upscale: ${passed} passed, ${failed} failed${browserMeasured ? ' (measured in Chromium)' : ' (cascade-only)'}`);

@@ -16,15 +16,15 @@
 //                    能力；死代码只作可见警告。`--strict-dead` 可把它提升为阻断（将来的清理用）。
 // 计数口径：同一页上的同一缺陷只在最有力的一类里计一次（c 与 d 的 aspect-ratio 同源），
 // 所以汇总总数是「去重后的不同发现」之和，不是各节行数的简单相加。
-// 依赖：Playwright（AUTOFE_CHROME_PATH / AUTOFE_PLAYWRIGHT_CORE，回退同 audit-visual.mjs）。
+// 依赖：Playwright（统一解析见 m1/eval/browser.mjs：AUTOFE_CHROME_PATH / AUTOFE_PLAYWRIGHT_CORE 可覆盖）。
 // 用法: node m1/eval/intent-audit.mjs [--strict-dead]
 //   退出码 0 = 无阻断错误（只有警告也算 0），1 = 有阻断错误，2 = 环境缺失
 //   --strict-dead: 死选择器由警告提升为阻断（默认关闭；开着时警告也判 1）。
 import fs from 'node:fs';
 import path from 'node:path';
-import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { pageLayoutOf, isImageOnlyItem } from '../axis.mjs';
+import { launchBrowser } from './browser.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..', '..');
@@ -442,10 +442,6 @@ export function loadPages() {
 
 async function main() {
   const strictDead = process.argv.includes('--strict-dead');
-  const require = createRequire(import.meta.url);
-  const PW = process.env.AUTOFE_PLAYWRIGHT_CORE || (process.env.HOME + '/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
-  const CHROME = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
-
   const rules = parseCss(engineCss());
   const pages = loadPages();
 
@@ -459,8 +455,7 @@ async function main() {
 
   let budget;
   try {
-    const { chromium } = require(PW);
-    budget = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
+    budget = await launchBrowser();
   } catch (e) {
     console.error(`意图门禁: 无法启动浏览器（${String(e.message).split('\n')[0]}）—— 运行时检查未执行，不能判通过`);
     return 2;

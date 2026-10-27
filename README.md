@@ -17,12 +17,9 @@
 ```sh
 git clone https://github.com/ZisIsNotZis/autofe.git
 cd autofe
-node m1/eval/pipeline.mjs          # render every curated model + run the gates (~1 min)
 ```
 
-No `npm install` — the grammar, the validator and the three renderers have no dependencies.
-
-Render one page, or check one model:
+**Zero-install track** — the grammar, the validator and the three renderers have no dependencies:
 
 ```sh
 node m1/render.mjs m1/curated/gov-uk/ni-rates-letters.json /tmp/ni-rates.html
@@ -30,16 +27,27 @@ node m1/render-md.mjs m1/curated/sspai-com/post-114716.json /tmp/post.md
 node m1/validate.mjs m1/curated/*/*.json
 ```
 
+**Full-gate track** — the pipeline's browser gates (visual self-audit, geometry self-tests, intent gate) need `playwright-core` and a headless Chromium. Install them once; nothing else is downloaded:
+
+```sh
+npm --prefix tools/capture install
+node tools/capture/node_modules/playwright-core/cli.js install chromium-headless-shell
+node m1/eval/pipeline.mjs          # render every curated model + run all gates (~1 min)
+```
+
+No environment variables are needed: every tool resolves `playwright-core` from `tools/capture/node_modules` and lets Playwright find the browser it installed. To use a browser that already exists on disk, set `AUTOFE_CHROME_PATH` (and `AUTOFE_PLAYWRIGHT_CORE` for a different `playwright-core`) instead of installing. `--shots` and the visual tools need the browser; the zero-install track above does not.
+
 ## What it can do now
 
 - **A closed grammar for page meaning.** Models use reserved `_`-keys only (`_intent`, `_scope`, `_subject`, `_rel`, `_when`, `_expose`, `_fields`, `_primary`, `_empty`, `_items`, `_lines`, `_action`). An unknown key is a hard error, not a warning — the grammar has no escape hatch for styling.
 - **Three render targets from one model.** HTML (`m1/render.mjs`), plain text (`m1/render-text.mjs`) and GFM Markdown (`m1/render-md.mjs`). Each imports `m1/axis.mjs` and `m1/model-lib.mjs` and **never** another renderer; renderer code contains zero model-semantic tokens.
-- **Page archetypes derived, not declared by hand.** `_scope`/`_subject` determine a page frame (marketing, catalog, search, reading, profile, table, detail) and a two-zone feed+rail or mosaic layout; `default` is no longer a legal outcome.
-- **Schema-checked composite primitives.** `m1/composites.json` declares `search`, `table`, `login`, `paginator` and `form` as named expansions with typed slots, so a model that claims a composite but misses a slot fails validation with a path.
+- **Page archetypes derived, not declared by hand.** `_scope`/`_subject` determine a page frame (marketing, catalog, search, reading, profile, table, detail, authentication, dashboard) and a feed+rail, mosaic or panel-board layout; `default` is no longer a legal outcome.
+- **Dashboards are declarable, not chart-shaped.** A page built from two or more stat walls — named readings with a unit — resolves to a `dashboard` frame: a two-column panel board, a three-column stat grid (3/2/2 columns at 1160/852/390), the name printed as the label and the value + unit as one reading. The Grafana Stats page carries its 33 captured readings; a chart/series primitive is not claimed.
+- **Schema-checked composite types.** `m1/composites.json` declares `search`, `table`, `login`, `paginator` and `form` as closed types with typed slots, so a model that claims a composite but misses a slot fails validation with a path.
 - **Deterministic output.** Same model + same context ⇒ byte-identical HTML. The renderers are pure functions: no AI, no network, no clock.
 - **26 gates, each with a negative control.** Fact fidelity (HTML and Markdown), source coverage, capture↔model integrity, no image upscaling, link coverage/ownership, label language, quotes, affordance, composition, page frame, taste geometry, and a screenshot⇄HTML hash manifest that refuses to pass when a PNG no longer matches the page it claims to show.
 - **A capture pipeline built on real sites.** `tools/capture/` drives a local `chrome-headless-shell` through `playwright-core` to record DOM, accessibility tree, JSON-LD, screenshots and per-element geometry, honouring robots decisions, host pacing, artifact caps, and recording every failure in `corpus/failures.json`.
-- **Evidence you can look at.** 41 curated models across 19 sites, their renders, and a side-by-side “original | render” gallery (`node m1/eval/side-by-side.mjs`).
+- **Evidence you can look at.** 40 curated pages across 19 sites, their renders, and a side-by-side “original | render” gallery (`node m1/eval/side-by-side.mjs`). The dashboard exemplar is `grafana-play/play-home`, with 33 captured name/value/unit readings.
 
 ## How it works
 
@@ -83,7 +91,7 @@ node m1/eval/side-by-side.mjs [site/page ...]  # “original | render” compari
 node m1/eval/three-target-preview.mjs          # regenerate docs/three-targets.md from real output
 ```
 
-Anything that needs a browser (`--shots`, `side-by-side`, the visual audit) uses a browser already on disk; point it explicitly with:
+`--shots`, `side-by-side` and the visual audit need a browser; the full-gate install in [Quick start](#quick-start) provides it and no environment variable is required. For a browser and `playwright-core` that already exist elsewhere, point at them explicitly; the shared resolver in `m1/eval/browser.mjs` is used by every browser-backed tool:
 
 ```sh
 AUTOFE_CHROME_PATH=/path/to/chrome-headless-shell \
@@ -101,23 +109,23 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). The project is currently a closed, singl
 **Implemented**
 
 - Closed grammar, validator, and three isomorphic render targets sharing one decision layer.
-- Page composition derivation (seven page frames, feed+rail, centered reading column, mosaic) and the intent gate that fails when a declared composition is not delivered at runtime.
-- Composite primitives: `search`, `table`, `login`, `paginator`, `form` with schema-checked slots.
-- Corpus capture pipeline with robots, pacing and failure accounting; 41 curated models across 19 sites.
+- Page composition derivation (the page frames: marketing, catalog, search, reading, profile, table, detail, authentication, dashboard; feed+rail, centred reading column, mosaic, stat wall) and the intent gate that fails when a declared composition is not delivered at runtime.
+- Composite types: `search`, `table`, `login`, `paginator`, `form` with schema-checked slots.
+- Corpus capture pipeline with robots, pacing and failure accounting; 40 curated pages across 19 sites.
 - Design language: Chinese-aware type scale, band rhythm, brand accent tokens measured from captured chrome, media role sizing, no-upscale rule.
 - Evidence gates, gallery and side-by-side delivery artifacts.
 
 **Planned**
 
-- Dashboard / data-viz primitives — the corpus has a dashboard page but the grammar has no chart, series or unit-bearing value primitive.
-- Prototype-specific frames for `search`, `table` and `profile`, which today only have the generic frame.
+- A closed chart/series primitive — the dashboard stat panels are declarable now, but a sparkline or series still has no typed data form. Not to be faked with escaped SVG.
 - `_region` as a semantic declaration, replacing the two-zone layout that is currently inferred from structure.
-- Capture fidelity: image `src`/`alt` on captured nodes, collapsed panels captured element-by-element, the 1000-character node-text cap.
+- Capture fidelity: panel bodies/options, image `src`/`alt` on captured nodes, collapsed panels captured element-by-element, the 1000-character node-text cap.
+- Numeric display precision (F-101: `85.0` renders as `85` because a typed `num` has no lexical form) as a closed presentation field, if the user wants it.
 - M5 brand layer: currency glyphs, type scale and radius tokens.
 
 The direction is that a backend should never have to describe pixels: as the primitive vocabulary grows, more of a real page becomes declarable intent, and the engine keeps the freedom to render the same meaning for another device, brand or language.
 
-> Status honesty: the current head is a work-in-progress round-62 visual-repair checkpoint. Gates and reports from earlier revisions are snapshots — rerun the pipeline rather than trusting a number quoted in a document. Known gaps are listed in `docs/m1/composition.md` §8 and `m1/failures.md`.
+> Status honesty: current head is the 40-page curated gallery with the dashboard exemplar; `node m1/eval/pipeline.mjs` renders 40/40, fidelity 1.00 in HTML and Markdown, and every gate passes. Gates and reports from earlier revisions are snapshots — rerun the pipeline rather than trusting a number quoted in a document. Known gaps are listed in `docs/9_IMPLEMENTATION.md` §4, `docs/m1/composition.md` §8 and `m1/failures.md` (F-101 trailing-zero precision, F-102 uncaptured panel options).
 
 ## License
 

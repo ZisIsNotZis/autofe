@@ -35,14 +35,14 @@ Read at HEAD `4e1e065` + the uncommitted chain docs; command:
 | HTML fidelity | **1.00 on 40/40** |
 | Markdown fidelity | **1.00 on 40/40** |
 | Model validation | **46/46 `ok`**, 10 non-blocking warnings (8 name-only watermark, 2 single-row tables) |
-| Capture↔model integrity | **0 unmatched**, 5984 facts, 33 declared conversions, 1 declared capture gap, 65 allow entries |
-| Link coverage | 6841 source anchors; 1435 anchor facts reproduced; **0 undeclared gaps**; 44 written declarations |
-| Visible English label leaks | **0** (95 source-copy exemptions, 1 whitelist, 2 declared conversions) |
+| Capture↔model integrity | **0 unmatched**, 6064 facts, 5328 judged, 33 declared conversions, 1 declared capture gap, 65 allow entries |
+| Link coverage | 6841 source anchors; 1436 anchor facts reproduced; **0 undeclared gaps**; 44 written declarations |
+| Visible English label leaks | **0** (96 source-copy exemptions, 1 whitelist, 2 declared conversions) |
 | Quote/emphasis | 20 captured emphasis witnesses, 17 model `_quote`, **0 undeclared gaps** |
 | Control rendering | 48 expected controls, 48 HTML hits, 1 singleton degraded to a fact, 2 state slots not drawn |
 | Intent gate | **0 errors** (0 undetermined composition, 0 dead declarations, 0 runtime violations); 24 dead-selector warnings |
 | Visual self-audit | **40/40 clean** (only info-class source-true duplicates and one mosaic variance) |
-| Screenshot ⇄ HTML | hash manifest verified after `--shots` |
+| Screenshot ⇄ HTML | hash manifest verified after `--shots`; the dashboard page is 1280×2000 and 390×4204 |
 | Gates | 26 checks, of which 18 are numbered self-tests; every self-test carries a negative control |
 | Pipeline duration | ≈1 min (render + gates), ≈3 min with `--shots` |
 
@@ -52,30 +52,30 @@ Read at HEAD `4e1e065` + the uncommitted chain docs; command:
 - Original | rendered pairs: `node m1/eval/side-by-side.mjs` → `m1/curated/renders/sbs/index.html`.
 - Three-target demonstration: `node m1/eval/three-target-preview.mjs` → `docs/three-targets.md`.
 - Per-round work and independent reviews: `.scratch/<round>/` (records, not fact homes).
-- Failure log: `m1/failures.md` (F-001…F-100).
+- Failure log: `m1/failures.md` (F-001…F-103).
 
 ## 4. Known gaps (honest, none hidden)
 
-1. **Dashboard/data-viz has no expression.** `grafana-play/play-home` currently models 11 panel
-   *names* only; the captured stat values and units are dropped. The page falls to the `table`
-   prototype without a table. This is the current milestone (roadmap M2).
-2. **`_region` is inferred, not declared.** The two-zone feed+rail frame is derived from structure;
+1. **Dashboard stat panels are declarable; chart/series data is not.** The Grafana Stats page now
+   carries its 33 captured name/value/unit readings and renders as a stat wall (`dashboard`
+   prototype). Three of its eleven panels (`Value only`, `No text`, `Emoji in stat names`) have empty
+   captured bodies because the source renders them below the capture viewport; only their titles are
+   modelled. A sparkline is not captured as data, so no chart is drawn (F-102). A closed chart/series
+   primitive remains future work.
+2. **Trailing-zero precision is lost (F-101).** `{"num": 85.0}` parses to `85`, so a source reading
+   displayed as `85.0 m²` renders as `85 m²`. Non-integer precision (`5.15`, `57.9`) is preserved.
+   A display-precision field would be a grammar change and is not added ad hoc.
+3. **`_region` is inferred, not declared.** The two-zone feed+rail frame is derived from structure;
    a sidebar/region semantic key does not exist yet.
-3. **Capture fidelity limits.** Panel options are merged into one text node; `nodes.json` image
+4. **Capture fidelity limits.** Panel options are merged into one text node; `nodes.json` image
    entries carry geometry only, not `src`/`alt`; node text is capped at 1000 characters; a
    non-visible form input is not captured (sspai login).
-4. **Brand layer (M5) incomplete.** Currency glyph/precision is a declared presentation choice, but
+5. **Brand layer (M5) incomplete.** Currency glyph/precision is a declared presentation choice, but
    the token layer (type scale, radius, glyph policy per brand) is not yet a product surface.
-5. **No chart primitive.** A real chart would need a closed typed primitive (data + unit + series),
-   not escaped SVG; the current corpus has stat panels, not chart data.
-6. **Two log templates still print a stale denominator "42 页"** in `pipeline.mjs` (cosmetic; the
-   lists are empty and every real denominator is 40).
-7. **README status paragraph is stale** ("round-62 visual-repair checkpoint"); it is refreshed at
-   each release, and is refreshed together with M2.
-8. **Screenshot determinism.** `manifest.json` contains a generated version/time; `aliyun-com-home.png`
+6. **Screenshot determinism.** `manifest.json` contains a generated version/time; `aliyun-com-home.png`
    can differ byte-for-byte on re-shoot while HTML is unchanged. Evidence identity is bound to HTML,
    not to a byte-stable PNG.
-9. **Remote hotlinks.** Many rendered `<img>` still point at source CDNs; offline they break. This is
+7. **Remote hotlinks.** Many rendered `<img>` still point at source CDNs; offline they break. This is
    a reproducibility risk, not (yet) a model defect.
-10. **Known non-blocking source gaps** are listed in `docs/m1/composition.md` §6/§8 and
-    `m1/failures.md`; they are debt recorded at their home, not silently fixed.
+8. **Known non-blocking source gaps** are listed in `docs/m1/composition.md` §6/§8 and
+   `m1/failures.md`; they are debt recorded at their home, not silently fixed.

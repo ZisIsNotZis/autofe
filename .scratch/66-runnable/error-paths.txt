@@ -1,0 +1,7 @@
+## error-path proofs
+# 1. AUTOFE_PLAYWRIGHT_CORE=/nope
+ERROR: cannot load playwright-core from /nope (Cannot find module '/nope'); install it with `npm --prefix tools/capture install` or set AUTOFE_PLAYWRIGHT_CORE to a playwright-core directory
+# 2. AUTOFE_CHROME_PATH=/nope
+ERROR: cannot launch Chromium (browserType.launch: Failed to launch chromium because executable doesn't exist at /nope); install it with `node tools/capture/node_modules/playwright-core/cli.js install chromium-headless-shell` or set AUTOFE_CHROME_PATH to an existing browser
+# 3. no browser installed (PLAYWRIGHT_BROWSERS_PATH points at an empty dir)
+ERROR: cannot launch Chromium (browserType.launch: Executable doesn't exist at /tmp/autofe-empty-browsers/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell); install it with `node tools/capture/node_modules/playwright-core/cli.js install chromium-headless-shell` or set AUTOFE_CHROME_PATH to an existing browser

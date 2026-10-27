@@ -1,45 +1,33 @@
-// On-disk browser + playwright-core wiring. Nothing is downloaded or installed:
-// both come from fixed local paths (overridable via env for other machines).
-
-import fs from 'node:fs';
-import { createRequire } from 'node:module';
+// Browser + playwright-core wiring for the capture tool. Where they come from is not decided
+// here: m1/eval/browser.mjs is the one resolver (AUTOFE_PLAYWRIGHT_CORE / `npm --prefix
+// tools/capture install`, AUTOFE_CHROME_PATH / Playwright's own installed browser).
 
 import { withTimeout } from './util.mjs';
+import {
+  launchBrowser as launchChromium,
+  loadPlaywright,
+  resolveChromePath,
+} from '../../../m1/eval/browser.mjs';
 
-const require = createRequire(import.meta.url);
-
-export const DEFAULT_PLAYWRIGHT_CORE =
-  '/home/z/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core';
-
-export const DEFAULT_CHROME_PATH = `${process.env.HOME}/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell`;
+// Re-exported so capture callers keep one import; the implementation lives in the resolver.
+export { loadPlaywright, resolveChromePath };
 
 export const PRODUCT_TOKEN = 'AutoFE-Research-Bot';
 export const USER_AGENT = `Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 ${PRODUCT_TOKEN}/0.1`;
 
-export function resolveChromePath() {
-  const chromePath = process.env.AUTOFE_CHROME_PATH || DEFAULT_CHROME_PATH;
-  if (!fs.existsSync(chromePath)) {
-    throw new Error(
-      `headless browser not found at ${chromePath}. Set AUTOFE_CHROME_PATH or install a browser; this tool never downloads one.`,
-    );
-  }
-  return chromePath;
-}
-
-export function loadPlaywright() {
-  const modulePath = process.env.AUTOFE_PLAYWRIGHT_CORE || DEFAULT_PLAYWRIGHT_CORE;
-  try {
-    return require(modulePath);
-  } catch (error) {
-    throw new Error(`cannot load playwright-core from ${modulePath}: ${error.message}`);
-  }
-}
+// Capture needs font-rendering stability on top of the shared launch rules; the executable and
+// the no-sandbox flag come from the resolver, so a fresh clone works without any env.
+const CAPTURE_ARGS = [
+  '--disable-dev-shm-usage',
+  '--disable-lcd-text',
+  '--disable-font-subpixel-positioning',
+  '--force-color-profile=srgb',
+];
 
 export async function launchBrowser({ log = () => {} } = {}) {
-  const { chromium } = loadPlaywright();
   const executablePath = resolveChromePath();
-  log(`browser: ${executablePath}`);
-  return chromium.launch({ executablePath, args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-lcd-text', '--disable-font-subpixel-positioning', '--force-color-profile=srgb'] });
+  if (executablePath) log(`browser: ${executablePath}`);
+  return launchChromium({ args: CAPTURE_ARGS });
 }
 
 // Fallback robots.txt fetch through the browser's network stack. Node's fetch fails

@@ -21,12 +21,11 @@ before acting on a cost decision.
   fixed the composition/design defects the user named; `pipeline --shots` exits 0.
 - **Open:** the user's own verdict on the 7 pages named in round 58 and the rest of the gallery. This
   is `need_user_review` — a perceptual judgement; no later work is allowed to claim it passed.
-- **Known holes at delivery:** dashboard page has names but no values (M2); `_region` inferred;
-  capture gaps; brand layer incomplete (see `docs/9_IMPLEMENTATION.md` §4).
+- **Known holes at delivery:** the dashboard page had names but no values (fixed by M2 in the same
+  release window); `_region` inferred; capture gaps; brand layer incomplete (see
+  `docs/9_IMPLEMENTATION.md` §4).
 
-## Current
-
-### M2 · Dashboards become declarable — the Grafana Stats page carries its measured values
+### M2 · Dashboards become declarable — the Grafana Stats page carries its measured values *(delivered; user review pending)*
 
 **Why this milestone.** The gallery contains exactly one dashboard page. It is the only archetype
 with no expression, its captured stat values are dropped, and the README already promises dashboards
@@ -50,9 +49,25 @@ now" gains the dashboard capability; the status paragraph stops being a stale ch
 5. An independent visual reviewer has seen the page at full height beside its source and reports no
    blocker; the page is added to the user's review surface.
 
+**Delivery record.** Implemented with existing closed semantics (no new key/role); 33 captured
+readings and the intro/basics prose curated from `nodes.json`; 39/40 other pages byte-identical in
+all three targets; `pipeline --shots` exit 0 with an empty `AUTOFE_*` environment. Independent
+review verdict: **REJECT** on three framed empty panels; fixed with a general body-less-panel rule
+(title-only dashed bar), plus row-gap / equal-height / banner-band / 390-column fixes; re-check
+verdict **ACCEPT** (blocker gone, no new blocker). The page is now 1280×2000 and 390×4204. Known
+losses declared: F-101 (trailing-zero precision), F-102 (uncaptured colour/sparkline options and the
+three empty panel bodies). User verdict still open.
+
+## Current
+
+No milestone is sliced past M2. The user's verdict on M1+M2 is the open gate; the next route is
+shaped by it. Work that did not depend on it was finished in the same release: the browser toolchain
+no longer carries a developer path (WP2.5) and a flaky image-timing assertion in the taste gate was
+removed (F-103).
+
 ### Workset M2 · one implementation lane (single writer)
 
-- [ ] **WP2.1 · Engine: dashboard prototype + stat presentation**
+- [x] **WP2.1 · Engine: dashboard prototype + stat presentation**
   - *Makes true:* `axis.mjs` resolves a stat-dominated page to `dashboard`; a named+measured,
     childless collection renders as a stat grid; HTML, text and Markdown all carry the same values.
   - *Must not:* add a reserved key, a vocabulary role, a per-site class or a styling escape; change
@@ -66,11 +81,11 @@ now" gains the dashboard capability; the status paragraph stops being a stale ch
     outputs; a renderer dropping the unit fails the self-test.
   - *AC3:* 40 existing pages' HTML/text/Markdown are byte-identical before/after, except the Grafana
     page (record the diff).
-  - *AC4:* stat grid at 1160 / 852 / 390 widths: 4 / 2 / 1 columns, no horizontal overflow, no image
+  - *AC4:* stat grid at 1160 / 852 / 390 widths: 3 / 2 / 2 columns (1 below 360px), no horizontal overflow, no image
     upscaling.
-- [ ] **WP2.2 · Curation: Grafana page from capture**
+- [x] **WP2.2 · Curation: Grafana page from capture**
   - *Makes true:* the page's captured intro prose, toolbar, banners and all 11 panels are modelled;
-    the 7 value-bearing panels carry their stat name/value/unit pairs.
+    the 5 value-bearing panels carry their 33 stat name/value/unit pairs.
   - *Must not:* invent a panel value, complete a truncated one, or model a panel body the capture
     does not contain; empty panels are named and explained, not filled.
   - *Where:* `m1/curated/grafana-play/play-home.json`, `m1/curated/curation-log-*.md`,
@@ -80,14 +95,24 @@ now" gains the dashboard capability; the status paragraph stops being a stale ch
   - *AC2:* `node m1/validate.mjs` `ok`; capture-integrity 0 unmatched; HTML and Markdown fidelity
     1.00.
   - *AC3:* every target/link/image is verbatim from the capture; no site-specific key or CSS.
-- [ ] **WP2.3 · Evidence and release**
+- [x] **WP2.3 · Evidence and release**
   - *Makes true:* gallery, side-by-side, manifest, README and `docs/9_IMPLEMENTATION.md` reflect the
-    new state.
+    new state, and the quick start runs from a fresh clone.
   - *Where:* `m1/curated/renders/`, `README.md`, `README.zh-CN.md`, `docs/9_IMPLEMENTATION.md`,
     `docs/0_ROADMAP.md`.
   - *AC:* `pipeline --shots` exit 0; manifest binds new PNG ⇄ HTML; gallery index includes the page;
     README quotes only measured numbers; release report named in the commit.
-- [ ] **WP2.4 · Independent visual review (fresh context, never the worker)**
+- [x] **WP2.5 · Runnable release: browser resolution without a developer path**
+  - *Makes true:* a fresh clone can run the full gate pass after the documented browser install;
+    no eval/capture tool carries a developer-specific `playwright-core` or Chrome path, and no
+    environment variable is required when `tools/capture/node_modules` + a Playwright browser exist.
+  - *Where:* a shared browser resolver, `m1/eval/*.mjs`, `tools/capture/lib/browser.mjs`,
+    `tools/capture/index.mjs`, both README quick starts, `CONTRIBUTING.md`.
+  - *AC:* `node m1/eval/pipeline.mjs` with an empty `AUTOFE_*` environment exits 0 in this tree;
+    `node tools/capture/index.mjs --dry-run` resolves robots without env; a missing browser or
+    `playwright-core` fails with one actionable message, not a stack trace; no render/model change
+    (40 pages byte-identical).
+- [x] **WP2.4 · Independent visual review (fresh context, never the worker)**
   - *Makes true:* an agent does the user's visual job before the user is asked to look.
   - *AC:* reads the dashboard at full height beside its source and the refreshed gallery; lists every
     seeable defect; 0 blocker remains before the user review. Any fix re-runs WP2.1–2.3 gates.

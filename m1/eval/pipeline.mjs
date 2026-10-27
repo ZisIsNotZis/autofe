@@ -10,7 +10,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { execSync } from 'node:child_process';
-import { createRequire } from 'node:module';
+
+import { launchBrowser } from './browser.mjs';
 
 const args = process.argv.slice(2);
 const wantShots = args.includes('--shots');
@@ -18,9 +19,6 @@ const wantCheck = args.includes('--check-shots');
 const onlyArg = args.find((a) => a.startsWith('--only'));
 const only = onlyArg ? (onlyArg.includes('=') ? onlyArg.split('=')[1] : args[args.indexOf(onlyArg) + 1]).split(',').map((s) => s.trim()).filter(Boolean) : null;
 
-const require = createRequire(import.meta.url);
-const PW = process.env.AUTOFE_PLAYWRIGHT_CORE || (process.env.HOME + '/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
-const CHROME = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
 
 const scale = JSON.parse(fs.readFileSync('m1/eval/m3-scale.json', 'utf8')).filter((x) => x.tier === 'exemplar');
 const rows = only ? scale.filter((s) => only.includes(s.k)) : scale;
@@ -282,7 +280,7 @@ console.log(`[pipeline] 构图推导自测(轮63): ${gCOMP.ok ? '通过' : '失�
 if (!gCOMP.ok) console.log(gCOMP.out);
 // 意图门禁（composition.md §5）：把引擎的声明与渲染/计算样式逐页对账，阻断项为「未定构图 /
 // 死声明 / 运行时意图未兑现」，死选择器只作警告。它跑真浏览器量 `.gallery-mosaic .strip` 的
-// 计算宽高比，浏览器来源沿用本流水线的既有约定：AUTOFE_CHROME_PATH / AUTOFE_PLAYWRIGHT_CORE
+// 计算宽高比；浏览器来源见 m1/eval/browser.mjs（AUTOFE_CHROME_PATH / AUTOFE_PLAYWRIGHT_CORE 可覆盖）。
 // 由调用方环境继承（与 audit-visual.mjs 同一条路，非 --shots 分支不自己 relaunch）。
 const gIAU = gate('node m1/eval/intent-audit.mjs');
 console.log(`[pipeline] 意图门禁(声明→兑现, S1c): ${gIAU.ok ? '通过' : '失败'}`);
@@ -313,8 +311,7 @@ const hardFails = (auditTail.match(/待修 (\d+)/) || [])[1];
 
 // ---- 3. shots + gallery ----------------------------------------------------
 if (wantShots) {
-  const { chromium } = require(PW);
-  const b = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
+  const b = await launchBrowser();
   const p = await b.newPage({ viewport: { width: 1280, height: 900 } });
   let n = 0;
   // Reuse only byte-bound HTML/PNG pairs; invalidated pages are captured normally.

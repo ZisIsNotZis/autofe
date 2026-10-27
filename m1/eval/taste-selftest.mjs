@@ -9,8 +9,8 @@
 // （选择器坏了），断言同样失败而不是静默通过。
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { createRequire } from 'node:module';
 import { render } from '../render.mjs';
+import { launchBrowser } from './browser.mjs';
 
 let checks = 0;
 const check = (label, condition) => { assert.ok(condition, label); checks++; };
@@ -107,14 +107,24 @@ const expectedLeft = (g, row) => (row.inRail || g.searchCol === null ? row.paren
 const misaligned = (g) => g.rows.filter((r) => Math.abs(r.left - expectedLeft(g, r)) > 4);
 const orphans = (m) => (m.cols === m.n ? [] : m.per.filter((c) => c === 1));
 
-const pw = process.env.AUTOFE_PLAYWRIGHT_CORE || (process.env.HOME + '/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
-const chrome = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
-assert.ok(fs.existsSync(pw) && fs.existsSync(chrome), 'Chromium required; a CSS-only reading cannot measure the content column, the waterfall columns or a table row stripe');
-const { chromium } = createRequire(import.meta.url)(pw);
-const browser = await chromium.launch({ executablePath: chrome, args: ['--no-sandbox'] });
+// Chromium is required; a CSS-only reading cannot measure the content column, the waterfall
+// columns or a table row stripe. The shared resolver reports an actionable install error.
+const browser = await launchBrowser();
 try {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-  const load = async (k) => { await page.setContent(render(modelOf(k), { site: k.split('/')[0] }), { waitUntil: 'domcontentloaded' }); return page.evaluate(PROBE); };
+  // The masonry check depends on image heights, and the rendered pages hotlink their source CDN
+  // images (no width/height attributes in the model). Measuring straight after domcontentloaded
+  // measured a layout whose images had not arrived yet and flaked once (apple-com/home, round 65).
+  // Wait for every image to settle, with a hard cap so a dead CDN cannot stall the gate; a timed-out
+  // image is a network fact, not a layout decision.
+  const settleImages = () => page.evaluate(() => Promise.all([...document.images].map((img) =>
+    img.complete ? 0 : new Promise((resolve) => {
+      const done = () => resolve(0);
+      img.addEventListener('load', done, { once: true });
+      img.addEventListener('error', done, { once: true });
+      setTimeout(done, 5000);
+    }))));
+  const load = async (k) => { await page.setContent(render(modelOf(k), { site: k.split('/')[0] }), { waitUntil: 'domcontentloaded' }); await settleImages(); return page.evaluate(PROBE); };
   let measuredRows = 0, footerPages = 0, identityPages = 0, railPages = 0;
   const waterfall = [], striped = [];
 

@@ -1,8 +1,14 @@
 # tools/capture — M0 corpus capture pipeline
 
 Renders a stratified page set headlessly and stores DOM + accessibility tree + JSON-LD +
-screenshots + per-element geometry/style, all aligned. Node only, no dependencies: it uses
-the already-installed browser and `playwright-core` from disk and installs nothing.
+screenshots + per-element geometry/style, all aligned. Node only. `playwright-core` and the
+browser it drives come from this directory (shared resolver: `m1/eval/browser.mjs`); install them
+once:
+
+```bash
+npm --prefix tools/capture install
+node tools/capture/node_modules/playwright-core/cli.js install chromium-headless-shell
+```
 
 Ticket: `.scratch/01-corpus-pipeline/spec.md` (M0). Design context: `docs/sources/design-basis.md` §7–§8.
 

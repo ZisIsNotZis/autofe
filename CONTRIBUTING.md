@@ -23,11 +23,26 @@ needs a failing example.
 
 ## Running the checks
 
+No dependencies are needed to render, validate, or read a model:
+
 ```sh
 node m1/validate.mjs m1/curated/*/*.json    # closed-grammar validation
+node m1/render.mjs m1/curated/gov-uk/ni-rates-letters.json /tmp/page.html
+```
+
+The pipeline includes browser gates, so install `playwright-core` and a headless Chromium once
+before running it (the tools resolve both themselves; no environment variable is needed):
+
+```sh
+npm --prefix tools/capture install
+node tools/capture/node_modules/playwright-core/cli.js install chromium-headless-shell
 node m1/eval/pipeline.mjs                   # render all curated models + 26 gates (~1 min)
 node m1/eval/pipeline.mjs --shots           # also re-shoot PNGs and rebuild the gallery (~3 min)
 ```
+
+To use a browser and `playwright-core` that already exist on disk instead, set
+`AUTOFE_CHROME_PATH` and `AUTOFE_PLAYWRIGHT_CORE`; every browser-backed tool resolves them through
+`m1/eval/browser.mjs`.
 
 Exit code 0 means every gate passed. A change is not done because the pipeline is green — the gates
 are a necessary condition, not a sufficient one (`docs/3_REQUIREMENT.md`, the user's acceptance

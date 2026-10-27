@@ -2,11 +2,7 @@
 // 用法: node m1/eval/audit-visual.mjs <render.html> [more.html...]  或  --all
 import fs from 'node:fs';
 import path from 'node:path';
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
-const PW = process.env.AUTOFE_PLAYWRIGHT_CORE || '/home/z/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core';
-const { chromium } = require(PW);
-const CHROME = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
+import { launchBrowser } from './browser.mjs';
 
 let files = process.argv.slice(2);
 if (!files.length || files[0] === '--all') {
@@ -44,7 +40,7 @@ function captureCount(file, needle) {
   if (!tokens.length) return 0;
   return tokens.every((t) => countAll(hay, t) >= 2) ? 2 : 0;
 }
-const browser = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
+const browser = await launchBrowser();
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 const rows = [];
 for (const f of files) {

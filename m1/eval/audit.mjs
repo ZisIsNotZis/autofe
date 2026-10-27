@@ -2,9 +2,8 @@
 // approximate what a human eye catches on first glance. Run per curated page.
 // Usage: node m1/eval/audit.mjs <model.json> <render.html> [out.json]
 import fs from 'node:fs';
-import { createRequire } from 'node:module';
 import { childrenOf, factsOf } from '../model-lib.mjs';
-const require = createRequire(import.meta.url);
+import { launchBrowser } from './browser.mjs';
 
 export function modelAudit(model) {
   const findings = [];
@@ -23,8 +22,7 @@ export function modelAudit(model) {
 }
 
 export async function renderAudit(htmlPath) {
-  const { chromium } = require(process.env.AUTOFE_PLAYWRIGHT_CORE || '/home/z/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
-  const b = await chromium.launch({ executablePath: process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell'), args: ['--no-sandbox'] });
+  const b = await launchBrowser();
   const p = await b.newPage({ viewport: { width: 1280, height: 900 } });
   await p.goto('file://' + (htmlPath.startsWith('/') ? htmlPath : process.cwd() + '/' + htmlPath));
   const audit = await p.evaluate(() => {

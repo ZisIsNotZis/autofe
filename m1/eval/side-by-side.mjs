@@ -9,11 +9,7 @@
 // 复用项目既有工具链（playwright-core），不引入新的图像依赖。
 import fs from 'node:fs';
 import path from 'node:path';
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
-const PW = process.env.AUTOFE_PLAYWRIGHT_CORE || '/home/z/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core';
-const { chromium } = require(PW);
-const CHROME = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell');
+import { launchBrowser } from './browser.mjs';
 
 const FLAGGED = [
   'airbnb-com/room-28871', 'apple-com-cn/iphone-17', 'bilibili-com/read-home',
@@ -33,7 +29,7 @@ if (!keys.length && !indexOnly) {
 const OUT = 'm1/curated/renders/sbs';
 fs.mkdirSync(OUT, { recursive: true });
 const W = 900; // 每栏目标宽度（px）
-const browser = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
+const browser = await launchBrowser();
 const page = await browser.newPage({ viewport: { width: 1920, height: 1200 } });
 // 读 PNG IHDR 得到真实像素尺寸（避免把“短图下方留白”误读为渲染缺陷）
 function probe(file) {

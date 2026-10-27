@@ -13,12 +13,12 @@
 // 整节「无违规」就不再是证据。
 // 只有「坏的被抓 且 好的通过」才退出 0；任一控制项失败退出 1，浏览器起不来退出 2（未执行≠通过）。
 // 用法: node m1/eval/intent-audit-selftest.mjs
-import { createRequire } from 'node:module';
 import {
   compositionViolations, deadSelectors, cascadeConflicts, parseCss, runtimeOverrides,
   pageKindClasses, emittedClasses, engineCss, loadPages, RUNTIME_VIEWPORTS, cascadeCoveredRuntimePages,
   gateOutcome,
 } from './intent-audit.mjs';
+import { launchBrowser } from './browser.mjs';
 
 let failed = 0, controls = 0;
 const check = (name, cond, detail = '') => {
@@ -170,12 +170,9 @@ check('发现非空: 真实 CSS 的死选择器检测仍有命中（检测器没
   realDead.length > 0, JSON.stringify(realDead.slice(0, 5)));
 
 // ----------------------------------------------------------- d) 运行时覆盖
-const require = createRequire(import.meta.url);
-const PW = process.env.AUTOFE_PLAYWRIGHT_CORE || (process.env.HOME + '/.local/share/fnm/node-versions/v24.18.1/installation/lib/node_modules/@playwright/mcp/node_modules/playwright-core');
-const CHROME = process.env.AUTOFE_CHROME_PATH || (process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell');
 let browser;
 try {
-  browser = await require(PW).chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
+  browser = await launchBrowser();
 } catch (e) {
   console.error(`意图门禁自测: 无法启动浏览器（${String(e.message).split('\n')[0]}）—— 运行时控制项未执行，不能判通过`);
   process.exit(2);
